@@ -1,0 +1,1139 @@
+/* 漫畫風系網 — 樹德動遊系 */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bowlby+One&family=Noto+Sans+TC:wght@400;500;700;900&family=Zen+Kurenaido&family=Reggae+One&display=swap');
+
+:root {
+  --paper: #f4ecd8;
+  --paper-2: #ece2c6;
+  --ink: #0f0d0a;
+  --ink-2: #1a1714;
+  --halftone: rgba(15, 13, 10, 0.18);
+  --accent-red: #e63946;        /* 熱血朱紅 */
+  --accent-blue: #1d4ed8;       /* 遊戲寶藍 */
+  --accent-yellow: #ffd60a;
+  --accent-pink: #ff70a6;
+  --gutter: 0px;
+  --bw: 5px; /* 邊框粗 */
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* 錨點點擊時平滑捲動，且讓章節停在 sticky topnav 下方 */
+html { scroll-behavior: smooth; }
+.chapter, .foot { scroll-margin-top: 80px; }
+html { scroll-behavior: smooth; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans TC', system-ui, sans-serif;
+  color: var(--ink);
+  background-color: #f4ecd8 !important;
+  background: var(--paper);
+  background-image:
+    radial-gradient(var(--halftone) 1px, transparent 1.4px),
+    radial-gradient(var(--halftone) 1px, transparent 1.4px);
+  background-size: 14px 14px, 14px 14px;
+  background-position: 0 0, 7px 7px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 紙質紋理覆蓋層 */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(15,13,10,0.02) 0 2px, transparent 2px 4px),
+    repeating-linear-gradient(-45deg, rgba(15,13,10,0.02) 0 2px, transparent 2px 4px);
+  z-index: 1;
+  mix-blend-mode: multiply;
+}
+
+/* 漫畫格通用 — 手繪邊 (filter 只套用於邊框，不影響內容) */
+.panel {
+  position: relative;
+  background: #fffaf0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+  isolation: isolate;
+  margin: calc(var(--bw) * -0.5);
+}
+/* 邊框用 ::before 浮層繪製 — filter 只套這層，內容不受影響 */
+.panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: var(--bw) solid var(--ink);
+  pointer-events: none;
+  z-index: 5;
+  filter: url(#rough-edge);
+}
+.panel:hover { z-index: 6; }
+
+/* 漫畫頁與 tier 結構 — 標準日漫排版 */
+.comic-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gutter);
+  margin-bottom: 32px;
+  position: relative;
+}
+.comic-tier {
+  display: flex;
+  gap: var(--gutter);
+  width: 100%;
+}
+.comic-tier > .panel {
+  flex: 1 1 0;
+  min-height: 0;
+}
+/* tier 高度預設 — 漫畫 tier 比例 */
+.tier-tall { min-height: 380px; }
+.tier-mid { min-height: 260px; }
+.tier-short { min-height: 180px; }
+.tier-splash { min-height: 480px; }
+
+/* 用 flex 比例代替不規則 grid */
+.tier-1-1 > .panel { flex: 1 1 0; }
+.tier-2-1 > .panel:nth-child(1) { flex: 2 1 0; }
+.tier-2-1 > .panel:nth-child(2) { flex: 1 1 0; }
+.tier-1-2 > .panel:nth-child(1) { flex: 1 1 0; }
+.tier-1-2 > .panel:nth-child(2) { flex: 2 1 0; }
+.tier-3-2 > .panel:nth-child(1) { flex: 3 1 0; }
+.tier-3-2 > .panel:nth-child(2) { flex: 2 1 0; }
+.tier-1-1-1 > .panel { flex: 1 1 0; }
+.tier-1-2-1 > .panel:nth-child(1) { flex: 1 1 0; }
+.tier-1-2-1 > .panel:nth-child(2) { flex: 2 1 0; }
+.tier-1-2-1 > .panel:nth-child(3) { flex: 1 1 0; }
+.tier-1-1-1-1 > .panel { flex: 1 1 0; }
+
+/* 點擊觸發狀聲詞與集中線 */
+@keyframes sfxPop {
+  0% { transform: rotate(var(--r,-8deg)) scale(0.4); opacity: 0; }
+  40% { transform: rotate(calc(var(--r,-8deg) - 4deg)) scale(1.25); opacity: 1; }
+  70% { transform: rotate(var(--r,-8deg)) scale(1); opacity: 1; }
+  100% { transform: rotate(var(--r,-8deg)) scale(1.05); opacity: 0; }
+}
+@keyframes speedlinesPulse {
+  0% { opacity: 0; transform: scale(0.6); }
+  30% { opacity: 0.9; transform: scale(1.05); }
+  100% { opacity: 0; transform: scale(1.4); }
+}
+@keyframes panelShake {
+  0%,100% { transform: translate(0,0) rotate(0); }
+  20% { transform: translate(-3px,2px) rotate(-0.6deg); }
+  40% { transform: translate(3px,-2px) rotate(0.6deg); }
+  60% { transform: translate(-2px,-2px) rotate(-0.4deg); }
+  80% { transform: translate(2px,2px) rotate(0.4deg); }
+}
+
+.panel.is-clicked, .panel-cut.is-clicked > .panel-cut-inner {
+  animation: panelShake 0.4s ease-in-out;
+}
+.panel-cut.is-clicked { animation: panelShake 0.4s ease-in-out; }
+
+.click-sfx {
+  position: absolute;
+  font-family: 'Bangers', 'Reggae One', system-ui;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  -webkit-text-stroke: 4px var(--ink);
+  paint-order: stroke fill;
+  color: var(--accent-yellow);
+  text-shadow: 6px 6px 0 var(--ink);
+  font-size: 56px;
+  line-height: 0.9;
+  animation: sfxPop 0.7s ease-out forwards;
+  pointer-events: none;
+  z-index: 30;
+  white-space: nowrap;
+}
+.click-speedlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-conic-gradient(from 0deg at 50% 50%,
+    rgba(15,13,10,0.95) 0deg 0.7deg,
+    transparent 0.7deg 6deg);
+  mix-blend-mode: multiply;
+  animation: speedlinesPulse 0.6s ease-out forwards;
+  z-index: 25;
+}
+
+/* === 彩蛋字樣 — 集中線中心點擊閃現 === */
+@keyframes eggPop {
+  0%   { opacity: 0; transform: translate(-50%, -50%) rotate(-12deg) scale(0.3); }
+  18%  { opacity: 1; transform: translate(-50%, -50%) rotate(-7deg) scale(1.5); }
+  32%  { opacity: 1; transform: translate(-50%, -50%) rotate(-5deg) scale(1.0); }
+  55%  { opacity: 1; transform: translate(-50%, -50%) rotate(-6deg) scale(1.08); }
+  100% { opacity: 0; transform: translate(-50%, -50%) rotate(-3deg) scale(1.2); }
+}
+.easter-egg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-family: 'Bangers', 'Reggae One', system-ui;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  /* 字再大一點 */
+  font-size: clamp(140px, 20vw, 280px);
+  /* 浮誇螢光桃紅 + 黃綠青三層錯位陰影 + 黑邊 — Splatoon × Comic 雙打 */
+  color: #ff2bb5;
+  -webkit-text-stroke: 9px var(--ink);
+  paint-order: stroke fill;
+  text-shadow:
+    6px 6px 0 var(--accent-yellow),
+    12px 12px 0 #1de9b6,
+    18px 18px 0 var(--ink),
+    0 0 36px rgba(255, 43, 181, 0.85);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 100;
+  animation: eggPop 1.6s cubic-bezier(.3,.7,.3,1.2) forwards;
+  transform-origin: center;
+  /* 不被選取反白影響效果 */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* === 斯普拉遁式墨水噴濺（SVG 不規則路徑版本） === */
+.ink-splat-anim {
+  opacity: 0;
+  transform-origin: center;
+  animation: inkSplatGrow 0.95s cubic-bezier(.2,.7,.2,1) forwards;
+}
+@keyframes inkSplatGrow {
+  0%   { transform: scale(0)    translate(0, -10px); opacity: 0; }
+  15%  { transform: scale(1.35) translate(0, 0);     opacity: 1; }
+  55%  { transform: scale(1.0)  translate(0, 0);     opacity: 1; }
+  100% { transform: scale(0.95) translate(0, 14px);  opacity: 0; }
+}
+
+/* === 斜切格 (Diagonal cut panels) ===
+   用 clip-path 把格子切成不規則四邊形。
+   外殼負責 clip + 黑底 (作邊框)，內層 inset 1 個 bw 形成「黑邊」效果。 */
+.panel-cut {
+  position: relative;
+  background: var(--ink);
+  filter: drop-shadow(0 0 0 var(--ink));
+  isolation: isolate;
+  margin: calc(var(--bw) * -0.5);
+}
+.panel-cut > .panel-cut-inner {
+  position: absolute;
+  inset: var(--bw);
+  background: #fffaf0;
+  background-color: #fffaf0 !important;
+  overflow: hidden;
+}
+.panel-cut.cut--tl-br { clip-path: polygon(0 0, 100% 0, 100% 76%, 76% 100%, 0 100%); }
+.panel-cut.cut--tl-br > .panel-cut-inner { clip-path: polygon(0 0, 100% 0, 100% 75%, 75% 100%, 0 100%); }
+.panel-cut.cut--tr-bl { clip-path: polygon(0 0, 100% 0, 100% 100%, 24% 100%, 0 75%); }
+.panel-cut.cut--tr-bl > .panel-cut-inner { clip-path: polygon(0 0, 100% 0, 100% 100%, 25% 100%, 0 76%); }
+.panel-cut.cut--diag-down { clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%); }
+.panel-cut.cut--diag-down > .panel-cut-inner { clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%); }
+.panel-cut.cut--diag-up { clip-path: polygon(0 30%, 100% 0, 100% 100%, 0 100%); }
+.panel-cut.cut--diag-up > .panel-cut-inner { clip-path: polygon(0 30%, 100% 0, 100% 100%, 0 100%); }
+.panel-cut.cut--parallelogram { clip-path: polygon(12% 0, 100% 0, 88% 100%, 0 100%); }
+.panel-cut.cut--parallelogram > .panel-cut-inner { clip-path: polygon(12% 0, 100% 0, 88% 100%, 0 100%); }
+.panel-cut.cut--zoom-corner {
+  /* 一格的角落「凹」進另一格 — 經典戰鬥場面用 */
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 38% 100%, 28% 62%, 0 62%);
+}
+.panel-cut.cut--zoom-corner > .panel-cut-inner {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 38% 100%, 28% 62%, 0 62%);
+}
+
+/* === 跨格 (Bleed) ===
+   一個元素跨越多個格子。父用 grid，子加這個 class 並指定 grid-column/row。 */
+.bleed {
+  position: relative;
+  z-index: 8;
+  pointer-events: none;
+}
+.bleed > * { pointer-events: auto; }
+
+/* 突破畫框 — 圖片元素超出格框 */
+.breakout {
+  position: absolute;
+  z-index: 9;
+  filter: drop-shadow(4px 4px 0 var(--ink));
+}
+
+/* 跨格大狀聲詞 */
+.sfx-bleed {
+  position: absolute;
+  z-index: 12;
+  pointer-events: none;
+}
+.panel--inkbg { background: var(--ink); color: var(--paper); }
+.panel--red { background: var(--accent-red); color: #fff; }
+.panel--blue { background: var(--accent-blue); color: #fff; }
+.panel--yellow { background: var(--accent-yellow); color: var(--ink); }
+.panel--paper { background: var(--paper); }
+
+/* 集中線 / 速度線背景（用 SVG via gradient） */
+.bg-speedlines {
+  background-image:
+    repeating-conic-gradient(from 0deg at 50% 50%,
+      rgba(15,13,10,0.85) 0deg 0.6deg,
+      transparent 0.6deg 5deg);
+  background-size: 100% 100%;
+}
+.bg-halftone-dense {
+  background-image: radial-gradient(rgba(15,13,10,0.30) 1.2px, transparent 1.6px);
+  background-size: 10px 10px;
+}
+.bg-halftone-light {
+  background-image: radial-gradient(rgba(15,13,10,0.12) 1px, transparent 1.3px);
+  background-size: 12px 12px;
+}
+.bg-halftone-red {
+  background-image: radial-gradient(rgba(230,57,70,0.28) 1.2px, transparent 1.6px);
+  background-size: 11px 11px;
+}
+.bg-halftone-blue {
+  background-image: radial-gradient(rgba(29,78,216,0.28) 1.2px, transparent 1.6px);
+  background-size: 11px 11px;
+}
+.bg-stripes {
+  background-image: repeating-linear-gradient(45deg,
+    var(--ink) 0 4px, transparent 4px 12px);
+}
+.bg-paper { background: var(--paper-2); }
+
+/* 圖片占位（ストライプ + label） */
+.placeholder-img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(15,13,10,0.08) 0 8px,
+      rgba(15,13,10,0.02) 8px 16px),
+    var(--paper-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.placeholder-img > span {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--ink);
+  background: rgba(255,250,240,0.85);
+  padding: 4px 8px;
+  border: 1.5px solid var(--ink);
+  letter-spacing: 0.05em;
+}
+
+/* 對話框 */
+.bubble {
+  position: relative;
+  background: #fffaf0;
+  border: 3px solid var(--ink);
+  border-radius: 18px / 22px;
+  padding: 10px 14px;
+  font-weight: 700;
+  display: inline-block;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.bubble::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: #fffaf0;
+  border-right: 3px solid var(--ink);
+  border-bottom: 3px solid var(--ink);
+  transform: rotate(45deg);
+  bottom: -10px;
+  left: 28px;
+}
+.bubble--cloud {
+  border-radius: 50px / 30px;
+}
+.bubble--shout {
+  background: #fff;
+  border: 4px solid var(--ink);
+  clip-path: polygon(
+    0% 20%, 8% 10%, 16% 22%, 24% 6%, 34% 18%, 44% 4%, 56% 16%, 66% 0%, 76% 14%, 86% 6%, 96% 18%, 100% 32%,
+    92% 44%, 100% 56%, 92% 68%, 100% 82%, 86% 92%, 74% 84%, 64% 96%, 52% 86%, 40% 100%, 30% 88%, 18% 96%, 8% 84%, 0% 70%,
+    8% 56%, 0% 42%
+  );
+  border: none;
+  box-shadow: none;
+  padding: 24px 28px;
+}
+.bubble--shout::after { display: none; }
+
+/* ===== 氣泡動畫大全 ===== */
+@keyframes bubbleFloat {
+  0%,100% { transform: translateY(0) rotate(-1deg); }
+  50%     { transform: translateY(-8px) rotate(1deg); }
+}
+@keyframes bubbleHeartbeat {
+  0%,100% { transform: scale(1); box-shadow: 3px 3px 0 var(--ink); }
+  15%     { transform: scale(1.08); box-shadow: 5px 5px 0 var(--ink); }
+  30%     { transform: scale(1); }
+  45%     { transform: scale(1.12); box-shadow: 6px 6px 0 var(--ink); }
+  60%     { transform: scale(1); box-shadow: 3px 3px 0 var(--ink); }
+}
+@keyframes bubbleJitter {
+  0%,100% { transform: translate(0,0) rotate(-1deg); }
+  20%     { transform: translate(-2px,1px) rotate(0.5deg); }
+  40%     { transform: translate(2px,-1px) rotate(-1.5deg); }
+  60%     { transform: translate(-1px,-2px) rotate(1deg); }
+  80%     { transform: translate(1px,2px) rotate(-0.5deg); }
+}
+@keyframes bubbleSwing {
+  0%,100% { transform: rotate(-3deg); }
+  50%     { transform: rotate(3deg); }
+}
+@keyframes bubbleBounce {
+  0%,100% { transform: translateY(0) scaleY(1); }
+  40%     { transform: translateY(-12px) scaleY(1.05); }
+  60%     { transform: translateY(0) scaleY(0.92); }
+  80%     { transform: translateY(-4px) scaleY(1.02); }
+}
+@keyframes bubblePop {
+  0%   { transform: scale(0.7) rotate(-8deg); opacity: 0; }
+  60%  { transform: scale(1.15) rotate(2deg); opacity: 1; }
+  100% { transform: scale(1) rotate(-1deg); opacity: 1; }
+}
+@keyframes bubbleGlow {
+  0%,100% { box-shadow: 3px 3px 0 var(--ink), 0 0 0 0 var(--accent-yellow); }
+  50%     { box-shadow: 3px 3px 0 var(--ink), 0 0 28px 8px var(--accent-yellow); }
+}
+@keyframes bubbleShake {
+  0%,100% { transform: translate(0,0); }
+  10%     { transform: translate(-3px,2px) rotate(-2deg); }
+  20%     { transform: translate(3px,-2px) rotate(2deg); }
+  30%     { transform: translate(-3px,-1px) rotate(-1deg); }
+  40%     { transform: translate(3px,1px) rotate(1.5deg); }
+  50%     { transform: translate(-2px,2px) rotate(-2deg); }
+  60%     { transform: translate(2px,-2px) rotate(1deg); }
+  70%     { transform: translate(-1px,1px) rotate(-1deg); }
+  80%     { transform: translate(1px,-1px) rotate(0.5deg); }
+}
+@keyframes bubbleBreathe {
+  0%,100% { transform: scale(1); }
+  50%     { transform: scale(1.04); }
+}
+@keyframes bubbleTilt {
+  0%   { transform: rotate(-2deg) translateY(0); }
+  25%  { transform: rotate(2deg) translateY(-3px); }
+  50%  { transform: rotate(-1deg) translateY(-1px); }
+  75%  { transform: rotate(3deg) translateY(-4px); }
+  100% { transform: rotate(-2deg) translateY(0); }
+}
+@keyframes bubbleFlash {
+  0%,40%,100% { background: #fffaf0; color: var(--ink); }
+  50%,90%     { background: var(--accent-yellow); color: var(--ink); }
+}
+@keyframes bubbleRubber {
+  0%   { transform: scale(1,1); }
+  30%  { transform: scale(1.25,0.75); }
+  40%  { transform: scale(0.75,1.25); }
+  60%  { transform: scale(1.15,0.85); }
+  100% { transform: scale(1,1); }
+}
+@keyframes typewriter {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+@keyframes spinTail {
+  0%,100% { transform: rotate(45deg) translate(0,0); }
+  50%     { transform: rotate(50deg) translate(2px,3px); }
+}
+
+/* 變體 — 套用在 .bubble 上 */
+.bubble--anim-float     { animation: bubbleFloat     3.2s ease-in-out infinite; }
+.bubble--anim-heartbeat { animation: bubbleHeartbeat 1.4s ease-in-out infinite; transform-origin: center; }
+.bubble--anim-jitter    { animation: bubbleJitter    0.55s steps(4,end)    infinite; }
+.bubble--anim-swing     { animation: bubbleSwing     2.4s ease-in-out infinite; transform-origin: top center; }
+.bubble--anim-bounce    { animation: bubbleBounce    1.6s cubic-bezier(.5,0,.3,1.4) infinite; }
+.bubble--anim-pop       { animation: bubblePop       0.7s cubic-bezier(.5,0,.2,1.6) both, bubbleBreathe 2.8s 0.7s ease-in-out infinite; }
+.bubble--anim-glow      { animation: bubbleGlow      2s   ease-in-out infinite; }
+.bubble--anim-shake     { animation: bubbleShake     0.4s steps(8,end)    infinite; }
+.bubble--anim-breathe   { animation: bubbleBreathe   2.4s ease-in-out infinite; transform-origin: center; }
+.bubble--anim-tilt      { animation: bubbleTilt      4s   ease-in-out infinite; transform-origin: bottom left; }
+.bubble--anim-flash     { animation: bubbleFlash     1.4s ease-in-out infinite; }
+.bubble--anim-rubber    { animation: bubbleRubber    1.8s ease-in-out infinite; }
+.bubble--anim-type      { overflow: hidden; animation: typewriter 2.4s steps(20,end) infinite alternate; }
+.bubble--anim-spintail::after { animation: spinTail 1.6s ease-in-out infinite; }
+
+/* hover 加倍 */
+.bubble:hover { animation-duration: 0.35s !important; }
+
+/* 狀聲詞 */
+.sfx {
+  font-family: 'Bowlby One', 'Reggae One', 'Noto Sans TC', system-ui;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  -webkit-text-stroke: 4px var(--ink);
+  paint-order: stroke fill;
+  color: #fffaf0;
+  text-shadow: 6px 6px 0 var(--ink);
+  line-height: 0.85;
+  display: inline-block;
+  transform: rotate(-6deg);
+}
+
+/* 狀聲詞動畫 */
+@keyframes sfxWobble {
+  0%,100% { transform: rotate(var(--r,-6deg)) scale(1); }
+  25%     { transform: rotate(calc(var(--r,-6deg) + 4deg)) scale(1.05); }
+  50%     { transform: rotate(calc(var(--r,-6deg) - 3deg)) scale(0.97); }
+  75%     { transform: rotate(calc(var(--r,-6deg) + 2deg)) scale(1.08); }
+}
+@keyframes sfxBlink {
+  0%,40%,100% { opacity: 1; transform: rotate(var(--r,-6deg)) scale(1); }
+  20%,60%     { opacity: 0.3; transform: rotate(var(--r,-6deg)) scale(0.85); }
+}
+@keyframes sfxBurst {
+  0%   { transform: rotate(var(--r,-6deg)) scale(0.6); opacity: 0; }
+  20%  { transform: rotate(var(--r,-6deg)) scale(1.2); opacity: 1; }
+  100% { transform: rotate(var(--r,-6deg)) scale(1); opacity: 1; }
+}
+.sfx--anim-wobble { animation: sfxWobble 0.6s ease-in-out infinite; }
+.sfx--anim-blink  { animation: sfxBlink  1.2s ease-in-out infinite; }
+.sfx--anim-burst  { animation: sfxBurst  0.8s cubic-bezier(.5,0,.2,1.6) both; }
+
+@keyframes loadingDot {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+  40%      { transform: translateY(-14px) scale(1.15); opacity: 1; }
+}
+@keyframes pressStart {
+  0%, 100% { transform: rotate(-2deg) scale(1); box-shadow: 5px 5px 0 var(--ink); }
+  50%      { transform: rotate(-2deg) scale(1.04); box-shadow: 6px 6px 0 var(--ink), 0 0 0 4px var(--accent-yellow); }
+}
+.sfx--red { color: var(--accent-red); }
+.sfx--yellow { color: var(--accent-yellow); }
+.sfx--blue { color: var(--accent-blue); }
+.sfx--ink { color: var(--ink); -webkit-text-stroke: 3px var(--paper); text-shadow: 5px 5px 0 var(--accent-red); }
+
+/* 章節標籤 第N話 — 漫畫格 corner sticker 風（簡潔但有重量） */
+.chapter-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 8px 16px 9px;
+  font-family: 'Noto Sans TC', system-ui;
+  font-weight: 900;
+  font-size: 17px;
+  letter-spacing: 0.06em;
+  box-shadow: 4px 4px 0 var(--accent-red);
+  transform: rotate(-1.5deg);
+  position: relative;
+  flex-shrink: 0;
+}
+.chapter-tag .num {
+  font-family: 'Bowlby One', system-ui;
+  color: var(--accent-yellow);
+  font-size: 1.35em;
+  font-weight: 900;
+  letter-spacing: 0;
+  margin: 0 2px;
+}
+
+/* 標題字 — 中英文搭配統一（Noto Sans TC 優先，英文字才會跟中文同樣粗細） */
+.h-display {
+  font-family: 'Noto Sans TC', 'Bowlby One', 'Bangers', system-ui;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+/* 純英文展示字（如 EST. 2006、HIGH SCORE）保留 Bowlby One 粗體效果 */
+.h-display-en {
+  font-family: 'Bowlby One', 'Bangers', system-ui;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  line-height: 0.95;
+}
+
+/* JoJo 風誇張主標 */
+.h-jojo {
+  font-family: 'Bowlby One', 'Bangers', system-ui;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 0.85;
+  display: inline-block;
+  position: relative;
+  color: var(--accent-yellow);
+  -webkit-text-stroke: 4px var(--ink);
+  paint-order: stroke fill;
+  text-shadow:
+    7px 7px 0 var(--accent-red),
+    7px 7px 0 1px var(--ink);
+  transform: skewX(-6deg);
+  filter: drop-shadow(2px 2px 0 var(--ink));
+  text-transform: uppercase;
+}
+.h-jojo::before {
+  content: '';
+  position: absolute;
+  inset: -8% -4%;
+  background: radial-gradient(rgba(15,13,10,0.35) 1.5px, transparent 1.8px);
+  background-size: 6px 6px;
+  z-index: -1;
+  mask: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  -webkit-mask: radial-gradient(ellipse at center, black 30%, transparent 70%);
+}
+.h-jojo span.shard {
+  display: inline-block;
+  transform: rotate(-3deg) translateY(-4px);
+}
+.h-jojo span.shard:nth-child(2n) { transform: rotate(2deg) translateY(2px); }
+.h-jojo span.shard:nth-child(3n) { transform: rotate(-5deg) translateY(-2px); }
+
+/* AGD logo mark — 強化 */
+.topnav .brand .logo-mark {
+  background: var(--accent-red);
+  color: #fff;
+  padding: 6px 12px;
+  border: 4px solid var(--paper);
+  box-shadow: 4px 4px 0 var(--paper), 4px 4px 0 7px var(--accent-yellow);
+  transform: rotate(-4deg) skewX(-8deg);
+  font-family: 'Bowlby One', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.05em;
+  -webkit-text-stroke: 1px var(--ink);
+}
+.h-jp {
+  font-family: 'Reggae One', 'Bowlby One', system-ui;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+/* 動線箭頭裝飾 */
+.flow-arrow {
+  position: absolute;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* 漫畫格 hover 效果 */
+.panel.is-clickable {
+  cursor: pointer;
+  transition: transform 0.18s cubic-bezier(.2,.7,.2,1.3), box-shadow 0.18s;
+}
+.panel.is-clickable:hover {
+  transform: translate(-3px, -3px) rotate(-0.6deg);
+  box-shadow: 10px 10px 0 var(--ink);
+}
+.panel.is-clickable:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+/* nav */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--ink);
+  color: var(--paper);
+  border-bottom: var(--bw) solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  font-family: 'Bowlby One', system-ui;
+  letter-spacing: 0.03em;
+}
+.topnav .brand {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 18px;
+}
+/* AGD logo mark in topnav — overrides earlier rule */
+.topnav .brand .logo-mark.logo-mark { display:inline-block; }
+.topnav nav {
+  display: flex; gap: 22px; font-size: 14px;
+}
+.topnav nav a {
+  color: var(--paper);
+  text-decoration: none;
+  position: relative;
+  padding: 4px 2px;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+}
+.topnav nav a:hover { color: var(--accent-yellow); }
+.topnav nav a:hover::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 -2px 0;
+  height: 3px;
+  background: var(--accent-yellow);
+}
+
+/* layout helpers */
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 2;
+}
+
+/* 章節分隔（gutter） */
+.chapter {
+  padding: 56px 0 24px;
+  position: relative;
+}
+.chapter-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+.chapter-header .title {
+  /* LOADING 風格 — 紅字 + 厚黑邊 + 黑色錯位陰影（同 .click-sfx） */
+  font-family: 'Bangers', 'Reggae One', 'Noto Sans TC', system-ui;
+  font-weight: 900;
+  font-size: clamp(28px, 4.2vw, 50px);
+  letter-spacing: 0.04em;
+  line-height: 1.05;
+  text-wrap: balance;
+  color: var(--accent-red);
+  -webkit-text-stroke: 3px var(--ink);
+  paint-order: stroke fill;
+  text-shadow: 5px 5px 0 var(--ink);
+  display: inline-block;
+  transform: rotate(-1deg);
+}
+.chapter-header .sub {
+  font-family: 'Bangers', system-ui;
+  letter-spacing: 0.14em;
+  color: var(--ink);
+  opacity: 0.55;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* ============ 課程地圖（CurriculumDetail） ============ */
+.curriculum-map {
+  --track-anim: #e63946;
+  --track-game: #1d4ed8;
+  --track-art: #b76aff;
+  --track-cross: #2d8a4f;
+  --track-core: #ffd60a;
+  --cm-line: rgba(15,13,10,0.2);
+}
+.curriculum-legend {
+  display: flex; flex-wrap: wrap; gap: 14px;
+  padding: 14px 18px; margin-bottom: 18px;
+  background: var(--paper-2);
+  border: 3px solid var(--ink);
+  font-family: 'Bangers', 'Noto Sans TC', sans-serif;
+  letter-spacing: 0.06em;
+  font-size: 13px;
+}
+.curriculum-legend .lg-item { display: flex; align-items: center; gap: 6px; }
+.curriculum-legend .lg-dot {
+  width: 14px; height: 14px; border: 2px solid var(--ink); display: inline-block;
+}
+.curriculum-legend .lg-dot.core { background: var(--track-core); }
+.curriculum-legend .lg-dot.anim { background: var(--track-anim); }
+.curriculum-legend .lg-dot.game { background: var(--track-game); }
+.curriculum-legend .lg-dot.art  { background: var(--track-art); }
+.curriculum-legend .lg-dot.cross{ background: var(--track-cross); }
+.curriculum-legend .lg-mark { color: var(--accent-red); font-weight: 900; font-size: 16px; }
+
+.curriculum-grid {
+  border: 4px solid var(--ink);
+  background: var(--paper);
+  overflow: hidden;
+}
+.cm-header, .cm-track {
+  display: grid;
+  grid-template-columns: 180px repeat(8, 1fr);
+}
+.cm-header {
+  background: var(--ink);
+  color: var(--paper);
+}
+.cm-header .cm-corner {
+  padding: 12px 14px;
+  font-family: 'Bangers', sans-serif;
+  letter-spacing: 0.12em;
+  font-size: 12px;
+  border-right: 1px solid #444;
+  display: flex; align-items: center;
+  color: var(--accent-yellow);
+}
+.cm-header .cm-sem {
+  padding: 10px 6px;
+  text-align: center;
+  border-right: 1px solid #333;
+  font-family: 'Bangers', sans-serif;
+}
+.cm-header .cm-sem:last-child { border-right: none; }
+.cm-header .cm-sem.year-start { box-shadow: inset 3px 0 0 var(--accent-yellow); }
+.cm-header .cm-sem .cm-year {
+  color: var(--accent-yellow);
+  font-size: 11px; letter-spacing: 0.1em;
+}
+.cm-header .cm-sem .cm-term {
+  font-size: 12px; margin-top: 2px;
+  color: var(--paper);
+}
+
+.cm-track {
+  border-bottom: 3px solid var(--ink);
+  min-height: 110px;
+}
+.cm-track:last-child { border-bottom: none; }
+.cm-track .cm-label {
+  padding: 14px 12px;
+  border-right: 3px solid var(--ink);
+  display: flex; flex-direction: column; justify-content: center;
+  background: var(--paper);
+  position: relative;
+}
+.cm-track .cm-label::before {
+  content: ""; position: absolute; left: 0; top: 10px; bottom: 10px;
+  width: 6px;
+}
+.cm-track.t-anim  .cm-label::before { background: var(--track-anim); }
+.cm-track.t-game  .cm-label::before { background: var(--track-game); }
+.cm-track.t-art   .cm-label::before { background: var(--track-art); }
+.cm-track.t-cross .cm-label::before { background: var(--track-cross); }
+.cm-track.t-core  .cm-label::before { background: var(--track-core); }
+
+.cm-track .cm-label .cm-name {
+  font-family: 'Reggae One', 'Bangers', 'Noto Sans TC', sans-serif;
+  font-size: 17px; font-weight: 900;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+.cm-track .cm-label .cm-name-en {
+  font-family: 'Bangers', sans-serif;
+  font-size: 11px; letter-spacing: 0.12em;
+  opacity: 0.55;
+}
+.cm-track .cm-label .cm-desc {
+  font-size: 11px; line-height: 1.5; margin-top: 6px;
+  opacity: 0.78;
+}
+
+.cm-track.t-core { background: var(--ink); }
+.cm-track.t-core .cm-label { background: var(--ink); border-right-color: #333; }
+.cm-track.t-core .cm-label .cm-name { color: var(--accent-yellow); }
+.cm-track.t-core .cm-label .cm-name-en { color: #aaa; }
+.cm-track.t-core .cm-label .cm-desc { color: #bbb; }
+
+.cm-cell {
+  padding: 8px 6px;
+  border-right: 1px solid var(--cm-line);
+  display: flex; flex-direction: column; gap: 5px;
+}
+.cm-cell:last-child { border-right: none; }
+.cm-cell.year-start { box-shadow: inset 3px 0 0 var(--accent-yellow); }
+
+.cm-track.t-anim  .cm-cell { background: rgba(230, 57, 70, 0.06); }
+.cm-track.t-game  .cm-cell { background: rgba(29, 78, 216, 0.06); }
+.cm-track.t-art   .cm-cell { background: rgba(183, 106, 255, 0.07); }
+.cm-track.t-cross .cm-cell { background: rgba(45, 138, 79, 0.07); }
+
+.cm-course {
+  background: #fffaf0;
+  border: 2px solid var(--ink);
+  border-left-width: 5px;
+  padding: 6px 8px;
+  font-size: 12px;
+  line-height: 1.25;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.cm-course .cm-cname { font-weight: 800; color: var(--ink); }
+.cm-course .cm-credit {
+  font-family: 'Bangers', monospace;
+  font-size: 10px; letter-spacing: 0.08em;
+  opacity: 0.65; margin-top: 2px;
+}
+.cm-course:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.cm-track.t-anim  .cm-course { border-left-color: var(--track-anim); }
+.cm-track.t-game  .cm-course { border-left-color: var(--track-game); }
+.cm-track.t-art   .cm-course { border-left-color: var(--track-art); }
+.cm-track.t-cross .cm-course { border-left-color: var(--track-cross); }
+.cm-track.t-core  .cm-course {
+  background: #2a2520;
+  color: var(--paper);
+  border-color: var(--accent-yellow);
+  border-left-color: var(--accent-yellow);
+}
+.cm-track.t-core  .cm-course .cm-cname { color: var(--paper); }
+.cm-track.t-core  .cm-course .cm-credit { color: var(--accent-yellow); opacity: 0.85; }
+.cm-track.t-core  .cm-course.cm-capstone {
+  background: linear-gradient(135deg, #c89a3c 0%, #e63946 100%);
+  border-color: var(--accent-yellow);
+}
+.cm-track.t-core  .cm-course.cm-capstone .cm-cname { color: var(--paper); }
+.cm-course .cm-mark {
+  color: var(--accent-yellow);
+  font-weight: 900;
+  margin-right: 4px;
+}
+.cm-track.t-core .cm-course.cm-capstone .cm-mark { color: #fff; text-shadow: 1px 1px 0 var(--ink); }
+
+.curriculum-flow {
+  margin-top: 22px;
+  padding: 18px 20px;
+  background: var(--paper-2);
+  border: 3px dashed var(--ink);
+  font-family: 'Bangers', 'Noto Sans TC', sans-serif;
+  letter-spacing: 0.06em;
+  font-size: 14px;
+  text-align: center;
+}
+.curriculum-flow .arrow {
+  display: inline-block; margin: 0 8px;
+  color: var(--accent-red); font-weight: 900;
+}
+.curriculum-flow strong { color: var(--accent-red); }
+
+.curriculum-foot {
+  margin-top: 20px;
+  font-size: 12px;
+  line-height: 1.7;
+  opacity: 0.85;
+}
+.curriculum-foot p { margin: 4px 0; }
+.curriculum-foot .mark { color: var(--accent-red); font-weight: 900; }
+
+/* 平板 / 手機 — 橫向滾動 */
+@media (max-width: 1100px) {
+  .curriculum-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 3px solid var(--ink);
+  }
+  .curriculum-grid { min-width: 1180px; border: none; }
+}
+
+/* utility */
+.divider-zigzag {
+  height: 18px;
+  background:
+    linear-gradient(135deg, var(--ink) 25%, transparent 25%) 0 0/14px 14px,
+    linear-gradient(225deg, var(--ink) 25%, transparent 25%) 0 0/14px 14px,
+    var(--paper);
+  border-top: 3px solid var(--ink);
+  border-bottom: 3px solid var(--ink);
+  margin: 32px 0;
+}
+
+/* footer */
+.foot {
+  margin-top: 60px;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 36px 24px 24px;
+  border-top: var(--bw) solid var(--ink);
+}
+.foot .grid {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.foot h4 {
+  font-family: 'Bowlby One', system-ui;
+  margin: 0 0 8px;
+  color: var(--accent-yellow);
+  letter-spacing: 0.05em;
+}
+.foot a { color: var(--paper); text-decoration: none; display: block; padding: 4px 0; opacity: 0.85; }
+.foot a:hover { color: var(--accent-yellow); opacity: 1; }
+.foot .end {
+  text-align: center;
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px dashed rgba(244,236,216,0.3);
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+@media (max-width: 720px) {
+  .foot .grid { grid-template-columns: repeat(2,1fr); }
+}
+
+/* === 漢堡選單按鈕 ===
+   PC 預設隱藏，只在 ≤760px 顯示。3 條黑線堆疊風格 */
+.hamburger {
+  display: none;
+  background: var(--accent-yellow);
+  border: 3px solid var(--paper);
+  box-shadow: 3px 3px 0 var(--paper);
+  padding: 8px 10px;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 4px;
+  transform: rotate(-2deg);
+  align-items: stretch;
+  justify-content: center;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 3px;
+  background: var(--ink);
+  transition: transform 0.2s, opacity 0.2s;
+}
+.topnav.is-open .hamburger span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.topnav.is-open .hamburger span:nth-child(2) {
+  opacity: 0;
+}
+.topnav.is-open .hamburger span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* === RWD · 手機版 (≤760px) ===
+   PC / 平板（≥761px）完全不受以下規則影響 — 所有改動都包在 media query 內 */
+@media (max-width: 760px) {
+  /* 1. 所有 comic-tier 從橫排改成垂直堆疊 */
+  .comic-tier {
+    flex-direction: column;
+  }
+  .comic-tier > .panel {
+    flex: 1 1 auto;
+    min-height: 180px;
+  }
+  /* 拉高 tier 的 min-height 限制 — 改成自動依內容撐開 */
+  .tier-tall, .tier-splash, .tier-mid, .tier-short { min-height: auto; }
+
+  /* 2. TopNav — 主選單藏起來，改用漢堡（漢堡按鈕由 JSX 端控制） */
+  .hamburger { display: flex; }
+  .topnav .nav-divider { display: none; }
+  .topnav { padding: 8px 14px; gap: 8px; flex-wrap: nowrap; }
+  .topnav .brand { font-size: 14px; gap: 6px; }
+  .topnav .brand .logo-mark { font-size: 16px; padding: 4px 8px; border-width: 3px; }
+  .topnav .brand > div > span:first-child { font-size: 13px; }
+  .topnav .brand > div > span:nth-child(2) { font-size: 9px; }
+  .topnav nav {
+    /* 預設 hidden，由 .topnav.is-open nav 翻開 */
+    display: none;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: var(--ink);
+    border-top: 3px solid var(--paper);
+    padding: 12px 18px;
+    flex-direction: column;
+    gap: 14px;
+    z-index: 60;
+  }
+  .topnav.is-open nav { display: flex; }
+  .topnav nav a { font-size: 16px; padding: 6px 0; }
+  /* 立即報名按鈕在手機縮小一點 */
+  .topnav > a:last-child { padding: 6px 10px; font-size: 12px; }
+
+  /* 3. 大標題字級 — 只在手機調整 */
+  .h-display { font-size: clamp(28px, 9vw, 48px); }
+  .h-jojo { font-size: clamp(36px, 11vw, 64px) !important; }
+
+  /* 4. Chapter tag 縮小 */
+  .chapter-tag { transform: rotate(-2deg) scale(0.85); transform-origin: left center; }
+  .chapter-header .title { font-size: clamp(32px, 9vw, 56px) !important; }
+
+  /* 5. 半色調 / 集中線 — 在小螢幕降階避免閃眼 */
+  .bg-speedlines { opacity: 0.5 !important; }
+  .bg-halftone-dense, .bg-halftone-red, .bg-halftone-blue {
+    background-size: 14px 14px;
+  }
+
+  /* 6. Container 內距收一收 */
+  .container { padding: 16px 12px; }
+  .chapter, .foot { scroll-margin-top: 60px; }
+
+  /* 7. Panel 內距 */
+  .panel { padding: 16px; }
+
+  /* 8. SFX 狀聲詞縮小 */
+  .sfx { font-size: clamp(28px, 8vw, 48px); }
+  .click-sfx { font-size: 36px; }
+
+  /* 9. Footer 改成 1 欄，更乾淨 */
+  .foot .grid { grid-template-columns: 1fr; gap: 18px; }
+
+  /* 10. 彩蛋字樣手機版縮小（避免破版） */
+  .easter-egg-text {
+    font-size: clamp(72px, 18vw, 120px);
+    -webkit-text-stroke: 5px var(--ink);
+    text-shadow:
+      4px 4px 0 var(--accent-yellow),
+      8px 8px 0 #1de9b6,
+      12px 12px 0 var(--ink),
+      0 0 24px rgba(255, 43, 181, 0.85);
+  }
+
+  /* 11. TopNav 手機版隱藏紅色「立即報名」（避免擠成直書 — drawer 內已有「招生資訊」） */
+  .topnav > a:not(.brand) { display: none; }
+
+  /* 12. Hero splash panel 手機版重構 — inline absolute 改靜態流式 */
+  .tier-splash .panel {
+    padding: 16px !important;
+    min-height: auto;
+  }
+  /* 把 splash 內所有 inline-style 含 absolute 的容器拆成靜態流式（保留 bg-speedlines） */
+  .tier-splash .panel > div:not(.bg-speedlines):not(.click-sfx):not(.click-speedlines) {
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+    text-align: left !important;
+    max-width: 100% !important;
+    margin: 8px 0 !important;
+    align-items: stretch !important;
+  }
+  /* SFX 「碰！」桌機版浮在右上角，手機版直接收掉 */
+  .tier-splash .panel .sfx { display: none; }
+  /* 底部 highlight 泡泡並排太擠，手機版改成垂直 */
+  .tier-splash .panel > div > a > .bubble,
+  .tier-splash .panel .bubble {
+    position: static !important;
+    transform: none !important;
+    margin-bottom: 6px !important;
+    display: inline-block;
+  }
+  /* PRESS START 按鈕 + 對白 group 不能旋轉 */
+  .tier-splash .panel a[href="#news"] {
+    transform: none !important;
+    width: 100%;
+    text-align: center;
+    justify-content: center !important;
+  }
+  /* 主標題 .h-display 在 hero 內再壓一級 */
+  .tier-splash .h-display {
+    font-size: clamp(36px, 12vw, 56px) !important;
+    line-height: 1 !important;
+  }
+
+  /* 13. 其他章節 panel 內 absolute 裝飾元素一律改靜態（避免疊在主內容上） */
+  .panel .sfx[style*="absolute"] { display: none; }
+  .panel > div[style*="absolute"]:not(.bg-speedlines):not(.bg-halftone-light):not(.bg-halftone-dense):not(.bg-halftone-red):not(.bg-halftone-blue):not(.click-sfx):not(.click-speedlines) {
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+  }
+
+  /* 14. ChapterTag 不要太大旋轉爆出畫面 */
+  .chapter-tag { font-size: 14px; padding: 4px 12px; }
+
+  /* 15. Hero tagline 桌機 nowrap，手機改回正常換行 */
+  .hero-tagline { white-space: normal !important; font-size: 14px !important; }
+}

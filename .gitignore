@@ -1,0 +1,30 @@
+# 不上線的內部檔
+uploads/
+.claude/
+docs/
+CLAUDE.md
+
+# 備份用大檔（產品用 Comic Site.html）
+Comic Site.bundle.html
+Comic Site.standalone.html
+
+# 系統 / 編輯器產物
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+*.log
+
+# Python dev server 殘留
+__pycache__/
+*.pyc
+
+# Node（如未來導入打包）
+node_modules/
+dist/
+.cache/
+
+# 本地敏感
+.env
+.env.local
+*.local
