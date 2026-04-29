@@ -670,10 +670,15 @@ const AdmissionDetail = ({ slug }) => {
                 <div className="h-display h-jojo" style={{ fontSize: "clamp(26px, 3.6vw, 40px)", color: "#fff", marginTop: 16, lineHeight: 0.98 }}>
                   {a.title}
                 </div>
-                <div style={{ fontSize: 14, color: "#fff", marginTop: 10, fontWeight: 700, opacity: 0.95, lineHeight: 1.7 }}>
+                <div style={{ fontSize: 14, color: "#fff", marginTop: 10, fontWeight: 800, opacity: 0.95, lineHeight: 1.6 }}>
                   {a.year} · 名額 {a.quota}
-                  {a.summary ? ` · ${a.summary}` : ""}
+                  {a.code ? ` · ${a.code}` : ""}
                 </div>
+                {a.summary && (
+                  <div style={{ fontSize: 13, color: "#fff", marginTop: 6, opacity: 0.9, lineHeight: 1.7 }}>
+                    {a.summary}
+                  </div>
+                )}
               </div>
             </Panel>
           </div>
@@ -725,61 +730,51 @@ const AdmissionDetail = ({ slug }) => {
             </div>
           )}
 
-          {/* 招生資訊速覽 — code / quota / groups / weights（取消白框，info bar 一行） */}
-          {(a.code || a.groups || a.weights) && (
+          {/* 招生群類 — 只在多群招生（含 groups 表格）時顯示 */}
+          {a.groups && a.groups.length > 0 && (
             <div className="comic-tier tier-1 tier-mid">
               <Panel className="bg-halftone-blue" style={{ padding: 24, position: "relative" }}>
                 <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 13, letterSpacing: "0.1em", marginBottom: 4 }}>
-                  📋 ADMISSION INFO · 招生資訊速覽
+                  📋 ADMISSION INFO · 招生群類分配
                 </div>
                 <div className="h-display" style={{ fontSize: 20, marginBottom: 10 }}>
-                  {a.groups && a.groups.length > 0 ? "招生群類 · 名額分配" : "招生重點資訊"}
+                  招生群類 · 名額分配
                 </div>
-                <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 14, lineHeight: 1.8, opacity: 0.88 }}>
-                  系辦分機 <b>#6102</b>（07-6158000）
-                  {a.code && (!a.groups || a.groups.length === 0) ? <> · <b>{a.code}</b></> : null}
-                  {a.weights ? <> · 採計權重 <b>{a.weights}</b></> : null}
-                </div>
-                {a.groups && a.groups.length > 0 && (
-                  <div style={{ marginTop: 14, overflowX: "auto" }}>
-                    <table style={{
-                      width: "100%", borderCollapse: "collapse",
-                      background: "var(--paper)", border: "2px solid var(--ink)",
-                      boxShadow: "3px 3px 0 var(--ink)",
-                      fontSize: 13
-                    }}>
-                      <thead>
-                        <tr style={{ background: "var(--ink)", color: "var(--accent-yellow)", fontFamily: "'Bangers',sans-serif", letterSpacing: "0.06em" }}>
-                          <th style={{ padding: "8px 10px", textAlign: "left", border: "1px solid var(--ink)" }}>志願代碼</th>
-                          <th style={{ padding: "8px 10px", textAlign: "left", border: "1px solid var(--ink)" }}>招生群類</th>
-                          <th style={{ padding: "8px 10px", textAlign: "center", border: "1px solid var(--ink)" }}>一般生</th>
-                          <th style={{ padding: "8px 10px", textAlign: "center", border: "1px solid var(--ink)" }}>原住民</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {a.groups.map((g, i) => (
-                          <tr key={i} style={{ background: i % 2 === 0 ? "rgba(255,255,255,0.6)" : "rgba(255,235,180,0.4)" }}>
-                            <td style={{ padding: "8px 10px", border: "1px solid var(--ink)", fontFamily: "'Bowlby One',sans-serif", fontSize: 13 }}>{g.code}</td>
-                            <td style={{ padding: "8px 10px", border: "1px solid var(--ink)", fontWeight: 700 }}>{g.group}</td>
-                            <td style={{ padding: "8px 10px", border: "1px solid var(--ink)", textAlign: "center", fontWeight: 800 }}>{g.regular}</td>
-                            <td style={{ padding: "8px 10px", border: "1px solid var(--ink)", textAlign: "center", fontWeight: 800 }}>{g.indigenous == null ? "—" : g.indigenous}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                {a.weights && (
+                  <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 14, lineHeight: 1.8, opacity: 0.88 }}>
+                    採計權重 <b>{a.weights}</b>
                   </div>
                 )}
+                <div style={{ marginTop: 6, overflowX: "auto" }}>
+                  <table style={{
+                    width: "100%", borderCollapse: "collapse",
+                    background: "var(--paper)", border: "2px solid var(--ink)",
+                    boxShadow: "3px 3px 0 var(--ink)",
+                    fontSize: 13
+                  }}>
+                    <thead>
+                      <tr style={{ background: "var(--ink)", color: "var(--accent-yellow)", fontFamily: "'Bangers',sans-serif", letterSpacing: "0.06em" }}>
+                        <th style={{ padding: "8px 10px", textAlign: "left", border: "1px solid var(--ink)" }}>志願代碼</th>
+                        <th style={{ padding: "8px 10px", textAlign: "left", border: "1px solid var(--ink)" }}>招生群類</th>
+                        <th style={{ padding: "8px 10px", textAlign: "center", border: "1px solid var(--ink)" }}>一般生</th>
+                        <th style={{ padding: "8px 10px", textAlign: "center", border: "1px solid var(--ink)" }}>原住民</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {a.groups.map((g, i) => (
+                        <tr key={i} style={{ background: i % 2 === 0 ? "rgba(255,255,255,0.6)" : "rgba(255,235,180,0.4)" }}>
+                          <td style={{ padding: "8px 10px", border: "1px solid var(--ink)", fontFamily: "'Bowlby One',sans-serif", fontSize: 13 }}>{g.code}</td>
+                          <td style={{ padding: "8px 10px", border: "1px solid var(--ink)", fontWeight: 700 }}>{g.group}</td>
+                          <td style={{ padding: "8px 10px", border: "1px solid var(--ink)", textAlign: "center", fontWeight: 800 }}>{g.regular}</td>
+                          <td style={{ padding: "8px 10px", border: "1px solid var(--ink)", textAlign: "center", fontWeight: 800 }}>{g.indigenous == null ? "—" : g.indigenous}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </Panel>
             </div>
           )}
-
-          <div className="comic-tier tier-1 tier-mid">
-            <Panel className="bg-halftone-light" style={{ padding: 32 }}>
-              <div style={{ fontSize: 15, lineHeight: 1.95, fontWeight: 500, whiteSpace: "pre-line" }}>
-                {a.content}
-              </div>
-            </Panel>
-          </div>
 
           {/* 重要提示 — key_notes */}
           {a.key_notes && a.key_notes.length > 0 && (
