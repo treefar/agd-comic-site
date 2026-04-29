@@ -230,7 +230,9 @@ const NewsDetail = ({ slug }) => {
                                 display: "inline-flex", alignItems: "center", gap: 6,
                                 background: w.social.type === "ig"
                                   ? "linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)"
-                                  : "#1877f2",
+                                  : w.social.type === "yt"
+                                    ? "#FF0000"
+                                    : "#1877f2",
                                 color: "#fff",
                                 padding: "6px 12px",
                                 fontSize: 12, fontWeight: 800,
@@ -243,7 +245,11 @@ const NewsDetail = ({ slug }) => {
                               onMouseEnter={e => { e.currentTarget.style.transform = "translate(-1px,-1px)"; e.currentTarget.style.boxShadow = "3px 3px 0 var(--ink)"; }}
                               onMouseLeave={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = "2px 2px 0 var(--ink)"; }}
                             >
-                              <span style={{ fontSize: 14 }}>{w.social.type === "ig" ? "📷" : "📘"}</span>
+                              <span style={{ fontSize: 14 }}>{
+                                w.social.type === "ig" ? "📷"
+                                : w.social.type === "yt" ? "▶"
+                                : "📘"
+                              }</span>
                               <span>{w.social.label}</span>
                               <span style={{ opacity: 0.9, fontSize: 11 }}>↗</span>
                             </a>
