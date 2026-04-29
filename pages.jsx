@@ -41,7 +41,7 @@ const localHref = (type, slug) => `#/${type}/${encodeURIComponent(slug)}`;
 
 // Data cache (loaded once per type)
 // _BUILD_VER 跟 Comic Site.html 的 jsx ?v= 同步 bump，避免瀏覽器 cache JSON 舊版
-const _BUILD_VER = '20260429d';
+const _BUILD_VER = '20260429e';
 const _dataCache = {};
 const _MIN_LOAD_MS = 850; // Loading 至少顯示這麼久（讓動畫看得到）
 const useDataset = (type) => {
@@ -169,7 +169,7 @@ const NewsDetail = ({ slug }) => {
                   ★ SELECTED WORKS · 入圍作品專輯
                 </div>
                 <div className="h-display" style={{ fontSize: 24, color: "var(--paper)", margin: "4px 0 22px" }}>
-                  {post.gallery.length} 部畢業專題作品
+                  {post.galleryTitle || `${post.gallery.length} 部畢業專題作品`}
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
                   {post.gallery.map((w, i) => {
