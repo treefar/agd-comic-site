@@ -283,6 +283,12 @@ const NEWS = [
     link: "#/news/2026-04-29-awards-showcase"
   },
   {
+    id: 7141, date: "2026.04.25", tag: "國際", color: "wine", num: "01",
+    title: "四部學生動畫橫掃國際影展｜21+ 入圍獲獎、足跡橫跨歐美亞澳四大洲",
+    excerpt: "《失竊的祕方》《癡迷的現實》《人造人》《神癒》登上多國影展競賽單元 — 義大利怪誕影展叛逆視野獎、西班牙愛情影展最佳奇幻類等獎項相繼到手。",
+    link: "#/news/2026-04-25-international-festivals"
+  },
+  {
     id: 7119, date: "2026.04.08", tag: "課程", color: "blue", num: "02",
     title: "114 學年度第 2 學期學生「Unity 證照輔導班」開課！",
     excerpt: "Unity Certification User (UCU) 國際認證 · 5/16-5/17 D0625 · 名額 20 人 · 楊智彰老師授課。",
@@ -471,9 +477,9 @@ const NewsChapter = () => (
           </Panel>
         </div>
 
-        {/* TIER 2 — 4 格次要新聞（開拓徵稿 + 3 證照課程） */}
+        {/* TIER 2 — 4 格次要新聞（國際影展 + 開拓徵稿 + 2 證照課程） */}
         <div className="comic-tier tier-1-1-1 tier-mid">
-          {[NEWS[3], NEWS[1], NEWS[2], NEWS[4]].map((n, i) => (
+          {[NEWS[1], NEWS[4], NEWS[2], NEWS[3]].map((n, i) => (
             <Panel
               key={i}
               clickable
