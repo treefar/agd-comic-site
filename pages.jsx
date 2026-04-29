@@ -40,6 +40,8 @@ const useHashRoute = () => {
 const localHref = (type, slug) => `#/${type}/${encodeURIComponent(slug)}`;
 
 // Data cache (loaded once per type)
+// _BUILD_VER 跟 Comic Site.html 的 jsx ?v= 同步 bump，避免瀏覽器 cache JSON 舊版
+const _BUILD_VER = '20260429b';
 const _dataCache = {};
 const _MIN_LOAD_MS = 850; // Loading 至少顯示這麼久（讓動畫看得到）
 const useDataset = (type) => {
@@ -47,7 +49,7 @@ const useDataset = (type) => {
   React.useEffect(() => {
     if (data) return;
     const t0 = Date.now();
-    fetch(`data/${type}.json`).then(r => r.json()).then(d => {
+    fetch(`data/${type}.json?v=${_BUILD_VER}`).then(r => r.json()).then(d => {
       _dataCache[type] = d;
       const elapsed = Date.now() - t0;
       const wait = Math.max(0, _MIN_LOAD_MS - elapsed);
@@ -1460,7 +1462,7 @@ const CurriculumDetail = () => {
   React.useEffect(() => {
     if (window.__curriculumCache) { setData(window.__curriculumCache); return; }
     const t0 = Date.now();
-    fetch("data/curriculum.json").then(r => r.json()).then(d => {
+    fetch(`data/curriculum.json?v=${_BUILD_VER}`).then(r => r.json()).then(d => {
       window.__curriculumCache = d;
       const wait = Math.max(0, 850 - (Date.now() - t0));
       setTimeout(() => setData(d), wait);
