@@ -1136,4 +1136,13 @@ body::before {
 
   /* 15. Hero tagline 桌機 nowrap，手機改回正常換行 */
   .hero-tagline { white-space: normal !important; font-size: 14px !important; }
+
+  /* 16. 新聞詳情入圍作品 zigzag 卡 — 手機改單欄（圖上文下） */
+  .news-work-row {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+  .news-work-row > div:first-child { grid-column: 1 !important; grid-row: 2 !important; }
+  .news-work-row > div:last-child { grid-column: 1 !important; grid-row: 1 !important; aspect-ratio: 4 / 3 !important; }
+  .news-work-row .h-display { font-size: 22px !important; }
 }

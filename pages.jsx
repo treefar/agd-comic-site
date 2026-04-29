@@ -130,19 +130,23 @@ const NewsDetail = ({ slug }) => {
               </Panel>
             </div>
           ) : (
-            // 純文字版：標題卡 + 日期，省掉空圖
-            <div className="comic-tier tier-1 tier-short">
-              <Panel variant="inkbg" style={{ padding: "20px 28px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
-                  <div style={{ background: "var(--accent-yellow)", color: "var(--ink)", padding: "4px 12px", fontFamily: "'Bangers',sans-serif", fontSize: 13, letterSpacing: "0.1em" }}>
+            // 純文字版：輕量 strip — 編號 / 日期 / 回新聞列表
+            <div className="comic-tier tier-1" style={{ marginBottom: 12 }}>
+              <div style={{
+                display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12,
+                padding: "10px 16px", background: "var(--paper)", color: "var(--ink)",
+                border: "3px solid var(--ink)", boxShadow: "4px 4px 0 var(--ink)"
+              }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+                  <span style={{ background: "var(--accent-yellow)", color: "var(--ink)", padding: "3px 10px", fontFamily: "'Bangers',sans-serif", fontSize: 12, letterSpacing: "0.1em", border: "2px solid var(--ink)" }}>
                     #{post.id} · {post.tag}
-                  </div>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: "var(--paper)", opacity: 0.85 }}>{post.date}</div>
+                  </span>
+                  <span style={{ fontSize: 12, fontWeight: 700, opacity: 0.7 }}>{post.date}</span>
                 </div>
-                <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 14, color: "var(--accent-yellow)", letterSpacing: "0.1em" }}>
-                  ▼ 課程詳情
-                </div>
-              </Panel>
+                <a href="#news" style={{ fontFamily: "'Bangers',sans-serif", fontSize: 13, color: "var(--ink)", letterSpacing: "0.08em", textDecoration: "none", borderBottom: "2px solid var(--ink)" }}>
+                  ← 回新聞列表
+                </a>
+              </div>
             </div>
           )}
 
@@ -155,98 +159,113 @@ const NewsDetail = ({ slug }) => {
             </Panel>
           </div>
 
-          {/* GALLERY — 入圍作品專輯（僅 awards roundup 類新聞使用） */}
+          {/* GALLERY — 入圍作品專輯（左右交替 zigzag 漫畫雜誌風） */}
           {Array.isArray(post.gallery) && post.gallery.length > 0 && (
             <div className="comic-tier tier-1" style={{ marginTop: 12 }}>
               <Panel variant="inkbg" style={{ padding: "22px 24px 28px", position: "relative" }}>
                 <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 13, letterSpacing: "0.14em", color: "var(--accent-yellow)" }}>
                   ★ SELECTED WORKS · 入圍作品專輯
                 </div>
-                <div className="h-display" style={{ fontSize: 24, color: "var(--paper)", margin: "4px 0 18px" }}>
+                <div className="h-display" style={{ fontSize: 24, color: "var(--paper)", margin: "4px 0 22px" }}>
                   {post.gallery.length} 部畢業專題作品
                 </div>
-                <div style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-                  gap: 18,
-                }}>
-                  {post.gallery.map((w, i) => (
-                    <div key={i}
-                      id={`work-${String(i + 1).padStart(2, "0")}`}
-                      style={{
-                        background: "var(--paper)",
-                        color: "var(--ink)",
-                        border: "3px solid var(--ink)",
-                        overflow: "hidden",
-                        display: "flex",
-                        flexDirection: "column",
-                        scrollMarginTop: 80
-                      }}>
-                      <div style={{ position: "relative", aspectRatio: "3 / 4", background: "#000", borderBottom: "3px solid var(--ink)" }}>
-                        <img src={w.image} alt={w.title}
-                          loading="lazy"
-                          style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+                  {post.gallery.map((w, i) => {
+                    const isImgRight = i % 2 === 0; // 第 1, 3, 5, 7 筆：圖在右；2, 4, 6 筆：圖在左
+                    const accentColors = ["var(--accent-red)", "var(--accent-blue)", "var(--accent-yellow)", "var(--accent-pink, #ec4899)"];
+                    const accent = accentColors[i % accentColors.length];
+                    return (
+                      <div key={i}
+                        className="news-work-row"
+                        id={`work-${String(i + 1).padStart(2, "0")}`}
+                        style={{
+                          background: "var(--paper)",
+                          color: "var(--ink)",
+                          border: "3px solid var(--ink)",
+                          boxShadow: `${isImgRight ? "6px" : "-6px"} 6px 0 ${accent}`,
+                          padding: 18,
+                          scrollMarginTop: 80,
+                          display: "grid",
+                          gridTemplateColumns: isImgRight ? "1fr 240px" : "240px 1fr",
+                          gap: 20,
+                          alignItems: "stretch"
+                        }}>
+                        {/* 左側 / 右側 — 文字區 */}
                         <div style={{
-                          position: "absolute", top: 8, left: 8,
-                          background: "var(--accent-yellow)", color: "var(--ink)",
-                          padding: "2px 8px",
-                          fontFamily: "'Bangers',sans-serif", fontSize: 11, letterSpacing: "0.1em"
-                        }}>{w.rank}</div>
-                        {w.tier === "grand" && (
-                          <div style={{
-                            position: "absolute", top: 8, right: 8,
-                            background: "var(--accent-red)", color: "#fff",
-                            padding: "3px 10px",
-                            fontFamily: "'Bowlby One',sans-serif", fontSize: 11, letterSpacing: "0.1em"
-                          }}>★ 4 競賽全入圍</div>
-                        )}
-                      </div>
-                      <div style={{ padding: "14px 16px 16px", display: "flex", flexDirection: "column", gap: 8, flex: 1 }}>
-                        <div style={{ fontSize: 10, fontFamily: "'Bangers',sans-serif", letterSpacing: "0.1em", opacity: 0.7 }}>{w.category}</div>
-                        <div className="h-display" style={{ fontSize: 22, lineHeight: 1.15 }}>{w.title}</div>
-                        <div style={{ fontSize: 11, fontStyle: "italic", opacity: 0.65 }}>{w.titleEn}</div>
-                        <div style={{ fontSize: 11, fontWeight: 700, marginTop: 4, lineHeight: 1.6 }}>
-                          <span style={{ opacity: 0.6 }}>指導 </span>{w.mentor}<br/>
-                          <span style={{ opacity: 0.6 }}>主創 </span>{w.designers}
+                          gridColumn: isImgRight ? 1 : 2,
+                          gridRow: 1,
+                          display: "flex", flexDirection: "column", gap: 8, minWidth: 0
+                        }}>
+                          <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                            <span style={{ background: "var(--ink)", color: "var(--accent-yellow)", padding: "3px 10px", fontFamily: "'Bangers',sans-serif", fontSize: 12, letterSpacing: "0.1em" }}>
+                              {w.rank}
+                            </span>
+                            <span style={{ fontSize: 11, fontFamily: "'Bangers',sans-serif", letterSpacing: "0.1em", opacity: 0.7 }}>{w.category}</span>
+                            {w.tier === "grand" && (
+                              <span style={{ background: "var(--accent-red)", color: "#fff", padding: "3px 10px", fontFamily: "'Bowlby One',sans-serif", fontSize: 11, letterSpacing: "0.1em" }}>
+                                ★ 4 競賽全入圍
+                              </span>
+                            )}
+                          </div>
+                          <div className="h-display" style={{ fontSize: 28, lineHeight: 1.1, marginTop: 2 }}>{w.title}</div>
+                          {w.titleEn && <div style={{ fontSize: 12, fontStyle: "italic", opacity: 0.65 }}>{w.titleEn}</div>}
+                          <div style={{ fontSize: 12, fontWeight: 700, marginTop: 4, lineHeight: 1.7 }}>
+                            <span style={{ opacity: 0.55 }}>指導 </span>{w.mentor}<br/>
+                            <span style={{ opacity: 0.55 }}>主創 </span>{w.designers}
+                          </div>
+                          {w.desc && <div style={{ fontSize: 13, lineHeight: 1.75, marginTop: 6 }}>{w.desc}</div>}
+                          <div style={{ display: "flex", flexWrap: "wrap", gap: 4, marginTop: 8 }}>
+                            {w.awards.map((a, j) => (
+                              <span key={j} style={{
+                                background: "var(--ink)", color: "var(--accent-yellow)",
+                                padding: "2px 9px", fontSize: 11, fontWeight: 700,
+                                fontFamily: "'Bangers',sans-serif", letterSpacing: "0.08em"
+                              }}>{a}</span>
+                            ))}
+                          </div>
+                          {w.social && (
+                            <a href={w.social.url} target="_blank" rel="noopener noreferrer"
+                              style={{
+                                marginTop: 10,
+                                display: "inline-flex", alignItems: "center", gap: 6,
+                                background: w.social.type === "ig"
+                                  ? "linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)"
+                                  : "#1877f2",
+                                color: "#fff",
+                                padding: "6px 12px",
+                                fontSize: 12, fontWeight: 800,
+                                textDecoration: "none",
+                                border: "2px solid var(--ink)",
+                                boxShadow: "2px 2px 0 var(--ink)",
+                                alignSelf: "flex-start",
+                                transition: "transform 0.1s"
+                              }}
+                              onMouseEnter={e => { e.currentTarget.style.transform = "translate(-1px,-1px)"; e.currentTarget.style.boxShadow = "3px 3px 0 var(--ink)"; }}
+                              onMouseLeave={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = "2px 2px 0 var(--ink)"; }}
+                            >
+                              <span style={{ fontSize: 14 }}>{w.social.type === "ig" ? "📷" : "📘"}</span>
+                              <span>{w.social.label}</span>
+                              <span style={{ opacity: 0.9, fontSize: 11 }}>↗</span>
+                            </a>
+                          )}
                         </div>
-                        <div style={{ fontSize: 12, lineHeight: 1.7, marginTop: 4 }}>{w.desc}</div>
-                        <div style={{ display: "flex", flexWrap: "wrap", gap: 4, marginTop: "auto", paddingTop: 8 }}>
-                          {w.awards.map((a, j) => (
-                            <span key={j} style={{
-                              background: "var(--ink)", color: "var(--accent-yellow)",
-                              padding: "2px 8px", fontSize: 10, fontWeight: 700,
-                              fontFamily: "'Bangers',sans-serif", letterSpacing: "0.08em"
-                            }}>{a}</span>
-                          ))}
+
+                        {/* 右側 / 左側 — 海報圖 */}
+                        <div style={{
+                          gridColumn: isImgRight ? 2 : 1,
+                          gridRow: 1,
+                          aspectRatio: "3 / 4",
+                          background: "#000",
+                          border: "3px solid var(--ink)",
+                          overflow: "hidden"
+                        }}>
+                          <img src={w.image} alt={w.title}
+                            loading="lazy"
+                            style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                         </div>
-                        {w.social && (
-                          <a href={w.social.url} target="_blank" rel="noopener noreferrer"
-                            style={{
-                              marginTop: 8,
-                              display: "inline-flex", alignItems: "center", gap: 6,
-                              background: w.social.type === "ig"
-                                ? "linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)"
-                                : "#1877f2",
-                              color: "#fff",
-                              padding: "6px 12px",
-                              fontSize: 12, fontWeight: 800,
-                              textDecoration: "none",
-                              border: "2px solid var(--ink)",
-                              boxShadow: "2px 2px 0 var(--ink)",
-                              alignSelf: "flex-start",
-                              transition: "transform 0.1s"
-                            }}
-                            onMouseEnter={e => { e.currentTarget.style.transform = "translate(-1px,-1px)"; e.currentTarget.style.boxShadow = "3px 3px 0 var(--ink)"; }}
-                            onMouseLeave={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = "2px 2px 0 var(--ink)"; }}
-                          >
-                            <span style={{ fontSize: 14 }}>{w.social.type === "ig" ? "📷" : "📘"}</span>
-                            <span>{w.social.label}</span>
-                            <span style={{ opacity: 0.9, fontSize: 11 }}>↗</span>
-                          </a>
-                        )}
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </Panel>
             </div>
