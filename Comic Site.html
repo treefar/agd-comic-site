@@ -75,5 +75,62 @@
 <script type="text/babel" src="chapters-2.jsx"></script>
 <script type="text/babel" src="pages.jsx"></script>
 <script type="text/babel" src="app.jsx"></script>
+
+<!-- iframe embed bridge：給 dgd.stu.edu.tw 嵌入時用，獨立於 React，原生 JS -->
+<script>
+(function(){
+  if (window.parent === window) return; // 非 iframe 不啟動
+
+  function isAllowedParent(origin){
+    return /^https?:\/\/([^/]+\.)?dgd\.stu\.edu\.tw$/.test(origin);
+  }
+
+  var lastHeight = 0;
+  function pushHeight(){
+    var h = Math.max(
+      document.documentElement.scrollHeight,
+      document.body ? document.body.scrollHeight : 0
+    );
+    if (h === lastHeight) return;
+    lastHeight = h;
+    window.parent.postMessage({ type: 'comic:height', height: h }, '*');
+  }
+
+  var pendingHeight = null;
+  function schedulePushHeight(){
+    if (pendingHeight) return;
+    pendingHeight = requestAnimationFrame(function(){
+      pendingHeight = null;
+      pushHeight();
+    });
+  }
+
+  if ('ResizeObserver' in window) {
+    var ro = new ResizeObserver(schedulePushHeight);
+    var startObserve = function(){ if (document.body) ro.observe(document.body); };
+    if (document.body) startObserve(); else window.addEventListener('DOMContentLoaded', startObserve);
+  }
+  window.addEventListener('load', schedulePushHeight);
+  setInterval(schedulePushHeight, 1500); // 兜底（圖片 lazy load 後高度補正）
+
+  window.addEventListener('hashchange', function(){
+    window.parent.postMessage({ type: 'comic:hash', hash: location.hash }, '*');
+  });
+
+  window.addEventListener('message', function(e){
+    if (!isAllowedParent(e.origin)) return;
+    var d = e.data || {};
+    if (d.type === 'parent:hash' && typeof d.hash === 'string' && location.hash !== d.hash) {
+      location.hash = d.hash;
+    }
+    if (d.type === 'parent:scrollTop') {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  });
+
+  // 通知父頁 iframe 已就緒，可以推 hash 過來
+  window.parent.postMessage({ type: 'comic:ready' }, '*');
+})();
+</script>
 </body>
 </html>
