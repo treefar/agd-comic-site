@@ -659,45 +659,86 @@ const AdmissionDetail = ({ slug }) => {
         <DetailHeader tag="招" title={a.title} sub={`${a.year} · ${a.quota}`} />
 
         <div className="comic-page">
-          <div className="comic-tier tier-1 tier-tall">
-            <Panel variant="red" style={{ padding: 36, position: "relative" }}>
+          {/* Hero — 瘦身版 */}
+          <div className="comic-tier tier-1">
+            <Panel variant="red" style={{ padding: 22, position: "relative" }}>
               <div className="bg-speedlines" style={{ position: "absolute", inset: 0, opacity: 0.2 }} />
               <div style={{ position: "relative" }}>
-                <Bubble variant="bubble--shout" className="bubble--anim-shake" style={{ background: "var(--accent-yellow)", color: "var(--ink)", fontFamily: "'Bowlby One',sans-serif", fontSize: 22, transform: "rotate(-3deg)" }}>
+                <Bubble variant="bubble--shout" className="bubble--anim-shake" style={{ background: "var(--accent-yellow)", color: "var(--ink)", fontFamily: "'Bowlby One',sans-serif", fontSize: 18, padding: "8px 14px", transform: "rotate(-3deg)" }}>
                   下一話的主角，是你！
                 </Bubble>
-                <div className="h-display h-jojo" style={{ fontSize: "clamp(34px, 5vw, 56px)", color: "#fff", marginTop: 24, lineHeight: 0.95 }}>
+                <div className="h-display h-jojo" style={{ fontSize: "clamp(26px, 3.6vw, 40px)", color: "#fff", marginTop: 16, lineHeight: 0.98 }}>
                   {a.title}
                 </div>
-                <div style={{ fontSize: 16, color: "#fff", marginTop: 18, fontWeight: 700 }}>
+                <div style={{ fontSize: 14, color: "#fff", marginTop: 10, fontWeight: 700, opacity: 0.95, lineHeight: 1.7 }}>
                   {a.year} · 名額 {a.quota}
-                </div>
-                <div style={{ fontSize: 14, color: "#fff", marginTop: 12, opacity: 0.92 }}>
-                  {a.summary}
+                  {a.summary ? ` · ${a.summary}` : ""}
                 </div>
               </div>
             </Panel>
           </div>
 
-          {/* 招生資訊速覽 — code / quota / groups / weights */}
+          {/* 招生時程 — 關鍵日期排第一順位 */}
+          {a.timeline && a.timeline.length > 0 && (
+            <div className="comic-tier tier-1 tier-mid">
+              <Panel variant="yellow" style={{ padding: 24, position: "relative" }}>
+                <SFX color="red" rotate={-8} size={40} style={{ position: "absolute", top: 12, right: 18 }}>排程！</SFX>
+                <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 13, letterSpacing: "0.12em", marginBottom: 4 }}>
+                  TIMELINE · 招生時程
+                </div>
+                <div className="h-display" style={{ fontSize: 22, marginBottom: 14 }}>
+                  關鍵日期 — 報名 / 放榜 / 繳費
+                </div>
+                <ol style={{ listStyle: "none", padding: 0, margin: 0, position: "relative" }}>
+                  {a.timeline.map((t, i) => (
+                    <li key={i} style={{
+                      display: "flex", gap: 14, alignItems: "flex-start",
+                      padding: "10px 0",
+                      borderBottom: i < a.timeline.length - 1 ? "2px dashed var(--ink)" : "none"
+                    }}>
+                      <div style={{
+                        flex: "0 0 auto", minWidth: 36, height: 36,
+                        background: "var(--ink)", color: "var(--accent-yellow)",
+                        fontFamily: "'Bowlby One',sans-serif", fontSize: 16,
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        border: "2px solid var(--ink)",
+                        boxShadow: "2px 2px 0 var(--accent-red)",
+                        padding: "0 10px"
+                      }}>
+                        {String(i + 1).padStart(2, "0")}
+                      </div>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ fontFamily: "'Noto Sans TC',sans-serif", fontWeight: 900, fontSize: 16, lineHeight: 1.3 }}>
+                          {t.label}
+                        </div>
+                        <div style={{ fontSize: 13, fontWeight: 700, opacity: 0.78, marginTop: 2 }}>
+                          📅 {t.date}
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+                <div style={{ fontSize: 11, marginTop: 14, opacity: 0.7, lineHeight: 1.6 }}>
+                  ※ 確切日期以招聯會 / 技專校院招生委員會聯合會 / 樹德招生資訊網公告為準。
+                </div>
+              </Panel>
+            </div>
+          )}
+
+          {/* 招生資訊速覽 — code / quota / groups / weights（取消白框，info bar 一行） */}
           {(a.code || a.groups || a.weights) && (
             <div className="comic-tier tier-1 tier-mid">
               <Panel className="bg-halftone-blue" style={{ padding: 24, position: "relative" }}>
-                <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 13, letterSpacing: "0.1em", marginBottom: 6 }}>
+                <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 13, letterSpacing: "0.1em", marginBottom: 4 }}>
                   📋 ADMISSION INFO · 招生資訊速覽
                 </div>
-                <div className="h-display" style={{ fontSize: 22, marginBottom: 14 }}>
-                  系所代碼 / 招生群類 / 名額
+                <div className="h-display" style={{ fontSize: 20, marginBottom: 10 }}>
+                  {a.groups && a.groups.length > 0 ? "招生群類 · 名額分配" : "招生重點資訊"}
                 </div>
-                <div style={{ background: "var(--paper)", padding: 16, border: "2px solid var(--ink)", boxShadow: "3px 3px 0 var(--ink)", fontSize: 14, lineHeight: 1.9 }}>
-                  <div><b>科系：</b>動畫與遊戲設計系（系辦分機 6102 · 07-6158000）</div>
-                  {a.code && !a.groups && (
-                    <div><b>代碼：</b>{a.code}</div>
-                  )}
-                  <div><b>名額：</b>{a.quota}</div>
-                  {a.weights && (
-                    <div><b>採計權重：</b>{a.weights}</div>
-                  )}
+                <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 14, lineHeight: 1.8, opacity: 0.88 }}>
+                  系辦分機 <b>#6102</b>（07-6158000）
+                  {a.code && (!a.groups || a.groups.length === 0) ? <> · <b>{a.code}</b></> : null}
+                  {a.weights ? <> · 採計權重 <b>{a.weights}</b></> : null}
                 </div>
                 {a.groups && a.groups.length > 0 && (
                   <div style={{ marginTop: 14, overflowX: "auto" }}>
@@ -766,53 +807,6 @@ const AdmissionDetail = ({ slug }) => {
                     </li>
                   ))}
                 </ul>
-              </Panel>
-            </div>
-          )}
-
-          {/* 招生時程表 — 漫畫風時間軸 */}
-          {a.timeline && a.timeline.length > 0 && (
-            <div className="comic-tier tier-1 tier-mid">
-              <Panel variant="yellow" style={{ padding: 28, position: "relative" }}>
-                <SFX color="red" rotate={-8} size={44} style={{ position: "absolute", top: 12, right: 18 }}>排程！</SFX>
-                <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 14, letterSpacing: "0.12em", marginBottom: 6 }}>
-                  TIMELINE · 招生時程
-                </div>
-                <div className="h-display" style={{ fontSize: 26, marginBottom: 18 }}>
-                  關鍵日期 — 報名 / 放榜 / 繳費
-                </div>
-                <ol style={{ listStyle: "none", padding: 0, margin: 0, position: "relative" }}>
-                  {a.timeline.map((t, i) => (
-                    <li key={i} style={{
-                      display: "flex", gap: 14, alignItems: "flex-start",
-                      padding: "10px 0",
-                      borderBottom: i < a.timeline.length - 1 ? "2px dashed var(--ink)" : "none"
-                    }}>
-                      <div style={{
-                        flex: "0 0 auto", minWidth: 36, height: 36,
-                        background: "var(--ink)", color: "var(--accent-yellow)",
-                        fontFamily: "'Bowlby One',sans-serif", fontSize: 16,
-                        display: "flex", alignItems: "center", justifyContent: "center",
-                        border: "2px solid var(--ink)",
-                        boxShadow: "2px 2px 0 var(--accent-red)",
-                        padding: "0 10px"
-                      }}>
-                        {String(i + 1).padStart(2, "0")}
-                      </div>
-                      <div style={{ flex: 1 }}>
-                        <div style={{ fontFamily: "'Noto Sans TC',sans-serif", fontWeight: 900, fontSize: 16, lineHeight: 1.3 }}>
-                          {t.label}
-                        </div>
-                        <div style={{ fontSize: 13, fontWeight: 700, opacity: 0.78, marginTop: 2 }}>
-                          📅 {t.date}
-                        </div>
-                      </div>
-                    </li>
-                  ))}
-                </ol>
-                <div style={{ fontSize: 11, marginTop: 14, opacity: 0.7, lineHeight: 1.6 }}>
-                  ※ 確切日期以招聯會 / 技專校院招生委員會聯合會 / 樹德招生資訊網公告為準。
-                </div>
               </Panel>
             </div>
           )}
