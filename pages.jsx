@@ -835,28 +835,6 @@ const AdmissionDetail = ({ slug }) => {
             </div>
           )}
 
-          {/* 報名 + 註冊費用 */}
-          {a.fees && (
-            <div className="comic-tier tier-1-1 tier-mid">
-              <Panel variant="inkbg" style={{ padding: 24, position: "relative" }}>
-                <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 12, letterSpacing: "0.1em", color: "var(--accent-yellow)", marginBottom: 8 }}>
-                  💳 APPLY · 報名費
-                </div>
-                <div style={{ fontFamily: "'Noto Sans TC',sans-serif", fontWeight: 900, fontSize: 18, color: "var(--paper)", lineHeight: 1.4 }}>
-                  {a.fees.apply}
-                </div>
-              </Panel>
-              <Panel variant="red" style={{ padding: 24, position: "relative" }}>
-                <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 12, letterSpacing: "0.1em", color: "var(--accent-yellow)", marginBottom: 8 }}>
-                  🎓 ENROLL · 註冊繳費
-                </div>
-                <div style={{ fontFamily: "'Noto Sans TC',sans-serif", fontWeight: 900, fontSize: 18, color: "#fff", lineHeight: 1.4 }}>
-                  {a.fees.tuition}
-                </div>
-              </Panel>
-            </div>
-          )}
-
           {/* 官方資訊連結 */}
           {a.links && a.links.length > 0 && (
             <div className="comic-tier tier-1 tier-mid">
