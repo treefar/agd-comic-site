@@ -1140,9 +1140,60 @@ body::before {
   /* 16. 新聞詳情入圍作品 zigzag 卡 — 手機改單欄（圖上文下） */
   .news-work-row {
     grid-template-columns: 1fr !important;
-    gap: 14px !important;
+    gap: 10px !important;
+    padding: 12px !important;
   }
-  .news-work-row > div:first-child { grid-column: 1 !important; grid-row: 2 !important; }
-  .news-work-row > div:last-child { grid-column: 1 !important; grid-row: 1 !important; aspect-ratio: 4 / 3 !important; }
-  .news-work-row .h-display { font-size: 22px !important; }
+  .news-work-row > div:first-child { grid-column: 1 !important; grid-row: 2 !important; gap: 4px !important; }
+  .news-work-row > div:last-child {
+    grid-column: 1 !important; grid-row: 1 !important;
+    aspect-ratio: 16 / 9 !important;  /* YouTube 縮圖原生 16:9，省高度 */
+    width: 100% !important;
+  }
+  .news-work-row .h-display { font-size: 18px !important; line-height: 1.2 !important; }
+  /* desc 段（13px → 12px + 限 4 行 line-clamp，避免單筆撐太高） */
+  .news-work-row > div:first-child > div[style*="font-size: 13px"],
+  .news-work-row > div:first-child > div[style*="font-size:13px"] {
+    font-size: 12px !important;
+    line-height: 1.55 !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  /* awards / rank / category badge 縮（FILM 02 有 8 個 awards） */
+  .news-work-row span[style*="Bangers"] {
+    font-size: 10px !important;
+    padding: 1px 6px !important;
+    letter-spacing: 0.06em !important;
+  }
+  /* watch / IG / FB / YouTube 觀賞按鈕縮 */
+  .news-work-row a[style*="background"] {
+    font-size: 11px !important;
+    padding: 5px 10px !important;
+  }
+
+  /* 17. CH.02 NewsChapter 大頭條（headline）— 改單欄、字縮 */
+  .news-headline {
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+  }
+  .news-headline > div:first-child { min-height: 200px !important; }
+  .news-headline > div:last-child { padding: 18px 18px 16px !important; }
+  .news-headline .h-display { font-size: 20px !important; line-height: 1.25 !important; }
+  /* HEADLINE · 頭版 標籤 + tag pills 略縮 */
+  .news-headline div[style*="HEADLINE"], .news-headline div[style*="Bowlby One"] {
+    font-size: 11px !important;
+    padding: 3px 10px !important;
+  }
+
+  /* 18. CH.02 TIER 2 四格次要新聞 — 卡標題字縮 */
+  .tier-1-1-1.tier-mid > .panel div[style*="font-weight: 900"],
+  .tier-1-1-1.tier-mid > .panel div[style*="font-weight:900"] {
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+  }
+  .tier-1-1-1.tier-mid > .panel div[style*="font-size: 12px"],
+  .tier-1-1-1.tier-mid > .panel div[style*="font-size:12px"] {
+    font-size: 11px !important;
+  }
 }
