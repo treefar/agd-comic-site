@@ -606,34 +606,34 @@ const AboutChapter = () => (
               display: "block"
             }}>
               <div style={{
-                display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12,
-                padding: "10px 14px", flexWrap: "wrap",
+                display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16,
+                padding: "16px 20px", flexWrap: "wrap",
                 background: "var(--accent-yellow)",
                 border: "3px solid var(--ink)",
-                boxShadow: "3px 3px 0 var(--ink)",
+                boxShadow: "4px 4px 0 var(--ink)",
                 transition: "transform 0.1s"
               }}
-              onMouseEnter={e => { e.currentTarget.style.transform = "translate(-1px,-1px)"; e.currentTarget.style.boxShadow = "4px 4px 0 var(--ink)"; }}
-              onMouseLeave={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = "3px 3px 0 var(--ink)"; }}
+              onMouseEnter={e => { e.currentTarget.style.transform = "translate(-1px,-1px)"; e.currentTarget.style.boxShadow = "5px 5px 0 var(--ink)"; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = "4px 4px 0 var(--ink)"; }}
               >
                 <div>
-                  <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 11, letterSpacing: "0.12em", opacity: 0.8 }}>
+                  <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 14, letterSpacing: "0.12em", opacity: 0.8 }}>
                     📚 CURRICULUM MAP · 課程地圖
                   </div>
-                  <div style={{ fontFamily: "'Noto Sans TC',sans-serif", fontWeight: 900, fontSize: 16, marginTop: 2, lineHeight: 1.2 }}>
+                  <div style={{ fontFamily: "'Noto Sans TC',sans-serif", fontWeight: 900, fontSize: 21, marginTop: 4, lineHeight: 1.25 }}>
                     想看每學期上什麼課？4 年 128 學分一次看
                   </div>
-                  <div style={{ fontSize: 11.5, opacity: 0.85, marginTop: 2, fontWeight: 700 }}>
+                  <div style={{ fontSize: 14, opacity: 0.85, marginTop: 4, fontWeight: 700 }}>
                     核心專業必修 + 動畫／遊戲／美術／跨域 4 條軸線 · 含畢業專題與校外實習
                   </div>
                 </div>
-                <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 13, letterSpacing: "0.1em", whiteSpace: "nowrap" }}>
+                <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 17, letterSpacing: "0.1em", whiteSpace: "nowrap" }}>
                   看課程地圖 →
                 </div>
               </div>
             </a>
           </Panel>
-          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "var(--gutter)" }}>
+          <div style={{ flex: 0.67, display: "flex", flexDirection: "column", gap: "var(--gutter)" }}>
             <Panel clickable className="bg-halftone-red" variant="red" style={{ padding: 22, position: "relative", flex: 1, overflow: "hidden" }}
               onClick={() => { window.location.hash = "#faculty"; }}>
               <div style={{ fontFamily: "'Bowlby One',sans-serif", fontSize: 64, lineHeight: 1 }}>16</div>
