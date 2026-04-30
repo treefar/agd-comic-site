@@ -220,7 +220,7 @@ const GlobalClickFx = () => {
       if (e.target.closest?.(
         "a[href], button, [role='button'], " +
         ".topnav, .chapter-tag, .chapter-header, " +
-        ".h-display, .h-jojo, " +
+        ".h-display, .h-jojo, .hero-tagline, " +
         "[data-no-fx='true'], [data-no-splat='true']"
       )) return;
 
@@ -345,6 +345,11 @@ const Panel = ({
   const [fx, setFx] = React.useState(null);
   const handle = (e) => {
     if (!clickable) return onClick && onClick(e);
+    // 3-zone 對齊 GlobalClickFx：點圖片 / 標題 → Panel 不放狀聲詞（圖片由 Global 噴墨、標題完全 no effect），仍允許 navigation
+    if (e.target.closest?.("img, .placeholder-img, [data-fx='splat'], .h-display, .h-jojo, .hero-tagline, .chapter-tag, .chapter-header, [data-no-fx='true']")) {
+      if (onClick) onClick(e);
+      return;
+    }
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
