@@ -628,7 +628,7 @@ const AboutChapter = () => (
                   想看每學期上什麼課？4 年 128 學分一次看
                 </div>
                 <div style={{ fontSize: 11.5, opacity: 0.8, marginTop: 3, fontWeight: 700 }}>
-                  必修主幹 + 動畫／遊戲／美術／跨域 4 條軸線 · 含畢業專題與校外實習
+                  核心專業必修 + 動畫／遊戲／美術／跨域 4 條軸線 · 含畢業專題與校外實習
                 </div>
               </div>
               <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 13, letterSpacing: "0.1em", whiteSpace: "nowrap" }}>
