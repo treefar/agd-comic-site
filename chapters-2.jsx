@@ -3,7 +3,7 @@
 // CH.05 — 師資登場
 const FACULTY = [
   {
-    name: "鄧樹遠", role: "系主任 · 副教授(技)", en: "TENG, SHU-YUAN",
+    name: "鄧樹遠", role: "系主任 · 副教授", en: "TENG, SHU-YUAN",
     spec: "遊戲設計 / 劇本創作 / 數位剪輯", color: "red",
     photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/09/78pan_0-scaled-e1725608026576-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/treefar/"
@@ -21,7 +21,7 @@ const FACULTY = [
     page: "https://www.dgd.stu.edu.tw/江雅媚/"
   },
   {
-    name: "陳重光", role: "助理教授(技)(專)", en: "CHEN, CHUNG-KUANG",
+    name: "陳重光", role: "助理教授", en: "CHEN, CHUNG-KUANG",
     spec: "繪本製作 / 角色造型 / 電腦繪圖", color: "",
     photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/09/1189pan_0-scaled-e1725608414852-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/陳重光/"
@@ -33,25 +33,25 @@ const FACULTY = [
     page: "https://www.dgd.stu.edu.tw/楊智彰/"
   },
   {
-    name: "陳慶鴻", role: "助理教授(技)", en: "CHEN, CHING-HUNG",
+    name: "陳慶鴻", role: "助理教授", en: "CHEN, CHING-HUNG",
     spec: "數位設計 / 電腦動畫 / 動態影像", color: "red",
     photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/09/311pan-scaled-e1725608387187-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/陳慶鴻/"
   },
   {
-    name: "張純雅", role: "助理教授(技)", en: "CHANG, CHUN-YA",
+    name: "張純雅", role: "助理教授", en: "CHANG, CHUN-YA",
     spec: "視覺設計 / 字體設計 / 動畫美術", color: "",
     photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/04/990pan-YAYA-scaled-e1712910086728-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/張純雅/"
   },
   {
-    name: "邱士展", role: "助理教授(技)(專)", en: "CHIU, SHIN-CHAN",
+    name: "邱士展", role: "助理教授", en: "CHIU, SHIN-CHAN",
     spec: "電腦動畫 / 動畫導演 / 數位特效 / 鏡頭語言", color: "yellow",
     photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/04/jjjj-scaled-e1712910712234-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/邱士展/"
   },
   {
-    name: "陳美蓉", role: "助理教授(技)", en: "CHEN, MEI-JUNG",
+    name: "陳美蓉", role: "助理教授", en: "CHEN, MEI-JUNG",
     spec: "視覺傳達 / 企業識別 / 推廣與廣告", color: "yellow",
     photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/04/1185pan-scaled-e1712910426723-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/系所成員/陳美蓉/"
@@ -63,7 +63,7 @@ const FACULTY = [
     page: "https://www.dgd.stu.edu.tw/系所成員/陳慧萍/"
   },
   {
-    name: "吳焉昇", role: "講師(技)(專)", en: "WU, YEN-SHEN",
+    name: "吳焉昇", role: "講師", en: "WU, YEN-SHEN",
     spec: "平面設計 / 網路多媒體 / 影像處理", color: "red",
     photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/09/513-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/系所成員/吳焉昇/"
@@ -81,19 +81,19 @@ const FACULTY = [
     page: "https://www.dgd.stu.edu.tw/系所成員/王宗立/"
   },
   {
-    name: "陳寀瑜", role: "助理教授(專) · 從聘", en: "CHEN, TSAI-YU",
+    name: "陳寀瑜", role: "助理教授 · 從聘", en: "CHEN, TSAI-YU",
     spec: "資訊介面 / 數位遊戲理論 / 互動裝置 / 遊戲企劃", color: "blue",
     photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/04/157pan-scaled-e1712912482260-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/系所成員/陳寀瑜/"
   },
   {
-    name: "蔣天華", role: "助理教授(技)(專) · 從聘", en: "CHIANG, TIEN-HUA",
+    name: "蔣天華", role: "助理教授 · 從聘", en: "CHIANG, TIEN-HUA",
     spec: "互動遊戲 / AR VR MR / 物聯網", color: "red",
     photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/04/1170pan-scaled-e1712911533827-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/系所成員/蔣天華/"
   },
   {
-    name: "尹立", role: "助理教授(技) · 留職停薪", en: "YIN, LI",
+    name: "尹立", role: "助理教授 · 留職停薪", en: "YIN, LI",
     spec: "設計展演 / 設計實務 / 應用設計", color: "",
     photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/09/192pan_0-scaled-e1725608280681-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/系所成員/尹立/"
