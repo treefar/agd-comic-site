@@ -290,13 +290,13 @@ const HeroChapter = () => (
 const NEWS = [
   {
     id: 7140, date: "2026.04.29", tag: "入圍", color: "red", num: "01",
-    title: "動遊系 2026 競賽佳績榜｜4 大競賽 14 件入圍 7 部畢業專題榮耀上榜",
+    title: "動遊系 2026 競賽佳績榜 · 14 件入圍 7 部畢業專題上榜",
     excerpt: "全國技專專題、青春設計節、放視大賞、金點新秀 — 4 大競賽 14 件入圍，7 部畢業專題作品全榜公開。",
     link: "#/news/2026-04-29-awards-showcase"
   },
   {
     id: 7141, date: "2026.04.25", tag: "國際", color: "wine", num: "01",
-    title: "四部學生動畫橫掃國際影展｜21+ 入圍獲獎、足跡橫跨歐美亞澳四大洲",
+    title: "四部學生動畫橫掃國際影展 · 21+ 入圍 · 歐美亞澳四大洲",
     excerpt: "《失竊的祕方》《癡迷的現實》《人造人》《神癒》登上多國影展競賽單元 — 義大利怪誕影展叛逆視野獎、西班牙愛情影展最佳奇幻類等獎項相繼到手。",
     link: "#/news/2026-04-25-international-festivals"
   },
@@ -347,6 +347,24 @@ const NEWS = [
     title: "樹德科大動遊系勇奪巴哈姆特 ACG 創作大賽優選雙獎",
     excerpt: "原創動畫《人造人》與《癡迷的現實》同時榮獲優選賞，從全台 69 件入圍作品中脫穎而出。",
     link: "#/news/2025-08-28-bahamut-acg"
+  },
+  {
+    id: 6753, date: "2025.07.25", tag: "國際", color: "wine", num: "10",
+    title: "樹德科大攜手日本動畫大廠 培育國際競爭力動漫設計人才",
+    excerpt: "與日本 Hautecouture (HC) 公司合作邁入第八年，學海築夢計畫 8 位學生赴愛媛縣松山市實習近三個月。",
+    link: "#/news/2025-07-25-japan-hc-internship"
+  },
+  {
+    id: 6747, date: "2025.07.04", tag: "得獎", color: "red", num: "11",
+    title: "樹科大動遊系創意展實力 時報金犢獎國際競賽勇奪第二名",
+    excerpt: "張純雅老師指導學生作品《永慶房屋雇主品牌招募廣告系列》榮獲第 34 屆時報金犢獎第二名。",
+    link: "#/news/2025-07-04-times-golden-pin"
+  },
+  {
+    id: 6735, date: "2025.06.17", tag: "得獎", color: "red", num: "12",
+    title: "樹科大動遊系勇奪全國競賽佳績 畢業專題《失竊的祕方》領銜嶄露鋒芒",
+    excerpt: "《失竊的祕方》獲青春設計節優選，並入圍全國技專校院實務專題競賽（從 1,181 件作品中脫穎而出）。",
+    link: "#/news/2025-06-17-stolen-recipe"
   },
 ];
 
@@ -513,8 +531,8 @@ const NewsChapter = () => (
           </Panel>
         </div>
 
-        {/* TIER 2 / 3 / 4 — 9 格次要新聞（最近的 9 則，加上頭條共 10 則） */}
-        {[NEWS.slice(1, 4), NEWS.slice(4, 7), NEWS.slice(7, 10)].map((row, ri) => (
+        {/* TIER 2 / 3 / 4 / 5 — 12 格次要新聞（最近的 12 則，加上頭條共 13 則） */}
+        {[NEWS.slice(1, 4), NEWS.slice(4, 7), NEWS.slice(7, 10), NEWS.slice(10, 13)].map((row, ri) => (
           <div key={ri} className="comic-tier tier-1-1-1" style={{ minHeight: 0 }}>
             {row.map((n, i) => (
               <Panel

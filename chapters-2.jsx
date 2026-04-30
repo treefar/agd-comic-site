@@ -411,7 +411,7 @@ const WorkCard = ({ w, i }) => (
 );
 
 const WORKS = [
-  { id: "clipstudio-grand-prize", title: "ClipStudio 國際插畫大賽", award: "Grand Prize 國際首獎", year: "2022", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/03/_page-0001-scaled-e1765931540737.jpg" },
+  { id: "international-festivals-2026", title: "四部學生動畫橫掃國際影展", award: "21+ 入圍 · 歐美亞澳四大洲", year: "2026", img: "https://img.youtube.com/vi/g63HmiIJoiQ/hqdefault.jpg", link: "#/news/2026-04-25-international-festivals" },
   { id: "bahamut-acg", title: "巴哈姆特 ACG 創作大賽", award: "優選雙獎", year: "2025", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/08/1140828-1.jpg" },
   { id: "times-pin", title: "時報金犢獎國際競賽", award: "第二名", year: "2025", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/07/unnamed.jpg" },
   { id: "fangshi-2025", title: "2025 放視大賞", award: "8 件入圍", year: "2025", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/05/unnamed-1.jpg" },
