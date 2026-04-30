@@ -515,30 +515,34 @@ const NewsChapter = () => (
 
         {/* TIER 2 / 3 / 4 — 9 格次要新聞（最近的 9 則，加上頭條共 10 則） */}
         {[NEWS.slice(1, 4), NEWS.slice(4, 7), NEWS.slice(7, 10)].map((row, ri) => (
-          <div key={ri} className="comic-tier tier-1-1-1 tier-mid">
+          <div key={ri} className="comic-tier tier-1-1-1" style={{ minHeight: 0 }}>
             {row.map((n, i) => (
               <Panel
                 key={i}
                 clickable
                 onClick={goLocal("news", n.id)}
-                style={{ padding: "10px 12px 8px", display: "flex", flexDirection: "column" }}
+                style={{ padding: "7px 10px 6px", display: "flex", flexDirection: "column", minHeight: 0 }}
               >
                 <div style={{
                   display: "inline-block",
                   background: "var(--ink)", color: "var(--accent-yellow)",
-                  padding: "1px 7px", alignSelf: "flex-start",
-                  fontFamily: "'Bangers',sans-serif", fontSize: 11, letterSpacing: "0.08em",
-                  marginBottom: 6
+                  padding: "1px 6px", alignSelf: "flex-start",
+                  fontFamily: "'Bangers',sans-serif", fontSize: 10, letterSpacing: "0.08em",
+                  marginBottom: 3
                 }}>
                   #{n.num}　{n.tag}
                 </div>
-                <div style={{ fontWeight: 900, fontSize: 15, lineHeight: 1.35 }}>{n.title}</div>
-                <div style={{ fontSize: 12, fontWeight: 500, lineHeight: 1.55, marginTop: 5, opacity: 0.78 }}>
+                <div style={{ fontWeight: 900, fontSize: 14, lineHeight: 1.3 }}>{n.title}</div>
+                <div style={{
+                  fontSize: 11.5, fontWeight: 500, lineHeight: 1.45, marginTop: 3, opacity: 0.78,
+                  display: "-webkit-box", WebkitBoxOrient: "vertical", WebkitLineClamp: 2,
+                  overflow: "hidden"
+                }}>
                   {n.excerpt}
                 </div>
                 <div style={{
                   display: "flex", justifyContent: "space-between", alignItems: "center",
-                  fontSize: 10, fontWeight: 700, opacity: 0.6, marginTop: "auto", paddingTop: 8
+                  fontSize: 10, fontWeight: 700, opacity: 0.6, marginTop: 4
                 }}>
                   <span>{n.date}</span>
                   <span>READ →</span>

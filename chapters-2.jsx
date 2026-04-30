@@ -375,82 +375,42 @@ const LabsChapter = () => (
 );
 
 // CH.04 — 作品 / 榮譽
-const WorkCard = ({ w, i }) => {
-  const isVideo = !!w.video;
-  const handleClick = () => {
-    if (isVideo) window.open(w.video, "_blank", "noopener,noreferrer");
-    else window.location.hash = "#/works/" + w.id;
-  };
-  return (
-    <Panel clickable
-      onClick={handleClick}
-      style={{ padding: 0, position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}>
-      <div style={{ position: "relative", height: 140, borderBottom: "var(--bw) solid var(--ink)", overflow: "hidden" }}>
-        {w.img ? (
-          <PH src={w.img} alt={w.title} fit="cover" pos="center" />
-        ) : (
-          <div className={i % 3 === 0 ? "bg-halftone-light" : i % 3 === 1 ? "bg-halftone-red" : "bg-halftone-blue"}
-            style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <span style={{ fontFamily: "'Bowlby One',sans-serif", fontSize: 64, opacity: 0.4 }}>★</span>
-          </div>
-        )}
-        <div style={{
-          position: "absolute", top: 8, left: 8,
-          background: "var(--accent-red)", color: "#fff",
-          padding: "3px 10px", fontSize: 11,
-          fontFamily: "'Bangers',sans-serif", letterSpacing: "0.1em",
-          boxShadow: "2px 2px 0 var(--ink)"
-        }}>WIN · {w.year}</div>
-        {isVideo && (
-          <div style={{
-            position: "absolute", inset: 0,
-            display: "flex", alignItems: "center", justifyContent: "center",
-            pointerEvents: "none"
-          }}>
-            <div style={{
-              width: 56, height: 56, borderRadius: "50%",
-              background: "rgba(255,0,0,0.92)",
-              border: "3px solid #fff",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              boxShadow: "0 4px 12px rgba(0,0,0,0.45)"
-            }}>
-              <span style={{ color: "#fff", fontSize: 22, marginLeft: 4 }}>▶</span>
-            </div>
-          </div>
-        )}
-      </div>
-      <div style={{ padding: 14, flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-        <div style={{ fontWeight: 900, fontSize: 15, lineHeight: 1.4 }}>{w.title}</div>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 8 }}>
-          <div style={{ fontSize: 12, fontWeight: 800, color: "var(--accent-blue)" }}>
-            ▸ {w.award}
-          </div>
-          <div style={{ fontFamily: "'Bangers',sans-serif", letterSpacing: "0.08em", fontSize: 11, opacity: 0.7 }}>
-            {isVideo ? "觀賞 →" : "詳情 →"}
-          </div>
+const WorkCard = ({ w, i }) => (
+  <Panel clickable
+    onClick={() => { window.location.hash = "#/works/" + w.id; }}
+    style={{ padding: 0, position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}>
+    <div style={{ position: "relative", height: 140, borderBottom: "var(--bw) solid var(--ink)", overflow: "hidden" }}>
+      {w.img ? (
+        <PH src={w.img} alt={w.title} fit="cover" pos="center" />
+      ) : (
+        <div className={i % 3 === 0 ? "bg-halftone-light" : i % 3 === 1 ? "bg-halftone-red" : "bg-halftone-blue"}
+          style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <span style={{ fontFamily: "'Bowlby One',sans-serif", fontSize: 64, opacity: 0.4 }}>★</span>
+        </div>
+      )}
+      <div style={{
+        position: "absolute", top: 8, left: 8,
+        background: "var(--accent-red)", color: "#fff",
+        padding: "3px 10px", fontSize: 11,
+        fontFamily: "'Bangers',sans-serif", letterSpacing: "0.1em",
+        boxShadow: "2px 2px 0 var(--ink)"
+      }}>WIN · {w.year}</div>
+    </div>
+    <div style={{ padding: 14, flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+      <div style={{ fontWeight: 900, fontSize: 15, lineHeight: 1.4 }}>{w.title}</div>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 8 }}>
+        <div style={{ fontSize: 12, fontWeight: 800, color: "var(--accent-blue)" }}>
+          ▸ {w.award}
+        </div>
+        <div style={{ fontFamily: "'Bangers',sans-serif", letterSpacing: "0.08em", fontSize: 11, opacity: 0.7 }}>
+          詳情 →
         </div>
       </div>
-    </Panel>
-  );
-};
+    </div>
+  </Panel>
+);
 
 const WORKS = [
-  {
-    id: "obsessive-reality",
-    title: "畢業專題《癡迷的現實》動畫",
-    award: "巴哈姆特 ACG 優選 · 多國影展入圍",
-    year: "2025",
-    img: "https://img.youtube.com/vi/y0GLRAaN_P8/hqdefault.jpg",
-    video: "https://www.youtube.com/watch?v=y0GLRAaN_P8"
-  },
-  {
-    id: "stolen-recipe",
-    title: "畢業專題《失竊的祕方》動畫",
-    award: "義大利怪誕影展叛逆視野獎",
-    year: "2025",
-    img: "https://img.youtube.com/vi/g63HmiIJoiQ/hqdefault.jpg",
-    video: "https://www.youtube.com/watch?v=g63HmiIJoiQ"
-  },
   { id: "clipstudio-grand-prize", title: "ClipStudio 國際插畫大賽", award: "Grand Prize 國際首獎", year: "2022", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/03/_page-0001-scaled-e1765931540737.jpg" },
   { id: "bahamut-acg", title: "巴哈姆特 ACG 創作大賽", award: "優選雙獎", year: "2025", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/08/1140828-1.jpg" },
   { id: "times-pin", title: "時報金犢獎國際競賽", award: "第二名", year: "2025", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/07/unnamed.jpg" },
@@ -521,22 +481,17 @@ const WorksChapter = () => (
           </Panel>
         </div>
 
-        {/* TIER 2 — 學生影音作品（YouTube 直連，置頂） */}
-        <div className="comic-tier tier-1-1 tier-mid">
-          {WORKS.slice(0, 2).map((w, i) => <WorkCard key={i} w={w} i={i} />)}
+        {/* TIER 2 — 三格戰績 (with images) */}
+        <div className="comic-tier tier-1-1-1 tier-mid">
+          {WORKS.slice(0, 3).map((w, i) => <WorkCard key={i} w={w} i={i} />)}
         </div>
 
         {/* TIER 3 — 三格戰績 (with images) */}
         <div className="comic-tier tier-1-1-1 tier-mid">
-          {WORKS.slice(2, 5).map((w, i) => <WorkCard key={i + 2} w={w} i={i + 2} />)}
+          {WORKS.slice(3, 6).map((w, i) => <WorkCard key={i + 3} w={w} i={i + 3} />)}
         </div>
 
-        {/* TIER 4 — 三格戰績 (with images) */}
-        <div className="comic-tier tier-1-1-1 tier-mid">
-          {WORKS.slice(5, 8).map((w, i) => <WorkCard key={i + 5} w={w} i={i + 5} />)}
-        </div>
-
-        {/* TIER 5 — 完整榮譽史入口 */}
+        {/* TIER 4 — 完整榮譽史入口 */}
         <div className="comic-tier tier-1 tier-short">
           <Panel clickable variant="inkbg" style={{ padding: 24, position: "relative", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}
             onClick={() => { window.location.hash = "#/stats/honors"; }}>
@@ -591,7 +546,7 @@ const VideoWall = () => {
 const VideoCard = ({ v, i }) => {
   const palette = ["", "yellow", "", ""];
   const bgs = ["bg-halftone-red", "", "bg-halftone-blue", "bg-halftone-light"];
-  const tagColors = { "動畫": "var(--accent-red)", "遊戲": "var(--accent-blue)", "形象片": "var(--accent-yellow)", "教學": "#8b5cf6", "活動": "#16a34a", "學生": "#ec4899", "遊戲評論": "#6b7280" };
+  const tagColors = { "動畫": "var(--accent-red)", "遊戲": "var(--accent-blue)", "形象片": "var(--accent-yellow)", "教學": "#8b5cf6", "活動": "#16a34a", "課堂作業": "#ec4899", "遊戲評論": "#6b7280" };
   return (
     <Panel
       clickable
