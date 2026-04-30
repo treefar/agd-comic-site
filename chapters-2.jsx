@@ -411,11 +411,11 @@ const WorkCard = ({ w, i }) => (
 );
 
 const WORKS = [
+  { id: "awards-2026", title: "動遊系 2026 競賽佳績榜", award: "4 競賽 14 件入圍 · 7 部畢業專題", year: "2026", img: "images/news/2026-awards/healing-light.jpg", link: "#/news/2026-04-29-awards-showcase" },
   { id: "international-festivals-2026", title: "四部學生動畫橫掃國際影展", award: "21+ 入圍 · 歐美亞澳四大洲", year: "2026", img: "https://img.youtube.com/vi/g63HmiIJoiQ/hqdefault.jpg", link: "#/news/2026-04-25-international-festivals" },
   { id: "bahamut-acg", title: "巴哈姆特 ACG 創作大賽", award: "優選雙獎", year: "2025", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/08/1140828-1.jpg" },
   { id: "times-pin", title: "時報金犢獎國際競賽", award: "第二名", year: "2025", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/07/unnamed.jpg" },
   { id: "fangshi-2025", title: "2025 放視大賞", award: "8 件入圍", year: "2025", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/05/unnamed-1.jpg" },
-  { id: "awards-2026", title: "動遊系 2026 競賽佳績榜", award: "4 競賽 14 件入圍 · 7 部畢業專題", year: "2026", img: "images/news/2026-awards/healing-light.jpg", link: "#/news/2026-04-29-awards-showcase" },
   { id: "top-2-scientists", title: "科研雙星 · 全球前 2% 學者榜", award: "連四年榮登", year: "2025", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/09/c6135cb3c2111669fdf3d99d0b26bd20.jpg" },
 ];
 
