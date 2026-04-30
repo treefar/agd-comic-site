@@ -312,6 +312,30 @@ const NEWS = [
     excerpt: "動畫與遊戲設計系辦理 114-2 學期「ACP Illustrator」國際證照輔導班，提升學生數位設計就業競爭力。",
     link: "https://www.dgd.stu.edu.tw/2026/03/17/114%e5%ad%b8%e5%b9%b4%e5%ba%a6%e7%ac%ac2%e5%ad%b8%e6%9c%9f%e3%80%8cacp-illustrator%e3%80%8d%e5%9c%8b%e9%9a%9b%e8%ad%89%e7%85%a7%e8%bc%94%e5%b0%8e%e7%8f%ad/"
   },
+  {
+    id: 7053, date: "2026.01.27", tag: "活動", color: "yellow", num: "06",
+    title: "樹德科大動遊系 2026 Open Day 引導學員體驗動畫與遊戲設計學習現場",
+    excerpt: "Open Day 以「真實體驗大學學習」為核心，五門核心課程＋桌遊互動＋校園走讀＋分組實作。",
+    link: "#/news/2026-01-27-open-day"
+  },
+  {
+    id: 6800, date: "2025.10.20", tag: "課程", color: "blue", num: "07",
+    title: "114 學年度第 1 學期學生「Unity 證照輔導班」",
+    excerpt: "Unity Certification User (UCU) 國際認證 · 11/29-11/30 · D0625 · Programmer 第二張證照。",
+    link: "#/news/2025-10-20-unity-114-1"
+  },
+  {
+    id: 6765, date: "2025.09.25", tag: "榮譽", color: "wine", num: "08",
+    title: "樹德科大再創佳績！科研雙星連四年榮登全球前 2% 學者榜",
+    excerpt: "蘇中和教授（動遊系）連續四年入選《全球前 2% 頂尖科學家》。",
+    link: "#/news/2025-09-25-top-2-percent-scientists"
+  },
+  {
+    id: 6759, date: "2025.08.28", tag: "得獎", color: "red", num: "09",
+    title: "樹德科大動遊系勇奪巴哈姆特 ACG 創作大賽優選雙獎",
+    excerpt: "原創動畫《人造人》與《癡迷的現實》同時榮獲優選賞，從全台 69 件入圍作品中脫穎而出。",
+    link: "#/news/2025-08-28-bahamut-acg"
+  },
 ];
 
 // 2026 競賽佳績榜 7 部入圍作品（首頁縮圖用 — 點擊跳到 NEWS[0] 詳情頁）
@@ -477,38 +501,40 @@ const NewsChapter = () => (
           </Panel>
         </div>
 
-        {/* TIER 2 — 4 格次要新聞（國際影展 + 開拓徵稿 + 2 證照課程） */}
-        <div className="comic-tier tier-1-1-1 tier-mid">
-          {[NEWS[1], NEWS[4], NEWS[2], NEWS[3]].map((n, i) => (
-            <Panel
-              key={i}
-              clickable
-              onClick={goLocal("news", n.id)}
-              style={{ padding: "16px 18px 14px", display: "flex", flexDirection: "column" }}
-            >
-              <div style={{
-                display: "inline-block",
-                background: "var(--ink)", color: "var(--accent-yellow)",
-                padding: "2px 8px", alignSelf: "flex-start",
-                fontFamily: "'Bangers',sans-serif", fontSize: 12, letterSpacing: "0.1em",
-                marginBottom: 10
-              }}>
-                #{n.num}　{n.tag}
-              </div>
-              <div style={{ fontWeight: 900, fontSize: 16, lineHeight: 1.45 }}>{n.title}</div>
-              <div style={{ fontSize: 12, fontWeight: 500, lineHeight: 1.7, marginTop: 8, opacity: 0.78 }}>
-                {n.excerpt}
-              </div>
-              <div style={{
-                display: "flex", justifyContent: "space-between", alignItems: "center",
-                fontSize: 11, fontWeight: 700, opacity: 0.6, marginTop: "auto", paddingTop: 14
-              }}>
-                <span>{n.date}</span>
-                <span>READ →</span>
-              </div>
-            </Panel>
-          ))}
-        </div>
+        {/* TIER 2 / 3 / 4 — 9 格次要新聞（最近的 9 則，加上頭條共 10 則） */}
+        {[NEWS.slice(1, 4), NEWS.slice(4, 7), NEWS.slice(7, 10)].map((row, ri) => (
+          <div key={ri} className="comic-tier tier-1-1-1 tier-mid">
+            {row.map((n, i) => (
+              <Panel
+                key={i}
+                clickable
+                onClick={goLocal("news", n.id)}
+                style={{ padding: "16px 18px 14px", display: "flex", flexDirection: "column" }}
+              >
+                <div style={{
+                  display: "inline-block",
+                  background: "var(--ink)", color: "var(--accent-yellow)",
+                  padding: "2px 8px", alignSelf: "flex-start",
+                  fontFamily: "'Bangers',sans-serif", fontSize: 12, letterSpacing: "0.1em",
+                  marginBottom: 10
+                }}>
+                  #{n.num}　{n.tag}
+                </div>
+                <div style={{ fontWeight: 900, fontSize: 16, lineHeight: 1.45 }}>{n.title}</div>
+                <div style={{ fontSize: 12, fontWeight: 500, lineHeight: 1.7, marginTop: 8, opacity: 0.78 }}>
+                  {n.excerpt}
+                </div>
+                <div style={{
+                  display: "flex", justifyContent: "space-between", alignItems: "center",
+                  fontSize: 11, fontWeight: 700, opacity: 0.6, marginTop: "auto", paddingTop: 14
+                }}>
+                  <span>{n.date}</span>
+                  <span>READ →</span>
+                </div>
+              </Panel>
+            ))}
+          </div>
+        ))}
       </div>
 
       <ChapterNext to="#about" num="03" title="我們在做什麼" currentLabel="P. 002 — 第二話 NEWS" />
@@ -629,7 +655,7 @@ const AboutChapter = () => (
       {/* 影片牆 — 系上 YouTube 學生作品集錦（搬家自 CH.06） */}
       {typeof VideoWall !== "undefined" && <VideoWall />}
 
-      <ChapterNext to="#faculty" num="04" title="老師登場" currentLabel="P. 003 — 第三話 ABOUT" />
+      <ChapterNext to="#works" num="04" title="BOSS BATTLE 榮譽戰績" currentLabel="P. 003 — 第三話 ABOUT" />
     </div>
   </section>
 );

@@ -41,7 +41,7 @@ const localHref = (type, slug) => `#/${type}/${encodeURIComponent(slug)}`;
 
 // Data cache (loaded once per type)
 // _BUILD_VER 跟 Comic Site.html 的 jsx ?v= 同步 bump，避免瀏覽器 cache JSON 舊版
-const _BUILD_VER = '20260429f';
+const _BUILD_VER = '20260429h';
 const _dataCache = {};
 const _MIN_LOAD_MS = 850; // Loading 至少顯示這麼久（讓動畫看得到）
 const useDataset = (type) => {
@@ -225,36 +225,38 @@ const NewsDetail = ({ slug }) => {
                               }}>{a}</span>
                             ))}
                           </div>
-                          {w.social && (
-                            <a href={w.social.url} target="_blank" rel="noopener noreferrer"
-                              style={{
-                                marginTop: 10,
-                                display: "inline-flex", alignItems: "center", gap: 6,
-                                background: w.social.type === "ig"
-                                  ? "linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)"
-                                  : w.social.type === "yt"
-                                    ? "#FF0000"
-                                    : "#1877f2",
-                                color: "#fff",
-                                padding: "6px 12px",
-                                fontSize: 12, fontWeight: 800,
-                                textDecoration: "none",
-                                border: "2px solid var(--ink)",
-                                boxShadow: "2px 2px 0 var(--ink)",
-                                alignSelf: "flex-start",
-                                transition: "transform 0.1s"
-                              }}
-                              onMouseEnter={e => { e.currentTarget.style.transform = "translate(-1px,-1px)"; e.currentTarget.style.boxShadow = "3px 3px 0 var(--ink)"; }}
-                              onMouseLeave={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = "2px 2px 0 var(--ink)"; }}
-                            >
-                              <span style={{ fontSize: 14 }}>{
-                                w.social.type === "ig" ? "📷"
-                                : w.social.type === "yt" ? "▶"
-                                : "📘"
-                              }</span>
-                              <span>{w.social.label}</span>
-                              <span style={{ opacity: 0.9, fontSize: 11 }}>↗</span>
-                            </a>
+                          {w.socials && w.socials.length > 0 && (
+                            <div style={{ marginTop: 10, display: "flex", flexWrap: "wrap", gap: 8 }}>
+                              {w.socials.map((s, si) => (
+                                <a key={si} href={s.url} target="_blank" rel="noopener noreferrer"
+                                  style={{
+                                    display: "inline-flex", alignItems: "center", gap: 6,
+                                    background: s.type === "ig"
+                                      ? "linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)"
+                                      : s.type === "yt"
+                                        ? "#FF0000"
+                                        : "#1877f2",
+                                    color: "#fff",
+                                    padding: "6px 12px",
+                                    fontSize: 12, fontWeight: 800,
+                                    textDecoration: "none",
+                                    border: "2px solid var(--ink)",
+                                    boxShadow: "2px 2px 0 var(--ink)",
+                                    transition: "transform 0.1s"
+                                  }}
+                                  onMouseEnter={e => { e.currentTarget.style.transform = "translate(-1px,-1px)"; e.currentTarget.style.boxShadow = "3px 3px 0 var(--ink)"; }}
+                                  onMouseLeave={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = "2px 2px 0 var(--ink)"; }}
+                                >
+                                  <span style={{ fontSize: 14 }}>{
+                                    s.type === "ig" ? "📷"
+                                    : s.type === "yt" ? "▶"
+                                    : "📘"
+                                  }</span>
+                                  <span>{s.label}</span>
+                                  <span style={{ opacity: 0.9, fontSize: 11 }}>↗</span>
+                                </a>
+                              ))}
+                            </div>
                           )}
                         </div>
 

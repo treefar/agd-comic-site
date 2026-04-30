@@ -1,6 +1,6 @@
 /* 章節 — 師資 / 實驗室 / 作品 / 招生 / 聯絡 — 標準 tier 結構 */
 
-// CH.04 — 師資登場
+// CH.05 — 師資登場
 const FACULTY = [
   {
     name: "鄧樹遠", role: "系主任 · 副教授(技)", en: "TENG, SHU-YUAN",
@@ -178,9 +178,9 @@ const FacultyChapter = () => {
   const remote = useDataset ? useDataset("faculty") : null;
   const list = remote && remote.length ? remote : FACULTY;
   return (
-    <section className="chapter" id="faculty" data-screen-label="04 Faculty">
+    <section className="chapter" id="faculty" data-screen-label="05 Faculty">
       <div className="container">
-        <ChapterTag num="04" title="第四話 — CHARACTER 老師登場！" jp="MEET THE SENSEI" />
+        <ChapterTag num="05" title="第五話 — CHARACTER 老師登場！" jp="MEET THE SENSEI" />
         <div style={{ marginBottom: 20 }}>
           <Bubble variant="bubble--shout" className="bubble--anim-jitter" style={{ background: "var(--accent-yellow)", display: "inline-block" }}>
             <span style={{ fontFamily: "'Bowlby One',sans-serif", fontSize: 22 }}>業界派 SENSEI 集合！</span>
@@ -217,13 +217,13 @@ const FacultyChapter = () => {
           </a>
         </div>
 
-        <ChapterNext to="#labs" num="05" title="我們的祕密基地" currentLabel="P. 004 — 第四話 FACULTY" />
+        <ChapterNext to="#labs" num="06" title="我們的祕密基地" currentLabel="P. 005 — 第五話 FACULTY" />
       </div>
     </section>
   );
 };
 
-// CH.05 — 實驗室
+// CH.06 — 實驗室
 const LABS = [
   { slug: "d0604",  code: "D0604",  name: "電繪實驗室",        t: "TABLET",     desc: "電繪繪圖板專業教室，2D 角色與場景設計練功房。" },
   { slug: "d0628",  code: "D0628",  name: "3D 列印工作坊",      t: "3D PRINT",   desc: "FDM / 光固化 3D 列印機群，把建模作品實體化。" },
@@ -274,9 +274,9 @@ const LabCard = ({ l, i }) => (
 );
 
 const LabsChapter = () => (
-  <section className="chapter" id="labs" data-screen-label="05 Labs">
+  <section className="chapter" id="labs" data-screen-label="06 Labs">
     <div className="container">
-      <ChapterTag num="05" title="第五話 — 我們的祕密基地" jp="THE SECRET BASE" />
+      <ChapterTag num="06" title="第六話 — 我們的祕密基地" jp="THE SECRET BASE" />
 
       <div className="comic-page">
         {/* TIER 1 — 大地圖 1:2（一格 + 兩格） */}
@@ -369,46 +369,70 @@ const LabsChapter = () => (
         </Panel>
       </div>
 
-      <ChapterNext to="#works" num="06" title="BOSS BATTLE 榮譽戰績" currentLabel="P. 005 — 第五話 LABS" />
+      <ChapterNext to="#join" num="07" title="加入連載" currentLabel="P. 006 — 第六話 LABS" />
     </div>
   </section>
 );
 
-// CH.06 — 作品 / 榮譽
-const WorkCard = ({ w, i }) => (
-  <Panel clickable
-    onClick={() => { window.location.hash = "#/works/" + w.id; }}
-    style={{ padding: 0, position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}>
-    <div style={{ position: "relative", height: 140, borderBottom: "var(--bw) solid var(--ink)", overflow: "hidden" }}>
-      {w.img ? (
-        <PH src={w.img} alt={w.title} fit="cover" pos="center" />
-      ) : (
-        <div className={i % 3 === 0 ? "bg-halftone-light" : i % 3 === 1 ? "bg-halftone-red" : "bg-halftone-blue"}
-          style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <span style={{ fontFamily: "'Bowlby One',sans-serif", fontSize: 64, opacity: 0.4 }}>★</span>
-        </div>
-      )}
-      <div style={{
-        position: "absolute", top: 8, left: 8,
-        background: "var(--accent-red)", color: "#fff",
-        padding: "3px 10px", fontSize: 11,
-        fontFamily: "'Bangers',sans-serif", letterSpacing: "0.1em",
-        boxShadow: "2px 2px 0 var(--ink)"
-      }}>WIN · {w.year}</div>
-    </div>
-    <div style={{ padding: 14, flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-      <div style={{ fontWeight: 900, fontSize: 15, lineHeight: 1.4 }}>{w.title}</div>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 8 }}>
-        <div style={{ fontSize: 12, fontWeight: 800, color: "var(--accent-blue)" }}>
-          ▸ {w.award}
-        </div>
-        <div style={{ fontFamily: "'Bangers',sans-serif", letterSpacing: "0.08em", fontSize: 11, opacity: 0.7 }}>
-          詳情 →
+// CH.04 — 作品 / 榮譽
+const WorkCard = ({ w, i }) => {
+  const isVideo = !!w.video;
+  const handleClick = () => {
+    if (isVideo) window.open(w.video, "_blank", "noopener,noreferrer");
+    else window.location.hash = "#/works/" + w.id;
+  };
+  return (
+    <Panel clickable
+      onClick={handleClick}
+      style={{ padding: 0, position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}>
+      <div style={{ position: "relative", height: 140, borderBottom: "var(--bw) solid var(--ink)", overflow: "hidden" }}>
+        {w.img ? (
+          <PH src={w.img} alt={w.title} fit="cover" pos="center" />
+        ) : (
+          <div className={i % 3 === 0 ? "bg-halftone-light" : i % 3 === 1 ? "bg-halftone-red" : "bg-halftone-blue"}
+            style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <span style={{ fontFamily: "'Bowlby One',sans-serif", fontSize: 64, opacity: 0.4 }}>★</span>
+          </div>
+        )}
+        <div style={{
+          position: "absolute", top: 8, left: 8,
+          background: "var(--accent-red)", color: "#fff",
+          padding: "3px 10px", fontSize: 11,
+          fontFamily: "'Bangers',sans-serif", letterSpacing: "0.1em",
+          boxShadow: "2px 2px 0 var(--ink)"
+        }}>WIN · {w.year}</div>
+        {isVideo && (
+          <div style={{
+            position: "absolute", inset: 0,
+            display: "flex", alignItems: "center", justifyContent: "center",
+            pointerEvents: "none"
+          }}>
+            <div style={{
+              width: 56, height: 56, borderRadius: "50%",
+              background: "rgba(255,0,0,0.92)",
+              border: "3px solid #fff",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.45)"
+            }}>
+              <span style={{ color: "#fff", fontSize: 22, marginLeft: 4 }}>▶</span>
+            </div>
+          </div>
+        )}
+      </div>
+      <div style={{ padding: 14, flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+        <div style={{ fontWeight: 900, fontSize: 15, lineHeight: 1.4 }}>{w.title}</div>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 8 }}>
+          <div style={{ fontSize: 12, fontWeight: 800, color: "var(--accent-blue)" }}>
+            ▸ {w.award}
+          </div>
+          <div style={{ fontFamily: "'Bangers',sans-serif", letterSpacing: "0.08em", fontSize: 11, opacity: 0.7 }}>
+            {isVideo ? "觀賞 →" : "詳情 →"}
+          </div>
         </div>
       </div>
-    </div>
-  </Panel>
-);
+    </Panel>
+  );
+};
 
 const WORKS = [
   { id: "clipstudio-grand-prize", title: "ClipStudio 國際插畫大賽", award: "Grand Prize 國際首獎", year: "2022", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/03/_page-0001-scaled-e1765931540737.jpg" },
@@ -417,12 +441,28 @@ const WORKS = [
   { id: "fangshi-2025", title: "2025 放視大賞", award: "8 件入圍", year: "2025", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/05/unnamed-1.jpg" },
   { id: "soothing-sounds", title: "114 級畢展《癒光之音》", award: "教育部入圍", year: "2026", img: "uploads/soothing-sounds.jpg" },
   { id: "top-2-scientists", title: "科研雙星 · 全球前 2% 學者榜", award: "連四年榮登", year: "2025", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/09/c6135cb3c2111669fdf3d99d0b26bd20.jpg" },
+  {
+    id: "stolen-recipe",
+    title: "畢業專題《失竊的祕方》動畫",
+    award: "義大利怪誕影展叛逆視野獎",
+    year: "2025",
+    img: "https://img.youtube.com/vi/g63HmiIJoiQ/hqdefault.jpg",
+    video: "https://www.youtube.com/watch?v=g63HmiIJoiQ"
+  },
+  {
+    id: "obsessive-reality",
+    title: "畢業專題《癡迷的現實》動畫",
+    award: "巴哈姆特 ACG 優選 · 多國影展入圍",
+    year: "2025",
+    img: "https://img.youtube.com/vi/y0GLRAaN_P8/hqdefault.jpg",
+    video: "https://www.youtube.com/watch?v=y0GLRAaN_P8"
+  },
 ];
 
 const WorksChapter = () => (
-  <section className="chapter" id="works" data-screen-label="06 Works">
+  <section className="chapter" id="works" data-screen-label="04 Works">
     <div className="container">
-      <ChapterTag num="06" title="第六話 — BOSS BATTLE 榮譽戰績" jp="HIGH SCORE" />
+      <ChapterTag num="04" title="第四話 — BOSS BATTLE 榮譽戰績" jp="HIGH SCORE" />
 
       <div className="comic-page">
         {/* TIER 1 — 大主榜 2:1 */}
@@ -491,7 +531,12 @@ const WorksChapter = () => (
           {WORKS.slice(3, 6).map((w, i) => <WorkCard key={i + 3} w={w} i={i + 3} />)}
         </div>
 
-        {/* TIER 4 — 完整榮譽史入口 */}
+        {/* TIER 4 — 學生影音作品（YouTube 直連） */}
+        <div className="comic-tier tier-1-1 tier-mid">
+          {WORKS.slice(6, 8).map((w, i) => <WorkCard key={i + 6} w={w} i={i + 6} />)}
+        </div>
+
+        {/* TIER 5 — 完整榮譽史入口 */}
         <div className="comic-tier tier-1 tier-short">
           <Panel clickable variant="inkbg" style={{ padding: 24, position: "relative", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}
             onClick={() => { window.location.hash = "#/stats/honors"; }}>
@@ -514,7 +559,7 @@ const WorksChapter = () => (
         </div>
       </div>
 
-      <ChapterNext to="#join" num="07" title="加入連載" currentLabel="P. 006 — 第六話 WORKS" />
+      <ChapterNext to="#faculty" num="05" title="老師登場" currentLabel="P. 004 — 第四話 WORKS" />
     </div>
   </section>
 );

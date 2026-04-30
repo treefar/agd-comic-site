@@ -403,9 +403,9 @@ const TopNav = () => {
   const items = [
     { label: "最新消息", href: "#news" },
     { label: "系所簡介", href: "#about" },
+    { label: "作品成果", href: "#works" },
     { label: "師資陣容", href: "#faculty" },
     { label: "實驗室",   href: "#labs" },
-    { label: "作品成果", href: "#works" },
     { label: "招生資訊", href: "#join" },
     { label: "聯絡我們", href: "#contact" },
   ];

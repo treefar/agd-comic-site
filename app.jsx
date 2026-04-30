@@ -169,9 +169,9 @@ const App = () => {
           <HeroChapter />
           <NewsChapter />
           <AboutChapter />
+          <WorksChapter />
           <FacultyChapter />
           <LabsChapter />
-          <WorksChapter />
           <JoinChapter />
         </>
       )}
