@@ -583,9 +583,9 @@ const AboutChapter = () => (
       <ChapterTag num="03" title="第三話 — 我們在做什麼" jp="WHO WE ARE" />
 
       <div className="comic-page">
-        {/* TIER 1 — 主獨白 2:3 + 數字側欄（右側 4 stats 拉寬）*/}
+        {/* TIER 1 — 主獨白 2:1 + 數字側欄（右側收回 1/3 寬）*/}
         <div className="comic-tier tier-tall" style={{ display: "flex", gap: "var(--gutter)" }}>
-          <Panel className="bg-halftone-light" style={{ flex: 2, padding: 24, position: "relative", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+          <Panel className="bg-halftone-light" style={{ flex: 2, padding: 24, position: "relative", display: "flex", flexDirection: "column" }}>
             <div style={{ marginBottom: 12 }}>
               <Bubble variant="bubble--cloud" className="bubble--anim-heartbeat" style={{ background: "var(--accent-yellow)" }}>
                 「動遊系到底在學什麼？」
@@ -599,8 +599,41 @@ const AboutChapter = () => (
             <div style={{ fontSize: 14, lineHeight: 1.75, fontWeight: 500 }}>
               <b>2006</b> 年成立全國第一所「<b>數位遊戲設計系</b>」，<b>2011</b> 年依產業人才需求更名為「<b>動畫與遊戲設計系</b>」。完整的專業學習課程＋產學合作機制，師生定期參與企業參訪、教學講座，掌握產業脈動；持續在<b>放視大賞</b>、<b>巴哈姆特 ACG</b>、<b>金犢獎</b>等競賽屢獲佳績。
             </div>
+            {/* 課程地圖 CTA — 塞進主獨白 panel 底部 */}
+            <a href="#/curriculum/map" style={{
+              marginTop: 14,
+              textDecoration: "none", color: "var(--ink)",
+              display: "block"
+            }}>
+              <div style={{
+                display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12,
+                padding: "10px 14px", flexWrap: "wrap",
+                background: "var(--accent-yellow)",
+                border: "3px solid var(--ink)",
+                boxShadow: "3px 3px 0 var(--ink)",
+                transition: "transform 0.1s"
+              }}
+              onMouseEnter={e => { e.currentTarget.style.transform = "translate(-1px,-1px)"; e.currentTarget.style.boxShadow = "4px 4px 0 var(--ink)"; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = "3px 3px 0 var(--ink)"; }}
+              >
+                <div>
+                  <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 11, letterSpacing: "0.12em", opacity: 0.8 }}>
+                    📚 CURRICULUM MAP · 課程地圖
+                  </div>
+                  <div style={{ fontFamily: "'Noto Sans TC',sans-serif", fontWeight: 900, fontSize: 16, marginTop: 2, lineHeight: 1.2 }}>
+                    想看每學期上什麼課？4 年 128 學分一次看
+                  </div>
+                  <div style={{ fontSize: 11.5, opacity: 0.85, marginTop: 2, fontWeight: 700 }}>
+                    核心專業必修 + 動畫／遊戲／美術／跨域 4 條軸線 · 含畢業專題與校外實習
+                  </div>
+                </div>
+                <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 13, letterSpacing: "0.1em", whiteSpace: "nowrap" }}>
+                  看課程地圖 →
+                </div>
+              </div>
+            </a>
           </Panel>
-          <div style={{ flex: 3, display: "flex", flexDirection: "column", gap: "var(--gutter)" }}>
+          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "var(--gutter)" }}>
             <Panel clickable className="bg-halftone-red" variant="red" style={{ padding: 22, position: "relative", flex: 1, overflow: "hidden" }}
               onClick={() => { window.location.hash = "#faculty"; }}>
               <div style={{ fontFamily: "'Bowlby One',sans-serif", fontSize: 64, lineHeight: 1 }}>16</div>
@@ -629,31 +662,6 @@ const AboutChapter = () => (
               <div style={{ position: "absolute", bottom: 8, right: 14, fontFamily: "'Bangers',sans-serif", fontSize: 11, letterSpacing: "0.1em" }}>詳情 →</div>
             </Panel>
           </div>
-        </div>
-
-        {/* TIER 1.5 — 課程地圖 CTA（緊貼上方 stats 底部，省 gap）*/}
-        <div className="comic-tier tier-1" style={{ marginTop: "calc(var(--gutter) * -1)" }}>
-          <Panel clickable variant="yellow"
-            onClick={() => { window.location.hash = "#/curriculum/map"; }}
-            style={{ padding: "10px 18px", position: "relative", overflow: "hidden", minHeight: 0 }}>
-            <div className="bg-halftone-light" style={{ position: "absolute", inset: 0, opacity: 0.5 }} />
-            <div style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
-              <div>
-                <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 11, letterSpacing: "0.12em", opacity: 0.8 }}>
-                  📚 CURRICULUM MAP · 課程地圖
-                </div>
-                <div className="h-display" style={{ fontSize: 19, marginTop: 2, lineHeight: 1.2 }}>
-                  想看每學期上什麼課？4 年 128 學分一次看
-                </div>
-                <div style={{ fontSize: 11.5, opacity: 0.8, marginTop: 3, fontWeight: 700 }}>
-                  核心專業必修 + 動畫／遊戲／美術／跨域 4 條軸線 · 含畢業專題與校外實習
-                </div>
-              </div>
-              <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 13, letterSpacing: "0.1em", whiteSpace: "nowrap" }}>
-                看課程地圖 →
-              </div>
-            </div>
-          </Panel>
         </div>
 
         {/* TIER 2 — 三大主軸 */}

@@ -41,7 +41,7 @@ const localHref = (type, slug) => `#/${type}/${encodeURIComponent(slug)}`;
 
 // Data cache (loaded once per type)
 // _BUILD_VER 跟 Comic Site.html 的 jsx ?v= 同步 bump，避免瀏覽器 cache JSON 舊版
-const _BUILD_VER = '20260429r';
+const _BUILD_VER = '20260429s';
 const _dataCache = {};
 const _MIN_LOAD_MS = 850; // Loading 至少顯示這麼久（讓動畫看得到）
 const useDataset = (type) => {
