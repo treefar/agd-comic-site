@@ -77,7 +77,7 @@ body::before {
   display: flex;
   flex-direction: column;
   gap: var(--gutter);
-  margin-bottom: 32px;
+  margin-bottom: 16px;
   position: relative;
 }
 .comic-tier {
@@ -90,10 +90,10 @@ body::before {
   min-height: 0;
 }
 /* tier 高度預設 — 漫畫 tier 比例 */
-.tier-tall { min-height: 380px; }
-.tier-mid { min-height: 260px; }
-.tier-short { min-height: 180px; }
-.tier-splash { min-height: 480px; }
+.tier-tall { min-height: 320px; }
+.tier-mid { min-height: 180px; }
+.tier-short { min-height: 120px; }
+.tier-splash { min-height: 420px; }
 
 /* 用 flex 比例代替不規則 grid */
 .tier-1-1 > .panel { flex: 1 1 0; }
@@ -686,14 +686,14 @@ body::before {
 
 /* 章節分隔（gutter） */
 .chapter {
-  padding: 56px 0 24px;
+  padding: 28px 0 16px;
   position: relative;
 }
 .chapter-header {
   display: flex;
   align-items: center;
   gap: 18px;
-  margin-bottom: 22px;
+  margin-bottom: 12px;
   flex-wrap: wrap;
 }
 .chapter-header .title {

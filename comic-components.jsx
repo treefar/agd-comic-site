@@ -471,9 +471,9 @@ const ChapterNext = ({ to, num, title, hint = "READ NEXT", currentLabel }) => (
     href={to}
     style={{
       display: "flex", justifyContent: "space-between", alignItems: "center",
-      gap: 20, padding: "20px 18px", borderTop: "3px dashed var(--ink)",
+      gap: 20, padding: "10px 14px", borderTop: "3px dashed var(--ink)",
       fontFamily: "'Bangers',sans-serif", letterSpacing: "0.1em",
-      fontSize: 14, marginTop: 18,
+      fontSize: 14, marginTop: 8,
       textDecoration: "none", color: "var(--ink)",
       background: "transparent", transition: "background 0.15s",
       cursor: "pointer"

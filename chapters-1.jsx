@@ -614,24 +614,24 @@ const AboutChapter = () => (
         </div>
 
         {/* TIER 1.5 — 課程地圖 CTA */}
-        <div className="comic-tier tier-1 tier-short">
+        <div className="comic-tier tier-1">
           <Panel clickable variant="yellow"
             onClick={() => { window.location.hash = "#/curriculum/map"; }}
-            style={{ padding: "18px 24px", position: "relative", overflow: "hidden" }}>
+            style={{ padding: "10px 18px", position: "relative", overflow: "hidden", minHeight: 0 }}>
             <div className="bg-halftone-light" style={{ position: "absolute", inset: 0, opacity: 0.5 }} />
             <div style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
               <div>
-                <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 12, letterSpacing: "0.12em", opacity: 0.8 }}>
+                <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 11, letterSpacing: "0.12em", opacity: 0.8 }}>
                   📚 CURRICULUM MAP · 課程地圖
                 </div>
-                <div className="h-display" style={{ fontSize: 24, marginTop: 4 }}>
+                <div className="h-display" style={{ fontSize: 19, marginTop: 2, lineHeight: 1.2 }}>
                   想看每學期上什麼課？4 年 128 學分一次看
                 </div>
-                <div style={{ fontSize: 12, opacity: 0.8, marginTop: 6, fontWeight: 700 }}>
+                <div style={{ fontSize: 11.5, opacity: 0.8, marginTop: 3, fontWeight: 700 }}>
                   必修主幹 + 動畫／遊戲／美術／跨域 4 條軸線 · 含畢業專題與校外實習
                 </div>
               </div>
-              <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 14, letterSpacing: "0.1em", whiteSpace: "nowrap" }}>
+              <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 13, letterSpacing: "0.1em", whiteSpace: "nowrap" }}>
                 看課程地圖 →
               </div>
             </div>
@@ -639,7 +639,7 @@ const AboutChapter = () => (
         </div>
 
         {/* TIER 2 — 三大主軸 */}
-        <div className="comic-tier tier-1-1-1 tier-mid">
+        <div className="comic-tier tier-1-1-1" style={{ minHeight: 0 }}>
           {[
             { num: "ACT.1", t: "動畫製作", d: "2D / 3D / 偶動畫 / 動態捕捉", col: "red", bg: "bg-halftone-red", to: "#/labs/d0631", linkLabel: "去動作捕捉實驗室" },
             { num: "ACT.2", t: "遊戲設計", d: "Unity / Unreal / 美術 / 程式", col: "blue", bg: "bg-halftone-blue", to: "#/labs/d0633", linkLabel: "去體感互動實驗室" },
@@ -651,16 +651,16 @@ const AboutChapter = () => (
               onClick={() => { window.location.hash = b.to; }}
               className={b.bg}
               variant={b.col}
-              style={{ padding: 24, position: "relative" }}
+              style={{ padding: "12px 14px 28px", position: "relative", minHeight: 0 }}
             >
               <div style={{
-                fontFamily: "'Bangers',sans-serif", letterSpacing: "0.12em",
+                fontFamily: "'Bangers',sans-serif", letterSpacing: "0.1em", fontSize: 12,
                 background: "var(--ink)", color: "var(--paper)",
-                display: "inline-block", padding: "3px 12px", marginBottom: 16
+                display: "inline-block", padding: "2px 10px", marginBottom: 6
               }}>{b.num}</div>
-              <div className="h-display" style={{ fontSize: 32 }}>{b.t}</div>
-              <div style={{ fontSize: 14, fontWeight: 700, marginTop: 10, opacity: 0.9 }}>{b.d}</div>
-              <div style={{ position: "absolute", bottom: 14, right: 16, fontFamily: "'Bangers',sans-serif", letterSpacing: "0.1em", fontSize: 12 }}>
+              <div className="h-display" style={{ fontSize: 22, lineHeight: 1.15 }}>{b.t}</div>
+              <div style={{ fontSize: 12.5, fontWeight: 700, marginTop: 4, opacity: 0.9 }}>{b.d}</div>
+              <div style={{ position: "absolute", bottom: 8, right: 12, fontFamily: "'Bangers',sans-serif", letterSpacing: "0.08em", fontSize: 11 }}>
                 {b.linkLabel} →
               </div>
             </Panel>
