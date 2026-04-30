@@ -435,20 +435,6 @@ const WorkCard = ({ w, i }) => {
 };
 
 const WORKS = [
-  { id: "clipstudio-grand-prize", title: "ClipStudio 國際插畫大賽", award: "Grand Prize 國際首獎", year: "2022", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/03/_page-0001-scaled-e1765931540737.jpg" },
-  { id: "bahamut-acg", title: "巴哈姆特 ACG 創作大賽", award: "優選雙獎", year: "2025", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/08/1140828-1.jpg" },
-  { id: "times-pin", title: "時報金犢獎國際競賽", award: "第二名", year: "2025", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/07/unnamed.jpg" },
-  { id: "fangshi-2025", title: "2025 放視大賞", award: "8 件入圍", year: "2025", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/05/unnamed-1.jpg" },
-  { id: "soothing-sounds", title: "114 級畢展《癒光之音》", award: "教育部入圍", year: "2026", img: "uploads/soothing-sounds.jpg" },
-  { id: "top-2-scientists", title: "科研雙星 · 全球前 2% 學者榜", award: "連四年榮登", year: "2025", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/09/c6135cb3c2111669fdf3d99d0b26bd20.jpg" },
-  {
-    id: "stolen-recipe",
-    title: "畢業專題《失竊的祕方》動畫",
-    award: "義大利怪誕影展叛逆視野獎",
-    year: "2025",
-    img: "https://img.youtube.com/vi/g63HmiIJoiQ/hqdefault.jpg",
-    video: "https://www.youtube.com/watch?v=g63HmiIJoiQ"
-  },
   {
     id: "obsessive-reality",
     title: "畢業專題《癡迷的現實》動畫",
@@ -457,6 +443,20 @@ const WORKS = [
     img: "https://img.youtube.com/vi/y0GLRAaN_P8/hqdefault.jpg",
     video: "https://www.youtube.com/watch?v=y0GLRAaN_P8"
   },
+  {
+    id: "stolen-recipe",
+    title: "畢業專題《失竊的祕方》動畫",
+    award: "義大利怪誕影展叛逆視野獎",
+    year: "2025",
+    img: "https://img.youtube.com/vi/g63HmiIJoiQ/hqdefault.jpg",
+    video: "https://www.youtube.com/watch?v=g63HmiIJoiQ"
+  },
+  { id: "clipstudio-grand-prize", title: "ClipStudio 國際插畫大賽", award: "Grand Prize 國際首獎", year: "2022", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/03/_page-0001-scaled-e1765931540737.jpg" },
+  { id: "bahamut-acg", title: "巴哈姆特 ACG 創作大賽", award: "優選雙獎", year: "2025", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/08/1140828-1.jpg" },
+  { id: "times-pin", title: "時報金犢獎國際競賽", award: "第二名", year: "2025", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/07/unnamed.jpg" },
+  { id: "fangshi-2025", title: "2025 放視大賞", award: "8 件入圍", year: "2025", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/05/unnamed-1.jpg" },
+  { id: "soothing-sounds", title: "114 級畢展《癒光之音》", award: "教育部入圍", year: "2026", img: "uploads/soothing-sounds.jpg" },
+  { id: "top-2-scientists", title: "科研雙星 · 全球前 2% 學者榜", award: "連四年榮登", year: "2025", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/09/c6135cb3c2111669fdf3d99d0b26bd20.jpg" },
 ];
 
 const WorksChapter = () => (
@@ -521,19 +521,19 @@ const WorksChapter = () => (
           </Panel>
         </div>
 
-        {/* TIER 2 — 三格戰績 (with images) */}
-        <div className="comic-tier tier-1-1-1 tier-mid">
-          {WORKS.slice(0, 3).map((w, i) => <WorkCard key={i} w={w} i={i} />)}
+        {/* TIER 2 — 學生影音作品（YouTube 直連，置頂） */}
+        <div className="comic-tier tier-1-1 tier-mid">
+          {WORKS.slice(0, 2).map((w, i) => <WorkCard key={i} w={w} i={i} />)}
         </div>
 
         {/* TIER 3 — 三格戰績 (with images) */}
         <div className="comic-tier tier-1-1-1 tier-mid">
-          {WORKS.slice(3, 6).map((w, i) => <WorkCard key={i + 3} w={w} i={i + 3} />)}
+          {WORKS.slice(2, 5).map((w, i) => <WorkCard key={i + 2} w={w} i={i + 2} />)}
         </div>
 
-        {/* TIER 4 — 學生影音作品（YouTube 直連） */}
-        <div className="comic-tier tier-1-1 tier-mid">
-          {WORKS.slice(6, 8).map((w, i) => <WorkCard key={i + 6} w={w} i={i + 6} />)}
+        {/* TIER 4 — 三格戰績 (with images) */}
+        <div className="comic-tier tier-1-1-1 tier-mid">
+          {WORKS.slice(5, 8).map((w, i) => <WorkCard key={i + 5} w={w} i={i + 5} />)}
         </div>
 
         {/* TIER 5 — 完整榮譽史入口 */}

@@ -32,8 +32,20 @@ const HeroChapter = () => (
               }}>
                 畫出來，<br />動起來。
               </div>
-              <div className="hero-tagline" style={{ fontSize: 17, marginTop: 18, fontWeight: 700, whiteSpace: "nowrap" }}>
-                動畫、遊戲、互動媒體 — 把你腦內的世界畫出來，動起來，變成會跑的角色與故事。
+              <div style={{ marginTop: 18 }}>
+                <span className="hero-tagline" style={{
+                  display: "inline-block",
+                  fontSize: 17, fontWeight: 700,
+                  whiteSpace: "nowrap",
+                  background: "var(--accent-yellow)",
+                  color: "var(--ink)",
+                  padding: "6px 14px",
+                  border: "3px solid var(--ink)",
+                  boxShadow: "3px 3px 0 var(--ink)",
+                  position: "relative", zIndex: 2
+                }}>
+                  動畫、遊戲、互動媒體 — 把你腦內的世界畫出來，動起來，變成會跑的角色與故事。
+                </span>
               </div>
             </div>
             <SFX color="yellow" rotate={-10} size={120} anim="burst"
@@ -509,24 +521,24 @@ const NewsChapter = () => (
                 key={i}
                 clickable
                 onClick={goLocal("news", n.id)}
-                style={{ padding: "16px 18px 14px", display: "flex", flexDirection: "column" }}
+                style={{ padding: "10px 12px 8px", display: "flex", flexDirection: "column" }}
               >
                 <div style={{
                   display: "inline-block",
                   background: "var(--ink)", color: "var(--accent-yellow)",
-                  padding: "2px 8px", alignSelf: "flex-start",
-                  fontFamily: "'Bangers',sans-serif", fontSize: 12, letterSpacing: "0.1em",
-                  marginBottom: 10
+                  padding: "1px 7px", alignSelf: "flex-start",
+                  fontFamily: "'Bangers',sans-serif", fontSize: 11, letterSpacing: "0.08em",
+                  marginBottom: 6
                 }}>
                   #{n.num}　{n.tag}
                 </div>
-                <div style={{ fontWeight: 900, fontSize: 16, lineHeight: 1.45 }}>{n.title}</div>
-                <div style={{ fontSize: 12, fontWeight: 500, lineHeight: 1.7, marginTop: 8, opacity: 0.78 }}>
+                <div style={{ fontWeight: 900, fontSize: 15, lineHeight: 1.35 }}>{n.title}</div>
+                <div style={{ fontSize: 12, fontWeight: 500, lineHeight: 1.55, marginTop: 5, opacity: 0.78 }}>
                   {n.excerpt}
                 </div>
                 <div style={{
                   display: "flex", justifyContent: "space-between", alignItems: "center",
-                  fontSize: 11, fontWeight: 700, opacity: 0.6, marginTop: "auto", paddingTop: 14
+                  fontSize: 10, fontWeight: 700, opacity: 0.6, marginTop: "auto", paddingTop: 8
                 }}>
                   <span>{n.date}</span>
                   <span>READ →</span>
