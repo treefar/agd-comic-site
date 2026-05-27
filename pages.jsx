@@ -41,7 +41,7 @@ const localHref = (type, slug) => `#/${type}/${encodeURIComponent(slug)}`;
 
 // Data cache (loaded once per type)
 // _BUILD_VER 跟 Comic Site.html 的 jsx ?v= 同步 bump，避免瀏覽器 cache JSON 舊版
-const _BUILD_VER = '20260430e';
+const _BUILD_VER = '20260430f';
 const _dataCache = {};
 const _MIN_LOAD_MS = 850; // Loading 至少顯示這麼久（讓動畫看得到）
 const useDataset = (type) => {
@@ -375,6 +375,28 @@ const FacultyDetail = ({ slug }) => {
                   {f.achievements.map((a, i) => <li key={i}>{a}</li>)}
                 </ul>
                 <SFX color="yellow" rotate={-6} size={48} style={{ position: "absolute", top: 14, right: 22 }}>讚！</SFX>
+              </Panel>
+            </div>
+          )}
+
+          {f.papers && f.papers.length > 0 && (
+            <div className="comic-tier tier-1 tier-mid">
+              <Panel className="bg-halftone-light" style={{ padding: 24 }}>
+                <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 13, letterSpacing: "0.1em", marginBottom: 12 }}>📑 PAPERS · 研究發表（近 {f.papers.length} 篇）</div>
+                <ul style={{ paddingLeft: 0, margin: 0, listStyle: "none" }}>
+                  {f.papers.map((p, i) => (
+                    <li key={i} style={{ marginBottom: 10, paddingLeft: 0, paddingBottom: 8, borderBottom: i < f.papers.length - 1 ? "1px dashed rgba(0,0,0,0.15)" : "none" }}>
+                      <div style={{ display: "flex", gap: 10, alignItems: "baseline" }}>
+                        <span style={{ fontFamily: "'Bangers',sans-serif", fontSize: 14, color: "var(--accent-red)", flexShrink: 0, minWidth: 50 }}>{p.year}</span>
+                        <span style={{ fontSize: 13.5, lineHeight: 1.55, fontWeight: 600 }}>{p.title}</span>
+                      </div>
+                      {p.venue && (
+                        <div style={{ fontSize: 12, lineHeight: 1.55, color: "rgba(0,0,0,0.65)", marginLeft: 60, marginTop: 2, fontStyle: "italic" }}>· {p.venue}</div>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+                <div style={{ marginTop: 10, fontSize: 11, color: "rgba(0,0,0,0.5)" }}>資料來源：dgd.stu.edu.tw 教師個人頁</div>
               </Panel>
             </div>
           )}
