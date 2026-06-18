@@ -289,6 +289,12 @@ const HeroChapter = () => (
 // CH.02 — 最新消息（標準 tier：頭條 2:1 + 三格新聞）
 const NEWS = [
   {
+    id: 7160, date: "2026.06.16", tag: "國際", color: "wine", num: "01",
+    title: "動遊系畢製《Dear, All Robots》躍上國際媒體",
+    excerpt: "陳美蓉老師指導的印尼學生團隊，以畢業動畫短片《Dear, All Robots》參與 2026 青春設計節，獲《CommonWealth English》與《換日線 Crossing》專文報導。",
+    link: "#/news/2026-06-16-dear-all-robots"
+  },
+  {
     id: 7140, date: "2026.04.29", tag: "入圍", color: "red", num: "01",
     title: "動遊系 2026 競賽佳績榜 · 14 件入圍 7 部畢業專題上榜",
     excerpt: "全國技專專題、青春設計節、放視大賞、金點新秀 — 4 大競賽 14 件入圍，7 部畢業專題作品全榜公開。",
