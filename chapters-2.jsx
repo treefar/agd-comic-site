@@ -411,6 +411,14 @@ const WorkCard = ({ w, i }) => (
 );
 
 const WORKS = [
+  {
+    id: "dear-all-robots-2026",
+    title: "《Dear, All Robots》躍上國際媒體",
+    award: "獲《CommonWealth English》與《換日線 Crossing》專文報導",
+    year: "2026",
+    img: "images/news/7160-dear-all-robots.jpg",
+    link: "#/news/2026-06-16-dear-all-robots"
+  },
   { id: "awards-2026", title: "動遊系 2026 競賽佳績榜", award: "4 競賽 14 件入圍 · 7 部畢業專題", year: "2026", img: "images/news/2026-awards/healing-light.jpg", link: "#/news/2026-04-29-awards-showcase" },
   { id: "international-festivals-2026", title: "四部學生動畫橫掃國際影展", award: "21+ 入圍 · 歐美亞澳四大洲", year: "2026", img: "https://img.youtube.com/vi/g63HmiIJoiQ/hqdefault.jpg", link: "#/news/2026-04-25-international-festivals" },
   { id: "bahamut-acg", title: "巴哈姆特 ACG 創作大賽", award: "優選雙獎", year: "2025", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/08/1140828-1.jpg" },
