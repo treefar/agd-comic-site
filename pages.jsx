@@ -161,6 +161,23 @@ const NewsDetail = ({ slug }) => {
             </Panel>
           </div>
 
+          {Array.isArray(post.sources) && post.sources.length > 0 && (
+            <div className="comic-tier tier-1" style={{ marginTop: 12 }}>
+              <Panel className="bg-halftone-light" style={{ padding: 24 }}>
+                <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 22, letterSpacing: "0.06em", marginBottom: 10 }}>資料來源</div>
+                <ol style={{ margin: 0, paddingLeft: 22, fontSize: 15, lineHeight: 1.8 }}>
+                  {post.sources.map((s, i) => (
+                    <li key={i} style={{ marginBottom: 6 }}>
+                      <a href={s.url} target="_blank" rel="noopener noreferrer" style={{ color: "var(--ink)", textDecoration: "underline", textUnderlineOffset: 3 }}>
+                        {s.title || s.url}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </Panel>
+            </div>
+          )}
+
           {/* GALLERY — 入圍作品專輯（左右交替 zigzag 漫畫雜誌風） */}
           {Array.isArray(post.gallery) && post.gallery.length > 0 && (
             <div className="comic-tier tier-1" style={{ marginTop: 12 }}>
