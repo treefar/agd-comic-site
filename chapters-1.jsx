@@ -117,6 +117,15 @@ const HeroChapter = () => (
                   🇯🇵 日本海外實習 · 第 9 屆
                 </Bubble>
               </a>
+              <a href="#labs" style={{ textDecoration: "none" }}>
+                <Bubble className="bubble--anim-flash" style={{
+                  background: "var(--ink)", color: "var(--accent-yellow)",
+                  fontFamily: "'Noto Sans TC',sans-serif", fontWeight: 900,
+                  fontSize: 13, cursor: "pointer", transform: "rotate(2deg)"
+                }}>
+                  🎬 12 間實驗室 · 動作捕捉／虛擬製片棚
+                </Bubble>
+              </a>
             </div>
           </Panel>
         </div>
