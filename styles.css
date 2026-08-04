@@ -1203,7 +1203,8 @@ body::before {
   /* 20. Loading 畫面瘦身 — 主視覺三點 + 副提示縮 */
   .chapter > .container[style*="60vh"] > .sfx { font-size: clamp(48px, 14vw, 80px) !important; }
 
-  /* 21. tier-1-1-1-1 (Faculty 16 卡 / Labs 8 卡) 改 2-col grid，避免 16 卡疊一條柱 */
+  /* 21. tier-1-1-1-1 (Faculty 13 卡 / Labs 8 卡) 改 2-col grid，避免卡片疊一條柱 */
+  .faculty-spacer { display: none !important; }
   .comic-tier.tier-1-1-1-1 {
     flex-direction: row !important;
     flex-wrap: wrap !important;

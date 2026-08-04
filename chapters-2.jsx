@@ -9,12 +9,6 @@ const FACULTY = [
     page: "https://www.dgd.stu.edu.tw/treefar/"
   },
   {
-    name: "蘇中和", role: "教授", en: "SU, CHUNG-HO",
-    spec: "互動多媒體 / VR / AR / 遊戲化學習", color: "blue",
-    photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/04/1211pan-scaled-e1712908210105-1024x1024.jpg",
-    page: "https://www.dgd.stu.edu.tw/mic6033/"
-  },
-  {
     name: "江雅媚", role: "助理教授", en: "CHIANG, YA-MEI",
     spec: "數位媒體設計 / 介面設計 / 角色與場景", color: "yellow",
     photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/04/1176pan-scaled-e1712908337437-1024x1024.jpg",
@@ -34,7 +28,7 @@ const FACULTY = [
   },
   {
     name: "陳慶鴻", role: "助理教授", en: "CHEN, CHING-HUNG",
-    spec: "數位設計 / 電腦動畫 / 動態影像", color: "red",
+    spec: "數位設計 / 電腦動畫 / 動態影像", color: "blue",
     photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/09/311pan-scaled-e1725608387187-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/陳慶鴻/"
   },
@@ -52,27 +46,15 @@ const FACULTY = [
   },
   {
     name: "陳美蓉", role: "助理教授", en: "CHEN, MEI-JUNG",
-    spec: "視覺傳達 / 企業識別 / 推廣與廣告", color: "yellow",
+    spec: "視覺傳達 / 企業識別 / 推廣與廣告", color: "red",
     photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/04/1185pan-scaled-e1712910426723-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/系所成員/陳美蓉/"
   },
   {
-    name: "陳慧萍", role: "助理教授", en: "CHEN, HUEI-PING",
-    spec: "資訊管理 / 互動設計 / 數據分析 / 遊戲程式", color: "blue",
-    photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/09/1080pan_0-scaled-e1725608358262-1024x1024.jpg",
-    page: "https://www.dgd.stu.edu.tw/系所成員/陳慧萍/"
-  },
-  {
     name: "吳焉昇", role: "講師", en: "WU, YEN-SHEN",
-    spec: "平面設計 / 網路多媒體 / 影像處理", color: "red",
+    spec: "平面設計 / 網路多媒體 / 影像處理", color: "",
     photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/09/513-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/系所成員/吳焉昇/"
-  },
-  {
-    name: "李宛庭", role: "助理教授", en: "LI, WAN-TING",
-    spec: "品牌設計 / 策展 / 包裝設計 / 文化研究", color: "",
-    photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/04/1066pan-scaled-e1712911883658-1024x1024.jpg",
-    page: "https://www.dgd.stu.edu.tw/系所成員/李宛庭/"
   },
   {
     name: "王宗立", role: "助理教授", en: "WANG, TSUNG-LI",
@@ -88,13 +70,13 @@ const FACULTY = [
   },
   {
     name: "蔣天華", role: "助理教授 · 從聘", en: "CHIANG, TIEN-HUA",
-    spec: "互動遊戲 / AR VR MR / 物聯網", color: "red",
+    spec: "互動遊戲 / AR VR MR / 物聯網", color: "",
     photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/04/1170pan-scaled-e1712911533827-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/系所成員/蔣天華/"
   },
   {
     name: "尹立", role: "助理教授 · 留職停薪", en: "YIN, LI",
-    spec: "設計展演 / 設計實務 / 應用設計", color: "",
+    spec: "設計展演 / 設計實務 / 應用設計", color: "red",
     photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/09/192pan_0-scaled-e1725608280681-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/系所成員/尹立/"
   },
@@ -188,18 +170,18 @@ const FacultyChapter = () => {
         </div>
 
         <div className="comic-page">
-          <div className="comic-tier tier-1-1-1-1" style={{ minHeight: 320 }}>
-            {list.slice(0, 4).map((f, i) => <FacultyCard key={i} f={f} i={i} />)}
-          </div>
-          <div className="comic-tier tier-1-1-1-1" style={{ minHeight: 320 }}>
-            {list.slice(4, 8).map((f, i) => <FacultyCard key={i + 4} f={f} i={i + 4} />)}
-          </div>
-          <div className="comic-tier tier-1-1-1-1" style={{ minHeight: 320 }}>
-            {list.slice(8, 12).map((f, i) => <FacultyCard key={i + 8} f={f} i={i + 8} />)}
-          </div>
-          <div className="comic-tier tier-1-1-1-1" style={{ minHeight: 320 }}>
-            {list.slice(12, 16).map((f, i) => <FacultyCard key={i + 12} f={f} i={i + 12} />)}
-          </div>
+          {Array.from({ length: Math.ceil(list.length / 4) }, (_, r) => {
+            const row = list.slice(r * 4, r * 4 + 4);
+            return (
+              <div key={r} className="comic-tier tier-1-1-1-1" style={{ minHeight: 320 }}>
+                {row.map((f, i) => <FacultyCard key={r * 4 + i} f={f} i={r * 4 + i} />)}
+                {/* 末排不足 4 格時補等寬佔位，維持格線對齊（手機版隱藏） */}
+                {Array.from({ length: 4 - row.length }, (_, k) => (
+                  <div key={"sp" + k} className="faculty-spacer" style={{ flex: "1 1 0" }} aria-hidden="true" />
+                ))}
+              </div>
+            );
+          })}
         </div>
 
         <div style={{ display: "flex", justifyContent: "center", gap: 16, marginTop: 20, flexWrap: "wrap" }}>
@@ -340,10 +322,10 @@ const LabsChapter = () => (
             SIDE QUEST · 國際實習
           </div>
           <div className="h-display" style={{ fontSize: 24, marginBottom: 8 }}>
-            日本 HC 公司 · 第 8 年合作 · 6 國 8 公司
+            日本 HC 公司 · 第 9 屆合作 · 6 國 8 公司
           </div>
           <div style={{ fontSize: 13, lineHeight: 1.7, fontWeight: 500 }}>
-            學海築夢計畫近 3 年共派 16 位學生赴日本愛媛縣松山市 Hautecouture 株式會社實習。合作網絡涵蓋日本、韓國、印尼共 6 國 8 家公司。
+            學海築夢計畫近 4 年共派 20 位學生赴日本愛媛縣松山市 Hautecouture 株式會社實習。合作網絡涵蓋日本、韓國、印尼共 6 國 8 家公司。
           </div>
           <div style={{ position: "absolute", bottom: 12, right: 22, fontFamily: "'Bangers',sans-serif", fontSize: 11, letterSpacing: "0.1em" }}>
             完整名單 →

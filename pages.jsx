@@ -41,7 +41,7 @@ const localHref = (type, slug) => `#/${type}/${encodeURIComponent(slug)}`;
 
 // Data cache (loaded once per type)
 // _BUILD_VER 跟 Comic Site.html 的 jsx ?v= 同步 bump，避免瀏覽器 cache JSON 舊版
-const _BUILD_VER = '20260430i';
+const _BUILD_VER = '20260804b';
 const _dataCache = {};
 const _MIN_LOAD_MS = 850; // Loading 至少顯示這麼久（讓動畫看得到）
 const useDataset = (type) => {
@@ -160,6 +160,40 @@ const NewsDetail = ({ slug }) => {
               <SFX color="red" rotate={-6} size={48} style={{ position: "absolute", top: 16, right: 24 }}>!</SFX>
             </Panel>
           </div>
+
+          {/* PHOTOS — 現場照片紀實（每張帶圖說，漫畫格排列） */}
+          {Array.isArray(post.photos) && post.photos.length > 0 && (
+            <div className="comic-tier tier-1" style={{ marginTop: 12 }}>
+              <Panel className="bg-halftone-light" style={{ padding: "22px 24px 26px" }}>
+                <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 13, letterSpacing: "0.14em", color: "var(--accent-red)" }}>
+                  ★ PHOTO REPORT · 現場紀實
+                </div>
+                <div className="h-display" style={{ fontSize: 24, margin: "4px 0 20px" }}>
+                  {post.photosTitle || `${post.photos.length} 張現場照片`}
+                </div>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "var(--gutter)" }}>
+                  {post.photos.map((p, i) => (
+                    <Panel key={i} style={{ padding: 0, overflow: "hidden", display: "flex", flexDirection: "column" }}>
+                      <div style={{ position: "relative", aspectRatio: "16 / 10", borderBottom: "var(--bw) solid var(--ink)" }}>
+                        <PH src={p.src} alt={p.caption || `照片 ${i + 1}`} fit="cover" />
+                        <div style={{
+                          position: "absolute", top: 8, left: 8,
+                          fontFamily: "'Bangers',sans-serif",
+                          background: "var(--ink)", color: "var(--paper)",
+                          padding: "2px 8px", fontSize: 12, letterSpacing: "0.1em", zIndex: 2
+                        }}>
+                          PHOTO {String(i + 1).padStart(2, "0")}
+                        </div>
+                      </div>
+                      <div style={{ padding: "10px 12px", fontSize: 13, lineHeight: 1.6, fontWeight: 600 }}>
+                        {p.caption}
+                      </div>
+                    </Panel>
+                  ))}
+                </div>
+              </Panel>
+            </div>
+          )}
 
           {Array.isArray(post.sources) && post.sources.length > 0 && (
             <div className="comic-tier tier-1" style={{ marginTop: 12 }}>
@@ -1317,7 +1351,7 @@ const EnglishDetail = ({ slug }) => {
 
             <Panel variant="yellow" style={{ padding: 22, display: "flex", flexDirection: "column", justifyContent: "center", gap: 14 }}>
               {[
-                { n: "8", u: "YEARS", t: "Japan internship program (Hautecouture Inc.)" },
+                { n: "9", u: "COHORTS", t: "Japan internship program (Hautecouture Inc.)" },
                 { n: "6", u: "COUNTRIES", t: "Asia-Pacific industry partners" },
                 { n: "100+", u: "AWARDS", t: "Domestic & international, 15-year span" },
                 { n: "94%", u: "EMPLOYED", t: "Within 1 year of graduation" },
@@ -1345,7 +1379,7 @@ const EnglishDetail = ({ slug }) => {
               },
               {
                 t: "Japan Internship",
-                b: "Annual MOE-funded program at Hautecouture Inc. (Matsuyama, Ehime). 16 students placed in the past 3 years — 2-month paid internship.",
+                b: "Annual MOE-funded program at Hautecouture Inc. (Matsuyama, Ehime), now in its 9th cohort. 20 students placed in the past 4 years — 2-month paid internship.",
                 v: "yellow", icon: "🇯🇵"
               },
               {

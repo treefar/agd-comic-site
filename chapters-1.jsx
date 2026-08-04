@@ -114,16 +114,7 @@ const HeroChapter = () => (
                   fontFamily: "'Noto Sans TC',sans-serif", fontWeight: 900,
                   fontSize: 13, cursor: "pointer"
                 }}>
-                  🇯🇵 日本海外實習 · 第 8 年
-                </Bubble>
-              </a>
-              <a href="#/works/top-2-scientists" style={{ textDecoration: "none" }}>
-                <Bubble className="bubble--anim-flash" style={{
-                  background: "var(--ink)", color: "var(--accent-yellow)",
-                  fontFamily: "'Noto Sans TC',sans-serif", fontWeight: 900,
-                  fontSize: 13, cursor: "pointer", transform: "rotate(2deg)"
-                }}>
-                  ⭐ 全球前 2% 學者 · 連 4 年
+                  🇯🇵 日本海外實習 · 第 9 屆
                 </Bubble>
               </a>
             </div>
@@ -149,11 +140,11 @@ const HeroChapter = () => (
             {/* 6 格統計 — 3 欄 × 2 列 */}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10, marginTop: 14 }}>
               {[
-                { num: "16", unit: "位", label: "業界派老師", to: "#faculty", color: "var(--accent-red)" },
+                { num: "13", unit: "位", label: "業界派老師", to: "#faculty", color: "var(--accent-red)" },
                 { num: "12", unit: "間", label: "特色實驗室", to: "#labs", color: "var(--accent-blue)" },
                 { num: "811", unit: "張", label: "5 年取得證照", to: "#/stats/certifications", color: "var(--accent-red)" },
                 { num: "90+", unit: "件", label: "歷屆得獎", to: "#/stats/awards", color: "var(--ink)" },
-                { num: "8", unit: "年", label: "日本實習", to: "#/stats/international", color: "var(--accent-blue)" },
+                { num: "9", unit: "屆", label: "日本實習", to: "#/stats/international", color: "var(--accent-blue)" },
                 { num: "94%", unit: "", label: "畢業就業比", to: "#/stats/employment", color: "var(--ink)" },
               ].map((s, i) => (
                 <a key={i} href={s.to} style={{
@@ -289,6 +280,12 @@ const HeroChapter = () => (
 // CH.02 — 最新消息（標準 tier：頭條 2:1 + 三格新聞）
 const NEWS = [
   {
+    id: 7180, date: "2026.08.04", tag: "國際", color: "wine", num: "01",
+    title: "設計力出海！動遊系赴日實習邁入第九屆",
+    excerpt: "教育部「學海築夢」計畫今年派 4 名學生赴日本愛媛縣松山市 HC 公司實習近三個月，由張純雅老師帶隊，並延伸至西予市、砥部町的地方創生與傳統工藝交流。",
+    link: "#/news/2026-08-04-japan-internship-9th"
+  },
+  {
     id: 7160, date: "2026.06.16", tag: "國際", color: "wine", num: "01",
     title: "動遊系畢製《Dear, All Robots》躍上國際媒體",
     excerpt: "陳美蓉老師指導的印尼學生團隊，以畢業動畫短片《Dear, All Robots》參與 2026 青春設計節，獲《CommonWealth English》與《換日線 Crossing》專文報導。",
@@ -394,7 +391,7 @@ const NewsChapter = () => (
       <ChapterTag num="02" title="動畫與遊戲設計系 — 最新消息" jp="LATEST DROPS" />
 
       <div className="comic-page">
-        {/* TIER 1 — 頭條全寬大版（2026 競賽佳績榜） */}
+        {/* TIER 1 — 頭條全寬大版（最新一則 = NEWS[0]） */}
         <div className="comic-tier tier-1">
           <Panel clickable onClick={goLocal("news", NEWS[0].id)} className="bg-halftone-light"
             style={{ padding: 0, position: "relative", overflow: "hidden" }}>
@@ -407,21 +404,21 @@ const NewsChapter = () => (
               {/* 左：海報主視覺（絕對定位避免被 img 撐爆） */}
               <div style={{ position: "relative", borderRight: "var(--bw) solid var(--ink)", overflow: "hidden", minHeight: 420 }}>
                 <div style={{ position: "absolute", inset: 0 }}>
-                  <PH label="2026 競賽佳績榜"
-                    src="images/news/2026-awards/healing-light.jpg"
-                    alt="2026 動遊系競賽佳績榜 — 全國技專專題／青春設計節／放視大賞／金點新秀"
+                  <PH label="2026 赴日海外實習"
+                    src="images/news/2026-japan-internship/01-arrival-airport.jpg"
+                    alt="動遊系赴日實習師生團隊抵達日本機場"
                     fit="cover"
-                    pos="center 18%" />
+                    pos="center 30%" />
                 </div>
                 <SFX color="yellow" rotate={-10} size={84} style={{ position: "absolute", top: 18, left: 22, zIndex: 2 }}>
-                  14 件！
+                  第 9 屆！
                 </SFX>
                 <div style={{
                   position: "absolute", bottom: 14, left: 14, zIndex: 2,
                   background: "var(--accent-red)", color: "#fff",
                   padding: "5px 12px",
                   fontFamily: "'Bowlby One',sans-serif", fontSize: 13, letterSpacing: "0.1em"
-                }}>★ 4 競賽全入圍代表作《癒光之音：悅曲》</div>
+                }}>★ 教育部學海築夢 · 愛媛縣松山市 HC 公司</div>
               </div>
               {/* 右：標題與內文 */}
               <div style={{ padding: "28px 30px 26px", display: "flex", flexDirection: "column", justifyContent: "space-between", gap: 16 }}>
@@ -438,7 +435,7 @@ const NewsChapter = () => (
                     {NEWS[0].excerpt}
                   </div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 14 }}>
-                    {["全國技專專題", "青春設計節", "放視大賞", "金點新秀"].map((c, i) => (
+                    {["學海築夢", "HC 公司", "愛媛松山", "砥部燒"].map((c, i) => (
                       <span key={i} style={{
                         background: "var(--ink)", color: "var(--accent-yellow)",
                         padding: "3px 10px", fontFamily: "'Bangers',sans-serif",
@@ -459,8 +456,8 @@ const NewsChapter = () => (
                       WebkitTextStroke: "2px var(--ink)",
                       paintOrder: "stroke fill",
                       margin: "0 2px"
-                    }}>7</span>
-                    部入圍作品 →
+                    }}>9</span>
+                    張現場紀實 →
                   </div>
                 </div>
               </div>
@@ -481,7 +478,7 @@ const NewsChapter = () => (
                   7 部畢業專題　14 件入圍
                 </div>
               </div>
-              <div onClick={goLocal("news", NEWS[0].id)}
+              <div onClick={goLocal("news", "2026-04-29-awards-showcase")}
                 style={{ fontFamily: "'Bangers',sans-serif", fontSize: 13, letterSpacing: "0.1em", color: "var(--accent-yellow)", cursor: "pointer" }}>
                 看完整內文 →
               </div>
@@ -642,7 +639,7 @@ const AboutChapter = () => (
           <div style={{ flex: 0.67, display: "flex", flexDirection: "column", gap: "var(--gutter)" }}>
             <Panel clickable className="bg-halftone-red" variant="red" style={{ padding: 22, position: "relative", flex: 1, overflow: "hidden" }}
               onClick={() => { window.location.hash = "#faculty"; }}>
-              <div style={{ fontFamily: "'Bowlby One',sans-serif", fontSize: 64, lineHeight: 1 }}>16</div>
+              <div style={{ fontFamily: "'Bowlby One',sans-serif", fontSize: 64, lineHeight: 1 }}>13</div>
               <div style={{ fontWeight: 800, fontSize: 13, marginTop: 4 }}>位業界派老師<br/>平均 15+ 年實戰</div>
               <div style={{ position: "absolute", bottom: 8, right: 14, fontFamily: "'Bangers',sans-serif", fontSize: 11, letterSpacing: "0.1em" }}>看陣容 →</div>
             </Panel>
@@ -655,16 +652,16 @@ const AboutChapter = () => (
             <Panel clickable variant="yellow" style={{ padding: 22, position: "relative", flex: 1, overflow: "hidden" }}
               onClick={() => { window.location.hash = "#/news/6753"; }}>
               <div style={{ display: "flex", alignItems: "baseline", gap: 6 }}>
-                <div style={{ fontFamily: "'Bowlby One',sans-serif", fontSize: 56, lineHeight: 1 }}>8</div>
-                <div style={{ fontSize: 18, fontWeight: 900 }}>年</div>
+                <div style={{ fontFamily: "'Bowlby One',sans-serif", fontSize: 56, lineHeight: 1 }}>9</div>
+                <div style={{ fontSize: 18, fontWeight: 900 }}>屆</div>
               </div>
               <div style={{ fontWeight: 800, fontSize: 13, marginTop: 4 }}>日本 HC 公司<br/>國際實習合作</div>
               <div style={{ position: "absolute", bottom: 8, right: 14, fontFamily: "'Bangers',sans-serif", fontSize: 11, letterSpacing: "0.1em" }}>看故事 →</div>
             </Panel>
             <Panel clickable className="bg-halftone-blue" style={{ padding: 22, position: "relative", flex: 1 }}
-              onClick={() => { window.location.hash = "#/works/top-2-scientists"; }}>
-              <div style={{ fontFamily: "'Bowlby One',sans-serif", fontSize: 56, color: "var(--accent-red)", lineHeight: 1 }}>2%</div>
-              <div style={{ fontSize: 13, fontWeight: 800, marginTop: 4 }}>全球頂尖科學家<br/>連 4 年榮登</div>
+              onClick={() => { window.location.hash = "#/stats/awards"; }}>
+              <div style={{ fontFamily: "'Bowlby One',sans-serif", fontSize: 56, color: "var(--accent-red)", lineHeight: 1 }}>90+</div>
+              <div style={{ fontSize: 13, fontWeight: 800, marginTop: 4 }}>件學生競賽得獎<br/>5 學年累積</div>
               <div style={{ position: "absolute", bottom: 8, right: 14, fontFamily: "'Bangers',sans-serif", fontSize: 11, letterSpacing: "0.1em" }}>詳情 →</div>
             </Panel>
           </div>
