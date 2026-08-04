@@ -16,7 +16,7 @@ const FACULTY = [
   },
   {
     name: "陳重光", role: "助理教授", en: "CHEN, CHUNG-KUANG",
-    spec: "繪本製作 / 角色造型 / 電腦繪圖", color: "",
+    spec: "繪本製作 / 角色造型 / 電腦繪圖", color: "blue",
     photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/09/1189pan_0-scaled-e1725608414852-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/陳重光/"
   },
@@ -28,7 +28,7 @@ const FACULTY = [
   },
   {
     name: "陳慶鴻", role: "助理教授", en: "CHEN, CHING-HUNG",
-    spec: "數位設計 / 電腦動畫 / 動態影像", color: "blue",
+    spec: "數位設計 / 電腦動畫 / 動態影像", color: "",
     photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/09/311pan-scaled-e1725608387187-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/陳慶鴻/"
   },
@@ -40,7 +40,7 @@ const FACULTY = [
   },
   {
     name: "邱士展", role: "助理教授", en: "CHIU, SHIN-CHAN",
-    spec: "電腦動畫 / 動畫導演 / 數位特效 / 鏡頭語言", color: "yellow",
+    spec: "電腦動畫 / 動畫導演 / 數位特效 / 鏡頭語言", color: "red",
     photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/04/jjjj-scaled-e1712910712234-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/邱士展/"
   },
@@ -52,7 +52,7 @@ const FACULTY = [
   },
   {
     name: "吳焉昇", role: "講師", en: "WU, YEN-SHEN",
-    spec: "平面設計 / 網路多媒體 / 影像處理", color: "",
+    spec: "平面設計 / 網路多媒體 / 影像處理", color: "blue",
     photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/09/513-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/系所成員/吳焉昇/"
   },
@@ -64,7 +64,7 @@ const FACULTY = [
   },
   {
     name: "陳寀瑜", role: "助理教授 · 從聘", en: "CHEN, TSAI-YU",
-    spec: "資訊介面 / 數位遊戲理論 / 互動裝置 / 遊戲企劃", color: "blue",
+    spec: "資訊介面 / 數位遊戲理論 / 互動裝置 / 遊戲企劃", color: "",
     photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/04/157pan-scaled-e1712912482260-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/系所成員/陳寀瑜/"
   },
@@ -90,7 +90,8 @@ const FacultyCard = ({ f, i }) => {
       clickable
       onClick={() => { window.location.hash = "#/faculty/" + slug; }}
       bg={f.color === "red" ? "bg-halftone-red" : f.color === "blue" ? "bg-halftone-blue" : "bg-halftone-light"}
-      variant={f.color === "yellow" ? "yellow" : ""}
+      /* 黃底改由位置決定：NO.02 / 04 / 06… 隔一張交錯，不再看資料的 color */
+      variant={i % 2 === 1 ? "yellow" : ""}
       style={{ padding: 0, position: "relative", overflow: "hidden" }}
     >
       <div
@@ -534,15 +535,16 @@ const VideoWall = () => {
 };
 
 const VideoCard = ({ v, i }) => {
-  const palette = ["", "yellow", "", ""];
-  const bgs = ["bg-halftone-red", "", "bg-halftone-blue", "bg-halftone-light"];
+  // 黃底隔一張交錯（第 2 / 4 / 6…格），其餘輪紅→藍→淺網點 — 與師資卡同一套規律
+  const isYellow = i % 2 === 1;
+  const bg = isYellow ? "" : ["bg-halftone-red", "bg-halftone-blue", "bg-halftone-light"][Math.floor(i / 2) % 3];
   const tagColors = { "動畫": "var(--accent-red)", "遊戲": "var(--accent-blue)", "形象片": "var(--accent-yellow)", "教學": "#8b5cf6", "活動": "#16a34a", "課堂作業": "#ec4899", "遊戲評論": "#6b7280" };
   return (
     <Panel
       clickable
       onClick={() => { window.location.hash = "#/videos/" + v.id; }}
-      variant={palette[i % 4]}
-      className={bgs[i % 4]}
+      variant={isYellow ? "yellow" : ""}
+      className={bg}
       style={{ padding: 0, position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}
     >
       <div style={{ position: "relative", aspectRatio: "16/9", background: "var(--ink)", borderBottom: "var(--bw) solid var(--ink)" }}>
