@@ -3,7 +3,7 @@
 // CH.05 — 師資登場
 const FACULTY = [
   {
-    name: "鄧樹遠", role: "系主任 · 副教授", en: "TENG, SHU-YUAN",
+    name: "鄧樹遠", role: "系主任 · 副教授 · 電競娛樂系代理主任", en: "TENG, SHU-YUAN",
     spec: "遊戲設計 / 劇本創作 / 數位剪輯", color: "red",
     photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/09/78pan_0-scaled-e1725608026576-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/treefar/"
@@ -15,7 +15,7 @@ const FACULTY = [
     page: "https://www.dgd.stu.edu.tw/江雅媚/"
   },
   {
-    name: "陳重光", role: "助理教授", en: "CHEN, CHUNG-KUANG",
+    name: "陳重光", role: "助理教授 · 電競娛樂系合聘", en: "CHEN, CHUNG-KUANG",
     spec: "繪本製作 / 角色造型 / 電腦繪圖", color: "blue",
     photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/09/1189pan_0-scaled-e1725608414852-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/陳重光/"
@@ -51,7 +51,7 @@ const FACULTY = [
     page: "https://www.dgd.stu.edu.tw/系所成員/陳美蓉/"
   },
   {
-    name: "吳焉昇", role: "講師", en: "WU, YEN-SHEN",
+    name: "吳焉昇", role: "講師 · 電競娛樂系合聘", en: "WU, YEN-SHEN",
     spec: "平面設計 / 網路多媒體 / 影像處理", color: "blue",
     photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/09/513-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/系所成員/吳焉昇/"
