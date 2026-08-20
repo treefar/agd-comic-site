@@ -1222,6 +1222,22 @@ body::before {
     padding: 8px 10px !important;
   }
 
+  /* 21b. Faculty 卡手機版破版修正
+     tier 的 inline min-height:320 讓 wrap 後每列被壓成 156~174px，
+     但卡片內容需要約 237px，Panel 的 overflow:hidden 會把「職稱」切一半、
+     「專長」整行裁掉（13 張中 12 張中招）。改為高度依內容撐開，
+     照片區改給固定高度（原本 height:62% 在 auto 高度下會失效）。
+     只作用於 #faculty，Labs 的 8 卡維持原樣。 */
+  #faculty .comic-tier.tier-1-1-1-1 {
+    min-height: auto !important;
+    align-content: flex-start !important;
+  }
+  #faculty .comic-tier.tier-1-1-1-1 > .panel { height: auto !important; }
+  #faculty .comic-tier.tier-1-1-1-1 > .panel > div:first-of-type {
+    height: 150px !important;
+    flex: none !important;
+  }
+
   /* 22. CH.03 About TIER 1 左 panel inline flex（用戶手動加的）— 強制 column + 全寬 */
   #about > .container > .comic-page > .comic-tier.tier-tall {
     flex-direction: column !important;
