@@ -1,6 +1,28 @@
 /* 章節版型 — 標準漫畫 tier 結構 */
 const { useState: useS } = React;
 
+// E4 PRESS START 遊戲回饋：白閃＋LET'S GO!! 特效（原生 DOM，不進 React state）
+const heroPressStartFx = () => {
+  playPageTurnSound();
+  const flash = document.createElement("div");
+  flash.style.cssText = "position:fixed;inset:0;background:#fff;z-index:9997;pointer-events:none;opacity:0.85;transition:opacity 0.32s ease-out";
+  const go = document.createElement("span");
+  go.textContent = "LET'S GO!!";
+  go.style.cssText = "position:fixed;top:40%;left:50%;transform:translate(-50%,-50%) rotate(-6deg);font-family:'Reggae One','Bowlby One','Noto Sans TC',system-ui;font-size:72px;color:#e63946;-webkit-text-stroke:4px #0f0d0a;paint-order:stroke fill;text-shadow:6px 6px 0 #ffd60a;z-index:9998;pointer-events:none";
+  document.body.append(flash, go);
+  requestAnimationFrame(() => { flash.style.opacity = "0"; });
+  setTimeout(() => { flash.remove(); go.remove(); }, 460);
+};
+
+// Z9 hero 主標逐字彈出 — 固定 delay 序列，非隨機
+const HeroTitleChars = ({ text, offset = 0 }) =>
+  text.split("").map((ch, i) => (
+    <span key={i} className="hero-char" style={{
+      animationDelay: `${0.18 + (offset + i) * 0.085}s`,
+      fontSize: (ch === "，" || ch === "。") ? "0.6em" : undefined
+    }}>{ch}</span>
+  ));
+
 // CH.01 — HERO 卷頭頁（splash + tier 結構）
 const HeroChapter = () => (
   <section className="chapter" id="hero" data-screen-label="01 Hero">
@@ -13,8 +35,11 @@ const HeroChapter = () => (
           <div style={{ position: "absolute", top: -28, left: 36, zIndex: 7, transform: "rotate(-3deg)" }}>
             <Bubble variant="bubble--cloud" className="bubble--anim-bounce">「動起來！動到極限！」</Bubble>
           </div>
-          <Panel bg="bg-halftone-light" style={{ padding: 0, position: "relative" }}>
-            <div style={{ position: "absolute", inset: 0 }} className="bg-speedlines" />
+          <Panel style={{ padding: 0, position: "relative" }}>
+            {/* A4：手繪雙層集中線＋中心留白（bg-halftone-light 全版鋪點退場） */}
+            <div style={{ position: "absolute", inset: 0 }} className="bg-speedlines speedlines-focus" />
+            {/* A4：CMYK 疊角網點只留右上角帶 */}
+            <div className="bg-cmyk-corner" style={{ top: 0, right: 0, width: 320, height: 200, WebkitMaskImage: "linear-gradient(205deg, black 28%, transparent 70%)", maskImage: "linear-gradient(205deg, black 28%, transparent 70%)" }} />
             {/* 🥚 彩蛋熱區 — 集中線中心半徑 20px 內可點 */}
             <EasterEgg size={40} label="彩蛋！" />
             <div style={{
@@ -27,31 +52,33 @@ const HeroChapter = () => (
                 color: "var(--accent-red)", fontSize: 22,
                 letterSpacing: "0.1em", textShadow: "2px 2px 0 var(--ink)"
               }}>SHU-TE UNIVERSITY · DEPT. OF ANIMATION & GAME DESIGN</div>
-              <div className="h-display h-jojo" style={{
+              {/* Z9 逐字彈出＋A4 實色厚陰影＋E6 hover 套版錯位 */}
+              <div className="h-display h-jojo cmyk-hover" style={{
                 fontSize: "clamp(72px, 10vw, 140px)", marginTop: 10
               }}>
-                畫出來，<br />動起來。
+                <HeroTitleChars text="畫出來，" offset={0} /><br /><HeroTitleChars text="動起來。" offset={4} />
               </div>
               <div style={{ marginTop: 18 }}>
+                {/* A3：標語條讓出黃色，關鍵詞用紅 */}
                 <span className="hero-tagline" style={{
                   display: "inline-block",
                   fontSize: 17, fontWeight: 700,
                   whiteSpace: "nowrap",
-                  background: "var(--accent-yellow)",
+                  background: "#fffaf0",
                   color: "var(--ink)",
                   padding: "6px 14px",
                   border: "3px solid var(--ink)",
                   boxShadow: "3px 3px 0 var(--ink)",
                   position: "relative", zIndex: 2
                 }}>
-                  動畫、遊戲、互動媒體 — 把你腦內的世界畫出來，動起來，變成會跑的角色與故事。
+                  動畫、遊戲、互動媒體 — 把你腦內的世界<b style={{ color: "var(--accent-red)" }}>畫出來，動起來</b>，變成會跑的角色與故事。
                 </span>
               </div>
             </div>
-            <SFX color="yellow" rotate={-10} size={120} anim="burst"
-              style={{ position: "absolute", top: 30, right: 60, zIndex: 5 }}>
+            {/* A2：擬聲字改爆炸框＋筆刷字（過渡版，正式手繪字圖走生圖管線） */}
+            <SFXBurst size={190} rotate={-6} style={{ position: "absolute", top: 22, right: 52, zIndex: 5 }}>
               碰！
-            </SFX>
+            </SFXBurst>
             <div style={{
               position: "absolute", top: 24, right: 24,
               fontFamily: "'Bangers',sans-serif", fontSize: 14,
@@ -75,7 +102,8 @@ const HeroChapter = () => (
               }}>
                 準備好了嗎？<br/>翻開第一格 ↓
               </Bubble>
-              <a href="#news" style={{
+              {/* E4 點擊白閃＋LET'S GO!!；E2 hover 爆速度線 */}
+              <a href="#news" className="cta-burst" onClick={heroPressStartFx} style={{
                 background: "var(--accent-red)", color: "#fff",
                 fontFamily: "'Bowlby One',sans-serif", letterSpacing: "0.06em",
                 fontSize: 22, padding: "12px 24px",
@@ -87,8 +115,11 @@ const HeroChapter = () => (
                 cursor: "pointer",
                 animation: "pressStart 1.6s ease-in-out infinite"
               }}>
+                <span className="cta-lines" />
                 ▶ PRESS START
               </a>
+              {/* Z4 手寫註記 */}
+              <div className="voice-note" style={{ fontSize: 14, transform: "rotate(-3deg)" }}>↑ 按下去有驚喜</div>
               <div style={{
                 fontFamily: "'Bangers',sans-serif", fontSize: 12, letterSpacing: "0.1em",
                 color: "var(--ink)", opacity: 0.6
@@ -98,19 +129,20 @@ const HeroChapter = () => (
             </div>
             {/* 底部 highlight 泡泡 — 點擊即跳到對應的精彩內容 */}
             <div style={{ position: "absolute", bottom: 24, left: 32, right: 280, display: "flex", gap: 10, flexWrap: "wrap", zIndex: 5 }}>
+              {/* A3：紅色只給「全台第一所」，其餘徽章讓位 */}
               <a href="#about" style={{ textDecoration: "none" }}>
                 <Bubble className="bubble--anim-glow" style={{
-                  background: "#fff", color: "var(--ink)",
+                  background: "var(--accent-red)", color: "#fff",
                   fontFamily: "'Noto Sans TC',sans-serif", fontWeight: 900,
                   fontSize: 13, cursor: "pointer", transform: "rotate(-2deg)",
-                  border: "3px solid var(--accent-red)"
+                  border: "3px solid var(--ink)"
                 }}>
-                  🥇 全台<b style={{ color: "var(--accent-red)" }}>第一所</b>動畫與遊戲科系
+                  🥇 全台<b style={{ color: "var(--accent-yellow)" }}>第一所</b>動畫與遊戲科系
                 </Bubble>
               </a>
               <a href="#/stats/international" style={{ textDecoration: "none" }}>
                 <Bubble variant="bubble--cloud" className="bubble--anim-rubber" style={{
-                  background: "var(--accent-red)", color: "#fff",
+                  background: "#fffaf0", color: "var(--ink)",
                   fontFamily: "'Noto Sans TC',sans-serif", fontWeight: 900,
                   fontSize: 13, cursor: "pointer"
                 }}>
@@ -118,8 +150,8 @@ const HeroChapter = () => (
                 </Bubble>
               </a>
               <a href="#labs" style={{ textDecoration: "none" }}>
-                <Bubble className="bubble--anim-flash" style={{
-                  background: "var(--ink)", color: "var(--accent-yellow)",
+                <Bubble style={{
+                  background: "#fffaf0", color: "var(--ink)",
                   fontFamily: "'Noto Sans TC',sans-serif", fontWeight: 900,
                   fontSize: 13, cursor: "pointer", transform: "rotate(2deg)"
                 }}>
@@ -132,8 +164,8 @@ const HeroChapter = () => (
 
         {/* TIER 2 — 方案 C：左寬 stats 主體（含工具棧）+ 右側海報 sidebar 等高拉長 */}
         <div className="comic-tier">
-          {/* LEFT — stats 主體（3 欄 6 格） */}
-          <Panel variant="yellow" style={{ flex: 2, padding: 18, position: "relative", display: "flex", flexDirection: "column", justifyContent: "space-between", overflow: "hidden" }}>
+          {/* LEFT — stats 主體（3 欄 6 格）— A3：整面黃退場改紙白 */}
+          <Panel style={{ flex: 2, padding: 18, position: "relative", display: "flex", flexDirection: "column", justifyContent: "space-between", overflow: "hidden" }}>
             {/* 標題 */}
             <div>
               <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 6 }}>
@@ -148,16 +180,18 @@ const HeroChapter = () => (
 
             {/* 6 格統計 — 3 欄 × 2 列 */}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10, marginTop: 14 }}>
+              {/* T2 大小格分層：94% 就業比升紅底主打格，其餘紙底 */}
               {[
                 { num: "13", unit: "位", label: "業界派老師", to: "#faculty", color: "var(--accent-red)" },
                 { num: "12", unit: "間", label: "特色實驗室", to: "#labs", color: "var(--accent-blue)" },
                 { num: "811", unit: "張", label: "5 年取得證照", to: "#/stats/certifications", color: "var(--accent-red)" },
                 { num: "90+", unit: "件", label: "歷屆得獎", to: "#/stats/awards", color: "var(--ink)" },
                 { num: "9", unit: "屆", label: "日本實習", to: "#/stats/international", color: "var(--accent-blue)" },
-                { num: "94%", unit: "", label: "畢業就業比", to: "#/stats/employment", color: "var(--ink)" },
+                { num: "94%", unit: "", label: "畢業就業比", to: "#/stats/employment", color: "#fff", hot: true },
               ].map((s, i) => (
                 <a key={i} href={s.to} style={{
-                  background: "var(--paper)", color: "var(--ink)",
+                  background: s.hot ? "var(--accent-red)" : "var(--paper)",
+                  color: s.hot ? "#fff" : "var(--ink)",
                   padding: "12px 14px", textDecoration: "none",
                   border: "3px solid var(--ink)", boxShadow: "3px 3px 0 var(--ink)",
                   display: "flex", flexDirection: "column", justifyContent: "center",
@@ -166,10 +200,10 @@ const HeroChapter = () => (
                 onMouseEnter={(e) => { e.currentTarget.style.transform = "translate(-2px,-2px)"; e.currentTarget.style.boxShadow = "5px 5px 0 var(--ink)"; }}
                 onMouseLeave={(e) => { e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = "3px 3px 0 var(--ink)"; }}>
                   <div style={{ display: "flex", alignItems: "baseline", gap: 3 }}>
-                    <span style={{ fontFamily: "'Bowlby One',sans-serif", fontSize: 32, lineHeight: 1, color: s.color }}>{s.num}</span>
+                    <span style={{ fontFamily: "'Bowlby One',sans-serif", fontSize: s.hot ? 40 : 32, lineHeight: 1, color: s.color }}>{s.num}</span>
                     <span style={{ fontSize: 13, fontWeight: 800 }}>{s.unit}</span>
                   </div>
-                  <div style={{ fontSize: 12, fontWeight: 700, marginTop: 6, opacity: 0.85 }}>{s.label} →</div>
+                  <div style={{ fontSize: 12, fontWeight: 700, marginTop: 6, opacity: s.hot ? 1 : 0.85 }}>{s.label} →</div>
                 </a>
               ))}
             </div>
@@ -231,8 +265,8 @@ const HeroChapter = () => (
           </Panel>
         </div>
 
-        {/* TIER 3 — 全寬 CTA 橫條：「這一話，由你來畫」 */}
-        <div className="comic-tier tier-1">
+        {/* TIER 3 — 全寬 CTA 橫條：「這一話，由你來畫」— W1 出血格：紅帶衝出版心滿寬 */}
+        <div className="comic-tier tier-1 tier-bleed">
           <Panel clickable variant="red"
             onClick={() => { window.location.hash = "#about"; }}
             style={{ padding: "20px 28px", position: "relative", overflow: "hidden" }}>
@@ -281,7 +315,8 @@ const HeroChapter = () => (
         </div>
       </div>
 
-      <ChapterNext to="#news" num="02" title="最新消息" currentLabel="P. 001 — 第一話 OPEN" />
+      <ChapterNext to="#news" num="02" title="最新消息" currentLabel="P. 001 — 第一話 OPEN"
+        teaser="下一話：出海！第九屆日本實習啟程——" />
     </div>
   </section>
 );
@@ -413,11 +448,13 @@ const NewsChapter = () => (
               {/* 左：海報主視覺（絕對定位避免被 img 撐爆） */}
               <div style={{ position: "relative", borderRight: "var(--bw) solid var(--ink)", overflow: "hidden", minHeight: 420 }}>
                 <div style={{ position: "absolute", inset: 0 }}>
+                  {/* A5：現場照走漫畫化管線（hover 還原彩色）；作品美術不套 */}
                   <PH label="2026 赴日海外實習"
                     src="images/news/2026-japan-internship/01-arrival-airport.jpg"
                     alt="動遊系赴日實習師生團隊抵達日本機場"
                     fit="cover"
-                    pos="center 30%" />
+                    pos="center 30%"
+                    manga={true} />
                 </div>
                 <SFX color="yellow" rotate={-10} size={84} style={{ position: "absolute", top: 18, left: 22, zIndex: 2 }}>
                   第 9 屆！
@@ -583,7 +620,8 @@ const NewsChapter = () => (
         ))}
       </div>
 
-      <ChapterNext to="#about" num="03" title="我們在做什麼" currentLabel="P. 002 — 第二話 NEWS" />
+      <ChapterNext to="#about" num="03" title="我們在做什麼" currentLabel="P. 002 — 第二話 NEWS"
+        teaser="下一話：四年 128 學分，到底在學什麼？" />
     </div>
   </section>
 );
@@ -608,8 +646,21 @@ const AboutChapter = () => (
               <span style={{ color: "var(--accent-blue)" }}>遊戲設計</span>、
               影音後製、互動設計（AR / VR）<br/>所需的專業人才。
             </div>
-            <div style={{ fontSize: 14, lineHeight: 1.75, fontWeight: 500 }}>
-              <b>2006</b> 年成立全國第一所「<b>數位遊戲設計系</b>」，<b>2011</b> 年依產業人才需求更名為「<b>動畫與遊戲設計系</b>」。完整的專業學習課程＋產學合作機制，師生定期參與企業參訪、教學講座，掌握產業脈動；持續在<b>放視大賞</b>、<b>巴哈姆特 ACG</b>、<b>金犢獎</b>等競賽屢獲佳績。
+            {/* T1 三聲道排印：史實用旁白框（黑底明體），對話留給泡泡，心聲用手寫虛線框；
+                Z3 直排引言箋並排右側 — 日漫單行本的欄式排版 */}
+            {/* 直排箋限高自動折雙列（單列 13 字會把整區撐高 330px 留白） */}
+            <div style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
+              <div style={{ flex: 1 }}>
+                <div className="voice-narration" style={{ fontSize: 14 }}>
+                  <b>2006</b> 年成立全國第一所「<b>數位遊戲設計系</b>」，<b>2011</b> 年依產業人才需求更名為「<b>動畫與遊戲設計系</b>」。完整的專業學習課程＋產學合作機制，師生定期參與企業參訪、教學講座，掌握產業脈動；持續在<b>放視大賞</b>、<b>巴哈姆特 ACG</b>、<b>金犢獎</b>等競賽屢獲佳績。
+                </div>
+                <div className="voice-thought" style={{ fontSize: 13.5, marginTop: 10, width: "fit-content" }}>
+                  （原來我畫的東西，真的能變成會跑的遊戲……）
+                </div>
+              </div>
+              <div className="vertical-quote" style={{ fontSize: 15, flexShrink: 0, maxHeight: 172 }}>
+                把腦內的世界，畫成會動的故事。
+              </div>
             </div>
             {/* 課程地圖 CTA — 塞進主獨白 panel 底部 */}
             <a href="#/curriculum/map" style={{
@@ -709,7 +760,8 @@ const AboutChapter = () => (
       {/* 影片牆 — 系上 YouTube 學生作品集錦（搬家自 CH.06） */}
       {typeof VideoWall !== "undefined" && <VideoWall />}
 
-      <ChapterNext to="#works" num="04" title="BOSS BATTLE 榮譽戰績" currentLabel="P. 003 — 第三話 ABOUT" />
+      <ChapterNext to="#works" num="04" title="BOSS BATTLE 榮譽戰績" currentLabel="P. 003 — 第三話 ABOUT"
+        teaser="下一話：連載 15 年的得獎戰績，一次攤開。" />
     </div>
   </section>
 );

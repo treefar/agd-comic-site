@@ -23,7 +23,7 @@
 <!-- 預先連線到 React / Babel CDN，省 50-100ms 的 DNS+TLS 握手 -->
 <link rel="preconnect" href="https://unpkg.com" crossorigin />
 <link rel="dns-prefetch" href="https://wpcdn.stu.edu.tw" />
-<link rel="stylesheet" href="styles.css?v=20260804f" />
+<link rel="stylesheet" href="styles.css?v=20260822d" />
 <style>
   /* style variants */
   body.style-novel {
@@ -74,20 +74,32 @@
       <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="7" result="noise2"/>
       <feDisplacementMap in="SourceGraphic" in2="noise2" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
     </filter>
+    <!-- A4 手繪集中線用：兩組不同亂流讓雙層線各自顫動 -->
+    <filter id="hand-wobble" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="2" seed="11" result="hw1"/>
+      <feDisplacementMap in="SourceGraphic" in2="hw1" scale="9" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="hand-wobble-2" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03 0.016" numOctaves="2" seed="4" result="hw2"/>
+      <feDisplacementMap in="SourceGraphic" in2="hw2" scale="14" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <!-- A5 彩色漫畫渲染：RGB 各壓成 5 階，照片變賽璐璐上色感（黑白版已撤，避免遺照聯想） -->
+    <filter id="manga-color">
+      <feComponentTransfer>
+        <feFuncR type="discrete" tableValues="0.13 0.38 0.62 0.84 1"/>
+        <feFuncG type="discrete" tableValues="0.13 0.38 0.62 0.84 1"/>
+        <feFuncB type="discrete" tableValues="0.13 0.38 0.62 0.84 1"/>
+      </feComponentTransfer>
+    </filter>
   </defs>
 </svg>
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<!-- X1 預編譯：production React + 預打包 bundle（原 Babel standalone 瀏覽器端編譯已退場） -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 
-<!-- BUILD_VER: 改 jsx 後 bump 這個字串，迫使瀏覽器拿新版（GitHub Pages 預設 jsx cache 10 分鐘） -->
-<script type="text/babel" src="tweaks-panel.jsx?v=20260804f"></script>
-<script type="text/babel" src="comic-components.jsx?v=20260804f"></script>
-<script type="text/babel" src="chapters-1.jsx?v=20260804f"></script>
-<script type="text/babel" src="chapters-2.jsx?v=20260804f"></script>
-<script type="text/babel" src="pages.jsx?v=20260804f"></script>
-<script type="text/babel" src="app.jsx?v=20260804f"></script>
+<!-- BUILD_VER: 改 jsx 後執行 build.mjs 重打包並 bump 這個字串 -->
+<script src="bundle.js?v=20260822d"></script>
 
 <!-- iframe embed bridge：給 dgd.stu.edu.tw 嵌入時用，獨立於 React，原生 JS -->
 <script>

@@ -81,6 +81,9 @@ const App = () => {
   const route = useHashRoute();
   const isDetail = !!route.type;
 
+  // Z6 ← → 鍵盤翻章
+  useChapterKeys();
+
   // 首頁初次載入 LOADING（讓動畫露面 1.5 秒），detail page 由各自 useDataset 處理
   const [bootLoading, setBootLoading] = u(true);
   ue(() => {
@@ -173,6 +176,8 @@ const App = () => {
           <FacultyChapter />
           <LabsChapter />
           <JoinChapter />
+          {/* Z2/Z7 章節 rail + 集章卡（桌機 only，CSS 控制） */}
+          <ChapterRailAndStamps />
         </>
       )}
       <FooterChapter />

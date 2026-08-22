@@ -2,12 +2,13 @@
 const { useState, useEffect, useRef } = React;
 
 // 圖片占位 — 給 src 就直接顯示真圖（保留漫畫格邊框感）；src 載入失敗時自動切到 fallback
-const PH = ({ label = "image", className = "", src, fallback, alt, fit = "cover", pos = "center" }) => {
+// A5：manga=true 時套「網點黑白、hover 還原彩色」漫畫化管線（用於現實照片，作品美術保持原色）
+const PH = ({ label = "image", className = "", src, fallback, alt, fit = "cover", pos = "center", manga = false }) => {
   const [current, setCurrent] = useState(src);
   React.useEffect(() => { setCurrent(src); }, [src]);
   if (current) {
     return (
-      <div className={`placeholder-img ${className}`} style={{ background: "var(--ink)", overflow: "hidden", padding: 0 }}>
+      <div className={`placeholder-img ${manga ? "manga-photo" : ""} ${className}`} style={{ background: "var(--ink)", overflow: "hidden", padding: 0 }}>
         <img
           src={current}
           alt={alt || label}
@@ -31,13 +32,55 @@ const Bubble = ({ children, variant = "", style = {}, className = "" }) => (
 );
 
 // 狀聲詞 — 預設帶 wobble 動畫，可用 anim 屬性切換
+// A2 過渡版：純文字內容逐字拆 span 手排（固定變形表，非隨機），黑體 fallback 也有手寫錯落感
+const SFX_TILTS = [[-7, -3, 1.06], [5, 2, 0.97], [-3, 1, 1.03], [6, -2, 1.0], [-5, 3, 1.05], [3, -1, 0.96]];
 const SFX = ({ children, color = "red", rotate = -8, size = 64, anim = "wobble", style = {}, className = "" }) => (
   <span
     className={`sfx sfx--${color} ${anim ? `sfx--anim-${anim}` : ""} ${className}`}
     style={{ fontSize: size, transform: `rotate(${rotate}deg)`, "--r": `${rotate}deg`, ...style }}
   >
-    {children}
+    {typeof children === "string"
+      ? children.split("").map((ch, i) => {
+          const [r, ty, sc] = SFX_TILTS[i % SFX_TILTS.length];
+          return (
+            <span key={i} className="sfx-ch" style={{ transform: `rotate(${r}deg) translateY(${ty}px) scale(${sc})` }}>
+              {ch}
+            </span>
+          );
+        })
+      : children}
   </span>
+);
+
+// A2 爆炸框擬聲字 — 不規則 spiky 多邊形＋筆刷字，重點擬聲專用（概念過渡版，正式字圖走生圖管線）
+const SFXBurst = ({ children, size = 170, rotate = -4, style = {} }) => (
+  <div style={{ position: "relative", width: size, height: size * 0.76, pointerEvents: "none", transform: `rotate(${rotate}deg)`, ...style }}>
+    <svg viewBox="0 0 200 152" width="100%" height="100%" style={{ position: "absolute", inset: 0, overflow: "visible" }}>
+      <polygon
+        points="100,2 118,30 152,10 148,44 196,38 162,68 198,94 156,98 172,134 132,114 122,150 100,120 74,148 70,110 30,128 48,92 4,88 44,66 12,36 58,46 52,10 84,32"
+        fill="var(--accent-yellow)" stroke="var(--ink)" strokeWidth="5" strokeLinejoin="round"
+        filter="url(#hand-wobble-2)" />
+    </svg>
+    {/* 黃底黑字＝爆炸框最高對比（紅字疊黃底太近色會糊）；只留一層白陰影 */}
+    <div style={{
+      position: "absolute", inset: 0,
+      display: "flex", alignItems: "center", justifyContent: "center",
+      fontFamily: "'Reggae One','Noto Sans TC',system-ui",
+      fontSize: size * 0.31, color: "var(--ink)",
+      textShadow: "3px 3px 0 #fffaf0"
+    }}>
+      {typeof children === "string"
+        ? children.split("").map((ch, i) => {
+            const [r, ty, sc] = SFX_TILTS[(i + 2) % SFX_TILTS.length];
+            return (
+              <span key={i} style={{ display: "inline-block", transform: `rotate(${r}deg) translateY(${ty * 1.2}px) scale(${sc})` }}>
+                {ch}
+              </span>
+            );
+          })
+        : children}
+    </div>
+  </div>
 );
 
 // 章節標籤
@@ -60,9 +103,16 @@ const INK_PALETTE = [
   "#ffb347",  // 螢光柔橘（highlighter orange）
 ];
 
+// E5 音效層總開關 — localStorage 記狀態，預設開（噴墨音是既有行為）；TopNav 的 SOUND 鈕切換
+const AGDSound = {
+  isOn() { try { return localStorage.getItem("agd-sound") !== "off"; } catch (e) { return true; } },
+  set(on) { try { localStorage.setItem("agd-sound", on ? "on" : "off"); } catch (e) { /* 無痛降級 */ } },
+};
+
 // Web Audio：合成噴墨音效（不需音檔，純 oscillator + noise）
 let _audioCtx = null;
 const playSplatSound = () => {
+  if (!AGDSound.isOn()) return;
   try {
     _audioCtx = _audioCtx || new (window.AudioContext || window.webkitAudioContext)();
     if (_audioCtx.state === "suspended") _audioCtx.resume();
@@ -93,6 +143,52 @@ const playSplatSound = () => {
     const lp = ctx.createBiquadFilter();
     lp.type = "lowpass"; lp.frequency.value = 2400;
     noise.connect(lp).connect(nGain).connect(ctx.destination);
+    noise.start(t);
+  } catch (e) { /* 靜音降級 */ }
+};
+
+// E5 追加音效：狀聲詞短音（Panel 點擊）與翻頁音（ChapterNext）— 同樣走總開關
+const playPopSound = () => {
+  if (!AGDSound.isOn()) return;
+  try {
+    _audioCtx = _audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+    if (_audioCtx.state === "suspended") _audioCtx.resume();
+    const ctx = _audioCtx;
+    const t = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const g = ctx.createGain();
+    osc.type = "square";
+    osc.frequency.setValueAtTime(330, t);
+    osc.frequency.exponentialRampToValueAtTime(660, t + 0.06);
+    g.gain.setValueAtTime(0.07, t);
+    g.gain.exponentialRampToValueAtTime(0.001, t + 0.12);
+    osc.connect(g).connect(ctx.destination);
+    osc.start(t); osc.stop(t + 0.13);
+  } catch (e) { /* 靜音降級 */ }
+};
+const playPageTurnSound = () => {
+  if (!AGDSound.isOn()) return;
+  try {
+    _audioCtx = _audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+    if (_audioCtx.state === "suspended") _audioCtx.resume();
+    const ctx = _audioCtx;
+    const t = ctx.currentTime;
+    const len = Math.floor(ctx.sampleRate * 0.22);
+    const buf = ctx.createBuffer(1, len, ctx.sampleRate);
+    const data = buf.getChannelData(0);
+    for (let i = 0; i < len; i++) {
+      const p = i / len;
+      data[i] = (Math.random() * 2 - 1) * Math.sin(p * Math.PI) * 0.5;
+    }
+    const noise = ctx.createBufferSource();
+    noise.buffer = buf;
+    const bp = ctx.createBiquadFilter();
+    bp.type = "bandpass";
+    bp.frequency.setValueAtTime(900, t);
+    bp.frequency.exponentialRampToValueAtTime(2600, t + 0.2);
+    const g = ctx.createGain();
+    g.gain.value = 0.12;
+    noise.connect(bp).connect(g).connect(ctx.destination);
     noise.start(t);
   } catch (e) { /* 靜音降級 */ }
 };
@@ -331,6 +427,8 @@ const EasterEgg = ({ size = 40, label = "彩蛋！", threshold = 10, style = {} 
 };
 
 // 漫畫格 — 通用容器
+// E2：clickable 的格子 mount 時抽定一個 hover 擬聲字（單次會話內穩定），CSS ::after 彈出
+const HOVER_POPS = ["磅！", "咚！", "嘿！", "唰！", "叮！", "咻！"];
 const Panel = ({
   children,
   className = "",
@@ -343,6 +441,9 @@ const Panel = ({
   onClick,
 }) => {
   const [fx, setFx] = React.useState(null);
+  const [hoverWord] = React.useState(() =>
+    clickable ? HOVER_POPS[Math.floor(Math.random() * HOVER_POPS.length)] : ""
+  );
   const handle = (e) => {
     if (!clickable) return onClick && onClick(e);
     // 3-zone 對齊 GlobalClickFx：點圖片 / 標題 → Panel 不放狀聲詞（圖片由 Global 噴墨、標題完全 no effect），仍允許 navigation
@@ -356,6 +457,7 @@ const Panel = ({
     const word = POPS[Math.floor(Math.random()*POPS.length)];
     const r = (Math.random()*16 - 8);
     // Panel 只負責狀聲詞；墨水濺射由 GlobalClickFx 處理（每個 click 都觸發）
+    playPopSound();
     setFx({ x, y, word, r, id: Date.now() });
     setTimeout(() => setFx(null), 600);
     // 延遲 onClick 讓狀聲詞顯示後再 navigate
@@ -382,6 +484,7 @@ const Panel = ({
     <div
       className={`panel ${variant ? `panel--${variant}` : ""} ${bg} ${clickable ? "is-clickable" : ""} ${clicked} ${className}`}
       style={{ transform: rotate ? `rotate(${rotate}deg)` : undefined, ...style }}
+      data-hover-sfx={clickable ? hoverWord : undefined}
       onClick={handle}
     >
       {children}
@@ -445,6 +548,7 @@ const TopNav = () => {
           color: "var(--accent-yellow)", letterSpacing: "0.08em",
           fontFamily: "'Bangers',sans-serif", fontWeight: 900
         }}>🌐 EN</a>
+        <SoundToggle />
       </nav>
       {/* 漢堡按鈕：只在 ≤760px 顯示（CSS 控制） */}
       <button
@@ -466,14 +570,42 @@ const TopNav = () => {
   );
 };
 
+// E5 SOUND 開關（TopNav 用）— 控制全站合成音效
+const SoundToggle = () => {
+  const [on, setOn] = React.useState(() => AGDSound.isOn());
+  const flip = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const next = !on;
+    AGDSound.set(next);
+    setOn(next);
+    if (next) playPopSound();
+  };
+  return (
+    <button className={`sound-toggle ${on ? "" : "is-off"}`} data-no-splat="true" onClick={flip}
+      aria-label={on ? "關閉音效" : "開啟音效"} title="全站音效開關">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M11 5 6 9H2v6h4l5 4z"></path>
+        {on
+          ? <path d="M15.5 8.5a5 5 0 0 1 0 7"></path>
+          : <path d="M16 9l5 6M21 9l-5 6"></path>}
+      </svg>
+      SOUND {on ? "ON" : "OFF"}
+    </button>
+  );
+};
+
 // 章節之間的「翻頁」CTA — 可點 anchor / hash route
 // to: 目的 anchor 或 hash（"#about" 或 "#/news/123"）
 // num: 下一話的編號 ("03")
 // title: 下一話標題 ("第三話 — 我們在做什麼")
 // hint: 上方小字提示 ("讀完了嗎?" / 預設 "READ NEXT")
-const ChapterNext = ({ to, num, title, hint = "READ NEXT", currentLabel }) => (
+// teaser: T3 下回預告句（顯示在 hint 下方，手寫感）；E3 掀頁角＋翻頁音
+const ChapterNext = ({ to, num, title, hint = "READ NEXT", currentLabel, teaser }) => (
   <a
     href={to}
+    className="chapter-next-fold"
+    onClick={() => playPageTurnSound()}
     style={{
       display: "flex", justifyContent: "space-between", alignItems: "center",
       gap: 20, padding: "10px 14px", borderTop: "3px dashed var(--ink)",
@@ -486,9 +618,14 @@ const ChapterNext = ({ to, num, title, hint = "READ NEXT", currentLabel }) => (
     onMouseEnter={(e) => { e.currentTarget.style.background = "var(--accent-yellow)"; }}
     onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; }}
   >
-    <span>{hint} →</span>
+    <span style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+      <span>{hint} →</span>
+      {teaser && (
+        <span className="voice-note" style={{ fontSize: 13, letterSpacing: "0.02em" }}>{teaser}</span>
+      )}
+    </span>
     {currentLabel && <span style={{ opacity: 0.5 }}>{currentLabel}</span>}
-    <span style={{
+    <span className="chapter-next-badge" style={{
       background: "var(--ink)", color: "var(--paper)",
       padding: "6px 14px", border: "3px solid var(--ink)",
       boxShadow: "3px 3px 0 var(--accent-red)",
@@ -499,4 +636,98 @@ const ChapterNext = ({ to, num, title, hint = "READ NEXT", currentLabel }) => (
   </a>
 );
 
-Object.assign(window, { PH, Bubble, SFX, ChapterTag, Panel, FlowArrow, TopNav, ChapterNext, GlobalClickFx });
+// ── COMIC WEB 2.0 ──────────────────────────────────
+
+// 章節定義（rail 與集章卡共用）— 順序即連載順序
+const CHAPTER_STOPS = [
+  { id: "hero",    num: "01", label: "OPEN",    c: "#e63946" },
+  { id: "news",    num: "02", label: "NEWS",    c: "#1d4ed8" },
+  { id: "about",   num: "03", label: "ABOUT",   c: "#2d8a4f" },
+  { id: "works",   num: "04", label: "WORKS",   c: "#c8912b" },
+  { id: "faculty", num: "05", label: "SENSEI",  c: "#8b5cf6" },
+  { id: "labs",    num: "06", label: "LABS",    c: "#0e7490" },
+  { id: "join",    num: "07", label: "JOIN",    c: "#e63946" },
+];
+
+// Z7 章節書籤 rail — 右側固定導覽，菱形點＋目前話高亮（桌機 only，CSS 控制）
+// Z2 集章卡 — 讀到哪一話就蓋到哪一話的章；七章集滿顯示「全卷讀破！」
+// 兩者共用同一個 IntersectionObserver 狀態
+const ChapterRailAndStamps = () => {
+  const [current, setCurrent] = React.useState("hero");
+  const [stamped, setStamped] = React.useState(() => new Set(["hero"]));
+  React.useEffect(() => {
+    if (!("IntersectionObserver" in window)) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        const id = en.target.id;
+        setCurrent(id);
+        setStamped((prev) => {
+          if (prev.has(id)) return prev;
+          const next = new Set(prev);
+          next.add(id);
+          return next;
+        });
+      });
+    }, { rootMargin: "-35% 0px -55% 0px" });
+    CHAPTER_STOPS.forEach((s) => {
+      const el = document.getElementById(s.id);
+      if (el) io.observe(el);
+    });
+    return () => io.disconnect();
+  }, []);
+  const allDone = stamped.size >= CHAPTER_STOPS.length;
+  return (
+    <>
+      <nav className="chapter-rail" aria-label="章節導覽" data-no-splat="true">
+        {CHAPTER_STOPS.map((s) => (
+          <a key={s.id} href={"#" + s.id} className={current === s.id ? "is-current" : ""} style={{ "--rail-c": s.c }}>
+            <span className="rail-label">第 {s.num} 話 · {s.label}</span>
+            <span className="rail-dot" />
+          </a>
+        ))}
+      </nav>
+      <div className="stamp-card" data-no-splat="true" title="讀完一話蓋一章，七章集滿！">
+        <div className="stamp-title">READER'S STAMP · 讀到哪蓋到哪</div>
+        <div className="stamp-row">
+          {CHAPTER_STOPS.map((s) => (
+            <span key={s.id} className={`stamp-slot ${stamped.has(s.id) ? "is-stamped" : ""}`} style={{ "--sc": s.c }}>
+              {s.num.slice(-1) === s.num ? s.num : s.num.replace(/^0/, "")}
+            </span>
+          ))}
+        </div>
+        {allDone && <div className="stamp-done">全卷讀破！下一話由你來畫 → <a href="#join" style={{ color: "var(--accent-red)" }}>報名</a></div>}
+      </div>
+    </>
+  );
+};
+
+// Z6 鍵盤翻章 — ← → 在章節之間跳（輸入框內不攔截）
+const useChapterKeys = () => {
+  React.useEffect(() => {
+    const onKey = (e) => {
+      if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      if (e.target.matches?.("input, textarea, select, [contenteditable='true']")) return;
+      if (window.location.hash.startsWith("#/")) return; // detail 頁不攔
+      const mid = window.innerHeight * 0.4;
+      let idx = 0;
+      CHAPTER_STOPS.forEach((s, i) => {
+        const el = document.getElementById(s.id);
+        if (el && el.getBoundingClientRect().top <= mid) idx = i;
+      });
+      const next = e.key === "ArrowRight" ? Math.min(idx + 1, CHAPTER_STOPS.length - 1) : Math.max(idx - 1, 0);
+      if (next === idx) return;
+      e.preventDefault();
+      playPageTurnSound();
+      const el = document.getElementById(CHAPTER_STOPS[next].id);
+      if (el) {
+        const y = el.getBoundingClientRect().top + window.pageYOffset - 60;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+};
+
+Object.assign(window, { PH, Bubble, SFX, SFXBurst, ChapterTag, Panel, FlowArrow, TopNav, ChapterNext, GlobalClickFx, SoundToggle, ChapterRailAndStamps, useChapterKeys, AGDSound, playPopSound, playPageTurnSound });

@@ -1,5 +1,5 @@
 /* 漫畫風系網 — 樹德動遊系 */
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bowlby+One&family=Noto+Sans+TC:wght@400;500;700;900&family=Zen+Kurenaido&family=Reggae+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bowlby+One&family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@900&family=Zen+Kurenaido&family=Reggae+One&family=LXGW+WenKai+TC:wght@700&display=swap');
 
 :root {
   --paper: #f4ecd8;
@@ -276,13 +276,32 @@ body::before {
 .panel--yellow { background: var(--accent-yellow); color: var(--ink); }
 .panel--paper { background: var(--paper); }
 
-/* 集中線 / 速度線背景（用 SVG via gradient） */
+/* 集中線 / 速度線背景 — A4 手繪版：主層粗線過 turbulence 抖動，::after 疊細線層 */
 .bg-speedlines {
+  position: relative;
   background-image:
-    repeating-conic-gradient(from 0deg at 50% 50%,
-      rgba(15,13,10,0.85) 0deg 0.6deg,
-      transparent 0.6deg 5deg);
+    repeating-conic-gradient(from 2deg at 50% 50%,
+      rgba(15,13,10,0.85) 0deg 0.9deg,
+      transparent 0.9deg 7.2deg);
   background-size: 100% 100%;
+  filter: url(#hand-wobble);
+}
+.bg-speedlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-conic-gradient(from 0.6deg at 50% 50%,
+      rgba(15,13,10,0.45) 0deg 0.4deg,
+      transparent 0.4deg 4.6deg);
+  filter: url(#hand-wobble-2);
+  pointer-events: none;
+}
+/* Hero 專用：集中線中心留白，讓大字獨佔舞台（留白區加大：主標不再壓線） */
+.speedlines-focus,
+.speedlines-focus::after {
+  -webkit-mask-image: radial-gradient(ellipse 88% 80% at 46% 46%, transparent 40%, black 66%);
+  mask-image: radial-gradient(ellipse 88% 80% at 46% 46%, transparent 40%, black 66%);
 }
 .bg-halftone-dense {
   background-image: radial-gradient(rgba(15,13,10,0.30) 1.2px, transparent 1.6px);
@@ -469,9 +488,10 @@ body::before {
 /* hover 加倍 */
 .bubble:hover { animation-duration: 0.35s !important; }
 
-/* 狀聲詞 */
+/* 狀聲詞 — A2 過渡版：Reggae One 筆刷體優先（缺字退 Noto 900），
+   逐字手排變形由 SFX 元件的 per-char span 提供；正式手繪字圖另走生圖管線 */
 .sfx {
-  font-family: 'Bowlby One', 'Reggae One', 'Noto Sans TC', system-ui;
+  font-family: 'Reggae One', 'Bowlby One', 'Noto Sans TC', system-ui;
   font-weight: 900;
   letter-spacing: 0.02em;
   -webkit-text-stroke: 4px var(--ink);
@@ -482,6 +502,7 @@ body::before {
   display: inline-block;
   transform: rotate(-6deg);
 }
+.sfx .sfx-ch { display: inline-block; }
 
 /* 狀聲詞動畫 */
 @keyframes sfxWobble {
@@ -507,6 +528,7 @@ body::before {
   0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
   40%      { transform: translateY(-14px) scale(1.15); opacity: 1; }
 }
+/* Z8 原稿格蓋印已撤（視覺辨識度不足） */
 @keyframes pressStart {
   0%, 100% { transform: rotate(-2deg) scale(1); box-shadow: 5px 5px 0 var(--ink); }
   50%      { transform: rotate(-2deg) scale(1.04); box-shadow: 6px 6px 0 var(--ink), 0 0 0 4px var(--accent-yellow); }
@@ -558,34 +580,24 @@ body::before {
   line-height: 0.95;
 }
 
-/* JoJo 風誇張主標 */
+/* JoJo 風誇張主標 — A1：中文改吃 Reggae One 筆刷體
+   清晰度減法（2026-08-22）：描邊 4→2px、紅陰影 7→5px 留單層、
+   外圈黑暈 drop-shadow 移除、斜切 -6°→-2° —— 筆刷字型本身已有動勢，特效退居配角 */
 .h-jojo {
-  font-family: 'Bowlby One', 'Bangers', system-ui;
+  font-family: 'Bowlby One', 'Reggae One', 'Bangers', 'Noto Sans TC', system-ui;
   font-weight: 900;
-  letter-spacing: -0.02em;
-  line-height: 0.85;
+  letter-spacing: 0;
+  line-height: 0.9;
   display: inline-block;
   position: relative;
   color: var(--accent-yellow);
-  -webkit-text-stroke: 4px var(--ink);
+  -webkit-text-stroke: 2px var(--ink);
   paint-order: stroke fill;
-  text-shadow:
-    7px 7px 0 var(--accent-red),
-    7px 7px 0 1px var(--ink);
-  transform: skewX(-6deg);
-  filter: drop-shadow(2px 2px 0 var(--ink));
+  text-shadow: 5px 5px 0 var(--accent-red);
+  transform: skewX(-2deg);
   text-transform: uppercase;
 }
-.h-jojo::before {
-  content: '';
-  position: absolute;
-  inset: -8% -4%;
-  background: radial-gradient(rgba(15,13,10,0.35) 1.5px, transparent 1.8px);
-  background-size: 6px 6px;
-  z-index: -1;
-  mask: radial-gradient(ellipse at center, black 30%, transparent 70%);
-  -webkit-mask: radial-gradient(ellipse at center, black 30%, transparent 70%);
-}
+/* A4：字內網點暈停用 — 大字改吃實色＋厚陰影，網點退到背景帶 */
 .h-jojo span.shard {
   display: inline-block;
   transform: rotate(-3deg) translateY(-4px);
@@ -971,6 +983,388 @@ body::before {
 @media (max-width: 720px) {
   .foot .grid { grid-template-columns: repeat(2,1fr); }
 }
+
+/* ════════════════════════════════════════════════════
+   2026-08 改版新增區 — 提案 A1/A4/A5/E1/E2/E6/T1 + COMIC WEB 2.0（Z 系列）
+   ════════════════════════════════════════════════════ */
+
+/* ── W1 出血格（Full-bleed splash） ──
+   重點格衝出 1320px 版心、滿寬到瀏覽器邊緣；
+   html 用 overflow-x: clip 吃掉 100vw 含捲軸寬的溢出（clip 不建立捲動容器，sticky 不受影響） */
+html { overflow-x: clip; }
+.tier-bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+@media (max-width: 760px) { .tier-bleed { width: auto; margin-left: 0; } }
+
+/* ── W4 畫筆游標（桌機精準指標 only；可點物維持系統手勢） ── */
+@media (min-width: 761px) and (pointer: fine) {
+  body {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Cg stroke='%23fffaf0' stroke-width='1.6' stroke-linejoin='round'%3E%3Cpath d='M3 23 L5.5 15.5 L10.5 20.5 Z' fill='%230f0d0a'/%3E%3Cpath d='M5.5 15.5 L15.5 5.5 L20.5 10.5 L10.5 20.5 Z' fill='%23ffd60a'/%3E%3Cpath d='M15.5 5.5 L18 3 L23 8 L20.5 10.5 Z' fill='%23e63946'/%3E%3C/g%3E%3C/svg%3E") 3 23, auto;
+  }
+}
+
+/* ── Z1 每話一色 spot color ──
+   黑白紙為底，每話只放行自己的章節色：tag 陰影、標題、翻頁章標都吃 --ch */
+.chapter { --ch: var(--accent-red); }
+#news    { --ch: var(--accent-blue); }
+#about   { --ch: #2d8a4f; }
+#works   { --ch: #c8912b; }
+#faculty { --ch: #8b5cf6; }
+#labs    { --ch: #0e7490; }
+#join    { --ch: var(--accent-red); }
+.chapter .chapter-tag { box-shadow: 4px 4px 0 var(--ch); }
+.chapter .chapter-header .title { color: var(--ch); }
+.chapter .chapter-next-badge { box-shadow: 3px 3px 0 var(--ch) !important; }
+
+/* ── A1/T1 字型演技：四聲道 ── */
+.voice-narration {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'Noto Serif TC', 'Noto Sans TC', serif;
+  font-weight: 900;
+  padding: 14px 18px;
+  line-height: 1.9;
+  letter-spacing: 0.03em;
+}
+.voice-thought {
+  background: rgba(255,250,240,0.72);
+  border: 2.5px dashed var(--ink);
+  font-family: 'LXGW WenKai TC', 'Zen Kurenaido', 'Noto Sans TC', cursive;
+  font-weight: 700;
+  padding: 10px 14px;
+  line-height: 1.8;
+}
+.voice-note {
+  font-family: 'LXGW WenKai TC', 'Zen Kurenaido', 'Noto Sans TC', cursive;
+  font-weight: 700;
+  color: rgba(15,13,10,0.62);
+  letter-spacing: 0.04em;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ── Z3 直排文字（日漫引言箋） ── */
+.vertical-quote {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: 'Noto Serif TC', serif;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  line-height: 1.7;
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  padding: 16px 10px;
+}
+
+/* ── A5 照片漫畫化：預設「彩色漫畫渲染」（色階壓縮＋提飽和＋細網點），hover 還原實照 ──
+   黑白版已撤：黑白肖像在台灣語境有遺照聯想 */
+.manga-photo { position: relative; }
+.manga-photo img { filter: url(#manga-color) saturate(1.45) contrast(1.06); transition: filter 0.28s ease; }
+.manga-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(15,13,10,0.28) 0.9px, transparent 1.3px);
+  background-size: 4px 4px;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+  z-index: 1;
+}
+.is-clickable:hover .manga-photo img, .manga-photo:hover img { filter: none; }
+.is-clickable:hover .manga-photo::after, .manga-photo:hover::after { opacity: 0; }
+
+/* ── A4 CMYK 疊角網點裝飾帶 ── */
+.bg-cmyk-corner {
+  position: absolute;
+  pointer-events: none;
+  background-image:
+    radial-gradient(rgba(230,57,70,0.4) 1.5px, transparent 1.9px),
+    radial-gradient(rgba(29,78,216,0.32) 1.3px, transparent 1.7px);
+  background-size: 9px 9px, 11px 11px;
+  background-position: 0 0, 4px 6px;
+}
+
+/* ── E2 hover 擬聲字：clickable panel 滑過彈小字 ── */
+.panel.is-clickable::after {
+  content: attr(data-hover-sfx);
+  position: absolute;
+  top: 5px;
+  right: 9px;
+  z-index: 20;
+  font-family: 'Reggae One', 'Noto Sans TC', system-ui;
+  font-weight: 900;
+  font-size: 30px;
+  color: var(--accent-yellow);
+  -webkit-text-stroke: 2.5px var(--ink);
+  paint-order: stroke fill;
+  text-shadow: 3px 3px 0 var(--ink);
+  opacity: 0;
+  transform: rotate(-14deg) scale(0.3);
+  transition: opacity 0.14s, transform 0.18s cubic-bezier(.3,.6,.3,1.6);
+  pointer-events: none;
+}
+.panel.is-clickable:hover::after { opacity: 1; transform: rotate(-8deg) scale(1); }
+.panel.is-clickable[data-hover-sfx=""]::after { display: none; }
+
+/* CTA hover 速度線圈（PRESS START／立即報名） */
+.cta-burst { position: relative; }
+.cta-burst .cta-lines {
+  position: absolute;
+  inset: -26px;
+  opacity: 0;
+  pointer-events: none;
+  background-image: repeating-conic-gradient(from 8deg at 50% 50%, rgba(15,13,10,0.9) 0deg 1.6deg, transparent 1.6deg 14deg);
+  -webkit-mask-image: radial-gradient(circle at center, transparent 34%, black 42%, black 62%, transparent 74%);
+  mask-image: radial-gradient(circle at center, transparent 34%, black 42%, black 62%, transparent 74%);
+}
+.cta-burst:hover .cta-lines { animation: ctaBurst 0.5s ease-out infinite; }
+@keyframes ctaBurst {
+  0% { opacity: 0; transform: scale(0.7) rotate(0deg); }
+  30% { opacity: 1; }
+  100% { opacity: 0; transform: scale(1.25) rotate(9deg); }
+}
+
+/* ── E6 CMYK 套版錯位瞬效（hover 觸發一次） ── */
+.cmyk-hover:hover { animation: cmykJolt 0.32s steps(3, end) 1; }
+@keyframes cmykJolt {
+  0% { text-shadow: -5px 0 0 rgba(0,180,255,0.85), 5px 0 0 rgba(255,0,120,0.85), 7px 7px 0 var(--accent-red); transform: skewX(-6deg) translateX(-2px); }
+  50% { text-shadow: 4px 0 0 rgba(0,180,255,0.85), -4px 0 0 rgba(255,0,120,0.85), 7px 7px 0 var(--accent-red); transform: skewX(-6deg) translateX(2px); }
+  100% { text-shadow: 7px 7px 0 var(--accent-red); transform: skewX(-6deg); }
+}
+
+/* ── A6 師資 RPG 人物卡 ── */
+.sensei-ribbon {
+  position: absolute;
+  top: 14px;
+  left: -38px;
+  z-index: 2;
+  background: var(--accent-red);
+  color: #fff;
+  font-family: 'Bangers', system-ui;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  padding: 3px 44px;
+  transform: rotate(-35deg);
+  border: 2px solid var(--ink);
+}
+#faculty .panel .sensei-ribbon { background: var(--ch); }
+.sensei-class {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 2;
+  background: var(--ink);
+  color: var(--accent-yellow);
+  font-family: 'Bangers', 'Noto Sans TC', system-ui;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  padding: 3px 9px;
+}
+.sensei-name {
+  font-family: 'Reggae One', 'Noto Sans TC', system-ui;
+  font-size: 23px;
+  line-height: 1.1;
+}
+.skill-chip {
+  border: 2px solid var(--ink);
+  background: #fffaf0;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 1px 7px;
+  box-shadow: 2px 2px 0 rgba(15,13,10,0.35);
+  white-space: nowrap;
+}
+
+/* ── A7 無圖得獎卡：獎盃版型 ── */
+.trophy-card-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--accent-red);
+  background-image: repeating-conic-gradient(from 0deg at 50% 26%, rgba(255,214,10,0.22) 0deg 8deg, transparent 8deg 16deg);
+}
+
+/* ── Z5 螢光筆選取 ── */
+::selection { background: rgba(255,214,10,0.85); color: var(--ink); }
+
+/* ── Z4 手寫註記層（頁邊鉛筆塗鴉） ── */
+.margin-note {
+  position: absolute;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.margin-note svg { flex-shrink: 0; }
+
+/* ── Z7 章節書籤 rail（桌機 only） ── */
+.chapter-rail {
+  position: fixed;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+}
+.chapter-rail a {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  text-decoration: none;
+  color: var(--ink);
+}
+.chapter-rail .rail-dot {
+  width: 12px;
+  height: 12px;
+  background: var(--paper);
+  border: 2.5px solid var(--ink);
+  transform: rotate(45deg);
+  transition: background 0.2s, transform 0.2s;
+}
+.chapter-rail a.is-current .rail-dot { background: var(--rail-c, var(--accent-red)); transform: rotate(45deg) scale(1.35); }
+.chapter-rail .rail-label {
+  font-family: 'Bangers', 'Noto Sans TC', system-ui;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 2px 8px;
+  opacity: 0;
+  transform: translateX(6px);
+  transition: opacity 0.18s, transform 0.18s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.chapter-rail a:hover .rail-label, .chapter-rail a.is-current .rail-label { opacity: 1; transform: translateX(0); }
+
+/* ── Z2 集章卡（閱讀進度遊戲化） ── */
+.stamp-card {
+  position: fixed;
+  left: 14px;
+  bottom: 14px;
+  z-index: 40;
+  background: #fffaf0;
+  border: 3px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  padding: 8px 10px 7px;
+  transform: rotate(-1.5deg);
+}
+.stamp-card .stamp-title {
+  font-family: 'Bangers', 'Noto Sans TC', system-ui;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  opacity: 0.65;
+  margin-bottom: 5px;
+}
+.stamp-card .stamp-row { display: flex; gap: 5px; }
+.stamp-card .stamp-slot {
+  width: 22px;
+  height: 22px;
+  border: 2px dashed rgba(15,13,10,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Reggae One', system-ui;
+  font-size: 12px;
+  color: transparent;
+}
+.stamp-card .stamp-slot.is-stamped {
+  border: 2.5px solid var(--sc, var(--accent-red));
+  color: var(--sc, var(--accent-red));
+  transform: rotate(-8deg);
+  animation: stampHit 0.3s cubic-bezier(.2,.7,.2,1.4) 1;
+}
+@keyframes stampHit {
+  0% { transform: rotate(4deg) scale(1.8); opacity: 0; }
+  100% { transform: rotate(-8deg) scale(1); opacity: 1; }
+}
+.stamp-card .stamp-done {
+  margin-top: 5px;
+  font-size: 10px;
+  font-weight: 900;
+  color: var(--accent-red);
+  text-align: center;
+  animation: stampHit 0.4s cubic-bezier(.2,.7,.2,1.4) 1;
+}
+@media (max-width: 1100px) { .chapter-rail, .stamp-card { display: none; } }
+
+/* ── E1 捲動分鏡進場（蓋章）＋ Z9 hero 逐字彈出 ──
+   只在桌機＋支援 scroll-driven animations＋未要求減少動態時啟用 */
+@keyframes tierStamp {
+  0% { opacity: 0; transform: scale(1.045) rotate(0.4deg); }
+  62% { opacity: 1; transform: scale(0.997) rotate(-0.12deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+@keyframes headerStamp {
+  0% { opacity: 0; transform: translateX(-14px) rotate(-2.5deg); }
+  100% { opacity: 1; transform: translateX(0) rotate(-1deg); }
+}
+@media (min-width: 761px) and (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .chapter .comic-tier {
+      animation: tierStamp linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 34%;
+    }
+    .chapter .chapter-header .title {
+      animation: headerStamp linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+  }
+}
+@keyframes charPop {
+  0% { opacity: 0; transform: translateY(16px) rotate(6deg) scale(0.6); }
+  62% { opacity: 1; transform: translateY(-3px) rotate(-1.5deg) scale(1.06); }
+  100% { opacity: 1; transform: translateY(0) rotate(0deg) scale(1); }
+}
+.hero-char {
+  display: inline-block;
+  animation: charPop 0.42s cubic-bezier(.2,.7,.2,1.35) both;
+}
+@media (prefers-reduced-motion: reduce) { .hero-char { animation: none; } }
+
+/* ── E3 章節翻頁條（掀頁角視覺） ── */
+.chapter-next-fold {
+  position: relative;
+}
+.chapter-next-fold::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -3px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 22px 22px 0;
+  border-color: transparent var(--paper-2) transparent transparent;
+  filter: drop-shadow(-2px 2px 1px rgba(15,13,10,0.3));
+  transition: border-width 0.18s;
+}
+.chapter-next-fold:hover::before { border-width: 0 34px 34px 0; }
+
+/* ── E5 SOUND 開關（topnav） ── */
+.sound-toggle {
+  background: transparent;
+  border: 2px solid var(--paper);
+  color: var(--paper);
+  font-family: 'Bangers', system-ui;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  padding: 3px 9px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.sound-toggle.is-off { opacity: 0.55; }
+.sound-toggle:hover { color: var(--accent-yellow); border-color: var(--accent-yellow); }
 
 /* === 漢堡選單按鈕 ===
    PC 預設隱藏，只在 ≤760px 顯示。3 條黑線堆疊風格 */

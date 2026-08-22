@@ -82,6 +82,8 @@ const FACULTY = [
   },
 ];
 
+// A6 RPG 人物卡：照片走漫畫化管線（hover 還原彩色）、編號斜帶、CLASS 條、必殺技 chips
+// A3：黃底交錯取消，統一紙白讓照片當主角
 const FacultyCard = ({ f, i }) => {
   const [hover, setHover] = React.useState(false);
   const slug = f.slug || f.en.toLowerCase().replace(/[^a-z]/g, "");
@@ -89,26 +91,18 @@ const FacultyCard = ({ f, i }) => {
     <Panel
       clickable
       onClick={() => { window.location.hash = "#/faculty/" + slug; }}
-      bg={f.color === "red" ? "bg-halftone-red" : f.color === "blue" ? "bg-halftone-blue" : "bg-halftone-light"}
-      /* 黃底改由位置決定：NO.02 / 04 / 06… 隔一張交錯，不再看資料的 color */
-      variant={i % 2 === 1 ? "yellow" : ""}
       style={{ padding: 0, position: "relative", overflow: "hidden" }}
     >
       <div
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
-        style={{ height: "62%", borderBottom: "var(--bw) solid var(--ink)", position: "relative" }}
+        style={{ height: "62%", borderBottom: "var(--bw) solid var(--ink)", position: "relative", overflow: "hidden" }}
       >
-        <PH label={`${f.name} portrait`} src={f.photo} fallback={f.photoFallback} alt={`${f.name} 老師`} pos="center top" />
-        <div style={{
-          position: "absolute", top: 8, left: 8,
-          fontFamily: "'Bangers',sans-serif",
-          background: "var(--ink)", color: "var(--paper)",
-          padding: "2px 8px", fontSize: 13, letterSpacing: "0.1em",
-          zIndex: 2
-        }}>
+        <PH label={`${f.name} portrait`} src={f.photo} fallback={f.photoFallback} alt={`${f.name} 老師`} pos="center top" manga={true} />
+        <div className="sensei-ribbon">
           NO. {String(i + 1).padStart(2, "0")}
         </div>
+        <div className="sensei-class">CLASS — {f.role}</div>
 
         {/* Hover popover — 漫畫對話框風 */}
         {hover && (
@@ -143,14 +137,22 @@ const FacultyCard = ({ f, i }) => {
         )}
       </div>
       <div style={{ padding: "12px 14px" }}>
-        <div className="h-display" style={{ fontSize: 22 }}>{f.name}</div>
-        <div style={{ fontSize: 11, fontWeight: 800, opacity: 0.65, letterSpacing: "0.06em" }}>{f.en}</div>
-        <div style={{
-          fontSize: 12, fontWeight: 800, marginTop: 6,
-          background: "var(--ink)", color: "var(--paper)",
-          display: "inline-block", padding: "2px 6px"
-        }}>{f.role}</div>
-        <div style={{ fontSize: 12, fontWeight: 600, marginTop: 6, opacity: 0.85 }}>專長 · {f.spec}</div>
+        <div style={{ display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap" }}>
+          <div className="sensei-name">{f.name}</div>
+          <div style={{ fontSize: 10.5, fontFamily: "'Bangers',sans-serif", opacity: 0.55, letterSpacing: "0.1em" }}>{f.en}</div>
+        </div>
+        <div style={{ display: "flex", alignItems: "flex-start", gap: 7, marginTop: 8 }}>
+          <span style={{
+            flexShrink: 0, fontSize: 10, fontWeight: 900, color: "#fff",
+            background: "var(--accent-red)", padding: "1px 7px",
+            transform: "rotate(-1.5deg)", border: "2px solid var(--ink)"
+          }}>必殺技</span>
+          <span style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
+            {(f.spec || "").split("/").map((sp, k) => (
+              <span key={k} className="skill-chip">{sp.trim()}</span>
+            ))}
+          </span>
+        </div>
       </div>
     </Panel>
   );
@@ -200,7 +202,8 @@ const FacultyChapter = () => {
           </a>
         </div>
 
-        <ChapterNext to="#labs" num="06" title="我們的祕密基地" currentLabel="P. 005 — 第五話 FACULTY" />
+        <ChapterNext to="#labs" num="06" title="我們的祕密基地" currentLabel="P. 005 — 第五話 FACULTY"
+          teaser="下一話：潛入 12 間實驗室祕密基地——" />
       </div>
     </section>
   );
@@ -227,8 +230,9 @@ const LabCard = ({ l, i }) => (
   <Panel
     clickable
     onClick={() => { if (l.slug) window.location.hash = "#/labs/" + l.slug; }}
-    variant={i % 4 === 0 ? "inkbg" : i % 4 === 2 ? "yellow" : ""}
-    className={i % 4 === 1 ? "bg-halftone-red" : i % 4 === 3 ? "bg-halftone-blue" : ""}
+    /* A3：黃底格退場，保留黑格節奏；底紋輪紅藍淺點 */
+    variant={i % 4 === 0 ? "inkbg" : ""}
+    className={i % 4 === 1 ? "bg-halftone-red" : i % 4 === 3 ? "bg-halftone-blue" : i % 4 === 2 ? "bg-halftone-light" : ""}
     style={{ padding: 16, display: "flex", flexDirection: "column", justifyContent: "space-between" }}
   >
     <div>
@@ -352,7 +356,8 @@ const LabsChapter = () => (
         </Panel>
       </div>
 
-      <ChapterNext to="#join" num="07" title="加入連載" currentLabel="P. 006 — 第六話 LABS" />
+      <ChapterNext to="#join" num="07" title="加入連載" currentLabel="P. 006 — 第六話 LABS"
+        teaser="最終話：下一話的主角，是你。" />
     </div>
   </section>
 );
@@ -366,9 +371,24 @@ const WorkCard = ({ w, i }) => (
       {w.img ? (
         <PH src={w.img} alt={w.title} fit="cover" pos="center" />
       ) : (
-        <div className={i % 3 === 0 ? "bg-halftone-light" : i % 3 === 1 ? "bg-halftone-red" : "bg-halftone-blue"}
-          style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <span style={{ fontFamily: "'Bowlby One',sans-serif", fontSize: 64, opacity: 0.4 }}>★</span>
+        /* A7 無圖得獎卡：獎盃版型 — 紅底集中線＋獎盃線圖＋獎名大字，不再開天窗 */
+        <div style={{ position: "relative", width: "100%", height: "100%" }}>
+          <div className="trophy-card-bg" />
+          <div style={{ position: "relative", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--accent-yellow)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M6 4h12v5a6 6 0 0 1-12 0z"></path>
+              <path d="M6 6H4a2 2 0 0 0 2 5"></path>
+              <path d="M18 6h2a2 2 0 0 1-2 5"></path>
+              <path d="M12 15v3"></path>
+              <path d="M8 21h8"></path>
+              <path d="M9 18h6"></path>
+            </svg>
+            <div style={{
+              fontFamily: "'Reggae One','Noto Sans TC',system-ui", fontSize: 21,
+              color: "#fffaf0", WebkitTextStroke: "1.5px var(--ink)", paintOrder: "stroke fill",
+              textShadow: "2px 2px 0 var(--ink)", transform: "rotate(-2deg)", padding: "0 10px", textAlign: "center"
+            }}>{w.award}</div>
+          </div>
         </div>
       )}
       <div style={{
@@ -505,7 +525,8 @@ const WorksChapter = () => (
         </div>
       </div>
 
-      <ChapterNext to="#faculty" num="05" title="老師登場" currentLabel="P. 004 — 第四話 WORKS" />
+      <ChapterNext to="#faculty" num="05" title="老師登場" currentLabel="P. 004 — 第四話 WORKS"
+        teaser="下一話：13 位業界派老師，全員登場！" />
     </div>
   </section>
 );
@@ -523,29 +544,30 @@ const VideoWall = () => {
         <div className="title h-display" style={{ fontSize: 32 }}>影片牆 · 學生作品 / 課堂精選</div>
         <div className="sub">— STUDENT REEL · {videos.length} CLIPS —</div>
       </div>
+      {/* T2 大小格分鏡：第一支升 FEATURED 大格（2×2），其餘小格 — 等格陳列退場 */}
       <div style={{
         display: "grid",
         gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
         gap: "var(--gutter)"
       }}>
-        {videos.map((v, i) => <VideoCard key={v.id} v={v} i={i} />)}
+        {videos.map((v, i) => (
+          <div key={v.id} style={i === 0 ? { gridColumn: "span 2", gridRow: "span 2", display: "flex" } : { display: "flex" }}>
+            <VideoCard v={v} i={i} featured={i === 0} />
+          </div>
+        ))}
       </div>
     </div>
   );
 };
 
-const VideoCard = ({ v, i }) => {
-  // 黃底隔一張交錯（第 2 / 4 / 6…格），其餘輪紅→藍→淺網點 — 與師資卡同一套規律
-  const isYellow = i % 2 === 1;
-  const bg = isYellow ? "" : ["bg-halftone-red", "bg-halftone-blue", "bg-halftone-light"][Math.floor(i / 2) % 3];
+const VideoCard = ({ v, i, featured = false }) => {
+  // A3：黃底交錯退場，全部紙白讓縮圖當主角
   const tagColors = { "動畫": "var(--accent-red)", "遊戲": "var(--accent-blue)", "形象片": "var(--accent-yellow)", "教學": "#8b5cf6", "活動": "#16a34a", "課堂作業": "#ec4899", "遊戲評論": "#6b7280" };
   return (
     <Panel
       clickable
       onClick={() => { window.location.hash = "#/videos/" + v.id; }}
-      variant={isYellow ? "yellow" : ""}
-      className={bg}
-      style={{ padding: 0, position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}
+      style={{ padding: 0, position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", flex: 1 }}
     >
       <div style={{ position: "relative", aspectRatio: "16/9", background: "var(--ink)", borderBottom: "var(--bw) solid var(--ink)" }}>
         <PH
@@ -584,6 +606,15 @@ const VideoCard = ({ v, i }) => {
             padding: "2px 8px", border: "2px solid var(--ink)"
           }}>{v.category}</div>
         )}
+        {featured && (
+          <div style={{
+            position: "absolute", top: 8, right: 8,
+            fontFamily: "'Bangers',sans-serif", fontSize: 12, letterSpacing: "0.1em",
+            background: "var(--accent-red)", color: "#fff",
+            padding: "3px 10px", border: "2px solid var(--ink)",
+            boxShadow: "2px 2px 0 var(--ink)", transform: "rotate(2deg)"
+          }}>★ FEATURED</div>
+        )}
       </div>
       <div style={{ padding: "10px 12px 14px", flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
         <div style={{ fontWeight: 800, fontSize: 13, lineHeight: 1.4 }}>{v.title}</div>
@@ -602,8 +633,8 @@ const JoinChapter = () => (
       <ChapterTag num="07" title="第七話 — 加入連載！" jp="JOIN THE STORY" />
 
       <div className="comic-page">
-        {/* TIER 1 — 主 CTA 2:1 */}
-        <div className="comic-tier tier-2-1 tier-tall">
+        {/* TIER 1 — 主 CTA 2:1 — W1 出血格：全站情緒最高點衝出版心，跨頁大場面 */}
+        <div className="comic-tier tier-2-1 tier-tall tier-bleed">
           <Panel variant="red" style={{ padding: 36, position: "relative" }}>
             <div className="bg-speedlines" style={{ position: "absolute", inset: 0, opacity: 0.2 }} />
             <div style={{ position: "relative" }}>
@@ -675,14 +706,15 @@ const JoinChapter = () => (
 
         {/* TIER 2 — 2 格招生管道 */}
         <div className="comic-tier tier-1-1 tier-short">
+          {/* A3：黃底卡退場（黃只留給上方最大管道「甄選入學」一張） */}
           {[
-            { t: "技優甄審", q: "16 名 · 85-035 商設", s: "報名 5/18-5/22 · 放榜 6/22", c: "", slug: "tech-elite" },
-            { t: "登記分發", q: "5 名 · 設計 3+1 / 資電 1 / 商管 1+1", s: "登記 7/28-7/31 · 放榜 8/06", c: "yellow", slug: "joint" },
+            { t: "技優甄審", q: "16 名 · 85-035 商設", s: "報名 5/18-5/22 · 放榜 6/22", c: "", bg: "bg-halftone-red", slug: "tech-elite" },
+            { t: "登記分發", q: "5 名 · 設計 3+1 / 資電 1 / 商管 1+1", s: "登記 7/28-7/31 · 放榜 8/06", c: "", bg: "bg-halftone-light", slug: "joint" },
           ].map((o, i) => (
             <Panel key={i} clickable
               onClick={() => { window.location.hash = "#/admission/" + o.slug; }}
               variant={o.c}
-              className={o.c === "" ? "bg-halftone-red" : ""}
+              className={o.bg}
               style={{ padding: 14, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
               <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 11, letterSpacing: "0.1em", opacity: 0.85 }}>OPTION 0{i + 4} · 115</div>
               <div>
@@ -700,8 +732,12 @@ const JoinChapter = () => (
           <Panel variant="inkbg" style={{ padding: 24, position: "relative" }}>
             <div className="bg-speedlines" style={{ position: "absolute", inset: 0, opacity: 0.12 }} />
             <div style={{ position: "relative" }}>
-              <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 14, letterSpacing: "0.12em", color: "var(--accent-yellow)" }}>
-                🔗 OFFICIAL LINKS · 官方時程以這裡為準
+              <div style={{ display: "flex", alignItems: "baseline", gap: 14, flexWrap: "wrap" }}>
+                <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 14, letterSpacing: "0.12em", color: "var(--accent-yellow)" }}>
+                  🔗 OFFICIAL LINKS · 官方時程以這裡為準
+                </div>
+                {/* Z4 手寫註記 */}
+                <span className="voice-note" style={{ fontSize: 13, color: "rgba(244,236,216,0.75)", transform: "rotate(-2deg)" }}>時程別錯過！</span>
               </div>
               <div className="h-display" style={{ fontSize: 26, marginTop: 6, marginBottom: 16, color: "var(--paper)" }}>
                 簡章下載 · 報名繳費 · 放榜查詢
@@ -755,27 +791,28 @@ const JoinChapter = () => (
           </Panel>
         </div>
 
-        {/* TIER 3 — 全寬參訪 */}
+        {/* TIER 3 — 全寬參訪 — A3：底改紙白，紅色 CTA 自然浮出 */}
         <div className="comic-tier tier-1-1 tier-short" style={{ minHeight: 120 }}>
-          <Panel variant="yellow" style={{ padding: 22, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 14 }}>
+          <Panel className="bg-halftone-light" style={{ padding: 22, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 14 }}>
             <div>
               <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 14, letterSpacing: "0.1em" }}>SIDE QUEST · 支線任務</div>
               <div className="h-display" style={{ fontSize: 30, marginTop: 4 }}>
                 預約深度參訪 · 進入動遊系祕密基地
               </div>
             </div>
-            <a href="#/admission/visit" style={{
-              background: "var(--ink)", color: "var(--paper)",
+            <a href="#/admission/visit" className="cta-burst" style={{
+              background: "var(--accent-red)", color: "#fff",
               padding: "14px 22px", textDecoration: "none",
               fontFamily: "'Bowlby One',sans-serif", letterSpacing: "0.06em",
               fontSize: 16, border: "3px solid var(--ink)",
-              boxShadow: "5px 5px 0 var(--accent-red)"
-            }}>立即預約 →</a>
+              boxShadow: "5px 5px 0 var(--ink)", position: "relative"
+            }}><span className="cta-lines" />立即預約 →</a>
           </Panel>
         </div>
       </div>
 
-      <ChapterNext to="#contact" num="08" title="聯絡我們" hint="THE END" currentLabel="P. 007 — 第七話 JOIN" />
+      <ChapterNext to="#contact" num="08" title="聯絡我們" hint="THE END" currentLabel="P. 007 — 第七話 JOIN"
+        teaser="（聯絡方式與交通，隨時翻閱）" />
     </div>
   </section>
 );
@@ -792,6 +829,16 @@ const FooterChapter = () => (
           boxShadow: "4px 4px 0 var(--ink)", display: "inline-block",
           transform: "rotate(-2deg)"
         }}>~ 待續 TO BE CONTINUED ~</span>
+      </div>
+    </div>
+    {/* T3 下期預告框 */}
+    <div style={{ maxWidth: 1320, margin: "0 auto 26px", textAlign: "center" }}>
+      <div style={{
+        display: "inline-block", border: "2px dashed rgba(244,236,216,0.5)",
+        padding: "10px 22px", fontSize: 13, lineHeight: 1.7
+      }}>
+        <span style={{ fontFamily: "'Bangers',sans-serif", letterSpacing: "0.14em", color: "var(--accent-yellow)", marginRight: 10 }}>NEXT ISSUE · 下期預告</span>
+        115 學年度招生連載中 — 報名方式見<a href="#join" style={{ display: "inline", padding: 0, color: "var(--accent-yellow)", opacity: 1 }}>第七話</a>。下一格的主角，是你。
       </div>
     </div>
     <div className="grid">
