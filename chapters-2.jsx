@@ -69,7 +69,7 @@ const FACULTY = [
     page: "https://www.dgd.stu.edu.tw/系所成員/陳寀瑜/"
   },
   {
-    name: "蔣天華", role: "助理教授 · 從聘", en: "CHIANG, TIEN-HUA",
+    name: "蔣天華", role: "副教授 · 從聘", en: "CHIANG, TIEN-HUA",
     spec: "互動遊戲 / AR VR MR / 物聯網", color: "",
     photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/04/1170pan-scaled-e1712911533827-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/系所成員/蔣天華/"
