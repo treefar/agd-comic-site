@@ -1,0 +1,26 @@
+{
+  "name": "agd-comic-site",
+  "version": "1.0.0",
+  "description": "樹德動遊系漫畫版系網：JSX 預先編譯與首頁預渲染",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check-dist.mjs",
+    "check:report": "node scripts/check-dist.mjs --report",
+    "serve": "npx --yes http-server dist -p 8081 -c-1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/treefar/agd-comic-site.git"
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/treefar/agd-comic-site/issues"
+  },
+  "homepage": "https://github.com/treefar/agd-comic-site#readme",
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "private": true
+}

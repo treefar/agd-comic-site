@@ -82,8 +82,10 @@ const App = () => {
   const isDetail = !!route.type;
 
   // 首頁初次載入 LOADING（讓動畫露面 1.5 秒），detail page 由各自 useDataset 處理
-  const [bootLoading, setBootLoading] = u(true);
+  // 預渲染版（dist/）已帶完整內容，直接顯示不再播 LOADING，避免 hydration 不一致；開發版（Babel）行為不變
+  const [bootLoading, setBootLoading] = u(() => !window.__AGD_PRERENDERED__);
   ue(() => {
+    if (!bootLoading) return;
     const t = setTimeout(() => setBootLoading(false), 1500);
     return () => clearTimeout(t);
   }, []);
@@ -213,5 +215,15 @@ const App = () => {
   );
 };
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+// 掛載：預渲染 HTML 且目前在首頁 → hydrate 接手；在詳情頁 hash（#/xxx）或開發版 → 清空重畫
+// 伺服端預渲染（scripts/build.mjs）沒有 document，會跳過這段
+if (typeof document !== "undefined") {
+  const container = document.getElementById("root");
+  const onDetail = window.location.hash.startsWith("#/");
+  if (window.__AGD_PRERENDERED__ && container.firstChild && !onDetail && ReactDOM.hydrateRoot) {
+    ReactDOM.hydrateRoot(container, <App />);
+  } else {
+    container.textContent = "";
+    ReactDOM.createRoot(container).render(<App />);
+  }
+}

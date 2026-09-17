@@ -1,0 +1,47 @@
+# push 到 main → 預先編譯 JSX＋預渲染首頁 → 發布 dist/ 到 GitHub Pages
+# 啟用前提：repo Settings → Pages → Source 改成「GitHub Actions」（原本是 Deploy from a branch: main / root）
+# 自訂網域 treefar.link 來自使用者站 treefar/treefar.github.io 的 CNAME，本 repo 不需要也不應放 CNAME
+# action 版本以 2026-09-17 查到的最新 release 為準
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: 靜態文字與 head 標記檢查
+        run: npm run check:report
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
