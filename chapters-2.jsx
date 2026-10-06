@@ -156,10 +156,50 @@ const FacultyCard = ({ f, i }) => {
   );
 };
 
+// 系辦行政人員（獨立一排，不併入老師陣容與 13 位老師的統計）
+const STAFF = [
+  { slug: "rita", name: "曹雨娟", en: "Rita", role: "系助理", duty: "系務行政與參訪安排", ext: "6102", email: "rita@stu.edu.tw",
+    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2021/05/14192314/2021-AGDTeachers-rita.jpg" },
+];
+
+const StaffCard = ({ s }) => (
+  <Panel
+    clickable
+    onClick={() => { window.location.hash = "#/admission/visit"; }}
+    style={{ padding: 0, display: "flex", flexDirection: "column" }}
+  >
+    <div style={{ height: "62%", borderBottom: "var(--bw) solid var(--ink)", position: "relative" }}>
+      <PH label={`${s.name} portrait`} src={s.photo} alt={`${s.name} ${s.role}`} pos="center top" />
+      <div style={{
+        position: "absolute", top: 8, left: 8,
+        fontFamily: "'Bangers',sans-serif",
+        background: "var(--accent-red)", color: "var(--paper)",
+        padding: "2px 8px", fontSize: 13, letterSpacing: "0.1em",
+        zIndex: 2
+      }}>
+        STAFF
+      </div>
+    </div>
+    <div style={{ padding: "12px 14px" }}>
+      <div className="h-display" style={{ fontSize: 22 }}>{s.name}</div>
+      <div style={{ fontSize: 11, fontWeight: 800, opacity: 0.65, letterSpacing: "0.06em" }}>{s.en}</div>
+      <div style={{
+        fontSize: 12, fontWeight: 800, marginTop: 6,
+        background: "var(--ink)", color: "var(--paper)",
+        display: "inline-block", padding: "2px 6px"
+      }}>{s.role}</div>
+      <div style={{ fontSize: 12, fontWeight: 600, marginTop: 6, opacity: 0.85 }}>{s.duty}</div>
+      <div style={{ fontSize: 12, fontWeight: 600, marginTop: 2, opacity: 0.85 }}>分機 {s.ext} · {s.email}</div>
+    </div>
+  </Panel>
+);
+
 const FacultyChapter = () => {
   // 優先讀本地 data/faculty.json（含完整 research/courses/achievements），fallback 用上方 FACULTY
   const remote = useDataset ? useDataset("faculty") : null;
   const list = remote && remote.length ? remote : FACULTY;
+  const remoteStaff = useDataset ? useDataset("staff") : null;
+  const staff = remoteStaff && remoteStaff.length ? remoteStaff : STAFF;
   return (
     <section className="chapter" id="faculty" data-screen-label="05 Faculty">
       <div className="container">
@@ -183,6 +223,23 @@ const FacultyChapter = () => {
               </div>
             );
           })}
+        </div>
+
+        {/* 系辦行政人員 — 老師陣容下方獨立一排 */}
+        <div style={{ marginTop: 24, marginBottom: 10 }}>
+          <span style={{
+            display: "inline-block", background: "var(--ink)", color: "var(--accent-yellow)",
+            fontFamily: "'Noto Sans TC',sans-serif", fontWeight: 900, fontSize: 16,
+            padding: "4px 12px", boxShadow: "3px 3px 0 var(--accent-red)", transform: "rotate(-1.5deg)"
+          }}>系助理 · STAFF</span>
+        </div>
+        <div className="comic-page">
+          <div className="comic-tier tier-1-1-1-1" style={{ minHeight: 320 }}>
+            {staff.map((s) => <StaffCard key={s.slug} s={s} />)}
+            {Array.from({ length: Math.max(0, 4 - staff.length) }, (_, k) => (
+              <div key={"ssp" + k} className="faculty-spacer" style={{ flex: "1 1 0" }} aria-hidden="true" />
+            ))}
+          </div>
         </div>
 
         <div style={{ display: "flex", justifyContent: "center", gap: 16, marginTop: 20, flexWrap: "wrap" }}>
