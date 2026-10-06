@@ -178,6 +178,7 @@ const App = () => {
         </>
       )}
       <FooterChapter />
+      <FloatingCTA />
 
       {tweaksOpen && (
         <TweaksPanel onClose={() => {

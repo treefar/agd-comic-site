@@ -41,7 +41,7 @@ const localHref = (type, slug) => `#/${type}/${encodeURIComponent(slug)}`;
 
 // Data cache (loaded once per type)
 // _BUILD_VER 跟 Comic Site.html 的 jsx ?v= 同步 bump，避免瀏覽器 cache JSON 舊版
-const _BUILD_VER = '20261006c';
+const _BUILD_VER = '20261006d';
 const _dataCache = {};
 const _MIN_LOAD_MS = 850; // Loading 至少顯示這麼久（讓動畫看得到）
 const useDataset = (type) => {
@@ -1659,6 +1659,212 @@ const CurriculumDetail = () => {
 };
 
 // =========================================================
+// 互動測驗「你是動畫派還是遊戲派？」 #/quiz/start、結果可分享 #/quiz/<type>
+// 四種結果對應課程地圖四條軸線（data/curriculum.json 的 anim / game / art / cross）
+// =========================================================
+const LINE_URL = "https://line.me/R/ti/p/%40jmx6304i"; // 系網側欄「LINE 加入好友」同一個帳號
+
+const QUIZ_Q = [
+  { q: "週末空出一整天，你最想？", a: ["追完一整季動畫，順便研究分鏡", "跟朋友開黑，順便研究關卡怎麼設計", "窩著畫圖、捏自己的原創角色", "拍 vlog、玩新的 AI 或 AR 小工具"] },
+  { q: "看完一部作品，你最先注意到？", a: ["鏡頭、節奏、配樂怎麼帶情緒", "玩法和規則好不好玩", "角色設計和整體畫風", "背後的技術是怎麼做出來的"] },
+  { q: "分組報告時，你通常負責？", a: ["剪輯影片、配字幕", "規劃流程、訂規則", "簡報美術、排版", "找新工具，把大家的東西串起來"] },
+  { q: "最想做出哪一種作品？", a: ["一部會讓人哭的短片", "一款讓人停不下來的遊戲", "一個大家都想收藏的角色", "一個會跟著你動的互動裝置"] },
+  { q: "手機最常打開的是？", a: ["YouTube、串流動畫", "遊戲", "Pinterest、IG 繪師帳號", "各種新奇的 AI、AR App"] },
+  { q: "朋友都說你是？", a: ["很會說故事的人", "很會想規則、出點子的人", "很會畫畫、很有美感的人", "什麼都想試、很會動手做的人"] },
+  { q: "動遊系 12 間實驗室，你最想先去？", a: ["動作捕捉實驗室", "體感互動實驗室", "電繪實驗室", "虛擬運動科藝館"] },
+  { q: "十年後的你，最可能在做？", a: ["動畫導演、動畫師", "遊戲企劃、遊戲程式", "角色設計、概念美術", "XR／互動媒體創作者"] },
+];
+const QUIZ_KEYS = ["anim", "game", "art", "cross"];
+const QUIZ_RESULT = {
+  anim:  { name: "動畫派", en: "ANIMATOR", color: "var(--accent-red)",  line: "你天生會用畫面說故事。", lab: { slug: "d0631", name: "動作捕捉實驗室" } },
+  game:  { name: "遊戲派", en: "GAME MAKER", color: "var(--accent-blue)", line: "你喜歡設計規則，讓人玩到停不下來。", lab: { slug: "d0633", name: "體感互動實驗室" } },
+  art:   { name: "美術派", en: "ARTIST", color: "#ec4899", line: "你的武器是畫筆和美感。", lab: { slug: "d0604", name: "電繪實驗室" } },
+  cross: { name: "跨域派", en: "CREATOR", color: "#16a34a", line: "你什麼都想試，最會把點子做成真的。", lab: { slug: "db104", name: "虛擬運動科藝館" } },
+};
+
+// 最高分勝出；同分時看最後一題（十年後的你）選了誰，若它不在同分名單裡才取順序較前者
+const quizWinner = (score, lastPick) => {
+  const max = Math.max(...score);
+  const tied = score.map((v, i) => (v === max ? i : -1)).filter((i) => i >= 0);
+  return tied.includes(lastPick) ? lastPick : tied[0];
+};
+
+const QuizDetail = ({ slug }) => {
+  const curriculum = useDataset("curriculum");
+  const [step, setStep] = React.useState(0);
+  const [score, setScore] = React.useState([0, 0, 0, 0]);
+  const [copied, setCopied] = React.useState(false);
+  const resultKey = QUIZ_KEYS.includes(slug) ? slug : null;
+
+  const pick = (k) => {
+    const next = score.map((v, i) => (i === k ? v + 1 : v));
+    setScore(next);
+    if (step + 1 < QUIZ_Q.length) { setStep(step + 1); return; }
+    window.location.hash = "#/quiz/" + QUIZ_KEYS[quizWinner(next, k)];
+  };
+  const restart = () => { setStep(0); setScore([0, 0, 0, 0]); window.location.hash = "#/quiz/start"; };
+
+  if (resultKey) {
+    const r = QUIZ_RESULT[resultKey];
+    const track = curriculum && curriculum.tracks ? curriculum.tracks.find((t) => t.key === resultKey) : null;
+    const courses = track ? track.courses.flat().map((c) => c.name).slice(0, 8) : [];
+    const shareUrl = "https://www.dgd.stu.edu.tw/#/quiz/" + resultKey;
+    const share = async () => {
+      const text = `我是動遊系的「${r.name}」！你是哪一派？`;
+      try {
+        if (navigator.share) { await navigator.share({ title: "你是動畫派還是遊戲派？", text, url: shareUrl }); return; }
+        await navigator.clipboard.writeText(text + " " + shareUrl);
+        setCopied(true); setTimeout(() => setCopied(false), 2000);
+      } catch (e) { /* 使用者取消分享 */ }
+    };
+    return (
+      <section className="chapter">
+        <div className="container">
+          <BackBar />
+          <DetailHeader tag="測" title="測驗結果" sub="你是動畫派還是遊戲派？" />
+          <div className="comic-page">
+            <div className="comic-tier tier-1">
+              <Panel style={{ padding: 28, background: r.color, color: "#fff", textAlign: "center", position: "relative" }}>
+                <div className="bg-speedlines" style={{ position: "absolute", inset: 0, opacity: 0.18 }} />
+                <div style={{ position: "relative" }}>
+                  <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 18, letterSpacing: "0.12em" }}>YOU ARE · {r.en}</div>
+                  {/* 不用 h-display：手機版 .panel .h-display 會被壓到 28px，結果名稱要夠大才有分享感 */}
+                  <div className="h-jojo" style={{ fontSize: "clamp(48px, 9vw, 96px)", lineHeight: 1, marginTop: 8 }}>{r.name}</div>
+                  <div style={{ fontSize: 18, fontWeight: 900, marginTop: 12 }}>{r.line}</div>
+                </div>
+              </Panel>
+            </div>
+            <div className="comic-tier tier-1-1">
+              <Panel style={{ padding: 22 }}>
+                <div className="h-display" style={{ fontSize: 22 }}>{track ? track.name : "推薦課程"}</div>
+                {track && <div style={{ fontSize: 13, marginTop: 6, opacity: 0.8 }}>{track.desc}</div>}
+                <ul style={{ margin: "12px 0 0", paddingLeft: 20, lineHeight: 1.9, fontWeight: 700 }}>
+                  {courses.map((c) => <li key={c}>{c}</li>)}
+                </ul>
+                <a href="#/curriculum/map" style={{ display: "inline-block", marginTop: 12, fontWeight: 900, color: "var(--ink)" }}>看完整課程地圖 →</a>
+              </Panel>
+              <Panel variant="yellow" style={{ padding: 22, display: "flex", flexDirection: "column", gap: 12 }}>
+                <div className="h-display" style={{ fontSize: 22 }}>下一步</div>
+                <a href={`#/labs/${r.lab.slug}`} style={{ fontWeight: 900, color: "var(--ink)" }}>去看你的主場：{r.lab.name} →</a>
+                <a href="#join" style={{ fontWeight: 900, color: "var(--ink)" }}>看招生管道 →</a>
+                <a href={LINE_URL} target="_blank" rel="noopener" style={{ fontWeight: 900, color: "var(--ink)" }}>LINE 直接問系辦 →</a>
+                <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 6 }}>
+                  <button onClick={share} style={{ fontFamily: "'Noto Sans TC',sans-serif", fontWeight: 900, fontSize: 15, padding: "8px 14px", background: "var(--accent-red)", color: "#fff", border: "3px solid var(--ink)", boxShadow: "3px 3px 0 var(--ink)", cursor: "pointer" }}>
+                    {copied ? "已複製連結！" : "分享我的結果"}
+                  </button>
+                  <button onClick={restart} style={{ fontFamily: "'Noto Sans TC',sans-serif", fontWeight: 900, fontSize: 15, padding: "8px 14px", background: "var(--paper)", color: "var(--ink)", border: "3px solid var(--ink)", boxShadow: "3px 3px 0 var(--ink)", cursor: "pointer" }}>
+                    再測一次
+                  </button>
+                </div>
+              </Panel>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  const cur = QUIZ_Q[step];
+  return (
+    <section className="chapter">
+      <div className="container">
+        <BackBar />
+        <DetailHeader tag="測" title="你是動畫派還是遊戲派？" sub={`8 題 · 約 1 分鐘 · 第 ${step + 1} / ${QUIZ_Q.length} 題`} />
+        <div className="comic-page">
+          <div className="comic-tier tier-1">
+            <Panel style={{ padding: 26 }}>
+              <div style={{ height: 10, border: "3px solid var(--ink)", background: "var(--paper)", marginBottom: 18 }}>
+                <div style={{ height: "100%", width: `${(step / QUIZ_Q.length) * 100}%`, background: "var(--accent-red)", transition: "width 0.2s" }} />
+              </div>
+              <div className="h-display" style={{ fontSize: "clamp(22px, 3.4vw, 34px)", lineHeight: 1.3 }}>Q{step + 1}. {cur.q}</div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 12, marginTop: 18 }}>
+                {cur.a.map((text, k) => (
+                  <button key={k} onClick={() => pick(k)} style={{
+                    textAlign: "left", fontFamily: "'Noto Sans TC',sans-serif", fontWeight: 800, fontSize: 16, lineHeight: 1.5,
+                    padding: "14px 16px", background: ["#fff", "var(--accent-yellow)", "#fff", "var(--accent-yellow)"][k],
+                    color: "var(--ink)", border: "3px solid var(--ink)", boxShadow: "4px 4px 0 var(--ink)", cursor: "pointer"
+                  }}>
+                    <b style={{ fontFamily: "'Bangers',sans-serif", marginRight: 8 }}>{"ABCD"[k]}</b>{text}
+                  </button>
+                ))}
+              </div>
+            </Panel>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// =========================================================
+// 滑影片模式 #/reels/all、#/reels/<分類>：直式一則一則滑，點一下才載入播放器
+// =========================================================
+const ReelsDetail = ({ slug }) => {
+  const videos = useDataset("videos");
+  const [playing, setPlaying] = React.useState(null);
+  if (!videos) return <Loading />;
+  const cats = ["全部", ...Array.from(new Set(videos.map((v) => v.category).filter(Boolean)))];
+  const cat = slug && slug !== "all" ? slug : "全部";
+  const list = cat === "全部" ? videos : videos.filter((v) => v.category === cat);
+  return (
+    <section className="chapter">
+      <div className="container">
+        <BackBar />
+        <DetailHeader tag="影" title="滑影片模式" sub={`STUDENT REEL · ${list.length} CLIPS`} />
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
+          {cats.map((c) => (
+            <a key={c} href={"#/reels/" + (c === "全部" ? "all" : encodeURIComponent(c))} style={{
+              padding: "4px 12px", fontWeight: 900, fontSize: 14, textDecoration: "none",
+              border: "3px solid var(--ink)", color: c === cat ? "#fff" : "var(--ink)",
+              background: c === cat ? "var(--ink)" : "var(--paper)", boxShadow: "2px 2px 0 var(--ink)"
+            }}>{c}</a>
+          ))}
+        </div>
+        <div style={{ maxWidth: 560, margin: "0 auto", display: "flex", flexDirection: "column", gap: 24 }}>
+          {list.map((v) => (
+            <Panel key={v.id} style={{ padding: 0, overflow: "hidden" }}>
+              <div style={{ position: "relative", aspectRatio: "16/9", background: "var(--ink)" }}>
+                {playing === v.id ? (
+                  <iframe title={v.title} src={`https://www.youtube-nocookie.com/embed/${v.id}?autoplay=1&rel=0`}
+                    allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen
+                    style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }} />
+                ) : (
+                  <button onClick={() => setPlaying(v.id)} aria-label={"播放 " + v.title}
+                    style={{ position: "absolute", inset: 0, width: "100%", height: "100%", padding: 0, border: 0, cursor: "pointer", background: "none" }}>
+                    <PH src={`https://img.youtube.com/vi/${v.id}/hqdefault.jpg`} fallback={`https://img.youtube.com/vi/${v.id}/mqdefault.jpg`} alt={v.title} fit="cover" />
+                    <span style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%,-50%) rotate(-3deg)", background: "var(--accent-red)", color: "#fff", fontFamily: "'Bangers',sans-serif", fontSize: 22, padding: "6px 16px", border: "4px solid var(--paper)", boxShadow: "4px 4px 0 var(--ink)" }}>▶ PLAY</span>
+                  </button>
+                )}
+              </div>
+              <div style={{ padding: "12px 14px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10 }}>
+                <div>
+                  <div className="h-display" style={{ fontSize: 20 }}>{v.title}</div>
+                  {v.category && <div style={{ fontSize: 12, fontWeight: 800, opacity: 0.7 }}>{v.category}</div>}
+                </div>
+                <a href={"#/videos/" + v.id} style={{ fontWeight: 900, fontSize: 13, color: "var(--ink)", whiteSpace: "nowrap" }}>詳細 →</a>
+              </div>
+            </Panel>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// =========================================================
+// 浮動按鈕：右下角「測驗」＋「LINE 問系辦」，全站都看得到
+// =========================================================
+const FloatingCTA = () => {
+  const btn = { display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none", fontFamily: "'Noto Sans TC',sans-serif", fontWeight: 900, fontSize: 14, padding: "8px 12px", border: "3px solid var(--ink)", boxShadow: "3px 3px 0 var(--ink)", lineHeight: 1.2 };
+  return (
+    <div style={{ position: "fixed", right: 14, bottom: 14, zIndex: 60, display: "flex", flexDirection: "column", gap: 8, alignItems: "flex-end" }}>
+      <a href="#/quiz/start" style={{ ...btn, background: "var(--accent-yellow)", color: "var(--ink)" }}>測驗：你是哪一派？</a>
+      <a href={LINE_URL} target="_blank" rel="noopener" style={{ ...btn, background: "#06C755", color: "#fff" }}>LINE 問系辦</a>
+    </div>
+  );
+};
+
+// =========================================================
 // Detail dispatcher
 // =========================================================
 const DetailView = ({ type, slug }) => {
@@ -1673,8 +1879,10 @@ const DetailView = ({ type, slug }) => {
     case "stats":    return <StatsDetail slug={slug} />;
     case "en":       return <EnglishDetail slug={slug} />;
     case "curriculum": return <CurriculumDetail />;
+    case "quiz":     return <QuizDetail slug={slug} />;
+    case "reels":    return <ReelsDetail slug={slug} />;
     default:         return <NotFound type={type} slug={slug} />;
   }
 };
 
-Object.assign(window, { useHashRoute, localHref, DetailView, useDataset });
+Object.assign(window, { useHashRoute, localHref, DetailView, useDataset, FloatingCTA, LINE_URL });

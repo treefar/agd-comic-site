@@ -579,6 +579,11 @@ const VideoWall = () => {
         </div>
         <div className="title h-display" style={{ fontSize: 32 }}>影片牆 · 學生作品 / 課堂精選</div>
         <div className="sub">— STUDENT REEL · {videos.length} CLIPS —</div>
+        <a href="#/reels/all" style={{
+          display: "inline-block", marginTop: 10, padding: "6px 14px", textDecoration: "none",
+          background: "var(--accent-red)", color: "#fff", fontWeight: 900, fontSize: 15,
+          border: "3px solid var(--ink)", boxShadow: "3px 3px 0 var(--ink)"
+        }}>▶ 滑影片模式</a>
       </div>
       <div style={{
         display: "grid",
@@ -653,6 +658,29 @@ const VideoCard = ({ v, i }) => {
 };
 
 // CH.07 — 招生
+// 學長姐見證：只顯示 data/testimonials.json 裡的真實內容；檔案是空陣列時整區不出現（不放假見證）
+// 每筆格式：{ "name": "王小明", "grad": "114 級", "role": "現職：某遊戲公司 3D 美術", "quote": "……", "photo": "（可省略）" }
+const Testimonials = () => {
+  const list = useDataset ? useDataset("testimonials") : null;
+  if (!list || !list.length) return null;
+  return (
+    <div className="comic-tier tier-1 tier-mid">
+      <Panel style={{ padding: 22 }}>
+        <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 14, letterSpacing: "0.12em" }}>SENPAI TALK · 學長姐怎麼說</div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 14, marginTop: 12 }}>
+          {list.map((t, i) => (
+            <div key={i} className="bubble" style={{ padding: "14px 16px", background: i % 2 ? "var(--accent-yellow)" : "#fff", border: "3px solid var(--ink)", boxShadow: "3px 3px 0 var(--ink)" }}>
+              <div style={{ fontSize: 15, fontWeight: 700, lineHeight: 1.7 }}>「{t.quote}」</div>
+              <div style={{ fontSize: 13, fontWeight: 900, marginTop: 8 }}>— {t.name}（{t.grad}）</div>
+              {t.role && <div style={{ fontSize: 12, fontWeight: 700, opacity: 0.75 }}>{t.role}</div>}
+            </div>
+          ))}
+        </div>
+      </Panel>
+    </div>
+  );
+};
+
 const JoinChapter = () => (
   <section className="chapter" id="join" data-screen-label="07 Join">
     <div className="container">
@@ -745,7 +773,7 @@ const JoinChapter = () => (
               variant={o.c}
               className={o.c === "" ? "bg-halftone-red" : ""}
               style={{ padding: 14, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-              <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 11, letterSpacing: "0.1em", opacity: 0.85 }}>OPTION 0{i + 4} · 115</div>
+              <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 11, letterSpacing: "0.1em", opacity: 0.85 }}>OPTION 0{i + 4} · 115（已結束）</div>
               <div>
                 <div className="h-display" style={{ fontSize: 19, lineHeight: 1.15 }}>{o.t}</div>
                 <div style={{ fontSize: 11, fontWeight: 700, marginTop: 6, opacity: 0.85, lineHeight: 1.5 }}>名額 · {o.q}</div>
@@ -755,6 +783,21 @@ const JoinChapter = () => (
             </Panel>
           ))}
         </div>
+
+        {/* TIER 2.4 — 互動測驗入口 */}
+        <div className="comic-tier tier-1 tier-mid">
+          <Panel clickable variant="yellow" onClick={() => { window.location.hash = "#/quiz/start"; }}
+            style={{ padding: 24, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
+            <div>
+              <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 14, letterSpacing: "0.12em" }}>QUIZ · 8 題 · 1 分鐘</div>
+              <div className="h-display" style={{ fontSize: "clamp(26px, 4vw, 40px)", lineHeight: 1.1, marginTop: 4 }}>你是動畫派，還是遊戲派？</div>
+              <div style={{ fontSize: 14, fontWeight: 700, marginTop: 6 }}>測完告訴你最適合的學習軸線、課程和實驗室，結果可以分享給朋友。</div>
+            </div>
+            <span style={{ background: "var(--accent-red)", color: "#fff", fontWeight: 900, fontSize: 18, padding: "10px 18px", border: "3px solid var(--ink)", boxShadow: "4px 4px 0 var(--ink)" }}>開始測驗 →</span>
+          </Panel>
+        </div>
+
+        <Testimonials />
 
         {/* TIER 2.5 — 官方連結集中區（樹德 + 招聯會 + 技專校院招聯會） */}
         <div className="comic-tier tier-1 tier-mid">
