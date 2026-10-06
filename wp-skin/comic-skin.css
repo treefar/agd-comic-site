@@ -1,0 +1,528 @@
+/* =====================================================================
+   AGD COMIC SKIN — 動遊系 WordPress 舊頁面漫畫外衣
+   用途：讓 Google 搜到的舊頁（新聞、招生頁）跟漫畫版首頁同一個風格
+   放置：HFCM 片段「Site Wide Header」，整段包在 <style> 內
+   規則來源：D:\A06_工具開發\StyleLibrary_風格庫\styles\comic-edition.json
+             色票對齊 agd-comic-site 線上版 20260917a 的 styles.css
+   原則：只改外觀，不動內容；圓角 0；陰影只用實心偏移；不做深色模式
+   首頁（body.home，頁面 7265）被 iframe 蓋住，這裡的樣式不影響它
+   ===================================================================== */
+
+:root {
+  --agdc-paper: #f4ecd8;
+  --agdc-paper2: #ece2c6;
+  --agdc-card: #fffaf0;
+  --agdc-ink: #0f0d0a;
+  --agdc-muted: #5a5148;
+  --agdc-halftone: rgba(15, 13, 10, 0.18);
+  --agdc-red: #e63946;
+  --agdc-blue: #1d4ed8;
+  --agdc-yellow: #ffd60a;
+  --agdc-pink: #ff70a6;
+  --agdc-bw: 5px;
+  --agdc-tc: 'Noto Sans TC', system-ui, sans-serif;
+  --agdc-display: 'Bangers', 'Bowlby One', 'Noto Sans TC', sans-serif;
+}
+
+/* ---------- 1. 紙張與網點底 ---------- */
+body:not(.home) {
+  background-color: var(--agdc-paper) !important;
+  background-image:
+    radial-gradient(var(--agdc-halftone) 1px, transparent 1.4px),
+    radial-gradient(var(--agdc-halftone) 1px, transparent 1.4px) !important;
+  background-size: 14px 14px, 14px 14px !important;
+  background-position: 0 0, 7px 7px !important;
+  color: var(--agdc-ink);
+}
+body:not(.home),
+body:not(.home) p,
+body:not(.home) li,
+body:not(.home) td,
+body:not(.home) th,
+body:not(.home) input,
+body:not(.home) textarea,
+body:not(.home) select,
+body:not(.home) button,
+body:not(.home) .elementor-widget-container {
+  font-family: var(--agdc-tc) !important;
+}
+body:not(.home) h1, body:not(.home) h2, body:not(.home) h3,
+body:not(.home) h4, body:not(.home) h5, body:not(.home) h6 {
+  font-family: var(--agdc-tc) !important;
+  font-weight: 900 !important;
+  color: var(--agdc-ink);
+  letter-spacing: 0.02em;
+}
+body:not(.home) *, body:not(.home) *::before, body:not(.home) *::after {
+  border-radius: 0 !important;
+}
+/* 舊主題的 Pace 載入條改成朱紅 */
+body:not(.home) .pace .pace-progress { background: var(--agdc-red) !important; }
+
+/* ---------- 2. 頂部導覽列（對齊漫畫版 .topnav） ---------- */
+body:not(.home) .header,
+body:not(.home) .header.type2 {
+  background: var(--agdc-ink) !important;
+  border-bottom: var(--agdc-bw) solid var(--agdc-ink);
+  box-shadow: 0 6px 0 var(--agdc-yellow);
+}
+/* 主題預設的「Disco Dancer」logo 圖藏起來，改成 AGD 徽章＋系名 */
+body:not(.home) .logo .logoimga img { display: none !important; }
+body:not(.home) .logo .logoimga {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none !important;
+}
+body:not(.home) .logo .logoimga::before {
+  content: 'AGD';
+  display: inline-block;
+  background: var(--agdc-red);
+  color: #fff;
+  padding: 6px 12px;
+  border: 4px solid var(--agdc-paper);
+  box-shadow: 4px 4px 0 var(--agdc-paper), 4px 4px 0 7px var(--agdc-yellow);
+  transform: rotate(-4deg) skewX(-8deg);
+  font-family: 'Bowlby One', sans-serif;
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  -webkit-text-stroke: 1px var(--agdc-ink);
+}
+body:not(.home) .logo .logoimga::after {
+  content: '動畫與遊戲設計系';
+  color: var(--agdc-paper);
+  font-family: var(--agdc-tc);
+  font-weight: 900;
+  font-size: 19px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+body:not(.home) .logo .desc {
+  color: var(--agdc-yellow) !important;
+  font-family: var(--agdc-tc) !important;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-top: 14px !important;
+  display: block;
+}
+body:not(.home) #topmenu ul li a {
+  color: var(--agdc-paper) !important;
+  font-family: var(--agdc-tc) !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.05em;
+}
+body:not(.home) #topmenu > div > ul > li > a:hover,
+body:not(.home) #topmenu > div > ul > li.current-menu-item > a,
+body:not(.home) #topmenu > div > ul > li.current-menu-ancestor > a {
+  color: var(--agdc-yellow) !important;
+  box-shadow: inset 0 -4px 0 var(--agdc-yellow);
+}
+/* 下拉子選單：白紙格＋黑框＋偏移陰影 */
+body:not(.home) #topmenu ul ul,
+body:not(.home) #topmenu ul.sub-menu {
+  background: var(--agdc-card) !important;
+  border: 4px solid var(--agdc-ink) !important;
+  box-shadow: 6px 6px 0 var(--agdc-ink) !important;
+}
+body:not(.home) #topmenu ul ul li { border-color: var(--agdc-ink) !important; }
+body:not(.home) #topmenu ul ul li a {
+  color: var(--agdc-ink) !important;
+  background: transparent !important;
+}
+body:not(.home) #topmenu ul ul li a:hover {
+  background: var(--agdc-yellow) !important;
+  color: var(--agdc-ink) !important;
+}
+/* 手機漢堡鈕 */
+body:not(.home) #simple-menu {
+  color: var(--agdc-ink) !important;
+  background: var(--agdc-yellow) !important;
+  border: 3px solid var(--agdc-paper);
+  box-shadow: 3px 3px 0 var(--agdc-paper);
+}
+
+/* ---------- 3. 回漫畫版首頁橫幅（由 comic-bar.html 插入） ---------- */
+#agdc-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  padding: 10px 16px;
+  background: var(--agdc-yellow);
+  border-bottom: 4px solid var(--agdc-ink);
+  color: var(--agdc-ink) !important;
+  text-decoration: none !important;
+  position: relative;
+  z-index: 20;
+  font-family: var(--agdc-tc);
+}
+#agdc-bar .agdc-pow {
+  font-family: 'Bangers', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.06em;
+  background: var(--agdc-red);
+  color: #fff;
+  padding: 0 10px;
+  border: 3px solid var(--agdc-ink);
+  box-shadow: 3px 3px 0 var(--agdc-ink);
+  transform: rotate(-4deg);
+  -webkit-text-stroke: 0.5px var(--agdc-ink);
+}
+#agdc-bar b { font-weight: 900; font-size: 17px; letter-spacing: 0.04em; }
+#agdc-bar .agdc-en {
+  font-family: 'Bangers', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  background: var(--agdc-ink);
+  color: var(--agdc-yellow);
+  padding: 2px 12px;
+  box-shadow: 3px 3px 0 var(--agdc-red);
+  transition: transform 80ms steps(3, end), box-shadow 80ms;
+}
+#agdc-bar:hover .agdc-en {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--agdc-red);
+}
+
+/* ---------- 4. 標題區灰色大色塊 → 朱紅網點條 ---------- */
+body:not(.home) .post_head,
+body:not(.home) .page_head {
+  background-color: var(--agdc-red) !important;
+  background-image:
+    radial-gradient(rgba(15,13,10,0.28) 1.3px, transparent 1.6px),
+    radial-gradient(rgba(15,13,10,0.28) 1.3px, transparent 1.6px) !important;
+  background-size: 12px 12px, 12px 12px !important;
+  background-position: 0 0, 6px 6px !important;
+  border-bottom: var(--agdc-bw) solid var(--agdc-ink);
+  height: 110px !important;
+  min-height: 0 !important;
+  position: relative;
+  overflow: hidden;
+}
+/* 色塊上的大字狀聲詞：新聞頁 NEWS FLASH!，一般頁 AGD COMIC! */
+body:not(.home) .post_head::after,
+body:not(.home) .page_head::after {
+  content: 'NEWS FLASH!';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-3deg);
+  font-family: 'Bangers', sans-serif;
+  font-size: clamp(40px, 7vw, 76px);
+  letter-spacing: 0.06em;
+  line-height: 1;
+  color: var(--agdc-yellow);
+  -webkit-text-stroke: 2px var(--agdc-ink);
+  text-shadow: 5px 5px 0 var(--agdc-ink);
+  white-space: nowrap;
+  pointer-events: none;
+}
+body:not(.home) .page_head::after { content: 'AGD COMIC!'; }
+
+/* ---------- 5. 內文主體：一格漫畫格 ---------- */
+body:not(.home) .single_post,
+body:not(.home) .page_wrap .single_wrap > .single_post {
+  background: var(--agdc-card);
+  border: var(--agdc-bw) solid var(--agdc-ink);
+  box-shadow: 10px 10px 0 var(--agdc-ink);
+  padding: 28px 30px 24px;
+  margin-bottom: 36px;
+}
+/* 文章與頁面標題：黃底貼紙標 */
+body:not(.home) h1.postitle,
+body:not(.home) .single_post h1.entry-title,
+body.page:not(.home) .single_post .thn_post_wrap > h1:first-child {
+  display: inline-block;
+  background: var(--agdc-yellow);
+  border: 4px solid var(--agdc-ink);
+  box-shadow: 6px 6px 0 var(--agdc-ink);
+  padding: 8px 18px;
+  margin: -46px 0 18px -14px !important;
+  transform: rotate(-1.2deg);
+  font-size: clamp(22px, 3.2vw, 32px) !important;
+  line-height: 1.35 !important;
+  color: var(--agdc-ink) !important;
+  max-width: calc(100% + 14px);
+}
+body:not(.home) .single_metainfo,
+body:not(.home) .single_metainfo a {
+  color: var(--agdc-muted) !important;
+  font-weight: 700;
+}
+body:not(.home) .single_metainfo i { color: var(--agdc-red) !important; }
+body:not(.home) .thn_post_wrap,
+body:not(.home) .thn_post_wrap p,
+body:not(.home) .thn_post_wrap li {
+  color: var(--agdc-ink) !important;
+  font-size: 17px;
+  line-height: 1.8;
+}
+/* 內文小標：左側朱紅粗條 */
+body:not(.home) .thn_post_wrap h2:not(.elementor-post__title):not(.elementor-heading-title),
+body:not(.home) .thn_post_wrap h3:not(.elementor-post__title):not(.elementor-heading-title),
+body:not(.home) .elementor-widget-text-editor h2,
+body:not(.home) .elementor-widget-text-editor h3 {
+  border-left: 10px solid var(--agdc-red);
+  padding-left: 12px;
+  margin-top: 1.4em;
+}
+/* 內文連結：寶藍粗底線 */
+body:not(.home) .thn_post_wrap a,
+body:not(.home) .elementor-widget-text-editor a {
+  color: var(--agdc-blue) !important;
+  font-weight: 700;
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 3px;
+  word-break: break-all;
+}
+body:not(.home) .thn_post_wrap a:hover,
+body:not(.home) .elementor-widget-text-editor a:hover {
+  background: var(--agdc-yellow);
+  color: var(--agdc-ink) !important;
+}
+/* 內文圖片：黑框格 */
+body:not(.home) .thn_post_wrap img,
+body:not(.home) .elementor-widget-image img {
+  border: 3px solid var(--agdc-ink) !important;
+  box-shadow: 5px 5px 0 var(--agdc-ink);
+  background: var(--agdc-card);
+  height: auto;
+}
+/* 引言改成對話框 */
+body:not(.home) blockquote {
+  position: relative;
+  background: var(--agdc-card) !important;
+  border: 4px solid var(--agdc-ink) !important;
+  box-shadow: 5px 5px 0 var(--agdc-ink);
+  padding: 14px 18px !important;
+  margin: 1.4em 0 1.8em !important;
+  font-style: normal !important;
+  color: var(--agdc-ink) !important;
+}
+body:not(.home) blockquote::after {
+  content: '';
+  position: absolute;
+  left: 28px;
+  bottom: -18px;
+  border: 9px solid transparent;
+  border-top-color: var(--agdc-ink);
+  border-left-color: var(--agdc-ink);
+}
+/* 表格（含 TablePress） */
+body:not(.home) .thn_post_wrap table,
+body:not(.home) .tablepress {
+  border: var(--agdc-bw) solid var(--agdc-ink) !important;
+  border-collapse: collapse;
+  background: var(--agdc-card);
+}
+body:not(.home) .thn_post_wrap th,
+body:not(.home) .tablepress thead th {
+  background: var(--agdc-ink) !important;
+  color: var(--agdc-paper) !important;
+}
+body:not(.home) .thn_post_wrap td,
+body:not(.home) .thn_post_wrap th,
+body:not(.home) .tablepress td,
+body:not(.home) .tablepress th {
+  border: 2px solid var(--agdc-ink) !important;
+}
+body:not(.home) .tablepress tbody tr:nth-child(odd) td { background: transparent !important; }
+/* 影片嵌入：黑框 */
+body:not(.home) .thn_post_wrap iframe,
+body:not(.home) .wp-video,
+body:not(.home) .elementor-video {
+  border: 4px solid var(--agdc-ink);
+  box-shadow: 6px 6px 0 var(--agdc-ink);
+}
+
+/* ---------- 6. 上一篇／下一篇 ---------- */
+body:not(.home) #ast_nextprev { border: 0 !important; }
+body:not(.home) #ast_nextprev .nav-box {
+  background: var(--agdc-paper2) !important;
+  border: 3px solid var(--agdc-ink);
+  box-shadow: 4px 4px 0 var(--agdc-ink);
+}
+body:not(.home) #ast_nextprev .nav-box a { color: var(--agdc-ink) !important; font-weight: 900; }
+body:not(.home) #ast_nextprev .nav-box:hover { background: var(--agdc-yellow) !important; }
+body:not(.home) #ast_nextprev .div_middle { display: none; }
+
+/* ---------- 7. 側欄小工具：每個一小格 ---------- */
+body:not(.home) #sidebar .widget_wrap {
+  background: var(--agdc-card) !important;
+  border: 4px solid var(--agdc-ink) !important;
+  box-shadow: 6px 6px 0 var(--agdc-ink);
+  padding: 16px !important;
+  margin-bottom: 26px;
+}
+body:not(.home) #sidebar .widget_corner,
+body:not(.home) #sidebar .widget_border { display: none !important; }
+body:not(.home) #sidebar .widgettitle {
+  display: inline-block;
+  background: var(--agdc-ink);
+  color: var(--agdc-yellow) !important;
+  padding: 4px 12px;
+  margin: -30px 0 12px -6px !important;
+  font-size: 17px !important;
+  transform: rotate(-2deg);
+  box-shadow: 3px 3px 0 var(--agdc-red);
+}
+body:not(.home) #sidebar ul li { border-color: rgba(15,13,10,0.25) !important; }
+body:not(.home) #sidebar ul li a { color: var(--agdc-ink) !important; font-weight: 700; }
+body:not(.home) #sidebar ul li a:hover { color: var(--agdc-red) !important; }
+body:not(.home) #sidebar img { border: 3px solid var(--agdc-ink); }
+body:not(.home) #wp-calendar caption { font-weight: 900; color: var(--agdc-ink); }
+body:not(.home) #wp-calendar td a { color: var(--agdc-red) !important; font-weight: 900; }
+
+/* ---------- 8. 表單與按鈕 ---------- */
+body:not(.home) input[type=text],
+body:not(.home) input[type=search],
+body:not(.home) input[type=email],
+body:not(.home) input[type=tel],
+body:not(.home) textarea,
+body:not(.home) select {
+  background: #fff !important;
+  border: 3px solid var(--agdc-ink) !important;
+  color: var(--agdc-ink) !important;
+  box-shadow: none !important;
+}
+body:not(.home) input[type=submit],
+body:not(.home) button,
+body:not(.home) .elementor-button,
+body:not(.home) a.more-link {
+  background: var(--agdc-red) !important;
+  color: #fffaf0 !important;
+  border: 3px solid var(--agdc-ink) !important;
+  box-shadow: 3px 3px 0 var(--agdc-ink) !important;
+  font-weight: 900 !important;
+  text-shadow: none !important;
+  transition: transform 80ms steps(3, end), box-shadow 80ms;
+}
+body:not(.home) input[type=submit]:hover,
+body:not(.home) button:hover,
+body:not(.home) .elementor-button:hover,
+body:not(.home) a.more-link:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--agdc-ink) !important;
+}
+/* 分頁 */
+body:not(.home) .wp-pagenavi a,
+body:not(.home) .wp-pagenavi span,
+body:not(.home) .elementor-pagination .page-numbers {
+  background: var(--agdc-card) !important;
+  border: 3px solid var(--agdc-ink) !important;
+  color: var(--agdc-ink) !important;
+  font-weight: 900;
+  padding: 4px 10px !important;
+  margin: 0 3px;
+  box-shadow: 3px 3px 0 var(--agdc-ink);
+}
+body:not(.home) .wp-pagenavi span.current,
+body:not(.home) .elementor-pagination .page-numbers.current {
+  background: var(--agdc-ink) !important;
+  color: var(--agdc-yellow) !important;
+}
+
+/* ---------- 9. Elementor 頁面（最新消息列表、招生頁） ---------- */
+body:not(.home) .elementor-heading-title {
+  font-family: var(--agdc-tc) !important;
+  font-weight: 900 !important;
+  color: var(--agdc-ink) !important;
+}
+body:not(.home) .elementor-post,
+body:not(.home) .elementor-posts .elementor-post__card {
+  background: var(--agdc-card) !important;
+  border: 4px solid var(--agdc-ink) !important;
+  box-shadow: 6px 6px 0 var(--agdc-ink) !important;
+  overflow: hidden;
+  transition: transform 140ms cubic-bezier(.2,1.4,.4,1), box-shadow 140ms;
+}
+body:not(.home) .elementor-posts .elementor-post__card { border: 0 !important; box-shadow: none !important; }
+body:not(.home) .elementor-post:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 10px 10px 0 var(--agdc-ink) !important;
+}
+body:not(.home) .elementor-post__thumbnail__link { border-bottom: 4px solid var(--agdc-ink); margin-bottom: 0 !important; }
+body:not(.home) .elementor-post__text { padding: 12px 12px 14px !important; }
+body:not(.home) .elementor-post__title,
+body:not(.home) .elementor-post__title a {
+  font-family: var(--agdc-tc) !important;
+  font-weight: 900 !important;
+  color: var(--agdc-ink) !important;
+  line-height: 1.4 !important;
+}
+body:not(.home) .elementor-post__title { font-size: 15px !important; }
+body:not(.home) .elementor-post__title a,
+body:not(.home) .elementor-post__read-more,
+body:not(.home) .elementor-post__thumbnail__link {
+  text-decoration: none !important;
+  font-weight: 900;
+}
+body:not(.home) .elementor-post__meta-data {
+  color: var(--agdc-red) !important;
+  font-weight: 700;
+}
+body:not(.home) .elementor-post__read-more {
+  color: var(--agdc-blue) !important;
+  font-weight: 900 !important;
+}
+body:not(.home) .elementor-divider-separator { border-color: var(--agdc-ink) !important; border-top-width: 4px !important; }
+
+/* ---------- 10. 頁尾 ---------- */
+body:not(.home) #footer {
+  background: var(--agdc-ink) !important;
+  color: var(--agdc-paper) !important;
+  border-top: 6px solid var(--agdc-yellow);
+}
+body:not(.home) #footer h3 {
+  font-family: 'Bangers', var(--agdc-tc) !important;
+  font-weight: 400 !important;
+  color: var(--agdc-yellow) !important;
+  letter-spacing: 0.06em;
+  font-size: 22px !important;
+}
+body:not(.home) #footer,
+body:not(.home) #footer p,
+body:not(.home) #footer li,
+body:not(.home) #footer span,
+body:not(.home) #footer a { color: var(--agdc-paper) !important; }
+body:not(.home) #footer a:hover { color: var(--agdc-yellow) !important; }
+/* 舞蹈學校主題殘留的「OPEN HOURS 營業時間」欄，對系所是錯誤資訊，隱藏 */
+body:not(.home) #footer .footercols4:has(.open-hours) { display: none !important; }
+body:not(.home) #copyright {
+  background: #000 !important;
+  border-top: 3px solid var(--agdc-red);
+}
+body:not(.home) #copyright,
+body:not(.home) #copyright a { color: var(--agdc-paper2) !important; }
+/* 回到頂端鈕：朱紅方塊 */
+body:not(.home) a.to_top {
+  background: var(--agdc-red) !important;
+  color: #fff !important;
+  border: 3px solid var(--agdc-ink);
+  box-shadow: 3px 3px 0 var(--agdc-ink);
+}
+
+/* ---------- 11. 手機 ---------- */
+@media (max-width: 767px) {
+  body:not(.home) .single_post { padding: 22px 16px 18px; box-shadow: 6px 6px 0 var(--agdc-ink); }
+  body:not(.home) h1.postitle,
+  body:not(.home) .single_post h1.entry-title,
+  body.page:not(.home) .single_post .thn_post_wrap > h1:first-child { margin: -38px 0 14px -6px !important; transform: rotate(-0.8deg); }
+  body:not(.home) .logo .logoimga::before { font-size: 18px; padding: 4px 9px; }
+  body:not(.home) .logo .logoimga::after { font-size: 16px; }
+  body:not(.home) .logo .desc { display: none !important; }
+  body:not(.home) .post_head,
+  body:not(.home) .page_head { height: 72px !important; }
+  #agdc-bar { padding: 8px 10px; gap: 6px 10px; }
+  #agdc-bar .agdc-pow { font-size: 18px; }
+  #agdc-bar b { font-size: 15px; }
+  #agdc-bar .agdc-en { font-size: 15px; }
+}
+
+/* 減少動態偏好：取消位移 */
+@media (prefers-reduced-motion: reduce) {
+  body:not(.home) *, #agdc-bar * { transition: none !important; transform: none !important; }
+}

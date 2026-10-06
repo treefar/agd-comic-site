@@ -1,0 +1,19 @@
+<!-- AGD COMIC SKIN：回漫畫版首頁橫幅
+     放置：HFCM 片段「Site Wide Footer」
+     作用：在頂部導覽列下方插一條黃色橫幅，連回漫畫版首頁；首頁（body.home）不插
+     註：網址含 english- 的頁面內容其實是中文，所以橫幅一律用中文 -->
+<script>
+(function () {
+  var b = document.body;
+  if (!b || b.classList.contains('home') || document.getElementById('agdc-bar')) return;
+  var a = document.createElement('a');
+  a.id = 'agdc-bar';
+  a.href = 'https://www.dgd.stu.edu.tw/';
+  a.innerHTML = '<span class="agdc-pow">POW!</span>' +
+    '<b>動遊系官網已改版成漫畫版</b>' +
+    '<span class="agdc-en">回漫畫版首頁 ▶</span>';
+  var h = document.querySelector('.header_wrap');
+  if (h && h.parentNode) h.parentNode.insertBefore(a, h.nextSibling);
+  else b.insertBefore(a, b.firstChild);
+})();
+</script>
