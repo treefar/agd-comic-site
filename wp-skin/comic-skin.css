@@ -142,14 +142,14 @@ body:not(.home) #simple-menu {
   box-shadow: 3px 3px 0 var(--agdc-paper);
 }
 
-/* ---------- 3. 回漫畫版首頁橫幅（由 comic-bar.html 插入） ---------- */
+/* ---------- 3. 回首頁橫幅（由 comic-bar.html 插入） ---------- */
 #agdc-bar {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px 16px;
-  padding: 10px 16px;
+  padding: 8px 16px;
   background: var(--agdc-yellow);
   border-bottom: 4px solid var(--agdc-ink);
   color: var(--agdc-ink) !important;
@@ -172,8 +172,9 @@ body:not(.home) #simple-menu {
 }
 #agdc-bar b { font-weight: 900; font-size: 17px; letter-spacing: 0.04em; }
 #agdc-bar .agdc-en {
-  font-family: 'Bangers', sans-serif;
-  font-size: 18px;
+  font-family: var(--agdc-tc);
+  font-weight: 900;
+  font-size: 16px;
   letter-spacing: 0.08em;
   background: var(--agdc-ink);
   color: var(--agdc-yellow);
@@ -220,6 +221,9 @@ body:not(.home) .page_head::after {
   pointer-events: none;
 }
 body:not(.home) .page_head::after { content: 'AGD COMIC!'; }
+/* 有些頁面把精選圖片塞進標題色塊，裁成 110px 高的照片條很難看，統一藏起來 */
+body:not(.home) .page_head img,
+body:not(.home) .post_head img { display: none !important; }
 
 /* ---------- 5. 內文主體：一格漫畫格 ---------- */
 body:not(.home) .single_post,
@@ -520,6 +524,7 @@ body:not(.home) a.to_top {
   #agdc-bar .agdc-pow { font-size: 18px; }
   #agdc-bar b { font-size: 15px; }
   #agdc-bar .agdc-en { font-size: 15px; }
+  #agdc-bar { padding: 6px 10px; }
 }
 
 /* 減少動態偏好：取消位移 */

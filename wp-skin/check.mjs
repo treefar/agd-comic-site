@@ -49,7 +49,11 @@ for (const [name, hex] of [['paper', '#f4ecd8'], ['ink', '#0f0d0a'], ['red', '#e
 // 6. 橫幅腳本：首頁不插、不重複插、連回首頁
 ok(/classList\.contains\('home'\)/.test(bar), '橫幅沒有排除首頁');
 ok(/getElementById\('agdc-bar'\)/.test(bar), '橫幅沒有防重複');
-ok(/href = 'https:\/\/www\.dgd\.stu\.edu\.tw\/'/.test(bar), '橫幅連結不是漫畫版首頁');
+ok(/href = 'https:\/\/www\.dgd\.stu\.edu\.tw\/'/.test(bar), '橫幅連結不是首頁');
+// 使用者 2026-10-06 指示：橫幅只寫「回首頁」，不寫改版或漫畫版字樣
+const barText = bar.replace(/<!--[\s\S]*?-->/g, '');
+ok(!/改版|漫畫版/.test(barText), '橫幅文字不可出現「改版」「漫畫版」');
+ok(/回首頁/.test(barText), '橫幅要有「回首頁」');
 
 // 7. 產出的 HFCM 片段結構正確，且大括號成對
 const header = buildHeader(css);
