@@ -41,7 +41,7 @@ const localHref = (type, slug) => `#/${type}/${encodeURIComponent(slug)}`;
 
 // Data cache (loaded once per type)
 // _BUILD_VER 跟 Comic Site.html 的 jsx ?v= 同步 bump，避免瀏覽器 cache JSON 舊版
-const _BUILD_VER = '20261006d';
+const _BUILD_VER = '20261006e';
 const _dataCache = {};
 const _MIN_LOAD_MS = 850; // Loading 至少顯示這麼久（讓動畫看得到）
 const useDataset = (type) => {
@@ -1385,7 +1385,7 @@ const EnglishDetail = ({ slug }) => {
               },
               {
                 t: "Japan Internship",
-                b: "Annual MOE-funded program at Hautecouture Inc. (Matsuyama, Ehime), now in its 9th cohort. 20 students placed in the past 4 years — 2-month paid internship.",
+                b: "Annual MOE-funded program at Hautecouture Inc. (Matsuyama, Ehime), now in its 9th cohort. 22 students placed in the past 4 years — 2-month paid internship.",
                 v: "yellow", icon: "🇯🇵"
               },
               {

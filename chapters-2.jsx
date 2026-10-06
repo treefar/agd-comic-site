@@ -383,7 +383,7 @@ const LabsChapter = () => (
             日本 HC 公司 · 第 9 屆合作 · 6 國 8 公司
           </div>
           <div style={{ fontSize: 13, lineHeight: 1.7, fontWeight: 500 }}>
-            學海築夢計畫近 4 年共派 20 位學生赴日本愛媛縣松山市 Hautecouture 株式會社實習。合作網絡涵蓋日本、韓國、印尼共 6 國 8 家公司。
+            學海築夢計畫近 4 年共派 22 位學生赴日本愛媛縣松山市 Hautecouture 株式會社實習。合作網絡涵蓋日本、韓國、印尼共 6 國 8 家公司。
           </div>
           <div style={{ position: "absolute", bottom: 12, right: 22, fontFamily: "'Bangers',sans-serif", fontSize: 11, letterSpacing: "0.1em" }}>
             完整名單 →
@@ -717,7 +717,7 @@ const JoinChapter = () => (
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--gutter)" }}>
             {[
               { t: "申請入學", q: "11 名 · 代碼 205005", s: "報名 3/19-3/25 · 放榜 5/25", c: "", slug: "high-school-application" },
-              { t: "甄選入學", q: "44 名 · 設計 22 / 商管 14 / 資電 8 / 青儲 2", s: "統測 4/25-4/26 · 放榜 7/14", c: "yellow", slug: "selection" },
+              { t: "甄選入學", q: "46 名 · 設計 22 / 商管 14 / 資電 8 / 青儲 2", s: "統測 4/25-4/26 · 放榜 7/14", c: "yellow", slug: "selection" },
               { t: "科技繁星", q: "設計群 3 名 · 代碼 08039", s: "報名 3/11-3/18 · 放榜 5/5", c: "inkbg", slug: "tech-star" },
             ].map((o, i) => (
               <Panel key={i} clickable
