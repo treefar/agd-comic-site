@@ -531,3 +531,10 @@ body:not(.home) a.to_top {
 @media (prefers-reduced-motion: reduce) {
   body:not(.home) *, #agdc-bar * { transition: none !important; transform: none !important; }
 }
+
+/* ---------- 12. 內文表格在手機上可以左右捲動（課程地圖 9 欄，窄螢幕會被裁掉） ---------- */
+body:not(.home) .thn_post_wrap table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
