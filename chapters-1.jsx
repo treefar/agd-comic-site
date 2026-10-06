@@ -152,7 +152,7 @@ const HeroChapter = () => (
                 { num: "13", unit: "位", label: "業界派老師", to: "#faculty", color: "var(--accent-red)" },
                 { num: "12", unit: "間", label: "特色實驗室", to: "#labs", color: "var(--accent-blue)" },
                 { num: "811", unit: "張", label: "5 年取得證照", to: "#/stats/certifications", color: "var(--accent-red)" },
-                { num: "90+", unit: "件", label: "歷屆得獎", to: "#/stats/awards", color: "var(--ink)" },
+                { num: "120+", unit: "件", label: "歷屆得獎", to: "#/stats/awards", color: "var(--ink)" },
                 { num: "9", unit: "屆", label: "日本實習", to: "#/stats/international", color: "var(--accent-blue)" },
                 { num: "94%", unit: "", label: "畢業就業比", to: "#/stats/employment", color: "var(--ink)" },
               ].map((s, i) => (
@@ -669,8 +669,8 @@ const AboutChapter = () => (
             </Panel>
             <Panel clickable className="bg-halftone-blue" style={{ padding: 22, position: "relative", flex: 1 }}
               onClick={() => { window.location.hash = "#/stats/awards"; }}>
-              <div style={{ fontFamily: "'Bowlby One',sans-serif", fontSize: 56, color: "var(--accent-red)", lineHeight: 1 }}>90+</div>
-              <div style={{ fontSize: 13, fontWeight: 800, marginTop: 4 }}>件學生競賽得獎<br/>5 學年累積</div>
+              <div style={{ fontFamily: "'Bowlby One',sans-serif", fontSize: 56, color: "var(--accent-red)", lineHeight: 1 }}>120+</div>
+              <div style={{ fontSize: 13, fontWeight: 800, marginTop: 4 }}>件學生競賽得獎<br/>6 學年累積</div>
               <div style={{ position: "absolute", bottom: 8, right: 14, fontFamily: "'Bangers',sans-serif", fontSize: 11, letterSpacing: "0.1em" }}>詳情 →</div>
             </Panel>
           </div>

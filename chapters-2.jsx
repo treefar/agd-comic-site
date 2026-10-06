@@ -430,7 +430,7 @@ const WorksChapter = () => (
               <div style={{ display: "flex", gap: 20, marginTop: 28, flexWrap: "wrap" }}>
                 {[
                   { n: "811", l: "5 年取得證照", sub: "Adobe / Unity / Autodesk", to: "#/stats/certifications" },
-                  { n: "90+", l: "歷屆得獎", sub: "109-113 學年度", to: "#/stats/awards" },
+                  { n: "120+", l: "歷屆得獎", sub: "109-114 學年度", to: "#/stats/awards" },
                   { n: "8 + 42", l: "MOU 戰略 + 產學案", sub: "智冠 / HC / 西基…", to: "#/stats/partners" },
                   { n: "94%", l: "平均就業比", sub: "教育部追蹤調查", to: "#/stats/employment" },
                 ].map((s, i) => (
