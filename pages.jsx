@@ -41,7 +41,7 @@ const localHref = (type, slug) => `#/${type}/${encodeURIComponent(slug)}`;
 
 // Data cache (loaded once per type)
 // _BUILD_VER 跟 Comic Site.html 的 jsx ?v= 同步 bump，避免瀏覽器 cache JSON 舊版
-const _BUILD_VER = '20261006b';
+const _BUILD_VER = '20261006c';
 const _dataCache = {};
 const _MIN_LOAD_MS = 850; // Loading 至少顯示這麼久（讓動畫看得到）
 const useDataset = (type) => {
@@ -762,6 +762,12 @@ const AdmissionDetail = ({ slug }) => {
                     {a.summary}
                   </div>
                 )}
+                {/* 115 學年度時程已全部結束（2026-10），參訪是全年開放不加註 */}
+                {/115/.test(a.year || "") && a.slug !== "visit" && (
+                  <div style={{ fontSize: 13, color: "var(--ink)", background: "var(--accent-yellow)", marginTop: 12, fontWeight: 800, lineHeight: 1.5, padding: "6px 10px", border: "3px solid var(--ink)", display: "inline-block" }}>
+                    115 學年度招生已結束，以下時程與名額僅供參考；116 學年度簡章公布後更新。
+                  </div>
+                )}
               </div>
             </Panel>
           </div>
@@ -1448,7 +1454,7 @@ const EnglishDetail = ({ slug }) => {
                 {[
                   "🇪🇸 Barcelona Auteur Film Festival — Selection (2024)",
                   "🇮🇳 Mumbai International Short Film — Winner (2024)",
-                  "🇫🇷 Prisme Animation Festival, Rome — Selection (2024)",
+                  "🇮🇹 Rome Prisma Independent Film Awards — Selection (2024)",
                   "🇹🇷 Istanbul-NewYork Short Film — Selection (2024)",
                   "🇹🇼 ClipStudio International Illustration — GRAND PRIZE",
                   "🇹🇼 TISDC, Bahamut ACG, KT Award, Vision Get Wild — multiple wins",
@@ -1475,7 +1481,7 @@ const EnglishDetail = ({ slug }) => {
               <ol style={{ listStyle: "none", padding: 0, fontSize: 13, lineHeight: 1.8, color: "var(--paper)", fontWeight: 700 }}>
                 <li><b style={{ color: "var(--accent-yellow)" }}>1.</b> Foreign Student Direct Admission — apply via SHU-TE OIA</li>
                 <li><b style={{ color: "var(--accent-yellow)" }}>2.</b> Overseas Chinese / Hong Kong / Macau channel — UAC system</li>
-                <li><b style={{ color: "var(--accent-yellow)" }}>3.</b> Exchange semester via partner schools (NTU Singapore, etc.)</li>
+                <li><b style={{ color: "var(--accent-yellow)" }}>3.</b> Exchange semester via partner schools (Nanyang Polytechnic, Singapore, etc.)</li>
               </ol>
               <a href="https://oia.stu.edu.tw/" target="_blank" rel="noopener" style={{
                 display: "inline-block", marginTop: 18,

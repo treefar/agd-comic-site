@@ -41,7 +41,13 @@ for (const x of [...pages, { id: widget.id, label: '小工具', html: widget.htm
     ok(open === close, `${x.label} <${t}> 開關不成對（${open}/${close}）`);
   }
 }
-// 8. 小工具不可再出現舊系名
+// 8. 115 學年度招生頁（參訪除外）都要有「已結束」提示
+for (const id of [7139, 6906, 6926, 6908, 6919, 1952, 2001]) {
+  const x = pages.find((y) => y.id === id);
+  ok(x && /115 學年度招生已結束/.test(x.html), `招生頁 ${id} 缺「115 學年度招生已結束」提示`);
+}
+ok(!/115 學年度招生已結束/.test(pages.find((y) => y.id === 3138).html), '參訪頁不應出現招生已結束提示');
+// 9. 小工具不可再出現舊系名
 ok(!/數位科技與遊戲設計系/.test(widget.html), '小工具還有舊系名');
 
 // 預覽頁

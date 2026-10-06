@@ -675,10 +675,14 @@ const JoinChapter = () => (
                 fontSize: "clamp(40px, 6vw, 72px)", color: "#fff",
                 marginTop: 30, lineHeight: 0.9
               }}>
-                115 學年度<br/>新生招募中
+                116 學年度<br/>招生準備中
               </div>
               <div style={{ fontSize: 16, color: "#fff", marginTop: 18, fontWeight: 700, maxWidth: 460, lineHeight: 1.6 }}>
                 只要你愛畫、愛玩、愛動腦 — 我們就有你的位置。歡迎報名校系說明會與一日體驗。
+              </div>
+              {/* 2026-10 起 115 學年度各管道已結束，右側資料保留供參考 */}
+              <div style={{ fontSize: 13, color: "var(--ink)", background: "var(--accent-yellow)", marginTop: 14, fontWeight: 800, maxWidth: 460, lineHeight: 1.5, padding: "6px 10px", border: "3px solid var(--ink)" }}>
+                115 學年度招生已結束，116 學年度簡章公布後更新；右側為 115 學年度資料，供參考。
               </div>
             </div>
           </Panel>
@@ -693,7 +697,7 @@ const JoinChapter = () => (
                 variant={o.c}
                 className={o.c === "" ? "bg-halftone-blue" : ""}
                 style={{ padding: 14, display: "flex", flexDirection: "column", justifyContent: "space-between", flex: 1 }}>
-                <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 12, letterSpacing: "0.1em", opacity: 0.85 }}>OPTION 0{i + 1} · 115 學年度</div>
+                <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 12, letterSpacing: "0.1em", opacity: 0.85 }}>OPTION 0{i + 1} · 115 學年度（已結束）</div>
                 <div>
                   <div className="h-display" style={{ fontSize: 22 }}>{o.t}</div>
                   <div style={{ fontSize: 12, fontWeight: 800, marginTop: 4, opacity: 0.85, lineHeight: 1.5 }}>名額 · {o.q}</div>

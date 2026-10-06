@@ -102,6 +102,10 @@
   // ---------- 招生 ----------
   const ADM_PAGE = { 'high-school-application': '高中申請/', selection: '甄選入學/', 'tech-star': '科技繁星/', 'tech-elite': '技優甄選/', scholarship: '菁英獎學金/', visit: '參訪聯繫師長/' };
 
+  // 115 學年度時程已全部結束（2026-10）；參訪是全年開放，不加註
+  const ADM_CLOSED = '115 學年度招生已結束，以下時程與名額僅供參考；116 學年度簡章公布後更新。';
+  const admissionNotice = (x) => (/115/.test(x.year || '') && x.slug !== 'visit' ? `<p><strong>${esc(ADM_CLOSED)}</strong></p>` : '');
+
   function admissionPage(x) {
     const meta = [x.year, x.quota && (/\d+\s*名/.test(x.quota) ? `名額：${x.quota}` : x.quota), x.code, x.schedule_short].filter(Boolean);
     const tl = (x.timeline || []).map((t) => `<tr><td>${esc(t.date)}</td><td>${esc(t.label)}</td></tr>`);
@@ -116,6 +120,7 @@
       : '';
     return join(
       h2(x.title),
+      admissionNotice(x),
       ul(meta),
       x.summary && p(x.summary),
       prose(x.content),
@@ -138,7 +143,7 @@
       const bits = [x.year, q, x.schedule_short].filter(Boolean).map(esc).join('｜');
       return `<li>${name}｜${bits}<br />${esc(x.summary || '')}</li>`;
     });
-    return join(h2('招生管道一覽'), `<ul>\n${items.join('\n')}\n</ul>`, `<p>另有${a(SITE + '特殊選才/', '特殊選才')}管道，請見專頁。</p>`, src('#/admission/visit'));
+    return join(h2('招生管道一覽'), `<p><strong>${esc(ADM_CLOSED)}</strong></p>`, `<ul>\n${items.join('\n')}\n</ul>`, `<p>另有${a(SITE + '特殊選才/', '特殊選才')}管道，請見專頁。</p>`, src('#/admission/visit'));
   }
 
   function contactPage(D) {

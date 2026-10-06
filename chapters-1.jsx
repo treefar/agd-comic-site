@@ -289,6 +289,12 @@ const HeroChapter = () => (
 // CH.02 — 最新消息（標準 tier：頭條 2:1 + 三格新聞）
 const NEWS = [
   {
+    id: 7200, date: "2026.08.19", tag: "國際", color: "wine", num: "01",
+    title: "《癡迷的現實》再添 5 項國際影展 · 累計 13 項橫跨 7 國",
+    excerpt: "杜拜、芝加哥、希瓦吉、東京、義大利旅遊影展同月報到 — 陳美蓉老師指導的動畫短片《癡迷的現實》國際入圍提名累計達 13 項。",
+    link: "#/news/2026-08-19-obsessive-reality-5-more-festivals"
+  },
+  {
     id: 7180, date: "2026.08.04", tag: "國際", color: "wine", num: "01",
     title: "設計力出海！動遊系赴日實習邁入第九屆",
     excerpt: "教育部「學海築夢」計畫今年派 4 名學生赴日本愛媛縣松山市 HC 公司實習近三個月，由張純雅老師帶隊，並延伸至西予市、砥部町的地方創生與傳統工藝交流。",
@@ -315,13 +321,13 @@ const NEWS = [
   {
     id: 7119, date: "2026.04.08", tag: "課程", color: "blue", num: "02",
     title: "114 學年度第 2 學期學生「Unity 證照輔導班」開課！",
-    excerpt: "Unity Certification User (UCU) 國際認證 · 5/16-5/17 D0625 · 名額 20 人 · 楊智彰老師授課。",
+    excerpt: "Unity Certified User (UCU) 國際認證 · 5/16-5/17 D0625 · 名額 20 人 · 楊智彰老師授課。",
     link: "https://www.dgd.stu.edu.tw/2026/04/08/%e5%8b%95%e7%95%ab%e8%88%87%e9%81%8a%e6%88%b2%e8%a8%ad%e8%a8%88%e7%b3%bb%e8%be%a6%e7%90%86114%e5%ad%b8%e5%b9%b4%e5%ba%a6%e7%ac%ac%e4%ba%8c%e5%ad%b8%e6%9c%9f%e5%ad%b8%e7%94%9f%e3%80%8cunity%e8%ad%89/"
   },
   {
     id: 7108, date: "2026.03.31", tag: "課程", color: "yellow", num: "03",
-    title: "「SSE-Adobe After Effect CC」國際證照輔導班",
-    excerpt: "動畫與遊戲設計系辦理 114-2 學年度「SSE-Adobe After Effect CC」國際證照輔導班。",
+    title: "「SSE-Adobe After Effects CC」國際證照輔導班",
+    excerpt: "動畫與遊戲設計系辦理 114 學年度第 2 學期「SSE-Adobe After Effects CC」國際證照輔導班。",
     link: "https://www.dgd.stu.edu.tw/2026/03/31/%e5%8b%95%e7%95%ab%e8%88%87%e9%81%8a%e6%88%b2%e8%a8%ad%e8%a8%88%e7%b3%bb%e8%be%a6%e7%90%86114-2%e5%ad%b8%e5%b9%b4%e5%ba%a6%e3%80%8csse-adobe-after-effect-cc%e3%80%8d%e5%9c%8b%e9%9a%9b%e8%ad%89/"
   },
   {
@@ -345,7 +351,7 @@ const NEWS = [
   {
     id: 6800, date: "2025.10.20", tag: "課程", color: "blue", num: "07",
     title: "114 學年度第 1 學期學生「Unity 證照輔導班」",
-    excerpt: "Unity Certification User (UCU) 國際認證 · 11/29-11/30 · D0625 · Programmer 第二張證照。",
+    excerpt: "Unity Certified User (UCU) 國際認證 · 11/29-11/30 · D0625 · Programmer 第二張證照。",
     link: "#/news/2025-10-20-unity-114-1"
   },
   {
@@ -655,11 +661,11 @@ const AboutChapter = () => (
             <Panel clickable variant="inkbg" style={{ padding: 22, position: "relative", flex: 1 }}
               onClick={() => { window.location.hash = "#labs"; }}>
               <div style={{ fontFamily: "'Bowlby One',sans-serif", fontSize: 56, color: "var(--accent-yellow)", lineHeight: 1 }}>12</div>
-              <div style={{ fontSize: 13, fontWeight: 700, marginTop: 4 }}>間特色實驗室<br/>設計大樓 + H + B1 跨樓層</div>
+              <div style={{ fontSize: 13, fontWeight: 700, marginTop: 4 }}>間特色實驗室<br/>設計大樓 + DB + H + B1 跨樓層</div>
               <div style={{ position: "absolute", bottom: 8, right: 14, fontFamily: "'Bangers',sans-serif", fontSize: 11, letterSpacing: "0.1em", color: "var(--accent-yellow)" }}>探索 →</div>
             </Panel>
             <Panel clickable variant="yellow" style={{ padding: 22, position: "relative", flex: 1, overflow: "hidden" }}
-              onClick={() => { window.location.hash = "#/news/6753"; }}>
+              onClick={() => { window.location.hash = "#/news/2026-08-04-japan-internship-9th"; }}>
               <div style={{ display: "flex", alignItems: "baseline", gap: 6 }}>
                 <div style={{ fontFamily: "'Bowlby One',sans-serif", fontSize: 56, lineHeight: 1 }}>9</div>
                 <div style={{ fontSize: 18, fontWeight: 900 }}>屆</div>

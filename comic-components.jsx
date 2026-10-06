@@ -456,7 +456,7 @@ const TopNav = () => {
       >
         <span /><span /><span />
       </button>
-      <a href="#join" title="查看所有招生管道 — 高中申請 / 科技繁星 / 技優甄選 / 甄選入學 / 特殊選才" style={{
+      <a href="#join" title="查看所有招生管道 — 申請入學 / 甄選入學 / 科技繁星 / 技優甄審 / 登記分發" style={{
         background: "var(--accent-red)", color: "#fff", padding: "8px 14px",
         textDecoration: "none", border: "3px solid var(--paper)",
         boxShadow: "3px 3px 0 var(--paper)", fontFamily: "'Noto Sans TC',sans-serif",
