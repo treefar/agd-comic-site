@@ -5,7 +5,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const here = dirname(fileURLToPath(import.meta.url));
-const VERSION = '20261006c'; // 改 CSS 後一起改，方便在原始碼裡辨認線上是哪一版
+const VERSION = '20261007a'; // 改 CSS 後一起改，方便在原始碼裡辨認線上是哪一版
 
 const FONT_URL =
   'https://fonts.googleapis.com/css2?family=Bangers&family=Bowlby+One&family=Noto+Sans+TC:wght@400;700;900&display=swap';

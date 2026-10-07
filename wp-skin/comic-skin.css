@@ -220,7 +220,9 @@ body:not(.home) .page_head::after {
   white-space: nowrap;
   pointer-events: none;
 }
-body:not(.home) .page_head::after { content: 'AGD COMIC!'; }
+/* 一般頁不放大字，色塊縮成細條（2026-10-07 使用者要求拿掉 AGD COMIC!） */
+body:not(.home) .page_head::after { content: none; }
+body:not(.home) .page_head.page_head { height: 36px !important; }
 /* 有些頁面把精選圖片塞進標題色塊，裁成 110px 高的照片條很難看，統一藏起來 */
 body:not(.home) .page_head img,
 body:not(.home) .post_head img { display: none !important; }
@@ -473,6 +475,26 @@ body:not(.home) .elementor-post__read-more {
   font-weight: 900 !important;
 }
 body:not(.home) .elementor-divider-separator { border-color: var(--agdc-ink) !important; border-top-width: 4px !important; }
+
+/* 最新消息頁（page 571）與分類彙整：拿掉右側欄，文章改成整齊方塊 */
+body:not(.home).page-id-571 #sidebar,
+body:not(.home).archive #sidebar { display: none !important; }
+body:not(.home).page-id-571 .single_wrap,
+body:not(.home).archive .lay4_wrap { width: 100% !important; float: none !important; }
+body:not(.home).page-id-571 .elementor-posts-container { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; gap: 28px !important; }
+body:not(.home).page-id-571 .elementor-post__thumbnail { padding-bottom: 66% !important; }
+body:not(.home).page-id-571 .elementor-post__title {
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  font-size: 16px !important;
+}
+body:not(.home).page-id-571 .elementor-post__excerpt { display: none !important; }
+@media (max-width: 1024px) {
+  body:not(.home).page-id-571 .elementor-posts-container { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 20px !important; }
+}
+@media (max-width: 480px) {
+  body:not(.home).page-id-571 .elementor-posts-container { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 12px !important; }
+  body:not(.home).page-id-571 .elementor-post__title { font-size: 14px !important; }
+}
 
 /* ---------- 10. 頁尾 ---------- */
 body:not(.home) #footer {
