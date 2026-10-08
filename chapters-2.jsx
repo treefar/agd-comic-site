@@ -549,10 +549,10 @@ const WorksChapter = () => (
                 ★ FULL ARCHIVE
               </div>
               <div style={{ fontFamily: "'Noto Sans TC',sans-serif", fontWeight: 900, fontSize: 28, color: "var(--paper)", lineHeight: 1.2 }}>
-                看完整榮譽史 · 連載 15 年
+                看完整榮譽史 · 連載 16 年
               </div>
               <div style={{ fontSize: 13, color: "var(--paper)", opacity: 0.85, marginTop: 6 }}>
-                2011 → 2025 · 100+ 件得獎 + 20+ 國際影展 · 從早期金獎到最近巴塞隆納/印度孟買/西班牙停格…
+                2011 → 2026 · 130+ 件得獎 + 20+ 國際影展 · 從早期金獎到最近巴塞隆納/印度孟買/西班牙停格…
               </div>
             </div>
             <div style={{ position: "relative", fontFamily: "'Bowlby One',sans-serif", fontSize: 16, color: "var(--accent-yellow)", padding: "10px 18px", border: "3px solid var(--accent-yellow)" }}>

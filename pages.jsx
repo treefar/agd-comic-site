@@ -41,7 +41,7 @@ const localHref = (type, slug) => `#/${type}/${encodeURIComponent(slug)}`;
 
 // Data cache (loaded once per type)
 // _BUILD_VER 跟 Comic Site.html 的 jsx ?v= 同步 bump，避免瀏覽器 cache JSON 舊版
-const _BUILD_VER = '20261008i';
+const _BUILD_VER = '20261008j';
 const _dataCache = {};
 const _MIN_LOAD_MS = 850; // Loading 至少顯示這麼久（讓動畫看得到）
 const useDataset = (type) => {
@@ -1359,7 +1359,7 @@ const EnglishDetail = ({ slug }) => {
               {[
                 { n: "9", u: "COHORTS", t: "Japan internship program (Hautecouture Inc.)" },
                 { n: "12", u: "LABS", t: "Motion capture, VR, stop-motion and more" },
-                { n: "100+", u: "AWARDS", t: "Domestic & international, since 2011" },
+                { n: "130+", u: "AWARDS", t: "Domestic & international, since 2011" },
                 { n: "94%", u: "EMPLOYED", t: "Average for 2020–2023 graduates (MOE survey)" },
               ].map((h, i) => (
                 <div key={i} style={{
