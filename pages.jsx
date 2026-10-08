@@ -41,7 +41,7 @@ const localHref = (type, slug) => `#/${type}/${encodeURIComponent(slug)}`;
 
 // Data cache (loaded once per type)
 // _BUILD_VER 跟 Comic Site.html 的 jsx ?v= 同步 bump，避免瀏覽器 cache JSON 舊版
-const _BUILD_VER = '20261008h';
+const _BUILD_VER = '20261008i';
 const _dataCache = {};
 const _MIN_LOAD_MS = 850; // Loading 至少顯示這麼久（讓動畫看得到）
 const useDataset = (type) => {
@@ -2263,7 +2263,7 @@ const ParentsGuide = () => {
   const emp = st("employment");        // data/stats.json slug=employment：平均就業比 94%、5 年總畢業生 300+、109-112 學年度各年就業比
   const cert = st("certifications");   // data/stats.json slug=certifications：109-113 學年度共 811 張證照（subtitle）
   const partners = st("partners");     // data/stats.json slug=partners：5 年 8 家戰略 MOU + 42 件產學計畫（subtitle）
-  const intl = st("international");    // data/stats.json slug=international：合作公司 8、國家／地區 6、近 4 年赴日 22 人，與各年赴日人數
+  const intl = st("international");    // data/stats.json slug=international：合作公司 8、合作國家 3、近 4 年赴日 22 人，與各年赴日人數
   const japanList = intl ? ((intl.groups.find((g) => g.year.includes("赴日")) || {}).items || []) : [];
   const sch = admission.find((x) => x.slug === "scholarship"); // data/admission.json slug=scholarship：10 萬 ~ 43 萬、設計群 420／商管群 400 分門檻
   const visit = admission.find((x) => x.slug === "visit");     // data/admission.json slug=visit：總機 07-6158000、系助理分機 6102、地址

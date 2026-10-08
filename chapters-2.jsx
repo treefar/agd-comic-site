@@ -380,10 +380,10 @@ const LabsChapter = () => (
             SIDE QUEST · 國際實習
           </div>
           <div className="h-display" style={{ fontSize: 24, marginBottom: 8 }}>
-            日本 HC 公司 · 第 9 屆合作 · 6 國 8 公司
+            日本 HC 公司 · 第 9 屆合作 · 3 國 8 公司
           </div>
           <div style={{ fontSize: 13, lineHeight: 1.7, fontWeight: 500 }}>
-            學海築夢計畫近 4 年共派 22 位學生赴日本愛媛縣松山市 Hautecouture 株式會社實習。合作網絡涵蓋日本、韓國、印尼共 6 國 8 家公司。
+            學海築夢計畫近 4 年共派 22 位學生赴日本愛媛縣松山市 Hautecouture 株式會社實習。合作網絡涵蓋日本、韓國、印尼共 3 國 8 家公司。
           </div>
           <div style={{ position: "absolute", bottom: 12, right: 22, fontFamily: "'Bangers',sans-serif", fontSize: 11, letterSpacing: "0.1em" }}>
             完整名單 →
