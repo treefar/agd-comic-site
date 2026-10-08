@@ -16,6 +16,7 @@
   --agdc-muted: #5a5148;
   --agdc-halftone: rgba(15, 13, 10, 0.18);
   --agdc-red: #e63946;
+  --agdc-red-text: #c8102e; /* 白字底或米白底上的朱紅：對比 5.6 以上，過 WCAG AA（#e63946 只有 4.0） */
   --agdc-blue: #1d4ed8;
   --agdc-yellow: #ffd60a;
   --agdc-pink: #ff70a6;
@@ -398,7 +399,7 @@ body:not(.home) input[type=submit],
 body:not(.home) button,
 body:not(.home) .elementor-button,
 body:not(.home) a.more-link {
-  background: var(--agdc-red) !important;
+  background: var(--agdc-red-text) !important;
   color: #fffaf0 !important;
   border: 3px solid var(--agdc-ink) !important;
   box-shadow: 3px 3px 0 var(--agdc-ink) !important;
@@ -467,7 +468,7 @@ body:not(.home) .elementor-post__thumbnail__link {
   font-weight: 900;
 }
 body:not(.home) .elementor-post__meta-data {
-  color: var(--agdc-red) !important;
+  color: var(--agdc-red-text) !important;
   font-weight: 700;
 }
 body:not(.home) .elementor-post__read-more {
@@ -525,7 +526,7 @@ body:not(.home) #copyright,
 body:not(.home) #copyright a { color: var(--agdc-paper2) !important; }
 /* 回到頂端鈕：朱紅方塊 */
 body:not(.home) a.to_top {
-  background: var(--agdc-red) !important;
+  background: var(--agdc-red-text) !important;
   color: #fff !important;
   border: 3px solid var(--agdc-ink);
   box-shadow: 3px 3px 0 var(--agdc-ink);
