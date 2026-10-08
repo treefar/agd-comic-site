@@ -113,7 +113,9 @@ console.log(`PASS 招生導引 ${cases.length} 組代表案例、${combos} 種�
   for (const k of Object.keys(want)) {
     const list = quizWallPick(wall, k);
     console.log(`  ${k}: ` + list.map((it) => `${it.title}[${it.cats.join('+')}]`).join('、'));
-    if (list.length !== 6) qf.push(`${k} 應有 6 件，實際 ${list.length}`);
+    // 動畫、遊戲派最多 20 件（資料不足就全放），美術、跨域派 6 件
+    const expect = ['anim', 'game'].includes(k) ? Math.min(20, wall.filter((it) => it.cats.includes(want[k][0])).length) : 6;
+    if (list.length !== expect) qf.push(`${k} 應有 ${expect} 件，實際 ${list.length}`);
     if (new Set(list).size !== list.length) qf.push(`${k} 有重複作品`);
     if (list.some((it) => !it.cats.some((c) => want[k].includes(c)))) qf.push(`${k} 混進不相干分類`);
     if (list.some((it) => it.cats.includes('其他') && it.cats.length === 1)) qf.push(`${k} 混進「其他」（形象片、教學）`);
@@ -125,5 +127,5 @@ console.log(`PASS 招生導引 ${cases.length} 組代表案例、${combos} 種�
   if (!cross.some((it) => it.cats.includes('動畫')) || !cross.some((it) => it.cats.includes('遊戲'))) qf.push('跨域派要同時有動畫與遊戲');
   if (quizWallPick(wall, 'nope').length !== 0) qf.push('未知派別應回傳空陣列');
   if (qf.length) { console.error('FAIL 測驗作品牆\n- ' + qf.join('\n- ')); process.exit(1); }
-  console.log('PASS 測驗結果作品牆：四派各 6 件、分類正確、得獎作品優先');
+  console.log('PASS 測驗結果作品牆：動畫、遊戲派全放（上限 20）、美術與跨域派 6 件、分類正確、得獎作品優先');
 }

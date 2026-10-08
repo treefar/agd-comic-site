@@ -41,7 +41,7 @@ const localHref = (type, slug) => `#/${type}/${encodeURIComponent(slug)}`;
 
 // Data cache (loaded once per type)
 // _BUILD_VER 跟 Comic Site.html 的 jsx ?v= 同步 bump，避免瀏覽器 cache JSON 舊版
-const _BUILD_VER = '20261008f';
+const _BUILD_VER = '20261008g';
 const _dataCache = {};
 const _MIN_LOAD_MS = 850; // Loading 至少顯示這麼久（讓動畫看得到）
 const useDataset = (type) => {
@@ -2093,10 +2093,10 @@ const buildWall = (works, videos, news) => {
 };
 
 // ---------- 測驗結果頁：這一派的學長姐得獎作品（取代原本的插圖） ----------
-// 得獎作品優先（works.json 與新聞得獎專輯），影片庫作品排後面；每派最多 6 件
+// 得獎作品優先（works.json 與新聞得獎專輯），影片庫作品排後面；動畫、遊戲派最多 20 件（使用者 2026-10-08），其他派 6 件
 const QUIZ_WALL = {
-  anim: { title: "動畫派學長姐的得獎作品", cats: ["動畫"] },
-  game: { title: "遊戲派學長姐的得獎作品", cats: ["遊戲"] },
+  anim: { title: "動畫派學長姐的得獎作品", cats: ["動畫"], max: 20 },
+  game: { title: "遊戲派學長姐的得獎作品", cats: ["遊戲"], max: 20 },
   // 資料裡的插畫只有 1 件，後面接動畫得獎作品
   art: { title: "美術派看這裡：插畫首獎與動畫得獎作品", cats: ["美術插畫", "動畫"] },
   cross: { title: "跨域派：動畫、遊戲都拿過獎", cats: ["動畫", "遊戲"], mix: true },
@@ -2105,6 +2105,7 @@ const QUIZ_WALL_MAX = 6;
 const quizWallPick = (all, k) => {
   const spec = QUIZ_WALL[k];
   if (!spec) return [];
+  const max = spec.max || QUIZ_WALL_MAX;
   const rank = (it) => (it.key.startsWith("w-") ? 0 : it.key.startsWith("n-") ? 1 : 2);
   const ranked = all.map((it, i) => ({ it, i })).sort((a, b) => rank(a.it) - rank(b.it) || a.i - b.i).map((x) => x.it);
   if (spec.mix) {
@@ -2112,13 +2113,13 @@ const quizWallPick = (all, k) => {
     const both = ranked.filter((it) => spec.cats.every((c) => it.cats.includes(c)));
     const pools = spec.cats.map((c) => ranked.filter((it) => it.cats.includes(c) && !both.includes(it)));
     const out = [...both];
-    for (let i = 0; out.length < QUIZ_WALL_MAX && pools.some((p) => p.length > i); i++) pools.forEach((p) => { if (p[i] && out.length < QUIZ_WALL_MAX) out.push(p[i]); });
-    return out.slice(0, QUIZ_WALL_MAX);
+    for (let i = 0; out.length < max && pools.some((p) => p.length > i); i++) pools.forEach((p) => { if (p[i] && out.length < max) out.push(p[i]); });
+    return out.slice(0, max);
   }
   // 依 cats 的順序：前面的分類全部放完才放後面的
   const out = [];
   spec.cats.forEach((c) => ranked.forEach((it) => { if (it.cats.includes(c) && !out.includes(it)) out.push(it); }));
-  return out.slice(0, QUIZ_WALL_MAX);
+  return out.slice(0, max);
 };
 
 const QuizWorks = ({ k, name, color }) => {
