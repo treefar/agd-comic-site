@@ -41,7 +41,7 @@ const localHref = (type, slug) => `#/${type}/${encodeURIComponent(slug)}`;
 
 // Data cache (loaded once per type)
 // _BUILD_VER 跟 Comic Site.html 的 jsx ?v= 同步 bump，避免瀏覽器 cache JSON 舊版
-const _BUILD_VER = '20261008b';
+const _BUILD_VER = '20261008c';
 const _dataCache = {};
 const _MIN_LOAD_MS = 850; // Loading 至少顯示這麼久（讓動畫看得到）
 const useDataset = (type) => {
@@ -1864,12 +1864,437 @@ const ReelsDetail = ({ slug }) => {
 };
 
 // =========================================================
+// 預覽功能（?preview=new 才出現）：招生管道導引、作品集牆、家長懶人包
+// 沒帶 ?preview=new 時：路由維持 404、入口按鈕不出現，外觀與行為和原站相同
+// 正式公開時：拿掉 isPreviewNew / usePreviewNew 的判斷即可
+// =========================================================
+const isPreviewNew = () => typeof window !== "undefined" && /[?&]preview=new\b/.test(window.location.search);
+// 首頁是預渲染後 hydrate，第一次 render 必須與伺服端一致（都不顯示），掛載後才依網址打開
+const usePreviewNew = () => {
+  const [on, setOn] = React.useState(false);
+  React.useEffect(() => { setOn(isPreviewNew()); }, []);
+  return on;
+};
+
+// 共用：漫畫風按鈕與小標
+const PV_BTN = { display: "inline-block", fontFamily: "'Noto Sans TC',sans-serif", fontWeight: 900, fontSize: 15, padding: "8px 14px", border: "3px solid var(--ink)", boxShadow: "3px 3px 0 var(--ink)", textDecoration: "none", cursor: "pointer", color: "var(--ink)", background: "var(--paper)" };
+const PvLabel = ({ children, color }) => (
+  <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 14, letterSpacing: "0.1em", marginBottom: 8, color: color || "inherit" }}>{children}</div>
+);
+
+// ---------- 1. 招生管道導引 #/guide/start ----------
+const GUIDE_Q = [
+  { key: "school", q: "你現在就讀（或畢業於）哪一種學校？", a: [["hs", "普通型高中"], ["voc", "高職或綜合高中"], ["work", "已經畢業或在職，想邊工作邊讀"]] },
+  { key: "award", q: "有沒有技藝技能競賽得獎或證照？", a: [["award", "有全國級或國際級技藝技能競賽得獎"], ["cert", "沒有得獎，但有證照"], ["none", "都還沒有"]] },
+  { key: "route", q: "你想靠哪一種成績或資料上大學？", a: [["gsat", "學測成績"], ["tcte", "統測成績"], ["school", "在校成績（由學校推薦）"], ["portfolio", "作品集與書面審查"]] },
+];
+
+// 判定：回傳 1–2 個 data/admission.json 的 slug（第一個是最推薦）
+// 依據 admission.json 各管道「適用對象」：申請入學＝高中生持學測；甄選入學＝高職／綜高採統測；
+// 科技繁星＝應屆高職／綜高、學校推薦；技優甄審＝技藝技能競賽得獎者；登記分發＝參加統測的考生；進修部＝在職、二度就讀
+const guidePick = (school, award, route) => {
+  if (school === "work") return ["evening"];
+  if (school === "hs") return route === "tcte" ? ["joint"] : ["high-school-application"];
+  const byRoute = { tcte: ["selection", "joint"], portfolio: ["selection"], school: ["tech-star", "selection"], gsat: ["selection", "joint"] };
+  const base = byRoute[route] || ["selection", "joint"];
+  if (award === "award") return ["tech-elite", base[0]];
+  return base;
+};
+
+// 從管道時程找出「晚於 now」的最近一個日期；全部都已過去就回傳 null（不推估明年日期）
+const guideNextDate = (timeline, now) => {
+  let best = null;
+  for (const t of timeline || []) {
+    const m = String(t.date).match(/(\d{4})\/(\d{2})\/(\d{2})/);
+    if (!m) continue;
+    const d = new Date(+m[1], +m[2] - 1, +m[3]);
+    if (d > now && (!best || d < best.date)) best = { date: d, label: t.label, raw: t.date };
+  }
+  return best;
+};
+
+const GuideDetail = () => {
+  const data = useDataset("admission");
+  const [ans, setAns] = React.useState({});
+  const [step, setStep] = React.useState(0);
+  if (!data) return <Loading />;
+  const done = step >= GUIDE_Q.length;
+  const pick = (key, val) => {
+    setAns({ ...ans, [key]: val });
+    // 已畢業／在職直接看結果（進修部），不用再答後兩題
+    setStep(key === "school" && val === "work" ? GUIDE_Q.length : step + 1);
+  };
+  const restart = () => { setAns({}); setStep(0); };
+
+  if (!done) {
+    const cur = GUIDE_Q[step];
+    return (
+      <section className="chapter">
+        <div className="container">
+          <BackBar />
+          <DetailHeader tag="導" title="我適合哪個入學管道？" sub={`3 題 · 第 ${step + 1} / ${GUIDE_Q.length} 題`} />
+          <div className="comic-page">
+            <div className="comic-tier tier-1">
+              <Panel style={{ padding: 26 }}>
+                <div style={{ height: 10, border: "3px solid var(--ink)", background: "var(--paper)", marginBottom: 18 }}>
+                  <div style={{ height: "100%", width: `${(step / GUIDE_Q.length) * 100}%`, background: "var(--accent-blue)", transition: "width 0.2s" }} />
+                </div>
+                <div className="h-display" style={{ fontSize: "clamp(22px, 3.4vw, 34px)", lineHeight: 1.3 }}>Q{step + 1}. {cur.q}</div>
+                <div className="pv-grid" style={{ marginTop: 18 }}>
+                  {cur.a.map(([val, text], k) => (
+                    <button key={val} onClick={() => pick(cur.key, val)} style={{
+                      textAlign: "left", fontFamily: "'Noto Sans TC',sans-serif", fontWeight: 800, fontSize: 16, lineHeight: 1.5,
+                      padding: "14px 16px", background: k % 2 ? "var(--accent-yellow)" : "#fff",
+                      color: "var(--ink)", border: "3px solid var(--ink)", boxShadow: "4px 4px 0 var(--ink)", cursor: "pointer"
+                    }}>
+                      <b style={{ fontFamily: "'Bangers',sans-serif", marginRight: 8 }}>{"ABCD"[k]}</b>{text}
+                    </button>
+                  ))}
+                </div>
+              </Panel>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  const slugs = guidePick(ans.school, ans.award, ans.route);
+  const picks = slugs.map((s) => data.find((x) => x.slug === s)).filter(Boolean);
+  const now = new Date();
+  const scholarship = data.find((x) => x.slug === "scholarship");
+  // 補充說明：只轉述 admission.json 既有文字的意思，不另外推估
+  const notes = [];
+  if (ans.school === "hs" && ans.route === "school") notes.push("科技繁星限應屆高職／綜合高中，而且已報名大學繁星推薦就不能重複報名科技繁星；普通型高中建議走申請入學。");
+  if (ans.school === "hs" && ans.award === "award") notes.push("技優甄審的適用對象是持技藝技能競賽得獎證明的高職應屆畢業生；高中生仍以申請入學為主。");
+  if (ans.school === "voc" && ans.route === "gsat") notes.push("申請入學的適用對象是高中應屆畢業生（持學測成績）；高職／綜合高中的主力是統測相關管道。");
+  if (slugs.includes("tech-star")) notes.push("科技繁星一旦錄取且未放棄資格，就不能再報名其他四技入學管道，記得先和學校老師討論順序。");
+  return (
+    <section className="chapter">
+      <div className="container">
+        <BackBar />
+        <DetailHeader tag="導" title="你的推薦管道" sub="我適合哪個入學管道？" />
+        <div className="comic-page">
+          <div className="comic-tier tier-1">
+            <Panel variant="yellow" style={{ padding: 16 }}>
+              <div style={{ fontWeight: 900, fontSize: 15, lineHeight: 1.6 }}>
+                以 115 學年度時程為參考，116 學年度簡章公布後更新。名額與日期以當年度招生簡章為準。
+              </div>
+            </Panel>
+          </div>
+          {picks.map((a, i) => {
+            const next = guideNextDate(a.timeline, now);
+            return (
+              <div className="comic-tier tier-1" key={a.slug}>
+                <Panel variant={i === 0 ? "red" : ""} className={i === 0 ? "" : "bg-halftone-light"} style={{ padding: 24, position: "relative", color: i === 0 ? "#fff" : "var(--ink)" }}>
+                  <PvLabel color={i === 0 ? "var(--accent-yellow)" : "var(--accent-blue)"}>{i === 0 ? "BEST MATCH · 最推薦" : "ALSO TRY · 也可以搭配"}</PvLabel>
+                  <div className="h-display" style={{ fontSize: "clamp(26px, 4vw, 40px)", lineHeight: 1.1 }}>{a.title}</div>
+                  <div style={{ fontSize: 14, fontWeight: 800, marginTop: 8, lineHeight: 1.6 }}>{a.year} · 名額 {a.quota}</div>
+                  {a.schedule_short && <div style={{ fontSize: 14, fontWeight: 700, marginTop: 4, lineHeight: 1.6 }}>115 學年度時程：{a.schedule_short}</div>}
+                  {next && <div style={{ fontSize: 14, fontWeight: 900, marginTop: 6 }}>下一個時程：{next.label}（{next.raw}），還有 {Math.ceil((next.date - now) / 86400000)} 天</div>}
+                  {a.summary && <div style={{ fontSize: 15, fontWeight: 700, marginTop: 10, lineHeight: 1.7 }}>{a.summary}</div>}
+                  {a.key_notes && (
+                    <ul style={{ margin: "10px 0 0", paddingLeft: 20, lineHeight: 1.8, fontSize: 14, fontWeight: 600 }}>
+                      {a.key_notes.slice(0, 2).map((n) => <li key={n}>{n}</li>)}
+                    </ul>
+                  )}
+                  <a href={`#/admission/${a.slug}`} style={{ ...PV_BTN, marginTop: 14, background: i === 0 ? "var(--accent-yellow)" : "var(--ink)", color: i === 0 ? "var(--ink)" : "var(--paper)" }}>看{a.title}完整說明 →</a>
+                </Panel>
+              </div>
+            );
+          })}
+          {(notes.length > 0 || (slugs.includes("joint") && scholarship)) && (
+            <div className="comic-tier tier-1">
+              <Panel style={{ padding: 20 }}>
+                <PvLabel>NOTE · 小提醒</PvLabel>
+                <ul style={{ margin: 0, paddingLeft: 20, lineHeight: 1.8, fontSize: 14, fontWeight: 700 }}>
+                  {notes.map((n) => <li key={n}>{n}</li>)}
+                  {slugs.includes("joint") && scholarship && <li>統測成績達標、登記分發第一志願填動遊系，可同步爭取 <a href="#/admission/scholarship" style={{ color: "var(--ink)", fontWeight: 900 }}>{scholarship.title}（{scholarship.quota}）</a>。</li>}
+                </ul>
+              </Panel>
+            </div>
+          )}
+          <div className="comic-tier tier-1">
+            <Panel variant="inkbg" style={{ padding: 20, display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center", justifyContent: "space-between" }}>
+              <div style={{ color: "var(--paper)", fontWeight: 900, fontSize: 18 }}>也做做看：你是哪一派？</div>
+              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                <a href="#/quiz/start" style={{ ...PV_BTN, background: "var(--accent-yellow)" }}>去測驗 →</a>
+                <button onClick={restart} style={PV_BTN}>重新選一次</button>
+                <a href={LINE_URL} target="_blank" rel="noopener" style={{ ...PV_BTN, background: "#06C755", color: "#fff" }}>LINE 問系辦</a>
+              </div>
+            </Panel>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ---------- 2. 作品集牆 #/works/all ----------
+const WALL_CATS = ["全部", "動畫", "遊戲", "美術插畫", "其他"];
+// 原始欄位值 → 牆上分類（works.json 的 kind、videos.json 的 category、news.json gallery 的 category）；對不到的一律歸「其他」
+const WALL_KIND_MAP = {
+  "2D 動畫": ["動畫"], "原創動畫": ["動畫"], "廣告動畫": ["動畫"], "動畫": ["動畫"],
+  "動畫 + 遊戲": ["動畫", "遊戲"], "遊戲": ["遊戲"], "插畫": ["美術插畫"],
+  "Animation Short Film · 動畫短片": ["動畫"], "Animation · 動畫組": ["動畫"], "Game Design · 遊戲組": ["遊戲"],
+};
+// 不是學生作品的條目不上牆（works.json 的教師學術榮譽）
+const WALL_EXCLUDE_KINDS = ["學術榮譽"];
+const wallCats = (raw) => WALL_KIND_MAP[raw] || ["其他"];
+const wallKey = (title) => { const m = String(title).match(/《([^》]+)》/); return (m ? m[1] : String(title)).replace(/\s+/g, "").toLowerCase(); };
+const ytIdOf = (url) => { const m = String(url || "").match(/[?&]v=([\w-]{11})/); return m ? m[1] : null; };
+
+// 彙整三個資料來源；同名作品合併（保留先出現的詳細頁連結，補上 YouTube 與分類）
+const buildWall = (works, videos, news) => {
+  const items = [];
+  const byKey = {};
+  const add = (it) => {
+    const k = wallKey(it.title);
+    const old = byKey[k];
+    if (old) {
+      if (!old.yt && it.yt) old.yt = it.yt;
+      if (!old.img && it.img) old.img = it.img;
+      it.cats.forEach((c) => { if (!old.cats.includes(c)) old.cats.push(c); });
+      return;
+    }
+    byKey[k] = it;
+    items.push(it);
+  };
+  (works || []).forEach((w) => {
+    if (WALL_EXCLUDE_KINDS.includes(w.kind)) return;
+    add({ key: "w-" + w.id, title: w.title, img: w.image || null, cats: [...wallCats(w.kind)], raw: w.kind, sub: [w.year, w.award].filter(Boolean).join(" · "), link: "#/works/" + w.id, yt: null });
+  });
+  (news || []).forEach((n) => (n.gallery || []).forEach((g, i) => {
+    const yt = ytIdOf(((g.socials || []).find((s) => s.type === "yt") || {}).url);
+    add({ key: "n-" + n.slug + "-" + i, title: g.title, img: g.image || null, cats: [...wallCats(g.category)], raw: g.category, sub: g.mentor ? `指導老師：${g.mentor}` : "", link: "#/news/" + n.slug, yt });
+  }));
+  (videos || []).forEach((v) => {
+    add({ key: "v-" + v.id, title: v.title, img: `https://img.youtube.com/vi/${v.id}/hqdefault.jpg`, cats: [...wallCats(v.category)], raw: v.category, sub: v.category || "", link: "#/videos/" + v.id, yt: v.id });
+  });
+  return items;
+};
+
+const WorksWall = () => {
+  const works = useDataset("works");
+  const videos = useDataset("videos");
+  const news = useDataset("news");
+  const [cat, setCat] = React.useState("全部");
+  const [playing, setPlaying] = React.useState(null);
+  if (!works || !videos || !news) return <Loading />;
+  const all = buildWall(works, videos, news);
+  const list = cat === "全部" ? all : all.filter((it) => it.cats.includes(cat));
+  const tagColor = { "動畫": "var(--accent-red)", "遊戲": "var(--accent-blue)", "美術插畫": "#ec4899", "其他": "var(--ink)" };
+  return (
+    <section className="chapter">
+      <div className="container">
+        <BackBar />
+        <DetailHeader tag="作" title="作品集牆" sub={`PORTFOLIO WALL · ${list.length} WORKS`} />
+        <div role="tablist" aria-label="作品分類" style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
+          {WALL_CATS.map((c) => {
+            const n = c === "全部" ? all.length : all.filter((it) => it.cats.includes(c)).length;
+            return (
+              <button key={c} role="tab" aria-selected={c === cat} onClick={() => { setCat(c); setPlaying(null); }} style={{
+                ...PV_BTN, fontSize: 14, padding: "4px 12px", boxShadow: "2px 2px 0 var(--ink)",
+                color: c === cat ? "#fff" : "var(--ink)", background: c === cat ? "var(--ink)" : "var(--paper)"
+              }}>{c}（{n}）</button>
+            );
+          })}
+        </div>
+        <div className="pv-grid pv-grid--cards">
+          {list.map((it) => (
+            <Panel key={it.key} style={{ padding: 0, overflow: "hidden", display: "flex", flexDirection: "column" }}>
+              <div style={{ position: "relative", aspectRatio: "16/9", background: "var(--ink)", borderBottom: "3px solid var(--ink)" }}>
+                {playing === it.key ? (
+                  <iframe title={it.title} src={`https://www.youtube-nocookie.com/embed/${it.yt}?autoplay=1&rel=0`}
+                    allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen
+                    style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }} />
+                ) : it.yt ? (
+                  <button onClick={() => setPlaying(it.key)} aria-label={"播放 " + it.title}
+                    style={{ position: "absolute", inset: 0, width: "100%", height: "100%", padding: 0, border: 0, cursor: "pointer", background: "none" }}>
+                    {it.img && <img src={it.img} alt={it.title} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />}
+                    <span style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%,-50%) rotate(-3deg)", background: "var(--accent-red)", color: "#fff", fontFamily: "'Bangers',sans-serif", fontSize: 20, padding: "4px 14px", border: "4px solid var(--paper)", boxShadow: "4px 4px 0 var(--ink)" }}>▶ PLAY</span>
+                  </button>
+                ) : (
+                  <a href={it.link} aria-label={"看 " + it.title + " 詳細介紹"} style={{ position: "absolute", inset: 0, display: "block" }}>
+                    {it.img && <img src={it.img} alt={it.title} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />}
+                  </a>
+                )}
+              </div>
+              <div style={{ padding: "10px 12px 12px", flex: 1, display: "flex", flexDirection: "column", gap: 6 }}>
+                <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                  {it.cats.map((c) => <span key={c} style={{ fontSize: 11, fontWeight: 900, color: "#fff", background: tagColor[c], padding: "1px 8px", border: "2px solid var(--ink)" }}>{c}</span>)}
+                </div>
+                <div style={{ fontWeight: 900, fontSize: 15, lineHeight: 1.4 }}>{it.title}</div>
+                {it.sub && <div style={{ fontSize: 12, fontWeight: 700, opacity: 0.75, lineHeight: 1.5 }}>{it.sub}</div>}
+                <a href={it.link} style={{ marginTop: "auto", alignSelf: "flex-end", fontWeight: 900, fontSize: 13, color: "var(--ink)" }}>詳細 →</a>
+              </div>
+            </Panel>
+          ))}
+        </div>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 24, padding: "20px 4px 12px", borderTop: "3px dashed var(--ink)", fontFamily: "'Bangers',sans-serif", letterSpacing: "0.08em", fontSize: 14, flexWrap: "wrap", gap: 10 }}>
+          <a href="#works" style={{ color: "var(--ink)", textDecoration: "none" }}>← 回榮譽戰績</a>
+          <a href="#/reels/all" style={{ color: "var(--ink)", textDecoration: "none" }}>滑影片模式 →</a>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// 首頁作品區的入口（預覽模式才顯示；hydrate 安全）
+const PreviewWorksLink = () => {
+  const on = usePreviewNew();
+  if (!on) return null;
+  return (
+    <div style={{ textAlign: "right", marginTop: 14 }}>
+      <a href="#/works/all" style={{ ...PV_BTN, background: "var(--accent-yellow)" }}>看全部作品 →</a>
+    </div>
+  );
+};
+
+// ---------- 3. 家長懶人包 #/parents/guide ----------
+const PvSection = ({ num, title, children, variant, className }) => (
+  <div className="comic-tier tier-1">
+    <Panel variant={variant || ""} className={className || ""} style={{ padding: 24 }}>
+      <PvLabel color={variant === "inkbg" ? "var(--accent-yellow)" : "var(--accent-red)"}>PART {num}</PvLabel>
+      <div className="h-display" style={{ fontSize: "clamp(24px, 3.2vw, 34px)", lineHeight: 1.2, marginBottom: 12, color: variant === "inkbg" ? "var(--paper)" : undefined }}>{title}</div>
+      {children}
+    </Panel>
+  </div>
+);
+const PvStats = ({ items, dark }) => (
+  <div style={{ display: "flex", gap: 18, flexWrap: "wrap", margin: "6px 0 12px" }}>
+    {items.map((h) => (
+      <div key={h.year} style={{ borderLeft: `4px solid ${dark ? "var(--accent-yellow)" : "var(--accent-red)"}`, paddingLeft: 10 }}>
+        <div style={{ fontFamily: "'Bowlby One',sans-serif", fontSize: 30, lineHeight: 1 }}>{h.count}</div>
+        <div style={{ fontSize: 12, fontWeight: 800, marginTop: 4 }}>{h.year}</div>
+      </div>
+    ))}
+  </div>
+);
+const PV_LINK = { fontWeight: 900, color: "inherit" };
+
+const ParentsGuide = () => {
+  const stats = useDataset("stats");
+  const admission = useDataset("admission");
+  const labs = useDataset("labs");
+  if (!stats || !admission || !labs) return <Loading />;
+  const st = (slug) => stats.find((x) => x.slug === slug) || null;
+  // 本頁所有數字都由資料檔即時帶出，不在程式裡寫死：
+  const emp = st("employment");        // data/stats.json slug=employment：平均就業比 94%、5 年總畢業生 300+、109-112 學年度各年就業比
+  const cert = st("certifications");   // data/stats.json slug=certifications：109-113 學年度共 811 張證照（subtitle）
+  const partners = st("partners");     // data/stats.json slug=partners：5 年 8 家戰略 MOU + 42 件產學計畫（subtitle）
+  const intl = st("international");    // data/stats.json slug=international：合作公司 8、國家／地區 6、近 4 年赴日 22 人，與各年赴日人數
+  const japanList = intl ? ((intl.groups.find((g) => g.year.includes("赴日")) || {}).items || []) : [];
+  const sch = admission.find((x) => x.slug === "scholarship"); // data/admission.json slug=scholarship：10 萬 ~ 43 萬、設計群 420／商管群 400 分門檻
+  const visit = admission.find((x) => x.slug === "visit");     // data/admission.json slug=visit：總機 07-6158000、系助理分機 6102、地址
+  const c = visit && visit.contact;
+  const mapUrl = c ? "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(c.address) : null;
+  return (
+    <section className="chapter">
+      <div className="container">
+        <BackBar />
+        <DetailHeader tag="家" title="家長懶人包" sub="孩子想讀動畫與遊戲設計？先看這頁" />
+        <div className="comic-page">
+          <div className="comic-tier tier-1">
+            <Panel variant="yellow" style={{ padding: 18 }}>
+              <div style={{ fontWeight: 800, fontSize: 15, lineHeight: 1.8 }}>
+                家長最常問的五件事：畢業後做什麼、能不能出國實習、有沒有獎學金、設備夠不夠、怎麼聯絡系上。以下數字都來自本系網公開資料，點連結可看完整內容。
+              </div>
+            </Panel>
+          </div>
+
+          <PvSection num="01" title="就業與出路" className="bg-halftone-light">
+            {emp && <>
+              <PvStats items={emp.highlights} />
+              <div style={{ fontSize: 14, fontWeight: 700, lineHeight: 1.8 }}>{emp.summary}</div>
+              <ul style={{ margin: "10px 0 0", paddingLeft: 20, lineHeight: 1.8, fontSize: 14, fontWeight: 600 }}>
+                {emp.groups.map((g) => <li key={g.year}>{g.year}：{g.items.join("、")}</li>)}
+              </ul>
+              {emp.note && <div style={{ fontSize: 12, opacity: 0.75, marginTop: 8, lineHeight: 1.7 }}>※ {emp.note}</div>}
+            </>}
+            {cert && <div style={{ fontSize: 14, fontWeight: 800, marginTop: 12, lineHeight: 1.7 }}>證照：{cert.subtitle}。<a href="#/stats/certifications" style={PV_LINK}>看證照成績單 →</a></div>}
+            {partners && <div style={{ fontSize: 14, fontWeight: 800, marginTop: 6, lineHeight: 1.7 }}>業界合作：{partners.subtitle}。<a href="#/stats/partners" style={PV_LINK}>看合作夥伴 →</a></div>}
+            <div style={{ marginTop: 12 }}><a href="#/stats/employment" style={{ ...PV_BTN, background: "var(--accent-yellow)" }}>看畢業生流向 →</a></div>
+          </PvSection>
+
+          <PvSection num="02" title="日本實習" variant="inkbg">
+            {intl && <div style={{ color: "var(--paper)" }}>
+              <PvStats items={intl.highlights} dark />
+              <div style={{ fontSize: 14, fontWeight: 700, lineHeight: 1.8 }}>{intl.summary}</div>
+              {japanList.length > 0 && (
+                <ul style={{ margin: "10px 0 0", paddingLeft: 20, lineHeight: 1.8, fontSize: 14, fontWeight: 600 }}>
+                  {japanList.map((t) => <li key={t}>{t}</li>)}
+                </ul>
+              )}
+              <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 14 }}>
+                <a href="#/stats/international" style={{ ...PV_BTN, background: "var(--accent-yellow)" }}>看國際合作 →</a>
+                <a href="#/news/2026-08-04-japan-internship-9th" style={PV_BTN}>看第九屆赴日實習報導 →</a>
+              </div>
+            </div>}
+          </PvSection>
+
+          <PvSection num="03" title="獎學金">
+            {sch && <>
+              <div style={{ fontSize: 13, fontWeight: 900, color: "var(--accent-red)" }}>{sch.title} · {sch.year} · {sch.quota}</div>
+              <div style={{ fontSize: 15, fontWeight: 700, lineHeight: 1.8, marginTop: 6 }}>{sch.summary}</div>
+              <div style={{ fontSize: 14, lineHeight: 1.85, marginTop: 8, whiteSpace: "pre-line" }}>{sch.content}</div>
+              <div style={{ fontSize: 12, opacity: 0.75, marginTop: 8 }}>※ 以 115 學年度資料為參考，116 學年度簡章公布後更新。</div>
+              <div style={{ marginTop: 12 }}><a href="#/admission/scholarship" style={{ ...PV_BTN, background: "var(--accent-yellow)" }}>看獎學金完整說明 →</a></div>
+            </>}
+          </PvSection>
+
+          <PvSection num="04" title={`實驗室與設備 · ${labs.length} 間`} className="bg-halftone-light">
+            <div className="pv-grid">
+              {labs.map((l) => (
+                <a key={l.slug} href={`#/labs/${l.slug}`} style={{ display: "block", padding: "10px 12px", border: "3px solid var(--ink)", background: "#fff", color: "var(--ink)", textDecoration: "none", boxShadow: "3px 3px 0 var(--ink)" }}>
+                  <div style={{ fontWeight: 900, fontSize: 15 }}>{l.name}</div>
+                  <div style={{ fontSize: 12, fontWeight: 600, opacity: 0.8, marginTop: 4, lineHeight: 1.5 }}>{l.shortDesc}</div>
+                </a>
+              ))}
+            </div>
+          </PvSection>
+
+          <PvSection num="05" title="交通與聯絡" variant="yellow">
+            {c && <div style={{ fontSize: 15, fontWeight: 700, lineHeight: 1.9 }}>
+              <div>地址：{c.address}</div>
+              <div>系辦電話：<a href={"tel:" + c.phone.replace(/-/g, "")} style={PV_LINK}>{c.phone}</a> 轉分機 {c.assistant.ext}（{c.assistant.name}，{c.assistant.title}）</div>
+              <div>Email：<a href={"mailto:" + c.assistant.email} style={PV_LINK}>{c.assistant.email}</a></div>
+              <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 12 }}>
+                <a href={mapUrl} target="_blank" rel="noopener" style={PV_BTN}>在 Google 地圖開啟 →</a>
+                <a href="#/admission/visit" style={{ ...PV_BTN, background: "var(--accent-red)", color: "#fff" }}>預約一日參訪 →</a>
+                <a href={LINE_URL} target="_blank" rel="noopener" style={{ ...PV_BTN, background: "#06C755", color: "#fff" }}>LINE 問系辦</a>
+              </div>
+            </div>}
+          </PvSection>
+
+          <div className="comic-tier tier-1">
+            <Panel variant="inkbg" style={{ padding: 20, display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center", justifyContent: "space-between" }}>
+              <div style={{ color: "var(--paper)", fontWeight: 900, fontSize: 17, lineHeight: 1.6 }}>學雜費、住宿與交通車資訊，請以學校官網公告為準</div>
+              <a href="https://www.stu.edu.tw/" target="_blank" rel="noopener" style={{ ...PV_BTN, background: "var(--accent-yellow)" }}>學雜費與宿舍請見學校官網 →</a>
+            </Panel>
+          </div>
+          <div className="comic-tier tier-1">
+            <Panel style={{ padding: 18, display: "flex", flexWrap: "wrap", gap: 10, alignItems: "center", justifyContent: "space-between" }}>
+              <div style={{ fontWeight: 900, fontSize: 16 }}>想知道孩子適合哪個入學管道？</div>
+              <a href="#/guide/start" style={{ ...PV_BTN, background: "var(--accent-yellow)" }}>3 題找出入學管道 →</a>
+            </Panel>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// =========================================================
 // 浮動按鈕：右下角「測驗」＋「LINE 問系辦」，全站都看得到
 // =========================================================
 const FloatingCTA = () => {
   const btn = { display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none", fontFamily: "'Noto Sans TC',sans-serif", fontWeight: 900, fontSize: 14, padding: "8px 12px", border: "3px solid var(--ink)", boxShadow: "3px 3px 0 var(--ink)", lineHeight: 1.2 };
+  const preview = usePreviewNew(); // ?preview=new 才多兩顆（掛載後才出現，首頁 hydrate 不會不一致）
   return (
     <div style={{ position: "fixed", right: 14, bottom: 14, zIndex: 60, display: "flex", flexDirection: "column", gap: 8, alignItems: "flex-end" }}>
+      {preview && <a href="#/guide/start" style={{ ...btn, background: "var(--accent-blue)", color: "#fff" }}>我適合哪個管道</a>}
+      {preview && <a href="#/parents/guide" style={{ ...btn, background: "var(--paper)", color: "var(--ink)" }}>家長看這裡</a>}
       <a href="#/quiz/start" style={{ ...btn, background: "var(--accent-yellow)", color: "var(--ink)" }}>測驗：你是哪一派？</a>
       <a href={LINE_URL} target="_blank" rel="noopener" style={{ ...btn, background: "#06C755", color: "#fff" }}>LINE 問系辦</a>
     </div>
@@ -1885,7 +2310,7 @@ const DetailView = ({ type, slug }) => {
     case "news":     return <NewsDetail slug={slug} />;
     case "faculty":  return <FacultyDetail slug={slug} />;
     case "labs":     return <LabDetail slug={slug} />;
-    case "works":    return <WorksDetail slug={slug} />;
+    case "works":    return slug === "all" && isPreviewNew() ? <WorksWall /> : <WorksDetail slug={slug} />;
     case "admission":return <AdmissionDetail slug={slug} />;
     case "videos":   return <VideoDetail slug={slug} />;
     case "stats":    return <StatsDetail slug={slug} />;
@@ -1893,8 +2318,11 @@ const DetailView = ({ type, slug }) => {
     case "curriculum": return <CurriculumDetail />;
     case "quiz":     return <QuizDetail slug={slug} />;
     case "reels":    return <ReelsDetail slug={slug} />;
-    default:         return <NotFound type={type} slug={slug} />;
+    // 以下兩條只在 ?preview=new 開放，否則與原站一樣顯示 404
+    case "guide":    return isPreviewNew() ? <GuideDetail /> : <NotFound type={type} slug={slug} />;
+    case "parents":  return isPreviewNew() ? <ParentsGuide /> : <NotFound type={type} slug={slug} />;
+    default:        return <NotFound type={type} slug={slug} />;
   }
 };
 
-Object.assign(window, { useHashRoute, localHref, DetailView, useDataset, FloatingCTA, LINE_URL });
+Object.assign(window, { useHashRoute, localHref, DetailView, useDataset, FloatingCTA, LINE_URL, PreviewWorksLink });
