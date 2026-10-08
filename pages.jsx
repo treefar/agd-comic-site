@@ -41,7 +41,7 @@ const localHref = (type, slug) => `#/${type}/${encodeURIComponent(slug)}`;
 
 // Data cache (loaded once per type)
 // _BUILD_VER 跟 Comic Site.html 的 jsx ?v= 同步 bump，避免瀏覽器 cache JSON 舊版
-const _BUILD_VER = '20261008g';
+const _BUILD_VER = '20261008h';
 const _dataCache = {};
 const _MIN_LOAD_MS = 850; // Loading 至少顯示這麼久（讓動畫看得到）
 const useDataset = (type) => {
@@ -1348,8 +1348,8 @@ const EnglishDetail = ({ slug }) => {
                   We turn passion into portfolios. Our undergraduate program in Kaohsiung, Taiwan trains
                   the next generation of animators, game designers, and interactive media creators —
                   with a curriculum built around <b style={{ color: "var(--accent-yellow)" }}>real industry projects</b>,
-                  <b style={{ color: "var(--accent-yellow)" }}> Japanese / Korean / Indonesian internships</b>,
-                  and a 15-year award track record at international film festivals and game expos.
+                  <b style={{ color: "var(--accent-yellow)" }}> a Japan internship program now in its 9th cohort</b>,
+                  and a 16-year award track record at domestic competitions and international film festivals.
                 </div>
               </div>
               <SFX color="yellow" rotate={-8} size={64} anim="burst" style={{ position: "absolute", top: 18, right: 28 }}>POW!</SFX>
@@ -1358,9 +1358,9 @@ const EnglishDetail = ({ slug }) => {
             <Panel variant="yellow" style={{ padding: 22, display: "flex", flexDirection: "column", justifyContent: "center", gap: 14 }}>
               {[
                 { n: "9", u: "COHORTS", t: "Japan internship program (Hautecouture Inc.)" },
-                { n: "6", u: "COUNTRIES", t: "Asia-Pacific industry partners" },
-                { n: "100+", u: "AWARDS", t: "Domestic & international, 15-year span" },
-                { n: "94%", u: "EMPLOYED", t: "Within 1 year of graduation" },
+                { n: "12", u: "LABS", t: "Motion capture, VR, stop-motion and more" },
+                { n: "100+", u: "AWARDS", t: "Domestic & international, since 2011" },
+                { n: "94%", u: "EMPLOYED", t: "Average for 2020–2023 graduates (MOE survey)" },
               ].map((h, i) => (
                 <div key={i} style={{
                   display: "flex", alignItems: "baseline", gap: 8,
@@ -1380,22 +1380,22 @@ const EnglishDetail = ({ slug }) => {
             {[
               {
                 t: "Industry-Driven Studio",
-                b: "Real briefs from Smilegate, ELF, ZIP-LAB and more. You graduate with a portfolio of shipped pieces, not just classroom exercises.",
+                b: "About 10 industry-funded projects a year, plus 8 overseas partner companies in Japan, Korea and Indonesia. You graduate with a portfolio of real projects, not just classroom exercises.",
                 v: "red", icon: "🎬"
               },
               {
                 t: "Japan Internship",
-                b: "Annual MOE-funded program at Hautecouture Inc. (Matsuyama, Ehime), now in its 9th cohort. 22 students placed in the past 4 years — 2-month paid internship.",
+                b: "Annual MOE-funded program at Hautecouture Inc. (Matsuyama, Ehime), now in its 9th cohort. 22 students placed in the past 4 years; internships last 2 to 3 months.",
                 v: "yellow", icon: "🇯🇵"
               },
               {
                 t: "English & Japanese",
-                b: "English-medium core: Professional English for Digital Media. Free Japanese I & II for everyone — start from zero, exit conversational.",
+                b: "Professional English for Digital Media is taught entirely in English, and Japanese I and II are offered every year.",
                 v: "inkbg", icon: "🗾"
               },
               {
-                t: "South Taiwan Hub",
-                b: "Kaohsiung — Taiwan's animation capital. 10 min to MRT, 25 min to high-speed rail, 35 min to international airport.",
+                t: "Based in Kaohsiung",
+                b: "Our campus is in Yanchao, Kaohsiung, in southern Taiwan, with 12 labs and studios for animation, games and interactive media.",
                 v: "", icon: "🌏"
               },
             ].map((p, i) => (
@@ -1417,10 +1417,10 @@ const EnglishDetail = ({ slug }) => {
                 From sketchbook<br />to published title.
               </div>
               <ul style={{ listStyle: "none", padding: 0, fontSize: 13, lineHeight: 1.9, fontWeight: 700 }}>
-                <li>Y1 · Drawing fundamentals · 2D animation · Game theory</li>
-                <li>Y2 · 3D modelling (Maya / ZBrush) · Unity · Storyboard</li>
-                <li>Y3 · Studio capstone · Industry mentorship · Specialise</li>
-                <li>Y4 · Senior showcase + festival submissions + internship</li>
+                <li>Y1 · Drawing and design fundamentals · Digital media</li>
+                <li>Y2 · 2D / 3D animation · Game engines · Storyboarding</li>
+                <li>Y3 · Choose your track · Industry projects</li>
+                <li>Y4 · Capstone · Graduation showcase · Festivals & internships</li>
               </ul>
             </Panel>
 
@@ -1432,10 +1432,10 @@ const EnglishDetail = ({ slug }) => {
                 Where our<br />grads land.
               </div>
               <ul style={{ listStyle: "none", padding: 0, fontSize: 13, lineHeight: 1.8, fontWeight: 700 }}>
-                <li>🎮 Game studios — Smilegate, IGS, XPEC, Rayark</li>
-                <li>🎬 Animation houses — CGCG, Studio2, Wonderland</li>
+                <li>🎮 Game studios and independent game teams</li>
+                <li>🎬 Animation, film and TV production</li>
                 <li>🎨 Freelance / SOHO illustrator & character designer</li>
-                <li>🏫 Graduate school in Taiwan, Japan, UK, USA</li>
+                <li>🏫 Graduate school in Taiwan and abroad</li>
               </ul>
               <SFX color="yellow" rotate={-6} size={48} style={{ position: "absolute", top: 14, right: 18 }}>JOB!</SFX>
             </Panel>
@@ -1452,11 +1452,11 @@ const EnglishDetail = ({ slug }) => {
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 10, fontSize: 12, lineHeight: 1.6 }}>
                 {[
-                  "🇪🇸 Barcelona Auteur Film Festival — Selection (2024)",
-                  "🇮🇳 Mumbai International Short Film — Winner (2024)",
-                  "🇮🇹 Rome Prisma Independent Film Awards — Selection (2024)",
-                  "🇹🇷 Istanbul-NewYork Short Film — Selection (2024)",
-                  "🇹🇼 ClipStudio International Illustration — GRAND PRIZE",
+                  "🇪🇸 Love Film Festival — Best Fantasy (2026)",
+                  "🇪🇸 Barcelona Author Film Festival — Finalists (2025–26)",
+                  "🇮🇹 Rome Prisma Independent Film Awards — Selection (2025–26)",
+                  "🇮🇳 Mumbai International Film Awards — Animated Short Selection (2025–26)",
+                  "🌏 CLIP STUDIO International Illustration Contest — GRAND PRIZE",
                   "🇹🇼 TISDC, Bahamut ACG, KT Award, Vision Get Wild — multiple wins",
                 ].map((s, i) => (
                   <div key={i} style={{
@@ -1502,11 +1502,9 @@ const EnglishDetail = ({ slug }) => {
               <div style={{ fontSize: 13, lineHeight: 1.9, fontWeight: 700 }}>
                 <div>📧 <a href="mailto:rita@stu.edu.tw" style={{ color: "var(--ink)" }}>rita@stu.edu.tw</a></div>
                 <div>☎ +886-7-6158000 ext. 6100 / 6102</div>
-                <div>📍 6F, Design Building, No. 59 Hengshan Rd.,<br />Yanchao Dist., Kaohsiung 824, Taiwan</div>
+                <div>📍 6F, Design Building, No. 59 Hengshan Rd.,<br />Yanchao Dist., Kaohsiung 82445, Taiwan</div>
               </div>
-              <div style={{ marginTop: 14, fontSize: 11, opacity: 0.7, fontStyle: "italic" }}>
-                We reply in English, Mandarin, or Japanese — pick whichever feels easiest.
-              </div>
+              
             </Panel>
           </div>
 
