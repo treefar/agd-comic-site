@@ -59,6 +59,8 @@ console.log(`PASS 測驗 ${nQ} 題、${cases.length} 組計分案例`);
     if (w !== 1200 || hgt !== 630) shareFails.push(`share-${k}.jpg 尺寸 ${w}x${hgt}，應為 1200x630`);
   }
   if (!src.includes('treefar.link/agd-comic-site/share/')) shareFails.push('pages.jsx 的 shareUrl 沒改用 share 頁');
+  // 未公開期間：分享圖要藏在 ?preview=quiz 後面（公開時連同這行一起拿掉）
+  if (!/QUIZ_SHARE_PREVIEW && <div/.test(src)) shareFails.push('分享圖卡片沒有藏在 QUIZ_SHARE_PREVIEW 後面');
   if (shareFails.length) { console.error('FAIL 分享頁\n- ' + shareFails.join('\n- ')); process.exit(1); }
   console.log('PASS 分享頁 4 張（og:image 1200x630、轉址正確）');
 }

@@ -1709,7 +1709,11 @@ const QuizDetail = ({ slug }) => {
     const track = curriculum && curriculum.tracks ? curriculum.tracks.find((t) => t.key === resultKey) : null;
     const courses = track ? track.courses.flat().map((c) => c.name).slice(0, 8) : [];
     // 系網首頁的 iframe 不會轉交 #/quiz/...，分享改走 share/<派>.html：有專屬預覽圖，點開再轉到結果頁
-    const shareUrl = "https://treefar.link/agd-comic-site/share/" + resultKey + ".html";
+    // 分享圖尚未公開（使用者 2026-10-08：先上網不公開）：網址帶 ?preview=quiz 才啟用；正式公開時拿掉 QUIZ_SHARE_PREVIEW 判斷
+    const QUIZ_SHARE_PREVIEW = typeof window !== "undefined" && /[?&]preview=quiz\b/.test(window.location.search);
+    const shareUrl = QUIZ_SHARE_PREVIEW
+      ? "https://treefar.link/agd-comic-site/share/" + resultKey + ".html"
+      : "https://www.dgd.stu.edu.tw/#/quiz/" + resultKey;
     const shareImg = "images/quiz/share-" + resultKey + ".jpg";
     const share = async () => {
       const text = `我是動遊系的「${r.name}」！你是哪一派？`;
@@ -1736,12 +1740,12 @@ const QuizDetail = ({ slug }) => {
                 </div>
               </Panel>
             </div>
-            <div className="comic-tier tier-1">
+            {QUIZ_SHARE_PREVIEW && <div className="comic-tier tier-1">
               <Panel style={{ padding: 14, textAlign: "center" }}>
                 <img src={shareImg} alt={`YOU ARE ${r.name} ${r.en}`} width="1200" height="630" loading="lazy" style={{ width: "100%", height: "auto", display: "block", border: "3px solid var(--ink)" }} />
                 <a href={shareImg} download={`agd-quiz-${resultKey}.jpg`} style={{ display: "inline-block", marginTop: 10, fontWeight: 900, color: "var(--ink)" }}>存下這張圖，貼到 IG 限動 →</a>
               </Panel>
-            </div>
+            </div>}
             <div className="comic-tier tier-1-1">
               <Panel style={{ padding: 22 }}>
                 <div className="h-display" style={{ fontSize: 22 }}>{track ? track.name : "推薦課程"}</div>
