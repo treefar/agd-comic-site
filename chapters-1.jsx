@@ -289,6 +289,24 @@ const HeroChapter = () => (
 // CH.02 — 最新消息（標準 tier：頭條 2:1 + 三格新聞）
 const NEWS = [
   {
+    id: 7959, date: "2026.10.06", tag: "課程", color: "blue", num: "00",
+    title: "115 學年度第 1 學期學生「Unity 證照輔導班」",
+    excerpt: "Unity Certified User：Programmer 國際認證 · 11/14-11/15 · D0625 · 名額 20 人 · 楊智彰老師授課。",
+    link: "#/news/2026-10-06-unity-115-1"
+  },
+  {
+    id: 7960, date: "2026.10.06", tag: "課程", color: "yellow", num: "00",
+    title: "115 學年度第 1 學期「SSE-Adobe After Effects CC」國際證照輔導班",
+    excerpt: "SSE-Adobe After Effects CC 國際證照 · 12/5-12/6 · D0625 · 名額 20 人 · 楊智彰老師授課。",
+    link: "#/news/2026-10-06-after-effects-115-1"
+  },
+  {
+    id: 7961, date: "2026.10.06", tag: "課程", color: "blue", num: "00",
+    title: "115 學年度第 1 學期「ACP Photoshop」國際證照輔導班",
+    excerpt: "ACP Photoshop 國際證照 · 12/12-12/13 · D0235 · 名額 15 人 · 江雅媚老師授課。",
+    link: "#/news/2026-10-06-photoshop-115-1"
+  },
+  {
     id: 7200, date: "2026.08.19", tag: "國際", color: "wine", num: "01",
     title: "《癡迷的現實》再添 5 項國際影展 · 累計 13 項橫跨 7 國",
     excerpt: "杜拜、芝加哥、希瓦吉、東京、義大利旅遊影展同月報到 — 陳美蓉老師指導的動畫短片《癡迷的現實》國際入圍提名累計達 13 項。",
@@ -397,6 +415,10 @@ const AWARDS_WORKS = [
   { rank: "07", title: "冤枉汪",        cat: "動畫", img: "images/news/2026-awards/yuan-wang-wang.jpg" },
 ];
 
+// 頭條固定為赴日實習：頭條版面的照片、「第 9 屆！」與標籤都是這則專用，換成別則會圖文不符
+const HEADLINE = NEWS.find((n) => n.id === 7180);
+const NEWS_REST = NEWS.filter((n) => n !== HEADLINE);
+
 // 本地導航：設定 hash → 觸發 router 切換到 detail page
 const goLocal = (type, slug) => () => { window.location.hash = "#/" + type + "/" + slug; };
 
@@ -406,9 +428,9 @@ const NewsChapter = () => (
       <ChapterTag num="02" title="動畫與遊戲設計系 — 最新消息" jp="LATEST DROPS" />
 
       <div className="comic-page">
-        {/* TIER 1 — 頭條全寬大版（最新一則 = NEWS[0]） */}
+        {/* TIER 1 — 頭條全寬大版（固定 = HEADLINE 赴日實習） */}
         <div className="comic-tier tier-1">
-          <Panel clickable onClick={goLocal("news", NEWS[0].id)} className="bg-halftone-light"
+          <Panel clickable onClick={goLocal("news", HEADLINE.id)} className="bg-halftone-light"
             style={{ padding: 0, position: "relative", overflow: "hidden" }}>
             <div className="news-headline" style={{
               display: "grid",
@@ -444,10 +466,10 @@ const NewsChapter = () => (
                     letterSpacing: "0.1em", fontSize: 14, marginBottom: 14
                   }}>HEADLINE · 頭版</div>
                   <div className="h-display" style={{ fontSize: 32, marginBottom: 14, lineHeight: 1.18 }}>
-                    {NEWS[0].title}
+                    {HEADLINE.title}
                   </div>
                   <div style={{ fontSize: 14, lineHeight: 1.85, opacity: 0.88, marginBottom: 12, fontWeight: 500 }}>
-                    {NEWS[0].excerpt}
+                    {HEADLINE.excerpt}
                   </div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 14 }}>
                     {["學海築夢", "HC 公司", "愛媛松山", "砥部燒"].map((c, i) => (
@@ -461,7 +483,7 @@ const NewsChapter = () => (
                 </div>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", borderTop: "2px dashed var(--ink)", paddingTop: 12 }}>
                   <div style={{ fontSize: 13, color: "var(--ink-2)", opacity: 0.7, fontWeight: 700 }}>
-                    {NEWS[0].date} · {NEWS[0].tag}
+                    {HEADLINE.date} · {HEADLINE.tag}
                   </div>
                   <div style={{ fontFamily: "'Bangers',sans-serif", letterSpacing: "0.1em", fontSize: 16, display: "flex", alignItems: "center", gap: 4 }}>
                     看
@@ -550,7 +572,7 @@ const NewsChapter = () => (
         </div>
 
         {/* TIER 2 / 3 / 4 / 5 — 12 格次要新聞（最近的 12 則，加上頭條共 13 則） */}
-        {[NEWS.slice(1, 4), NEWS.slice(4, 7), NEWS.slice(7, 10), NEWS.slice(10, 13)].map((row, ri) => (
+        {[NEWS_REST.slice(0, 3), NEWS_REST.slice(3, 6), NEWS_REST.slice(6, 9), NEWS_REST.slice(9, 12)].map((row, ri) => (
           <div key={ri} className="comic-tier tier-1-1-1" style={{ minHeight: 0 }}>
             {row.map((n, i) => (
               <Panel

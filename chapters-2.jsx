@@ -787,18 +787,8 @@ const JoinChapter = () => (
           ))}
         </div>
 
-        {/* TIER 2.4 — 互動測驗入口 */}
-        <div className="comic-tier tier-1 tier-mid">
-          <Panel clickable variant="yellow" onClick={() => { window.location.hash = "#/quiz/start"; }}
-            style={{ padding: 24, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
-            <div>
-              <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 14, letterSpacing: "0.12em" }}>QUIZ · 8 題 · 1 分鐘</div>
-              <div className="h-display" style={{ fontSize: "clamp(26px, 4vw, 40px)", lineHeight: 1.1, marginTop: 4 }}>你是動畫派，還是遊戲派？</div>
-              <div style={{ fontSize: 14, fontWeight: 700, marginTop: 6 }}>測完告訴你最適合的學習軸線、課程和實驗室，結果可以分享給朋友。</div>
-            </div>
-            <span style={{ background: "var(--accent-red)", color: "#fff", fontWeight: 900, fontSize: 18, padding: "10px 18px", border: "3px solid var(--ink)", boxShadow: "4px 4px 0 var(--ink)" }}>開始測驗 →</span>
-          </Panel>
-        </div>
+        {/* TIER 2.4 — 互動測驗入口（暫不公開，?preview=quiz 才出現，元件在 pages.jsx 的 QuizEntry） */}
+        <QuizEntry />
 
         <Testimonials />
 

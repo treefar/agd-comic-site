@@ -36,8 +36,14 @@ for (const m of src.match(/const QUIZ_Q = \[([\s\S]*?)\n\];/)[1].matchAll(/a: \[
   const n = (m[1].match(/"[^"]*"/g) || []).length;
   if (n !== 4) fails.push(`有一題選項數為 ${n}`);
 }
+// 測驗暫不公開（使用者 2026-10-08）：路由、浮動鈕、首頁入口都要藏在 isPreviewQuiz／usePreviewQuiz 後面；公開時連同這段一起拿掉
+if (!src.includes('case "quiz":     return isPreviewQuiz() ?')) fails.push('quiz 路由沒有藏在 isPreviewQuiz 後面');
+if (!/\{quizOn && <a href="#\/quiz\/start"/.test(src)) fails.push('浮動鈕的測驗按鈕沒有藏起來');
+const ch2 = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', 'chapters-2.jsx'), 'utf8');
+if (ch2.includes('window.location.hash = "#/quiz/start"')) fails.push('chapters-2 還有直接公開的測驗入口');
+if (!src.includes('const LINE_URL = "https://line.me/ti/p/~treefar"')) fails.push('LINE 連結不是系主任 treefar');
 if (fails.length) { console.error('FAIL\n- ' + fails.join('\n- ')); process.exit(1); }
-console.log(`PASS 測驗 ${nQ} 題、${cases.length} 組計分案例`);
+console.log(`PASS 測驗 ${nQ} 題、${cases.length} 組計分案例；測驗未公開、LINE 為系主任`);
 
 // 分享頁：四派各一張 share/<派>.html，og:image 指向存在的 1200x630 圖，並轉到 #/quiz/<派>
 {

@@ -41,7 +41,7 @@ const localHref = (type, slug) => `#/${type}/${encodeURIComponent(slug)}`;
 
 // Data cache (loaded once per type)
 // _BUILD_VER 跟 Comic Site.html 的 jsx ?v= 同步 bump，避免瀏覽器 cache JSON 舊版
-const _BUILD_VER = '20261008c';
+const _BUILD_VER = '20261008d';
 const _dataCache = {};
 const _MIN_LOAD_MS = 850; // Loading 至少顯示這麼久（讓動畫看得到）
 const useDataset = (type) => {
@@ -1662,7 +1662,7 @@ const CurriculumDetail = () => {
 // 互動測驗「你是動畫派還是遊戲派？」 #/quiz/start、結果可分享 #/quiz/<type>
 // 四種結果對應課程地圖四條軸線（data/curriculum.json 的 anim / game / art / cross）
 // =========================================================
-const LINE_URL = "https://line.me/R/ti/p/%40jmx6304i"; // 系網側欄「LINE 加入好友」同一個帳號
+const LINE_URL = "https://line.me/ti/p/~treefar"; // 系主任鄧樹遠的 LINE ID（使用者 2026-10-08 指定，取代系辦官方帳號）
 
 const QUIZ_Q = [
   { q: "週末空出一整天，你最想？", a: ["追完一整季動畫，順便研究分鏡", "跟朋友開黑，順便研究關卡怎麼設計", "窩著畫圖、捏自己的原創角色", "拍 vlog、玩新的 AI 或 AR 小工具"] },
@@ -1759,7 +1759,7 @@ const QuizDetail = ({ slug }) => {
                 <div className="h-display" style={{ fontSize: 22 }}>下一步</div>
                 <a href={`#/labs/${r.lab.slug}`} style={{ fontWeight: 900, color: "var(--ink)" }}>去看你的主場：{r.lab.name} →</a>
                 <a href="#join" style={{ fontWeight: 900, color: "var(--ink)" }}>看招生管道 →</a>
-                <a href={LINE_URL} target="_blank" rel="noopener" style={{ fontWeight: 900, color: "var(--ink)" }}>LINE 直接問系辦 →</a>
+                <a href={LINE_URL} target="_blank" rel="noopener" style={{ fontWeight: 900, color: "var(--ink)" }}>LINE 聯絡系主任 →</a>
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 6 }}>
                   <button onClick={share} style={{ fontFamily: "'Noto Sans TC',sans-serif", fontWeight: 900, fontSize: 15, padding: "8px 14px", background: "var(--accent-red)", color: "#fff", border: "3px solid var(--ink)", boxShadow: "3px 3px 0 var(--ink)", cursor: "pointer" }}>
                     {copied ? "已複製連結！" : "分享我的結果"}
@@ -1874,6 +1874,31 @@ const usePreviewNew = () => {
   const [on, setOn] = React.useState(false);
   React.useEffect(() => { setOn(isPreviewNew()); }, []);
   return on;
+};
+// 「你是哪一派」測驗暫不公開（使用者 2026-10-08）：?preview=quiz 或 ?preview=new 才看得到；公開時把這兩個判斷改回 true
+const isPreviewQuiz = () => typeof window !== "undefined" && /[?&]preview=(quiz|new)\b/.test(window.location.search);
+const usePreviewQuiz = () => {
+  const [on, setOn] = React.useState(false);
+  React.useEffect(() => { setOn(isPreviewQuiz()); }, []);
+  return on;
+};
+// 首頁的測驗入口（chapters-2 用），未公開時整格不顯示
+const QuizEntry = () => {
+  const on = usePreviewQuiz();
+  if (!on) return null;
+  return (
+    <div className="comic-tier tier-1 tier-mid">
+      <Panel clickable variant="yellow" onClick={() => { window.location.hash = "#/quiz/start"; }}
+        style={{ padding: 24, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
+        <div>
+          <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 14, letterSpacing: "0.12em" }}>QUIZ · 8 題 · 1 分鐘</div>
+          <div className="h-display" style={{ fontSize: "clamp(26px, 4vw, 40px)", lineHeight: 1.1, marginTop: 4 }}>你是動畫派，還是遊戲派？</div>
+          <div style={{ fontSize: 14, fontWeight: 700, marginTop: 6 }}>測完告訴你最適合的學習軸線、課程和實驗室，結果可以分享給朋友。</div>
+        </div>
+        <span style={{ background: "var(--accent-red)", color: "#fff", fontWeight: 900, fontSize: 18, padding: "10px 18px", border: "3px solid var(--ink)", boxShadow: "4px 4px 0 var(--ink)" }}>開始測驗 →</span>
+      </Panel>
+    </div>
+  );
 };
 
 // 共用：漫畫風按鈕與小標
@@ -2020,7 +2045,7 @@ const GuideDetail = () => {
               <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                 <a href="#/quiz/start" style={{ ...PV_BTN, background: "var(--accent-yellow)" }}>去測驗 →</a>
                 <button onClick={restart} style={PV_BTN}>重新選一次</button>
-                <a href={LINE_URL} target="_blank" rel="noopener" style={{ ...PV_BTN, background: "#06C755", color: "#fff" }}>LINE 問系辦</a>
+                <a href={LINE_URL} target="_blank" rel="noopener" style={{ ...PV_BTN, background: "#06C755", color: "#fff" }}>LINE 聯絡系主任</a>
               </div>
             </Panel>
           </div>
@@ -2262,7 +2287,7 @@ const ParentsGuide = () => {
               <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 12 }}>
                 <a href={mapUrl} target="_blank" rel="noopener" style={PV_BTN}>在 Google 地圖開啟 →</a>
                 <a href="#/admission/visit" style={{ ...PV_BTN, background: "var(--accent-red)", color: "#fff" }}>預約一日參訪 →</a>
-                <a href={LINE_URL} target="_blank" rel="noopener" style={{ ...PV_BTN, background: "#06C755", color: "#fff" }}>LINE 問系辦</a>
+                <a href={LINE_URL} target="_blank" rel="noopener" style={{ ...PV_BTN, background: "#06C755", color: "#fff" }}>LINE 聯絡系主任</a>
               </div>
             </div>}
           </PvSection>
@@ -2286,17 +2311,18 @@ const ParentsGuide = () => {
 };
 
 // =========================================================
-// 浮動按鈕：右下角「測驗」＋「LINE 問系辦」，全站都看得到
+// 浮動按鈕：右下角「LINE 聯絡系主任」全站都看得到；測驗鈕要預覽才出現
 // =========================================================
 const FloatingCTA = () => {
   const btn = { display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none", fontFamily: "'Noto Sans TC',sans-serif", fontWeight: 900, fontSize: 14, padding: "8px 12px", border: "3px solid var(--ink)", boxShadow: "3px 3px 0 var(--ink)", lineHeight: 1.2 };
   const preview = usePreviewNew(); // ?preview=new 才多兩顆（掛載後才出現，首頁 hydrate 不會不一致）
+  const quizOn = usePreviewQuiz();
   return (
     <div style={{ position: "fixed", right: 14, bottom: 14, zIndex: 60, display: "flex", flexDirection: "column", gap: 8, alignItems: "flex-end" }}>
       {preview && <a href="#/guide/start" style={{ ...btn, background: "var(--accent-blue)", color: "#fff" }}>我適合哪個管道</a>}
       {preview && <a href="#/parents/guide" style={{ ...btn, background: "var(--paper)", color: "var(--ink)" }}>家長看這裡</a>}
-      <a href="#/quiz/start" style={{ ...btn, background: "var(--accent-yellow)", color: "var(--ink)" }}>測驗：你是哪一派？</a>
-      <a href={LINE_URL} target="_blank" rel="noopener" style={{ ...btn, background: "#06C755", color: "#fff" }}>LINE 問系辦</a>
+      {quizOn && <a href="#/quiz/start" style={{ ...btn, background: "var(--accent-yellow)", color: "var(--ink)" }}>測驗：你是哪一派？</a>}
+      <a href={LINE_URL} target="_blank" rel="noopener" style={{ ...btn, background: "#06C755", color: "#fff" }}>LINE 聯絡系主任</a>
     </div>
   );
 };
@@ -2316,7 +2342,7 @@ const DetailView = ({ type, slug }) => {
     case "stats":    return <StatsDetail slug={slug} />;
     case "en":       return <EnglishDetail slug={slug} />;
     case "curriculum": return <CurriculumDetail />;
-    case "quiz":     return <QuizDetail slug={slug} />;
+    case "quiz":     return isPreviewQuiz() ? <QuizDetail slug={slug} /> : <NotFound type={type} slug={slug} />;
     case "reels":    return <ReelsDetail slug={slug} />;
     // 以下兩條只在 ?preview=new 開放，否則與原站一樣顯示 404
     case "guide":    return isPreviewNew() ? <GuideDetail /> : <NotFound type={type} slug={slug} />;
@@ -2325,4 +2351,4 @@ const DetailView = ({ type, slug }) => {
   }
 };
 
-Object.assign(window, { useHashRoute, localHref, DetailView, useDataset, FloatingCTA, LINE_URL, PreviewWorksLink });
+Object.assign(window, { useHashRoute, localHref, DetailView, useDataset, FloatingCTA, LINE_URL, PreviewWorksLink, QuizEntry });
