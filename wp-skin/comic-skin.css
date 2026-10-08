@@ -477,11 +477,11 @@ body:not(.home) .elementor-post__read-more {
 }
 body:not(.home) .elementor-divider-separator { border-color: var(--agdc-ink) !important; border-top-width: 4px !important; }
 
-/* 最新消息頁（page 571）與分類彙整：拿掉右側欄，文章改成整齊方塊 */
-body:not(.home).page-id-571 #sidebar,
-body:not(.home).archive #sidebar { display: none !important; }
-body:not(.home).page-id-571 .single_wrap,
-body:not(.home).archive .lay4_wrap { width: 100% !important; float: none !important; }
+/* 全站拿掉右側欄（2026-10-08 使用者要求：文章、最新消息、分類／日期彙整、搜尋頁都不放），主欄撐滿 */
+body:not(.home) #sidebar { display: none !important; }
+body:not(.home) .single_wrap,
+body:not(.home) .lay4_wrap { width: 100% !important; float: none !important; }
+/* 最新消息頁（page 571）：文章改成整齊方塊 */
 body:not(.home).page-id-571 .elementor-posts-container { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; gap: 28px !important; }
 body:not(.home).page-id-571 .elementor-post__thumbnail { padding-bottom: 66% !important; }
 body:not(.home).page-id-571 .elementor-post__title {
