@@ -1357,3 +1357,37 @@ body::before {
   .floating-cta { right: 8px !important; bottom: 8px !important; gap: 5px !important; }
   .floating-cta a { font-size: 12px !important; padding: 4px 8px !important; border-width: 2px !important; box-shadow: 2px 2px 0 var(--ink) !important; opacity: 0.92; }
 }
+
+/* === 2026-10-08 手機平板稽核修正 === */
+/* 1. 平板（761–1180px）頂部選單也改漢堡，避免選單被擠成一字一行 */
+@media (min-width: 761px) and (max-width: 1180px) {
+  .hamburger { display: flex; }
+  .topnav .nav-divider { display: none; }
+  .topnav { flex-wrap: nowrap; }
+  .topnav nav {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: var(--ink);
+    border-top: 3px solid var(--paper);
+    padding: 12px 24px;
+    flex-direction: column;
+    gap: 14px;
+    z-index: 60;
+  }
+  .topnav.is-open nav { display: flex; }
+  .topnav nav a { font-size: 17px; padding: 6px 0; white-space: nowrap; }
+}
+/* 2. 右下浮動鈕不蓋住頁尾：頁尾底部留出按鈕的高度，捲到底時連結會露出來 */
+.foot { padding-bottom: 210px; }
+/* 3. 手機：浮動鈕改成貼底的一排，不再佔右下角一大塊 */
+@media (max-width: 600px) {
+  .floating-cta { left: 6px !important; right: 6px !important; bottom: 6px !important; flex-direction: row !important; flex-wrap: wrap; justify-content: center !important; align-items: stretch !important; }
+  .floating-cta a { flex: 1 1 40%; text-align: center; }
+  .foot { padding-bottom: 110px; }
+}
+/* 4. 手機頁尾「待續」斜橫幅：縮小並保持一行，不壓到下方標題 */
+@media (max-width: 760px) {
+  .foot-banner { font-size: 12px !important; padding: 4px 12px !important; white-space: nowrap; }
+  .foot { padding-top: 44px; }
+}

@@ -882,7 +882,7 @@ const FooterChapter = () => (
   <footer className="foot" id="contact" data-screen-label="08 Contact">
     <div className="container" style={{ position: "relative", padding: 0 }}>
       <div style={{ position: "absolute", top: -42, left: 0, right: 0, textAlign: "center" }}>
-        <span style={{
+        <span className="foot-banner" style={{
           background: "var(--accent-yellow)", color: "var(--ink)",
           fontFamily: "'Bowlby One',sans-serif", padding: "6px 18px",
           letterSpacing: "0.06em", border: "3px solid var(--ink)",

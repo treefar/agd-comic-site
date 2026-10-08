@@ -362,6 +362,11 @@ const Panel = ({
     if (onClick) setTimeout(() => onClick(e), 400);
   };
   const clicked = fx ? "is-clicked" : "";
+  // 可點的 Panel 也要能用鍵盤操作（Tab 選到、Enter／空白鍵觸發），報讀軟體會念成連結
+  const a11y = clickable && onClick ? {
+    role: "link", tabIndex: 0,
+    onKeyDown: (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onClick(e); } },
+  } : {};
 
   if (cut) {
     return (
@@ -369,6 +374,7 @@ const Panel = ({
         className={`panel-cut cut--${cut} ${clickable ? "is-clickable" : ""} ${clicked} ${className}`}
         style={{ transform: rotate ? `rotate(${rotate}deg)` : undefined, ...style }}
         onClick={handle}
+        {...a11y}
       >
         <div className={`panel-cut-inner ${variant ? `panel--${variant}` : ""} ${bg}`}>
           {children}
@@ -383,6 +389,7 @@ const Panel = ({
       className={`panel ${variant ? `panel--${variant}` : ""} ${bg} ${clickable ? "is-clickable" : ""} ${clicked} ${className}`}
       style={{ transform: rotate ? `rotate(${rotate}deg)` : undefined, ...style }}
       onClick={handle}
+      {...a11y}
     >
       {children}
       {fx && <span className="click-speedlines" />}

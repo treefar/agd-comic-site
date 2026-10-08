@@ -561,3 +561,6 @@ body:not(.home) .thn_post_wrap table {
   max-width: 100%;
   overflow-x: auto;
 }
+
+/* 2026-10-08 手機稽核：最新消息「Read More」可點區太小（68×14），放大成好按的按鈕高度 */
+body:not(.home) .elementor-post__read-more { display: inline-block; padding: 10px 2px; min-width: 44px; }
