@@ -41,7 +41,7 @@ const localHref = (type, slug) => `#/${type}/${encodeURIComponent(slug)}`;
 
 // Data cache (loaded once per type)
 // _BUILD_VER 跟 Comic Site.html 的 jsx ?v= 同步 bump，避免瀏覽器 cache JSON 舊版
-const _BUILD_VER = '20261006e';
+const _BUILD_VER = '20261008a';
 const _dataCache = {};
 const _MIN_LOAD_MS = 850; // Loading 至少顯示這麼久（讓動畫看得到）
 const useDataset = (type) => {
@@ -1708,7 +1708,9 @@ const QuizDetail = ({ slug }) => {
     const r = QUIZ_RESULT[resultKey];
     const track = curriculum && curriculum.tracks ? curriculum.tracks.find((t) => t.key === resultKey) : null;
     const courses = track ? track.courses.flat().map((c) => c.name).slice(0, 8) : [];
-    const shareUrl = "https://www.dgd.stu.edu.tw/#/quiz/" + resultKey;
+    // 系網首頁的 iframe 不會轉交 #/quiz/...，分享改走 share/<派>.html：有專屬預覽圖，點開再轉到結果頁
+    const shareUrl = "https://treefar.link/agd-comic-site/share/" + resultKey + ".html";
+    const shareImg = "images/quiz/share-" + resultKey + ".jpg";
     const share = async () => {
       const text = `我是動遊系的「${r.name}」！你是哪一派？`;
       try {
@@ -1732,6 +1734,12 @@ const QuizDetail = ({ slug }) => {
                   <div className="h-jojo" style={{ fontSize: "clamp(48px, 9vw, 96px)", lineHeight: 1, marginTop: 8 }}>{r.name}</div>
                   <div style={{ fontSize: 18, fontWeight: 900, marginTop: 12 }}>{r.line}</div>
                 </div>
+              </Panel>
+            </div>
+            <div className="comic-tier tier-1">
+              <Panel style={{ padding: 14, textAlign: "center" }}>
+                <img src={shareImg} alt={`YOU ARE ${r.name} ${r.en}`} width="1200" height="630" loading="lazy" style={{ width: "100%", height: "auto", display: "block", border: "3px solid var(--ink)" }} />
+                <a href={shareImg} download={`agd-quiz-${resultKey}.jpg`} style={{ display: "inline-block", marginTop: 10, fontWeight: 900, color: "var(--ink)" }}>存下這張圖，貼到 IG 限動 →</a>
               </Panel>
             </div>
             <div className="comic-tier tier-1-1">

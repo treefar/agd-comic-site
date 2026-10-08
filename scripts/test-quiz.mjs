@@ -38,3 +38,27 @@ for (const m of src.match(/const QUIZ_Q = \[([\s\S]*?)\n\];/)[1].matchAll(/a: \[
 }
 if (fails.length) { console.error('FAIL\n- ' + fails.join('\n- ')); process.exit(1); }
 console.log(`PASS 測驗 ${nQ} 題、${cases.length} 組計分案例`);
+
+// 分享頁：四派各一張 share/<派>.html，og:image 指向存在的 1200x630 圖，並轉到 #/quiz/<派>
+{
+  const root = join(dirname(fileURLToPath(import.meta.url)), '..');
+  const { existsSync, readFileSync: rf } = await import('node:fs');
+  const shareFails = [];
+  for (const k of KEYS) {
+    const f = join(root, 'share', k + '.html');
+    if (!existsSync(f)) { shareFails.push(`缺 share/${k}.html`); continue; }
+    const h = rf(f, 'utf8');
+    if (!h.includes(`images/quiz/share-${k}.jpg`)) shareFails.push(`${k} 的 og:image 不對`);
+    if (!h.includes(`#/quiz/${k}"`)) shareFails.push(`${k} 沒轉到 #/quiz/${k}`);
+    const img = join(root, 'images', 'quiz', `share-${k}.jpg`);
+    if (!existsSync(img)) { shareFails.push(`缺 images/quiz/share-${k}.jpg`); continue; }
+    const b = rf(img);
+    // 讀 JPEG SOF0/SOF2 取尺寸
+    let i = 2, w = 0, hgt = 0;
+    while (i < b.length) { const m = b[i + 1], len = b.readUInt16BE(i + 2); if (m === 0xc0 || m === 0xc2) { hgt = b.readUInt16BE(i + 5); w = b.readUInt16BE(i + 7); break; } i += 2 + len; }
+    if (w !== 1200 || hgt !== 630) shareFails.push(`share-${k}.jpg 尺寸 ${w}x${hgt}，應為 1200x630`);
+  }
+  if (!src.includes('treefar.link/agd-comic-site/share/')) shareFails.push('pages.jsx 的 shareUrl 沒改用 share 頁');
+  if (shareFails.length) { console.error('FAIL 分享頁\n- ' + shareFails.join('\n- ')); process.exit(1); }
+  console.log('PASS 分享頁 4 張（og:image 1200x630、轉址正確）');
+}
