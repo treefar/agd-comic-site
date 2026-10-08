@@ -562,6 +562,9 @@ const WorksChapter = () => (
         </div>
       </div>
 
+      {/* 預覽入口（?preview=new 才顯示）：作品集牆 */}
+      {typeof PreviewWorksLink !== "undefined" && <PreviewWorksLink />}
+
       <ChapterNext to="#faculty" num="05" title="老師登場" currentLabel="P. 004 — 第四話 WORKS" />
     </div>
   </section>

@@ -1344,3 +1344,10 @@ body::before {
   /* Hero TIER 1 splash 內 PRESS START + 對白群組 — 縮 padding */
   .tier-splash .panel a[href="#news"] { font-size: 18px !important; padding: 8px 16px !important; }
 }
+
+/* === 預覽功能（?preview=new）：招生導引選項、作品集牆、家長懶人包的格線 === */
+.pv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.pv-grid--cards { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+@media (max-width: 420px) {
+  .pv-grid, .pv-grid--cards { grid-template-columns: 1fr; }
+}
