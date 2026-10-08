@@ -212,7 +212,7 @@ const HeroChapter = () => (
           <Panel style={{ flex: 1, padding: 0, position: "relative", overflow: "hidden", background: "var(--ink)", minWidth: 280, alignSelf: "stretch" }}>
             <PH label="ClipStudio Grand Prize 國際插畫首獎"
               src="images/posters/clipstudio-grand-prize.jpg"
-              fallback="https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/03/_page-0001-scaled-e1765931540737.jpg"
+              fallback="https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2025/03/_page-0001-scaled-e1765931540737.jpg"
               alt="ClipStudio Grand Prize 國際插畫首獎 · 直幅原版海報"
               fit="cover"
               pos="center top" />

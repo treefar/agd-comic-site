@@ -5,79 +5,79 @@ const FACULTY = [
   {
     name: "鄧樹遠", role: "系主任 · 副教授 · 電競娛樂系代理主任", en: "TENG, SHU-YUAN",
     spec: "遊戲設計 / 劇本創作 / 數位剪輯", color: "red",
-    photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/09/78pan_0-scaled-e1725608026576-1024x1024.jpg",
+    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/09/78pan_0-scaled-e1725608026576-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/treefar/"
   },
   {
     name: "江雅媚", role: "助理教授", en: "CHIANG, YA-MEI",
     spec: "數位媒體設計 / 介面設計 / 角色與場景", color: "yellow",
-    photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/04/1176pan-scaled-e1712908337437-1024x1024.jpg",
+    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/04/1176pan-scaled-e1712908337437-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/江雅媚/"
   },
   {
     name: "陳重光", role: "助理教授 · 電競娛樂系合聘", en: "CHEN, CHUNG-KUANG",
     spec: "繪本製作 / 角色造型 / 電腦繪圖", color: "blue",
-    photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/09/1189pan_0-scaled-e1725608414852-1024x1024.jpg",
+    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/09/1189pan_0-scaled-e1725608414852-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/陳重光/"
   },
   {
     name: "楊智彰", role: "助理教授", en: "YANG, CHIH-CHANG",
     spec: "Unity / VR / 程式設計 / 大數據", color: "blue",
-    photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/04/1092pan-scaled-e1712909734467-1024x1024.jpg",
+    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/04/1092pan-scaled-e1712909734467-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/楊智彰/"
   },
   {
     name: "陳慶鴻", role: "助理教授", en: "CHEN, CHING-HUNG",
     spec: "數位設計 / 電腦動畫 / 動態影像", color: "",
-    photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/09/311pan-scaled-e1725608387187-1024x1024.jpg",
+    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/09/311pan-scaled-e1725608387187-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/陳慶鴻/"
   },
   {
     name: "張純雅", role: "助理教授", en: "CHANG, CHUN-YA",
     spec: "視覺設計 / 字體設計 / 動畫美術", color: "",
-    photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/04/990pan-YAYA-scaled-e1712910086728-1024x1024.jpg",
+    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/04/990pan-YAYA-scaled-e1712910086728-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/張純雅/"
   },
   {
     name: "邱士展", role: "助理教授", en: "CHIU, SHIN-CHAN",
     spec: "電腦動畫 / 動畫導演 / 數位特效 / 鏡頭語言", color: "red",
-    photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/04/jjjj-scaled-e1712910712234-1024x1024.jpg",
+    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/04/jjjj-scaled-e1712910712234-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/邱士展/"
   },
   {
     name: "陳美蓉", role: "助理教授", en: "CHEN, MEI-JUNG",
     spec: "視覺傳達 / 企業識別 / 推廣與廣告", color: "red",
-    photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/04/1185pan-scaled-e1712910426723-1024x1024.jpg",
+    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/04/1185pan-scaled-e1712910426723-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/系所成員/陳美蓉/"
   },
   {
     name: "吳焉昇", role: "講師 · 電競娛樂系合聘", en: "WU, YEN-SHEN",
     spec: "平面設計 / 網路多媒體 / 影像處理", color: "blue",
-    photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/09/513-1024x1024.jpg",
+    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/09/513-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/系所成員/吳焉昇/"
   },
   {
     name: "王宗立", role: "助理教授", en: "WANG, TSUNG-LI",
     spec: "3D 角色 / 2D & 3D 動畫 / 影片後製剪輯", color: "yellow",
-    photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/09/1223pan-scaled-e1725608460881-1024x1024.jpg",
+    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/09/1223pan-scaled-e1725608460881-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/系所成員/王宗立/"
   },
   {
     name: "陳寀瑜", role: "助理教授 · 從聘", en: "CHEN, TSAI-YU",
     spec: "資訊介面 / 數位遊戲理論 / 互動裝置 / 遊戲企劃", color: "",
-    photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/04/157pan-scaled-e1712912482260-1024x1024.jpg",
+    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/04/157pan-scaled-e1712912482260-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/系所成員/陳寀瑜/"
   },
   {
     name: "蔣天華", role: "副教授 · 從聘", en: "CHIANG, TIEN-HUA",
     spec: "互動遊戲 / AR VR MR / 物聯網", color: "",
-    photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/04/1170pan-scaled-e1712911533827-1024x1024.jpg",
+    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/04/1170pan-scaled-e1712911533827-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/系所成員/蔣天華/"
   },
   {
     name: "尹立", role: "助理教授 · 留職停薪", en: "YIN, LI",
     spec: "設計展演 / 設計實務 / 應用設計", color: "red",
-    photo: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2024/09/192pan_0-scaled-e1725608280681-1024x1024.jpg",
+    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/09/192pan_0-scaled-e1725608280681-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/系所成員/尹立/"
   },
 ];
@@ -461,10 +461,10 @@ const WORKS = [
   },
   { id: "awards-2026", title: "動遊系 2026 競賽佳績榜", award: "4 競賽 14 件入圍 · 7 部畢業專題", year: "2026", img: "images/news/2026-awards/healing-light.jpg", link: "#/news/2026-04-29-awards-showcase" },
   { id: "international-festivals-2026", title: "四部學生動畫橫掃國際影展", award: "21+ 入圍 · 歐美亞澳四大洲", year: "2026", img: "https://img.youtube.com/vi/g63HmiIJoiQ/hqdefault.jpg", link: "#/news/2026-04-25-international-festivals" },
-  { id: "bahamut-acg", title: "巴哈姆特 ACG 創作大賽", award: "優選雙獎", year: "2025", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/08/1140828-1.jpg" },
-  { id: "times-pin", title: "時報金犢獎國際競賽", award: "第二名", year: "2025", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/07/unnamed.jpg" },
-  { id: "fangshi-2025", title: "2025 放視大賞", award: "8 件入圍", year: "2025", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/05/unnamed-1.jpg" },
-  { id: "top-2-scientists", title: "科研雙星 · 全球前 2% 學者榜", award: "連四年榮登", year: "2025", img: "https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/09/c6135cb3c2111669fdf3d99d0b26bd20.jpg" },
+  { id: "bahamut-acg", title: "巴哈姆特 ACG 創作大賽", award: "優選雙獎", year: "2025", img: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2025/08/1140828-1.jpg" },
+  { id: "times-pin", title: "時報金犢獎國際競賽", award: "第二名", year: "2025", img: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2025/07/unnamed.jpg" },
+  { id: "fangshi-2025", title: "2025 放視大賞", award: "8 件入圍", year: "2025", img: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2025/05/unnamed-1.jpg" },
+  { id: "top-2-scientists", title: "科研雙星 · 全球前 2% 學者榜", award: "連四年榮登", year: "2025", img: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2025/09/c6135cb3c2111669fdf3d99d0b26bd20.jpg" },
 ];
 
 const WorksChapter = () => (
@@ -519,7 +519,7 @@ const WorksChapter = () => (
             </div>
             <div style={{ height: 140, marginBottom: 12 }}>
               <PH label="ClipStudio Grand Prize"
-                src="https://wpcdn.stu.edu.tw/wp-content/uploads/sites/53/2025/03/_page-0001-scaled-e1765931540737.jpg"
+                src="https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2025/03/_page-0001-scaled-e1765931540737.jpg"
                 alt="ClipStudio Grand Prize 代表作" />
             </div>
             <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, fontWeight: 800, letterSpacing: "0.1em" }}>
