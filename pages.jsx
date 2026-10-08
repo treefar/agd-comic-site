@@ -41,7 +41,7 @@ const localHref = (type, slug) => `#/${type}/${encodeURIComponent(slug)}`;
 
 // Data cache (loaded once per type)
 // _BUILD_VER 跟 Comic Site.html 的 jsx ?v= 同步 bump，避免瀏覽器 cache JSON 舊版
-const _BUILD_VER = '20261008d';
+const _BUILD_VER = '20261008f';
 const _dataCache = {};
 const _MIN_LOAD_MS = 850; // Loading 至少顯示這麼久（讓動畫看得到）
 const useDataset = (type) => {
@@ -1709,12 +1709,9 @@ const QuizDetail = ({ slug }) => {
     const track = curriculum && curriculum.tracks ? curriculum.tracks.find((t) => t.key === resultKey) : null;
     const courses = track ? track.courses.flat().map((c) => c.name).slice(0, 8) : [];
     // 系網首頁的 iframe 不會轉交 #/quiz/...，分享改走 share/<派>.html：有專屬預覽圖，點開再轉到結果頁
-    // 分享圖尚未公開（使用者 2026-10-08：先上網不公開）：網址帶 ?preview=quiz 才啟用；正式公開時拿掉 QUIZ_SHARE_PREVIEW 判斷
-    const QUIZ_SHARE_PREVIEW = typeof window !== "undefined" && /[?&]preview=quiz\b/.test(window.location.search);
-    const shareUrl = QUIZ_SHARE_PREVIEW
-      ? "https://treefar.link/agd-comic-site/share/" + resultKey + ".html"
-      : "https://www.dgd.stu.edu.tw/#/quiz/" + resultKey;
-    const shareImg = "images/quiz/share-" + resultKey + ".jpg";
+    // 分享連結帶各派的預覽圖（share/<派>.html 的 og:image）；結果頁本身改放得獎作品，不放插圖
+    const QUIZ_SHARE_PREVIEW = true; // 使用者 2026-10-08 同意公開
+    const shareUrl = "https://treefar.link/agd-comic-site/share/" + resultKey + ".html";
     const share = async () => {
       const text = `我是動遊系的「${r.name}」！你是哪一派？`;
       try {
@@ -1740,11 +1737,9 @@ const QuizDetail = ({ slug }) => {
                 </div>
               </Panel>
             </div>
+            {/* 結果頁不放插圖，改放這一派的學長姐得獎作品（使用者 2026-10-08） */}
             {QUIZ_SHARE_PREVIEW && <div className="comic-tier tier-1">
-              <Panel style={{ padding: 14, textAlign: "center" }}>
-                <img src={shareImg} alt={`YOU ARE ${r.name} ${r.en}`} width="1200" height="630" loading="lazy" style={{ width: "100%", height: "auto", display: "block", border: "3px solid var(--ink)" }} />
-                <a href={shareImg} download={`agd-quiz-${resultKey}.jpg`} style={{ display: "inline-block", marginTop: 10, fontWeight: 900, color: "var(--ink)" }}>存下這張圖，貼到 IG 限動 →</a>
-              </Panel>
+              <QuizWorks k={resultKey} name={r.name} color={r.color} />
             </div>}
             <div className="comic-tier tier-1-1">
               <Panel style={{ padding: 22 }}>
@@ -1864,21 +1859,19 @@ const ReelsDetail = ({ slug }) => {
 };
 
 // =========================================================
-// 預覽功能（?preview=new 才出現）：招生管道導引、作品集牆、家長懶人包
-// 沒帶 ?preview=new 時：路由維持 404、入口按鈕不出現，外觀與行為和原站相同
-// 正式公開時：拿掉 isPreviewNew / usePreviewNew 的判斷即可
+// 招生管道導引、作品集牆、家長懶人包（2026-10-08 起公開；原本藏在 ?preview=new）
 // =========================================================
-const isPreviewNew = () => typeof window !== "undefined" && /[?&]preview=new\b/.test(window.location.search);
-// 首頁是預渲染後 hydrate，第一次 render 必須與伺服端一致（都不顯示），掛載後才依網址打開
+const isPreviewNew = () => true; // 使用者 2026-10-08 同意公開：招生管道導引、作品集牆、家長懶人包
+// 已公開：初值設 true，預渲染與瀏覽器 hydrate 一致都顯示
 const usePreviewNew = () => {
-  const [on, setOn] = React.useState(false);
+  const [on, setOn] = React.useState(true);
   React.useEffect(() => { setOn(isPreviewNew()); }, []);
   return on;
 };
-// 「你是哪一派」測驗暫不公開（使用者 2026-10-08）：?preview=quiz 或 ?preview=new 才看得到；公開時把這兩個判斷改回 true
-const isPreviewQuiz = () => typeof window !== "undefined" && /[?&]preview=(quiz|new)\b/.test(window.location.search);
+// 「你是哪一派」測驗（2026-10-08 使用者同意公開；要再藏起來就把下面改回判斷 ?preview=quiz）
+const isPreviewQuiz = () => true; // 使用者 2026-10-08 同意公開「你是哪一派」測驗
 const usePreviewQuiz = () => {
-  const [on, setOn] = React.useState(false);
+  const [on, setOn] = React.useState(true);
   React.useEffect(() => { setOn(isPreviewQuiz()); }, []);
   return on;
 };
@@ -2097,6 +2090,69 @@ const buildWall = (works, videos, news) => {
     add({ key: "v-" + v.id, title: v.title, img: `https://img.youtube.com/vi/${v.id}/hqdefault.jpg`, cats: [...wallCats(v.category)], raw: v.category, sub: v.category || "", link: "#/videos/" + v.id, yt: v.id });
   });
   return items;
+};
+
+// ---------- 測驗結果頁：這一派的學長姐得獎作品（取代原本的插圖） ----------
+// 得獎作品優先（works.json 與新聞得獎專輯），影片庫作品排後面；每派最多 6 件
+const QUIZ_WALL = {
+  anim: { title: "動畫派學長姐的得獎作品", cats: ["動畫"] },
+  game: { title: "遊戲派學長姐的得獎作品", cats: ["遊戲"] },
+  // 資料裡的插畫只有 1 件，後面接動畫得獎作品
+  art: { title: "美術派看這裡：插畫首獎與動畫得獎作品", cats: ["美術插畫", "動畫"] },
+  cross: { title: "跨域派：動畫、遊戲都拿過獎", cats: ["動畫", "遊戲"], mix: true },
+};
+const QUIZ_WALL_MAX = 6;
+const quizWallPick = (all, k) => {
+  const spec = QUIZ_WALL[k];
+  if (!spec) return [];
+  const rank = (it) => (it.key.startsWith("w-") ? 0 : it.key.startsWith("n-") ? 1 : 2);
+  const ranked = all.map((it, i) => ({ it, i })).sort((a, b) => rank(a.it) - rank(b.it) || a.i - b.i).map((x) => x.it);
+  if (spec.mix) {
+    // 先放同時跨動畫與遊戲的，再動畫、遊戲輪流放
+    const both = ranked.filter((it) => spec.cats.every((c) => it.cats.includes(c)));
+    const pools = spec.cats.map((c) => ranked.filter((it) => it.cats.includes(c) && !both.includes(it)));
+    const out = [...both];
+    for (let i = 0; out.length < QUIZ_WALL_MAX && pools.some((p) => p.length > i); i++) pools.forEach((p) => { if (p[i] && out.length < QUIZ_WALL_MAX) out.push(p[i]); });
+    return out.slice(0, QUIZ_WALL_MAX);
+  }
+  // 依 cats 的順序：前面的分類全部放完才放後面的
+  const out = [];
+  spec.cats.forEach((c) => ranked.forEach((it) => { if (it.cats.includes(c) && !out.includes(it)) out.push(it); }));
+  return out.slice(0, QUIZ_WALL_MAX);
+};
+
+const QuizWorks = ({ k, name, color }) => {
+  const works = useDataset("works");
+  const videos = useDataset("videos");
+  const news = useDataset("news");
+  if (!works || !videos || !news) return <Panel style={{ padding: 22 }}><Loading /></Panel>;
+  const list = quizWallPick(buildWall(works, videos, news), k);
+  const spec = QUIZ_WALL[k];
+  return (
+    <Panel style={{ padding: 18 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: 8, marginBottom: 12 }}>
+        <div>
+          <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 13, letterSpacing: "0.12em", color }}>{name} · SENPAI WORKS</div>
+          <div className="h-display" style={{ fontSize: 22, marginTop: 2 }}>{spec.title}</div>
+        </div>
+        <a href="#/works/all" style={{ fontWeight: 900, color: "var(--ink)" }}>看全部作品 →</a>
+      </div>
+      <div className="pv-grid pv-grid--cards">
+        {list.map((it) => (
+          <a key={it.key} href={it.link} aria-label={"看 " + it.title} style={{ display: "block", textDecoration: "none", color: "var(--ink)", border: "3px solid var(--ink)", background: "var(--paper)", boxShadow: "3px 3px 0 var(--ink)" }}>
+            <div style={{ position: "relative", aspectRatio: "16/9", background: "var(--ink)", borderBottom: "3px solid var(--ink)", overflow: "hidden" }}>
+              {it.img && <img src={it.img} alt={it.title} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />}
+              {it.yt && <span style={{ position: "absolute", right: 6, bottom: 6, background: "var(--accent-red)", color: "#fff", fontFamily: "'Bangers',sans-serif", fontSize: 12, padding: "1px 8px", border: "2px solid var(--paper)" }}>▶ 影片</span>}
+            </div>
+            <div style={{ padding: "8px 10px 10px" }}>
+              <div style={{ fontWeight: 900, fontSize: 15, lineHeight: 1.35 }}>{it.title}</div>
+              {it.sub && <div style={{ fontSize: 12, marginTop: 4, opacity: 0.8 }}>{it.sub}</div>}
+            </div>
+          </a>
+        ))}
+      </div>
+    </Panel>
+  );
 };
 
 const WorksWall = () => {
@@ -2318,7 +2374,7 @@ const FloatingCTA = () => {
   const preview = usePreviewNew(); // ?preview=new 才多兩顆（掛載後才出現，首頁 hydrate 不會不一致）
   const quizOn = usePreviewQuiz();
   return (
-    <div style={{ position: "fixed", right: 14, bottom: 14, zIndex: 60, display: "flex", flexDirection: "column", gap: 8, alignItems: "flex-end" }}>
+    <div className="floating-cta" style={{ position: "fixed", right: 14, bottom: 14, zIndex: 60, display: "flex", flexDirection: "column", gap: 8, alignItems: "flex-end" }}>
       {preview && <a href="#/guide/start" style={{ ...btn, background: "var(--accent-blue)", color: "#fff" }}>我適合哪個管道</a>}
       {preview && <a href="#/parents/guide" style={{ ...btn, background: "var(--paper)", color: "var(--ink)" }}>家長看這裡</a>}
       {quizOn && <a href="#/quiz/start" style={{ ...btn, background: "var(--accent-yellow)", color: "var(--ink)" }}>測驗：你是哪一派？</a>}

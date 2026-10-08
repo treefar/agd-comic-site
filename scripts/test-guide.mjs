@@ -73,7 +73,7 @@ if (!early || early.raw.indexOf('2026/03/19') !== 0) fails.push(`2026-01-01 的�
 if (guideNextDate([{ date: '2026/09 起', label: 'x' }, { date: '依樹德進修部專區公告', label: 'y' }], new Date(2000, 0, 1))) fails.push('不完整日期被誤判成倒數目標');
 
 // 4) 結果頁必帶的文案
-for (const t of ['以 115 學年度時程為參考，116 學年度簡章公布後更新', '也做做看：你是哪一派？', '#/quiz/start', 'preview=new']) {
+for (const t of ['以 115 學年度時程為參考，116 學年度簡章公布後更新', '也做做看：你是哪一派？', '#/quiz/start']) {
   if (!src.includes(t)) fails.push(`pages.jsx 缺少「${t}」`);
 }
 
@@ -104,4 +104,26 @@ console.log(`PASS 招生導引 ${cases.length} 組代表案例、${combos} 種�
   if (wf.length) { console.error('FAIL 作品集牆\n- ' + wf.join('\n- ')); process.exit(1); }
   const count = (c) => wall.filter((it) => it.cats.includes(c)).length;
   console.log(`PASS 作品集牆 ${wall.length} 件（動畫 ${count('動畫')}、遊戲 ${count('遊戲')}、美術插畫 ${count('美術插畫')}、其他 ${count('其他')}）`);
+
+  // 6) 測驗結果頁的作品牆：每派 6 件、分類對得上、得獎作品排在影片庫前面
+  const pickBlock = grab(/const QUIZ_WALL = [\s\S]*?\nconst quizWallPick = [\s\S]*?\n\};/, '測驗作品牆挑選函式');
+  const quizWallPick = new Function(pickBlock + '\nreturn quizWallPick;')();
+  const qf = [];
+  const want = { anim: ['動畫'], game: ['遊戲'], art: ['美術插畫', '動畫'], cross: ['動畫', '遊戲'] };
+  for (const k of Object.keys(want)) {
+    const list = quizWallPick(wall, k);
+    console.log(`  ${k}: ` + list.map((it) => `${it.title}[${it.cats.join('+')}]`).join('、'));
+    if (list.length !== 6) qf.push(`${k} 應有 6 件，實際 ${list.length}`);
+    if (new Set(list).size !== list.length) qf.push(`${k} 有重複作品`);
+    if (list.some((it) => !it.cats.some((c) => want[k].includes(c)))) qf.push(`${k} 混進不相干分類`);
+    if (list.some((it) => it.cats.includes('其他') && it.cats.length === 1)) qf.push(`${k} 混進「其他」（形象片、教學）`);
+    const ranks = list.map((it) => (it.key.startsWith('v-') ? 1 : 0));
+    if (ranks.some((r, i) => i > 0 && r < ranks[i - 1])) qf.push(`${k} 影片庫作品排到得獎作品前面`);
+  }
+  if (!quizWallPick(wall, 'art')[0].cats.includes('美術插畫')) qf.push('美術派第一件應是插畫');
+  const cross = quizWallPick(wall, 'cross');
+  if (!cross.some((it) => it.cats.includes('動畫')) || !cross.some((it) => it.cats.includes('遊戲'))) qf.push('跨域派要同時有動畫與遊戲');
+  if (quizWallPick(wall, 'nope').length !== 0) qf.push('未知派別應回傳空陣列');
+  if (qf.length) { console.error('FAIL 測驗作品牆\n- ' + qf.join('\n- ')); process.exit(1); }
+  console.log('PASS 測驗結果作品牆：四派各 6 件、分類正確、得獎作品優先');
 }

@@ -1351,3 +1351,9 @@ body::before {
 @media (max-width: 420px) {
   .pv-grid, .pv-grid--cards { grid-template-columns: 1fr; }
 }
+
+/* 右下浮動鈕：手機上縮小、半透明，少擋內容（2026-10-08 四顆鈕公開後） */
+@media (max-width: 600px) {
+  .floating-cta { right: 8px !important; bottom: 8px !important; gap: 5px !important; }
+  .floating-cta a { font-size: 12px !important; padding: 4px 8px !important; border-width: 2px !important; box-shadow: 2px 2px 0 var(--ink) !important; opacity: 0.92; }
+}
