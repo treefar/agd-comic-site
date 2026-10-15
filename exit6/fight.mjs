@@ -19,7 +19,7 @@ export const ATTACKS = [
   { id: "kick", name: "長鏡頭掃腿", tele: "他壓低重心，準備一記長長的掃腿！", counter: "low" },
   { id: "take", name: "一鏡到底", tele: "他大喊：「這顆鏡頭不准 NG！」整個人衝過來！", counter: "dolly" },
 ];
-export const FINISHER = { id: "last", name: "最後一顆鏡頭", tele: "他搖搖晃晃——趁現在補上最後一擊！", counter: "dutch" };
+export const FINISHER = { id: "last", name: "最後一顆鏡頭", tele: "他搖搖晃晃——把畫面拍斜，給他最後一擊！", counter: "dutch" };
 
 export const QIU_HP = 5;
 export const PLAYER_HP = 3;
@@ -27,17 +27,17 @@ export const PLAYER_HP = 3;
 // 斜方向可以省略：cmd 裡的斜向，若前後兩個方向剛好是它的組成（↓ 然後 →），沒按到斜向也算對
 const parts = { UL: ["U", "L"], UR: ["U", "R"], DL: ["D", "L"], DR: ["D", "R"] };
 
-// buffer：[{ k, t }]（由舊到新）；回傳是否在 now 時剛完成 cmd
-export function matches(buffer, cmd, now = buffer.length ? buffer[buffer.length - 1].t : 0) {
+// buffer：[{ k, t }]（由舊到新）；回傳是否在 now 時剛完成 cmd；gap／win 可放寬（判斷「方向對了只是太慢」用）
+export function matches(buffer, cmd, now = buffer.length ? buffer[buffer.length - 1].t : 0, gap = GAP_MS, win = WINDOW_MS) {
   if (!buffer.length) return false;
   const last = buffer[buffer.length - 1];
-  if (last.k !== cmd[cmd.length - 1] || now - last.t > GAP_MS) return false;
+  if (last.k !== cmd[cmd.length - 1] || now - last.t > gap) return false;
   let bi = buffer.length - 2, prevT = last.t, startT = last.t;
   for (let ci = cmd.length - 2; ci >= 0; ci--) {
     const want = cmd[ci];
     // 在時間間隔內往回找這個輸入
     let found = -1;
-    for (let j = bi; j >= 0 && prevT - buffer[j].t <= GAP_MS; j--) {
+    for (let j = bi; j >= 0 && prevT - buffer[j].t <= gap; j--) {
       if (buffer[j].k === want) { found = j; break; }
       if (buffer[j].k === "A") break;          // 中間夾了動作鍵就斷掉
     }
@@ -49,7 +49,7 @@ export function matches(buffer, cmd, now = buffer.length ? buffer[buffer.length 
     }
     prevT = buffer[found].t; startT = prevT; bi = found - 1;
   }
-  return last.t - startT <= WINDOW_MS;
+  return last.t - startT <= win;
 }
 
 // 對戰狀態
@@ -82,8 +82,11 @@ export function input(f, k, now) {
     if (f.qiu <= 0) f.over = "win";
     return { type: "hit", move, over: f.over };
   }
-  // 按了動作鍵卻沒對上指令＝出招失誤
-  if (k === "A") return hurt(f);
+  // 按了動作鍵卻沒對上指令＝出招失誤；方向順序對、只是太慢，回報 slow 讓畫面說清楚
+  if (k === "A") {
+    const slow = matches(f.buffer, move.cmd, now, 60000, 60000);
+    return { ...hurt(f), reason: slow ? "slow" : "wrong" };
+  }
   return { type: "pending" };
 }
 

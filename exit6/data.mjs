@@ -53,7 +53,7 @@ export const ANOMALIES = [
   { id: "A03", station: 1, still: "frames/s1_a03.webp", hits: [{ x: 0, y: 74, w: 100, h: 26 }],
     card: { title: "地墊方向反了", text: "（待老師補充：這張彩繪地墊的作者與作品介紹）" } },
   { id: "A04", station: 2, still: "frames/s2_a04.webp", hits: [{ x: 10, y: 56, w: 22, h: 20 }],
-    card: { title: "有人脫了鞋", text: "（待老師補充：天橋地板彩繪的由來）" } },
+    card: { title: "有人脫了鞋", text: "天橋的地板彩繪上本來什麼都沒放。（待老師補充：天橋地板彩繪的由來）" } },
   { id: "A05", station: 3, still: "frames/s3_a05.webp", hits: [{ x: 34, y: 52, w: 29, h: 28 }],
     card: { title: "牌樓下有人坐過", text: "（待老師補充：中庭牌樓的由來）在六樓迷路，先找牌樓。" } },
   { id: "A06", station: 4, still: "frames/s4_a06.webp", hits: [{ x: 41, y: 13, w: 14, h: 15 }],

@@ -13,6 +13,15 @@ test("時段：邊界小時歸類正確", () => {
   for (const [h, p] of Object.entries(cases)) assert.equal(periodOf(+h), p, `${h} 點`);
 });
 
+test("時段顯示：0～5 點寫「深夜」，其他照時段", async () => {
+  const { hourLabel } = await import("../exit6/time.mjs");
+  assert.equal(hourLabel(2), "深夜");
+  assert.equal(hourLabel(5), "深夜");
+  assert.equal(hourLabel(21), "晚上");
+  assert.equal(hourLabel(18), "黃昏");
+  assert.equal(hourLabel(9), "白天");
+});
+
 test("時鐘：0～23 點開局，第 1～4 圈內一定有一圈是晚上（時段線索碰得到）", () => {
   for (let start = 0; start < 24; start++) {
     const laps = Array.from({ length: NIGHT_BY_LAP }, (_, i) => hourAt(start, i + 1));
@@ -117,7 +126,7 @@ test("座標：同一站的導覽調查點互不重疊（2026-10-15 系辦門口
 
 test("座標：可點物件的中心不被畫面角落的手帳鈕、岔路鈕蓋住", async () => {
   const { CLUES } = await import("../exit6/clues.mjs");
-  const corners = [{ x: 84, y: 84, w: 16, h: 16 }, { x: 0, y: 84, w: 22, h: 16 }];   // 右下手帳、左下岔路（約略範圍）
+  const corners = [{ x: 0, y: 84, w: 22, h: 16 }];   // 左下岔路（約略範圍）；手帳鈕已移到畫面外的下方按鈕列
   const center = (b) => ({ x: b.x + b.w / 2, y: b.y + b.h / 2, w: 0.01, h: 0.01 });
   const all = [...STATIONS.flatMap((s) => s.spots.map((p) => [`${s.id} ${p.label}`, p])), ...TARGETS.map((t) => [`交付 ${t.id}`, t.box]), ...CLUES.map((c) => [`線索 ${c.id}`, c.box])];
   for (const [name, b] of all) for (const c of corners) assert.ok(!overlap(center(b), c), `${name} 的中心被角落按鈕蓋住`);

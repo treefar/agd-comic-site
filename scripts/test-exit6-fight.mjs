@@ -79,6 +79,19 @@ test("對戰：同一招不會連續兩回合出現（固定亂數也一樣）",
   }
 });
 
+test("對戰：方向對但太慢回報 slow、方向錯回報 wrong（試玩回報錯誤訊息說錯原因）", () => {
+  const f = createFight(() => 0);
+  const atk = nextRound(f, 0);
+  const cmd = MOVES[atk.counter].cmd;
+  let t = 0, r;
+  for (const k of cmd) r = input(f, k, (t += GAP_MS + 300));   // 每鍵間隔都超過上限
+  assert.equal(r.type, "miss");
+  assert.equal(r.reason, "slow");
+  const g = createFight(() => 0);
+  nextRound(g, 0);
+  assert.equal(input(g, "A", 50).reason, "wrong");
+});
+
 test("對戰：時間窗越來越短但不低於 1.5 秒；每招都有對應反擊", () => {
   assert.ok(windowFor(1) > windowFor(5));
   assert.equal(windowFor(30), 1500);

@@ -72,10 +72,11 @@
 
   .below { width: min(100vw, 900px); padding: 10px 16px 0; min-height: 96px; }
   .tip { padding: 10px 12px; background: #111614; border-left: 3px solid var(--accent); font-size: 14px; line-height: 1.55; }
+  @media (orientation: portrait) { .tip { min-height: calc(1.55em * 4 + 20px); } }   /* 手機直拿：說明欄固定 4 行高，文字變多時畫面不跳動 */
   .tip b { color: var(--pop); }
   .rotate { margin-top: 6px; font-size: 12px; color: var(--dim); text-align: center; }
   @media (orientation: landscape) { .rotate { display: none; } }
-  .controls { width: min(100vw, 900px); height: var(--ctrl-h); display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 10px 16px max(10px, env(safe-area-inset-bottom)); }
+  .controls { width: min(100vw, 900px); height: var(--ctrl-h); display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; padding: 10px 16px max(10px, env(safe-area-inset-bottom)); }
   button { font: inherit; border: 0; border-radius: 10px; font-size: 17px; font-weight: 700; cursor: pointer; transition: transform .08s; }
   button:active:not(:disabled) { transform: scale(.94); }
   button:disabled { opacity: .4; cursor: default; }
@@ -97,7 +98,7 @@
   .card h2 { margin: 6px 0 8px; font-size: 22px; }
   .card p { margin: 0 0 14px; line-height: 1.6; }
   .card button { width: 100%; padding: 12px; background: var(--paperink); color: var(--paper); }
-  .toast { position: absolute; left: 50%; bottom: 18%; transform: translateX(-50%); z-index: 6; background: rgba(0,0,0,.8); color: var(--ink); padding: 6px 12px; border-radius: 999px; font-size: 13px; pointer-events: none; }
+  .toast { position: absolute; left: 50%; top: 12%; transform: translateX(-50%); max-width: min(92vw, 560px); text-align: center; line-height: 1.5; z-index: 6; background: rgba(0,0,0,.8); color: var(--ink); padding: 6px 12px; border-radius: 999px; font-size: 13px; pointer-events: none; }
 
   /* 沿邊光暈與浮起：外層 drop-shadow 跟著內層多邊形裁切的形狀走 */
   .cuts { position: absolute; inset: 0; pointer-events: none; }
@@ -116,7 +117,7 @@
 
   /* 時鐘、手帳、交付 */
   .clock { margin-top: 4px; font: 700 12px ui-monospace, monospace; color: var(--paper); text-shadow: 0 0 6px #000; font-variant-numeric: tabular-nums; }
-  .nb { position: absolute; right: 10px; bottom: 10px; z-index: 2; padding: 6px 12px; font-size: 14px; background: var(--paper); color: var(--paperink); border: 2px solid var(--paperink); box-shadow: 3px 3px 0 var(--paperink); }
+  .nb { padding: 6px 12px; font-size: 14px; background: var(--paper); color: var(--paperink); border: 2px solid var(--paperink); box-shadow: 3px 3px 0 var(--paperink); }
   .nb.pulse { animation: pop .5s cubic-bezier(.2,1.8,.4,1) 2; }
   .spot.deliver { border-color: #6ea8ff; background: rgba(29,78,216,.14); border-style: dashed; animation: none; }
   .spot.deliver span { background: var(--blue); color: #fff; }
@@ -129,6 +130,9 @@
   .sheet li.ok b::after { content: "　✔"; }
   .sheet .clock { color: var(--paperink); text-shadow: none; }
   .sheet > button { width: 100%; margin-top: 12px; padding: 10px; }
+  .sheet .ghost, .card .ghost { color: var(--paperink); border-color: var(--paperink); background: transparent; }
+  .sheet > button.x { position: sticky; top: 0; float: right; width: 40px; height: 40px; margin: 0 0 4px 8px; padding: 0; font-size: 22px; background: var(--paperink); color: var(--paper); border-radius: 50%; z-index: 1; }
+  .spot.lbl-below span { top: auto; bottom: -1.6em; }
   .spot.clue span { background: #ff8a1f; color: var(--paperink); }
   .cut.c-clue { filter: drop-shadow(0 0 1px #ff8a1f) drop-shadow(0 0 1px #ff8a1f) drop-shadow(0 0 8px rgba(255,138,31,.9)); animation: glow 1.2s ease-in-out infinite; }
   .branch { position: absolute; left: 10px; bottom: 10px; z-index: 2; padding: 8px 14px; font-size: 15px; background: #ff8a1f; color: var(--paperink); border: 2px solid var(--paperink); box-shadow: 3px 3px 0 var(--paperink); animation: pop .6s cubic-bezier(.2,1.8,.4,1) 1; }
@@ -230,7 +234,6 @@
     <img class="dean" id="dean" alt="系主任">
     <div class="burst" id="burst"></div>
     <div class="hud"><div><div class="floorNo" id="floorNo">0F</div><div class="clock" id="clock"></div></div><div><div class="where" id="where"></div><div class="timer" id="timer"></div></div></div>
-    <button class="nb" id="nbBtn" aria-label="打開手帳">手帳</button>
     <button class="branch hidden" id="branch">往走廊深處 →</button>
     <div class="dbg hidden" id="dbg"></div>
   </div>
@@ -240,6 +243,7 @@
   </div>
   <div class="controls">
     <button class="btnBack" id="btnBack" aria-label="回頭（鍵盤 ← 或 ↓）">↩ 回頭</button>
+    <button class="nb" id="nbBtn" aria-label="打開手帳">手帳</button>
     <button class="btnFwd" id="btnFwd" aria-label="往前（鍵盤 → 或 ↑）">往前 ↑</button>
   </div>
 

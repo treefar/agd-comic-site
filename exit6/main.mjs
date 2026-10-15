@@ -2,7 +2,7 @@
 // 規則在 game-core.mjs（有回歸測試）；這裡只管演出：走路、點擊調查、果汁、系主任、測驗、紀錄
 import { createGame, step, anomalyAt, mulberry32 } from "./game-core.mjs";
 import { STATIONS, ANOMALIES, QUIZ, VOICE_TEXT } from "./data.mjs";
-import { periodOf, stepFor, hourAt, gradeFor, fmtHour, PERIOD_LABEL } from "./time.mjs";
+import { periodOf, stepFor, hourAt, gradeFor, fmtHour, hourLabel } from "./time.mjs";
 import { ITEMS, TARGETS, createQuests, takeItems, deliver, pending, targetsAt, STAMP_POSTMAN } from "./quests.mjs";
 import { OUTLINES } from "./outlines.mjs";
 import { CLUES, CODE, createClues, visibleClues, collect, allFound, tryCode } from "./clues.mjs";
@@ -16,6 +16,8 @@ const $ = (id) => document.getElementById(id);
 const stage = $("stage");
 const layers = [$("imgA"), $("imgB")];
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+// 資料裡「（待老師補充／確認：…）」是給老師看的佔位，玩家畫面不顯示
+const pub = (s) => String(s).replace(/（待老師[^）]*）/g, "").trim();
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 let front = 0;
 let busy = false;     // 卡片開著或走路中，不接受操作
@@ -55,8 +57,11 @@ function play(n, vol = 1, maxMs = 0) {
   const c = a.cloneNode(); c.volume = vol; c.play().catch(() => {});
   if (maxMs) setTimeout(() => c.pause(), maxMs);
 }
+// 系主任語音錄好、放進 exit6/audio/ 後改成 true；之前不載入，避免主控台 404
+const VOICE_READY = false;
 const voices = {};
 function loadVoices() {
+  if (!VOICE_READY) return;
   for (const id of Object.keys(VOICE_TEXT)) {
     const a = new Audio(`audio/${id}.m4a`); a.preload = "auto"; a.onerror = () => { voices[id] = null; }; voices[id] = a;
   }
@@ -107,7 +112,7 @@ function grade() {
   stage.style.setProperty("--grade", g.filter);
   stage.style.setProperty("--tint", g.tint);
   stage.style.setProperty("--vig", String(g.vig));
-  $("clock").textContent = `${fmtHour(h)} ${PERIOD_LABEL[g.period]}`;
+  $("clock").textContent = `${fmtHour(h)} ${hourLabel(h)}`;
 }
 function toast(text) {
   const t = $("toast"); t.textContent = text; t.classList.remove("hidden");
@@ -144,7 +149,10 @@ function setButtons() {
   $("btnFwd").disabled = off || (game.phase === "tour" && tourLeft() > 0);
 }
 
-function placeBtn(b, s) { Object.assign(b.style, { left: s.x + "%", top: s.y + "%", width: s.w + "%", height: s.h + "%" }); }
+function placeBtn(b, s) {
+  Object.assign(b.style, { left: s.x + "%", top: s.y + "%", width: s.w + "%", height: s.h + "%" });
+  if (s.y < 16) b.classList.add("lbl-below");   // 太靠上的標籤會被左上樓層、右上站名壓到，改放下方
+}
 
 // ---------- 沿邊光暈與浮起：用 SAM 輪廓多邊形裁出同一張圖的物件（outlines.mjs），只做裁切與 UI 特效 ----------
 function cutout(key, src, kind) {
@@ -192,7 +200,7 @@ function renderSpots() {
       b.onclick = (e) => {
         e.stopPropagation(); if (busy) return;
         run.toured.add(`${game.station}:${i}`); play("click");
-        b.classList.add("done"); cut?.classList.add("c-done"); $("tip").innerHTML = `<b>${s.label}</b>　${s.text}`;
+        b.classList.add("done"); cut?.classList.add("c-done"); $("tip").innerHTML = `<b>${s.label}</b>　${pub(s.text)}`;
         if (s.action === "takeItems" && !quests.taken) { takeItems(quests); nbPulse(); burst("收到委託", true); renderSpots(); }
         setButtons();
         if (tourLeft() === 0) toast("這站看完了，可以往前走");
@@ -226,7 +234,7 @@ function renderSpots() {
       if (collect(clues, c.id)) { play("found", 0.8); burst("線索！", true); nbPulse(); b.classList.add("done"); cut?.classList.add("c-done"); }
       else play("click");
       toast(c.text);
-      if (allFound(clues) && !clues.opened) setTimeout(() => toast("4 條線索都到手了！D0646 那邊的走廊深處好像有路……"), 1800);
+      if (allFound(clues) && !clues.opened) setTimeout(() => toast("4 條線索都到手了！D0646 那邊的走廊深處好像有路……"), Math.max(1800, c.text.length * 110 + 300));
       renderBranch();
     };
     box.appendChild(b);
@@ -245,7 +253,7 @@ function nbPulse() { const n = $("nbBtn"); n.classList.remove("pulse"); void n.o
 function openSheet(html, cls = "") {
   const s = $("sheet"); s.innerHTML = html; s.className = "sheet " + cls; s.classList.remove("hidden");
   busy = true; setButtons();
-  s.querySelector("[data-close]").onclick = closeSheet;
+  s.querySelectorAll("[data-close]").forEach((b) => (b.onclick = closeSheet));
 }
 function closeSheet() { $("sheet").classList.add("hidden"); busy = false; setButtons(); }
 function openNotebook() {
@@ -260,7 +268,7 @@ function openNotebook() {
     ? CLUES.filter((c) => clues.found.includes(c.id)).map((c) => `<li class="ok"><b>${c.label}</b><br>${c.text}</li>`).join("")
     : `<li>還沒有線索。循環開始後，留意畫面上發亮的「線索」。</li>`;
   const slots = CLUES.map((c, i) => (clues.found.includes(c.id) ? "？" : "＿")).join(" ");
-  openSheet(`<h3>手帳</h3><p class="clock">現在 ${fmtHour(nowHour())}（${PERIOD_LABEL[periodOf(nowHour())]}）</p>
+  openSheet(`<button class="x" data-close aria-label="關閉手帳">×</button><h3>手帳</h3><p class="clock">現在 ${fmtHour(nowHour())}（${hourLabel(nowHour())}）</p>
     <h4>系辦委託</h4><ul>${items}</ul>
     <h4>邱老師研究室的密碼　${slots}（${clues.found.length}/${CLUES.length}）</h4><ul>${clueList}</ul>
     <h4>紀念章</h4><ul>${stampList}</ul><button class="go" data-close>關閉</button>`);
@@ -325,7 +333,7 @@ function showCard(tag, anomalyId, onClose) {
   const a = ANOMALIES.find((x) => x.id === anomalyId);
   $("cardTag").textContent = tag;
   $("cardTitle").textContent = a.card.title;
-  $("cardText").textContent = a.card.text;
+  $("cardText").textContent = pub(a.card.text);
   const card = $("card"); card.classList.add("hidden"); void card.offsetWidth; card.classList.remove("hidden");
   busy = true; setButtons();
   $("cardOk").onclick = () => { card.classList.add("hidden"); busy = false; setButtons(); onClose && onClose(); };
@@ -354,7 +362,7 @@ function openKeypad() {
         $("codeMsg").textContent = r.text;
         if (r.ok) { play("clear"); setTimeout(() => { closeSheet(); enterD0647(true); }, 700); }
         else { play("wrong", 0.6); shake(false); code = ""; }
-      } else if (code.length < CODE.length) { code += n; play("click", 0.6); }
+      } else if (code.length < CODE.length) { code += n; play("click", 0.6); $("codeMsg").textContent = ""; }
       showCode();
     };
   });
@@ -454,7 +462,9 @@ function fightResult(r) {
     clearTimeout(fightResult.t); fightResult.t = setTimeout(() => term.classList.add("hidden"), 2200);
   } else {
     play("wrong"); const box = $("fbox"); box.classList.remove("shake-l"); void box.offsetWidth; box.classList.add("shake-l");
-    $("tele").innerHTML = `NG！被「${lastAttack?.name ?? "招式"}」打中了<small>正解是「${MOVES[lastAttack?.counter]?.name ?? ""}」</small>`;
+    $("tele").innerHTML = r.reason === "slow"
+      ? `太慢了！方向對了，但相鄰按鍵要在 0.5 秒內按完<small>「${MOVES[lastAttack?.counter]?.name ?? ""}」再快一點</small>`
+      : `NG！被「${lastAttack?.name ?? "招式"}」打中了<small>正解是「${MOVES[lastAttack?.counter]?.name ?? ""}」</small>`;
   }
   if (r.over === "win") return fightWin();
   if (r.over === "lose") return fightLose();

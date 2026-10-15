@@ -228,7 +228,7 @@
       station: 2,
       still: "frames/s2_a04.webp",
       hits: [{ x: 10, y: 56, w: 22, h: 20 }],
-      card: { title: "\u6709\u4EBA\u812B\u4E86\u978B", text: "\uFF08\u5F85\u8001\u5E2B\u88DC\u5145\uFF1A\u5929\u6A4B\u5730\u677F\u5F69\u7E6A\u7684\u7531\u4F86\uFF09" }
+      card: { title: "\u6709\u4EBA\u812B\u4E86\u978B", text: "\u5929\u6A4B\u7684\u5730\u677F\u5F69\u7E6A\u4E0A\u672C\u4F86\u4EC0\u9EBC\u90FD\u6C92\u653E\u3002\uFF08\u5F85\u8001\u5E2B\u88DC\u5145\uFF1A\u5929\u6A4B\u5730\u677F\u5F69\u7E6A\u7684\u7531\u4F86\uFF09" }
     },
     {
       id: "A05",
@@ -328,6 +328,7 @@
     return ((start + stepFor(start) * lap) % 24 + 24) % 24;
   }
   var PERIOD_LABEL = { day: "\u767D\u5929", dusk: "\u9EC3\u660F", night: "\u665A\u4E0A" };
+  var hourLabel = (h) => (h % 24 + 24) % 24 < 6 ? "\u6DF1\u591C" : PERIOD_LABEL[periodOf(h)];
   var TINT = { day: null, dusk: { rgb: [255, 196, 140], a: 0.28 }, night: { rgb: [96, 128, 210], a: 0.34 } };
   var lum = ([r, g, b]) => (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
   function gradeFor(hour, count = 0) {
@@ -489,19 +490,19 @@
     { id: "kick", name: "\u9577\u93E1\u982D\u6383\u817F", tele: "\u4ED6\u58D3\u4F4E\u91CD\u5FC3\uFF0C\u6E96\u5099\u4E00\u8A18\u9577\u9577\u7684\u6383\u817F\uFF01", counter: "low" },
     { id: "take", name: "\u4E00\u93E1\u5230\u5E95", tele: "\u4ED6\u5927\u558A\uFF1A\u300C\u9019\u9846\u93E1\u982D\u4E0D\u51C6 NG\uFF01\u300D\u6574\u500B\u4EBA\u885D\u904E\u4F86\uFF01", counter: "dolly" }
   ];
-  var FINISHER = { id: "last", name: "\u6700\u5F8C\u4E00\u9846\u93E1\u982D", tele: "\u4ED6\u6416\u6416\u6643\u6643\u2014\u2014\u8D81\u73FE\u5728\u88DC\u4E0A\u6700\u5F8C\u4E00\u64CA\uFF01", counter: "dutch" };
+  var FINISHER = { id: "last", name: "\u6700\u5F8C\u4E00\u9846\u93E1\u982D", tele: "\u4ED6\u6416\u6416\u6643\u6643\u2014\u2014\u628A\u756B\u9762\u62CD\u659C\uFF0C\u7D66\u4ED6\u6700\u5F8C\u4E00\u64CA\uFF01", counter: "dutch" };
   var QIU_HP = 5;
   var PLAYER_HP = 3;
   var parts = { UL: ["U", "L"], UR: ["U", "R"], DL: ["D", "L"], DR: ["D", "R"] };
-  function matches(buffer, cmd, now = buffer.length ? buffer[buffer.length - 1].t : 0) {
+  function matches(buffer, cmd, now = buffer.length ? buffer[buffer.length - 1].t : 0, gap = GAP_MS, win = WINDOW_MS) {
     if (!buffer.length) return false;
     const last = buffer[buffer.length - 1];
-    if (last.k !== cmd[cmd.length - 1] || now - last.t > GAP_MS) return false;
+    if (last.k !== cmd[cmd.length - 1] || now - last.t > gap) return false;
     let bi = buffer.length - 2, prevT = last.t, startT = last.t;
     for (let ci = cmd.length - 2; ci >= 0; ci--) {
       const want = cmd[ci];
       let found = -1;
-      for (let j = bi; j >= 0 && prevT - buffer[j].t <= GAP_MS; j--) {
+      for (let j = bi; j >= 0 && prevT - buffer[j].t <= gap; j--) {
         if (buffer[j].k === want) {
           found = j;
           break;
@@ -516,7 +517,7 @@
       startT = prevT;
       bi = found - 1;
     }
-    return last.t - startT <= WINDOW_MS;
+    return last.t - startT <= win;
   }
   function createFight(rng2 = Math.random) {
     return { qiu: QIU_HP, me: PLAYER_HP, round: 0, attack: null, deadline: 0, buffer: [], over: null, rng: rng2 };
@@ -542,7 +543,10 @@
       if (f.qiu <= 0) f.over = "win";
       return { type: "hit", move, over: f.over };
     }
-    if (k === "A") return hurt(f);
+    if (k === "A") {
+      const slow = matches(f.buffer, move.cmd, now, 6e4, 6e4);
+      return { ...hurt(f), reason: slow ? "slow" : "wrong" };
+    }
     return { type: "pending" };
   }
   function timeout(f, now) {
@@ -565,6 +569,7 @@
   var stage = $("stage");
   var layers = [$("imgA"), $("imgB")];
   var sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  var pub = (s) => String(s).replace(/（待老師[^）]*）/g, "").trim();
   var reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   var front = 0;
   var busy = false;
@@ -620,8 +625,10 @@
     });
     if (maxMs) setTimeout(() => c.pause(), maxMs);
   }
+  var VOICE_READY = false;
   var voices = {};
   function loadVoices() {
+    if (!VOICE_READY) return;
     for (const id of Object.keys(VOICE_TEXT)) {
       const a = new Audio(`audio/${id}.m4a`);
       a.preload = "auto";
@@ -693,7 +700,7 @@
     stage.style.setProperty("--grade", g.filter);
     stage.style.setProperty("--tint", g.tint);
     stage.style.setProperty("--vig", String(g.vig));
-    $("clock").textContent = `${fmtHour(h)} ${PERIOD_LABEL[g.period]}`;
+    $("clock").textContent = `${fmtHour(h)} ${hourLabel(h)}`;
   }
   function toast(text) {
     const t = $("toast");
@@ -741,6 +748,7 @@
   }
   function placeBtn(b, s) {
     Object.assign(b.style, { left: s.x + "%", top: s.y + "%", width: s.w + "%", height: s.h + "%" });
+    if (s.y < 16) b.classList.add("lbl-below");
   }
   function cutout(key, src, kind) {
     const polys = OUTLINES[key];
@@ -803,7 +811,7 @@
           play("click");
           b.classList.add("done");
           cut == null ? void 0 : cut.classList.add("c-done");
-          $("tip").innerHTML = `<b>${s.label}</b>\u3000${s.text}`;
+          $("tip").innerHTML = `<b>${s.label}</b>\u3000${pub(s.text)}`;
           if (s.action === "takeItems" && !quests.taken) {
             takeItems(quests);
             nbPulse();
@@ -851,7 +859,7 @@
           cut == null ? void 0 : cut.classList.add("c-done");
         } else play("click");
         toast(c.text);
-        if (allFound(clues) && !clues.opened) setTimeout(() => toast("4 \u689D\u7DDA\u7D22\u90FD\u5230\u624B\u4E86\uFF01D0646 \u90A3\u908A\u7684\u8D70\u5ECA\u6DF1\u8655\u597D\u50CF\u6709\u8DEF\u2026\u2026"), 1800);
+        if (allFound(clues) && !clues.opened) setTimeout(() => toast("4 \u689D\u7DDA\u7D22\u90FD\u5230\u624B\u4E86\uFF01D0646 \u90A3\u908A\u7684\u8D70\u5ECA\u6DF1\u8655\u597D\u50CF\u6709\u8DEF\u2026\u2026"), Math.max(1800, c.text.length * 110 + 300));
         renderBranch();
       };
       box.appendChild(b);
@@ -875,7 +883,7 @@
     s.classList.remove("hidden");
     busy = true;
     setButtons();
-    s.querySelector("[data-close]").onclick = closeSheet;
+    s.querySelectorAll("[data-close]").forEach((b) => b.onclick = closeSheet);
   }
   function closeSheet() {
     $("sheet").classList.add("hidden");
@@ -890,7 +898,7 @@
     const stampList = st.length ? st.map((s) => `<li class="ok"><b>${s.name}</b><br>${s.text}</li>`).join("") : `<li>\u9084\u6C92\u6709\u7D00\u5FF5\u7AE0\u3002</li>`;
     const clueList = clues.found.length ? CLUES.filter((c) => clues.found.includes(c.id)).map((c) => `<li class="ok"><b>${c.label}</b><br>${c.text}</li>`).join("") : `<li>\u9084\u6C92\u6709\u7DDA\u7D22\u3002\u5FAA\u74B0\u958B\u59CB\u5F8C\uFF0C\u7559\u610F\u756B\u9762\u4E0A\u767C\u4EAE\u7684\u300C\u7DDA\u7D22\u300D\u3002</li>`;
     const slots = CLUES.map((c, i) => clues.found.includes(c.id) ? "\uFF1F" : "\uFF3F").join(" ");
-    openSheet(`<h3>\u624B\u5E33</h3><p class="clock">\u73FE\u5728 ${fmtHour(nowHour())}\uFF08${PERIOD_LABEL[periodOf(nowHour())]}\uFF09</p>
+    openSheet(`<button class="x" data-close aria-label="\u95DC\u9589\u624B\u5E33">\xD7</button><h3>\u624B\u5E33</h3><p class="clock">\u73FE\u5728 ${fmtHour(nowHour())}\uFF08${hourLabel(nowHour())}\uFF09</p>
     <h4>\u7CFB\u8FA6\u59D4\u8A17</h4><ul>${items}</ul>
     <h4>\u90B1\u8001\u5E2B\u7814\u7A76\u5BA4\u7684\u5BC6\u78BC\u3000${slots}\uFF08${clues.found.length}/${CLUES.length}\uFF09</h4><ul>${clueList}</ul>
     <h4>\u7D00\u5FF5\u7AE0</h4><ul>${stampList}</ul><button class="go" data-close>\u95DC\u9589</button>`);
@@ -977,7 +985,7 @@
     const a = ANOMALIES.find((x) => x.id === anomalyId);
     $("cardTag").textContent = tag;
     $("cardTitle").textContent = a.card.title;
-    $("cardText").textContent = a.card.text;
+    $("cardText").textContent = pub(a.card.text);
     const card = $("card");
     card.classList.add("hidden");
     void card.offsetWidth;
@@ -1034,6 +1042,7 @@
         } else if (code.length < CODE.length) {
           code += n;
           play("click", 0.6);
+          $("codeMsg").textContent = "";
         }
         showCode();
       };
@@ -1152,7 +1161,7 @@
     if (r.type !== "pending") fightResult(r);
   }
   function fightResult(r) {
-    var _a, _b, _c;
+    var _a, _b, _c, _d, _e;
     cancelAnimationFrame(fightRaf);
     hpDraw();
     document.querySelectorAll("#movelist div").forEach((d) => d.classList.remove("want"));
@@ -1179,7 +1188,7 @@
       box.classList.remove("shake-l");
       void box.offsetWidth;
       box.classList.add("shake-l");
-      $("tele").innerHTML = `NG\uFF01\u88AB\u300C${(_a = lastAttack == null ? void 0 : lastAttack.name) != null ? _a : "\u62DB\u5F0F"}\u300D\u6253\u4E2D\u4E86<small>\u6B63\u89E3\u662F\u300C${(_c = (_b = MOVES[lastAttack == null ? void 0 : lastAttack.counter]) == null ? void 0 : _b.name) != null ? _c : ""}\u300D</small>`;
+      $("tele").innerHTML = r.reason === "slow" ? `\u592A\u6162\u4E86\uFF01\u65B9\u5411\u5C0D\u4E86\uFF0C\u4F46\u76F8\u9130\u6309\u9375\u8981\u5728 0.5 \u79D2\u5167\u6309\u5B8C<small>\u300C${(_b = (_a = MOVES[lastAttack == null ? void 0 : lastAttack.counter]) == null ? void 0 : _a.name) != null ? _b : ""}\u300D\u518D\u5FEB\u4E00\u9EDE</small>` : `NG\uFF01\u88AB\u300C${(_c = lastAttack == null ? void 0 : lastAttack.name) != null ? _c : "\u62DB\u5F0F"}\u300D\u6253\u4E2D\u4E86<small>\u6B63\u89E3\u662F\u300C${(_e = (_d = MOVES[lastAttack == null ? void 0 : lastAttack.counter]) == null ? void 0 : _d.name) != null ? _e : ""}\u300D</small>`;
     }
     if (r.over === "win") return fightWin();
     if (r.over === "lose") return fightLose();

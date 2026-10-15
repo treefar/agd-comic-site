@@ -26,6 +26,8 @@ export function hourAt(start, lap) {
 }
 
 export const PERIOD_LABEL = { day: "白天", dusk: "黃昏", night: "晚上" };
+// 顯示用：0～5 點寫「深夜」（時段判定仍算晚上）
+export const hourLabel = (h) => (((h % 24) + 24) % 24 < 6 ? "深夜" : PERIOD_LABEL[periodOf(h)]);
 
 // 整張調色：filter 只調亮度／飽和／對比（不轉色相，紅色告示晚上仍是紅的），
 // 時段色調用一層「相乘」疊色（tint）；亮度下限以疊色後的實際亮度計算
