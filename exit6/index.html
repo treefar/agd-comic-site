@@ -86,11 +86,27 @@
 
   .layer { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 16px; text-align: center; z-index: 7; }
   .hidden { display: none !important; }
-  .start { background: radial-gradient(circle at 50% 40%, #16201a, var(--bg) 70%); gap: 14px; }
-  .start h1 { margin: 0; font: 400 clamp(40px, 10vw, 64px)/1 var(--f-display); letter-spacing: .06em; color: var(--paper); -webkit-text-stroke: 2px var(--paperink); text-shadow: 4px 4px 0 var(--red); }
-  .start p { margin: 0; color: var(--dim); line-height: 1.6; font-size: 14px; max-width: 34em; }
-  .start p b { color: var(--ink); }
-  .start .best { color: var(--accent); font-size: 13px; }
+  /* 開場：漫畫封面。背景用 s0 電梯（已核准的漫畫風圖，只做整張調色），標題粗明體＋印刷錯版紅影，說明放旁白框 */
+  .start { background: #0b0b0a; gap: 14px; overflow: hidden; justify-content: flex-end; padding-bottom: max(28px, 6vh); }
+  .start .cover { position: absolute; inset: -4%; background: url(frames/s0.webp) center 40% / cover no-repeat; filter: grayscale(.55) contrast(1.15) brightness(.62); animation: coverPush 18s ease-out forwards; }
+  @keyframes coverPush { from { transform: scale(1); } to { transform: scale(1.08); } }
+  .start .tone { position: absolute; inset: 0; background:
+      radial-gradient(rgba(0,0,0,.35) 1px, transparent 1.5px) 0 0 / 5px 5px,
+      linear-gradient(180deg, rgba(8,8,7,.25) 0%, rgba(8,8,7,.05) 35%, rgba(8,8,7,.82) 72%, #0b0b0a 100%); }
+  .start .frameline { position: absolute; inset: 12px; border: 3px solid var(--paper); opacity: .85; pointer-events: none; }
+  .start > *:not(.cover):not(.tone):not(.frameline) { position: relative; }
+  .start .kicker { margin: 0; font: 700 12px/1 var(--f-body); letter-spacing: .32em; color: var(--paper); background: var(--paperink); padding: 6px 10px 6px 14px; border: 2px solid var(--paper); }
+  .start h1 { margin: 0; font: 900 clamp(48px, 12vw, 96px)/1 "Noto Serif TC", "PMingLiU", serif; letter-spacing: .08em; color: var(--paper);
+      -webkit-text-stroke: 1.5px var(--paperink); text-shadow: 3px 3px 0 var(--red), 0 0 24px rgba(0,0,0,.7); writing-mode: horizontal-tb; }
+  .start .warn { margin: 0 0 2px; font: 900 clamp(14px, 2.4vw, 18px)/1 "Noto Serif TC", serif; letter-spacing: .6em; padding: 6px 4px 6px 14px; color: var(--paper); background: var(--red); border: 2px solid var(--paperink); transform: rotate(-2deg); box-shadow: 3px 3px 0 var(--paperink); }
+  .start .caption { margin: 0; max-width: 32em; background: var(--paper); color: var(--paperink); border: 2.5px solid var(--paperink); box-shadow: 4px 4px 0 var(--paperink);
+      padding: 10px 14px; line-height: 1.65; font-size: 14px; text-align: left; }
+  .start .caption b { color: var(--red); }
+  .start .best { margin: 0; color: var(--pop); font-size: 13px; text-shadow: 0 1px 2px #000; }
+  .start .go { background: var(--paperink); color: var(--paper); border: 2.5px solid var(--paper); border-radius: 4px; box-shadow: 4px 4px 0 var(--red); padding: 12px 34px; letter-spacing: .2em; }
+  .start .credit { margin: 0; font-size: 11px; color: rgba(244,236,216,.6); max-width: 34em; }
+  @media (orientation: portrait) { .start .cover { background-position: 88% 20%; } }   /* 直拿：對準樓層燈「6」 */
+  @media (prefers-reduced-motion: reduce) { .start .cover { animation: none; } }
   .go { background: var(--accent); color: #06130b; padding: 14px 36px; }
   .card { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(92vw, 420px); background: var(--paper); color: var(--paperink); border: 3px solid var(--paperink); border-radius: 14px; padding: 18px; box-shadow: 6px 6px 0 var(--paperink); z-index: 8; animation: slam .35s cubic-bezier(.2,1.6,.4,1); }
   @keyframes slam { from { transform: translate(-50%, -50%) scale(1.4) rotate(4deg); opacity: 0; } to { transform: translate(-50%, -50%) scale(1); opacity: 1; } }
@@ -221,7 +237,7 @@
   }
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Noto+Sans+TC:wght@400;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@900&display=swap">
 </head>
 <body>
 <div id="app">
@@ -253,11 +269,14 @@
   <div class="card hidden" id="card"><small id="cardTag"></small><h2 id="cardTitle"></h2><p id="cardText"></p><button id="cardOk">繼續走</button></div>
 
   <div class="layer start" id="start">
+    <div class="cover" aria-hidden="true"></div><div class="tone" aria-hidden="true"></div><div class="frameline" aria-hidden="true"></div>
+    <p class="kicker">樹德科大 設計大樓 D 棟・6F</p>
     <h1>六樓出口</h1>
-    <p>你在設計大樓六樓醒來，走廊一直循環。<br>先走一圈導覽，把發亮的地方都點過。<br>之後覺得哪裡不對勁：<b>直接點那個地方</b>，或按<b>回頭</b>。<br>沒有異常就往前走。連續走對 6 圈，才能離開六樓。</p>
+    <p class="warn">請勿回頭</p>
+    <p class="caption">電梯門開了，你在六樓醒來。走廊一直循環。<br>先走一圈導覽，把發亮的地方都點過。之後覺得哪裡不對勁：<b>直接點那個地方</b>，或按<b>回頭</b>；沒有異常就往前走。<br>連續走對 6 圈，才能離開六樓。</p>
     <p class="best" id="best"></p>
     <button class="go" id="go">進入六樓</button>
-    <p style="font-size:12px">畫面依設計大樓六樓實拍，以 Codex 生圖重繪成漫畫風。系主任語音尚未錄製，先以字幕代替。</p>
+    <p class="credit">畫面依設計大樓六樓實拍，以 Codex 生圖重繪成漫畫風。系主任語音尚未錄製，先以字幕代替。</p>
   </div>
   <div class="layer panel hidden" id="ending"></div>
 
