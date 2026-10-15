@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>字體對撞（視覺傳達設計）- 試玩頁</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: #0f0d0a;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      overflow: hidden;
+    }
+    #stage-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      max-width: calc(100vh * 16 / 9);
+      max-height: calc(100vw * 9 / 16);
+      aspect-ratio: 16 / 9;
+      background: #f4ecd8;
+      border: 3px solid #0f0d0a;
+      box-shadow: 6px 6px 0 #0f0d0a;
+      overflow: hidden;
+    }
+    @media (max-aspect-ratio: 1/1) {
+      /* 手機直向全螢幕適配 (375x812) */
+      #stage-container {
+        max-width: 100vw;
+        max-height: 100vh;
+        aspect-ratio: auto;
+        border: none;
+        box-shadow: none;
+      }
+    }
+    #root {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    #host-result {
+      position: absolute;
+      bottom: 12px;
+      right: 16px;
+      background: #ffd60a;
+      border: 2px solid #0f0d0a;
+      box-shadow: 3px 3px 0 #0f0d0a;
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 900;
+      color: #0f0d0a;
+      display: none;
+      z-index: 50;
+      align-items: center;
+      gap: 8px;
+    }
+    #host-restart-btn {
+      background: #1d4ed8;
+      color: #fff;
+      border: 2px solid #0f0d0a;
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="stage-container">
+    <div id="root"></div>
+    <div id="host-result">
+      <span id="host-result-text"></span>
+      <button id="host-restart-btn">再玩一次</button>
+    </div>
+  </div>
+
+  <script src="rules.js"></script>
+  <script src="game.js"></script>
+  <script>
+    (function () {
+      const root = document.getElementById("root");
+      const hostResult = document.getElementById("host-result");
+      const hostResultText = document.getElementById("host-result-text");
+      const hostRestartBtn = document.getElementById("host-restart-btn");
+      let activeGame = null;
+
+      function launch() {
+        hostResult.style.display = "none";
+        if (activeGame) {
+          activeGame.destroy();
+          activeGame = null;
+        }
+
+        activeGame = window.EXIT6_MG["mg-type"].mount(root, {
+          onEnd: function (result) {
+            hostResultText.textContent = (result.win ? "獲勝" : "敗北") + "，得分：" + result.score;
+            hostResult.style.display = "flex";
+          },
+          rng: Math.random
+        });
+      }
+
+      hostRestartBtn.addEventListener("click", launch);
+      launch();
+    })();
+  </script>
+</body>
+</html>

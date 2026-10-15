@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>時間曲線滑翔 — 六樓出口</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background-color: #f4ecd8;
+    color: #0f0d0a;
+    font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 12px;
+  }
+  header {
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  h1 {
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .tag {
+    font-size: 12px;
+    background-color: #ffd60a;
+    border: 2px solid #0f0d0a;
+    padding: 2px 6px;
+    box-shadow: 2px 2px 0 #0f0d0a;
+  }
+  #stage-wrapper {
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 16 / 9;
+    border: 3px solid #0f0d0a;
+    box-shadow: 4px 4px 0 #0f0d0a;
+    background-color: #f4ecd8;
+    position: relative;
+    overflow: hidden;
+  }
+  #root {
+    width: 100%;
+    height: 100%;
+  }
+  footer {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #0f0d0a;
+    text-align: center;
+    line-height: 1.5;
+  }
+  .controls-hint {
+    background-color: #8a948e;
+    color: #f4ecd8;
+    display: inline-block;
+    padding: 4px 10px;
+    border: 2px solid #0f0d0a;
+    font-weight: bold;
+    margin-top: 4px;
+  }
+  #host-overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 13, 10, 0.7);
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+  }
+  .host-card {
+    background-color: #f4ecd8;
+    border: 3px solid #0f0d0a;
+    box-shadow: 4px 4px 0 #0f0d0a;
+    padding: 20px;
+    text-align: center;
+    max-width: 380px;
+    width: 85%;
+  }
+  .host-card h2 {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+  .host-card p {
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+  .replay-btn {
+    min-width: 120px;
+    min-height: 44px;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #0f0d0a;
+    color: #f4ecd8;
+    border: 2px solid #0f0d0a;
+    box-shadow: 3px 3px 0 #1d4ed8;
+    cursor: pointer;
+    padding: 8px 18px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>時間曲線滑翔 <span class="tag">電腦動畫</span></h1>
+</header>
+
+<div id="stage-wrapper">
+  <div id="root"></div>
+  <div id="host-overlay">
+    <div class="host-card">
+      <h2 id="host-title">遊戲結束</h2>
+      <p id="host-desc"></p>
+      <button class="replay-btn" id="host-replay">再玩一次</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="controls-hint">操作方式：滑鼠點擊按住／觸控按住／鍵盤空白鍵或 Z 鍵俯衝，放手滑翔</div>
+</footer>
+
+<script src="rules.js"></script>
+<script src="game.js"></script>
+<script>
+  (function () {
+    var root = document.getElementById("root");
+    var overlay = document.getElementById("host-overlay");
+    var hostTitle = document.getElementById("host-title");
+    var hostDesc = document.getElementById("host-desc");
+    var replayBtn = document.getElementById("host-replay");
+    var currentGame = null;
+
+    function startGame() {
+      overlay.style.display = "none";
+      if (currentGame) {
+        currentGame.destroy();
+        currentGame = null;
+      }
+      var mg = window.EXIT6_MG["mg-anim"];
+      if (mg) {
+        currentGame = mg.mount(root, {
+          onEnd: function (res) {
+            hostTitle.innerText = res.win ? "★ 挑戰通關！" : "挑戰結束";
+            hostTitle.style.color = res.win ? "#1d4ed8" : "#e63946";
+            hostDesc.innerText = "最終得分：" + res.score + " 分";
+            overlay.style.display = "flex";
+          },
+          rng: Math.random
+        });
+      }
+    }
+
+    replayBtn.addEventListener("click", function () {
+      startGame();
+    });
+
+    startGame();
+  })();
+</script>
+</body>
+</html>
