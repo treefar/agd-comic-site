@@ -108,6 +108,21 @@ test("密碼門：沒集齊不能開；位數不對、部分正確都有提示�
   assert.equal(st.opened, true);
 });
 
+test("座標：同一站的導覽調查點互不重疊（2026-10-15 系辦門口「兩側海報」蓋住「門上告示」導致卡關）", () => {
+  for (const s of STATIONS) {
+    for (let i = 0; i < s.spots.length; i++) for (let j = i + 1; j < s.spots.length; j++)
+      assert.ok(!overlap(s.spots[i], s.spots[j]), `${s.id}「${s.spots[i].label}」和「${s.spots[j].label}」重疊`);
+  }
+});
+
+test("座標：可點物件的中心不被畫面角落的手帳鈕、岔路鈕蓋住", async () => {
+  const { CLUES } = await import("../exit6/clues.mjs");
+  const corners = [{ x: 84, y: 84, w: 16, h: 16 }, { x: 0, y: 84, w: 22, h: 16 }];   // 右下手帳、左下岔路（約略範圍）
+  const center = (b) => ({ x: b.x + b.w / 2, y: b.y + b.h / 2, w: 0.01, h: 0.01 });
+  const all = [...STATIONS.flatMap((s) => s.spots.map((p) => [`${s.id} ${p.label}`, p])), ...TARGETS.map((t) => [`交付 ${t.id}`, t.box]), ...CLUES.map((c) => [`線索 ${c.id}`, c.box])];
+  for (const [name, b] of all) for (const c of corners) assert.ok(!overlap(center(b), c), `${name} 的中心被角落按鈕蓋住`);
+});
+
 test("座標：交付點不和同站異常點擊範圍重疊、不和導覽調查點重疊", () => {
   for (const t of TARGETS) {
     for (const a of ANOMALIES.filter((x) => x.station === t.station))

@@ -13,9 +13,10 @@ export const STATIONS = [
     spots: [
       { x: 3, y: 13, w: 24, h: 22, label: "系名牆", text: "動畫與遊戲設計系（Department of Animation and Game Design, STU）。系辦就在電梯正前方，新生有問題先來這裡問。" },
       { x: 54, y: 24, w: 9, h: 23, label: "門上告示", text: "「請勿回頭」。記住它寫什麼。" },
-      { x: 27, y: 16, w: 60, h: 28, label: "兩側海報", text: "門左邊一張藍色海報，右邊兩張彩色海報。記住哪邊是哪張。" },
+      { x: 27, y: 16, w: 12, h: 30, label: "左側海報", text: "門左邊是一張藍色海報。記住它在左邊。" },
       { x: 0, y: 76, w: 100, h: 24, label: "彩繪地墊", text: "門前的彩繪地墊，記住人物排列的方向。（待老師補充：地墊作者）" },
       { x: 53, y: 52, w: 10, h: 16, label: "系辦委託", action: "takeItems", text: "系辦拜託你送 3 件東西，已經放進手帳。每件只寫了用途，要自己想想該送到六樓哪裡。" },
+      { x: 66, y: 14, w: 21, h: 30, label: "右側海報", text: "門右邊是兩張彩色海報。記住它們在右邊。" },
     ] },
   { id: "S2", name: "天橋地板彩繪", frames: ["frames/s2_a.webp", "frames/s2_b.webp"], still: "frames/s2.webp", src: "B 0:30–0:40",
     tour: "穿過休息區就是天橋。",
