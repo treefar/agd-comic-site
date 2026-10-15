@@ -336,11 +336,11 @@
     const base = { day: 1, dusk: 0.98, night: 0.95 }[p];
     const b = Math.max(BRIGHT_FLOOR / tintFactor, base - count * 0.025);
     const s = Math.max(0.6, { day: 1, dusk: 1.05, night: 0.85 }[p] - count * 0.05);
-    const parts = [`brightness(${b.toFixed(3)})`, `saturate(${s.toFixed(3)})`];
-    if (count) parts.push(`contrast(${(1 + count * 0.025).toFixed(3)})`);
+    const parts2 = [`brightness(${b.toFixed(3)})`, `saturate(${s.toFixed(3)})`];
+    if (count) parts2.push(`contrast(${(1 + count * 0.025).toFixed(3)})`);
     const vig = Math.min(0.85, (p === "night" ? 0.6 : 0.5) + count * 0.04);
     const tint = t ? `rgba(${t.rgb.join(",")},${t.a})` : "transparent";
-    return { period: p, filter: parts.join(" "), tint, vig, brightness: b * tintFactor };
+    return { period: p, filter: parts2.join(" "), tint, vig, brightness: b * tintFactor };
   }
   var fmtHour = (h) => `${String(h).padStart(2, "0")}:00`;
 
@@ -462,8 +462,8 @@
     return true;
   }
   var allFound = (st) => CLUES.every((c) => st.found.includes(c.id));
-  function tryCode(st, input) {
-    const code = String(input).replace(/\D/g, "");
+  function tryCode(st, input2) {
+    const code = String(input2).replace(/\D/g, "");
     if (!allFound(st)) return { ok: false, text: "\u7DDA\u7D22\u9084\u6C92\u96C6\u9F4A\uFF0C\u518D\u5230\u516D\u6A13\u5404\u8655\u627E\u627E\u3002" };
     if (code.length !== CODE.length) return { ok: false, text: `\u5BC6\u78BC\u662F ${CODE.length} \u500B\u6578\u5B57\u3002` };
     if (code !== CODE) {
@@ -472,6 +472,87 @@
     }
     st.opened = true;
     return { ok: true, text: "\u5580\u5693\u2014\u2014D0647 \u7684\u9580\u958B\u4E86\u3002" };
+  }
+
+  // exit6/fight.mjs
+  var GAP_MS = 500;
+  var WINDOW_MS = 1600;
+  var MOVES = {
+    pan: { name: "\u6416\u93E1\u9583\u8EAB", cmd: ["L", "A"], cam: { key: "pan", term: "\u6416\u93E1 Pan", def: "\u651D\u5F71\u6A5F\u539F\u5730\u5DE6\u53F3\u8F49\u52D5\uFF0C\u5E36\u51FA\u7A7A\u9593\u8207\u89D2\u8272\u52D5\u7DDA\u3002" } },
+    low: { name: "\u4EF0\u89D2\u8DF3\u8E22", cmd: ["U", "A"], cam: { key: "low", term: "\u4EF0\u89D2 Low Angle", def: "\u5F9E\u4E0B\u5F80\u4E0A\u62CD\uFF0C\u8B93\u89D2\u8272\u770B\u8D77\u4F86\u66F4\u5F37\u5927\u3001\u66F4\u6709\u58D3\u8FEB\u611F\u3002" } },
+    dolly: { name: "\u63A8\u8ECC\u9023\u6BB5", cmd: ["D", "DR", "R", "A"], cam: { key: "dolly", term: "\u63A8\u8ECC Dolly In", def: "\u651D\u5F71\u6A5F\u5BE6\u969B\u5F80\u524D\u79FB\u52D5\u9760\u8FD1\u4E3B\u89D2\uFF0C\u8B93\u60C5\u7DD2\u8207\u5F35\u529B\u4E00\u8DEF\u5347\u9AD8\u3002" } },
+    dutch: { name: "\u8377\u862D\u89D2\u8FF4\u65CB", cmd: ["R", "D", "DR", "A"], cam: { key: "dutch", term: "\u8377\u862D\u89D2 Dutch Angle", def: "\u628A\u756B\u9762\u6545\u610F\u62CD\u659C\uFF0C\u88FD\u9020\u4E0D\u5B89\u6216\u5931\u8861\u7684\u611F\u89BA\u3002" } }
+  };
+  var ATTACKS = [
+    { id: "jab", name: "\u5834\u8A18\u677F\u76F4\u62F3", tele: "\u4ED6\u8209\u8D77\u5834\u8A18\u677F\u5F80\u524D\u885D\uFF01", counter: "pan" },
+    { id: "kick", name: "\u9577\u93E1\u982D\u6383\u817F", tele: "\u4ED6\u58D3\u4F4E\u91CD\u5FC3\uFF0C\u6E96\u5099\u4E00\u8A18\u9577\u9577\u7684\u6383\u817F\uFF01", counter: "low" },
+    { id: "take", name: "\u4E00\u93E1\u5230\u5E95", tele: "\u4ED6\u5927\u558A\uFF1A\u300C\u9019\u9846\u93E1\u982D\u4E0D\u51C6 NG\uFF01\u300D\u6574\u500B\u4EBA\u885D\u904E\u4F86\uFF01", counter: "dolly" }
+  ];
+  var FINISHER = { id: "last", name: "\u6700\u5F8C\u4E00\u9846\u93E1\u982D", tele: "\u4ED6\u6416\u6416\u6643\u6643\u2014\u2014\u8D81\u73FE\u5728\u88DC\u4E0A\u6700\u5F8C\u4E00\u64CA\uFF01", counter: "dutch" };
+  var QIU_HP = 5;
+  var PLAYER_HP = 3;
+  var parts = { UL: ["U", "L"], UR: ["U", "R"], DL: ["D", "L"], DR: ["D", "R"] };
+  function matches(buffer, cmd, now = buffer.length ? buffer[buffer.length - 1].t : 0) {
+    if (!buffer.length) return false;
+    const last = buffer[buffer.length - 1];
+    if (last.k !== cmd[cmd.length - 1] || now - last.t > GAP_MS) return false;
+    let bi = buffer.length - 2, prevT = last.t, startT = last.t;
+    for (let ci = cmd.length - 2; ci >= 0; ci--) {
+      const want = cmd[ci];
+      let found = -1;
+      for (let j = bi; j >= 0 && prevT - buffer[j].t <= GAP_MS; j--) {
+        if (buffer[j].k === want) {
+          found = j;
+          break;
+        }
+        if (buffer[j].k === "A") break;
+      }
+      if (found < 0) {
+        if (parts[want] && cmd[ci - 1] === parts[want][0] && (cmd[ci + 1] === parts[want][1] || cmd[ci + 1] === "A")) continue;
+        return false;
+      }
+      prevT = buffer[found].t;
+      startT = prevT;
+      bi = found - 1;
+    }
+    return last.t - startT <= WINDOW_MS;
+  }
+  function createFight(rng2 = Math.random) {
+    return { qiu: QIU_HP, me: PLAYER_HP, round: 0, attack: null, deadline: 0, buffer: [], over: null, rng: rng2 };
+  }
+  var windowFor = (round) => Math.max(1500, Math.round(2600 * Math.pow(0.9, round)));
+  function nextRound(f, now) {
+    f.round += 1;
+    const pool = ATTACKS.filter((a) => a.id !== f.prev);
+    f.attack = f.qiu === 1 ? FINISHER : pool[Math.floor(f.rng() * pool.length)];
+    f.prev = f.attack.id;
+    f.deadline = now + windowFor(f.round);
+    f.buffer = [];
+    return f.attack;
+  }
+  function input(f, k, now) {
+    if (f.over || !f.attack) return { type: "pending" };
+    f.buffer.push({ k, t: now });
+    if (f.buffer.length > 12) f.buffer.shift();
+    const move = MOVES[f.attack.counter];
+    if (matches(f.buffer, move.cmd, now)) {
+      f.qiu -= 1;
+      f.attack = null;
+      if (f.qiu <= 0) f.over = "win";
+      return { type: "hit", move, over: f.over };
+    }
+    if (k === "A") return hurt(f);
+    return { type: "pending" };
+  }
+  function timeout(f, now) {
+    if (f.over || !f.attack || now < f.deadline) return null;
+    return hurt(f);
+  }
+  function hurt(f) {
+    f.me -= 1;
+    f.attack = null;
+    if (f.me <= 0) f.over = "lose";
+    return { type: "miss", over: f.over };
   }
 
   // exit6/main.mjs
@@ -506,7 +587,7 @@
   var quests = createQuests();
   var clues = createClues();
   var STAMP_QIU = { id: "qiu", name: "\u627E\u5230\u90B1\u8001\u5E2B", text: "\u89E3\u958B 4 \u689D\u7DDA\u7D22\u3001\u6253\u958B D0647\uFF0C\u898B\u5230\u52D5\u756B\u5C0E\u6F14\u90B1\u58EB\u5C55\u8001\u5E2B\u3002" };
-  var stamps = () => [...quests.stamps.length ? [STAMP_POSTMAN] : [], ...clues.opened ? [STAMP_QIU] : []];
+  var stamps = () => [...quests.stamps.length ? [STAMP_POSTMAN] : [], ...clues.opened ? [STAMP_QIU] : [], ...fightWon ? [STAMP_FIGHT] : []];
   var realHour = (/* @__PURE__ */ new Date()).getHours();
   var startHour = q.has("hour") ? (Number(q.get("hour")) % 24 + 24) % 24 : realHour;
   var nowHour = () => hourAt(startHour, game.phase === "tour" ? 0 : game.lap);
@@ -1000,8 +1081,9 @@
     <ul><li><b>\u5C08\u9577</b><br>\u96FB\u8166\u52D5\u756B\u3001\u52D5\u756B\u5C0E\u6F14\u3001\u6578\u4F4D\u7279\u6548\u3001\u93E1\u982D\u8A9E\u8A00</li>
     <li><b>\u8AB2\u7A0B</b><br>3D \u89D2\u8272\u52D5\u756B\u30013D \u904A\u6232\u5F15\u64CE\u61C9\u7528\u3001\u52D5\u756B\u5287\u672C\u5275\u4F5C\u30013D \u5217\u5370\u61C9\u7528\u5BE6\u52D9</li>
     <li><b>2026</b><br>\u6307\u5C0E\u7684\u52D5\u756B\u4F5C\u54C1\u5165\u570D\u653E\u8996\u5927\u8CDE\u52D5\u756B\u985E</li></ul>
-    <p class="why">\u300C\u807D\u8AAA\u4F60\u4E5F\u611B\u5C0D\u6230\uFF1F\u7247\u5834\u5C0D\u6C7A\u4E0B\u4E00\u7248\u958B\u62CD\uFF0C\u5230\u6642\u5019\u518D\u4F86\u627E\u6211\u3002\u300D</p>
-    <button class="go" data-close>\u56DE\u5230\u8D70\u5ECA</button>`, "left");
+    <p class="why">\u300C\u807D\u8AAA\u4F60\u4E5F\u611B\u5C0D\u6230\uFF1F\u4F86\u4E00\u5834\u7247\u5834\u5C0D\u6C7A\u5427\uFF0C\u7528\u93E1\u982D\u8A9E\u8A00\u6253\u6557\u6211\uFF01\u300D</p>
+    <button class="go" data-fight>\u63A5\u53D7\u7247\u5834\u5C0D\u6C7A</button><button class="ghost" data-close>\u56DE\u5230\u8D70\u5ECA</button>`, "left");
+    $("sheet").querySelector("[data-fight]").onclick = startFight;
     $("sheet").querySelector("[data-close]").onclick = () => {
       closeSheet();
       deanImg.classList.remove("in");
@@ -1011,6 +1093,146 @@
       renderStop();
     };
   }
+  var ARROW = { U: "\u2191", D: "\u2193", L: "\u2190", R: "\u2192", UL: "\u2196", UR: "\u2197", DL: "\u2199", DR: "\u2198", A: "A" };
+  var STAMP_FIGHT = { id: "fight", name: "\u7247\u5834\u6BBA\u9752", text: "\u5728 D0647 \u7247\u5834\u5C0D\u6C7A\u8D0F\u4E86\u90B1\u58EB\u5C55\u8001\u5E2B\uFF0C\u5B78\u6703\u6416\u93E1\u3001\u4EF0\u89D2\u3001\u63A8\u8ECC\u3001\u8377\u862D\u89D2\u3002" };
+  var fight = null;
+  var fightRaf = 0;
+  var fightWon = false;
+  var lastAttack = null;
+  var fightOn = () => !$("fight").classList.contains("hidden");
+  function hpDraw() {
+    $("hpQ").textContent = "\u25A0".repeat(fight.qiu) + "\u25A1".repeat(QIU_HP - fight.qiu);
+    $("hpM").textContent = "\u2665".repeat(fight.me) + "\u2661".repeat(PLAYER_HP - fight.me);
+  }
+  function startFight() {
+    closeSheet();
+    deanImg.classList.remove("in");
+    deanImg.classList.add("out");
+    $("sub").classList.add("hidden");
+    fight = createFight(rng);
+    $("fbg").style.filter = `blur(2px) brightness(.75) ${stage.style.getPropertyValue("--grade")}`;
+    $("movelist").innerHTML = Object.entries(MOVES).map(([id, m]) => `<div data-m="${id}"><span>${m.name}</span><code>${m.cmd.map((k) => ARROW[k]).join(" ")}</code></div>`).join("");
+    $("fight").classList.remove("hidden");
+    busy = true;
+    setButtons();
+    $("fqiu").src = "frames/qiu_ready.webp";
+    hpDraw();
+    $("tbar").style.transform = "scaleX(1)";
+    $("tele").innerHTML = `\u300CAction\uFF01\u300D<small>\u770B\u4ED6\u7684\u9810\u544A\uFF0C\u7167\u5206\u93E1\u8868\u8F38\u5165\u53CD\u64CA\uFF08\u659C\u65B9\u5411\u53EF\u7701\u7565\uFF09\u3002\u96FB\u8166\u53EF\u7528\u65B9\u5411\u9375\uFF0BZ\u3002</small>`;
+    play("dean");
+    play("sting", 0.5);
+    setTimeout(nextFightRound, 2600);
+  }
+  function nextFightRound() {
+    if (!fight || fight.over) return;
+    const atk = lastAttack = nextRound(fight, performance.now());
+    $("fqiu").src = "frames/qiu_attack.webp";
+    const hint = fight.round <= 3;
+    $("tele").innerHTML = `${atk.tele}<small>${atk.name}${hint ? `\u3000\u2192 \u7528\u300C${MOVES[atk.counter].name}\u300D` : ""}</small>`;
+    document.querySelectorAll("#movelist div").forEach((d) => d.classList.toggle("want", hint && d.dataset.m === atk.counter));
+    const total = fight.deadline - performance.now();
+    cancelAnimationFrame(fightRaf);
+    const tick = () => {
+      if (!fight || !fight.attack) return;
+      $("tbar").style.transform = `scaleX(${Math.max(0, (fight.deadline - performance.now()) / total)})`;
+      const r = timeout(fight, performance.now());
+      if (r) {
+        fightResult(r);
+        return;
+      }
+      fightRaf = requestAnimationFrame(tick);
+    };
+    fightRaf = requestAnimationFrame(tick);
+  }
+  function fightKey(k) {
+    if (!fight || fight.over || !fight.attack) return;
+    play("click", 0.35);
+    const r = input(fight, k, performance.now());
+    if (r.type !== "pending") fightResult(r);
+  }
+  function fightResult(r) {
+    var _a, _b, _c;
+    cancelAnimationFrame(fightRaf);
+    hpDraw();
+    document.querySelectorAll("#movelist div").forEach((d) => d.classList.remove("want"));
+    const cam = $("fcam"), q2 = $("fqiu");
+    if (r.type === "hit") {
+      play("found");
+      cam.className = "fcam";
+      void cam.offsetWidth;
+      cam.classList.add("cam-" + r.move.cam.key);
+      q2.classList.remove("hit");
+      void q2.offsetWidth;
+      q2.classList.add("hit");
+      $("tele").innerHTML = `\u547D\u4E2D\uFF01${r.move.name}<small>${r.move.cam.term}</small>`;
+      const term = $("term");
+      term.innerHTML = `<b>${r.move.cam.term}</b>${r.move.cam.def}`;
+      term.classList.add("hidden");
+      void term.offsetWidth;
+      term.classList.remove("hidden");
+      clearTimeout(fightResult.t);
+      fightResult.t = setTimeout(() => term.classList.add("hidden"), 2200);
+    } else {
+      play("wrong");
+      const box = $("fbox");
+      box.classList.remove("shake-l");
+      void box.offsetWidth;
+      box.classList.add("shake-l");
+      $("tele").innerHTML = `NG\uFF01\u88AB\u300C${(_a = lastAttack == null ? void 0 : lastAttack.name) != null ? _a : "\u62DB\u5F0F"}\u300D\u6253\u4E2D\u4E86<small>\u6B63\u89E3\u662F\u300C${(_c = (_b = MOVES[lastAttack == null ? void 0 : lastAttack.counter]) == null ? void 0 : _b.name) != null ? _c : ""}\u300D</small>`;
+    }
+    if (r.over === "win") return fightWin();
+    if (r.over === "lose") return fightLose();
+    setTimeout(() => {
+      q2.src = "frames/qiu_ready.webp";
+    }, 500);
+    setTimeout(nextFightRound, 1500);
+  }
+  function fightEndButtons(html) {
+    var _a;
+    $("tele").innerHTML = html;
+    (_a = $("tele").querySelector("[data-retry]")) == null ? void 0 : _a.addEventListener("click", startFight);
+    $("tele").querySelector("[data-leave]").addEventListener("click", leaveFight);
+  }
+  function fightWin() {
+    fightWon = true;
+    play("clear");
+    setTimeout(() => {
+      $("fqiu").src = "frames/qiu_ko.webp";
+      fightEndButtons(`\u300C\u6BBA\u9752\uFF01\u300D<small>\u4F60\u7684\u904B\u93E1\u611F\u5F88\u597D\uFF0C\u4F86\u52D5\u904A\u7CFB\u4E00\u8D77\u62CD\u7247\u5427\uFF01\u7D00\u5FF5\u7AE0\u300C${STAMP_FIGHT.name}\u300D</small>
+      <div class="row" style="margin-top:6px"><button class="go" data-leave>\u56DE\u5230\u8D70\u5ECA</button></div>`);
+      nbPulse();
+    }, 700);
+  }
+  function fightLose() {
+    setTimeout(() => {
+      $("fqiu").src = "frames/qiu_greet.webp";
+      fightEndButtons(`\u300CNG\uFF01\u9019\u9846\u93E1\u982D\u91CD\u4F86\uFF01\u300D<small>\u770B\u9810\u544A\u3001\u5C0D\u5206\u93E1\u8868\uFF0C\u659C\u65B9\u5411\u53EF\u4EE5\u7701\u7565\u3002</small>
+      <div class="row" style="margin-top:6px"><button class="go" data-retry>\u518D\u62CD\u4E00\u6B21</button><button class="ghost" data-leave>\u56DE\u5230\u8D70\u5ECA</button></div>`);
+    }, 700);
+  }
+  function leaveFight() {
+    cancelAnimationFrame(fightRaf);
+    fight = null;
+    $("fight").classList.add("hidden");
+    busy = false;
+    show(stopSrc(STATIONS[game.station], anomalyAt(game, ANOMALIES)), false);
+    renderStop();
+    setButtons();
+  }
+  var held = /* @__PURE__ */ new Set();
+  var dirOf = () => {
+    const v = (held.has("ArrowUp") ? "U" : held.has("ArrowDown") ? "D" : "") + (held.has("ArrowLeft") ? "L" : held.has("ArrowRight") ? "R" : "");
+    return v || null;
+  };
+  addEventListener("keyup", (e) => held.delete(e.key));
+  document.querySelectorAll("#fight [data-k]").forEach((b) => {
+    b.addEventListener("pointerdown", (e) => {
+      e.preventDefault();
+      b.classList.add("on");
+      fightKey(b.dataset.k);
+    });
+    for (const ev of ["pointerup", "pointerleave", "pointercancel"]) b.addEventListener(ev, () => b.classList.remove("on"));
+  });
   async function react(ev, precise) {
     if ("count" in ev) $("floorNo").textContent = `${ev.count}F`;
     remember(ev.anomaly);
@@ -1222,8 +1444,27 @@
   $("btnFwd").onclick = () => act("forward");
   stage.addEventListener("click", pointAt);
   addEventListener("keydown", (e) => {
+    if (fightOn()) {
+      if (e.key.startsWith("Arrow")) {
+        e.preventDefault();
+        if (e.repeat) return;
+        held.add(e.key);
+        const d = dirOf();
+        if (d) fightKey(d);
+      } else if (["z", "Z", " ", "Enter"].includes(e.key)) {
+        e.preventDefault();
+        if (!e.repeat) fightKey("A");
+      }
+      return;
+    }
     if (["ArrowLeft", "ArrowDown"].includes(e.key)) act("back");
     if (["ArrowRight", "ArrowUp"].includes(e.key)) act("forward");
+  });
+  addEventListener("keyup", (e) => {
+    if (fightOn() && e.key.startsWith("Arrow")) {
+      const d = dirOf();
+      if (d) fightKey(d);
+    }
   });
   $("go").onclick = () => {
     loadSfx();
@@ -1247,4 +1488,8 @@
   renderStop();
   prefetch(0);
   if (q.has("debug") && q.has("go")) $("go").click();
+  if (q.has("debug") && q.has("fight")) {
+    $("start").classList.add("hidden");
+    startFight();
+  }
 })();

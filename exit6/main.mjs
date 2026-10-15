@@ -6,6 +6,7 @@ import { periodOf, stepFor, hourAt, gradeFor, fmtHour, PERIOD_LABEL } from "./ti
 import { ITEMS, TARGETS, createQuests, takeItems, deliver, pending, targetsAt, STAMP_POSTMAN } from "./quests.mjs";
 import { OUTLINES } from "./outlines.mjs";
 import { CLUES, CODE, createClues, visibleClues, collect, allFound, tryCode } from "./clues.mjs";
+import { MOVES, QIU_HP, PLAYER_HP, createFight, nextRound, input, timeout } from "./fight.mjs";
 
 const q = new URLSearchParams(location.search);
 const seed = q.has("seed") ? Number(q.get("seed")) : (Date.now() & 0xffffffff);
@@ -29,7 +30,7 @@ const run = { t0: 0, mistakes: 0, precise: 0, misTaps: 0, toured: new Set() };
 const quests = createQuests();
 const clues = createClues();
 const STAMP_QIU = { id: "qiu", name: "找到邱老師", text: "解開 4 條線索、打開 D0647，見到動畫導演邱士展老師。" };
-const stamps = () => [...(quests.stamps.length ? [STAMP_POSTMAN] : []), ...(clues.opened ? [STAMP_QIU] : [])];
+const stamps = () => [...(quests.stamps.length ? [STAMP_POSTMAN] : []), ...(clues.opened ? [STAMP_QIU] : []), ...(fightWon ? [STAMP_FIGHT] : [])];
 
 // ---------- 時間：開局讀玩家裝置的本地時間（除錯 ?hour=N），之後每圈前進 stepFor 小時 ----------
 const realHour = new Date().getHours();
@@ -384,13 +385,119 @@ async function enterD0647(first) {
     <ul><li><b>專長</b><br>電腦動畫、動畫導演、數位特效、鏡頭語言</li>
     <li><b>課程</b><br>3D 角色動畫、3D 遊戲引擎應用、動畫劇本創作、3D 列印應用實務</li>
     <li><b>2026</b><br>指導的動畫作品入圍放視大賞動畫類</li></ul>
-    <p class="why">「聽說你也愛對戰？片場對決下一版開拍，到時候再來找我。」</p>
-    <button class="go" data-close>回到走廊</button>`, "left");
+    <p class="why">「聽說你也愛對戰？來一場片場對決吧，用鏡頭語言打敗我！」</p>
+    <button class="go" data-fight>接受片場對決</button><button class="ghost" data-close>回到走廊</button>`, "left");
+  $("sheet").querySelector("[data-fight]").onclick = startFight;
   $("sheet").querySelector("[data-close]").onclick = () => {
     closeSheet(); deanImg.classList.remove("in"); deanImg.classList.add("out"); $("sub").classList.add("hidden");
     show(stopSrc(STATIONS[game.station], anomalyAt(game, ANOMALIES)), false); renderStop();
   };
 }
+
+// ---------- D0647 片場對決（規則在 fight.mjs；全部原創，不使用既有格鬥遊戲的名稱與素材） ----------
+const ARROW = { U: "↑", D: "↓", L: "←", R: "→", UL: "↖", UR: "↗", DL: "↙", DR: "↘", A: "A" };
+const STAMP_FIGHT = { id: "fight", name: "片場殺青", text: "在 D0647 片場對決贏了邱士展老師，學會搖鏡、仰角、推軌、荷蘭角。" };
+let fight = null, fightRaf = 0, fightWon = false, lastAttack = null;
+const fightOn = () => !$("fight").classList.contains("hidden");
+
+function hpDraw() {
+  $("hpQ").textContent = "■".repeat(fight.qiu) + "□".repeat(QIU_HP - fight.qiu);
+  $("hpM").textContent = "♥".repeat(fight.me) + "♡".repeat(PLAYER_HP - fight.me);
+}
+function startFight() {
+  closeSheet(); deanImg.classList.remove("in"); deanImg.classList.add("out"); $("sub").classList.add("hidden");
+  fight = createFight(rng);
+  $("fbg").style.filter = `blur(2px) brightness(.75) ${stage.style.getPropertyValue("--grade")}`;
+  $("movelist").innerHTML = Object.entries(MOVES).map(([id, m]) =>
+    `<div data-m="${id}"><span>${m.name}</span><code>${m.cmd.map((k) => ARROW[k]).join(" ")}</code></div>`).join("");
+  $("fight").classList.remove("hidden"); busy = true; setButtons();
+  $("fqiu").src = "frames/qiu_ready.webp"; hpDraw(); $("tbar").style.transform = "scaleX(1)";
+  $("tele").innerHTML = `「Action！」<small>看他的預告，照分鏡表輸入反擊（斜方向可省略）。電腦可用方向鍵＋Z。</small>`;
+  play("dean"); play("sting", 0.5);
+  setTimeout(nextFightRound, 2600);
+}
+function nextFightRound() {
+  if (!fight || fight.over) return;
+  const atk = (lastAttack = nextRound(fight, performance.now()));
+  $("fqiu").src = "frames/qiu_attack.webp";
+  const hint = fight.round <= 3;   // 前 3 回合標出該用哪一招，之後靠記憶
+  $("tele").innerHTML = `${atk.tele}<small>${atk.name}${hint ? `　→ 用「${MOVES[atk.counter].name}」` : ""}</small>`;
+  document.querySelectorAll("#movelist div").forEach((d) => d.classList.toggle("want", hint && d.dataset.m === atk.counter));
+  const total = fight.deadline - performance.now();
+  cancelAnimationFrame(fightRaf);
+  const tick = () => {
+    if (!fight || !fight.attack) return;
+    $("tbar").style.transform = `scaleX(${Math.max(0, (fight.deadline - performance.now()) / total)})`;
+    const r = timeout(fight, performance.now());
+    if (r) { fightResult(r); return; }
+    fightRaf = requestAnimationFrame(tick);
+  };
+  fightRaf = requestAnimationFrame(tick);
+}
+function fightKey(k) {
+  if (!fight || fight.over || !fight.attack) return;
+  play("click", 0.35);
+  const r = input(fight, k, performance.now());
+  if (r.type !== "pending") fightResult(r);
+}
+function fightResult(r) {
+  cancelAnimationFrame(fightRaf); hpDraw();
+  document.querySelectorAll("#movelist div").forEach((d) => d.classList.remove("want"));
+  const cam = $("fcam"), q = $("fqiu");
+  if (r.type === "hit") {
+    play("found");
+    cam.className = "fcam"; void cam.offsetWidth; cam.classList.add("cam-" + r.move.cam.key);
+    q.classList.remove("hit"); void q.offsetWidth; q.classList.add("hit");
+    $("tele").innerHTML = `命中！${r.move.name}<small>${r.move.cam.term}</small>`;
+    const term = $("term"); term.innerHTML = `<b>${r.move.cam.term}</b>${r.move.cam.def}`;
+    term.classList.add("hidden"); void term.offsetWidth; term.classList.remove("hidden");
+    clearTimeout(fightResult.t); fightResult.t = setTimeout(() => term.classList.add("hidden"), 2200);
+  } else {
+    play("wrong"); const box = $("fbox"); box.classList.remove("shake-l"); void box.offsetWidth; box.classList.add("shake-l");
+    $("tele").innerHTML = `NG！被「${lastAttack?.name ?? "招式"}」打中了<small>正解是「${MOVES[lastAttack?.counter]?.name ?? ""}」</small>`;
+  }
+  if (r.over === "win") return fightWin();
+  if (r.over === "lose") return fightLose();
+  setTimeout(() => { q.src = "frames/qiu_ready.webp"; }, 500);
+  setTimeout(nextFightRound, 1500);
+}
+function fightEndButtons(html) {
+  $("tele").innerHTML = html;
+  $("tele").querySelector("[data-retry]")?.addEventListener("click", startFight);
+  $("tele").querySelector("[data-leave]").addEventListener("click", leaveFight);
+}
+function fightWin() {
+  fightWon = true; play("clear");
+  setTimeout(() => {
+    $("fqiu").src = "frames/qiu_ko.webp";
+    fightEndButtons(`「殺青！」<small>你的運鏡感很好，來動遊系一起拍片吧！紀念章「${STAMP_FIGHT.name}」</small>
+      <div class="row" style="margin-top:6px"><button class="go" data-leave>回到走廊</button></div>`);
+    nbPulse();
+  }, 700);
+}
+function fightLose() {
+  setTimeout(() => {
+    $("fqiu").src = "frames/qiu_greet.webp";
+    fightEndButtons(`「NG！這顆鏡頭重來！」<small>看預告、對分鏡表，斜方向可以省略。</small>
+      <div class="row" style="margin-top:6px"><button class="go" data-retry>再拍一次</button><button class="ghost" data-leave>回到走廊</button></div>`);
+  }, 700);
+}
+function leaveFight() {
+  cancelAnimationFrame(fightRaf); fight = null;
+  $("fight").classList.add("hidden"); busy = false;
+  show(stopSrc(STATIONS[game.station], anomalyAt(game, ANOMALIES)), false); renderStop(); setButtons();
+}
+// 實體鍵盤：方向鍵可同時按出斜向，Z／空白／Enter＝A
+const held = new Set();
+const dirOf = () => {
+  const v = (held.has("ArrowUp") ? "U" : held.has("ArrowDown") ? "D" : "") + (held.has("ArrowLeft") ? "L" : held.has("ArrowRight") ? "R" : "");
+  return v || null;
+};
+addEventListener("keyup", (e) => held.delete(e.key));
+document.querySelectorAll("#fight [data-k]").forEach((b) => {
+  b.addEventListener("pointerdown", (e) => { e.preventDefault(); b.classList.add("on"); fightKey(b.dataset.k); });
+  for (const ev of ["pointerup", "pointerleave", "pointercancel"]) b.addEventListener(ev, () => b.classList.remove("on"));
+});
 
 // ---------- 判定後的演出 ----------
 async function react(ev, precise) {
@@ -546,9 +653,16 @@ $("btnBack").onclick = () => act("back");
 $("btnFwd").onclick = () => act("forward");
 stage.addEventListener("click", pointAt);
 addEventListener("keydown", (e) => {
+  if (fightOn()) {                                   // 對戰中：方向鍵（可同按出斜向）＋ Z／空白／Enter
+    if (e.key.startsWith("Arrow")) { e.preventDefault(); if (e.repeat) return; held.add(e.key); const d = dirOf(); if (d) fightKey(d); }
+    else if (["z", "Z", " ", "Enter"].includes(e.key)) { e.preventDefault(); if (!e.repeat) fightKey("A"); }
+    return;
+  }
   if (["ArrowLeft", "ArrowDown"].includes(e.key)) act("back");
   if (["ArrowRight", "ArrowUp"].includes(e.key)) act("forward");
 });
+// 放開一個方向、另一個還按著時，送出剩下的方向（↓ → 同按再放開 ↓＝↓ ↘ →）
+addEventListener("keyup", (e) => { if (fightOn() && e.key.startsWith("Arrow")) { const d = dirOf(); if (d) fightKey(d); } });
 $("go").onclick = () => {
   loadSfx(); loadVoices(); play("hum"); $("start").classList.add("hidden"); walk();
   if (periodOf(realHour) === "night") setTimeout(() => dean("cheer", "vo_night", 3600), 1600);   // 真實時間在晚上的彩蛋
@@ -560,3 +674,4 @@ for (const p of ["plead", "cheer", "welcome", "peek"]) new Image().src = `frames
 for (const f of ["s8_a", "s8", "qiu_greet"]) new Image().src = `frames/${f}.webp`;
 renderStop(); prefetch(0);
 if (q.has("debug") && q.has("go")) $("go").click();   // 除錯：自動進入（無頭瀏覽器截圖用）
+if (q.has("debug") && q.has("fight")) { $("start").classList.add("hidden"); startFight(); }   // 除錯：直接進片場對決
