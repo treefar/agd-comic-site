@@ -64,7 +64,7 @@ const features = [
   row("邱士展老師立繪與 D0647", allFiles([...qiuFiles, "frames/s8.webp", "frames/s8_a.webp"]), `${qiuFiles.filter(has).length}/4 立繪`, testsOk, "素材存在測試", C("qiuConsent")),
   row("片場對決", has("fight.mjs"), `${Object.keys(MOVES).length} 招反擊`, testsOk, "指令容錯紅綠循環", C("qiuLines")),
   row("破關測驗", QUIZ.length >= 5, `${QUIZ.length} 題題庫`, testsOk, "題目格式測試", null),
-  row("音效", sfx.files >= 7, `${sfx.files}/9 檔（dean、clear 待補）、CC0 ${sfx.cc0}/${sfx.rows}`, sfx.rows === sfx.files && sfx.cc0 === sfx.rows, "授權帳本全為 CC0", C("audioCC0")),
+  row("音效", sfx.files === 9, `${sfx.files}/9 檔、CC0 ${sfx.cc0}/${sfx.rows}`, sfx.rows === sfx.files && sfx.cc0 === sfx.rows, "授權帳本全為 CC0", C("audioCC0")),
   row("系主任語音", voices > 0, `${voices}/${Object.keys(VOICE_TEXT).length} 句已錄`, voices === Object.keys(VOICE_TEXT).length, "音檔存在", null),
 ];
 

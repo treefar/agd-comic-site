@@ -16,8 +16,7 @@
 | exit6/audio/sfx_wrong.mp3 | error_003 | Kenney／Interface Sounds 1.0 | 跨引擎共用_CC0（Kenney 官方下載） | 跨引擎共用_CC0/Kenney/Audio/kenney_interface-sounds.zip → Audio/error_003.ogg | 2026-10-15 | CC0 1.0 | 不需標示（Kenney 歡迎署名，非必要） | 答錯提示 |
 | exit6/audio/sfx_correct.mp3 | confirmation_002 | Kenney／Interface Sounds 1.0 | 跨引擎共用_CC0（Kenney 官方下載） | 跨引擎共用_CC0/Kenney/Audio/kenney_interface-sounds.zip → Audio/confirmation_002.ogg | 2026-10-15 | CC0 1.0 | 不需標示（Kenney 歡迎署名，非必要） | 答對提示音 |
 | exit6/audio/sfx_click.mp3 | click_001 | Kenney／Interface Sounds 1.0 | 跨引擎共用_CC0（Kenney 官方下載） | 跨引擎共用_CC0/Kenney/Audio/kenney_interface-sounds.zip → Audio/click_001.ogg | 2026-10-15 | CC0 1.0 | 不需標示（Kenney 歡迎署名，非必要） | 點擊物件 UI 音 |
+| exit6/audio/sfx_dean.mp3 | phaseJump1 | Kenney／Digital Audio 1.0 | kenney.nl 官網下載（使用者 2026-10-15 同意），已存入跨引擎共用_CC0 | 跨引擎共用_CC0/Kenney/Audio/kenney_digital-audio.zip → phaseJump1.ogg | 2026-10-15 | CC0 1.0 | 不需標示（Kenney 歡迎署名，非必要） | 系主任彈出場的彈跳音（0.47 秒） |
+| exit6/audio/sfx_clear.mp3 | jingles_PIZZI02 | Kenney／Music Jingles 1.0 | kenney.nl 官網下載（使用者 2026-10-15 同意），已存入跨引擎共用_CC0 | 跨引擎共用_CC0/Kenney/Audio/kenney_music-jingles.zip → Pizzicato jingles/jingles_PIZZI02.ogg | 2026-10-15 | CC0 1.0 | 不需標示（Kenney 歡迎署名，非必要） | 破關上揚撥弦短樂句（0.96 秒） |
 
-## 缺口（自有 CC0 庫找不到，未用非 CC0 頂替）
-
-- dean（搞笑出場 boing／彈簧）：Kenney 五包皆無 boing、彈簧或卡通滑稽音。原 Unity 檔 sfx_dean.mp3 已刪除。
-- clear（破關勝利 jingle）：Kenney 五包皆無樂句或 jingle。原 Unity 檔 sfx_clear.mp3 已刪除。
+原本的兩個缺口（dean、clear）已於 2026-10-15 由上面兩列補上；兩包下載自 https://kenney.nl/assets/digital-audio 與 https://kenney.nl/assets/music-jingles，包內 License.txt 皆為 CC0。
