@@ -6,81 +6,147 @@
 <meta name="robots" content="noindex">
 <title>六樓出口</title>
 <style>
+  /* 版面：16:9 漫畫畫面置中，下方說明＋兩顆大按鈕；單一暗色世界（恐怖走廊），不隨淺色主題切換 */
   :root {
+    color-scheme: dark;
     --bg: #07090a; --ink: #e8ece9; --dim: #8a948e; --accent: #34d27a; --danger: #e5484d;
-    --card: #f4f1e8; --cardink: #1d1d1b; --ctrl-h: 76px;
+    --paper: #f4ecd8; --paperink: #0f0d0a; --pop: #ffd60a; --red: #e63946; --blue: #1d4ed8;
+    --ctrl-h: 76px; --grade: none;
+    --f-display: "Bungee", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    --f-body: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
   }
   * { box-sizing: border-box; }
-  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink);
-    font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif; overflow: hidden; }
-  #app { position: relative; height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center; user-select: none; }
+  html, body { margin: 0; height: 100%; min-height: 0; background: var(--bg); color: var(--ink); font-family: var(--f-body); overflow: hidden; }
+  #app { position: relative; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; user-select: none; -webkit-tap-highlight-color: transparent; }
 
-  /* 實拍畫面固定 16:9，整張都看得到（異常可能在畫面邊緣） */
-  .stage { position: relative; width: min(100vw, calc((100dvh - var(--ctrl-h) - 96px) * 16 / 9)); aspect-ratio: 16 / 9; background: #000; overflow: hidden; }
-  .stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .22s; transform-origin: 50% 55%; }
-  .stage img.on { opacity: 1; }
-  @keyframes push { from { transform: scale(1); } to { transform: scale(1.06); } }
-  .vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55)); }
-  .ov { position: absolute; transform: translate(-50%, -50%); padding: 4px 8px; font-size: clamp(10px, 2.2vw, 15px); font-weight: 800; text-align: center; white-space: nowrap; pointer-events: none; }
-  .ov.sign { background: #f4f0e2; color: #8b0f12; font-size: clamp(12px, 3vw, 22px); padding: 6px 12px; box-shadow: 0 2px 8px rgba(0,0,0,.4); }
-  .ov.ph { background: rgba(255, 214, 10, .9); color: #2a2100; border: 2px dashed #2a2100; }
-  .ov small { display: block; font-size: .7em; font-weight: 600; opacity: .75; }
+  .stage { position: relative; width: min(100vw, calc((100dvh - var(--ctrl-h) - 96px) * 16 / 9)); aspect-ratio: 16 / 9; max-width: 100%; background: #000; overflow: hidden; }
+  .stage img.frame { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .22s; transform-origin: 50% 55%; filter: var(--grade); }
+  .stage img.frame.on { opacity: 1; }
+  @keyframes push { 0% { transform: scale(1) translateY(0); } 50% { transform: scale(1.03) translateY(-0.6%); } 100% { transform: scale(1.06) translateY(0); } }
+  .vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,var(--vig, .5))); }
 
-  .hud { position: absolute; top: 8px; left: 10px; right: 10px; display: flex; justify-content: space-between; align-items: flex-start; pointer-events: none; }
-  .floorNo { font: 900 clamp(20px, 5vw, 34px)/1 ui-monospace, monospace; color: var(--accent); text-shadow: 0 0 10px #000, 0 0 10px var(--accent); }
-  .where { font-size: 12px; padding: 3px 8px; background: rgba(0,0,0,.55); border-radius: 6px; }
-  .dbg { position: absolute; left: 10px; bottom: 8px; font: 11px ui-monospace, monospace; color: #ff0; background: rgba(0,0,0,.6); padding: 2px 6px; }
+  /* 調查點：導覽圈發亮脈動，點過變勾勾；循環圈看不見 */
+  .spots { position: absolute; inset: 0; }
+  .spot { position: absolute; border: 2px solid var(--pop); border-radius: 8px; background: rgba(255,214,10,.08); cursor: pointer; padding: 0; animation: pulse 1.4s ease-in-out infinite; }
+  .spot span { position: absolute; left: 0; top: -1.6em; background: var(--pop); color: var(--paperink); font-size: 12px; font-weight: 800; padding: 1px 6px; border-radius: 4px; white-space: nowrap; }
+  .spot.done { animation: none; border-color: rgba(52,210,122,.7); background: transparent; }
+  .spot.done span { background: var(--accent); }
+  .spot.done span::before { content: "✔ "; }
+  @keyframes pulse { 50% { box-shadow: 0 0 0 6px rgba(255,214,10,.25); } }
+  .ripple { position: absolute; width: 36px; height: 36px; margin: -18px 0 0 -18px; border: 3px solid #fff; border-radius: 50%; pointer-events: none; animation: rip .5s ease-out forwards; }
+  @keyframes rip { from { transform: scale(.3); opacity: 1; } to { transform: scale(1.6); opacity: 0; } }
 
-  .below { width: min(100vw, 900px); padding: 10px 12px 0; min-height: 96px; }
+  .hud { position: absolute; top: 8px; left: 10px; right: 10px; display: flex; justify-content: space-between; align-items: flex-start; pointer-events: none; z-index: 2; }
+  .floorNo { font: 400 clamp(22px, 5vw, 38px)/1 var(--f-display); color: var(--accent); text-shadow: 0 0 10px #000, 0 0 12px var(--accent); }
+  .floorNo.pop { animation: pop .45s cubic-bezier(.2,1.8,.4,1); }
+  .floorNo.reset { color: var(--danger); text-shadow: 0 0 10px #000, 0 0 12px var(--danger); animation: pop .45s cubic-bezier(.2,1.8,.4,1); }
+  @keyframes pop { 0% { transform: scale(1); } 40% { transform: scale(1.7) rotate(-6deg); } 100% { transform: scale(1); } }
+  .where { font-size: 12px; padding: 3px 8px; background: rgba(0,0,0,.6); border-radius: 6px; }
+  .timer { font: 600 12px ui-monospace, monospace; color: var(--dim); margin-top: 4px; text-align: right; font-variant-numeric: tabular-nums; }
+  .dbg { position: absolute; left: 10px; bottom: 8px; font: 11px ui-monospace, monospace; color: #ff0; background: rgba(0,0,0,.6); padding: 2px 6px; z-index: 2; }
+
+  /* 果汁：震動、閃光、漫畫「碰！」字 */
+  .shake-s { animation: shakeS .28s linear; }
+  .shake-l { animation: shakeL .5s linear; }
+  @keyframes shakeS { 20% { transform: translate(-4px, 2px); } 40% { transform: translate(4px, -2px); } 60% { transform: translate(-3px, -1px); } 80% { transform: translate(2px, 2px); } }
+  @keyframes shakeL { 10% { transform: translate(-12px, 6px) rotate(-1deg); } 25% { transform: translate(10px, -8px) rotate(1deg); } 40% { transform: translate(-9px, 4px); } 55% { transform: translate(8px, 6px) rotate(-.5deg); } 70% { transform: translate(-5px, -4px); } 85% { transform: translate(3px, 2px); } }
+  .burst { position: absolute; left: 50%; top: 44%; transform: translate(-50%, -50%) scale(0); z-index: 3; pointer-events: none; font: 400 clamp(30px, 8vw, 72px)/1 var(--f-display); color: var(--pop); -webkit-text-stroke: 3px var(--paperink); paint-order: stroke fill; text-shadow: 5px 5px 0 var(--red); white-space: nowrap; }
+  .burst.go { animation: burst .9s cubic-bezier(.2,1.6,.4,1) forwards; }
+  .burst.small { font-size: clamp(22px, 5vw, 44px); text-shadow: 4px 4px 0 var(--blue); }
+  @keyframes burst { 0% { transform: translate(-50%, -50%) scale(0) rotate(-20deg); opacity: 1; } 30% { transform: translate(-50%, -50%) scale(1.15) rotate(-6deg); } 45% { transform: translate(-50%, -50%) scale(1) rotate(-6deg); } 80% { opacity: 1; } 100% { transform: translate(-50%, -60%) scale(1.05) rotate(-6deg); opacity: 0; } }
+  .flash { position: absolute; inset: 0; z-index: 4; pointer-events: none; animation: fade 700ms ease forwards; background: #fff; }
+  .flash.red { background: #5a0006; animation-duration: 1s; }
+  .flash.black { background: #000; animation-duration: .9s; }
+  @keyframes fade { from { opacity: 1; } to { opacity: 0; } }
+  .glitch img.frame { animation: glitch .6s steps(2) 1; }
+  @keyframes glitch { 0% { filter: var(--grade) hue-rotate(90deg) contrast(1.8); transform: translateX(6px); } 50% { filter: var(--grade) invert(.2) contrast(2); transform: translateX(-6px); } 100% { filter: var(--grade); transform: none; } }
+
+  /* 系主任：從右邊彈出來，對白框跟著他 */
+  .dean { position: absolute; right: -2%; bottom: -4%; height: 92%; z-index: 3; pointer-events: none; transform: translateX(110%); filter: drop-shadow(4px 4px 0 var(--paperink)); }
+  .dean.in { animation: deanIn .55s cubic-bezier(.2,1.5,.4,1) forwards; }
+  .dean.out { animation: deanOut .35s ease-in forwards; }
+  @keyframes deanIn { from { transform: translateX(110%) rotate(8deg); } to { transform: translateX(0) rotate(0); } }
+  @keyframes deanOut { from { transform: translateX(0); } to { transform: translateX(110%); } }
+  .bubble { position: absolute; z-index: 6; left: 50%; top: 10px; transform: translateX(-50%); width: min(92vw, 520px); padding: 10px 14px; background: var(--paper); color: var(--paperink); border: 3px solid var(--paperink); border-radius: 16px; font-size: 15px; font-weight: 700; line-height: 1.5; box-shadow: 4px 4px 0 var(--paperink); }
+  .bubble b { display: block; font-size: 11px; letter-spacing: .1em; color: var(--red); }
+
+  .below { width: min(100vw, 900px); padding: 10px 16px 0; min-height: 96px; }
   .tip { padding: 10px 12px; background: #111614; border-left: 3px solid var(--accent); font-size: 14px; line-height: 1.55; }
+  .tip b { color: var(--pop); }
   .rotate { margin-top: 6px; font-size: 12px; color: var(--dim); text-align: center; }
   @media (orientation: landscape) { .rotate { display: none; } }
-  .controls { width: min(100vw, 900px); height: var(--ctrl-h); display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 10px 12px max(10px, env(safe-area-inset-bottom)); }
-  button { font: inherit; border: 0; border-radius: 10px; font-size: 17px; font-weight: 700; cursor: pointer; }
+  .controls { width: min(100vw, 900px); height: var(--ctrl-h); display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 10px 16px max(10px, env(safe-area-inset-bottom)); }
+  button { font: inherit; border: 0; border-radius: 10px; font-size: 17px; font-weight: 700; cursor: pointer; transition: transform .08s; }
+  button:active:not(:disabled) { transform: scale(.94); }
   button:disabled { opacity: .4; cursor: default; }
   .btnBack { background: #2b1718; color: #ffb4b6; }
   .btnFwd  { background: #13281c; color: #a6f0c6; }
   button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 
-  .layer { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; text-align: center; z-index: 3; }
+  .layer { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 16px; text-align: center; z-index: 7; }
   .hidden { display: none !important; }
   .start { background: radial-gradient(circle at 50% 40%, #16201a, var(--bg) 70%); gap: 14px; }
-  .start h1 { margin: 0; font-size: 40px; letter-spacing: .1em; }
-  .start p { margin: 0; color: var(--dim); line-height: 1.6; font-size: 14px; }
+  .start h1 { margin: 0; font: 400 clamp(40px, 10vw, 64px)/1 var(--f-display); letter-spacing: .06em; color: var(--paper); -webkit-text-stroke: 2px var(--paperink); text-shadow: 4px 4px 0 var(--red); }
+  .start p { margin: 0; color: var(--dim); line-height: 1.6; font-size: 14px; max-width: 34em; }
+  .start p b { color: var(--ink); }
+  .start .best { color: var(--accent); font-size: 13px; }
   .go { background: var(--accent); color: #06130b; padding: 14px 36px; }
-  .flash { background: #000; animation: fade 900ms ease forwards; pointer-events: none; z-index: 4; }
-  .flash.red { background: #3a0003; }
-  @keyframes fade { from { opacity: 1; } to { opacity: 0; } }
-  .card { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(92vw, 420px); background: var(--card); color: var(--cardink); border-radius: 14px; padding: 18px; box-shadow: 0 10px 40px rgba(0,0,0,.6); z-index: 5; }
-  .card small { color: #7a6f55; letter-spacing: .1em; }
+  .card { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(92vw, 420px); background: var(--paper); color: var(--paperink); border: 3px solid var(--paperink); border-radius: 14px; padding: 18px; box-shadow: 6px 6px 0 var(--paperink); z-index: 8; animation: slam .35s cubic-bezier(.2,1.6,.4,1); }
+  @keyframes slam { from { transform: translate(-50%, -50%) scale(1.4) rotate(4deg); opacity: 0; } to { transform: translate(-50%, -50%) scale(1); opacity: 1; } }
+  .card small { color: #7a6f55; letter-spacing: .1em; font-weight: 700; }
   .card h2 { margin: 6px 0 8px; font-size: 22px; }
   .card p { margin: 0 0 14px; line-height: 1.6; }
-  .card button { width: 100%; padding: 12px; background: var(--cardink); color: var(--card); }
-  .sub { position: absolute; left: 50%; top: 12px; transform: translateX(-50%); width: min(92vw, 520px); padding: 10px 14px; background: #fff7d6; color: #3b2a00; border-radius: 12px; font-size: 15px; line-height: 1.5; box-shadow: 0 6px 20px rgba(0,0,0,.4); z-index: 6; }
-  .sub b { display: block; font-size: 12px; color: #a0740a; }
-  .ending { background: var(--bg); gap: 12px; overflow-y: auto; justify-content: flex-start; padding-top: 40px; }
-  .ending h1 { margin: 0; color: var(--accent); }
-  .dex { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; width: min(100%, 720px); }
-  .dex div { padding: 8px; border-radius: 8px; background: #151a17; font-size: 13px; text-align: left; }
+  .card button { width: 100%; padding: 12px; background: var(--paperink); color: var(--paper); }
+  .toast { position: absolute; left: 50%; bottom: 18%; transform: translateX(-50%); z-index: 6; background: rgba(0,0,0,.8); color: var(--ink); padding: 6px 12px; border-radius: 999px; font-size: 13px; pointer-events: none; }
+
+  /* 結算、測驗、成績卡 */
+  .panel { background: var(--bg); gap: 12px; overflow-y: auto; justify-content: flex-start; padding-top: 32px; }
+  .panel h1 { margin: 0; font: 400 clamp(30px, 7vw, 46px)/1.1 var(--f-display); color: var(--accent); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; width: min(100%, 640px); }
+  .stats div { background: #151a17; border-radius: 8px; padding: 8px; }
+  .stats b { display: block; font: 400 22px var(--f-display); color: var(--pop); font-variant-numeric: tabular-nums; }
+  .stats small { color: var(--dim); }
+  .dex { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; width: min(100%, 720px); }
+  .dex div { padding: 8px; border-radius: 8px; background: #151a17; font-size: 13px; text-align: left; min-width: 0; }
   .dex .no { color: #444; }
-  /* 手機橫放：影片佔滿高度，說明與按鈕疊在畫面下緣 */
+  .quiz { width: min(100%, 520px); background: var(--paper); color: var(--paperink); border: 3px solid var(--paperink); border-radius: 14px; padding: 18px; box-shadow: 6px 6px 0 var(--paperink); text-align: left; }
+  .quiz small { color: #7a6f55; font-weight: 700; }
+  .quiz h2 { margin: 6px 0 12px; font-size: 20px; text-wrap: balance; }
+  .quiz .opts { display: grid; gap: 8px; }
+  .quiz .opts button { background: #fff; color: var(--paperink); border: 2px solid var(--paperink); padding: 10px; text-align: left; font-size: 15px; }
+  .quiz .opts button.right { background: var(--accent); }
+  .quiz .opts button.bad { background: var(--danger); color: #fff; }
+  .quiz .why { margin: 10px 0 0; font-size: 14px; min-height: 1.4em; }
+  .result { width: min(100%, 440px); background: var(--paper); color: var(--paperink); border: 3px solid var(--paperink); border-radius: 14px; padding: 20px; box-shadow: 6px 6px 0 var(--red); }
+  .result .title { font: 400 30px/1.1 var(--f-display); color: var(--red); margin: 6px 0; }
+  .result .meta { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px; text-align: left; font-size: 14px; margin-top: 10px; font-variant-numeric: tabular-nums; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+  .ghost { background: transparent; color: var(--ink); border: 2px solid var(--dim); padding: 12px 20px; }
+
+  /* 手機橫放：畫面佔滿高度，說明與按鈕疊在下緣 */
   @media (orientation: landscape) and (max-height: 520px) {
     .stage { width: min(100vw, calc(100dvh * 16 / 9)); }
     .below { position: absolute; left: 50%; transform: translateX(-50%); bottom: 58px; width: min(92vw, 640px); min-height: 0; padding: 0; z-index: 2; }
     .tip { background: rgba(0,0,0,.72); font-size: 13px; padding: 6px 10px; }
-    .controls { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); height: 54px; padding: 6px 12px max(6px, env(safe-area-inset-bottom)); z-index: 2; }
+    .controls { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); height: 54px; padding: 6px 16px max(6px, env(safe-area-inset-bottom)); z-index: 2; }
     .controls button { background-color: rgba(20, 20, 20, .7); }
-    .btnBack { color: #ffb4b6; } .btnFwd { color: #a6f0c6; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .shake-s, .shake-l, .glitch img.frame, .spot, .floorNo.pop, .floorNo.reset { animation: none !important; }
   }
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Noto+Sans+TC:wght@400;700;900&display=swap">
 </head>
 <body>
 <div id="app">
   <div class="stage" id="stage">
-    <img id="imgA" alt=""><img id="imgB" alt="">
+    <img class="frame" id="imgA" alt=""><img class="frame" id="imgB" alt="">
     <div class="vignette"></div>
-    <div id="ovs"></div>
-    <div class="hud"><div class="floorNo" id="floorNo">0F</div><div class="where" id="where"></div></div>
+    <div class="spots" id="spots"></div>
+    <img class="dean" id="dean" alt="系主任">
+    <div class="burst" id="burst"></div>
+    <div class="hud"><div class="floorNo" id="floorNo">0F</div><div><div class="where" id="where"></div><div class="timer" id="timer"></div></div></div>
     <div class="dbg hidden" id="dbg"></div>
   </div>
   <div class="below">
@@ -92,16 +158,18 @@
     <button class="btnFwd" id="btnFwd" aria-label="往前（鍵盤 → 或 ↑）">往前 ↑</button>
   </div>
 
-  <div class="sub hidden" id="sub"></div>
+  <div class="bubble hidden" id="sub"></div>
+  <div class="toast hidden" id="toast"></div>
   <div class="card hidden" id="card"><small id="cardTag"></small><h2 id="cardTitle"></h2><p id="cardText"></p><button id="cardOk">繼續走</button></div>
 
   <div class="layer start" id="start">
     <h1>六樓出口</h1>
-    <p>你在設計大樓六樓醒來。<br>走廊會一直循環。<br>覺得哪裡不對勁，就回頭。<br>沒有異常，就往前走。<br>連續走對 6 圈，才能離開六樓。</p>
+    <p>你在設計大樓六樓醒來，走廊一直循環。<br>先走一圈導覽，把發亮的地方都點過。<br>之後覺得哪裡不對勁：<b>直接點那個地方</b>，或按<b>回頭</b>。<br>沒有異常就往前走。連續走對 6 圈，才能離開六樓。</p>
+    <p class="best" id="best"></p>
     <button class="go" id="go">進入六樓</button>
-    <p style="font-size:12px">畫面依設計大樓六樓實拍，以 Codex 生圖重繪成漫畫風。<br>系主任語音尚未錄製，先以字幕代替。</p>
+    <p style="font-size:12px">畫面依設計大樓六樓實拍，以 Codex 生圖重繪成漫畫風。系主任語音尚未錄製，先以字幕代替。</p>
   </div>
-  <div class="layer ending hidden" id="ending"></div>
+  <div class="layer panel hidden" id="ending"></div>
 </div>
 
 <script src="game.js"></script>

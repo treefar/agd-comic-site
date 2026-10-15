@@ -3,28 +3,48 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createGame, step, startLap, anomalyAt, mulberry32, GOAL, LAST_STATION } from "../exit6/game-core.mjs";
-import { STATIONS, ANOMALIES, VOICE_TEXT } from "../exit6/data.mjs";
+import { STATIONS, ANOMALIES, QUIZ, VOICE_TEXT } from "../exit6/data.mjs";
 
 const walkTour = (g) => { for (let i = 0; i <= LAST_STATION; i++) step(g, "forward"); };
 const walkToEnd = (g) => { let ev; for (let i = 0; i <= LAST_STATION; i++) ev = step(g, "forward"); return ev; };
 // 依答案正確作答一圈
 const answerRight = (g) => (g.anomaly ? step(g, "back") : walkToEnd(g));
 
-test("資料：站數對、異常 id 不重複、每個異常有站點／佔位位置／佈置方式／圖鑑", () => {
+const inBox = (b) => b.x >= 0 && b.y >= 0 && b.w > 0 && b.h > 0 && b.x + b.w <= 100.01 && b.y + b.h <= 100.01;
+
+test("資料：站數對、異常 id 不重複、每個異常有站點／點擊範圍／圖鑑", () => {
   assert.equal(STATIONS.length, LAST_STATION + 1);
   assert.equal(new Set(ANOMALIES.map((a) => a.id)).size, ANOMALIES.length);
   for (const a of ANOMALIES) {
     assert.ok(STATIONS[a.station], a.id);
-    const p = a.placeholder;
-    assert.ok(p.x >= 0 && p.x <= 100 && p.y >= 0 && p.y <= 100 && p.text, `${a.id} 佔位設定`);
+    assert.ok(a.hits?.length && a.hits.every(inBox), `${a.id} 點擊範圍要在畫面內`);
+    assert.ok(a.still, `${a.id} 缺異常圖`);
     assert.ok(a.card.title && a.card.text, a.id);
   }
 });
 
-test("素材：每站的中間格與停站圖、已填的異常圖都存在", async () => {
+test("資料：每站至少一個調查點，範圍在畫面內且有說明", () => {
+  for (const s of STATIONS) {
+    assert.ok(s.spots?.length, `${s.id} 沒有調查點`);
+    for (const p of s.spots) assert.ok(inBox(p) && p.label && p.text, `${s.id} ${p.label}`);
+  }
+});
+
+test("資料：測驗題至少 5 題、四個選項、答案索引有效、有解說", () => {
+  assert.ok(QUIZ.length >= 5);
+  for (const t of QUIZ) {
+    assert.equal(t.options.length, 4, t.q);
+    assert.equal(new Set(t.options).size, 4, `${t.q} 選項重複`);
+    assert.ok(t.a >= 0 && t.a < 4 && t.why, t.q);
+  }
+});
+
+test("素材：每站的中間格與停站圖、異常圖、系主任立繪都存在", async () => {
   const fs = await import("node:fs");
   const url = await import("node:url");
-  const items = [...STATIONS.map((s) => [s.id, ...s.frames, s.still]), ...ANOMALIES.filter((a) => a.still).map((a) => [a.id, a.still])];
+  const items = [...STATIONS.map((s) => [s.id, ...s.frames, s.still]), ...ANOMALIES.map((a) => [a.id, a.still]),
+    ["dean", ...["plead", "cheer", "welcome", "peek"].map((p) => `frames/dean_${p}.webp`)],
+    ["sfx", ...["footstep", "hum", "sting", "found", "wrong", "dean", "correct", "clear", "click"].map((n) => `audio/sfx_${n}.mp3`)]];
   for (const [id, ...files] of items) for (const f of files) {
     const p = url.fileURLToPath(new URL(`../exit6/${f}`, import.meta.url));
     assert.ok(fs.existsSync(p), `${id} 缺 ${f}`);

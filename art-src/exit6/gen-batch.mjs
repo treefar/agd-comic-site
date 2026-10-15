@@ -69,11 +69,25 @@ const anomJob = ([id, s, change]) => ({
     `The change must be drawn in the same comic style. Landscape 16:9, same size as the input.`,
 });
 
+// 系主任立繪：依系網官方照片（使用者 2026-10-15 指定），純綠背景方便去背
+const DEAN_BASE = "Open and look at the portrait reference art-src/exit6/ref/dean_photo.jpg and the STYLE reference art-src/exit6/gen/s5_a09.png " +
+  "(the poster of him in the middle). Draw THE SAME MAN (same face, eyes, nose, mouth, black bowl haircut, black hooded velvet cloak tied at the neck, white sweater) " +
+  "as a comedic manga character, in the same comic style as the poster: bold black ink outlines, screentone shading, flat colors. " +
+  "Waist-up, centered, fully inside the frame with margin. The ENTIRE background must be one flat pure green #00FF00 with no shading, no floor, no shadow, no text, no speech bubble. Square image.";
+const DEAN = [
+  ["dean_plead", "Pose: leaning forward, palms pressed together begging, teary puppy-dog eyes, exaggerated pleading pout — funny, not scary."],
+  ["dean_cheer", "Pose: big proud grin, one hand giving a thumbs up toward the viewer, the other on his hip."],
+  ["dean_welcome", "Pose: both arms spread wide open in welcome, warm happy smile, cloak spread like wings."],
+  ["dean_peek", "Pose: peeking from the right edge of the frame, only half of his face and one hand visible, wide mischievous grin, one eye staring at the viewer."],
+];
+const deanJob = ([id, pose]) => ({ id, out: `art-src/exit6/gen/${id}.png`, prompt: `${DEAN_BASE} ${pose}` });
+
 const STATIONS = ["s0", "s1", "s2", "s3", "s4", "s5", "s6", "s7"];
 const SETS = {
   stops: () => STATIONS.map(stopJob),
   mids: () => STATIONS.flatMap((s) => ["a", "b"].map((k) => midJob(s, k))),
   anomalies: () => ANOM.map(anomJob),
+  dean: () => DEAN.map(deanJob),
 };
 
 const [set, ...only] = process.argv.slice(2);
