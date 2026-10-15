@@ -21,7 +21,7 @@ const REQUIRED_IDS = ["hero", "news", "about", "works", "faculty", "labs", "join
 // 不複製進 dist 的來源/建置檔
 const EXCLUDE = new Set([
   ".git", ".github", ".gitignore", "node_modules", "dist", ".build-dev", "scripts", ".build-tmp", "_prerender-check",
-  "package.json", "package-lock.json", "index.html", "README.md", "CLAUDE.md", "AGENTS.md", "docs", "uploads", ".claude",
+  "package.json", "package-lock.json", "index.html", "README.md", "CLAUDE.md", "AGENTS.md", "docs", "uploads", ".claude", "art-src",
   ...SOURCES,
 ]);
 

@@ -17,17 +17,15 @@ test("資料：站數對、異常 id 不重複、每個異常有站點／佔位�
     assert.ok(STATIONS[a.station], a.id);
     const p = a.placeholder;
     assert.ok(p.x >= 0 && p.x <= 100 && p.y >= 0 && p.y <= 100 && p.text, `${a.id} 佔位設定`);
-    assert.ok(a.stage, `${a.id} 缺補拍佈置方式`);
     assert.ok(a.card.title && a.card.text, a.id);
   }
 });
 
-test("素材：每站的片段與停站畫面檔案都存在", async () => {
+test("素材：每站的中間格與停站圖、已填的異常圖都存在", async () => {
   const fs = await import("node:fs");
   const url = await import("node:url");
-  const items = [...STATIONS.map((s) => [s.id, s.clip, s.still]), ...ANOMALIES.filter((a) => a.clip).map((a) => [a.id, a.clip, a.still])];
+  const items = [...STATIONS.map((s) => [s.id, ...s.frames, s.still]), ...ANOMALIES.filter((a) => a.still).map((a) => [a.id, a.still])];
   for (const [id, ...files] of items) for (const f of files) {
-    assert.ok(f, `${id} 有 clip 就要有 still`);
     const p = url.fileURLToPath(new URL(`../exit6/${f}`, import.meta.url));
     assert.ok(fs.existsSync(p), `${id} 缺 ${f}`);
   }

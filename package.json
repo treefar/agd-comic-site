@@ -6,6 +6,7 @@
     "build": "node scripts/build.mjs",
     "check": "node scripts/check-dist.mjs",
     "check:report": "node scripts/check-dist.mjs --report",
+    "exit6:bundle": "esbuild exit6/main.mjs --bundle --format=iife --target=es2019 --outfile=exit6/game.js --legal-comments=none",
     "serve": "npx --yes http-server dist -p 8081 -c-1"
   },
   "repository": {

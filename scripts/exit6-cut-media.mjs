@@ -1,8 +1,9 @@
-// 《六樓出口》影片剪輯：從原始實拍影片剪出 720p 走路片段＋停站畫面（片段最後一格）
+// 《六樓出口》影片剪輯：從原始實拍影片剪出 720p 走路片段＋停站畫面（片段最後一格），當漫畫風重繪的參考（art-src/exit6/ref）
 // 用法：node scripts/exit6-cut-media.mjs "<原片資料夾>" [只剪某幾段，例如 s0 s6]
 // 需要 ffmpeg 在 PATH 上。原片不進 git（2026-10-15 存於桌面「系網企畫」）
-// 補拍後在 CLIPS 加一列（例：["s4_a06", "新檔名.mp4", 2.0, 12.5]），再把 data.mjs 對應異常填 clip / still
+// 剪完要重抽參考圖與轉正：抽圖見 art-src/exit6（ref/ 由片段 25%、60% 與最後一格抽出），再跑 python art-src/exit6/level_refs.py
 import { execFileSync } from "node:child_process";
+import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -26,7 +27,8 @@ export const CLIPS = [
 const dir = process.argv[2];
 if (!dir) { console.error("請給原片資料夾路徑"); process.exit(1); }
 const only = new Set(process.argv.slice(3));
-const OUT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "exit6", "media");
+const OUT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "art-src", "exit6", "clips");   // 只當生圖參考，不發布
+fs.mkdirSync(OUT, { recursive: true });
 
 for (const [name, src, start, end] of CLIPS) {
   if (only.size && !only.has(name)) continue;
