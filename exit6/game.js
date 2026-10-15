@@ -135,7 +135,8 @@
         { x: 3, y: 13, w: 24, h: 22, label: "\u7CFB\u540D\u7246", text: "\u52D5\u756B\u8207\u904A\u6232\u8A2D\u8A08\u7CFB\uFF08Department of Animation and Game Design, STU\uFF09\u3002\u7CFB\u8FA6\u5C31\u5728\u96FB\u68AF\u6B63\u524D\u65B9\uFF0C\u65B0\u751F\u6709\u554F\u984C\u5148\u4F86\u9019\u88E1\u554F\u3002" },
         { x: 54, y: 24, w: 9, h: 23, label: "\u9580\u4E0A\u544A\u793A", text: "\u300C\u8ACB\u52FF\u56DE\u982D\u300D\u3002\u8A18\u4F4F\u5B83\u5BEB\u4EC0\u9EBC\u3002" },
         { x: 27, y: 16, w: 60, h: 28, label: "\u5169\u5074\u6D77\u5831", text: "\u9580\u5DE6\u908A\u4E00\u5F35\u85CD\u8272\u6D77\u5831\uFF0C\u53F3\u908A\u5169\u5F35\u5F69\u8272\u6D77\u5831\u3002\u8A18\u4F4F\u54EA\u908A\u662F\u54EA\u5F35\u3002" },
-        { x: 0, y: 76, w: 100, h: 24, label: "\u5F69\u7E6A\u5730\u588A", text: "\u9580\u524D\u7684\u5F69\u7E6A\u5730\u588A\uFF0C\u8A18\u4F4F\u4EBA\u7269\u6392\u5217\u7684\u65B9\u5411\u3002\uFF08\u5F85\u8001\u5E2B\u88DC\u5145\uFF1A\u5730\u588A\u4F5C\u8005\uFF09" }
+        { x: 0, y: 76, w: 100, h: 24, label: "\u5F69\u7E6A\u5730\u588A", text: "\u9580\u524D\u7684\u5F69\u7E6A\u5730\u588A\uFF0C\u8A18\u4F4F\u4EBA\u7269\u6392\u5217\u7684\u65B9\u5411\u3002\uFF08\u5F85\u8001\u5E2B\u88DC\u5145\uFF1A\u5730\u588A\u4F5C\u8005\uFF09" },
+        { x: 53, y: 52, w: 10, h: 16, label: "\u7CFB\u8FA6\u59D4\u8A17", action: "takeItems", text: "\u7CFB\u8FA6\u62DC\u8A17\u4F60\u9001 3 \u4EF6\u6771\u897F\uFF0C\u5DF2\u7D93\u653E\u9032\u624B\u5E33\u3002\u6BCF\u4EF6\u53EA\u5BEB\u4E86\u7528\u9014\uFF0C\u8981\u81EA\u5DF1\u60F3\u60F3\u8A72\u9001\u5230\u516D\u6A13\u54EA\u88E1\u3002" }
       ]
     },
     {
@@ -175,7 +176,7 @@
       still: "frames/s5.webp",
       src: "A 7:30\u20137:41",
       tour: "\u8D70\u5ECA\u6AE5\u7A97\u8CBC\u6EFF\u4F5C\u54C1\u6D77\u5831\u3002",
-      spots: [{ x: 16, y: 8, w: 78, h: 84, label: "\u6D77\u5831\u6AE5\u7A97", text: "\u4E09\u5F35\u5B8C\u6574\u7684\u6D77\u5831\uFF0C\u5F9E\u5DE6\u5230\u53F3\uFF1A\u5B87\u5B99\u96FB\u53F0\u3001\u7C89\u7D05\u982D\u9AEE\u5973\u5B69\u3001GO PLAYING DIMENSION\u3002\u8A18\u4F4F\u9806\u5E8F\u548C\u65B9\u5411\u30022025 \u5E74\u7CFB\u4E0A\u6709 8 \u4EF6\u4F5C\u54C1\u5165\u570D\u653E\u8996\u5927\u8CDE\u3002\uFF08\u5F85\u8001\u5E2B\u78BA\u8A8D\uFF1A\u6D77\u5831\u51FA\u8655\uFF09" }]
+      spots: [{ x: 16, y: 8, w: 52, h: 84, label: "\u6D77\u5831\u6AE5\u7A97", text: "\u4E09\u5F35\u5B8C\u6574\u7684\u6D77\u5831\uFF0C\u5F9E\u5DE6\u5230\u53F3\uFF1A\u5B87\u5B99\u96FB\u53F0\u3001\u7C89\u7D05\u982D\u9AEE\u5973\u5B69\u3001GO PLAYING DIMENSION\u3002\u8A18\u4F4F\u9806\u5E8F\u548C\u65B9\u5411\u30022025 \u5E74\u7CFB\u4E0A\u6709 8 \u4EF6\u4F5C\u54C1\u5165\u570D\u653E\u8996\u5927\u8CDE\u3002\uFF08\u5F85\u8001\u5E2B\u78BA\u8A8D\uFF1A\u6D77\u5831\u51FA\u8655\uFF09" }]
     },
     {
       id: "S6",
@@ -195,7 +196,7 @@
       frames: ["frames/s7_a.webp", "frames/s7_b.webp"],
       still: "frames/s7.webp",
       src: "B 5:58\u20136:10",
-      tour: "\u7E5E\u4E00\u5708\u53C8\u56DE\u5230\u96FB\u68AF\u5EF3\u3002",
+      tour: "\u7E5E\u4E00\u5708\u53C8\u56DE\u5230\u96FB\u68AF\u5EF3\u3002\u5149\u7DDA\u548C\u6642\u9593\u7684\u8B8A\u5316\u4E0D\u662F\u7570\u5E38\uFF0C\u53EA\u770B\u6771\u897F\u6709\u6C92\u6709\u8B8A\u3002",
       spots: [{ x: 40, y: 1, w: 12, h: 15, label: "\u6A13\u5C64\u6578\u5B57", text: "\u7246\u4E0A\u7684\u300C6\u300D\u3002\u5C0E\u89BD\u5708\u7D50\u675F\u5F8C\uFF0C\u771F\u6B63\u7684\u5FAA\u74B0\u624D\u958B\u59CB\uFF1A\u770B\u5230\u4E0D\u5C0D\u52C1\u5C31\u56DE\u982D\uFF0C\u6216\u76F4\u63A5\u9EDE\u51FA\u7570\u5E38\u7684\u4F4D\u7F6E\u3002" }]
     }
   ];
@@ -303,8 +304,109 @@
     vo_first_correct: "\u6B38\uFF5E\u4F60\u5F88\u6703\u770B\u5594\uFF01\u5C31\u662F\u8981\u9019\u6A23\u3002",
     vo_half: "\u8D70\u4E00\u534A\u4E86\uFF0C\u516D\u6A13\u7684\u5730\u6A19\u4F60\u8A8D\u5F97\u5E7E\u500B\u5566\uFF1F",
     vo_ending: "\u606D\u559C\u4F60\u8D70\u51FA\u516D\u6A13\uFF01\u4E0D\u904E\u8AAA\u771F\u7684\uFF0C\u6B61\u8FCE\u4F60\u5E38\u5E38\u56DE\u4F86\u770B\u770B\u3002\u6211\u662F\u7CFB\u4E3B\u4EFB\u9127\u6A39\u9060\uFF0C\u52D5\u904A\u7CFB\u7B49\u4F60\u3002",
+    vo_night: "\u9019\u9EBC\u665A\u9084\u4F86\u516D\u6A13\u63A2\u96AA\uFF1F\u5F88\u6709\u52D5\u904A\u7CFB\u7684\u7CBE\u795E\u5594\u2026\u2026\u4E0D\u904E\u9084\u662F\u8981\u65E9\u9EDE\u4F11\u606F\uFF01",
     vo_secret: "12 \u500B\u7570\u5E38\u5168\u88AB\u4F60\u627E\u5230\u4E86\u2026\u2026\u5176\u5BE6\u6211\u4E00\u76F4\u8DDF\u5728\u4F60\u5F8C\u9762\u5594\u3002\u6B61\u8FCE\u52A0\u5165\u52D5\u904A\u7CFB\uFF01"
   };
+
+  // exit6/time.mjs
+  var NIGHT_BY_LAP = 4;
+  var BRIGHT_FLOOR = 0.72;
+  function periodOf(hour) {
+    const h = (hour % 24 + 24) % 24;
+    if (h >= 19 || h < 6) return "night";
+    if (h >= 17) return "dusk";
+    return "day";
+  }
+  function stepFor(start) {
+    const h = (start % 24 + 24) % 24;
+    if (h < 6) return 0;
+    if (h >= 19) return 1;
+    return Math.ceil((19 - h) / NIGHT_BY_LAP);
+  }
+  function hourAt(start, lap) {
+    return ((start + stepFor(start) * lap) % 24 + 24) % 24;
+  }
+  var PERIOD_LABEL = { day: "\u767D\u5929", dusk: "\u9EC3\u660F", night: "\u665A\u4E0A" };
+  var TINT = { day: null, dusk: { rgb: [255, 196, 140], a: 0.28 }, night: { rgb: [96, 128, 210], a: 0.34 } };
+  var lum = ([r, g, b]) => (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+  function gradeFor(hour, count = 0) {
+    const p = periodOf(hour);
+    const t = TINT[p];
+    const tintFactor = t ? 1 - t.a * (1 - lum(t.rgb)) : 1;
+    const base = { day: 1, dusk: 0.98, night: 0.95 }[p];
+    const b = Math.max(BRIGHT_FLOOR / tintFactor, base - count * 0.025);
+    const s = Math.max(0.6, { day: 1, dusk: 1.05, night: 0.85 }[p] - count * 0.05);
+    const parts = [`brightness(${b.toFixed(3)})`, `saturate(${s.toFixed(3)})`];
+    if (count) parts.push(`contrast(${(1 + count * 0.025).toFixed(3)})`);
+    const vig = Math.min(0.85, (p === "night" ? 0.6 : 0.5) + count * 0.04);
+    const tint = t ? `rgba(${t.rgb.join(",")},${t.a})` : "transparent";
+    return { period: p, filter: parts.join(" "), tint, vig, brightness: b * tintFactor };
+  }
+  var fmtHour = (h) => `${String(h).padStart(2, "0")}:00`;
+
+  // exit6/quests.mjs
+  var ITEMS = [
+    { id: "tablet", name: "\u7E6A\u5716\u677F\u6559\u5B78\u8B1B\u7FA9", hint: "\u8981\u9001\u5230\u300C\u80FD\u7DF4 2D \u89D2\u8272\u3001\u5834\u666F\u548C UI \u7684\u6559\u5BA4\u300D\u3002", to: "lab" },
+    { id: "motion", name: "\u52D5\u614B\u5716\u50CF\u8A2D\u8A08\u4F5C\u696D", hint: "\u8981\u4EA4\u7D66\u300C\u6559\u52D5\u614B\u5716\u50CF\u8A2D\u8A08\u7684\u8001\u5E2B\u300D\u3002", to: "office" },
+    { id: "poster", name: "\u4F5C\u54C1\u6D77\u5831", hint: "\u8981\u8CBC\u5230\u300C\u5C55\u793A\u7CFB\u4E0A\u4F5C\u54C1\u7684\u5730\u65B9\u300D\u3002", to: "window" }
+  ];
+  var TARGETS = [
+    {
+      id: "office1",
+      station: 1,
+      box: { x: 41, y: 50, w: 11, h: 20 },
+      label: "\u7CFB\u8FA6",
+      wrong: "\u9019\u88E1\u662F\u7CFB\u8FA6\uFF1A\u9078\u8AB2\u3001\u5404\u7A2E\u7533\u8ACB\u3001\u627E\u4EBA\u554F\u4E8B\u60C5\u90FD\u5148\u4F86\u9019\u88E1\u3002\u4E0D\u904E\u9019\u4EF6\u6771\u897F\u4E0D\u662F\u8981\u4EA4\u7D66\u7CFB\u8FA6\u7684\u3002"
+    },
+    {
+      id: "lab",
+      station: 4,
+      box: { x: 36, y: 44, w: 20, h: 22 },
+      label: "D0604",
+      wrong: "\u9019\u88E1\u662F D0604 \u96FB\u7E6A\u5BE6\u9A57\u5BA4\uFF0C\u662F\u7E6A\u5716\u677F\u6559\u5BA4\u3002\u9019\u4EF6\u6771\u897F\u4E0D\u662F\u8981\u9001\u4F86\u9019\u88E1\u7684\u3002"
+    },
+    {
+      id: "window",
+      station: 5,
+      box: { x: 70, y: 12, w: 22, h: 40 },
+      label: "\u6AE5\u7A97",
+      wrong: "\u9019\u88E1\u662F\u4F5C\u54C1\u6D77\u5831\u6AE5\u7A97\uFF0C\u5C55\u793A\u7CFB\u4E0A\u4F5C\u54C1\u3002\u9019\u4EF6\u6771\u897F\u4E0D\u662F\u8981\u8CBC\u5728\u9019\u88E1\u7684\u3002"
+    },
+    {
+      id: "office",
+      station: 6,
+      box: { x: 33, y: 18, w: 24, h: 30 },
+      label: "D0646",
+      wrong: "\u9019\u88E1\u662F D0646 \u9673\u6176\u9D3B\u8001\u5E2B\u7814\u7A76\u5BA4\uFF0C\u4ED6\u6559\u52D5\u614B\u5716\u50CF\u8A2D\u8A08\u3002\u9019\u4EF6\u6771\u897F\u4E0D\u662F\u8981\u4EA4\u7D66\u4ED6\u7684\u3002"
+    }
+  ];
+  var STAMP_POSTMAN = { id: "postman", name: "\u516D\u6A13\u90F5\u5DEE", text: "3 \u4EF6\u59D4\u8A17\u90FD\u9001\u5C0D\u4E86\u3002\u7CFB\u8FA6\u3001\u5BE6\u9A57\u5BA4\u3001\u6AE5\u7A97\u3001\u7814\u7A76\u5BA4\uFF0C\u4F60\u90FD\u77E5\u9053\u5728\u54EA\u3002" };
+  function createQuests() {
+    return { taken: false, delivered: [], stamps: [] };
+  }
+  function takeItems(qs) {
+    qs.taken = true;
+    return ITEMS.map((i) => i.id);
+  }
+  var pending = (qs) => qs.taken ? ITEMS.filter((i) => !qs.delivered.includes(i.id)) : [];
+  function deliver(qs, itemId, targetId) {
+    const item = ITEMS.find((i) => i.id === itemId);
+    const target = TARGETS.find((t) => t.id === targetId);
+    if (!item || !target) return { ok: false, text: "\u627E\u4E0D\u5230\u9019\u4EF6\u6771\u897F\u6216\u9019\u500B\u5730\u65B9\u3002" };
+    if (!qs.taken || qs.delivered.includes(itemId)) return { ok: false, text: "\u9019\u4EF6\u6771\u897F\u4E0D\u5728\u4F60\u8EAB\u4E0A\u3002" };
+    if (item.to !== targetId) return { ok: false, text: target.wrong };
+    qs.delivered.push(itemId);
+    const res = { ok: true, text: `\u300C${item.name}\u300D\u9001\u5230\u4E86\uFF01` };
+    if (qs.delivered.length === ITEMS.length && !qs.stamps.includes(STAMP_POSTMAN.id)) {
+      qs.stamps.push(STAMP_POSTMAN.id);
+      res.stamp = STAMP_POSTMAN;
+    }
+    return res;
+  }
+  var targetsAt = (station) => TARGETS.filter((t) => t.station === station);
+
+  // exit6/outlines.mjs
+  var OUTLINES = { "S0:0": [[[90.4, 3.2], [84.5, 3.9], [83.8, 4.4], [83.8, 29.9], [84.1, 32.1], [84.9, 33.8], [85.7, 34.4], [88.1, 34.4], [89.1, 33.6], [88.2, 33.3], [87.7, 32.2], [89.1, 31], [89.5, 31], [89.6, 31.7], [90.1, 30.8], [89.7, 30.4], [89.7, 29.7], [90.5, 28.8], [90.6, 4.2]]], "S1:0": [[[4.1, 19.7], [4.6, 20.4], [4.5, 26], [4.7, 27.1], [23.2, 27.6], [23.9, 27.1], [26.3, 27.2], [27, 26], [26.7, 23.8], [23, 24], [22.7, 22.9], [23.3, 21.8], [14.6, 21.7], [14.1, 20.7], [14.4, 17.6], [13.4, 16.2], [8.7, 16.2], [7.8, 17.1], [5.9, 16.4]], [[27, 31], [26.7, 28.8], [26.4, 28.3], [24.3, 28.9], [23.3, 27.8], [21.6, 28.3], [15.8, 28.1], [15.5, 28.5], [11, 28.3], [10.2, 28.8], [8, 28.3], [7.6, 28.9], [5.6, 28.3], [4.7, 28.8], [4.5, 32.4], [4.8, 33.8], [26.5, 33.6]]], "S1:1": [[[60.5, 28.1], [55.6, 28.2], [55.6, 44.7], [60.3, 44.7], [60.7, 44.4], [60.7, 28.8]]], "S1:2": [[[37.3, 21.2], [29.3, 21.5], [29.1, 27.4], [29.5, 42.1], [37.3, 41.9], [37.5, 41]], [[76, 21.1], [75.2, 21.4], [74.5, 20.8], [69.3, 21], [69.3, 38.9], [69.7, 41.9], [70.1, 41.5], [73.4, 40.8], [74.3, 40], [74.8, 40.1], [75.3, 39], [76, 38.8], [76.3, 38.1], [76.1, 35.8]], [[79.1, 23.2], [79.1, 23.9], [78.4, 24.4], [78.4, 39.3], [78.7, 39.6], [84.2, 39.4], [84.4, 38.9], [84.4, 25.3], [84.1, 24], [79.7, 24.2], [79.3, 23.9]]], "S1:3": [[[99.9, 86.7], [94.8, 84.3], [81.4, 85.3], [63, 79.7], [54.5, 82.6], [42.3, 80.1], [35, 84.7], [27.7, 82.6], [15.9, 86.4], [12.8, 92.2], [0, 92.9], [0, 99.9], [99.9, 99.9]]], "S1:4": [[[41.6, 21.9], [41.6, 69], [64.1, 69], [64.1, 22.1]]], "S2:0": [[[36.2, 60.4], [34.2, 58.9], [29.5, 58.3], [28.8, 56.7], [27.3, 58.9], [18, 60], [17, 58.3], [15.9, 58.5], [15.5, 60.4], [12.2, 61.4], [11.2, 63.1], [7.9, 66], [3.6, 67.6], [3.6, 68.3], [8.5, 68.5], [9.1, 70], [8.3, 71.2], [11.2, 71.7], [11.6, 72.6], [12.9, 71.4], [30.5, 66.2], [31.2, 64.6], [35.7, 62.2]]], "S3:0": [[[62.7, 12.9], [60.5, 14.6], [58, 9.6], [52.6, 8.2], [48, 0.7], [43.7, 8.1], [38, 9.9], [35.8, 15.1], [33.2, 14.6], [32.3, 78.1], [36.3, 77.4], [35.5, 37.4], [38.4, 34.7], [39.6, 69], [41.2, 68.3], [40.7, 40.4], [53.4, 37.5], [58, 40.6], [57.7, 68.3], [59.8, 68.5], [59.3, 37.6], [60.7, 36.2], [60.4, 77.4], [64.3, 77.4], [64.2, 16.2]]], "S4:0": [[[45.4, 17.8], [45.3, 22.2], [44.7, 22.6], [44.9, 22.9], [44.9, 23.3], [45.3, 23.5], [45.5, 24.2], [45.6, 23.9], [51.7, 24], [51.9, 23.5], [52.3, 23.5], [52.5, 24.2], [52.5, 22.5], [52.2, 22.5], [52, 22.2], [52, 19.2], [51.9, 17.8]]], "S4:1": [[[99.9, 30.6], [72.8, 30.8], [72.6, 99.9], [99.9, 99.9]]], "S5:0": [[[17.3, 8.3], [17.3, 82.5], [40, 82.9], [40.4, 8.8]], [[43.9, 7.6], [43.8, 82.8], [66.6, 83.9], [66.7, 7.9]]], "S6:0": [[[58.4, 3.8], [58, 1.5], [56.2, 1.7], [56.1, 3.3], [53.4, 3.3], [52.9, 2.2], [50.8, 2.9], [44.9, 2.2], [44.5, 3.2], [43.6, 2.1], [30.1, 2.4], [37.7, 3.2], [37, 4.2], [32, 4.4], [31.5, 5.4], [31.8, 12.9], [38.9, 12.5], [39.9, 14.2], [41.6, 13.2], [44.9, 14.2], [56.8, 13.2], [57.6, 12.2], [57, 11.1], [57.7, 10.7], [57.7, 9.3], [56, 8.3], [56, 6.5], [58, 6.4]]], "S6:1": [[[58.1, 94.7], [56.8, 90.3], [54.5, 90], [55.1, 88.9], [56, 88.8], [56.5, 87.4], [57.7, 87.5], [56.8, 82.2], [56.2, 83.8], [31.7, 83.5], [30.3, 86.9], [30.5, 89.4], [31.7, 91.5], [54.1, 91.8], [54.8, 92.4], [54.8, 94.7], [56, 96.9], [57, 96.8]]], "S7:0": [[[46.6, 2.4], [45.4, 2.4], [44.8, 3.1], [44.7, 3.1], [44.6, 3.5], [44.3, 3.9], [43.9, 5.7], [43.9, 7.2], [44.1, 7.6], [44.2, 8.8], [44.8, 9.7], [45.7, 10.4], [46.6, 10.1], [47.2, 9.4], [47.4, 8.9], [47.6, 8.1], [47.6, 6.5], [47.4, 6.1], [47.4, 5.8], [47.3, 5.6], [47.3, 4.7], [47.4, 4.4], [47.4, 3.6], [47, 2.8], [46.7, 2.6]]], "T:office1": [[[41.6, 21.9], [41.6, 69], [64.1, 69], [64.1, 22.1]]], "T:lab": [[[6.4, 0], [6, 38.9], [3.1, 38.8], [3.4, 30.8], [1.9, 28.6], [1.8, 99.9], [63.1, 99.9], [63.2, 2.8], [7.3, 2.2]]], "T:window": [[[94, 8.3], [70.1, 8.6], [70.4, 82.9], [93.8, 82.4], [94.6, 46.8]]], "T:office": [[[58.4, 1.5], [29.8, 2.4], [30, 99.9], [45.2, 99.9], [45.4, 96.1], [47.1, 99.9], [58.4, 99.9]]], "A01": [[[55.7, 28.2], [55.5, 28.6], [55.5, 44], [55.6, 44.7], [56, 45], [56.4, 44.7], [60.7, 44.6], [60.7, 28.6], [60.4, 28.1]]], "A02": [[[28.6, 21], [28.4, 25.3], [28.6, 41.9], [29, 42.2], [34.8, 41.9], [35.2, 39.3], [35.3, 31.5], [35, 21.1], [34.5, 20.8]], [[69, 21], [68.8, 38.1], [68.5, 38.9], [66.6, 38.9], [66.5, 41.9], [76.8, 41.7], [77, 38.5], [77, 27.9], [77.1, 27.4], [77.6, 27.4], [77.6, 26.7], [77, 26.4], [77, 25.1], [77.7, 23.9], [77, 23.5], [76.9, 21.1]]], "A03": [[[99.9, 86.8], [95.5, 84.4], [82.1, 85.1], [63.7, 80], [55.5, 82.5], [43, 80.1], [34.6, 84.7], [27.8, 82.4], [14.2, 88.3], [13, 92.2], [0.9, 92.4], [0, 99.9], [15.5, 98.1], [20.3, 99.9], [87.4, 99.9], [90.4, 97.2], [90.2, 93.3], [99.9, 93.1]]], "A04": [[[28.2, 64.2], [27.2, 63.3], [26.4, 63.5], [26.3, 60.4], [27.1, 59.3], [23.9, 59.2], [22.3, 60], [22.6, 60.7], [24.1, 60.8], [23.6, 62.1], [24.2, 62.8], [24.3, 64.2], [23.3, 65.1], [22.3, 65.3], [21.6, 64], [20.7, 63.9], [19.4, 65.6], [17.5, 65.6], [17.2, 62.4], [18, 62.2], [18, 61], [18.5, 61.2], [19.3, 60.4], [14.9, 60.7], [14.4, 62.6], [13.7, 62.8], [14.3, 63.2], [13.8, 65.6], [14.2, 66.8], [14.1, 68.3], [14.5, 68.8], [14.4, 70.6], [27.3, 66.9], [28, 66.2]]], "A05": [[[38.4, 66.7], [38.8, 69.2], [38.8, 73.5], [39.7, 73.2], [39.8, 71.7], [40.5, 71.1], [40.5, 69.4], [41.6, 67.9], [56.8, 67.9], [57.2, 68.6], [57.2, 71.1], [57.7, 71.4], [58, 73.3], [58.8, 73.6], [59.1, 73.2], [59.1, 69.3], [59.9, 68.3], [59.5, 64.9], [59.4, 65.8], [58.1, 64.9], [57.7, 59.6], [56.1, 59.2], [40.2, 59.2], [39.8, 61], [39.7, 64.2]]], "A06": [[[44.6, 22.5], [44.7, 24.6], [45.2, 24.6], [45.2, 24.2], [45.5, 24], [51.7, 24], [52, 23.3], [52.3, 23.3], [52.5, 22.6], [52.9, 22.6], [52.9, 22.4], [52.3, 22.4], [52.1, 21.9], [52, 18.2], [51.6, 17.5], [45.4, 17.6], [45.2, 18.2], [45.2, 21.8], [45.1, 22.2]]], "A07": [[[14, 44.4], [14.1, 46.5], [15.7, 47.5], [15.7, 48.2], [15, 48.8], [14.5, 50.1], [15.1, 52.9], [14.9, 62.8], [15.4, 64], [26.6, 63.9], [27.8, 61.4], [27.7, 51.8], [28, 50.1], [26.8, 47.4], [28.3, 46.8], [28.3, 44.2], [25.2, 44], [24.7, 43.5], [24.8, 42.4], [24.5, 41.8], [23.2, 42.2], [20.5, 41.7], [19.6, 42.4], [18.9, 41.7], [18.5, 43.6]]], "A08": [[[17.3, 8.3], [17.3, 82.6], [40.2, 82.1], [40.4, 8.9]]], "A09": [[[66.6, 7.8], [43.8, 7.8], [44, 83.2], [66.6, 83.6]]], "A10": [[[58, 95], [57.4, 91.2], [55.3, 90], [55.4, 89.3], [57.8, 88.6], [58, 86.4], [57.3, 85.8], [57, 82.2], [56.4, 82.2], [56, 84], [31.7, 83.5], [30.3, 86.9], [30.5, 89.7], [31.7, 91.5], [54.1, 91.8], [54.8, 92.4], [54.8, 94.7], [56, 96.9], [57, 96.8]]], "A11": [[[58.4, 2.1], [53.3, 1.5], [30.2, 2.2], [30.2, 8.9], [31, 9.2], [31.8, 14.9], [55.3, 14.7], [57.2, 13.9], [58, 14.4]]], "A12": [[[38.8, 12.1], [39.2, 13.1], [39.8, 12.5], [40.3, 13.5], [47.8, 13.9], [52, 13.6], [52, 12.5], [53, 12.2], [53.2, 13.2], [52.8, 13.5], [53.3, 13.5], [53.7, 12.1], [46.9, 11.7], [47, 10.7], [47.5, 10.7], [47.3, 9.6], [48.2, 10.8], [49.1, 10.7], [48.7, 9.7], [49.2, 9.6], [49.8, 10.8], [49.8, 8.3], [51.3, 8.2], [51.4, 6.2], [50.2, 5.7], [49.6, 6.2], [49.9, 7.5], [49.5, 8.2], [48.5, 8.2], [48.3, 6.4], [47.7, 6.7], [47.5, 5.8], [47.8, 4.4], [46.4, 2.1], [45.1, 2.4], [43.8, 4.6], [43.7, 7.9], [45.5, 11], [45.4, 11.7]]] };
 
   // exit6/main.mjs
   var q = new URLSearchParams(location.search);
@@ -335,6 +437,10 @@
   }
   var save = Object.assign({ dex: [], bestMs: null, bestMiss: null, clears: 0 }, loadSave());
   var run = { t0: 0, mistakes: 0, precise: 0, misTaps: 0, toured: /* @__PURE__ */ new Set() };
+  var quests = createQuests();
+  var realHour = (/* @__PURE__ */ new Date()).getHours();
+  var startHour = q.has("hour") ? (Number(q.get("hour")) % 24 + 24) % 24 : realHour;
+  var nowHour = () => hourAt(startHour, game.phase === "tour" ? 0 : game.lap);
   var SFX = ["footstep", "hum", "sting", "found", "wrong", "dean", "correct", "clear", "click"];
   var sfx = {};
   function loadSfx() {
@@ -431,16 +537,19 @@
     stage.classList.add("glitch");
   }
   function grade() {
-    const c = game.phase === "loop" ? game.count : 0;
-    stage.style.setProperty("--grade", c ? `brightness(${1 - c * 0.05}) saturate(${1 - c * 0.08}) sepia(${c * 0.04}) hue-rotate(${c * 6}deg) contrast(${1 + c * 0.03})` : "none");
-    stage.style.setProperty("--vig", String(0.5 + c * 0.07));
+    const h = nowHour();
+    const g = gradeFor(h, game.phase === "loop" ? game.count : 0);
+    stage.style.setProperty("--grade", g.filter);
+    stage.style.setProperty("--tint", g.tint);
+    stage.style.setProperty("--vig", String(g.vig));
+    $("clock").textContent = `${fmtHour(h)} ${PERIOD_LABEL[g.period]}`;
   }
   function toast(text) {
     const t = $("toast");
     t.textContent = text;
     t.classList.remove("hidden");
     clearTimeout(toast.t);
-    toast.t = setTimeout(() => t.classList.add("hidden"), 1400);
+    toast.t = setTimeout(() => t.classList.add("hidden"), Math.max(1400, text.length * 110));
   }
   function ripple(x, y) {
     const r = document.createElement("div");
@@ -479,27 +588,152 @@
     $("btnBack").disabled = off;
     $("btnFwd").disabled = off || game.phase === "tour" && tourLeft() > 0;
   }
+  function placeBtn(b, s) {
+    Object.assign(b.style, { left: s.x + "%", top: s.y + "%", width: s.w + "%", height: s.h + "%" });
+  }
+  function cutout(key, src, kind) {
+    const polys = OUTLINES[key];
+    if (!polys || !polys.length) return null;
+    const wrap = document.createElement("div");
+    wrap.className = "cut " + kind;
+    let x0 = 100, y0 = 100, x1 = 0, y1 = 0;
+    for (const p of polys) {
+      const d = document.createElement("div");
+      d.className = "cut-in";
+      d.style.backgroundImage = `url("${src}")`;
+      d.style.clipPath = `polygon(${p.map(([x, y]) => `${x}% ${y}%`).join(",")})`;
+      wrap.appendChild(d);
+      for (const [x, y] of p) {
+        x0 = Math.min(x0, x);
+        y0 = Math.min(y0, y);
+        x1 = Math.max(x1, x);
+        y1 = Math.max(y1, y);
+      }
+    }
+    wrap.style.transformOrigin = `${(x0 + x1) / 2}% ${(y0 + y1) / 2}%`;
+    $("cuts").appendChild(wrap);
+    return wrap;
+  }
+  function linkLift(btn, cut) {
+    if (!cut) return;
+    btn.classList.add("has-cut");
+    const on = () => cut.classList.add("lift"), off = () => cut.classList.remove("lift");
+    btn.addEventListener("pointerenter", on);
+    btn.addEventListener("pointerleave", off);
+    btn.addEventListener("pointerdown", on);
+    btn.addEventListener("pointerup", off);
+  }
+  function liftFound(anomalyId) {
+    const a = ANOMALIES.find((x) => x.id === anomalyId);
+    if (!a) return;
+    const c = cutout(a.id, a.still, "c-found");
+    if (!c) return;
+    requestAnimationFrame(() => c.classList.add("lift"));
+  }
   function renderSpots() {
     const box = $("spots");
     box.innerHTML = "";
-    if (game.phase !== "tour") return;
-    STATIONS[game.station].spots.forEach((s, i) => {
-      const b = document.createElement("button");
-      b.className = "spot" + (run.toured.has(`${game.station}:${i}`) ? " done" : "");
-      Object.assign(b.style, { left: s.x + "%", top: s.y + "%", width: s.w + "%", height: s.h + "%" });
-      b.innerHTML = `<span>${s.label}</span>`;
-      b.setAttribute("aria-label", `\u8ABF\u67E5\uFF1A${s.label}`);
-      b.onclick = (e) => {
-        e.stopPropagation();
-        if (busy) return;
-        run.toured.add(`${game.station}:${i}`);
-        play("click");
-        b.classList.add("done");
-        $("tip").innerHTML = `<b>${s.label}</b>\u3000${s.text}`;
-        setButtons();
-        if (tourLeft() === 0) toast("\u9019\u7AD9\u770B\u5B8C\u4E86\uFF0C\u53EF\u4EE5\u5F80\u524D\u8D70");
+    $("cuts").innerHTML = "";
+    const curSrc = stopSrc(STATIONS[game.station], game.phase === "loop" ? anomalyAt(game, ANOMALIES) : null);
+    if (game.phase === "tour") {
+      STATIONS[game.station].spots.forEach((s, i) => {
+        const b = document.createElement("button");
+        const seen = run.toured.has(`${game.station}:${i}`);
+        b.className = "spot" + (seen ? " done" : "");
+        placeBtn(b, s);
+        b.innerHTML = `<span>${s.label}</span>`;
+        b.setAttribute("aria-label", `\u8ABF\u67E5\uFF1A${s.label}`);
+        const cut = cutout(`S${game.station}:${i}`, curSrc, seen ? "c-spot c-done" : "c-spot");
+        linkLift(b, cut);
+        b.onclick = (e) => {
+          e.stopPropagation();
+          if (busy) return;
+          run.toured.add(`${game.station}:${i}`);
+          play("click");
+          b.classList.add("done");
+          cut == null ? void 0 : cut.classList.add("c-done");
+          $("tip").innerHTML = `<b>${s.label}</b>\u3000${s.text}`;
+          if (s.action === "takeItems" && !quests.taken) {
+            takeItems(quests);
+            nbPulse();
+            burst("\u6536\u5230\u59D4\u8A17", true);
+            renderSpots();
+          }
+          setButtons();
+          if (tourLeft() === 0) toast("\u9019\u7AD9\u770B\u5B8C\u4E86\uFF0C\u53EF\u4EE5\u5F80\u524D\u8D70");
+        };
+        box.appendChild(b);
+      });
+    }
+    if (pending(quests).length) {
+      for (const t of targetsAt(game.station)) {
+        const b = document.createElement("button");
+        b.className = "spot deliver";
+        placeBtn(b, t.box);
+        b.innerHTML = `<span>\u9001\u30FB${t.label}</span>`;
+        linkLift(b, cutout(`T:${t.id}`, curSrc, "c-deliver"));
+        b.setAttribute("aria-label", `\u4EA4\u4ED8\u5230 ${t.label}`);
+        b.onclick = (e) => {
+          e.stopPropagation();
+          if (!busy) openDeliver(t);
+        };
+        box.appendChild(b);
+      }
+    }
+  }
+  function nbPulse() {
+    const n = $("nbBtn");
+    n.classList.remove("pulse");
+    void n.offsetWidth;
+    n.classList.add("pulse");
+  }
+  function openSheet(html) {
+    const s = $("sheet");
+    s.innerHTML = html;
+    s.classList.remove("hidden");
+    busy = true;
+    setButtons();
+    s.querySelector("[data-close]").onclick = closeSheet;
+  }
+  function closeSheet() {
+    $("sheet").classList.add("hidden");
+    busy = false;
+    setButtons();
+  }
+  function openNotebook() {
+    if (!$("start").classList.contains("hidden") || walking) return;
+    play("click");
+    const items = quests.taken ? ITEMS.map((i) => `<li class="${quests.delivered.includes(i.id) ? "ok" : ""}"><b>${i.name}</b><br>${quests.delivered.includes(i.id) ? "\u5DF2\u9001\u9054" : i.hint}</li>`).join("") : `<li>\u9084\u6C92\u6709\u59D4\u8A17\u3002\u5C0E\u89BD\u5708\u7D93\u904E\u7CFB\u8FA6\u9580\u53E3\u6642\u770B\u770B\u3002</li>`;
+    const stamps = quests.stamps.length ? quests.stamps.map(() => `<li class="ok"><b>${STAMP_POSTMAN.name}</b><br>${STAMP_POSTMAN.text}</li>`).join("") : `<li>\u9084\u6C92\u6709\u7D00\u5FF5\u7AE0\u3002</li>`;
+    openSheet(`<h3>\u624B\u5E33</h3><p class="clock">\u73FE\u5728 ${fmtHour(nowHour())}\uFF08${PERIOD_LABEL[periodOf(nowHour())]}\uFF09</p>
+    <h4>\u7CFB\u8FA6\u59D4\u8A17</h4><ul>${items}</ul><h4>\u7D00\u5FF5\u7AE0</h4><ul>${stamps}</ul><button class="go" data-close>\u95DC\u9589</button>`);
+  }
+  function openDeliver(target) {
+    play("click");
+    const list = pending(quests);
+    openSheet(`<h3>\u9001\u5230 ${target.label}\uFF1F</h3><p>\u9078\u4E00\u4EF6\u8981\u4EA4\u51FA\u53BB\u7684\u6771\u897F\uFF1A</p>
+    <div class="choices">${list.map((i) => `<button data-item="${i.id}"><b>${i.name}</b><small>${i.hint}</small></button>`).join("")}</div>
+    <button class="ghost" data-close>\u5148\u4E0D\u8981</button>`);
+    $("sheet").querySelectorAll("[data-item]").forEach((b) => {
+      b.onclick = () => {
+        const r = deliver(quests, b.dataset.item, target.id);
+        closeSheet();
+        if (r.ok) {
+          play("correct");
+          burst(r.stamp ? "\u84CB\u7AE0\uFF01" : "\u9001\u9054\uFF01", !r.stamp);
+          shake(false);
+          toast(r.text);
+          if (r.stamp) {
+            play("clear");
+            setTimeout(() => dean("cheer", null, 2200), 500);
+            toast(`\u7D00\u5FF5\u7AE0\u300C${r.stamp.name}\u300D\uFF1A${r.stamp.text}`);
+          }
+          renderSpots();
+        } else {
+          play("wrong", 0.5);
+          toast(r.text);
+        }
       };
-      box.appendChild(b);
     });
   }
   function renderStop() {
@@ -531,6 +765,7 @@
     busy = true;
     setButtons();
     $("spots").innerHTML = "";
+    $("cuts").innerHTML = "";
     let i = 0, timer = null, ended = false;
     const done = () => {
       if (ended) return;
@@ -583,15 +818,18 @@
       busy = true;
       setButtons();
       if (ev.anomaly) {
+        $("spots").innerHTML = "";
+        $("cuts").innerHTML = "";
         if (precise) {
           run.precise++;
           flash();
           await sleep(reduced ? 0 : 110);
           shake(false);
+          liftFound(ev.anomaly);
           burst("\u78B0\uFF01\u6293\u5230\u4E86");
           play("found");
         } else {
-          flash("black");
+          liftFound(ev.anomaly);
           burst("\u56DE\u982D\u6210\u529F", true);
           play("correct");
         }
@@ -606,7 +844,7 @@
         await sleep(500);
         return finish();
       }
-      await sleep(ev.anomaly ? 650 : 250);
+      await sleep(ev.anomaly ? 950 : 250);
       if (ev.anomaly) showCard(precise ? "\u2714 \u7CBE\u6E96\u6307\u8A8D\uFF01\u5716\u9451\u6536\u9304" : "\u2714 \u7B54\u5C0D\uFF01\u5716\u9451\u6536\u9304", ev.anomaly, walk);
       else walk();
       return;
@@ -650,6 +888,9 @@
       flash("black");
       burst("\u5FAA\u74B0\u958B\u59CB", true);
       play("sting", 0.6);
+      const sp = stepFor(startHour);
+      if (sp > 1) setTimeout(() => toast(`\u516D\u6A13\u7684\u6642\u9593\u904E\u5F97\u7279\u5225\u5FEB\u2026\u2026\u6BCF\u8D70\u4E00\u5708\u904E ${sp} \u5C0F\u6642`), 900);
+      if (sp === 0) setTimeout(() => toast("\u516D\u6A13\u7684\u6642\u9593\u597D\u50CF\u505C\u4F4F\u4E86\u2026\u2026"), 900);
       $("tip").textContent = "\u770B\u5230\u4E0D\u5C0D\u52C1\uFF1A\u76F4\u63A5\u9EDE\u90A3\u500B\u5730\u65B9\uFF0C\u6216\u6309\u56DE\u982D\u3002";
       $("tip").dataset.keep = "1";
       $("tip").classList.remove("hidden");
@@ -712,6 +953,7 @@
       <div><b>${run.mistakes}</b><small>\u5931\u8AA4\u6B21\u6578</small></div>
       <div><b>${run.precise}</b><small>\u7CBE\u6E96\u6307\u8A8D</small></div>
       <div><b>${got.size}/${ANOMALIES.length}</b><small>\u5716\u9451\uFF08\u7D2F\u8A08\uFF09</small></div>
+      <div><b>${quests.delivered.length}/${ITEMS.length}</b><small>\u59D4\u8A17\u9001\u9054${quests.stamps.length ? "\u30FB\u516D\u6A13\u90F5\u5DEE" : ""}</small></div>
     </div>
     <div class="dex">${ANOMALIES.map((a) => got.has(a.id) ? `<div><b>${a.card.title}</b><br>${STATIONS[a.station].name}</div>` : `<div class="no">\uFF1F\uFF1F\uFF1F</div>`).join("")}</div>
     ${got.size < ANOMALIES.length ? `<p style="color:var(--dim);font-size:13px">\u96C6\u6EFF ${ANOMALIES.length} \u500B\u7570\u5E38\uFF0C\u6703\u89E3\u9396\u96B1\u85CF\u7D50\u5C40\u3002</p>` : ""}
@@ -769,7 +1011,8 @@
       <div class="title">${title}</div><p>${line}</p>
       <div class="meta"><span>\u901A\u95DC\u6642\u9593</span><b>${fmt(ms)}</b><span>\u5931\u8AA4\u6B21\u6578</span><b>${run.mistakes}</b>
         <span>\u7CBE\u6E96\u6307\u8A8D</span><b>${run.precise}</b><span>\u5C0F\u6E2C\u9A57</span><b>${score} / ${total}</b>
-        <span>\u5716\u9451\u7D2F\u8A08</span><b>${new Set(save.dex).size} / ${ANOMALIES.length}</b><span>\u6700\u4F73\u6642\u9593</span><b>${save.bestMs != null ? fmt(save.bestMs) : "\u2014"}</b></div></div>
+        <span>\u5716\u9451\u7D2F\u8A08</span><b>${new Set(save.dex).size} / ${ANOMALIES.length}</b><span>\u59D4\u8A17\u9001\u9054</span><b>${quests.delivered.length} / ${ITEMS.length}</b>
+        <span>\u7D00\u5FF5\u7AE0</span><b>${quests.stamps.length ? STAMP_POSTMAN.name : "\u2014"}</b><span>\u6700\u4F73\u6642\u9593</span><b>${save.bestMs != null ? fmt(save.bestMs) : "\u2014"}</b></div></div>
     <p style="color:var(--dim);font-size:13px">\u622A\u5716\u9019\u5F35\u6210\u7E3E\u5361\uFF0C\u5206\u4EAB\u7D66\u540C\u5B78\u3002</p>
     <div class="row"><button class="go" id="again2">\u518D\u8D70\u4E00\u6B21</button></div>`;
     $("again2").onclick = () => location.reload();
@@ -787,6 +1030,11 @@
     play("hum");
     $("start").classList.add("hidden");
     walk();
+    if (periodOf(realHour) === "night") setTimeout(() => dean("cheer", "vo_night", 3600), 1600);
+  };
+  $("nbBtn").onclick = (e) => {
+    e.stopPropagation();
+    openNotebook();
   };
   if (save.bestMs != null) $("best").textContent = `\u4F60\u7684\u6700\u4F73\u6642\u9593 ${fmt(save.bestMs)}\u30FB\u5716\u9451 ${new Set(save.dex).size}/${ANOMALIES.length}\u30FB\u901A\u95DC ${save.clears} \u6B21`;
   for (const p of ["plead", "cheer", "welcome", "peek"]) new Image().src = `frames/dean_${p}.webp`;

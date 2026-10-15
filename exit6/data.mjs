@@ -15,6 +15,7 @@ export const STATIONS = [
       { x: 54, y: 24, w: 9, h: 23, label: "門上告示", text: "「請勿回頭」。記住它寫什麼。" },
       { x: 27, y: 16, w: 60, h: 28, label: "兩側海報", text: "門左邊一張藍色海報，右邊兩張彩色海報。記住哪邊是哪張。" },
       { x: 0, y: 76, w: 100, h: 24, label: "彩繪地墊", text: "門前的彩繪地墊，記住人物排列的方向。（待老師補充：地墊作者）" },
+      { x: 53, y: 52, w: 10, h: 16, label: "系辦委託", action: "takeItems", text: "系辦拜託你送 3 件東西，已經放進手帳。每件只寫了用途，要自己想想該送到六樓哪裡。" },
     ] },
   { id: "S2", name: "天橋地板彩繪", frames: ["frames/s2_a.webp", "frames/s2_b.webp"], still: "frames/s2.webp", src: "B 0:30–0:40",
     tour: "穿過休息區就是天橋。",
@@ -30,7 +31,7 @@ export const STATIONS = [
     ] },
   { id: "S5", name: "作品海報櫥窗", frames: ["frames/s5_a.webp", "frames/s5_b.webp"], still: "frames/s5.webp", src: "A 7:30–7:41",
     tour: "走廊櫥窗貼滿作品海報。",
-    spots: [{ x: 16, y: 8, w: 78, h: 84, label: "海報櫥窗", text: "三張完整的海報，從左到右：宇宙電台、粉紅頭髮女孩、GO PLAYING DIMENSION。記住順序和方向。2025 年系上有 8 件作品入圍放視大賞。（待老師確認：海報出處）" }] },
+    spots: [{ x: 16, y: 8, w: 52, h: 84, label: "海報櫥窗", text: "三張完整的海報，從左到右：宇宙電台、粉紅頭髮女孩、GO PLAYING DIMENSION。記住順序和方向。2025 年系上有 8 件作品入圍放視大賞。（待老師確認：海報出處）" }] },
   { id: "S6", name: "D0646 研究室", frames: ["frames/s6_a.webp", "frames/s6_b.webp"], still: "frames/s6.webp", src: "A 11:08–11:14",
     tour: "老師研究室的門口。",
     spots: [
@@ -38,7 +39,7 @@ export const STATIONS = [
       { x: 29, y: 80, w: 30, h: 17, label: "在室牌", text: "IN 是在、OUT 是不在，找老師前先看一眼。現在三顆磁鐵在左邊，紅色那顆在右上。" },
     ] },
   { id: "S7", name: "電梯廳", frames: ["frames/s7_a.webp", "frames/s7_b.webp"], still: "frames/s7.webp", src: "B 5:58–6:10",
-    tour: "繞一圈又回到電梯廳。",
+    tour: "繞一圈又回到電梯廳。光線和時間的變化不是異常，只看東西有沒有變。",
     spots: [{ x: 40, y: 1, w: 12, h: 15, label: "樓層數字", text: "牆上的「6」。導覽圈結束後，真正的循環才開始：看到不對勁就回頭，或直接點出異常的位置。" }] },
 ];
 
@@ -90,5 +91,6 @@ export const VOICE_TEXT = {
   vo_first_correct: "欸～你很會看喔！就是要這樣。",
   vo_half: "走一半了，六樓的地標你認得幾個啦？",
   vo_ending: "恭喜你走出六樓！不過說真的，歡迎你常常回來看看。我是系主任鄧樹遠，動遊系等你。",
+  vo_night: "這麼晚還來六樓探險？很有動遊系的精神喔……不過還是要早點休息！",
   vo_secret: "12 個異常全被你找到了……其實我一直跟在你後面喔。歡迎加入動遊系！",
 };

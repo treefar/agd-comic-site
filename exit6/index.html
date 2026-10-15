@@ -99,6 +99,39 @@
   .card button { width: 100%; padding: 12px; background: var(--paperink); color: var(--paper); }
   .toast { position: absolute; left: 50%; bottom: 18%; transform: translateX(-50%); z-index: 6; background: rgba(0,0,0,.8); color: var(--ink); padding: 6px 12px; border-radius: 999px; font-size: 13px; pointer-events: none; }
 
+  /* 沿邊光暈與浮起：外層 drop-shadow 跟著內層多邊形裁切的形狀走 */
+  .cuts { position: absolute; inset: 0; pointer-events: none; }
+  .tint { position: absolute; inset: 0; pointer-events: none; background: var(--tint, transparent); mix-blend-mode: multiply; transition: background .8s; }
+  .cut { position: absolute; inset: 0; transition: transform .2s cubic-bezier(.2,1.4,.4,1), filter .2s; will-change: transform; }
+  .cut-in { position: absolute; inset: 0; background-size: 100% 100%; filter: var(--grade); }
+  .cut.c-spot { filter: drop-shadow(0 0 1px var(--pop)) drop-shadow(0 0 1px var(--pop)) drop-shadow(0 0 7px rgba(255,214,10,.85)); animation: glow 1.6s ease-in-out infinite; }
+  .cut.c-deliver { filter: drop-shadow(0 0 1px #6ea8ff) drop-shadow(0 0 1px #6ea8ff) drop-shadow(0 0 7px rgba(110,168,255,.9)); animation: glow 1.6s ease-in-out infinite; }
+  .cut.c-done { filter: drop-shadow(0 0 1px rgba(52,210,122,.9)) drop-shadow(0 0 4px rgba(52,210,122,.6)); animation: none; }
+  .cut.lift { transform: translateY(-1.5%) scale(1.045); animation: none; filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 10px 12px rgba(0,0,0,.65)); }
+  .cut.c-found { filter: drop-shadow(0 0 2px var(--pop)) drop-shadow(0 0 2px var(--pop)) drop-shadow(0 0 14px rgba(255,214,10,.95)); z-index: 2; }
+  .cut.c-found.lift { transform: translateY(-3%) scale(1.09); }
+  @keyframes glow { 50% { opacity: .55; } }
+  .spot.has-cut { border-color: transparent; background: transparent; animation: none; }
+  .spot.has-cut.done { border-color: transparent; }
+
+  /* 時鐘、手帳、交付 */
+  .clock { margin-top: 4px; font: 700 12px ui-monospace, monospace; color: var(--paper); text-shadow: 0 0 6px #000; font-variant-numeric: tabular-nums; }
+  .nb { position: absolute; right: 10px; bottom: 10px; z-index: 2; padding: 6px 12px; font-size: 14px; background: var(--paper); color: var(--paperink); border: 2px solid var(--paperink); box-shadow: 3px 3px 0 var(--paperink); }
+  .nb.pulse { animation: pop .5s cubic-bezier(.2,1.8,.4,1) 2; }
+  .spot.deliver { border-color: #6ea8ff; background: rgba(29,78,216,.14); border-style: dashed; animation: none; }
+  .spot.deliver span { background: var(--blue); color: #fff; }
+  .sheet { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(92vw, 440px); max-height: 86%; overflow-y: auto; z-index: 8; background: var(--paper); color: var(--paperink); border: 3px solid var(--paperink); border-radius: 14px; padding: 16px 18px; box-shadow: 6px 6px 0 var(--paperink); text-align: left; animation: slam .3s cubic-bezier(.2,1.6,.4,1); }
+  .sheet h3 { margin: 0 0 6px; font-size: 20px; }
+  .sheet h4 { margin: 12px 0 4px; font-size: 14px; color: var(--red); letter-spacing: .08em; }
+  .sheet ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: 14px; line-height: 1.5; }
+  .sheet li.ok { color: #1d6b3f; }
+  .sheet li.ok b::after { content: "　✔"; }
+  .sheet .clock { color: var(--paperink); text-shadow: none; }
+  .sheet > button { width: 100%; margin-top: 12px; padding: 10px; }
+  .choices { display: grid; gap: 8px; }
+  .choices button { background: #fff; color: var(--paperink); border: 2px solid var(--paperink); padding: 10px; text-align: left; }
+  .choices small { display: block; font-weight: 400; font-size: 13px; color: #555; margin-top: 2px; }
+
   /* 結算、測驗、成績卡 */
   .panel { background: var(--bg); gap: 12px; overflow-y: auto; justify-content: flex-start; padding-top: 32px; }
   .panel h1 { margin: 0; font: 400 clamp(30px, 7vw, 46px)/1.1 var(--f-display); color: var(--accent); }
@@ -132,7 +165,8 @@
     .controls button { background-color: rgba(20, 20, 20, .7); }
   }
   @media (prefers-reduced-motion: reduce) {
-    .shake-s, .shake-l, .glitch img.frame, .spot, .floorNo.pop, .floorNo.reset { animation: none !important; }
+    .shake-s, .shake-l, .glitch img.frame, .spot, .cut, .floorNo.pop, .floorNo.reset { animation: none !important; }
+    .cut.lift { transform: none; }
   }
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -143,10 +177,13 @@
   <div class="stage" id="stage">
     <img class="frame" id="imgA" alt=""><img class="frame" id="imgB" alt="">
     <div class="vignette"></div>
+    <div class="cuts" id="cuts"></div>
+    <div class="tint"></div>
     <div class="spots" id="spots"></div>
     <img class="dean" id="dean" alt="系主任">
     <div class="burst" id="burst"></div>
-    <div class="hud"><div class="floorNo" id="floorNo">0F</div><div><div class="where" id="where"></div><div class="timer" id="timer"></div></div></div>
+    <div class="hud"><div><div class="floorNo" id="floorNo">0F</div><div class="clock" id="clock"></div></div><div><div class="where" id="where"></div><div class="timer" id="timer"></div></div></div>
+    <button class="nb" id="nbBtn" aria-label="打開手帳">手帳</button>
     <div class="dbg hidden" id="dbg"></div>
   </div>
   <div class="below">
@@ -160,6 +197,7 @@
 
   <div class="bubble hidden" id="sub"></div>
   <div class="toast hidden" id="toast"></div>
+  <div class="sheet hidden" id="sheet" role="dialog" aria-modal="true"></div>
   <div class="card hidden" id="card"><small id="cardTag"></small><h2 id="cardTitle"></h2><p id="cardText"></p><button id="cardOk">繼續走</button></div>
 
   <div class="layer start" id="start">

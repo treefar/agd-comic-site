@@ -2,6 +2,9 @@
 // 規則在 game-core.mjs（有回歸測試）；這裡只管演出：走路、點擊調查、果汁、系主任、測驗、紀錄
 import { createGame, step, anomalyAt, mulberry32 } from "./game-core.mjs";
 import { STATIONS, ANOMALIES, QUIZ, VOICE_TEXT } from "./data.mjs";
+import { periodOf, stepFor, hourAt, gradeFor, fmtHour, PERIOD_LABEL } from "./time.mjs";
+import { ITEMS, TARGETS, createQuests, takeItems, deliver, pending, targetsAt, STAMP_POSTMAN } from "./quests.mjs";
+import { OUTLINES } from "./outlines.mjs";
 
 const q = new URLSearchParams(location.search);
 const seed = q.has("seed") ? Number(q.get("seed")) : (Date.now() & 0xffffffff);
@@ -22,6 +25,12 @@ function loadSave() { try { return JSON.parse(localStorage.getItem(SAVE_KEY)) ||
 function writeSave(s) { try { localStorage.setItem(SAVE_KEY, JSON.stringify(s)); } catch { /* 私密視窗等情況 */ } }
 const save = Object.assign({ dex: [], bestMs: null, bestMiss: null, clears: 0 }, loadSave());
 const run = { t0: 0, mistakes: 0, precise: 0, misTaps: 0, toured: new Set() };
+const quests = createQuests();
+
+// ---------- 時間：開局讀玩家裝置的本地時間（除錯 ?hour=N），之後每圈前進 stepFor 小時 ----------
+const realHour = new Date().getHours();
+const startHour = q.has("hour") ? ((Number(q.get("hour")) % 24) + 24) % 24 : realHour;
+const nowHour = () => hourAt(startHour, game.phase === "tour" ? 0 : game.lap);
 
 // ---------- 音效：audio/sfx_<名稱>.mp3，沒有檔案就安靜略過 ----------
 const SFX = ["footstep", "hum", "sting", "found", "wrong", "dean", "correct", "clear", "click"];
@@ -86,15 +95,18 @@ function floorFx(kind) {
   const el = $("floorNo"); el.classList.remove("pop", "reset"); void el.offsetWidth; el.classList.add(kind);
 }
 function glitch() { if (reduced) return; stage.classList.remove("glitch"); void stage.offsetWidth; stage.classList.add("glitch"); }
-// 樓層越高越暗、越綠、越壓迫（整張調色，不改畫面內容）
+// 時段光線＋樓層越高越壓迫（整張調色，不改畫面內容；亮度有下限）
 function grade() {
-  const c = game.phase === "loop" ? game.count : 0;
-  stage.style.setProperty("--grade", c ? `brightness(${1 - c * 0.05}) saturate(${1 - c * 0.08}) sepia(${c * 0.04}) hue-rotate(${c * 6}deg) contrast(${1 + c * 0.03})` : "none");
-  stage.style.setProperty("--vig", String(0.5 + c * 0.07));
+  const h = nowHour();
+  const g = gradeFor(h, game.phase === "loop" ? game.count : 0);
+  stage.style.setProperty("--grade", g.filter);
+  stage.style.setProperty("--tint", g.tint);
+  stage.style.setProperty("--vig", String(g.vig));
+  $("clock").textContent = `${fmtHour(h)} ${PERIOD_LABEL[g.period]}`;
 }
 function toast(text) {
   const t = $("toast"); t.textContent = text; t.classList.remove("hidden");
-  clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.add("hidden"), 1400);
+  clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.add("hidden"), Math.max(1400, text.length * 110));   // 字多就停久一點
 }
 function ripple(x, y) {
   const r = document.createElement("div"); r.className = "ripple";
@@ -127,23 +139,110 @@ function setButtons() {
   $("btnFwd").disabled = off || (game.phase === "tour" && tourLeft() > 0);
 }
 
+function placeBtn(b, s) { Object.assign(b.style, { left: s.x + "%", top: s.y + "%", width: s.w + "%", height: s.h + "%" }); }
+
+// ---------- 沿邊光暈與浮起：用 SAM 輪廓多邊形裁出同一張圖的物件（outlines.mjs），只做裁切與 UI 特效 ----------
+function cutout(key, src, kind) {
+  const polys = OUTLINES[key]; if (!polys || !polys.length) return null;
+  const wrap = document.createElement("div"); wrap.className = "cut " + kind;
+  let x0 = 100, y0 = 100, x1 = 0, y1 = 0;
+  for (const p of polys) {
+    const d = document.createElement("div"); d.className = "cut-in";
+    d.style.backgroundImage = `url("${src}")`;
+    d.style.clipPath = `polygon(${p.map(([x, y]) => `${x}% ${y}%`).join(",")})`;
+    wrap.appendChild(d);
+    for (const [x, y] of p) { x0 = Math.min(x0, x); y0 = Math.min(y0, y); x1 = Math.max(x1, x); y1 = Math.max(y1, y); }
+  }
+  wrap.style.transformOrigin = `${(x0 + x1) / 2}% ${(y0 + y1) / 2}%`;   // 從物件中心浮起
+  $("cuts").appendChild(wrap);
+  return wrap;
+}
+// 按鈕和剪影連動：滑過、按住就浮起
+function linkLift(btn, cut) {
+  if (!cut) return;
+  btn.classList.add("has-cut");
+  const on = () => cut.classList.add("lift"), off = () => cut.classList.remove("lift");
+  btn.addEventListener("pointerenter", on); btn.addEventListener("pointerleave", off);
+  btn.addEventListener("pointerdown", on); btn.addEventListener("pointerup", off);
+}
+function liftFound(anomalyId) {
+  const a = ANOMALIES.find((x) => x.id === anomalyId); if (!a) return;
+  const c = cutout(a.id, a.still, "c-found"); if (!c) return;
+  requestAnimationFrame(() => c.classList.add("lift"));
+}
+
 function renderSpots() {
-  const box = $("spots"); box.innerHTML = "";
-  if (game.phase !== "tour") return;
-  STATIONS[game.station].spots.forEach((s, i) => {
-    const b = document.createElement("button");
-    b.className = "spot" + (run.toured.has(`${game.station}:${i}`) ? " done" : "");
-    Object.assign(b.style, { left: s.x + "%", top: s.y + "%", width: s.w + "%", height: s.h + "%" });
-    b.innerHTML = `<span>${s.label}</span>`;
-    b.setAttribute("aria-label", `調查：${s.label}`);
-    b.onclick = (e) => {
-      e.stopPropagation(); if (busy) return;
-      run.toured.add(`${game.station}:${i}`); play("click");
-      b.classList.add("done"); $("tip").innerHTML = `<b>${s.label}</b>　${s.text}`;
-      setButtons();
-      if (tourLeft() === 0) toast("這站看完了，可以往前走");
+  const box = $("spots"); box.innerHTML = ""; $("cuts").innerHTML = "";
+  const curSrc = stopSrc(STATIONS[game.station], game.phase === "loop" ? anomalyAt(game, ANOMALIES) : null);
+  if (game.phase === "tour") {
+    STATIONS[game.station].spots.forEach((s, i) => {
+      const b = document.createElement("button");
+      const seen = run.toured.has(`${game.station}:${i}`);
+      b.className = "spot" + (seen ? " done" : "");
+      placeBtn(b, s);
+      b.innerHTML = `<span>${s.label}</span>`;
+      b.setAttribute("aria-label", `調查：${s.label}`);
+      const cut = cutout(`S${game.station}:${i}`, curSrc, seen ? "c-spot c-done" : "c-spot");
+      linkLift(b, cut);
+      b.onclick = (e) => {
+        e.stopPropagation(); if (busy) return;
+        run.toured.add(`${game.station}:${i}`); play("click");
+        b.classList.add("done"); cut?.classList.add("c-done"); $("tip").innerHTML = `<b>${s.label}</b>　${s.text}`;
+        if (s.action === "takeItems" && !quests.taken) { takeItems(quests); nbPulse(); burst("收到委託", true); renderSpots(); }
+        setButtons();
+        if (tourLeft() === 0) toast("這站看完了，可以往前走");
+      };
+      box.appendChild(b);
+    });
+  }
+  // 交付點：領了委託、還有東西沒送時，在導覽圈與循環圈都看得到
+  if (pending(quests).length) {
+    for (const t of targetsAt(game.station)) {
+      const b = document.createElement("button");
+      b.className = "spot deliver"; placeBtn(b, t.box);
+      b.innerHTML = `<span>送・${t.label}</span>`;
+      linkLift(b, cutout(`T:${t.id}`, curSrc, "c-deliver"));
+      b.setAttribute("aria-label", `交付到 ${t.label}`);
+      b.onclick = (e) => { e.stopPropagation(); if (!busy) openDeliver(t); };
+      box.appendChild(b);
+    }
+  }
+}
+
+// ---------- 手帳與交付 ----------
+function nbPulse() { const n = $("nbBtn"); n.classList.remove("pulse"); void n.offsetWidth; n.classList.add("pulse"); }
+function openSheet(html) {
+  const s = $("sheet"); s.innerHTML = html; s.classList.remove("hidden");
+  busy = true; setButtons();
+  s.querySelector("[data-close]").onclick = closeSheet;
+}
+function closeSheet() { $("sheet").classList.add("hidden"); busy = false; setButtons(); }
+function openNotebook() {
+  if (!$("start").classList.contains("hidden") || walking) return;
+  play("click");
+  const items = quests.taken
+    ? ITEMS.map((i) => `<li class="${quests.delivered.includes(i.id) ? "ok" : ""}"><b>${i.name}</b><br>${quests.delivered.includes(i.id) ? "已送達" : i.hint}</li>`).join("")
+    : `<li>還沒有委託。導覽圈經過系辦門口時看看。</li>`;
+  const stamps = quests.stamps.length ? quests.stamps.map(() => `<li class="ok"><b>${STAMP_POSTMAN.name}</b><br>${STAMP_POSTMAN.text}</li>`).join("") : `<li>還沒有紀念章。</li>`;
+  openSheet(`<h3>手帳</h3><p class="clock">現在 ${fmtHour(nowHour())}（${PERIOD_LABEL[periodOf(nowHour())]}）</p>
+    <h4>系辦委託</h4><ul>${items}</ul><h4>紀念章</h4><ul>${stamps}</ul><button class="go" data-close>關閉</button>`);
+}
+function openDeliver(target) {
+  play("click");
+  const list = pending(quests);
+  openSheet(`<h3>送到 ${target.label}？</h3><p>選一件要交出去的東西：</p>
+    <div class="choices">${list.map((i) => `<button data-item="${i.id}"><b>${i.name}</b><small>${i.hint}</small></button>`).join("")}</div>
+    <button class="ghost" data-close>先不要</button>`);
+  $("sheet").querySelectorAll("[data-item]").forEach((b) => {
+    b.onclick = () => {
+      const r = deliver(quests, b.dataset.item, target.id);
+      closeSheet();
+      if (r.ok) {
+        play("correct"); burst(r.stamp ? "蓋章！" : "送達！", !r.stamp); shake(false); toast(r.text);
+        if (r.stamp) { play("clear"); setTimeout(() => dean("cheer", null, 2200), 500); toast(`紀念章「${r.stamp.name}」：${r.stamp.text}`); }
+        renderSpots();
+      } else { play("wrong", 0.5); toast(r.text); }
     };
-    box.appendChild(b);
   });
 }
 
@@ -169,7 +268,7 @@ function walk() {
   const an = game.phase === "loop" ? anomalyAt(game, ANOMALIES) : null;
   const seq = [...st.frames, stopSrc(st, an)];
   busy = true; setButtons();
-  $("spots").innerHTML = "";
+  $("spots").innerHTML = ""; $("cuts").innerHTML = "";
   let i = 0, timer = null, ended = false;
   const done = () => {
     if (ended) return; ended = true; clearTimeout(timer); walking = null;
@@ -204,14 +303,15 @@ async function react(ev, precise) {
   if (ev.type === "correct" || ev.type === "ending") {
     busy = true; setButtons();
     if (ev.anomaly) {
-      if (precise) { run.precise++; flash(); await sleep(reduced ? 0 : 110); /* 頓幀 */ shake(false); burst("碰！抓到了"); play("found"); }
-      else { flash("black"); burst("回頭成功", true); play("correct"); }
+      $("spots").innerHTML = ""; $("cuts").innerHTML = "";
+      if (precise) { run.precise++; flash(); await sleep(reduced ? 0 : 110); /* 頓幀 */ shake(false); liftFound(ev.anomaly); burst("碰！抓到了"); play("found"); }
+      else { liftFound(ev.anomaly); burst("回頭成功", true); play("correct"); }
     } else { burst("✔ 正常", true); play("correct", 0.7); }
     floorFx("pop");
     if (ev.voice === "vo_first_correct") dean("cheer", ev.voice);
     else if (ev.voice === "vo_half") dean("peek", ev.voice, 2600);
     if (ev.type === "ending") { await sleep(500); return finish(); }
-    await sleep(ev.anomaly ? 650 : 250);
+    await sleep(ev.anomaly ? 950 : 250);
     if (ev.anomaly) showCard(precise ? "✔ 精準指認！圖鑑收錄" : "✔ 答對！圖鑑收錄", ev.anomaly, walk); else walk();
     return;
   }
@@ -240,6 +340,9 @@ function act(action) {
   if (ev.type === "tour-done") {
     run.t0 = performance.now(); tickTimer();
     flash("black"); burst("循環開始", true); play("sting", 0.6);
+    const sp = stepFor(startHour);
+    if (sp > 1) setTimeout(() => toast(`六樓的時間過得特別快……每走一圈過 ${sp} 小時`), 900);
+    if (sp === 0) setTimeout(() => toast("六樓的時間好像停住了……"), 900);
     $("tip").textContent = "看到不對勁：直接點那個地方，或按回頭。"; $("tip").dataset.keep = "1"; $("tip").classList.remove("hidden");
     walk(); return;
   }
@@ -291,6 +394,7 @@ async function finish() {
       <div><b>${run.mistakes}</b><small>失誤次數</small></div>
       <div><b>${run.precise}</b><small>精準指認</small></div>
       <div><b>${got.size}/${ANOMALIES.length}</b><small>圖鑑（累計）</small></div>
+      <div><b>${quests.delivered.length}/${ITEMS.length}</b><small>委託送達${quests.stamps.length ? "・六樓郵差" : ""}</small></div>
     </div>
     <div class="dex">${ANOMALIES.map((a) => got.has(a.id)
       ? `<div><b>${a.card.title}</b><br>${STATIONS[a.station].name}</div>` : `<div class="no">？？？</div>`).join("")}</div>
@@ -333,7 +437,8 @@ function resultCard(ms, score, total) {
       <div class="title">${title}</div><p>${line}</p>
       <div class="meta"><span>通關時間</span><b>${fmt(ms)}</b><span>失誤次數</span><b>${run.mistakes}</b>
         <span>精準指認</span><b>${run.precise}</b><span>小測驗</span><b>${score} / ${total}</b>
-        <span>圖鑑累計</span><b>${new Set(save.dex).size} / ${ANOMALIES.length}</b><span>最佳時間</span><b>${save.bestMs != null ? fmt(save.bestMs) : "—"}</b></div></div>
+        <span>圖鑑累計</span><b>${new Set(save.dex).size} / ${ANOMALIES.length}</b><span>委託送達</span><b>${quests.delivered.length} / ${ITEMS.length}</b>
+        <span>紀念章</span><b>${quests.stamps.length ? STAMP_POSTMAN.name : "—"}</b><span>最佳時間</span><b>${save.bestMs != null ? fmt(save.bestMs) : "—"}</b></div></div>
     <p style="color:var(--dim);font-size:13px">截圖這張成績卡，分享給同學。</p>
     <div class="row"><button class="go" id="again2">再走一次</button></div>`;
   $("again2").onclick = () => location.reload();
@@ -347,7 +452,11 @@ addEventListener("keydown", (e) => {
   if (["ArrowLeft", "ArrowDown"].includes(e.key)) act("back");
   if (["ArrowRight", "ArrowUp"].includes(e.key)) act("forward");
 });
-$("go").onclick = () => { loadSfx(); loadVoices(); play("hum"); $("start").classList.add("hidden"); walk(); };
+$("go").onclick = () => {
+  loadSfx(); loadVoices(); play("hum"); $("start").classList.add("hidden"); walk();
+  if (periodOf(realHour) === "night") setTimeout(() => dean("cheer", "vo_night", 3600), 1600);   // 真實時間在晚上的彩蛋
+};
+$("nbBtn").onclick = (e) => { e.stopPropagation(); openNotebook(); };
 if (save.bestMs != null) $("best").textContent = `你的最佳時間 ${fmt(save.bestMs)}・圖鑑 ${new Set(save.dex).size}/${ANOMALIES.length}・通關 ${save.clears} 次`;
 for (const p of ["plead", "cheer", "welcome", "peek"]) new Image().src = `frames/dean_${p}.webp`;
 renderStop(); prefetch(0);
