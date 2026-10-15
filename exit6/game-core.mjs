@@ -39,19 +39,28 @@ export function createGame(anomalies, rng = Math.random) {
     firstCorrectBack: false,
     halfPlayed: false,
     ids: anomalies.map((x) => x.id),
+    tiers: Object.fromEntries(anomalies.map((x) => [x.id, x.tier ?? 3])),
     rng,
   };
 }
 
+// 由淺入深：第 1 圈只出第 1 級（一眼看出），第 2～3 圈最多第 2 級，第 4 圈起全部開放
+export const maxTierFor = (lap) => (lap <= 1 ? 1 : lap <= 3 ? 2 : 3);
+
 function drawAnomaly(s) {
   if (s.deck.length === 0) s.deck = shuffle(s.ids, s.rng);
-  return s.deck.pop();
+  const max = maxTierFor(s.lap);
+  for (let i = s.deck.length - 1; i >= 0; i--) {
+    if (s.tiers[s.deck[i]] <= max) return s.deck.splice(i, 1)[0];
+  }
+  return s.deck.pop();   // 剩下的都比較難：照樣出，不卡住
 }
 
-// 開新的一圈：第 1 圈固定有異常，讓新手馬上學會回頭
+// 開新的一圈：第 1 圈固定有異常（學會指認），第 2 圈固定正常（學會一路往前）
 export function startLap(s) {
   s.lap += 1;
   s.station = 0;
+  if (s.lap === 2) { s.anomaly = null; return s; }
   const forced = s.lap === 1;
   s.anomaly = forced || s.rng() < ANOMALY_RATE ? drawAnomaly(s) : null;
   return s;

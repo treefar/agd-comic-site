@@ -96,8 +96,24 @@
   .start .frameline { position: absolute; inset: 12px; border: 3px solid var(--paper); opacity: .85; pointer-events: none; }
   .start > *:not(.cover):not(.tone):not(.frameline) { position: relative; }
   .start .kicker { margin: 0; font: 700 12px/1 var(--f-body); letter-spacing: .32em; color: var(--paper); background: var(--paperink); padding: 6px 10px 6px 14px; border: 2px solid var(--paper); }
-  .start h1 { margin: 0; font: 900 clamp(48px, 12vw, 96px)/1 "Noto Serif TC", "PMingLiU", serif; letter-spacing: .08em; color: var(--paper);
-      -webkit-text-stroke: 1.5px var(--paperink); text-shadow: 3px 3px 0 var(--red), 0 0 24px rgba(0,0,0,.7); writing-mode: horizontal-tb; }
+  /* 標題：漫畫封面大字。逐字錯落＋粗墨邊（paint-order 讓墨邊在字外）＋紅色網點陰影＋集中線，依序砸進場 */
+  .start .titlewrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .start .rays { position: absolute; left: 50%; top: 50%; width: 260%; aspect-ratio: 1; transform: translate(-50%, -50%); pointer-events: none;
+      background: repeating-conic-gradient(from 0deg, rgba(244,236,216,.16) 0 1.1deg, transparent 1.1deg 6.5deg);
+      -webkit-mask: radial-gradient(closest-side, transparent 18%, #000 34%, transparent 70%); mask: radial-gradient(closest-side, transparent 18%, #000 34%, transparent 70%); }
+  .start h1.title { margin: 0; display: flex; align-items: flex-end; gap: .01em; font: 900 clamp(64px, 15vw, 136px)/1 "Noto Serif TC", "PMingLiU", serif; }
+  .start .ch { position: relative; z-index: 0; display: inline-block; color: var(--paper); -webkit-text-stroke: .075em var(--paperink); paint-order: stroke fill;
+      animation: chSlam .5s cubic-bezier(.2,1.6,.4,1) both; animation-delay: calc(var(--i) * 110ms + 150ms); }
+  .start .ch::before { content: attr(data-t); position: absolute; left: .08em; top: .08em; z-index: -1; -webkit-text-stroke: 0; color: transparent;
+      background: radial-gradient(circle, var(--red) 42%, transparent 46%) 0 0 / .06em .06em; -webkit-background-clip: text; background-clip: text; }
+  .start .ch:nth-child(1) { --r: -5deg; --s: 1.16; --y: .02em; }
+  .start .ch:nth-child(2) { --r: 2.5deg; --s: 1; --y: -.08em; }
+  .start .ch:nth-child(3) { --r: -1.5deg; --s: 1.04; --y: .05em; }
+  .start .ch:nth-child(4) { --r: 4deg; --s: .9; --y: -.02em; }
+  .start .ch { transform: translateY(var(--y)) rotate(var(--r)) scale(var(--s)); }
+  @keyframes chSlam { from { opacity: 0; transform: translateY(var(--y)) rotate(calc(var(--r) * 3)) scale(calc(var(--s) * 1.9)); } to { opacity: 1; transform: translateY(var(--y)) rotate(var(--r)) scale(var(--s)); } }
+  .start .vert { position: absolute; right: -1.6em; top: 6%; writing-mode: vertical-rl; font: 900 13px/1 "Noto Serif TC", serif; letter-spacing: .3em; color: var(--paperink); background: var(--paper); padding: 8px 4px; border: 2px solid var(--paperink); }
+  .start .titlebox { position: relative; }
   .start .warn { margin: 0 0 2px; font: 900 clamp(14px, 2.4vw, 18px)/1 "Noto Serif TC", serif; letter-spacing: .6em; padding: 6px 4px 6px 14px; color: var(--paper); background: var(--red); border: 2px solid var(--paperink); transform: rotate(-2deg); box-shadow: 3px 3px 0 var(--paperink); }
   .start .caption { margin: 0; max-width: 32em; background: var(--paper); color: var(--paperink); border: 2.5px solid var(--paperink); box-shadow: 4px 4px 0 var(--paperink);
       padding: 10px 14px; line-height: 1.65; font-size: 14px; text-align: left; }
@@ -106,7 +122,7 @@
   .start .go { background: var(--paperink); color: var(--paper); border: 2.5px solid var(--paper); border-radius: 4px; box-shadow: 4px 4px 0 var(--red); padding: 12px 34px; letter-spacing: .2em; }
   .start .credit { margin: 0; font-size: 11px; color: rgba(244,236,216,.6); max-width: 34em; }
   @media (orientation: portrait) { .start .cover { background-position: 88% 20%; } }   /* 直拿：對準樓層燈「6」 */
-  @media (prefers-reduced-motion: reduce) { .start .cover { animation: none; } }
+  @media (prefers-reduced-motion: reduce) { .start .cover, .start .ch { animation: none; } }
   .go { background: var(--accent); color: #06130b; padding: 14px 36px; }
   .card { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(92vw, 420px); background: var(--paper); color: var(--paperink); border: 3px solid var(--paperink); border-radius: 14px; padding: 18px; box-shadow: 6px 6px 0 var(--paperink); z-index: 8; animation: slam .35s cubic-bezier(.2,1.6,.4,1); }
   @keyframes slam { from { transform: translate(-50%, -50%) scale(1.4) rotate(4deg); opacity: 0; } to { transform: translate(-50%, -50%) scale(1); opacity: 1; } }
@@ -114,6 +130,13 @@
   .card h2 { margin: 6px 0 8px; font-size: 22px; }
   .card p { margin: 0 0 14px; line-height: 1.6; }
   .card button { width: 100%; padding: 12px; background: var(--paperink); color: var(--paper); }
+  /* 新手引導：黃色虛線框圈住要按的東西＋一句話；卡住第 3 層提示的發光框 */
+  .coach { position: absolute; z-index: 6; border: 3px dashed var(--pop); border-radius: 12px; pointer-events: none; animation: coachPulse 1.1s ease-in-out infinite; }
+  .coach span { position: absolute; left: 50%; top: calc(100% + 8px); transform: translateX(-50%); white-space: nowrap; background: var(--pop); color: var(--paperink); font-weight: 900; font-size: 14px; padding: 5px 10px; border: 2px solid var(--paperink); border-radius: 8px; box-shadow: 3px 3px 0 var(--paperink); }
+  .coach.up span { top: auto; bottom: calc(100% + 8px); }
+  @keyframes coachPulse { 50% { transform: scale(1.06); } }
+  .hintbox { position: absolute; border: 3px solid var(--pop); border-radius: 10px; box-shadow: 0 0 0 4px rgba(255,214,10,.25), 0 0 24px rgba(255,214,10,.6); pointer-events: none; animation: coachPulse .9s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce) { .coach, .hintbox { animation: none; } }
   .toast { position: absolute; left: 50%; top: 12%; transform: translateX(-50%); max-width: min(92vw, 560px); text-align: center; line-height: 1.5; z-index: 6; background: rgba(0,0,0,.8); color: var(--ink); padding: 6px 12px; border-radius: 999px; font-size: 13px; pointer-events: none; }
 
   /* 沿邊光暈與浮起：外層 drop-shadow 跟著內層多邊形裁切的形狀走 */
@@ -264,15 +287,21 @@
   </div>
 
   <div class="bubble hidden" id="sub"></div>
+  <div class="coach hidden" id="coach" aria-live="polite"><span></span></div>
   <div class="toast hidden" id="toast"></div>
   <div class="sheet hidden" id="sheet" role="dialog" aria-modal="true"></div>
   <div class="card hidden" id="card"><small id="cardTag"></small><h2 id="cardTitle"></h2><p id="cardText"></p><button id="cardOk">繼續走</button></div>
 
   <div class="layer start" id="start">
     <div class="cover" aria-hidden="true"></div><div class="tone" aria-hidden="true"></div><div class="frameline" aria-hidden="true"></div>
-    <p class="kicker">樹德科大 設計大樓 D 棟・6F</p>
-    <h1>六樓出口</h1>
-    <p class="warn">請勿回頭</p>
+    <div class="titlewrap">
+      <p class="kicker">樹德科大 設計大樓 D 棟・6F</p>
+      <div class="titlebox"><div class="rays" aria-hidden="true"></div>
+        <h1 class="title" aria-label="六樓出口"><span class="ch" style="--i:0" data-t="六">六</span><span class="ch" style="--i:1" data-t="樓">樓</span><span class="ch" style="--i:2" data-t="出">出</span><span class="ch" style="--i:3" data-t="口">口</span></h1>
+        <span class="vert" aria-hidden="true">循環走廊怪談</span>
+      </div>
+      <p class="warn">請勿回頭</p>
+    </div>
     <p class="caption">電梯門開了，你在六樓醒來。走廊一直循環。<br>先走一圈導覽，把發亮的地方都點過。之後覺得哪裡不對勁：<b>直接點那個地方</b>，或按<b>回頭</b>；沒有異常就往前走。<br>連續走對 6 圈，才能離開六樓。</p>
     <p class="best" id="best"></p>
     <button class="go" id="go">進入六樓</button>

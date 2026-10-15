@@ -41,16 +41,29 @@
       firstCorrectBack: false,
       halfPlayed: false,
       ids: anomalies.map((x) => x.id),
+      tiers: Object.fromEntries(anomalies.map((x) => {
+        var _a;
+        return [x.id, (_a = x.tier) != null ? _a : 3];
+      })),
       rng: rng2
     };
   }
+  var maxTierFor = (lap) => lap <= 1 ? 1 : lap <= 3 ? 2 : 3;
   function drawAnomaly(s) {
     if (s.deck.length === 0) s.deck = shuffle(s.ids, s.rng);
+    const max = maxTierFor(s.lap);
+    for (let i = s.deck.length - 1; i >= 0; i--) {
+      if (s.tiers[s.deck[i]] <= max) return s.deck.splice(i, 1)[0];
+    }
     return s.deck.pop();
   }
   function startLap(s) {
     s.lap += 1;
     s.station = 0;
+    if (s.lap === 2) {
+      s.anomaly = null;
+      return s;
+    }
     const forced = s.lap === 1;
     s.anomaly = forced || s.rng() < ANOMALY_RATE ? drawAnomaly(s) : null;
     return s;
@@ -204,6 +217,7 @@
   var ANOMALIES = [
     {
       id: "A01",
+      tier: 3,
       station: 1,
       still: "frames/s1_a01.webp",
       hits: [{ x: 53, y: 22, w: 11, h: 27 }],
@@ -211,6 +225,7 @@
     },
     {
       id: "A02",
+      tier: 2,
       station: 1,
       still: "frames/s1_a02.webp",
       hits: [{ x: 27, y: 16, w: 12, h: 30 }, { x: 66, y: 14, w: 21, h: 30 }],
@@ -218,6 +233,7 @@
     },
     {
       id: "A03",
+      tier: 2,
       station: 1,
       still: "frames/s1_a03.webp",
       hits: [{ x: 0, y: 74, w: 100, h: 26 }],
@@ -225,6 +241,7 @@
     },
     {
       id: "A04",
+      tier: 1,
       station: 2,
       still: "frames/s2_a04.webp",
       hits: [{ x: 10, y: 56, w: 22, h: 20 }],
@@ -232,6 +249,7 @@
     },
     {
       id: "A05",
+      tier: 3,
       station: 3,
       still: "frames/s3_a05.webp",
       hits: [{ x: 34, y: 52, w: 29, h: 28 }],
@@ -239,6 +257,7 @@
     },
     {
       id: "A06",
+      tier: 3,
       station: 4,
       still: "frames/s4_a06.webp",
       hits: [{ x: 41, y: 13, w: 14, h: 15 }],
@@ -246,6 +265,7 @@
     },
     {
       id: "A07",
+      tier: 2,
       station: 4,
       still: "frames/s4_a07.webp",
       hits: [{ x: 10, y: 37, w: 22, h: 27 }],
@@ -253,6 +273,7 @@
     },
     {
       id: "A08",
+      tier: 1,
       station: 5,
       still: "frames/s5_a08.webp",
       hits: [{ x: 15, y: 6, w: 27, h: 88 }],
@@ -260,6 +281,7 @@
     },
     {
       id: "A09",
+      tier: 1,
       station: 5,
       still: "frames/s5_a09.webp",
       hits: [{ x: 41, y: 6, w: 27, h: 88 }],
@@ -267,6 +289,7 @@
     },
     {
       id: "A10",
+      tier: 3,
       station: 6,
       still: "frames/s6_a10.webp",
       hits: [{ x: 28, y: 78, w: 32, h: 20 }],
@@ -274,6 +297,7 @@
     },
     {
       id: "A11",
+      tier: 3,
       station: 6,
       still: "frames/s6_a11.webp",
       hits: [{ x: 28, y: 1, w: 32, h: 14 }],
@@ -281,6 +305,7 @@
     },
     {
       id: "A12",
+      tier: 2,
       station: 7,
       still: "frames/s7_a12.webp",
       hits: [{ x: 39, y: 0, w: 14, h: 17 }],
@@ -560,6 +585,39 @@
     return { type: "miss", over: f.over };
   }
 
+  // exit6/coach.mjs
+  function cueFor(lap, failStreak = 0) {
+    const base = lap <= 1 ? 2 : lap <= 3 ? 1 : 0;
+    return failStreak >= 2 ? Math.max(base, 1) : base;
+  }
+  function hintStage(seconds, misTaps, hintOn) {
+    if (!hintOn) return 0;
+    if (seconds >= 26) return 3;
+    if (seconds >= 16 || misTaps >= 4) return 2;
+    if (seconds >= 8 || misTaps >= 2) return 1;
+    return 0;
+  }
+  function areaOf(box) {
+    const cx = box.x + box.w / 2, cy = box.y + box.h / 2;
+    if (cy >= 65) return "\u756B\u9762\u4E0B\u65B9";
+    if (cy <= 25) return "\u756B\u9762\u4E0A\u65B9";
+    if (cx < 35) return "\u756B\u9762\u5DE6\u908A";
+    if (cx > 65) return "\u756B\u9762\u53F3\u908A";
+    return "\u756B\u9762\u4E2D\u9593";
+  }
+  var HINT_TEXT = {
+    1: "\u62DC\u8A17\u518D\u770B\u770B\u561B\u2026\u2026\u9019\u4E00\u7AD9\u8DDF\u5C0E\u89BD\u6642\u597D\u50CF\u6709\u4E00\u9EDE\u9EDE\u4E0D\u4E00\u6A23\u5594\u3002",
+    2: "\u7D66\u4F60\u4E00\u500B\u63D0\u793A\u5C31\u597D\uFF1A\u76EF\u8457{area}\u770B\u770B\uFF01",
+    3: "\u597D\u5566\u597D\u5566\uFF0C\u6211\u5E6B\u4F60\u5708\u8D77\u4F86\u4E86\uFF0C\u9EDE\u90A3\u500B\u767C\u5149\u7684\u5730\u65B9\uFF01"
+  };
+  var COACH = {
+    fwd: "\u6309\u300C\u5F80\u524D\u300D\u8D70\u51FA\u96FB\u68AF",
+    spot: "\u9EDE\u9EDE\u770B\u767C\u4EAE\u7684\u5730\u65B9",
+    done: "\u9019\u7AD9\u770B\u5B8C\u4E86\uFF0C\u6309\u300C\u5F80\u524D\u300D",
+    loop1: "\u54A6\uFF1F\u9019\u88E1\u8DDF\u525B\u525B\u597D\u50CF\u4E0D\u4E00\u6A23\u2026\u2026\u89BA\u5F97\u602A\u5C31\u76F4\u63A5\u9EDE\u5B83\uFF01",
+    lap2: "\u9019\u5708\u770B\u8D77\u4F86\u90FD\u5F88\u6B63\u5E38\uFF1F\u90A3\u5C31\u4E00\u8DEF\u300C\u5F80\u524D\u300D\u8D70\u5230\u5E95\uFF01"
+  };
+
   // exit6/main.mjs
   var q = new URLSearchParams(location.search);
   var seed = q.has("seed") ? Number(q.get("seed")) : Date.now() & 4294967295;
@@ -589,7 +647,8 @@
     }
   }
   var save = Object.assign({ dex: [], bestMs: null, bestMiss: null, clears: 0 }, loadSave());
-  var run = { t0: 0, mistakes: 0, precise: 0, misTaps: 0, toured: /* @__PURE__ */ new Set() };
+  var run = { t0: 0, mistakes: 0, precise: 0, misTaps: 0, toured: /* @__PURE__ */ new Set(), failStreak: 0 };
+  var hint = { t0: 0, mis: 0, stage: 0, on: false, timer: null };
   var quests = createQuests();
   var clues = createClues();
   var STAMP_QIU = { id: "qiu", name: "\u627E\u5230\u90B1\u8001\u5E2B", text: "\u89E3\u958B 4 \u689D\u7DDA\u7D22\u3001\u6253\u958B D0647\uFF0C\u898B\u5230\u52D5\u756B\u5C0E\u6F14\u90B1\u58EB\u5C55\u8001\u5E2B\u3002" };
@@ -653,6 +712,16 @@
       deanImg.classList.remove("in");
       deanImg.classList.add("out");
     }, ms);
+  }
+  function sayText(text, ms = 4500) {
+    $("sub").innerHTML = `<b>\u7CFB\u4E3B\u4EFB</b>${text}`;
+    $("sub").classList.remove("hidden");
+    clearTimeout(say.t);
+    say.t = setTimeout(() => $("sub").classList.add("hidden"), ms);
+  }
+  function deanSays(text, ms = 4200) {
+    dean("peek", null, ms);
+    sayText(text, ms);
   }
   function say(id, ms = 4500) {
     const v = voices[id];
@@ -819,6 +888,7 @@
             renderSpots();
           }
           setButtons();
+          updateCoach();
           if (tourLeft() === 0) toast("\u9019\u7AD9\u770B\u5B8C\u4E86\uFF0C\u53EF\u4EE5\u5F80\u524D\u8D70");
         };
         box.appendChild(b);
@@ -946,6 +1016,10 @@
     delete tip.dataset.keep;
     renderSpots();
     grade();
+    updateCoach();
+    const anHere = game.phase === "loop" ? anomalyAt(game, ANOMALIES) : null;
+    if (anHere) startHint(anHere);
+    if (game.phase === "loop" && game.lap === 2 && game.station === 0) setTimeout(() => deanSays(COACH.lap2, 4e3), 500);
     if (q.has("debug")) {
       $("dbg").textContent = `seed ${seed}\uFF5C\u9019\u5708\u7570\u5E38\uFF1A${(_a = game.anomaly) != null ? _a : "\u7121"}`;
       $("dbg").classList.remove("hidden");
@@ -959,6 +1033,8 @@
     const seq = [...st.frames, stopSrc(st, an)];
     busy = true;
     setButtons();
+    stopHint();
+    coachAt(null);
     $("spots").innerHTML = "";
     $("cuts").innerHTML = "";
     let i = 0, timer = null, ended = false;
@@ -1137,9 +1213,9 @@
     if (!fight || fight.over) return;
     const atk = lastAttack = nextRound(fight, performance.now());
     $("fqiu").src = "frames/qiu_attack.webp";
-    const hint = fight.round <= 3;
-    $("tele").innerHTML = `${atk.tele}<small>${atk.name}${hint ? `\u3000\u2192 \u7528\u300C${MOVES[atk.counter].name}\u300D` : ""}</small>`;
-    document.querySelectorAll("#movelist div").forEach((d) => d.classList.toggle("want", hint && d.dataset.m === atk.counter));
+    const hint2 = fight.round <= 3;
+    $("tele").innerHTML = `${atk.tele}<small>${atk.name}${hint2 ? `\u3000\u2192 \u7528\u300C${MOVES[atk.counter].name}\u300D` : ""}</small>`;
+    document.querySelectorAll("#movelist div").forEach((d) => d.classList.toggle("want", hint2 && d.dataset.m === atk.counter));
     const total = fight.deadline - performance.now();
     cancelAnimationFrame(fightRaf);
     const tick = () => {
@@ -1243,10 +1319,65 @@
     });
     for (const ev of ["pointerup", "pointerleave", "pointercancel"]) b.addEventListener(ev, () => b.classList.remove("on"));
   });
+  function coachAt(el, text) {
+    const c = $("coach");
+    if (!el) {
+      c.classList.add("hidden");
+      return;
+    }
+    const a = $("app").getBoundingClientRect(), r = el.getBoundingClientRect();
+    Object.assign(c.style, { left: r.left - a.left - 6 + "px", top: r.top - a.top - 6 + "px", width: r.width + 12 + "px", height: r.height + 12 + "px" });
+    const sp = c.querySelector("span");
+    sp.textContent = text;
+    sp.style.marginLeft = "0px";
+    c.classList.toggle("up", r.top - a.top > a.height * 0.55);
+    c.classList.remove("hidden");
+    const t = sp.getBoundingClientRect();
+    const shift = Math.min(0, a.right - 8 - t.right) || Math.max(0, a.left + 8 - t.left);
+    sp.style.marginLeft = shift + "px";
+  }
+  function updateCoach() {
+    if (busy || game.phase !== "tour" || game.station > 1) return coachAt(null);
+    const next = [...$("spots").querySelectorAll(".spot:not(.done):not(.deliver):not(.clue)")][0];
+    coachAt(next || $("btnFwd"), next ? COACH.spot : game.station === 0 ? COACH.fwd : COACH.done);
+  }
+  addEventListener("resize", () => updateCoach());
+  function stopHint() {
+    var _a;
+    clearInterval(hint.timer);
+    hint.timer = null;
+    (_a = $("spots").querySelector(".hintbox")) == null ? void 0 : _a.remove();
+  }
+  function startHint(an) {
+    stopHint();
+    Object.assign(hint, { t0: performance.now(), mis: 0, stage: 0, on: game.lap <= 3 || run.failStreak >= 2 });
+    const cue = cueFor(game.lap, run.failStreak);
+    if (cue >= 1) setTimeout(glitch, 250);
+    if (cue === 2) setTimeout(() => deanSays(COACH.loop1, 4200), 700);
+    if (hint.on) hint.timer = setInterval(() => checkHint(an), 1e3);
+  }
+  function checkHint(an) {
+    if (busy || anomalyAt(game, ANOMALIES) !== an) return;
+    const st = hintStage((performance.now() - hint.t0) / 1e3, hint.mis, hint.on);
+    if (st <= hint.stage) return;
+    hint.stage = st;
+    deanSays(HINT_TEXT[st].replace("{area}", areaOf(an.hits[0])), 4600);
+    if (st === 3) {
+      for (const h of an.hits) {
+        const b = document.createElement("div");
+        b.className = "hintbox";
+        placeBtn(b, h);
+        $("spots").appendChild(b);
+      }
+      clearInterval(hint.timer);
+    }
+  }
   async function react(ev, precise) {
     if ("count" in ev) $("floorNo").textContent = `${ev.count}F`;
     remember(ev.anomaly);
+    stopHint();
     if (ev.type === "correct" || ev.type === "ending") {
+      run.failStreak = 0;
       busy = true;
       setButtons();
       if (ev.anomaly) {
@@ -1282,6 +1413,7 @@
       return;
     }
     run.mistakes++;
+    run.failStreak++;
     floorFx("reset");
     if (ev.reason === "missed") {
       busy = true;
@@ -1347,7 +1479,9 @@
       return;
     }
     run.misTaps++;
+    hint.mis++;
     play("click", 0.5);
+    if (an && hint.on) checkHint(an);
     toast(["\u9019\u88E1\u770B\u8D77\u4F86\u5F88\u6B63\u5E38\u2026\u2026", "\u55EF\uFF1F\u597D\u50CF\u6C92\u4EC0\u9EBC", "\u518D\u4ED4\u7D30\u770B\u770B"][run.misTaps % 3]);
   }
   var fmt = (ms) => {

@@ -7,6 +7,7 @@ import { ITEMS, TARGETS, createQuests, takeItems, deliver, pending, targetsAt, S
 import { OUTLINES } from "./outlines.mjs";
 import { CLUES, CODE, createClues, visibleClues, collect, allFound, tryCode } from "./clues.mjs";
 import { MOVES, QIU_HP, PLAYER_HP, createFight, nextRound, input, timeout } from "./fight.mjs";
+import { cueFor, hintStage, areaOf, HINT_TEXT, COACH } from "./coach.mjs";
 
 const q = new URLSearchParams(location.search);
 const seed = q.has("seed") ? Number(q.get("seed")) : (Date.now() & 0xffffffff);
@@ -28,7 +29,9 @@ const SAVE_KEY = "exit6-save-v1";
 function loadSave() { try { return JSON.parse(localStorage.getItem(SAVE_KEY)) || {}; } catch { return {}; } }
 function writeSave(s) { try { localStorage.setItem(SAVE_KEY, JSON.stringify(s)); } catch { /* 私密視窗等情況 */ } }
 const save = Object.assign({ dex: [], bestMs: null, bestMiss: null, clears: 0 }, loadSave());
-const run = { t0: 0, mistakes: 0, precise: 0, misTaps: 0, toured: new Set() };
+const run = { t0: 0, mistakes: 0, precise: 0, misTaps: 0, toured: new Set(), failStreak: 0 };
+// 卡住提示：進到異常站開始計時；hintOn＝這圈要不要給提示（前 3 圈，或連錯兩次後）
+const hint = { t0: 0, mis: 0, stage: 0, on: false, timer: null };
 const quests = createQuests();
 const clues = createClues();
 const STAMP_QIU = { id: "qiu", name: "找到邱老師", text: "解開 4 條線索、打開 D0647，見到動畫導演邱士展老師。" };
@@ -79,6 +82,12 @@ function dean(pose, voiceId, ms = 3200) {
   if (voiceId) say(voiceId, ms);
   deanTimer = setTimeout(() => { deanImg.classList.remove("in"); deanImg.classList.add("out"); }, ms);
 }
+function sayText(text, ms = 4500) {
+  $("sub").innerHTML = `<b>系主任</b>${text}`;
+  $("sub").classList.remove("hidden");
+  clearTimeout(say.t); say.t = setTimeout(() => $("sub").classList.add("hidden"), ms);
+}
+function deanSays(text, ms = 4200) { dean("peek", null, ms); sayText(text, ms); }
 function say(id, ms = 4500) {
   const v = voices[id]; if (v) v.play().catch(() => {});
   $("sub").innerHTML = `<b>系主任</b>${VOICE_TEXT[id]}`;
@@ -202,7 +211,7 @@ function renderSpots() {
         run.toured.add(`${game.station}:${i}`); play("click");
         b.classList.add("done"); cut?.classList.add("c-done"); $("tip").innerHTML = `<b>${s.label}</b>　${pub(s.text)}`;
         if (s.action === "takeItems" && !quests.taken) { takeItems(quests); nbPulse(); burst("收到委託", true); renderSpots(); }
-        setButtons();
+        setButtons(); updateCoach();
         if (tourLeft() === 0) toast("這站看完了，可以往前走");
       };
       box.appendChild(b);
@@ -303,6 +312,10 @@ function renderStop() {
   else if (!tip.dataset.keep) tip.classList.add("hidden");
   delete tip.dataset.keep;
   renderSpots(); grade();
+  updateCoach();
+  const anHere = game.phase === "loop" ? anomalyAt(game, ANOMALIES) : null;
+  if (anHere) startHint(anHere);
+  if (game.phase === "loop" && game.lap === 2 && game.station === 0) setTimeout(() => deanSays(COACH.lap2, 4000), 500);
   if (q.has("debug")) { $("dbg").textContent = `seed ${seed}｜這圈異常：${game.anomaly ?? "無"}`; $("dbg").classList.remove("hidden"); }
   prefetch(game.station + 1);
 }
@@ -313,7 +326,7 @@ function walk() {
   const st = STATIONS[game.station];
   const an = game.phase === "loop" ? anomalyAt(game, ANOMALIES) : null;
   const seq = [...st.frames, stopSrc(st, an)];
-  busy = true; setButtons();
+  busy = true; setButtons(); stopHint(); coachAt(null);
   $("spots").innerHTML = ""; $("cuts").innerHTML = "";
   let i = 0, timer = null, ended = false;
   const done = () => {
@@ -509,11 +522,60 @@ document.querySelectorAll("#fight [data-k]").forEach((b) => {
   for (const ev of ["pointerup", "pointerleave", "pointercancel"]) b.addEventListener(ev, () => b.classList.remove("on"));
 });
 
+
+// ---------- 新手引導：導覽圈前兩站圈住要按的東西 ----------
+function coachAt(el, text) {
+  const c = $("coach");
+  if (!el) { c.classList.add("hidden"); return; }
+  const a = $("app").getBoundingClientRect(), r = el.getBoundingClientRect();
+  Object.assign(c.style, { left: r.left - a.left - 6 + "px", top: r.top - a.top - 6 + "px", width: r.width + 12 + "px", height: r.height + 12 + "px" });
+  const sp = c.querySelector("span");
+  sp.textContent = text; sp.style.marginLeft = "0px";
+  c.classList.toggle("up", r.top - a.top > a.height * 0.55);   // 目標在下半部：說明放上面
+  c.classList.remove("hidden");
+  const t = sp.getBoundingClientRect();                         // 說明字超出畫面就往內推（手機直拿時右上角的樓層燈）
+  const shift = Math.min(0, a.right - 8 - t.right) || Math.max(0, a.left + 8 - t.left);
+  sp.style.marginLeft = shift + "px";
+}
+function updateCoach() {
+  if (busy || game.phase !== "tour" || game.station > 1) return coachAt(null);
+  const next = [...$("spots").querySelectorAll(".spot:not(.done):not(.deliver):not(.clue)")][0];
+  coachAt(next || $("btnFwd"), next ? COACH.spot : game.station === 0 ? COACH.fwd : COACH.done);
+}
+addEventListener("resize", () => updateCoach());
+
+// ---------- 異常站的線索與卡住提示 ----------
+function stopHint() { clearInterval(hint.timer); hint.timer = null; $("spots").querySelector(".hintbox")?.remove(); }
+function startHint(an) {
+  stopHint();
+  Object.assign(hint, { t0: performance.now(), mis: 0, stage: 0, on: game.lap <= 3 || run.failStreak >= 2 });
+  const cue = cueFor(game.lap, run.failStreak);
+  if (cue >= 1) setTimeout(glitch, 250);
+  if (cue === 2) setTimeout(() => deanSays(COACH.loop1, 4200), 700);
+  if (hint.on) hint.timer = setInterval(() => checkHint(an), 1000);
+}
+function checkHint(an) {
+  if (busy || anomalyAt(game, ANOMALIES) !== an) return;
+  const st = hintStage((performance.now() - hint.t0) / 1000, hint.mis, hint.on);
+  if (st <= hint.stage) return;
+  hint.stage = st;
+  deanSays(HINT_TEXT[st].replace("{area}", areaOf(an.hits[0])), 4600);
+  if (st === 3) {
+    for (const h of an.hits) {
+      const b = document.createElement("div"); b.className = "hintbox"; placeBtn(b, h); $("spots").appendChild(b);
+    }
+
+    clearInterval(hint.timer);
+  }
+}
+
 // ---------- 判定後的演出 ----------
 async function react(ev, precise) {
   if ("count" in ev) $("floorNo").textContent = `${ev.count}F`;
   remember(ev.anomaly);
+  stopHint();
   if (ev.type === "correct" || ev.type === "ending") {
+    run.failStreak = 0;
     busy = true; setButtons();
     if (ev.anomaly) {
       $("spots").innerHTML = ""; $("cuts").innerHTML = "";
@@ -529,7 +591,7 @@ async function react(ev, precise) {
     return;
   }
   // 答錯
-  run.mistakes++;
+  run.mistakes++; run.failStreak++;
   floorFx("reset");
   if (ev.reason === "missed") {
     busy = true; setButtons();
@@ -572,7 +634,8 @@ function pointAt(e) {
   const an = anomalyAt(game, ANOMALIES);
   const hit = an && an.hits.some((h) => px >= h.x && px <= h.x + h.w && py >= h.y && py <= h.y + h.h);
   if (hit) { react(step(game, "back"), true); return; }
-  run.misTaps++; play("click", 0.5);
+  run.misTaps++; hint.mis++; play("click", 0.5);
+  if (an && hint.on) checkHint(an);
   toast(["這裡看起來很正常……", "嗯？好像沒什麼", "再仔細看看"][run.misTaps % 3]);
 }
 

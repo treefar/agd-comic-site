@@ -45,30 +45,31 @@ export const STATIONS = [
 ];
 
 // hits：點擊感應範圍（可多塊）；card：圖鑑卡
+// tier：明顯程度（1 一眼看出、2 要對照記憶、3 細節變化），前幾圈依此由淺入深出題
 export const ANOMALIES = [
-  { id: "A01", station: 1, still: "frames/s1_a01.webp", hits: [{ x: 53, y: 22, w: 11, h: 27 }],
+  { id: "A01", tier: 3, station: 1, still: "frames/s1_a01.webp", hits: [{ x: 53, y: 22, w: 11, h: 27 }],
     card: { title: "告示變溫柔了", text: "「請勿回頭」其實是反話：回頭就是回報異常。系主任很希望你多看看系上。" } },
-  { id: "A02", station: 1, still: "frames/s1_a02.webp", hits: [{ x: 27, y: 16, w: 12, h: 30 }, { x: 66, y: 14, w: 21, h: 30 }],
+  { id: "A02", tier: 2, station: 1, still: "frames/s1_a02.webp", hits: [{ x: 27, y: 16, w: 12, h: 30 }, { x: 66, y: 14, w: 21, h: 30 }],
     card: { title: "海報換邊了", text: "系辦門口的海報是系上作品。系辦就在電梯正前方，新生有問題先來這裡問。" } },
-  { id: "A03", station: 1, still: "frames/s1_a03.webp", hits: [{ x: 0, y: 74, w: 100, h: 26 }],
+  { id: "A03", tier: 2, station: 1, still: "frames/s1_a03.webp", hits: [{ x: 0, y: 74, w: 100, h: 26 }],
     card: { title: "地墊方向反了", text: "（待老師補充：這張彩繪地墊的作者與作品介紹）" } },
-  { id: "A04", station: 2, still: "frames/s2_a04.webp", hits: [{ x: 10, y: 56, w: 22, h: 20 }],
+  { id: "A04", tier: 1, station: 2, still: "frames/s2_a04.webp", hits: [{ x: 10, y: 56, w: 22, h: 20 }],
     card: { title: "有人脫了鞋", text: "天橋的地板彩繪上本來什麼都沒放。（待老師補充：天橋地板彩繪的由來）" } },
-  { id: "A05", station: 3, still: "frames/s3_a05.webp", hits: [{ x: 34, y: 52, w: 29, h: 28 }],
+  { id: "A05", tier: 3, station: 3, still: "frames/s3_a05.webp", hits: [{ x: 34, y: 52, w: 29, h: 28 }],
     card: { title: "牌樓下有人坐過", text: "（待老師補充：中庭牌樓的由來）在六樓迷路，先找牌樓。" } },
-  { id: "A06", station: 4, still: "frames/s4_a06.webp", hits: [{ x: 41, y: 13, w: 14, h: 15 }],
+  { id: "A06", tier: 3, station: 4, still: "frames/s4_a06.webp", hits: [{ x: 41, y: 13, w: 14, h: 15 }],
     card: { title: "門號跑掉了", text: "D0604：D 棟、06 樓、04 號房。看懂門號，在學校就不會迷路。" } },
-  { id: "A07", station: 4, still: "frames/s4_a07.webp", hits: [{ x: 10, y: 37, w: 22, h: 27 }],
+  { id: "A07", tier: 2, station: 4, still: "frames/s4_a07.webp", hits: [{ x: 10, y: 37, w: 22, h: 27 }],
     card: { title: "電繪「食」驗室", text: "是實驗室不是食堂。電繪實驗室配備繪圖板，2D 角色、場景、UI 都在這裡練。" } },
-  { id: "A08", station: 5, still: "frames/s5_a08.webp", hits: [{ x: 15, y: 6, w: 27, h: 88 }],
+  { id: "A08", tier: 1, station: 5, still: "frames/s5_a08.webp", hits: [{ x: 15, y: 6, w: 27, h: 88 }],
     card: { title: "海報倒掛", text: "（待老師確認：櫥窗海報的出處與換展方式）2025 年系上有 8 件作品入圍放視大賞。" } },
-  { id: "A09", station: 5, still: "frames/s5_a09.webp", hits: [{ x: 41, y: 6, w: 27, h: 88 }],
+  { id: "A09", tier: 1, station: 5, still: "frames/s5_a09.webp", hits: [{ x: 41, y: 6, w: 27, h: 88 }],
     card: { title: "系主任在看你", text: "海報上是系主任鄧樹遠本人（照系網官方照片畫的），專長遊戲設計、劇本創作與數位剪輯。" } },
-  { id: "A10", station: 6, still: "frames/s6_a10.webp", hits: [{ x: 28, y: 78, w: 32, h: 20 }],
+  { id: "A10", tier: 3, station: 6, still: "frames/s6_a10.webp", hits: [{ x: 28, y: 78, w: 32, h: 20 }],
     card: { title: "全部都在？", text: "在室牌 IN 是在、OUT 是不在。找老師前先看在室牌，省得白跑一趟。" } },
-  { id: "A11", station: 6, still: "frames/s6_a11.webp", hits: [{ x: 28, y: 1, w: 32, h: 14 }],
+  { id: "A11", tier: 3, station: 6, still: "frames/s6_a11.webp", hits: [{ x: 28, y: 1, w: 32, h: 14 }],
     card: { title: "走錯研究室了", text: "D0646 是陳慶鴻老師的研究室，專長電腦動畫與動態影像，教動態圖像設計。" } },
-  { id: "A12", station: 7, still: "frames/s7_a12.webp", hits: [{ x: 39, y: 0, w: 14, h: 17 }],
+  { id: "A12", tier: 2, station: 7, still: "frames/s7_a12.webp", hits: [{ x: 39, y: 0, w: 14, h: 17 }],
     card: { title: "這裡不是八號出口", text: "這裡是六樓。致敬《8 番出口》，但我們的出口要靠認識動遊系才找得到。" } },
 ];
 
