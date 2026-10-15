@@ -21,6 +21,7 @@ const KEEP = "HARD RULE: keep the exact same camera angle, perspective, framing,
 // 正對牆面的站：水平線也要拉平（2026-10-15 使用者指出系辦門口畫面有歪）
 const FRONTAL = { s1: true, s4: true, s6: true, s7: true };
 const LEVEL = "The wall faces the camera head-on: the door top edge, wall seams and the floor line must be perfectly horizontal.";
+const LEVEL_TEXT = LEVEL;
 
 // 每站必須正確的字（錯了就重生）
 const TEXT = {
@@ -82,12 +83,37 @@ const DEAN = [
 ];
 const deanJob = ([id, pose]) => ({ id, out: `art-src/exit6/gen/${id}.png`, prompt: `${DEAN_BASE} ${pose}` });
 
+// 第二批：D0647 支線＋邱士展老師立繪（使用者 2026-10-15 於對話表示邱老師已同意；參考系網官方照片）
+const D0647 = [
+  { id: "s8_stop", out: "art-src/exit6/gen/s8_stop.png",
+    prompt: `Open and look at the reference photo art-src/exit6/ref/s8_stop.jpg and the STYLE reference art-src/exit6/gen/s6_stop.png. ` +
+      `Redraw the photo in exactly the same style as the STYLE reference. ${KEEP} ${LEVEL_TEXT} ` +
+      `The name plate must read exactly 'D0647' and '邱士展'. The colorful stickers and small cards stuck on the board must be redrawn as ORIGINAL ` +
+      `generic designs (film clapperboard, camera, star, arrow, game controller doodles) — do not copy any existing character, logo or brand. Style: ${STYLE}` },
+  { id: "s8_a", out: "art-src/exit6/gen/s8_a.png",
+    prompt: `Open and look at the reference photo art-src/exit6/ref/s8_a.jpg and the STYLE reference art-src/exit6/gen/s6_a.png (same corridor, already redrawn). ` +
+      `Redraw the photo in exactly the same style as the STYLE reference. ${KEEP} Keep it a calm, dim but readable office corridor, not scary. Style: ${STYLE}` },
+];
+const QIU_BASE = "Open and look at the portrait reference art-src/exit6/ref/qiu_photo.jpg and the STYLE reference art-src/exit6/gen/dean_cheer.png. " +
+  "Draw THE SAME MAN as in the portrait reference (same face shape, eyes behind the same thin metal octagonal glasses, short black hair, black hooded velvet cloak tied at the neck, light grey button shirt) " +
+  "as a comedic manga character in exactly the same comic style as the STYLE reference: bold black ink outlines, screentone shading, flat colors. " +
+  "He is a cheerful animation director. Waist-up or full upper body, fully inside the frame with margin. The ENTIRE background must be one flat pure green #00FF00 " +
+  "with no shading, no floor, no shadow, no text, no speech bubble. Original design only: do not imitate any existing fighting-game character, costume, headband or special-move effect. Square image.";
+const QIU = [
+  ["qiu_greet", "Pose: friendly wave with one hand, holding a small film clapperboard in the other, confident smile."],
+  ["qiu_ready", "Pose: playful martial-arts ready stance facing the viewer, fists up, cloak flaring, determined grin, glasses glinting."],
+  ["qiu_attack", "Pose: dynamic forward punch toward the viewer with comic speed lines around the arm (speed lines drawn in ink only), shouting mouth."],
+  ["qiu_ko", "Pose: comedic defeat — dizzy swirly eyes, glasses askew, holding the clapperboard closed above his head as if calling 'cut', big laughing mouth."],
+];
+const qiuJob = ([id, pose]) => ({ id, out: `art-src/exit6/gen/${id}.png`, prompt: `${QIU_BASE} ${pose}` });
+
 const STATIONS = ["s0", "s1", "s2", "s3", "s4", "s5", "s6", "s7"];
 const SETS = {
   stops: () => STATIONS.map(stopJob),
   mids: () => STATIONS.flatMap((s) => ["a", "b"].map((k) => midJob(s, k))),
   anomalies: () => ANOM.map(anomJob),
   dean: () => DEAN.map(deanJob),
+  d0647: () => [...D0647, ...QIU.map(qiuJob)],
 };
 
 const [set, ...only] = process.argv.slice(2);

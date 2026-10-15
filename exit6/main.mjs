@@ -5,6 +5,7 @@ import { STATIONS, ANOMALIES, QUIZ, VOICE_TEXT } from "./data.mjs";
 import { periodOf, stepFor, hourAt, gradeFor, fmtHour, PERIOD_LABEL } from "./time.mjs";
 import { ITEMS, TARGETS, createQuests, takeItems, deliver, pending, targetsAt, STAMP_POSTMAN } from "./quests.mjs";
 import { OUTLINES } from "./outlines.mjs";
+import { CLUES, CODE, createClues, visibleClues, collect, allFound, tryCode } from "./clues.mjs";
 
 const q = new URLSearchParams(location.search);
 const seed = q.has("seed") ? Number(q.get("seed")) : (Date.now() & 0xffffffff);
@@ -26,6 +27,9 @@ function writeSave(s) { try { localStorage.setItem(SAVE_KEY, JSON.stringify(s));
 const save = Object.assign({ dex: [], bestMs: null, bestMiss: null, clears: 0 }, loadSave());
 const run = { t0: 0, mistakes: 0, precise: 0, misTaps: 0, toured: new Set() };
 const quests = createQuests();
+const clues = createClues();
+const STAMP_QIU = { id: "qiu", name: "找到邱老師", text: "解開 4 條線索、打開 D0647，見到動畫導演邱士展老師。" };
+const stamps = () => [...(quests.stamps.length ? [STAMP_POSTMAN] : []), ...(clues.opened ? [STAMP_QIU] : [])];
 
 // ---------- 時間：開局讀玩家裝置的本地時間（除錯 ?hour=N），之後每圈前進 stepFor 小時 ----------
 const realHour = new Date().getHours();
@@ -207,12 +211,38 @@ function renderSpots() {
       box.appendChild(b);
     }
   }
+  // 線索：循環圈才出現；路燈那條限晚上
+  for (const c of visibleClues(game.station, nowHour(), game.phase)) {
+    const got = clues.found.includes(c.id);
+    const b = document.createElement("button");
+    b.className = "spot clue" + (got ? " done" : ""); placeBtn(b, c.box);
+    b.innerHTML = `<span>線索・${c.label}</span>`;
+    b.setAttribute("aria-label", `線索：${c.label}`);
+    const cut = cutout(c.outline, curSrc, got ? "c-clue c-done" : "c-clue");
+    linkLift(b, cut);
+    b.onclick = (e) => {
+      e.stopPropagation(); if (busy) return;
+      if (collect(clues, c.id)) { play("found", 0.8); burst("線索！", true); nbPulse(); b.classList.add("done"); cut?.classList.add("c-done"); }
+      else play("click");
+      toast(c.text);
+      if (allFound(clues) && !clues.opened) setTimeout(() => toast("4 條線索都到手了！D0646 那邊的走廊深處好像有路……"), 1800);
+      renderBranch();
+    };
+    box.appendChild(b);
+  }
+  renderBranch();
+}
+
+// S6 的岔路：線索集齊後出現「往走廊深處」，打開過之後可以再進去
+function renderBranch() {
+  $("branch").classList.toggle("hidden", !(game.phase === "loop" && game.station === 6 && allFound(clues)));
+  $("branch").textContent = clues.opened ? "進入 D0647 →" : "往走廊深處 →";
 }
 
 // ---------- 手帳與交付 ----------
 function nbPulse() { const n = $("nbBtn"); n.classList.remove("pulse"); void n.offsetWidth; n.classList.add("pulse"); }
-function openSheet(html) {
-  const s = $("sheet"); s.innerHTML = html; s.classList.remove("hidden");
+function openSheet(html, cls = "") {
+  const s = $("sheet"); s.innerHTML = html; s.className = "sheet " + cls; s.classList.remove("hidden");
   busy = true; setButtons();
   s.querySelector("[data-close]").onclick = closeSheet;
 }
@@ -223,9 +253,16 @@ function openNotebook() {
   const items = quests.taken
     ? ITEMS.map((i) => `<li class="${quests.delivered.includes(i.id) ? "ok" : ""}"><b>${i.name}</b><br>${quests.delivered.includes(i.id) ? "已送達" : i.hint}</li>`).join("")
     : `<li>還沒有委託。導覽圈經過系辦門口時看看。</li>`;
-  const stamps = quests.stamps.length ? quests.stamps.map(() => `<li class="ok"><b>${STAMP_POSTMAN.name}</b><br>${STAMP_POSTMAN.text}</li>`).join("") : `<li>還沒有紀念章。</li>`;
+  const st = stamps();
+  const stampList = st.length ? st.map((s) => `<li class="ok"><b>${s.name}</b><br>${s.text}</li>`).join("") : `<li>還沒有紀念章。</li>`;
+  const clueList = clues.found.length
+    ? CLUES.filter((c) => clues.found.includes(c.id)).map((c) => `<li class="ok"><b>${c.label}</b><br>${c.text}</li>`).join("")
+    : `<li>還沒有線索。循環開始後，留意畫面上發亮的「線索」。</li>`;
+  const slots = CLUES.map((c, i) => (clues.found.includes(c.id) ? "？" : "＿")).join(" ");
   openSheet(`<h3>手帳</h3><p class="clock">現在 ${fmtHour(nowHour())}（${PERIOD_LABEL[periodOf(nowHour())]}）</p>
-    <h4>系辦委託</h4><ul>${items}</ul><h4>紀念章</h4><ul>${stamps}</ul><button class="go" data-close>關閉</button>`);
+    <h4>系辦委託</h4><ul>${items}</ul>
+    <h4>邱老師研究室的密碼　${slots}（${clues.found.length}/${CLUES.length}）</h4><ul>${clueList}</ul>
+    <h4>紀念章</h4><ul>${stampList}</ul><button class="go" data-close>關閉</button>`);
 }
 function openDeliver(target) {
   play("click");
@@ -295,6 +332,65 @@ function showCard(tag, anomalyId, onClose) {
 }
 
 function remember(id) { if (id && !save.dex.includes(id)) { save.dex.push(id); writeSave(save); } }
+
+// ---------- 密碼門與 D0647 支線（不呼叫 step()，不影響 6 圈主線） ----------
+function openKeypad() {
+  if (clues.opened) { enterD0647(); return; }
+  play("click");
+  let code = "";
+  openSheet(`<h3>D0647 門鎖</h3><p>輸入 4 位數密碼（線索在手帳裡）。</p>
+    <div class="code" id="codeShow">＿ ＿ ＿ ＿</div>
+    <div class="keypad">${[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => `<button data-n="${n}">${n}</button>`).join("")}
+      <button data-n="clr">清除</button><button data-n="0">0</button><button data-n="ok" class="ok">開鎖</button></div>
+    <p class="why" id="codeMsg"></p><button class="ghost" data-close>先不要</button>`);
+  const showCode = () => { $("codeShow").textContent = [...code.padEnd(CODE.length, "＿")].join(" "); };
+  $("sheet").querySelectorAll("[data-n]").forEach((b) => {
+    b.onclick = () => {
+      const n = b.dataset.n;
+      if (n === "clr") code = "";
+      else if (n === "ok") {
+        const r = tryCode(clues, code);
+        $("codeMsg").textContent = r.text;
+        if (r.ok) { play("clear"); setTimeout(() => { closeSheet(); enterD0647(true); }, 700); }
+        else { play("wrong", 0.6); shake(false); code = ""; }
+      } else if (code.length < CODE.length) { code += n; play("click", 0.6); }
+      showCode();
+    };
+  });
+}
+
+function actor(src, ms) {
+  clearTimeout(deanTimer);
+  deanImg.src = src; deanImg.style.right = "-2%";
+  deanImg.classList.remove("out"); void deanImg.offsetWidth; deanImg.classList.add("in");
+  if (ms) deanTimer = setTimeout(() => { deanImg.classList.remove("in"); deanImg.classList.add("out"); }, ms);
+}
+function speak(name, text, ms = 5000) {
+  $("sub").innerHTML = `<b>${name}</b>${text}`; $("sub").classList.remove("hidden");
+  clearTimeout(say.t); say.t = setTimeout(() => $("sub").classList.add("hidden"), ms);
+}
+
+async function enterD0647(first) {
+  busy = true; setButtons();
+  $("spots").innerHTML = ""; $("cuts").innerHTML = ""; $("branch").classList.add("hidden");
+  $("where").textContent = "支線・D0647 研究室";
+  play("footstep", 1, 560); show("frames/s8_a.webp", true); await sleep(650);
+  play("footstep", 1, 560); show("frames/s8.webp", false); await sleep(600);
+  actor("frames/qiu_greet.webp", 0); play("dean");
+  if (first) { burst("蓋章！找到邱老師"); nbPulse(); }
+  speak("邱士展老師", "哦？居然找得到 D0647！我是邱士展，教 3D 角色動畫和動畫劇本創作，專長是動畫導演跟鏡頭語言。", 6000);
+  await sleep(first ? 1200 : 300);
+  openSheet(`<h3>D0647・邱士展老師</h3>
+    <ul><li><b>專長</b><br>電腦動畫、動畫導演、數位特效、鏡頭語言</li>
+    <li><b>課程</b><br>3D 角色動畫、3D 遊戲引擎應用、動畫劇本創作、3D 列印應用實務</li>
+    <li><b>2026</b><br>指導的動畫作品入圍放視大賞動畫類</li></ul>
+    <p class="why">「聽說你也愛對戰？片場對決下一版開拍，到時候再來找我。」</p>
+    <button class="go" data-close>回到走廊</button>`, "left");
+  $("sheet").querySelector("[data-close]").onclick = () => {
+    closeSheet(); deanImg.classList.remove("in"); deanImg.classList.add("out"); $("sub").classList.add("hidden");
+    show(stopSrc(STATIONS[game.station], anomalyAt(game, ANOMALIES)), false); renderStop();
+  };
+}
 
 // ---------- 判定後的演出 ----------
 async function react(ev, precise) {
@@ -395,6 +491,7 @@ async function finish() {
       <div><b>${run.precise}</b><small>精準指認</small></div>
       <div><b>${got.size}/${ANOMALIES.length}</b><small>圖鑑（累計）</small></div>
       <div><b>${quests.delivered.length}/${ITEMS.length}</b><small>委託送達${quests.stamps.length ? "・六樓郵差" : ""}</small></div>
+      <div><b>${clues.found.length}/${CLUES.length}</b><small>線索${clues.opened ? "・找到邱老師" : ""}</small></div>
     </div>
     <div class="dex">${ANOMALIES.map((a) => got.has(a.id)
       ? `<div><b>${a.card.title}</b><br>${STATIONS[a.station].name}</div>` : `<div class="no">？？？</div>`).join("")}</div>
@@ -438,7 +535,7 @@ function resultCard(ms, score, total) {
       <div class="meta"><span>通關時間</span><b>${fmt(ms)}</b><span>失誤次數</span><b>${run.mistakes}</b>
         <span>精準指認</span><b>${run.precise}</b><span>小測驗</span><b>${score} / ${total}</b>
         <span>圖鑑累計</span><b>${new Set(save.dex).size} / ${ANOMALIES.length}</b><span>委託送達</span><b>${quests.delivered.length} / ${ITEMS.length}</b>
-        <span>紀念章</span><b>${quests.stamps.length ? STAMP_POSTMAN.name : "—"}</b><span>最佳時間</span><b>${save.bestMs != null ? fmt(save.bestMs) : "—"}</b></div></div>
+        <span>紀念章</span><b>${stamps().map((s) => s.name).join("、") || "—"}</b><span>最佳時間</span><b>${save.bestMs != null ? fmt(save.bestMs) : "—"}</b></div></div>
     <p style="color:var(--dim);font-size:13px">截圖這張成績卡，分享給同學。</p>
     <div class="row"><button class="go" id="again2">再走一次</button></div>`;
   $("again2").onclick = () => location.reload();
@@ -457,7 +554,9 @@ $("go").onclick = () => {
   if (periodOf(realHour) === "night") setTimeout(() => dean("cheer", "vo_night", 3600), 1600);   // 真實時間在晚上的彩蛋
 };
 $("nbBtn").onclick = (e) => { e.stopPropagation(); openNotebook(); };
+$("branch").onclick = (e) => { e.stopPropagation(); if (!busy) openKeypad(); };
 if (save.bestMs != null) $("best").textContent = `你的最佳時間 ${fmt(save.bestMs)}・圖鑑 ${new Set(save.dex).size}/${ANOMALIES.length}・通關 ${save.clears} 次`;
 for (const p of ["plead", "cheer", "welcome", "peek"]) new Image().src = `frames/dean_${p}.webp`;
+for (const f of ["s8_a", "s8", "qiu_greet"]) new Image().src = `frames/${f}.webp`;
 renderStop(); prefetch(0);
 if (q.has("debug") && q.has("go")) $("go").click();   // 除錯：自動進入（無頭瀏覽器截圖用）

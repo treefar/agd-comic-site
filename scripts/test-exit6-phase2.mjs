@@ -75,6 +75,39 @@ test("輪廓：每個調查點、交付點、異常都有 SAM 輪廓，座標在
   }
 });
 
+test("線索：4 條線索的數字依序拼起來等於密碼；只在循環圈出現；路燈限晚上", async () => {
+  const { CLUES, CODE, visibleClues } = await import("../exit6/clues.mjs");
+  assert.equal(CLUES.map((c) => c.digit).join(""), CODE);
+  assert.equal(visibleClues(3, 21, "tour").length, 0, "導覽圈不出現線索");
+  assert.equal(visibleClues(3, 10, "loop").length, 0, "白天看不到路燈線索");
+  assert.equal(visibleClues(3, 21, "loop").length, 1, "晚上看得到路燈線索");
+  assert.equal(CLUES.filter((c) => !c.night).every((c) => visibleClues(c.station, 10, "loop").includes(c)), true);
+});
+
+test("線索：點擊範圍不和同站異常、交付點重疊，且都有輪廓", async () => {
+  const { CLUES } = await import("../exit6/clues.mjs");
+  const { OUTLINES } = await import("../exit6/outlines.mjs");
+  for (const c of CLUES) {
+    for (const a of ANOMALIES.filter((x) => x.station === c.station)) for (const h of a.hits) assert.ok(!overlap(c.box, h), `${c.id} 壓到 ${a.id}`);
+    for (const t of TARGETS.filter((x) => x.station === c.station)) assert.ok(!overlap(c.box, t.box), `${c.id} 壓到交付點 ${t.id}`);
+    assert.ok(OUTLINES[c.outline]?.length, `${c.id} 沒有輪廓 ${c.outline}`);
+  }
+});
+
+test("密碼門：沒集齊不能開；位數不對、部分正確都有提示；正確才開", async () => {
+  const { CLUES, CODE, createClues, collect, tryCode, allFound } = await import("../exit6/clues.mjs");
+  const st = createClues();
+  assert.equal(tryCode(st, CODE).ok, false);
+  for (const c of CLUES) assert.equal(collect(st, c.id), true);
+  assert.equal(collect(st, CLUES[0].id), false, "同一條不重複收");
+  assert.ok(allFound(st));
+  assert.match(tryCode(st, "12").text, /4 個數字/);
+  assert.match(tryCode(st, CODE.slice(0, 2) + "99").text, /2 碼/);
+  assert.equal(st.opened, false);
+  assert.equal(tryCode(st, CODE).ok, true);
+  assert.equal(st.opened, true);
+});
+
 test("座標：交付點不和同站異常點擊範圍重疊、不和導覽調查點重疊", () => {
   for (const t of TARGETS) {
     for (const a of ANOMALIES.filter((x) => x.station === t.station))

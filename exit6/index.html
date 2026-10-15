@@ -121,6 +121,7 @@
   .spot.deliver { border-color: #6ea8ff; background: rgba(29,78,216,.14); border-style: dashed; animation: none; }
   .spot.deliver span { background: var(--blue); color: #fff; }
   .sheet { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(92vw, 440px); max-height: 86%; overflow-y: auto; z-index: 8; background: var(--paper); color: var(--paperink); border: 3px solid var(--paperink); border-radius: 14px; padding: 16px 18px; box-shadow: 6px 6px 0 var(--paperink); text-align: left; animation: slam .3s cubic-bezier(.2,1.6,.4,1); }
+  .sheet.left { left: max(16px, calc(50% - 46vw)); transform: translate(0, -50%); width: min(58vw, 400px); }
   .sheet h3 { margin: 0 0 6px; font-size: 20px; }
   .sheet h4 { margin: 12px 0 4px; font-size: 14px; color: var(--red); letter-spacing: .08em; }
   .sheet ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: 14px; line-height: 1.5; }
@@ -128,6 +129,14 @@
   .sheet li.ok b::after { content: "　✔"; }
   .sheet .clock { color: var(--paperink); text-shadow: none; }
   .sheet > button { width: 100%; margin-top: 12px; padding: 10px; }
+  .spot.clue span { background: #ff8a1f; color: var(--paperink); }
+  .cut.c-clue { filter: drop-shadow(0 0 1px #ff8a1f) drop-shadow(0 0 1px #ff8a1f) drop-shadow(0 0 8px rgba(255,138,31,.9)); animation: glow 1.2s ease-in-out infinite; }
+  .branch { position: absolute; left: 10px; bottom: 10px; z-index: 2; padding: 8px 14px; font-size: 15px; background: #ff8a1f; color: var(--paperink); border: 2px solid var(--paperink); box-shadow: 3px 3px 0 var(--paperink); animation: pop .6s cubic-bezier(.2,1.8,.4,1) 1; }
+  .code { font: 400 34px/1 var(--f-display); letter-spacing: .2em; text-align: center; margin: 6px 0 10px; }
+  .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .keypad button { padding: 12px 0; font-size: 20px; background: #fff; color: var(--paperink); border: 2px solid var(--paperink); }
+  .keypad button.ok { background: var(--accent); }
+  .sheet .why { margin: 8px 0 0; font-size: 14px; min-height: 1.2em; }
   .choices { display: grid; gap: 8px; }
   .choices button { background: #fff; color: var(--paperink); border: 2px solid var(--paperink); padding: 10px; text-align: left; }
   .choices small { display: block; font-weight: 400; font-size: 13px; color: #555; margin-top: 2px; }
@@ -184,6 +193,7 @@
     <div class="burst" id="burst"></div>
     <div class="hud"><div><div class="floorNo" id="floorNo">0F</div><div class="clock" id="clock"></div></div><div><div class="where" id="where"></div><div class="timer" id="timer"></div></div></div>
     <button class="nb" id="nbBtn" aria-label="打開手帳">手帳</button>
+    <button class="branch hidden" id="branch">往走廊深處 →</button>
     <div class="dbg hidden" id="dbg"></div>
   </div>
   <div class="below">

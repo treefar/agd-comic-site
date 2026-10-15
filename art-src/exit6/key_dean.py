@@ -1,4 +1,4 @@
-# 《六樓出口》系主任立繪去背：純綠 #00FF00 背景 → 透明，去邊緣綠色反光，裁到內容範圍，輸出 WebP（含透明）
+# 《六樓出口》系主任與邱士展老師立繪去背：純綠 #00FF00 背景 → 透明，去邊緣綠色反光，裁到內容範圍，輸出 WebP（含透明）
 # 只做去背、透明度、裁切與尺寸（核准管線輸出的後製），不繪製任何新像素內容
 # 用法：python art-src/exit6/key_dean.py
 import os, glob
@@ -8,7 +8,7 @@ import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "..", "..", "exit6", "frames")
 
-for f in sorted(glob.glob(os.path.join(HERE, "gen", "dean_*.png"))):
+for f in sorted(glob.glob(os.path.join(HERE, "gen", "dean_*.png")) + glob.glob(os.path.join(HERE, "gen", "qiu_*.png"))):
     img = cv2.imread(f).astype(np.float32)
     b, g, r = img[..., 0], img[..., 1], img[..., 2]
     green = g - np.maximum(r, b)                       # 越綠越大
