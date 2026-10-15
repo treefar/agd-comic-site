@@ -39,6 +39,19 @@
 - 未修：手機直拿場景小（16:9 先天限制，已有「橫放」提示）；部分熱點小於 44px；debug 模式 #dbg 標籤蓋到按鈕（只在 ?debug=1）。
 - 測試 40 項全過；Artifact 第 8 版。
 
+## 2026-10-16 已完成（TF-BASE）
+
+- 開場改寫實漫畫封面：s0 電梯圖整張調色＋網點、標題逐字錯落粗明體＋紅網點陰影＋集中線、「請勿回頭」紅告示條、旁白框說明（提交 72b0a1e、b2cec08）。
+- 由淺入深（使用者選：第 1 圈手把手、異常由明顯到細微、卡住給提示）：`exit6/coach.mjs`＋`game-core.mjs`。
+  異常加 `tier` 1～3（我依畫面判斷，可再調）；第 1 圈只出 tier 1、第 2 圈固定正常、第 3 圈最多 tier 2；
+  導覽圈前兩站黃框指示；異常站第 1 圈強線索、第 2～3 圈弱線索；卡住 8／16／26 秒三層提示，第 3 層圈出異常；連錯兩次重新給提示；「求救」按鈕 10 秒冷卻（提交 ffb88a6）。
+- 測試：`node --test scripts/test-exit6.mjs scripts/test-exit6-phase2.mjs scripts/test-exit6-fight.mjs scripts/test-exit6-onboard.mjs`（47 項全過）。Artifact 第 11 版。
+- 已知：Browser 預覽窗格隱藏時不推進 CSS 動畫，標題會停在透明的第一格；一般瀏覽器正常。
+- AGY 工作區 `C:\agywork\exit6-mg`（不在 repo 內）：`research/` r1 小遊戲玩法、r3 新手引導、r4 實驗室謎題（全標 unverified）；
+  `orders/_mg-contract.md` 是小遊戲共用介面規格（`window.EXIT6_MG[id].mount(root,{onEnd,rng})`）；`mg/` 是 AGY 做的 5 個灰盒雛形
+  （mg-anim 動畫、mg-code 程式、mg-book 繪本角色、mg-type 視覺傳達、mg-3d 3D 列印，Three.js r128）。驗收狀態見下一段。
+- 舊雛形盤點（Explore 子代理）：遊戲時光屋 57 款在 `G:\我的雲端硬碟\07_私密網頁\site\retro-game-house\`、GameWiki 40 款、折光港 10 款、字旋試場；3D 類沒有現成雛形。
+
 ## 下一階段（建議開新 session 做）：老師關卡與實驗室支線
 
 使用者 2026-10-15 已決定：
