@@ -7,7 +7,7 @@ import { ITEMS, TARGETS, createQuests, takeItems, deliver, pending, targetsAt, S
 import { OUTLINES } from "./outlines.mjs";
 import { CLUES, CODE, createClues, visibleClues, collect, allFound, tryCode } from "./clues.mjs";
 import { MOVES, QIU_HP, PLAYER_HP, createFight, nextRound, input, timeout } from "./fight.mjs";
-import { cueFor, hintStage, areaOf, HINT_TEXT, COACH } from "./coach.mjs";
+import { cueFor, hintStage, areaOf, HINT_TEXT, COACH, helpReply, HELP_COOLDOWN_MS, HELP_CLEAR } from "./coach.mjs";
 
 const q = new URLSearchParams(location.search);
 const seed = q.has("seed") ? Number(q.get("seed")) : (Date.now() & 0xffffffff);
@@ -557,16 +557,30 @@ function startHint(an) {
 function checkHint(an) {
   if (busy || anomalyAt(game, ANOMALIES) !== an) return;
   const st = hintStage((performance.now() - hint.t0) / 1000, hint.mis, hint.on);
-  if (st <= hint.stage) return;
+  if (st > hint.stage) showHint(an, st);
+}
+function showHint(an, st) {
   hint.stage = st;
   deanSays(HINT_TEXT[st].replace("{area}", areaOf(an.hits[0])), 4600);
-  if (st === 3) {
+  if (st === 3 && !$("spots").querySelector(".hintbox")) {
     for (const h of an.hits) {
       const b = document.createElement("div"); b.className = "hintbox"; placeBtn(b, h); $("spots").appendChild(b);
     }
 
     clearInterval(hint.timer);
   }
+}
+
+// 主動求救：只在循環圈可用
+let helpAt = -Infinity;
+function askHelp() {
+  if (busy || game.phase !== "loop") { toast("先走進循環再求救喔"); return; }
+  const left = HELP_COOLDOWN_MS - (performance.now() - helpAt);
+  if (left > 0) { toast(`系主任喘口氣中……${Math.ceil(left / 1000)} 秒後再叫我`); return; }
+  helpAt = performance.now();
+  const an = anomalyAt(game, ANOMALIES);
+  const r = helpReply(!!an, hint.stage);
+  if (r.kind === "hint") showHint(an, r.stage); else deanSays(HELP_CLEAR, 3200);
 }
 
 // ---------- 判定後的演出 ----------
@@ -741,6 +755,7 @@ $("go").onclick = () => {
   if (periodOf(realHour) === "night") setTimeout(() => dean("cheer", "vo_night", 3600), 1600);   // 真實時間在晚上的彩蛋
 };
 $("nbBtn").onclick = (e) => { e.stopPropagation(); openNotebook(); };
+$("helpBtn").onclick = (e) => { e.stopPropagation(); askHelp(); };
 $("branch").onclick = (e) => { e.stopPropagation(); if (!busy) openKeypad(); };
 if (save.bestMs != null) $("best").textContent = `你的最佳時間 ${fmt(save.bestMs)}・圖鑑 ${new Set(save.dex).size}/${ANOMALIES.length}・通關 ${save.clears} 次`;
 for (const p of ["plead", "cheer", "welcome", "peek"]) new Image().src = `frames/dean_${p}.webp`;

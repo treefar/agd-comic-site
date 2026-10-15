@@ -157,6 +157,8 @@
   /* 時鐘、手帳、交付 */
   .clock { margin-top: 4px; font: 700 12px ui-monospace, monospace; color: var(--paper); text-shadow: 0 0 6px #000; font-variant-numeric: tabular-nums; }
   .nb { padding: 6px 12px; font-size: 14px; background: var(--paper); color: var(--paperink); border: 2px solid var(--paperink); box-shadow: 3px 3px 0 var(--paperink); }
+  .mid { display: flex; gap: 6px; align-items: stretch; }
+  .nb.help { background: var(--pop); }
   .nb.pulse { animation: pop .5s cubic-bezier(.2,1.8,.4,1) 2; }
   .spot.deliver { border-color: #6ea8ff; background: rgba(29,78,216,.14); border-style: dashed; animation: none; }
   .spot.deliver span { background: var(--blue); color: #fff; }
@@ -282,7 +284,7 @@
   </div>
   <div class="controls">
     <button class="btnBack" id="btnBack" aria-label="回頭（鍵盤 ← 或 ↓）">↩ 回頭</button>
-    <button class="nb" id="nbBtn" aria-label="打開手帳">手帳</button>
+    <div class="mid"><button class="nb" id="nbBtn" aria-label="打開手帳">手帳</button><button class="nb help" id="helpBtn" aria-label="叫系主任給提示">求救</button></div>
     <button class="btnFwd" id="btnFwd" aria-label="往前（鍵盤 → 或 ↑）">往前 ↑</button>
   </div>
 

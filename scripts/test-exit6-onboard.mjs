@@ -61,3 +61,12 @@ test("方位描述：依點擊範圍中心說上下左右", () => {
   assert.equal(areaOf({ x: 70, y: 40, w: 20, h: 20 }), "畫面右邊");
   assert.equal(areaOf({ x: 41, y: 40, w: 20, h: 20 }), "畫面中間");
 });
+
+test("主動求救：有異常時提示升一層、最多第 3 層；沒異常只說這站沒問題", async () => {
+  const { helpReply, HELP_COOLDOWN_MS, HELP_CLEAR } = await import("../exit6/coach.mjs");
+  assert.deepEqual(helpReply(true, 0), { kind: "hint", stage: 1 });
+  assert.deepEqual(helpReply(true, 2), { kind: "hint", stage: 3 });
+  assert.deepEqual(helpReply(true, 3), { kind: "hint", stage: 3 });
+  assert.deepEqual(helpReply(false, 2), { kind: "clear" });
+  assert.ok(HELP_CLEAR && HELP_COOLDOWN_MS >= 5000);
+});

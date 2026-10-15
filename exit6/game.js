@@ -617,6 +617,11 @@
     loop1: "\u54A6\uFF1F\u9019\u88E1\u8DDF\u525B\u525B\u597D\u50CF\u4E0D\u4E00\u6A23\u2026\u2026\u89BA\u5F97\u602A\u5C31\u76F4\u63A5\u9EDE\u5B83\uFF01",
     lap2: "\u9019\u5708\u770B\u8D77\u4F86\u90FD\u5F88\u6B63\u5E38\uFF1F\u90A3\u5C31\u4E00\u8DEF\u300C\u5F80\u524D\u300D\u8D70\u5230\u5E95\uFF01"
   };
+  var HELP_COOLDOWN_MS = 1e4;
+  var HELP_CLEAR = "\u9019\u4E00\u7AD9\u6211\u770B\u662F\u6C92\u554F\u984C\u5566\uFF0C\u5F80\u524D\u8D70\u8D70\u770B\uFF01";
+  function helpReply(anomalyHere, stageNow) {
+    return anomalyHere ? { kind: "hint", stage: Math.min(3, stageNow + 1) } : { kind: "clear" };
+  }
 
   // exit6/main.mjs
   var q = new URLSearchParams(location.search);
@@ -1359,10 +1364,12 @@
   function checkHint(an) {
     if (busy || anomalyAt(game, ANOMALIES) !== an) return;
     const st = hintStage((performance.now() - hint.t0) / 1e3, hint.mis, hint.on);
-    if (st <= hint.stage) return;
+    if (st > hint.stage) showHint(an, st);
+  }
+  function showHint(an, st) {
     hint.stage = st;
     deanSays(HINT_TEXT[st].replace("{area}", areaOf(an.hits[0])), 4600);
-    if (st === 3) {
+    if (st === 3 && !$("spots").querySelector(".hintbox")) {
       for (const h of an.hits) {
         const b = document.createElement("div");
         b.className = "hintbox";
@@ -1371,6 +1378,23 @@
       }
       clearInterval(hint.timer);
     }
+  }
+  var helpAt = -Infinity;
+  function askHelp() {
+    if (busy || game.phase !== "loop") {
+      toast("\u5148\u8D70\u9032\u5FAA\u74B0\u518D\u6C42\u6551\u5594");
+      return;
+    }
+    const left = HELP_COOLDOWN_MS - (performance.now() - helpAt);
+    if (left > 0) {
+      toast(`\u7CFB\u4E3B\u4EFB\u5598\u53E3\u6C23\u4E2D\u2026\u2026${Math.ceil(left / 1e3)} \u79D2\u5F8C\u518D\u53EB\u6211`);
+      return;
+    }
+    helpAt = performance.now();
+    const an = anomalyAt(game, ANOMALIES);
+    const r = helpReply(!!an, hint.stage);
+    if (r.kind === "hint") showHint(an, r.stage);
+    else deanSays(HELP_CLEAR, 3200);
   }
   async function react(ev, precise) {
     if ("count" in ev) $("floorNo").textContent = `${ev.count}F`;
@@ -1621,6 +1645,10 @@
   $("nbBtn").onclick = (e) => {
     e.stopPropagation();
     openNotebook();
+  };
+  $("helpBtn").onclick = (e) => {
+    e.stopPropagation();
+    askHelp();
   };
   $("branch").onclick = (e) => {
     e.stopPropagation();

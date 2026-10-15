@@ -42,3 +42,10 @@ export const COACH = {
   loop1: "咦？這裡跟剛剛好像不一樣……覺得怪就直接點它！",
   lap2: "這圈看起來都很正常？那就一路「往前」走到底！",
 };
+
+// 主動求救：按鈕叫系主任，10 秒冷卻。這站有異常→提示升一層；這站沒有→說這站沒問題（不透露後面幾站）
+export const HELP_COOLDOWN_MS = 10000;
+export const HELP_CLEAR = "這一站我看是沒問題啦，往前走走看！";
+export function helpReply(anomalyHere, stageNow) {
+  return anomalyHere ? { kind: "hint", stage: Math.min(3, stageNow + 1) } : { kind: "clear" };
+}
