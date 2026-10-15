@@ -49,7 +49,9 @@
 - 已知：Browser 預覽窗格隱藏時不推進 CSS 動畫，標題會停在透明的第一格；一般瀏覽器正常。
 - AGY 工作區 `C:\agywork\exit6-mg`（不在 repo 內）：`research/` r1 小遊戲玩法、r3 新手引導、r4 實驗室謎題（全標 unverified）；
   `orders/_mg-contract.md` 是小遊戲共用介面規格（`window.EXIT6_MG[id].mount(root,{onEnd,rng})`）；`mg/` 是 AGY 做的 5 個灰盒雛形
-  （mg-anim 動畫、mg-code 程式、mg-book 繪本角色、mg-type 視覺傳達、mg-3d 3D 列印，Three.js r128）。驗收狀態見下一段。
+  （mg-anim 動畫、mg-code 程式、mg-book 繪本角色、mg-type 視覺傳達、mg-3d 3D 列印，Three.js r128）。
+  **已驗收並複製進 repo `art-src/exit6/phase3/`（提交 86f0e93），看 `驗收報告.md`**：規則測試 44 項全過、無頭 Chrome 亂按 62 秒無錯誤；
+  mg-type、mg-code 難度要真人試。下一步：使用者試玩→挑老師並取得同意→寫宿主（走廊遇老師→mount→onEnd 發簽名卡）。
 - 舊雛形盤點（Explore 子代理）：遊戲時光屋 57 款在 `G:\我的雲端硬碟\07_私密網頁\site\retro-game-house\`、GameWiki 40 款、折光港 10 款、字旋試場；3D 類沒有現成雛形。
 
 ## 下一階段（建議開新 session 做）：老師關卡與實驗室支線
