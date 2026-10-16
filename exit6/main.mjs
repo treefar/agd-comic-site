@@ -9,6 +9,7 @@ import { CLUES, CODE, createClues, visibleClues, collect, allFound, tryCode } fr
 import { MOVES, QIU_HP, PLAYER_HP, createFight, nextRound, input, timeout } from "./fight.mjs";
 import { cueFor, hintStage, areaOf, HINT_TEXT, COACH, helpReply, HELP_COOLDOWN_MS, HELP_CLEAR } from "./coach.mjs";
 import { TEACHERS, displayName, createCards, award, allCollected, teacherAt, scriptsFor } from "./teachers.mjs";
+import { mustIndex, narrFor, spotAt } from "./story.mjs";
 
 const q = new URLSearchParams(location.search);
 const seed = q.has("seed") ? Number(q.get("seed")) : (Date.now() & 0xffffffff);
@@ -31,7 +32,7 @@ function loadSave() { try { return JSON.parse(localStorage.getItem(SAVE_KEY)) ||
 function writeSave(s) { try { localStorage.setItem(SAVE_KEY, JSON.stringify(s)); } catch { /* 私密視窗等情況 */ } }
 const save = Object.assign({ dex: [], bestMs: null, bestMiss: null, clears: 0, cards: [] }, loadSave());
 const cardBook = createCards(save.cards);   // 老師簽名卡（壞資料就當沒有）
-const run = { t0: 0, mistakes: 0, precise: 0, misTaps: 0, toured: new Set(), failStreak: 0 };
+const run = { t0: 0, mistakes: 0, precise: 0, misTaps: 0, toured: new Set(), failStreak: 0, seen: new Set() };   // seen：點過的物件（手帳「看過的東西」）
 // 卡住提示：進到異常站開始計時；hintOn＝這圈要不要給提示（前 3 圈，或連錯兩次後）
 const hint = { t0: 0, mis: 0, stage: 0, on: false, timer: null };
 const quests = createQuests();
@@ -97,6 +98,20 @@ function say(id, ms = 4500) {
   clearTimeout(say.t); say.t = setTimeout(() => $("sub").classList.add("hidden"), ms);
 }
 
+// ---------- 主角旁白框（大一新生的內心話） ----------
+function narrate(text, ms = 5200) {
+  const n = $("narr"); if (!text) return;
+  n.textContent = text; n.classList.remove("hidden", "in"); void n.offsetWidth; n.classList.add("in");
+  clearTimeout(narrate.t); narrate.t = setTimeout(() => n.classList.add("hidden"), ms);
+}
+function sayAbout(k, src) {
+  const sp = STATIONS[game.station].spots[k];
+  run.seen.add(`${game.station}:${k}`);
+  narrate(sp.say, 3600);
+  const c = cutout(`S${game.station}:${k}`, src, "c-egg");    // 浮起一下再消失
+  if (c) { requestAnimationFrame(() => c.classList.add("lift")); setTimeout(() => c.remove(), 1300); }
+}
+
 // ---------- 果汁 ----------
 function shake(big) {
   if (reduced) return;
@@ -152,7 +167,7 @@ function show(src, push) {
   back.src = src;
 }
 const stopSrc = (st, an) => an?.still || st.still;
-const tourLeft = () => STATIONS[game.station].spots.filter((_, i) => !run.toured.has(`${game.station}:${i}`)).length;
+const tourLeft = () => (run.toured.has(`${game.station}:${mustIndex(game.station)}`) ? 0 : 1);   // 導覽圈每站只點 1 個必點物件
 
 function setButtons() {
   const off = busy || game.phase === "ending";
@@ -200,6 +215,7 @@ function renderSpots() {
   const curSrc = stopSrc(STATIONS[game.station], game.phase === "loop" ? anomalyAt(game, ANOMALIES) : null);
   if (game.phase === "tour") {
     STATIONS[game.station].spots.forEach((s, i) => {
+      if (i !== mustIndex(game.station)) return;                 // 其他物件第 2 圈起才是彩蛋（不亮、不擋路）
       const b = document.createElement("button");
       const seen = run.toured.has(`${game.station}:${i}`);
       b.className = "spot" + (seen ? " done" : "");
@@ -211,7 +227,8 @@ function renderSpots() {
       b.onclick = (e) => {
         e.stopPropagation(); if (busy) return;
         run.toured.add(`${game.station}:${i}`); play("click");
-        b.classList.add("done"); cut?.classList.add("c-done"); $("tip").innerHTML = `<b>${s.label}</b>　${pub(s.text)}`;
+        b.classList.add("done"); cut?.classList.add("c-done"); run.seen.add(`${game.station}:${i}`); narrate(s.say, 4200);
+        $("tip").textContent = "看完了，按「往前」繼續走。";
         if (s.action === "takeItems" && !quests.taken) { takeItems(quests); nbPulse(); burst("收到委託", true); renderSpots(); }
         setButtons(); updateCoach();
         if (tourLeft() === 0) toast("這站看完了，可以往前走");
@@ -274,6 +291,11 @@ function openSheet(html, cls = "") {
   s.querySelectorAll("[data-close]").forEach((b) => (b.onclick = closeSheet));
 }
 function closeSheet() { $("sheet").classList.add("hidden"); busy = false; setButtons(); updateCoach(); }
+function seenList() {
+  if (!run.seen.size) return `<li>還沒有。點點看畫面上的東西。</li>`;
+  return [...run.seen].map((key) => { const [st, k] = key.split(":").map(Number); const sp = STATIONS[st].spots[k];
+    return `<li class="ok"><b>${sp.label}</b><br>${pub(sp.text)}</li>`; }).join("");
+}
 function cardGrid() {
   return TEACHERS.map((t) => {
     const c = cardBook.cards.find((x) => x.id === t.id);
@@ -296,6 +318,7 @@ function openNotebook() {
   openSheet(`<button class="x" data-close aria-label="關閉手帳">×</button><h3>手帳</h3><p class="clock">現在 ${fmtHour(nowHour())}（${hourLabel(nowHour())}）</p>
     <h4>系辦委託</h4><ul>${items}</ul>
     <h4>邱老師研究室的密碼　${slots}（${clues.found.length}/${CLUES.length}）</h4><ul>${clueList}</ul>
+    <h4>看過的東西（${run.seen.size}）</h4><ul>${seenList()}</ul>
     <h4>老師簽名卡（${cardBook.cards.length}/${TEACHERS.length}）</h4><div class="cardgrid">${cardGrid()}</div>
     ${allCollected(cardBook) ? `<button class="ghost" data-ending>重看隱藏結局</button>` : `<p class="dim">循環圈經過有老師的站，按右下角「邀請」挑戰小遊戲。</p>`}
     <h4>紀念章</h4><ul>${stampList}</ul><button class="go" data-close>關閉</button>`);
@@ -327,7 +350,7 @@ function renderStop() {
   $("floorNo").textContent = `${game.count}F`;
   $("where").textContent = game.phase === "tour" ? `導覽圈・${st.name}` : `第 ${game.lap} 圈・${st.name}`;
   const tip = $("tip");
-  if (game.phase === "tour") { tip.textContent = `${st.tour}（還有 ${tourLeft()} 個地方沒看）`; tip.classList.remove("hidden"); }
+  if (game.phase === "tour") { tip.textContent = tourLeft() ? "點一下發亮的地方看看。" : "看完了，按「往前」繼續走。"; tip.classList.remove("hidden"); }
   else if (!tip.dataset.keep) tip.classList.add("hidden");
   delete tip.dataset.keep;
   renderSpots(); grade();
@@ -346,6 +369,7 @@ function walk() {
   const an = game.phase === "loop" ? anomalyAt(game, ANOMALIES) : null;
   const seq = [...st.frames, stopSrc(st, an)];
   busy = true; setButtons(); stopHint(); coachAt(null);
+  narrate(narrFor(game.station, game.phase), 5200);           // 換場景就有一句主角內心話銜接
   $("spots").innerHTML = ""; $("cuts").innerHTML = "";
   let i = 0, timer = null, ended = false;
   const done = () => {
@@ -736,6 +760,8 @@ function pointAt(e) {
   const an = anomalyAt(game, ANOMALIES);
   const hit = an && an.hits.some((h) => px >= h.x && px <= h.x + h.w && py >= h.y && py <= h.y + h.h);
   if (hit) { react(step(game, "back"), true); return; }
+  const k = spotAt(game.station, px, py);
+  if (k !== null) { sayAbout(k, stopSrc(STATIONS[game.station], an)); return; }
   run.misTaps++; hint.mis++; play("click", 0.5);
   if (an && hint.on) checkHint(an);
   toast(["這裡看起來很正常……", "嗯？好像沒什麼", "再仔細看看"][run.misTaps % 3]);

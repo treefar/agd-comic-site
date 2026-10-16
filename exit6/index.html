@@ -186,6 +186,12 @@
   .mgskill, .mgbest { font-size: 14px; }
   .mgbest { color: var(--blue); font-weight: 700; }
   a.linkbtn { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; border-radius: 10px; font-weight: 700; min-height: 44px; padding: 0 16px; }
+  /* 主角旁白框：漫畫的方形旁白（不是對話泡泡），畫面左上、樓層數字下方 */
+  .narr { position: absolute; left: 2%; top: 15%; z-index: 4; max-width: min(46%, 360px); padding: 6px 10px; background: var(--paper); color: var(--paperink); border: 2.5px solid var(--paperink); box-shadow: 3px 3px 0 var(--paperink); font-size: clamp(12px, 1.6vw, 15px); font-weight: 700; line-height: 1.5; pointer-events: none; }
+  .narr.in { animation: narrIn .3s ease-out; }
+  @keyframes narrIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+  .cut.c-egg { filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff); }
+  @media (prefers-reduced-motion: reduce) { .narr.in { animation: none; } }
   .mid { display: flex; gap: 6px; align-items: stretch; }
   .nb.help { background: var(--pop); }
   .nb.pulse { animation: pop .5s cubic-bezier(.2,1.8,.4,1) 2; }
@@ -304,6 +310,7 @@
     <img class="dean" id="dean" alt="系主任">
     <div class="burst" id="burst"></div>
     <div class="hud"><div><div class="floorNo" id="floorNo">0F</div><div class="clock" id="clock"></div></div><div><div class="where" id="where"></div><div class="timer" id="timer"></div></div></div>
+    <div class="narr hidden" id="narr" aria-live="polite"></div>
     <button class="invite hidden" id="invite" aria-label="老師邀請"></button>
     <button class="branch hidden" id="branch">往走廊深處 →</button>
     <div class="dbg hidden" id="dbg"></div>

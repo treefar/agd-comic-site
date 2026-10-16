@@ -130,88 +130,96 @@
   var STATIONS = [
     {
       id: "S0",
+      narr: { tour: "\u958B\u5B78\u7B2C\u4E00\u5929\uFF0C\u6211\u6309\u4E0B 6 \u6A13\u3002\u807D\u8AAA\u52D5\u904A\u7CFB\u7684\u5927\u5BB6\u90FD\u5728\u9019\u4E00\u5C64\u3002", loop: "\u2026\u2026\u53C8\u662F\u96FB\u68AF\u3002\u6211\u662F\u4E0D\u662F\u4E00\u76F4\u5728\u7E5E\u5708\uFF1F" },
       name: "\u96FB\u68AF\u5167",
       frames: ["frames/s0_a.webp", "frames/s0_b.webp"],
       still: "frames/s0.webp",
       src: "B 0:09\u20130:13",
       tour: "\u8A2D\u8A08\u5927\u6A13 D \u68DF\uFF0C\u6309\u4E0B 6 \u6A13\u3002\u9EDE\u4E00\u4E0B\u767C\u4EAE\u7684\u5730\u65B9\u8ABF\u67E5\u3002",
-      spots: [{ x: 82, y: 3, w: 9, h: 27, label: "\u6A13\u5C64\u986F\u793A", text: "\u986F\u793A 6\uFF1A\u9019\u88E1\u662F\u8A2D\u8A08\u5927\u6A13 D \u68DF\u516D\u6A13\u3002\u52D5\u904A\u7CFB\u7684\u7CFB\u8FA6\u3001\u5F88\u591A\u9593\u5BE6\u9A57\u5BA4\u548C\u8001\u5E2B\u7814\u7A76\u5BA4\u90FD\u5728\u9019\u4E00\u5C64\u3002" }]
+      spots: [{ x: 82, y: 3, w: 9, h: 27, label: "\u6A13\u5C64\u986F\u793A", must: true, say: "6 \u6A13\uFF0C\u5230\u4E86\u3002\u7CFB\u8FA6\u5C31\u5728\u9019\u4E00\u5C64\u3002", text: "\u986F\u793A 6\uFF1A\u9019\u88E1\u662F\u8A2D\u8A08\u5927\u6A13 D \u68DF\u516D\u6A13\u3002\u52D5\u904A\u7CFB\u7684\u7CFB\u8FA6\u3001\u5F88\u591A\u9593\u5BE6\u9A57\u5BA4\u548C\u8001\u5E2B\u7814\u7A76\u5BA4\u90FD\u5728\u9019\u4E00\u5C64\u3002" }]
     },
     {
       id: "S1",
+      narr: { tour: "\u96FB\u68AF\u9580\u4E00\u958B\uFF0C\u6B63\u5C0D\u9762\u5C31\u662F\u7CFB\u8FA6\u3002\u9580\u4E0A\u8CBC\u8457\u544A\u793A\uFF0C\u5169\u908A\u6709\u6D77\u5831\uFF0C\u5730\u4E0A\u92EA\u8457\u5F69\u7E6A\u5730\u588A\u3002", loop: "\u7CFB\u8FA6\u9580\u53E3\u3002\u544A\u793A\u3001\u6D77\u5831\u3001\u5730\u588A\u2026\u2026\u8DDF\u525B\u525B\u4E00\u6A23\u55CE\uFF1F" },
       name: "\u7CFB\u8FA6\u9580\u53E3",
       frames: ["frames/s1_a.webp", "frames/s1_b.webp"],
       still: "frames/s1.webp",
       src: "B 0:13\u20130:19",
       tour: "\u96FB\u68AF\u4E00\u51FA\u4F86\u7684\u6B63\u524D\u65B9\u5C31\u662F\u7CFB\u8FA6\u3002\u628A\u544A\u793A\u3001\u6D77\u5831\u3001\u5730\u588A\u90FD\u9EDE\u4E00\u904D\u8A18\u8D77\u4F86\u3002",
       spots: [
-        { x: 3, y: 13, w: 24, h: 22, label: "\u7CFB\u540D\u7246", text: "\u52D5\u756B\u8207\u904A\u6232\u8A2D\u8A08\u7CFB\uFF08Department of Animation and Game Design, STU\uFF09\u3002\u7CFB\u8FA6\u5C31\u5728\u96FB\u68AF\u6B63\u524D\u65B9\uFF0C\u65B0\u751F\u6709\u554F\u984C\u5148\u4F86\u9019\u88E1\u554F\u3002" },
-        { x: 54, y: 24, w: 9, h: 23, label: "\u9580\u4E0A\u544A\u793A", text: "\u300C\u8ACB\u52FF\u56DE\u982D\u300D\u3002\u8A18\u4F4F\u5B83\u5BEB\u4EC0\u9EBC\u3002" },
-        { x: 27, y: 16, w: 12, h: 30, label: "\u5DE6\u5074\u6D77\u5831", text: "\u9580\u5DE6\u908A\u662F\u4E00\u5F35\u85CD\u8272\u6D77\u5831\u3002\u8A18\u4F4F\u5B83\u5728\u5DE6\u908A\u3002" },
-        { x: 0, y: 76, w: 100, h: 24, label: "\u5F69\u7E6A\u5730\u588A", text: "\u9580\u524D\u7684\u5F69\u7E6A\u5730\u588A\uFF0C\u8A18\u4F4F\u4EBA\u7269\u6392\u5217\u7684\u65B9\u5411\u3002\uFF08\u5F85\u8001\u5E2B\u88DC\u5145\uFF1A\u5730\u588A\u4F5C\u8005\uFF09" },
-        { x: 53, y: 52, w: 10, h: 16, label: "\u7CFB\u8FA6\u59D4\u8A17", action: "takeItems", text: "\u7CFB\u8FA6\u62DC\u8A17\u4F60\u9001 3 \u4EF6\u6771\u897F\uFF0C\u5DF2\u7D93\u653E\u9032\u624B\u5E33\u3002\u6BCF\u4EF6\u53EA\u5BEB\u4E86\u7528\u9014\uFF0C\u8981\u81EA\u5DF1\u60F3\u60F3\u8A72\u9001\u5230\u516D\u6A13\u54EA\u88E1\u3002" },
-        { x: 66, y: 14, w: 21, h: 30, label: "\u53F3\u5074\u6D77\u5831", text: "\u9580\u53F3\u908A\u662F\u5169\u5F35\u5F69\u8272\u6D77\u5831\u3002\u8A18\u4F4F\u5B83\u5011\u5728\u53F3\u908A\u3002" }
+        { x: 3, y: 13, w: 24, h: 22, label: "\u7CFB\u540D\u7246", say: "\u52D5\u756B\u8207\u904A\u6232\u8A2D\u8A08\u7CFB\u2026\u2026\u4EE5\u5F8C\u56DB\u5E74\u5C31\u662F\u9019\u88E1\u4E86\u3002", text: "\u52D5\u756B\u8207\u904A\u6232\u8A2D\u8A08\u7CFB\uFF08Department of Animation and Game Design, STU\uFF09\u3002\u7CFB\u8FA6\u5C31\u5728\u96FB\u68AF\u6B63\u524D\u65B9\uFF0C\u65B0\u751F\u6709\u554F\u984C\u5148\u4F86\u9019\u88E1\u554F\u3002" },
+        { x: 54, y: 24, w: 9, h: 23, label: "\u9580\u4E0A\u544A\u793A", say: "\u300C\u8ACB\u52FF\u56DE\u982D\u300D\uFF1F\u8CBC\u5728\u7CFB\u8FA6\u9580\u4E0A\u6709\u9EDE\u795E\u7955\u3002", text: "\u300C\u8ACB\u52FF\u56DE\u982D\u300D\u3002\u8A18\u4F4F\u5B83\u5BEB\u4EC0\u9EBC\u3002" },
+        { x: 27, y: 16, w: 12, h: 30, label: "\u5DE6\u5074\u6D77\u5831", say: "\u5DE6\u908A\u9019\u5F35\u85CD\u8272\u6D77\u5831\uFF0C\u69CB\u5716\u597D\u6709\u6C23\u52E2\u3002", text: "\u9580\u5DE6\u908A\u662F\u4E00\u5F35\u85CD\u8272\u6D77\u5831\u3002\u8A18\u4F4F\u5B83\u5728\u5DE6\u908A\u3002" },
+        { x: 0, y: 76, w: 100, h: 24, label: "\u5F69\u7E6A\u5730\u588A", say: "\u597D\u53EF\u611B\u7684\u7E6A\u5716\uFF0C\u9023\u5730\u588A\u90FD\u662F\u4F5C\u54C1\u3002", text: "\u9580\u524D\u7684\u5F69\u7E6A\u5730\u588A\uFF0C\u8A18\u4F4F\u4EBA\u7269\u6392\u5217\u7684\u65B9\u5411\u3002\uFF08\u5F85\u8001\u5E2B\u88DC\u5145\uFF1A\u5730\u588A\u4F5C\u8005\uFF09" },
+        { x: 53, y: 52, w: 10, h: 16, label: "\u7CFB\u8FA6\u59D4\u8A17", must: true, say: "\u7CFB\u8FA6\u585E\u7D66\u6211\u4E09\u6A23\u6771\u897F\uFF0C\u5E6B\u5FD9\u9001\u4E00\u4E0B\u597D\u4E86\u3002", action: "takeItems", text: "\u7CFB\u8FA6\u62DC\u8A17\u4F60\u9001 3 \u4EF6\u6771\u897F\uFF0C\u5DF2\u7D93\u653E\u9032\u624B\u5E33\u3002\u6BCF\u4EF6\u53EA\u5BEB\u4E86\u7528\u9014\uFF0C\u8981\u81EA\u5DF1\u60F3\u60F3\u8A72\u9001\u5230\u516D\u6A13\u54EA\u88E1\u3002" },
+        { x: 66, y: 14, w: 21, h: 30, label: "\u53F3\u5074\u6D77\u5831", say: "\u53F3\u908A\u5169\u5F35\u5F69\u8272\u6D77\u5831\uFF0C\u662F\u5B78\u9577\u59D0\u756B\u7684\u5427\uFF1F", text: "\u9580\u53F3\u908A\u662F\u5169\u5F35\u5F69\u8272\u6D77\u5831\u3002\u8A18\u4F4F\u5B83\u5011\u5728\u53F3\u908A\u3002" }
       ]
     },
     {
       id: "S2",
+      narr: { tour: "\u7A7F\u904E\u4F11\u606F\u5340\uFF0C\u662F\u4E00\u689D\u5730\u677F\u756B\u6EFF\u5F69\u7E6A\u7684\u5929\u6A4B\u3002", loop: "\u5929\u6A4B\u5230\u4E86\u3002\u5730\u677F\u4E0A\u7684\u756B\uFF0C\u6709\u4EC0\u9EBC\u4E0D\u4E00\u6A23\u55CE\uFF1F" },
       name: "\u5929\u6A4B\u5730\u677F\u5F69\u7E6A",
       frames: ["frames/s2_a.webp", "frames/s2_b.webp"],
       still: "frames/s2.webp",
       src: "B 0:30\u20130:40",
       tour: "\u7A7F\u904E\u4F11\u606F\u5340\u5C31\u662F\u5929\u6A4B\u3002",
-      spots: [{ x: 3, y: 56, w: 36, h: 24, label: "\u5730\u677F\u5F69\u7E6A", text: "\u5929\u6A4B\u4E0A\u7684\u4E00\u5927\u7247\u5730\u677F\u5F69\u7E6A\uFF0C\u4E0A\u9762\u4EC0\u9EBC\u90FD\u6C92\u653E\u3002\uFF08\u5F85\u8001\u5E2B\u88DC\u5145\uFF1A\u5F69\u7E6A\u7531\u4F86\uFF09" }]
+      spots: [{ x: 3, y: 56, w: 36, h: 24, label: "\u5730\u677F\u5F69\u7E6A", must: true, say: "\u6574\u7247\u5730\u677F\u90FD\u662F\u756B\uFF0C\u8E29\u4E0A\u53BB\u6709\u9EDE\u6368\u4E0D\u5F97\u3002", text: "\u5929\u6A4B\u4E0A\u7684\u4E00\u5927\u7247\u5730\u677F\u5F69\u7E6A\uFF0C\u4E0A\u9762\u4EC0\u9EBC\u90FD\u6C92\u653E\u3002\uFF08\u5F85\u8001\u5E2B\u88DC\u5145\uFF1A\u5F69\u7E6A\u7531\u4F86\uFF09" }]
     },
     {
       id: "S3",
+      narr: { tour: "\u73BB\u7483\u5929\u68DA\u4E0B\u9762\uFF0C\u7ACB\u8457\u4E00\u5EA7\u6728\u982D\u724C\u6A13\uFF0C\u4E0B\u9762\u662F\u7A7A\u7684\u901A\u9053\u3002", loop: "\u724C\u6A13\u9084\u5728\u3002\u4E0B\u9762\u7684\u901A\u9053\u9084\u662F\u7A7A\u7684\u55CE\uFF1F" },
       name: "\u4E2D\u5EAD\u724C\u6A13",
       frames: ["frames/s3_a.webp", "frames/s3_b.webp"],
       still: "frames/s3.webp",
       src: "B 3:30\u20133:39",
       tour: "\u73BB\u7483\u5929\u68DA\u4E0B\u7684\u6728\u9020\u724C\u6A13\u3002",
-      spots: [{ x: 31, y: 0, w: 32, h: 80, label: "\u6728\u9020\u724C\u6A13", text: "\u516D\u6A13\u6700\u597D\u8A8D\u7684\u5730\u6A19\uFF0C\u724C\u6A13\u4E0B\u9762\u662F\u7A7A\u7684\u901A\u9053\u3002\u5728\u516D\u6A13\u8FF7\u8DEF\uFF0C\u5C31\u5148\u627E\u5B83\u3002\uFF08\u5F85\u8001\u5E2B\u88DC\u5145\uFF1A\u724C\u6A13\u7531\u4F86\uFF09" }]
+      spots: [{ x: 31, y: 0, w: 32, h: 80, label: "\u6728\u9020\u724C\u6A13", must: true, say: "\u9019\u5EA7\u6728\u724C\u6A13\u597D\u9192\u76EE\uFF0C\u8FF7\u8DEF\u5C31\u627E\u5B83\u3002", text: "\u516D\u6A13\u6700\u597D\u8A8D\u7684\u5730\u6A19\uFF0C\u724C\u6A13\u4E0B\u9762\u662F\u7A7A\u7684\u901A\u9053\u3002\u5728\u516D\u6A13\u8FF7\u8DEF\uFF0C\u5C31\u5148\u627E\u5B83\u3002\uFF08\u5F85\u8001\u5E2B\u88DC\u5145\uFF1A\u724C\u6A13\u7531\u4F86\uFF09" }]
     },
     {
       id: "S4",
+      narr: { tour: "\u8D70\u5ECA\u4E0A\u7684\u5BE6\u9A57\u5BA4\uFF0C\u9580\u724C\u5BEB\u8457 D0604\uFF0C\u65C1\u908A\u662F\u6D88\u9632\u6813\u3002", loop: "\u5BE6\u9A57\u5BA4\u9580\u53E3\u3002\u9580\u724C\u548C\u9580\u4E0A\uFF0C\u6709\u6C92\u6709\u591A\u4E86\u4EC0\u9EBC\uFF1F" },
       name: "D0604 \u96FB\u7E6A\u5BE6\u9A57\u5BA4",
       frames: ["frames/s4_a.webp", "frames/s4_b.webp"],
       still: "frames/s4.webp",
       src: "A 7:16\u20137:26",
       tour: "\u8D70\u5ECA\u4E0A\u7684\u5BE6\u9A57\u5BA4\u9580\u53E3\u3002",
       spots: [
-        { x: 42, y: 15, w: 12, h: 12, label: "\u9580\u865F", text: "D0604\uFF1DD \u68DF\u300106 \u6A13\u300104 \u865F\u623F\u3002\u9019\u9593\u662F\u96FB\u7E6A\u5BE6\u9A57\u5BA4\uFF1A\u7E6A\u5716\u677F\u6559\u5BA4\uFF0C2D \u89D2\u8272\u3001\u5834\u666F\u3001UI \u90FD\u5728\u9019\u88E1\u7DF4\u3002" },
-        { x: 72, y: 30, w: 28, h: 70, label: "\u6D88\u9632\u6813", text: "\u9580\u65C1\u908A\u662F\u6D88\u9632\u6813\u3002\u9580\u4E0A\u9664\u4E86\u9580\u865F\u4EC0\u9EBC\u90FD\u6C92\u8CBC\u3002" }
+        { x: 42, y: 15, w: 12, h: 12, label: "\u9580\u865F", must: true, say: "D0604\u2026\u2026\u539F\u4F86\u9580\u724C\u662F\u9019\u6A23\u770B\u7684\u3002", text: "D0604\uFF1DD \u68DF\u300106 \u6A13\u300104 \u865F\u623F\u3002\u9019\u9593\u662F\u96FB\u7E6A\u5BE6\u9A57\u5BA4\uFF1A\u7E6A\u5716\u677F\u6559\u5BA4\uFF0C2D \u89D2\u8272\u3001\u5834\u666F\u3001UI \u90FD\u5728\u9019\u88E1\u7DF4\u3002" },
+        { x: 72, y: 30, w: 28, h: 70, label: "\u6D88\u9632\u6813", say: "\u6D88\u9632\u6813\u3002\u55EF\uFF0C\u5F88\u6B63\u5E38\u7684\u6D88\u9632\u6813\u3002", text: "\u9580\u65C1\u908A\u662F\u6D88\u9632\u6813\u3002\u9580\u4E0A\u9664\u4E86\u9580\u865F\u4EC0\u9EBC\u90FD\u6C92\u8CBC\u3002" }
       ]
     },
     {
       id: "S5",
+      narr: { tour: "\u7246\u4E0A\u7684\u6AE5\u7A97\u8CBC\u6EFF\u4F5C\u54C1\u6D77\u5831\uFF0C\u4E09\u5F35\u6392\u6210\u4E00\u6392\u3002", loop: "\u6D77\u5831\u6AE5\u7A97\u3002\u4E09\u5F35\u6D77\u5831\u7684\u9806\u5E8F\u548C\u65B9\u5411\u2026\u2026" },
       name: "\u4F5C\u54C1\u6D77\u5831\u6AE5\u7A97",
       frames: ["frames/s5_a.webp", "frames/s5_b.webp"],
       still: "frames/s5.webp",
       src: "A 7:30\u20137:41",
       tour: "\u8D70\u5ECA\u6AE5\u7A97\u8CBC\u6EFF\u4F5C\u54C1\u6D77\u5831\u3002",
-      spots: [{ x: 16, y: 8, w: 52, h: 84, label: "\u6D77\u5831\u6AE5\u7A97", text: "\u4E09\u5F35\u5B8C\u6574\u7684\u6D77\u5831\uFF0C\u5F9E\u5DE6\u5230\u53F3\uFF1A\u5B87\u5B99\u96FB\u53F0\u3001\u7C89\u7D05\u982D\u9AEE\u5973\u5B69\u3001GO PLAYING DIMENSION\u3002\u8A18\u4F4F\u9806\u5E8F\u548C\u65B9\u5411\u30022025 \u5E74\u7CFB\u4E0A\u6709 8 \u4EF6\u4F5C\u54C1\u5165\u570D\u653E\u8996\u5927\u8CDE\u3002\uFF08\u5F85\u8001\u5E2B\u78BA\u8A8D\uFF1A\u6D77\u5831\u51FA\u8655\uFF09" }]
+      spots: [{ x: 16, y: 8, w: 52, h: 84, label: "\u6D77\u5831\u6AE5\u7A97", must: true, say: "\u6BCF\u5F35\u6D77\u5831\u90FD\u597D\u6709\u8CEA\u611F\uFF0C\u597D\u60F3\u505C\u4E0B\u4F86\u770B\u3002", text: "\u4E09\u5F35\u5B8C\u6574\u7684\u6D77\u5831\uFF0C\u5F9E\u5DE6\u5230\u53F3\uFF1A\u5B87\u5B99\u96FB\u53F0\u3001\u7C89\u7D05\u982D\u9AEE\u5973\u5B69\u3001GO PLAYING DIMENSION\u3002\u8A18\u4F4F\u9806\u5E8F\u548C\u65B9\u5411\u30022025 \u5E74\u7CFB\u4E0A\u6709 8 \u4EF6\u4F5C\u54C1\u5165\u570D\u653E\u8996\u5927\u8CDE\u3002\uFF08\u5F85\u8001\u5E2B\u78BA\u8A8D\uFF1A\u6D77\u5831\u51FA\u8655\uFF09" }]
     },
     {
       id: "S6",
+      narr: { tour: "\u8001\u5E2B\u7814\u7A76\u5BA4\u7684\u9580\u53E3\uFF0C\u4E0A\u9762\u6709\u540D\u724C\uFF0C\u4E0B\u9762\u639B\u8457\u5728\u5BA4\u724C\u3002", loop: "\u7814\u7A76\u5BA4\u9580\u53E3\u3002\u540D\u724C\u548C\u5728\u5BA4\u724C\uFF0C\u90FD\u9084\u662F\u539F\u6A23\u55CE\uFF1F" },
       name: "D0646 \u7814\u7A76\u5BA4",
       frames: ["frames/s6_a.webp", "frames/s6_b.webp"],
       still: "frames/s6.webp",
       src: "A 11:08\u201311:14",
       tour: "\u8001\u5E2B\u7814\u7A76\u5BA4\u7684\u9580\u53E3\u3002",
       spots: [
-        { x: 29, y: 2, w: 30, h: 12, label: "\u540D\u724C", text: "D0646 \u9673\u6176\u9D3B\u8001\u5E2B\uFF0C\u5C08\u9577\u96FB\u8166\u52D5\u756B\u8207\u52D5\u614B\u5F71\u50CF\uFF0C\u6559\u52D5\u614B\u5716\u50CF\u8A2D\u8A08\u3002" },
-        { x: 29, y: 80, w: 30, h: 17, label: "\u5728\u5BA4\u724C", text: "IN \u662F\u5728\u3001OUT \u662F\u4E0D\u5728\uFF0C\u627E\u8001\u5E2B\u524D\u5148\u770B\u4E00\u773C\u3002\u73FE\u5728\u4E09\u9846\u78C1\u9435\u5728\u5DE6\u908A\uFF0C\u7D05\u8272\u90A3\u9846\u5728\u53F3\u4E0A\u3002" }
+        { x: 29, y: 2, w: 30, h: 12, label: "\u540D\u724C", must: true, say: "D0646\uFF0C\u662F\u8001\u5E2B\u7684\u7814\u7A76\u5BA4\u3002", text: "D0646 \u9673\u6176\u9D3B\u8001\u5E2B\uFF0C\u5C08\u9577\u96FB\u8166\u52D5\u756B\u8207\u52D5\u614B\u5F71\u50CF\uFF0C\u6559\u52D5\u614B\u5716\u50CF\u8A2D\u8A08\u3002" },
+        { x: 29, y: 80, w: 30, h: 17, label: "\u5728\u5BA4\u724C", say: "IN \u662F\u5728\u3001OUT \u662F\u4E0D\u5728\uFF0C\u5148\u770B\u4E00\u773C\u518D\u6572\u9580\u3002", text: "IN \u662F\u5728\u3001OUT \u662F\u4E0D\u5728\uFF0C\u627E\u8001\u5E2B\u524D\u5148\u770B\u4E00\u773C\u3002\u73FE\u5728\u4E09\u9846\u78C1\u9435\u5728\u5DE6\u908A\uFF0C\u7D05\u8272\u90A3\u9846\u5728\u53F3\u4E0A\u3002" }
       ]
     },
     {
       id: "S7",
+      narr: { tour: "\u7E5E\u4E86\u4E00\u5708\uFF0C\u53C8\u56DE\u5230\u96FB\u68AF\u5EF3\u2026\u2026\u7B49\u7B49\uFF0C\u597D\u50CF\u9084\u6C92\u7D50\u675F\u3002", loop: "\u96FB\u68AF\u5EF3\u3002\u9019\u4E00\u5708\uFF0C\u6211\u6709\u770B\u6F0F\u4EC0\u9EBC\u55CE\uFF1F" },
       name: "\u96FB\u68AF\u5EF3",
       frames: ["frames/s7_a.webp", "frames/s7_b.webp"],
       still: "frames/s7.webp",
       src: "B 5:58\u20136:10",
       tour: "\u7E5E\u4E00\u5708\u53C8\u56DE\u5230\u96FB\u68AF\u5EF3\u3002\u5149\u7DDA\u548C\u6642\u9593\u7684\u8B8A\u5316\u4E0D\u662F\u7570\u5E38\uFF0C\u53EA\u770B\u6771\u897F\u6709\u6C92\u6709\u8B8A\u3002",
-      spots: [{ x: 40, y: 1, w: 12, h: 15, label: "\u6A13\u5C64\u6578\u5B57", text: "\u7246\u4E0A\u7684\u300C6\u300D\u3002\u5C0E\u89BD\u5708\u7D50\u675F\u5F8C\uFF0C\u771F\u6B63\u7684\u5FAA\u74B0\u624D\u958B\u59CB\uFF1A\u770B\u5230\u4E0D\u5C0D\u52C1\u5C31\u56DE\u982D\uFF0C\u6216\u76F4\u63A5\u9EDE\u51FA\u7570\u5E38\u7684\u4F4D\u7F6E\u3002" }]
+      spots: [{ x: 40, y: 1, w: 12, h: 15, label: "\u6A13\u5C64\u6578\u5B57", must: true, say: "\u53C8\u56DE\u5230\u96FB\u68AF\u5EF3\u4E86\uFF0C\u7246\u4E0A\u7684 6 \u597D\u5927\u3002", text: "\u7246\u4E0A\u7684\u300C6\u300D\u3002\u5C0E\u89BD\u5708\u7D50\u675F\u5F8C\uFF0C\u771F\u6B63\u7684\u5FAA\u74B0\u624D\u958B\u59CB\uFF1A\u770B\u5230\u4E0D\u5C0D\u52C1\u5C31\u56DE\u982D\uFF0C\u6216\u76F4\u63A5\u9EDE\u51FA\u7570\u5E38\u7684\u4F4D\u7F6E\u3002" }]
     }
   ];
   var ANOMALIES = [
@@ -704,6 +712,21 @@
     return { got: true, first: true, completed: !before && allCollected(st) };
   }
 
+  // exit6/story.mjs
+  var mustIndex = (station) => STATIONS[station].spots.findIndex((p) => p.must);
+  function narrFor(station, phase) {
+    const n = STATIONS[station] && STATIONS[station].narr;
+    if (!n) return null;
+    if (phase === "tour") return n.tour;
+    if (phase === "loop") return n.loop;
+    return null;
+  }
+  function spotAt(station, x, y) {
+    const spots = STATIONS[station].spots;
+    const k = spots.findIndex((p) => x >= p.x && x <= p.x + p.w && y >= p.y && y <= p.y + p.h);
+    return k < 0 ? null : k;
+  }
+
   // exit6/main.mjs
   var q = new URLSearchParams(location.search);
   var seed = q.has("seed") ? Number(q.get("seed")) : Date.now() & 4294967295;
@@ -734,7 +757,7 @@
   }
   var save = Object.assign({ dex: [], bestMs: null, bestMiss: null, clears: 0, cards: [] }, loadSave());
   var cardBook = createCards(save.cards);
-  var run = { t0: 0, mistakes: 0, precise: 0, misTaps: 0, toured: /* @__PURE__ */ new Set(), failStreak: 0 };
+  var run = { t0: 0, mistakes: 0, precise: 0, misTaps: 0, toured: /* @__PURE__ */ new Set(), failStreak: 0, seen: /* @__PURE__ */ new Set() };
   var hint = { t0: 0, mis: 0, stage: 0, on: false, timer: null };
   var quests = createQuests();
   var clues = createClues();
@@ -819,6 +842,26 @@
     clearTimeout(say.t);
     say.t = setTimeout(() => $("sub").classList.add("hidden"), ms);
   }
+  function narrate(text, ms = 5200) {
+    const n = $("narr");
+    if (!text) return;
+    n.textContent = text;
+    n.classList.remove("hidden", "in");
+    void n.offsetWidth;
+    n.classList.add("in");
+    clearTimeout(narrate.t);
+    narrate.t = setTimeout(() => n.classList.add("hidden"), ms);
+  }
+  function sayAbout(k, src) {
+    const sp = STATIONS[game.station].spots[k];
+    run.seen.add(`${game.station}:${k}`);
+    narrate(sp.say, 3600);
+    const c = cutout(`S${game.station}:${k}`, src, "c-egg");
+    if (c) {
+      requestAnimationFrame(() => c.classList.add("lift"));
+      setTimeout(() => c.remove(), 1300);
+    }
+  }
   function shake(big) {
     if (reduced) return;
     stage.classList.remove("shake-s", "shake-l");
@@ -896,7 +939,7 @@
     back.src = src;
   }
   var stopSrc = (st, an) => (an == null ? void 0 : an.still) || st.still;
-  var tourLeft = () => STATIONS[game.station].spots.filter((_, i) => !run.toured.has(`${game.station}:${i}`)).length;
+  var tourLeft = () => run.toured.has(`${game.station}:${mustIndex(game.station)}`) ? 0 : 1;
   function setButtons() {
     const off = busy || game.phase === "ending";
     $("btnBack").disabled = off;
@@ -952,6 +995,7 @@
     const curSrc = stopSrc(STATIONS[game.station], game.phase === "loop" ? anomalyAt(game, ANOMALIES) : null);
     if (game.phase === "tour") {
       STATIONS[game.station].spots.forEach((s, i) => {
+        if (i !== mustIndex(game.station)) return;
         const b = document.createElement("button");
         const seen = run.toured.has(`${game.station}:${i}`);
         b.className = "spot" + (seen ? " done" : "");
@@ -967,7 +1011,9 @@
           play("click");
           b.classList.add("done");
           cut == null ? void 0 : cut.classList.add("c-done");
-          $("tip").innerHTML = `<b>${s.label}</b>\u3000${pub(s.text)}`;
+          run.seen.add(`${game.station}:${i}`);
+          narrate(s.say, 4200);
+          $("tip").textContent = "\u770B\u5B8C\u4E86\uFF0C\u6309\u300C\u5F80\u524D\u300D\u7E7C\u7E8C\u8D70\u3002";
           if (s.action === "takeItems" && !quests.taken) {
             takeItems(quests);
             nbPulse();
@@ -1056,6 +1102,14 @@
     setButtons();
     updateCoach();
   }
+  function seenList() {
+    if (!run.seen.size) return `<li>\u9084\u6C92\u6709\u3002\u9EDE\u9EDE\u770B\u756B\u9762\u4E0A\u7684\u6771\u897F\u3002</li>`;
+    return [...run.seen].map((key) => {
+      const [st, k] = key.split(":").map(Number);
+      const sp = STATIONS[st].spots[k];
+      return `<li class="ok"><b>${sp.label}</b><br>${pub(sp.text)}</li>`;
+    }).join("");
+  }
   function cardGrid() {
     return TEACHERS.map((t) => {
       const c = cardBook.cards.find((x) => x.id === t.id);
@@ -1074,6 +1128,7 @@
     openSheet(`<button class="x" data-close aria-label="\u95DC\u9589\u624B\u5E33">\xD7</button><h3>\u624B\u5E33</h3><p class="clock">\u73FE\u5728 ${fmtHour(nowHour())}\uFF08${hourLabel(nowHour())}\uFF09</p>
     <h4>\u7CFB\u8FA6\u59D4\u8A17</h4><ul>${items}</ul>
     <h4>\u90B1\u8001\u5E2B\u7814\u7A76\u5BA4\u7684\u5BC6\u78BC\u3000${slots}\uFF08${clues.found.length}/${CLUES.length}\uFF09</h4><ul>${clueList}</ul>
+    <h4>\u770B\u904E\u7684\u6771\u897F\uFF08${run.seen.size}\uFF09</h4><ul>${seenList()}</ul>
     <h4>\u8001\u5E2B\u7C3D\u540D\u5361\uFF08${cardBook.cards.length}/${TEACHERS.length}\uFF09</h4><div class="cardgrid">${cardGrid()}</div>
     ${allCollected(cardBook) ? `<button class="ghost" data-ending>\u91CD\u770B\u96B1\u85CF\u7D50\u5C40</button>` : `<p class="dim">\u5FAA\u74B0\u5708\u7D93\u904E\u6709\u8001\u5E2B\u7684\u7AD9\uFF0C\u6309\u53F3\u4E0B\u89D2\u300C\u9080\u8ACB\u300D\u6311\u6230\u5C0F\u904A\u6232\u3002</p>`}
     <h4>\u7D00\u5FF5\u7AE0</h4><ul>${stampList}</ul><button class="go" data-close>\u95DC\u9589</button>`);
@@ -1119,7 +1174,7 @@
     $("where").textContent = game.phase === "tour" ? `\u5C0E\u89BD\u5708\u30FB${st.name}` : `\u7B2C ${game.lap} \u5708\u30FB${st.name}`;
     const tip = $("tip");
     if (game.phase === "tour") {
-      tip.textContent = `${st.tour}\uFF08\u9084\u6709 ${tourLeft()} \u500B\u5730\u65B9\u6C92\u770B\uFF09`;
+      tip.textContent = tourLeft() ? "\u9EDE\u4E00\u4E0B\u767C\u4EAE\u7684\u5730\u65B9\u770B\u770B\u3002" : "\u770B\u5B8C\u4E86\uFF0C\u6309\u300C\u5F80\u524D\u300D\u7E7C\u7E8C\u8D70\u3002";
       tip.classList.remove("hidden");
     } else if (!tip.dataset.keep) tip.classList.add("hidden");
     delete tip.dataset.keep;
@@ -1144,6 +1199,7 @@
     setButtons();
     stopHint();
     coachAt(null);
+    narrate(narrFor(game.station, game.phase), 5200);
     $("spots").innerHTML = "";
     $("cuts").innerHTML = "";
     let i = 0, timer = null, ended = false;
@@ -1714,6 +1770,11 @@
     const hit = an && an.hits.some((h) => px >= h.x && px <= h.x + h.w && py >= h.y && py <= h.y + h.h);
     if (hit) {
       react(step(game, "back"), true);
+      return;
+    }
+    const k = spotAt(game.station, px, py);
+    if (k !== null) {
+      sayAbout(k, stopSrc(STATIONS[game.station], an));
       return;
     }
     run.misTaps++;

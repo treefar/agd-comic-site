@@ -2,46 +2,47 @@
 // frames：走到這一站的兩張中間格；still：停站圖。全部是 Codex 依實拍重繪的漫畫風（art-src/exit6），使用者 2026-10-15 於對話確認風格
 // 原始實拍影片：桌面「系網企畫」A＝20261015_134951.mp4、B＝20261015_140325.mp4，src 記原片秒數
 // 座標一律是畫面百分比 { x, y, w, h }（左上角＋寬高），2026-10-15 依停站圖疊格線量測
-// spots：可以點的調查點（導覽圈每站都要點完才能往前）
+// spots：可以點的物件。must＝導覽圈要點的那一個（每站 1 個）；say＝主角一句話；text＝系上知識（收進手帳）
+// narr：到站旁白（主角是剛入學的大一新生），tour 導覽圈、loop 循環圈
 
 export const STATIONS = [
-  { id: "S0", name: "電梯內", frames: ["frames/s0_a.webp", "frames/s0_b.webp"], still: "frames/s0.webp", src: "B 0:09–0:13",
+  { id: "S0", narr: { tour: "開學第一天，我按下 6 樓。聽說動遊系的大家都在這一層。", loop: "……又是電梯。我是不是一直在繞圈？" }, name: "電梯內", frames: ["frames/s0_a.webp", "frames/s0_b.webp"], still: "frames/s0.webp", src: "B 0:09–0:13",
     tour: "設計大樓 D 棟，按下 6 樓。點一下發亮的地方調查。",
-    spots: [{ x: 82, y: 3, w: 9, h: 27, label: "樓層顯示", text: "顯示 6：這裡是設計大樓 D 棟六樓。動遊系的系辦、很多間實驗室和老師研究室都在這一層。" }] },
-  { id: "S1", name: "系辦門口", frames: ["frames/s1_a.webp", "frames/s1_b.webp"], still: "frames/s1.webp", src: "B 0:13–0:19",
+    spots: [{ x: 82, y: 3, w: 9, h: 27, label: "樓層顯示", must: true, say: "6 樓，到了。系辦就在這一層。", text: "顯示 6：這裡是設計大樓 D 棟六樓。動遊系的系辦、很多間實驗室和老師研究室都在這一層。" }] },
+  { id: "S1", narr: { tour: "電梯門一開，正對面就是系辦。門上貼著告示，兩邊有海報，地上鋪著彩繪地墊。", loop: "系辦門口。告示、海報、地墊……跟剛剛一樣嗎？" }, name: "系辦門口", frames: ["frames/s1_a.webp", "frames/s1_b.webp"], still: "frames/s1.webp", src: "B 0:13–0:19",
     tour: "電梯一出來的正前方就是系辦。把告示、海報、地墊都點一遍記起來。",
     spots: [
-      { x: 3, y: 13, w: 24, h: 22, label: "系名牆", text: "動畫與遊戲設計系（Department of Animation and Game Design, STU）。系辦就在電梯正前方，新生有問題先來這裡問。" },
-      { x: 54, y: 24, w: 9, h: 23, label: "門上告示", text: "「請勿回頭」。記住它寫什麼。" },
-      { x: 27, y: 16, w: 12, h: 30, label: "左側海報", text: "門左邊是一張藍色海報。記住它在左邊。" },
-      { x: 0, y: 76, w: 100, h: 24, label: "彩繪地墊", text: "門前的彩繪地墊，記住人物排列的方向。（待老師補充：地墊作者）" },
-      { x: 53, y: 52, w: 10, h: 16, label: "系辦委託", action: "takeItems", text: "系辦拜託你送 3 件東西，已經放進手帳。每件只寫了用途，要自己想想該送到六樓哪裡。" },
-      { x: 66, y: 14, w: 21, h: 30, label: "右側海報", text: "門右邊是兩張彩色海報。記住它們在右邊。" },
+      { x: 3, y: 13, w: 24, h: 22, label: "系名牆", say: "動畫與遊戲設計系……以後四年就是這裡了。", text: "動畫與遊戲設計系（Department of Animation and Game Design, STU）。系辦就在電梯正前方，新生有問題先來這裡問。" },
+      { x: 54, y: 24, w: 9, h: 23, label: "門上告示", say: "「請勿回頭」？貼在系辦門上有點神祕。", text: "「請勿回頭」。記住它寫什麼。" },
+      { x: 27, y: 16, w: 12, h: 30, label: "左側海報", say: "左邊這張藍色海報，構圖好有氣勢。", text: "門左邊是一張藍色海報。記住它在左邊。" },
+      { x: 0, y: 76, w: 100, h: 24, label: "彩繪地墊", say: "好可愛的繪圖，連地墊都是作品。", text: "門前的彩繪地墊，記住人物排列的方向。（待老師補充：地墊作者）" },
+      { x: 53, y: 52, w: 10, h: 16, label: "系辦委託", must: true, say: "系辦塞給我三樣東西，幫忙送一下好了。", action: "takeItems", text: "系辦拜託你送 3 件東西，已經放進手帳。每件只寫了用途，要自己想想該送到六樓哪裡。" },
+      { x: 66, y: 14, w: 21, h: 30, label: "右側海報", say: "右邊兩張彩色海報，是學長姐畫的吧？", text: "門右邊是兩張彩色海報。記住它們在右邊。" },
     ] },
-  { id: "S2", name: "天橋地板彩繪", frames: ["frames/s2_a.webp", "frames/s2_b.webp"], still: "frames/s2.webp", src: "B 0:30–0:40",
+  { id: "S2", narr: { tour: "穿過休息區，是一條地板畫滿彩繪的天橋。", loop: "天橋到了。地板上的畫，有什麼不一樣嗎？" }, name: "天橋地板彩繪", frames: ["frames/s2_a.webp", "frames/s2_b.webp"], still: "frames/s2.webp", src: "B 0:30–0:40",
     tour: "穿過休息區就是天橋。",
-    spots: [{ x: 3, y: 56, w: 36, h: 24, label: "地板彩繪", text: "天橋上的一大片地板彩繪，上面什麼都沒放。（待老師補充：彩繪由來）" }] },
-  { id: "S3", name: "中庭牌樓", frames: ["frames/s3_a.webp", "frames/s3_b.webp"], still: "frames/s3.webp", src: "B 3:30–3:39",
+    spots: [{ x: 3, y: 56, w: 36, h: 24, label: "地板彩繪", must: true, say: "整片地板都是畫，踩上去有點捨不得。", text: "天橋上的一大片地板彩繪，上面什麼都沒放。（待老師補充：彩繪由來）" }] },
+  { id: "S3", narr: { tour: "玻璃天棚下面，立著一座木頭牌樓，下面是空的通道。", loop: "牌樓還在。下面的通道還是空的嗎？" }, name: "中庭牌樓", frames: ["frames/s3_a.webp", "frames/s3_b.webp"], still: "frames/s3.webp", src: "B 3:30–3:39",
     tour: "玻璃天棚下的木造牌樓。",
-    spots: [{ x: 31, y: 0, w: 32, h: 80, label: "木造牌樓", text: "六樓最好認的地標，牌樓下面是空的通道。在六樓迷路，就先找它。（待老師補充：牌樓由來）" }] },
-  { id: "S4", name: "D0604 電繪實驗室", frames: ["frames/s4_a.webp", "frames/s4_b.webp"], still: "frames/s4.webp", src: "A 7:16–7:26",
+    spots: [{ x: 31, y: 0, w: 32, h: 80, label: "木造牌樓", must: true, say: "這座木牌樓好醒目，迷路就找它。", text: "六樓最好認的地標，牌樓下面是空的通道。在六樓迷路，就先找它。（待老師補充：牌樓由來）" }] },
+  { id: "S4", narr: { tour: "走廊上的實驗室，門牌寫著 D0604，旁邊是消防栓。", loop: "實驗室門口。門牌和門上，有沒有多了什麼？" }, name: "D0604 電繪實驗室", frames: ["frames/s4_a.webp", "frames/s4_b.webp"], still: "frames/s4.webp", src: "A 7:16–7:26",
     tour: "走廊上的實驗室門口。",
     spots: [
-      { x: 42, y: 15, w: 12, h: 12, label: "門號", text: "D0604＝D 棟、06 樓、04 號房。這間是電繪實驗室：繪圖板教室，2D 角色、場景、UI 都在這裡練。" },
-      { x: 72, y: 30, w: 28, h: 70, label: "消防栓", text: "門旁邊是消防栓。門上除了門號什麼都沒貼。" },
+      { x: 42, y: 15, w: 12, h: 12, label: "門號", must: true, say: "D0604……原來門牌是這樣看的。", text: "D0604＝D 棟、06 樓、04 號房。這間是電繪實驗室：繪圖板教室，2D 角色、場景、UI 都在這裡練。" },
+      { x: 72, y: 30, w: 28, h: 70, label: "消防栓", say: "消防栓。嗯，很正常的消防栓。", text: "門旁邊是消防栓。門上除了門號什麼都沒貼。" },
     ] },
-  { id: "S5", name: "作品海報櫥窗", frames: ["frames/s5_a.webp", "frames/s5_b.webp"], still: "frames/s5.webp", src: "A 7:30–7:41",
+  { id: "S5", narr: { tour: "牆上的櫥窗貼滿作品海報，三張排成一排。", loop: "海報櫥窗。三張海報的順序和方向……" }, name: "作品海報櫥窗", frames: ["frames/s5_a.webp", "frames/s5_b.webp"], still: "frames/s5.webp", src: "A 7:30–7:41",
     tour: "走廊櫥窗貼滿作品海報。",
-    spots: [{ x: 16, y: 8, w: 52, h: 84, label: "海報櫥窗", text: "三張完整的海報，從左到右：宇宙電台、粉紅頭髮女孩、GO PLAYING DIMENSION。記住順序和方向。2025 年系上有 8 件作品入圍放視大賞。（待老師確認：海報出處）" }] },
-  { id: "S6", name: "D0646 研究室", frames: ["frames/s6_a.webp", "frames/s6_b.webp"], still: "frames/s6.webp", src: "A 11:08–11:14",
+    spots: [{ x: 16, y: 8, w: 52, h: 84, label: "海報櫥窗", must: true, say: "每張海報都好有質感，好想停下來看。", text: "三張完整的海報，從左到右：宇宙電台、粉紅頭髮女孩、GO PLAYING DIMENSION。記住順序和方向。2025 年系上有 8 件作品入圍放視大賞。（待老師確認：海報出處）" }] },
+  { id: "S6", narr: { tour: "老師研究室的門口，上面有名牌，下面掛著在室牌。", loop: "研究室門口。名牌和在室牌，都還是原樣嗎？" }, name: "D0646 研究室", frames: ["frames/s6_a.webp", "frames/s6_b.webp"], still: "frames/s6.webp", src: "A 11:08–11:14",
     tour: "老師研究室的門口。",
     spots: [
-      { x: 29, y: 2, w: 30, h: 12, label: "名牌", text: "D0646 陳慶鴻老師，專長電腦動畫與動態影像，教動態圖像設計。" },
-      { x: 29, y: 80, w: 30, h: 17, label: "在室牌", text: "IN 是在、OUT 是不在，找老師前先看一眼。現在三顆磁鐵在左邊，紅色那顆在右上。" },
+      { x: 29, y: 2, w: 30, h: 12, label: "名牌", must: true, say: "D0646，是老師的研究室。", text: "D0646 陳慶鴻老師，專長電腦動畫與動態影像，教動態圖像設計。" },
+      { x: 29, y: 80, w: 30, h: 17, label: "在室牌", say: "IN 是在、OUT 是不在，先看一眼再敲門。", text: "IN 是在、OUT 是不在，找老師前先看一眼。現在三顆磁鐵在左邊，紅色那顆在右上。" },
     ] },
-  { id: "S7", name: "電梯廳", frames: ["frames/s7_a.webp", "frames/s7_b.webp"], still: "frames/s7.webp", src: "B 5:58–6:10",
+  { id: "S7", narr: { tour: "繞了一圈，又回到電梯廳……等等，好像還沒結束。", loop: "電梯廳。這一圈，我有看漏什麼嗎？" }, name: "電梯廳", frames: ["frames/s7_a.webp", "frames/s7_b.webp"], still: "frames/s7.webp", src: "B 5:58–6:10",
     tour: "繞一圈又回到電梯廳。光線和時間的變化不是異常，只看東西有沒有變。",
-    spots: [{ x: 40, y: 1, w: 12, h: 15, label: "樓層數字", text: "牆上的「6」。導覽圈結束後，真正的循環才開始：看到不對勁就回頭，或直接點出異常的位置。" }] },
+    spots: [{ x: 40, y: 1, w: 12, h: 15, label: "樓層數字", must: true, say: "又回到電梯廳了，牆上的 6 好大。", text: "牆上的「6」。導覽圈結束後，真正的循環才開始：看到不對勁就回頭，或直接點出異常的位置。" }] },
 ];
 
 // hits：點擊感應範圍（可多塊）；card：圖鑑卡

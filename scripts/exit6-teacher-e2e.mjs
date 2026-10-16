@@ -93,6 +93,28 @@ try {
     $("sheet").querySelector("[data-ending]")?.click(); await W(600); return [n, $("sheet").innerText.slice(0,60), [...$("sheet").querySelectorAll("a")].map(a=>a.getAttribute("href"))];`);
   await shot("4-ending");
   ok("集滿 5 張：手帳 5/5 並能打開隱藏結局", end && end[0] === "老師簽名卡（5/5）" && /隱藏結局/.test(end[1]), JSON.stringify(end));
+  // 主角旁白與第一輪減量（2026-10-16）：重新開局，S0 旁白 → 點必點物件主角說一句 → S1 只亮 1 個 → 循環圈點彩蛋
+  await ev(`localStorage.removeItem("exit6-save-v1"); return 1;`);
+  await send("Emulation.setDeviceMetricsOverride", { width: 1280, height: 760, deviceScaleFactor: 1, mobile: false });
+  await send("Page.navigate", { url: BASE }); await sleep(2000);
+  const st = await ev(`${H} $("go").click(); await W(800); const n0=$("narr").textContent; await W(2000);
+    document.querySelector("#spots .spot:not(.done)").click(); await W(300); const say0=$("narr").textContent;
+    $("btnFwd").click(); await W(1200); const n1=$("narr").textContent; await W(1500);
+    const spots1=document.querySelectorAll("#spots .spot:not(.deliver):not(.clue)").length; return [n0, say0, n1, spots1];`);
+  await shot("6-narr-s1");
+  ok("到站旁白：電梯與系辦門口各有主角內心話", st && /6 樓/.test(st[0]) && /系辦/.test(st[2]), JSON.stringify(st && [st[0], st[2]]));
+  ok("點必點物件：主角說一句", st && st[1] === "6 樓，到了。系辦就在這一層。", st && st[1]);
+  ok("第一輪系辦門口只亮 1 個物件", st && st[3] === 1, st && String(st[3]));
+  const egg = await ev(`${H} document.querySelector("#spots .spot:not(.done)").click(); await W(300);
+    for (let k=0;k<10;k++){ for (const b of document.querySelectorAll('#spots .spot:not(.done):not(.deliver):not(.clue)')) { b.click(); await W(80); }
+      closeCard(); if ($("where").textContent.startsWith("第 1 圈")) break; $("btnFwd").click(); await W(2500); }
+    $("btnFwd").click(); await W(2600); closeCard();
+    const r=$("stage").getBoundingClientRect(); const x=r.left+r.width*0.33, y=r.top+r.height*0.31;
+    document.elementFromPoint(x,y).dispatchEvent(new MouseEvent("click",{bubbles:true,clientX:x,clientY:y})); await W(300);
+    return [$("where").textContent, $("narr").textContent, $("narr").classList.contains("hidden")];`);
+  await shot("7-egg");
+  ok("循環圈點系辦門口左側海報：主角說一句（彩蛋）", egg && /系辦門口/.test(egg[0]) && egg[1] === "左邊這張藍色海報，構圖好有氣勢。" && !egg[2], JSON.stringify(egg));
+
   // 手機直拿：手帳卡冊不超出畫面
   await send("Emulation.setDeviceMetricsOverride", { width: 375, height: 812, deviceScaleFactor: 2, mobile: true });
   const mob = await ev(`${H} $("sheet").querySelector("[data-close]")?.click(); await W(300); $("nbBtn").click(); await W(500);
