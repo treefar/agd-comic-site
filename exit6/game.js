@@ -623,6 +623,87 @@
     return anomalyHere ? { kind: "hint", stage: Math.min(3, stageNow + 1) } : { kind: "clear" };
   }
 
+  // exit6/teachers.mjs
+  var THREE_URL = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
+  var TEACHERS = [
+    {
+      id: "book",
+      mg: "mg-book",
+      station: 4,
+      title: "\u7E6A\u672C\u8001\u5E2B",
+      name: null,
+      skill: "\u7E6A\u672C\u8207\u89D2\u8272\u9020\u578B",
+      invite: "\u96FB\u7E6A\u5BE6\u9A57\u5BA4\u88E1\u6709\u4EBA\u5728\u756B\u89D2\u8272\u2026\u2026\u300C\u8981\u4E0D\u8981\u5E6B\u6211\u7684\u89D2\u8272\u627E\u914D\u4EF6\uFF1F\u300D",
+      quote: "\u526A\u5F71\u4E00\u773C\u8A8D\u5F97\u51FA\u4F86\uFF0C\u89D2\u8272\u5C31\u6210\u529F\u4E00\u534A\u4E86\u3002",
+      card: "frames/card_book.webp"
+    },
+    {
+      id: "type",
+      mg: "mg-type",
+      station: 5,
+      title: "\u8996\u50B3\u8001\u5E2B",
+      name: null,
+      skill: "\u8996\u89BA\u50B3\u9054\u8A2D\u8A08",
+      invite: "\u6D77\u5831\u6AE5\u7A97\u524D\u6709\u4EBA\u5728\u6311\u5B57\u578B\u2026\u2026\u300C\u4F60\u89BA\u5F97\u54EA\u7A2E\u5B57\u6700\u6709\u500B\u6027\uFF1F\u300D",
+      quote: "\u5B57\u9AD4\u4E5F\u6709\u500B\u6027\uFF0C\u6311\u5C0D\u5B57\uFF0C\u8A0A\u606F\u81EA\u5DF1\u6703\u8AAA\u8A71\u3002",
+      card: "frames/card_type.webp"
+    },
+    {
+      id: "anim",
+      mg: "mg-anim",
+      station: 6,
+      title: "\u52D5\u756B\u8001\u5E2B",
+      name: null,
+      skill: "\u96FB\u8166\u52D5\u756B",
+      invite: "D0646 \u7684\u9580\u958B\u4E86\u4E00\u689D\u7E2B\u2026\u2026\u300C\u4F86\u8A66\u8A66\u6642\u9593\u66F2\u7DDA\uFF0C\u52D5\u756B\u7684\u5FEB\u6162\u90FD\u5728\u9019\u88E1\u3002\u300D",
+      quote: "\u7DE9\u5165\u7DE9\u51FA\uFF0C\u52D5\u4F5C\u5C31\u6709\u4E86\u91CD\u91CF\u3002",
+      card: "frames/card_anim.webp"
+    },
+    {
+      id: "3d",
+      mg: "mg-3d",
+      station: 3,
+      title: "3D \u8001\u5E2B",
+      name: null,
+      skill: "3D \u89D2\u8272\u8207 3D \u5217\u5370",
+      invite: "\u724C\u6A13\u4E0B\u64FA\u8457\u4E00\u53F0 3D \u5370\u8868\u6A5F\u2026\u2026\u300C\u96F6\u4EF6\u65B9\u5411\u64FA\u5C0D\uFF0C\u624D\u5370\u5F97\u51FA\u4F86\u5594\u3002\u300D",
+      quote: "\u5148\u60F3\u6E05\u695A\u8EF8\u5411\uFF0C3D \u4E16\u754C\u5C31\u4E0D\u6703\u8DDF\u4F60\u4F5C\u5C0D\u3002",
+      card: "frames/card_3d.webp"
+    },
+    {
+      id: "code",
+      mg: "mg-code",
+      station: 7,
+      title: "\u7A0B\u5F0F\u8001\u5E2B",
+      name: null,
+      skill: "Unity\uFF0F\u7A0B\u5F0F",
+      invite: "\u96FB\u68AF\u5EF3\u7684\u7B46\u96FB\u9084\u958B\u8457\u2026\u2026\u300C\u5E6B\u6211\u628A\u8CC7\u6599\u6D41\u63A5\u5230 Goal \u597D\u55CE\uFF1F\u300D",
+      quote: "\u5148\u60F3\u597D\u6D41\u7A0B\u518D\u52D5\u624B\uFF0C\u6BD4\u4E8B\u5F8C\u6293\u87F2\u7701\u6642\u9593\u3002",
+      card: "frames/card_code.webp"
+    }
+  ];
+  var displayName = (t) => t.name || t.title;
+  var scriptsFor = (t) => [...t.mg === "mg-3d" ? [THREE_URL] : [], `minigames/${t.mg}/rules.js`, `minigames/${t.mg}/game.js`];
+  var teacherAt = (station, phase) => phase === "loop" ? TEACHERS.find((t) => t.station === station) || null : null;
+  function createCards(saved) {
+    const ok = Array.isArray(saved) ? saved.filter((c) => c && TEACHERS.some((t) => t.id === c.id)) : [];
+    return { cards: ok.map((c) => ({ id: c.id, best: Number(c.best) || 0 })) };
+  }
+  var allCollected = (st) => TEACHERS.every((t) => st.cards.some((c) => c.id === t.id));
+  function award(st, id, result) {
+    const t = TEACHERS.find((x) => x.id === id);
+    if (!t || !result || !result.win) return { got: false, first: false, completed: false };
+    const before = allCollected(st);
+    const score = Number(result.score) || 0;
+    const have = st.cards.find((c) => c.id === id);
+    if (have) {
+      have.best = Math.max(have.best, score);
+      return { got: true, first: false, completed: false };
+    }
+    st.cards.push({ id, best: score });
+    return { got: true, first: true, completed: !before && allCollected(st) };
+  }
+
   // exit6/main.mjs
   var q = new URLSearchParams(location.search);
   var seed = q.has("seed") ? Number(q.get("seed")) : Date.now() & 4294967295;
@@ -651,7 +732,8 @@
     } catch {
     }
   }
-  var save = Object.assign({ dex: [], bestMs: null, bestMiss: null, clears: 0 }, loadSave());
+  var save = Object.assign({ dex: [], bestMs: null, bestMiss: null, clears: 0, cards: [] }, loadSave());
+  var cardBook = createCards(save.cards);
   var run = { t0: 0, mistakes: 0, precise: 0, misTaps: 0, toured: /* @__PURE__ */ new Set(), failStreak: 0 };
   var hint = { t0: 0, mis: 0, stage: 0, on: false, timer: null };
   var quests = createQuests();
@@ -941,7 +1023,14 @@
     }
     renderBranch();
   }
+  function renderInvite() {
+    const t = teacherAt(game.station, game.phase);
+    const b = $("invite");
+    b.classList.toggle("hidden", !t);
+    if (t) b.innerHTML = `${cardBook.cards.some((c) => c.id === t.id) ? "\u2714 " : ""}${displayName(t)}\u7684\u9080\u8ACB`;
+  }
   function renderBranch() {
+    renderInvite();
     $("branch").classList.toggle("hidden", !(game.phase === "loop" && game.station === 6 && allFound(clues)));
     $("branch").textContent = clues.opened ? "\u9032\u5165 D0647 \u2192" : "\u5F80\u8D70\u5ECA\u6DF1\u8655 \u2192";
   }
@@ -958,14 +1047,23 @@
     s.classList.remove("hidden");
     busy = true;
     setButtons();
+    coachAt(null);
     s.querySelectorAll("[data-close]").forEach((b) => b.onclick = closeSheet);
   }
   function closeSheet() {
     $("sheet").classList.add("hidden");
     busy = false;
     setButtons();
+    updateCoach();
+  }
+  function cardGrid() {
+    return TEACHERS.map((t) => {
+      const c = cardBook.cards.find((x) => x.id === t.id);
+      return c ? `<figure class="mini"><img src="${t.card}" alt=""><figcaption><b>${displayName(t)}</b>${c.best} \u5206</figcaption></figure>` : `<figure class="mini lock"><span>\uFF1F</span><figcaption><b>${t.skill}</b>\u672A\u53D6\u5F97</figcaption></figure>`;
+    }).join("");
   }
   function openNotebook() {
+    var _a;
     if (!$("start").classList.contains("hidden") || walking) return;
     play("click");
     const items = quests.taken ? ITEMS.map((i) => `<li class="${quests.delivered.includes(i.id) ? "ok" : ""}"><b>${i.name}</b><br>${quests.delivered.includes(i.id) ? "\u5DF2\u9001\u9054" : i.hint}</li>`).join("") : `<li>\u9084\u6C92\u6709\u59D4\u8A17\u3002\u5C0E\u89BD\u5708\u7D93\u904E\u7CFB\u8FA6\u9580\u53E3\u6642\u770B\u770B\u3002</li>`;
@@ -976,7 +1074,13 @@
     openSheet(`<button class="x" data-close aria-label="\u95DC\u9589\u624B\u5E33">\xD7</button><h3>\u624B\u5E33</h3><p class="clock">\u73FE\u5728 ${fmtHour(nowHour())}\uFF08${hourLabel(nowHour())}\uFF09</p>
     <h4>\u7CFB\u8FA6\u59D4\u8A17</h4><ul>${items}</ul>
     <h4>\u90B1\u8001\u5E2B\u7814\u7A76\u5BA4\u7684\u5BC6\u78BC\u3000${slots}\uFF08${clues.found.length}/${CLUES.length}\uFF09</h4><ul>${clueList}</ul>
+    <h4>\u8001\u5E2B\u7C3D\u540D\u5361\uFF08${cardBook.cards.length}/${TEACHERS.length}\uFF09</h4><div class="cardgrid">${cardGrid()}</div>
+    ${allCollected(cardBook) ? `<button class="ghost" data-ending>\u91CD\u770B\u96B1\u85CF\u7D50\u5C40</button>` : `<p class="dim">\u5FAA\u74B0\u5708\u7D93\u904E\u6709\u8001\u5E2B\u7684\u7AD9\uFF0C\u6309\u53F3\u4E0B\u89D2\u300C\u9080\u8ACB\u300D\u6311\u6230\u5C0F\u904A\u6232\u3002</p>`}
     <h4>\u7D00\u5FF5\u7AE0</h4><ul>${stampList}</ul><button class="go" data-close>\u95DC\u9589</button>`);
+    (_a = $("sheet").querySelector("[data-ending]")) == null ? void 0 : _a.addEventListener("click", () => {
+      closeSheet();
+      hiddenEnding();
+    });
   }
   function openDeliver(target) {
     play("click");
@@ -1379,6 +1483,116 @@
       clearInterval(hint.timer);
     }
   }
+  var mgScripts = {};
+  function loadScript(src) {
+    if (!mgScripts[src]) mgScripts[src] = new Promise((ok, ng) => {
+      const el = document.createElement("script");
+      el.src = src;
+      el.onload = ok;
+      el.onerror = () => {
+        delete mgScripts[src];
+        ng(new Error(src));
+      };
+      document.head.appendChild(el);
+    });
+    return mgScripts[src];
+  }
+  var mgHandle = null;
+  var mgTeacher = null;
+  function openInvite() {
+    const t = teacherAt(game.station, game.phase);
+    if (!t || busy) return;
+    play("click");
+    stopHint();
+    const have = cardBook.cards.find((c) => c.id === t.id);
+    openSheet(`<button class="x" data-close aria-label="\u95DC\u9589">\xD7</button><h3>${displayName(t)}\u7684\u9080\u8ACB</h3>
+    <p>${t.invite}</p><p class="mgskill">\u5C08\u9577\uFF1A${t.skill}\u30FB60 \u79D2\u5C0F\u904A\u6232</p>
+    ${have ? `<p class="mgbest">\u5DF2\u62FF\u5230\u7C3D\u540D\u5361\uFF0C\u6700\u9AD8\u5206 ${have.best}\u3002\u518D\u73A9\u53EF\u4EE5\u5237\u65B0\u7D00\u9304\u3002</p>` : `<p class="mgbest">\u8D0F\u4E86\u53EF\u4EE5\u62FF\u5230\u300C${displayName(t)}\u300D\u7684\u7C3D\u540D\u5361\uFF0C\u96C6\u6EFF ${TEACHERS.length} \u5F35\u6709\u9A5A\u559C\u3002</p>`}
+    <div class="row"><button class="go" data-mg>\u63A5\u53D7\u6311\u6230</button><button class="ghost" data-close>\u5148\u4E0D\u8981</button></div>`);
+    $("sheet").querySelector("[data-mg]").onclick = () => startMinigame(t);
+  }
+  async function startMinigame(t) {
+    closeSheet();
+    deanImg.classList.remove("in");
+    deanImg.classList.add("out");
+    $("sub").classList.add("hidden");
+    busy = true;
+    setButtons();
+    mgTeacher = t;
+    $("mgTitle").textContent = `${displayName(t)}\u30FB${t.skill}`;
+    $("mgResult").classList.add("hidden");
+    $("mgRoot").innerHTML = `<p class="mgload">\u8F09\u5165\u4E2D\u2026\u2026</p>`;
+    $("mg").classList.remove("hidden");
+    play("sting", 0.4);
+    try {
+      for (const src of scriptsFor(t)) await loadScript(src);
+    } catch {
+      $("mgRoot").innerHTML = `<p class="mgload">\u9019\u500B\u5C0F\u904A\u6232\u8F09\u5165\u5931\u6557\uFF083D \u95DC\u5361\u9700\u8981\u9023\u7DB2\uFF09\u3002\u6309\u53F3\u4E0A\u89D2 \xD7 \u56DE\u8D70\u5ECA\u3002</p>`;
+      return;
+    }
+    if (mgTeacher !== t) return;
+    $("mgRoot").innerHTML = "";
+    let ended = false;
+    mgHandle = window.EXIT6_MG[t.mg].mount($("mgRoot"), { rng, onEnd: (r) => {
+      if (!ended) {
+        ended = true;
+        setTimeout(() => minigameEnd(t, r), 2600);
+      }
+    } });
+  }
+  function minigameEnd(t, r) {
+    var _a;
+    if (mgTeacher !== t) return;
+    const res = award(cardBook, t.id, r);
+    if (res.got) {
+      save.cards = cardBook.cards;
+      writeSave(save);
+      nbPulse();
+    }
+    const best = (_a = cardBook.cards.find((c) => c.id === t.id)) == null ? void 0 : _a.best;
+    const box = $("mgResult");
+    box.innerHTML = r && r.win ? `<div class="sigcard"><img src="${t.card}" alt=""><div><small>${res.first ? "\u7372\u5F97\u7C3D\u540D\u5361\uFF01" : "\u518D\u6B21\u6311\u6230\u6210\u529F"}</small><b>${displayName(t)}</b><span>${t.skill}</span><q>${t.quote}</q><em>\u672C\u6B21 ${r.score} \u5206\u30FB\u6700\u9AD8 ${best}</em></div></div>
+       <div class="row"><button class="go" data-back>${res.completed ? "\u96C6\u6EFF\u4E86\uFF01\u56DE\u8D70\u5ECA\u770B\u770B" : "\u6536\u9032\u624B\u5E33\uFF0C\u56DE\u8D70\u5ECA"}</button></div>` : `<h3>\u5DEE\u4E00\u9EDE\uFF01</h3><p>${t.skill}\u5C31\u662F\u8981\u591A\u7DF4\u5E7E\u6B21\u3002\u672C\u6B21 ${r ? r.score : 0} \u5206\u3002</p>
+       <div class="row"><button class="go" data-retry>\u518D\u8A66\u4E00\u6B21</button><button class="ghost" data-back>\u56DE\u5230\u8D70\u5ECA</button></div>`;
+    box.classList.remove("hidden");
+    if (r && r.win) {
+      play(res.first ? "clear" : "correct");
+      burst(res.first ? "\u7C3D\u540D\u5361 GET\uFF01" : "\u5237\u65B0\u7D00\u9304", true);
+    }
+    box.querySelector("[data-back]").onclick = () => leaveMinigame(res.completed);
+    const rt = box.querySelector("[data-retry]");
+    if (rt) rt.onclick = () => {
+      mgHandle == null ? void 0 : mgHandle.destroy();
+      mgHandle = null;
+      startMinigame(t);
+    };
+  }
+  function leaveMinigame(completed) {
+    try {
+      mgHandle == null ? void 0 : mgHandle.destroy();
+    } catch {
+    }
+    mgHandle = null;
+    mgTeacher = null;
+    $("mg").classList.add("hidden");
+    $("mgRoot").innerHTML = "";
+    busy = false;
+    show(stopSrc(STATIONS[game.station], anomalyAt(game, ANOMALIES)), false);
+    renderStop();
+    setButtons();
+    if (completed) setTimeout(hiddenEnding, 500);
+  }
+  function hiddenEnding() {
+    dean("welcome", null, 6e3);
+    sayText("\u4E94\u4F4D\u8001\u5E2B\u7684\u7C3D\u540D\u90FD\u5230\u624B\u4E86\uFF01\u4F60\u5DF2\u7D93\u628A\u52D5\u904A\u7CFB\u901B\u900F\u900F\u5566\u3002", 6e3);
+    save.allCardsSeen = true;
+    writeSave(save);
+    openSheet(`<button class="x" data-close aria-label="\u95DC\u9589">\xD7</button><h3>\u96B1\u85CF\u7D50\u5C40\uFF1A\u516D\u6A13\u7684\u901A\u884C\u8B49</h3>
+    <p>\u8D70\u5ECA\u76E1\u982D\u7684\u71C8\u4E00\u76DE\u76DE\u4EAE\u8D77\u4F86\u3002\u4E94\u4F4D\u8001\u5E2B\u7684\u7C3D\u540D\u5728\u624B\u5E33\u88E1\u6392\u6210\u4E00\u6392\u2014\u2014\u52D5\u756B\u3001\u7E6A\u672C\u3001\u7A0B\u5F0F\u30013D\u3001\u8996\u89BA\u50B3\u9054\uFF0C\u9019\u4E9B\u4F60\u525B\u525B\u90FD\u89AA\u624B\u73A9\u904E\u4E86\u3002</p>
+    <p>\u516D\u6A13\u4E0D\u662F\u8FF7\u5BAE\uFF0C\u662F\u6211\u5011\u6BCF\u5929\u4E0A\u8AB2\u7684\u5730\u65B9\u3002\u4E0B\u6B21\uFF0C\u7528\u5B78\u751F\u8B49\u8D70\u9032\u4F86\u5427\u3002</p>
+    <div class="row"><a class="go linkbtn" href="../#/works" target="_blank" rel="noopener">\u770B\u5B78\u9577\u59D0\u4F5C\u54C1</a><a class="go linkbtn" href="../#/admission" target="_blank" rel="noopener">\u62DB\u751F\u8CC7\u8A0A</a></div>
+    <div class="row"><a class="ghost linkbtn" href="../#/labs" target="_blank" rel="noopener">\u7279\u8272\u5BE6\u9A57\u5BA4</a><button class="ghost" data-close>\u56DE\u5230\u8D70\u5ECA</button></div>`);
+  }
   var helpAt = -Infinity;
   function askHelp() {
     if (busy || game.phase !== "loop") {
@@ -1650,6 +1864,11 @@
     e.stopPropagation();
     askHelp();
   };
+  $("invite").onclick = (e) => {
+    e.stopPropagation();
+    openInvite();
+  };
+  $("mgClose").onclick = () => leaveMinigame(false);
   $("branch").onclick = (e) => {
     e.stopPropagation();
     if (!busy) openKeypad();

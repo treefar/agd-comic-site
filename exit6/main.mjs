@@ -8,6 +8,7 @@ import { OUTLINES } from "./outlines.mjs";
 import { CLUES, CODE, createClues, visibleClues, collect, allFound, tryCode } from "./clues.mjs";
 import { MOVES, QIU_HP, PLAYER_HP, createFight, nextRound, input, timeout } from "./fight.mjs";
 import { cueFor, hintStage, areaOf, HINT_TEXT, COACH, helpReply, HELP_COOLDOWN_MS, HELP_CLEAR } from "./coach.mjs";
+import { TEACHERS, displayName, createCards, award, allCollected, teacherAt, scriptsFor } from "./teachers.mjs";
 
 const q = new URLSearchParams(location.search);
 const seed = q.has("seed") ? Number(q.get("seed")) : (Date.now() & 0xffffffff);
@@ -28,7 +29,8 @@ let walking = null;   // 走路中＝可呼叫的「略過」函式
 const SAVE_KEY = "exit6-save-v1";
 function loadSave() { try { return JSON.parse(localStorage.getItem(SAVE_KEY)) || {}; } catch { return {}; } }
 function writeSave(s) { try { localStorage.setItem(SAVE_KEY, JSON.stringify(s)); } catch { /* 私密視窗等情況 */ } }
-const save = Object.assign({ dex: [], bestMs: null, bestMiss: null, clears: 0 }, loadSave());
+const save = Object.assign({ dex: [], bestMs: null, bestMiss: null, clears: 0, cards: [] }, loadSave());
+const cardBook = createCards(save.cards);   // 老師簽名卡（壞資料就當沒有）
 const run = { t0: 0, mistakes: 0, precise: 0, misTaps: 0, toured: new Set(), failStreak: 0 };
 // 卡住提示：進到異常站開始計時；hintOn＝這圈要不要給提示（前 3 圈，或連錯兩次後）
 const hint = { t0: 0, mis: 0, stage: 0, on: false, timer: null };
@@ -252,7 +254,14 @@ function renderSpots() {
 }
 
 // S6 的岔路：線索集齊後出現「往走廊深處」，打開過之後可以再進去
+function renderInvite() {
+  const t = teacherAt(game.station, game.phase);
+  const b = $("invite");
+  b.classList.toggle("hidden", !t);
+  if (t) b.innerHTML = `${cardBook.cards.some((c) => c.id === t.id) ? "✔ " : ""}${displayName(t)}的邀請`;
+}
 function renderBranch() {
+  renderInvite();
   $("branch").classList.toggle("hidden", !(game.phase === "loop" && game.station === 6 && allFound(clues)));
   $("branch").textContent = clues.opened ? "進入 D0647 →" : "往走廊深處 →";
 }
@@ -261,10 +270,17 @@ function renderBranch() {
 function nbPulse() { const n = $("nbBtn"); n.classList.remove("pulse"); void n.offsetWidth; n.classList.add("pulse"); }
 function openSheet(html, cls = "") {
   const s = $("sheet"); s.innerHTML = html; s.className = "sheet " + cls; s.classList.remove("hidden");
-  busy = true; setButtons();
+  busy = true; setButtons(); coachAt(null);
   s.querySelectorAll("[data-close]").forEach((b) => (b.onclick = closeSheet));
 }
-function closeSheet() { $("sheet").classList.add("hidden"); busy = false; setButtons(); }
+function closeSheet() { $("sheet").classList.add("hidden"); busy = false; setButtons(); updateCoach(); }
+function cardGrid() {
+  return TEACHERS.map((t) => {
+    const c = cardBook.cards.find((x) => x.id === t.id);
+    return c ? `<figure class="mini"><img src="${t.card}" alt=""><figcaption><b>${displayName(t)}</b>${c.best} 分</figcaption></figure>`
+             : `<figure class="mini lock"><span>？</span><figcaption><b>${t.skill}</b>未取得</figcaption></figure>`;
+  }).join("");
+}
 function openNotebook() {
   if (!$("start").classList.contains("hidden") || walking) return;
   play("click");
@@ -280,7 +296,10 @@ function openNotebook() {
   openSheet(`<button class="x" data-close aria-label="關閉手帳">×</button><h3>手帳</h3><p class="clock">現在 ${fmtHour(nowHour())}（${hourLabel(nowHour())}）</p>
     <h4>系辦委託</h4><ul>${items}</ul>
     <h4>邱老師研究室的密碼　${slots}（${clues.found.length}/${CLUES.length}）</h4><ul>${clueList}</ul>
+    <h4>老師簽名卡（${cardBook.cards.length}/${TEACHERS.length}）</h4><div class="cardgrid">${cardGrid()}</div>
+    ${allCollected(cardBook) ? `<button class="ghost" data-ending>重看隱藏結局</button>` : `<p class="dim">循環圈經過有老師的站，按右下角「邀請」挑戰小遊戲。</p>`}
     <h4>紀念章</h4><ul>${stampList}</ul><button class="go" data-close>關閉</button>`);
+  $("sheet").querySelector("[data-ending]")?.addEventListener("click", () => { closeSheet(); hiddenEnding(); });
 }
 function openDeliver(target) {
   play("click");
@@ -571,6 +590,74 @@ function showHint(an, st) {
   }
 }
 
+
+// ---------- 老師關卡：邀請 → 覆蓋層載入小遊戲（EXIT6_MG 介面）→ 贏了發簽名卡 ----------
+const mgScripts = {};
+function loadScript(src) {
+  if (!mgScripts[src]) mgScripts[src] = new Promise((ok, ng) => {
+    const el = document.createElement("script"); el.src = src; el.onload = ok; el.onerror = () => { delete mgScripts[src]; ng(new Error(src)); };
+    document.head.appendChild(el);
+  });
+  return mgScripts[src];
+}
+let mgHandle = null, mgTeacher = null;
+function openInvite() {
+  const t = teacherAt(game.station, game.phase); if (!t || busy) return;
+  play("click"); stopHint();
+  const have = cardBook.cards.find((c) => c.id === t.id);
+  openSheet(`<button class="x" data-close aria-label="關閉">×</button><h3>${displayName(t)}的邀請</h3>
+    <p>${t.invite}</p><p class="mgskill">專長：${t.skill}・60 秒小遊戲</p>
+    ${have ? `<p class="mgbest">已拿到簽名卡，最高分 ${have.best}。再玩可以刷新紀錄。</p>` : `<p class="mgbest">贏了可以拿到「${displayName(t)}」的簽名卡，集滿 ${TEACHERS.length} 張有驚喜。</p>`}
+    <div class="row"><button class="go" data-mg>接受挑戰</button><button class="ghost" data-close>先不要</button></div>`);
+  $("sheet").querySelector("[data-mg]").onclick = () => startMinigame(t);
+}
+async function startMinigame(t) {
+  closeSheet(); deanImg.classList.remove("in"); deanImg.classList.add("out"); $("sub").classList.add("hidden");
+  busy = true; setButtons(); mgTeacher = t;
+  $("mgTitle").textContent = `${displayName(t)}・${t.skill}`;
+  $("mgResult").classList.add("hidden"); $("mgRoot").innerHTML = `<p class="mgload">載入中……</p>`;
+  $("mg").classList.remove("hidden"); play("sting", 0.4);
+  try { for (const src of scriptsFor(t)) await loadScript(src); }
+  catch { $("mgRoot").innerHTML = `<p class="mgload">這個小遊戲載入失敗（3D 關卡需要連網）。按右上角 × 回走廊。</p>`; return; }
+  if (mgTeacher !== t) return;                      // 載入途中已經關掉
+  $("mgRoot").innerHTML = "";
+  let ended = false;   // onEnd 後等 2.6 秒再蓋上簽名卡：先讓玩家讀完小遊戲自己的專長知識
+  mgHandle = window.EXIT6_MG[t.mg].mount($("mgRoot"), { rng, onEnd: (r) => { if (!ended) { ended = true; setTimeout(() => minigameEnd(t, r), 2600); } } });
+}
+function minigameEnd(t, r) {
+  if (mgTeacher !== t) return;
+  const res = award(cardBook, t.id, r);
+  if (res.got) { save.cards = cardBook.cards; writeSave(save); nbPulse(); }
+  const best = cardBook.cards.find((c) => c.id === t.id)?.best;
+  const box = $("mgResult");
+  box.innerHTML = r && r.win
+    ? `<div class="sigcard"><img src="${t.card}" alt=""><div><small>${res.first ? "獲得簽名卡！" : "再次挑戰成功"}</small><b>${displayName(t)}</b><span>${t.skill}</span><q>${t.quote}</q><em>本次 ${r.score} 分・最高 ${best}</em></div></div>
+       <div class="row"><button class="go" data-back>${res.completed ? "集滿了！回走廊看看" : "收進手帳，回走廊"}</button></div>`
+    : `<h3>差一點！</h3><p>${t.skill}就是要多練幾次。本次 ${r ? r.score : 0} 分。</p>
+       <div class="row"><button class="go" data-retry>再試一次</button><button class="ghost" data-back>回到走廊</button></div>`;
+  box.classList.remove("hidden");
+  if (r && r.win) { play(res.first ? "clear" : "correct"); burst(res.first ? "簽名卡 GET！" : "刷新紀錄", true); }
+  box.querySelector("[data-back]").onclick = () => leaveMinigame(res.completed);
+  const rt = box.querySelector("[data-retry]"); if (rt) rt.onclick = () => { mgHandle?.destroy(); mgHandle = null; startMinigame(t); };
+}
+function leaveMinigame(completed) {
+  try { mgHandle?.destroy(); } catch { /* 小遊戲自己出錯也要能回走廊 */ }
+  mgHandle = null; mgTeacher = null;
+  $("mg").classList.add("hidden"); $("mgRoot").innerHTML = ""; busy = false;
+  show(stopSrc(STATIONS[game.station], anomalyAt(game, ANOMALIES)), false); renderStop(); setButtons();
+  if (completed) setTimeout(hiddenEnding, 500);
+}
+function hiddenEnding() {
+  dean("welcome", null, 6000);
+  sayText("五位老師的簽名都到手了！你已經把動遊系逛透透啦。", 6000);
+  save.allCardsSeen = true; writeSave(save);
+  openSheet(`<button class="x" data-close aria-label="關閉">×</button><h3>隱藏結局：六樓的通行證</h3>
+    <p>走廊盡頭的燈一盞盞亮起來。五位老師的簽名在手帳裡排成一排——動畫、繪本、程式、3D、視覺傳達，這些你剛剛都親手玩過了。</p>
+    <p>六樓不是迷宮，是我們每天上課的地方。下次，用學生證走進來吧。</p>
+    <div class="row"><a class="go linkbtn" href="../#/works" target="_blank" rel="noopener">看學長姐作品</a><a class="go linkbtn" href="../#/admission" target="_blank" rel="noopener">招生資訊</a></div>
+    <div class="row"><a class="ghost linkbtn" href="../#/labs" target="_blank" rel="noopener">特色實驗室</a><button class="ghost" data-close>回到走廊</button></div>`);
+}
+
 // 主動求救：只在循環圈可用
 let helpAt = -Infinity;
 function askHelp() {
@@ -756,6 +843,8 @@ $("go").onclick = () => {
 };
 $("nbBtn").onclick = (e) => { e.stopPropagation(); openNotebook(); };
 $("helpBtn").onclick = (e) => { e.stopPropagation(); askHelp(); };
+$("invite").onclick = (e) => { e.stopPropagation(); openInvite(); };
+$("mgClose").onclick = () => leaveMinigame(false);
 $("branch").onclick = (e) => { e.stopPropagation(); if (!busy) openKeypad(); };
 if (save.bestMs != null) $("best").textContent = `你的最佳時間 ${fmt(save.bestMs)}・圖鑑 ${new Set(save.dex).size}/${ANOMALIES.length}・通關 ${save.clears} 次`;
 for (const p of ["plead", "cheer", "welcome", "peek"]) new Image().src = `frames/dean_${p}.webp`;

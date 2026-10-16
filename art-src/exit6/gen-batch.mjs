@@ -107,6 +107,20 @@ const QIU = [
 ];
 const qiuJob = ([id, pose]) => ({ id, out: `art-src/exit6/gen/${id}.png`, prompt: `${QIU_BASE} ${pose}` });
 
+// 老師簽名卡卡面（2026-10-16 使用者選「現在就用 Codex 生卡面插圖」）：專長主題的工作桌靜物，不畫人、不放可讀文字（老師名字要本人同意，先不出現）
+const CARD_BASE = `Open and look at the STYLE reference ${STYLE_REF}. Draw a NEW still-life illustration in exactly the same comic style ` +
+  "(copy its line weight, halftone screentone, cream paper tone, ink black lines and limited red/blue/yellow accents; do NOT copy its content). " +
+  "Square 1:1 composition, a close-up of a creative workspace on a desk seen from a 3/4 high angle, warm and inviting, a little playful. " +
+  "No people, no hands, no faces, no readable letters or words anywhere, no logos or brand names. Subject: ";
+const CARDS = [
+  ["card_anim", "an animator's light table with a stack of paper sheets showing a red ball bouncing in successive drawings (squash and stretch), a pencil, a timing chart drawn as tick marks, a small flipbook fanned open."],
+  ["card_book", "an open picture-book sketchbook with several solid black character silhouettes and one colored cute round character wearing a tall hat and a long scarf, colored pencils, a little paper hat prop."],
+  ["card_code", "a laptop whose screen shows colorful pipes and connected node blocks forming a flowing path from a yellow start block to a blue goal block, a glowing blue liquid running through the pipes, a coffee mug."],
+  ["card_3d", "a desktop 3D printer in the middle of printing a small stylized figurine, a spool of filament, a few printed blocky L-shaped and T-shaped parts lying beside it."],
+  ["card_type", "a typography workbench: wooden letterpress type blocks with abstract unreadable glyph shapes, an ink roller, red/blue/yellow color swatch cards fanned out, a round bold shape and a sharp thin shape contrasting."],
+];
+const cardJob = ([id, subj]) => ({ id, out: `art-src/exit6/gen/${id}.png`, prompt: CARD_BASE + subj });
+
 const STATIONS = ["s0", "s1", "s2", "s3", "s4", "s5", "s6", "s7"];
 const SETS = {
   stops: () => STATIONS.map(stopJob),
@@ -114,6 +128,7 @@ const SETS = {
   anomalies: () => ANOM.map(anomJob),
   dean: () => DEAN.map(deanJob),
   d0647: () => [...D0647, ...QIU.map(qiuJob)],
+  cards: () => CARDS.map(cardJob),
 };
 
 const [set, ...only] = process.argv.slice(2);

@@ -157,6 +157,34 @@
   /* 時鐘、手帳、交付 */
   .clock { margin-top: 4px; font: 700 12px ui-monospace, monospace; color: var(--paper); text-shadow: 0 0 6px #000; font-variant-numeric: tabular-nums; }
   .nb { padding: 6px 12px; font-size: 14px; background: var(--paper); color: var(--paperink); border: 2px solid var(--paperink); box-shadow: 3px 3px 0 var(--paperink); }
+  /* 老師關卡：邀請鈕（畫面右下）、小遊戲覆蓋層、簽名卡、手帳卡冊 */
+  .invite { position: absolute; right: 8px; bottom: 8px; z-index: 3; padding: 8px 12px; font-size: 14px; background: var(--pop); color: var(--paperink); border: 2px solid var(--paperink); box-shadow: 3px 3px 0 var(--paperink); animation: pop .6s cubic-bezier(.2,1.8,.4,1); }
+  .mg { background: rgba(7,9,10,.94); justify-content: flex-start; gap: 8px; padding: 10px 12px max(10px, env(safe-area-inset-bottom)); z-index: 9; }
+  .mghead { width: min(100%, 1100px); display: flex; justify-content: space-between; align-items: center; color: var(--paper); font-size: 15px; }
+  .mghead .x { position: static; }
+  .mgbox { position: relative; width: min(100%, 1100px, calc((100dvh - 70px) * 16 / 9)); aspect-ratio: 16 / 9; max-width: 100%; }
+  .mgroot { position: absolute; inset: 0; overflow: hidden; background: var(--paper); border: 3px solid var(--paperink); }
+  .mgload { margin: 0; padding: 24px; color: var(--paperink); }
+  .mgresult { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 16px; background: rgba(244,236,216,.96); color: var(--paperink); text-align: center; animation: slamIn .4s cubic-bezier(.2,1.6,.4,1); }
+  @keyframes slamIn { from { transform: scale(1.15); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .mgresult h3 { margin: 0; font-size: 24px; }
+  .sigcard { display: flex; gap: 14px; align-items: center; max-width: 560px; padding: 12px; background: #fffaf0; border: 3px solid var(--paperink); box-shadow: 6px 6px 0 var(--paperink); transform: rotate(-1.5deg); text-align: left; }
+  .sigcard img { width: min(38vw, 200px); aspect-ratio: 1; object-fit: cover; border: 2px solid var(--paperink); }
+  .sigcard div { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .sigcard small { color: var(--red); font-weight: 900; letter-spacing: .1em; }
+  .sigcard b { font: 900 clamp(20px, 3.4vw, 28px)/1.1 "Noto Serif TC", serif; }
+  .sigcard span { font-size: 13px; color: #5d5a52; }
+  .sigcard q { font-size: 15px; line-height: 1.5; }
+  .sigcard em { font-style: normal; font-size: 13px; color: var(--blue); font-weight: 700; }
+  .cardgrid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; margin-bottom: 8px; }
+  .mini { margin: 0; display: flex; flex-direction: column; gap: 3px; font-size: 11px; line-height: 1.3; }
+  .mini img, .mini span { width: 100%; aspect-ratio: 1; object-fit: cover; border: 2px solid var(--paperink); }
+  .mini span { display: grid; place-items: center; font-size: 22px; font-weight: 900; background: repeating-linear-gradient(45deg, #e9dfc6 0 6px, #f4ecd8 6px 12px); }
+  .mini figcaption b { display: block; }
+  .mini.lock { opacity: .7; }
+  .mgskill, .mgbest { font-size: 14px; }
+  .mgbest { color: var(--blue); font-weight: 700; }
+  a.linkbtn { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; border-radius: 10px; font-weight: 700; min-height: 44px; padding: 0 16px; }
   .mid { display: flex; gap: 6px; align-items: stretch; }
   .nb.help { background: var(--pop); }
   .nb.pulse { animation: pop .5s cubic-bezier(.2,1.8,.4,1) 2; }
@@ -275,6 +303,7 @@
     <img class="dean" id="dean" alt="系主任">
     <div class="burst" id="burst"></div>
     <div class="hud"><div><div class="floorNo" id="floorNo">0F</div><div class="clock" id="clock"></div></div><div><div class="where" id="where"></div><div class="timer" id="timer"></div></div></div>
+    <button class="invite hidden" id="invite" aria-label="老師邀請"></button>
     <button class="branch hidden" id="branch">往走廊深處 →</button>
     <div class="dbg hidden" id="dbg"></div>
   </div>
@@ -310,6 +339,11 @@
     <p class="credit">畫面依設計大樓六樓實拍，以 Codex 生圖重繪成漫畫風。系主任語音尚未錄製，先以字幕代替。</p>
   </div>
   <div class="layer panel hidden" id="ending"></div>
+
+  <div class="layer mg hidden" id="mg" aria-label="老師關卡">
+    <div class="mghead"><b id="mgTitle"></b><button class="x" id="mgClose" aria-label="離開小遊戲回走廊">×</button></div>
+    <div class="mgbox"><div class="mgroot" id="mgRoot"></div><div class="mgresult hidden" id="mgResult"></div></div>
+  </div>
 
   <div class="layer fight hidden" id="fight" aria-label="片場對決">
     <div class="fbox" id="fbox">
