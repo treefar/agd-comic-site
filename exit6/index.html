@@ -70,7 +70,7 @@
   .bubble { position: absolute; z-index: 6; left: 50%; top: 10px; transform: translateX(-50%); width: min(92vw, 520px); padding: 10px 14px; background: var(--paper); color: var(--paperink); border: 3px solid var(--paperink); border-radius: 16px; font-size: 15px; font-weight: 700; line-height: 1.5; box-shadow: 4px 4px 0 var(--paperink); }
   .bubble b { display: block; font-size: 11px; letter-spacing: .1em; color: var(--red); }
 
-  .below { width: min(100vw, 900px); padding: 10px 16px 0; min-height: 96px; }
+  .below { width: min(100vw, 900px); padding: 10px 16px 0; min-height: 96px; }   /* 旁白一行＋說明欄 */
   .tip { padding: 10px 12px; background: #111614; border-left: 3px solid var(--accent); font-size: 14px; line-height: 1.55; }
   @media (orientation: portrait) { .tip { min-height: calc(1.55em * 4 + 20px); } }   /* 手機直拿：說明欄固定 4 行高，文字變多時畫面不跳動 */
   .tip b { color: var(--pop); }
@@ -191,8 +191,9 @@
   .mgskill, .mgbest { font-size: 14px; }
   .mgbest { color: var(--blue); font-weight: 700; }
   a.linkbtn { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; border-radius: 10px; font-weight: 700; min-height: 44px; padding: 0 16px; }
-  /* 主角旁白框：漫畫的方形旁白（不是對話泡泡），畫面左上、樓層數字下方 */
-  .narr { position: absolute; left: 2%; top: 15%; z-index: 4; max-width: min(46%, 360px); padding: 6px 10px; background: var(--paper); color: var(--paperink); border: 2.5px solid var(--paperink); box-shadow: 3px 3px 0 var(--paperink); font-size: clamp(12px, 1.6vw, 15px); font-weight: 700; line-height: 1.5; pointer-events: none; }
+  /* 主角旁白框：放在畫面下方說明欄上面一行（不蓋畫面）；off 只是隱形、保留高度，版面不跳動 */
+  .narr { margin-bottom: 6px; min-height: calc(1.5em + 14px); padding: 6px 10px; background: var(--paper); color: var(--paperink); border: 2.5px solid var(--paperink); box-shadow: 3px 3px 0 var(--paperink); font-size: 14px; font-weight: 700; line-height: 1.5; }
+  .narr.off { visibility: hidden; }
   .narr.in { animation: narrIn .3s ease-out; }
   @keyframes narrIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
   .cut.c-egg { filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff); }
@@ -293,6 +294,7 @@
     .stage { width: min(100vw, calc(100dvh * 16 / 9)); }
     .below { position: absolute; left: 50%; transform: translateX(-50%); bottom: 58px; width: min(92vw, 640px); min-height: 0; padding: 0; z-index: 2; }
     .tip { background: rgba(0,0,0,.72); font-size: 13px; padding: 6px 10px; }
+    .narr { font-size: 13px; padding: 4px 8px; margin-bottom: 4px; min-height: 0; box-shadow: 2px 2px 0 var(--paperink); }   /* 手機橫拿：說明欄疊在畫面下緣，旁白縮小 */
     .controls { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); height: 54px; padding: 6px 16px max(6px, env(safe-area-inset-bottom)); z-index: 2; }
     .controls button { background-color: rgba(20, 20, 20, .7); }
   }
@@ -315,12 +317,12 @@
     <img class="dean" id="dean" alt="系主任">
     <div class="burst" id="burst"></div>
     <div class="hud"><div><div class="floorNo" id="floorNo">0F</div><div class="clock" id="clock"></div></div><div><div class="where" id="where"></div><div class="timer" id="timer"></div></div></div>
-    <div class="narr hidden" id="narr" aria-live="polite"></div>
     <button class="invite hidden" id="invite" aria-label="老師邀請"></button>
     <button class="branch hidden" id="branch">往走廊深處 →</button>
     <div class="dbg hidden" id="dbg"></div>
   </div>
   <div class="below">
+    <div class="narr off" id="narr" aria-live="polite"></div>
     <div class="tip hidden" id="tip"></div>
     <div class="rotate">手機橫放，畫面更大</div>
   </div>

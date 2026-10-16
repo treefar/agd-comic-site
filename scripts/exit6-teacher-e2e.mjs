@@ -111,9 +111,11 @@ try {
     $("btnFwd").click(); await W(2600); closeCard();
     const r=$("stage").getBoundingClientRect(); const x=r.left+r.width*0.33, y=r.top+r.height*0.31;
     document.elementFromPoint(x,y).dispatchEvent(new MouseEvent("click",{bubbles:true,clientX:x,clientY:y})); await W(300);
-    return [$("where").textContent, $("narr").textContent, $("narr").classList.contains("hidden")];`);
+    const nr=$("narr").getBoundingClientRect(), sr=$("stage").getBoundingClientRect();
+    return [$("where").textContent, $("narr").textContent, $("narr").classList.contains("off"), Math.round(nr.top - sr.bottom)];`);
   await shot("7-egg");
   ok("循環圈點系辦門口左側海報：主角說一句（彩蛋）", egg && /系辦門口/.test(egg[0]) && egg[1] === "左邊這張藍色海報，構圖好有氣勢。" && !egg[2], JSON.stringify(egg));
+  ok("旁白框在畫面下方、不蓋畫面（電腦尺寸）", egg && egg[3] >= 0, egg && `旁白上緣距畫面下緣 ${egg[3]}px`);
 
   // 手機直拿：手帳卡冊不超出畫面
   await send("Emulation.setDeviceMetricsOverride", { width: 375, height: 812, deviceScaleFactor: 2, mobile: true });

@@ -98,11 +98,11 @@ function say(id, ms = 4500) {
   clearTimeout(say.t); say.t = setTimeout(() => $("sub").classList.add("hidden"), ms);
 }
 
-// ---------- 主角旁白框（大一新生的內心話） ----------
+// ---------- 主角旁白框（大一新生的內心話；放在畫面下方說明欄上面） ----------
 function narrate(text, ms = 5200) {
   const n = $("narr"); if (!text) return;
-  n.textContent = text; n.classList.remove("hidden", "in"); void n.offsetWidth; n.classList.add("in");
-  clearTimeout(narrate.t); narrate.t = setTimeout(() => n.classList.add("hidden"), ms);
+  n.textContent = text; n.classList.remove("off", "in"); void n.offsetWidth; n.classList.add("in");
+  clearTimeout(narrate.t); narrate.t = setTimeout(() => n.classList.add("off"), ms);
 }
 function sayAbout(k, src) {
   const sp = STATIONS[game.station].spots[k];

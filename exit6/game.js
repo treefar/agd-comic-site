@@ -851,11 +851,11 @@
     const n = $("narr");
     if (!text) return;
     n.textContent = text;
-    n.classList.remove("hidden", "in");
+    n.classList.remove("off", "in");
     void n.offsetWidth;
     n.classList.add("in");
     clearTimeout(narrate.t);
-    narrate.t = setTimeout(() => n.classList.add("hidden"), ms);
+    narrate.t = setTimeout(() => n.classList.add("off"), ms);
   }
   function sayAbout(k, src) {
     const sp = STATIONS[game.station].spots[k];
