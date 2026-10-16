@@ -643,7 +643,8 @@
       skill: "\u7E6A\u672C\u8207\u89D2\u8272\u9020\u578B",
       invite: "\u96FB\u7E6A\u5BE6\u9A57\u5BA4\u88E1\u6709\u4EBA\u5728\u756B\u89D2\u8272\u2026\u2026\u300C\u8981\u4E0D\u8981\u5E6B\u6211\u7684\u89D2\u8272\u627E\u914D\u4EF6\uFF1F\u300D",
       quote: "\u526A\u5F71\u4E00\u773C\u8A8D\u5F97\u51FA\u4F86\uFF0C\u89D2\u8272\u5C31\u6210\u529F\u4E00\u534A\u4E86\u3002",
-      card: "frames/card_book.webp"
+      mark: "\u7E6A\u672C",
+      card: null
     },
     {
       id: "type",
@@ -654,7 +655,8 @@
       skill: "\u8996\u89BA\u50B3\u9054\u8A2D\u8A08",
       invite: "\u6D77\u5831\u6AE5\u7A97\u524D\u6709\u4EBA\u5728\u6311\u5B57\u578B\u2026\u2026\u300C\u4F60\u89BA\u5F97\u54EA\u7A2E\u5B57\u6700\u6709\u500B\u6027\uFF1F\u300D",
       quote: "\u5B57\u9AD4\u4E5F\u6709\u500B\u6027\uFF0C\u6311\u5C0D\u5B57\uFF0C\u8A0A\u606F\u81EA\u5DF1\u6703\u8AAA\u8A71\u3002",
-      card: "frames/card_type.webp"
+      mark: "\u8996\u50B3",
+      card: null
     },
     {
       id: "anim",
@@ -665,7 +667,8 @@
       skill: "\u96FB\u8166\u52D5\u756B",
       invite: "D0646 \u7684\u9580\u958B\u4E86\u4E00\u689D\u7E2B\u2026\u2026\u300C\u4F86\u8A66\u8A66\u6642\u9593\u66F2\u7DDA\uFF0C\u52D5\u756B\u7684\u5FEB\u6162\u90FD\u5728\u9019\u88E1\u3002\u300D",
       quote: "\u7DE9\u5165\u7DE9\u51FA\uFF0C\u52D5\u4F5C\u5C31\u6709\u4E86\u91CD\u91CF\u3002",
-      card: "frames/card_anim.webp"
+      mark: "\u52D5\u756B",
+      card: null
     },
     {
       id: "3d",
@@ -676,7 +679,8 @@
       skill: "3D \u89D2\u8272\u8207 3D \u5217\u5370",
       invite: "\u724C\u6A13\u4E0B\u64FA\u8457\u4E00\u53F0 3D \u5370\u8868\u6A5F\u2026\u2026\u300C\u96F6\u4EF6\u65B9\u5411\u64FA\u5C0D\uFF0C\u624D\u5370\u5F97\u51FA\u4F86\u5594\u3002\u300D",
       quote: "\u5148\u60F3\u6E05\u695A\u8EF8\u5411\uFF0C3D \u4E16\u754C\u5C31\u4E0D\u6703\u8DDF\u4F60\u4F5C\u5C0D\u3002",
-      card: "frames/card_3d.webp"
+      mark: "3D",
+      card: null
     },
     {
       id: "code",
@@ -687,7 +691,8 @@
       skill: "Unity\uFF0F\u7A0B\u5F0F",
       invite: "\u96FB\u68AF\u5EF3\u7684\u7B46\u96FB\u9084\u958B\u8457\u2026\u2026\u300C\u5E6B\u6211\u628A\u8CC7\u6599\u6D41\u63A5\u5230 Goal \u597D\u55CE\uFF1F\u300D",
       quote: "\u5148\u60F3\u597D\u6D41\u7A0B\u518D\u52D5\u624B\uFF0C\u6BD4\u4E8B\u5F8C\u6293\u87F2\u7701\u6642\u9593\u3002",
-      card: "frames/card_code.webp"
+      mark: "\u7A0B\u5F0F",
+      card: null
     }
   ];
   var displayName = (t) => t.name || t.title;
@@ -1102,6 +1107,7 @@
     setButtons();
     updateCoach();
   }
+  var cardFace = (t, cls = "") => t.card ? `<img class="${cls}" src="${t.card}" alt="">` : `<span class="cardface ${cls}" aria-hidden="true">${t.mark}</span>`;
   function seenList() {
     if (!run.seen.size) return `<li>\u9084\u6C92\u6709\u3002\u9EDE\u9EDE\u770B\u756B\u9762\u4E0A\u7684\u6771\u897F\u3002</li>`;
     return [...run.seen].map((key) => {
@@ -1113,7 +1119,7 @@
   function cardGrid() {
     return TEACHERS.map((t) => {
       const c = cardBook.cards.find((x) => x.id === t.id);
-      return c ? `<figure class="mini"><img src="${t.card}" alt=""><figcaption><b>${displayName(t)}</b>${c.best} \u5206</figcaption></figure>` : `<figure class="mini lock"><span>\uFF1F</span><figcaption><b>${t.skill}</b>\u672A\u53D6\u5F97</figcaption></figure>`;
+      return c ? `<figure class="mini">${cardFace(t)}<figcaption><b>${displayName(t)}</b>${c.best} \u5206</figcaption></figure>` : `<figure class="mini lock"><span>\uFF1F</span><figcaption><b>${t.skill}</b>\u672A\u53D6\u5F97</figcaption></figure>`;
     }).join("");
   }
   function openNotebook() {
@@ -1607,7 +1613,7 @@
     }
     const best = (_a = cardBook.cards.find((c) => c.id === t.id)) == null ? void 0 : _a.best;
     const box = $("mgResult");
-    box.innerHTML = r && r.win ? `<div class="sigcard"><img src="${t.card}" alt=""><div><small>${res.first ? "\u7372\u5F97\u7C3D\u540D\u5361\uFF01" : "\u518D\u6B21\u6311\u6230\u6210\u529F"}</small><b>${displayName(t)}</b><span>${t.skill}</span><q>${t.quote}</q><em>\u672C\u6B21 ${r.score} \u5206\u30FB\u6700\u9AD8 ${best}</em></div></div>
+    box.innerHTML = r && r.win ? `<div class="sigcard">${cardFace(t, "big")}<div><small>${res.first ? "\u7372\u5F97\u7C3D\u540D\u5361\uFF01" : "\u518D\u6B21\u6311\u6230\u6210\u529F"}</small><b>${displayName(t)}</b><span>${t.skill}</span><q>${t.quote}</q><em>\u672C\u6B21 ${r.score} \u5206\u30FB\u6700\u9AD8 ${best}</em></div></div>
        <div class="row"><button class="go" data-back>${res.completed ? "\u96C6\u6EFF\u4E86\uFF01\u56DE\u8D70\u5ECA\u770B\u770B" : "\u6536\u9032\u624B\u5E33\uFF0C\u56DE\u8D70\u5ECA"}</button></div>` : `<h3>\u5DEE\u4E00\u9EDE\uFF01</h3><p>${t.skill}\u5C31\u662F\u8981\u591A\u7DF4\u5E7E\u6B21\u3002\u672C\u6B21 ${r ? r.score : 0} \u5206\u3002</p>
        <div class="row"><button class="go" data-retry>\u518D\u8A66\u4E00\u6B21</button><button class="ghost" data-back>\u56DE\u5230\u8D70\u5ECA</button></div>`;
     box.classList.remove("hidden");

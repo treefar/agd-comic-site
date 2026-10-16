@@ -27,7 +27,8 @@ test("名字閘門：沒有本人同意的老師不得出現本名，畫面顯�
 test("每位老師的小遊戲檔與卡面圖都在 exit6 底下", () => {
   for (const t of TEACHERS) {
     for (const f of scriptsFor(t)) if (!f.startsWith("http")) assert.ok(fs.existsSync(path.join(EXIT6, f)), `${t.id} 缺 ${f}`);
-    assert.ok(fs.existsSync(path.join(EXIT6, t.card)), `${t.id} 缺卡面 ${t.card}`);
+    if (t.card) assert.ok(fs.existsSync(path.join(EXIT6, t.card)), `${t.id} 缺卡面 ${t.card}`);
+    else assert.ok(t.mark && t.mark.length <= 3, `${t.id} 文字卡要有 1～3 字的 mark`);
   }
   const t3 = TEACHERS.find((t) => t.mg === "mg-3d");
   assert.equal(scriptsFor(t3)[0], THREE_URL, "3D 關卡要先載 Three.js");

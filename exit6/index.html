@@ -177,9 +177,14 @@
   .sigcard span { font-size: 13px; color: #5d5a52; }
   .sigcard q { font-size: 15px; line-height: 1.5; }
   .sigcard em { font-style: normal; font-size: 13px; color: var(--blue); font-weight: 700; }
+  /* 文字卡面（暫代，不是正式美術）：紙底＋網點＋專長大字 */
+  .cardface { display: grid; place-items: center; aspect-ratio: 1; width: 100%; border: 2px solid var(--paperink); color: var(--paperink);
+      background: radial-gradient(rgba(15,13,10,.16) 1px, transparent 1.4px) 0 0 / 6px 6px, var(--paper);
+      font: 900 clamp(14px, 4vw, 22px)/1 "Noto Serif TC", serif; letter-spacing: .05em; }
+  .cardface.big { width: min(38vw, 200px); font-size: clamp(30px, 8vw, 56px); box-shadow: inset 0 0 0 6px #fffaf0, inset 0 0 0 8px var(--red); }
   .cardgrid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; margin-bottom: 8px; }
   .mini { margin: 0; display: flex; flex-direction: column; gap: 3px; font-size: 11px; line-height: 1.3; }
-  .mini img, .mini span { width: 100%; aspect-ratio: 1; object-fit: cover; border: 2px solid var(--paperink); }
+  .mini img, .mini span:not(.cardface) { width: 100%; aspect-ratio: 1; object-fit: cover; border: 2px solid var(--paperink); }
   .mini span { display: grid; place-items: center; font-size: 22px; font-weight: 900; background: repeating-linear-gradient(45deg, #e9dfc6 0 6px, #f4ecd8 6px 12px); }
   .mini figcaption b { display: block; }
   .mini.lock { opacity: .7; }

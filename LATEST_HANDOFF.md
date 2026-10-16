@@ -61,7 +61,7 @@
   老師本人同意後把本名填進 `name` 並加進 `CONSENTED`（測試會擋未登記的本名）。
 - 小遊戲在 `exit6/minigames/<id>/`（複製自 art-src/exit6/phase3/mg），點了才載入；3D 關卡先載 cdnjs three.js r128（離線會顯示載入失敗）。
   宿主每次給 `.mgstage` 內層容器，因為小遊戲會改容器樣式。贏了發卡，存 `exit6-save-v1.cards`，手帳卡冊 n/5，集滿開隱藏結局（文案是我寫的草稿，連 ../#/works、#/admission、#/labs）。
-- 卡面 `exit6/frames/card_*.webp`：gen-batch.mjs `cards` 組，帳本已記；**尚待使用者在對話確認通過**（預覽 art-src/exit6/gen/cards_contact.jpg）。
+- 卡面：Codex 插圖 5 張**使用者 2026-10-16 退回（AI 感太重）**，帳本已記，原圖留 art-src/exit6/gen/card_*.png；現在是文字卡（`teachers.mjs` 的 mark，card: null），是暫代不是正式美術。
 - 測試：`node --test scripts/test-exit6*.mjs` 54 項；端到端 `node scripts/exit6-teacher-e2e.mjs`（先開 `npx http-server . -p 8090 -c-1`）15 項全過。
 - 待辦：老師同意後換本名與肖像；隱藏結局文案請系主任確認；mg-type、mg-code 難度要真人試；作品展示與招生分享卡還沒做。
 

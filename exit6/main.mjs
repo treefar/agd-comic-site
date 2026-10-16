@@ -291,6 +291,8 @@ function openSheet(html, cls = "") {
   s.querySelectorAll("[data-close]").forEach((b) => (b.onclick = closeSheet));
 }
 function closeSheet() { $("sheet").classList.add("hidden"); busy = false; setButtons(); updateCoach(); }
+// 卡面：有核准插圖就用圖，沒有就是文字卡（紙底網點＋專長大字）
+const cardFace = (t, cls = "") => (t.card ? `<img class="${cls}" src="${t.card}" alt="">` : `<span class="cardface ${cls}" aria-hidden="true">${t.mark}</span>`);
 function seenList() {
   if (!run.seen.size) return `<li>還沒有。點點看畫面上的東西。</li>`;
   return [...run.seen].map((key) => { const [st, k] = key.split(":").map(Number); const sp = STATIONS[st].spots[k];
@@ -299,7 +301,7 @@ function seenList() {
 function cardGrid() {
   return TEACHERS.map((t) => {
     const c = cardBook.cards.find((x) => x.id === t.id);
-    return c ? `<figure class="mini"><img src="${t.card}" alt=""><figcaption><b>${displayName(t)}</b>${c.best} 分</figcaption></figure>`
+    return c ? `<figure class="mini">${cardFace(t)}<figcaption><b>${displayName(t)}</b>${c.best} 分</figcaption></figure>`
              : `<figure class="mini lock"><span>？</span><figcaption><b>${t.skill}</b>未取得</figcaption></figure>`;
   }).join("");
 }
@@ -656,7 +658,7 @@ function minigameEnd(t, r) {
   const best = cardBook.cards.find((c) => c.id === t.id)?.best;
   const box = $("mgResult");
   box.innerHTML = r && r.win
-    ? `<div class="sigcard"><img src="${t.card}" alt=""><div><small>${res.first ? "獲得簽名卡！" : "再次挑戰成功"}</small><b>${displayName(t)}</b><span>${t.skill}</span><q>${t.quote}</q><em>本次 ${r.score} 分・最高 ${best}</em></div></div>
+    ? `<div class="sigcard">${cardFace(t, "big")}<div><small>${res.first ? "獲得簽名卡！" : "再次挑戰成功"}</small><b>${displayName(t)}</b><span>${t.skill}</span><q>${t.quote}</q><em>本次 ${r.score} 分・最高 ${best}</em></div></div>
        <div class="row"><button class="go" data-back>${res.completed ? "集滿了！回走廊看看" : "收進手帳，回走廊"}</button></div>`
     : `<h3>差一點！</h3><p>${t.skill}就是要多練幾次。本次 ${r ? r.score : 0} 分。</p>
        <div class="row"><button class="go" data-retry>再試一次</button><button class="ghost" data-back>回到走廊</button></div>`;
