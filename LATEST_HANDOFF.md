@@ -179,3 +179,53 @@ mod 沒記到但同樣改過的：`exit6/main.mjs`、`exit6/index.html`、`exit6
 - **理由**：要同時顧遊戲設計、教學節奏與多檔整合；機械工作（雛形、調研）照舊派 AGY Flash High
 - **重新評估條件**：使用者只要文案或數值微調時，降為 Sonnet／medium
 - **套用狀態**：僅建議，尚未切換、尚未派工
+
+## 復盤 2026-10-16（第二段：實驗室支線、私網試玩、連結修正）
+
+### 1. 做了什麼、改了哪些檔
+
+- **六樓 5 間實驗室支線**（提交 `1896af1`）：循環圈 S2／S3／S4／S5／S7 出現「進入 D06xx」，進去是系網照片轉的漫畫背景＋各自 60 秒小遊戲，結算 1～3 星，手帳加成就牆、稱號、6 星解鎖作品展示、12 星解鎖招生分享卡。
+  - `exit6/labs.mjs`：實驗室資料、星等規則、稱號與獎勵、成就存檔（新檔）。
+  - `scripts/test-exit6-labs.mjs`：上面規則的 7 項測試（新檔）。
+  - `exit6/main.mjs`、`exit6/index.html`、`exit6/game.js`：入口按鈕、`openLab`／`startLabGame`／`labEnd`、成就牆、分享卡（mod 沒列到，但有改）。
+  - `exit6/minigames/lab-d06xx/`、`exit6/frames/lab_d06xx.webp`：5 款小遊戲與 5 張漫畫背景（mod 沒列到）。
+  - `scripts/exit6-teacher-e2e.mjs`：端到端加實驗室入口、三星結算、成就牆存檔，共 22 項。
+  - `C:/agywork/exit6-mg/orders/_lab-contract.md`：給 AGY 的實驗室小遊戲共用規格 v2（`lab`、`stars`、`flawless`）。
+  - `C:/agywork/exit6-mg/lab/lab-d0637/game.js`：修 `scale` 宣告前就被用到的錯誤。
+- **系網連結修正**（提交 `a8c761d`）：`exit6/links.mjs`（新檔）＋`scripts/test-exit6-links.mjs`（mod 沒列到）。嵌在系網 `/exit6/` 時走 `../#/works` 等內頁，其他地方連官網首頁。
+- **交接與帳本**（提交 `642b7ef`、`4c067a5`）：`LATEST_HANDOFF.md` 最新進度段；`art-src/exit6/ledger.jsonl` 記 4 張實驗室圖使用者通過。實驗室 5 張圖全部定稿。
+- **私網**（不在 repo）：`site/six-floor-exit/`（頭條，頁首有試玩按鈕）、`site/six-floor-exit-play/`（原型合集），已部署，門禁 302。
+- **Vault**：`專案紀錄/SixthFloorExit_六樓出口.md`、`待提煉/代理記憶候選/2026-10-16/20261016-120000-claude-code-exit6.md`。
+- **暫存腳本**（scratchpad，不留存）：`narr_below.py`（旁白框移到下方的改檔腳本）、`layoutshot.mjs`（量版面位置的無頭截圖）、`lab_host.py`（實驗室接進宿主的改檔腳本）、`d0637_deal.py`（D0637 發牌改倒推構造）。
+- 另外改了 `~/.claude/skills/treefar-site-publish/SKILL.md`：補一條 `new-item.ps1 -Force` 會洗掉 `hub` 標記的踩雷（mod 沒列到）。
+
+### 2. 踩雷與根因
+
+- **D0637 第 2、3 輪老是同一副牌**：`isSolvable` 搜尋上限 600 步，把有解的局誤判成無解，每次都退回固定牌局，第 3 輪每發一局要 3 秒。改成倒推構造（從排好的時間軸倒著把牌放回各疊），保證有解、不用搜尋；測試改成每輪 200 個種子貪婪法全部解完、牌局種類超過 150 種。
+- **D0637 `ReferenceError: Cannot access 'scale' before initialization`**：`startRound(0)` 寫在 `let scale` 之前。移到宣告之後。
+- **私網試玩版的「看學長姐作品」連錯**：程式寫死 `../#/works`，放在私網時會連到 `six-floor-exit/#/works`。改由 `links.mjs` 依所在路徑決定。
+- **部署被 `test-hubs.ps1` 擋下**：`RESULT: 1 FAILED: game-prototypes-hub embedded members == flagged members`。根因是 `new-item.ps1 -Force` 重建時把 `pages.json` 那筆的 `"hub":"game-prototypes-hub"` 洗掉。重跑 `tools\build-hubs.ps1` 補回後部署成功（上傳 12 檔）。
+- **`hubs.json` 改不進去**：檔案是 CRLF 換行，用 LF 字串比對找不到；只加 `groups` 沒效果，合集成員看的是 `members`。改成先偵測換行，兩邊都加。
+- **多步指令整段沒跑**：指令裡夾了 `rm`，被 Blast Radius 擋下。刪檔拆出來，Artifact 改用 `files: null` 移除。
+- **回覆跳成英文**：被 Stop hook 擋兩次，改寫成繁體中文。
+
+### 3. 額度花費
+
+- mod 量到：累計工作時間約 64 分鐘；本 session 約 US$187.86；最高用量窗口是週 32%。
+- 最耗的一步（推估，mod 沒有分步數字）：實驗室支線整段。要讀 AGY 交回的 5 款遊戲大檔、在無頭 Chrome 反覆跑冒煙與端到端測試、D0637 來回修三次，對話還因此壓縮過一次。其次是 Codex 生 5 張實驗室圖（每張約 100 秒）。私網部署與連結修正相對便宜。
+
+### 4. 下一步與規則建議
+
+下一步：
+1. 老師同意後在 `exit6/teachers.mjs` 填 `name`、加進 `CONSENTED`。
+2. 隱藏結局文案請系主任確認。
+3. 私人試玩 Artifact 還停在第 15 版（沒有實驗室），要不要更新由使用者決定；私網試玩版已是最新。
+4. 推 GitHub 前：刪本機備份分支 `backup/exit6-before-filter` 與 `refs/original/`，並確認 `art-src/exit6/ref_labs/` 照片沒進 git。
+
+規則建議（只提案，沒改規則檔）：
+- **工具修正優先於規則**：`07_私密網頁/tools/new-item.ps1` 用 `-Force` 重建時應保留原本的 `hub` 欄位。修好就不用靠人記；在那之前，skill 已補一條踩雷。
+- **`agy-max` skill 或 AGY 工單範本**：有隨機關卡的小遊戲，規格要寫「關卡用構造法保證有解，不用搜尋驗證」，驗收要「每輪至少 200 個種子全部可解」。這次是主控事後才抓到。
+- **專案 AGENTS.md（agd-comic-site）**：遊戲內連回系網的網址一律經 `exit6/links.mjs`，不要寫死 `../#/`；遊戲會同時放在系網、私網和 Artifact 三處。
+- hook：無新提案。
+
+下一輪建議：Claude Sonnet 5.5／推理強度中等。剩下的是填老師名字、改文案這類小改動，規格都清楚。
