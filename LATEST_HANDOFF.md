@@ -92,3 +92,80 @@
 - 補 6 處「待老師補充」文字（地墊作者、天橋彩繪、牌樓由來、櫥窗海報出處）。
 - 系主任語音 8 句（錄音稿 `docs/exit6/錄音稿.md`，檔放 `exit6/audio/<id>.m4a`）。
 - 音效只看數據挑選，需要親耳試聽。
+
+## 復盤 2026-10-16
+
+### 1. 做了什麼、改了哪些檔
+
+今天 13 個提交（`72b0a1e`～`87dffd9`），分五段：開場封面 → 由淺入深引導 → AGY 小遊戲雛形 → 老師關卡宿主與簽名卡 → 主角旁白與第一輪減量。
+
+mod 記錄到的檔案（後半段）與用途：
+
+| 檔案 | 用途 |
+|---|---|
+| `exit6/teachers.mjs` | 5 位老師（專長代稱、站點、對應小遊戲、邀請文、一句話）、發卡、集滿判定、名字同意閘門；卡面後來改 `card: null`＋`mark` 文字卡 |
+| `scripts/test-exit6-teachers.mjs` | 老師關卡規則 7 項測試（站點不重複、本名閘門、只有贏才發卡、集滿只觸發一次、壞存檔不壞） |
+| `exit6/story.mjs` | 主角旁白與物件台詞的純函式：mustIndex／narrFor／spotAt |
+| `scripts/test-exit6-story.mjs` | 4 項：每站 1 個必點、台詞長度與無佔位字無本名、兩圈旁白不同、彩蛋點擊判定 |
+| `scripts/exit6-teacher-e2e.mjs` | 無頭 Chrome（CDP）端到端 20 項：走導覽圈→接受邀請→亂按 62 秒→發卡→3D 關卡→繪本與視傳版面→集滿結局→旁白與彩蛋→手機卡冊 |
+| `LATEST_HANDOFF.md` | 各段現況與本復盤 |
+| scratchpad `teacher_patch.py` | 一次性：把宿主覆蓋層、邀請鈕、卡冊、隱藏結局插進 main.mjs／index.html（不進 repo） |
+| scratchpad `story_data.py` | 一次性：在 data.mjs 補 narr／must／say |
+| scratchpad `story_ui.py` | 一次性：旁白框、導覽圈只亮必點、彩蛋點擊、手帳「看過的東西」 |
+| scratchpad `card_text.py` | 一次性：卡面改文字卡、帳本記退回、改測試 |
+| scratchpad `cardshot.mjs` | 一次性截圖：文字卡卡冊與簽名卡畫面給使用者看（不是回歸測試） |
+
+mod 沒記到但同樣改過的：`exit6/main.mjs`、`exit6/index.html`、`exit6/data.mjs`、`exit6/game.js`（打包產物）、`exit6/minigames/*`（10 檔）、`exit6/coach.mjs`、`exit6/game-core.mjs`、`scripts/test-exit6-onboard.mjs`、`art-src/exit6/gen-batch.mjs`（cards 組）、`art-src/exit6/ledger.jsonl`（5 筆生成＋5 筆退回）、`art-src/exit6/phase3/**`（雛形、調研、驗收報告、smoke.mjs）。
+
+### 2. 踩雷與根因
+
+| 症狀（確切訊息） | 根因 | 修法 |
+|---|---|---|
+| esbuild `The symbol "loaded" has already been declared` | 新加的腳本快取取名 `loaded`，跟既有預載 Set 同名 | 改名 `mgScripts` |
+| esbuild `Unexpected end of file`（main.mjs:855） | 在一行內的程式中間插了 `//` 註解，把後面的 `} } });` 一起註解掉 | 註解移到上一行 |
+| 端到端 `mg-book：容器保有高度` 失敗，畫布 top −297px | 小遊戲 mount 時改宿主容器 `position: relative`，`inset:0` 失效、高度塌成 0 | 宿主每次給新的 `.mgstage`，並設 `width/height:100%` |
+| python 補丁 SyntaxError（字串中間斷行） | 用 sed 改 python 檔時 `\n` 被吃成真正換行 | 改用 Edit 工具、字串用 `chr(10)` |
+| 指令被 Blast Radius 擋下 10 分鐘「no answer」整段沒跑 | 多步指令裡夾了一行 `rm`（目標其實不存在） | 拆掉刪檔，Artifact 改用 `files: null` 移除 |
+| Browser pane 截圖標題全透明、小遊戲倒數不動 | pane 隱藏時 `document.timeline` 與 `requestAnimationFrame` 都不推進 | 改用無頭 Chrome（CDP）驗證 |
+| 5 個分頁同時跑冒煙，倒數幾乎不動 | 無頭 Chrome 背景分頁畫面更新被降速 | 一次只跑一個遊戲並 `Page.bringToFront` |
+| AGY 報告 FAKE（白名單外變動） | 主控自己在同一工作區寫了 jobs／out 檔 | 確認是誤判；outRoot 放工作區外、派工期間不寫該資料夾 |
+| AGY r2 讀檔被拒、零產出 | refs/ 是目錄連結指到工作區外；agy 又自行去讀 Vault | 複製 .md 到 refdocs/，再用 conversation 續接叫它直接寫 |
+| AGY 雛形測試 3 項失敗 | 2 項是 AGY 寫錯測試期望值，1 項是規則判斷順序錯（Bug 格先被判成沒管子） | 主控修，紅綠循環確認 |
+| 冒煙：導管除錯 12 秒就結束、字體對撞 2 秒就贏、3D 亂按把時間扣光 | 規格沒寫清「失敗重來」與第 1 階強度 | 派 AGY 第二輪修正並重測 |
+| 卡面插圖被退回 | Codex「工作桌靜物」卡面 AI 感太重 | 改文字卡暫代；帳本記退回，原圖留 gen/ |
+
+### 3. 額度花費
+
+- mod 量到：累計工作時間約 118 分鐘；本 session 花費約 US$150.55；目前最高用量窗口：週 29%。
+- 最耗的步驟（依過程判斷，沒有逐步計費數據）：
+  1. 發布 Artifact 前完整讀 10 個 AGY 小遊戲檔（約 250KB，約 7 萬 token）。
+  2. 長對話脈絡反覆帶入（大量 Bash／截圖輸出）＋多張全尺寸截圖判讀。
+  3. 端到端測試反覆重跑（每次約 3 分鐘，跑了 6 次以上）。
+- AGY 線（Gemini Flash High）承擔 4 份調研＋5 個雛形＋1 輪修正，不吃 Claude 額度。
+
+### 4. 下一步與規則建議
+
+下一步（依序）：
+1. 使用者試玩第 15 版，回饋旁白台詞口吻、第一輪難度、小遊戲難度（mg-type、mg-code 待真人試）。
+2. 老師本人同意後：`teachers.mjs` 填 `name` 並加進 `CONSENTED`。
+3. 卡面正式美術：使用者決定方向（手繪、實拍、其他管線）後再做；文字卡是暫代。
+4. 第二批小遊戲與實驗室支線（候選：惡意彈窗大掃除、手感果汁調校師、名導演黃金觀景窗、定格時光機 D0637）。
+5. 隱藏結局文案請系主任確認；作品展示與招生分享卡尚未做。
+
+規則建議（只提案，沒有改規則檔）：
+- **agy-max `references/pitfalls.md`**：網頁小遊戲工單要寫「不得改 mount 進來的 root 樣式」，宿主端一律給新的內層容器；另記「主控在 watchDir 寫檔會害 FAKE 誤判」與「目錄連結指到工作區外會被拒，要複製」。
+- **verify skill 或自動記憶**：Claude 內建 Browser pane 隱藏時 rAF／CSS 動畫不跑，動畫與遊戲驗證改用無頭 Chrome；無頭多分頁要一次一個。
+- **image-gen-routing**：記一筆「Codex 的專長主題工作桌靜物卡面，使用者 2026-10-16 判定 AI 感太重」，之後卡片類插圖先出 1 張樣張給使用者看再批次。
+- **全域習慣（不建議寫成規則）**：多步指令別夾刪檔，避免整段被 Blast Radius 擋住；這屬單次經驗，放自動記憶即可。
+
+下一輪建議（next-round-advisor 格式）：
+- **下一輪工作**：依使用者試玩回饋微調，或開第二批小遊戲／實驗室支線
+- **判定任務類型**：遊戲功能迭代（網頁前端）
+- **主線代理**：Claude Code
+- **建議模型**：Claude Opus 5.5
+- **推理強度**：high
+- **檔位注意**：Claude 對話只推薦 Claude 家族；Claude Code 的 /effort 可調整當前模型
+- **接續方式**：新對話＋本交接檔（對話已很長）
+- **理由**：要同時顧遊戲設計、教學節奏與多檔整合；機械工作（雛形、調研）照舊派 AGY Flash High
+- **重新評估條件**：使用者只要文案或數值微調時，降為 Sonnet／medium
+- **套用狀態**：僅建議，尚未切換、尚未派工
