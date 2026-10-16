@@ -54,6 +54,17 @@
   mg-type、mg-code 難度要真人試。下一步：使用者試玩→挑老師並取得同意→寫宿主（走廊遇老師→mount→onEnd 發簽名卡）。
 - 舊雛形盤點（Explore 子代理）：遊戲時光屋 57 款在 `G:\我的雲端硬碟\07_私密網頁\site\retro-game-house\`、GameWiki 40 款、折光港 10 款、字旋試場；3D 類沒有現成雛形。
 
+## 2026-10-16 老師關卡宿主與簽名卡（提交 f9e8869、1313a8e；Artifact 第 12 版）
+
+- 使用者選：5 個全接、名字先用專長代稱、依專長分散各站、卡面用 Codex 生圖。
+- `exit6/teachers.mjs`：繪本 S4、視傳 S5、動畫 S6、3D S3、程式 S7；循環圈右下角「<代稱>的邀請」。`name` 全部 null，
+  老師本人同意後把本名填進 `name` 並加進 `CONSENTED`（測試會擋未登記的本名）。
+- 小遊戲在 `exit6/minigames/<id>/`（複製自 art-src/exit6/phase3/mg），點了才載入；3D 關卡先載 cdnjs three.js r128（離線會顯示載入失敗）。
+  宿主每次給 `.mgstage` 內層容器，因為小遊戲會改容器樣式。贏了發卡，存 `exit6-save-v1.cards`，手帳卡冊 n/5，集滿開隱藏結局（文案是我寫的草稿，連 ../#/works、#/admission、#/labs）。
+- 卡面 `exit6/frames/card_*.webp`：gen-batch.mjs `cards` 組，帳本已記；**尚待使用者在對話確認通過**（預覽 art-src/exit6/gen/cards_contact.jpg）。
+- 測試：`node --test scripts/test-exit6*.mjs` 54 項；端到端 `node scripts/exit6-teacher-e2e.mjs`（先開 `npx http-server . -p 8090 -c-1`）15 項全過。
+- 待辦：老師同意後換本名與肖像；隱藏結局文案請系主任確認；mg-type、mg-code 難度要真人試；作品展示與招生分享卡還沒做。
+
 ## 下一階段（建議開新 session 做）：老師關卡與實驗室支線
 
 使用者 2026-10-15 已決定：
