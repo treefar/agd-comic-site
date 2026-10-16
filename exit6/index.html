@@ -198,6 +198,24 @@
   @keyframes narrIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
   .cut.c-egg { filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff); }
   @media (prefers-reduced-motion: reduce) { .narr.in { animation: none; } }
+  /* 實驗室：開場畫面（系網照片轉的漫畫背景；還沒有圖時是紙底網點）、星等結算、手帳成就牆 */
+  .labintro { position: absolute; inset: 0; background: center / cover no-repeat var(--paper); display: flex; align-items: flex-end; justify-content: center; padding: 14px; }
+  .labintro.nobg { background: radial-gradient(rgba(15,13,10,.16) 1px, transparent 1.4px) 0 0 / 8px 8px, var(--paper); align-items: center; }
+  .labcode { position: absolute; top: 12%; left: 50%; transform: translateX(-50%); font: 900 clamp(40px, 9vw, 96px)/1 "Noto Serif TC", serif; color: var(--paperink); opacity: .85; }
+  .labcap { max-width: 560px; padding: 12px 14px; background: var(--paper); color: var(--paperink); border: 3px solid var(--paperink); box-shadow: 5px 5px 0 var(--paperink); }
+  .labcap p { margin: 0 0 6px; line-height: 1.6; font-size: 15px; }
+  .labcap .labsay { font-weight: 700; }
+  .labcap .labrec { color: var(--blue); font-weight: 700; font-size: 14px; }
+  .labstars { font-size: clamp(44px, 8vw, 72px); letter-spacing: .1em; color: var(--pop); -webkit-text-stroke: 2px var(--paperink); line-height: 1; }
+  .labconds { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; text-align: left; font-size: 15px; }
+  .labconds li::before { content: "☐ "; }
+  .labconds li.ok::before { content: "☑ "; color: #1a7f3c; }
+  .labnew { margin: 0; font-weight: 900; color: var(--red); }
+  .rwrow { justify-content: flex-start; margin-bottom: 8px; }
+  .lockrw { font-size: 13px; color: #7a6f55; border: 2px dashed #b8ab8a; padding: 6px 10px; border-radius: 8px; }
+  .sharecard { display: flex; flex-direction: column; gap: 6px; padding: 14px; margin-bottom: 10px; background: radial-gradient(rgba(15,13,10,.12) 1px, transparent 1.4px) 0 0 / 7px 7px, var(--paper); border: 3px solid var(--paperink); box-shadow: 4px 4px 0 var(--paperink); color: var(--paperink); }
+  .sharecard b { font: 900 22px/1 "Noto Serif TC", serif; }
+  .sharecard span { line-height: 1.6; user-select: text; }
   .mid { display: flex; gap: 6px; align-items: stretch; }
   .nb.help { background: var(--pop); }
   .nb.pulse { animation: pop .5s cubic-bezier(.2,1.8,.4,1) 2; }
@@ -318,6 +336,7 @@
     <div class="burst" id="burst"></div>
     <div class="hud"><div><div class="floorNo" id="floorNo">0F</div><div class="clock" id="clock"></div></div><div><div class="where" id="where"></div><div class="timer" id="timer"></div></div></div>
     <button class="invite hidden" id="invite" aria-label="老師邀請"></button>
+    <button class="branch hidden" id="labBtn" aria-label="進入實驗室"></button>
     <button class="branch hidden" id="branch">往走廊深處 →</button>
     <div class="dbg hidden" id="dbg"></div>
   </div>

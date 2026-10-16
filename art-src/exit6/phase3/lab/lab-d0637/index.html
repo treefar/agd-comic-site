@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>lab-d0637「影格接龍」— D0637 偶動畫實驗室</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0f0d0a;
+    color: #f4ecd8;
+    font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 12px;
+  }
+  header {
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  header h1 {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #ffd60a;
+  }
+  header p {
+    font-size: 13px;
+    color: #8a948e;
+  }
+  /* 宿主 16:9 舞台容器 */
+  #stage-wrap {
+    width: 100%;
+    max-width: 960px;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    border: 3px solid #0f0d0a;
+    box-shadow: 4px 4px 0 #ffd60a;
+    background: #f4ecd8;
+    overflow: hidden;
+  }
+  #root {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  /* 結束結算遮罩面板 */
+  #result-panel {
+    display: none;
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 13, 10, 0.88);
+    color: #f4ecd8;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 100;
+    text-align: center;
+  }
+  #result-card {
+    background: #f4ecd8;
+    color: #0f0d0a;
+    border: 3px solid #0f0d0a;
+    box-shadow: 6px 6px 0 #ffd60a;
+    padding: 24px 32px;
+    max-width: 520px;
+    width: 90%;
+  }
+  .res-title {
+    font-size: 26px;
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+  .res-stars {
+    font-size: 36px;
+    letter-spacing: 6px;
+    color: #ffd60a;
+    margin: 8px 0;
+    text-shadow: 2px 2px 0 #0f0d0a;
+  }
+  .res-score {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .res-flawless {
+    display: inline-block;
+    padding: 4px 12px;
+    font-size: 13px;
+    font-weight: bold;
+    border: 2px solid #0f0d0a;
+    margin-bottom: 14px;
+    background: #ffd60a;
+  }
+  .res-lesson {
+    font-size: 14px;
+    line-height: 1.6;
+    border-top: 2px dashed #0f0d0a;
+    padding-top: 12px;
+    margin-bottom: 20px;
+    color: #0f0d0a;
+    text-align: left;
+  }
+  .retry-btn {
+    min-width: 160px;
+    min-height: 48px;
+    font-size: 16px;
+    font-weight: 900;
+    background: #e63946;
+    color: #f4ecd8;
+    border: 3px solid #0f0d0a;
+    box-shadow: 4px 4px 0 #0f0d0a;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+  .retry-btn:hover {
+    background: #ffd60a;
+    color: #0f0d0a;
+  }
+  .retry-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 #0f0d0a;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>D0637 偶動畫實驗室 ✦ 影格接龍</h1>
+  <p>專長：定格動畫 | 60 秒挑戰</p>
+</header>
+
+<div id="stage-wrap">
+  <div id="root"></div>
+
+  <div id="result-panel">
+    <div id="result-card">
+      <div id="res-outcome" class="res-title">獲勝！</div>
+      <div id="res-stars" class="res-stars">★★★</div>
+      <div id="res-score" class="res-score">SCORE: 0</div>
+      <div id="res-flawless-tag" class="res-flawless">★3 零失誤過關達成</div>
+      <div class="res-lesson">
+        <strong>定格動畫小知識：</strong><br>
+        定格動畫一秒要拍好幾張照片，每一格的順序和微小位移，決定動作看起來順不順。
+      </div>
+      <button id="retry-button" class="retry-btn" type="button">再玩一次</button>
+    </div>
+  </div>
+</div>
+
+<script src="./rules.js"></script>
+<script src="./game.js"></script>
+<script>
+(function() {
+  const rootEl = document.getElementById("root");
+  const resultPanel = document.getElementById("result-panel");
+  const resOutcome = document.getElementById("res-outcome");
+  const resStars = document.getElementById("res-stars");
+  const resScore = document.getElementById("res-score");
+  const resFlawlessTag = document.getElementById("res-flawless-tag");
+  const retryBtn = document.getElementById("retry-button");
+
+  let currentGameInstance = null;
+  const gameDef = window.EXIT6_MG["lab-d0637"];
+  const rules = window.EXIT6_RULES_LAB_D0637;
+
+  function launchGame() {
+    resultPanel.style.display = "none";
+
+    if (currentGameInstance && typeof currentGameInstance.destroy === "function") {
+      currentGameInstance.destroy();
+      currentGameInstance = null;
+    }
+
+    currentGameInstance = gameDef.mount(rootEl, {
+      rng: Math.random,
+      onEnd: function(result) {
+        showResults(result);
+      }
+    });
+  }
+
+  function showResults(result) {
+    const starCalc = rules.calcStars(result, gameDef.stars.score2);
+
+    resOutcome.textContent = result.win ? "🎉 挑戰成功！" : "⏱️ 時間到！未達標";
+    resOutcome.style.color = result.win ? "#1d4ed8" : "#e63946";
+    resStars.textContent = starCalc.text;
+    resScore.textContent = "得分: " + (result.score || 0) + " 分（★2 門檻: " + gameDef.stars.score2 + "）";
+
+    if (result.flawless) {
+      resFlawlessTag.style.display = "inline-block";
+      resFlawlessTag.textContent = "★3 " + gameDef.stars.flawless + " 達成！";
+      resFlawlessTag.style.background = "#ffd60a";
+    } else {
+      resFlawlessTag.style.display = "inline-block";
+      resFlawlessTag.textContent = "未達成零失誤（有被退回的拖放）";
+      resFlawlessTag.style.background = "#8a948e";
+    }
+
+    resultPanel.style.display = "flex";
+  }
+
+  retryBtn.addEventListener("click", function() {
+    launchGame();
+  });
+
+  launchGame();
+})();
+</script>
+</body>
+</html>

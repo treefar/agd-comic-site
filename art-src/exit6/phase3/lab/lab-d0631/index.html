@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>D0631 動作捕捉實驗室 — 虛擬製片靶場</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: #0f0d0a;
+      color: #f4ecd8;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      overflow-x: hidden;
+    }
+    header {
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    h1 {
+      font-size: clamp(18px, 3.2vw, 24px);
+      font-weight: 900;
+      color: #ffd60a;
+    }
+    .subtitle {
+      font-size: 13px;
+      color: #8a948e;
+      margin-top: 4px;
+    }
+    #stage-container {
+      width: min(96vw, 1120px);
+      aspect-ratio: 16 / 9;
+      position: relative;
+      border: 3px solid #0f0d0a;
+      box-shadow: 4px 4px 0 #0f0d0a, 0 0 0 2px #8a948e;
+      background: #0f0d0a;
+      overflow: hidden;
+    }
+    #root {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    #result-panel {
+      display: none;
+      margin-top: 14px;
+      width: min(96vw, 1120px);
+      padding: 16px 20px;
+      border: 3px solid #0f0d0a;
+      box-shadow: 4px 4px 0 #0f0d0a;
+      background: #f4ecd8;
+      color: #0f0d0a;
+      border-radius: 8px;
+      text-align: center;
+    }
+    #result-panel.active {
+      display: block;
+    }
+    .res-title {
+      font-size: 22px;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+    .res-stars {
+      font-size: 28px;
+      color: #1d4ed8;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+    .res-info {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #0f0d0a;
+    }
+    .replay-btn {
+      appearance: none;
+      border: 3px solid #0f0d0a;
+      border-radius: 999px;
+      padding: 10px 28px;
+      background: #ffd60a;
+      color: #0f0d0a;
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 4px 4px 0 #0f0d0a;
+    }
+    .replay-btn:hover {
+      background: #f4ecd8;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>D0631 動作捕捉實驗室 — 虛擬製片靶場</h1>
+    <div class="subtitle">專業技術：虛擬製片 ｜ 即時 LED 牆視效合成 ｜ 60 秒瞄準射擊</div>
+  </header>
+
+  <div id="stage-container">
+    <div id="root"></div>
+  </div>
+
+  <div id="result-panel">
+    <div id="res-stars" class="res-stars">★☆☆</div>
+    <div id="res-title" class="res-title">通關成功</div>
+    <div id="res-info" class="res-info">得分：0 ｜ 每箭上靶：否</div>
+    <button id="res-replay" class="replay-btn" type="button">再玩一次</button>
+  </div>
+
+  <script src="rules.js"></script>
+  <script src="game.js"></script>
+  <script>
+    (function () {
+      const root = document.getElementById("root");
+      const resultPanel = document.getElementById("result-panel");
+      const resStars = document.getElementById("res-stars");
+      const resTitle = document.getElementById("res-title");
+      const resInfo = document.getElementById("res-info");
+      const resReplay = document.getElementById("res-replay");
+
+      const mg = window.EXIT6_MG["lab-d0631"];
+      let activeGame = null;
+
+      function start() {
+        resultPanel.classList.remove("active");
+        if (activeGame && typeof activeGame.destroy === "function") {
+          activeGame.destroy();
+          activeGame = null;
+        }
+
+        activeGame = mg.mount(root, {
+          rng: Math.random,
+          onEnd: function (result) {
+            const won = result.win;
+            const score = result.score;
+            const flawless = result.flawless;
+
+            let star1 = won;
+            let star2 = score >= mg.stars.score2;
+            let star3 = flawless === true;
+
+            const starStr = (star1 ? "★" : "☆") + (star2 ? "★" : "☆") + (star3 ? "★" : "☆");
+            resStars.textContent = starStr;
+            resTitle.textContent = won ? "通關成功 (PASS)" : "挑戰失敗 (FAIL)";
+            resTitle.style.color = won ? "#1d4ed8" : "#e63946";
+            resInfo.textContent = "得分：" + score + " 分 (及格: " + window.EXIT6_RULES_LAB_D0631.WIN_SCORE + " / ★2: " + mg.stars.score2 + ") ｜ 每箭上靶 (★3)：" + (flawless ? "是 (零失誤)" : "否 (有脫靶)");
+            resultPanel.classList.add("active");
+          }
+        });
+      }
+
+      resReplay.addEventListener("click", function () {
+        start();
+      });
+
+      start();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>lab-d0604 繪圖板描線救援</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: #8a948e;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      padding: 12px;
+      user-select: none;
+    }
+    #stage-container {
+      width: 100%;
+      max-width: 960px;
+      aspect-ratio: 16 / 9;
+      position: relative;
+      background: #0f0d0a;
+      border: 3px solid #0f0d0a;
+      box-shadow: 6px 6px 0 #0f0d0a;
+      overflow: hidden;
+    }
+    #root {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    #result-box {
+      margin-top: 14px;
+      background: #f4ecd8;
+      border: 3px solid #0f0d0a;
+      box-shadow: 4px 4px 0 #0f0d0a;
+      padding: 12px 20px;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      max-width: 960px;
+      width: 100%;
+      color: #0f0d0a;
+      font-size: 15px;
+      font-weight: bold;
+    }
+    #result-text {
+      line-height: 1.5;
+    }
+    #restart-btn {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 8px 18px;
+      background: #ffd60a;
+      color: #0f0d0a;
+      border: 3px solid #0f0d0a;
+      box-shadow: 3px 3px 0 #0f0d0a;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      font-family: inherit;
+      touch-action: manipulation;
+    }
+    #restart-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 #0f0d0a;
+    }
+  </style>
+</head>
+<body>
+  <div id="stage-container">
+    <div id="root"></div>
+  </div>
+
+  <div id="result-box">
+    <div id="result-text"></div>
+    <button id="restart-btn">再玩一次</button>
+  </div>
+
+  <script src="./rules.js"></script>
+  <script src="./game.js"></script>
+  <script>
+    const rootEl = document.getElementById("root");
+    const resultBox = document.getElementById("result-box");
+    const resultText = document.getElementById("result-text");
+    const restartBtn = document.getElementById("restart-btn");
+    let gameInstance = null;
+
+    function runGame() {
+      if (gameInstance) {
+        gameInstance.destroy();
+        gameInstance = null;
+      }
+      resultBox.style.display = "none";
+
+      const MG = window.EXIT6_MG["lab-d0604"];
+      gameInstance = MG.mount(rootEl, {
+        onEnd: function (res) {
+          const stars = res.win
+            ? (res.flawless ? "★★★" : (res.score >= MG.stars.score2 ? "★★☆" : "★☆☆"))
+            : "☆☆☆";
+          resultText.textContent = `結果：${res.win ? "勝利" : "挑戰結束"} ｜ 星等：${stars} ｜ 分數：${res.score} ｜ 完美過關：${res.flawless ? "是" : "否"}`;
+          resultBox.style.display = "flex";
+        },
+        rng: Math.random
+      });
+    }
+
+    restartBtn.addEventListener("click", runGame);
+    runGame();
+  </script>
+</body>
+</html>

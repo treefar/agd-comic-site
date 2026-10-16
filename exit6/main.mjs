@@ -10,6 +10,7 @@ import { MOVES, QIU_HP, PLAYER_HP, createFight, nextRound, input, timeout } from
 import { cueFor, hintStage, areaOf, HINT_TEXT, COACH, helpReply, HELP_COOLDOWN_MS, HELP_CLEAR } from "./coach.mjs";
 import { TEACHERS, displayName, createCards, award, allCollected, teacherAt, scriptsFor } from "./teachers.mjs";
 import { mustIndex, narrFor, spotAt } from "./story.mjs";
+import { LABS, labAt, starsFor, createAchv, record, totalStars, titleFor, unlocked, MAX_STARS, REWARDS } from "./labs.mjs";
 
 const q = new URLSearchParams(location.search);
 const seed = q.has("seed") ? Number(q.get("seed")) : (Date.now() & 0xffffffff);
@@ -32,6 +33,7 @@ function loadSave() { try { return JSON.parse(localStorage.getItem(SAVE_KEY)) ||
 function writeSave(s) { try { localStorage.setItem(SAVE_KEY, JSON.stringify(s)); } catch { /* 私密視窗等情況 */ } }
 const save = Object.assign({ dex: [], bestMs: null, bestMiss: null, clears: 0, cards: [] }, loadSave());
 const cardBook = createCards(save.cards);   // 老師簽名卡（壞資料就當沒有）
+const achv = createAchv(save.achv);          // 實驗室成就：每間最高星與最高分
 const run = { t0: 0, mistakes: 0, precise: 0, misTaps: 0, toured: new Set(), failStreak: 0, seen: new Set() };   // seen：點過的物件（手帳「看過的東西」）
 // 卡住提示：進到異常站開始計時；hintOn＝這圈要不要給提示（前 3 圈，或連錯兩次後）
 const hint = { t0: 0, mis: 0, stage: 0, on: false, timer: null };
@@ -277,8 +279,13 @@ function renderInvite() {
   b.classList.toggle("hidden", !t);
   if (t) b.innerHTML = `${cardBook.cards.some((c) => c.id === t.id) ? "✔ " : ""}${displayName(t)}的邀請`;
 }
+function renderLab() {
+  const l = labAt(game.station, game.phase), b = $("labBtn");
+  b.classList.toggle("hidden", !l);
+  if (l) { const v = achv.labs[l.id]; b.textContent = `進入 ${l.code} ${l.name}${v && v.stars ? "　" + starRow(v.stars) : ""} →`; }
+}
 function renderBranch() {
-  renderInvite();
+  renderInvite(); renderLab();
   $("branch").classList.toggle("hidden", !(game.phase === "loop" && game.station === 6 && allFound(clues)));
   $("branch").textContent = clues.opened ? "進入 D0647 →" : "往走廊深處 →";
 }
@@ -321,10 +328,12 @@ function openNotebook() {
     <h4>系辦委託</h4><ul>${items}</ul>
     <h4>邱老師研究室的密碼　${slots}（${clues.found.length}/${CLUES.length}）</h4><ul>${clueList}</ul>
     <h4>看過的東西（${run.seen.size}）</h4><ul>${seenList()}</ul>
+    ${labWall()}
     <h4>老師簽名卡（${cardBook.cards.length}/${TEACHERS.length}）</h4><div class="cardgrid">${cardGrid()}</div>
     ${allCollected(cardBook) ? `<button class="ghost" data-ending>重看隱藏結局</button>` : `<p class="dim">循環圈經過有老師的站，按右下角「邀請」挑戰小遊戲。</p>`}
     <h4>紀念章</h4><ul>${stampList}</ul><button class="go" data-close>關閉</button>`);
   $("sheet").querySelector("[data-ending]")?.addEventListener("click", () => { closeSheet(); hiddenEnding(); });
+  $("sheet").querySelector("[data-share]")?.addEventListener("click", () => { closeSheet(); openShare(); });
 }
 function openDeliver(target) {
   play("click");
@@ -626,7 +635,7 @@ function loadScript(src) {
   });
   return mgScripts[src];
 }
-let mgHandle = null, mgTeacher = null;
+let mgHandle = null, mgCurrent = null;   // mgCurrent：目前開著的老師關卡或實驗室
 function openInvite() {
   const t = teacherAt(game.station, game.phase); if (!t || busy) return;
   play("click"); stopHint();
@@ -637,22 +646,29 @@ function openInvite() {
     <div class="row"><button class="go" data-mg>接受挑戰</button><button class="ghost" data-close>先不要</button></div>`);
   $("sheet").querySelector("[data-mg]").onclick = () => startMinigame(t);
 }
-async function startMinigame(t) {
+// 共用的小遊戲執行器：e = { mg, header, scripts, end(r) }；老師關卡與實驗室都走這裡
+async function runMinigame(e) {
   closeSheet(); deanImg.classList.remove("in"); deanImg.classList.add("out"); $("sub").classList.add("hidden");
-  busy = true; setButtons(); mgTeacher = t;
-  $("mgTitle").textContent = `${displayName(t)}・${t.skill}`;
+  busy = true; setButtons(); mgCurrent = e;
+  $("mgTitle").textContent = e.header;
   $("mgResult").classList.add("hidden"); $("mgRoot").innerHTML = `<p class="mgload">載入中……</p>`;
   $("mg").classList.remove("hidden"); play("sting", 0.4);
-  try { for (const src of scriptsFor(t)) await loadScript(src); }
+  try { for (const src of e.scripts) await loadScript(src); }
   catch { $("mgRoot").innerHTML = `<p class="mgload">這個小遊戲載入失敗（3D 關卡需要連網）。按右上角 × 回走廊。</p>`; return; }
-  if (mgTeacher !== t) return;                      // 載入途中已經關掉
+  if (mgCurrent !== e) return;                      // 載入途中已經關掉
+  if (!window.EXIT6_MG || !window.EXIT6_MG[e.mg]) { $("mgRoot").innerHTML = `<p class="mgload">這個小遊戲還在製作中。按右上角 × 回走廊。</p>`; return; }
   // 每次給小遊戲一個新的內層容器：小遊戲會改容器樣式（position、transform），不能讓它動到宿主的 #mgRoot
   $("mgRoot").innerHTML = `<div class="mgstage"></div>`;
-  let ended = false;   // onEnd 後等 2.6 秒再蓋上簽名卡：先讓玩家讀完小遊戲自己的專長知識
-  mgHandle = window.EXIT6_MG[t.mg].mount($("mgRoot").firstChild, { rng, onEnd: (r) => { if (!ended) { ended = true; setTimeout(() => minigameEnd(t, r), 2600); } } });
+  let ended = false;   // onEnd 後等 2.6 秒再蓋上結果：先讓玩家讀完小遊戲自己的專長知識
+  mgHandle = window.EXIT6_MG[e.mg].mount($("mgRoot").firstChild, { rng, onEnd: (r) => { if (!ended) { ended = true; setTimeout(() => { if (mgCurrent === e) e.end(r); }, 2600); } } });
 }
-function minigameEnd(t, r) {
-  if (mgTeacher !== t) return;
+function retryMinigame(again) { try { mgHandle?.destroy(); } catch { /* 照樣重來 */ } mgHandle = null; again(); }
+
+// ---------- 老師關卡 ----------
+function startMinigame(t) {
+  runMinigame({ mg: t.mg, header: `${displayName(t)}・${t.skill}`, scripts: scriptsFor(t), end: (r) => teacherEnd(t, r) });
+}
+function teacherEnd(t, r) {
   const res = award(cardBook, t.id, r);
   if (res.got) { save.cards = cardBook.cards; writeSave(save); nbPulse(); }
   const best = cardBook.cards.find((c) => c.id === t.id)?.best;
@@ -665,11 +681,76 @@ function minigameEnd(t, r) {
   box.classList.remove("hidden");
   if (r && r.win) { play(res.first ? "clear" : "correct"); burst(res.first ? "簽名卡 GET！" : "刷新紀錄", true); }
   box.querySelector("[data-back]").onclick = () => leaveMinigame(res.completed);
-  const rt = box.querySelector("[data-retry]"); if (rt) rt.onclick = () => { mgHandle?.destroy(); mgHandle = null; startMinigame(t); };
+  const rt = box.querySelector("[data-retry]"); if (rt) rt.onclick = () => retryMinigame(() => startMinigame(t));
 }
+
+// ---------- 實驗室支線：門口進去 → 實驗室畫面（系網照片轉漫畫）→ 小遊戲 → 1～3 星 ----------
+const labScripts = (l) => [`minigames/${l.mg}/rules.js`, `minigames/${l.mg}/game.js`];
+const starRow = (n) => "★".repeat(n) + "☆".repeat(3 - n);
+function openLab() {
+  const l = labAt(game.station, game.phase); if (!l || busy) return;
+  play("click"); stopHint(); closeSheet();
+  deanImg.classList.remove("in"); deanImg.classList.add("out"); $("sub").classList.add("hidden");
+  busy = true; setButtons(); mgCurrent = { lab: l };
+  const rec = achv.labs[l.id];
+  $("mgTitle").textContent = `${l.code} ${l.name}`;
+  $("mgResult").classList.add("hidden");
+  $("mgRoot").innerHTML = `<div class="labintro${l.bg ? "" : " nobg"}"${l.bg ? ` style="background-image:url('${l.bg}')"` : ""}>
+      ${l.bg ? "" : `<span class="labcode">${l.code}</span>`}
+      <div class="labcap"><p>${l.intro}</p><p class="labsay">「${l.say}」</p>
+        <p class="labrec">${rec ? `最高 ${starRow(rec.stars)}・${rec.best} 分` : "還沒挑戰過"}</p>
+        <div class="row"><button class="go" data-labgo>開始挑戰</button><button class="ghost" data-labback>回走廊</button></div></div></div>`;
+  $("mg").classList.remove("hidden"); play("sting", 0.3);
+  $("mgRoot").querySelector("[data-labgo]").onclick = () => startLabGame(l);
+  $("mgRoot").querySelector("[data-labback]").onclick = () => leaveMinigame(false);
+}
+function startLabGame(l) {
+  runMinigame({ mg: l.mg, header: `${l.code} ${l.name}`, scripts: labScripts(l), end: (r) => labEnd(l, r) });
+}
+function labEnd(l, r) {
+  const def = (window.EXIT6_MG[l.mg] && window.EXIT6_MG[l.mg].stars) || {};
+  const n = starsFor(r, def);
+  const res = record(achv, l.id, n, r ? r.score : 0);
+  save.achv = achv; writeSave(save);
+  if (res.improved) nbPulse();
+  const won = !!(r && r.win), byScore = won && Number.isFinite(def.score2) && r.score >= def.score2, clean = won && r.flawless === true;
+  const box = $("mgResult");
+  box.innerHTML = `<div class="labstars" aria-label="${n} 顆星">${starRow(n)}</div>
+    <ul class="labconds"><li class="${won ? "ok" : ""}">過關</li><li class="${byScore ? "ok" : ""}">分數 ${Number.isFinite(def.score2) ? def.score2 : "—"} 以上（本次 ${r ? r.score : 0}）</li><li class="${clean ? "ok" : ""}">${def.flawless || "完美過關"}</li></ul>
+    ${res.improved ? `<p class="mgbest">刷新紀錄！實驗室總星數 ${totalStars(achv)} / ${MAX_STARS}</p>` : ""}
+    ${res.newTitles.map((t) => `<p class="labnew">獲得稱號「${t.name}」</p>`).join("")}
+    ${res.newRewards.map((w) => `<p class="labnew">${w.name}（手帳裡看）</p>`).join("")}
+    <div class="row"><button class="go" data-retry>再挑戰一次</button><button class="ghost" data-back>回到走廊</button></div>`;
+  box.classList.remove("hidden");
+  if (n) { play(n === 3 ? "clear" : "correct"); burst(starRow(n), true); } else play("wrong", 0.5);
+  box.querySelector("[data-back]").onclick = () => leaveMinigame(false);
+  box.querySelector("[data-retry]").onclick = () => retryMinigame(() => startLabGame(l));
+}
+function shareText() {
+  const total = totalStars(achv), t = titleFor(total);
+  return `我在《六樓出口》的實驗室拿到 ${total} 顆星${t ? `，稱號「${t.name}」` : ""}！樹德科大動畫與遊戲設計系的六樓，等你來玩：https://www.dgd.stu.edu.tw/`;
+}
+function openShare() {
+  openSheet(`<button class="x" data-close aria-label="關閉">×</button><h3>招生分享卡</h3>
+    <div class="sharecard"><b>六樓出口</b><span>${shareText()}</span></div>
+    <div class="row"><button class="go" data-copy>複製文字</button><a class="ghost linkbtn" href="../#/admission" target="_blank" rel="noopener">招生資訊</a></div>`);
+  $("sheet").querySelector("[data-copy]").onclick = async (ev) => {
+    try { await navigator.clipboard.writeText(shareText()); ev.target.textContent = "已複製"; }
+    catch { const r = document.createRange(); r.selectNodeContents($("sheet").querySelector(".sharecard span")); getSelection().removeAllRanges(); getSelection().addRange(r); ev.target.textContent = "已選取，請按複製"; }
+  };
+}
+function labWall() {
+  const total = totalStars(achv), t = titleFor(total), got = unlocked(total);
+  const rows = LABS.map((l) => { const v = achv.labs[l.id]; return `<li class="${v && v.stars ? "ok" : ""}"><b>${l.code} ${l.name}</b>　${starRow(v ? v.stars : 0)}${v ? `　最高 ${v.best} 分` : ""}</li>`; }).join("");
+  const rw = REWARDS.map((w) => got.includes(w)
+    ? (w.id === "works" ? `<a class="ghost linkbtn" href="../#/works" target="_blank" rel="noopener">學長姐作品展示</a>` : `<button class="ghost" data-share>招生分享卡</button>`)
+    : `<span class="lockrw">${w.at} 星解鎖：${w.name.replace("解鎖：", "")}</span>`).join("");
+  return `<h4>實驗室成就（${total}/${MAX_STARS} 星）${t ? `　稱號「${t.name}」` : ""}</h4><ul>${rows}</ul><div class="row rwrow">${rw}</div>`;
+}
+
 function leaveMinigame(completed) {
   try { mgHandle?.destroy(); } catch { /* 小遊戲自己出錯也要能回走廊 */ }
-  mgHandle = null; mgTeacher = null;
+  mgHandle = null; mgCurrent = null;
   $("mg").classList.add("hidden"); $("mgRoot").innerHTML = ""; busy = false;
   show(stopSrc(STATIONS[game.station], anomalyAt(game, ANOMALIES)), false); renderStop(); setButtons();
   if (completed) setTimeout(hiddenEnding, 500);
@@ -861,7 +942,7 @@ addEventListener("keydown", (e) => {
     else if (["z", "Z", " ", "Enter"].includes(e.key)) { e.preventDefault(); if (!e.repeat) fightKey("A"); }
     return;
   }
-  if (mgTeacher) return;                             // 老師小遊戲開著：按鍵交給小遊戲
+  if (mgCurrent) return;                             // 小遊戲或實驗室開著：按鍵交給它
   if (["ArrowLeft", "ArrowDown"].includes(e.key)) act("back");
   if (["ArrowRight", "ArrowUp"].includes(e.key)) act("forward");
 });
@@ -874,6 +955,7 @@ $("go").onclick = () => {
 $("nbBtn").onclick = (e) => { e.stopPropagation(); openNotebook(); };
 $("helpBtn").onclick = (e) => { e.stopPropagation(); askHelp(); };
 $("invite").onclick = (e) => { e.stopPropagation(); openInvite(); };
+$("labBtn").onclick = (e) => { e.stopPropagation(); openLab(); };
 $("mgClose").onclick = () => leaveMinigame(false);
 $("branch").onclick = (e) => { e.stopPropagation(); if (!busy) openKeypad(); };
 if (save.bestMs != null) $("best").textContent = `你的最佳時間 ${fmt(save.bestMs)}・圖鑑 ${new Set(save.dex).size}/${ANOMALIES.length}・通關 ${save.clears} 次`;

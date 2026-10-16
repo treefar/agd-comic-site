@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>lab-d0628 逐層列印 — D0628 3D 列印工作坊</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: #8a948e;
+      color: #0f0d0a;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 12px;
+    }
+    .game-container {
+      width: 100%;
+      max-width: 960px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .stage-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #f4ecd8;
+      border: 3px solid #0f0d0a;
+      box-shadow: 4px 4px 0 #0f0d0a;
+      overflow: hidden;
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .panel {
+      width: 100%;
+      background: #f4ecd8;
+      border: 3px solid #0f0d0a;
+      box-shadow: 4px 4px 0 #0f0d0a;
+      padding: 12px 18px;
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .panel-info {
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .panel-stars {
+      color: #ffd60a;
+      font-size: 22px;
+      text-shadow: 1px 1px 0 #0f0d0a;
+      letter-spacing: 2px;
+    }
+    .replay-button {
+      background: #ffd60a;
+      color: #0f0d0a;
+      border: 3px solid #0f0d0a;
+      box-shadow: 3px 3px 0 #0f0d0a;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: bold;
+      padding: 6px 16px;
+      cursor: pointer;
+    }
+    .replay-button:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 #0f0d0a;
+    }
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <div class="stage-wrapper">
+      <div id="root"></div>
+    </div>
+    <div id="result-panel" class="panel">
+      <div id="result-content" class="panel-info"></div>
+      <div id="result-stars" class="panel-stars"></div>
+      <button id="panel-replay-btn" type="button" class="replay-button">再玩一次</button>
+    </div>
+  </div>
+
+  <script src="rules.js"></script>
+  <script src="game.js"></script>
+  <script>
+    (function () {
+      var root = document.getElementById('root');
+      var panel = document.getElementById('result-panel');
+      var contentEl = document.getElementById('result-content');
+      var starsEl = document.getElementById('result-stars');
+      var replayBtn = document.getElementById('panel-replay-btn');
+      var currentGame = null;
+
+      function start() {
+        panel.style.display = 'none';
+        if (currentGame && typeof currentGame.destroy === 'function') {
+          currentGame.destroy();
+          currentGame = null;
+        }
+
+        currentGame = window.EXIT6_MG['lab-d0628'].mount(root, {
+          rng: Math.random,
+          onEnd: function (res) {
+            var R = window.EXIT6_RULES_LAB_D0628;
+            var starCount = R ? R.calculateStars(res) : (res.win ? 1 : 0);
+            var starsText = '★'.repeat(starCount) + '☆'.repeat(3 - starCount);
+
+            contentEl.innerHTML = [
+              '<strong>結果：</strong>' + (res.win ? '<span style="color:#1d4ed8;">獲勝（成功列印）</span>' : '<span style="color:#e63946;">失敗</span>'),
+              ' ｜ <strong>得分：</strong>' + res.score,
+              ' ｜ <strong>不溢料評級：</strong>' + (res.flawless ? '<span style="color:#1d4ed8;">達成</span>' : '<span style="color:#e63946;">未達成</span>')
+            ].join('');
+
+            starsEl.textContent = starsText;
+            panel.style.display = 'flex';
+          }
+        });
+      }
+
+      replayBtn.addEventListener('click', start);
+      start();
+    })();
+  </script>
+</body>
+</html>

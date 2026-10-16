@@ -117,6 +117,23 @@ try {
   ok("循環圈點系辦門口左側海報：主角說一句（彩蛋）", egg && /系辦門口/.test(egg[0]) && egg[1] === "左邊這張藍色海報，構圖好有氣勢。" && !egg[2], JSON.stringify(egg));
   ok("旁白框在畫面下方、不蓋畫面（電腦尺寸）", egg && egg[3] >= 0, egg && `旁白上緣距畫面下緣 ${egg[3]}px`);
 
+  // 實驗室支線（2026-10-16）：第 5 站 D0637 → 漫畫背景開場 → 掛上小遊戲 → ×離開；再換成「必定三星」的假遊戲驗結算與成就牆
+  const lab = await ev(`${H} for (let k=0;k<12 && !/海報櫥窗/.test($("where").textContent);k++){ closeCard(); $("btnFwd").click(); await W(2500); closeCard(); await W(300); }
+    const btn=$("labBtn"); const r0=[$("where").textContent, btn.classList.contains("hidden"), btn.textContent];
+    btn.click(); await W(500); const intro=$("mgRoot").querySelector(".labintro"); const bg=intro?getComputedStyle(intro).backgroundImage:"";
+    $("mgRoot").querySelector("[data-labgo]").click(); await W(2500);
+    const mounted=!!(window.EXIT6_MG||{})["lab-d0637"] && $("mgRoot").querySelector(".mgstage")?.childElementCount>0;
+    $("mgClose").click(); await W(600); return [...r0, /lab_d0637/.test(bg), mounted, $("mg").classList.contains("hidden")];`);
+  ok("第 5 站出現「進入 D0637」並開出漫畫背景、掛上小遊戲、×可離開", lab && !lab[1] && /D0637/.test(lab[2]) && lab[3] && lab[4] && lab[5], JSON.stringify(lab));
+  const star = await ev(`${H} const g=window.EXIT6_MG["lab-d0637"]; const keep=g.mount;
+    g.mount=(root,api)=>{ setTimeout(()=>api.onEnd({win:true,score:999999,flawless:true}),200); return {destroy(){}}; };
+    $("labBtn").click(); await W(400); $("mgRoot").querySelector("[data-labgo]").click(); await W(3600);
+    const res=$("mgResult"); const out=[res.classList.contains("hidden"), res.querySelector(".labstars")?.textContent, res.innerText.replace(/\\s+/g," ").slice(0,120)];
+    res.querySelector("[data-back]").click(); await W(600); g.mount=keep;
+    $("nbBtn").click(); await W(400); const wall=($("sheet").innerText.match(/實驗室成就（\\d+\\/15 星）[^\\n]*/)||[""])[0]; $("sheet").querySelector("[data-close]").click();
+    const saved=JSON.parse(localStorage.getItem("exit6-save-v1")||"{}").achv; return [...out, wall, JSON.stringify(saved)];`);
+  ok("實驗室結算：過關＋高分＋零失誤＝★★★，存檔與手帳成就牆記到 3 星與稱號", star && !star[0] && star[1] === "★★★" && /3\/15 星/.test(star[3]) && /實驗室訪客/.test(star[3]) && /"d0637":\{"stars":3/.test(star[4]), JSON.stringify(star));
+
   // 手機直拿：手帳卡冊不超出畫面
   await send("Emulation.setDeviceMetricsOverride", { width: 375, height: 812, deviceScaleFactor: 2, mobile: true });
   const mob = await ev(`${H} $("sheet").querySelector("[data-close]")?.click(); await W(300); $("nbBtn").click(); await W(500);

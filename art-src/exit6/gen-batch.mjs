@@ -121,6 +121,21 @@ const CARDS = [
 ];
 const cardJob = ([id, subj]) => ({ id, out: `art-src/exit6/gen/${id}.png`, prompt: CARD_BASE + subj });
 
+// 實驗室內部（2026-10-16 使用者選：系網照片轉漫畫，先出 1 張樣張）：參考照在 ref_labs/（系網下載，不進 git）
+const LAB_BASE = (ref) => `Open and look at the reference photo art-src/exit6/ref_labs/${ref} and the STYLE reference ${STYLE_REF}. ` +
+  "Redraw the photo as a wide 16:9 manga panel in exactly the same style as the STYLE reference (copy its line weight, halftone screentone, palette and coloring; do NOT copy its content). " +
+  "Crop to 16:9 around the main subject; keep the camera angle, perspective and the position of the equipment. STRAIGHTEN THE VIEW: vertical lines must be vertical. " +
+  "NO people at all (remove anyone in the photo and fill the space with the room behind them). No readable text, no logos or brand names on screens or equipment. " +
+  `Style: ${STYLE} Subject notes: `;
+const LABS = [
+  ["lab_d0637", "D0637_5.jpg", "A stop-motion animation rig: a phone camera clamped on a stand shooting straight down at a small dinosaur figure on a white board, miniatures in the background (no recognizable toy brand). Approved by the user 2026-10-16."],
+  ["lab_d0604", "D0604_3.jpg", "A digital drawing lab: a row of large pen-display drawing monitors on white desks, framed illustrations on the wall."],
+  ["lab_d0628", "D0628_1.jpg", "A 3D printing workshop: two enclosed desktop 3D printers with filament spools on a white bench."],
+  ["lab_d0631", "D0631_1.jpg", "A virtual production / motion capture studio: green screen walls, studio lights on stands, cameras on tripods, a wall of monitors near the ceiling."],
+  ["lab_d0633", "D0633_1.jpg", "A VR motion lab: an omnidirectional VR treadmill platform, a VR bike, monitors on stands, a large wall graphic behind (render the graphic as abstract shapes, no text)."],
+];
+const labJob = ([id, ref, notes]) => ({ id, out: `art-src/exit6/gen/${id}.png`, prompt: LAB_BASE(ref) + notes });
+
 const STATIONS = ["s0", "s1", "s2", "s3", "s4", "s5", "s6", "s7"];
 const SETS = {
   stops: () => STATIONS.map(stopJob),
@@ -129,6 +144,7 @@ const SETS = {
   dean: () => DEAN.map(deanJob),
   d0647: () => [...D0647, ...QIU.map(qiuJob)],
   cards: () => CARDS.map(cardJob),
+  labs: () => LABS.map(labJob),
 };
 
 const [set, ...only] = process.argv.slice(2);

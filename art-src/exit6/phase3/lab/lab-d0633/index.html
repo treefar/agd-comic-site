@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>VR 跑步機衝刺 - D0633 體感互動實驗室</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: #0f0d0a;
+      color: #f4ecd8;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+    #header {
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    #header h1 {
+      font-size: 1.2rem;
+      color: #ffd60a;
+      margin-bottom: 4px;
+    }
+    #header p {
+      font-size: 0.85rem;
+      color: #8a948e;
+    }
+    #stage-container {
+      width: 100%;
+      max-width: 960px;
+      aspect-ratio: 16 / 9;
+      position: relative;
+      background: #f4ecd8;
+      border: 3px solid #0f0d0a;
+      box-shadow: 4px 4px 0 #ffd60a;
+      overflow: hidden;
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+    }
+    #dashboard {
+      margin-top: 12px;
+      width: 100%;
+      max-width: 960px;
+      background: #f4ecd8;
+      color: #0f0d0a;
+      border: 3px solid #0f0d0a;
+      box-shadow: 4px 4px 0 #8a948e;
+      padding: 10px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 0.9rem;
+    }
+    #dash-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+    }
+    .dash-tag {
+      font-weight: bold;
+    }
+    .dash-stars {
+      color: #1d4ed8;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+    }
+    #replay-btn {
+      background: #ffd60a;
+      color: #0f0d0a;
+      border: 2px solid #0f0d0a;
+      box-shadow: 2px 2px 0 #0f0d0a;
+      padding: 6px 16px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    #replay-btn:hover {
+      background: #f4ecd8;
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <h1>D0633 體感互動實驗室 ✦ VR 跑步機衝刺</h1>
+    <p>體感互動：點畫面或空白鍵跳躍，避開障礙箱在屋頂衝刺 60 秒</p>
+  </div>
+
+  <div id="stage-container">
+    <div id="root"></div>
+  </div>
+
+  <div id="dashboard">
+    <div id="dash-info">
+      <div><b>狀態：</b><span id="dash-status" class="dash-tag">奔馳中...</span></div>
+      <div><b>距離：</b><span id="dash-score" class="dash-tag">0 m</span></div>
+      <div><b>完美無瑕：</b><span id="dash-flawless" class="dash-tag">進行中</span></div>
+      <div><b>星等：</b><span id="dash-stars" class="dash-stars">☆☆☆</span></div>
+    </div>
+    <button id="replay-btn" type="button">再玩一次</button>
+  </div>
+
+  <script src="rules.js"></script>
+  <script src="game.js"></script>
+  <script>
+    (function () {
+      var rootEl = document.getElementById("root");
+      var statusEl = document.getElementById("dash-status");
+      var scoreEl = document.getElementById("dash-score");
+      var flawlessEl = document.getElementById("dash-flawless");
+      var starsEl = document.getElementById("dash-stars");
+      var replayBtn = document.getElementById("replay-btn");
+
+      var currentInstance = null;
+
+      function startSession() {
+        if (currentInstance && typeof currentInstance.destroy === "function") {
+          currentInstance.destroy();
+          currentInstance = null;
+        }
+
+        statusEl.textContent = "奔馳中...";
+        statusEl.style.color = "#0f0d0a";
+        scoreEl.textContent = "0 m";
+        flawlessEl.textContent = "進行中";
+        starsEl.textContent = "☆☆☆";
+
+        currentInstance = window.EXIT6_MG["lab-d0633"].mount(rootEl, {
+          rng: Math.random,
+          onEnd: function (result) {
+            // result = { win, score, flawless }
+            statusEl.textContent = result.win ? "完走勝利 ★1" : "失足結束";
+            statusEl.style.color = result.win ? "#1d4ed8" : "#e63946";
+            scoreEl.textContent = result.score + " m";
+            flawlessEl.textContent = result.flawless ? "達成 ★3" : "未達成";
+
+            // 計算星等：★1 ＝ win；★2 ＝ score >= score2；★3 ＝ flawless
+            var star1 = result.win;
+            var star2 = result.score >= window.EXIT6_MG["lab-d0633"].stars.score2;
+            var star3 = result.flawless;
+            starsEl.textContent = (star1 ? "★" : "☆") + (star2 ? "★" : "☆") + (star3 ? "★" : "☆");
+          }
+        });
+      }
+
+      replayBtn.onclick = function () {
+        startSession();
+      };
+
+      startSession();
+    })();
+  </script>
+</body>
+</html>

@@ -732,6 +732,109 @@
     return k < 0 ? null : k;
   }
 
+  // exit6/labs.mjs
+  var LABS = [
+    {
+      id: "d0633",
+      code: "D0633",
+      name: "\u9AD4\u611F\u4E92\u52D5\u5BE6\u9A57\u5BA4",
+      station: 2,
+      mg: "lab-d0633",
+      bg: "frames/lab_d0633.webp",
+      button: "left",
+      intro: "\u5929\u6A4B\u53E6\u4E00\u982D\u662F\u9AD4\u611F\u4E92\u52D5\u5BE6\u9A57\u5BA4\uFF0CVR \u8DD1\u6B65\u6A5F\u548C\u9AD4\u611F\u5E73\u53F0\u64FA\u6210\u4E00\u6392\u3002",
+      say: "\u6234\u4E0A\u982D\u76D4\uFF0C\u8173\u4E0B\u7684\u8DD1\u6B65\u6A5F\u5C31\u662F\u4E00\u6574\u5EA7\u57CE\u5E02\u3002"
+    },
+    {
+      id: "d0628",
+      code: "D0628",
+      name: "3D \u5217\u5370\u5DE5\u4F5C\u574A",
+      station: 3,
+      mg: "lab-d0628",
+      bg: "frames/lab_d0628.webp",
+      button: "left",
+      intro: "\u724C\u6A13\u65C1\u908A\u7684 3D \u5217\u5370\u5DE5\u4F5C\u574A\uFF0C\u5370\u8868\u6A5F\u6B63\u55E1\u55E1\u5730\u4E00\u5C64\u4E00\u5C64\u5F80\u4E0A\u758A\u3002",
+      say: "\u539F\u4F86\u6A21\u578B\u662F\u9019\u6A23\u4E00\u5C64\u4E00\u5C64\u9577\u51FA\u4F86\u7684\u3002"
+    },
+    {
+      id: "d0604",
+      code: "D0604",
+      name: "\u96FB\u7E6A\u5BE6\u9A57\u5BA4",
+      station: 4,
+      mg: "lab-d0604",
+      bg: "frames/lab_d0604.webp",
+      button: "left",
+      intro: "\u96FB\u7E6A\u5BE6\u9A57\u5BA4\u88E1\u4E00\u6574\u6392\u7E6A\u5716\u87A2\u5E55\uFF0C\u7B46\u4E00\u78B0\u4E0A\u53BB\u7DDA\u5C31\u51FA\u4F86\u4E86\u3002",
+      say: "\u5728\u7E6A\u5716\u677F\u4E0A\u756B\u7DDA\uFF0C\u624B\u611F\u8DDF\u7D19\u5B8C\u5168\u4E0D\u4E00\u6A23\u3002"
+    },
+    {
+      id: "d0637",
+      code: "D0637",
+      name: "\u5076\u52D5\u756B\u5BE6\u9A57\u5BA4",
+      station: 5,
+      mg: "lab-d0637",
+      bg: "frames/lab_d0637.webp",
+      button: "left",
+      intro: "\u5076\u52D5\u756B\u5BE6\u9A57\u5BA4\u88E1\uFF0C\u624B\u6A5F\u67B6\u5728\u652F\u67B6\u4E0A\uFF0C\u5C0D\u8457\u684C\u4E0A\u7684\u5C0F\u6050\u9F8D\u4E00\u683C\u4E00\u683C\u62CD\u3002",
+      say: "\u6BCF\u62CD\u4E00\u5F35\u5C31\u628A\u6050\u9F8D\u632A\u4E00\u9EDE\u9EDE\uFF0C\u96E3\u602A\u8981\u90A3\u9EBC\u6709\u8010\u5FC3\u3002"
+    },
+    {
+      id: "d0631",
+      code: "D0631",
+      name: "\u52D5\u4F5C\u6355\u6349\u5BE6\u9A57\u5BA4",
+      station: 7,
+      mg: "lab-d0631",
+      bg: "frames/lab_d0631.webp",
+      button: "left",
+      intro: "\u52D5\u4F5C\u6355\u6349\u5BE6\u9A57\u5BA4\u5176\u5BE6\u662F\u865B\u64EC\u88FD\u7247\u68DA\uFF0C\u6574\u7247\u7DA0\u5E55\u548C\u4E00\u6392\u651D\u5F71\u6A5F\u3002",
+      say: "\u6F14\u54E1\u5728\u7DA0\u5E55\u524D\u6F14\uFF0C\u87A2\u5E55\u4E0A\u99AC\u4E0A\u5C31\u662F\u53E6\u4E00\u500B\u4E16\u754C\u3002"
+    }
+  ];
+  var MAX_STARS = LABS.length * 3;
+  var labAt = (station, phase) => phase === "loop" ? LABS.find((l) => l.station === station) || null : null;
+  function starsFor(result, stars) {
+    if (!result || !result.win) return 0;
+    let n = 1;
+    if (stars && Number.isFinite(stars.score2) && Number(result.score) >= stars.score2) n++;
+    if (result.flawless === true) n++;
+    return n;
+  }
+  var TITLES = [
+    { at: 1, name: "\u5BE6\u9A57\u5BA4\u8A2A\u5BA2" },
+    { at: 5, name: "\u516D\u6A13\u5BE6\u7FD2\u751F" },
+    { at: 10, name: "\u5BE6\u9A57\u5BA4\u5E38\u5BA2" },
+    { at: 15, name: "\u516D\u6A13\u901A" }
+  ];
+  var REWARDS = [
+    { id: "works", at: 6, name: "\u89E3\u9396\uFF1A\u5B78\u9577\u59D0\u4F5C\u54C1\u5C55\u793A" },
+    { id: "share", at: 12, name: "\u89E3\u9396\uFF1A\u62DB\u751F\u5206\u4EAB\u5361" }
+  ];
+  var titleFor = (total) => [...TITLES].reverse().find((t) => total >= t.at) || null;
+  var unlocked = (total) => REWARDS.filter((r) => total >= r.at);
+  function createAchv(saved) {
+    const labs = {};
+    const src = saved && typeof saved === "object" && saved.labs && typeof saved.labs === "object" ? saved.labs : {};
+    for (const l of LABS) {
+      const v = src[l.id];
+      if (v && typeof v === "object") labs[l.id] = { stars: Math.max(0, Math.min(3, Number(v.stars) || 0)), best: Number(v.best) || 0 };
+    }
+    return { labs };
+  }
+  var totalStars = (st) => Object.values(st.labs).reduce((s, v) => s + v.stars, 0);
+  function record(st, id, stars, score) {
+    if (!LABS.some((l) => l.id === id)) return { improved: false, newTitles: [], newRewards: [] };
+    const before = totalStars(st);
+    const cur = st.labs[id] || { stars: 0, best: 0 };
+    const improved = stars > cur.stars;
+    st.labs[id] = { stars: Math.max(cur.stars, Math.min(3, stars)), best: Math.max(cur.best, Number(score) || 0) };
+    const after = totalStars(st);
+    return {
+      improved,
+      newTitles: TITLES.filter((t) => before < t.at && after >= t.at),
+      newRewards: REWARDS.filter((r) => before < r.at && after >= r.at)
+    };
+  }
+
   // exit6/main.mjs
   var q = new URLSearchParams(location.search);
   var seed = q.has("seed") ? Number(q.get("seed")) : Date.now() & 4294967295;
@@ -762,6 +865,7 @@
   }
   var save = Object.assign({ dex: [], bestMs: null, bestMiss: null, clears: 0, cards: [] }, loadSave());
   var cardBook = createCards(save.cards);
+  var achv = createAchv(save.achv);
   var run = { t0: 0, mistakes: 0, precise: 0, misTaps: 0, toured: /* @__PURE__ */ new Set(), failStreak: 0, seen: /* @__PURE__ */ new Set() };
   var hint = { t0: 0, mis: 0, stage: 0, on: false, timer: null };
   var quests = createQuests();
@@ -1080,8 +1184,17 @@
     b.classList.toggle("hidden", !t);
     if (t) b.innerHTML = `${cardBook.cards.some((c) => c.id === t.id) ? "\u2714 " : ""}${displayName(t)}\u7684\u9080\u8ACB`;
   }
+  function renderLab() {
+    const l = labAt(game.station, game.phase), b = $("labBtn");
+    b.classList.toggle("hidden", !l);
+    if (l) {
+      const v = achv.labs[l.id];
+      b.textContent = `\u9032\u5165 ${l.code} ${l.name}${v && v.stars ? "\u3000" + starRow(v.stars) : ""} \u2192`;
+    }
+  }
   function renderBranch() {
     renderInvite();
+    renderLab();
     $("branch").classList.toggle("hidden", !(game.phase === "loop" && game.station === 6 && allFound(clues)));
     $("branch").textContent = clues.opened ? "\u9032\u5165 D0647 \u2192" : "\u5F80\u8D70\u5ECA\u6DF1\u8655 \u2192";
   }
@@ -1123,7 +1236,7 @@
     }).join("");
   }
   function openNotebook() {
-    var _a;
+    var _a, _b;
     if (!$("start").classList.contains("hidden") || walking) return;
     play("click");
     const items = quests.taken ? ITEMS.map((i) => `<li class="${quests.delivered.includes(i.id) ? "ok" : ""}"><b>${i.name}</b><br>${quests.delivered.includes(i.id) ? "\u5DF2\u9001\u9054" : i.hint}</li>`).join("") : `<li>\u9084\u6C92\u6709\u59D4\u8A17\u3002\u5C0E\u89BD\u5708\u7D93\u904E\u7CFB\u8FA6\u9580\u53E3\u6642\u770B\u770B\u3002</li>`;
@@ -1135,12 +1248,17 @@
     <h4>\u7CFB\u8FA6\u59D4\u8A17</h4><ul>${items}</ul>
     <h4>\u90B1\u8001\u5E2B\u7814\u7A76\u5BA4\u7684\u5BC6\u78BC\u3000${slots}\uFF08${clues.found.length}/${CLUES.length}\uFF09</h4><ul>${clueList}</ul>
     <h4>\u770B\u904E\u7684\u6771\u897F\uFF08${run.seen.size}\uFF09</h4><ul>${seenList()}</ul>
+    ${labWall()}
     <h4>\u8001\u5E2B\u7C3D\u540D\u5361\uFF08${cardBook.cards.length}/${TEACHERS.length}\uFF09</h4><div class="cardgrid">${cardGrid()}</div>
     ${allCollected(cardBook) ? `<button class="ghost" data-ending>\u91CD\u770B\u96B1\u85CF\u7D50\u5C40</button>` : `<p class="dim">\u5FAA\u74B0\u5708\u7D93\u904E\u6709\u8001\u5E2B\u7684\u7AD9\uFF0C\u6309\u53F3\u4E0B\u89D2\u300C\u9080\u8ACB\u300D\u6311\u6230\u5C0F\u904A\u6232\u3002</p>`}
     <h4>\u7D00\u5FF5\u7AE0</h4><ul>${stampList}</ul><button class="go" data-close>\u95DC\u9589</button>`);
     (_a = $("sheet").querySelector("[data-ending]")) == null ? void 0 : _a.addEventListener("click", () => {
       closeSheet();
       hiddenEnding();
+    });
+    (_b = $("sheet").querySelector("[data-share]")) == null ? void 0 : _b.addEventListener("click", () => {
+      closeSheet();
+      openShare();
     });
   }
   function openDeliver(target) {
@@ -1560,7 +1678,7 @@
     return mgScripts[src];
   }
   var mgHandle = null;
-  var mgTeacher = null;
+  var mgCurrent = null;
   function openInvite() {
     const t = teacherAt(game.station, game.phase);
     if (!t || busy) return;
@@ -1573,38 +1691,54 @@
     <div class="row"><button class="go" data-mg>\u63A5\u53D7\u6311\u6230</button><button class="ghost" data-close>\u5148\u4E0D\u8981</button></div>`);
     $("sheet").querySelector("[data-mg]").onclick = () => startMinigame(t);
   }
-  async function startMinigame(t) {
+  async function runMinigame(e) {
     closeSheet();
     deanImg.classList.remove("in");
     deanImg.classList.add("out");
     $("sub").classList.add("hidden");
     busy = true;
     setButtons();
-    mgTeacher = t;
-    $("mgTitle").textContent = `${displayName(t)}\u30FB${t.skill}`;
+    mgCurrent = e;
+    $("mgTitle").textContent = e.header;
     $("mgResult").classList.add("hidden");
     $("mgRoot").innerHTML = `<p class="mgload">\u8F09\u5165\u4E2D\u2026\u2026</p>`;
     $("mg").classList.remove("hidden");
     play("sting", 0.4);
     try {
-      for (const src of scriptsFor(t)) await loadScript(src);
+      for (const src of e.scripts) await loadScript(src);
     } catch {
       $("mgRoot").innerHTML = `<p class="mgload">\u9019\u500B\u5C0F\u904A\u6232\u8F09\u5165\u5931\u6557\uFF083D \u95DC\u5361\u9700\u8981\u9023\u7DB2\uFF09\u3002\u6309\u53F3\u4E0A\u89D2 \xD7 \u56DE\u8D70\u5ECA\u3002</p>`;
       return;
     }
-    if (mgTeacher !== t) return;
+    if (mgCurrent !== e) return;
+    if (!window.EXIT6_MG || !window.EXIT6_MG[e.mg]) {
+      $("mgRoot").innerHTML = `<p class="mgload">\u9019\u500B\u5C0F\u904A\u6232\u9084\u5728\u88FD\u4F5C\u4E2D\u3002\u6309\u53F3\u4E0A\u89D2 \xD7 \u56DE\u8D70\u5ECA\u3002</p>`;
+      return;
+    }
     $("mgRoot").innerHTML = `<div class="mgstage"></div>`;
     let ended = false;
-    mgHandle = window.EXIT6_MG[t.mg].mount($("mgRoot").firstChild, { rng, onEnd: (r) => {
+    mgHandle = window.EXIT6_MG[e.mg].mount($("mgRoot").firstChild, { rng, onEnd: (r) => {
       if (!ended) {
         ended = true;
-        setTimeout(() => minigameEnd(t, r), 2600);
+        setTimeout(() => {
+          if (mgCurrent === e) e.end(r);
+        }, 2600);
       }
     } });
   }
-  function minigameEnd(t, r) {
+  function retryMinigame(again) {
+    try {
+      mgHandle == null ? void 0 : mgHandle.destroy();
+    } catch {
+    }
+    mgHandle = null;
+    again();
+  }
+  function startMinigame(t) {
+    runMinigame({ mg: t.mg, header: `${displayName(t)}\u30FB${t.skill}`, scripts: scriptsFor(t), end: (r) => teacherEnd(t, r) });
+  }
+  function teacherEnd(t, r) {
     var _a;
-    if (mgTeacher !== t) return;
     const res = award(cardBook, t.id, r);
     if (res.got) {
       save.cards = cardBook.cards;
@@ -1623,11 +1757,90 @@
     }
     box.querySelector("[data-back]").onclick = () => leaveMinigame(res.completed);
     const rt = box.querySelector("[data-retry]");
-    if (rt) rt.onclick = () => {
-      mgHandle == null ? void 0 : mgHandle.destroy();
-      mgHandle = null;
-      startMinigame(t);
+    if (rt) rt.onclick = () => retryMinigame(() => startMinigame(t));
+  }
+  var labScripts = (l) => [`minigames/${l.mg}/rules.js`, `minigames/${l.mg}/game.js`];
+  var starRow = (n) => "\u2605".repeat(n) + "\u2606".repeat(3 - n);
+  function openLab() {
+    const l = labAt(game.station, game.phase);
+    if (!l || busy) return;
+    play("click");
+    stopHint();
+    closeSheet();
+    deanImg.classList.remove("in");
+    deanImg.classList.add("out");
+    $("sub").classList.add("hidden");
+    busy = true;
+    setButtons();
+    mgCurrent = { lab: l };
+    const rec = achv.labs[l.id];
+    $("mgTitle").textContent = `${l.code} ${l.name}`;
+    $("mgResult").classList.add("hidden");
+    $("mgRoot").innerHTML = `<div class="labintro${l.bg ? "" : " nobg"}"${l.bg ? ` style="background-image:url('${l.bg}')"` : ""}>
+      ${l.bg ? "" : `<span class="labcode">${l.code}</span>`}
+      <div class="labcap"><p>${l.intro}</p><p class="labsay">\u300C${l.say}\u300D</p>
+        <p class="labrec">${rec ? `\u6700\u9AD8 ${starRow(rec.stars)}\u30FB${rec.best} \u5206` : "\u9084\u6C92\u6311\u6230\u904E"}</p>
+        <div class="row"><button class="go" data-labgo>\u958B\u59CB\u6311\u6230</button><button class="ghost" data-labback>\u56DE\u8D70\u5ECA</button></div></div></div>`;
+    $("mg").classList.remove("hidden");
+    play("sting", 0.3);
+    $("mgRoot").querySelector("[data-labgo]").onclick = () => startLabGame(l);
+    $("mgRoot").querySelector("[data-labback]").onclick = () => leaveMinigame(false);
+  }
+  function startLabGame(l) {
+    runMinigame({ mg: l.mg, header: `${l.code} ${l.name}`, scripts: labScripts(l), end: (r) => labEnd(l, r) });
+  }
+  function labEnd(l, r) {
+    const def = window.EXIT6_MG[l.mg] && window.EXIT6_MG[l.mg].stars || {};
+    const n = starsFor(r, def);
+    const res = record(achv, l.id, n, r ? r.score : 0);
+    save.achv = achv;
+    writeSave(save);
+    if (res.improved) nbPulse();
+    const won = !!(r && r.win), byScore = won && Number.isFinite(def.score2) && r.score >= def.score2, clean = won && r.flawless === true;
+    const box = $("mgResult");
+    box.innerHTML = `<div class="labstars" aria-label="${n} \u9846\u661F">${starRow(n)}</div>
+    <ul class="labconds"><li class="${won ? "ok" : ""}">\u904E\u95DC</li><li class="${byScore ? "ok" : ""}">\u5206\u6578 ${Number.isFinite(def.score2) ? def.score2 : "\u2014"} \u4EE5\u4E0A\uFF08\u672C\u6B21 ${r ? r.score : 0}\uFF09</li><li class="${clean ? "ok" : ""}">${def.flawless || "\u5B8C\u7F8E\u904E\u95DC"}</li></ul>
+    ${res.improved ? `<p class="mgbest">\u5237\u65B0\u7D00\u9304\uFF01\u5BE6\u9A57\u5BA4\u7E3D\u661F\u6578 ${totalStars(achv)} / ${MAX_STARS}</p>` : ""}
+    ${res.newTitles.map((t) => `<p class="labnew">\u7372\u5F97\u7A31\u865F\u300C${t.name}\u300D</p>`).join("")}
+    ${res.newRewards.map((w) => `<p class="labnew">${w.name}\uFF08\u624B\u5E33\u88E1\u770B\uFF09</p>`).join("")}
+    <div class="row"><button class="go" data-retry>\u518D\u6311\u6230\u4E00\u6B21</button><button class="ghost" data-back>\u56DE\u5230\u8D70\u5ECA</button></div>`;
+    box.classList.remove("hidden");
+    if (n) {
+      play(n === 3 ? "clear" : "correct");
+      burst(starRow(n), true);
+    } else play("wrong", 0.5);
+    box.querySelector("[data-back]").onclick = () => leaveMinigame(false);
+    box.querySelector("[data-retry]").onclick = () => retryMinigame(() => startLabGame(l));
+  }
+  function shareText() {
+    const total = totalStars(achv), t = titleFor(total);
+    return `\u6211\u5728\u300A\u516D\u6A13\u51FA\u53E3\u300B\u7684\u5BE6\u9A57\u5BA4\u62FF\u5230 ${total} \u9846\u661F${t ? `\uFF0C\u7A31\u865F\u300C${t.name}\u300D` : ""}\uFF01\u6A39\u5FB7\u79D1\u5927\u52D5\u756B\u8207\u904A\u6232\u8A2D\u8A08\u7CFB\u7684\u516D\u6A13\uFF0C\u7B49\u4F60\u4F86\u73A9\uFF1Ahttps://www.dgd.stu.edu.tw/`;
+  }
+  function openShare() {
+    openSheet(`<button class="x" data-close aria-label="\u95DC\u9589">\xD7</button><h3>\u62DB\u751F\u5206\u4EAB\u5361</h3>
+    <div class="sharecard"><b>\u516D\u6A13\u51FA\u53E3</b><span>${shareText()}</span></div>
+    <div class="row"><button class="go" data-copy>\u8907\u88FD\u6587\u5B57</button><a class="ghost linkbtn" href="../#/admission" target="_blank" rel="noopener">\u62DB\u751F\u8CC7\u8A0A</a></div>`);
+    $("sheet").querySelector("[data-copy]").onclick = async (ev) => {
+      try {
+        await navigator.clipboard.writeText(shareText());
+        ev.target.textContent = "\u5DF2\u8907\u88FD";
+      } catch {
+        const r = document.createRange();
+        r.selectNodeContents($("sheet").querySelector(".sharecard span"));
+        getSelection().removeAllRanges();
+        getSelection().addRange(r);
+        ev.target.textContent = "\u5DF2\u9078\u53D6\uFF0C\u8ACB\u6309\u8907\u88FD";
+      }
     };
+  }
+  function labWall() {
+    const total = totalStars(achv), t = titleFor(total), got = unlocked(total);
+    const rows = LABS.map((l) => {
+      const v = achv.labs[l.id];
+      return `<li class="${v && v.stars ? "ok" : ""}"><b>${l.code} ${l.name}</b>\u3000${starRow(v ? v.stars : 0)}${v ? `\u3000\u6700\u9AD8 ${v.best} \u5206` : ""}</li>`;
+    }).join("");
+    const rw = REWARDS.map((w) => got.includes(w) ? w.id === "works" ? `<a class="ghost linkbtn" href="../#/works" target="_blank" rel="noopener">\u5B78\u9577\u59D0\u4F5C\u54C1\u5C55\u793A</a>` : `<button class="ghost" data-share>\u62DB\u751F\u5206\u4EAB\u5361</button>` : `<span class="lockrw">${w.at} \u661F\u89E3\u9396\uFF1A${w.name.replace("\u89E3\u9396\uFF1A", "")}</span>`).join("");
+    return `<h4>\u5BE6\u9A57\u5BA4\u6210\u5C31\uFF08${total}/${MAX_STARS} \u661F\uFF09${t ? `\u3000\u7A31\u865F\u300C${t.name}\u300D` : ""}</h4><ul>${rows}</ul><div class="row rwrow">${rw}</div>`;
   }
   function leaveMinigame(completed) {
     try {
@@ -1635,7 +1848,7 @@
     } catch {
     }
     mgHandle = null;
-    mgTeacher = null;
+    mgCurrent = null;
     $("mg").classList.add("hidden");
     $("mgRoot").innerHTML = "";
     busy = false;
@@ -1906,7 +2119,7 @@
       }
       return;
     }
-    if (mgTeacher) return;
+    if (mgCurrent) return;
     if (["ArrowLeft", "ArrowDown"].includes(e.key)) act("back");
     if (["ArrowRight", "ArrowUp"].includes(e.key)) act("forward");
   });
@@ -1935,6 +2148,10 @@
   $("invite").onclick = (e) => {
     e.stopPropagation();
     openInvite();
+  };
+  $("labBtn").onclick = (e) => {
+    e.stopPropagation();
+    openLab();
   };
   $("mgClose").onclick = () => leaveMinigame(false);
   $("branch").onclick = (e) => {
