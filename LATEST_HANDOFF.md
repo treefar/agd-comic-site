@@ -13,7 +13,8 @@
 - **系網連結修正（`a8c761d`）**：隱藏結局、成就牆、分享卡的連結改由 `exit6/links.mjs` 決定，嵌在漫畫系網 `/exit6/` 時走 `../#/works` 等內頁，其他位置（私網、Artifact）改連官網首頁 https://www.dgd.stu.edu.tw/ 。
 - **私網**：頭條卡 https://tf-private.pages.dev/six-floor-exit/ （頁面最上方有試玩按鈕），直接玩 https://tf-private.pages.dev/six-floor-exit/play/index.html ；「原型與內部研發」合集另有 `six-floor-exit-play`。只有登入的人看得到。
 - 測試：`node --test scripts/test-exit6*.mjs` 67 項全過；端到端 `scripts/exit6-teacher-e2e.mjs`（先開 `npx http-server . -p 8090 -c-1`）22 項全過。
-- **待使用者**：D0604、D0628、D0631、D0633 四張實驗室圖還沒確認通過（D0637 樣張已確認）；老師同意後填名字；隱藏結局文案請系主任確認。私人試玩 Artifact 停在第 15 版（不含實驗室）。
+- **實驗室圖 5 張全部定稿**：D0637 樣張與 D0604、D0628、D0631、D0633 皆由使用者 2026-10-16 於對話確認（帳本 `art-src/exit6/ledger.jsonl` 有 approved 紀錄）。
+- **待使用者**：老師同意後填名字；隱藏結局文案請系主任確認。私人試玩 Artifact 停在第 15 版（不含實驗室）。
 
 ## 位置與連結
 
