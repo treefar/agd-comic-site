@@ -315,6 +315,7 @@
     skill: '繪本與角色造型',
     seconds: 60,
     mount: function (root, api) {
+      var LIMIT = api && api.seconds > 0 ? api.seconds : 60; // 派對模式會傳較短秒數
       api = api || {};
       var rng = typeof api.rng === 'function' ? api.rng : Math.random;
       var onEnd = typeof api.onEnd === 'function' ? api.onEnd : function () {};
@@ -350,7 +351,7 @@
       // 遊戲狀態機
       var gameState = 'playing'; // 'playing' | 'gameover'
       var timeElapsed = 0;
-      var timeLeft = 60;
+      var timeLeft = LIMIT;
       var height = 0;
       var camY = 0;
       var score = 0;
@@ -590,7 +591,7 @@
 
         // 時間推進
         timeElapsed += dt;
-        timeLeft = Math.max(0, 60 - timeElapsed);
+        timeLeft = Math.max(0, LIMIT - timeElapsed);
         if (hintTimer > 0) hintTimer -= dt;
 
         // 階級判定
@@ -877,7 +878,7 @@
         ctx.strokeStyle = ink;
         ctx.strokeRect(barX, barY, barW, barH);
 
-        var timeProgress = Math.max(0, timeLeft / 60);
+        var timeProgress = Math.max(0, timeLeft / LIMIT);
         ctx.fillStyle = timeProgress < 0.25 ? red : yellow;
         ctx.fillRect(barX + 2, barY + 2, (barW - 4) * timeProgress, barH - 4);
 

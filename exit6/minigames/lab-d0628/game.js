@@ -15,6 +15,7 @@
       flawless: '列印不溢料'
     },
     mount: function (root, api) {
+      var LIMIT = api && api.seconds > 0 ? api.seconds : R.TOTAL_SECONDS; // 派對模式會傳較短秒數
       if (!R) {
         R = window.EXIT6_RULES_LAB_D0628;
       }
@@ -236,7 +237,7 @@
       var bag = [];
       var nextQueue = [];
       var currentPiece = null;
-      var timeLeft = R.TOTAL_SECONDS;
+      var timeLeft = LIMIT;
       var elapsed = 0;
       var score = 0;
       var layersCleared = 0;
@@ -558,7 +559,7 @@
         bag = [];
         nextQueue = [];
         for (var i = 0; i < 3; i++) nextQueue.push(drawPiece());
-        timeLeft = R.TOTAL_SECONDS;
+        timeLeft = LIMIT;
         elapsed = 0;
         score = 0;
         layersCleared = 0;
@@ -639,13 +640,13 @@
         if (ended) return;
 
         elapsed += dt;
-        timeLeft = Math.max(0, R.TOTAL_SECONDS - elapsed);
+        timeLeft = Math.max(0, LIMIT - elapsed);
 
         // 時間倒數更新
         var timeEl = document.getElementById('d0628-time-num');
         if (timeEl) timeEl.textContent = timeLeft.toFixed(1);
         if (timeBarFill) {
-          var pct = Math.max(0, Math.min(100, (timeLeft / R.TOTAL_SECONDS) * 100));
+          var pct = Math.max(0, Math.min(100, (timeLeft / LIMIT) * 100));
           timeBarFill.style.width = pct + '%';
           if (pct < 20) timeBarFill.style.background = '#e63946';
           else if (pct < 45) timeBarFill.style.background = '#ffd60a';

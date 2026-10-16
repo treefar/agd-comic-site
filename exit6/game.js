@@ -739,6 +739,92 @@
     return inComicSite ? `../#/${route}` : OFFICIAL;
   }
 
+  // exit6/party.mjs
+  var PARTY_SECONDS = 20;
+  var PARTY_ROUNDS = 3;
+  var MIN_PLAYERS = 2;
+  var MAX_PLAYERS = 4;
+  var NAME_MAX = 8;
+  var PLACE_POINTS = [3, 2, 1, 0];
+  var PARTY_POOL = [
+    { mg: "mg-anim", title: "\u52D5\u756B\u8DD1\u9177\uFF1A\u7DE9\u5165\u7DE9\u51FA" },
+    { mg: "mg-book", title: "\u7E6A\u672C\u89D2\u8272\u5F80\u4E0A\u722C" },
+    { mg: "mg-code", title: "\u7A0B\u5F0F\u63A5\u6C34\u7BA1" },
+    { mg: "mg-type", title: "\u5B57\u578B\u5927\u4E82\u9B25" },
+    { mg: "lab-d0604", title: "\u7E6A\u5716\u677F\u63CF\u7DDA\u6551\u63F4" },
+    { mg: "lab-d0628", title: "3D \u9010\u5C64\u5217\u5370" },
+    { mg: "lab-d0631", title: "\u865B\u64EC\u88FD\u7247\u9776\u5834" },
+    { mg: "lab-d0633", title: "VR \u8DD1\u6B65\u6A5F\u885D\u523A" }
+  ];
+  function cleanNames(raw, count) {
+    const n = Math.max(MIN_PLAYERS, Math.min(MAX_PLAYERS, Number(count) || MIN_PLAYERS));
+    return Array.from({ length: n }, (_, i) => {
+      const s = String(raw && raw[i] || "").replace(/\s+/g, " ").trim().slice(0, NAME_MAX);
+      return s || `\u73A9\u5BB6 ${i + 1}`;
+    });
+  }
+  function createParty(names, rng2 = Math.random, rounds = PARTY_ROUNDS) {
+    const players = cleanNames(names, names ? names.length : MIN_PLAYERS);
+    const pool = PARTY_POOL.map((g) => g.mg);
+    for (let i = pool.length - 1; i > 0; i--) {
+      const j = Math.floor(rng2() * (i + 1));
+      [pool[i], pool[j]] = [pool[j], pool[i]];
+    }
+    const n = Math.max(1, Math.min(rounds, pool.length));
+    return {
+      players,
+      games: pool.slice(0, n),
+      seeds: Array.from({ length: n }, () => Math.floor(rng2() * 2 ** 31)),
+      results: Array.from({ length: n }, () => players.map(() => null)),
+      round: 0,
+      turn: 0
+    };
+  }
+  var isDone = (p) => p.round >= p.games.length;
+  var gameInfo = (mg) => PARTY_POOL.find((g) => g.mg === mg) || { mg, title: mg };
+  function current(p) {
+    if (isDone(p)) return null;
+    return { round: p.round, turn: p.turn, player: p.players[p.turn], mg: p.games[p.round], seed: p.seeds[p.round] };
+  }
+  function submit(p, r) {
+    if (isDone(p)) return { roundDone: false, done: true };
+    const score = Math.max(0, Math.round(Number(r && r.score) || 0));
+    p.results[p.round][p.turn] = { score, win: !!(r && r.win) };
+    p.turn++;
+    let roundDone = false;
+    if (p.turn >= p.players.length) {
+      p.turn = 0;
+      p.round++;
+      roundDone = true;
+    }
+    return { roundDone, done: isDone(p) };
+  }
+  function roundRanking(p, round) {
+    const rows = p.players.map((name, i) => ({ i, name, score: (p.results[round][i] || { score: 0 }).score }));
+    const sorted = [...rows].sort((a, b) => b.score - a.score || a.i - b.i);
+    return sorted.map((r) => {
+      var _a;
+      const place = sorted.findIndex((x) => x.score === r.score) + 1;
+      return { ...r, place, points: (_a = PLACE_POINTS[place - 1]) != null ? _a : 0 };
+    });
+  }
+  function standings(p) {
+    const played = Math.min(p.round, p.games.length);
+    const tot = p.players.map((name, i) => ({ i, name, points: 0, firsts: 0 }));
+    for (let r = 0; r < played; r++) for (const row of roundRanking(p, r)) {
+      tot[row.i].points += row.points;
+      if (row.place === 1) tot[row.i].firsts++;
+    }
+    const key = (t) => t.points * 100 + t.firsts;
+    const sorted = [...tot].sort((a, b) => key(b) - key(a) || a.i - b.i);
+    return sorted.map((t) => ({ ...t, place: sorted.findIndex((x) => key(x) === key(t)) + 1 }));
+  }
+  var champions = (p) => standings(p).filter((t) => t.place === 1);
+  function partyShareText(p, url = "https://www.dgd.stu.edu.tw/") {
+    const champ = champions(p).map((t) => t.name).join("\u3001");
+    return `\u6211\u5011\u5728\u300A\u516D\u6A13\u51FA\u53E3\u300B\u7684\u96B1\u85CF\u5F69\u86CB\u300C\u6BBA\u9752\u6D3E\u5C0D\u300D\u73A9\u4E86 ${p.games.length} \u8F2A\uFF0C\u51A0\u8ECD\u662F ${champ}\uFF01\u6A39\u5FB7\u79D1\u5927\u52D5\u756B\u8207\u904A\u6232\u8A2D\u8A08\u7CFB\u7684\u516D\u6A13\uFF0C\u7B49\u4F60\u4F86\u627E\uFF1A${url}`;
+  }
+
   // exit6/labs.mjs
   var LABS = [
     {
@@ -871,6 +957,7 @@
     }
   }
   var save = Object.assign({ dex: [], bestMs: null, bestMiss: null, clears: 0, cards: [] }, loadSave());
+  if (!save.party || typeof save.party !== "object") save.party = { found: false, plays: 0 };
   var cardBook = createCards(save.cards);
   var achv = createAchv(save.achv);
   var run = { t0: 0, mistakes: 0, precise: 0, misTaps: 0, toured: /* @__PURE__ */ new Set(), failStreak: 0, seen: /* @__PURE__ */ new Set() };
@@ -1243,7 +1330,7 @@
     }).join("");
   }
   function openNotebook() {
-    var _a, _b;
+    var _a, _b, _c;
     if (!$("start").classList.contains("hidden") || walking) return;
     play("click");
     const items = quests.taken ? ITEMS.map((i) => `<li class="${quests.delivered.includes(i.id) ? "ok" : ""}"><b>${i.name}</b><br>${quests.delivered.includes(i.id) ? "\u5DF2\u9001\u9054" : i.hint}</li>`).join("") : `<li>\u9084\u6C92\u6709\u59D4\u8A17\u3002\u5C0E\u89BD\u5708\u7D93\u904E\u7CFB\u8FA6\u9580\u53E3\u6642\u770B\u770B\u3002</li>`;
@@ -1258,12 +1345,18 @@
     ${labWall()}
     <h4>\u8001\u5E2B\u7C3D\u540D\u5361\uFF08${cardBook.cards.length}/${TEACHERS.length}\uFF09</h4><div class="cardgrid">${cardGrid()}</div>
     ${allCollected(cardBook) ? `<button class="ghost" data-ending>\u91CD\u770B\u96B1\u85CF\u7D50\u5C40</button>` : `<p class="dim">\u5FAA\u74B0\u5708\u7D93\u904E\u6709\u8001\u5E2B\u7684\u7AD9\uFF0C\u6309\u53F3\u4E0B\u89D2\u300C\u9080\u8ACB\u300D\u6311\u6230\u5C0F\u904A\u6232\u3002</p>`}
-    <h4>\u7D00\u5FF5\u7AE0</h4><ul>${stampList}</ul><button class="go" data-close>\u95DC\u9589</button>`);
-    (_a = $("sheet").querySelector("[data-ending]")) == null ? void 0 : _a.addEventListener("click", () => {
+    <h4>\u7D00\u5FF5\u7AE0</h4><ul>${stampList}</ul>
+    ${save.party.found ? `<h4>\u96B1\u85CF\u5F69\u86CB</h4><p class="dim">\u6BBA\u9752\u6D3E\u5C0D\uFF1A\u540C\u4E00\u53F0\u88DD\u7F6E 2\uFF5E${MAX_PLAYERS} \u4EBA\u8F2A\u6D41\u73A9\uFF0C\u5DF2\u958B\u904E ${save.party.plays} \u5834\u3002</p><button class="ghost" data-party>\u958B\u4E00\u5834\u6BBA\u9752\u6D3E\u5C0D</button>` : ""}
+    <button class="go" data-close>\u95DC\u9589</button>`);
+    (_a = $("sheet").querySelector("[data-party]")) == null ? void 0 : _a.addEventListener("click", () => {
+      closeSheet();
+      openPartySetup();
+    });
+    (_b = $("sheet").querySelector("[data-ending]")) == null ? void 0 : _b.addEventListener("click", () => {
       closeSheet();
       hiddenEnding();
     });
-    (_b = $("sheet").querySelector("[data-share]")) == null ? void 0 : _b.addEventListener("click", () => {
+    (_c = $("sheet").querySelector("[data-share]")) == null ? void 0 : _c.addEventListener("click", () => {
       closeSheet();
       openShare();
     });
@@ -1464,7 +1557,9 @@
     <li><b>\u8AB2\u7A0B</b><br>3D \u89D2\u8272\u52D5\u756B\u30013D \u904A\u6232\u5F15\u64CE\u61C9\u7528\u3001\u52D5\u756B\u5287\u672C\u5275\u4F5C\u30013D \u5217\u5370\u61C9\u7528\u5BE6\u52D9</li>
     <li><b>2026</b><br>\u6307\u5C0E\u7684\u52D5\u756B\u4F5C\u54C1\u5165\u570D\u653E\u8996\u5927\u8CDE\u52D5\u756B\u985E</li></ul>
     <p class="why">\u300C\u807D\u8AAA\u4F60\u4E5F\u611B\u5C0D\u6230\uFF1F\u4F86\u4E00\u5834\u7247\u5834\u5C0D\u6C7A\u5427\uFF0C\u7528\u93E1\u982D\u8A9E\u8A00\u6253\u6557\u6211\uFF01\u300D</p>
+    ${fightWon && !save.party.found ? `<p class="why">\u300C\u6BBA\u9752\u4E86\u5C31\u8A72\u958B\u6D3E\u5C0D\u2026\u2026\u9580\u4E0A\u90A3\u5F35\u5C0F\u5C0F\u7684\u904A\u6232\u624B\u628A\u8CBC\u7D19\uFF0C\u4F60\u770B\u5230\u4E86\u55CE\uFF1F\u300D</p>` : ""}
     <button class="go" data-fight>\u63A5\u53D7\u7247\u5834\u5C0D\u6C7A</button><button class="ghost" data-close>\u56DE\u5230\u8D70\u5ECA</button>`, "left");
+    placeSecret();
     $("sheet").querySelector("[data-fight]").onclick = startFight;
     $("sheet").querySelector("[data-close]").onclick = () => {
       closeSheet();
@@ -1724,14 +1819,17 @@
     }
     $("mgRoot").innerHTML = `<div class="mgstage"></div>`;
     let ended = false;
-    mgHandle = window.EXIT6_MG[e.mg].mount($("mgRoot").firstChild, { rng, onEnd: (r) => {
+    const api = { rng: e.rng || rng, onEnd: (r) => {
+      var _a;
       if (!ended) {
         ended = true;
         setTimeout(() => {
           if (mgCurrent === e) e.end(r);
-        }, 2600);
+        }, (_a = e.delay) != null ? _a : 2600);
       }
-    } });
+    } };
+    if (e.seconds) api.seconds = e.seconds;
+    mgHandle = window.EXIT6_MG[e.mg].mount($("mgRoot").firstChild, api);
   }
   function retryMinigame(again) {
     try {
@@ -1838,6 +1936,159 @@
         getSelection().addRange(r);
         ev.target.textContent = "\u5DF2\u9078\u53D6\uFF0C\u8ACB\u6309\u8907\u88FD";
       }
+    };
+  }
+  var SECRET = { x: 52.5, y: 76, w: 5.5, h: 8 };
+  function placeSecret() {
+    const b = document.createElement("button");
+    b.className = "spot secret";
+    b.id = "partySecret";
+    placeBtn(b, SECRET);
+    b.setAttribute("aria-label", "\u9580\u4E0A\u7684\u904A\u6232\u624B\u628A\u8CBC\u7D19");
+    b.onclick = (ev) => {
+      ev.stopPropagation();
+      findParty();
+    };
+    $("spots").appendChild(b);
+  }
+  function findParty() {
+    const first = !save.party.found;
+    save.party.found = true;
+    writeSave(save);
+    closeSheet();
+    deanImg.classList.remove("in");
+    deanImg.classList.add("out");
+    play(first ? "clear" : "click");
+    if (first) {
+      burst("\u767C\u73FE\u5F69\u86CB\uFF01\u6BBA\u9752\u6D3E\u5C0D");
+      nbPulse();
+    }
+    speak("\u90B1\u58EB\u5C55\u8001\u5E2B", first ? "\u88AB\u4F60\u767C\u73FE\u4E86\uFF01\u9019\u662F\u6211\u5011\u5287\u7D44\u7684\u6BBA\u9752\u6D3E\u5C0D\uFF0C\u627E\u670B\u53CB\u4E00\u8D77\u4F86\u6BD4\u4E00\u5834\u5427\u3002" : "\u53C8\u4F86\u958B\u6D3E\u5C0D\u5566\uFF1F", 5e3);
+    setTimeout(openPartySetup, first ? 900 : 200);
+  }
+  var party = null;
+  var partyCount = 2;
+  function openPartySetup() {
+    busy = true;
+    setButtons();
+    const names = save.party.names || [];
+    const inputs = Array.from({ length: MAX_PLAYERS }, (_, i) => `<label class="pname${i < partyCount ? "" : " hidden"}">\u73A9\u5BB6 ${i + 1}<input data-name maxlength="${NAME_MAX}" placeholder="\u73A9\u5BB6 ${i + 1}" value="${(names[i] || "").replace(/"/g, "")}"></label>`).join("");
+    openSheet(`<button class="x" data-close aria-label="\u95DC\u9589">\xD7</button><h3>\u6BBA\u9752\u6D3E\u5C0D</h3>
+    <p>\u540C\u4E00\u53F0\u88DD\u7F6E\u8F2A\u6D41\u73A9\uFF0C\u6BCF\u8F2A\u5927\u5BB6\u73A9\u540C\u4E00\u6B3E ${PARTY_SECONDS} \u79D2\u77ED\u7248\u5C0F\u904A\u6232\uFF0C\u6BD4\u540C\u8F2A\u540D\u6B21\u62FF\u7A4D\u5206\uFF0C3 \u8F2A\u5F8C\u7A4D\u5206\u6700\u9AD8\u7684\u5C31\u662F\u51A0\u8ECD\u3002</p>
+    <div class="row pcount">${[2, 3, 4].map((n) => `<button class="${n === partyCount ? "go" : "ghost"}" data-n="${n}">${n} \u4EBA</button>`).join("")}</div>
+    <div class="pnames">${inputs}</div>
+    <div class="row"><button class="go" data-start>\u958B\u59CB\u6D3E\u5C0D</button><button class="ghost" data-close>\u5148\u4E0D\u8981</button></div>`);
+    const sh = $("sheet");
+    sh.querySelectorAll("[data-close]").forEach((b) => {
+      b.onclick = () => {
+        closeSheet();
+        $("sub").classList.add("hidden");
+        show(stopSrc(STATIONS[game.station], anomalyAt(game, ANOMALIES)), false);
+        renderStop();
+      };
+    });
+    sh.querySelectorAll("[data-n]").forEach((b) => {
+      b.onclick = () => {
+        partyCount = Number(b.dataset.n);
+        saveNames();
+        openPartySetup();
+      };
+    });
+    sh.querySelector("[data-start]").onclick = () => {
+      saveNames();
+      party = createParty(save.party.names.slice(0, partyCount).concat(Array(partyCount).fill("")).slice(0, partyCount), Math.random);
+      save.party.plays = (save.party.plays || 0) + 1;
+      writeSave(save);
+      closeSheet();
+      partyHandoff();
+    };
+    function saveNames() {
+      save.party.names = [...$("sheet").querySelectorAll("[data-name]")].map((i) => i.value.trim());
+      writeSave(save);
+    }
+  }
+  function partyHandoff(note = "") {
+    const c = current(party);
+    if (!c) {
+      partyFinal();
+      return;
+    }
+    busy = true;
+    setButtons();
+    mgCurrent = { party: true };
+    try {
+      mgHandle == null ? void 0 : mgHandle.destroy();
+    } catch {
+    }
+    mgHandle = null;
+    $("mgTitle").textContent = `\u6BBA\u9752\u6D3E\u5C0D\u30FB\u7B2C ${c.round + 1}\uFF0F${party.games.length} \u8F2A`;
+    $("mgResult").classList.add("hidden");
+    $("mgRoot").innerHTML = `<div class="handoff">${note ? `<p class="pnote">${note}</p>` : ""}
+    <p class="pgame">\u7B2C ${c.round + 1} \u8F2A\u300A${gameInfo(c.mg).title}\u300B\u30FB${PARTY_SECONDS} \u79D2</p>
+    <p class="pwho">\u8F2A\u5230 <b>${c.player}</b></p><p class="dim">\u628A\u88DD\u7F6E\u4EA4\u7D66 ${c.player}\uFF0C\u6E96\u5099\u597D\u518D\u6309\u958B\u59CB\u3002</p>
+    <div class="row"><button class="go" data-pgo>\u958B\u59CB</button></div></div>`;
+    $("mg").classList.remove("hidden");
+    $("mgRoot").querySelector("[data-pgo]").onclick = () => partyPlay(c);
+  }
+  function partyPlay(c) {
+    const scripts = [`minigames/${c.mg}/rules.js`, `minigames/${c.mg}/game.js`];
+    runMinigame({ mg: c.mg, header: `\u6BBA\u9752\u6D3E\u5C0D\u30FB${c.player}`, scripts, seconds: PARTY_SECONDS, rng: mulberry32(c.seed), delay: 1200, end: (r) => partyEnd(c, r) });
+  }
+  function partyEnd(c, r) {
+    const res = submit(party, r);
+    const score = Math.max(0, Math.round(Number(r && r.score) || 0));
+    play("correct");
+    if (!res.roundDone) {
+      partyHandoff(`${c.player} \u62FF\u5230 ${score} \u5206\uFF01`);
+      return;
+    }
+    const rk = roundRanking(party, c.round);
+    const box = $("mgResult");
+    box.innerHTML = `<h3>\u7B2C ${c.round + 1} \u8F2A\u7D50\u679C\u300A${gameInfo(c.mg).title}\u300B</h3>
+    <ol class="prank">${rk.map((x) => `<li><b>${x.place}</b>${x.name}<span>${x.score} \u5206</span><em>+${x.points}</em></li>`).join("")}</ol>
+    <div class="row"><button class="go" data-next>${res.done ? "\u770B\u7E3D\u51A0\u8ECD" : "\u4E0B\u4E00\u8F2A"}</button></div>`;
+    box.classList.remove("hidden");
+    burst(`${rk[0].name} \u62FF\u4E0B\u9019\u8F2A`, true);
+    box.querySelector("[data-next]").onclick = () => res.done ? partyFinal() : partyHandoff();
+  }
+  function partyFinal() {
+    try {
+      mgHandle == null ? void 0 : mgHandle.destroy();
+    } catch {
+    }
+    mgHandle = null;
+    const st = standings(party), champ = champions(party);
+    $("mgTitle").textContent = "\u6BBA\u9752\u6D3E\u5C0D\u30FB\u7E3D\u7D50\u7B97";
+    $("mgRoot").innerHTML = "";
+    const box = $("mgResult");
+    box.innerHTML = `<div class="pchamp"><small>${champ.length > 1 ? "\u4E26\u5217\u51A0\u8ECD" : "\u51A0\u8ECD"}</small><b>${champ.map((t) => t.name).join("\u3001")}</b><span>\u516D\u6A13\u6BBA\u9752\u6D3E\u5C0D\u4E4B\u738B</span></div>
+    <ol class="prank">${st.map((t) => `<li><b>${t.place}</b>${t.name}<span>\u7B2C\u4E00\u540D ${t.firsts} \u6B21</span><em>${t.points} \u5206</em></li>`).join("")}</ol>
+    <div class="sharecard"><b>\u516D\u6A13\u51FA\u53E3\u30FB\u6BBA\u9752\u6D3E\u5C0D</b><span>${partyShareText(party)}</span></div>
+    <div class="row"><button class="go" data-copy>\u8907\u88FD\u5206\u4EAB\u6587\u5B57</button><button class="ghost" data-again>\u518D\u958B\u4E00\u5834</button><button class="ghost" data-back>\u56DE\u5230\u8D70\u5ECA</button></div>`;
+    box.classList.remove("hidden");
+    play("clear");
+    burst("\u6BBA\u9752\uFF01");
+    box.querySelector("[data-copy]").onclick = async (ev) => {
+      try {
+        await navigator.clipboard.writeText(partyShareText(party));
+        ev.target.textContent = "\u5DF2\u8907\u88FD";
+      } catch {
+        const r = document.createRange();
+        r.selectNodeContents(box.querySelector(".sharecard span"));
+        getSelection().removeAllRanges();
+        getSelection().addRange(r);
+        ev.target.textContent = "\u5DF2\u9078\u53D6\uFF0C\u8ACB\u6309\u8907\u88FD";
+      }
+    };
+    box.querySelector("[data-again]").onclick = () => {
+      $("mg").classList.add("hidden");
+      $("mgRoot").innerHTML = "";
+      mgCurrent = null;
+      openPartySetup();
+    };
+    box.querySelector("[data-back]").onclick = () => {
+      party = null;
+      leaveMinigame(false);
     };
   }
   function labWall() {
@@ -2174,5 +2425,9 @@
   if (q.has("debug") && q.has("fight")) {
     $("start").classList.add("hidden");
     startFight();
+  }
+  if (q.has("debug") && q.has("d0647")) {
+    $("start").classList.add("hidden");
+    enterD0647();
   }
 })();

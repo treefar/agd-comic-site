@@ -388,7 +388,7 @@
       let enemyFontKey = "serif";
 
       let timeElapsed = 0;
-      const MAX_TIME = 60;
+      const MAX_TIME = api && api.seconds > 0 ? api.seconds : 60; // 派對模式會傳較短秒數
       let particles = [];
       let screenShake = 0;
       let playerDashCooldown = 0;

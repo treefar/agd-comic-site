@@ -167,6 +167,7 @@
     skill: "電腦動畫",
     seconds: 60,
     mount: function (root, api) {
+      var LIMIT = api && api.seconds > 0 ? api.seconds : R.TOTAL_SECONDS; // 派對模式會傳較短秒數
       api = api || {};
       var rng = typeof api.rng === "function" ? api.rng : Math.random;
       var onEnd = typeof api.onEnd === "function" ? api.onEnd : function () {};
@@ -187,7 +188,7 @@
 
       // 遊戲狀態機
       var state = {
-        timeRemaining: 60,
+        timeRemaining: LIMIT,
         elapsedSeconds: 0,
         stage: 1,
         flagsPassed: 0,
@@ -497,7 +498,7 @@
 
       function resetGame() {
         endCalled = false;
-        state.timeRemaining = 60;
+        state.timeRemaining = LIMIT;
         state.elapsedSeconds = 0;
         state.stage = 1;
         state.flagsPassed = 0;
@@ -538,7 +539,7 @@
 
         // 倒數計時與階段推進
         state.elapsedSeconds += dt;
-        state.timeRemaining = Math.max(0, R.TOTAL_SECONDS - state.elapsedSeconds);
+        state.timeRemaining = Math.max(0, LIMIT - state.elapsedSeconds);
         state.stage = R.getStage(state.elapsedSeconds);
 
         if (state.showTeaching) {
@@ -661,7 +662,7 @@
           flagsPassed: state.flagsPassed,
           targetFlags: R.TARGET_FLAGS,
           elapsedSeconds: state.elapsedSeconds,
-          maxTime: R.TOTAL_SECONDS
+          maxTime: LIMIT
         });
 
         if (res.over) {
@@ -917,7 +918,7 @@
         // 倒數計時外框
         ctx.fillStyle = "rgba(15, 13, 10, 0.15)";
         ctx.fillRect(barX, barY, barW, 10);
-        var timeRatio = state.timeRemaining / R.TOTAL_SECONDS;
+        var timeRatio = state.timeRemaining / LIMIT;
         ctx.fillStyle = state.timeRemaining < 15 ? COLOR.red : COLOR.blue;
         ctx.fillRect(barX, barY, barW * timeRatio, 10);
         ctx.strokeStyle = COLOR.ink;

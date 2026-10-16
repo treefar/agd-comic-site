@@ -30,6 +30,7 @@
     },
 
     mount(root, api) {
+      const LIMIT = api && api.seconds > 0 ? api.seconds : R.TOTAL_SECONDS; // 派對模式會傳較短秒數
       const rng = (api && typeof api.rng === "function") ? api.rng : Math.random;
       let onEndCalled = false;
 
@@ -749,8 +750,8 @@
         ctx.fillText(`每箭上靶：${stats.hits} / ${stats.shotsFired} 箭${stats.misses === 0 && stats.shotsFired > 0 ? " ★" : ""}`, V_WIDTH - 28, 66);
 
         // 中央頂部 60 秒倒數計時條
-        const remainSeconds = Math.max(0, R.TOTAL_SECONDS - gameTime);
-        const progress = Math.min(1, gameTime / R.TOTAL_SECONDS);
+        const remainSeconds = Math.max(0, LIMIT - gameTime);
+        const progress = Math.min(1, gameTime / LIMIT);
 
         const barW = 420;
         const barH = 12;
@@ -884,8 +885,8 @@
           }
 
           // 60 秒到期結束
-          if (gameTime >= R.TOTAL_SECONDS) {
-            gameTime = R.TOTAL_SECONDS;
+          if (gameTime >= LIMIT) {
+            gameTime = LIMIT;
             finishGame();
           }
         }

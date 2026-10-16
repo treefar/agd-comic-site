@@ -91,6 +91,7 @@
     },
 
     mount: function (root, api) {
+      var LIMIT = api && api.seconds > 0 ? api.seconds : R.SECONDS; // 派對模式會傳較短秒數
       api = api || {};
       var onEnd = api.onEnd || function () {};
       var rng = typeof api.rng === "function" ? api.rng : Math.random;
@@ -578,7 +579,7 @@
         }
 
         // 時間到達 60 秒完走判定勝利
-        if (elapsed >= R.SECONDS) {
+        if (elapsed >= LIMIT) {
           finishGame(true);
         }
       }
@@ -752,7 +753,7 @@
         var barH = 8;
         var barX = (VW - barW) / 2;
         var barY = 10;
-        var timeRatio = Math.max(0, Math.min(1, (R.SECONDS - elapsed) / R.SECONDS));
+        var timeRatio = Math.max(0, Math.min(1, (LIMIT - elapsed) / LIMIT));
 
         // 倒數條底框（3px 墨色邊框 + 灰底）
         ctx.fillStyle = C.GRAY;
@@ -767,7 +768,7 @@
         ctx.fillStyle = C.INK;
         ctx.font = "bold 10px 'Noto Sans TC',sans-serif";
         ctx.textAlign = "center";
-        var remainSec = Math.max(0, Math.ceil(R.SECONDS - elapsed));
+        var remainSec = Math.max(0, Math.ceil(LIMIT - elapsed));
         ctx.fillText("剩餘 " + remainSec + "s", VW / 2, barY + 19);
 
         // 左上角 VR 跑步機狀態

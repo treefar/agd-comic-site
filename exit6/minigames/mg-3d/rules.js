@@ -304,7 +304,7 @@
       const rng = options && options.rng ? options.rng : Math.random;
       const questions = (options && options.questions) || createQuestions(rng);
       return {
-        timeRemaining: R.TOTAL_TIME,
+        timeRemaining: options && options.seconds > 0 ? options.seconds : R.TOTAL_TIME, // 派對模式會傳較短秒數
         currentIndex: 0,
         score: 0,
         targetQuestions: questions.length,

@@ -134,6 +134,50 @@ try {
     const saved=JSON.parse(localStorage.getItem("exit6-save-v1")||"{}").achv; return [...out, wall, JSON.stringify(saved)];`);
   ok("實驗室結算：過關＋高分＋零失誤＝★★★，存檔與手帳成就牆記到 3 星與稱號", star && !star[0] && star[1] === "★★★" && /3\/15 星/.test(star[3]) && /實驗室訪客/.test(star[3]) && /"d0637":\{"stars":3/.test(star[4]), JSON.stringify(star));
 
+  // 殺青派對（2026-10-16）：10 款小遊戲都吃 api.seconds（傳 3 秒要 3～6 秒內結束、分數是數字）
+  const secs = await ev(`${H} const ids=["mg-anim","mg-book","mg-code","mg-type","mg-3d","lab-d0604","lab-d0628","lab-d0631","lab-d0633","lab-d0637"]; const out={};
+    const load=(s)=>new Promise((ok,ng)=>{const e=document.createElement("script");e.src=s;e.onload=ok;e.onerror=ng;document.head.appendChild(e);});
+    if(!window.THREE) await load("https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js").catch(()=>{});
+    const box=document.createElement("div"); box.style.cssText="position:fixed;left:0;top:0;width:960px;height:540px;z-index:99"; document.body.appendChild(box);
+    for(const id of ids){ if(!(window.EXIT6_MG||{})[id]){ await load("minigames/"+id+"/rules.js"); await load("minigames/"+id+"/game.js"); }
+      box.innerHTML='<div style="width:100%;height:100%"></div>'; const t0=performance.now(); let res=null;
+      const h=window.EXIT6_MG[id].mount(box.firstChild,{rng:Math.random,seconds:3,onEnd:(r)=>{ if(!res) res={ms:Math.round(performance.now()-t0),score:r&&r.score}; }});
+      await W(300); box.querySelector("#type-start-btn")?.click();   // mg-type 先選字型，按開始才計時
+      for(let k=0;k<80&&!res;k++) await W(100); try{h&&h.destroy&&h.destroy();}catch{} out[id]=res; }
+    box.remove(); return out;`);
+  const secBad = Object.entries(secs || {}).filter(([, r]) => !r || r.ms > 6000 || typeof r.score !== "number");
+  ok("10 款小遊戲傳 seconds:3 都在 6 秒內結束並回傳數字分數", secs && secBad.length === 0, JSON.stringify(secs));
+
+  // D0647 門上遊戲手把貼紙 → 殺青派對：設定 2 人 → 交棒 → 第 1 棒真玩（20 秒自動結束）→ 其餘換成假遊戲跑完 → 冠軍與分享卡 → 手帳入口
+  await send("Page.navigate", { url: BASE + "&debug&d0647" }); await sleep(3500);
+  const egg1 = await ev(`${H} const s=$("partySecret"); if(!s) return null; const a=s.getBoundingClientRect(), b=$("sheet").getBoundingClientRect();
+    const hint=$("sheet").innerText.includes("邱士展"); s.click(); await W(1500);
+    return [hint, a.left>=b.right, $("sheet").querySelector("h3")?.textContent, JSON.parse(localStorage.getItem("exit6-save-v1")||"{}").party];`);
+  await shot("8-party-setup");
+  ok("D0647 門上有隱藏熱點、沒被說明框蓋住，點了開出殺青派對並存檔", egg1 && egg1[0] && egg1[1] && egg1[2] === "殺青派對" && egg1[3] && egg1[3].found === true, JSON.stringify(egg1));
+  const turn1 = await ev(`${H} const ins=$("sheet").querySelectorAll("[data-name]"); ins[0].value="小明"; ins[1].value="小華";
+    $("sheet").querySelector("[data-start]").click(); await W(500);
+    const who=$("mgRoot").querySelector(".pwho")?.textContent, game=$("mgRoot").querySelector(".pgame")?.textContent; $("mgRoot").querySelector("[data-pgo]").click(); const t0=performance.now();
+    for(let k=0;k<400 && !/小華/.test($("mgRoot").querySelector(".pwho")?.textContent||"");k++){ await W(100); $("mgRoot").querySelector("#type-start-btn")?.click(); }   // mg-type 要按開始才計時
+    return [who, Math.round((performance.now()-t0)/1000), $("mgRoot").querySelector(".pnote")?.textContent, game];`);
+  ok("交棒畫面先輪到小明；真玩一棒在 26 秒內結束，換小華並顯示小明的分數", turn1 && /小明/.test(turn1[0]) && turn1[1] <= 26 && /小明 拿到 \d+ 分/.test(turn1[2] || ""), JSON.stringify(turn1));
+  const pfin = await ev(`${H} let n=0; const fake={title:"假",mount:(root,api)=>{ const s=[80,20,10,90,70,30][n++%6]; setTimeout(()=>api.onEnd({win:false,score:s}),100); return {destroy(){}}; }};
+    window.EXIT6_MG=window.EXIT6_MG||{}; for(const id of ["mg-anim","mg-book","mg-code","mg-type","lab-d0604","lab-d0628","lab-d0631","lab-d0633"]) Object.defineProperty(window.EXIT6_MG,id,{get:()=>fake,set:()=>{},configurable:true});
+    const rounds=[];
+    for(let k=0;k<40;k++){ const go=$("mgRoot").querySelector("[data-pgo]"); const res=$("mgResult");
+      if(!res.classList.contains("hidden") && res.querySelector(".pchamp")) break;
+      if(!res.classList.contains("hidden") && res.querySelector("[data-next]")){ rounds.push(res.querySelector("h3").textContent); res.querySelector("[data-next]").click(); await W(400); continue; }
+      if(go){ go.click(); await W(2200); continue; } await W(300); }
+    const res=$("mgResult"); const champ=res.querySelector(".pchamp b")?.textContent; const share=res.querySelector(".sharecard span")?.textContent;
+    const rows=[...res.querySelectorAll(".prank li")].map(l=>l.innerText.replace(/\\s+/g," "));
+    return [rounds.length, champ, rows, /冠軍是/.test(share||"")];`);
+  await shot("9-party-final");
+  const pback = await ev(`${H} $("mgResult").querySelector("[data-back]").click(); await W(800); $("nbBtn").click(); await W(400);
+    const entry=!!$("sheet").querySelector("[data-party]"); $("sheet").querySelector("[data-close]").click();
+    return [entry, JSON.parse(localStorage.getItem("exit6-save-v1")||"{}").party.plays, $("mg").classList.contains("hidden")];`);
+  const fin2 = pfin && pback ? [...pfin, ...pback] : null;
+  ok("跑完 3 輪：每輪有名次、總結算有冠軍與分享文字、回走廊後手帳出現派對入口", fin2 && fin2[0] === 3 && fin2[1] && fin2[2].length === 2 && fin2[3] && fin2[4] && fin2[5] === 1 && fin2[6], JSON.stringify(fin2));
+
   // 手機直拿：手帳卡冊不超出畫面
   await send("Emulation.setDeviceMetricsOverride", { width: 375, height: 812, deviceScaleFactor: 2, mobile: true });
   const mob = await ev(`${H} $("sheet").querySelector("[data-close]")?.click(); await W(300); $("nbBtn").click(); await W(500);

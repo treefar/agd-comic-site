@@ -18,7 +18,8 @@ window.EXIT6_MG["mg-3d"] = {
     }
 
     // 動態狀態
-    let state = R.createInitialState({ rng: api && api.rng ? api.rng : Math.random });
+    const LIMIT = api && api.seconds > 0 ? api.seconds : R.TOTAL_TIME; // 派對模式會傳較短秒數
+    let state = R.createInitialState({ rng: api && api.rng ? api.rng : Math.random, seconds: LIMIT });
     let isGameOver = false;
     let endedCalled = false;
     let isDropping = false;
@@ -780,7 +781,7 @@ window.EXIT6_MG["mg-3d"] = {
       progressText.textContent = `題目: ${Math.min(state.currentIndex + 1, state.targetQuestions)} / ${state.targetQuestions}`;
       timeLabel.textContent = `${state.timeRemaining.toFixed(1)}s`;
 
-      const pct = Math.max(0, Math.min(100, (state.timeRemaining / R.TOTAL_TIME) * 100));
+      const pct = Math.max(0, Math.min(100, (state.timeRemaining / LIMIT) * 100));
       timeBarFill.style.width = `${pct}%`;
       if (pct < 25) timeBarFill.style.background = "#e63946";
       else if (pct < 50) timeBarFill.style.background = "#ffd60a";

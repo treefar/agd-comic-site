@@ -16,6 +16,7 @@ window.EXIT6_MG["lab-d0637"] = {
   },
 
   mount(root, api) {
+    const LIMIT = api && api.seconds > 0 ? api.seconds : 60; // 派對模式會傳較短秒數
     const rules = window.EXIT6_RULES_LAB_D0637;
     const rng = (api && typeof api.rng === "function") ? api.rng : Math.random;
 
@@ -166,7 +167,7 @@ window.EXIT6_MG["lab-d0637"] = {
       totalRounds: 3,
       completedRounds: 0,
       completedBands: 0,
-      remainingSeconds: 60,
+      remainingSeconds: LIMIT,
       wrongDrops: 0,
       score: 0,
       isEnded: false,
@@ -1123,7 +1124,7 @@ window.EXIT6_MG["lab-d0637"] = {
 
       ctx.fillStyle = COLORS.ink;
       ctx.fillRect(barX, barY, barW, barH);
-      const pct = Math.max(0, state.remainingSeconds / 60);
+      const pct = Math.max(0, state.remainingSeconds / LIMIT);
       ctx.fillStyle = pct > 0.25 ? COLORS.blue : COLORS.red;
       ctx.fillRect(barX + 2, barY + 2, (barW - 4) * pct, barH - 4);
 

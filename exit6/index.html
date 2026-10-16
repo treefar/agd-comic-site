@@ -216,6 +216,30 @@
   .sharecard { display: flex; flex-direction: column; gap: 6px; padding: 14px; margin-bottom: 10px; background: radial-gradient(rgba(15,13,10,.12) 1px, transparent 1.4px) 0 0 / 7px 7px, var(--paper); border: 3px solid var(--paperink); box-shadow: 4px 4px 0 var(--paperink); color: var(--paperink); }
   .sharecard b { font: 900 22px/1 "Noto Serif TC", serif; }
   .sharecard span { line-height: 1.6; user-select: text; }
+  /* 隱藏彩蛋：殺青派對。熱點不發亮，只有游標變手指 */
+  .spot.secret { border-color: transparent; background: transparent; animation: none; }
+  .spot.secret:hover, .spot.secret:focus-visible { border-color: rgba(255,214,10,.55); }
+  .handoff { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 16px; text-align: center; background: radial-gradient(rgba(255,214,10,.10) 1px, transparent 1.4px) 0 0 / 8px 8px, #111; color: var(--ink); }
+  .handoff .pnote { color: var(--pop); font-weight: 800; }
+  .handoff .pgame { font-size: 15px; color: var(--dim); }
+  .handoff .pwho { font: 900 clamp(26px, 6vw, 44px)/1.2 "Noto Serif TC", serif; }
+  .handoff .pwho b { color: var(--pop); }
+  .pcount button { min-width: 64px; }
+  .pnames { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; margin: 10px 0; }
+  .pnames label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; font-weight: 700; }
+  .pnames input { font: inherit; font-size: 15px; padding: 6px 8px; border: 2px solid var(--paperink); border-radius: 6px; background: #fff; color: var(--paperink); min-width: 0; }
+  .prank { list-style: none; padding: 0; margin: 8px 0 12px; display: grid; gap: 6px; }
+  .prank li { display: grid; grid-template-columns: 2em 1fr auto 3.4em; align-items: center; gap: 8px; padding: 6px 10px; border: 2px solid var(--paperink); border-radius: 8px; background: var(--paper); color: var(--paperink); font-variant-numeric: tabular-nums; }
+  .prank li:first-child { background: var(--pop); }
+  .prank b { font: 900 18px/1 "Noto Serif TC", serif; }
+  .prank span { font-size: 13px; }
+  .prank em { font-style: normal; font-weight: 900; text-align: right; }
+  .pchamp { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-bottom: 8px; text-align: center; }
+  .pchamp small { font-weight: 800; letter-spacing: .2em; color: var(--red); }
+  .pchamp b { font: 900 clamp(28px, 7vw, 48px)/1.1 "Noto Serif TC", serif; }
+  .pchamp span { font-size: 13px; }
+  .mgresult { overflow-y: auto; justify-content: safe center; }
+  .mgresult .prank, .mgresult .sharecard { width: min(100%, 460px); text-align: left; }
   .mid { display: flex; gap: 6px; align-items: stretch; }
   .nb.help { background: var(--pop); }
   .nb.pulse { animation: pop .5s cubic-bezier(.2,1.8,.4,1) 2; }
@@ -230,7 +254,7 @@
   .sheet li.ok b::after { content: "　✔"; }
   .sheet .clock { color: var(--paperink); text-shadow: none; }
   .sheet > button { width: 100%; margin-top: 12px; padding: 10px; }
-  .sheet .ghost, .card .ghost { color: var(--paperink); border-color: var(--paperink); background: transparent; }
+  .sheet .ghost, .card .ghost, .mgresult .ghost { color: var(--paperink); border-color: var(--paperink); background: transparent; }
   .sheet > button.x { position: sticky; top: 0; float: right; width: 40px; height: 40px; margin: 0 0 4px 8px; padding: 0; font-size: 22px; background: var(--paperink); color: var(--paper); border-radius: 50%; z-index: 1; }
   .spot.lbl-below span { top: auto; bottom: -1.6em; }
   .spot.clue span { background: #ff8a1f; color: var(--paperink); }

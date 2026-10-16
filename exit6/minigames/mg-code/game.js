@@ -111,7 +111,8 @@
       // 遊戲狀態機
       // ======================================================================
       var destroyed = false;
-      var totalTime = 60.0;
+      var LIMIT = api && api.seconds > 0 ? api.seconds : 60; // 派對模式會傳較短秒數
+      var totalTime = LIMIT;
       var currentScore = 0;
       var currentStageIdx = 0;
       var clearedStages = 0;
@@ -681,7 +682,7 @@
         var barH = 5;
         ctx.fillStyle = COLOR.grey;
         ctx.fillRect(10, 37, barW, barH);
-        var progress = Math.max(0, Math.min(1, totalTime / 60));
+        var progress = Math.max(0, Math.min(1, totalTime / LIMIT));
         ctx.fillStyle = progress > 0.25 ? COLOR.yellow : COLOR.red;
         ctx.fillRect(10, 37, barW * progress, barH);
 

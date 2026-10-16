@@ -470,8 +470,8 @@
         lines: [],
         inkLeft: Infinity,
         tool: "blue", // blue | red | erase
-        timeTotal: 60,
-        timeLeft: 60,
+        timeTotal: api && api.seconds > 0 ? api.seconds : 60, // 派對模式會傳較短秒數
+        timeLeft: api && api.seconds > 0 ? api.seconds : 60,
         passedLevels: 0,
         attempts: [0, 0, 0],
         crashes: 0,

@@ -11,6 +11,7 @@ import { cueFor, hintStage, areaOf, HINT_TEXT, COACH, helpReply, HELP_COOLDOWN_M
 import { TEACHERS, displayName, createCards, award, allCollected, teacherAt, scriptsFor } from "./teachers.mjs";
 import { mustIndex, narrFor, spotAt } from "./story.mjs";
 import { siteLink } from "./links.mjs";
+import { PARTY_SECONDS, MAX_PLAYERS, NAME_MAX, createParty, current, submit, roundRanking, standings, champions, gameInfo, partyShareText } from "./party.mjs";
 import { LABS, labAt, starsFor, createAchv, record, totalStars, titleFor, unlocked, MAX_STARS, REWARDS } from "./labs.mjs";
 
 const q = new URLSearchParams(location.search);
@@ -33,6 +34,7 @@ const SAVE_KEY = "exit6-save-v1";
 function loadSave() { try { return JSON.parse(localStorage.getItem(SAVE_KEY)) || {}; } catch { return {}; } }
 function writeSave(s) { try { localStorage.setItem(SAVE_KEY, JSON.stringify(s)); } catch { /* 私密視窗等情況 */ } }
 const save = Object.assign({ dex: [], bestMs: null, bestMiss: null, clears: 0, cards: [] }, loadSave());
+if (!save.party || typeof save.party !== "object") save.party = { found: false, plays: 0 };
 const cardBook = createCards(save.cards);   // 老師簽名卡（壞資料就當沒有）
 const achv = createAchv(save.achv);          // 實驗室成就：每間最高星與最高分
 const run = { t0: 0, mistakes: 0, precise: 0, misTaps: 0, toured: new Set(), failStreak: 0, seen: new Set() };   // seen：點過的物件（手帳「看過的東西」）
@@ -332,7 +334,10 @@ function openNotebook() {
     ${labWall()}
     <h4>老師簽名卡（${cardBook.cards.length}/${TEACHERS.length}）</h4><div class="cardgrid">${cardGrid()}</div>
     ${allCollected(cardBook) ? `<button class="ghost" data-ending>重看隱藏結局</button>` : `<p class="dim">循環圈經過有老師的站，按右下角「邀請」挑戰小遊戲。</p>`}
-    <h4>紀念章</h4><ul>${stampList}</ul><button class="go" data-close>關閉</button>`);
+    <h4>紀念章</h4><ul>${stampList}</ul>
+    ${save.party.found ? `<h4>隱藏彩蛋</h4><p class="dim">殺青派對：同一台裝置 2～${MAX_PLAYERS} 人輪流玩，已開過 ${save.party.plays} 場。</p><button class="ghost" data-party>開一場殺青派對</button>` : ""}
+    <button class="go" data-close>關閉</button>`);
+  $("sheet").querySelector("[data-party]")?.addEventListener("click", () => { closeSheet(); openPartySetup(); });
   $("sheet").querySelector("[data-ending]")?.addEventListener("click", () => { closeSheet(); hiddenEnding(); });
   $("sheet").querySelector("[data-share]")?.addEventListener("click", () => { closeSheet(); openShare(); });
 }
@@ -462,7 +467,9 @@ async function enterD0647(first) {
     <li><b>課程</b><br>3D 角色動畫、3D 遊戲引擎應用、動畫劇本創作、3D 列印應用實務</li>
     <li><b>2026</b><br>指導的動畫作品入圍放視大賞動畫類</li></ul>
     <p class="why">「聽說你也愛對戰？來一場片場對決吧，用鏡頭語言打敗我！」</p>
+    ${fightWon && !save.party.found ? `<p class="why">「殺青了就該開派對……門上那張小小的遊戲手把貼紙，你看到了嗎？」</p>` : ""}
     <button class="go" data-fight>接受片場對決</button><button class="ghost" data-close>回到走廊</button>`, "left");
+  placeSecret();
   $("sheet").querySelector("[data-fight]").onclick = startFight;
   $("sheet").querySelector("[data-close]").onclick = () => {
     closeSheet(); deanImg.classList.remove("in"); deanImg.classList.add("out"); $("sub").classList.add("hidden");
@@ -661,7 +668,9 @@ async function runMinigame(e) {
   // 每次給小遊戲一個新的內層容器：小遊戲會改容器樣式（position、transform），不能讓它動到宿主的 #mgRoot
   $("mgRoot").innerHTML = `<div class="mgstage"></div>`;
   let ended = false;   // onEnd 後等 2.6 秒再蓋上結果：先讓玩家讀完小遊戲自己的專長知識
-  mgHandle = window.EXIT6_MG[e.mg].mount($("mgRoot").firstChild, { rng, onEnd: (r) => { if (!ended) { ended = true; setTimeout(() => { if (mgCurrent === e) e.end(r); }, 2600); } } });
+  const api = { rng: e.rng || rng, onEnd: (r) => { if (!ended) { ended = true; setTimeout(() => { if (mgCurrent === e) e.end(r); }, e.delay ?? 2600); } } };
+  if (e.seconds) api.seconds = e.seconds;           // 派對模式傳短秒數；一般關卡不傳，小遊戲用自己的 60 秒
+  mgHandle = window.EXIT6_MG[e.mg].mount($("mgRoot").firstChild, api);
 }
 function retryMinigame(again) { try { mgHandle?.destroy(); } catch { /* 照樣重來 */ } mgHandle = null; again(); }
 
@@ -740,6 +749,97 @@ function openShare() {
     catch { const r = document.createRange(); r.selectNodeContents($("sheet").querySelector(".sharecard span")); getSelection().removeAllRanges(); getSelection().addRange(r); ev.target.textContent = "已選取，請按複製"; }
   };
 }
+// ---------- 隱藏彩蛋：殺青派對（規則在 party.mjs；同一台輪流，每輪同一款、同一個種子） ----------
+const SECRET = { x: 52.5, y: 76, w: 5.5, h: 8 };          // s8.webp 門上像素方塊旁的小遊戲手把貼紙
+function placeSecret() {
+  const b = document.createElement("button");
+  b.className = "spot secret"; b.id = "partySecret"; placeBtn(b, SECRET);
+  b.setAttribute("aria-label", "門上的遊戲手把貼紙");
+  b.onclick = (ev) => { ev.stopPropagation(); findParty(); };
+  $("spots").appendChild(b);
+}
+function findParty() {
+  const first = !save.party.found;
+  save.party.found = true; writeSave(save);
+  closeSheet(); deanImg.classList.remove("in"); deanImg.classList.add("out");
+  play(first ? "clear" : "click");
+  if (first) { burst("發現彩蛋！殺青派對"); nbPulse(); }
+  speak("邱士展老師", first ? "被你發現了！這是我們劇組的殺青派對，找朋友一起來比一場吧。" : "又來開派對啦？", 5000);
+  setTimeout(openPartySetup, first ? 900 : 200);
+}
+let party = null, partyCount = 2;
+function openPartySetup() {
+  busy = true; setButtons();
+  const names = (save.party.names || []);
+  const inputs = Array.from({ length: MAX_PLAYERS }, (_, i) =>
+    `<label class="pname${i < partyCount ? "" : " hidden"}">玩家 ${i + 1}<input data-name maxlength="${NAME_MAX}" placeholder="玩家 ${i + 1}" value="${(names[i] || "").replace(/"/g, "")}"></label>`).join("");
+  openSheet(`<button class="x" data-close aria-label="關閉">×</button><h3>殺青派對</h3>
+    <p>同一台裝置輪流玩，每輪大家玩同一款 ${PARTY_SECONDS} 秒短版小遊戲，比同輪名次拿積分，3 輪後積分最高的就是冠軍。</p>
+    <div class="row pcount">${[2, 3, 4].map((n) => `<button class="${n === partyCount ? "go" : "ghost"}" data-n="${n}">${n} 人</button>`).join("")}</div>
+    <div class="pnames">${inputs}</div>
+    <div class="row"><button class="go" data-start>開始派對</button><button class="ghost" data-close>先不要</button></div>`);
+  const sh = $("sheet");
+  // 從 D0647 進來時畫面還是門；關掉設定要回到走廊
+  sh.querySelectorAll("[data-close]").forEach((b) => { b.onclick = () => { closeSheet(); $("sub").classList.add("hidden"); show(stopSrc(STATIONS[game.station], anomalyAt(game, ANOMALIES)), false); renderStop(); }; });
+  sh.querySelectorAll("[data-n]").forEach((b) => { b.onclick = () => { partyCount = Number(b.dataset.n); saveNames(); openPartySetup(); }; });
+  sh.querySelector("[data-start]").onclick = () => {
+    saveNames();
+    party = createParty(save.party.names.slice(0, partyCount).concat(Array(partyCount).fill("")).slice(0, partyCount), Math.random);
+    save.party.plays = (save.party.plays || 0) + 1; writeSave(save);
+    closeSheet(); partyHandoff();
+  };
+  function saveNames() { save.party.names = [...$("sheet").querySelectorAll("[data-name]")].map((i) => i.value.trim()); writeSave(save); }
+}
+// 交棒畫面：先把裝置交給下一位，按了開始才計時
+function partyHandoff(note = "") {
+  const c = current(party); if (!c) { partyFinal(); return; }
+  busy = true; setButtons(); mgCurrent = { party: true };
+  try { mgHandle?.destroy(); } catch { /* 上一款自己出錯也照樣往下 */ } mgHandle = null;
+  $("mgTitle").textContent = `殺青派對・第 ${c.round + 1}／${party.games.length} 輪`;
+  $("mgResult").classList.add("hidden");
+  $("mgRoot").innerHTML = `<div class="handoff">${note ? `<p class="pnote">${note}</p>` : ""}
+    <p class="pgame">第 ${c.round + 1} 輪《${gameInfo(c.mg).title}》・${PARTY_SECONDS} 秒</p>
+    <p class="pwho">輪到 <b>${c.player}</b></p><p class="dim">把裝置交給 ${c.player}，準備好再按開始。</p>
+    <div class="row"><button class="go" data-pgo>開始</button></div></div>`;
+  $("mg").classList.remove("hidden");
+  $("mgRoot").querySelector("[data-pgo]").onclick = () => partyPlay(c);
+}
+function partyPlay(c) {
+  const scripts = [`minigames/${c.mg}/rules.js`, `minigames/${c.mg}/game.js`];
+  runMinigame({ mg: c.mg, header: `殺青派對・${c.player}`, scripts, seconds: PARTY_SECONDS, rng: mulberry32(c.seed), delay: 1200, end: (r) => partyEnd(c, r) });
+}
+function partyEnd(c, r) {
+  const res = submit(party, r);
+  const score = Math.max(0, Math.round(Number(r && r.score) || 0));
+  play("correct");
+  if (!res.roundDone) { partyHandoff(`${c.player} 拿到 ${score} 分！`); return; }
+  const rk = roundRanking(party, c.round);
+  const box = $("mgResult");
+  box.innerHTML = `<h3>第 ${c.round + 1} 輪結果《${gameInfo(c.mg).title}》</h3>
+    <ol class="prank">${rk.map((x) => `<li><b>${x.place}</b>${x.name}<span>${x.score} 分</span><em>+${x.points}</em></li>`).join("")}</ol>
+    <div class="row"><button class="go" data-next>${res.done ? "看總冠軍" : "下一輪"}</button></div>`;
+  box.classList.remove("hidden"); burst(`${rk[0].name} 拿下這輪`, true);
+  box.querySelector("[data-next]").onclick = () => (res.done ? partyFinal() : partyHandoff());
+}
+function partyFinal() {
+  try { mgHandle?.destroy(); } catch { /* 照樣結算 */ } mgHandle = null;
+  const st = standings(party), champ = champions(party);
+  $("mgTitle").textContent = "殺青派對・總結算";
+  $("mgRoot").innerHTML = "";
+  const box = $("mgResult");
+  box.innerHTML = `<div class="pchamp"><small>${champ.length > 1 ? "並列冠軍" : "冠軍"}</small><b>${champ.map((t) => t.name).join("、")}</b><span>六樓殺青派對之王</span></div>
+    <ol class="prank">${st.map((t) => `<li><b>${t.place}</b>${t.name}<span>第一名 ${t.firsts} 次</span><em>${t.points} 分</em></li>`).join("")}</ol>
+    <div class="sharecard"><b>六樓出口・殺青派對</b><span>${partyShareText(party)}</span></div>
+    <div class="row"><button class="go" data-copy>複製分享文字</button><button class="ghost" data-again>再開一場</button><button class="ghost" data-back>回到走廊</button></div>`;
+  box.classList.remove("hidden"); play("clear"); burst("殺青！");
+  box.querySelector("[data-copy]").onclick = async (ev) => {
+    try { await navigator.clipboard.writeText(partyShareText(party)); ev.target.textContent = "已複製"; }
+    catch { const r = document.createRange(); r.selectNodeContents(box.querySelector(".sharecard span")); getSelection().removeAllRanges(); getSelection().addRange(r); ev.target.textContent = "已選取，請按複製"; }
+  };
+  box.querySelector("[data-again]").onclick = () => { $("mg").classList.add("hidden"); $("mgRoot").innerHTML = ""; mgCurrent = null; openPartySetup(); };
+  box.querySelector("[data-back]").onclick = () => { party = null; leaveMinigame(false); };
+}
+
 function labWall() {
   const total = totalStars(achv), t = titleFor(total), got = unlocked(total);
   const rows = LABS.map((l) => { const v = achv.labs[l.id]; return `<li class="${v && v.stars ? "ok" : ""}"><b>${l.code} ${l.name}</b>　${starRow(v ? v.stars : 0)}${v ? `　最高 ${v.best} 分` : ""}</li>`; }).join("");
@@ -965,3 +1065,4 @@ for (const f of ["s8_a", "s8", "qiu_greet"]) new Image().src = `frames/${f}.webp
 renderStop(); prefetch(0);
 if (q.has("debug") && q.has("go")) $("go").click();   // 除錯：自動進入（無頭瀏覽器截圖用）
 if (q.has("debug") && q.has("fight")) { $("start").classList.add("hidden"); startFight(); }   // 除錯：直接進片場對決
+if (q.has("debug") && q.has("d0647")) { $("start").classList.add("hidden"); enterD0647(); }   // 除錯：直接進 D0647（測殺青派對熱點）
