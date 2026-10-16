@@ -732,6 +732,13 @@
     return k < 0 ? null : k;
   }
 
+  // exit6/links.mjs
+  var OFFICIAL = "https://www.dgd.stu.edu.tw/";
+  function siteLink(route, pathname) {
+    const inComicSite = /\/exit6\/(index\.html)?$/.test(String(pathname || ""));
+    return inComicSite ? `../#/${route}` : OFFICIAL;
+  }
+
   // exit6/labs.mjs
   var LABS = [
     {
@@ -1819,7 +1826,7 @@
   function openShare() {
     openSheet(`<button class="x" data-close aria-label="\u95DC\u9589">\xD7</button><h3>\u62DB\u751F\u5206\u4EAB\u5361</h3>
     <div class="sharecard"><b>\u516D\u6A13\u51FA\u53E3</b><span>${shareText()}</span></div>
-    <div class="row"><button class="go" data-copy>\u8907\u88FD\u6587\u5B57</button><a class="ghost linkbtn" href="../#/admission" target="_blank" rel="noopener">\u62DB\u751F\u8CC7\u8A0A</a></div>`);
+    <div class="row"><button class="go" data-copy>\u8907\u88FD\u6587\u5B57</button><a class="ghost linkbtn" href="${siteLink("admission", location.pathname)}" target="_blank" rel="noopener">\u62DB\u751F\u8CC7\u8A0A</a></div>`);
     $("sheet").querySelector("[data-copy]").onclick = async (ev) => {
       try {
         await navigator.clipboard.writeText(shareText());
@@ -1839,7 +1846,7 @@
       const v = achv.labs[l.id];
       return `<li class="${v && v.stars ? "ok" : ""}"><b>${l.code} ${l.name}</b>\u3000${starRow(v ? v.stars : 0)}${v ? `\u3000\u6700\u9AD8 ${v.best} \u5206` : ""}</li>`;
     }).join("");
-    const rw = REWARDS.map((w) => got.includes(w) ? w.id === "works" ? `<a class="ghost linkbtn" href="../#/works" target="_blank" rel="noopener">\u5B78\u9577\u59D0\u4F5C\u54C1\u5C55\u793A</a>` : `<button class="ghost" data-share>\u62DB\u751F\u5206\u4EAB\u5361</button>` : `<span class="lockrw">${w.at} \u661F\u89E3\u9396\uFF1A${w.name.replace("\u89E3\u9396\uFF1A", "")}</span>`).join("");
+    const rw = REWARDS.map((w) => got.includes(w) ? w.id === "works" ? `<a class="ghost linkbtn" href="${siteLink("works", location.pathname)}" target="_blank" rel="noopener">\u5B78\u9577\u59D0\u4F5C\u54C1\u5C55\u793A</a>` : `<button class="ghost" data-share>\u62DB\u751F\u5206\u4EAB\u5361</button>` : `<span class="lockrw">${w.at} \u661F\u89E3\u9396\uFF1A${w.name.replace("\u89E3\u9396\uFF1A", "")}</span>`).join("");
     return `<h4>\u5BE6\u9A57\u5BA4\u6210\u5C31\uFF08${total}/${MAX_STARS} \u661F\uFF09${t ? `\u3000\u7A31\u865F\u300C${t.name}\u300D` : ""}</h4><ul>${rows}</ul><div class="row rwrow">${rw}</div>`;
   }
   function leaveMinigame(completed) {
@@ -1865,8 +1872,8 @@
     openSheet(`<button class="x" data-close aria-label="\u95DC\u9589">\xD7</button><h3>\u96B1\u85CF\u7D50\u5C40\uFF1A\u516D\u6A13\u7684\u901A\u884C\u8B49</h3>
     <p>\u8D70\u5ECA\u76E1\u982D\u7684\u71C8\u4E00\u76DE\u76DE\u4EAE\u8D77\u4F86\u3002\u4E94\u4F4D\u8001\u5E2B\u7684\u7C3D\u540D\u5728\u624B\u5E33\u88E1\u6392\u6210\u4E00\u6392\u2014\u2014\u52D5\u756B\u3001\u7E6A\u672C\u3001\u7A0B\u5F0F\u30013D\u3001\u8996\u89BA\u50B3\u9054\uFF0C\u9019\u4E9B\u4F60\u525B\u525B\u90FD\u89AA\u624B\u73A9\u904E\u4E86\u3002</p>
     <p>\u516D\u6A13\u4E0D\u662F\u8FF7\u5BAE\uFF0C\u662F\u6211\u5011\u6BCF\u5929\u4E0A\u8AB2\u7684\u5730\u65B9\u3002\u4E0B\u6B21\uFF0C\u7528\u5B78\u751F\u8B49\u8D70\u9032\u4F86\u5427\u3002</p>
-    <div class="row"><a class="go linkbtn" href="../#/works" target="_blank" rel="noopener">\u770B\u5B78\u9577\u59D0\u4F5C\u54C1</a><a class="go linkbtn" href="../#/admission" target="_blank" rel="noopener">\u62DB\u751F\u8CC7\u8A0A</a></div>
-    <div class="row"><a class="ghost linkbtn" href="../#/labs" target="_blank" rel="noopener">\u7279\u8272\u5BE6\u9A57\u5BA4</a><button class="ghost" data-close>\u56DE\u5230\u8D70\u5ECA</button></div>`);
+    <div class="row"><a class="go linkbtn" href="${siteLink("works", location.pathname)}" target="_blank" rel="noopener">\u770B\u5B78\u9577\u59D0\u4F5C\u54C1</a><a class="go linkbtn" href="${siteLink("admission", location.pathname)}" target="_blank" rel="noopener">\u62DB\u751F\u8CC7\u8A0A</a></div>
+    <div class="row"><a class="ghost linkbtn" href="${siteLink("labs", location.pathname)}" target="_blank" rel="noopener">\u7279\u8272\u5BE6\u9A57\u5BA4</a><button class="ghost" data-close>\u56DE\u5230\u8D70\u5ECA</button></div>`);
   }
   var helpAt = -Infinity;
   function askHelp() {

@@ -10,6 +10,7 @@ import { MOVES, QIU_HP, PLAYER_HP, createFight, nextRound, input, timeout } from
 import { cueFor, hintStage, areaOf, HINT_TEXT, COACH, helpReply, HELP_COOLDOWN_MS, HELP_CLEAR } from "./coach.mjs";
 import { TEACHERS, displayName, createCards, award, allCollected, teacherAt, scriptsFor } from "./teachers.mjs";
 import { mustIndex, narrFor, spotAt } from "./story.mjs";
+import { siteLink } from "./links.mjs";
 import { LABS, labAt, starsFor, createAchv, record, totalStars, titleFor, unlocked, MAX_STARS, REWARDS } from "./labs.mjs";
 
 const q = new URLSearchParams(location.search);
@@ -733,7 +734,7 @@ function shareText() {
 function openShare() {
   openSheet(`<button class="x" data-close aria-label="關閉">×</button><h3>招生分享卡</h3>
     <div class="sharecard"><b>六樓出口</b><span>${shareText()}</span></div>
-    <div class="row"><button class="go" data-copy>複製文字</button><a class="ghost linkbtn" href="../#/admission" target="_blank" rel="noopener">招生資訊</a></div>`);
+    <div class="row"><button class="go" data-copy>複製文字</button><a class="ghost linkbtn" href="${siteLink("admission", location.pathname)}" target="_blank" rel="noopener">招生資訊</a></div>`);
   $("sheet").querySelector("[data-copy]").onclick = async (ev) => {
     try { await navigator.clipboard.writeText(shareText()); ev.target.textContent = "已複製"; }
     catch { const r = document.createRange(); r.selectNodeContents($("sheet").querySelector(".sharecard span")); getSelection().removeAllRanges(); getSelection().addRange(r); ev.target.textContent = "已選取，請按複製"; }
@@ -743,7 +744,7 @@ function labWall() {
   const total = totalStars(achv), t = titleFor(total), got = unlocked(total);
   const rows = LABS.map((l) => { const v = achv.labs[l.id]; return `<li class="${v && v.stars ? "ok" : ""}"><b>${l.code} ${l.name}</b>　${starRow(v ? v.stars : 0)}${v ? `　最高 ${v.best} 分` : ""}</li>`; }).join("");
   const rw = REWARDS.map((w) => got.includes(w)
-    ? (w.id === "works" ? `<a class="ghost linkbtn" href="../#/works" target="_blank" rel="noopener">學長姐作品展示</a>` : `<button class="ghost" data-share>招生分享卡</button>`)
+    ? (w.id === "works" ? `<a class="ghost linkbtn" href="${siteLink("works", location.pathname)}" target="_blank" rel="noopener">學長姐作品展示</a>` : `<button class="ghost" data-share>招生分享卡</button>`)
     : `<span class="lockrw">${w.at} 星解鎖：${w.name.replace("解鎖：", "")}</span>`).join("");
   return `<h4>實驗室成就（${total}/${MAX_STARS} 星）${t ? `　稱號「${t.name}」` : ""}</h4><ul>${rows}</ul><div class="row rwrow">${rw}</div>`;
 }
@@ -762,8 +763,8 @@ function hiddenEnding() {
   openSheet(`<button class="x" data-close aria-label="關閉">×</button><h3>隱藏結局：六樓的通行證</h3>
     <p>走廊盡頭的燈一盞盞亮起來。五位老師的簽名在手帳裡排成一排——動畫、繪本、程式、3D、視覺傳達，這些你剛剛都親手玩過了。</p>
     <p>六樓不是迷宮，是我們每天上課的地方。下次，用學生證走進來吧。</p>
-    <div class="row"><a class="go linkbtn" href="../#/works" target="_blank" rel="noopener">看學長姐作品</a><a class="go linkbtn" href="../#/admission" target="_blank" rel="noopener">招生資訊</a></div>
-    <div class="row"><a class="ghost linkbtn" href="../#/labs" target="_blank" rel="noopener">特色實驗室</a><button class="ghost" data-close>回到走廊</button></div>`);
+    <div class="row"><a class="go linkbtn" href="${siteLink("works", location.pathname)}" target="_blank" rel="noopener">看學長姐作品</a><a class="go linkbtn" href="${siteLink("admission", location.pathname)}" target="_blank" rel="noopener">招生資訊</a></div>
+    <div class="row"><a class="ghost linkbtn" href="${siteLink("labs", location.pathname)}" target="_blank" rel="noopener">特色實驗室</a><button class="ghost" data-close>回到走廊</button></div>`);
 }
 
 // 主動求救：只在循環圈可用
