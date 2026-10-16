@@ -76,6 +76,16 @@ try {
   const closed = await ev(`${H} $("mgClose").click(); await W(800); return [$("mg").classList.contains("hidden"), $("mgRoot").childElementCount, $("btnFwd").disabled];`);
   ok("按 × 離開 3D 關卡回走廊、按鈕可用", closed && closed[0] && closed[1] === 0 && closed[2] === false, JSON.stringify(closed));
 
+  // 第 4 站繪本、第 5 站視傳：小遊戲會改容器樣式，宿主的內層容器要保住尺寸（2026-10-16 mg-book 把容器改成 relative 會塌成 0 高）
+  for (const [station, mg, sel] of [["D0604", "mg-book", "canvas"], ["海報櫥窗", "mg-type", "input"]]) {
+    const r = await ev(`${H} for (let k=0;k<4 && !/${station}/.test($("where").textContent);k++){ closeCard(); $("btnFwd").click(); await W(2500); closeCard(); await W(300); }
+      $("invite").click(); await W(400); $("sheet").querySelector("[data-mg]").click(); await W(2500);
+      const el=$("mgRoot").querySelector("${sel}"); const box=$("mgRoot").getBoundingClientRect(); const e=el&&el.getBoundingClientRect();
+      const out=[$("where").textContent, Math.round(box.height), e?Math.round(e.height):0, e?Math.round(e.top-box.top):-1];
+      $("mgClose").click(); await W(600); return out;`);
+    ok(`${mg}：容器保有高度、${sel} 在畫面內`, r && r[1] > 100 && r[2] > 20 && r[3] >= 0 && r[3] < r[1], JSON.stringify(r));
+  }
+
   // 預存 5 張卡 → 手帳有「重看隱藏結局」→ 結局出現
   await ev(`localStorage.setItem("exit6-save-v1", JSON.stringify({ dex: [], clears: 0, cards: ["book","type","anim","3d","code"].map(id=>({id,best:100})) })); return 1;`);
   await send("Page.navigate", { url: BASE }); await sleep(2000);

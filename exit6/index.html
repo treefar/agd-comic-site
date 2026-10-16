@@ -164,6 +164,7 @@
   .mghead .x { position: static; }
   .mgbox { position: relative; width: min(100%, 1100px, calc((100dvh - 70px) * 16 / 9)); aspect-ratio: 16 / 9; max-width: 100%; }
   .mgroot { position: absolute; inset: 0; overflow: hidden; background: var(--paper); border: 3px solid var(--paperink); }
+  .mgstage { position: absolute; inset: 0; width: 100%; height: 100%; }   /* 小遊戲把它改成 relative 時，寬高仍撐滿 */
   .mgload { margin: 0; padding: 24px; color: var(--paperink); }
   .mgresult { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 16px; background: rgba(244,236,216,.96); color: var(--paperink); text-align: center; animation: slamIn .4s cubic-bezier(.2,1.6,.4,1); }
   @keyframes slamIn { from { transform: scale(1.15); opacity: 0; } to { transform: scale(1); opacity: 1; } }

@@ -1531,9 +1531,9 @@
       return;
     }
     if (mgTeacher !== t) return;
-    $("mgRoot").innerHTML = "";
+    $("mgRoot").innerHTML = `<div class="mgstage"></div>`;
     let ended = false;
-    mgHandle = window.EXIT6_MG[t.mg].mount($("mgRoot"), { rng, onEnd: (r) => {
+    mgHandle = window.EXIT6_MG[t.mg].mount($("mgRoot").firstChild, { rng, onEnd: (r) => {
       if (!ended) {
         ended = true;
         setTimeout(() => minigameEnd(t, r), 2600);
@@ -1839,6 +1839,7 @@
       }
       return;
     }
+    if (mgTeacher) return;
     if (["ArrowLeft", "ArrowDown"].includes(e.key)) act("back");
     if (["ArrowRight", "ArrowUp"].includes(e.key)) act("forward");
   });

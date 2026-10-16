@@ -620,9 +620,10 @@ async function startMinigame(t) {
   try { for (const src of scriptsFor(t)) await loadScript(src); }
   catch { $("mgRoot").innerHTML = `<p class="mgload">這個小遊戲載入失敗（3D 關卡需要連網）。按右上角 × 回走廊。</p>`; return; }
   if (mgTeacher !== t) return;                      // 載入途中已經關掉
-  $("mgRoot").innerHTML = "";
+  // 每次給小遊戲一個新的內層容器：小遊戲會改容器樣式（position、transform），不能讓它動到宿主的 #mgRoot
+  $("mgRoot").innerHTML = `<div class="mgstage"></div>`;
   let ended = false;   // onEnd 後等 2.6 秒再蓋上簽名卡：先讓玩家讀完小遊戲自己的專長知識
-  mgHandle = window.EXIT6_MG[t.mg].mount($("mgRoot"), { rng, onEnd: (r) => { if (!ended) { ended = true; setTimeout(() => minigameEnd(t, r), 2600); } } });
+  mgHandle = window.EXIT6_MG[t.mg].mount($("mgRoot").firstChild, { rng, onEnd: (r) => { if (!ended) { ended = true; setTimeout(() => minigameEnd(t, r), 2600); } } });
 }
 function minigameEnd(t, r) {
   if (mgTeacher !== t) return;
@@ -832,6 +833,7 @@ addEventListener("keydown", (e) => {
     else if (["z", "Z", " ", "Enter"].includes(e.key)) { e.preventDefault(); if (!e.repeat) fightKey("A"); }
     return;
   }
+  if (mgTeacher) return;                             // 老師小遊戲開著：按鍵交給小遊戲
   if (["ArrowLeft", "ArrowDown"].includes(e.key)) act("back");
   if (["ArrowRight", "ArrowUp"].includes(e.key)) act("forward");
 });
