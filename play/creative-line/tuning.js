@@ -29,7 +29,7 @@ window.TUNING = {
     document.body.appendChild(panel);
     const header=document.createElement('div');header.textContent='手感調校（拖曳移動）';header.style.cssText='touch-action:none;cursor:move';panel.appendChild(header);
     const stats=document.createElement('output');stats.id='cl-tune-stats';stats.style.display='block';panel.appendChild(stats);
-    const body=document.createElement('div');panel.appendChild(body);
+    const body=document.createElement('div');body.id='cl-tune-body';body.hidden=true;panel.appendChild(body);body.appendChild(stats);
     const inputs=[];
     const persist=()=>{try{localStorage.setItem('cl-tuning',JSON.stringify(tuning));}catch{}};
     for(const [g,values] of Object.entries(tuning))for(const k of Object.keys(values)){
@@ -42,9 +42,10 @@ window.TUNING = {
     const area=document.createElement('textarea');area.setAttribute('aria-label','調校 JSON');area.style.cssText='display:none;width:100%;height:160px';body.appendChild(area);
     const button=(text,fn)=>{const b=document.createElement('button');b.type='button';b.textContent=text;b.onclick=fn;panel.insertBefore(b,body);return b;};
     const status=document.createElement('output');status.setAttribute('aria-live','polite');panel.insertBefore(status,body);
-    button('複製 JSON',async()=>{const json=JSON.stringify(tuning,null,2);area.value=json;area.style.display='block';try{await navigator.clipboard.writeText(json);status.textContent='已複製';}catch{status.textContent='請在下方全選複製';area.focus();area.select();}});
-    button('還原預設',()=>{for(const g of Object.keys(defaults))Object.assign(tuning[g],defaults[g]);try{localStorage.removeItem('cl-tuning');}catch{}inputs.forEach(({input,value,g,k})=>{input.value=tuning[g][k];value.textContent=input.value;});status.textContent='已還原';});
-    const collapse=button('收合',()=>{body.hidden=!body.hidden;collapse.textContent=body.hidden?'展開':'收合';});
+    button('複製 JSON',async()=>{const json=JSON.stringify(tuning,null,2);area.value=json;area.style.display='block';setExpanded(true);try{await navigator.clipboard.writeText(json);status.textContent='已複製';}catch{status.textContent='請在下方全選複製';area.focus();area.select();}});
+    button('還原預設',()=>{for(const g of Object.keys(defaults))Object.assign(tuning[g],defaults[g]);try{localStorage.removeItem('cl-tuning');}catch{}inputs.forEach(({input,value,g,k})=>{input.value=tuning[g][k];value.textContent=input.value;});status.textContent='已還原';setExpanded(true);});
+    const setExpanded=expanded=>{body.hidden=!expanded;collapse.textContent=expanded?'收合':'展開';collapse.setAttribute('aria-expanded',String(expanded));};
+    const collapse=button('展開',()=>setExpanded(body.hidden));collapse.setAttribute('aria-controls',body.id);collapse.setAttribute('aria-expanded','false');
     let drag=null;
     header.onpointerdown=e=>{const b=panel.getBoundingClientRect();drag={x:e.clientX,y:e.clientY,left:b.left,top:b.top};header.setPointerCapture(e.pointerId);e.preventDefault();};
     header.onpointermove=e=>{if(!drag)return;panel.style.right='auto';panel.style.left=Math.max(0,Math.min(innerWidth-panel.offsetWidth,drag.left+e.clientX-drag.x))+'px';panel.style.top=Math.max(0,Math.min(innerHeight-40,drag.top+e.clientY-drag.y))+'px';};
