@@ -46,7 +46,7 @@ test("play.json 每款遊戲的入口與封面都存在、層級有效", () => {
 test("創作不斷線：碰撞遮罩三段都從起點連到終點", () => {
   const src = fs.readFileSync(path.join(root, "play/creative-line/masks.js"), "utf8");
   const MASKS = JSON.parse(src.slice(src.indexOf("{"), src.lastIndexOf("}") + 1));
-  for (const name of ["route1", "route2", "route3"]) {
+  for (const name of ["lab_d0637", "lab_d0604", "lab_d0633"]) {
     const m = MASKS[name];
     assert.ok(m, `缺 ${name}`);
     for (const plane of ["normal", "coarse"]) {
@@ -58,26 +58,28 @@ test("創作不斷線：碰撞遮罩三段都從起點連到終點", () => {
       let reach = false;
       while (q.length && !reach) {
         const [x, y] = q.shift();
-        if (Math.hypot(x - e[0], y - e[1]) < 18) reach = true;
+        if (Math.hypot(x - e[0], y - e[1]) < 9) reach = true;
         for (const [a, b] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) { const k = [x + a, y + b]; if (ok(...k) && !seen.has(k.join())) { seen.add(k.join()); q.push(k); } }
       }
       assert.ok(reach, `${name}/${plane} 起點走不到終點`);
-      // 牆一定要存在：可走格不能超過全畫面的 25%（防止遮罩漏到整張圖）
+      // 障礙一定要存在：可走格不能超過全畫面的 45%（防止遮罩漏到牆上或整張圖）
       let n = 0; for (let i = 0; i < m.w * m.h; i++) n += (bits[i >> 3] >> (i & 7)) & 1;
-      assert.ok(n < m.w * m.h * 0.25, `${name}/${plane} 可走區過大（${n} 格），可能漏色`);
+      assert.ok(n < m.w * m.h * 0.45, `${name}/${plane} 可走區過大（${n} 格），可能漏色`);
     }
   }
 });
 
 test("創作不斷線：用到的素材檔都存在，課程名稱都在 curriculum.json 裡", () => {
-  const g = fs.readFileSync(path.join(root, "play/creative-line/game.js"), "utf8");
-  const list = [...g.matchAll(/"((?:web|ui|fx)\/[\w]+)"/g)].map((m) => m[1]);
-  assert.ok(list.length >= 18, "素材清單太短");
-  for (const n of list) assert.ok(fs.existsSync(path.join(root, `play/creative-line/art/${n}.png`)), `缺 art/${n}.png`);
-  const routes = fs.readFileSync(path.join(root, "play/creative-line/routes.js"), "utf8");
+  const base = path.join(root, "play/creative-line");
+  for (const k of ["orb", "spark", "confetti", "stamp"]) assert.ok(fs.existsSync(path.join(base, `art/fx2/${k}.png`)), `缺 art/fx2/${k}.png`);
+  for (const k of ["lab_d0637", "lab_d0604", "lab_d0633", "s0"]) assert.ok(fs.existsSync(path.join(base, `art/scene/${k}.webp`)), `缺 art/scene/${k}.webp`);
+  const lv = fs.readFileSync(path.join(base, "levels.js"), "utf8");
   const cur = read("data/curriculum.json").tracks.flatMap((t) => t.courses.flat().map((c) => c.name));
-  for (const m of routes.matchAll(/name: "([^"]+)"/g)) assert.ok(cur.includes(m[1]), `課程「${m[1]}」不在 curriculum.json`);
-  for (const [k, v] of [["labs", "d0637"], ["labs", "multimedia-classroom"], ["faculty", "chiangyamei"]]) assert.ok(read(`data/${k}.json`).some((x) => x.slug === v), `${k} 沒有 ${v}`);
+  for (const m of lv.matchAll(/course: \{ name: "([^"]+)"/g)) assert.ok(cur.includes(m[1]), `課程「${m[1]}」不在 curriculum.json`);
+  for (const m of lv.matchAll(/labSlug: "([^"]+)"/g)) assert.ok(read("data/labs.json").some((x) => x.slug === m[1]), `labs 沒有 ${m[1]}`);
+  assert.ok(read("data/faculty.json").some((x) => x.slug === "chiangyamei"), "faculty 沒有 chiangyamei");
+  // 三關要有三種不同的玩法
+  assert.deepEqual([...lv.matchAll(/twist: "(\w+)"/g)].map((m) => m[1]), ["step", "ink", "spring"]);
   assert.ok(read("data/works.json").some((x) => x.id === "stolen-recipe"), "works 沒有 stolen-recipe");
 });
 

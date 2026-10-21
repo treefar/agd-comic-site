@@ -50,8 +50,10 @@ function keyMagenta(img) {
   for (let i = 0; i < p.length; i += 4) {
     const dist = Math.hypot(255 - p[i], p[i + 1], 255 - p[i + 2]);
     const a = Math.max(0, Math.min(1, (dist - 70) / 90));
-    if (a > 0 && a < 1) { p[i] = Math.min(p[i], 235); p[i + 2] = Math.min(p[i + 2], 235); } // 邊緣去洋紅溢色
-    p[i + 3] = Math.round(p[i + 3] * a);
+    // 去洋紅溢色：紅、藍都比綠高出越多，越像洋紅透出來的光暈 → 降透明度並把紅藍壓回綠的水準
+    const m = Math.min(p[i], p[i + 2]), spill = Math.max(0, Math.min(1, (m - p[i + 1] - 10) / 80));
+    if (spill > 0) { p[i] -= m - p[i + 1] > 0 ? (m - p[i + 1]) * spill : 0; p[i + 2] -= m - p[i + 1] > 0 ? (m - p[i + 1]) * spill : 0; }
+    p[i + 3] = Math.round(p[i + 3] * a * (1 - spill * 0.9));
   }
 }
 function components(img, count, rad = 2) {
@@ -101,12 +103,12 @@ function scale(img, nw, nh) { // 面積平均縮圖
 const only = process.argv.slice(2);
 const want = (k) => !only.length || only.includes(k);
 if (want("sheets")) {
-  for (const [sheet, names, rows, dir, side] of [
-    ["ui_sheet.png", ["btnPrimary", "btnSecondary", "btnPause", "btnSound", "btnMute", "btnBack", "panelCard", "panelResult"], 2, "ui", 640],
-    ["fx_sheet.png", ["orb", "spark", "confetti", "stamp", "gate"], 1, "fx", 320],
+  // v2（2026-10-21 使用者改實景路線）：只用實景漫畫風特效圖集；按鈕改純文字，不再切 ui_sheet
+  for (const [sheet, names, rows, dir, side, rad] of [
+    ["fx_sheet2.png", ["orb", "spark", "confetti", "stamp"], 1, "fx2", 320, 8],
   ]) {
     const img = read(sheet); keyMagenta(img);
-    const boxes = components(img, names.length, dir === "fx" ? 4 : 2);
+    const boxes = components(img, names.length, rad);
     if (boxes.length !== names.length) throw new Error(`${sheet} 只找到 ${boxes.length}/${names.length} 件，請檢查或重生`);
     orderRows(boxes, rows).forEach((b, i) => { write(`${dir}/${names[i]}.png`, crop(img, b, side)); console.log(`${dir}/${names[i]}.png`, b.w + "x" + b.h); });
   }

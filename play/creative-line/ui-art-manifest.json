@@ -1,174 +1,126 @@
 {
   "schema_version": 1,
-  "theme": "少年漫畫風：粗黑墨線、網點陰影、米色紙底，朱紅／寶藍／亮黃點色；動畫與遊戲設計系校園主題",
+  "theme": "實景轉漫畫：樹德科大動遊系實驗室照片轉成寫實漫畫風，米色紙底、細網點、黑墨線（比照《六樓出口》）",
   "ui_targets": [
     "game.js",
     "index.html"
   ],
+  "ui_policy_exception": {
+    "decided_by": "使用者",
+    "date": "2026-10-21",
+    "where": "Claude Code 對話（TF-GO）",
+    "decision": "本遊戲按鈕與面板比照《六樓出口》改用純文字按鈕（CSS 紙卡樣式），不套用「遊戲 UI 一律 Codex 生圖」規則；理由：受眾不喜歡 AI 生成圖，改以實景後製為主"
+  },
   "assets": [
     {
-      "id": "ui_sheet",
-      "path": "art/ui_sheet.png",
-      "sha256": "82ad3dbb7e060eb929569e83158de41cbe753760c7fc2a5219d0d507aeb4cfdb",
-      "prompt_file": "art/prompts/ui_sheet.txt",
+      "id": "fx_orb",
+      "path": "art/fx2/orb.png",
+      "sha256": "0ddb43444241e79af55072e379edf72a407a573c183d8652b9abba408b1e1628",
+      "prompt_file": "art/prompts/fx_sheet2.txt",
       "generator": {
         "producer": "codex",
         "entry": "codex-image",
-        "generated_at": "2026-10-21T09:04:11.129Z",
-        "source_sheet": "art/ui_sheet.png"
+        "generated_at": "2026-10-21T09:49:02.759Z",
+        "source_sheet": "art/fx_sheet2.png"
       },
-      "post": "原稿"
+      "post": "tools/prep-art.mjs：洋紅底去背、去洋紅溢色、連通區域裁切、長邊縮至 320"
     },
     {
-      "id": "btnPrimary",
-      "path": "art/ui/btnPrimary.png",
-      "sha256": "c8f0c4dd18ddab9aa1c4d5fb62138eb8d2f6daddcb11fcc602a0c12e8ac98646",
-      "prompt_file": "art/prompts/ui_sheet.txt",
+      "id": "fx_spark",
+      "path": "art/fx2/spark.png",
+      "sha256": "30719604ba6a8a5964cee44f79da96712a4a8f057595f739141ca558433462d3",
+      "prompt_file": "art/prompts/fx_sheet2.txt",
       "generator": {
         "producer": "codex",
         "entry": "codex-image",
-        "generated_at": "2026-10-21T09:04:11.129Z",
-        "source_sheet": "art/ui_sheet.png"
+        "generated_at": "2026-10-21T09:49:02.759Z",
+        "source_sheet": "art/fx_sheet2.png"
       },
-      "post": "tools/prep-art.mjs：洋紅底去背、連通區域裁切、縮至長邊 640"
+      "post": "tools/prep-art.mjs：洋紅底去背、去洋紅溢色、連通區域裁切、長邊縮至 320"
     },
     {
-      "id": "btnSecondary",
-      "path": "art/ui/btnSecondary.png",
-      "sha256": "c9f4018870977077bf339be5fcd731fe95066d257578d0dcd82bd697291a8bd3",
-      "prompt_file": "art/prompts/ui_sheet.txt",
+      "id": "fx_confetti",
+      "path": "art/fx2/confetti.png",
+      "sha256": "9220e04c8fd79bc808e7dda4fb072f638cb3dd6b4ad1502aef08089a9cb55c5f",
+      "prompt_file": "art/prompts/fx_sheet2.txt",
       "generator": {
         "producer": "codex",
         "entry": "codex-image",
-        "generated_at": "2026-10-21T09:04:11.129Z",
-        "source_sheet": "art/ui_sheet.png"
+        "generated_at": "2026-10-21T09:49:02.759Z",
+        "source_sheet": "art/fx_sheet2.png"
       },
-      "post": "tools/prep-art.mjs：洋紅底去背、連通區域裁切、縮至長邊 640"
+      "post": "tools/prep-art.mjs：洋紅底去背、去洋紅溢色、連通區域裁切、長邊縮至 320"
     },
     {
-      "id": "btnPause",
-      "path": "art/ui/btnPause.png",
-      "sha256": "219fe4159051114ef1e9627f99f1d5ec86d8e0f53a354a74a17f85ee62c7d158",
-      "prompt_file": "art/prompts/ui_sheet.txt",
+      "id": "fx_stamp",
+      "path": "art/fx2/stamp.png",
+      "sha256": "91e55e7f90450900048191744c3d5efeefd5a63ea0a03bd281164a4f7626a165",
+      "prompt_file": "art/prompts/fx_sheet2.txt",
       "generator": {
         "producer": "codex",
         "entry": "codex-image",
-        "generated_at": "2026-10-21T09:04:11.129Z",
-        "source_sheet": "art/ui_sheet.png"
+        "generated_at": "2026-10-21T09:49:02.759Z",
+        "source_sheet": "art/fx_sheet2.png"
       },
-      "post": "tools/prep-art.mjs：洋紅底去背、連通區域裁切、縮至長邊 640"
+      "post": "tools/prep-art.mjs：洋紅底去背、去洋紅溢色、連通區域裁切、長邊縮至 320"
     },
     {
-      "id": "btnSound",
-      "path": "art/ui/btnSound.png",
-      "sha256": "5d91038911b54e2d920d6d94aec81edb0adc8bc3443ad5dd31fb3eab018a29d9",
-      "prompt_file": "art/prompts/ui_sheet.txt",
-      "generator": {
-        "producer": "codex",
-        "entry": "codex-image",
-        "generated_at": "2026-10-21T09:04:11.129Z",
-        "source_sheet": "art/ui_sheet.png"
-      },
-      "post": "tools/prep-art.mjs：洋紅底去背、連通區域裁切、縮至長邊 640"
+      "id": "scene_lab_d0637",
+      "path": "art/scene/lab_d0637.webp",
+      "sha256": "176b37e57b7fca6f55fd116c8604b8352f1c44e57d14822c438cd0f26d2cfca6",
+      "source": "play/six-floor-exit/frames/lab_d0637.webp（六樓出口的實景照片轉漫畫圖，風格使用者 2026-10-15 確認；原樣複製，未再處理）"
     },
     {
-      "id": "btnMute",
-      "path": "art/ui/btnMute.png",
-      "sha256": "f042fa2b05cd303e3a011373d3dfcb33609af4e4d04133f302a4a7291ec850fc",
-      "prompt_file": "art/prompts/ui_sheet.txt",
-      "generator": {
-        "producer": "codex",
-        "entry": "codex-image",
-        "generated_at": "2026-10-21T09:04:11.129Z",
-        "source_sheet": "art/ui_sheet.png"
-      },
-      "post": "tools/prep-art.mjs：洋紅底去背、連通區域裁切、縮至長邊 640"
+      "id": "scene_lab_d0604",
+      "path": "art/scene/lab_d0604.webp",
+      "sha256": "e57e67975fc05cf8c2ffc2ed207e25c37bacfba38257e2d40ff686b5c196984f",
+      "source": "play/six-floor-exit/frames/lab_d0604.webp（六樓出口的實景照片轉漫畫圖，風格使用者 2026-10-15 確認；原樣複製，未再處理）"
     },
     {
-      "id": "btnBack",
-      "path": "art/ui/btnBack.png",
-      "sha256": "85220ef829a3a9d910955997de273b097614e996f7f56f56b27179dd492d21bc",
-      "prompt_file": "art/prompts/ui_sheet.txt",
-      "generator": {
-        "producer": "codex",
-        "entry": "codex-image",
-        "generated_at": "2026-10-21T09:04:11.129Z",
-        "source_sheet": "art/ui_sheet.png"
-      },
-      "post": "tools/prep-art.mjs：洋紅底去背、連通區域裁切、縮至長邊 640"
+      "id": "scene_lab_d0633",
+      "path": "art/scene/lab_d0633.webp",
+      "sha256": "399d8e455bd3caaeb55b1bc1eb445e8904458f51b82cb02bb2ccaa44c4ba86c3",
+      "source": "play/six-floor-exit/frames/lab_d0633.webp（六樓出口的實景照片轉漫畫圖，風格使用者 2026-10-15 確認；原樣複製，未再處理）"
     },
     {
-      "id": "panelCard",
-      "path": "art/ui/panelCard.png",
-      "sha256": "4314b46278bf762fdbdbb28df1c46394d78b8b20174d8bc41006a6cd50372de7",
-      "prompt_file": "art/prompts/ui_sheet.txt",
-      "generator": {
-        "producer": "codex",
-        "entry": "codex-image",
-        "generated_at": "2026-10-21T09:04:11.129Z",
-        "source_sheet": "art/ui_sheet.png"
-      },
-      "post": "tools/prep-art.mjs：洋紅底去背、連通區域裁切、縮至長邊 640"
-    },
-    {
-      "id": "panelResult",
-      "path": "art/ui/panelResult.png",
-      "sha256": "ad38267650c7572133fa3919281873b9acf392ed7abdeb6e65169cc4665dec80",
-      "prompt_file": "art/prompts/ui_sheet.txt",
-      "generator": {
-        "producer": "codex",
-        "entry": "codex-image",
-        "generated_at": "2026-10-21T09:04:11.129Z",
-        "source_sheet": "art/ui_sheet.png"
-      },
-      "post": "tools/prep-art.mjs：洋紅底去背、連通區域裁切、縮至長邊 640"
-    },
-    {
-      "id": "cover",
-      "path": "art/web/cover.png",
-      "sha256": "9ed30d4000063ea06291e0fc239e93382237f324753f2bbca73d273ad5edb9db",
-      "prompt_file": "art/prompts/cover.txt",
-      "generator": {
-        "producer": "codex",
-        "entry": "codex-image",
-        "generated_at": "2026-10-21T09:02:45.082Z",
-        "source_sheet": "art/cover.png"
-      },
-      "post": "tools/prep-art.mjs：縮至 600x900"
+      "id": "scene_s0",
+      "path": "art/scene/s0.webp",
+      "sha256": "0f6608cd9ec47170519d8943028c98c376a38033ac0080d83ab0c9ca07de00d8",
+      "source": "play/six-floor-exit/frames/s0.webp（六樓出口的實景照片轉漫畫圖，風格使用者 2026-10-15 確認；原樣複製，未再處理）"
     }
   ],
   "screens": [
     {
       "id": "cover",
       "asset_ids": [
-        "cover",
-        "btnPrimary"
+        "scene_s0",
+        "fx_orb"
       ]
     },
     {
-      "id": "hud",
+      "id": "play",
       "asset_ids": [
-        "btnPause",
-        "btnSound",
-        "btnMute"
+        "scene_lab_d0637",
+        "scene_lab_d0604",
+        "scene_lab_d0633",
+        "fx_orb",
+        "fx_spark",
+        "fx_confetti",
+        "fx_stamp"
       ]
     },
     {
       "id": "course_card",
       "asset_ids": [
-        "panelCard",
-        "btnPrimary",
-        "btnSecondary"
+        "fx_stamp"
       ]
     },
     {
-      "id": "result",
+      "id": "final",
       "asset_ids": [
-        "panelResult",
-        "btnPrimary",
-        "btnSecondary"
+        "fx_stamp"
       ]
     }
   ],
-  "review": "待使用者於對話確認（尚未通過）"
+  "review": "特效圖待使用者於對話確認（尚未通過）"
 }
