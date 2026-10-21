@@ -22,17 +22,17 @@
    - `L3-ready`、`L3-play-spring`（彈簧線拉開、畫面有傾斜）、`L3-card`
    - `final`
    - `paused`（任一關放手後）
-   - 共 15 個狀態 × 2 語言（`zh`、`en`） × 2 視窗（`desktop` 1280×720；`mobile` 390×844、`deviceScaleFactor 2`、`isMobile`＋`hasTouch`）＝ 60 張。
+   - 共 14 個狀態 × 2 語言（`zh`、`en`） × 2 視窗（`desktop` 1280×720；`mobile` 390×844、`deviceScaleFactor 2`、`isMobile`＋`hasTouch`）＝ 56 張。
 5. 每張截圖同時記錄主控台 error 與 404，彙整到 `console.txt`；外部字型與 `unpkg.com` 的網路錯誤可忽略但要列出。
 6. 產出 `docs/qa/creative-line/20261021/index.html`：純靜態對照表，列（狀態）× 欄（zh 桌機、zh 手機、en 桌機、en 手機），每格縮圖點開看原圖；頁首寫拍攝時間、瀏覽器版本、commit。這是 QA 文件不是遊戲 UI，可用簡單 HTML 表格。
 7. 腳本 `tools/qa/shoot-creative-line.mjs` 要能重跑：`node tools/qa/shoot-creative-line.mjs --out docs/qa/creative-line/<日期>`。
 
 ## 3. 驗收條件（每條 yes／no）
-1. `docs/qa/creative-line/20261021/` 內 PNG 剛好 60 張，檔名符合第 2 點格式。
-2. `index.html` 開啟後 60 格都有圖，沒有破圖。
+1. `docs/qa/creative-line/20261021/` 內 PNG 剛好 56 張，檔名符合第 2 點格式。
+2. `index.html` 開啟後 56 格都有圖，沒有破圖。
 3. `console.txt` 裡，站內（`127.0.0.1:8765`）的 404 為 0；JS error 為 0。不是 0 就逐條列出，不要修。
 4. `L1-fail` 四張都看得到火花圖（`art/fx2/spark.png`）；`L3-play-spring` 四張都看得到虛線彈簧線。
-5. `node --test tests/` 全過；白名單外 `git status` 無變動。
+5. `node --test tests/en-play.test.mjs` 全過；白名單外 `git status` 無變動。
 
 ## 4. 失敗路徑
 Playwright 與 Chrome 都不可用 → 交 `WO-01-report.md` 寫明錯誤全文與試過的指令，狀態 `blocked`。部分狀態截不到（例如 `L2-lowink` 抖不出來）→ 其餘照交，缺的標在 `index.html` 對應格並寫原因。

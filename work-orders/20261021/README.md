@@ -7,7 +7,7 @@
 3. **範圍鎖優先**：只改該工單第 0 節白名單列出的路徑；白名單外 `git status` 出現任何變動，先還原再交件。
 4. **不得刪檔**：要移除的東西只列清單（路徑、SHA-256、理由、復原方式），由使用者在對話確認後才動。
 5. **美術硬線**：不得新增任何由程式畫出的美術（Canvas／SVG 繪圖、Pillow、Node Canvas）；畫面上的圖只能是 `play/creative-line/art/` 既有檔案。本輪工單不需要生圖，也不要叫任何生圖工具。
-6. **驗證要跑真的**：每張工單的驗收條件逐條回答 yes／no，附實際指令與輸出摘錄。`node --test tests/` 必須維持全過。本機預覽用 `npx --yes http-server -p 8765 -c-1`（repo 根目錄）。
+6. **驗證要跑真的**：每張工單的驗收條件逐條回答 yes／no，附實際指令與輸出摘錄。`node --test tests/en-play.test.mjs` 必須維持全過。本機預覽用 `npx --yes http-server -p 8765 -c-1`（repo 根目錄）。
 7. **做不到就交部分**：在交件報告寫「卡在哪一條、試過什麼」，不可用近似品替代而不說明。
 8. **交件格式**：每張工單在 `work-orders/20261021/reports/WO-NN-report.md` 寫報告：做了什麼、改了哪些檔（`git diff --stat`）、驗收逐條 yes／no、沒做的與原因、下一步建議。最後回覆只列 `WROTE <路徑>` 清單與「我最不確定的一件事」。
 
@@ -31,4 +31,4 @@
 - 試玩區：`data/play.json` 五款（創作不斷線、六樓出口、晴日茶桌、地窖大廚、死線防衛隊），成品在 `play/`。
 - 《創作不斷線》v2：`play/creative-line/`，三關三種玩法（逐格／墨量／彈簧），場景沿用六樓出口實景漫畫圖，按鈕純文字，載入 1.8 MB。設計規格在 `C:\agywork\agd-game-research\claude\out\creative-line-levels.md`（repo 外，唯讀參考）。
 - 打包：改任何 `.jsx` 後跑 `node build.mjs`，再把 `index.html` 與 `pages.jsx` 的版本字串 `20261021c` 往後 bump。`play/creative-line/` 是獨立網頁，不經打包。
-- 測試：`node --test tests/`（目前 12/12）。
+- 測試：`node --test tests/en-play.test.mjs`（目前 12/12）。

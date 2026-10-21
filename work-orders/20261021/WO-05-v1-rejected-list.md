@@ -14,7 +14,7 @@
 1. `DELETE-LIST-creative-line-v1.tsv`：UTF-8 無 BOM、`\n` 換行，欄位 `相對路徑 \t 位元組 \t SHA-256 \t 理由 \t 復原方式`。
    - 理由統一寫 `2026-10-21 使用者退回：受眾不喜歡 AI 生成圖，改實景後製`。
    - 復原方式寫 `git show 8914554:<原路徑>`（原路徑＝搬家前的 `play/creative-line/art/...` 或 `routes.js`；用 `git log --follow` 查出來，每筆都要對）。
-2. `DELETE-LIST-creative-line-v1.md`：給人看的摘要（檔數、總位元組、裡面有哪幾類圖），加一段「建議的刪除指令」（字面路徑、一行一檔，不用變數），以及「刪除後要跑的驗證」：`node --test tests/`、`node C:/AIHome/claude/skills/game-ui-art/scripts/ui-policy.cjs --project play/creative-line`（後者預期仍因實景圖報 4 筆錯，屬已知例外）。
+2. `DELETE-LIST-creative-line-v1.md`：給人看的摘要（檔數、總位元組、裡面有哪幾類圖），加一段「建議的刪除指令」（字面路徑、一行一檔，不用變數），以及「刪除後要跑的驗證」：`node --test tests/en-play.test.mjs`、`node C:/AIHome/claude/skills/game-ui-art/scripts/ui-policy.cjs --project play/creative-line`（後者預期仍因實景圖報 4 筆錯，屬已知例外）。
 3. 另外檢查並寫進 md：repo 內還有沒有任何檔案引用 `_v1-rejected`、`art/web/`、`art/ui/`、`art/fx/`、`routes.js`、`mask-seeds.json`（`grep -rn` 排除 `_v1-rejected` 自己與 `work-orders/`）。有就列出來，這些引用也要一併處理才算乾淨。
 
 ## 3. 驗收條件（每條 yes／no）

@@ -23,7 +23,7 @@ agy 初譯有 513 處標 `[CHECK]`（清單在 `C:\agywork\agd-en-translate\英�
 2. 對照表每一列都有可開啟的來源 URL（報告附你實際開過的證據：頁面標題或 30 字內摘錄）。
 3. 四個檔的 `[CHECK]` 總數下降，且下降數 ＝ 對照表「影響筆數」合計。
 4. `git diff data/en/` 只動了字串值（用 `tools/validate-en.mjs` 的結構檢查證明）。
-5. `node --test tests/` 全過；白名單外無變動。
+5. `node --test tests/en-play.test.mjs` 全過；白名單外無變動。
 
 ## 4. 失敗路徑
 網路被沙箱擋 → 交 `blocked` 報告，但仍要完成第 1 點的 `tools/validate-en.mjs` 搬移與對照表的「待查名單」。

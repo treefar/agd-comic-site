@@ -7,7 +7,7 @@ Codex 讀 `work-orders/20261021/README.md`，依優先序從 **WO-01**（截圖�
 
 ## 目前狀態
 - 分支 `feature/en-site-and-play-zone`，本機最新 `0ec3276`（三個本機提交尚未推：`6e91607`、`8914554`、`0ec3276`；GitHub 上同名分支停在 `0cc8b2e`）。repo 公開，`main` 與線上站未動。
-- 英文版 8 頁（`#/en/*`）＋試玩區（`#/play/zone`、`#/en/play`）：本機 `npx --yes http-server -p 8765 -c-1` 可預覽；`node --test tests/` 12/12。
+- 英文版 8 頁（`#/en/*`）＋試玩區（`#/play/zone`、`#/en/play`）：本機 `npx --yes http-server -p 8765 -c-1` 可預覽；`node --test tests/en-play.test.mjs` 12/12。
 - 《創作不斷線》v2（`play/creative-line/`）：三關三種手感，實景漫畫場景，純文字按鈕，1.8 MB。自動試玩三關皆過；**真手機未測、畫面未目視**。
 - 已知未通過：`ui-policy.cjs` 對 4 張實景圖報「非 Codex 來源」，屬使用者 2026-10-21 於對話決定的例外（記在 `play/creative-line/ui-art-manifest.json`）。
 
