@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>死線防衛隊：畢展倒數</title>
+<meta name="description" content="動遊系學生趕畢展的三入口塔防遊戲：需求變更、Bug、當機、評審與展場觀眾都會變成入侵專案的怪物。守住交件主機，撐過十關 46 波與三場展覽。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="死線防衛隊：畢展倒數">
+<meta property="og:description" content="每一件沒做完的事，最後都會自己找上門。三入口塔防，招牌機制是「內耗引擎」——異職種相鄰會吵架，吵架充能滿了就能發動組合技。">
+<meta property="og:url" content="https://tf-private.pages.dev/crunch-defense/">
+<meta property="og:site_name" content="死線防衛隊">
+<meta property="og:locale" content="zh_TW">
+<!-- og:image 必須是絕對網址：Facebook／LINE／Discord 的爬蟲不解析相對路徑，
+     用相對路徑分享連結時會完全沒有卡片縮圖。尺寸 1200×630 是社群卡片標準。 -->
+<meta property="og:image" content="https://tf-private.pages.dev/crunch-defense/assets/og_image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="死線防衛隊：畢展倒數——四名學生守著交件主機，身後是九頭龍與各種專案怪物">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tf-private.pages.dev/crunch-defense/assets/og_image.png">
+<link rel="icon" type="image/png" href="assets/sprites/FEUD_ready.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- 頂部 HUD -->
+  <header id="topbar">
+    <div class="hud-block">
+      <span id="hud-wave" class="hud-big">—</span>
+      <span id="hud-wavename" class="hud-small">—</span>
+    </div>
+    <div class="hud-block hud-core">
+      <span class="hud-label">交件主機</span>
+      <div class="bar"><div id="core-fill" class="bar-fill"></div></div>
+      <span id="core-num" class="hud-small">100/100</span>
+    </div>
+    <div class="hud-block">
+      <span class="hud-label">部署點</span>
+      <span id="hud-dp" class="hud-big dp">12</span>
+      <span class="hud-label">上場</span>
+      <span id="hud-team" class="hud-small">0/5</span>
+    </div>
+    <button id="btn-musou" title="快捷鍵 M">
+      <div id="musou-fill"></div>
+      <span id="musou-label">通宵爆發 0%</span>
+    </button>
+    <div class="hud-block hud-ctrl">
+      <button id="btn-argue" class="ctrl-btn hidden" title="預算主任在場時可花 3 DP 當面理論">找他理論・3 DP</button>
+      <button id="btn-startwave" class="ctrl-btn hidden">開波</button>
+      <button id="btn-speed" class="ctrl-btn" title="切換遊戲速度">▶ 1x</button>
+      <button id="btn-pause" class="ctrl-btn" title="快捷鍵 P">暫停</button>
+      <button id="btn-sound" class="ctrl-btn">♪ 開</button>
+      <button id="btn-fullscreen" class="ctrl-btn" title="快捷鍵 F11">⛶ 全螢幕</button>
+    </div>
+  </header>
+
+  <!-- 戰場 -->
+  <div id="stage">
+    <canvas id="game"></canvas>
+    <div id="scanlines"></div>
+    <div id="boss-bar" class="hidden" aria-live="polite">
+      <span id="boss-bar-name">—</span>
+      <div class="bar"><div id="boss-bar-fill" class="bar-fill"></div></div>
+    </div>
+    <div id="build-menu" class="hidden"></div>
+    <div id="tower-info" class="hidden"></div>
+    <div id="toast"></div>
+
+    <!-- 暫停選單：戰鬥中的退出與重試路徑 -->
+    <div id="pause-menu" class="hidden" role="dialog" aria-modal="true" aria-label="暫停選單">
+      <div class="tutorial-panel">
+        <span class="tutorial-badge">先喘一口氣</span>
+        <h2>暫停中</h2>
+        <p>Esc 或 P 繼續。暫停時無法部署與開波。</p>
+        <!-- 快捷鍵原本只在標題畫面說明一次，忘了就找不回來。暫停選單是唯一隨時查得到的地方。 -->
+        <dl class="keyhelp">
+          <dt>1 – 4</dt><dd>選格子後部署對應隊友</dd>
+          <dt>U</dt><dd>升級選取中的隊友</dd>
+          <dt>空白鍵</dt><dd>準備期立即開波</dd>
+          <dt>M</dt><dd>通宵爆發</dd>
+          <dt>P ／ Esc</dt><dd>暫停、關閉選取、跳過演出</dd>
+        </dl>
+        <div class="volbox">
+          <label><span>音樂</span>
+            <input type="range" class="vol-slider" data-kind="bgm" min="0" max="100" step="5">
+            <b class="vol-val">100%</b></label>
+          <label><span>音效</span>
+            <input type="range" class="vol-slider" data-kind="sfx" min="0" max="100" step="5">
+            <b class="vol-val">100%</b></label>
+        </div>
+        <button id="btn-pause-resume" class="ts-btn primary"><b>繼續趕工</b></button>
+        <button id="btn-pause-restart" class="ts-btn"><b>重打本關</b></button>
+        <button id="btn-pause-quit" class="ts-btn"><b>放棄，回進度表</b></button>
+      </div>
+    </div>
+
+    <!-- 標題畫面 -->
+    <div id="title-screen">
+      <p class="ts-badge">內耗引擎運轉中 // 畢展死線第 01 學期</p>
+      <h1 id="t-title">死線防衛隊</h1>
+      <h2 id="t-sub">畢展倒數 10 週</h2>
+      <p id="t-tagline" class="ts-tagline"></p>
+      <p id="t-lore" class="ts-lore"></p>
+      <div class="ts-buttons">
+        <button id="btn-campaign" class="ts-btn primary">
+          <b>開始戰役</b><span>專題完整年・十道死線</span>
+        </button>
+        <button id="btn-endless" class="ts-btn">
+          <b>無盡加班</b><span id="endless-sub">撐過戰役後解鎖</span>
+        </button>
+        <button id="btn-gallery" class="ts-btn">
+          <b>名場面回顧</b><span id="gallery-sub">把這學期爆炸過的瞬間收好</span>
+        </button>
+        <button id="btn-asset-library" class="ts-btn">
+          <b>多元宇宙素材圖鑑</b><span>10 角色・20 場景・100 可拆物件</span>
+        </button>
+      </div>
+        <div class="volbox">
+          <label><span>音樂</span>
+            <input type="range" class="vol-slider" data-kind="bgm" min="0" max="100" step="5">
+            <b class="vol-val">100%</b></label>
+          <label><span>音效</span>
+            <input type="range" class="vol-slider" data-kind="sfx" min="0" max="100" step="5">
+            <b class="vol-val">100%</b></label>
+        </div>
+      <div id="meta-progress" class="meta-progress"></div>
+      <p class="ts-help">
+        點擊格子部署隊友（快捷鍵 1-4）・空白鍵開波・M 必殺・P 暫停・點隊友後按 U 升級
+      </p>
+      <p class="ts-credit">塔防結構・原創角色與世界觀・像素戰術喜劇</p>
+    </div>
+
+    <!-- 戰役 2.0：關卡選擇（甘特圖地圖） -->
+    <div id="level-screen" class="hidden">
+      <p class="ls-title">專題進度表<span class="ls-sub">—— 選擇下一個死線</span></p>
+      <div id="level-nodes"></div>
+      <div id="level-info" class="hidden">
+        <b id="li-name">—</b><span id="li-sub">—</span>
+        <button id="btn-level-go">開工</button>
+      </div>
+      <button id="btn-level-back" class="ls-back">回標題</button>
+    </div>
+
+    <!-- 過場插圖播放器 -->
+    <div id="cutscene" class="hidden">
+      <img id="cutscene-img" alt="">
+      <p class="cs-hint">點擊繼續 ▶</p>
+    </div>
+
+    <!-- v5 名場面 CG：首次玩出條件時完整凍結戰鬥 -->
+    <div id="cg-overlay" class="hidden" role="dialog" aria-modal="true" aria-label="名場面解鎖">
+      <div class="cg-stage">
+        <p id="cg-kicker">名場面解鎖</p>
+        <img id="cg-img" alt="">
+        <div class="cg-caption"><b id="cg-title">—</b><span id="cg-count">—</span></div>
+        <p id="cg-hint">2.5 秒後繼續・點擊或 Esc 跳過</p>
+      </div>
+    </div>
+
+    <!-- 首次吵架教學：招牌系統的必看演出 -->
+    <div id="tutorial-overlay" class="hidden" role="dialog" aria-modal="true" aria-label="吵架爆氣教學">
+      <div class="tutorial-panel">
+        <span class="tutorial-badge">內耗引擎啟動</span>
+        <h2>他們吵起來了！</h2>
+        <p>不同職種坐在相鄰格會吵架：吵架時輸出下降，但會把衝突充成<strong>爆氣</strong>。</p>
+        <p>吵架當下可以點「<strong>勸</strong>」提前止戰——少充一點爆氣，換回輸出。</p>
+        <p>場上拳頭圖示亮起後點一下，就能把內耗變成<strong>組合必殺</strong>。</p>
+        <button id="btn-tutorial-ok" class="ts-btn primary"><b>懂了，繼續吵</b></button>
+      </div>
+    </div>
+
+    <!-- 名場面鑑賞廊 -->
+    <div id="gallery-overlay" class="hidden" role="dialog" aria-modal="true" aria-label="名場面回顧">
+      <div class="gallery-panel">
+        <div class="gallery-head">
+          <div><span>這學期我們爆炸過幾次</span><h2>名場面回顧</h2></div>
+          <button id="btn-gallery-close" class="ctrl-btn">關閉</button>
+        </div>
+        <div id="gallery-grid"></div>
+        <p id="gallery-complete" class="hidden">八次爆炸，一次畢業。原來這就是團隊合作。</p>
+      </div>
+    </div>
+
+    <!-- Multiverse Pixel V1：manifest 驅動的可重用素材圖鑑 -->
+    <div id="asset-library-overlay" class="hidden" role="dialog" aria-modal="true" aria-label="多元宇宙素材圖鑑">
+      <div class="asset-library-panel">
+        <div class="asset-library-head">
+          <div>
+            <span>MULTIVERSE PIXEL V1 // 可拆分素材包</span>
+            <h2>多元宇宙素材圖鑑</h2>
+          </div>
+          <button id="btn-asset-library-close" class="ctrl-btn">關閉</button>
+        </div>
+        <div id="asset-library-stats" aria-live="polite">載入素材清單中……</div>
+        <div id="asset-library-tabs" role="tablist" aria-label="素材分類">
+          <button class="asset-tab active" type="button" data-kind="characters" role="tab">角色 10</button>
+          <button class="asset-tab" type="button" data-kind="scenes" role="tab">場景 20</button>
+          <button class="asset-tab" type="button" data-kind="objects" role="tab">物件 100</button>
+        </div>
+        <div class="asset-library-body">
+          <div id="asset-library-grid" aria-live="polite"></div>
+          <aside id="asset-library-detail">
+            <img id="asset-detail-image" alt="">
+            <b id="asset-detail-title">選擇一件素材</b>
+            <span id="asset-detail-meta">底圖與物件分離，可跨專案重排。</span>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    <!-- L6→L7 佈展拖拉：把相鄰規則變成一次可玩的座位儀式 -->
+    <div id="booth-overlay" class="hidden" role="dialog" aria-modal="true" aria-label="佈展座位安排">
+      <div class="booth-panel">
+        <span class="tutorial-badge">校外展前夜</span>
+        <h2>誰要坐誰旁邊？</h2>
+        <p>把四位組員拖進座位。相鄰異職種會亮起吵架連線，配置會直接成為 L7 的開場陣型。</p>
+        <div id="booth-workspace">
+          <svg id="booth-lines" viewBox="0 0 320 190" aria-hidden="true"></svg>
+          <div id="booth-seat-0" class="booth-seat" data-seat="0"><span>座位 A</span></div>
+          <div id="booth-seat-1" class="booth-seat" data-seat="1"><span>座位 B</span></div>
+          <div id="booth-seat-2" class="booth-seat" data-seat="2"><span>座位 C</span></div>
+          <div id="booth-seat-3" class="booth-seat" data-seat="3"><span>座位 D</span></div>
+        </div>
+        <div id="booth-roster"></div>
+        <p id="booth-summary">拖曳組員後，這裡會預覽內耗連線。</p>
+        <div class="booth-actions">
+          <button id="btn-booth-skip" class="ts-btn"><b>跳過，自由部署</b></button>
+          <button id="btn-booth-confirm" class="ts-btn primary" disabled><b>確認佈展</b></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 關卡通過結算 -->
+    <div id="level-clear" class="hidden">
+      <div class="lc-panel">
+        <h2>審查通過！</h2>
+        <div id="lc-stars">★★★</div>
+        <p id="lc-msg">—</p>
+        <button id="btn-lc-next" class="ts-btn primary"><b>回到進度表</b></button>
+      </div>
+    </div>
+
+    <!-- 三選一 -->
+    <div id="perk-overlay" class="hidden">
+      <div class="perk-panel">
+        <h3>深夜會議——組長說要選一個</h3>
+        <div id="perk-cards"></div>
+      </div>
+    </div>
+
+    <!-- 每關留下一件傳承：十關之間的單線養成鉤子 -->
+    <div id="legacy-overlay" class="hidden">
+      <div class="perk-panel legacy-panel">
+        <span class="tutorial-badge">這組人磨出了一點默契</span>
+        <h3>帶一項傳承到下一關</h3>
+        <div id="legacy-cards"></div>
+      </div>
+    </div>
+
+    <!-- 結算 -->
+    <div id="end-overlay" class="hidden">
+      <div class="end-panel">
+        <h2 id="end-title">—</h2>
+        <p id="end-sub">—</p>
+        <div id="end-stats"></div>
+        <div class="end-buttons">
+          <button id="btn-end-retry" class="ts-btn primary"><b>再戰一次</b></button>
+          <button id="btn-end-endless" class="ts-btn hidden"><b>挑戰無盡加班</b></button>
+          <button id="btn-end-title" class="ts-btn"><b>回標題</b></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 底部隊伍一覽 -->
+  <footer id="roster">
+    <span class="roster-label">畢展小隊</span>
+    <div id="roster-cards"></div>
+  </footer>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/sprites.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/render.js"></script>
+<script src="js/game.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/asset-gallery.js"></script>
+</body>
+</html>

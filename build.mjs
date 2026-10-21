@@ -9,6 +9,7 @@ const ORDER = [
   "chapters-1.jsx",
   "chapters-2.jsx",
   "pages.jsx",
+  "en-pages.jsx",
   "app.jsx",
 ];
 

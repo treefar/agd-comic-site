@@ -1,0 +1,88 @@
+{
+  "intro": {
+    "zh": "這些遊戲都出自動遊系。先花 30 秒玩一款，喜歡就往下挑一款完整的，最後看看做出它要上哪些課。",
+    "en": "Every game here was made in our department. Try one for 30 seconds, pick a longer one if you like it, then see which courses teach you to make it."
+  },
+  "tiers": [
+    { "key": "t30", "label": { "zh": "30 秒 · 先玩一下", "en": "30 SECONDS · JUST TRY IT" }, "hint": { "zh": "點一下就開始，不用安裝", "en": "One click, no install" } },
+    { "key": "t3",  "label": { "zh": "3 分鐘 · 玩一局", "en": "3 MINUTES · PLAY A ROUND" }, "hint": { "zh": "一局就能看到完整玩法", "en": "One round shows the whole loop" } },
+    { "key": "t10", "label": { "zh": "10 分鐘以上 · 看懂我們在做什麼", "en": "10+ MINUTES · SEE WHAT WE BUILD" }, "hint": { "zh": "玩完接著看課程地圖與實驗室", "en": "Then explore the curriculum and labs" } }
+  ],
+  "games": [
+    {
+      "id": "six-floor-exit",
+      "tier": "t30",
+      "title": { "zh": "六樓出口", "en": "Sixth-Floor Exit" },
+      "pitch": {
+        "zh": "在設計大樓六樓的循環走廊裡找異常，找錯就重來。走廊、教室、實驗室都是系上真實場景。",
+        "en": "Walk the looping 6th-floor corridor of our Design Building and spot what's wrong. Miss an anomaly and you start over. Every room is a real place in our department."
+      },
+      "shows": { "zh": ["遊戲企劃", "場景美術", "實驗室導覽"], "en": ["Game design", "Environment art", "Lab tour"] },
+      "mode": "embed",
+      "src": "play/six-floor-exit/index.html",
+      "poster": "play/six-floor-exit/frames/s5_a.webp",
+      "size": "17 MB",
+      "mobile": false,
+      "links": [
+        { "label": { "zh": "看六樓實驗室", "en": "See our labs" }, "href": "#labs", "hrefEn": "#/en/labs" },
+        { "label": { "zh": "課程地圖", "en": "Curriculum map" }, "href": "#/curriculum/map", "hrefEn": "#/en/curriculum" }
+      ]
+    },
+    {
+      "id": "cozy-big-two",
+      "tier": "t3",
+      "title": { "zh": "晴日茶桌", "en": "Sunny Tea Table" },
+      "pitch": {
+        "zh": "清新像素風的大老二，十關茶友旅程，每關換一位牌友和一套花草牌組。用 Unity 做成網頁版。",
+        "en": "A cozy pixel-art take on the card game Big Two: ten stages, a new tea-party opponent and flower deck each time. Built in Unity for the web."
+      },
+      "shows": { "zh": ["Unity 程式", "像素美術", "音效與配樂"], "en": ["Unity programming", "Pixel art", "Sound & music"] },
+      "mode": "embed",
+      "src": "play/cozy-big-two/index.html",
+      "poster": "play/cozy-big-two/room.png",
+      "size": "10 MB",
+      "mobile": false,
+      "links": [
+        { "label": { "zh": "遊戲開發軸線", "en": "Game Design stream" }, "href": "#/curriculum/map", "hrefEn": "#/en/curriculum" }
+      ]
+    },
+    {
+      "id": "dungeon-chef",
+      "tier": "t3",
+      "title": { "zh": "地窖大廚", "en": "Dungeon Chef" },
+      "pitch": {
+        "zh": "精準切割的卡牌迷宮：切下食材、組合料理、一路往地窖深處走。",
+        "en": "A card-maze about precise cutting: slice ingredients, combine dishes, and cook your way deeper into the cellar."
+      },
+      "shows": { "zh": ["關卡設計", "卡牌機制", "2D 美術"], "en": ["Level design", "Card mechanics", "2D art"] },
+      "mode": "embed",
+      "src": "play/dungeon-chef/index.html",
+      "poster": "play/dungeon-chef/assets/env/campfire.png",
+      "size": "10 MB",
+      "mobile": false,
+      "links": [
+        { "label": { "zh": "原創美術軸線", "en": "Original Art stream" }, "href": "#/curriculum/map", "hrefEn": "#/en/curriculum" }
+      ]
+    },
+    {
+      "id": "crunch-defense",
+      "tier": "t10",
+      "title": { "zh": "死線防衛隊：畢展倒數", "en": "Deadline Defense: Grad Show Countdown" },
+      "pitch": {
+        "zh": "動遊系學生趕畢展的塔防遊戲：需求變更、Bug、當機、評審都變成怪物，守住交件主機撐過十關。玩完就知道畢業專題在拚什麼。",
+        "en": "A tower-defense game about finishing your graduation project: scope changes, bugs, crashes and judges all attack the submission server. Survive ten stages and you'll know what our capstone feels like."
+      },
+      "shows": { "zh": ["畢業專題", "團隊分工", "塔防設計"], "en": ["Capstone project", "Teamwork", "Tower-defense design"] },
+      "mode": "embed",
+      "src": "play/crunch-defense/index.html",
+      "poster": "play/crunch-defense/assets/og_image.png",
+      "size": "12 MB",
+      "mobile": false,
+      "links": [
+        { "label": { "zh": "畢業專題與實習", "en": "Capstone & internship" }, "href": "#/curriculum/map", "hrefEn": "#/en/curriculum" },
+        { "label": { "zh": "學生得獎作品", "en": "Award-winning works" }, "href": "#works", "hrefEn": "#/en/works" }
+      ],
+      "credit": { "zh": "素材授權：BGM 為 CAFOFO（Unity Asset Store 授權）、字型 Cubic 11（OFL）。", "en": "Assets: BGM by CAFOFO (Unity Asset Store licence), font Cubic 11 (OFL)." }
+    }
+  ]
+}

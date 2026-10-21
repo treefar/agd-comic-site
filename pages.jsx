@@ -41,7 +41,7 @@ const localHref = (type, slug) => `#/${type}/${encodeURIComponent(slug)}`;
 
 // Data cache (loaded once per type)
 // _BUILD_VER 跟 Comic Site.html 的 jsx ?v= 同步 bump，避免瀏覽器 cache JSON 舊版
-const _BUILD_VER = '20260804f';
+const _BUILD_VER = '20261021a';
 const _dataCache = {};
 const _MIN_LOAD_MS = 850; // Loading 至少顯示這麼久（讓動畫看得到）
 const useDataset = (type) => {
@@ -71,10 +71,10 @@ const DetailHeader = ({ tag, title, sub }) => (
 );
 
 // Generic back-to-home link
-const BackBar = ({ label = "回首頁" }) => (
+const BackBar = ({ label = "回首頁", right = "樹德動遊系 — DETAIL CHAPTER" }) => (
   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 0", borderBottom: "3px dashed var(--ink)", marginBottom: 24, fontFamily: "'Bangers',sans-serif", letterSpacing: "0.08em", fontSize: 14 }}>
     <a href="#" style={{ color: "var(--ink)", textDecoration: "none" }}>← {label}</a>
-    <span style={{ opacity: 0.5 }}>樹德動遊系 — DETAIL CHAPTER</span>
+    <span style={{ opacity: 0.5 }}>{right}</span>
   </div>
 );
 
@@ -1309,12 +1309,13 @@ const NotFound = ({ type, slug }) => (
 // =========================================================
 // EN — English page for international students
 // =========================================================
-const EnglishDetail = ({ slug }) => {
-  // Single landing page — slug currently ignored (only "intro")
+// 英文版首頁（#/en/intro）；其他英文頁與分派在 en-pages.jsx
+const EnglishIntro = () => {
   return (
-    <section className="chapter" id="en-intro">
+    <section className="chapter" id="en-intro" lang="en">
       <div className="container">
-        <BackBar label="HOME" />
+        <BackBar label="HOME" right="SHU-TE AGD — ENGLISH" />
+        <EnSubNav current="intro" />
         <div className="chapter-header" style={{ marginBottom: 24 }}>
           <div className="chapter-tag">
             <span>EN</span>
@@ -1353,8 +1354,8 @@ const EnglishDetail = ({ slug }) => {
               {[
                 { n: "9", u: "COHORTS", t: "Japan internship program (Hautecouture Inc.)" },
                 { n: "6", u: "COUNTRIES", t: "Asia-Pacific industry partners" },
-                { n: "100+", u: "AWARDS", t: "Domestic & international, 15-year span" },
-                { n: "94%", u: "EMPLOYED", t: "Within 1 year of graduation" },
+                { n: "90+", u: "AWARDS", t: "Student competition awards, AY 109–113" },
+                { n: "94%", u: "EMPLOYED", t: "Average employment ratio, AY 109–112" },
               ].map((h, i) => (
                 <div key={i} style={{
                   display: "flex", alignItems: "baseline", gap: 8,
@@ -1667,8 +1668,9 @@ const DetailView = ({ type, slug }) => {
     case "stats":    return <StatsDetail slug={slug} />;
     case "en":       return <EnglishDetail slug={slug} />;
     case "curriculum": return <CurriculumDetail />;
+    case "play":     return <PlayZone lang="zh" />;
     default:         return <NotFound type={type} slug={slug} />;
   }
 };
 
-Object.assign(window, { useHashRoute, localHref, DetailView, useDataset });
+Object.assign(window, { useHashRoute, localHref, DetailView, useDataset, EnglishIntro, BackBar, DetailHeader });
