@@ -148,3 +148,32 @@ test('創作不斷線：手感常數不可寫死回遊戲',()=>{
     if(key!=='orbHitRadius')assert.ok(s.includes(`tuning.${group}.${key}`),`${group}.${key} 未接入`);
   }
 });
+
+test('試玩卡：中英頁均隱藏待補署名，保留已知 team · year', async () => {
+  const { chromium } = await import('playwright');
+  const { createServer } = await import('node:http');
+  const server = createServer((req, res) => {
+    const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
+    const file = path.join(root, pathname === '/' ? 'index.html' : pathname);
+    try {
+      res.setHeader('Content-Type', ({'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css','.json':'application/json; charset=utf-8'})[path.extname(file)] || 'application/octet-stream');
+      res.end(fs.readFileSync(file));
+    } catch { res.writeHead(404).end(); }
+  });
+  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+  let browser;
+  try {
+    browser = await chromium.launch(); const page = await browser.newPage();
+    for (const route of ['#/play/zone', '#/en/play']) {
+      await page.goto(`http://127.0.0.1:${server.address().port}/${route}`);
+      const known = read('data/play.json').games.find(g => g.id === 'creative-line');
+      const lang = route.includes('/en/') ? 'en' : 'zh';
+      const credit = `${known.team[lang]} · ${known.year[lang]}`;
+      await page.getByText(credit, {exact:true}).waitFor();
+      assert.equal(await page.getByRole('button', {name:/^(▶ 開始玩|▶ PLAY)/}).count(), 5);
+      assert.equal(await page.getByText(/待補/).count(), 0, `${route} 出現待補`);
+      assert.equal(await page.getByText(credit, {exact:true}).count(), 1);
+      console.log('PLAY-CARDS', route, 'cards=5 pending=0 credit=' + credit);
+    }
+  } finally { if (browser) await browser.close(); await new Promise(resolve => server.close(resolve)); }
+});
