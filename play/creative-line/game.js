@@ -35,7 +35,8 @@
   const inkLine = document.createElementNS(svg.namespaceURI, "polyline"); // 玩家拖出的墨線＝玩法資料
   Object.entries({ fill: "none", stroke: "#0f0d0a", "stroke-width": 7, "stroke-linecap": "round", "stroke-linejoin": "round" }).forEach(([k, v]) => inkLine.setAttribute(k, v)); svg.appendChild(inkLine);
   const blots = document.createElementNS(svg.namespaceURI, "g"); svg.appendChild(blots);
-  const springLine = document.createElementNS(svg.namespaceURI, "line"); springLine.setAttribute("stroke", "#f4ecd8"); springLine.setAttribute("stroke-width", 2); springLine.setAttribute("stroke-dasharray", "6 5"); svg.appendChild(springLine);
+  const springUnderlay = document.createElementNS(svg.namespaceURI, "line"); springUnderlay.setAttribute("stroke", "#f4ecd8"); springUnderlay.setAttribute("stroke-width", 8); svg.appendChild(springUnderlay);
+  const springLine = document.createElementNS(svg.namespaceURI, "line"); springLine.setAttribute("stroke", "#1a1712"); springLine.setAttribute("stroke-width", 4); springLine.setAttribute("stroke-dasharray", "6 5"); svg.appendChild(springLine);
   const goal = img("art/fx2/stamp.png", "goal", scene, 84);
   const ghost = img("art/fx2/orb.png", "ghost", scene, 50); ghost.style.opacity = 0;
   const afters = [0, 1, 2, 3, 4].map(() => { const i = img("art/fx2/orb.png", "after", scene, 50); i.style.opacity = 0; return i; });
@@ -282,8 +283,8 @@
     const life = lv && lv.twist === "step" ? 0.33 : 0.15, base = lv && lv.twist === "step" ? [0.5, 0.35, 0.2, 0.1] : [0.45, 0.35, 0.25, 0.15, 0.05];
     afters.forEach((a, i) => { const q = afterQ[i]; const keep = REDUCED ? i < 2 : true; if (q && keep && t - q.born < life && state === "play") { a.style.opacity = base[i] ?? 0; a.style.transform = `translate(${q.x - 25}px, ${q.y - 25}px)`; } else a.style.opacity = 0; });
     if (ghostT >= 0 && path) { const p = path[Math.min(path.length - 1, Math.floor((ghostT / 1.2) * path.length))]; ghost.style.opacity = 0.35; ghost.style.transform = `translate(${p[0] - 25}px, ${p[1] - 25}px)`; }
-    if (lv && lv.twist === "spring" && state === "play" && target) { const dist = Math.hypot(target.x - orb.x, target.y - orb.y); springLine.setAttribute("x1", orb.x); springLine.setAttribute("y1", orb.y); springLine.setAttribute("x2", target.x); springLine.setAttribute("y2", target.y); springLine.setAttribute("opacity", REDUCED ? 0.4 : Math.min(0.7, 0.2 + dist / 160)); }
-    else springLine.setAttribute("opacity", 0);
+    if (lv && lv.twist === "spring" && state === "play" && target) { const dist = Math.hypot(target.x - orb.x, target.y - orb.y); for (const line of [springUnderlay, springLine]) { line.setAttribute("x1", orb.x); line.setAttribute("y1", orb.y); line.setAttribute("x2", target.x); line.setAttribute("y2", target.y); line.setAttribute("opacity", REDUCED ? 0.4 : Math.min(0.7, 0.2 + dist / 160)); } }
+    else for (const line of [springUnderlay, springLine]) line.setAttribute("opacity", 0);
     if (lv && lv.twist === "spring" && !REDUCED) { tilt += ((state === "play" ? Math.max(-2.5, Math.min(2.5, orb.vx / 160)) : 0) - tilt) * 0.12; scene.style.transform = `rotate(${tilt.toFixed(2)}deg)`; }
     if (lv && lv.twist === "ink") { inkFill.style.width = ink + "%"; inkbar.classList.toggle("low", ink < 30); inkbar.classList.toggle("shake", ink < 15 && !REDUCED); inkLine.setAttribute("stroke-width", ink < 30 ? 4 : 7); inkLine.setAttribute("opacity", ink < 30 ? 0.55 : 0.9); }
     stat.textContent = `${T.time} ${fmt(lvTime)}　${T.fails} ${lvFails}`;
