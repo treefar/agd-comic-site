@@ -8,10 +8,14 @@ const arg = process.argv.indexOf('--out');
 const out = path.resolve(arg < 0 ? 'docs/qa/creative-line/20261021' : process.argv[arg + 1]);
 if (!out.startsWith(process.cwd() + path.sep)) throw Error('輸出必須在工作目錄內');
 fs.mkdirSync(out, { recursive: true });
+const onlyArg = process.argv.indexOf('--only');
+const only = onlyArg < 0 ? null : process.argv[onlyArg + 1];
+if (only && only !== 'L3-play-spring') throw Error('--only 目前只支援 L3-play-spring');
+const prior = only ? JSON.parse(fs.readFileSync(path.join(out, 'evidence.json'), 'utf8')) : null;
 const tmp = path.join(out, 'browser-tmp'); fs.mkdirSync(tmp, {recursive:true});
 process.env.TEMP = process.env.TMP = process.env.TMPDIR = tmp;
 const browser = await chromium.launch({headless:true});
-const logs = [], evidence = [];
+const logs = [], evidence = prior ? prior.shots.filter(e => e.shot !== only) : [];
 const states = ['cover','L1-ready','L1-play','L1-fail','L1-card','L2-ready','L2-play-ink','L2-lowink','L2-card','L3-ready','L3-play-spring','L3-card','final','paused'];
 try {
 for (const lang of ['zh','en']) for (const viewport of ['desktop','mobile']) {
@@ -29,10 +33,11 @@ for (const lang of ['zh','en']) for (const viewport of ['desktop','mobile']) {
   await page.evaluate(() => document.fonts.ready);
   const render = () => page.evaluate(() => new Promise(resolve => window.qaNativeRAF(() => {window.qaFrame(1000); resolve();})));
   const shot = async state => {
+    if (only && state !== only) return;
     await render();
     await page.evaluate(async () => { await Promise.all([...document.images].filter(i=>i.src).map(i=>i.decode().catch(()=>{}))); });
     const facts = await page.evaluate(() => {
-      const line = document.querySelector('line'), orb = {...__cl.orb};
+      const line = document.querySelector('line:last-child'), orb = {...__cl.orb};
       const attrs = Object.fromEntries(['x1','y1','x2','y2','opacity'].map(k=>[k,Number(line.getAttribute(k))]));
       const target = {x:attrs.x2,y:attrs.y2};
       return {state:__cl.state,level:__cl.li,fails:__cl.fails,ink:__cl.ink,sparks:[...document.images].filter(i=>i.src.endsWith('/spark.png')&&i.getBoundingClientRect().width>0).length,spring:attrs.opacity,tilt:document.querySelector('.scene').style.transform,orb,target,distance:Math.hypot(target.x-orb.x,target.y-orb.y),line:attrs,selection:window.qaSpring};
@@ -86,13 +91,14 @@ for (const lang of ['zh','en']) for (const viewport of ['desktop','mobile']) {
   await start(0);await page.evaluate(()=>__cl.play());await page.keyboard.press('Escape');await shot('paused');
   await context.close();
 }
+evidence.sort((a,b) => ['zh','en'].indexOf(a.lang)-['zh','en'].indexOf(b.lang) || ['desktop','mobile'].indexOf(a.viewport)-['desktop','mobile'].indexOf(b.viewport) || states.indexOf(a.shot)-states.indexOf(b.shot));
 const stamp=new Date().toISOString(),commit=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
 fs.writeFileSync(path.join(out,'console.txt'),logs.length?logs.join('\n')+'\n':'No console errors, JS errors, HTTP errors or failed requests.\n');
 const files=fs.readdirSync(out).filter(f=>f.endsWith('.webp'));
 const dimensions=await Promise.all(files.map(async file=>{const m=await sharp(path.join(out,file)).metadata();return {file,width:m.width,height:m.height,bytes:fs.statSync(path.join(out,file)).size};}));
 const bytes=dimensions.reduce((sum,m)=>sum+m.bytes,0);
 if(files.length!==56||fs.readdirSync(out).some(f=>f.endsWith('.png'))||bytes>20_000_000||dimensions.some(m=>!(/^(zh|en)-(desktop|mobile)-/.test(m.file))||m.width!==(m.file.includes('-mobile-')?780:1280)||m.height!==(m.file.includes('-mobile-')?1688:720)))throw Error('檔案數、容量或尺寸驗收失敗');
-fs.writeFileSync(path.join(out,'evidence.json'),JSON.stringify({stamp,browser:browser.version(),commit,conversion:{input:'Playwright PNG buffer',output:'WebP',quality:85,resize:false,crop:false,recolour:false},bytes,dimensions,shots:evidence},null,2));
+fs.writeFileSync(path.join(out,'evidence.json'),JSON.stringify({stamp,browser:browser.version(),commit,conversion:{input:'Playwright PNG buffer',output:'WebP',quality:85,resize:false,crop:false,recolour:false},bytes,dimensions,shots:evidence,...(only ? {recapture:{only,stamp,commit,preservedShots:52,priorStamp:prior.stamp,priorCommit:prior.commit}} : {})},null,2));
 const columns=['zh-desktop','zh-mobile','en-desktop','en-mobile'];
 fs.writeFileSync(path.join(out,'index.html'),`<!doctype html><meta charset="utf-8"><title>創作不斷線 QA</title><style>body{font-family:system-ui;background:#eee}table{width:100%;table-layout:fixed}td,th{border:1px solid #888;padding:4px}img{width:100%;height:180px;object-fit:contain}th:first-child{width:130px}</style><h1>創作不斷線：56 張狀態對照</h1><p>${stamp} · Chromium ${browser.version()} · commit ${commit}</p><p>手機為 390×844、DPR 2 觸控模擬；尚非真手機確認。點圖可看原圖。</p><table><tr><th>狀態</th>${columns.map(c=>`<th>${c}</th>`).join('')}</tr>${states.map(s=>`<tr><th>${s}</th>${columns.map(c=>`<td><a href="${c}-${s}.webp"><img loading="lazy" src="${c}-${s}.webp" alt="${c}-${s}"></a></td>`).join('')}</tr>`).join('')}</table>`);
 const gallery=await browser.newPage();await gallery.goto(`http://127.0.0.1:8765/${path.relative(process.cwd(),out).replaceAll('\\','/')}/index.html`);
