@@ -390,6 +390,7 @@ const PlayCard = ({ g, lang, t, active, onPlay, onClose }) => {
     : { play: "▶ 開始玩", watch: "▶ 看影片", open: "開新視窗 ↗", close: "✕ 關閉", full: "全螢幕 ↗", mobile: "手機可玩", desktop: "建議用電腦", shows: "看得到系上的" };
   const go = g.mode === "link" ? label.open : g.mode === "video" ? label.watch : label.play;
   const src = lang === "en" && g.srcEn ? g.srcEn : g.src;
+  const credits = [...new Set([g.credit && t(g.credit), g.license && t(g.license)].filter(value => value && !value.includes("待補")))];
   return (
     <Panel variant="" style={{ padding: 14, gridColumn: active ? "1 / -1" : undefined }}>
       {active && g.mode !== "link" ? (
@@ -439,8 +440,8 @@ const PlayCard = ({ g, lang, t, active, onPlay, onClose }) => {
           ))}
         </div>
       )}
-      {g.team && <div style={{ fontSize: 11, opacity: 0.65, marginTop: 8 }}>{t(g.team)} · {t(g.year)}</div>}
-      {(g.credit || g.license) && <div style={{ fontSize: 11, opacity: 0.65, marginTop: 8 }}>{[...new Set([g.credit && t(g.credit), g.license && t(g.license)].filter(Boolean))].join(" · ")}</div>}
+      {g.team && t(g.team) !== "待補" && t(g.year) !== "待補" && <div style={{ fontSize: 11, opacity: 0.65, marginTop: 8 }}>{t(g.team)} · {t(g.year)}</div>}
+      {credits.length > 0 && <div style={{ fontSize: 11, opacity: 0.65, marginTop: 8 }}>{credits.join(" · ")}</div>}
     </Panel>
   );
 };
