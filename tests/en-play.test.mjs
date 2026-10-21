@@ -87,3 +87,9 @@ test("bundle.js 已包含英文頁與試玩區", () => {
   const b = fs.readFileSync(path.join(root, "bundle.js"), "utf8");
   for (const s of ["PlayZone", "EnglishIntro", "en/faculty", "play/zone"]) assert.ok(b.includes(s), `bundle 缺 ${s}`);
 });
+
+test('試玩區：五款都有雙語製作與授權欄位',()=>{
+  for(const g of read('data/play.json').games)for(const k of ['team','year','license','credit'])for(const lang of ['zh','en']){
+    assert.equal(typeof g[k]?.[lang],'string',`${g.id}.${k}.${lang}`);assert.ok(g[k][lang].trim(),`${g.id}.${k}.${lang} 空白`);
+  }
+});
