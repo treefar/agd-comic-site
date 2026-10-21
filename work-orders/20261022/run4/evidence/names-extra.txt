@@ -1,0 +1,67 @@
+changedStrings=54
+stats:$[0].summary
+stats:$[0].groups[0].items[0]
+stats:$[0].groups[0].items[14]
+stats:$[0].groups[0].items[15]
+stats:$[0].groups[1].items[0]
+stats:$[0].groups[1].items[5]
+stats:$[0].groups[1].items[7]
+stats:$[0].groups[1].items[8]
+stats:$[0].groups[1].items[9]
+stats:$[0].groups[2].items[0]
+stats:$[0].groups[2].items[4]
+stats:$[0].groups[3].items[0]
+stats:$[0].groups[4].items[0]
+stats:$[1].groups[0].items[7]
+stats:$[5].summary
+stats:$[5].groups[0].items[0]
+stats:$[5].groups[1].items[1]
+stats:$[5].groups[1].items[2]
+stats:$[5].groups[1].items[3]
+stats:$[5].groups[1].items[4]
+stats:$[5].groups[3].items[4]
+stats:$[5].note
+stats:$[6].summary
+stats:$[6].groups[1].items[0]
+stats:$[6].groups[2].items[0]
+stats:$[6].groups[2].items[1]
+stats:$[6].groups[3].items[1]
+stats:$[6].groups[4].items[0]
+stats:$[6].groups[5].items[3]
+stats:$[6].groups[5].items[4]
+stats:$[6].groups[6].items[4]
+stats:$[6].groups[9].items[6]
+stats:$[6].groups[14].items[1]
+news:$[1].excerpt
+news:$[1].content
+news:$[3].excerpt
+news:$[3].content
+news:$[3].gallery[0].awards[3]
+news:$[3].gallery[1].awards[2]
+news:$[13].excerpt
+news:$[13].content
+news:$[14].title
+news:$[14].excerpt
+news:$[14].content
+works:$[4].title
+works:$[4].achievements[0]
+works:$[4].content
+faculty:$[1].achievements[0]
+faculty:$[5].achievements[0]
+faculty:$[5].achievements[5]
+faculty:$[7].achievements[2]
+faculty:$[7].achievements[3]
+faculty:$[7].achievements[9]
+faculty:$[7].achievements[12]
+CHECK 518 -> 510; 54 ledger rows; removed sum=8 PASS
+> node tools/validate-en.mjs
+admission.json	PASS	[CHECK]=0
+curriculum.json	PASS	[CHECK]=0
+faculty.json	PASS	[CHECK]=197
+labs.json	PASS	[CHECK]=0
+news.json	PASS	[CHECK]=37
+stats.json	PASS	[CHECK]=262
+videos.json	PASS	[CHECK]=0
+works.json	PASS	[CHECK]=14
+
+exit=0

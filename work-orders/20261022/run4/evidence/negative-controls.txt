@@ -1,0 +1,91 @@
+> git checkout --detach e492e58
+Previous HEAD position was 8ca0a85 官方來源覆核第二批英文名稱與逐筆證據
+HEAD is now at e492e58 交接檔與第二輪六張驗收報告（VERIFY-run2）
+
+exit=0
+
+> node C:\Users\treef\Documents\Codex\2026-10-21\c-projects-agdcomicsite-latest-handoff-md\work\run4\independent-ui.cjs C:\agywork\agd-run4-verifier cards
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+7 !== 0
+
+    at C:\Users\treef\Documents\Codex\2026-10-21\c-projects-agdcomicsite-latest-handoff-md\work\run4\independent-ui.cjs:3:384
+    at async exports.browser (C:\Users\treef\Documents\Codex\2026-10-21\c-projects-agdcomicsite-latest-handoff-md\work\run4\lib.cjs:5:1226)
+    at async C:\Users\treef\Documents\Codex\2026-10-21\c-projects-agdcomicsite-latest-handoff-md\work\run4\independent-ui.cjs:2:12 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 7,
+  expected: 0,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+exit=1
+
+> node C:\Users\treef\Documents\Codex\2026-10-21\c-projects-agdcomicsite-latest-handoff-md\work\run4\independent-ui.cjs C:\agywork\agd-run4-verifier panel
+locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByRole('button', { name: '開始', exact: true })[22m
+[2m    - locator resolved to <button class="tbtn " type="button">開始</button>[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <label>…</label> from <aside id="cl-tune" aria-label="手感調校">…</aside> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <label>…</label> from <aside id="cl-tune" aria-label="手感調校">…</aside> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    56 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is visible, enabled and stable[22m
+[2m       - scrolling into view if needed[22m
+[2m       - done scrolling[22m
+[2m       - <label>…</label> from <aside id="cl-tune" aria-label="手感調校">…</aside> subtree intercepts pointer events[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+
+    at C:\Users\treef\Documents\Codex\2026-10-21\c-projects-agdcomicsite-latest-handoff-md\work\run4\independent-ui.cjs:4:197
+    at async exports.browser (C:\Users\treef\Documents\Codex\2026-10-21\c-projects-agdcomicsite-latest-handoff-md\work\run4\lib.cjs:5:1226)
+    at async C:\Users\treef\Documents\Codex\2026-10-21\c-projects-agdcomicsite-latest-handoff-md\work\run4\independent-ui.cjs:2:12 {
+  log: [
+    "  - waiting for getByRole('button', { name: '開始', exact: true })",
+    '    - locator resolved to <button class="tbtn " type="button">開始</button>',
+    '  - attempting click action',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is visible, enabled and stable',
+    '      - scrolling into view if needed',
+    '      - done scrolling',
+    '      - <label>…</label> from <aside id="cl-tune" aria-label="手感調校">…</aside> subtree intercepts pointer events',
+    '    - retrying click action',
+    '    - waiting 20ms',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is visible, enabled and stable',
+    '      - scrolling into view if needed',
+    '      - done scrolling',
+    '      - <label>…</label> from <aside id="cl-tune" aria-label="手感調校">…</aside> subtree intercepts pointer events',
+    '    - retrying click action',
+    '      - waiting 100ms',
+    '    56 × waiting for element to be visible, enabled and stable',
+    '       - element is visible, enabled and stable',
+    '       - scrolling into view if needed',
+    '       - done scrolling',
+    '       - <label>…</label> from <aside id="cl-tune" aria-label="手感調校">…</aside> subtree intercepts pointer events',
+    '     - retrying click action',
+    '       - waiting 500ms'
+  ],
+  name: 'TimeoutError'
+}
+
+exit=1
+
+> git checkout --detach codex/en-check-batch2
+Previous HEAD position was e492e58 交接檔與第二輪六張驗收報告（VERIFY-run2）
+HEAD is now at 8ca0a85 官方來源覆核第二批英文名稱與逐筆證據
+
+exit=0

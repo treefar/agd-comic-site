@@ -1,0 +1,156 @@
+> node C:\Users\treef\Documents\Codex\2026-10-21\c-projects-agdcomicsite-latest-handoff-md\work\run4\extra-checks.cjs C:\agywork\agd-run4-verifier roundtrip
+> node --check play/creative-line/tuning.js
+
+exit=0
+
+> git diff -- play/creative-line/tuning.js
+diff --git a/play/creative-line/tuning.js b/play/creative-line/tuning.js
+index 50a6dec..418ffad 100644
+--- a/play/creative-line/tuning.js
++++ b/play/creative-line/tuning.js
+@@ -1,10 +1,43 @@
+ // 調校預設；可將面板複製的 JSON 貼在等號後。orbHitRadius 保留供後續碰撞規格確認。
+ window.TUNING = {
+-  common: { grabRadius:68, touchOffset:40, orbHitRadius:10, failFreeze:0.25, rewind:0.25, forgiveAfterFails:2, ghostAfterFails:3, checkpointAfterFails:6, checkpointRatio:0.25, maxSpeed:900 },
+-  step: { interval:0.083, maxJump:48 },
+-  ink: { sampleMs:50, angleMouse:70, angleTouch:90, costMouse:10, costTouch:7, regenAngle:30, regenPerSample:1.5, minSpeed:80, lowInk:30, shakeInk:15 },
+-  spring: { omega:14, zeta:0.85, afterimageMinSpeed:100, tiltMaxDeg:2.5, tiltSpeedDiv:160 },
+-  stars: { maxFails:2 }
++  "common": {
++    "grabRadius": 68,
++    "touchOffset": 40,
++    "orbHitRadius": 10,
++    "failFreeze": 0.25,
++    "rewind": 0.25,
++    "forgiveAfterFails": 2,
++    "ghostAfterFails": 3,
++    "checkpointAfterFails": 6,
++    "checkpointRatio": 0.25,
++    "maxSpeed": 900
++  },
++  "step": {
++    "interval": 0.083,
++    "maxJump": 48
++  },
++  "ink": {
++    "sampleMs": 50,
++    "angleMouse": 70,
++    "angleTouch": 90,
++    "costMouse": 10,
++    "costTouch": 8,
++    "regenAngle": 30,
++    "regenPerSample": 1.5,
++    "minSpeed": 80,
++    "lowInk": 30,
++    "shakeInk": 15
++  },
++  "spring": {
++    "omega": 14,
++    "zeta": 0.85,
++    "afterimageMinSpeed": 100,
++    "tiltMaxDeg": 2.5,
++    "tiltSpeedDiv": 160
++  },
++  "stars": {
++    "maxFails": 2
++  }
+ };
+ (() => {
+   if (new URLSearchParams(location.search).get('tune') !== '1') return;
+warning: in the working copy of 'play/creative-line/tuning.js', LF will be replaced by CRLF the next time Git touches it
+
+exit=0
+
+> node C:/agywork/agd-site-qa-scripts/autoplay.cjs C:\agywork\agd-run4-verifier  desktop brief
+desktop (no query) {"coarse":false,"hasTuning":"object","hasStats":"object","tunePanel":false} L1:won/fails=0/ink=100/then=card L2:won/fails=0/ink=100/then=card L3:won/fails=0/ink=100/then=card errors=0 
+
+exit=0
+
+> node C:/agywork/agd-site-qa-scripts/autoplay.cjs C:\agywork\agd-run4-verifier  mobile brief
+mobile (no query) {"coarse":true,"hasTuning":"object","hasStats":"object","tunePanel":false} L1:won/fails=0/ink=100/then=card L2:won/fails=0/ink=100/then=card L3:won/fails=0/ink=100/then=card errors=0 
+
+exit=0
+
+> git diff -- play/creative-line/tuning.js
+
+exit=0
+
+> node --check play/creative-line/tuning.js
+
+exit=0
+
+> git diff -- play/creative-line/tuning.js
+diff --git a/play/creative-line/tuning.js b/play/creative-line/tuning.js
+index 50a6dec..418ffad 100644
+--- a/play/creative-line/tuning.js
++++ b/play/creative-line/tuning.js
+@@ -1,10 +1,43 @@
+ // 調校預設；可將面板複製的 JSON 貼在等號後。orbHitRadius 保留供後續碰撞規格確認。
+ window.TUNING = {
+-  common: { grabRadius:68, touchOffset:40, orbHitRadius:10, failFreeze:0.25, rewind:0.25, forgiveAfterFails:2, ghostAfterFails:3, checkpointAfterFails:6, checkpointRatio:0.25, maxSpeed:900 },
+-  step: { interval:0.083, maxJump:48 },
+-  ink: { sampleMs:50, angleMouse:70, angleTouch:90, costMouse:10, costTouch:7, regenAngle:30, regenPerSample:1.5, minSpeed:80, lowInk:30, shakeInk:15 },
+-  spring: { omega:14, zeta:0.85, afterimageMinSpeed:100, tiltMaxDeg:2.5, tiltSpeedDiv:160 },
+-  stars: { maxFails:2 }
++  "common": {
++    "grabRadius": 68,
++    "touchOffset": 40,
++    "orbHitRadius": 10,
++    "failFreeze": 0.25,
++    "rewind": 0.25,
++    "forgiveAfterFails": 2,
++    "ghostAfterFails": 3,
++    "checkpointAfterFails": 6,
++    "checkpointRatio": 0.25,
++    "maxSpeed": 900
++  },
++  "step": {
++    "interval": 0.083,
++    "maxJump": 48
++  },
++  "ink": {
++    "sampleMs": 50,
++    "angleMouse": 70,
++    "angleTouch": 90,
++    "costMouse": 10,
++    "costTouch": 8,
++    "regenAngle": 30,
++    "regenPerSample": 1.5,
++    "minSpeed": 80,
++    "lowInk": 30,
++    "shakeInk": 15
++  },
++  "spring": {
++    "omega": 14,
++    "zeta": 0.85,
++    "afterimageMinSpeed": 100,
++    "tiltMaxDeg": 2.5,
++    "tiltSpeedDiv": 160
++  },
++  "stars": {
++    "maxFails": 2
++  }
+ };
+ (() => {
+   if (new URLSearchParams(location.search).get('tune') !== '1') return;
+warning: in the working copy of 'play/creative-line/tuning.js', LF will be replaced by CRLF the next time Git touches it
+
+exit=0
+
+> node C:/agywork/agd-site-qa-scripts/autoplay.cjs C:\agywork\agd-run4-verifier  desktop brief
+desktop (no query) {"coarse":false,"hasTuning":"object","hasStats":"object","tunePanel":false} L1:won/fails=0/ink=100/then=card L2:won/fails=0/ink=100/then=card L3:won/fails=0/ink=100/then=card errors=0 
+
+exit=0
+
+> node C:/agywork/agd-site-qa-scripts/autoplay.cjs C:\agywork\agd-run4-verifier  mobile brief
+mobile (no query) {"coarse":true,"hasTuning":"object","hasStats":"object","tunePanel":false} L1:won/fails=0/ink=100/then=card L2:won/fails=0/ink=100/then=card L3:won/fails=0/ink=100/then=card errors=0 
+
+exit=0
+
+Original restored SHA256 71909e16e067ef761d3184c198477394995974ea475906c1e05130aae04c28ee
+> git diff -- play/creative-line/tuning.js
+
+exit=0
+
+
+exit=0

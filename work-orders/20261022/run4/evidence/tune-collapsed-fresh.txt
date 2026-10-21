@@ -1,0 +1,48 @@
+> git checkout --detach codex/tune-collapsed
+Previous HEAD position was 2576ae7 修正試玩卡隱藏待補署名與授權文字
+HEAD is now at efe4204 調校面板預設收合並保留複製與還原操作
+
+exit=0
+
+> git diff --name-status e492e58..HEAD
+M	play/creative-line/tuning.js
+A	work-orders/20261022/reports/tune-collapsed-report.md
+
+exit=0
+
+> node C:\Users\treef\Documents\Codex\2026-10-21\c-projects-agdcomicsite-latest-handoff-md\work\run4\independent-ui.cjs C:\agywork\agd-run4-verifier panel
+mobile initial {"visible":1,"sliders":0,"buttons":["複製 JSON","還原預設","展開"]}
+28 sliders each min writes TUNING / reset / collapsed copy fallback visible / reload collapsed PASS
+local HTTP and JS errors = 0
+
+exit=0
+
+> node --test tests/en-play.test.mjs
+✔ data/en/faculty.json 與中文版結構一致 (4.2644ms)
+✔ data/en/curriculum.json 與中文版結構一致 (1.7436ms)
+✔ data/en/labs.json 與中文版結構一致 (1.3559ms)
+✔ data/en/works.json 與中文版結構一致 (1.2842ms)
+✔ data/en/videos.json 與中文版結構一致 (1.1147ms)
+✔ data/en/stats.json 與中文版結構一致 (1.9611ms)
+✔ data/en/news.json 與中文版結構一致 (1.7808ms)
+✔ data/en/admission.json 與中文版結構一致 (1.5547ms)
+✔ play.json 每款遊戲的入口與封面都存在、層級有效 (1.8417ms)
+✔ 創作不斷線：碰撞遮罩三段都從起點連到終點 (56.0395ms)
+✔ 創作不斷線：用到的素材檔都存在，課程名稱都在 curriculum.json 裡 (5.4674ms)
+✔ bundle.js 已包含英文頁與試玩區 (82.6997ms)
+✔ 試玩區：五款都有雙語製作與授權欄位 (1.2068ms)
+✔ 創作不斷線：調校預設鍵與原值完整 (1.0394ms)
+AUTO-PLAY [{"level":1,"state":"won","fails":0},{"level":2,"state":"won","fails":0},{"level":3,"state":"won","fails":0}]
+JITTER {"before":{"ink":72,"count":4},"after":{"ink":44,"count":4}}
+✔ 創作不斷線：瀏覽器通關、即時調校、持久化與公開版隔離 (1685.0965ms)
+✔ 創作不斷線：手感常數不可寫死回遊戲 (0.7585ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1933.7266
+
+exit=0

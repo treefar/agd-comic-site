@@ -1,0 +1,40 @@
+> git checkout --detach codex/tuning-roundtrip
+Previous HEAD position was efe4204 調校面板預設收合並保留複製與還原操作
+HEAD is now at 2fd7f99 實測調校JSON貼回檔案三關通過並還原
+
+exit=0
+
+> git diff --name-status e492e58..HEAD
+A	work-orders/20261022/reports/tuning-roundtrip-report.md
+
+exit=0
+
+> node --test tests/en-play.test.mjs
+✔ data/en/faculty.json 與中文版結構一致 (4.4681ms)
+✔ data/en/curriculum.json 與中文版結構一致 (1.9171ms)
+✔ data/en/labs.json 與中文版結構一致 (1.447ms)
+✔ data/en/works.json 與中文版結構一致 (1.1784ms)
+✔ data/en/videos.json 與中文版結構一致 (1.0429ms)
+✔ data/en/stats.json 與中文版結構一致 (2.051ms)
+✔ data/en/news.json 與中文版結構一致 (1.9451ms)
+✔ data/en/admission.json 與中文版結構一致 (1.7713ms)
+✔ play.json 每款遊戲的入口與封面都存在、層級有效 (2.1501ms)
+✔ 創作不斷線：碰撞遮罩三段都從起點連到終點 (58.6618ms)
+✔ 創作不斷線：用到的素材檔都存在，課程名稱都在 curriculum.json 裡 (10.4077ms)
+✔ bundle.js 已包含英文頁與試玩區 (1.1124ms)
+✔ 試玩區：五款都有雙語製作與授權欄位 (1.0172ms)
+✔ 創作不斷線：調校預設鍵與原值完整 (2.1184ms)
+AUTO-PLAY [{"level":1,"state":"won","fails":0},{"level":2,"state":"won","fails":0},{"level":3,"state":"won","fails":0}]
+JITTER {"before":{"ink":72,"count":4},"after":{"ink":44,"count":4}}
+✔ 創作不斷線：瀏覽器通關、即時調校、持久化與公開版隔離 (1645.8858ms)
+✔ 創作不斷線：手感常數不可寫死回遊戲 (0.8564ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1827.4416
+
+exit=0

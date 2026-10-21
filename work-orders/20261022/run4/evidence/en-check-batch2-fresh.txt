@@ -1,0 +1,57 @@
+> git checkout --detach codex/en-check-batch2
+Previous HEAD position was 5bb779b 還原faculty既有純英文證照欄位頓號
+HEAD is now at 8ca0a85 官方來源覆核第二批英文名稱與逐筆證據
+
+exit=0
+
+> git diff --name-status 5bb779b..HEAD
+M	data/en/faculty.json
+M	data/en/news.json
+M	data/en/stats.json
+M	data/en/works.json
+A	docs/qa/en-check/20261022-batch2.md
+A	work-orders/20261022/reports/en-check-batch2-report.md
+
+exit=0
+
+> node --test tests/en-play.test.mjs
+✔ data/en/faculty.json 與中文版結構一致 (4.4628ms)
+✔ data/en/curriculum.json 與中文版結構一致 (1.7457ms)
+✔ data/en/labs.json 與中文版結構一致 (1.5484ms)
+✔ data/en/works.json 與中文版結構一致 (1.1884ms)
+✔ data/en/videos.json 與中文版結構一致 (1.0075ms)
+✔ data/en/stats.json 與中文版結構一致 (1.6665ms)
+✔ data/en/news.json 與中文版結構一致 (1.8264ms)
+✔ data/en/admission.json 與中文版結構一致 (1.4831ms)
+✔ play.json 每款遊戲的入口與封面都存在、層級有效 (1.9016ms)
+✔ 創作不斷線：碰撞遮罩三段都從起點連到終點 (66.2083ms)
+✔ 創作不斷線：用到的素材檔都存在，課程名稱都在 curriculum.json 裡 (5.5735ms)
+✔ bundle.js 已包含英文頁與試玩區 (1.0762ms)
+✔ 試玩區：五款都有雙語製作與授權欄位 (0.8702ms)
+✔ 創作不斷線：調校預設鍵與原值完整 (1.0558ms)
+AUTO-PLAY [{"level":1,"state":"won","fails":0},{"level":2,"state":"won","fails":0},{"level":3,"state":"won","fails":0}]
+JITTER {"before":{"ink":72,"count":4},"after":{"ink":44,"count":4}}
+✔ 創作不斷線：瀏覽器通關、即時調校、持久化與公開版隔離 (1605.0597ms)
+✔ 創作不斷線：手感常數不可寫死回遊戲 (0.6893ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1787.324
+
+exit=0
+
+> node tools/validate-en.mjs
+admission.json	PASS	[CHECK]=0
+curriculum.json	PASS	[CHECK]=0
+faculty.json	PASS	[CHECK]=197
+labs.json	PASS	[CHECK]=0
+news.json	PASS	[CHECK]=37
+stats.json	PASS	[CHECK]=262
+videos.json	PASS	[CHECK]=0
+works.json	PASS	[CHECK]=14
+
+exit=0

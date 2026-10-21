@@ -1,0 +1,80 @@
+> git diff --exit-code
+
+exit=0
+
+> git checkout feature/en-site-and-play-zone
+Your branch is up to date with 'origin/feature/en-site-and-play-zone'.
+Switched to branch 'feature/en-site-and-play-zone'
+
+exit=0
+
+> git merge --no-ff --no-edit codex/hide-pending
+Merge made by the 'ort' strategy.
+ bundle.js                                          |   4 +-
+ en-pages.jsx                                       |   5 +-
+ index.html                                         |   4 +-
+ pages.jsx                                          |   2 +-
+ tests/en-play.test.mjs                             |  29 ++++
+ .../20261022/reports/hide-pending-report.md        | 192 +++++++++++++++++++++
+ 6 files changed, 229 insertions(+), 7 deletions(-)
+ create mode 100644 work-orders/20261022/reports/hide-pending-report.md
+
+exit=0
+
+> git merge --no-ff --no-edit codex/tune-collapsed
+Merge made by the 'ort' strategy.
+ play/creative-line/tuning.js                       |   9 +-
+ .../20261022/reports/tune-collapsed-report.md      | 186 +++++++++++++++++++++
+ 2 files changed, 191 insertions(+), 4 deletions(-)
+ create mode 100644 work-orders/20261022/reports/tune-collapsed-report.md
+
+exit=0
+
+> git merge --no-ff --no-edit codex/tuning-roundtrip
+Merge made by the 'ort' strategy.
+ .../20261022/reports/tuning-roundtrip-report.md    | 135 +++++++++++++++++++++
+ 1 file changed, 135 insertions(+)
+ create mode 100644 work-orders/20261022/reports/tuning-roundtrip-report.md
+
+exit=0
+
+> git merge --no-ff --no-edit codex/spring-backgrounds
+Merge made by the 'ort' strategy.
+ .../20261022/background-evidence.json              | 153 +++++++++++++++++++++
+ .../creative-line/20261022/desktop-blue-wall.webp  | Bin 0 -> 405978 bytes
+ .../20261022/desktop-dark-platform.webp            | Bin 0 -> 405478 bytes
+ .../creative-line/20261022/mobile-blue-wall.webp   | Bin 0 -> 160412 bytes
+ .../20261022/mobile-dark-platform.webp             | Bin 0 -> 159986 bytes
+ .../20261022/reports/spring-backgrounds-report.md  |  45 ++++++
+ 6 files changed, 198 insertions(+)
+ create mode 100644 docs/qa/creative-line/20261022/background-evidence.json
+ create mode 100644 docs/qa/creative-line/20261022/desktop-blue-wall.webp
+ create mode 100644 docs/qa/creative-line/20261022/desktop-dark-platform.webp
+ create mode 100644 docs/qa/creative-line/20261022/mobile-blue-wall.webp
+ create mode 100644 docs/qa/creative-line/20261022/mobile-dark-platform.webp
+ create mode 100644 work-orders/20261022/reports/spring-backgrounds-report.md
+
+exit=0
+
+> git merge --no-ff --no-edit codex/faculty-punctuation
+Merge made by the 'ort' strategy.
+ data/en/faculty.json                               |  2 +-
+ .../20261022/reports/faculty-punctuation-report.md | 65 ++++++++++++++++++++++
+ 2 files changed, 66 insertions(+), 1 deletion(-)
+ create mode 100644 work-orders/20261022/reports/faculty-punctuation-report.md
+
+exit=0
+
+> git merge --no-ff --no-edit codex/en-check-batch2
+Merge made by the 'ort' strategy.
+ data/en/faculty.json                               |  14 +--
+ data/en/news.json                                  |  22 ++---
+ data/en/stats.json                                 |  66 ++++++-------
+ data/en/works.json                                 |   6 +-
+ docs/qa/en-check/20261022-batch2.md                | 104 +++++++++++++++++++++
+ .../20261022/reports/en-check-batch2-report.md     | 102 ++++++++++++++++++++
+ 6 files changed, 260 insertions(+), 54 deletions(-)
+ create mode 100644 docs/qa/en-check/20261022-batch2.md
+ create mode 100644 work-orders/20261022/reports/en-check-batch2-report.md
+
+exit=0

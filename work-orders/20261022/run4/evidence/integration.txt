@@ -1,0 +1,324 @@
+> node build.mjs
+bundle.js 已更新 — 記得 bump index.html 的 ?v= 版本字串
+▲ [WARNING] Duplicate key "color" in object literal [duplicate-object-key]
+
+    _all.tmp.jsx:2183:44:
+      2183 │         background: "var(--accent-yellow)", color: "var(--ink)",
+           ╵                                             ~~~~~
+
+  The original key "color" is here:
+
+    _all.tmp.jsx:2182:8:
+      2182 │         color: "inherit", textDecoration: "none", fontFamily: "'...
+           ╵         ~~~~~
+
+
+exit=0
+
+> node --test tests/en-play.test.mjs
+✔ data/en/faculty.json 與中文版結構一致 (4.5218ms)
+✔ data/en/curriculum.json 與中文版結構一致 (2.3918ms)
+✔ data/en/labs.json 與中文版結構一致 (1.5493ms)
+✔ data/en/works.json 與中文版結構一致 (1.445ms)
+✔ data/en/videos.json 與中文版結構一致 (1.4101ms)
+✔ data/en/stats.json 與中文版結構一致 (2.2965ms)
+✔ data/en/news.json 與中文版結構一致 (2.2471ms)
+✔ data/en/admission.json 與中文版結構一致 (1.8307ms)
+✔ play.json 每款遊戲的入口與封面都存在、層級有效 (1.8033ms)
+✔ 創作不斷線：碰撞遮罩三段都從起點連到終點 (62.2243ms)
+✔ 創作不斷線：用到的素材檔都存在，課程名稱都在 curriculum.json 裡 (5.1263ms)
+✔ bundle.js 已包含英文頁與試玩區 (1.0879ms)
+✔ 試玩區：五款都有雙語製作與授權欄位 (0.3853ms)
+✔ 創作不斷線：調校預設鍵與原值完整 (25.3037ms)
+AUTO-PLAY [{"level":1,"state":"won","fails":0},{"level":2,"state":"won","fails":0},{"level":3,"state":"won","fails":0}]
+JITTER {"before":{"ink":72,"count":4},"after":{"ink":44,"count":4}}
+✔ 創作不斷線：瀏覽器通關、即時調校、持久化與公開版隔離 (1941.9643ms)
+✔ 創作不斷線：手感常數不可寫死回遊戲 (0.9482ms)
+PLAY-CARDS #/play/zone cards=5 pending=0 credit=動遊系 × Claude／Codex 協作（2026-10） · 2026
+PLAY-CARDS #/en/play cards=5 pending=0 credit=AGD × Claude/Codex collaboration (Oct 2026) · 2026
+✔ 試玩卡：中英頁均隱藏待補署名，保留已知 team · year (1751.79ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3906.2637
+
+exit=0
+
+> node tools/validate-en.mjs
+admission.json	PASS	[CHECK]=0
+curriculum.json	PASS	[CHECK]=0
+faculty.json	PASS	[CHECK]=197
+labs.json	PASS	[CHECK]=0
+news.json	PASS	[CHECK]=37
+stats.json	PASS	[CHECK]=262
+videos.json	PASS	[CHECK]=0
+works.json	PASS	[CHECK]=14
+
+exit=0
+
+> node C:\Users\treef\Documents\Codex\2026-10-21\c-projects-agdcomicsite-latest-handoff-md\work\run4\independent-ui.cjs C:/agywork/agd-site-codex cards
+#/play/zone five cards / no pending / real iframe load and close PASS
+#/en/play five cards / no pending / real iframe load and close PASS
+local HTTP and JS errors = 0
+
+exit=0
+
+> node C:\Users\treef\Documents\Codex\2026-10-21\c-projects-agdcomicsite-latest-handoff-md\work\run4\independent-ui.cjs C:/agywork/agd-site-codex panel
+mobile initial {"visible":1,"sliders":0,"buttons":["複製 JSON","還原預設","展開"]}
+28 sliders each min writes TUNING / reset / collapsed copy fallback visible / reload collapsed PASS
+local HTTP and JS errors = 0
+
+exit=0
+
+> node C:/agywork/agd-site-qa-scripts/autoplay.cjs C:/agywork/agd-site-codex  desktop brief
+desktop (no query) {"coarse":false,"hasTuning":"object","hasStats":"object","tunePanel":false} L1:won/fails=0/ink=100/then=card L2:won/fails=0/ink=100/then=card L3:won/fails=0/ink=100/then=card errors=0 
+
+exit=0
+
+> node C:/agywork/agd-site-qa-scripts/autoplay.cjs C:/agywork/agd-site-codex  mobile brief
+mobile (no query) {"coarse":true,"hasTuning":"object","hasStats":"object","tunePanel":false} L1:won/fails=0/ink=100/then=card L2:won/fails=0/ink=100/then=card L3:won/fails=0/ink=100/then=card errors=0 
+
+exit=0
+
+> node C:/agywork/agd-site-qa-scripts/autoplay.cjs C:/agywork/agd-site-codex ?lang=en desktop brief
+desktop ?lang=en {"coarse":false,"hasTuning":"object","hasStats":"object","tunePanel":false} L1:won/fails=0/ink=100/then=card L2:won/fails=0/ink=100/then=card L3:won/fails=0/ink=100/then=card errors=0 
+
+exit=0
+
+> node C:/agywork/agd-site-qa-scripts/autoplay.cjs C:/agywork/agd-site-codex ?lang=en mobile brief
+mobile ?lang=en {"coarse":true,"hasTuning":"object","hasStats":"object","tunePanel":false} L1:won/fails=0/ink=100/then=card L2:won/fails=0/ink=100/then=card L3:won/fails=0/ink=100/then=card errors=0 
+
+exit=0
+
+> node C:/agywork/agd-site-qa-scripts/autoplay.cjs C:/agywork/agd-site-codex ?tune=1 mobile brief
+mobile ?tune=1 {"coarse":true,"hasTuning":"object","hasStats":"object","tunePanel":true} L1:won/fails=0/ink=100/then=card L2:won/fails=0/ink=100/then=card L3:won/fails=0/ink=100/then=card errors=0 
+
+exit=0
+
+> node C:/agywork/agd-site-qa-scripts/autoplay.cjs C:/agywork/agd-site-codex ?lang=en&tune=1 mobile brief
+mobile ?lang=en&tune=1 {"coarse":true,"hasTuning":"object","hasStats":"object","tunePanel":true} L1:won/fails=0/ink=100/then=card L2:won/fails=0/ink=100/then=card L3:won/fails=0/ink=100/then=card errors=0 
+
+exit=0
+
+> node C:/agywork/agd-site-qa-scripts/wo02check.cjs C:/agywork/agd-site-codex
+{
+ "panel": {
+  "panel": true,
+  "sliders": 28,
+  "buttons": [
+   "複製 JSON",
+   "還原預設",
+   "展開"
+  ],
+  "statsKeys": [
+   "fails",
+   "seconds",
+   "jitterCount",
+   "springLag",
+   "stepsPerSecond"
+  ]
+ },
+ "beforeSlider": {
+  "inkBefore": 100,
+  "inkAfter": 58,
+  "drop": 42,
+  "jitterDelta": 6,
+  "state": "play"
+ },
+ "sliderNow": 12,
+ "afterSlider": {
+  "inkBefore": 100,
+  "inkAfter": 28,
+  "drop": 72,
+  "jitterDelta": 6,
+  "state": "play"
+ },
+ "statsLine": "失誤 0 · 0.0 秒 · 扣墨 0 次 · 落後 0.0 px · 步數/秒 0.0",
+ "lsAfterSlider": 12,
+ "publicLoad": {
+  "costTouch": 7,
+  "panel": false
+ },
+ "tuneReload": {
+  "costTouch": 12,
+  "panel": true
+ },
+ "copy": {
+  "status": "請在下方全選複製",
+  "totalKeys": 28,
+  "costTouch": 12
+ },
+ "reset": {
+  "costTouch": 7,
+  "ls": null
+ },
+ "errors": []
+}
+
+exit=0
+
+> node C:\Users\treef\Documents\Codex\2026-10-21\c-projects-agdcomicsite-latest-handoff-md\work\run4\extra-checks.cjs C:/agywork/agd-site-codex roundtrip
+> node --check play/creative-line/tuning.js
+
+exit=0
+
+> git diff -- play/creative-line/tuning.js
+diff --git a/play/creative-line/tuning.js b/play/creative-line/tuning.js
+index 22610f9..ae41926 100644
+--- a/play/creative-line/tuning.js
++++ b/play/creative-line/tuning.js
+@@ -1,10 +1,43 @@
+ // 調校預設；可將面板複製的 JSON 貼在等號後。orbHitRadius 保留供後續碰撞規格確認。
+ window.TUNING = {
+-  common: { grabRadius:68, touchOffset:40, orbHitRadius:10, failFreeze:0.25, rewind:0.25, forgiveAfterFails:2, ghostAfterFails:3, checkpointAfterFails:6, checkpointRatio:0.25, maxSpeed:900 },
+-  step: { interval:0.083, maxJump:48 },
+-  ink: { sampleMs:50, angleMouse:70, angleTouch:90, costMouse:10, costTouch:7, regenAngle:30, regenPerSample:1.5, minSpeed:80, lowInk:30, shakeInk:15 },
+-  spring: { omega:14, zeta:0.85, afterimageMinSpeed:100, tiltMaxDeg:2.5, tiltSpeedDiv:160 },
+-  stars: { maxFails:2 }
++  "common": {
++    "grabRadius": 68,
++    "touchOffset": 40,
++    "orbHitRadius": 10,
++    "failFreeze": 0.25,
++    "rewind": 0.25,
++    "forgiveAfterFails": 2,
++    "ghostAfterFails": 3,
++    "checkpointAfterFails": 6,
++    "checkpointRatio": 0.25,
++    "maxSpeed": 900
++  },
++  "step": {
++    "interval": 0.083,
++    "maxJump": 48
++  },
++  "ink": {
++    "sampleMs": 50,
++    "angleMouse": 70,
++    "angleTouch": 90,
++    "costMouse": 10,
++    "costTouch": 8,
++    "regenAngle": 30,
++    "regenPerSample": 1.5,
++    "minSpeed": 80,
++    "lowInk": 30,
++    "shakeInk": 15
++  },
++  "spring": {
++    "omega": 14,
++    "zeta": 0.85,
++    "afterimageMinSpeed": 100,
++    "tiltMaxDeg": 2.5,
++    "tiltSpeedDiv": 160
++  },
++  "stars": {
++    "maxFails": 2
++  }
+ };
+ (() => {
+   if (new URLSearchParams(location.search).get('tune') !== '1') return;
+warning: in the working copy of 'play/creative-line/tuning.js', LF will be replaced by CRLF the next time Git touches it
+
+exit=0
+
+> node C:/agywork/agd-site-qa-scripts/autoplay.cjs C:\agywork\agd-site-codex  desktop brief
+desktop (no query) {"coarse":false,"hasTuning":"object","hasStats":"object","tunePanel":false} L1:won/fails=0/ink=100/then=card L2:won/fails=0/ink=100/then=card L3:won/fails=0/ink=100/then=card errors=0 
+
+exit=0
+
+> node C:/agywork/agd-site-qa-scripts/autoplay.cjs C:\agywork\agd-site-codex  mobile brief
+mobile (no query) {"coarse":true,"hasTuning":"object","hasStats":"object","tunePanel":false} L1:won/fails=0/ink=100/then=card L2:won/fails=0/ink=100/then=card L3:won/fails=0/ink=100/then=card errors=0 
+
+exit=0
+
+> git diff -- play/creative-line/tuning.js
+
+exit=0
+
+> node --check play/creative-line/tuning.js
+
+exit=0
+
+> git diff -- play/creative-line/tuning.js
+diff --git a/play/creative-line/tuning.js b/play/creative-line/tuning.js
+index 22610f9..ae41926 100644
+--- a/play/creative-line/tuning.js
++++ b/play/creative-line/tuning.js
+@@ -1,10 +1,43 @@
+ // 調校預設；可將面板複製的 JSON 貼在等號後。orbHitRadius 保留供後續碰撞規格確認。
+ window.TUNING = {
+-  common: { grabRadius:68, touchOffset:40, orbHitRadius:10, failFreeze:0.25, rewind:0.25, forgiveAfterFails:2, ghostAfterFails:3, checkpointAfterFails:6, checkpointRatio:0.25, maxSpeed:900 },
+-  step: { interval:0.083, maxJump:48 },
+-  ink: { sampleMs:50, angleMouse:70, angleTouch:90, costMouse:10, costTouch:7, regenAngle:30, regenPerSample:1.5, minSpeed:80, lowInk:30, shakeInk:15 },
+-  spring: { omega:14, zeta:0.85, afterimageMinSpeed:100, tiltMaxDeg:2.5, tiltSpeedDiv:160 },
+-  stars: { maxFails:2 }
++  "common": {
++    "grabRadius": 68,
++    "touchOffset": 40,
++    "orbHitRadius": 10,
++    "failFreeze": 0.25,
++    "rewind": 0.25,
++    "forgiveAfterFails": 2,
++    "ghostAfterFails": 3,
++    "checkpointAfterFails": 6,
++    "checkpointRatio": 0.25,
++    "maxSpeed": 900
++  },
++  "step": {
++    "interval": 0.083,
++    "maxJump": 48
++  },
++  "ink": {
++    "sampleMs": 50,
++    "angleMouse": 70,
++    "angleTouch": 90,
++    "costMouse": 10,
++    "costTouch": 8,
++    "regenAngle": 30,
++    "regenPerSample": 1.5,
++    "minSpeed": 80,
++    "lowInk": 30,
++    "shakeInk": 15
++  },
++  "spring": {
++    "omega": 14,
++    "zeta": 0.85,
++    "afterimageMinSpeed": 100,
++    "tiltMaxDeg": 2.5,
++    "tiltSpeedDiv": 160
++  },
++  "stars": {
++    "maxFails": 2
++  }
+ };
+ (() => {
+   if (new URLSearchParams(location.search).get('tune') !== '1') return;
+warning: in the working copy of 'play/creative-line/tuning.js', LF will be replaced by CRLF the next time Git touches it
+
+exit=0
+
+> node C:/agywork/agd-site-qa-scripts/autoplay.cjs C:\agywork\agd-site-codex  desktop brief
+desktop (no query) {"coarse":false,"hasTuning":"object","hasStats":"object","tunePanel":false} L1:won/fails=0/ink=100/then=card L2:won/fails=0/ink=100/then=card L3:won/fails=0/ink=100/then=card errors=0 
+
+exit=0
+
+> node C:/agywork/agd-site-qa-scripts/autoplay.cjs C:\agywork\agd-site-codex  mobile brief
+mobile (no query) {"coarse":true,"hasTuning":"object","hasStats":"object","tunePanel":false} L1:won/fails=0/ink=100/then=card L2:won/fails=0/ink=100/then=card L3:won/fails=0/ink=100/then=card errors=0 
+
+exit=0
+
+Original restored SHA256 7c519c526b21446068b7e47e0f7ef53f6231961ccab633bb86c920c5e91caa24
+> git diff -- play/creative-line/tuning.js
+
+exit=0
+
+
+exit=0
+
+> git diff --exit-code
+warning: in the working copy of 'bundle.js', LF will be replaced by CRLF the next time Git touches it
+
+exit=0

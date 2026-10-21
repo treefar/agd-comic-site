@@ -1,0 +1,269 @@
+{
+  "schema_version": 1,
+  "meta": {
+    "project": "系網漫畫版_AGDComicSite",
+    "title": "六分支獨立驗收與整合完成",
+    "generated": "2026-10-21",
+    "subtitle": "feature整合；試玩包已解壓實跑。C節未執行。",
+    "authorities": [
+      {
+        "path": "acceptance.json",
+        "role": "不可變分支提交與驗收彙整"
+      },
+      {
+        "path": "evidence/*-fresh.txt",
+        "role": "各分支實際測試輸出"
+      },
+      {
+        "path": "evidence/package-integrity.json",
+        "role": "試玩包雜湊與檔案數"
+      }
+    ],
+    "notes": [
+      "程式／啟動器基準212f9a1；本頁由資料規則計算。",
+      "真手機尚未測；未push，main未動。"
+    ]
+  },
+  "status_levels": [
+    {
+      "key": "built",
+      "label": "已整合",
+      "tone": "ok",
+      "layer": "data"
+    },
+    {
+      "key": "passed",
+      "label": "獨立驗收通過",
+      "tone": "ok",
+      "layer": "tool"
+    },
+    {
+      "key": "pending",
+      "label": "使用者未確認",
+      "tone": "info",
+      "layer": "user"
+    },
+    {
+      "key": "confirmed",
+      "label": "使用者已確認",
+      "tone": "ok",
+      "layer": "user"
+    }
+  ],
+  "summary_cards": [
+    {
+      "id": "merged",
+      "label": "已整合分支",
+      "layer": "data",
+      "rule": {
+        "count": "branches",
+        "where": {
+          "data": "built"
+        }
+      },
+      "value": 6
+    },
+    {
+      "id": "checked",
+      "label": "獨立驗收通過",
+      "layer": "tool",
+      "rule": {
+        "count": "branches",
+        "where": {
+          "tool": "passed"
+        }
+      },
+      "value": 6
+    },
+    {
+      "id": "tests",
+      "label": "分支測試通過數",
+      "layer": "tool",
+      "rule": {
+        "sum": "branches",
+        "field": "tests"
+      },
+      "value": 97
+    },
+    {
+      "id": "confirmed",
+      "label": "使用者確認",
+      "layer": "user",
+      "rule": {
+        "count": "branches",
+        "where": {
+          "user": "confirmed"
+        }
+      },
+      "value": 0
+    }
+  ],
+  "sections": [
+    {
+      "id": "branches",
+      "title": "六項驗收",
+      "row_key": "id",
+      "columns": [
+        {
+          "key": "name",
+          "title": "項目",
+          "type": "text"
+        },
+        {
+          "key": "data",
+          "title": "資料層",
+          "type": "tag"
+        },
+        {
+          "key": "tool",
+          "title": "工具層",
+          "type": "tag"
+        },
+        {
+          "key": "user",
+          "title": "使用者層",
+          "type": "tag"
+        }
+      ],
+      "detail_fields": [
+        {
+          "key": "id",
+          "title": "分支codex/",
+          "type": "code"
+        },
+        {
+          "key": "commit",
+          "title": "提交",
+          "type": "code"
+        },
+        {
+          "key": "tests",
+          "title": "通過測試",
+          "type": "number"
+        }
+      ],
+      "search_fields": [
+        "name",
+        "id"
+      ],
+      "rows": [
+        {
+          "id": "hide-pending",
+          "commit": "2576ae70ae8c22e08ca79fbc619b79072b5e05eb",
+          "codeChecks": true,
+          "extra": "cards",
+          "pass": true,
+          "tests": 17,
+          "data": "built",
+          "tool": "passed",
+          "user": "pending",
+          "name": "試玩卡隱藏待補"
+        },
+        {
+          "id": "tune-collapsed",
+          "commit": "efe42041ebdb5c2bc801cffb9c290fecf04123cf",
+          "codeChecks": true,
+          "extra": "panel",
+          "pass": true,
+          "tests": 16,
+          "data": "built",
+          "tool": "passed",
+          "user": "pending",
+          "name": "手機面板收合"
+        },
+        {
+          "id": "tuning-roundtrip",
+          "commit": "2fd7f99453117aea47a874ae9422f5e82ab1b719",
+          "codeChecks": true,
+          "extra": "roundtrip",
+          "pass": true,
+          "tests": 16,
+          "data": "built",
+          "tool": "passed",
+          "user": "pending",
+          "name": "JSON磁碟貼回"
+        },
+        {
+          "id": "spring-backgrounds",
+          "commit": "be6da333733583dbcb53e1d8f65b4f9f00dfc514",
+          "codeChecks": true,
+          "extra": "spring",
+          "pass": true,
+          "tests": 16,
+          "data": "built",
+          "tool": "passed",
+          "user": "pending",
+          "name": "兩背景彈簧線"
+        },
+        {
+          "id": "faculty-punctuation",
+          "commit": "5bb779b3a6d6b2668de8c5592160a116b4d37e98",
+          "codeChecks": true,
+          "extra": "certs",
+          "pass": true,
+          "tests": 16,
+          "data": "built",
+          "tool": "passed",
+          "user": "pending",
+          "name": "證照標點"
+        },
+        {
+          "id": "en-check-batch2",
+          "commit": "8ca0a857b657e9834b8230b1a915d9c67cb707c8",
+          "codeChecks": true,
+          "extra": "names",
+          "pass": true,
+          "tests": 16,
+          "data": "built",
+          "tool": "passed",
+          "user": "pending",
+          "name": "英文名稱第二批"
+        }
+      ],
+      "row_count": 6
+    }
+  ],
+  "filters": [
+    {
+      "id": "ui",
+      "label": "畫面與操作",
+      "conditions": {
+        "branches": {
+          "id": {
+            "in": [
+              "hide-pending",
+              "tune-collapsed",
+              "tuning-roundtrip",
+              "spring-backgrounds"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "data",
+      "label": "英文資料",
+      "conditions": {
+        "branches": {
+          "id": {
+            "in": [
+              "faculty-punctuation",
+              "en-check-batch2"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "unknowns": [
+    "真手機未測",
+    "ZIP-LAB來源正文可讀性未確認，原資料未改",
+    "英文CHECK尚餘510",
+    "ui-policy只有4個已裁定實景例外",
+    "agy DENIED後重送TIMEOUT，未採用其判定"
+  ],
+  "build": {
+    "generator": "project-dashboard/build-dashboard.js",
+    "schema_version": 1
+  }
+}

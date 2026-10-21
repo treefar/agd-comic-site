@@ -1,30 +1,35 @@
 # 系網漫畫版 交接檔（LATEST_HANDOFF）
 
-最後更新：2026-10-21 深夜（TF-GO，Claude Opus 5.5；交給 Codex 接手）
+最後更新：2026-10-21，TF-GO／Codex（六分支獨立驗收與整合、試玩包交付）。
 
-## 下一輪第一件事（給 Codex）
-1. 先讀完本檔與 `work-orders/20261021/VERIFY-run2.md`（六張工單＋WO-07 的驗收證據與合併過程）。
-2. **工作地點**：建議沿用 ASCII 路徑的 clone `C:\agywork\agd-site-codex`，但它的 feature 還停在 `e6ac8eb`，開工前先同步：`git -C C:/agywork/agd-site-codex checkout feature/en-site-and-play-zone`、`git -C C:/agywork/agd-site-codex fetch origin`、`git -C C:/agywork/agd-site-codex merge --ff-only origin/feature/en-site-and-play-zone`，確認 HEAD 是 `6981888`。clone 的 `node_modules` 是真安裝，可直接跑測試。若改在主專案做，先做第 3 步。
-3. 在主專案做的話，先做「A. 環境整理」第 1 項（把 `node_modules` 目錄連結換成正式安裝），跑 `node --test tests/en-play.test.mjs` 確認 16/16 再開工。
-4. 依「B. Codex 可直接做的待辦」優先序往下做；每項開 `codex/<短名>` 分支，**不 push、不碰 `main`、不刪檔**。
+## 下一輪第一件事
+1. 使用者試玩：完整解壓 AGDComicSite-Playtest-20261021.zip，雙擊 START.cmd 進入五款試玩區。試玩包位於本次Codex對話outputs/run4/，ZIP約60MB；完整SHA256見下。
+2. 接手代理先讀 work-orders/20261022/VERIFY-run4.md 與 run4/acceptance.json；報告附逐項yes/no、真實指令輸出及負向控制。不要再把B表當未做待辦。
+3. 在clone C:/agywork/agd-site-codex 或主專案開始前先 git status 與 git rev-parse HEAD。feature/en-site-and-play-zone 已整合六條分支；玩家程式／啟動器基準212f9a1，之後提交只補驗收與交接文件。兩邊用本機fetch＋ff-only同步，未push。
+4. C節保持待使用者決定；不自動push、不刪檔、不做真手機代調、不補未知製作者授權、不定案格鬥規格。C節原文保持，原提交數是舊交接數字，現況以git查詢。
 
-## 目前狀態（2026-10-21 深夜實測）
-- 專案：`C:\Projects\系網漫畫版_AGDComicSite`，分支 `feature/en-site-and-play-zone`，HEAD `6981888`。
-- **本機比 origin 多 20 個提交，尚未 push**（origin 同名分支停在 `0cc8b2e`）。repo 公開；`main` 與線上站未動。推不推由使用者決定。
-- 未提交的修改：`LATEST_HANDOFF.md`（本檔）、新檔 `work-orders/20261021/VERIFY-run2.md`。
-- 本輪已合併進 feature 的分支（皆經 Claude Opus 獨立驗收）：
-  - `codex/wo-07-spring-line`：WO-01 截圖包（56 張 WebP，10.3 MB）＋第 3 關彈簧線修正（墨黑 4px 虛線＋米白 8px 底線）。
-  - `codex/wo-02-tuning`：手感參數外部化到 `play/creative-line/tuning.js`，`?tune=1` 手機調校面板，`window.__cl.tuning`／`stats`。
-  - `codex/wo-03-credits`：`data/play.json` 五款加 team／year／license／credit，試玩卡顯示 `team · year`。
-  - `codex/wo-04-en-check`：英文名稱第一批（青春設計節、智冠），`tools/validate-en.mjs`。
-  - `codex/wo-05-delete-list`：`_v1-rejected` 29 檔移除清單（只列不刪）。
-  - `codex/wo-06-fighter-spec`：`docs/design/fighter-homage/SPEC.md`＋拍攝清單。
-- 合併時解了一個衝突：`game.js` 彈簧線兩行用 wo-07（雙線），傾斜與墨量兩行用 wo-02（讀 `tuning`）；測試檔兩邊新測試都保留。
-- 合併後在主專案實測：`node --test` 16/16；三關自動試玩（桌機、手機模擬、`?tune=1`）皆 `won`、失誤 0、錯誤 0；調校面板 28 支滑桿，`ink.costTouch` 7→12 時同樣抖動扣墨 42→72；公開版不讀 `localStorage` 的 `cl-tuning`。
-- `ui-policy.cjs --project play/creative-line` 仍報 4 筆實景圖「非 Codex 來源」，屬使用者 2026-10-21 裁定的例外，不算新問題。
-- **真手機從未測過。**
+## 目前狀態
+- 主專案：C:/Projects/系網漫畫版_AGDComicSite；執行clone：C:/agywork/agd-site-codex。分支均feature/en-site-and-play-zone。
+- 本輪六條：codex/hide-pending 2576ae7、codex/tune-collapsed efe4204、codex/tuning-roundtrip 2fd7f99、codex/spring-backgrounds be6da33、codex/faculty-punctuation 5bb779b、codex/en-check-batch2 8ca0a85。全數獨立重跑後合併，合併點d0e7eb1，0衝突。
+- 獨立驗收工作樹：C:/agywork/agd-run4-verifier，保留未清理。六分支相關測試分別17/16/16/16/16/16，全通過。
+- 整合版 node --test tests/en-play.test.mjs：17/17；node tools/validate-en.mjs：8檔PASS；英文CHECK 518→510。
+- node build.mjs exit0，既有duplicate color警告仍在；輸出bundle與提交版一致。沒有額外重寫介面或改遊戲。
+- 中英試玩卡5張皆無待補，可真正開啟／關閉iframe；已知team·year保留。390×844調校面板預設收合，遊戲可見100%，28鍵可用；扣墨42→72、公開／調校localStorage隔離、JSON28鍵維持。
+- JSON實際貼回磁碟tuning.js後，桌機／手機三關通過，再用原始bytes還原，SHA256一致。六組語系／裝置／調校組合各三關won、0失誤、0錯誤。
+- 平台與藍牆四張圖重新拍攝並逐張代理目視可辨識虛線；未改顏色或程式，未宣稱使用者對話確認。
+- 英文來源本輪重新開啟金點主辦部會、金犢官方PDF、KT藝術節、HC真正官網；ZIP-LAB可讀性待確認，原值未改。
+- ui-policy工具仍exit1，只有既有4張實景例外，沒有新問題。
+- agy補助審查：ReadFile被擋；改附文字重送後240秒TIMEOUT，未提供可用判定，不納入驗收。
+- **真手機從未測過**。其餘四款只做啟動及第一段操作冒煙，不宣稱完整通關；《創作不斷線》完整三關已測。
 
-## A. 環境整理（Codex 先做）
+## 本輪試玩交付
+- ZIP：AGDComicSite-Playtest-20261021.zip，59,982,468 bytes。完整解壓後雙擊START.cmd；Windows內建PowerShell即可，無需npm安裝。既有React CDN與網路字型需網路。
+- ZIP SHA256：0a9d073e68e5e291b7dde2c99581028b688aa05deba4e562f8ed5d1f724c9603。
+- ZIP已真正解壓到 work/run4/unpacked-playtest，用包內PowerShell伺服器實跑五款第一段操作，全部通過、JS/站內HTTP錯誤0。554個runtime檔案逐一雜湊一致；PS1 UTF-8 BOM、CMD純ASCII，PowerShell5.1/7解析皆過。
+- 可重跑QA：tools/qa/run4/README.md；啟動器範本：tools/playtest/。
+- 離線狀態儀表板：work-orders/20261022/run4/dashboard/index.html（2026-10-21重產；資料／工具／使用者狀態分開，使用者確認仍為0）。
+
+## A. 環境整理（本輪使用clone，主專案junction未拆）
 1. **`node_modules` 目前是目錄連結**（junction，指向 `C:\agywork\agd-site-codex\node_modules`），不是正式安裝。處理方式：
    - 先確認是連結：PowerShell `(Get-Item node_modules).LinkType` 應為 `Junction`。
    - 只拆連結、不碰目標內容：`cmd /c rmdir node_modules`（**不可加 `/s`，不可用 `Remove-Item -Recurse`／`rm -rf`**，那會刪到 clone 裡的真套件）。
@@ -32,7 +37,7 @@
    - 驗收：`node --test tests/en-play.test.mjs` 16/16。
 2. 文字檔換行：clone 設 `core.autocrlf=true`，工作目錄是 CRLF、git 內是 LF。比對雜湊時要說明用的是哪一邊。
 
-## B. Codex 可直接做的待辦（依優先序）
+## B. 本輪六項已完成（以下保留原工單規格）
 每項做完寫 `work-orders/20261022/reports/<名稱>-report.md`：做了什麼、`git diff --stat`、驗收逐條 yes／no 附實際指令輸出。
 
 | 優先 | 項目 | 範圍（白名單） | 驗收（yes／no） |
