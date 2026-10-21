@@ -69,3 +69,9 @@ ZIP：AGDComicSite-Playtest-20261021.zip；59,982,468bytes；SHA256 0a9d073e68e5
 - agy實跑：headless無法跑命令，兩次補助審查皆沒有可用結果。
 
 儀表板25/25檔案與權威驗證通過；桌機淺色／手機深色搜尋、篩選、列展開通過，頁面無橫向溢出。
+
+## 主專案同步後實驗
+
+主專案在本輪期間新增87e7c63（只在交接檔尾端加48行復盤），首次ff-only停止；clone fetch後自動合併保留全部文字，程式沒有新增變動，再於主專案ff-only成功。其後在中文路徑主專案實跑17/17、英文資料8/8、中英試玩iframe開關均通過。
+
+[主專案實際輸出](run4/evidence/source-final-verification.txt)；[main、C節與無刪檔檢查](run4/evidence/final-scope.txt)。

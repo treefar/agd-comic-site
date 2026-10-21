@@ -1,0 +1,223 @@
+第一次ff-only安全停止：主專案額外87e7c63只在LATEST_HANDOFF.md尾端新增48行復盤。clone已fetch並自動合併，保留全部新增文字；程式與試玩包runtime未變。
+> git branch --show-current
+feature/en-site-and-play-zone
+
+exit=0
+
+> git diff --exit-code
+
+exit=0
+
+> git fetch --no-tags C:/agywork/agd-site-codex feature/en-site-and-play-zone:refs/remotes/codex-run4/feature
+From C:/agywork/agd-site-codex
+   bd0e0da..69e1367  feature/en-site-and-play-zone -> codex-run4/feature
+
+exit=0
+
+> git merge --ff-only refs/remotes/codex-run4/feature
+Updating 87e7c63..69e1367
+Fast-forward
+ LATEST_HANDOFF.md                                  |  57 ++--
+ bundle.js                                          |   4 +-
+ data/en/faculty.json                               |  16 +-
+ data/en/news.json                                  |  22 +-
+ data/en/stats.json                                 |  66 ++--
+ data/en/works.json                                 |   6 +-
+ .../20261022/background-evidence.json              | 153 +++++++++
+ .../creative-line/20261022/desktop-blue-wall.webp  | Bin 0 -> 405978 bytes
+ .../20261022/desktop-dark-platform.webp            | Bin 0 -> 405478 bytes
+ .../creative-line/20261022/mobile-blue-wall.webp   | Bin 0 -> 160412 bytes
+ .../20261022/mobile-dark-platform.webp             | Bin 0 -> 159986 bytes
+ docs/qa/en-check/20261022-batch2.md                | 104 ++++++
+ en-pages.jsx                                       |   5 +-
+ index.html                                         |   4 +-
+ pages.jsx                                          |   2 +-
+ play/creative-line/tuning.js                       |   9 +-
+ tests/en-play.test.mjs                             |  29 ++
+ tools/playtest/README.md                           |   9 +
+ tools/playtest/START.cmd                           |   3 +
+ tools/playtest/start.ps1                           |  36 ++
+ tools/qa/run4/README.md                            |  16 +
+ tools/qa/run4/autoplay.cjs                         |  43 +++
+ tools/qa/run4/extra-checks.cjs                     |   5 +
+ tools/qa/run4/games-smoke.cjs                      |   7 +
+ tools/qa/run4/independent-ui.cjs                   |   5 +
+ tools/qa/run4/lib.cjs                              |   5 +
+ work-orders/20261022/VERIFY-run4.md                |  71 ++++
+ .../20261022/reports/en-check-batch2-report.md     | 102 ++++++
+ .../20261022/reports/faculty-punctuation-report.md |  65 ++++
+ .../20261022/reports/hide-pending-report.md        | 192 +++++++++++
+ .../20261022/reports/spring-backgrounds-report.md  |  45 +++
+ .../20261022/reports/tune-collapsed-report.md      | 186 ++++++++++
+ .../20261022/reports/tuning-roundtrip-report.md    | 135 ++++++++
+ work-orders/20261022/run4/acceptance.json          |  91 +++++
+ work-orders/20261022/run4/authority.cjs            |   1 +
+ work-orders/20261022/run4/dashboard-input.json     | 260 ++++++++++++++
+ .../20261022/run4/dashboard/dashboard-data.json    | 269 +++++++++++++++
+ work-orders/20261022/run4/dashboard/index.html     | 380 +++++++++++++++++++++
+ .../20261022/run4/evidence/agy-inline-result.json  |  32 ++
+ .../20261022/run4/evidence/agy-read-result.json    |  40 +++
+ .../20261022/run4/evidence/branch-results.json     |  38 +++
+ work-orders/20261022/run4/evidence/c-section.json  |   4 +
+ work-orders/20261022/run4/evidence/cards-en.webp   | Bin 0 -> 461038 bytes
+ work-orders/20261022/run4/evidence/cards-zh.webp   | Bin 0 -> 417266 bytes
+ work-orders/20261022/run4/evidence/certs-extra.txt |  13 +
+ .../20261022/run4/evidence/dashboard-desktop.webp  | Bin 0 -> 86732 bytes
+ .../20261022/run4/evidence/dashboard-mobile.webp   | Bin 0 -> 75790 bytes
+ .../20261022/run4/evidence/dashboard-smoke.json    |  80 +++++
+ .../run4/evidence/en-check-batch2-extra-run.txt    |  83 +++++
+ .../run4/evidence/en-check-batch2-fresh.txt        |  57 ++++
+ .../evidence/faculty-punctuation-extra-run.txt     |  29 ++
+ .../run4/evidence/faculty-punctuation-fresh.txt    |  53 +++
+ .../20261022/run4/evidence/games-smoke.json        |  32 ++
+ .../20261022/run4/evidence/games-smokepack.json    |  32 ++
+ .../20261022/run4/evidence/hide-pending-fresh.txt  |  55 +++
+ work-orders/20261022/run4/evidence/integration.txt | 324 ++++++++++++++++++
+ work-orders/20261022/run4/evidence/merge.txt       |  80 +++++
+ work-orders/20261022/run4/evidence/names-extra.txt |  67 ++++
+ .../20261022/run4/evidence/negative-controls.txt   |  91 +++++
+ work-orders/20261022/run4/evidence/pack-smoke.txt  |  11 +
+ .../20261022/run4/evidence/package-integrity.json  |  10 +
+ .../20261022/run4/evidence/panel-collapsed.webp    | Bin 0 -> 145934 bytes
+ .../20261022/run4/evidence/roundtrip-extra.txt     |  76 +++++
+ .../20261022/run4/evidence/smoke-cozy-big-two.webp | Bin 0 -> 61930 bytes
+ .../run4/evidence/smoke-creative-line.webp         | Bin 0 -> 346700 bytes
+ .../run4/evidence/smoke-crunch-defense.webp        | Bin 0 -> 54916 bytes
+ .../20261022/run4/evidence/smoke-dungeon-chef.webp | Bin 0 -> 35192 bytes
+ .../run4/evidence/smoke-six-floor-exit.webp        | Bin 0 -> 367508 bytes
+ .../run4/evidence/spring-backgrounds-extra-run.txt |  15 +
+ .../run4/evidence/spring-backgrounds-fresh.txt     |  45 +++
+ .../run4/evidence/spring-desktop-platform.webp     | Bin 0 -> 384604 bytes
+ .../run4/evidence/spring-desktop-wall.webp         | Bin 0 -> 385308 bytes
+ .../20261022/run4/evidence/spring-extra.txt        |   7 +
+ .../run4/evidence/spring-mobile-platform.webp      | Bin 0 -> 145618 bytes
+ .../20261022/run4/evidence/spring-mobile-wall.webp | Bin 0 -> 145698 bytes
+ .../run4/evidence/tune-collapsed-fresh.txt         |  48 +++
+ .../run4/evidence/tuning-roundtrip-extra-run.txt   | 156 +++++++++
+ .../run4/evidence/tuning-roundtrip-fresh.txt       |  40 +++
+ work-orders/20261022/run4/evidence/ui-policy.txt   |  17 +
+ work-orders/20261022/run4/sources.md               |  12 +
+ 80 files changed, 3858 insertions(+), 92 deletions(-)
+ create mode 100644 docs/qa/creative-line/20261022/background-evidence.json
+ create mode 100644 docs/qa/creative-line/20261022/desktop-blue-wall.webp
+ create mode 100644 docs/qa/creative-line/20261022/desktop-dark-platform.webp
+ create mode 100644 docs/qa/creative-line/20261022/mobile-blue-wall.webp
+ create mode 100644 docs/qa/creative-line/20261022/mobile-dark-platform.webp
+ create mode 100644 docs/qa/en-check/20261022-batch2.md
+ create mode 100644 tools/playtest/README.md
+ create mode 100644 tools/playtest/START.cmd
+ create mode 100644 tools/playtest/start.ps1
+ create mode 100644 tools/qa/run4/README.md
+ create mode 100644 tools/qa/run4/autoplay.cjs
+ create mode 100644 tools/qa/run4/extra-checks.cjs
+ create mode 100644 tools/qa/run4/games-smoke.cjs
+ create mode 100644 tools/qa/run4/independent-ui.cjs
+ create mode 100644 tools/qa/run4/lib.cjs
+ create mode 100644 work-orders/20261022/VERIFY-run4.md
+ create mode 100644 work-orders/20261022/reports/en-check-batch2-report.md
+ create mode 100644 work-orders/20261022/reports/faculty-punctuation-report.md
+ create mode 100644 work-orders/20261022/reports/hide-pending-report.md
+ create mode 100644 work-orders/20261022/reports/spring-backgrounds-report.md
+ create mode 100644 work-orders/20261022/reports/tune-collapsed-report.md
+ create mode 100644 work-orders/20261022/reports/tuning-roundtrip-report.md
+ create mode 100644 work-orders/20261022/run4/acceptance.json
+ create mode 100644 work-orders/20261022/run4/authority.cjs
+ create mode 100644 work-orders/20261022/run4/dashboard-input.json
+ create mode 100644 work-orders/20261022/run4/dashboard/dashboard-data.json
+ create mode 100644 work-orders/20261022/run4/dashboard/index.html
+ create mode 100644 work-orders/20261022/run4/evidence/agy-inline-result.json
+ create mode 100644 work-orders/20261022/run4/evidence/agy-read-result.json
+ create mode 100644 work-orders/20261022/run4/evidence/branch-results.json
+ create mode 100644 work-orders/20261022/run4/evidence/c-section.json
+ create mode 100644 work-orders/20261022/run4/evidence/cards-en.webp
+ create mode 100644 work-orders/20261022/run4/evidence/cards-zh.webp
+ create mode 100644 work-orders/20261022/run4/evidence/certs-extra.txt
+ create mode 100644 work-orders/20261022/run4/evidence/dashboard-desktop.webp
+ create mode 100644 work-orders/20261022/run4/evidence/dashboard-mobile.webp
+ create mode 100644 work-orders/20261022/run4/evidence/dashboard-smoke.json
+ create mode 100644 work-orders/20261022/run4/evidence/en-check-batch2-extra-run.txt
+ create mode 100644 work-orders/20261022/run4/evidence/en-check-batch2-fresh.txt
+ create mode 100644 work-orders/20261022/run4/evidence/faculty-punctuation-extra-run.txt
+ create mode 100644 work-orders/20261022/run4/evidence/faculty-punctuation-fresh.txt
+ create mode 100644 work-orders/20261022/run4/evidence/games-smoke.json
+ create mode 100644 work-orders/20261022/run4/evidence/games-smokepack.json
+ create mode 100644 work-orders/20261022/run4/evidence/hide-pending-fresh.txt
+ create mode 100644 work-orders/20261022/run4/evidence/integration.txt
+ create mode 100644 work-orders/20261022/run4/evidence/merge.txt
+ create mode 100644 work-orders/20261022/run4/evidence/names-extra.txt
+ create mode 100644 work-orders/20261022/run4/evidence/negative-controls.txt
+ create mode 100644 work-orders/20261022/run4/evidence/pack-smoke.txt
+ create mode 100644 work-orders/20261022/run4/evidence/package-integrity.json
+ create mode 100644 work-orders/20261022/run4/evidence/panel-collapsed.webp
+ create mode 100644 work-orders/20261022/run4/evidence/roundtrip-extra.txt
+ create mode 100644 work-orders/20261022/run4/evidence/smoke-cozy-big-two.webp
+ create mode 100644 work-orders/20261022/run4/evidence/smoke-creative-line.webp
+ create mode 100644 work-orders/20261022/run4/evidence/smoke-crunch-defense.webp
+ create mode 100644 work-orders/20261022/run4/evidence/smoke-dungeon-chef.webp
+ create mode 100644 work-orders/20261022/run4/evidence/smoke-six-floor-exit.webp
+ create mode 100644 work-orders/20261022/run4/evidence/spring-backgrounds-extra-run.txt
+ create mode 100644 work-orders/20261022/run4/evidence/spring-backgrounds-fresh.txt
+ create mode 100644 work-orders/20261022/run4/evidence/spring-desktop-platform.webp
+ create mode 100644 work-orders/20261022/run4/evidence/spring-desktop-wall.webp
+ create mode 100644 work-orders/20261022/run4/evidence/spring-extra.txt
+ create mode 100644 work-orders/20261022/run4/evidence/spring-mobile-platform.webp
+ create mode 100644 work-orders/20261022/run4/evidence/spring-mobile-wall.webp
+ create mode 100644 work-orders/20261022/run4/evidence/tune-collapsed-fresh.txt
+ create mode 100644 work-orders/20261022/run4/evidence/tuning-roundtrip-extra-run.txt
+ create mode 100644 work-orders/20261022/run4/evidence/tuning-roundtrip-fresh.txt
+ create mode 100644 work-orders/20261022/run4/evidence/ui-policy.txt
+ create mode 100644 work-orders/20261022/run4/sources.md
+
+exit=0
+
+> node --test tests/en-play.test.mjs
+✔ data/en/faculty.json 與中文版結構一致 (7.1175ms)
+✔ data/en/curriculum.json 與中文版結構一致 (2.8448ms)
+✔ data/en/labs.json 與中文版結構一致 (3.0446ms)
+✔ data/en/works.json 與中文版結構一致 (2.0265ms)
+✔ data/en/videos.json 與中文版結構一致 (2.6938ms)
+✔ data/en/stats.json 與中文版結構一致 (3.5997ms)
+✔ data/en/news.json 與中文版結構一致 (3.5294ms)
+✔ data/en/admission.json 與中文版結構一致 (3.6296ms)
+✔ play.json 每款遊戲的入口與封面都存在、層級有效 (2.722ms)
+✔ 創作不斷線：碰撞遮罩三段都從起點連到終點 (95.7564ms)
+✔ 創作不斷線：用到的素材檔都存在，課程名稱都在 curriculum.json 裡 (24.009ms)
+✔ bundle.js 已包含英文頁與試玩區 (93.3231ms)
+✔ 試玩區：五款都有雙語製作與授權欄位 (1.4204ms)
+✔ 創作不斷線：調校預設鍵與原值完整 (26.5162ms)
+AUTO-PLAY [{"level":1,"state":"won","fails":0},{"level":2,"state":"won","fails":0},{"level":3,"state":"won","fails":0}]
+JITTER {"before":{"ink":72,"count":4},"after":{"ink":44,"count":4}}
+✔ 創作不斷線：瀏覽器通關、即時調校、持久化與公開版隔離 (10549.5487ms)
+✔ 創作不斷線：手感常數不可寫死回遊戲 (1.0484ms)
+PLAY-CARDS #/play/zone cards=5 pending=0 credit=動遊系 × Claude／Codex 協作（2026-10） · 2026
+PLAY-CARDS #/en/play cards=5 pending=0 credit=AGD × Claude/Codex collaboration (Oct 2026) · 2026
+✔ 試玩卡：中英頁均隱藏待補署名，保留已知 team · year (2216.9977ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13149.5963
+
+exit=0
+
+> node tools/validate-en.mjs
+admission.json	PASS	[CHECK]=0
+curriculum.json	PASS	[CHECK]=0
+faculty.json	PASS	[CHECK]=197
+labs.json	PASS	[CHECK]=0
+news.json	PASS	[CHECK]=37
+stats.json	PASS	[CHECK]=262
+videos.json	PASS	[CHECK]=0
+works.json	PASS	[CHECK]=14
+
+exit=0
+
+> node tools/qa/run4/independent-ui.cjs C:/Projects/系網漫畫版_AGDComicSite cards
+#/play/zone five cards / no pending / real iframe load and close PASS
+#/en/play five cards / no pending / real iframe load and close PASS
+local HTTP and JS errors = 0
+
+exit=0

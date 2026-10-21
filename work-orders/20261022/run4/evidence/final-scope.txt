@@ -1,0 +1,37 @@
+原專案main與其他既有refs全部不變；僅feature更新與新增codex-run4/feature追蹤ref。
+C節git blob原文完全一致。
+87e7c63新增48行復盤全部保留。
+基準到HEAD沒有D/R。
+clone bundle換行回core.autocrlf=true預期的CRLF，git內容無差異。
+
+> source refs
+refs/heads/codex/attempt1-partial c4a9124394cd0f70a83b6aff38aa914c37c3acec
+refs/heads/codex/wo-01-screenshots af546c730583b861330abffe5b070e96f0fd4d04
+refs/heads/codex/wo-01-screenshots-webp 7ee07e37d9563d2064701594aee7185c6735dca7
+refs/heads/codex/wo-02-tuning 0fc88ab834a9e11bc3aa07b1b0bff4d9c40f34c6
+refs/heads/codex/wo-03-credits 1a43ec2838e765ba6d3b09763dca0c96b7aa91ee
+refs/heads/codex/wo-04-en-check 9b463232847d4d1c6b9591421f4ede1a0063396c
+refs/heads/codex/wo-05-delete-list 17ba8fdef3f77518d0695c5e7e0eee1478ade0a5
+refs/heads/codex/wo-06-fighter-spec 76e1f8aeee2b14a60ecd02d49c7f5e60ba545072
+refs/heads/codex/wo-07-spring-line 1e2bc2dd9c713bcbe5b2165a7ba712791a77a93c
+refs/heads/feature/en-site-and-play-zone 69e1367c3d9ea6e4d773be660a04d386ff5a1aa7
+refs/heads/merge/codex-run2 698188813b05df617ca0ee470963cddac07a9abd
+refs/heads/redesign-comic2 0cc8b2ef37e82dc99c471981d602f2f52a0f1121
+refs/remotes/codex-run4/feature 69e1367c3d9ea6e4d773be660a04d386ff5a1aa7
+refs/remotes/drive/HEAD 0cc8b2ef37e82dc99c471981d602f2f52a0f1121
+refs/remotes/drive/main a934aad5fb01de21a9e353f877f1e829748e309b
+refs/remotes/drive/redesign-comic2 0cc8b2ef37e82dc99c471981d602f2f52a0f1121
+refs/remotes/origin/feature/en-site-and-play-zone 0cc8b2ef37e82dc99c471981d602f2f52a0f1121
+refs/remotes/origin/redesign-comic2 0cc8b2ef37e82dc99c471981d602f2f52a0f1121
+refs/stash d62578d74f27801762e07d1ffd08c40687339fce
+
+> clone status
+?? docs/qa/creative-line/20261021/browser-tmp/
+?? work-orders/20261021/codex-last-message-run2.txt
+?? work-orders/20261021/codex-last-message-run3.txt
+?? work-orders/20261021/codex-last-message-run4.txt
+?? work-orders/20261021/codex-prompt-run2.txt
+?? work-orders/20261021/codex-prompt-run3.txt
+?? work-orders/20261021/codex-prompt-run4.txt
+
+> source status
