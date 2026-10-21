@@ -439,7 +439,8 @@ const PlayCard = ({ g, lang, t, active, onPlay, onClose }) => {
           ))}
         </div>
       )}
-      {g.credit && <div style={{ fontSize: 11, opacity: 0.65, marginTop: 8 }}>{t(g.credit)}</div>}
+      {g.team && <div style={{ fontSize: 11, opacity: 0.65, marginTop: 8 }}>{t(g.team)} · {t(g.year)}</div>}
+      {(g.credit || g.license) && <div style={{ fontSize: 11, opacity: 0.65, marginTop: 8 }}>{[...new Set([g.credit && t(g.credit), g.license && t(g.license)].filter(Boolean))].join(" · ")}</div>}
     </Panel>
   );
 };
