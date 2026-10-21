@@ -389,23 +389,25 @@ const PlayCard = ({ g, lang, t, active, onPlay, onClose }) => {
     ? { play: "▶ PLAY", watch: "▶ WATCH", open: "OPEN ↗", close: "✕ CLOSE", full: "FULL SCREEN ↗", mobile: "Phone OK", desktop: "Desktop only", shows: "WHAT IT SHOWS" }
     : { play: "▶ 開始玩", watch: "▶ 看影片", open: "開新視窗 ↗", close: "✕ 關閉", full: "全螢幕 ↗", mobile: "手機可玩", desktop: "建議用電腦", shows: "看得到系上的" };
   const go = g.mode === "link" ? label.open : g.mode === "video" ? label.watch : label.play;
+  const src = lang === "en" && g.srcEn ? g.srcEn : g.src;
   return (
     <Panel variant="" style={{ padding: 14, gridColumn: active ? "1 / -1" : undefined }}>
       {active && g.mode !== "link" ? (
         <div>
-          <div style={{ position: "relative", width: "100%", aspectRatio: g.aspect || "16 / 9", background: "#000", border: "3px solid var(--ink)" }}>
+          {/* 直式遊戲（aspect 2 / 3）限制最大寬度，避免在寬螢幕撐得比視窗還高 */}
+          <div style={{ position: "relative", width: "100%", maxWidth: g.maxWidth || undefined, margin: "0 auto", aspectRatio: g.aspect || "16 / 9", background: "#000", border: "3px solid var(--ink)" }}>
             {g.mode === "video"
               ? <video src={g.src} poster={g.poster} controls autoPlay playsInline style={{ width: "100%", height: "100%" }} />
-              : <iframe src={g.src} title={t(g.title)} allow="autoplay; fullscreen; gamepad" allowFullScreen
+              : <iframe src={src} title={t(g.title)} allow="autoplay; fullscreen; gamepad" allowFullScreen
                   style={{ width: "100%", height: "100%", border: 0, display: "block" }} />}
           </div>
           <div style={{ display: "flex", gap: 10, marginTop: 10, flexWrap: "wrap" }}>
             <button onClick={onClose} data-no-splat="true" style={{ ...enPill(false), cursor: "pointer" }}>{label.close}</button>
-            {g.mode === "embed" && <a href={g.src} target="_blank" rel="noopener" style={enPill(false)}>{label.full}</a>}
+            {g.mode === "embed" && <a href={src} target="_blank" rel="noopener" style={enPill(false)}>{label.full}</a>}
           </div>
         </div>
       ) : (
-        <button onClick={() => (g.mode === "link" ? window.open(g.src, "_blank", "noopener") : onPlay())} data-no-splat="true"
+        <button onClick={() => (g.mode === "link" ? window.open(src, "_blank", "noopener") : onPlay())} data-no-splat="true"
           aria-label={`${go} ${t(g.title)}`}
           style={{ position: "relative", display: "block", width: "100%", padding: 0, border: "3px solid var(--ink)", cursor: "pointer", background: "var(--ink)" }}>
           {g.poster

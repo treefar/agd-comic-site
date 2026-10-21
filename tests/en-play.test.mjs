@@ -43,6 +43,44 @@ test("play.json 每款遊戲的入口與封面都存在、層級有效", () => {
   }
 });
 
+test("創作不斷線：碰撞遮罩三段都從起點連到終點", () => {
+  const src = fs.readFileSync(path.join(root, "play/creative-line/masks.js"), "utf8");
+  const MASKS = JSON.parse(src.slice(src.indexOf("{"), src.lastIndexOf("}") + 1));
+  for (const name of ["route1", "route2", "route3"]) {
+    const m = MASKS[name];
+    assert.ok(m, `缺 ${name}`);
+    for (const plane of ["normal", "coarse"]) {
+      const bits = Buffer.from(m[plane], "base64");
+      const ok = (x, y) => x >= 0 && y >= 0 && x < m.w && y < m.h && (bits[(y * m.w + x) >> 3] >> ((y * m.w + x) & 7)) & 1;
+      const s = m.start.map((v) => Math.round(v / m.cell)), e = m.end.map((v) => v / m.cell);
+      assert.ok(ok(s[0], s[1]), `${name}/${plane} 起點不在可走區`);
+      const seen = new Set([s.join()]), q = [s];
+      let reach = false;
+      while (q.length && !reach) {
+        const [x, y] = q.shift();
+        if (Math.hypot(x - e[0], y - e[1]) < 18) reach = true;
+        for (const [a, b] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) { const k = [x + a, y + b]; if (ok(...k) && !seen.has(k.join())) { seen.add(k.join()); q.push(k); } }
+      }
+      assert.ok(reach, `${name}/${plane} 起點走不到終點`);
+      // 牆一定要存在：可走格不能超過全畫面的 25%（防止遮罩漏到整張圖）
+      let n = 0; for (let i = 0; i < m.w * m.h; i++) n += (bits[i >> 3] >> (i & 7)) & 1;
+      assert.ok(n < m.w * m.h * 0.25, `${name}/${plane} 可走區過大（${n} 格），可能漏色`);
+    }
+  }
+});
+
+test("創作不斷線：用到的素材檔都存在，課程名稱都在 curriculum.json 裡", () => {
+  const g = fs.readFileSync(path.join(root, "play/creative-line/game.js"), "utf8");
+  const list = [...g.matchAll(/"((?:web|ui|fx)\/[\w]+)"/g)].map((m) => m[1]);
+  assert.ok(list.length >= 18, "素材清單太短");
+  for (const n of list) assert.ok(fs.existsSync(path.join(root, `play/creative-line/art/${n}.png`)), `缺 art/${n}.png`);
+  const routes = fs.readFileSync(path.join(root, "play/creative-line/routes.js"), "utf8");
+  const cur = read("data/curriculum.json").tracks.flatMap((t) => t.courses.flat().map((c) => c.name));
+  for (const m of routes.matchAll(/name: "([^"]+)"/g)) assert.ok(cur.includes(m[1]), `課程「${m[1]}」不在 curriculum.json`);
+  for (const [k, v] of [["labs", "d0637"], ["labs", "multimedia-classroom"], ["faculty", "chiangyamei"]]) assert.ok(read(`data/${k}.json`).some((x) => x.slug === v), `${k} 沒有 ${v}`);
+  assert.ok(read("data/works.json").some((x) => x.id === "stolen-recipe"), "works 沒有 stolen-recipe");
+});
+
 test("bundle.js 已包含英文頁與試玩區", () => {
   const b = fs.readFileSync(path.join(root, "bundle.js"), "utf8");
   for (const s of ["PlayZone", "EnglishIntro", "en/faculty", "play/zone"]) assert.ok(b.includes(s), `bundle 缺 ${s}`);
