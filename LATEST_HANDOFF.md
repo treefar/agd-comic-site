@@ -1,30 +1,86 @@
 # 系網漫畫版 交接檔（LATEST_HANDOFF）
 
-最後更新：2026-10-21（TF-GO，Claude Fable 5.1 規劃；前段由 Claude Opus 5.5 實作）
+最後更新：2026-10-21 深夜（TF-GO，Claude Opus 5.5；交給 Codex 接手）
 
-## 下一輪第一件事
-Codex 讀 `work-orders/20261021/README.md`，依優先序從 **WO-01**（截圖包）開始；每張工單開自己的 `codex/wo-NN-*` 分支，不 push、不碰 `main`。
+## 下一輪第一件事（給 Codex）
+1. 先讀完本檔與 `work-orders/20261021/VERIFY-run2.md`（六張工單＋WO-07 的驗收證據與合併過程）。
+2. **工作地點**：建議沿用 ASCII 路徑的 clone `C:\agywork\agd-site-codex`，但它的 feature 還停在 `e6ac8eb`，開工前先同步：`git -C C:/agywork/agd-site-codex checkout feature/en-site-and-play-zone`、`git -C C:/agywork/agd-site-codex fetch origin`、`git -C C:/agywork/agd-site-codex merge --ff-only origin/feature/en-site-and-play-zone`，確認 HEAD 是 `6981888`。clone 的 `node_modules` 是真安裝，可直接跑測試。若改在主專案做，先做第 3 步。
+3. 在主專案做的話，先做「A. 環境整理」第 1 項（把 `node_modules` 目錄連結換成正式安裝），跑 `node --test tests/en-play.test.mjs` 確認 16/16 再開工。
+4. 依「B. Codex 可直接做的待辦」優先序往下做；每項開 `codex/<短名>` 分支，**不 push、不碰 `main`、不刪檔**。
 
-## 目前狀態
-- 分支 `feature/en-site-and-play-zone`，本機最新 `0ec3276`（三個本機提交尚未推：`6e91607`、`8914554`、`0ec3276`；GitHub 上同名分支停在 `0cc8b2e`）。repo 公開，`main` 與線上站未動。
-- 英文版 8 頁（`#/en/*`）＋試玩區（`#/play/zone`、`#/en/play`）：本機 `npx --yes http-server -p 8765 -c-1` 可預覽；`node --test tests/en-play.test.mjs` 12/12。
-- 《創作不斷線》v2（`play/creative-line/`）：三關三種手感，實景漫畫場景，純文字按鈕，1.8 MB。自動試玩三關皆過；**真手機未測、畫面未目視**。
-- 已知未通過：`ui-policy.cjs` 對 4 張實景圖報「非 Codex 來源」，屬使用者 2026-10-21 於對話決定的例外（記在 `play/creative-line/ui-art-manifest.json`）。
+## 目前狀態（2026-10-21 深夜實測）
+- 專案：`C:\Projects\系網漫畫版_AGDComicSite`，分支 `feature/en-site-and-play-zone`，HEAD `6981888`。
+- **本機比 origin 多 20 個提交，尚未 push**（origin 同名分支停在 `0cc8b2e`）。repo 公開；`main` 與線上站未動。推不推由使用者決定。
+- 未提交的修改：`LATEST_HANDOFF.md`（本檔）、新檔 `work-orders/20261021/VERIFY-run2.md`。
+- 本輪已合併進 feature 的分支（皆經 Claude Opus 獨立驗收）：
+  - `codex/wo-07-spring-line`：WO-01 截圖包（56 張 WebP，10.3 MB）＋第 3 關彈簧線修正（墨黑 4px 虛線＋米白 8px 底線）。
+  - `codex/wo-02-tuning`：手感參數外部化到 `play/creative-line/tuning.js`，`?tune=1` 手機調校面板，`window.__cl.tuning`／`stats`。
+  - `codex/wo-03-credits`：`data/play.json` 五款加 team／year／license／credit，試玩卡顯示 `team · year`。
+  - `codex/wo-04-en-check`：英文名稱第一批（青春設計節、智冠），`tools/validate-en.mjs`。
+  - `codex/wo-05-delete-list`：`_v1-rejected` 29 檔移除清單（只列不刪）。
+  - `codex/wo-06-fighter-spec`：`docs/design/fighter-homage/SPEC.md`＋拍攝清單。
+- 合併時解了一個衝突：`game.js` 彈簧線兩行用 wo-07（雙線），傾斜與墨量兩行用 wo-02（讀 `tuning`）；測試檔兩邊新測試都保留。
+- 合併後在主專案實測：`node --test` 16/16；三關自動試玩（桌機、手機模擬、`?tune=1`）皆 `won`、失誤 0、錯誤 0；調校面板 28 支滑桿，`ink.costTouch` 7→12 時同樣抖動扣墨 42→72；公開版不讀 `localStorage` 的 `cl-tuning`。
+- `ui-policy.cjs --project play/creative-line` 仍報 4 筆實景圖「非 Codex 來源」，屬使用者 2026-10-21 裁定的例外，不算新問題。
+- **真手機從未測過。**
 
-## 使用者本輪裁定（不要再問）
+## A. 環境整理（Codex 先做）
+1. **`node_modules` 目前是目錄連結**（junction，指向 `C:\agywork\agd-site-codex\node_modules`），不是正式安裝。處理方式：
+   - 先確認是連結：PowerShell `(Get-Item node_modules).LinkType` 應為 `Junction`。
+   - 只拆連結、不碰目標內容：`cmd /c rmdir node_modules`（**不可加 `/s`，不可用 `Remove-Item -Recurse`／`rm -rf`**，那會刪到 clone 裡的真套件）。
+   - 再 `npm install`（`package.json` 已有 devDependencies `playwright ^1.64.1`、`sharp ^0.35.5`）；Chromium 沒裝就 `npx playwright install chromium`。
+   - 驗收：`node --test tests/en-play.test.mjs` 16/16。
+2. 文字檔換行：clone 設 `core.autocrlf=true`，工作目錄是 CRLF、git 內是 LF。比對雜湊時要說明用的是哪一邊。
+
+## B. Codex 可直接做的待辦（依優先序）
+每項做完寫 `work-orders/20261022/reports/<名稱>-report.md`：做了什麼、`git diff --stat`、驗收逐條 yes／no 附實際指令輸出。
+
+| 優先 | 項目 | 範圍（白名單） | 驗收（yes／no） |
+|---|---|---|---|
+| P0 | **英文頁不要顯示中文「待補」**：四款試玩卡現在顯示「待補 · 待補」，`#/en/play` 也是中文。值為「待補」時該行不顯示（中英皆然），不改資料 | `en-pages.jsx` 的 `PlayCard`、`bundle.js`（`node build.mjs` 產物）、`index.html`／`pages.jsx` 版本字串 `20261021d`→`20261022a`、`tests/en-play.test.mjs`（只新增） | `#/play/zone` 與 `#/en/play` 五張卡都沒有「待補」字樣；creative-line 仍顯示 `team · year`；測試全過 |
+| P0 | **調校面板在手機直向會蓋住整個遊戲**：改成預設收合（只露標題列與三顆按鈕），點「展開」才出現滑桿 | `play/creative-line/tuning.js` | 390×844 手機模擬 `?tune=1` 截圖，遊戲畫面可見面積 ≥ 70%；展開後 28 支滑桿可用；`node C:/agywork/agd-site-qa-scripts/wo02check.cjs <repo根>` 結果與現在相同 |
+| P1 | **驗「複製 JSON 貼回 `tuning.js`」**（之前 unverified）：把面板複製的 JSON 貼回檔案等號後，頁面能正常載入、三關可過 | 只驗不改；若壞掉才改 `tuning.js` | 貼回後 `autoplay.cjs` 三關 won；報告附貼回前後 diff（驗完還原） |
+| P1 | **彈簧線在深色平台與藍色牆上的可見度**（之前只驗了米白地板） | 只截圖不改程式；截圖放 `docs/qa/creative-line/20261022/` | 兩種背景各 1 張桌機 1 張手機，人眼看得到虛線；看不到就寫報告，不要自己改顏色 |
+| P1 | **`faculty.json` 既有驗證失敗**：`node tools/validate-en.mjs` 報 `faculty.json FAIL 1：$[9].certs 純英文原值被改`（原文頓號被換成英文逗號；合併前就存在） | `data/en/faculty.json` 只改 `$[9].certs` 的標點 | `node tools/validate-en.mjs` 八檔全 PASS |
+| P2 | **英文 `[CHECK]` 第二批**：四檔還剩 518 個（stats 265、news 37、works 16、faculty 200）。先查 WO-04 列為「查過但未採用」的：金點新秀、時報金犢獎、KT 科藝獎、西基、ZIP-LAB、Hautecouture 法人名 | 同 WO-04（`work-orders/20261021/WO-04-en-check-review.md` 第 0 節），對照表寫 `docs/qa/en-check/20261022-batch2.md` | 同 WO-04 第 3 節；每筆有可開啟的官方來源 URL；維基不算來源 |
+
+## C. 要使用者決定的事（Codex 不要自己做）
+1. **推上 origin**：本機多 20 個提交；repo 公開，推之前使用者要自己看過內容。
+2. **`_v1-rejected` 29 檔要不要刪**：清單在 `work-orders/20261021/DELETE-LIST-creative-line-v1.tsv`／`.md`。刪之前還要一併處理 `play/creative-line/tools/prep-art.mjs` 對 `art/ui`、`art/fx`、`art/web`、`tools/mask-seeds.json` 的舊引用。一次刪 20 檔以上要使用者在對話確認。
+3. **手機手感**：使用者拿真手機開 `play/creative-line/index.html?tune=1` 調，調完按「複製 JSON」貼回 `tuning.js`。
+4. **《小朋友齊打交》致敬版規格定案**：`docs/design/fighter-homage/SPEC.md` 第 10 節的選項。LF2 原版再利用條款仍是 unverified（`lf2.net/en/terms.html` 404）。
+5. **試玩卡「待補」的實際內容**：六樓出口、晴日茶桌、地窖大廚、死線防衛隊的製作者、年份、授權要使用者提供（`cozy-big-two` 有 `fusion-pixel-tea.ttf` 但沒有授權檔）。
+6. **清理**（使用者同意才動）：
+   - 臨時分支 `merge/codex-run2` 與工作樹 `C:\agywork\agd-site-merge`（內容已全部進 feature）。
+   - 已合併的 `codex/wo-0N-*` 分支、`codex/attempt1-partial`。
+   - `C:\agywork\agd-site-attempt1-docs-untracked`：第一次失敗留下的未追蹤 `docs/`（23 檔，含瀏覽器暫存），從主專案搬出來的備份。
+   - `C:\agywork\agd-site-codex` clone 裡的未追蹤暫存：`docs/qa/creative-line/20261021/browser-tmp/`（約 529 檔 Node 編譯快取）與 `work-orders/20261021/codex-*` 提示檔與 log。
+
+## 使用者裁定（不要再問）
 - 減少 AI 美術，盡量用系上實景後製；場景沿用《六樓出口》的實景轉漫畫圖。
-- 這款遊戲的按鈕與面板比照《六樓出口》用純文字。
+- 《創作不斷線》按鈕與面板比照《六樓出口》用純文字。
 - 試玩區選入：創作不斷線、六樓出口、晴日茶桌、地窖大廚、死線防衛隊。
 - Dots 暫不使用（工作單 agd-comic-site#1 留著）；不用 Claude API、不用雲端 session；副戰力只用 Codex 與 agy。
+- `ui-policy.cjs` 對 4 張實景圖報錯是已知例外（記在 `play/creative-line/ui-art-manifest.json`），不改工具。
+- 截圖包用 WebP，不放 PNG 進公開 repo。
 
-## 待使用者決定（工單做完才問）
-1. 手機試玩後手感怎麼調（WO-02 面板調完貼回 `tuning.js`）。
-2. `_v1-rejected` 29 檔要不要刪（WO-05 清單）。
-3. 何時推分支、合併 `main` 上線。
-4. 《小朋友齊打交》致敬版規格定案（WO-06）。
+## 硬規則（照全域 AGENTS.md）
+- 不 push、不碰 `main`、不刪檔（要刪先列清單給使用者確認）。
+- 不生圖、不用程式畫美術；畫面上的圖只能用既有素材。調校面板是除錯工具，用純 HTML 表單元素。
+- 驗證要實際跑指令並貼輸出；做不到就交部分並寫明卡在哪。
+
+## 驗收工具（repo 外，可直接用）
+`C:\agywork\agd-site-qa-scripts\`（Playwright 從 `C:/agywork/agd-site-codex/node_modules/playwright` 載入，自帶靜態伺服器，不需 http-server）：
+- `node autoplay.cjs <repo根> ["?lang=en"|"?tune=1"] [desktop|mobile] brief`：三關沿 `path` 自動試玩，印出每關狀態、失誤、錯誤數。
+- `node wo02check.cjs <repo根>`：調校面板、滑桿改 `costTouch` 前後扣墨、`localStorage` 持久化與公開版隔離、複製 JSON、還原預設。
+- `node wo03check.cjs <repo根>`：開 `#/play/zone`、`#/en/play` 數試玩卡的 `team · year` 行。
+- `node mergeshot.cjs <repo根> <輸出.png>`：拍一張第 3 關彈簧線並印出兩條線的屬性。
+- `node crop.cjs <來源png> <輸出png> x y w h`：放大 3 倍裁切，看細節用。
+- 參考基準：原版三關以 `autoplay.cjs` 跑都是 `won`、失誤 0。
 
 ## 重要路徑（repo 外，唯讀參考）
 - 調研與構想：`C:\agywork\agd-game-research\{codex,agy,claude}\out\`，彙整 `C:\agywork\agd-game-research\彙整報告_系網試玩區.md`
 - 關卡設計規格：`C:\agywork\agd-game-research\claude\out\creative-line-levels.md`
-- 譯文覆核清單與驗證器：`C:\agywork\agd-en-translate\`
+- 譯文覆核清單與原驗證器：`C:\agywork\agd-en-translate\`
+- Codex 專用 clone：`C:\agywork\agd-site-codex`（origin 是主專案資料夾；在那裡 push 會直接推進主專案的分支，不可）
 - 18T 遊戲清單：`G:\我的雲端硬碟\_跨機傳輸\18T遊戲清單_給系網調研_20261021.tsv`（147 列，48 列有網頁版）
