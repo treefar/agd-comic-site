@@ -4,6 +4,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
+import vm from "node:vm";
 
 const root = path.resolve(import.meta.dirname, "..");
 const read = (p) => JSON.parse(fs.readFileSync(path.join(root, p), "utf8").replace(/^﻿/, ""));
@@ -86,4 +87,58 @@ test("創作不斷線：用到的素材檔都存在，課程名稱都在 curricu
 test("bundle.js 已包含英文頁與試玩區", () => {
   const b = fs.readFileSync(path.join(root, "bundle.js"), "utf8");
   for (const s of ["PlayZone", "EnglishIntro", "en/faculty", "play/zone"]) assert.ok(b.includes(s), `bundle 缺 ${s}`);
+});
+
+const tuningExpected = {
+  common: { grabRadius:68,touchOffset:40,orbHitRadius:10,failFreeze:0.25,rewind:0.25,forgiveAfterFails:2,ghostAfterFails:3,checkpointAfterFails:6,checkpointRatio:0.25,maxSpeed:900 },
+  step:{interval:0.083,maxJump:48},
+  ink:{sampleMs:50,angleMouse:70,angleTouch:90,costMouse:10,costTouch:7,regenAngle:30,regenPerSample:1.5,minSpeed:80,lowInk:30,shakeInk:15},
+  spring:{omega:14,zeta:0.85,afterimageMinSpeed:100,tiltMaxDeg:2.5,tiltSpeedDiv:160},stars:{maxFails:2}
+};
+test('創作不斷線：調校預設鍵與原值完整',()=>{
+  const context={window:{},URLSearchParams,location:{search:''}};vm.runInNewContext(fs.readFileSync(path.join(root,'play/creative-line/tuning.js'),'utf8'),context);
+  for(const [group,values] of Object.entries(tuningExpected))for(const [key,value] of Object.entries(values)){
+    assert.equal(typeof context.window.TUNING[group][key],'number',`${group}.${key}`);
+    assert.equal(context.window.TUNING[group][key],value,`${group}.${key} 原值改動`);
+  }
+});
+
+test('創作不斷線：瀏覽器通關、即時調校、持久化與公開版隔離',async()=>{
+  const { chromium }=await import('playwright');const {createServer}=await import('node:http');
+  const tmp=path.join(root,'work-orders/20261021/reports/browser-tmp');fs.mkdirSync(tmp,{recursive:true});
+  const server=createServer((req,res)=>{const file=path.resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://localhost').pathname));if(!file.startsWith(root+path.sep)){res.writeHead(403).end();return;}try{const ext=path.extname(file);res.setHeader('Content-Type',({'.js':'text/javascript','.html':'text/html','.json':'application/json','.webp':'image/webp','.png':'image/png'})[ext]||'application/octet-stream');res.end(fs.readFileSync(file));}catch{res.writeHead(404).end();}});
+  await new Promise(r=>server.listen(0,'127.0.0.1',r));
+  const oldEnv={TEMP:process.env.TEMP,TMP:process.env.TMP,TMPDIR:process.env.TMPDIR};
+  process.env.TEMP=process.env.TMP=process.env.TMPDIR=tmp;
+  let browser;
+  try{
+    browser=await chromium.launch();
+    const context=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});const page=await context.newPage();
+    await page.addInitScript(()=>{performance.now=()=>1000;requestAnimationFrame=cb=>{window.qaFrame=cb;return 1;};});
+    const url=`http://127.0.0.1:${server.address().port}/play/creative-line/index.html`;
+    const load=async query=>{await page.goto(url+query);await page.waitForFunction(()=>window.__cl?.state==='cover',null,{polling:50});};
+    await load('');assert.equal(await page.locator('#cl-tune').count(),0);
+    const wins=await page.evaluate(()=>{const result=[];for(let i=0;i<3;i++){__cl.startLevel(i);__cl.play();const p=__cl.path;for(const q of p){__cl.setTarget(...q);for(let j=0;j<30&&__cl.state==='play'&&Math.hypot(__cl.orb.x-q[0],__cl.orb.y-q[1])>.8;j++)__cl.step(1/60);if(__cl.state!=='play')break;}if(__cl.state==='play'){__cl.setTarget(...p.at(-1));for(let j=0;j<120&&__cl.state==='play';j++)__cl.step(1/60);}result.push({level:i+1,state:__cl.state,fails:__cl.fails});}return result;});
+    assert.ok(wins.every(r=>r.state==='won'&&r.fails===0));console.log('AUTO-PLAY',JSON.stringify(wins));
+    await load('?tune=1');assert.equal(await page.locator('input[type=range]').count(),Object.values(tuningExpected).reduce((n,g)=>n+Object.keys(g).length,0));
+    const jitter=()=>page.evaluate(()=>{__cl.startLevel(1);__cl.play();const b={...__cl.orb};for(let i=0;i<6;i++){__cl.setTarget(b.x+(i%2?8:-8),b.y);__cl.step(.05);}return {ink:__cl.ink,count:__cl.stats.jitterCount};});
+    const before=await jitter();await page.locator('[data-key="ink.costTouch"]').evaluate(e=>{e.value='14';e.dispatchEvent(new Event('input',{bubbles:true}));});const after=await jitter();
+    assert.equal(before.count,after.count);assert.equal(100-after.ink,2*(100-before.ink));console.log('JITTER',JSON.stringify({before,after}));
+    await page.getByRole('button',{name:'複製 JSON',exact:true}).click();const exported=await page.getByRole('textbox',{name:'調校 JSON'}).inputValue();assert.equal(JSON.parse(exported).ink.costTouch,14);
+    const sandbox={window:{}};vm.runInNewContext('window.TUNING = '+exported+';',sandbox);assert.equal(sandbox.window.TUNING.ink.costTouch,14);
+    await page.route('**/creative-line/tuning.js',route=>route.fulfill({contentType:'text/javascript',body:'window.TUNING = '+exported+';\n'+fs.readFileSync(path.join(root,'play/creative-line/tuning.js'),'utf8').split('(() => {')[1].replace(/^/,'(() => {')}));
+    await load('');assert.equal(await page.evaluate(()=>__cl.tuning.ink.costTouch),14);assert.equal(await page.evaluate(()=>__cl.state),'cover');await page.unroute('**/creative-line/tuning.js');
+    await load('?tune=1');assert.equal(await page.evaluate(()=>__cl.tuning.ink.costTouch),14);
+    await load('');assert.equal(await page.evaluate(()=>__cl.tuning.ink.costTouch),7);
+    await load('?tune=1');await page.getByRole('button',{name:'還原預設',exact:true}).click();assert.equal(await page.evaluate(()=>localStorage.getItem('cl-tuning')),null);assert.equal(await page.evaluate(()=>__cl.tuning.ink.costTouch),7);
+    await page.getByRole('button',{name:'收合',exact:true}).click();assert.equal(await page.locator('input[type=range]').first().isVisible(),false);
+  }finally{if(browser)await browser.close();await new Promise(r=>server.close(r));for(const [k,v] of Object.entries(oldEnv)){if(v===undefined)delete process.env[k];else process.env[k]=v;}}
+});
+test('創作不斷線：手感常數不可寫死回遊戲',()=>{
+  const s=fs.readFileSync(path.join(root,'play/creative-line/game.js'),'utf8').replace(/\/\*[\s\S]*?\*\/|\/\/[^\n]*/g,'');
+  assert.ok(!/\b0\.083\b/.test(s));assert.ok(!/\b14\s*,\s*\w+\s*=\s*0\.85\b/.test(s));
+  for(const [group,keys] of Object.entries(tuningExpected))for(const key of Object.keys(keys)){
+    // orbHitRadius 是規格保留欄位，v2 遮罩原實作僅查中心，不在本工單改碰撞規則。
+    if(key!=='orbHitRadius')assert.ok(s.includes(`tuning.${group}.${key}`),`${group}.${key} 未接入`);
+  }
 });

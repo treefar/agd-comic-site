@@ -5,6 +5,7 @@
    碰撞用 masks.js；網址參數 ?lang=en 英文版 */
 (() => {
   const W = 1280, H = 720;
+  const tuning = window.TUNING;
   const LANG = new URLSearchParams(location.search).get("lang") === "en" ? "en" : "zh";
   const COARSE = matchMedia("(pointer: coarse)").matches;
   const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -108,7 +109,9 @@
   let stepAcc = 0, ink = 100, jit = { acc: 0, last: null, prevV: null }, trail = [], travel = 0, beat = 0, tilt = 0;
   const afterQ = []; let results = [];
   const LV = () => LEVELS[li], M = () => MASKS[LV().id];
-  const plan = () => (COARSE || lvFails >= 2 ? "coarse" : "normal");
+  let jitterCount = 0, springLag = 0, stepTimes = [];
+  const stats = () => ({ fails: lvFails, seconds: lvTime, jitterCount, springLag, stepsPerSecond: stepTimes.filter(x => lvTime - x < 1).length });
+  const plan = () => (COARSE || lvFails >= tuning.common.forgiveAfterFails ? "coarse" : "normal");
   const fmt = (s) => `${Math.floor(s / 60)}:${(s % 60).toFixed(1).padStart(4, "0")}`;
   const toast = (s, sec = 2.5) => { toastEl.textContent = s; toastEl.classList.remove("hide"); toastT = sec; };
 
@@ -122,6 +125,7 @@
   }
   function startLevel(i) {
     li = i; lvTime = 0; lvFails = 0; cpUsed = false; stopLoops();
+    jitterCount = 0; springLag = 0; stepTimes = [];
     const lv = LV(); bg.src = lv.img; tag.textContent = lv.intro[LANG]; ruleEl.textContent = lv.rule[LANG];
     startPt = M().start.slice(); path = bfsPath(lv, startPt);
     resetRun(); inkbar.classList.toggle("hide", lv.twist !== "ink");
@@ -145,16 +149,16 @@
     if (tw === "ink") { tone("f", 196, 0.18, "sawtooth", 0.07, 150); buzz([30, 40, 30]); if (!REDUCED) inkLine.animate([{ filter: "blur(0)" }, { filter: "blur(4px)", opacity: 0 }], { duration: 220, fill: "forwards" }); }
     if (tw === "spring") { tone("f", 880, 0.25, "sine", 0.08, 220); buzz([15, 20, 15, 20, 15]); }
     if (!REDUCED) world.animate([{ transform: world.style.transform + " translate(0,0)" }, { transform: world.style.transform + " translate(-4px,2px)" }, { transform: world.style.transform + " translate(4px,-2px)" }, { transform: world.style.transform }], { duration: 220 });
-    if (lvFails >= 6 && !cpUsed && path) { cpUsed = true; startPt = path[Math.floor(path.length * 0.25)].slice(); toast(T.cp); }
-    if (lvFails === 3) { ghostT = 0; toast(T.ghost); }
-    rewind = { from: [orb.x, orb.y], t: 0 }; failT = REDUCED ? 0.05 : 0.25; setState("fail");
+    if (lvFails >= tuning.common.checkpointAfterFails && !cpUsed && path) { cpUsed = true; startPt = path[Math.floor(path.length * tuning.common.checkpointRatio)].slice(); toast(T.cp); }
+    if (lvFails === tuning.common.ghostAfterFails) { ghostT = 0; toast(T.ghost); }
+    rewind = { from: [orb.x, orb.y], t: 0 }; failT = REDUCED ? 0.05 : tuning.common.failFreeze; setState("fail");
   }
   function finishRewind() { rewind = null; resetRun(); setState("ready"); }
   function success() {
     const lv = LV(); tone("w1", 523, 0.09); setTimeout(() => tone("w2", 659, 0.09), 90); setTimeout(() => tone("w3", 784, 0.12), 180); setTimeout(() => tone("w4", 1047, 0.18), 270); buzz(40);
     for (let i = 0; i < 3; i++) setTimeout(() => burst("art/fx2/confetti.png", M().end[0] + (i - 1) * 60, M().end[1], 140, 1100, 80), i * 90);
     let best = null; try { best = Number(localStorage.getItem("cl-best-" + lv.id)) || null; if (!best || lvTime < best) { localStorage.setItem("cl-best-" + lv.id, lvTime.toFixed(2)); best = lvTime; } } catch (e) {}
-    const stars = [true, lvFails <= 2, lvTime <= lv.starTime && !cpUsed];
+    const stars = [true, lvFails <= tuning.stars.maxFails, lvTime <= lv.starTime && !cpUsed];
     let n = stars.filter(Boolean).length; if (cpUsed) n = Math.min(n, 2);
     results[li] = { stars: n, time: lvTime, fails: lvFails, best };
     setTimeout(() => showCard(), REDUCED ? 100 : 650); setState("won");
@@ -225,7 +229,7 @@
     const lv = LEVELS[li];
     if (lv && lv.twist === "spring" && ac && !muted && ["ready", "play", "paused"].includes(state)) { beat += dt; if (beat >= 0.667) { beat -= 0.667; const sp = Math.hypot(orb.vx, orb.vy); tone("hb", 55, 0.3, "sine", Math.min(0.18, 0.1 + sp / 4000), 0, 0.01); } }
     if (state === "fail") { failT -= dt; if (failT <= 0) { state = "rewind"; rewind.t = 0; } return; }
-    if (state === "rewind") { rewind.t += dt / (REDUCED ? 0.05 : 0.25); const k = Math.min(1, rewind.t), e = 1 - Math.pow(1 - k, 3); orb.x = rewind.from[0] + (startPt[0] - rewind.from[0]) * e; orb.y = rewind.from[1] + (startPt[1] - rewind.from[1]) * e; if (k >= 1) finishRewind(); return; }
+    if (state === "rewind") { rewind.t += dt / (REDUCED ? 0.05 : tuning.common.rewind); const k = Math.min(1, rewind.t), e = 1 - Math.pow(1 - k, 3); orb.x = rewind.from[0] + (startPt[0] - rewind.from[0]) * e; orb.y = rewind.from[1] + (startPt[1] - rewind.from[1]) * e; if (k >= 1) finishRewind(); return; }
     if (state !== "play") return;
     lvTime += dt;
     const kx = (keys.ArrowRight ? 1 : 0) - (keys.ArrowLeft ? 1 : 0), ky = (keys.ArrowDown ? 1 : 0) - (keys.ArrowUp ? 1 : 0);
@@ -234,10 +238,11 @@
     const tw = lv.twist;
     if (tw === "step") { // 逐格：每 83ms 跳一次，單次最多 48px
       stepAcc += dt;
-      while (stepAcc >= 0.083 && state === "play") {
-        stepAcc -= 0.083; const dx = target.x - orb.x, dy = target.y - orb.y, d = Math.hypot(dx, dy); if (d < 1) continue;
-        const m = Math.min(d, 48), px = orb.x, py = orb.y;
+      while (stepAcc >= tuning.step.interval && state === "play") {
+        stepAcc -= tuning.step.interval; const dx = target.x - orb.x, dy = target.y - orb.y, d = Math.hypot(dx, dy); if (d < 1) continue;
+        const m = Math.min(d, tuning.step.maxJump), px = orb.x, py = orb.y;
         if (!sweep(orb.x + (dx / d) * m, orb.y + (dy / d) * m)) return;
+        stepTimes.push(lvTime); stepTimes = stepTimes.filter(x => lvTime - x < 1);
         tone("click", 880, 0.05, "triangle", 0.09, 0, 0.002); noise("clickn", 0.006, "highpass", 2000, 0.08);
         afterQ.unshift({ x: px, y: py, born: t }); if (afterQ.length > 4) afterQ.pop();
         if (!REDUCED) { flash.style.left = orb.x + "px"; flash.style.top = orb.y + "px"; flash.animate([{ transform: "scale(1)", opacity: 0.8 }, { transform: "scale(1.12)", opacity: 0 }], { duration: 83 }); }
@@ -245,21 +250,21 @@
       return;
     }
     if (tw === "ink") { // 跟手（上限 900px/s）；每 50ms 判斷一次抖動
-      const dx = target.x - orb.x, dy = target.y - orb.y, d = Math.hypot(dx, dy), m = Math.min(d, 900 * dt), px = orb.x, py = orb.y;
+      const dx = target.x - orb.x, dy = target.y - orb.y, d = Math.hypot(dx, dy), m = Math.min(d, tuning.common.maxSpeed * dt), px = orb.x, py = orb.y;
       if (m > 0.5 && !sweep(orb.x + (dx / d) * m, orb.y + (dy / d) * m)) return;
       const moved = Math.hypot(orb.x - px, orb.y - py), sp = moved / dt;
       loop("sand", "bandpass", 2400, 1.2); loopSet("sand", Math.min(0.12, sp / 500 * 0.12));
       const lastPt = trail[trail.length - 1]; if (!lastPt || Math.hypot(orb.x - lastPt[0], orb.y - lastPt[1]) > 4) { trail.push([orb.x, orb.y]); inkLine.setAttribute("points", trail.map((p) => p.join(",")).join(" ")); }
       if (travel >= 120) { travel -= 120; tone("bell", PENTA[Math.floor(t * 3) % 5], 0.18, "sine", 0.08); }
       jit.acc += dt;
-      if (jit.acc >= 0.05) {
+      if (jit.acc >= tuning.ink.sampleMs / 1000) {
         const v = jit.last ? [target.x - jit.last[0], target.y - jit.last[1]] : null; jit.last = [target.x, target.y]; const speed = v ? Math.hypot(...v) / jit.acc : 0; jit.acc = 0;
-        if (v && jit.prevV && speed > 80) {
+        if (v && jit.prevV && speed > tuning.ink.minSpeed) {
           const a = Math.acos(Math.max(-1, Math.min(1, (v[0] * jit.prevV[0] + v[1] * jit.prevV[1]) / (Math.hypot(...v) * Math.hypot(...jit.prevV) || 1)))) * 180 / Math.PI;
-          if (a > (COARSE ? 90 : 70)) { ink -= COARSE ? 7 : 10; noise("zz", 0.07, "highpass", 3000, 0.06); buzz(10);
+          if (a > (COARSE ? tuning.ink.angleTouch : tuning.ink.angleMouse)) { jitterCount++; ink -= COARSE ? tuning.ink.costTouch : tuning.ink.costMouse; noise("zz", 0.07, "highpass", 3000, 0.06); buzz(10);
             const c = document.createElementNS(svg.namespaceURI, "circle"); c.setAttribute("cx", orb.x); c.setAttribute("cy", orb.y); c.setAttribute("r", 6 + Math.random() * 3); c.setAttribute("fill", "#0f0d0a"); blots.appendChild(c);
             c.animate([{ opacity: 1 }, { opacity: 1, offset: 0.7 }, { opacity: 0 }], { duration: 1100, fill: "forwards" }); }
-          else if (a < 30) ink = Math.min(100, ink + 1.5);
+          else if (a < tuning.ink.regenAngle) ink = Math.min(100, ink + tuning.ink.regenPerSample);
         }
         if (v) jit.prevV = v;
         if (ink <= 0) { ink = 0; fail(); return; }
@@ -267,12 +272,13 @@
       return;
     }
     if (tw === "spring") { // 二階彈簧追隨：ω=14、ζ=0.85
-      const w = 14, z = 0.85; let nx = orb.x, ny = orb.y;
+      const w = tuning.spring.omega, z = tuning.spring.zeta; let nx = orb.x, ny = orb.y;
       for (let s = 0; s < 4; s++) { const h = dt / 4; orb.vx += (w * w * (target.x - nx) - 2 * z * w * orb.vx) * h; orb.vy += (w * w * (target.y - ny) - 2 * z * w * orb.vy) * h; nx += orb.vx * h; ny += orb.vy * h; }
       const px = orb.x, py = orb.y; if (!sweep(nx, ny)) return;
+      springLag += (Math.hypot(target.x - orb.x, target.y - orb.y) - springLag) * (1 - Math.exp(-dt / 0.5));
       const sp = Math.hypot(orb.vx, orb.vy);
       loop("wind", "lowpass", 400, 0.7); loopSet("wind", Math.min(0.1, sp / 600 * 0.1), 400 + Math.min(1400, sp * 2.5));
-      if (sp > 100 && (!afterQ[0] || t - afterQ[0].born > 0.03)) { afterQ.unshift({ x: px, y: py, born: t }); if (afterQ.length > 5) afterQ.pop(); }
+      if (sp > tuning.spring.afterimageMinSpeed && (!afterQ[0] || t - afterQ[0].born > 0.03)) { afterQ.unshift({ x: px, y: py, born: t }); if (afterQ.length > 5) afterQ.pop(); }
     }
   }
   function render() {
@@ -284,8 +290,8 @@
     if (ghostT >= 0 && path) { const p = path[Math.min(path.length - 1, Math.floor((ghostT / 1.2) * path.length))]; ghost.style.opacity = 0.35; ghost.style.transform = `translate(${p[0] - 25}px, ${p[1] - 25}px)`; }
     if (lv && lv.twist === "spring" && state === "play" && target) { const dist = Math.hypot(target.x - orb.x, target.y - orb.y); springLine.setAttribute("x1", orb.x); springLine.setAttribute("y1", orb.y); springLine.setAttribute("x2", target.x); springLine.setAttribute("y2", target.y); springLine.setAttribute("opacity", REDUCED ? 0.4 : Math.min(0.7, 0.2 + dist / 160)); }
     else springLine.setAttribute("opacity", 0);
-    if (lv && lv.twist === "spring" && !REDUCED) { tilt += ((state === "play" ? Math.max(-2.5, Math.min(2.5, orb.vx / 160)) : 0) - tilt) * 0.12; scene.style.transform = `rotate(${tilt.toFixed(2)}deg)`; }
-    if (lv && lv.twist === "ink") { inkFill.style.width = ink + "%"; inkbar.classList.toggle("low", ink < 30); inkbar.classList.toggle("shake", ink < 15 && !REDUCED); inkLine.setAttribute("stroke-width", ink < 30 ? 4 : 7); inkLine.setAttribute("opacity", ink < 30 ? 0.55 : 0.9); }
+    if (lv && lv.twist === "spring" && !REDUCED) { tilt += ((state === "play" ? Math.max(-tuning.spring.tiltMaxDeg, Math.min(tuning.spring.tiltMaxDeg, orb.vx / tuning.spring.tiltSpeedDiv)) : 0) - tilt) * 0.12; scene.style.transform = `rotate(${tilt.toFixed(2)}deg)`; }
+    if (lv && lv.twist === "ink") { inkFill.style.width = ink + "%"; inkbar.classList.toggle("low", ink < tuning.ink.lowInk); inkbar.classList.toggle("shake", ink < tuning.ink.shakeInk && !REDUCED); inkLine.setAttribute("stroke-width", ink < tuning.ink.lowInk ? 4 : 7); inkLine.setAttribute("opacity", ink < tuning.ink.lowInk ? 0.55 : 0.9); }
     stat.textContent = `${T.time} ${fmt(lvTime)}　${T.fails} ${lvFails}`;
   }
   let last = performance.now();
@@ -301,14 +307,14 @@
   const pos = (e) => { const b = world.getBoundingClientRect(), k = b.width / W; return { x: (e.clientX - b.left) / k, y: (e.clientY - b.top) / k, k }; };
   world.addEventListener("pointerdown", (e) => {
     ensureAudio(); if (state !== "ready" && state !== "paused") return;
-    const p = pos(e), off = COARSE ? 40 / p.k : 0;
-    if (Math.hypot(p.x - orb.x, p.y - off - orb.y) < 28 + 40) { // 光點外圍 40px 內都算抓到
+    const p = pos(e), off = COARSE ? tuning.common.touchOffset / p.k : 0;
+    if (Math.hypot(p.x - orb.x, p.y - off - orb.y) < tuning.common.grabRadius) { // 保留原抓取範圍
       pressing = true; world.setPointerCapture(e.pointerId); target = { x: p.x, y: p.y - off }; orb.s = 1.15; buzz(8);
       if (state === "ready" && LV().twist === "ink" && lvFails === 0) toast(T.steady, 2);
       setState("play");
     }
   });
-  world.addEventListener("pointermove", (e) => { if (!pressing) return; const p = pos(e), off = COARSE ? 40 / p.k : 0; target = { x: p.x, y: p.y - off }; });
+  world.addEventListener("pointermove", (e) => { if (!pressing) return; const p = pos(e), off = COARSE ? tuning.common.touchOffset / p.k : 0; target = { x: p.x, y: p.y - off }; });
   const release = () => { if (pressing && state === "play") setState("paused"); pressing = false; target = null; orb.vx = orb.vy = 0; };
   world.addEventListener("pointerup", release); world.addEventListener("pointercancel", release);
   world.addEventListener("contextmenu", (e) => e.preventDefault());
@@ -322,5 +328,6 @@
 
   // 自動化測試用
   window.__cl = { get state() { return state; }, get orb() { return orb; }, get li() { return li; }, get fails() { return lvFails; }, get ink() { return ink; }, get results() { return results; },
+    get tuning() { return tuning; }, get stats() { return stats(); },
     get path() { return path; }, newGame, startLevel, step: (dt) => update(dt), play: () => setState("play"), setTarget: (x, y) => { target = { x, y }; }, walk: (x, y) => walk(LV(), x, y, plan()) };
 })();
