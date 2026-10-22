@@ -1,0 +1,1808 @@
+{
+  "runId": "2026-10-22T13-28-41-426Z",
+  "url": "http://127.0.0.1:8800",
+  "method": "headless Chromium, real DOM buttons/ranges, no direct game imports or state mutation",
+  "cases": [
+    {
+      "game": "new-year",
+      "lang": "en",
+      "width": 390,
+      "status": "pass",
+      "checks": {
+        "locale": "yes",
+        "uniqueIds": "yes",
+        "englishInstruction": "yes",
+        "keyboardRange": "yes",
+        "images": "yes",
+        "initialWrongBlocked": "yes",
+        "noHorizontalOverflow": "yes",
+        "completedFromDOM": "yes",
+        "keyboardReplayExit": "yes",
+        "replay3Shots": "yes",
+        "retryFresh": "yes",
+        "exitArchive": "yes",
+        "browserErrors": "yes"
+      },
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "stylesheetSha256": "afac35d566a0eb304689d3feb37dd9882961e25282de6ee415dea4dad7694559",
+      "duplicateIds": [],
+      "missingImages": [],
+      "layoutScreenshot": "screenshots/2026-10-22T13-28-41-426Z-new-year-en-390-layout.png",
+      "stageScreenshot": "screenshots/2026-10-22T13-28-41-426Z-new-year-en-390-stage.png",
+      "horizontalOverflow": false,
+      "score": "96 / 100",
+      "artifact": {
+        "takes": [
+          {
+            "timing": [
+              440,
+              160,
+              400
+            ],
+            "score": 87
+          },
+          {
+            "timing": [
+              320,
+              140,
+              320
+            ],
+            "score": 100
+          },
+          {
+            "timing": [
+              500,
+              220,
+              420
+            ],
+            "score": 100
+          }
+        ],
+        "attempts": 3
+      },
+      "resultScreenshot": "screenshots/2026-10-22T13-28-41-426Z-new-year-en-390-result.png",
+      "replayScreenshot": "screenshots/2026-10-22T13-28-41-426Z-new-year-en-390-replay.png",
+      "replayShots": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "errors": [],
+  "status": "pass",
+  "previousRuns": [
+    {
+      "runId": "2026-10-22T13-06-06-447Z",
+      "url": "http://127.0.0.1:8800",
+      "method": "headless Chromium, real DOM buttons/ranges, no direct game imports or state mutation",
+      "cases": [
+        {
+          "game": "new-year",
+          "lang": "zh",
+          "width": 1440,
+          "status": "pass",
+          "checks": {
+            "locale": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "pause": "yes",
+            "noHorizontalOverflow": "yes",
+            "completedFromDOM": "yes",
+            "replay3Shots": "yes",
+            "retryFresh": "yes",
+            "browserErrors": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "missingImages": [],
+          "stageScreenshot": "screenshots/2026-10-22T13-06-06-447Z-new-year-zh-1440-stage.png",
+          "horizontalOverflow": false,
+          "score": "100 / 100",
+          "artifact": {
+            "takes": [
+              {
+                "timing": [
+                  400,
+                  180,
+                  380
+                ],
+                "score": 100
+              },
+              {
+                "timing": [
+                  320,
+                  140,
+                  320
+                ],
+                "score": 100
+              },
+              {
+                "timing": [
+                  500,
+                  220,
+                  420
+                ],
+                "score": 100
+              }
+            ],
+            "attempts": 3
+          },
+          "resultScreenshot": "screenshots/2026-10-22T13-06-06-447Z-new-year-zh-1440-result.png",
+          "replayScreenshot": "screenshots/2026-10-22T13-06-06-447Z-new-year-zh-1440-replay.png",
+          "replayShots": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "game": "lunar-new-year",
+          "lang": "zh",
+          "width": 1440,
+          "status": "fail",
+          "checks": {
+            "locale": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "missingImages": [],
+          "stageScreenshot": "screenshots/2026-10-22T13-06-06-447Z-lunar-new-year-zh-1440-stage.png",
+          "horizontalOverflow": false,
+          "error": "locator.fill: Error: strict mode violation: locator('#lny-brow') resolved to 2 elements:\n    1) <img alt=\"\" id=\"lny-brow\" class=\"sprite\" draggable=\"false\" aria-hidden=\"true\" src=\"assets/lunar-new-year/prop1.png\"/> aka getByLabel('年獸表演課').locator('#lny-brow')\n    2) <input max=\"30\" step=\"1\" min=\"-30\" value=\"0\" type=\"range\" id=\"lny-brow\" aria-label=\"眉毛角度\"/> aka getByRole('slider', { name: '眉毛角度' })\n\nCall log:\n\u001b[2m  - waiting for locator('#lny-brow')\u001b[22m\n\n    at range (C:\\agywork\\agd-holiday-play-qa\\holiday-lab\\qa\\playthrough.cjs:17:68)\n    at solve (C:\\agywork\\agd-holiday-play-qa\\holiday-lab\\qa\\playthrough.cjs:31:72)\n    at oneCase (C:\\agywork\\agd-holiday-play-qa\\holiday-lab\\qa\\playthrough.cjs:72:9)\n    at async C:\\agywork\\agd-holiday-play-qa\\holiday-lab\\qa\\playthrough.cjs:80:309",
+          "failureScreenshot": "screenshots/2026-10-22T13-06-06-447Z-lunar-new-year-zh-1440-failure.png"
+        },
+        {
+          "game": "lantern",
+          "lang": "zh",
+          "width": 1440,
+          "status": "pass",
+          "checks": {
+            "locale": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes",
+            "completedFromDOM": "yes",
+            "replay3Shots": "yes",
+            "retryFresh": "yes",
+            "browserErrors": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "missingImages": [],
+          "stageScreenshot": "screenshots/2026-10-22T13-06-06-447Z-lantern-zh-1440-stage.png",
+          "horizontalOverflow": false,
+          "score": "96 / 100",
+          "artifact": {
+            "shots": [
+              {
+                "lamp": 20,
+                "paper": 57.5,
+                "depth": 20,
+                "order": "front",
+                "x": 65,
+                "scale": 1.2
+              },
+              {
+                "lamp": 20,
+                "paper": 43.3,
+                "depth": 50,
+                "order": "back",
+                "x": 54.949999999999996,
+                "scale": 1.5
+              },
+              {
+                "lamp": 20,
+                "paper": 48.6,
+                "depth": 75,
+                "order": "front",
+                "x": 70.05,
+                "scale": 1.75
+              }
+            ],
+            "misses": 1
+          },
+          "resultScreenshot": "screenshots/2026-10-22T13-06-06-447Z-lantern-zh-1440-result.png",
+          "replayScreenshot": "screenshots/2026-10-22T13-06-06-447Z-lantern-zh-1440-replay.png",
+          "replayShots": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "game": "children",
+          "lang": "zh",
+          "width": 1440,
+          "status": "pass",
+          "checks": {
+            "locale": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes",
+            "completedFromDOM": "yes",
+            "replay3Shots": "yes",
+            "retryFresh": "yes",
+            "browserErrors": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "missingImages": [],
+          "stageScreenshot": "screenshots/2026-10-22T13-06-06-447Z-children-zh-1440-stage.png",
+          "horizontalOverflow": false,
+          "score": "100 / 100",
+          "artifact": {
+            "takes": [
+              {
+                "material": "wood",
+                "cue": 700,
+                "error": 0
+              },
+              {
+                "material": "metal",
+                "cue": 1200,
+                "error": 0
+              },
+              {
+                "material": "paper",
+                "cue": 1700,
+                "error": 0
+              }
+            ],
+            "attempts": 4
+          },
+          "resultScreenshot": "screenshots/2026-10-22T13-06-06-447Z-children-zh-1440-result.png",
+          "replayScreenshot": "screenshots/2026-10-22T13-06-06-447Z-children-zh-1440-replay.png",
+          "replayShots": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "game": "dragon-boat",
+          "lang": "zh",
+          "width": 1440,
+          "status": "pass",
+          "checks": {
+            "locale": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes",
+            "completedFromDOM": "yes",
+            "replay3Shots": "yes",
+            "retryFresh": "yes",
+            "browserErrors": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "missingImages": [],
+          "stageScreenshot": "screenshots/2026-10-22T13-06-06-447Z-dragon-boat-zh-1440-stage.png",
+          "horizontalOverflow": false,
+          "score": "96 / 100",
+          "artifact": {
+            "folds": [
+              {
+                "leaf": "left",
+                "angle": 140,
+                "face": "inside",
+                "coverage": 1
+              },
+              {
+                "leaf": "right",
+                "angle": 140,
+                "face": "inside",
+                "coverage": 1
+              },
+              {
+                "leaf": "top",
+                "angle": 160,
+                "face": "inside",
+                "coverage": 1
+              }
+            ],
+            "misses": 1
+          },
+          "resultScreenshot": "screenshots/2026-10-22T13-06-06-447Z-dragon-boat-zh-1440-result.png",
+          "replayScreenshot": "screenshots/2026-10-22T13-06-06-447Z-dragon-boat-zh-1440-replay.png",
+          "replayShots": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "game": "mid-autumn",
+          "lang": "zh",
+          "width": 1440,
+          "status": "pass",
+          "checks": {
+            "locale": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes",
+            "completedFromDOM": "yes",
+            "replay3Shots": "yes",
+            "retryFresh": "yes",
+            "browserErrors": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "missingImages": [],
+          "stageScreenshot": "screenshots/2026-10-22T13-06-06-447Z-mid-autumn-zh-1440-stage.png",
+          "horizontalOverflow": false,
+          "score": "100 / 100",
+          "artifact": {
+            "cuts": [
+              {
+                "time": 900,
+                "x": 21.5,
+                "size": 20,
+                "endX": 35,
+                "speed": 15,
+                "score": 100
+              },
+              {
+                "time": 1200,
+                "x": 38,
+                "size": 26,
+                "endX": 62,
+                "speed": 20,
+                "score": 100
+              },
+              {
+                "time": 750,
+                "x": 56.5,
+                "size": 18,
+                "endX": 45.25,
+                "speed": -15,
+                "score": 99
+              }
+            ],
+            "attempts": 3
+          },
+          "resultScreenshot": "screenshots/2026-10-22T13-06-06-447Z-mid-autumn-zh-1440-result.png",
+          "replayScreenshot": "screenshots/2026-10-22T13-06-06-447Z-mid-autumn-zh-1440-replay.png",
+          "replayShots": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "game": "teachers",
+          "lang": "zh",
+          "width": 1440,
+          "status": "pass",
+          "checks": {
+            "locale": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes",
+            "completedFromDOM": "yes",
+            "replay3Shots": "yes",
+            "retryFresh": "yes",
+            "browserErrors": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "missingImages": [],
+          "stageScreenshot": "screenshots/2026-10-22T13-06-06-447Z-teachers-zh-1440-stage.png",
+          "horizontalOverflow": false,
+          "score": "97 / 100",
+          "artifact": {
+            "panels": [
+              {
+                "action": "listen",
+                "line": "ask",
+                "pause": 900
+              },
+              {
+                "action": "thanks",
+                "line": "thank-patient",
+                "pause": 1400
+              },
+              {
+                "action": "reply",
+                "line": "reply",
+                "pause": 1100
+              }
+            ],
+            "attempts": 4
+          },
+          "resultScreenshot": "screenshots/2026-10-22T13-06-06-447Z-teachers-zh-1440-result.png",
+          "replayScreenshot": "screenshots/2026-10-22T13-06-06-447Z-teachers-zh-1440-replay.png",
+          "replayShots": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "game": "national-day",
+          "lang": "zh",
+          "width": 1440,
+          "status": "pass",
+          "checks": {
+            "locale": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes",
+            "completedFromDOM": "yes",
+            "replay3Shots": "yes",
+            "retryFresh": "yes",
+            "browserErrors": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "missingImages": [],
+          "stageScreenshot": "screenshots/2026-10-22T13-06-06-447Z-national-day-zh-1440-stage.png",
+          "horizontalOverflow": false,
+          "score": "96 / 100",
+          "artifact": {
+            "shots": [
+              {
+                "camera": -12,
+                "fore": 22,
+                "mid": -1,
+                "far": -4,
+                "order": "normal",
+                "screen_fore": 82.8,
+                "screen_mid": 55,
+                "screen_far": 48.4,
+                "screen_subject": 57.2
+              },
+              {
+                "camera": 0,
+                "fore": 22,
+                "mid": 0,
+                "far": 0,
+                "order": "normal",
+                "screen_fore": 72,
+                "screen_mid": 50,
+                "screen_far": 50,
+                "screen_subject": 50
+              },
+              {
+                "camera": 12,
+                "fore": 22,
+                "mid": 1,
+                "far": 4,
+                "order": "normal",
+                "screen_fore": 61.2,
+                "screen_mid": 45,
+                "screen_far": 51.6,
+                "screen_subject": 42.8
+              }
+            ],
+            "misses": 1
+          },
+          "resultScreenshot": "screenshots/2026-10-22T13-06-06-447Z-national-day-zh-1440-result.png",
+          "replayScreenshot": "screenshots/2026-10-22T13-06-06-447Z-national-day-zh-1440-replay.png",
+          "replayShots": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "game": "semester",
+          "lang": "zh",
+          "width": 1440,
+          "status": "pass",
+          "checks": {
+            "locale": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes",
+            "completedFromDOM": "yes",
+            "replay3Shots": "yes",
+            "retryFresh": "yes",
+            "browserErrors": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "missingImages": [],
+          "stageScreenshot": "screenshots/2026-10-22T13-06-06-447Z-semester-zh-1440-stage.png",
+          "horizontalOverflow": false,
+          "score": "100 / 100",
+          "artifact": {
+            "route": [
+              {
+                "x": 0,
+                "y": 2
+              },
+              {
+                "x": 0,
+                "y": 1
+              },
+              {
+                "x": 0,
+                "y": 0
+              },
+              {
+                "x": 1,
+                "y": 0
+              },
+              {
+                "x": 2,
+                "y": 0
+              },
+              {
+                "x": 3,
+                "y": 0
+              },
+              {
+                "x": 4,
+                "y": 0
+              },
+              {
+                "x": 4,
+                "y": 1
+              },
+              {
+                "x": 4,
+                "y": 2
+              },
+              {
+                "x": 3,
+                "y": 2
+              },
+              {
+                "x": 2,
+                "y": 2
+              }
+            ],
+            "visits": [
+              {
+                "index": 0,
+                "x": 0,
+                "y": 0,
+                "steps": 2
+              },
+              {
+                "index": 1,
+                "x": 4,
+                "y": 0,
+                "steps": 6
+              },
+              {
+                "index": 2,
+                "x": 2,
+                "y": 2,
+                "steps": 10
+              }
+            ],
+            "fictionalMap": true
+          },
+          "resultScreenshot": "screenshots/2026-10-22T13-06-06-447Z-semester-zh-1440-result.png",
+          "replayScreenshot": "screenshots/2026-10-22T13-06-06-447Z-semester-zh-1440-replay.png",
+          "replayShots": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "game": "exhibition",
+          "lang": "zh",
+          "width": 1440,
+          "status": "fail",
+          "checks": {
+            "locale": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "missingImages": [],
+          "stageScreenshot": "screenshots/2026-10-22T13-06-06-447Z-exhibition-zh-1440-stage.png",
+          "horizontalOverflow": false,
+          "error": "locator.click: Error: strict mode violation: locator('#exhibition-info-1') resolved to 2 elements:\n    1) <img alt=\"\" class=\"sprite\" draggable=\"false\" aria-hidden=\"true\" id=\"exhibition-info-1\" src=\"assets/exhibition/token2.png\"/> aka getByLabel('畢展策展接力').locator('#exhibition-info-1')\n    2) <button type=\"button\" class=\"button\" aria-pressed=\"false\" id=\"exhibition-info-1\">放上資訊卡</button> aka getByRole('button', { name: '放上資訊卡' })\n\nCall log:\n\u001b[2m  - waiting for locator('#exhibition-info-1')\u001b[22m\n\n    at click (C:\\agywork\\agd-holiday-play-qa\\holiday-lab\\qa\\playthrough.cjs:16:250)\n    at choice (C:\\agywork\\agd-holiday-play-qa\\holiday-lab\\qa\\playthrough.cjs:18:41)\n    at solve (C:\\agywork\\agd-holiday-play-qa\\holiday-lab\\qa\\playthrough.cjs:50:153)\n    at async oneCase (C:\\agywork\\agd-holiday-play-qa\\holiday-lab\\qa\\playthrough.cjs:72:3)\n    at async C:\\agywork\\agd-holiday-play-qa\\holiday-lab\\qa\\playthrough.cjs:80:309",
+          "failureScreenshot": "screenshots/2026-10-22T13-06-06-447Z-exhibition-zh-1440-failure.png"
+        },
+        {
+          "game": "new-year",
+          "lang": "en",
+          "width": 390,
+          "status": "pass",
+          "checks": {
+            "locale": "yes",
+            "englishInstruction": "yes",
+            "keyboardRange": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes",
+            "completedFromDOM": "yes",
+            "replay3Shots": "yes",
+            "retryFresh": "yes",
+            "browserErrors": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "missingImages": [],
+          "stageScreenshot": "screenshots/2026-10-22T13-06-06-447Z-new-year-en-390-stage.png",
+          "horizontalOverflow": false,
+          "score": "96 / 100",
+          "artifact": {
+            "takes": [
+              {
+                "timing": [
+                  440,
+                  160,
+                  400
+                ],
+                "score": 87
+              },
+              {
+                "timing": [
+                  320,
+                  140,
+                  320
+                ],
+                "score": 100
+              },
+              {
+                "timing": [
+                  500,
+                  220,
+                  420
+                ],
+                "score": 100
+              }
+            ],
+            "attempts": 3
+          },
+          "resultScreenshot": "screenshots/2026-10-22T13-06-06-447Z-new-year-en-390-result.png",
+          "replayScreenshot": "screenshots/2026-10-22T13-06-06-447Z-new-year-en-390-replay.png",
+          "replayShots": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "game": "lunar-new-year",
+          "lang": "ja",
+          "width": 768,
+          "status": "fail",
+          "checks": {
+            "locale": "yes",
+            "japaneseInstruction": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "missingImages": [],
+          "stageScreenshot": "screenshots/2026-10-22T13-06-06-447Z-lunar-new-year-ja-768-stage.png",
+          "horizontalOverflow": false,
+          "error": "locator.fill: Error: strict mode violation: locator('#lny-brow') resolved to 2 elements:\n    1) <img alt=\"\" id=\"lny-brow\" class=\"sprite\" draggable=\"false\" aria-hidden=\"true\" src=\"assets/lunar-new-year/prop1.png\"/> aka getByLabel('年獣の演技レッスン').locator('#lny-brow')\n    2) <input max=\"30\" step=\"1\" min=\"-30\" value=\"0\" type=\"range\" id=\"lny-brow\" aria-label=\"眉の角度\"/> aka getByRole('slider', { name: '眉の角度' })\n\nCall log:\n\u001b[2m  - waiting for locator('#lny-brow')\u001b[22m\n\n    at range (C:\\agywork\\agd-holiday-play-qa\\holiday-lab\\qa\\playthrough.cjs:17:68)\n    at solve (C:\\agywork\\agd-holiday-play-qa\\holiday-lab\\qa\\playthrough.cjs:31:72)\n    at oneCase (C:\\agywork\\agd-holiday-play-qa\\holiday-lab\\qa\\playthrough.cjs:72:9)\n    at async C:\\agywork\\agd-holiday-play-qa\\holiday-lab\\qa\\playthrough.cjs:80:417",
+          "failureScreenshot": "screenshots/2026-10-22T13-06-06-447Z-lunar-new-year-ja-768-failure.png"
+        }
+      ],
+      "errors": [
+        {
+          "game": "lunar-new-year",
+          "lang": "zh",
+          "error": "locator.fill: Error: strict mode violation: locator('#lny-brow') resolved to 2 elements:\n    1) <img alt=\"\" id=\"lny-brow\" class=\"sprite\" draggable=\"false\" aria-hidden=\"true\" src=\"assets/lunar-new-year/prop1.png\"/> aka getByLabel('年獸表演課').locator('#lny-brow')\n    2) <input max=\"30\" step=\"1\" min=\"-30\" value=\"0\" type=\"range\" id=\"lny-brow\" aria-label=\"眉毛角度\"/> aka getByRole('slider', { name: '眉毛角度' })\n\nCall log:\n\u001b[2m  - waiting for locator('#lny-brow')\u001b[22m\n"
+        },
+        {
+          "game": "exhibition",
+          "lang": "zh",
+          "error": "locator.click: Error: strict mode violation: locator('#exhibition-info-1') resolved to 2 elements:\n    1) <img alt=\"\" class=\"sprite\" draggable=\"false\" aria-hidden=\"true\" id=\"exhibition-info-1\" src=\"assets/exhibition/token2.png\"/> aka getByLabel('畢展策展接力').locator('#exhibition-info-1')\n    2) <button type=\"button\" class=\"button\" aria-pressed=\"false\" id=\"exhibition-info-1\">放上資訊卡</button> aka getByRole('button', { name: '放上資訊卡' })\n\nCall log:\n\u001b[2m  - waiting for locator('#exhibition-info-1')\u001b[22m\n"
+        },
+        {
+          "game": "lunar-new-year",
+          "lang": "ja",
+          "error": "locator.fill: Error: strict mode violation: locator('#lny-brow') resolved to 2 elements:\n    1) <img alt=\"\" id=\"lny-brow\" class=\"sprite\" draggable=\"false\" aria-hidden=\"true\" src=\"assets/lunar-new-year/prop1.png\"/> aka getByLabel('年獣の演技レッスン').locator('#lny-brow')\n    2) <input max=\"30\" step=\"1\" min=\"-30\" value=\"0\" type=\"range\" id=\"lny-brow\" aria-label=\"眉の角度\"/> aka getByRole('slider', { name: '眉の角度' })\n\nCall log:\n\u001b[2m  - waiting for locator('#lny-brow')\u001b[22m\n"
+        }
+      ],
+      "status": "fail"
+    },
+    {
+      "runId": "2026-10-22T13-20-56-816Z",
+      "url": "http://127.0.0.1:8800",
+      "method": "headless Chromium, real DOM buttons/ranges, no direct game imports or state mutation",
+      "cases": [
+        {
+          "game": "new-year",
+          "lang": "zh",
+          "width": 1440,
+          "status": "pass",
+          "checks": {
+            "locale": "yes",
+            "uniqueIds": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "pause": "yes",
+            "noHorizontalOverflow": "yes",
+            "completedFromDOM": "yes",
+            "replay3Shots": "yes",
+            "retryFresh": "yes",
+            "browserErrors": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "duplicateIds": [],
+          "missingImages": [],
+          "stageScreenshot": "screenshots/2026-10-22T13-20-56-816Z-new-year-zh-1440-stage.png",
+          "horizontalOverflow": false,
+          "score": "100 / 100",
+          "artifact": {
+            "takes": [
+              {
+                "timing": [
+                  400,
+                  180,
+                  380
+                ],
+                "score": 100
+              },
+              {
+                "timing": [
+                  320,
+                  140,
+                  320
+                ],
+                "score": 100
+              },
+              {
+                "timing": [
+                  500,
+                  220,
+                  420
+                ],
+                "score": 100
+              }
+            ],
+            "attempts": 3
+          },
+          "resultScreenshot": "screenshots/2026-10-22T13-20-56-816Z-new-year-zh-1440-result.png",
+          "replayScreenshot": "screenshots/2026-10-22T13-20-56-816Z-new-year-zh-1440-replay.png",
+          "replayShots": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "game": "lunar-new-year",
+          "lang": "zh",
+          "width": 1440,
+          "status": "pass",
+          "checks": {
+            "locale": "yes",
+            "uniqueIds": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes",
+            "completedFromDOM": "yes",
+            "replay3Shots": "yes",
+            "retryFresh": "yes",
+            "browserErrors": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "duplicateIds": [],
+          "missingImages": [],
+          "stageScreenshot": "screenshots/2026-10-22T13-20-56-816Z-lunar-new-year-zh-1440-stage.png",
+          "horizontalOverflow": false,
+          "score": "100 / 100",
+          "artifact": {
+            "poses": [
+              {
+                "values": {
+                  "brow": -20,
+                  "eyes": 1.4,
+                  "mouth": 0.7,
+                  "pose": 0
+                },
+                "score": 100,
+                "role": 0
+              },
+              {
+                "values": {
+                  "brow": 10,
+                  "eyes": 0.8,
+                  "mouth": 1,
+                  "pose": 0
+                },
+                "score": 100,
+                "role": 1
+              },
+              {
+                "values": {
+                  "brow": 0,
+                  "eyes": 0.7,
+                  "mouth": 0.5,
+                  "pose": 30
+                },
+                "score": 100,
+                "role": 2
+              }
+            ],
+            "attempts": 4
+          },
+          "resultScreenshot": "screenshots/2026-10-22T13-20-56-816Z-lunar-new-year-zh-1440-result.png",
+          "replayScreenshot": "screenshots/2026-10-22T13-20-56-816Z-lunar-new-year-zh-1440-replay.png",
+          "replayShots": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "game": "lantern",
+          "lang": "zh",
+          "width": 1440,
+          "status": "pass",
+          "checks": {
+            "locale": "yes",
+            "uniqueIds": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes",
+            "completedFromDOM": "yes",
+            "replay3Shots": "yes",
+            "retryFresh": "yes",
+            "browserErrors": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "duplicateIds": [],
+          "missingImages": [],
+          "stageScreenshot": "screenshots/2026-10-22T13-20-56-816Z-lantern-zh-1440-stage.png",
+          "horizontalOverflow": false,
+          "score": "96 / 100",
+          "artifact": {
+            "shots": [
+              {
+                "lamp": 20,
+                "paper": 57.5,
+                "depth": 20,
+                "order": "front",
+                "x": 65,
+                "scale": 1.2
+              },
+              {
+                "lamp": 20,
+                "paper": 43.3,
+                "depth": 50,
+                "order": "back",
+                "x": 54.949999999999996,
+                "scale": 1.5
+              },
+              {
+                "lamp": 20,
+                "paper": 48.6,
+                "depth": 75,
+                "order": "front",
+                "x": 70.05,
+                "scale": 1.75
+              }
+            ],
+            "misses": 1
+          },
+          "resultScreenshot": "screenshots/2026-10-22T13-20-56-816Z-lantern-zh-1440-result.png",
+          "replayScreenshot": "screenshots/2026-10-22T13-20-56-816Z-lantern-zh-1440-replay.png",
+          "replayShots": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "game": "children",
+          "lang": "zh",
+          "width": 1440,
+          "status": "pass",
+          "checks": {
+            "locale": "yes",
+            "uniqueIds": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes",
+            "completedFromDOM": "yes",
+            "replay3Shots": "yes",
+            "retryFresh": "yes",
+            "browserErrors": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "duplicateIds": [],
+          "missingImages": [],
+          "stageScreenshot": "screenshots/2026-10-22T13-20-56-816Z-children-zh-1440-stage.png",
+          "horizontalOverflow": false,
+          "score": "100 / 100",
+          "artifact": {
+            "takes": [
+              {
+                "material": "wood",
+                "cue": 700,
+                "error": 0
+              },
+              {
+                "material": "metal",
+                "cue": 1200,
+                "error": 0
+              },
+              {
+                "material": "paper",
+                "cue": 1700,
+                "error": 0
+              }
+            ],
+            "attempts": 4
+          },
+          "resultScreenshot": "screenshots/2026-10-22T13-20-56-816Z-children-zh-1440-result.png",
+          "replayScreenshot": "screenshots/2026-10-22T13-20-56-816Z-children-zh-1440-replay.png",
+          "replayShots": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "game": "dragon-boat",
+          "lang": "zh",
+          "width": 1440,
+          "status": "pass",
+          "checks": {
+            "locale": "yes",
+            "uniqueIds": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes",
+            "completedFromDOM": "yes",
+            "replay3Shots": "yes",
+            "retryFresh": "yes",
+            "browserErrors": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "duplicateIds": [],
+          "missingImages": [],
+          "stageScreenshot": "screenshots/2026-10-22T13-20-56-816Z-dragon-boat-zh-1440-stage.png",
+          "horizontalOverflow": false,
+          "score": "96 / 100",
+          "artifact": {
+            "folds": [
+              {
+                "leaf": "left",
+                "angle": 140,
+                "face": "inside",
+                "coverage": 1
+              },
+              {
+                "leaf": "right",
+                "angle": 140,
+                "face": "inside",
+                "coverage": 1
+              },
+              {
+                "leaf": "top",
+                "angle": 160,
+                "face": "inside",
+                "coverage": 1
+              }
+            ],
+            "misses": 1
+          },
+          "resultScreenshot": "screenshots/2026-10-22T13-20-56-816Z-dragon-boat-zh-1440-result.png",
+          "replayScreenshot": "screenshots/2026-10-22T13-20-56-816Z-dragon-boat-zh-1440-replay.png",
+          "replayShots": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "game": "mid-autumn",
+          "lang": "zh",
+          "width": 1440,
+          "status": "pass",
+          "checks": {
+            "locale": "yes",
+            "uniqueIds": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes",
+            "completedFromDOM": "yes",
+            "replay3Shots": "yes",
+            "retryFresh": "yes",
+            "browserErrors": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "duplicateIds": [],
+          "missingImages": [],
+          "stageScreenshot": "screenshots/2026-10-22T13-20-56-816Z-mid-autumn-zh-1440-stage.png",
+          "horizontalOverflow": false,
+          "score": "100 / 100",
+          "artifact": {
+            "cuts": [
+              {
+                "time": 900,
+                "x": 21.5,
+                "size": 20,
+                "endX": 35,
+                "speed": 15,
+                "score": 100
+              },
+              {
+                "time": 1200,
+                "x": 38,
+                "size": 26,
+                "endX": 62,
+                "speed": 20,
+                "score": 100
+              },
+              {
+                "time": 750,
+                "x": 56.5,
+                "size": 18,
+                "endX": 45.25,
+                "speed": -15,
+                "score": 99
+              }
+            ],
+            "attempts": 3
+          },
+          "resultScreenshot": "screenshots/2026-10-22T13-20-56-816Z-mid-autumn-zh-1440-result.png",
+          "replayScreenshot": "screenshots/2026-10-22T13-20-56-816Z-mid-autumn-zh-1440-replay.png",
+          "replayShots": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "game": "teachers",
+          "lang": "zh",
+          "width": 1440,
+          "status": "pass",
+          "checks": {
+            "locale": "yes",
+            "uniqueIds": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes",
+            "completedFromDOM": "yes",
+            "replay3Shots": "yes",
+            "retryFresh": "yes",
+            "browserErrors": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "duplicateIds": [],
+          "missingImages": [],
+          "stageScreenshot": "screenshots/2026-10-22T13-20-56-816Z-teachers-zh-1440-stage.png",
+          "horizontalOverflow": false,
+          "score": "97 / 100",
+          "artifact": {
+            "panels": [
+              {
+                "action": "listen",
+                "line": "ask",
+                "pause": 900
+              },
+              {
+                "action": "thanks",
+                "line": "thank-patient",
+                "pause": 1400
+              },
+              {
+                "action": "reply",
+                "line": "reply",
+                "pause": 1100
+              }
+            ],
+            "attempts": 4
+          },
+          "resultScreenshot": "screenshots/2026-10-22T13-20-56-816Z-teachers-zh-1440-result.png",
+          "replayScreenshot": "screenshots/2026-10-22T13-20-56-816Z-teachers-zh-1440-replay.png",
+          "replayShots": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "game": "national-day",
+          "lang": "zh",
+          "width": 1440,
+          "status": "pass",
+          "checks": {
+            "locale": "yes",
+            "uniqueIds": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes",
+            "completedFromDOM": "yes",
+            "replay3Shots": "yes",
+            "retryFresh": "yes",
+            "browserErrors": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "duplicateIds": [],
+          "missingImages": [],
+          "stageScreenshot": "screenshots/2026-10-22T13-20-56-816Z-national-day-zh-1440-stage.png",
+          "horizontalOverflow": false,
+          "score": "96 / 100",
+          "artifact": {
+            "shots": [
+              {
+                "camera": -12,
+                "fore": 22,
+                "mid": -1,
+                "far": -4,
+                "order": "normal",
+                "screen_fore": 82.8,
+                "screen_mid": 55,
+                "screen_far": 48.4,
+                "screen_subject": 57.2
+              },
+              {
+                "camera": 0,
+                "fore": 22,
+                "mid": 0,
+                "far": 0,
+                "order": "normal",
+                "screen_fore": 72,
+                "screen_mid": 50,
+                "screen_far": 50,
+                "screen_subject": 50
+              },
+              {
+                "camera": 12,
+                "fore": 22,
+                "mid": 1,
+                "far": 4,
+                "order": "normal",
+                "screen_fore": 61.2,
+                "screen_mid": 45,
+                "screen_far": 51.6,
+                "screen_subject": 42.8
+              }
+            ],
+            "misses": 1
+          },
+          "resultScreenshot": "screenshots/2026-10-22T13-20-56-816Z-national-day-zh-1440-result.png",
+          "replayScreenshot": "screenshots/2026-10-22T13-20-56-816Z-national-day-zh-1440-replay.png",
+          "replayShots": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "game": "semester",
+          "lang": "zh",
+          "width": 1440,
+          "status": "pass",
+          "checks": {
+            "locale": "yes",
+            "uniqueIds": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes",
+            "completedFromDOM": "yes",
+            "replay3Shots": "yes",
+            "retryFresh": "yes",
+            "browserErrors": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "duplicateIds": [],
+          "missingImages": [],
+          "stageScreenshot": "screenshots/2026-10-22T13-20-56-816Z-semester-zh-1440-stage.png",
+          "horizontalOverflow": false,
+          "score": "100 / 100",
+          "artifact": {
+            "route": [
+              {
+                "x": 0,
+                "y": 2
+              },
+              {
+                "x": 0,
+                "y": 1
+              },
+              {
+                "x": 0,
+                "y": 0
+              },
+              {
+                "x": 1,
+                "y": 0
+              },
+              {
+                "x": 2,
+                "y": 0
+              },
+              {
+                "x": 3,
+                "y": 0
+              },
+              {
+                "x": 4,
+                "y": 0
+              },
+              {
+                "x": 4,
+                "y": 1
+              },
+              {
+                "x": 4,
+                "y": 2
+              },
+              {
+                "x": 3,
+                "y": 2
+              },
+              {
+                "x": 2,
+                "y": 2
+              }
+            ],
+            "visits": [
+              {
+                "index": 0,
+                "x": 0,
+                "y": 0,
+                "steps": 2
+              },
+              {
+                "index": 1,
+                "x": 4,
+                "y": 0,
+                "steps": 6
+              },
+              {
+                "index": 2,
+                "x": 2,
+                "y": 2,
+                "steps": 10
+              }
+            ],
+            "fictionalMap": true
+          },
+          "resultScreenshot": "screenshots/2026-10-22T13-20-56-816Z-semester-zh-1440-result.png",
+          "replayScreenshot": "screenshots/2026-10-22T13-20-56-816Z-semester-zh-1440-replay.png",
+          "replayShots": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "game": "exhibition",
+          "lang": "zh",
+          "width": 1440,
+          "status": "pass",
+          "checks": {
+            "locale": "yes",
+            "uniqueIds": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes",
+            "completedFromDOM": "yes",
+            "replay3Shots": "yes",
+            "retryFresh": "yes",
+            "browserErrors": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "duplicateIds": [],
+          "missingImages": [],
+          "stageScreenshot": "screenshots/2026-10-22T13-20-56-816Z-exhibition-zh-1440-stage.png",
+          "horizontalOverflow": false,
+          "score": "100 / 100",
+          "artifact": {
+            "works": [
+              {
+                "id": 0,
+                "x": 20,
+                "y": 30,
+                "info": true
+              },
+              {
+                "id": 1,
+                "x": 50,
+                "y": 30,
+                "info": true
+              },
+              {
+                "id": 2,
+                "x": 80,
+                "y": 30,
+                "info": true
+              }
+            ],
+            "visitorOrder": [
+              0,
+              1,
+              2
+            ],
+            "edits": 15,
+            "fictionalWorks": true
+          },
+          "resultScreenshot": "screenshots/2026-10-22T13-20-56-816Z-exhibition-zh-1440-result.png",
+          "replayScreenshot": "screenshots/2026-10-22T13-20-56-816Z-exhibition-zh-1440-replay.png",
+          "replayShots": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "game": "new-year",
+          "lang": "en",
+          "width": 390,
+          "status": "pass",
+          "checks": {
+            "locale": "yes",
+            "uniqueIds": "yes",
+            "englishInstruction": "yes",
+            "keyboardRange": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes",
+            "completedFromDOM": "yes",
+            "replay3Shots": "yes",
+            "retryFresh": "yes",
+            "browserErrors": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "duplicateIds": [],
+          "missingImages": [],
+          "stageScreenshot": "screenshots/2026-10-22T13-20-56-816Z-new-year-en-390-stage.png",
+          "horizontalOverflow": false,
+          "score": "96 / 100",
+          "artifact": {
+            "takes": [
+              {
+                "timing": [
+                  440,
+                  160,
+                  400
+                ],
+                "score": 87
+              },
+              {
+                "timing": [
+                  320,
+                  140,
+                  320
+                ],
+                "score": 100
+              },
+              {
+                "timing": [
+                  500,
+                  220,
+                  420
+                ],
+                "score": 100
+              }
+            ],
+            "attempts": 3
+          },
+          "resultScreenshot": "screenshots/2026-10-22T13-20-56-816Z-new-year-en-390-result.png",
+          "replayScreenshot": "screenshots/2026-10-22T13-20-56-816Z-new-year-en-390-replay.png",
+          "replayShots": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "game": "lunar-new-year",
+          "lang": "ja",
+          "width": 768,
+          "status": "pass",
+          "checks": {
+            "locale": "yes",
+            "uniqueIds": "yes",
+            "japaneseInstruction": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes",
+            "completedFromDOM": "yes",
+            "replay3Shots": "yes",
+            "retryFresh": "yes",
+            "browserErrors": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "duplicateIds": [],
+          "missingImages": [],
+          "stageScreenshot": "screenshots/2026-10-22T13-20-56-816Z-lunar-new-year-ja-768-stage.png",
+          "horizontalOverflow": false,
+          "score": "98 / 100",
+          "artifact": {
+            "poses": [
+              {
+                "values": {
+                  "brow": -16,
+                  "eyes": 1.4,
+                  "mouth": 0.8,
+                  "pose": 0
+                },
+                "score": 93,
+                "role": 0
+              },
+              {
+                "values": {
+                  "brow": 10,
+                  "eyes": 0.8,
+                  "mouth": 1,
+                  "pose": 0
+                },
+                "score": 100,
+                "role": 1
+              },
+              {
+                "values": {
+                  "brow": 0,
+                  "eyes": 0.7,
+                  "mouth": 0.5,
+                  "pose": 30
+                },
+                "score": 100,
+                "role": 2
+              }
+            ],
+            "attempts": 4
+          },
+          "resultScreenshot": "screenshots/2026-10-22T13-20-56-816Z-lunar-new-year-ja-768-result.png",
+          "replayScreenshot": "screenshots/2026-10-22T13-20-56-816Z-lunar-new-year-ja-768-replay.png",
+          "replayShots": [
+            0,
+            1,
+            2
+          ]
+        }
+      ],
+      "errors": [],
+      "status": "pass",
+      "servedSourceSha256": {
+        "runner.mjs": "1bb83b37bbfc74ef7c2f09d1ee9f018b2bce9f5e0442fbb83475048fc6155aa5",
+        "catalog.mjs": "c83181fe689bea083900baaf7bf38a9d45cc6c88d9297bc2c46fb3ff1a0b8232",
+        "games/new-year.mjs": "f8ddc54f564d586fc64b863b38ec9d2776556a85181da9b6c94d52ff3b7e9723",
+        "games/lunar-new-year.mjs": "fa7b3ad16679123323ca115dfeca36ca770539ca11ca5e3abe74987e69d1bc47",
+        "games/lantern.mjs": "a550a9c7b2abaaf2ba4f34ea81963cb61431ed7ce1e5de77a12cabb1fc661c2c",
+        "games/children.mjs": "29f172170038a222994633f8071a6d3d5c6e781698075b902e031fb76b1ee0b0",
+        "games/dragon-boat.mjs": "12c515a8434ea32cd1fdd6013fa9b362ea76488b2ef24a44b1b4ea02d8da02c7",
+        "games/mid-autumn.mjs": "b78b9702fc3b73cc72a2f22df8140bc297abd27efc79ec3d18ca935e436efc0f",
+        "games/teachers.mjs": "12d92f06a40629e9ffbd63a51f7894f23a5a068634359f68b4a92410c315759f",
+        "games/national-day.mjs": "cc7fe3f338b7f058274f374cfecbcfba7efec888c13fedfbc5a3306cd65cdb48",
+        "games/semester.mjs": "31ae5b2b103c7de6f2244523d02691327cbd2eb06250fba917101c708ff810c1",
+        "games/exhibition.mjs": "1c6370fd2e12424defa18963414adf5546dc32f3c2e17450078a3b9ed27bef6b"
+      },
+      "browserVersion": "151.0.7922.34"
+    },
+    {
+      "runId": "2026-10-22T13-27-12-912Z",
+      "url": "http://127.0.0.1:8800",
+      "method": "headless Chromium, real DOM buttons/ranges, no direct game imports or state mutation",
+      "cases": [
+        {
+          "game": "new-year",
+          "lang": "en",
+          "width": 390,
+          "status": "pass",
+          "checks": {
+            "locale": "yes",
+            "uniqueIds": "yes",
+            "englishInstruction": "yes",
+            "keyboardRange": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes",
+            "completedFromDOM": "yes",
+            "replay3Shots": "yes",
+            "retryFresh": "yes",
+            "browserErrors": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "duplicateIds": [],
+          "missingImages": [],
+          "stageScreenshot": "screenshots/2026-10-22T13-27-12-912Z-new-year-en-390-stage.png",
+          "horizontalOverflow": false,
+          "score": "96 / 100",
+          "artifact": {
+            "takes": [
+              {
+                "timing": [
+                  440,
+                  160,
+                  400
+                ],
+                "score": 87
+              },
+              {
+                "timing": [
+                  320,
+                  140,
+                  320
+                ],
+                "score": 100
+              },
+              {
+                "timing": [
+                  500,
+                  220,
+                  420
+                ],
+                "score": 100
+              }
+            ],
+            "attempts": 3
+          },
+          "resultScreenshot": "screenshots/2026-10-22T13-27-12-912Z-new-year-en-390-result.png",
+          "replayScreenshot": "screenshots/2026-10-22T13-27-12-912Z-new-year-en-390-replay.png",
+          "replayShots": [
+            0,
+            1,
+            2
+          ]
+        }
+      ],
+      "errors": [],
+      "status": "pass",
+      "servedSourceSha256": {
+        "runner.mjs": "1bb83b37bbfc74ef7c2f09d1ee9f018b2bce9f5e0442fbb83475048fc6155aa5",
+        "catalog.mjs": "c83181fe689bea083900baaf7bf38a9d45cc6c88d9297bc2c46fb3ff1a0b8232",
+        "games/new-year.mjs": "f8ddc54f564d586fc64b863b38ec9d2776556a85181da9b6c94d52ff3b7e9723",
+        "games/lunar-new-year.mjs": "fa7b3ad16679123323ca115dfeca36ca770539ca11ca5e3abe74987e69d1bc47",
+        "games/lantern.mjs": "a550a9c7b2abaaf2ba4f34ea81963cb61431ed7ce1e5de77a12cabb1fc661c2c",
+        "games/children.mjs": "29f172170038a222994633f8071a6d3d5c6e781698075b902e031fb76b1ee0b0",
+        "games/dragon-boat.mjs": "12c515a8434ea32cd1fdd6013fa9b362ea76488b2ef24a44b1b4ea02d8da02c7",
+        "games/mid-autumn.mjs": "b78b9702fc3b73cc72a2f22df8140bc297abd27efc79ec3d18ca935e436efc0f",
+        "games/teachers.mjs": "12d92f06a40629e9ffbd63a51f7894f23a5a068634359f68b4a92410c315759f",
+        "games/national-day.mjs": "cc7fe3f338b7f058274f374cfecbcfba7efec888c13fedfbc5a3306cd65cdb48",
+        "games/semester.mjs": "31ae5b2b103c7de6f2244523d02691327cbd2eb06250fba917101c708ff810c1",
+        "games/exhibition.mjs": "1c6370fd2e12424defa18963414adf5546dc32f3c2e17450078a3b9ed27bef6b"
+      },
+      "browserVersion": "151.0.7922.34"
+    },
+    {
+      "runId": "2026-10-22T13-27-48-760Z",
+      "url": "http://127.0.0.1:8800",
+      "method": "headless Chromium, real DOM buttons/ranges, no direct game imports or state mutation",
+      "cases": [
+        {
+          "game": "new-year",
+          "lang": "zh",
+          "width": 390,
+          "status": "pass",
+          "checks": {
+            "locale": "yes",
+            "uniqueIds": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "pause": "yes",
+            "noHorizontalOverflow": "yes",
+            "completedFromDOM": "yes",
+            "keyboardReplayExit": "yes",
+            "replay3Shots": "yes",
+            "retryFresh": "yes",
+            "exitArchive": "yes",
+            "browserErrors": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "stylesheetSha256": "afac35d566a0eb304689d3feb37dd9882961e25282de6ee415dea4dad7694559",
+          "duplicateIds": [],
+          "missingImages": [],
+          "layoutScreenshot": "screenshots/2026-10-22T13-27-48-760Z-new-year-zh-390-layout.png",
+          "stageScreenshot": "screenshots/2026-10-22T13-27-48-760Z-new-year-zh-390-stage.png",
+          "horizontalOverflow": false,
+          "score": "100 / 100",
+          "artifact": {
+            "takes": [
+              {
+                "timing": [
+                  400,
+                  180,
+                  380
+                ],
+                "score": 100
+              },
+              {
+                "timing": [
+                  320,
+                  140,
+                  320
+                ],
+                "score": 100
+              },
+              {
+                "timing": [
+                  500,
+                  220,
+                  420
+                ],
+                "score": 100
+              }
+            ],
+            "attempts": 3
+          },
+          "resultScreenshot": "screenshots/2026-10-22T13-27-48-760Z-new-year-zh-390-result.png",
+          "replayScreenshot": "screenshots/2026-10-22T13-27-48-760Z-new-year-zh-390-replay.png",
+          "replayShots": [
+            0,
+            1,
+            2
+          ]
+        }
+      ],
+      "errors": [],
+      "status": "pass",
+      "servedSourceSha256": {
+        "runner.mjs": "1bb83b37bbfc74ef7c2f09d1ee9f018b2bce9f5e0442fbb83475048fc6155aa5",
+        "catalog.mjs": "c83181fe689bea083900baaf7bf38a9d45cc6c88d9297bc2c46fb3ff1a0b8232",
+        "games/new-year.mjs": "f8ddc54f564d586fc64b863b38ec9d2776556a85181da9b6c94d52ff3b7e9723",
+        "games/lunar-new-year.mjs": "fa7b3ad16679123323ca115dfeca36ca770539ca11ca5e3abe74987e69d1bc47",
+        "games/lantern.mjs": "a550a9c7b2abaaf2ba4f34ea81963cb61431ed7ce1e5de77a12cabb1fc661c2c",
+        "games/children.mjs": "29f172170038a222994633f8071a6d3d5c6e781698075b902e031fb76b1ee0b0",
+        "games/dragon-boat.mjs": "12c515a8434ea32cd1fdd6013fa9b362ea76488b2ef24a44b1b4ea02d8da02c7",
+        "games/mid-autumn.mjs": "b78b9702fc3b73cc72a2f22df8140bc297abd27efc79ec3d18ca935e436efc0f",
+        "games/teachers.mjs": "12d92f06a40629e9ffbd63a51f7894f23a5a068634359f68b4a92410c315759f",
+        "games/national-day.mjs": "cc7fe3f338b7f058274f374cfecbcfba7efec888c13fedfbc5a3306cd65cdb48",
+        "games/semester.mjs": "31ae5b2b103c7de6f2244523d02691327cbd2eb06250fba917101c708ff810c1",
+        "games/exhibition.mjs": "1c6370fd2e12424defa18963414adf5546dc32f3c2e17450078a3b9ed27bef6b"
+      },
+      "browserVersion": "151.0.7922.34"
+    },
+    {
+      "runId": "2026-10-22T13-28-03-396Z",
+      "url": "http://127.0.0.1:8800",
+      "method": "headless Chromium, real DOM buttons/ranges, no direct game imports or state mutation",
+      "cases": [
+        {
+          "game": "new-year",
+          "lang": "en",
+          "width": 390,
+          "status": "pass",
+          "checks": {
+            "locale": "yes",
+            "uniqueIds": "yes",
+            "englishInstruction": "yes",
+            "keyboardRange": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes",
+            "completedFromDOM": "yes",
+            "keyboardReplayExit": "yes",
+            "replay3Shots": "yes",
+            "retryFresh": "yes",
+            "exitArchive": "yes",
+            "browserErrors": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "stylesheetSha256": "afac35d566a0eb304689d3feb37dd9882961e25282de6ee415dea4dad7694559",
+          "duplicateIds": [],
+          "missingImages": [],
+          "layoutScreenshot": "screenshots/2026-10-22T13-28-03-396Z-new-year-en-390-layout.png",
+          "stageScreenshot": "screenshots/2026-10-22T13-28-03-396Z-new-year-en-390-stage.png",
+          "horizontalOverflow": false,
+          "score": "96 / 100",
+          "artifact": {
+            "takes": [
+              {
+                "timing": [
+                  440,
+                  160,
+                  400
+                ],
+                "score": 87
+              },
+              {
+                "timing": [
+                  320,
+                  140,
+                  320
+                ],
+                "score": 100
+              },
+              {
+                "timing": [
+                  500,
+                  220,
+                  420
+                ],
+                "score": 100
+              }
+            ],
+            "attempts": 3
+          },
+          "resultScreenshot": "screenshots/2026-10-22T13-28-03-396Z-new-year-en-390-result.png",
+          "replayScreenshot": "screenshots/2026-10-22T13-28-03-396Z-new-year-en-390-replay.png",
+          "replayShots": [
+            0,
+            1,
+            2
+          ]
+        }
+      ],
+      "errors": [],
+      "status": "pass",
+      "servedSourceSha256": {
+        "runner.mjs": "1bb83b37bbfc74ef7c2f09d1ee9f018b2bce9f5e0442fbb83475048fc6155aa5",
+        "catalog.mjs": "c83181fe689bea083900baaf7bf38a9d45cc6c88d9297bc2c46fb3ff1a0b8232",
+        "games/new-year.mjs": "f8ddc54f564d586fc64b863b38ec9d2776556a85181da9b6c94d52ff3b7e9723",
+        "games/lunar-new-year.mjs": "fa7b3ad16679123323ca115dfeca36ca770539ca11ca5e3abe74987e69d1bc47",
+        "games/lantern.mjs": "a550a9c7b2abaaf2ba4f34ea81963cb61431ed7ce1e5de77a12cabb1fc661c2c",
+        "games/children.mjs": "29f172170038a222994633f8071a6d3d5c6e781698075b902e031fb76b1ee0b0",
+        "games/dragon-boat.mjs": "12c515a8434ea32cd1fdd6013fa9b362ea76488b2ef24a44b1b4ea02d8da02c7",
+        "games/mid-autumn.mjs": "b78b9702fc3b73cc72a2f22df8140bc297abd27efc79ec3d18ca935e436efc0f",
+        "games/teachers.mjs": "12d92f06a40629e9ffbd63a51f7894f23a5a068634359f68b4a92410c315759f",
+        "games/national-day.mjs": "cc7fe3f338b7f058274f374cfecbcfba7efec888c13fedfbc5a3306cd65cdb48",
+        "games/semester.mjs": "31ae5b2b103c7de6f2244523d02691327cbd2eb06250fba917101c708ff810c1",
+        "games/exhibition.mjs": "1c6370fd2e12424defa18963414adf5546dc32f3c2e17450078a3b9ed27bef6b"
+      },
+      "browserVersion": "151.0.7922.34"
+    }
+  ],
+  "servedSourceSha256": {
+    "runner.mjs": "1bb83b37bbfc74ef7c2f09d1ee9f018b2bce9f5e0442fbb83475048fc6155aa5",
+    "catalog.mjs": "c83181fe689bea083900baaf7bf38a9d45cc6c88d9297bc2c46fb3ff1a0b8232",
+    "games/new-year.mjs": "f8ddc54f564d586fc64b863b38ec9d2776556a85181da9b6c94d52ff3b7e9723",
+    "games/lunar-new-year.mjs": "fa7b3ad16679123323ca115dfeca36ca770539ca11ca5e3abe74987e69d1bc47",
+    "games/lantern.mjs": "a550a9c7b2abaaf2ba4f34ea81963cb61431ed7ce1e5de77a12cabb1fc661c2c",
+    "games/children.mjs": "29f172170038a222994633f8071a6d3d5c6e781698075b902e031fb76b1ee0b0",
+    "games/dragon-boat.mjs": "12c515a8434ea32cd1fdd6013fa9b362ea76488b2ef24a44b1b4ea02d8da02c7",
+    "games/mid-autumn.mjs": "b78b9702fc3b73cc72a2f22df8140bc297abd27efc79ec3d18ca935e436efc0f",
+    "games/teachers.mjs": "12d92f06a40629e9ffbd63a51f7894f23a5a068634359f68b4a92410c315759f",
+    "games/national-day.mjs": "cc7fe3f338b7f058274f374cfecbcfba7efec888c13fedfbc5a3306cd65cdb48",
+    "games/semester.mjs": "31ae5b2b103c7de6f2244523d02691327cbd2eb06250fba917101c708ff810c1",
+    "games/exhibition.mjs": "1c6370fd2e12424defa18963414adf5546dc32f3c2e17450078a3b9ed27bef6b"
+  },
+  "browserVersion": "151.0.7922.34",
+  "preservedFullMatrix": {
+    "runId": "2026-10-22T13-20-56-816Z",
+    "cases": 12,
+    "javascriptSha256Unchanged": true
+  }
+}
