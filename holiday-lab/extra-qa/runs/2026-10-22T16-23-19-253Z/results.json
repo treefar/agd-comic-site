@@ -1,0 +1,146 @@
+{
+  "date": "2026-10-22T16:23:19.253Z",
+  "url": "http://127.0.0.1:8818",
+  "method": "known-solution real DOM regression; not a student blind playtest",
+  "cases": [
+    {
+      "game": "constitution",
+      "lang": "zh",
+      "width": 1440,
+      "status": "pass",
+      "checks": {
+        "locale": "yes",
+        "uniqueDOMIds": "yes",
+        "startImages": "yes",
+        "noHorizontalOverflow": "yes",
+        "wrongBlocked": "yes",
+        "completedFromDOM": "yes",
+        "savedActualInputs": "yes",
+        "replayThreeShots": "yes",
+        "replayImages": "yes",
+        "savedCaptionText": "yes",
+        "retryFresh": "yes",
+        "consoleAndNetwork": "yes"
+      },
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "initialProgress": "0/3",
+      "initialScreenshot": "constitution-zh-1440-initial.png",
+      "wrong": {
+        "progress": "0/3",
+        "feedback": "這位讀者需要再大一點的字，試著調大。"
+      },
+      "wrongScreenshot": "constitution-zh-1440-wrong.png",
+      "knownSolutionSeconds": 19.13,
+      "score": "100 / 100",
+      "artifact": {
+        "captions": [
+          {
+            "font": 18,
+            "lines": 2,
+            "duration": 6,
+            "x": 50,
+            "y": 78,
+            "tone": "light",
+            "lang": "zh",
+            "words": {
+              "zh": "每個故事，\n都值得被看見。",
+              "en": "Every story is\nworth seeing.",
+              "ja": "どの物語も、\n見る価値がある。"
+            },
+            "stageWidth": 659
+          },
+          {
+            "font": 20,
+            "lines": 2,
+            "duration": 6,
+            "x": 50,
+            "y": 78,
+            "tone": "light",
+            "lang": "zh",
+            "words": {
+              "zh": "字大一些，\n讀慢一些。",
+              "en": "Bigger words.\nTime to read.",
+              "ja": "大きい文字、\n読む時間。"
+            },
+            "stageWidth": 659
+          },
+          {
+            "font": 18,
+            "lines": 2,
+            "duration": 6,
+            "x": 50,
+            "y": 78,
+            "tone": "light",
+            "lang": "zh",
+            "words": {
+              "zh": "這一頁，\n我們一起讀完。",
+              "en": "Read this page\ntogether.",
+              "ja": "このページを、\n一緒に。"
+            },
+            "stageWidth": 659
+          }
+        ],
+        "attempts": 3
+      },
+      "resultScreenshot": "constitution-zh-1440-result.png",
+      "replayScreenshot": "constitution-zh-1440-replay.png",
+      "replayShots": [
+        {
+          "shot": 0,
+          "caption": "第1格・2行・18字級：每個故事，／都值得被看見。",
+          "texts": [
+            "每個故事，\n都值得被看見。"
+          ]
+        },
+        {
+          "shot": 1,
+          "caption": "第2格・2行・20字級：字大一些，／讀慢一些。",
+          "texts": [
+            "字大一些，\n讀慢一些。"
+          ]
+        },
+        {
+          "shot": 2,
+          "caption": "第3格・2行・18字級：這一頁，／我們一起讀完。",
+          "texts": [
+            "這一頁，\n我們一起讀完。"
+          ]
+        }
+      ],
+      "retryWrong": {
+        "progress": "0/3",
+        "feedback": "這位讀者需要再大一點的字，試著調大。"
+      },
+      "retryScreenshot": "constitution-zh-1440-retry.png"
+    }
+  ],
+  "receipts": {
+    "before": {
+      "runner.mjs": "313bfc9f27d2fd864613439e1f44d2c07271af31ca378382deca9a05e2d8bbef",
+      "replay-model.mjs": "202d09d268c31d7d159035cc8958bb15caa84f5406c36736ba646bf09e0757e3",
+      "catalog.mjs": "3ff982b58d12e560e94d90ef3032ec389e48207d50bbec91268f914a56882dad",
+      "lab.css": "e7fe83b79e062ce89d67eb7cbe1eca28b9aa8900384ddea2775aae2888254dd0",
+      "games/peace-memory.mjs": "0b4cb80bb7e2574c4001ea6a507a85d2cf0177bdbab46e557aac54eb13542596",
+      "games/qingming.mjs": "3936b5606016b60ca38de77e63d2f2170681592e6dc7e7c9147e29210870cc5f",
+      "games/labor.mjs": "2020df91daa151aa4ca124cc6fa55aa5495e39f7e7f9ae590dd7e211a6c597eb",
+      "games/retrocession.mjs": "64765225ca980c62feb3f673393efaf8d7d479739b908bf3928389cabca21989",
+      "games/constitution.mjs": "de73d0e7b5ecd2de54d6f9d3a234a9a4e88bd3dd4861bf91b138c322290a64d5"
+    },
+    "after": {
+      "runner.mjs": "313bfc9f27d2fd864613439e1f44d2c07271af31ca378382deca9a05e2d8bbef",
+      "replay-model.mjs": "202d09d268c31d7d159035cc8958bb15caa84f5406c36736ba646bf09e0757e3",
+      "catalog.mjs": "3ff982b58d12e560e94d90ef3032ec389e48207d50bbec91268f914a56882dad",
+      "lab.css": "e7fe83b79e062ce89d67eb7cbe1eca28b9aa8900384ddea2775aae2888254dd0",
+      "games/peace-memory.mjs": "0b4cb80bb7e2574c4001ea6a507a85d2cf0177bdbab46e557aac54eb13542596",
+      "games/qingming.mjs": "3936b5606016b60ca38de77e63d2f2170681592e6dc7e7c9147e29210870cc5f",
+      "games/labor.mjs": "2020df91daa151aa4ca124cc6fa55aa5495e39f7e7f9ae590dd7e211a6c597eb",
+      "games/retrocession.mjs": "64765225ca980c62feb3f673393efaf8d7d479739b908bf3928389cabca21989",
+      "games/constitution.mjs": "de73d0e7b5ecd2de54d6f9d3a234a9a4e88bd3dd4861bf91b138c322290a64d5"
+    }
+  },
+  "status": "pass",
+  "browser": "151.0.7922.34"
+}

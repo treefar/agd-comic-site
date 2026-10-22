@@ -1,5 +1,5 @@
 // Reconcile both human-readable semantic batches with the final compiled maps.
-const fs=require('fs'),assert=require('node:assert/strict'),vm=require('vm');
+const fs=require('fs'),assert=require('node:assert/strict'),vm=require('vm'),crypto=require('node:crypto');
 const norm=s=>s.replace(/\s+/g,' ').trim(),read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
 const guide=read('data/students/guide.json'),first=read('holiday-lab/translation-review/followup/semantic-reviewed.json').units.filter(u=>u.id.startsWith('faq/')),last=read('holiday-lab/translation-review/faq-remainder/reviewed.json').units;
 const all=[...first,...last],ids=new Set(all.map(x=>x.id)),expectedIds=guide.cards.flatMap(c=>c.faq.map((_,i)=>`faq/${c.id}/${i}`));
@@ -15,4 +15,5 @@ const rows=[];for(const c of guide.cards)for(const [index,faq]of c.faq.entries()
   assert.equal(maps[lang][norm(key)],expected,`${id}/${part}/${lang}`);rows.push({id,part,lang,compiled_value_verified:true});
  }
 }
-const result={faq_pairs:expectedIds.length,target_strings:rows.length,unique_review_units:ids.size,pass:true,scope:'semantic review coverage and compiled values; not a fresh audit of every underlying school regulation',rows};fs.writeFileSync('holiday-lab/translation-review/all-faq-result.json',JSON.stringify(result,null,2));console.log(`FAQ_SEMANTIC_AND_COMPILED ${expectedIds.length} pairs / ${rows.length} strings PASS`);
+const source_fingerprints=Object.fromEntries(['data/students/guide.json','locale-en.js','locale-ja.js'].map(f=>[f,crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex')]));
+const result={checked_at:new Date().toISOString(),source_fingerprints,faq_pairs:expectedIds.length,target_strings:rows.length,unique_review_units:ids.size,pass:true,scope:'semantic review coverage and compiled values; not a fresh audit of every underlying school regulation',rows};fs.writeFileSync('holiday-lab/translation-review/all-faq-result.json',JSON.stringify(result,null,2));console.log(`FAQ_SEMANTIC_AND_COMPILED ${expectedIds.length} pairs / ${rows.length} strings PASS`);
