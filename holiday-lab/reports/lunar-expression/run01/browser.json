@@ -1,0 +1,1907 @@
+{
+  "at": "2026-10-22T16:11:31.972Z",
+  "build": ".measure-lunar-expression-01",
+  "method": "Real DOM, known fixture performances, no game imports or internal state injection; not a student blind test.",
+  "cases": [
+    {
+      "id": "zh-320",
+      "lang": "zh",
+      "width": 320,
+      "poses": [
+        {
+          "brow": -10,
+          "eyes": 1.2,
+          "mouth": 0.5,
+          "pose": 10
+        },
+        {
+          "brow": 0,
+          "eyes": 1,
+          "mouth": 0.7,
+          "pose": 12
+        },
+        {
+          "brow": -10,
+          "eyes": 0.6,
+          "mouth": 0.3,
+          "pose": 12
+        }
+      ],
+      "intent": "reserved",
+      "pass": true,
+      "pageErrors": [],
+      "consoleErrors": [],
+      "instructions": "眉、眼、嘴一起演戲。看畫面，試出自己的三幕。驚喜：看到新作品先睜大眼、傾斜眉，張嘴接住驚喜；先別急著鞠躬。眼睛還沒睜大，驚喜看不出來。試著把眼睛張開。眉毛角度減0加眼睛張開減1加嘴形張開減0加鞠躬角度減0加最後想怎麼拜年？誇張喜劇含蓄問候表情歸零拍下這一幕",
+      "neutralFailure": "眼睛還沒睜大，驚喜看不出來。試著把眼睛張開。",
+      "eyeOnlyFeedback": "眼睛睜大了，眉毛卻還很平。傾斜眉毛，讓驚喜更鮮明。",
+      "causalEyeChange": true,
+      "liveFaceProps": [
+        [
+          {
+            "left": "52.1152%",
+            "top": "43.632%",
+            "width": "13%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(0deg) scale(1, 1)"
+          },
+          {
+            "left": "51.6268%",
+            "top": "48.0637%",
+            "width": "14%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(10deg) scale(1, 1.2)"
+          },
+          {
+            "left": "51.1384%",
+            "top": "52.4953%",
+            "width": "9%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(10deg) scale(1, 0.9)"
+          }
+        ],
+        [
+          {
+            "left": "52.4485%",
+            "top": "43.8154%",
+            "width": "13%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 1)"
+          },
+          {
+            "left": "51.8638%",
+            "top": "48.217%",
+            "width": "14%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 1)"
+          },
+          {
+            "left": "51.279%",
+            "top": "52.6187%",
+            "width": "9%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 1.14)"
+          }
+        ],
+        [
+          {
+            "left": "52.4485%",
+            "top": "43.8154%",
+            "width": "13%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(2deg) scale(1, 1)"
+          },
+          {
+            "left": "51.8638%",
+            "top": "48.217%",
+            "width": "14%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 0.6)"
+          },
+          {
+            "left": "51.279%",
+            "top": "52.6187%",
+            "width": "9%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 0.66)"
+          }
+        ]
+      ],
+      "actScreenshots": [
+        "zh-320-act1.png",
+        "zh-320-act2.png",
+        "zh-320-act3.png"
+      ],
+      "surpriseIsNotJoy": "眼睛還像剛被嚇到。放鬆眼神，讓笑口成為重點。",
+      "wrongIntentFeedback": "笑容很熱情，鞠躬卻還很輕。用深鞠躬把喜劇動作做大。",
+      "intentChangesMeaning": true,
+      "artifact": {
+        "poses": [
+          {
+            "values": {
+              "brow": -10,
+              "eyes": 1.2,
+              "mouth": 0.5,
+              "pose": 10
+            },
+            "score": 100,
+            "role": 0,
+            "intent": "surprise"
+          },
+          {
+            "values": {
+              "brow": 0,
+              "eyes": 1,
+              "mouth": 0.7,
+              "pose": 12
+            },
+            "score": 100,
+            "role": 1,
+            "intent": "joy"
+          },
+          {
+            "values": {
+              "brow": -10,
+              "eyes": 0.6,
+              "mouth": 0.3,
+              "pose": 12
+            },
+            "score": 100,
+            "role": 2,
+            "intent": "reserved"
+          }
+        ],
+        "attempts": 6
+      },
+      "explorationNotPenalized": true,
+      "resultScreenshot": "zh-320-result.png",
+      "replay": [
+        {
+          "caption": "驚喜：看到新作品",
+          "props": [
+            {
+              "left": "52.1152%",
+              "top": "43.632%",
+              "width": "13%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(0deg) scale(1, 1)"
+            },
+            {
+              "left": "51.6268%",
+              "top": "48.0637%",
+              "width": "14%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(10deg) scale(1, 1.2)"
+            },
+            {
+              "left": "51.1384%",
+              "top": "52.4953%",
+              "width": "9%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(10deg) scale(1, 0.9)"
+            }
+          ]
+        },
+        {
+          "caption": "開心：朋友來了",
+          "props": [
+            {
+              "left": "52.4485%",
+              "top": "43.8154%",
+              "width": "13%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 1)"
+            },
+            {
+              "left": "51.8638%",
+              "top": "48.217%",
+              "width": "14%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 1)"
+            },
+            {
+              "left": "51.279%",
+              "top": "52.6187%",
+              "width": "9%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 1.14)"
+            }
+          ]
+        },
+        {
+          "caption": "含蓄問候",
+          "props": [
+            {
+              "left": "52.4485%",
+              "top": "43.8154%",
+              "width": "13%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(2deg) scale(1, 1)"
+            },
+            {
+              "left": "51.8638%",
+              "top": "48.217%",
+              "width": "14%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 0.6)"
+            },
+            {
+              "left": "51.279%",
+              "top": "52.6187%",
+              "width": "9%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 0.66)"
+            }
+          ]
+        }
+      ],
+      "replayScreenshot": "zh-320-replay.png",
+      "retryFresh": true,
+      "mutedPlayable": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "id": "zh-1440",
+      "lang": "zh",
+      "width": 1440,
+      "poses": [
+        {
+          "brow": -30,
+          "eyes": 1.5,
+          "mouth": 1,
+          "pose": 0
+        },
+        {
+          "brow": 22,
+          "eyes": 0.6,
+          "mouth": 1,
+          "pose": 4
+        },
+        {
+          "brow": 18,
+          "eyes": 1.4,
+          "mouth": 0.9,
+          "pose": 38
+        }
+      ],
+      "intent": "comic",
+      "pass": true,
+      "pageErrors": [],
+      "consoleErrors": [],
+      "instructions": "眉、眼、嘴一起演戲。看畫面，試出自己的三幕。驚喜：看到新作品先睜大眼、傾斜眉，張嘴接住驚喜；先別急著鞠躬。眼睛還沒睜大，驚喜看不出來。試著把眼睛張開。眉毛角度減0加眼睛張開減1加嘴形張開減0加鞠躬角度減0加最後想怎麼拜年？誇張喜劇含蓄問候表情歸零拍下這一幕",
+      "neutralFailure": "眼睛還沒睜大，驚喜看不出來。試著把眼睛張開。",
+      "eyeOnlyFeedback": "眼睛睜大了，眉毛卻還很平。傾斜眉毛，讓驚喜更鮮明。",
+      "causalEyeChange": true,
+      "liveFaceProps": [
+        [
+          {
+            "left": "50.4%",
+            "top": "43%",
+            "width": "13%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(-30deg) scale(1, 1)"
+          },
+          {
+            "left": "50.4%",
+            "top": "47.5%",
+            "width": "14%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(0deg) scale(1, 1.5)"
+          },
+          {
+            "left": "50.4%",
+            "top": "52%",
+            "width": "9%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(0deg) scale(1, 1.5)"
+          }
+        ],
+        [
+          {
+            "left": "51.0942%",
+            "top": "43.1952%",
+            "width": "13%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(26deg) scale(1, 1)"
+          },
+          {
+            "left": "50.898%",
+            "top": "47.6843%",
+            "width": "14%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(4deg) scale(1, 0.6)"
+          },
+          {
+            "left": "50.7018%",
+            "top": "52.1733%",
+            "width": "9%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(4deg) scale(1, 1.5)"
+          }
+        ],
+        [
+          {
+            "left": "56.2598%",
+            "top": "47.7709%",
+            "width": "13%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(56deg) scale(1, 1)"
+          },
+          {
+            "left": "54.5283%",
+            "top": "51.317%",
+            "width": "14%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(38deg) scale(1, 1.4)"
+          },
+          {
+            "left": "52.7967%",
+            "top": "54.863%",
+            "width": "9%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(38deg) scale(1, 1.38)"
+          }
+        ]
+      ],
+      "actScreenshots": [
+        "zh-1440-act1.png",
+        "zh-1440-act2.png",
+        "zh-1440-act3.png"
+      ],
+      "surpriseIsNotJoy": "眼睛還像剛被嚇到。放鬆眼神，讓笑口成為重點。",
+      "wrongIntentFeedback": "鞠躬比微笑更搶眼。把身體收回一點，留下輕聲問候的感覺。",
+      "intentChangesMeaning": true,
+      "artifact": {
+        "poses": [
+          {
+            "values": {
+              "brow": -30,
+              "eyes": 1.5,
+              "mouth": 1,
+              "pose": 0
+            },
+            "score": 100,
+            "role": 0,
+            "intent": "surprise"
+          },
+          {
+            "values": {
+              "brow": 22,
+              "eyes": 0.6,
+              "mouth": 1,
+              "pose": 4
+            },
+            "score": 100,
+            "role": 1,
+            "intent": "joy"
+          },
+          {
+            "values": {
+              "brow": 18,
+              "eyes": 1.4,
+              "mouth": 0.9,
+              "pose": 38
+            },
+            "score": 100,
+            "role": 2,
+            "intent": "comic"
+          }
+        ],
+        "attempts": 6
+      },
+      "explorationNotPenalized": true,
+      "resultScreenshot": "zh-1440-result.png",
+      "replay": [
+        {
+          "caption": "驚喜：看到新作品",
+          "props": [
+            {
+              "left": "50.4%",
+              "top": "43%",
+              "width": "13%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(-30deg) scale(1, 1)"
+            },
+            {
+              "left": "50.4%",
+              "top": "47.5%",
+              "width": "14%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(0deg) scale(1, 1.5)"
+            },
+            {
+              "left": "50.4%",
+              "top": "52%",
+              "width": "9%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(0deg) scale(1, 1.5)"
+            }
+          ]
+        },
+        {
+          "caption": "開心：朋友來了",
+          "props": [
+            {
+              "left": "51.0942%",
+              "top": "43.1952%",
+              "width": "13%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(26deg) scale(1, 1)"
+            },
+            {
+              "left": "50.898%",
+              "top": "47.6843%",
+              "width": "14%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(4deg) scale(1, 0.6)"
+            },
+            {
+              "left": "50.7018%",
+              "top": "52.1733%",
+              "width": "9%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(4deg) scale(1, 1.5)"
+            }
+          ]
+        },
+        {
+          "caption": "誇張喜劇",
+          "props": [
+            {
+              "left": "56.2598%",
+              "top": "47.7709%",
+              "width": "13%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(56deg) scale(1, 1)"
+            },
+            {
+              "left": "54.5283%",
+              "top": "51.317%",
+              "width": "14%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(38deg) scale(1, 1.4)"
+            },
+            {
+              "left": "52.7967%",
+              "top": "54.863%",
+              "width": "9%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(38deg) scale(1, 1.38)"
+            }
+          ]
+        }
+      ],
+      "replayScreenshot": "zh-1440-replay.png",
+      "retryFresh": true,
+      "mutedPlayable": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "id": "en-320",
+      "lang": "en",
+      "width": 320,
+      "poses": [
+        {
+          "brow": -10,
+          "eyes": 1.2,
+          "mouth": 0.5,
+          "pose": 10
+        },
+        {
+          "brow": 0,
+          "eyes": 1,
+          "mouth": 0.7,
+          "pose": 12
+        },
+        {
+          "brow": -10,
+          "eyes": 0.6,
+          "mouth": 0.3,
+          "pose": 12
+        }
+      ],
+      "intent": "reserved",
+      "pass": true,
+      "pageErrors": [],
+      "consoleErrors": [],
+      "instructions": "Brows, eyes and mouth act together. Watch the face and shape three acts of your own.Surprise: discovering new artOpen the eyes, tilt the brows and open the mouth for surprise. Stay upright.The eyes still look relaxed. Open them wider for surprise.Brow angle−0+Eye openness−1+Mouth openness−0+Bow angle−0+How should the greeting feel?Big comic greetingQuiet greetingReset expressionCapture this act",
+      "neutralFailure": "The eyes still look relaxed. Open them wider for surprise.",
+      "eyeOnlyFeedback": "The eyes are wide, but the brows still look level. Tilt them to strengthen surprise.",
+      "causalEyeChange": true,
+      "liveFaceProps": [
+        [
+          {
+            "left": "52.1152%",
+            "top": "43.632%",
+            "width": "13%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(0deg) scale(1, 1)"
+          },
+          {
+            "left": "51.6268%",
+            "top": "48.0637%",
+            "width": "14%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(10deg) scale(1, 1.2)"
+          },
+          {
+            "left": "51.1384%",
+            "top": "52.4953%",
+            "width": "9%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(10deg) scale(1, 0.9)"
+          }
+        ],
+        [
+          {
+            "left": "52.4485%",
+            "top": "43.8154%",
+            "width": "13%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 1)"
+          },
+          {
+            "left": "51.8638%",
+            "top": "48.217%",
+            "width": "14%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 1)"
+          },
+          {
+            "left": "51.279%",
+            "top": "52.6187%",
+            "width": "9%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 1.14)"
+          }
+        ],
+        [
+          {
+            "left": "52.4485%",
+            "top": "43.8154%",
+            "width": "13%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(2deg) scale(1, 1)"
+          },
+          {
+            "left": "51.8638%",
+            "top": "48.217%",
+            "width": "14%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 0.6)"
+          },
+          {
+            "left": "51.279%",
+            "top": "52.6187%",
+            "width": "9%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 0.66)"
+          }
+        ]
+      ],
+      "actScreenshots": [
+        "en-320-act1.png",
+        "en-320-act2.png",
+        "en-320-act3.png"
+      ],
+      "surpriseIsNotJoy": "The eyes still look startled. Relax them so the grin becomes the focus.",
+      "wrongIntentFeedback": "The greeting needs a bigger gesture. Deepen the bow for the comic ending.",
+      "intentChangesMeaning": true,
+      "artifact": {
+        "poses": [
+          {
+            "values": {
+              "brow": -10,
+              "eyes": 1.2,
+              "mouth": 0.5,
+              "pose": 10
+            },
+            "score": 100,
+            "role": 0,
+            "intent": "surprise"
+          },
+          {
+            "values": {
+              "brow": 0,
+              "eyes": 1,
+              "mouth": 0.7,
+              "pose": 12
+            },
+            "score": 100,
+            "role": 1,
+            "intent": "joy"
+          },
+          {
+            "values": {
+              "brow": -10,
+              "eyes": 0.6,
+              "mouth": 0.3,
+              "pose": 12
+            },
+            "score": 100,
+            "role": 2,
+            "intent": "reserved"
+          }
+        ],
+        "attempts": 6
+      },
+      "explorationNotPenalized": true,
+      "resultScreenshot": "en-320-result.png",
+      "replay": [
+        {
+          "caption": "Surprise: discovering new art",
+          "props": [
+            {
+              "left": "52.1152%",
+              "top": "43.632%",
+              "width": "13%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(0deg) scale(1, 1)"
+            },
+            {
+              "left": "51.6268%",
+              "top": "48.0637%",
+              "width": "14%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(10deg) scale(1, 1.2)"
+            },
+            {
+              "left": "51.1384%",
+              "top": "52.4953%",
+              "width": "9%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(10deg) scale(1, 0.9)"
+            }
+          ]
+        },
+        {
+          "caption": "Joy: a friend arrives",
+          "props": [
+            {
+              "left": "52.4485%",
+              "top": "43.8154%",
+              "width": "13%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 1)"
+            },
+            {
+              "left": "51.8638%",
+              "top": "48.217%",
+              "width": "14%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 1)"
+            },
+            {
+              "left": "51.279%",
+              "top": "52.6187%",
+              "width": "9%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 1.14)"
+            }
+          ]
+        },
+        {
+          "caption": "Quiet greeting",
+          "props": [
+            {
+              "left": "52.4485%",
+              "top": "43.8154%",
+              "width": "13%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(2deg) scale(1, 1)"
+            },
+            {
+              "left": "51.8638%",
+              "top": "48.217%",
+              "width": "14%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 0.6)"
+            },
+            {
+              "left": "51.279%",
+              "top": "52.6187%",
+              "width": "9%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 0.66)"
+            }
+          ]
+        }
+      ],
+      "replayScreenshot": "en-320-replay.png",
+      "retryFresh": true,
+      "mutedPlayable": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "id": "en-1440",
+      "lang": "en",
+      "width": 1440,
+      "poses": [
+        {
+          "brow": -30,
+          "eyes": 1.5,
+          "mouth": 1,
+          "pose": 0
+        },
+        {
+          "brow": 22,
+          "eyes": 0.6,
+          "mouth": 1,
+          "pose": 4
+        },
+        {
+          "brow": 18,
+          "eyes": 1.4,
+          "mouth": 0.9,
+          "pose": 38
+        }
+      ],
+      "intent": "comic",
+      "pass": true,
+      "pageErrors": [],
+      "consoleErrors": [],
+      "instructions": "Brows, eyes and mouth act together. Watch the face and shape three acts of your own.Surprise: discovering new artOpen the eyes, tilt the brows and open the mouth for surprise. Stay upright.The eyes still look relaxed. Open them wider for surprise.Brow angle−0+Eye openness−1+Mouth openness−0+Bow angle−0+How should the greeting feel?Big comic greetingQuiet greetingReset expressionCapture this act",
+      "neutralFailure": "The eyes still look relaxed. Open them wider for surprise.",
+      "eyeOnlyFeedback": "The eyes are wide, but the brows still look level. Tilt them to strengthen surprise.",
+      "causalEyeChange": true,
+      "liveFaceProps": [
+        [
+          {
+            "left": "50.4%",
+            "top": "43%",
+            "width": "13%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(-30deg) scale(1, 1)"
+          },
+          {
+            "left": "50.4%",
+            "top": "47.5%",
+            "width": "14%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(0deg) scale(1, 1.5)"
+          },
+          {
+            "left": "50.4%",
+            "top": "52%",
+            "width": "9%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(0deg) scale(1, 1.5)"
+          }
+        ],
+        [
+          {
+            "left": "51.0942%",
+            "top": "43.1952%",
+            "width": "13%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(26deg) scale(1, 1)"
+          },
+          {
+            "left": "50.898%",
+            "top": "47.6843%",
+            "width": "14%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(4deg) scale(1, 0.6)"
+          },
+          {
+            "left": "50.7018%",
+            "top": "52.1733%",
+            "width": "9%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(4deg) scale(1, 1.5)"
+          }
+        ],
+        [
+          {
+            "left": "56.2598%",
+            "top": "47.7709%",
+            "width": "13%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(56deg) scale(1, 1)"
+          },
+          {
+            "left": "54.5283%",
+            "top": "51.317%",
+            "width": "14%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(38deg) scale(1, 1.4)"
+          },
+          {
+            "left": "52.7967%",
+            "top": "54.863%",
+            "width": "9%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(38deg) scale(1, 1.38)"
+          }
+        ]
+      ],
+      "actScreenshots": [
+        "en-1440-act1.png",
+        "en-1440-act2.png",
+        "en-1440-act3.png"
+      ],
+      "surpriseIsNotJoy": "The eyes still look startled. Relax them so the grin becomes the focus.",
+      "wrongIntentFeedback": "The deep bow overpowers the small smile. Ease it back for a quieter greeting.",
+      "intentChangesMeaning": true,
+      "artifact": {
+        "poses": [
+          {
+            "values": {
+              "brow": -30,
+              "eyes": 1.5,
+              "mouth": 1,
+              "pose": 0
+            },
+            "score": 100,
+            "role": 0,
+            "intent": "surprise"
+          },
+          {
+            "values": {
+              "brow": 22,
+              "eyes": 0.6,
+              "mouth": 1,
+              "pose": 4
+            },
+            "score": 100,
+            "role": 1,
+            "intent": "joy"
+          },
+          {
+            "values": {
+              "brow": 18,
+              "eyes": 1.4,
+              "mouth": 0.9,
+              "pose": 38
+            },
+            "score": 100,
+            "role": 2,
+            "intent": "comic"
+          }
+        ],
+        "attempts": 6
+      },
+      "explorationNotPenalized": true,
+      "resultScreenshot": "en-1440-result.png",
+      "replay": [
+        {
+          "caption": "Surprise: discovering new art",
+          "props": [
+            {
+              "left": "50.4%",
+              "top": "43%",
+              "width": "13%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(-30deg) scale(1, 1)"
+            },
+            {
+              "left": "50.4%",
+              "top": "47.5%",
+              "width": "14%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(0deg) scale(1, 1.5)"
+            },
+            {
+              "left": "50.4%",
+              "top": "52%",
+              "width": "9%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(0deg) scale(1, 1.5)"
+            }
+          ]
+        },
+        {
+          "caption": "Joy: a friend arrives",
+          "props": [
+            {
+              "left": "51.0942%",
+              "top": "43.1952%",
+              "width": "13%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(26deg) scale(1, 1)"
+            },
+            {
+              "left": "50.898%",
+              "top": "47.6843%",
+              "width": "14%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(4deg) scale(1, 0.6)"
+            },
+            {
+              "left": "50.7018%",
+              "top": "52.1733%",
+              "width": "9%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(4deg) scale(1, 1.5)"
+            }
+          ]
+        },
+        {
+          "caption": "Big comic greeting",
+          "props": [
+            {
+              "left": "56.2598%",
+              "top": "47.7709%",
+              "width": "13%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(56deg) scale(1, 1)"
+            },
+            {
+              "left": "54.5283%",
+              "top": "51.317%",
+              "width": "14%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(38deg) scale(1, 1.4)"
+            },
+            {
+              "left": "52.7967%",
+              "top": "54.863%",
+              "width": "9%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(38deg) scale(1, 1.38)"
+            }
+          ]
+        }
+      ],
+      "replayScreenshot": "en-1440-replay.png",
+      "retryFresh": true,
+      "mutedPlayable": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "id": "ja-320",
+      "lang": "ja",
+      "width": 320,
+      "poses": [
+        {
+          "brow": -10,
+          "eyes": 1.2,
+          "mouth": 0.5,
+          "pose": 10
+        },
+        {
+          "brow": 0,
+          "eyes": 1,
+          "mouth": 0.7,
+          "pose": 12
+        },
+        {
+          "brow": -10,
+          "eyes": 0.6,
+          "mouth": 0.3,
+          "pose": 12
+        }
+      ],
+      "intent": "reserved",
+      "pass": true,
+      "pageErrors": [],
+      "consoleErrors": [],
+      "instructions": "眉・目・口で演じよう。顔を見ながら、自分だけの3幕に。驚き：新しい作品を発見目を大きく、眉を傾け、口を開いて驚きを。まだお辞儀はしません。まだ目が落ち着いています。大きく開いて驚きを見せよう。眉の角度−0+目の開き−1+口の開き−0+お辞儀の角度−0+最後はどんなあいさつ？大げさな喜劇控えめなあいさつ表情をリセットこの幕を撮影",
+      "neutralFailure": "まだ目が落ち着いています。大きく開いて驚きを見せよう。",
+      "eyeOnlyFeedback": "目は大きいのに眉は平ら。眉を傾けて驚きを強めよう。",
+      "causalEyeChange": true,
+      "liveFaceProps": [
+        [
+          {
+            "left": "52.1152%",
+            "top": "43.632%",
+            "width": "13%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(0deg) scale(1, 1)"
+          },
+          {
+            "left": "51.6268%",
+            "top": "48.0637%",
+            "width": "14%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(10deg) scale(1, 1.2)"
+          },
+          {
+            "left": "51.1384%",
+            "top": "52.4953%",
+            "width": "9%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(10deg) scale(1, 0.9)"
+          }
+        ],
+        [
+          {
+            "left": "52.4485%",
+            "top": "43.8154%",
+            "width": "13%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 1)"
+          },
+          {
+            "left": "51.8638%",
+            "top": "48.217%",
+            "width": "14%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 1)"
+          },
+          {
+            "left": "51.279%",
+            "top": "52.6187%",
+            "width": "9%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 1.14)"
+          }
+        ],
+        [
+          {
+            "left": "52.4485%",
+            "top": "43.8154%",
+            "width": "13%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(2deg) scale(1, 1)"
+          },
+          {
+            "left": "51.8638%",
+            "top": "48.217%",
+            "width": "14%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 0.6)"
+          },
+          {
+            "left": "51.279%",
+            "top": "52.6187%",
+            "width": "9%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 0.66)"
+          }
+        ]
+      ],
+      "actScreenshots": [
+        "ja-320-act1.png",
+        "ja-320-act2.png",
+        "ja-320-act3.png"
+      ],
+      "surpriseIsNotJoy": "まだ驚いた目。目をゆるめて笑顔を主役にしよう。",
+      "wrongIntentFeedback": "喜劇には動きも大きく。お辞儀を深くしよう。",
+      "intentChangesMeaning": true,
+      "artifact": {
+        "poses": [
+          {
+            "values": {
+              "brow": -10,
+              "eyes": 1.2,
+              "mouth": 0.5,
+              "pose": 10
+            },
+            "score": 100,
+            "role": 0,
+            "intent": "surprise"
+          },
+          {
+            "values": {
+              "brow": 0,
+              "eyes": 1,
+              "mouth": 0.7,
+              "pose": 12
+            },
+            "score": 100,
+            "role": 1,
+            "intent": "joy"
+          },
+          {
+            "values": {
+              "brow": -10,
+              "eyes": 0.6,
+              "mouth": 0.3,
+              "pose": 12
+            },
+            "score": 100,
+            "role": 2,
+            "intent": "reserved"
+          }
+        ],
+        "attempts": 6
+      },
+      "explorationNotPenalized": true,
+      "resultScreenshot": "ja-320-result.png",
+      "replay": [
+        {
+          "caption": "驚き：新しい作品を発見",
+          "props": [
+            {
+              "left": "52.1152%",
+              "top": "43.632%",
+              "width": "13%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(0deg) scale(1, 1)"
+            },
+            {
+              "left": "51.6268%",
+              "top": "48.0637%",
+              "width": "14%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(10deg) scale(1, 1.2)"
+            },
+            {
+              "left": "51.1384%",
+              "top": "52.4953%",
+              "width": "9%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(10deg) scale(1, 0.9)"
+            }
+          ]
+        },
+        {
+          "caption": "喜び：友だちが来た",
+          "props": [
+            {
+              "left": "52.4485%",
+              "top": "43.8154%",
+              "width": "13%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 1)"
+            },
+            {
+              "left": "51.8638%",
+              "top": "48.217%",
+              "width": "14%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 1)"
+            },
+            {
+              "left": "51.279%",
+              "top": "52.6187%",
+              "width": "9%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 1.14)"
+            }
+          ]
+        },
+        {
+          "caption": "控えめなあいさつ",
+          "props": [
+            {
+              "left": "52.4485%",
+              "top": "43.8154%",
+              "width": "13%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(2deg) scale(1, 1)"
+            },
+            {
+              "left": "51.8638%",
+              "top": "48.217%",
+              "width": "14%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 0.6)"
+            },
+            {
+              "left": "51.279%",
+              "top": "52.6187%",
+              "width": "9%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 0.66)"
+            }
+          ]
+        }
+      ],
+      "replayScreenshot": "ja-320-replay.png",
+      "retryFresh": true,
+      "mutedPlayable": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "id": "ja-1440",
+      "lang": "ja",
+      "width": 1440,
+      "poses": [
+        {
+          "brow": -30,
+          "eyes": 1.5,
+          "mouth": 1,
+          "pose": 0
+        },
+        {
+          "brow": 22,
+          "eyes": 0.6,
+          "mouth": 1,
+          "pose": 4
+        },
+        {
+          "brow": 18,
+          "eyes": 1.4,
+          "mouth": 0.9,
+          "pose": 38
+        }
+      ],
+      "intent": "comic",
+      "pass": true,
+      "pageErrors": [],
+      "consoleErrors": [],
+      "instructions": "眉・目・口で演じよう。顔を見ながら、自分だけの3幕に。驚き：新しい作品を発見目を大きく、眉を傾け、口を開いて驚きを。まだお辞儀はしません。まだ目が落ち着いています。大きく開いて驚きを見せよう。眉の角度−0+目の開き−1+口の開き−0+お辞儀の角度−0+最後はどんなあいさつ？大げさな喜劇控えめなあいさつ表情をリセットこの幕を撮影",
+      "neutralFailure": "まだ目が落ち着いています。大きく開いて驚きを見せよう。",
+      "eyeOnlyFeedback": "目は大きいのに眉は平ら。眉を傾けて驚きを強めよう。",
+      "causalEyeChange": true,
+      "liveFaceProps": [
+        [
+          {
+            "left": "50.4%",
+            "top": "43%",
+            "width": "13%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(-30deg) scale(1, 1)"
+          },
+          {
+            "left": "50.4%",
+            "top": "47.5%",
+            "width": "14%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(0deg) scale(1, 1.5)"
+          },
+          {
+            "left": "50.4%",
+            "top": "52%",
+            "width": "9%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(0deg) scale(1, 1.5)"
+          }
+        ],
+        [
+          {
+            "left": "51.0942%",
+            "top": "43.1952%",
+            "width": "13%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(26deg) scale(1, 1)"
+          },
+          {
+            "left": "50.898%",
+            "top": "47.6843%",
+            "width": "14%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(4deg) scale(1, 0.6)"
+          },
+          {
+            "left": "50.7018%",
+            "top": "52.1733%",
+            "width": "9%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(4deg) scale(1, 1.5)"
+          }
+        ],
+        [
+          {
+            "left": "56.2598%",
+            "top": "47.7709%",
+            "width": "13%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(56deg) scale(1, 1)"
+          },
+          {
+            "left": "54.5283%",
+            "top": "51.317%",
+            "width": "14%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(38deg) scale(1, 1.4)"
+          },
+          {
+            "left": "52.7967%",
+            "top": "54.863%",
+            "width": "9%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(38deg) scale(1, 1.38)"
+          }
+        ]
+      ],
+      "actScreenshots": [
+        "ja-1440-act1.png",
+        "ja-1440-act2.png",
+        "ja-1440-act3.png"
+      ],
+      "surpriseIsNotJoy": "まだ驚いた目。目をゆるめて笑顔を主役にしよう。",
+      "wrongIntentFeedback": "深いお辞儀が笑顔より目立ちます。浅くして静かなあいさつに。",
+      "intentChangesMeaning": true,
+      "artifact": {
+        "poses": [
+          {
+            "values": {
+              "brow": -30,
+              "eyes": 1.5,
+              "mouth": 1,
+              "pose": 0
+            },
+            "score": 100,
+            "role": 0,
+            "intent": "surprise"
+          },
+          {
+            "values": {
+              "brow": 22,
+              "eyes": 0.6,
+              "mouth": 1,
+              "pose": 4
+            },
+            "score": 100,
+            "role": 1,
+            "intent": "joy"
+          },
+          {
+            "values": {
+              "brow": 18,
+              "eyes": 1.4,
+              "mouth": 0.9,
+              "pose": 38
+            },
+            "score": 100,
+            "role": 2,
+            "intent": "comic"
+          }
+        ],
+        "attempts": 6
+      },
+      "explorationNotPenalized": true,
+      "resultScreenshot": "ja-1440-result.png",
+      "replay": [
+        {
+          "caption": "驚き：新しい作品を発見",
+          "props": [
+            {
+              "left": "50.4%",
+              "top": "43%",
+              "width": "13%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(-30deg) scale(1, 1)"
+            },
+            {
+              "left": "50.4%",
+              "top": "47.5%",
+              "width": "14%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(0deg) scale(1, 1.5)"
+            },
+            {
+              "left": "50.4%",
+              "top": "52%",
+              "width": "9%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(0deg) scale(1, 1.5)"
+            }
+          ]
+        },
+        {
+          "caption": "喜び：友だちが来た",
+          "props": [
+            {
+              "left": "51.0942%",
+              "top": "43.1952%",
+              "width": "13%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(26deg) scale(1, 1)"
+            },
+            {
+              "left": "50.898%",
+              "top": "47.6843%",
+              "width": "14%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(4deg) scale(1, 0.6)"
+            },
+            {
+              "left": "50.7018%",
+              "top": "52.1733%",
+              "width": "9%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(4deg) scale(1, 1.5)"
+            }
+          ]
+        },
+        {
+          "caption": "大げさな喜劇",
+          "props": [
+            {
+              "left": "56.2598%",
+              "top": "47.7709%",
+              "width": "13%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(56deg) scale(1, 1)"
+            },
+            {
+              "left": "54.5283%",
+              "top": "51.317%",
+              "width": "14%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(38deg) scale(1, 1.4)"
+            },
+            {
+              "left": "52.7967%",
+              "top": "54.863%",
+              "width": "9%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(38deg) scale(1, 1.38)"
+            }
+          ]
+        }
+      ],
+      "replayScreenshot": "ja-1440-replay.png",
+      "retryFresh": true,
+      "mutedPlayable": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "id": "en-keyboard",
+      "lang": "en",
+      "width": 1440,
+      "poses": [
+        {
+          "brow": -10,
+          "eyes": 1.2,
+          "mouth": 0.5,
+          "pose": 10
+        },
+        {
+          "brow": 0,
+          "eyes": 1,
+          "mouth": 0.7,
+          "pose": 12
+        },
+        {
+          "brow": -10,
+          "eyes": 0.6,
+          "mouth": 0.3,
+          "pose": 12
+        }
+      ],
+      "intent": "reserved",
+      "keyboard": true,
+      "pass": true,
+      "pageErrors": [],
+      "consoleErrors": [],
+      "instructions": "Brows, eyes and mouth act together. Watch the face and shape three acts of your own.Surprise: discovering new artOpen the eyes, tilt the brows and open the mouth for surprise. Stay upright.The eyes still look relaxed. Open them wider for surprise.Brow angle−0+Eye openness−1+Mouth openness−0+Bow angle−0+How should the greeting feel?Big comic greetingQuiet greetingReset expressionCapture this act",
+      "neutralFailure": "The eyes still look relaxed. Open them wider for surprise.",
+      "eyeOnlyFeedback": "The eyes are wide, but the brows still look level. Tilt them to strengthen surprise.",
+      "causalEyeChange": true,
+      "liveFaceProps": [
+        [
+          {
+            "left": "52.1152%",
+            "top": "43.632%",
+            "width": "13%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(0deg) scale(1, 1)"
+          },
+          {
+            "left": "51.6268%",
+            "top": "48.0637%",
+            "width": "14%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(10deg) scale(1, 1.2)"
+          },
+          {
+            "left": "51.1384%",
+            "top": "52.4953%",
+            "width": "9%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(10deg) scale(1, 0.9)"
+          }
+        ],
+        [
+          {
+            "left": "52.4485%",
+            "top": "43.8154%",
+            "width": "13%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 1)"
+          },
+          {
+            "left": "51.8638%",
+            "top": "48.217%",
+            "width": "14%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 1)"
+          },
+          {
+            "left": "51.279%",
+            "top": "52.6187%",
+            "width": "9%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 1.14)"
+          }
+        ],
+        [
+          {
+            "left": "52.4485%",
+            "top": "43.8154%",
+            "width": "13%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(2deg) scale(1, 1)"
+          },
+          {
+            "left": "51.8638%",
+            "top": "48.217%",
+            "width": "14%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 0.6)"
+          },
+          {
+            "left": "51.279%",
+            "top": "52.6187%",
+            "width": "9%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 0.66)"
+          }
+        ]
+      ],
+      "actScreenshots": [
+        "en-keyboard-act1.png",
+        "en-keyboard-act2.png",
+        "en-keyboard-act3.png"
+      ],
+      "surpriseIsNotJoy": "The eyes still look startled. Relax them so the grin becomes the focus.",
+      "wrongIntentFeedback": "The greeting needs a bigger gesture. Deepen the bow for the comic ending.",
+      "intentChangesMeaning": true,
+      "artifact": {
+        "poses": [
+          {
+            "values": {
+              "brow": -10,
+              "eyes": 1.2,
+              "mouth": 0.5,
+              "pose": 10
+            },
+            "score": 100,
+            "role": 0,
+            "intent": "surprise"
+          },
+          {
+            "values": {
+              "brow": 0,
+              "eyes": 1,
+              "mouth": 0.7,
+              "pose": 12
+            },
+            "score": 100,
+            "role": 1,
+            "intent": "joy"
+          },
+          {
+            "values": {
+              "brow": -10,
+              "eyes": 0.6,
+              "mouth": 0.3,
+              "pose": 12
+            },
+            "score": 100,
+            "role": 2,
+            "intent": "reserved"
+          }
+        ],
+        "attempts": 6
+      },
+      "explorationNotPenalized": true,
+      "resultScreenshot": "en-keyboard-result.png",
+      "replay": [
+        {
+          "caption": "Surprise: discovering new art",
+          "props": [
+            {
+              "left": "52.1152%",
+              "top": "43.632%",
+              "width": "13%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(0deg) scale(1, 1)"
+            },
+            {
+              "left": "51.6268%",
+              "top": "48.0637%",
+              "width": "14%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(10deg) scale(1, 1.2)"
+            },
+            {
+              "left": "51.1384%",
+              "top": "52.4953%",
+              "width": "9%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(10deg) scale(1, 0.9)"
+            }
+          ]
+        },
+        {
+          "caption": "Joy: a friend arrives",
+          "props": [
+            {
+              "left": "52.4485%",
+              "top": "43.8154%",
+              "width": "13%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 1)"
+            },
+            {
+              "left": "51.8638%",
+              "top": "48.217%",
+              "width": "14%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 1)"
+            },
+            {
+              "left": "51.279%",
+              "top": "52.6187%",
+              "width": "9%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 1.14)"
+            }
+          ]
+        },
+        {
+          "caption": "Quiet greeting",
+          "props": [
+            {
+              "left": "52.4485%",
+              "top": "43.8154%",
+              "width": "13%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(2deg) scale(1, 1)"
+            },
+            {
+              "left": "51.8638%",
+              "top": "48.217%",
+              "width": "14%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 0.6)"
+            },
+            {
+              "left": "51.279%",
+              "top": "52.6187%",
+              "width": "9%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(12deg) scale(1, 0.66)"
+            }
+          ]
+        }
+      ],
+      "replayScreenshot": "en-keyboard-replay.png",
+      "retryFresh": true,
+      "mutedPlayable": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "id": "ja-reduced",
+      "lang": "ja",
+      "width": 320,
+      "poses": [
+        {
+          "brow": -30,
+          "eyes": 1.5,
+          "mouth": 1,
+          "pose": 0
+        },
+        {
+          "brow": 22,
+          "eyes": 0.6,
+          "mouth": 1,
+          "pose": 4
+        },
+        {
+          "brow": 18,
+          "eyes": 1.4,
+          "mouth": 0.9,
+          "pose": 38
+        }
+      ],
+      "intent": "comic",
+      "reduced": true,
+      "pass": true,
+      "pageErrors": [],
+      "consoleErrors": [],
+      "instructions": "眉・目・口で演じよう。顔を見ながら、自分だけの3幕に。驚き：新しい作品を発見目を大きく、眉を傾け、口を開いて驚きを。まだお辞儀はしません。まだ目が落ち着いています。大きく開いて驚きを見せよう。眉の角度−0+目の開き−1+口の開き−0+お辞儀の角度−0+最後はどんなあいさつ？大げさな喜劇控えめなあいさつ表情をリセットこの幕を撮影",
+      "neutralFailure": "まだ目が落ち着いています。大きく開いて驚きを見せよう。",
+      "eyeOnlyFeedback": "目は大きいのに眉は平ら。眉を傾けて驚きを強めよう。",
+      "causalEyeChange": true,
+      "liveFaceProps": [
+        [
+          {
+            "left": "50.4%",
+            "top": "43%",
+            "width": "13%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(-30deg) scale(1, 1)"
+          },
+          {
+            "left": "50.4%",
+            "top": "47.5%",
+            "width": "14%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(0deg) scale(1, 1.5)"
+          },
+          {
+            "left": "50.4%",
+            "top": "52%",
+            "width": "9%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(0deg) scale(1, 1.5)"
+          }
+        ],
+        [
+          {
+            "left": "51.0942%",
+            "top": "43.1952%",
+            "width": "13%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(26deg) scale(1, 1)"
+          },
+          {
+            "left": "50.898%",
+            "top": "47.6843%",
+            "width": "14%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(4deg) scale(1, 0.6)"
+          },
+          {
+            "left": "50.7018%",
+            "top": "52.1733%",
+            "width": "9%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(4deg) scale(1, 1.5)"
+          }
+        ],
+        [
+          {
+            "left": "56.2598%",
+            "top": "47.7709%",
+            "width": "13%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(56deg) scale(1, 1)"
+          },
+          {
+            "left": "54.5283%",
+            "top": "51.317%",
+            "width": "14%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(38deg) scale(1, 1.4)"
+          },
+          {
+            "left": "52.7967%",
+            "top": "54.863%",
+            "width": "9%",
+            "height": "7%",
+            "transform": "translate(-50%, -50%) rotate(38deg) scale(1, 1.38)"
+          }
+        ]
+      ],
+      "actScreenshots": [
+        "ja-reduced-act1.png",
+        "ja-reduced-act2.png",
+        "ja-reduced-act3.png"
+      ],
+      "surpriseIsNotJoy": "まだ驚いた目。目をゆるめて笑顔を主役にしよう。",
+      "wrongIntentFeedback": "深いお辞儀が笑顔より目立ちます。浅くして静かなあいさつに。",
+      "intentChangesMeaning": true,
+      "artifact": {
+        "poses": [
+          {
+            "values": {
+              "brow": -30,
+              "eyes": 1.5,
+              "mouth": 1,
+              "pose": 0
+            },
+            "score": 100,
+            "role": 0,
+            "intent": "surprise"
+          },
+          {
+            "values": {
+              "brow": 22,
+              "eyes": 0.6,
+              "mouth": 1,
+              "pose": 4
+            },
+            "score": 100,
+            "role": 1,
+            "intent": "joy"
+          },
+          {
+            "values": {
+              "brow": 18,
+              "eyes": 1.4,
+              "mouth": 0.9,
+              "pose": 38
+            },
+            "score": 100,
+            "role": 2,
+            "intent": "comic"
+          }
+        ],
+        "attempts": 6
+      },
+      "explorationNotPenalized": true,
+      "resultScreenshot": "ja-reduced-result.png",
+      "replay": [
+        {
+          "caption": "驚き：新しい作品を発見",
+          "props": [
+            {
+              "left": "50.4%",
+              "top": "43%",
+              "width": "13%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(-30deg) scale(1, 1)"
+            },
+            {
+              "left": "50.4%",
+              "top": "47.5%",
+              "width": "14%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(0deg) scale(1, 1.5)"
+            },
+            {
+              "left": "50.4%",
+              "top": "52%",
+              "width": "9%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(0deg) scale(1, 1.5)"
+            }
+          ]
+        },
+        {
+          "caption": "喜び：友だちが来た",
+          "props": [
+            {
+              "left": "51.0942%",
+              "top": "43.1952%",
+              "width": "13%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(26deg) scale(1, 1)"
+            },
+            {
+              "left": "50.898%",
+              "top": "47.6843%",
+              "width": "14%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(4deg) scale(1, 0.6)"
+            },
+            {
+              "left": "50.7018%",
+              "top": "52.1733%",
+              "width": "9%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(4deg) scale(1, 1.5)"
+            }
+          ]
+        },
+        {
+          "caption": "大げさな喜劇",
+          "props": [
+            {
+              "left": "56.2598%",
+              "top": "47.7709%",
+              "width": "13%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(56deg) scale(1, 1)"
+            },
+            {
+              "left": "54.5283%",
+              "top": "51.317%",
+              "width": "14%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(38deg) scale(1, 1.4)"
+            },
+            {
+              "left": "52.7967%",
+              "top": "54.863%",
+              "width": "9%",
+              "height": "7%",
+              "transform": "translate(-50%, -50%) rotate(38deg) scale(1, 1.38)"
+            }
+          ]
+        }
+      ],
+      "replayScreenshot": "ja-reduced-replay.png",
+      "retryFresh": true,
+      "mutedPlayable": true,
+      "noHorizontalOverflow": true
+    }
+  ],
+  "errors": [],
+  "server": {
+    "pid": 57612,
+    "log": "Local review: http://127.0.0.1:8817/ · C:\\agywork\\agd-lunar-expression\\.measure-lunar-expression-01\n"
+  },
+  "sourceSha256": "4ab5fe09342a751b98c32a2136d720fcb440c9a77492ccd8ff9b7be64dd1117c",
+  "browser": "151.0.7922.34",
+  "sourceSha256After": "4ab5fe09342a751b98c32a2136d720fcb440c9a77492ccd8ff9b7be64dd1117c",
+  "twoDistinctPerformances": true,
+  "pass": true
+}

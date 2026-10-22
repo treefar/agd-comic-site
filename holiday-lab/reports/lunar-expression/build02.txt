@@ -1,0 +1,36 @@
+MEASUREMENT ONLY: test build for layout capture; not cleared for packaging or delivery.
+{
+  "pass": true,
+  "project": "C:\\agywork\\agd-lunar-expression",
+  "assets": 257,
+  "screens": 9,
+  "errors": []
+}
+Translations: 2314 Static candidates: 14 Unpaired paths: 21
+Japanese exact translations: 2343
+▲ [WARNING] Duplicate key "color" in object literal [duplicate-object-key]
+
+    ssr-entry.jsx:6979:44:
+      6979 │         background: "var(--accent-yellow)", color: "var(--ink)",
+           ╵                                             ~~~~~
+
+  The original key "color" is here:
+
+    ssr-entry.jsx:6978:8:
+      6978 │         color: "inherit", textDecoration: "none", fontFamily: "'...
+           ╵         ~~~~~
+
+▲ [WARNING] Duplicate key "color" in object literal [duplicate-object-key]
+
+    client-entry.jsx:6978:44:
+      6978 │         background: "var(--accent-yellow)", color: "var(--ink)",
+           ╵                                             ~~~~~
+
+  The original key "color" is here:
+
+    client-entry.jsx:6977:8:
+      6977 │         color: "inherit", textDecoration: "none", fontFamily: "'...
+           ╵         ~~~~~
+
+[build] 完成：.measure-lunar-expression-02/index.html 135.6 KB、app-TPGC27UW.js 1162.7 KB
+MEASUREMENT_ONLY: .measure-lunar-expression-02; 356 files; no publication performed.

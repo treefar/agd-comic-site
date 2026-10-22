@@ -1,0 +1,11 @@
+export function expressionProps(v){
+  const angle=v.pose*Math.PI/180,aspect=16/10,cx=49,cy=59;
+  // Percent axes have different pixel scales: rotate in height units first.
+  const center=(x,y)=>{const dx=(x-cx)*aspect,dy=y-cy;return {x:cx+(dx*Math.cos(angle)-dy*Math.sin(angle))/aspect,y:cy+dx*Math.sin(angle)+dy*Math.cos(angle),rotation:v.pose};};
+  return {
+    brow:{...center(50.4,43),width:13,height:7,rotation:v.pose+v.brow},
+    eyes:{...center(50.4,47.5),width:14,height:7,scaleY:v.eyes},
+    mouth:{...center(50.4,52),width:9,height:7,scaleY:0.3+v.mouth*1.2},
+    body:{x:cx,y:cy,width:40,height:58,rotation:v.pose}
+  };
+}
