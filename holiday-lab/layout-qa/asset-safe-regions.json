@@ -121,6 +121,44 @@
       "status": "agent-measured candidate, user visual acceptance pending"
     }
   },
+  "stage_papers": {
+    "constitution/prop1.png": {
+      "source": "holiday-lab/assets/constitution/prop1.png",
+      "sha256": "c7b2c1d365de5062ab1359b168ea69d40da14a4ed29297a73008ba185f47b2cf",
+      "image_width": 284,
+      "image_height": 99,
+      "paper_rect": {
+        "x": 18,
+        "y": 18,
+        "width": 249,
+        "height": 64
+      },
+      "own_text_selectors": [
+        "#caption-stage-words",
+        ".replay-text"
+      ],
+      "method": "actual prop PNG viewed in full; fixed inset excludes black frame/light rim; object-fit contain and actual rendered letterboxing must be mapped",
+      "status": "agent-measured candidate, user visual acceptance pending"
+    },
+    "constitution/prop2.png": {
+      "source": "holiday-lab/assets/constitution/prop2.png",
+      "sha256": "89a575bb7272a03ca7ff7b4eadcc737153051862bb4c950f8b98aa1508c26087",
+      "image_width": 282,
+      "image_height": 101,
+      "paper_rect": {
+        "x": 20,
+        "y": 20,
+        "width": 243,
+        "height": 60
+      },
+      "own_text_selectors": [
+        "#caption-stage-words",
+        ".replay-text"
+      ],
+      "method": "actual prop PNG viewed in full; fixed inset excludes black frame/light rim; object-fit contain and actual rendered letterboxing must be mapped",
+      "status": "agent-measured candidate, user visual acceptance pending"
+    }
+  },
   "unmapped_asset_policy": "fail closed; no viewport or full-sprite fallback",
   "note": "Transforms/skins must be mapped from real rendered geometry; these candidates do not constitute user art approval."
 }
