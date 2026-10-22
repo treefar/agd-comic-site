@@ -1,5 +1,7 @@
 # 學生遊戲 WebGL 工單索引
 
+最新執行方式：先讀BACKGROUND-TESTING.md。使用者已選TF-BASE開Codex承接，要求批次背景建置/測試，避免反覆選Unity執行檔；這是新工單規則，並非已完成Build。
+
 2026-10-22，source_agent: codex。這是建置接續工單，不是已完成的 WebGL 產物。
 
 | ID | 使用者指定作品 | 系網已讀資料 | 來源身分狀態 | 單款工單 |

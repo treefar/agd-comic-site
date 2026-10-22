@@ -1,0 +1,234 @@
+{
+  "date": "2026-10-22T14:57:36.854Z",
+  "url": "http://127.0.0.1:8804",
+  "method": "known-solution real DOM regression; not a student blind playtest",
+  "cases": [
+    {
+      "game": "peace-memory",
+      "lang": "zh",
+      "width": 390,
+      "status": "pass",
+      "checks": {
+        "locale": "yes",
+        "uniqueDOMIds": "yes",
+        "startImages": "yes",
+        "noHorizontalOverflow": "yes",
+        "wrongBlocked": "yes",
+        "completedFromDOM": "yes",
+        "savedActualInputs": "yes",
+        "replayThreeShots": "yes",
+        "replayImages": "yes",
+        "retryFresh": "yes",
+        "consoleAndNetwork": "yes"
+      },
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "initialProgress": "0/3",
+      "initialScreenshot": "peace-memory-zh-390-initial.png",
+      "wrong": {
+        "progress": "0/3",
+        "feedback": "完整包住訊息窗，才不會漏掉一段話。"
+      },
+      "wrongScreenshot": "peace-memory-zh-390-wrong.png",
+      "knownSolutionSeconds": 4.12,
+      "score": "100 / 100",
+      "artifact": {
+        "heard": [
+          {
+            "speaker": 2,
+            "frame": {
+              "x": 80,
+              "y": 65,
+              "width": 24
+            },
+            "seconds": 1.2
+          },
+          {
+            "speaker": 0,
+            "frame": {
+              "x": 20,
+              "y": 65,
+              "width": 24
+            },
+            "seconds": 1.2
+          },
+          {
+            "speaker": 1,
+            "frame": {
+              "x": 50,
+              "y": 65,
+              "width": 24
+            },
+            "seconds": 1.2
+          }
+        ]
+      },
+      "resultScreenshot": "peace-memory-zh-390-result.png",
+      "replayScreenshot": "peace-memory-zh-390-replay.png",
+      "replayShots": [
+        {
+          "shot": 0,
+          "caption": "把記憶留下，也把理解的位置留下。",
+          "texts": []
+        },
+        {
+          "shot": 1,
+          "caption": "我希望自己的話，能被好好聽完。",
+          "texts": []
+        },
+        {
+          "shot": 2,
+          "caption": "我們的感受不同，也能坐下來說。",
+          "texts": []
+        }
+      ],
+      "retryWrong": {
+        "progress": "0/3",
+        "feedback": "完整包住訊息窗，才不會漏掉一段話。"
+      },
+      "retryScreenshot": "peace-memory-zh-390-retry.png"
+    },
+    {
+      "game": "labor",
+      "lang": "zh",
+      "width": 390,
+      "status": "pass",
+      "checks": {
+        "locale": "yes",
+        "uniqueDOMIds": "yes",
+        "startImages": "yes",
+        "noHorizontalOverflow": "yes",
+        "wrongBlocked": "yes",
+        "completedFromDOM": "yes",
+        "savedActualInputs": "yes",
+        "replayThreeShots": "yes",
+        "replayImages": "yes",
+        "retryFresh": "yes",
+        "consoleAndNetwork": "yes"
+      },
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "initialProgress": "1/6",
+      "initialScreenshot": "labor-zh-390-initial.png",
+      "wrong": {
+        "progress": "1/6",
+        "feedback": "下一步太早開始，先等前一份工作完成。"
+      },
+      "wrongScreenshot": "labor-zh-390-wrong.png",
+      "knownSolutionSeconds": 5.08,
+      "score": "100 / 100",
+      "artifact": {
+        "jobs": [
+          {
+            "artist": 0,
+            "start": 0,
+            "shot": 0,
+            "step": 0,
+            "duration": 10,
+            "end": 10
+          },
+          {
+            "artist": 1,
+            "start": 10,
+            "shot": 0,
+            "step": 1,
+            "duration": 12,
+            "end": 22
+          },
+          {
+            "artist": 2,
+            "start": 22,
+            "shot": 0,
+            "step": 2,
+            "duration": 8,
+            "end": 30
+          },
+          {
+            "artist": 0,
+            "start": 10,
+            "shot": 1,
+            "step": 0,
+            "duration": 10,
+            "end": 20
+          },
+          {
+            "artist": 1,
+            "start": 22,
+            "shot": 1,
+            "step": 1,
+            "duration": 12,
+            "end": 34
+          },
+          {
+            "artist": 2,
+            "start": 34,
+            "shot": 1,
+            "step": 2,
+            "duration": 8,
+            "end": 42
+          }
+        ],
+        "loads": [
+          20,
+          24,
+          16
+        ],
+        "finish": 42
+      },
+      "resultScreenshot": "labor-zh-390-result.png",
+      "replayScreenshot": "labor-zh-390-replay.png",
+      "replayShots": [
+        {
+          "shot": 0,
+          "caption": "鏡頭1・草稿交給A",
+          "texts": []
+        },
+        {
+          "shot": 1,
+          "caption": "鏡頭1・動作交給B",
+          "texts": []
+        },
+        {
+          "shot": 2,
+          "caption": "鏡頭2・草稿交給A",
+          "texts": []
+        }
+      ],
+      "retryWrong": {
+        "progress": "1/6",
+        "feedback": "下一步太早開始，先等前一份工作完成。"
+      },
+      "retryScreenshot": "labor-zh-390-retry.png"
+    }
+  ],
+  "receipts": {
+    "before": {
+      "runner.mjs": "38e70bef5b8da026a1f715e0178ae83309bb63340ed7aac0a4970ae05fcf26f7",
+      "replay-model.mjs": "73bb0f7b8847693206638cf91d3c7e7aa2f8bece531954b0b2c08b8ba6788402",
+      "catalog.mjs": "3ff982b58d12e560e94d90ef3032ec389e48207d50bbec91268f914a56882dad",
+      "lab.css": "226357de5930f0d0eccf3e43cad50dbc83285fd1e4d11f7e3a16c08c55e692ac",
+      "games/peace-memory.mjs": "0b4cb80bb7e2574c4001ea6a507a85d2cf0177bdbab46e557aac54eb13542596",
+      "games/qingming.mjs": "3936b5606016b60ca38de77e63d2f2170681592e6dc7e7c9147e29210870cc5f",
+      "games/labor.mjs": "2020df91daa151aa4ca124cc6fa55aa5495e39f7e7f9ae590dd7e211a6c597eb",
+      "games/retrocession.mjs": "64765225ca980c62feb3f673393efaf8d7d479739b908bf3928389cabca21989",
+      "games/constitution.mjs": "ecbe690e6b0728c1b5c5c64a88c6dd7e9e19c2e456dab0f521351739de337f96"
+    },
+    "after": {
+      "runner.mjs": "38e70bef5b8da026a1f715e0178ae83309bb63340ed7aac0a4970ae05fcf26f7",
+      "replay-model.mjs": "73bb0f7b8847693206638cf91d3c7e7aa2f8bece531954b0b2c08b8ba6788402",
+      "catalog.mjs": "3ff982b58d12e560e94d90ef3032ec389e48207d50bbec91268f914a56882dad",
+      "lab.css": "226357de5930f0d0eccf3e43cad50dbc83285fd1e4d11f7e3a16c08c55e692ac",
+      "games/peace-memory.mjs": "0b4cb80bb7e2574c4001ea6a507a85d2cf0177bdbab46e557aac54eb13542596",
+      "games/qingming.mjs": "3936b5606016b60ca38de77e63d2f2170681592e6dc7e7c9147e29210870cc5f",
+      "games/labor.mjs": "2020df91daa151aa4ca124cc6fa55aa5495e39f7e7f9ae590dd7e211a6c597eb",
+      "games/retrocession.mjs": "64765225ca980c62feb3f673393efaf8d7d479739b908bf3928389cabca21989",
+      "games/constitution.mjs": "ecbe690e6b0728c1b5c5c64a88c6dd7e9e19c2e456dab0f521351739de337f96"
+    }
+  },
+  "status": "pass",
+  "browser": "151.0.7922.34"
+}

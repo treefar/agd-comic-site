@@ -1,15 +1,19 @@
 # 全面試作進度
 
-2026-10-22，source_agent: codex。使用者已授權把原企畫全面試作，取代先選一款建議。
+source_agent: codex
 
-- 目標：8節日＋開學＋畢展共10款，三語、30–90秒、首頁主動點擊開始、平時回顧。本機候選審閱，不push、不上線、不碰main、不刪檔，C節不改。
-- 整合：C:/agywork/agd-holiday-prototypes，codex/holiday-prototypes，基底ee0e251，契約2df305e。
-- 子代理motion_games：new-year/lunar-new-year/mid-autumn；spatial_games：lantern/dragon-boat/national-day；campus_story_games：children/teachers/semester/exhibition。各在C:/agywork/agd-hg-<id>、codex/hg-<id>，只負責games/tests/reports。
-- 主控：共用Codex生成素材、5CG開場、三語外框、首頁/回顧接線、白名單建置、獨立瀏覽器解題、報告與交接。
-- 生圖：node holiday-lab/generate-art.mjs，執行session 3076；jobs.json與逐項log在art-source。不得因安靜就重啟。原始圖皆候選，尚未由使用者確認。
-- 既有十款已完成：51項Node測試、12/12實際DOM通關＋中英390 CSS複驗；共用外框04為56 yes／1 no（真背景分頁未能建立hidden前提，保留未驗）。177候選素材/50CG/6短聲；Chrome8800已開。
-- 試玩交付：delivery/holiday-preview.zip（32,168,703 bytes，SHA5e36bbf8d86b619182105c492fb31605ec6403155231d292269803c9b7a4fb42），唯一影片delivery/holiday-preview.mp4，38.56秒。完整解壓/啟動/HTTP/hash已實測，詳REPORT.md。
-- 最新追加：使用者2026-10-22要求再派子代理試玩與做其它假日；independent_player_review在C:/agywork/agd-holiday-player-review、codex/holiday-player-review做十款玩法實玩；additional_holidays在C:/agywork/agd-holiday-extra-plan、codex/holiday-extra-plan查剩餘官方假日與下一批，三題方向確認等待回覆。新工作不能誤當已完成，也不重做前十款。
-- 既有8797三語網站與8785舊遊戲伺服器保留；新整合用新port。
+## 2026-10-22 最新：節日番外篇全面本機試作（驗收收尾中）
 
-下一個具體任務：先回收新的試玩審查與追加假日研究，依三題回覆安排新分支與Codex美術；既有十款只修實見問題。維持04 runtime供主任看，不重啟8797/8785，不重跑13次已完成生圖。既有dashboard已建，收尾腳本/原始交接需同步最新新增工作。
+- 本機整合 C:/agywork/agd-holiday-prototypes，codex/holiday-prototypes；最新root提交782f3aa（另有子代理後續工作）。不push、不發布、不碰main、不刪檔，C節保護不變。
+- 已擴大到15款：原8節日＋開學/畢展，再加和平紀念、清明、勞動、臺灣光復、行憲。剩餘假日官方來源見extra-plan/RESEARCH.md，不把政府行事曆當成學校停課公告。
+- 新5款追加獨立DOM驗證11/11：5桌機、5手機390、行憲日文390；真實錯誤→修正→完成→3段回放→重試，console/HTTP/解碼圖無錯。第一次3筆圖片尚在解碼競態已修驗證器，同served SHA重測通過；失敗紀錄保留。extra-qa/REPORT.md。
+- children音效與mid-autumn位移在原獨立分支修好再整合。renderer8b9d2a0保留audio cues/frames/textLayers；瀏覽器紅0/3→綠3/3，相關21tests pass，字幕手機至少16px。真正背景分頁仍未驗證，模擬hidden不代替真切頁。
+- Node整合108/108；257候選素材、75CG及6短音效來源落地。圖片尚未使用者確認。dashboard23/23，15已建/13目前模組SHA相符的完整通關/0使用者確認；children/moon完整通關舊SHA不同，故未升格（另有針對性修正綠燈）。外框56yes/1未驗為04歷史結果，不能當最新整包已全過。
+- 指南已實作3/2/1欄摘要卡、展開完整15項47步/30FAQ、6身分篩選（全部/新生/在校生/轉學生/準畢業生/畢業生）；三語×1440/900/390九組瀏覽器pass。畢業生標籤僅就業/升學查找需求，不新增服務資格。清除身分漏reset曾失敗，已修同測全通過。
+- 使用者截圖要求導覽不要單字掉行：nav各項不拆字，英日1900px內提早選單；27組三語×390–2484驗證通過，日文1440/2484實拍已留。最新可看8805/.review-local-08（後續老師照片/字體調整尚未包含）。8800仍04舊整包、8804固定extraQA01；8797/8785不動。
+- 缺字：首輪3語首頁127font/CDP/cmap稽核完成，fallback不等於tofu。使用者新規則：優先不換字體，用不改原意的改句避缺字；密集缺字才提相似字體，人名/系名/法規/資格專名不改。font_coverage_audit正在glyph-copy中日102狀態初批，尚未收件。
+- 視覺小改版3案比較已完成，推薦A清爽漫畫（尚未選案/套全站）；redesign/style-options/index.html，36版面/4互動pass。手機CTA遮擋已在root改頁內流。使用者最新要求老師照片頭大小/眼睛水平：replay_fix改chapters-2.jsx，新增faculty-portrait模型/CSS逐人量測，執行中。
+- WebGL：TF-BASE原始專案尚未取得。工單5檔同步Google Drive ClaudeShare/handoffs/20261022-student-webgl，BACKGROUND-TESTING明定固定6000.5.10f1、單次hidden批次PID/log、Chrome真實WebGL驗證，避免反覆Unity視窗。未建置成功，不重送舊fleet queue。
+- 舊10款delivery/holiday-preview.zip及唯一影片仍保留；新15款delivery-v2子代理正準備參數化打包，等待照片/字體/最終freshbuild，不可把舊ZIP當新成果。
+- 下一輪第一件事：回收glyph-copy與faculty-portrait實際產出，先完成使用者可感知的老師對齊/日文不拆字畫面；fresh build後更新8800與Chrome，交delivery-v2實際打包驗證，補最新共用外框/來源SHA證據，再更新dashboard與本交接。不要重跑生圖/不要啟動UnityGUI。
+
