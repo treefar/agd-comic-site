@@ -1,0 +1,2 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {makeResult,shots} from '../games/children.mjs';
+test('foley replay schedules each chosen material at its actual saved cue',()=>{const make=offset=>makeResult({takes:shots.map(s=>({...s,cue:s.cue+offset,error:offset})),attempts:3});const a=make(0),b=make(50);assert.deepEqual(a.replay.map(s=>s.audio),shots.map(s=>[{kind:s.material,at:s.cue}]));assert.deepEqual(b.replay.map(s=>s.audio),shots.map(s=>[{kind:s.material,at:s.cue+50}]));assert.notDeepEqual(a.replay,b.replay);});
