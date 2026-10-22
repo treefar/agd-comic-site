@@ -1,0 +1,564 @@
+{
+  "checked_at": "2026-10-22",
+  "source_agent": "codex",
+  "stage": "high-risk-first-pass",
+  "product_changes_applied": false,
+  "issues": [
+    {
+      "id": "JA-RANK-KEEP",
+      "priority": "P1",
+      "lang": "ja",
+      "zh": "助理教授",
+      "current": "助教",
+      "proposed": "助教",
+      "category": "verified_keep",
+      "reason": "JST列助教為Assistant Professor層級，文科省指出它以自行教育研究為主要職務；不是台灣教學助理。短卡保留；詳頁可附原職稱助理教授與英文，避免宣稱跨制度資格完全等同。",
+      "sources": [
+        {
+          "id": "jst",
+          "url": "https://jrecin.jst.go.jp/html/app/seek/dsc_jobtype_j.html"
+        },
+        {
+          "id": "mext",
+          "url": "https://www.mext.go.jp/b_menu/shingi/chukyo/chukyo4/houkoku/attach/1342439.htm"
+        }
+      ],
+      "decision": "keep",
+      "applied": false,
+      "source_locations": [
+        {
+          "file": "data/ja/messages.json",
+          "pointer": "/助理教授",
+          "value": "助教"
+        }
+      ]
+    },
+    {
+      "id": "JA-ASSOC-KEEP",
+      "priority": "P1",
+      "lang": "ja",
+      "zh": "系主任 · 副教授",
+      "current": "学科長・准教授",
+      "proposed": "学科長・准教授",
+      "category": "verified_keep",
+      "reason": "JST將准教授對應Associate Professor。系主任對應学科長符合此頁系層級；不改成学部長。",
+      "sources": [
+        {
+          "id": "jst",
+          "url": "https://jrecin.jst.go.jp/html/app/seek/dsc_jobtype_j.html"
+        }
+      ],
+      "decision": "keep",
+      "applied": false,
+      "source_locations": [
+        {
+          "file": "data/ja/messages.json",
+          "pointer": "/系主任 · 副教授",
+          "value": "学科長・准教授"
+        }
+      ]
+    },
+    {
+      "id": "JA-JOINT-01",
+      "priority": "P1",
+      "lang": "ja",
+      "zh": "助理教授 · 電競娛樂系合聘",
+      "current": "助教・eスポーツエンターテインメント学科兼任",
+      "proposed": "助教・eスポーツエンターテインメント学科との共同任用（原職：助理教授・合聘）",
+      "category": "appointment_relationship",
+      "reason": "合聘是共同聘任；只寫兼任會模糊與非常勤兼任教師的差別。校方舊彙編的合聘辦法第4條區分主聘/從聘。此為解釋譯法，不冒稱校方正式日譯；2026最新法規版本尚待人事確認。",
+      "sources": [
+        {
+          "id": "joint",
+          "url": "https://wpc.stu.edu.tw/wp-content/uploads/sites/7/2019/11/7.E4BABAE4BA8BE5AEA4.pdf"
+        }
+      ],
+      "decision": "recommend",
+      "applied": false,
+      "source_locations": [
+        {
+          "file": "data/ja/messages.json",
+          "pointer": "/助理教授 · 電競娛樂系合聘",
+          "value": "助教・eスポーツエンターテインメント学科兼任"
+        }
+      ]
+    },
+    {
+      "id": "JA-JOINT-02",
+      "priority": "P1",
+      "lang": "ja",
+      "zh": "講師 · 電競娛樂系合聘",
+      "current": "講師 · eスポーツ・エンターテインメント学科兼任",
+      "proposed": "講師・eスポーツエンターテインメント学科との共同任用（原職：講師・合聘）",
+      "category": "appointment_relationship",
+      "reason": "逐筆核對此教師role，與助理教授筆分開，不從單一對照推所有職級；兼任不完整表達共同聘任。",
+      "sources": [
+        {
+          "id": "jst",
+          "url": "https://jrecin.jst.go.jp/html/app/seek/dsc_jobtype_j.html"
+        },
+        {
+          "id": "joint",
+          "url": "https://wpc.stu.edu.tw/wp-content/uploads/sites/7/2019/11/7.E4BABAE4BA8BE5AEA4.pdf"
+        }
+      ],
+      "decision": "recommend",
+      "applied": false,
+      "source_locations": [
+        {
+          "file": "data/ja/messages.json",
+          "pointer": "/講師 · 電競娛樂系合聘",
+          "value": "講師 · eスポーツ・エンターテインメント学科兼任"
+        }
+      ]
+    },
+    {
+      "id": "JA-SECONDARY-01",
+      "priority": "P1",
+      "lang": "ja",
+      "zh": "助理教授 · 從聘",
+      "current": "助教 · 兼任",
+      "proposed": "助教・共同任用（本学科は従たる所属）",
+      "category": "appointment_relationship",
+      "reason": "從聘表示共同聘任中的次要聘任單位，不是直接等同part-time。必要時附原文從聘。",
+      "sources": [
+        {
+          "id": "joint",
+          "url": "https://wpc.stu.edu.tw/wp-content/uploads/sites/7/2019/11/7.E4BABAE4BA8BE5AEA4.pdf"
+        }
+      ],
+      "decision": "recommend",
+      "applied": false,
+      "source_locations": [
+        {
+          "file": "data/ja/messages.json",
+          "pointer": "/助理教授 · 從聘",
+          "value": "助教 · 兼任"
+        }
+      ]
+    },
+    {
+      "id": "JA-SECONDARY-02",
+      "priority": "P1",
+      "lang": "ja",
+      "zh": "副教授 · 從聘",
+      "current": "准教授 · 兼任",
+      "proposed": "准教授・共同任用（本学科は従たる所属）",
+      "category": "appointment_relationship",
+      "reason": "這筆副教授逐筆保留准教授層級，補上從聘關係，不把從聘一律替成兼任。",
+      "sources": [
+        {
+          "id": "jst",
+          "url": "https://jrecin.jst.go.jp/html/app/seek/dsc_jobtype_j.html"
+        },
+        {
+          "id": "joint",
+          "url": "https://wpc.stu.edu.tw/wp-content/uploads/sites/7/2019/11/7.E4BABAE4BA8BE5AEA4.pdf"
+        }
+      ],
+      "decision": "recommend",
+      "applied": false,
+      "source_locations": [
+        {
+          "file": "data/ja/messages.json",
+          "pointer": "/副教授 · 從聘",
+          "value": "准教授 · 兼任"
+        }
+      ]
+    },
+    {
+      "id": "JA-UNPAID",
+      "priority": "P1",
+      "lang": "ja",
+      "zh": "助理教授 · 留職停薪",
+      "current": "助教 · 休職中",
+      "proposed": "助教・無給休職中",
+      "category": "meaning_omission",
+      "reason": "休職中未表達停薪，補無給即可保留原中文資訊；不推定休職原因或復職日期。",
+      "sources": [],
+      "decision": "recommend",
+      "applied": false,
+      "source_locations": [
+        {
+          "file": "data/ja/messages.json",
+          "pointer": "/助理教授 · 留職停薪",
+          "value": "助教 · 休職中"
+        }
+      ]
+    },
+    {
+      "id": "EN-ABSENCE",
+      "priority": "P1",
+      "lang": "en",
+      "zh": "學生請假與獎懲簽核公告",
+      "current": "Announcement on Student Leave of Absence and Reward/Discipline Sign-off",
+      "proposed": "Announcement on Student Absence Requests and Approval of Rewards and Disciplinary Measures",
+      "category": "terminology_ambiguity",
+      "reason": "請假是單次/數日缺席申請；同站另用leave of absence表示休學，應區分，避免學生點錯程序。原中文與guide.json請假/休學卡可直接核對；不是對官方公告另增規定。",
+      "sources": [],
+      "decision": "recommend",
+      "applied": false,
+      "source_locations": [
+        {
+          "file": "data/en/student-guide-ui.json",
+          "pointer": "/學生請假與獎懲簽核公告",
+          "value": "Announcement on Student Leave of Absence and Reward/Discipline Sign-off"
+        }
+      ]
+    },
+    {
+      "id": "EN-ACADEMIC-LEAVE",
+      "priority": "P1",
+      "lang": "en",
+      "zh": "休學復學與兵役",
+      "current": "Suspension of Studies, Resumption of Studies, and Military Service",
+      "proposed": "Leave of Absence, Return to Study and Military Service",
+      "category": "terminology_ambiguity",
+      "reason": "Suspension可能讓英語讀者理解成紀律停學；此卡是學生申辦休學/復學，與單次請假分開命名。",
+      "sources": [],
+      "decision": "recommend",
+      "applied": false,
+      "source_locations": [
+        {
+          "file": "data/en/student-guide-ui.json",
+          "pointer": "/休學復學與兵役",
+          "value": "Suspension of Studies, Resumption of Studies, and Military Service"
+        }
+      ]
+    },
+    {
+      "id": "EN-STATUS-NOTICE",
+      "priority": "P1",
+      "lang": "en",
+      "zh": "115-1休學退學注意事項",
+      "current": "Notes on Suspension and Withdrawal for Semester 115-1",
+      "proposed": "Leave of Absence and Withdrawal: Semester 115-1",
+      "category": "terminology_consistency",
+      "reason": "與休學卡統一leave of absence；不改學期或公告適用範圍。",
+      "sources": [],
+      "decision": "recommend",
+      "applied": false,
+      "source_locations": [
+        {
+          "file": "data/en/student-guide-ui.json",
+          "pointer": "/115-1休學退學注意事項",
+          "value": "Notes on Suspension and Withdrawal for Semester 115-1"
+        }
+      ]
+    },
+    {
+      "id": "EN-RETURN",
+      "priority": "P2",
+      "lang": "en",
+      "zh": "休學後如何知道復學時間？",
+      "current": "How do I know when to resume studies after suspension?",
+      "proposed": "When should I return to study after a leave of absence?",
+      "category": "terminology_consistency",
+      "reason": "與休學/復學術語一致，避免suspension暗示停學處分。",
+      "sources": [],
+      "decision": "recommend",
+      "applied": false,
+      "source_locations": [
+        {
+          "file": "data/en/student-guide-ui.json",
+          "pointer": "/休學後如何知道復學時間？",
+          "value": "How do I know when to resume studies after suspension?"
+        }
+      ]
+    },
+    {
+      "id": "JA-OFFICE-01",
+      "priority": "P1",
+      "lang": "ja",
+      "zh": "教務處註冊課務組（動遊系）",
+      "current": "教務処学籍・教務課（アニメとゲームデザイン学科担当）",
+      "proposed": "教務処・註冊課務組（学籍・履修担当／本学科担当）",
+      "category": "office_consistency",
+      "reason": "現站同一單位有学籍・教務課、登録・履修課、登録・教務組及学籍・教務担当等寫法。建議保留實際中文單位名，加固定功能解釋；不虛構學校已有正式日文部門名。",
+      "sources": [
+        {
+          "id": "stuCredit",
+          "url": "https://www.aca.stu.edu.tw/抵免學分/"
+        }
+      ],
+      "decision": "recommend",
+      "applied": false,
+      "source_locations": [
+        {
+          "file": "data/ja/messages.json",
+          "pointer": "/教務處註冊課務組（動遊系）",
+          "value": "教務処学籍・教務課（アニメとゲームデザイン学科担当）"
+        }
+      ]
+    },
+    {
+      "id": "JA-OFFICE-02",
+      "priority": "P1",
+      "lang": "ja",
+      "zh": "考試相關另洽教務處註冊課務組",
+      "current": "試験関連は別途教務処登録・履修課にお問い合わせください",
+      "proposed": "試験については、教務処・註冊課務組（学籍・履修担当）へ",
+      "category": "office_consistency",
+      "reason": "現站同一單位有学籍・教務課、登録・履修課、登録・教務組及学籍・教務担当等寫法。建議保留實際中文單位名，加固定功能解釋；不虛構學校已有正式日文部門名。",
+      "sources": [
+        {
+          "id": "stuCredit",
+          "url": "https://www.aca.stu.edu.tw/抵免學分/"
+        }
+      ],
+      "decision": "recommend",
+      "applied": false,
+      "source_locations": [
+        {
+          "file": "data/ja/messages.json",
+          "pointer": "/考試相關另洽教務處註冊課務組",
+          "value": "試験関連は別途教務処登録・履修課にお問い合わせください"
+        }
+      ]
+    },
+    {
+      "id": "JA-OFFICE-03",
+      "priority": "P1",
+      "lang": "ja",
+      "zh": "註冊課務組（動遊系）",
+      "current": "登録・履修課（アニメとゲームデザイン学科担当）",
+      "proposed": "註冊課務組（学籍・履修担当／本学科担当）",
+      "category": "office_consistency",
+      "reason": "現站同一單位有学籍・教務課、登録・履修課、登録・教務組及学籍・教務担当等寫法。建議保留實際中文單位名，加固定功能解釋；不虛構學校已有正式日文部門名。",
+      "sources": [
+        {
+          "id": "stuCredit",
+          "url": "https://www.aca.stu.edu.tw/抵免學分/"
+        }
+      ],
+      "decision": "recommend",
+      "applied": false,
+      "source_locations": [
+        {
+          "file": "data/ja/messages.json",
+          "pointer": "/註冊課務組（動遊系）",
+          "value": "登録・履修課（アニメとゲームデザイン学科担当）"
+        }
+      ]
+    },
+    {
+      "id": "EN-SKILLS-CLASS",
+      "priority": "P1",
+      "lang": "en",
+      "zh": "這份指南以日間四技在校生為主。一般班、技優班與不同入學年度可能不同；申請資格和日期請以各處室當期公告為準。",
+      "current": "This guide is primarily for current students in the day division Four-year program. General classes, the Special Talent Program, and different admission years may vary; please refer to current announcements from respective administrative offices for application eligibility and dates.",
+      "proposed": "This guide is mainly for students in the four-year undergraduate day program. Rules may differ by entry year and class, including regular classes and skills-excellence classes (技優班). Check the current notice from the responsible office for eligibility and dates.",
+      "category": "program_name_precision",
+      "reason": "Special Talent Program可能與其他特殊選才學程混淆。保留技優班原文並使用解釋性英譯；不宣稱這是校方核定英文名稱。",
+      "sources": [
+        {
+          "id": "stuPrograms",
+          "url": "https://about.stu.edu.tw/en"
+        }
+      ],
+      "decision": "recommend",
+      "applied": false,
+      "source_locations": [
+        {
+          "file": "data/en/student-guide-ui.json",
+          "pointer": "/這份指南以日間四技在校生為主。一般班、技優班與不同入學年度可能不同；申請資格和日期請以各處室當期公告為準。",
+          "value": "This guide is primarily for current students in the day division Four-year program. General classes, the Special Talent Program, and different admission years may vary; please refer to current announcements from respective administrative offices for application eligibility and dates."
+        }
+      ]
+    },
+    {
+      "id": "EN-PROGRAM",
+      "priority": "P2",
+      "lang": "en",
+      "zh": "115 學年度 · 四技日間部",
+      "current": "AY 115 · Four-Year College Day Division",
+      "proposed": "Academic Year 115 · Four-Year Undergraduate Program (Day Division)",
+      "category": "education_system_clarity",
+      "reason": "四技是大學部，不是英美語境的two-year college。校方英文介紹使用four-year undergraduate programs；英文加Undergraduate更清楚。民國學年未自行改算。",
+      "sources": [
+        {
+          "id": "stuPrograms",
+          "url": "https://about.stu.edu.tw/en"
+        }
+      ],
+      "decision": "recommend",
+      "applied": false,
+      "source_locations": [
+        {
+          "file": "data/en/faculty.json",
+          "note": "Structured faculty field is paired to canonical zh role; match slug using faculty-roles.json."
+        }
+      ]
+    },
+    {
+      "id": "JA-PROGRAM",
+      "priority": "P2",
+      "lang": "ja",
+      "zh": "115 學年度 · 四技日間部",
+      "current": "115学年度 · 4年制課程 昼間部",
+      "proposed": "115学年度・4年制学士課程（昼間部）",
+      "category": "education_system_clarity",
+      "reason": "4年制課程並非錯，但補學士課程可明確區分專科学校。JASSO對臺灣大學部/科技大學制度的說明作讀者用語依據，不把日本學制套成台灣法律。",
+      "sources": [
+        {
+          "id": "jasso",
+          "url": "https://ryugaku.jasso.go.jp/oversea_info/region/asia/taiwan/info_tw_university.html"
+        }
+      ],
+      "decision": "recommend",
+      "applied": false,
+      "source_locations": [
+        {
+          "file": "data/ja/messages.json",
+          "pointer": "/115 學年度 · 四技日間部",
+          "value": "115学年度 · 4年制課程 昼間部"
+        }
+      ]
+    },
+    {
+      "id": "JA-CEEC",
+      "priority": "P2",
+      "lang": "ja",
+      "zh": "大學入學考試中心（學測）",
+      "current": "大学入試センター（学測）",
+      "proposed": "台湾・大学入学考試中心（学科能力測験）",
+      "category": "proper_name_disambiguation",
+      "reason": "現譯大学入試センター容易被當成日本的同名機構。保留臺灣原機構字樣並標臺灣，避免轉譯成另一個國家的機關。英文CEEC本身可保留。",
+      "sources": [
+        {
+          "id": "ceec",
+          "url": "https://www.ceec.edu.tw/Default.html"
+        }
+      ],
+      "decision": "recommend",
+      "applied": false,
+      "source_locations": [
+        {
+          "file": "data/ja/messages.json",
+          "pointer": "/大學入學考試中心（學測）",
+          "value": "大学入試センター（学測）"
+        }
+      ]
+    },
+    {
+      "id": "JA-SELECTION-HOLD",
+      "priority": "P1",
+      "lang": "ja",
+      "zh": "甄選入學",
+      "current": "推薦選抜入試",
+      "proposed": "甄選入学（台湾の入試区分）",
+      "category": "pending_official_term",
+      "reason": "現譯推薦選抜入試多了推薦概念。應以當期簡章確認是否每類都須推薦，未確認前保留制度原名；暫不全站批次取代。",
+      "sources": [],
+      "decision": "needs_official_confirmation",
+      "applied": false,
+      "source_locations": [
+        {
+          "file": "data/ja/messages.json",
+          "pointer": "/甄選入學",
+          "value": "推薦選抜入試"
+        }
+      ]
+    },
+    {
+      "id": "EN-CONTACT",
+      "priority": "P2",
+      "lang": "en",
+      "zh": "前往承辦單位 ↗",
+      "current": "Go to Responsible Unit ↗",
+      "proposed": "Contact the responsible office ↗",
+      "category": "plain_language",
+      "reason": "Responsible Unit像內部組織用語；office對學生較直接。連結仍是原官方URL，不更動服務內容。",
+      "sources": [],
+      "decision": "recommend",
+      "applied": false,
+      "source_locations": [
+        {
+          "file": "data/en/student-guide-ui.json",
+          "pointer": "/前往承辦單位 ↗",
+          "value": "Go to Responsible Unit ↗"
+        }
+      ]
+    },
+    {
+      "id": "EN-OVERSEAS-Q",
+      "priority": "P2",
+      "lang": "en",
+      "zh": "出國實習的保險和簽證，可以自己隨便買辦嗎？",
+      "current": "Can insurance and visas for overseas internships be purchased and arranged casually by oneself?",
+      "proposed": "Can I arrange my own insurance and visa for an overseas internship?",
+      "category": "plain_language",
+      "reason": "刪除casually by oneself的逐字語氣，保留學生想問可否自行安排的意思；答案原有須照計畫/承辦要求仍保留。",
+      "sources": [],
+      "decision": "recommend",
+      "applied": false,
+      "source_locations": [
+        {
+          "file": "data/en/student-guide-ui.json",
+          "pointer": "/出國實習的保險和簽證，可以自己隨便買辦嗎？",
+          "value": "Can insurance and visas for overseas internships be purchased and arranged casually by oneself?"
+        }
+      ]
+    },
+    {
+      "id": "EN-GAME-STORY",
+      "priority": "P2",
+      "lang": "en",
+      "zh": "每個故事，都值得被看見。",
+      "current": "Every story can be seen.",
+      "proposed": "Every story deserves to be seen.",
+      "category": "meaning_shift",
+      "reason": "can be seen只表示看得到，漏掉值得的價值與包容語氣。此句是虛構遊戲字幕，不是政策。",
+      "sources": [],
+      "decision": "recommend",
+      "applied": false,
+      "source_locations": [
+        {
+          "file": "holiday-lab/games/constitution.mjs",
+          "line": 3,
+          "value": "Every story can be seen."
+        }
+      ]
+    },
+    {
+      "id": "JA-GAME-STORY",
+      "priority": "P2",
+      "lang": "ja",
+      "zh": "每個故事，都值得被看見。",
+      "current": "みんなの物語を、大切に。",
+      "proposed": "どの物語も、見てもらう価値がある。",
+      "category": "meaning_shift",
+      "reason": "現譯みんなの物語を、大切に是珍惜故事的改寫，未保留值得被看見；建議較忠實版本。若採用，必須同步captionLines分行與字幕可讀性條件，不能只改PHRASES。",
+      "sources": [],
+      "decision": "recommend",
+      "applied": false,
+      "source_locations": [
+        {
+          "file": "holiday-lab/games/constitution.mjs",
+          "line": 3,
+          "value": "みんなの物語を、大切に。"
+        }
+      ]
+    },
+    {
+      "id": "JA-GAME-READING",
+      "priority": "P2",
+      "lang": "ja",
+      "zh": "字幕碰到人物或舞台邊緣，移到下方閱讀區。",
+      "current": "字幕が人物や舞台の端に重なっています。下の読書エリアへ。",
+      "proposed": "字幕が人物や画面の端に重なっています。下の字幕エリアへ移動しましょう。",
+      "category": "natural_instruction",
+      "reason": "舞台與読書エリア在字幕編排語境較不自然，画面/字幕エリア可清楚指向實際操作區，沒有改安全區位置。",
+      "sources": [],
+      "decision": "recommend",
+      "applied": false,
+      "source_locations": [
+        {
+          "file": "holiday-lab/games/constitution.mjs",
+          "line": 13,
+          "value": "字幕が人物や舞台の端に重なっています。下の読書エリアへ。"
+        }
+      ]
+    }
+  ]
+}
