@@ -11,7 +11,7 @@
 | 條件 | yes/no | 證據 |
 |---|---|---|
 | 測試先紅 | yes | 實跑 `node --test holiday-lab/tests/new-year.test.mjs` → exit 1，`ERR_MODULE_NOT_FOUND`，`tests 1 / pass 0 / fail 1` |
-| 規則、非法輸入、不會自動完成、重置、不同輸入影響結果 | yes | 最新同指令：exit 0，`tests 4 / pass 4 / fail 0 / cancelled 0 / skipped 0 / todo 0`，duration 73.753 ms |
+| 規則、非法輸入、不會自動完成、重置、不同輸入影響結果 | yes | 中心座標修正後重跑同指令：exit 0，`tests 4 / pass 4 / fail 0 / cancelled 0 / skipped 0 / todo 0`，duration 89.3814 ms |
 | 契約互動走三幕、預覽閘門與卸載取消 frame | yes | 第4個測試 `mounted controls require a full fresh preview and teardown unsubscribes` 通過；使用測試 ctx，非瀏覽器畫面證據 |
 | ES module 語法 | yes | `node --check holiday-lab/games/new-year.mjs` → exit 0，stdout 空白 |
 | 中英日動態文字 | yes | 模組全部透過 `{zh,en,ja}`；標籤及回饋均提供三語。譯文尚未母語校閱 |
@@ -36,6 +36,8 @@
 ```
 
 ## 主控瀏覽器解法
+
+全部 Sprite 的 x/y 是中心百分比，已配合共用外框；最少有效動畫試播共2.88秒，操作閱讀目標30–90秒，沒有隱藏跳關。
 
 原生 range 的實際 DOM id 由共用 ui 決定；本模組傳入穩定 id：`ny-hold-0`、`ny-hold-1`、`ny-hold-2`。每幕依序設下列數值，觸發 input；按 `ny-preview`，讓正常 ctx.onFrame 播滿後按 `ny-submit`。
 
