@@ -1,5 +1,7 @@
 # 新生第一張地圖：先選事情，再找窗口（2026-10-23）
 
+最新驗證為 `terminology-03/`（單位名稱一致性修訂），不是根目錄保留的 fresh02 舊證據。英日名稱已分別統一為 `Registration and Curriculum Section`、`註冊課務組（学籍・履修担当）`。
+
 分支 `codex/semester-tasks`，獨立工作樹 `C:/agywork/agd-semester-tasks`，由主代理 `e731c4d` 建立。所有權只含 `games/semester.mjs`、`semester*.test.mjs` 與本報告目錄。共用 renderer／CSS／qa／指南資料未修改；只做測量 build，沒有打包交付。
 
 ## 實際玩法
@@ -87,14 +89,14 @@ tests 14 / pass 14 / fail 0 / exit 0
 node --check holiday-lab/games/semester.mjs
 exit 0
 
-node holiday-lab/build-review.mjs .measure-semester-tasks-02 --measurement
+node holiday-lab/build-review.mjs .measure-semester-tasks-03 --measurement
 MEASUREMENT ONLY: test build for layout capture; not cleared for packaging or delivery.
 ui-policy pass=true, assets=257, screens=9, errors=[]
-MEASUREMENT_ONLY: .measure-semester-tasks-02; 356 files; no publication performed.
+MEASUREMENT_ONLY: .measure-semester-tasks-03; 356 files; no publication performed.
 exit 0
 ```
 
-完整綠燈項目為 `green.txt`；測量輸出為 `build02.txt`。建置有原有 JSX duplicate color key 警告，未擅改該處。沒有執行打包或繞過交付 layout gate。
+最新14項綠燈為 `terminology-03/green.txt`；測量輸出為 `terminology-03/build.txt`。建置有原有 JSX duplicate color key 警告，未擅改該處。沒有執行打包或繞過交付 layout gate。
 
 ## 最後 DOM 驗證
 
@@ -112,7 +114,7 @@ TOTAL 8/8; errors=0
 exit 0
 ```
 
-完整 `browser.json` 保留每組來源、24 次真指南開啟／搜尋／展開後的卡名與 contact、8 次試辦紀錄、實際路線與四鏡 caption。所有 query 都等於遊戲提供的詞，且實際找到同名標題；沒有用測試器讀到的正確卡名代填。操作均使用 DOM，不匯入規則、不注入狀態、不 teleport、不呼叫 complete。已知 fixtures 的代理操作不等同真人盲測。
+最新完整 `terminology-03/browser.json` 保留每組來源、24 次真指南開啟／搜尋／展開後的卡名與 contact、8 次試辦紀錄、實際路線與四鏡 caption。所有 query 都等於遊戲提供的詞，且實際找到同名標題；沒有用測試器讀到的正確卡名代填。操作均使用 DOM，不匯入規則、不注入狀態、不 teleport、不呼叫 complete。已知 fixtures 的代理操作不等同真人盲測。
 
 | 驗收項目 | yes／no | 實際證據 |
 |---|---|---|
@@ -126,6 +128,7 @@ exit 0
 | 探索不暗扣分、重試乾淨、靜音可玩 | yes | 各組4次失敗＋4次成功，attempts=8、score=100；重試位置(0,2)、0/3；Audio.play=0 |
 | Console／page error、缺圖、水平溢出 | yes（無上述錯誤） | 全八組空錯誤陣列、圖片已載入、scrollWidth檢查；不把它等同文字安全區通過 |
 | 圖面已實際打開檢查 | yes | 實看 zh320第三幕、zh1440舞台、en1440錯教室、ja320第三幕；有原學生角色與舊生成建築，不新增程序畫面 |
+| 單位名稱與新實際文案一致 | yes | 英文6處與日文6處替換；14pure與8DOM重跑，實際 window／hint／replay 無舊名稱 |
 | 真實墨跡／安全區 layout gate | no | 新文字與 choice 尚待主代理 collector；此輪未打包、不造報告 |
 | 全15卡即時官網全文重新核實 | no | 全15卡是本機逐筆來源窗口審核；使用的三卡做官方索引交叉查核，直接全文有限制 |
 | 真人學生理解、30–90秒體驗、使用者美術確認 | no | 未進行真人學生測試，也沒有使用者於對話確認 |
@@ -134,10 +137,24 @@ exit 0
 本次 headless Chromium `151.0.7922.34`。served 模組開始與結束 SHA-256 相同：
 
 ```text
-569a7a6fcb81bf267cdfdac579f741d6ebb41263e7cddbd4c4d59347e5686c9b
+f4d154896ebb50a4e2c268c203594a2c66fd9692ca318f49325bf189f737b2c4
 ```
 
 真指南 JSON 的 served SHA-256：`81595129ae609d1913c4562500955a6ff1601782cf4fe11368ee5bcc9e3239fc`。同時保存實際讀取的 en／ja 字典與各張原素材 SHA；Git checkout 換行若有轉換，主代理以合併後 served 位元組重新建立收據。
+
+## 術語一致性修訂（terminology-03）
+
+- 先搜尋所有 literal 引用，runtime 英文6處、日文6處；單位選項、任務提示、圖例與從同一名稱衍生的計畫／回放均使用新名稱。歷史 JSON／截圖／官方來源敘述保留原樣，不竄改舊證據。
+- 將兩組新字串反向替換後，以 Git 的 LF 規則比較，模組與前一 commit 完全相同；只有工作副本末行 CRLF 與 Git blob LF 的差異。id、任務邏輯、來源對映、人名均未改，見 `terminology-03/literal-audit.json`。
+- 14/14 pure、同一新 source 測量 build、8/8 DOM（含24次真指南搜尋）全部重跑。新舊八組 artifact 逐筆完全相同，保留任務、窗口ID、路線、順序與嘗試次數，見 `terminology-03/term-results.json`。
+- 已實看英文320與日文320第三幕、英文1440錯站提示；較長的窗口名稱自然換行，未縮字，未見水平溢出或省略裁字。未修改共用 CSS，正式墨跡安全區仍須主代理 collector，不以截圖實看代替。
+- 本次新增證據皆在 `terminology-03/`；根目錄 `browser.json` 與 `run01/` 是過去版本，不能拿來當新 source 證據。
+
+實際術語／資料比對輸出：
+
+```text
+YES 8/8 new actual terms; 8/8 artifacts unchanged; source SHA stable f4d154896ebb50a4e2c268c203594a2c66fd9692ca318f49325bf189f737b2c4
+```
 
 ## 整合與界線
 
