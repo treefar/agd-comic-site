@@ -1,0 +1,47 @@
+{
+  "checked_at": "2026-10-23",
+  "checks": [
+    {
+      "topic": "日本合作公司正式名與同名公司排除",
+      "url": "https://hautecouture.jp/about/",
+      "status": "Full official HTML readable",
+      "facts_used": "Company outline pairs 株式会社オートクチュール with hautecouture Inc.; history records Shu-Te collaboration in 2015; branch section lists Matsuyama. These three anchors support identifying the partner described by the local article.",
+      "excluded_url": "https://hautecouture.co.jp/about/",
+      "excluded_status": "Full official HTML readable",
+      "excluded_reason": "Different self-described company uses オートクチュール株式会社, established in 2021 with a different president. Not used as the Shu-Te internship partner. No inference from similar spelling alone.",
+      "decision": "Propose correcting latest article's company name in canonical Chinese, English and Japanese as one linked change. Do not silently replace all historical names."
+    },
+    {
+      "topic": "第九屆、四人、松山、地方交流與AR成果",
+      "url": "https://www.stu.edu.tw/latestnews-single/?id=223564",
+      "status": "Official search index contains the article body; direct open HTTP 403",
+      "facts_used": "University news index identifies ninth cohort, four students, Matsuyama, nearly three months, advisers, cultural exchanges and prior AR work. Supports preserving these facts, not a claim that every extra quote in the rewritten local article was independently authenticated.",
+      "decision": "Retain dates, counts, names and event relationships. No inferred visa, salary, eligibility or current application promise."
+    },
+    {
+      "topic": "Dear, All Robots 原採訪與敘述強度",
+      "url": "https://english.cw.com.tw/article/article.action?id=4814",
+      "status": "Full original publisher article readable, dated 2026-06-05",
+      "facts_used": "Publisher's original article identifies the five-minute film, Indonesian student team, exhibition, creator Ryan Evan Limawi, cat/robot story and promotional material. The interview presents future career change as a possibility, not a guarantee.",
+      "decision": "Remove Japanese 必ず promise. Preserve the English film title and source Chinese story. No additional biography or project credits introduced."
+    },
+    {
+      "topic": "青春設計節作品正式拼寫與指導關係",
+      "url": "https://www.ydf.org.tw/upload/attachments/5562053333.pdf",
+      "status": "Official organizer search index readable; PDF not fully opened in this batch",
+      "facts_used": "Organizer's indexed shortlist includes Dear, All Robots, Shu-Te department and 陳美蓉. It does not independently verify all four competition totals or every earlier award.",
+      "decision": "Keep film spelling. Distinguish 14 selection records from seven different capstones based on the actual Chinese source; do not assert all underlying award results were re-counted."
+    },
+    {
+      "topic": "三則115-1證照課程公告",
+      "queries": ["site.dgd.stu.edu.tw 2026 Unity 115 11 14", "site.dgd.stu.edu.tw 115 Unity 11/14"],
+      "status": "No independently readable matching current official course notice found",
+      "decision": "Translate actual canonical dates, capacities, classroom numbers, attendance and exam conditions without changing them. Correct only Japanese relative opening date wording. This is translation fidelity, not confirmation that applications are still open or that certificate provider names are current. No guessed WordPress URL presented as evidence."
+    },
+    {
+      "topic": "人名、作品及計畫正式英譯",
+      "status": "Partially verified only",
+      "decision": "Do not certify all existing romanized student/faculty names or The Stolen Recipe as author-approved title. Retain source Chinese alongside prior explanatory names. Keep 學海築夢 original where no approved English program name was obtained. Uwa museum, tourism association and AR event English renderings in long article remain explanatory/pending."
+    }
+  ]
+}
