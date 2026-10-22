@@ -1,0 +1,773 @@
+{
+  "checked_at": "2026-10-22",
+  "source_commit": "904ac79937407d748e1bfdbce22517d38acbf8f3",
+  "mode": "proposal-only; product not changed",
+  "files": [
+    {
+      "file": "data/en/student-guide-ui.json",
+      "before_sha256": "0863ad2ff25f125ea692aa0684aa52abd7defb5ed6ecf18931dbfeefa6879524",
+      "after_sha256": "91f6ec3bebfadd375f678c3b1f7a4042390d95f25dd3adde27fa5c11fdbf6f6d"
+    },
+    {
+      "file": "data/ja/messages.json",
+      "before_sha256": "a053923aad0f0ff777ba3cf220bf08e1f03582c1e3c08517b12b82986f9475b5",
+      "after_sha256": "986ffb82bf0af498d16c168895460d9ab845aa526b330df6442b5fe200afd64c"
+    },
+    {
+      "file": "data/en/admission.json",
+      "before_sha256": "8ed52927e4e11f489a29ea50d707e4be7c710172f7f553302900425c7b42a95d",
+      "after_sha256": "bce82f00c6e4b982e8d6c92d85063e053a2fda62257e323f8bf755bd60da5821"
+    },
+    {
+      "file": "data/admission.json",
+      "before_sha256": "2d658c093d2c0f605d76af88a5c8af8e2212462f893d90873ea3aa2fa7cd76d7",
+      "after_sha256": "3241894cb67b5855937e71141e397abd39ea0cef113eb6cc9c9f6f44772fb4c2"
+    },
+    {
+      "file": "holiday-lab/games/constitution.mjs",
+      "before_sha256": "ecbe690e6b0728c1b5c5c64a88c6dd7e9e19c2e456dab0f521351739de337f96",
+      "after_sha256": "98b7d50c69cac1de56867dee9ec1608f97ecdd234ac5b5f78ef79a563e2c0bfb"
+    },
+    {
+      "file": "pages.jsx",
+      "before_sha256": "83607f472db719fd0669d13bd7e42ba2f957dbca0ea8165737c15c92a59c602e",
+      "after_sha256": "11f02e927d93c579b1cc8a1467eb45ca6c52120a1d06fdafe1378f10fa71cb66"
+    },
+    {
+      "file": "data/en/ui.json",
+      "before_sha256": "6bee6a98a2d94de8a2b629ad54a41937a9ced83b837ef6a4fcd504378d30f3ad",
+      "after_sha256": "8963df2dd958b523c1da103347d1db321098e4d4ffe90cd97e60af8fcc1a9dfc"
+    },
+    {
+      "file": "data/en/step-details-ui.json",
+      "before_sha256": "581c8cfc4e0c47dae80b27b16beb49a392db7242b242e100a8a896e126b7f3d6",
+      "after_sha256": "e7394a01f0d4acc69a97742a9786508d7b467bbda3c442b63f7e7c039146e296"
+    },
+    {
+      "file": "data/ja/ui.json",
+      "before_sha256": "c4cc45a9e204822a31885401a99a1126859d4f583c2711272fb3b443945bc48b",
+      "after_sha256": "64ab7dcc1a4a74f9092367066d20df24138a2b994b8806e49d560170e5ef67d8"
+    }
+  ],
+  "changes": [
+    {
+      "id": "EN-RETURN",
+      "group": "p2",
+      "kind": "set-json",
+      "file": "data/en/student-guide-ui.json",
+      "pointer": "/休學後如何知道復學時間？",
+      "old": "How do I know when to resume studies after suspension?",
+      "new": "When should I return to study after a leave of absence?"
+    },
+    {
+      "id": "JA-PROGRAM",
+      "group": "p2",
+      "kind": "set-json",
+      "file": "data/ja/messages.json",
+      "pointer": "/115 學年度 · 四技日間部",
+      "old": "115学年度 · 4年制課程 昼間部",
+      "new": "115学年度・4年制学士課程（昼間部）"
+    },
+    {
+      "id": "EN-OVERSEAS-Q",
+      "group": "p2",
+      "kind": "set-json",
+      "file": "data/en/student-guide-ui.json",
+      "pointer": "/出國實習的保險和簽證，可以自己隨便買辦嗎？",
+      "old": "Can insurance and visas for overseas internships be purchased and arranged casually by oneself?",
+      "new": "Can I arrange my own insurance and visa for an overseas internship?"
+    },
+    {
+      "id": "EN-PROGRAM/high-school-application",
+      "group": "p2",
+      "kind": "set-json",
+      "file": "data/en/admission.json",
+      "pointer": "/1/year",
+      "old": "AY 115 · Four-Year College Day Division",
+      "new": "Academic Year 115 · Four-Year Undergraduate Program (Day Division)"
+    },
+    {
+      "id": "EN-PROGRAM/tech-star",
+      "group": "p2",
+      "kind": "set-json",
+      "file": "data/en/admission.json",
+      "pointer": "/3/year",
+      "old": "AY 115 · Four-Year College Day Division",
+      "new": "Academic Year 115 · Four-Year Undergraduate Program (Day Division)"
+    },
+    {
+      "id": "EN-PROGRAM/tech-elite",
+      "group": "p2",
+      "kind": "set-json",
+      "file": "data/en/admission.json",
+      "pointer": "/4/year",
+      "old": "AY 115 · Four-Year College Day Division",
+      "new": "Academic Year 115 · Four-Year Undergraduate Program (Day Division)"
+    },
+    {
+      "id": "EN-PROGRAM/joint",
+      "group": "p2",
+      "kind": "set-json",
+      "file": "data/en/admission.json",
+      "pointer": "/5/year",
+      "old": "AY 115 · Four-Year College Day Division",
+      "new": "Academic Year 115 · Four-Year Undergraduate Program (Day Division)"
+    },
+    {
+      "id": "JA-CEEC",
+      "group": "p2",
+      "kind": "set-json",
+      "file": "data/ja/messages.json",
+      "pointer": "/大學入學考試中心（學測）",
+      "old": "大学入試センター（学測）",
+      "new": "台湾の大學入學考試中心（学測）"
+    },
+    {
+      "id": "EN-CONTACT",
+      "group": "p2",
+      "kind": "set-json",
+      "file": "data/en/student-guide-ui.json",
+      "pointer": "/前往承辦單位 ↗",
+      "old": "Go to Responsible Unit ↗",
+      "new": "Visit the responsible office’s website ↗"
+    },
+    {
+      "id": "EN-GAME-STORY/phrase",
+      "group": "p2",
+      "kind": "replace-text",
+      "file": "holiday-lab/games/constitution.mjs",
+      "old": "'Every story can be seen.'",
+      "new": "'Every story is worth seeing.'",
+      "expectedCount": 1
+    },
+    {
+      "id": "EN-GAME-STORY/pair",
+      "group": "p2",
+      "kind": "replace-text",
+      "file": "holiday-lab/games/constitution.mjs",
+      "old": "en:['Every story','can be seen.']",
+      "new": "en:['Every story is','worth seeing.']",
+      "expectedCount": 1
+    },
+    {
+      "id": "JA-GAME-STORY/phrase",
+      "group": "p2",
+      "kind": "replace-text",
+      "file": "holiday-lab/games/constitution.mjs",
+      "old": "'みんなの物語を、大切に。'",
+      "new": "'どの物語も、見る価値がある。'",
+      "expectedCount": 1
+    },
+    {
+      "id": "JA-GAME-STORY/pair",
+      "group": "p2",
+      "kind": "replace-text",
+      "file": "holiday-lab/games/constitution.mjs",
+      "old": "ja:['みんなの物語を、','大切に。']",
+      "new": "ja:['どの物語も、','見る価値がある。']",
+      "expectedCount": 1
+    },
+    {
+      "id": "JA-GAME-READING",
+      "group": "p2",
+      "kind": "replace-text",
+      "file": "holiday-lab/games/constitution.mjs",
+      "old": "'字幕が人物や舞台の端に重なっています。下の読書エリアへ。'",
+      "new": "'字幕が人物や画面の端に重なっています。下の字幕エリアへ移動しましょう。'",
+      "expectedCount": 1
+    },
+    {
+      "id": "SELECTION-SIX/zh",
+      "group": "admission-policy",
+      "kind": "set-json",
+      "file": "data/admission.json",
+      "pointer": "/2/content",
+      "old": "四技日間部甄選入學 — 透過聯合招生，採統測 + 校系自辦指定項目甄試的入學管道。\n\n適用對象：高職 / 綜合高中應屆畢業生（採統測成績）\n\n樹德動遊系一次開出 4 個招生代碼（一般組 3 群 + 青年儲蓄帳戶組），申請者一次最多可申請 5 個校系。\n\n錄取流程：\n1. 統測成績進入第一階段篩選\n2. 通過篩選者上傳第二階段備審資料\n3. 第二階段甄試到校 — 書審 + 面試 + 實作（設計群）\n4. 公告總成績 + 正備取名單\n5. 登記就讀志願序 → 統一分發 → 報到\n\n須備：學習歷程檔案、作品集（設計群）、自傳、讀書計畫",
+      "new": "四技日間部甄選入學 — 透過聯合招生，採統測 + 校系自辦指定項目甄試的入學管道。\n\n適用對象：高職 / 綜合高中應屆畢業生（採統測成績）\n\n樹德動遊系一次開出 4 個招生代碼（一般組 3 群 + 青年儲蓄帳戶組），115學年度甄選入學最多可申請6個校系科（組）、學程，各校得另限制可報名該校的系科數；請依當年簡章核對。\n\n錄取流程：\n1. 統測成績進入第一階段篩選\n2. 通過篩選者上傳第二階段備審資料\n3. 第二階段甄試到校 — 書審 + 面試 + 實作（設計群）\n4. 公告總成績 + 正備取名單\n5. 登記就讀志願序 → 統一分發 → 報到\n\n須備：學習歷程檔案、作品集（設計群）、自傳、讀書計畫"
+    },
+    {
+      "id": "SELECTION-SIX/en",
+      "group": "admission-policy",
+      "kind": "set-json",
+      "file": "data/en/admission.json",
+      "pointer": "/2/content",
+      "old": "Four-Year College Day Division Recommendation and Selection Admission (甄選入學) — An admission pathway through joint admissions based on TCTE + department-administered designated examinations.\n\nTarget Audience: Graduating seniors from vocational high schools / comprehensive high schools (using TCTE scores)\n\nShu-Te AGD offers 4 admission codes at once (3 general groups + Youth Savings Account group); applicants may apply to up to 5 departments at once.\n\nAdmission Process:\n1. TCTE scores enter Stage 1 screening\n2. Those who pass screening upload Stage 2 review documents\n3. Stage 2 on-campus examination — documentary review + interview + practical test (Design Group)\n4. Announcement of total scores + admitted/waitlisted lists\n5. Registering department preferences → centralized placement → registration\n\nRequired: Student Learning Portfolio, portfolio (Design Group), autobiography, study plan",
+      "new": "Four-Year College Day Division Recommendation and Selection Admission (甄選入學) — An admission pathway through joint admissions based on TCTE + department-administered designated examinations.\n\nTarget Audience: Graduating seniors from vocational high schools / comprehensive high schools (using TCTE scores)\n\nShu-Te AGD offers 4 admission codes at once (3 general groups + Youth Savings Account group); for Academic Year 115, applicants may apply to at most six departments, divisions or degree programs in total. Individual universities may impose their own per-university limit; check that year’s official guide.\n\nAdmission Process:\n1. TCTE scores enter Stage 1 screening\n2. Those who pass screening upload Stage 2 review documents\n3. Stage 2 on-campus examination — documentary review + interview + practical test (Design Group)\n4. Announcement of total scores + admitted/waitlisted lists\n5. Registering department preferences → centralized placement → registration\n\nRequired: Student Learning Portfolio, portfolio (Design Group), autobiography, study plan"
+    },
+    {
+      "id": "SELECTION-SIX/ja",
+      "group": "admission-policy",
+      "kind": "rename-json-key",
+      "file": "data/ja/messages.json",
+      "oldKey": "四技日間部甄選入學 — 透過聯合招生，採統測 + 校系自辦指定項目甄試的入學管道。 適用對象：高職 / 綜合高中應屆畢業生（採統測成績） 樹德動遊系一次開出 4 個招生代碼（一般組 3 群 + 青年儲蓄帳戶組），申請者一次最多可申請 5 個校系。 錄取流程： 1. 統測成績進入第一階段篩選 2. 通過篩選者上傳第二階段備審資料 3. 第二階段甄試到校 — 書審 + 面試 + 實作（設計群） 4. 公告總成績 + 正備取名單 5. 登記就讀志願序 → 統一分發 → 報到 須備：學習歷程檔案、作品集（設計群）、自傳、讀書計畫",
+      "newKey": "四技日間部甄選入學 — 透過聯合招生，採統測 + 校系自辦指定項目甄試的入學管道。 適用對象：高職 / 綜合高中應屆畢業生（採統測成績） 樹德動遊系一次開出 4 個招生代碼（一般組 3 群 + 青年儲蓄帳戶組），115學年度甄選入學最多可申請6個校系科（組）、學程，各校得另限制可報名該校的系科數；請依當年簡章核對。 錄取流程： 1. 統測成績進入第一階段篩選 2. 通過篩選者上傳第二階段備審資料 3. 第二階段甄試到校 — 書審 + 面試 + 實作（設計群） 4. 公告總成績 + 正備取名單 5. 登記就讀志願序 → 統一分發 → 報到 須備：學習歷程檔案、作品集（設計群）、自傳、讀書計畫",
+      "old": "4年制課程昼間部 推薦選抜入試 — 合同募集を通じ、統測成績＋大学学科独自の指定選考を実施する入試制度。適用対象：専門高校／総合高校の卒業見込者（統測成績を利用） 樹徳科技大学アニメとゲームデザイン学科では4つの募集コード（一般枠3群＋青年貯蓄口座枠）を開設しており、志願者は最大5校・学科まで併願可能です。選考プロセス：1. 統測成績による第1段階スクリーニング 2. 通過者による第2段階審査書類のアップロード 3. 第2段階の来校選考 — 書類選考＋面接＋実技試験（デザイン群） 4. 総合点発表＋合格・補欠合格者リスト公表 5. 進学志望順位登録 → 統一割当 → 入学手続き 提出書類：学習履歴ファイル、ポートフォリオ（デザイン群）、自己推薦書、学習計画書",
+      "new": "4年制課程昼間部 推薦選抜入試 — 合同募集を通じ、統測成績＋大学学科独自の指定選考を実施する入試制度。適用対象：専門高校／総合高校の卒業見込者（統測成績を利用） 樹徳科技大学アニメとゲームデザイン学科では4つの募集コード（一般枠3群＋青年貯蓄口座枠）を開設しており、115学年度は、大学・学科（専攻・学位課程）の選択を合計6件まで申請できます。各大学が自校の出願先数を別途制限する場合もあるため、当該年度の募集要項で確認してください。選考プロセス：1. 統測成績による第1段階スクリーニング 2. 通過者による第2段階審査書類のアップロード 3. 第2段階の来校選考 — 書類選考＋面接＋実技試験（デザイン群） 4. 総合点発表＋合格・補欠合格者リスト公表 5. 進学志望順位登録 → 統一割当 → 入学手続き 提出書類：学習履歴ファイル、ポートフォリオ（デザイン群）、自己推薦書、学習計画書"
+    },
+    {
+      "id": "SKILL-SUMMARY/zh",
+      "group": "admission-policy",
+      "kind": "set-json",
+      "file": "data/admission.json",
+      "pointer": "/4/summary",
+      "old": "技藝技能優良得獎者優先錄取（85 商設類別）。",
+      "new": "競賽優勝、採認證照等資格甄審（115學年度85商設類別；依當年簡章）。"
+    },
+    {
+      "id": "SKILL-SUMMARY/en",
+      "group": "admission-policy",
+      "kind": "set-json",
+      "file": "data/en/admission.json",
+      "pointer": "/4/summary",
+      "old": "Priority admission for award winners with outstanding vocational skills (Category 85 Commercial Design) (85 商設類別).",
+      "new": "Selection based on eligible competition awards or recognized credentials (AY 115, Category 85 Commercial Design; subject to that year’s guide)."
+    },
+    {
+      "id": "SKILL-SUMMARY/ja",
+      "group": "admission-policy",
+      "kind": "rename-json-key",
+      "file": "data/ja/messages.json",
+      "oldKey": "技藝技能優良得獎者優先錄取（85 商設類別）。",
+      "newKey": "競賽優勝、採認證照等資格甄審（115學年度85商設類別；依當年簡章）。",
+      "old": "技術・技能優秀な受賞者を優先選考（85 商業デザイン類）。",
+      "new": "競技大会の入賞や対象資格に基づく選考（115学年度・85商業デザイン類。詳細は当該年度の募集要項）。"
+    },
+    {
+      "id": "SKILL-ELIGIBILITY/zh",
+      "group": "admission-policy",
+      "kind": "set-json",
+      "file": "data/admission.json",
+      "pointer": "/4/content",
+      "old": "技優甄審入學 — 持有教育部認可技藝技能優良得獎證明者優先甄審的管道。\n\n適用對象：持有國際級／全國級技藝技能競賽得獎證明的高職應屆畢業生\n\n錄取流程：\n1. 第一階段：報名 + 繳費 + 上傳得獎證明 / 作品集\n2. 第二階段：書面審查（樹德動遊系不含現場實作）\n3. 公告甄審結果 → 登記志願序 → 統一分發 → 報到",
+      "new": "技優甄審入學 — 依115學年度簡章審查技藝技能競賽優勝、採認證照等資格的入學管道。\n\n適用對象：符合當年簡章學歷與資格規定者，不只限應屆畢業生。可採認的資格包括競賽優勝、勞動部乙級（含）以上技術士證等；證照職（種）類與招生類別須符合簡章，並非持任一乙級證照即可報名本系。\n\n錄取流程：\n1. 第一階段：報名 + 繳費 + 上傳當年簡章要求的資格證明 / 作品集\n2. 第二階段：書面審查（樹德動遊系不含現場實作）\n3. 公告甄審結果 → 登記志願序 → 統一分發 → 報到"
+    },
+    {
+      "id": "SKILL-ELIGIBILITY/en",
+      "group": "admission-policy",
+      "kind": "set-json",
+      "file": "data/en/admission.json",
+      "pointer": "/4/content",
+      "old": "Skill-Excellence Screening Admission (技優甄審入學) — A pathway offering priority screening for holders of skill competition awards recognized by the Ministry of Education.\n\nTarget Audience: Graduating vocational high school seniors holding certificates of international or national skill competitions\n\nAdmission Process:\n1. Stage 1: Registration + fee payment + uploading award certificates / portfolio\n2. Stage 2: Documentary review (Shu-Te AGD does not include on-site practical test)\n3. Announcement of screening results → Preference ranking registration → Centralized placement → Registration",
+      "new": "Skill-Excellence Screening Admission (技優甄審入學) — Selection based on eligible competition awards, recognized credentials and other qualifications specified in the Academic Year 115 guide.\n\nEligibility: Applicants must meet that year’s education and qualification requirements; eligibility is not limited to current-year graduates. Recognized qualifications include eligible competition awards and Class B or higher technician certificates issued by Taiwan’s Ministry of Labor. The certificate trade and admission category must match the guide; holding any Class B certificate does not automatically qualify someone to apply to AGD.\n\nAdmission Process:\n1. Stage 1: Registration + fee payment + uploading the qualification documents required by that year’s guide / portfolio\n2. Stage 2: Documentary review (Shu-Te AGD does not include on-site practical test)\n3. Announcement of screening results → Preference ranking registration → Centralized placement → Registration"
+    },
+    {
+      "id": "SKILL-ELIGIBILITY/ja",
+      "group": "admission-policy",
+      "kind": "rename-json-key",
+      "file": "data/ja/messages.json",
+      "oldKey": "技優甄審入學 — 持有教育部認可技藝技能優良得獎證明者優先甄審的管道。 適用對象：持有國際級／全國級技藝技能競賽得獎證明的高職應屆畢業生 錄取流程： 1. 第一階段：報名 + 繳費 + 上傳得獎證明 / 作品集 2. 第二階段：書面審查（樹德動遊系不含現場實作） 3. 公告甄審結果 → 登記志願序 → 統一分發 → 報到",
+      "newKey": "技優甄審入學 — 依115學年度簡章審查技藝技能競賽優勝、採認證照等資格的入學管道。 適用對象：符合當年簡章學歷與資格規定者，不只限應屆畢業生。可採認的資格包括競賽優勝、勞動部乙級（含）以上技術士證等；證照職（種）類與招生類別須符合簡章，並非持任一乙級證照即可報名本系。 錄取流程： 1. 第一階段：報名 + 繳費 + 上傳當年簡章要求的資格證明 / 作品集 2. 第二階段：書面審查（樹德動遊系不含現場實作） 3. 公告甄審結果 → 登記志願序 → 統一分發 → 報到",
+      "old": "技優甄審入試 — 教育部認可の技術・技能優秀受賞証明書保持者を優先選考する入試枠。 適用対象：国際規模／全国規模の技術・技能競技大会の受賞証明書を有する実業高校の卒業見込者 選考プロセス： 1. 第1段階：出願 + 納付 + 受賞証明書／ポートフォリオの提出 2. 第2段階：書類審査（樹徳科技大学アニメとゲームデザイン学科は実技試験なし） 3. 選考結果発表 → 志望順位登録 → 一括配分 → 入学手続き",
+      "new": "技優甄審入試 — 115学年度の募集要項に基づき、技能競技大会の入賞や対象資格などを審査する入試制度。対象者：当該年度の学歴・資格要件を満たす方。卒業見込者だけに限りません。対象となる資格には、所定の競技大会での入賞、台湾の労働部発行の乙級以上の技能士資格などがあります。資格の職種と募集区分は要項に適合する必要があり、任意の乙級資格を持っていれば本学科へ出願できるわけではありません。 選考プロセス： 1. 第1段階：出願 + 納付 + 当該年度の要項が求める資格証明書／ポートフォリオの提出 2. 第2段階：書類審査（樹徳科技大学アニメとゲームデザイン学科は実技試験なし） 3. 選考結果発表 → 志望順位登録 → 一括配分 → 入学手続き"
+    },
+    {
+      "id": "SKILL-NOTE/zh",
+      "group": "admission-policy",
+      "kind": "set-json",
+      "file": "data/admission.json",
+      "pointer": "/4/key_notes/0",
+      "old": "📜 限教育部認可全國級 / 國際級技藝技能優良得獎者",
+      "new": "📜 依115簡章審查競賽優勝、勞動部乙級（含）以上技術士證等資格；須符合招生職種與類別。"
+    },
+    {
+      "id": "SKILL-NOTE/en",
+      "group": "admission-policy",
+      "kind": "set-json",
+      "file": "data/en/admission.json",
+      "pointer": "/4/key_notes/0",
+      "old": "📜 Restricted to national/international skill competition award winners recognized by the Ministry of Education",
+      "new": "📜 AY 115 eligibility includes recognized competition awards, Ministry of Labor Class B or higher technician certificates and other listed qualifications; the trade and admission category must meet the guide."
+    },
+    {
+      "id": "SKILL-NOTE/ja",
+      "group": "admission-policy",
+      "kind": "rename-json-key",
+      "file": "data/ja/messages.json",
+      "oldKey": "📜 限教育部認可全國級 / 國際級技藝技能優良得獎者",
+      "newKey": "📜 依115簡章審查競賽優勝、勞動部乙級（含）以上技術士證等資格；須符合招生職種與類別。",
+      "old": "📜 教育部認可の全国規模／国際規模の技術・技能優秀受賞者に限定",
+      "new": "📜 115学年度の要項に基づき、所定の競技大会入賞、台湾の労働部発行の乙級以上技能士資格などを審査。職種・募集区分の適合が必要です。"
+    },
+    {
+      "id": "SKILL-TRADE/zh",
+      "group": "admission-policy",
+      "kind": "set-json",
+      "file": "data/admission.json",
+      "pointer": "/4/stu_focus/1",
+      "old": "📜 接受得獎類別：教育部認可全國高中職技藝競賽、全國技能競賽、國際技能競賽相關項目",
+      "new": "📜 競賽與證照須符合115簡章採認職（種）類及85商設招生類別，請先查資格對照表。"
+    },
+    {
+      "id": "SKILL-TRADE/en",
+      "group": "admission-policy",
+      "kind": "set-json",
+      "file": "data/en/admission.json",
+      "pointer": "/4/stu_focus/1",
+      "old": "📜 Accepted award categories: MOE-recognized National Senior High School Skills Competition, National Skills Competition, and International Skills Competition relevant categories",
+      "new": "📜 Awards and credentials must match the recognized trades and Category 85 Commercial Design in the AY 115 guide. Check its qualification tables first."
+    },
+    {
+      "id": "SKILL-TRADE/ja",
+      "group": "admission-policy",
+      "kind": "rename-json-key",
+      "file": "data/ja/messages.json",
+      "oldKey": "📜 接受得獎類別：教育部認可全國高中職技藝競賽、全國技能競賽、國際技能競賽相關項目",
+      "newKey": "📜 競賽與證照須符合115簡章採認職（種）類及85商設招生類別，請先查資格對照表。",
+      "old": "📜 対象となる受賞分野：教育部認可の全国高校・実業高校技術競技大会、全国技能競技大会、国際技能競技大会の関連種目",
+      "new": "📜 大会・資格の職種は115学年度の対象職種と85商業デザイン類に適合する必要があります。先に資格対照表を確認してください。"
+    },
+    {
+      "id": "SKILL-DOCUMENTS/zh",
+      "group": "admission-policy",
+      "kind": "set-json",
+      "file": "data/admission.json",
+      "pointer": "/4/stu_focus/3",
+      "old": "📂 書審重點：得獎證明正本影本、作品集（建議含動畫 / 遊戲 / 視覺三大類）",
+      "new": "📂 書審重點：依115簡章準備得獎、採認證照等資格證明及作品集（建議含動畫 / 遊戲 / 視覺三大類）。"
+    },
+    {
+      "id": "SKILL-DOCUMENTS/en",
+      "group": "admission-policy",
+      "kind": "set-json",
+      "file": "data/en/admission.json",
+      "pointer": "/4/stu_focus/3",
+      "old": "📂 Documentary review focus: Original/copy of award certificates, portfolio (recommended to include animation / game / visual design)",
+      "new": "📂 Prepare proof of eligible awards, recognized credentials or other qualifications specified in the AY 115 guide, plus a portfolio (animation, games and visual design work are recommended)."
+    },
+    {
+      "id": "SKILL-DOCUMENTS/ja",
+      "group": "admission-policy",
+      "kind": "rename-json-key",
+      "file": "data/ja/messages.json",
+      "oldKey": "📂 書審重點：得獎證明正本影本、作品集（建議含動畫 / 遊戲 / 視覺三大類）",
+      "newKey": "📂 書審重點：依115簡章準備得獎、採認證照等資格證明及作品集（建議含動畫 / 遊戲 / 視覺三大類）。",
+      "old": "📂 書類審査のポイント：受賞証明書の原本およびコピー、ポートフォリオ（アニメ／ゲーム／ビジュアルデザインの3分野を含むことを推奨）",
+      "new": "📂 115学年度の要項に沿って、入賞・対象資格などの証明とポートフォリオを準備（アニメ／ゲーム／ビジュアルデザイン作品を推奨）。"
+    },
+    {
+      "id": "SKILL-QUIZ/zh",
+      "group": "admission-policy",
+      "kind": "replace-text",
+      "file": "pages.jsx",
+      "old": "\"技優甄審的適用對象是持技藝技能競賽得獎證明的高職應屆畢業生；高中生仍以申請入學為主。\"",
+      "new": "\"技優甄審不限競賽獲獎的高職應屆生；115學年度也採認符合簡章職種的勞動部乙級（含）以上技術士證等資格。高中、非應屆等身分須依當年簡章核對，不可只憑身分判定可否報名。\"",
+      "expectedCount": 1
+    },
+    {
+      "id": "SKILL-QUIZ/en",
+      "group": "admission-policy",
+      "kind": "rename-json-key",
+      "file": "data/en/ui.json",
+      "oldKey": "技優甄審的適用對象是持技藝技能競賽得獎證明的高職應屆畢業生；高中生仍以申請入學為主。",
+      "newKey": "技優甄審不限競賽獲獎的高職應屆生；115學年度也採認符合簡章職種的勞動部乙級（含）以上技術士證等資格。高中、非應屆等身分須依當年簡章核對，不可只憑身分判定可否報名。",
+      "old": "Skills excellence selection is for current vocational high-school graduates with eligible skills competition awards. General high-school students should primarily consider application-based admission.",
+      "new": "Skill-excellence selection is not limited to current vocational high-school graduates with competition awards. The AY 115 guide also recognizes eligible Ministry of Labor Class B or higher technician certificates and other listed qualifications. General high-school and non-current-year applicants must check that year’s guide; school type alone does not establish eligibility."
+    },
+    {
+      "id": "SKILL-QUIZ/ja",
+      "group": "admission-policy",
+      "kind": "rename-json-key",
+      "file": "data/ja/messages.json",
+      "oldKey": "技優甄審的適用對象是持技藝技能競賽得獎證明的高職應屆畢業生；高中生仍以申請入學為主。",
+      "newKey": "技優甄審不限競賽獲獎的高職應屆生；115學年度也採認符合簡章職種的勞動部乙級（含）以上技術士證等資格。高中、非應屆等身分須依當年簡章核對，不可只憑身分判定可否報名。",
+      "old": "技優甄審の対象は、技能競技会での入賞証明を持つ職業高校の卒業見込生です。普通科高校生は引き続き申請入試が中心となります。",
+      "new": "技優甄審は競技大会入賞者の職業高校卒業見込者だけの制度ではありません。115学年度は、要項の対象職種に適合する台湾の労働部発行の乙級以上技能士資格なども対象です。普通科高校や既卒者も、出身区分だけで判断せず当該年度の要件を確認してください。"
+    },
+    {
+      "id": "SELECTION-TERM/35",
+      "group": "terminology",
+      "kind": "set-json",
+      "file": "data/en/admission.json",
+      "pointer": "/0/content",
+      "old": "In-Depth Visit Schedule (approx. 2-3 hours):\n\n1. Department Introduction — What you learn in four years at AGD, industry-academia collaboration, career pathways\n2. Lab Tour — Motion capture, somatosensory interaction, 3D printing, puppet animation, etc.\n3. Admission Pathway Planning — Application Admission (申請入學) / Recommendation and Selection Admission (甄選入學) / Star Program for Vocational Colleges (科技繁星) / Skill-Excellence Screening (技優甄審) / Joint Distribution Admission (登記分發) / Special Project for Students with Disabilities (身心障礙專案)\n4. Q&A and Future Planning Consultation\n\nBooking Method: Please fill out the form below, or contact the department office directly by Email or phone. In-depth visits are open every Saturday; weekday visits can be arranged upon request.",
+      "new": "In-Depth Visit Schedule (approx. 2-3 hours):\n\n1. Department Introduction — What you learn in four years at AGD, industry-academia collaboration, career pathways\n2. Lab Tour — Motion capture, somatosensory interaction, 3D printing, puppet animation, etc.\n3. Admission Pathway Planning — Application Admission (申請入學) / Selection-Based Admission (甄選入學) / Star Program for Vocational Colleges (科技繁星) / Skill-Excellence Screening (技優甄審) / Joint Distribution Admission (登記分發) / Special Project for Students with Disabilities (身心障礙專案)\n4. Q&A and Future Planning Consultation\n\nBooking Method: Please fill out the form below, or contact the department office directly by Email or phone. In-depth visits are open every Saturday; weekday visits can be arranged upon request."
+    },
+    {
+      "id": "SELECTION-TERM/36",
+      "group": "terminology",
+      "kind": "set-json",
+      "file": "data/en/admission.json",
+      "pointer": "/2/title",
+      "old": "Recommendation and Selection Admission (甄選入學)",
+      "new": "Selection-Based Admission (甄選入學)"
+    },
+    {
+      "id": "SELECTION-TERM/37",
+      "group": "terminology",
+      "kind": "set-json",
+      "file": "data/en/admission.json",
+      "pointer": "/2/content",
+      "old": "Four-Year College Day Division Recommendation and Selection Admission (甄選入學) — An admission pathway through joint admissions based on TCTE + department-administered designated examinations.\n\nTarget Audience: Graduating seniors from vocational high schools / comprehensive high schools (using TCTE scores)\n\nShu-Te AGD offers 4 admission codes at once (3 general groups + Youth Savings Account group); for Academic Year 115, applicants may apply to at most six departments, divisions or degree programs in total. Individual universities may impose their own per-university limit; check that year’s official guide.\n\nAdmission Process:\n1. TCTE scores enter Stage 1 screening\n2. Those who pass screening upload Stage 2 review documents\n3. Stage 2 on-campus examination — documentary review + interview + practical test (Design Group)\n4. Announcement of total scores + admitted/waitlisted lists\n5. Registering department preferences → centralized placement → registration\n\nRequired: Student Learning Portfolio, portfolio (Design Group), autobiography, study plan",
+      "new": "Four-Year College Day Division Selection-Based Admission (甄選入學) — An admission pathway through joint admissions based on TCTE + department-administered designated examinations.\n\nTarget Audience: Graduating seniors from vocational high schools / comprehensive high schools (using TCTE scores)\n\nShu-Te AGD offers 4 admission codes at once (3 general groups + Youth Savings Account group); for Academic Year 115, applicants may apply to at most six departments, divisions or degree programs in total. Individual universities may impose their own per-university limit; check that year’s official guide.\n\nAdmission Process:\n1. TCTE scores enter Stage 1 screening\n2. Those who pass screening upload Stage 2 review documents\n3. Stage 2 on-campus examination — documentary review + interview + practical test (Design Group)\n4. Announcement of total scores + admitted/waitlisted lists\n5. Registering department preferences → centralized placement → registration\n\nRequired: Student Learning Portfolio, portfolio (Design Group), autobiography, study plan"
+    },
+    {
+      "id": "SELECTION-TERM/38",
+      "group": "terminology",
+      "kind": "set-json",
+      "file": "data/en/admission.json",
+      "pointer": "/2/links/0/label",
+      "old": "Shu-Te · Four-Year College Recommendation and Selection Admission Page",
+      "new": "Shu-Te · Four-Year College Selection-Based Admission Page"
+    },
+    {
+      "id": "SELECTION-TERM/39",
+      "group": "terminology",
+      "kind": "set-json",
+      "file": "data/en/admission.json",
+      "pointer": "/2/links/2/label",
+      "old": "Joint Committee · AY 115 Recommendation and Selection Admission",
+      "new": "Joint Committee · AY 115 Selection-Based Admission"
+    },
+    {
+      "id": "SELECTION-TERM/40",
+      "group": "terminology",
+      "kind": "set-json",
+      "file": "data/en/admission.json",
+      "pointer": "/4/key_notes/3",
+      "old": "📅 No schedule conflict with other four-year college pathways; recommended to apply simultaneously with Recommendation and Selection Admission",
+      "new": "📅 No schedule conflict with other four-year college pathways; recommended to apply simultaneously with Selection-Based Admission"
+    },
+    {
+      "id": "SELECTION-TERM/41",
+      "group": "terminology",
+      "kind": "set-json",
+      "file": "data/en/admission.json",
+      "pointer": "/5/stu_focus/3",
+      "old": "🚪 Fewer places (3 Design places) — Recommended to pursue dual tracks alongside Recommendation and Selection Admission to improve admission chances",
+      "new": "🚪 Fewer places (3 Design places) — Recommended to pursue dual tracks alongside Selection-Based Admission to improve admission chances"
+    },
+    {
+      "id": "SELECTION-TERM/42",
+      "group": "terminology",
+      "kind": "set-json",
+      "file": "data/ja/messages.json",
+      "pointer": "/深度參訪流程（約 2-3 小時）： 1. 系所介紹 — 動遊四年學什麼、產學合作、業界出路 2. 實驗室實地走訪 — 動作捕捉、體感互動、3D 列印、偶動畫等 3. 入學管道規劃 — 申請入學 ~1 甄選入學 ~1 科技繁星 ~1 技優甄審 ~1 登記分發 ~1 身心障礙專案 4. Q&A 與未來規劃諮詢 預約方式：請填寫下方表單，或直接 Email ~1 電話聯絡系辦。每週六固定開放深度參訪，平日如有需求可另行協調。",
+      "old": "詳細見学の流れ（約2〜3時間）：1. 学科紹介 — アニメとゲームデザイン学科の4年間の学び、産学連携、業界での進路 2. 実習室・ラボ見学 — モーションキャプチャー、体感型インタラクティブ、3Dプリント、パペットアニメーションなど 3. 入試制度相談 — 申請入試 / 推薦選抜入試 / 科技繁星（スター枠推薦） / 技優甄審（技能優秀選抜） / 登記分發（志望登録割当） / 身心障礙（障がい学生）特別枠 4. Q&Aおよび将来相談 予約方法：下記のフォームに入力するか、メールまたはお電話で直接学科事務室までお問い合わせください。毎週土曜日に定期開催しており、平日のご希望についても個別に対応いたします。",
+      "new": "詳細見学の流れ（約2〜3時間）：1. 学科紹介 — アニメとゲームデザイン学科の4年間の学び、産学連携、業界での進路 2. 実習室・ラボ見学 — モーションキャプチャー、体感型インタラクティブ、3Dプリント、パペットアニメーションなど 3. 入試制度相談 — 申請入試 / 甄選入学（選抜入試） / 科技繁星（スター枠推薦） / 技優甄審（技能優秀選抜） / 登記分發（志望登録割当） / 身心障礙（障がい学生）特別枠 4. Q&Aおよび将来相談 予約方法：下記のフォームに入力するか、メールまたはお電話で直接学科事務室までお問い合わせください。毎週土曜日に定期開催しており、平日のご希望についても個別に対応いたします。"
+    },
+    {
+      "id": "SELECTION-TERM/43",
+      "group": "terminology",
+      "kind": "set-json",
+      "file": "data/ja/messages.json",
+      "pointer": "/甄選入學",
+      "old": "推薦選抜入試",
+      "new": "甄選入学（選抜入試）"
+    },
+    {
+      "id": "SELECTION-TERM/44",
+      "group": "terminology",
+      "kind": "set-json",
+      "file": "data/ja/messages.json",
+      "pointer": "/四技日間部甄選入學 — 透過聯合招生，採統測 + 校系自辦指定項目甄試的入學管道。 適用對象：高職 ~1 綜合高中應屆畢業生（採統測成績） 樹德動遊系一次開出 4 個招生代碼（一般組 3 群 + 青年儲蓄帳戶組），115學年度甄選入學最多可申請6個校系科（組）、學程，各校得另限制可報名該校的系科數；請依當年簡章核對。 錄取流程： 1. 統測成績進入第一階段篩選 2. 通過篩選者上傳第二階段備審資料 3. 第二階段甄試到校 — 書審 + 面試 + 實作（設計群） 4. 公告總成績 + 正備取名單 5. 登記就讀志願序 → 統一分發 → 報到 須備：學習歷程檔案、作品集（設計群）、自傳、讀書計畫",
+      "old": "4年制課程昼間部 推薦選抜入試 — 合同募集を通じ、統測成績＋大学学科独自の指定選考を実施する入試制度。適用対象：専門高校／総合高校の卒業見込者（統測成績を利用） 樹徳科技大学アニメとゲームデザイン学科では4つの募集コード（一般枠3群＋青年貯蓄口座枠）を開設しており、115学年度は、大学・学科（専攻・学位課程）の選択を合計6件まで申請できます。各大学が自校の出願先数を別途制限する場合もあるため、当該年度の募集要項で確認してください。選考プロセス：1. 統測成績による第1段階スクリーニング 2. 通過者による第2段階審査書類のアップロード 3. 第2段階の来校選考 — 書類選考＋面接＋実技試験（デザイン群） 4. 総合点発表＋合格・補欠合格者リスト公表 5. 進学志望順位登録 → 統一割当 → 入学手続き 提出書類：学習履歴ファイル、ポートフォリオ（デザイン群）、自己推薦書、学習計画書",
+      "new": "4年制課程昼間部 甄選入学（選抜入試） — 合同募集を通じ、統測成績＋大学学科独自の指定選考を実施する入試制度。適用対象：専門高校／総合高校の卒業見込者（統測成績を利用） 樹徳科技大学アニメとゲームデザイン学科では4つの募集コード（一般枠3群＋青年貯蓄口座枠）を開設しており、115学年度は、大学・学科（専攻・学位課程）の選択を合計6件まで申請できます。各大学が自校の出願先数を別途制限する場合もあるため、当該年度の募集要項で確認してください。選考プロセス：1. 統測成績による第1段階スクリーニング 2. 通過者による第2段階審査書類のアップロード 3. 第2段階の来校選考 — 書類選考＋面接＋実技試験（デザイン群） 4. 総合点発表＋合格・補欠合格者リスト公表 5. 進学志望順位登録 → 統一割当 → 入学手続き 提出書類：学習履歴ファイル、ポートフォリオ（デザイン群）、自己推薦書、学習計画書"
+    },
+    {
+      "id": "SELECTION-TERM/45",
+      "group": "terminology",
+      "kind": "set-json",
+      "file": "data/ja/messages.json",
+      "pointer": "/樹德 · 四技甄選入學專頁",
+      "old": "樹徳科技大学 · 4年制課程 推薦選抜入試特設ページ",
+      "new": "樹徳科技大学 · 4年制課程 甄選入学（選抜入試）特設ページ"
+    },
+    {
+      "id": "SELECTION-TERM/46",
+      "group": "terminology",
+      "kind": "set-json",
+      "file": "data/ja/messages.json",
+      "pointer": "/技專校院招聯會 · 115 甄選入學",
+      "old": "技専校院招連会 · 115 推薦選抜入試",
+      "new": "技専校院招連会 · 115 甄選入学（選抜入試）"
+    },
+    {
+      "id": "SELECTION-TERM/47",
+      "group": "terminology",
+      "kind": "set-json",
+      "file": "data/ja/messages.json",
+      "pointer": "/📅 與其他四技管道時程不衝突，建議搭配甄選入學雙軌進行",
+      "old": "📅 他の4年制課程入試と日程が重複しないため、推薦選抜入試との併願を推奨",
+      "new": "📅 他の4年制課程入試と日程が重複しないため、甄選入学（選抜入試）との併願を推奨"
+    },
+    {
+      "id": "SELECTION-TERM/48",
+      "group": "terminology",
+      "kind": "set-json",
+      "file": "data/ja/messages.json",
+      "pointer": "/🚪 名額較少（設計 3 名）— 建議搭配甄選入學雙軌進行，提高錄取機會",
+      "old": "🚪 定員が少なめ（デザイン 3 名）— 合格率を高めるため、推薦選抜入試との併願を推奨",
+      "new": "🚪 定員が少なめ（デザイン 3 名）— 合格率を高めるため、甄選入学（選抜入試）との併願を推奨"
+    },
+    {
+      "id": "SELECTION-TERM/49",
+      "group": "terminology",
+      "kind": "set-json",
+      "file": "data/ja/messages.json",
+      "pointer": "/查看所有招生管道 — 申請入學 ~1 甄選入學 ~1 科技繁星 ~1 技優甄審 ~1 登記分發",
+      "old": "すべての入試制度を見る — 申請入試 / 推薦入試 / 科技繁星推薦 / 技能優秀特別選考 / 登記分発",
+      "new": "すべての入試制度を見る — 申請入試 / 甄選入学（選抜入試） / 科技繁星推薦 / 技能優秀特別選考 / 登記分発"
+    },
+    {
+      "id": "SELECTION-TERM/50",
+      "group": "terminology",
+      "kind": "set-json",
+      "file": "data/ja/messages.json",
+      "pointer": "/樹德 · 甄選入學",
+      "old": "樹徳 · 推薦入試",
+      "new": "樹徳 · 甄選入学（選抜入試）"
+    },
+    {
+      "id": "SELECTION-TERM/51",
+      "group": "terminology",
+      "kind": "set-json",
+      "file": "data/ja/messages.json",
+      "pointer": "/115 甄選入學",
+      "old": "115 推薦入試",
+      "new": "115 甄選入学（選抜入試）"
+    },
+    {
+      "id": "SELECTION-TERM/52",
+      "group": "terminology",
+      "kind": "set-json",
+      "file": "data/ja/messages.json",
+      "pointer": "/申請入學 · 甄選入學 · 科技繁星 · 技優甄審 · 登記分發",
+      "old": "申請入試 · 推薦選抜入試 · 科技繁星選抜 · 技能優秀者選抜 · 統一志願分発",
+      "new": "申請入試 · 甄選入学（選抜入試） · 科技繁星選抜 · 技能優秀者選抜 · 統一志願分発"
+    },
+    {
+      "id": "SKILLS-CLASS/1",
+      "group": "semantic-batch",
+      "kind": "set-json",
+      "file": "data/en/step-details-ui.json",
+      "pointer": "/從教務處歷年課程表找到「動遊系」，先核對入學年與一般班、技優班。把自己的那一份存下來，之後選課與畢業檢核都用它比對。",
+      "old": "Find 'Department of Animation and Game Design' in the Office of Academic Affairs curriculum catalog across academic years, and check your enrollment year as well as regular class or Special Talent Program. Save your copy to reference later during course selection and graduation audits.",
+      "new": "Find 'Department of Animation and Game Design' in the Office of Academic Affairs curriculum catalog across academic years, and check your enrollment year as well as regular class or skills-excellence class (技優班). Save your copy to reference later during course selection and graduation audits."
+    },
+    {
+      "id": "SKILLS-CLASS/2",
+      "group": "semantic-batch",
+      "kind": "set-json",
+      "file": "data/en/student-guide-ui.json",
+      "pointer": "/一般班p1；114~1115技優專班p2另有規範。附件回application~1octet-stream，實為PDF。",
+      "old": "Regular class p1; 114/115 Special Talent Program p2 has separate regulations. Attachment returns application/octet-stream, which is actually a PDF.",
+      "new": "Regular class p1; 114/115 skills-excellence class (技優班) p2 has separate regulations. Attachment returns application/octet-stream, which is actually a PDF."
+    },
+    {
+      "id": "SKILLS-CLASS/3",
+      "group": "semantic-batch",
+      "kind": "set-json",
+      "file": "data/en/student-guide-ui.json",
+      "pointer": "/技優班條件另核，請帶自己的入學年度課表向系辦確認。",
+      "old": "Special Talent Program requirements are audited separately; please bring your academic entry year curriculum roadmap to the department office for confirmation.",
+      "new": "skills-excellence class (技優班) requirements are audited separately; please bring your academic entry year curriculum roadmap to the department office for confirmation."
+    },
+    {
+      "id": "SKILLS-CLASS/4",
+      "group": "semantic-batch",
+      "kind": "set-json",
+      "file": "data/en/student-guide-ui.json",
+      "pointer": "/一般班最低要幾學分？技優班也一樣嗎？",
+      "old": "What is the minimum credit requirement for regular classes? Is it the same for the Special Talent Program?",
+      "new": "What is the minimum credit requirement for regular classes? Is it the same for the skills-excellence class (技優班)?"
+    },
+    {
+      "id": "SKILLS-CLASS/5",
+      "group": "semantic-batch",
+      "kind": "set-json",
+      "file": "data/en/student-guide-ui.json",
+      "pointer": "/112至115入學一般日四技課表列最低128學分，各類別與零學分必修仍須完成。技優班不能直接套用一般班條件。",
+      "old": "Curriculum for 112 to 115 entry regular day four-year program lists a minimum of 128 credits; each category and zero-credit required courses must still be completed. Special Talent Program cannot directly apply regular class conditions.",
+      "new": "Curriculum for 112 to 115 entry regular day four-year program lists a minimum of 128 credits; each category and zero-credit required courses must still be completed. skills-excellence class (技優班) cannot directly apply regular class conditions."
+    },
+    {
+      "id": "SKILLS-CLASS/6",
+      "group": "semantic-batch",
+      "kind": "set-json",
+      "file": "data/en/student-guide-ui.json",
+      "pointer": "/技優班條件另核；畢業認列與獎助資格，請分別向系辦、職發中心確認。",
+      "old": "Special Talent Program requirements are audited separately; please verify graduation recognition and subsidy eligibility with the department office and Career Development Center respectively.",
+      "new": "skills-excellence class (技優班) requirements are audited separately; please verify graduation recognition and subsidy eligibility with the department office and Career Development Center respectively."
+    },
+    {
+      "id": "FAQ-RETURN-ANSWER",
+      "group": "semantic-batch",
+      "kind": "set-json",
+      "file": "data/en/student-guide-ui.json",
+      "pointer": "/教務處FAQ說明，休學期滿前會寄送復學通知，應依通知辦理。地址、信箱與電話有變動要更新；兵役問題另向生輔組確認。",
+      "old": "The Office of Academic Affairs FAQ states that a resumption notice will be sent prior to the expiration of the suspension period, and procedures should follow that notice. Please update any changes in address, email, or phone number; confirm military service matters separately with the Student Assistance Section.",
+      "new": "The Office of Academic Affairs FAQ says a return-to-study notice will be sent before your leave of absence ends. Follow that notice and update any changes to your address, email or phone number. Check military-service matters separately with the Student Life Guidance Section."
+    },
+    {
+      "id": "FAQ-EDUCATION-LEVEL/en",
+      "group": "semantic-batch",
+      "kind": "set-json",
+      "file": "data/en/student-guide-ui.json",
+      "pointer": "/教育部現行要點要求中華民國國籍、臺灣戶籍與同階段在學一學期以上等條件。能否參加實習與能否領此補助要分開問，不能由過往新聞推定。",
+      "old": "Current Ministry of Education guidelines require Republic of China nationality, household registration in Taiwan, and enrollment for at least one semester at the current study stage. Eligibility to participate in internships and eligibility to receive this subsidy must be inquired separately and cannot be assumed from past news.",
+      "new": "The current Ministry of Education guidelines require, among other conditions, Republic of China nationality, household registration in Taiwan and at least one semester of enrollment at the same level of study. Check internship participation and subsidy eligibility separately; past news does not establish eligibility."
+    },
+    {
+      "id": "FAQ-EDUCATION-LEVEL/ja",
+      "group": "semantic-batch",
+      "kind": "set-json",
+      "file": "data/ja/messages.json",
+      "pointer": "/教育部現行要點要求中華民國國籍、臺灣戶籍與同階段在學一學期以上等條件。能否參加實習與能否領此補助要分開問，不能由過往新聞推定。",
+      "old": "教育部の現行要綱では、中華民国国籍、台湾の戸籍、同一学年段階で1学期以上の在学などの条件が求められます。インターンシップに参加できるかと本補助金を受給できるかは別個に確認する必要があり、過去のニュースから推定することはできません。",
+      "new": "教育部の現行要綱では、中華民国国籍、台湾の戸籍、同一の教育段階で1学期以上の在学などの条件が求められます。インターンシップへの参加資格と補助金の受給資格は別々に確認し、過去のニュースだけで判断しないでください。"
+    },
+    {
+      "id": "FAQ-SUBMIT-APPROVE/ja",
+      "group": "semantic-batch",
+      "kind": "set-json",
+      "file": "data/ja/messages.json",
+      "pointer": "/先確認核准結果，不能把「已送件」當成通過。課表是否需要自行退選，也請在規定期間向系辦或註冊課務組確認。",
+      "old": "まず承認結果を確認してください。「書類提出済み」を通ったとみなすことはできません。時間割からご自身で取り消す必要があるかについても、所定の期間内に学科事務室または登録・履修課へご確認ください。",
+      "new": "まず承認結果を確認してください。提出しただけでは承認されたことにはなりません。自分で履修取消を行う必要があるかも、所定の期間内に学科事務室または註冊課務組（学籍・履修担当）に確認してください。"
+    },
+    {
+      "id": "FAQ-CREDIT-TRANSFER/en",
+      "group": "semantic-batch",
+      "kind": "set-json",
+      "file": "data/en/student-guide-ui.json",
+      "pointer": "/現在能補交115-1抵免嗎？",
+      "old": "Can 115-1 credit waiver applications still be submitted late now?",
+      "new": "Can I still submit a late credit-transfer application for Semester 115-1?"
+    },
+    {
+      "id": "GUIDE-UI-1/en",
+      "group": "guide-ui",
+      "kind": "add-json",
+      "file": "data/en/ui.json",
+      "pointer": "/持有勞動部乙級以上技術士證（職種仍須符合簡章）",
+      "new": "I hold a Class B or higher technician certificate issued by Taiwan’s Ministry of Labor (the trade must also meet the guide).",
+      "expectedAbsent": true
+    },
+    {
+      "id": "GUIDE-UI-1/ja",
+      "group": "guide-ui",
+      "kind": "add-json",
+      "file": "data/ja/ui.json",
+      "pointer": "/持有勞動部乙級以上技術士證（職種仍須符合簡章）",
+      "new": "台湾の労働部発行の乙級以上「技術士證」を持っている（職種は募集要項への適合が必要）",
+      "expectedAbsent": true
+    },
+    {
+      "id": "GUIDE-UI-2/en",
+      "group": "guide-ui",
+      "kind": "add-json",
+      "file": "data/en/ui.json",
+      "pointer": "/沒有，或只有其他證照／尚未確認資格",
+      "new": "No, or I only have other credentials / have not checked eligibility.",
+      "expectedAbsent": true
+    },
+    {
+      "id": "GUIDE-UI-2/ja",
+      "group": "guide-ui",
+      "kind": "add-json",
+      "file": "data/ja/ui.json",
+      "pointer": "/沒有，或只有其他證照／尚未確認資格",
+      "new": "該当なし／その他の資格のみ／出願資格を未確認",
+      "expectedAbsent": true
+    },
+    {
+      "id": "GUIDE-UI-3/en",
+      "group": "guide-ui",
+      "kind": "add-json",
+      "file": "data/en/ui.json",
+      "pointer": "/優先找進修部，想邊工作邊讀",
+      "new": "I’d prefer continuing education so I can work while studying.",
+      "expectedAbsent": true
+    },
+    {
+      "id": "GUIDE-UI-3/ja",
+      "group": "guide-ui",
+      "kind": "add-json",
+      "file": "data/ja/ui.json",
+      "pointer": "/優先找進修部，想邊工作邊讀",
+      "new": "働きながら学ぶため、進修部を優先して探したい",
+      "expectedAbsent": true
+    },
+    {
+      "id": "GUIDE-UI-4/en",
+      "group": "guide-ui",
+      "kind": "add-json",
+      "file": "data/en/ui.json",
+      "pointer": "/有簡章認可的技藝技能競賽獲獎",
+      "new": "I have an award from a skills competition recognized in the guide.",
+      "expectedAbsent": true
+    },
+    {
+      "id": "GUIDE-UI-4/ja",
+      "group": "guide-ui",
+      "kind": "add-json",
+      "file": "data/ja/ui.json",
+      "pointer": "/有簡章認可的技藝技能競賽獲獎",
+      "new": "募集要項で対象とされる技能競技大会で入賞している",
+      "expectedAbsent": true
+    },
+    {
+      "id": "STAR-115-RESTRICTION/zh",
+      "group": "admission-policy",
+      "kind": "set-json",
+      "file": "data/admission.json",
+      "pointer": "/3/key_notes/2",
+      "old": "🚫 一旦錄取且未放棄資格，不得再報名其他四技入學管道",
+      "new": "🚫 115 學年度科技繁星錄取生，不論是否放棄，均不得參加當年度四技二專甄選入學；其他管道請依各招生簡章與報到／放棄規定辦理。"
+    },
+    {
+      "id": "STAR-115-RESTRICTION/en",
+      "group": "admission-policy",
+      "kind": "set-json",
+      "file": "data/en/admission.json",
+      "pointer": "/3/key_notes/2",
+      "old": "🚫 Once admitted without forfeiting qualification, you cannot apply to other four-year college admission pathways",
+      "new": "🚫 Students admitted through the Academic Year 115 Technical Star program may not participate in that year’s Four-Year/Two-Year Selection-Based Admission (四技二專甄選入學), whether or not they give up their place. For other pathways, follow each guide and its registration and withdrawal rules."
+    },
+    {
+      "id": "STAR-115-RESTRICTION/ja",
+      "group": "admission-policy",
+      "kind": "rename-json-key",
+      "file": "data/ja/messages.json",
+      "oldKey": "🚫 一旦錄取且未放棄資格，不得再報名其他四技入學管道",
+      "newKey": "🚫 115 學年度科技繁星錄取生，不論是否放棄，均不得參加當年度四技二專甄選入學；其他管道請依各招生簡章與報到／放棄規定辦理。",
+      "old": "🚫 一度合格して辞退しない場合、他の4年制課程入試制度には出願できません",
+      "new": "🚫 115学年度の科技繁星合格者は、入学資格を辞退したかどうかにかかわらず、当該年度の四技二専甄選入学（選抜入試）には出願できません。その他の入試区分は、それぞれの募集要項、入学手続き・辞退の規定に従ってください。"
+    },
+    {
+      "id": "STAR-115-GUIDE/zh",
+      "group": "admission-policy",
+      "kind": "replace-text",
+      "file": "pages.jsx",
+      "old": "\"科技繁星一旦錄取且未放棄資格，就不能再報名其他四技入學管道，記得先和學校老師討論順序。\"",
+      "new": "\"115 學年度科技繁星錄取生，不論是否放棄，均不得參加當年度四技二專甄選入學；其他管道請依各招生簡章與報到／放棄規定辦理。\"",
+      "expectedCount": 1
+    },
+    {
+      "id": "STAR-115-GUIDE/en",
+      "group": "admission-policy",
+      "kind": "rename-json-key",
+      "file": "data/en/ui.json",
+      "oldKey": "科技繁星一旦錄取且未放棄資格，就不能再報名其他四技入學管道，記得先和學校老師討論順序。",
+      "newKey": "115 學年度科技繁星錄取生，不論是否放棄，均不得參加當年度四技二專甄選入學；其他管道請依各招生簡章與報到／放棄規定辦理。",
+      "old": "If you accept a Technical Star place without withdrawing, you cannot apply through other four-year technical college pathways. Discuss the order with your school counselor.",
+      "new": "Students admitted through the Academic Year 115 Technical Star program may not participate in that year’s Four-Year/Two-Year Selection-Based Admission (四技二專甄選入學), whether or not they give up their place. For other pathways, follow each guide and its registration and withdrawal rules."
+    },
+    {
+      "id": "STAR-115-GUIDE/ja",
+      "group": "admission-policy",
+      "kind": "rename-json-key",
+      "file": "data/ja/messages.json",
+      "oldKey": "科技繁星一旦錄取且未放棄資格，就不能再報名其他四技入學管道，記得先和學校老師討論順序。",
+      "newKey": "115 學年度科技繁星錄取生，不論是否放棄，均不得參加當年度四技二專甄選入學；其他管道請依各招生簡章與報到／放棄規定辦理。",
+      "old": "科技繁星で合格し辞退しなかった場合、他の4年制課程の入試制度には出願できなくなります。事前に高校の先生と出願順を相談してください。",
+      "new": "115学年度の科技繁星合格者は、入学資格を辞退したかどうかにかかわらず、当該年度の四技二専甄選入学（選抜入試）には出願できません。その他の入試区分は、それぞれの募集要項、入学手続き・辞退の規定に従ってください。"
+    }
+  ],
+  "notes": [
+    "Old-exact assertions are sequential; apply all listed operations in order after reviewing.",
+    "No quotas, event dates, game rules or numerical thresholds are changed. The admission six-choice correction is explicitly AY115 only.",
+    "guidePick recommendation logic is not repaired by this text plan and remains a separate P1.",
+    "Term labels are explanatory translations retaining the Taiwanese name, not claimed official English/Japanese titles."
+  ]
+}

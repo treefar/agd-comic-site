@@ -1,0 +1,208 @@
+✖ All 72 exact operations preflight without writing any product file (2.6926ms)
+✖ A changed JSON old value stops before any write (0.9814ms)
+✖ A changed game token stops before any write (1.0468ms)
+✖ New UI key collisions are not silently overwritten (1.2967ms)
+✖ Renamed canonical dictionary keys cannot overwrite an existing target (0.9137ms)
+✖ Unrelated root edits survive the exact plan (0.8251ms)
+✖ A concurrent edit after preflight prevents all writes (0.8917ms)
+✖ Canonical eligibility corrections retain quotas, dates and every translated key (1.0944ms)
+✖ Game rules and threshold ASTs are unchanged; new captions remain playable (1.3284ms)
+✖ All nine P2 decisions and four bilingual guide UI options are explicitly covered (1.1489ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 0
+ℹ fail 10
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 89.6504
+
+✖ failing tests:
+
+test at holiday-lab\translation-review\followup\apply-safe.test.mjs:6:1
+✖ All 72 exact operations preflight without writing any product file (2.6926ms)
+  Error: ENOENT: no such file or directory, copyfile 'C:\agywork\data\en\student-guide-ui.json' -> 'C:\agywork\agd-translation-review\holiday-lab\translation-review\followup\fixtures\dry-run\data\en\student-guide-ui.json'
+      at Object.copyFileSync (node:fs:3105:11)
+      at fixture (file:///C:/agywork/agd-translation-review/holiday-lab/translation-review/followup/apply-safe.test.mjs:3:164)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-translation-review/holiday-lab/translation-review/followup/apply-safe.test.mjs:6:91)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'copyfile',
+    path: 'C:\\agywork\\data\\en\\student-guide-ui.json',
+    dest: 'C:\\agywork\\agd-translation-review\\holiday-lab\\translation-review\\followup\\fixtures\\dry-run\\data\\en\\student-guide-ui.json'
+  }
+
+test at holiday-lab\translation-review\followup\apply-safe.test.mjs:7:1
+✖ A changed JSON old value stops before any write (0.9814ms)
+  Error: ENOENT: no such file or directory, copyfile 'C:\agywork\data\en\student-guide-ui.json' -> 'C:\agywork\agd-translation-review\holiday-lab\translation-review\followup\fixtures\json-drift\data\en\student-guide-ui.json'
+      at Object.copyFileSync (node:fs:3105:11)
+      at fixture (file:///C:/agywork/agd-translation-review/holiday-lab/translation-review/followup/apply-safe.test.mjs:3:164)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-translation-review/holiday-lab/translation-review/followup/apply-safe.test.mjs:7:72)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'copyfile',
+    path: 'C:\\agywork\\data\\en\\student-guide-ui.json',
+    dest: 'C:\\agywork\\agd-translation-review\\holiday-lab\\translation-review\\followup\\fixtures\\json-drift\\data\\en\\student-guide-ui.json'
+  }
+
+test at holiday-lab\translation-review\followup\apply-safe.test.mjs:8:1
+✖ A changed game token stops before any write (1.0468ms)
+  Error: ENOENT: no such file or directory, copyfile 'C:\agywork\data\en\student-guide-ui.json' -> 'C:\agywork\agd-translation-review\holiday-lab\translation-review\followup\fixtures\token-drift\data\en\student-guide-ui.json'
+      at Object.copyFileSync (node:fs:3105:11)
+      at fixture (file:///C:/agywork/agd-translation-review/holiday-lab/translation-review/followup/apply-safe.test.mjs:3:164)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-translation-review/holiday-lab/translation-review/followup/apply-safe.test.mjs:8:68)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'copyfile',
+    path: 'C:\\agywork\\data\\en\\student-guide-ui.json',
+    dest: 'C:\\agywork\\agd-translation-review\\holiday-lab\\translation-review\\followup\\fixtures\\token-drift\\data\\en\\student-guide-ui.json'
+  }
+
+test at holiday-lab\translation-review\followup\apply-safe.test.mjs:9:1
+✖ New UI key collisions are not silently overwritten (1.2967ms)
+  Error: ENOENT: no such file or directory, copyfile 'C:\agywork\data\en\student-guide-ui.json' -> 'C:\agywork\agd-translation-review\holiday-lab\translation-review\followup\fixtures\new-key-collision\data\en\student-guide-ui.json'
+      at Object.copyFileSync (node:fs:3105:11)
+      at fixture (file:///C:/agywork/agd-translation-review/holiday-lab/translation-review/followup/apply-safe.test.mjs:3:164)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-translation-review/holiday-lab/translation-review/followup/apply-safe.test.mjs:9:75)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'copyfile',
+    path: 'C:\\agywork\\data\\en\\student-guide-ui.json',
+    dest: 'C:\\agywork\\agd-translation-review\\holiday-lab\\translation-review\\followup\\fixtures\\new-key-collision\\data\\en\\student-guide-ui.json'
+  }
+
+test at holiday-lab\translation-review\followup\apply-safe.test.mjs:10:1
+✖ Renamed canonical dictionary keys cannot overwrite an existing target (0.9137ms)
+  Error: ENOENT: no such file or directory, copyfile 'C:\agywork\data\en\student-guide-ui.json' -> 'C:\agywork\agd-translation-review\holiday-lab\translation-review\followup\fixtures\key-collision\data\en\student-guide-ui.json'
+      at Object.copyFileSync (node:fs:3105:11)
+      at fixture (file:///C:/agywork/agd-translation-review/holiday-lab/translation-review/followup/apply-safe.test.mjs:3:164)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-translation-review/holiday-lab/translation-review/followup/apply-safe.test.mjs:10:94)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'copyfile',
+    path: 'C:\\agywork\\data\\en\\student-guide-ui.json',
+    dest: 'C:\\agywork\\agd-translation-review\\holiday-lab\\translation-review\\followup\\fixtures\\key-collision\\data\\en\\student-guide-ui.json'
+  }
+
+test at holiday-lab\translation-review\followup\apply-safe.test.mjs:11:1
+✖ Unrelated root edits survive the exact plan (0.8251ms)
+  Error: ENOENT: no such file or directory, copyfile 'C:\agywork\data\en\student-guide-ui.json' -> 'C:\agywork\agd-translation-review\holiday-lab\translation-review\followup\fixtures\unrelated-edits\data\en\student-guide-ui.json'
+      at Object.copyFileSync (node:fs:3105:11)
+      at fixture (file:///C:/agywork/agd-translation-review/holiday-lab/translation-review/followup/apply-safe.test.mjs:3:164)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-translation-review/holiday-lab/translation-review/followup/apply-safe.test.mjs:11:68)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'copyfile',
+    path: 'C:\\agywork\\data\\en\\student-guide-ui.json',
+    dest: 'C:\\agywork\\agd-translation-review\\holiday-lab\\translation-review\\followup\\fixtures\\unrelated-edits\\data\\en\\student-guide-ui.json'
+  }
+
+test at holiday-lab\translation-review\followup\apply-safe.test.mjs:12:1
+✖ A concurrent edit after preflight prevents all writes (0.8917ms)
+  Error: ENOENT: no such file or directory, copyfile 'C:\agywork\data\en\student-guide-ui.json' -> 'C:\agywork\agd-translation-review\holiday-lab\translation-review\followup\fixtures\concurrent\data\en\student-guide-ui.json'
+      at Object.copyFileSync (node:fs:3105:11)
+      at fixture (file:///C:/agywork/agd-translation-review/holiday-lab/translation-review/followup/apply-safe.test.mjs:3:164)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-translation-review/holiday-lab/translation-review/followup/apply-safe.test.mjs:12:78)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'copyfile',
+    path: 'C:\\agywork\\data\\en\\student-guide-ui.json',
+    dest: 'C:\\agywork\\agd-translation-review\\holiday-lab\\translation-review\\followup\\fixtures\\concurrent\\data\\en\\student-guide-ui.json'
+  }
+
+test at holiday-lab\translation-review\followup\apply-safe.test.mjs:13:1
+✖ Canonical eligibility corrections retain quotas, dates and every translated key (1.0944ms)
+  Error: ENOENT: no such file or directory, copyfile 'C:\agywork\data\en\student-guide-ui.json' -> 'C:\agywork\agd-translation-review\holiday-lab\translation-review\followup\fixtures\canonical\data\en\student-guide-ui.json'
+      at Object.copyFileSync (node:fs:3105:11)
+      at fixture (file:///C:/agywork/agd-translation-review/holiday-lab/translation-review/followup/apply-safe.test.mjs:3:164)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-translation-review/holiday-lab/translation-review/followup/apply-safe.test.mjs:13:109)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'copyfile',
+    path: 'C:\\agywork\\data\\en\\student-guide-ui.json',
+    dest: 'C:\\agywork\\agd-translation-review\\holiday-lab\\translation-review\\followup\\fixtures\\canonical\\data\\en\\student-guide-ui.json'
+  }
+
+test at holiday-lab\translation-review\followup\apply-safe.test.mjs:14:1
+✖ Game rules and threshold ASTs are unchanged; new captions remain playable (1.3284ms)
+  Error: ENOENT: no such file or directory, copyfile 'C:\agywork\data\en\student-guide-ui.json' -> 'C:\agywork\agd-translation-review\holiday-lab\translation-review\followup\fixtures\game\data\en\student-guide-ui.json'
+      at Object.copyFileSync (node:fs:3105:11)
+      at fixture (file:///C:/agywork/agd-translation-review/holiday-lab/translation-review/followup/apply-safe.test.mjs:3:164)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-translation-review/holiday-lab/translation-review/followup/apply-safe.test.mjs:14:108)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'copyfile',
+    path: 'C:\\agywork\\data\\en\\student-guide-ui.json',
+    dest: 'C:\\agywork\\agd-translation-review\\holiday-lab\\translation-review\\followup\\fixtures\\game\\data\\en\\student-guide-ui.json'
+  }
+
+test at holiday-lab\translation-review\followup\apply-safe.test.mjs:15:1
+✖ All nine P2 decisions and four bilingual guide UI options are explicitly covered (1.1489ms)
+  Error: ENOENT: no such file or directory, copyfile 'C:\agywork\data\en\student-guide-ui.json' -> 'C:\agywork\agd-translation-review\holiday-lab\translation-review\followup\fixtures\ui\data\en\student-guide-ui.json'
+      at Object.copyFileSync (node:fs:3105:11)
+      at fixture (file:///C:/agywork/agd-translation-review/holiday-lab/translation-review/followup/apply-safe.test.mjs:3:164)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-translation-review/holiday-lab/translation-review/followup/apply-safe.test.mjs:15:218)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'copyfile',
+    path: 'C:\\agywork\\data\\en\\student-guide-ui.json',
+    dest: 'C:\\agywork\\agd-translation-review\\holiday-lab\\translation-review\\followup\\fixtures\\ui\\data\\en\\student-guide-ui.json'
+  }

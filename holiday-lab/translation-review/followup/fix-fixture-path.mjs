@@ -1,0 +1,1 @@
+import fs from 'node:fs';const p='holiday-lab/translation-review/followup/apply-safe.test.mjs';let s=fs.readFileSync(p,'utf8');s=s.replace("repo=path.resolve(dir,'../../../..')","repo=path.resolve(dir,'../../..')");fs.writeFileSync(p,s);
