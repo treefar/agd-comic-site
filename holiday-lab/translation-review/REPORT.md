@@ -85,3 +85,11 @@
 verify.cjs預設exit0只表示審校資料結構與來源錨點檢查通過；--strict會因尚有21筆建議未採用而exit2，不把未修內容當品質綠燈。未執行Build/Lint/畫面，原因是無產品變更，且不能對未套入的譯句宣稱排版通過。
 
 下一個具體任務：主控先採用/修訂P1共同聘任與請假休學區分、統一承辦單位詞彙，補當期甄選制度確認；再對剩餘長篇逐類續審，依實際畫面校短句。所有產品改譯都需三語一致性、無缺字及可讀性回歸。
+
+## 主控可執行的 P1 修正
+
+`node holiday-lab/translation-review/apply-p1.mjs` 預設只做 dry-run；本輪實際輸出：`Preflight PASS: 12 source-anchored P1 decisions; 12 exact patches; 2 data files.`，`DRY RUN ONLY: no product files modified.`。計畫在 `apply-p1-plan.json`。
+
+主控閱讀原→新與diff後，可執行 `node holiday-lab/translation-review/apply-p1.mjs --apply`。只會寫 `data/ja/messages.json`、`data/en/student-guide-ui.json`，每一筆先要求原值完全一致；所有檔案的前置比對都成功後才開始寫檔，任何漂移即停止。未處理的P2、核定保留職稱與待確認甄選名稱均不套用。之後用原建置流程重產locale並驗證中文原文未變、職稱/窗口/請假與休學、版面/缺字。
+
+注意：這12筆先修明列位置；註冊課務組在其餘長句中仍有其他日譯，完整窗口一致性仍需後續逐筆處理。若主控想縮短教師卡文字，保留共同任用/從聘關係，原職說明移詳頁；不要只為短句退回兼任或把助教當誤譯。

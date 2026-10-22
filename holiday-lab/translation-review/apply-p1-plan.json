@@ -1,0 +1,94 @@
+{
+  "mode": "dry-run",
+  "issues": 12,
+  "files": [
+    "data/ja/messages.json",
+    "data/en/student-guide-ui.json"
+  ],
+  "patches": [
+    {
+      "issue": "JA-JOINT-01",
+      "file": "data/ja/messages.json",
+      "pointer": "/助理教授 · 電競娛樂系合聘",
+      "old": "助教・eスポーツエンターテインメント学科兼任",
+      "new": "助教・eスポーツエンターテインメント学科との共同任用（原職：助理教授・合聘）"
+    },
+    {
+      "issue": "JA-JOINT-02",
+      "file": "data/ja/messages.json",
+      "pointer": "/講師 · 電競娛樂系合聘",
+      "old": "講師 · eスポーツ・エンターテインメント学科兼任",
+      "new": "講師・eスポーツエンターテインメント学科との共同任用（原職：講師・合聘）"
+    },
+    {
+      "issue": "JA-SECONDARY-01",
+      "file": "data/ja/messages.json",
+      "pointer": "/助理教授 · 從聘",
+      "old": "助教 · 兼任",
+      "new": "助教・共同任用（本学科は従たる所属）"
+    },
+    {
+      "issue": "JA-SECONDARY-02",
+      "file": "data/ja/messages.json",
+      "pointer": "/副教授 · 從聘",
+      "old": "准教授 · 兼任",
+      "new": "准教授・共同任用（本学科は従たる所属）"
+    },
+    {
+      "issue": "JA-UNPAID",
+      "file": "data/ja/messages.json",
+      "pointer": "/助理教授 · 留職停薪",
+      "old": "助教 · 休職中",
+      "new": "助教・無給休職中"
+    },
+    {
+      "issue": "EN-ABSENCE",
+      "file": "data/en/student-guide-ui.json",
+      "pointer": "/學生請假與獎懲簽核公告",
+      "old": "Announcement on Student Leave of Absence and Reward/Discipline Sign-off",
+      "new": "Announcement on Student Absence Requests and Approval of Rewards and Disciplinary Measures"
+    },
+    {
+      "issue": "EN-ACADEMIC-LEAVE",
+      "file": "data/en/student-guide-ui.json",
+      "pointer": "/休學復學與兵役",
+      "old": "Suspension of Studies, Resumption of Studies, and Military Service",
+      "new": "Leave of Absence, Return to Study and Military Service"
+    },
+    {
+      "issue": "EN-STATUS-NOTICE",
+      "file": "data/en/student-guide-ui.json",
+      "pointer": "/115-1休學退學注意事項",
+      "old": "Notes on Suspension and Withdrawal for Semester 115-1",
+      "new": "Leave of Absence and Withdrawal: Semester 115-1"
+    },
+    {
+      "issue": "JA-OFFICE-01",
+      "file": "data/ja/messages.json",
+      "pointer": "/教務處註冊課務組（動遊系）",
+      "old": "教務処学籍・教務課（アニメとゲームデザイン学科担当）",
+      "new": "教務処・註冊課務組（学籍・履修担当／本学科担当）"
+    },
+    {
+      "issue": "JA-OFFICE-02",
+      "file": "data/ja/messages.json",
+      "pointer": "/考試相關另洽教務處註冊課務組",
+      "old": "試験関連は別途教務処登録・履修課にお問い合わせください",
+      "new": "試験については、教務処・註冊課務組（学籍・履修担当）へ"
+    },
+    {
+      "issue": "JA-OFFICE-03",
+      "file": "data/ja/messages.json",
+      "pointer": "/註冊課務組（動遊系）",
+      "old": "登録・履修課（アニメとゲームデザイン学科担当）",
+      "new": "註冊課務組（学籍・履修担当／本学科担当）"
+    },
+    {
+      "issue": "EN-SKILLS-CLASS",
+      "file": "data/en/student-guide-ui.json",
+      "pointer": "/這份指南以日間四技在校生為主。一般班、技優班與不同入學年度可能不同；申請資格和日期請以各處室當期公告為準。",
+      "old": "This guide is primarily for current students in the day division Four-year program. General classes, the Special Talent Program, and different admission years may vary; please refer to current announcements from respective administrative offices for application eligibility and dates.",
+      "new": "This guide is mainly for students in the four-year undergraduate day program. Rules may differ by entry year and class, including regular classes and skills-excellence classes (技優班). Check the current notice from the responsible office for eligibility and dates."
+    }
+  ]
+}
