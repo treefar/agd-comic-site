@@ -489,6 +489,18 @@ const WORKS = [
   { id: "top-2-scientists", title: "科研雙星 · 全球前 2% 學者榜", award: "連四年榮登", year: "2025", img: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2025/09/c6135cb3c2111669fdf3d99d0b26bd20.jpg" },
 ];
 
+// Keep the whole sentence in language order; isolated translated fragments lose grammar.
+function WorksLocalizedHeading() {
+  const emphasis = text => React.createElement("span", { style: { color: "var(--accent-yellow)" } }, text);
+  const copy = {
+    en: ["20 chapters of stories.", React.createElement("br"), "The achievements ", emphasis("keep coming"), "."],
+    ja: ["連載20話。", React.createElement("br"), "実績は", emphasis("途切れない"), "。"]
+  };
+  const parts = copy[siteLanguage];
+  if (!parts) throw new Error("Unknown localized Works heading");
+  return React.createElement(React.Fragment, null, ...parts);
+}
+
 const WorksChapter = () => (
   <section className="chapter" id="works" data-screen-label="04 Works">
     <div className="container">
@@ -503,8 +515,8 @@ const WorksChapter = () => (
               <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 14, color: "var(--accent-yellow)", letterSpacing: "0.1em" }}>
                 HIGH SCORE BOARD ★
               </div>
-              <div className="h-display" style={{ fontSize: "clamp(36px, 5vw, 64px)", color: "var(--paper)", marginTop: 8 }}>
-                連載 20 話<br/>戰績<span style={{ color: "var(--accent-yellow)" }}>不間斷</span>。
+              <div className="h-display" data-copy-id="works-main-heading" style={{ fontSize: "clamp(36px, 5vw, 64px)", color: "var(--paper)", marginTop: 8 }}>
+                {siteLanguage === "zh" ? <>連載 20 話<br/>戰績<span style={{ color: "var(--accent-yellow)" }}>不間斷</span>。</> : <WorksLocalizedHeading />}
               </div>
               <div style={{ display: "flex", gap: 20, marginTop: 28, flexWrap: "wrap" }}>
                 {[

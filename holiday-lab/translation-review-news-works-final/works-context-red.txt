@@ -1,0 +1,283 @@
+✖ Works en matches the fixed reviewed complete sentence, including its highlighted predicate (35.7127ms)
+✖ Works ja matches the fixed reviewed complete sentence, including its highlighted predicate (14.3342ms)
+✖ Works keeps the exact original Chinese heading and chooses the whole localized renderer only outside zh (129.2539ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 0
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 382.5565
+
+✖ failing tests:
+
+test at tests\works-copy-context.test.cjs:7:31
+✖ Works en matches the fixed reviewed complete sentence, including its highlighted predicate (35.7127ms)
+  AssertionError [ERR_ASSERTION]: Works needs a complete-sentence localized heading
+      at render (C:\agywork\agd-holiday-prototypes\tests\works-copy-context.test.cjs:5:194)
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\tests\works-copy-context.test.cjs:7:147)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\works-copy-context.test.cjs:7:31
+✖ Works ja matches the fixed reviewed complete sentence, including its highlighted predicate (14.3342ms)
+  AssertionError [ERR_ASSERTION]: Works needs a complete-sentence localized heading
+      at render (C:\agywork\agd-holiday-prototypes\tests\works-copy-context.test.cjs:5:194)
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\tests\works-copy-context.test.cjs:7:147)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\works-copy-context.test.cjs:8:1
+✖ Works keeps the exact original Chinese heading and chooses the whole localized renderer only outside zh (129.2539ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /siteLanguage === "zh" \? <>連載 20 話/. Input:
+  
+  '/** @jsx siteCreateElement */\r\n' +
+    '/* 章節 — 師資 / 實驗室 / 作品 / 招生 / 聯絡 — 標準 tier 結構 */\r\n' +
+    '\r\n' +
+    '// CH.05 — 師資登場\r\n' +
+    'const FACULTY = [\r\n' +
+    '  {\r\n' +
+    '    name: "鄧樹遠", role: "系主任 · 副教授", en: "TENG, SHU-YUAN",\r\n' +
+    '    spec: "遊戲設計 / 劇本創作 / 數位剪輯", color: "red",\r\n' +
+    '    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/09/78pan_0-scaled-e1725608026576-1024x1024.jpg",\r\n' +
+    '    page: "https://www.dgd.stu.edu.tw/treefar/"\r\n' +
+    '  },\r\n' +
+    '  {\r\n' +
+    '    name: "江雅媚", role: "助理教授", en: "CHIANG, YA-MEI",\r\n' +
+    '    spec: "數位媒體設計 / 介面設計 / 角色與場景", color: "yellow",\r\n' +
+    '    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/04/1176pan-scaled-e1712908337437-1024x1024.jpg",\r\n' +
+    '    page: "https://www.dgd.stu.edu.tw/江雅媚/"\r\n' +
+    '  },\r\n' +
+    '  {\r\n' +
+    '    name: "陳重光", role: "助理教授 · 電競娛樂系合聘", en: "CHEN, CHUNG-KUANG",\r\n' +
+    '    spec: "繪本製作 / 角色造型 / 電腦繪圖", color: "blue",\r\n' +
+    '    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/09/1189pan_0-scaled-e1725608414852-1024x1024.jpg",\r\n' +
+    '    page: "https://www.dgd.stu.edu.tw/陳重光/"\r\n' +
+    '  },\r\n' +
+    '  {\r\n' +
+    '    name: "楊智彰", role: "助理教授", en: "YANG, CHIH-CHANG",\r\n' +
+    '    spec: "Unity / VR / 程式設計 / 大數據", color: "blue",\r\n' +
+    '    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/04/1092pan-scaled-e1712909734467-1024x1024.jpg",\r\n' +
+    '    page: "https://www.dgd.stu.edu.tw/楊智彰/"\r\n' +
+    '  },\r\n' +
+    '  {\r\n' +
+    '    name: "陳慶鴻", role: "助理教授", en: "CHEN, CHING-HUNG",\r\n' +
+    '    spec: "數位設計 / 電腦動畫 / 動態影像", color: "",\r\n' +
+    '    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/09/311pan-scaled-e1725608387187-1024x1024.jpg",\r\n' +
+    '    page: "https://www.dgd.stu.edu.tw/陳慶鴻/"\r\n' +
+    '  },\r\n' +
+    '  {\r\n' +
+    '    name: "張純雅", role: "助理教授", en: "CHANG, CHUN-YA",\r\n' +
+    '    spec: "視覺設計 / 字體設計 / 動畫美術", color: "",\r\n' +
+    '    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/04/990pan-YAYA-scaled-e1712910086728-1024x1024.jpg",\r\n' +
+    '    page: "https://www.dgd.stu.edu.tw/張純雅/"\r\n' +
+    '  },\r\n' +
+    '  {\r\n' +
+    '    name: "邱士展", role: "助理教授", en: "CHIU, SHIN-CHAN",\r\n' +
+    '    spec: "電腦動畫 / 動畫導演 / 數位特效 / 鏡頭語言", color: "red",\r\n' +
+    '    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/04/jjjj-scaled-e1712910712234-1024x1024.jpg",\r\n' +
+    '    page: "https://www.dgd.stu.edu.tw/邱士展/"\r\n' +
+    '  },\r\n' +
+    '  {\r\n' +
+    '    name: "陳美蓉", role: "助理教授", en: "CHEN, MEI-JUNG",\r\n' +
+    '    spec: "視覺傳達 / 企業識別 / 推廣與廣告", color: "red",\r\n' +
+    '    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/04/1185pan-scaled-e1712910426723-1024x1024.jpg",\r\n' +
+    '    page: "https://www.dgd.stu.edu.tw/系所成員/陳美蓉/"\r\n' +
+    '  },\r\n' +
+    '  {\r\n' +
+    '    name: "吳焉昇", role: "講師 · 電競娛樂系合聘", en: "WU, YEN-SHEN",\r\n' +
+    '    spec: "平面設計 / 網路多媒體 / 影像處理", color: "blue",\r\n' +
+    '    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/09/513-1024x1024.jpg",\r\n' +
+    '    page: "https://www.dgd.stu.edu.tw/系所成員/吳焉昇/"\r\n' +
+    '  },\r\n' +
+    '  {\r\n' +
+    '    name: "王宗立", role: "助理教授", en: "WANG, TSUNG-LI",\r\n' +
+    '    spec: "3D 角色 / 2D & 3D 動畫 / 影片後製剪輯", color: "yellow",\r\n' +
+    '    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/09/1223pan-scaled-e1725608460881-1024x1024.jpg",\r\n' +
+    '    page: "https://www.dgd.stu.edu.tw/系所成員/王宗立/"\r\n' +
+    '  },\r\n' +
+    '  {\r\n' +
+    '    name: "陳寀瑜", role: "助理教授 · 從聘", en: "CHEN, TSAI-YU",\r\n' +
+    '    spec: "資訊介面 / 數位遊戲理論 / 互動裝置 / 遊戲企劃", color: "",\r\n' +
+    '    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/04/157pan-scaled-e1712912482260-1024x1024.jpg",\r\n' +
+    '    page: "https://www.dgd.stu.edu.tw/系所成員/陳寀瑜/"\r\n' +
+    '  },\r\n' +
+    '  {\r\n' +
+    '    name: "蔣天華", role: "副教授 · 從聘", en: "CHIANG, TIEN-HUA",\r\n' +
+    '    spec: "互動遊戲 / AR VR MR / 物聯網", color: "",\r\n' +
+    '    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/04/1170pan-scaled-e1712911533827-1024x1024.jpg",\r\n' +
+    '    page: "https://www.dgd.stu.edu.tw/系所成員/蔣天華/"\r\n' +
+    '  },\r\n' +
+    '  {\r\n' +
+    '    name: "尹立", role: "助理教授 · 留職停薪", en: "YIN, LI",\r\n' +
+    '    spec: "設計展演 / 設計實務 / 應用設計", color: "red",\r\n' +
+    '    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/09/192pan_0-scaled-e1725608280681-1024x1024.jpg",\r\n' +
+    '    page: "https://www.dgd.stu.edu.tw/系所成員/尹立/"\r\n' +
+    '  },\r\n' +
+    '];\r\n' +
+    '\r\n' +
+    '// Only the directory cards share this crop. The detail page keeps its wider composition.\r\n' +
+    'const FacultyPortrait = ({ f, slug }) => {\r\n' +
+    '  const [source, setSource] = React.useState(f.photo);\r\n' +
+    '  React.useEffect(() => { setSource(f.photo); }, [f.photo]);\r\n' +
+    '  const crop = FacultyPortraitModel.styleFor(slug, source);\r\n' +
+    '  return (\r\n' +
+    '    <div className="faculty-portrait" data-faculty-slug={slug} data-normalized={crop ? "true" : "false"}\r\n' +
+    '      style={crop ? { backgroundImage: `url("images/faculty-portrait-background/${slug}.png")` } : undefined}>\r\n' +
+    '      {crop && <img className="faculty-portrait-backdrop" alt="" aria-hidden="true"\r\n' +
+    '        src={`images/faculty-portrait-background/${slug}.png`}\r\n' +
+    '        style={{ left: crop.left, transform: `scaleX(${parseFloat(crop.height) / 100}) ${crop.transform}` }} />}\r\n' +
+    '      <img className={crop ? "faculty-portrait-image" : "faculty-portrait-unmeasured"}\r\n' +
+    '        src={source} alt={`${f.name} 老師`} loading="lazy"\r\n' +
+    '        style={crop || undefined}\r\n' +
+    '        onError={() => { if (f.photoFallback && source !== f.photoFallback) setSource(f.photoFallback); }} />\r\n' +
+    '    </div>\r\n' +
+    '  );\r\n' +
+    '};\r\n' +
+    '\r\n' +
+    'const FacultyCard = ({ f, i }) => {\r\n' +
+    '  const [hover, setHover] = React.useState(false);\r\n' +
+    '  const slug = f.slug || f.en.toLowerCase().replace(/[^a-z]/g, "");\r\n' +
+    '  return (\r\n' +
+    '    <Panel\r\n' +
+    '      clickable\r\n' +
+    '      className="faculty-card"\r\n' +
+    '      onClick={() => { window.location.hash = "#/faculty/" + slug; }}\r\n' +
+    '      bg={f.color === "red" ? "bg-halftone-red" : f.color === "blue" ? "bg-halftone-blue" : "bg-halftone-light"}\r\n' +
+    '      /* 黃底改由位置決定：NO.02 / 04 / 06… 隔一張交錯，不再看資料的 color */\r\n' +
+    '      variant={i % 2 === 1 ? "yellow" : ""}\r\n' +
+    '      style={{ padding: 0, position: "relative", overflow: "hidden" }}\r\n' +
+    '    >\r\n' +
+    '      <div\r\n' +
+    '        className="faculty-portrait-slot"\r\n' +
+    '        onMouseEnter={() => setHover(true)}\r\n' +
+    '        onMouseLeave={() => setHover(false)}\r\n' +
+    '        style={{ height: "62%", borderBottom: "var(--bw) solid var(--ink)", position: "relative" }}\r\n' +
+    '      >\r\n' +
+    '        <FacultyPortrait f={f} slug={slug} />\r\n' +
+    '        <div style={{\r\n' +
+    '          position: "absolute", top: 8, left: 8,\r\n' +
+    `          fontFamily: "'Bangers',sans-serif",\r\n` +
+    '          background: "var(--ink)", color: "var(--paper)",\r\n' +
+    '          padding: "2px 8px", fontSize: 13, letterSpacing: "0.1em",\r\n' +
+    '          zIndex: 2\r\n' +
+    '        }}>\r\n' +
+    '          NO. {String(i + 1).padStart(2, "0")}\r\n' +
+    '        </div>\r\n' +
+    '\r\n' +
+    '        {/* Hover popover — 漫畫對話框風 */}\r\n' +
+    '        {hover && (\r\n' +
+    '          <div style={{\r\n' +
+    '            position: "absolute", inset: 0,\r\n' +
+    '            background: "rgba(15,13,10,0.94)", color: "var(--paper)",\r\n' +
+    '            padding: 16, display: "flex", flexDirection: "column", justifyContent: "space-between",\r\n' +
+    '            zIndex: 3, animation: "fadeIn 0.15s",\r\n' +
+    '            border: "var(--bw) solid var(--ink)"\r\n' +
+    '          }}>\r\n' +
+    '            <div>\r\n' +
+    `              <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 12, color: "var(--accent-yellow)", letterSpacing: "0.1em", marginBottom: 6 }}>\r\n` +
+    '                CHARACTER PROFILE\r\n' +
+    '              </div>\r\n' +
+    '              <div className="h-display" style={{ fontSize: 22, lineHeight: 1.1 }}>{f.name}</div>\r\n' +
+    '              {f.research && (\r\n' +
+    '                <div style={{ fontSize: 11, lineHeight: 1.55, marginTop: 8, opacity: 0.92 }}>\r\n' +
+    '                  <b style={{ color: "var(--accent-yellow)" }}>研究專長</b><br/>\r\n' +
+    '                  {f.research}\r\n' +
+    '                </div>\r\n' +
+    '              )}\r\n' +
+    '              {f.courses && (\r\n' +
+    '                <div style={{ fontSize: 11, lineHeight: 1.55, marginTop: 6, opacity: 0.85 }}>\r\n' +
+    '                  <b style={{ color: "var(--accent-yellow)" }}>授課</b> · {f.courses}\r\n' +
+    '                </div>\r\n' +
+    '              )}\r\n' +
+    '            </div>\r\n' +
+    `            <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 12, letterSpacing: "0.1em", color: "var(--accent-yellow)", textAlign: "right" }}>\r\n` +
+    '              點擊看完整 →\r\n' +
+    '            </div>\r\n' +
+    '          </div>\r\n' +
+    '        )}\r\n' +
+    '      </div>\r\n' +
+    '      <div style={{ padding: "12px 14px" }}>\r\n' +
+    '        <div className="h-display" style={{ fontSize: 22 }}>{f.name}</div>\r\n' +
+    '        <div style={{ fontSize: 11, fontWeight: 800, opacity: 0.65, letterSpacing: "0.06em" }}>{f.en}</div>\r\n' +
+    '        <div style={{\r\n' +
+    '          fontSize: 12, fontWeight: 800, marginTop: 6,\r\n' +
+    '          background: "var(--ink)", color: "var(--paper)",\r\n' +
+    '          display: "inline-block", padding: "2px 6px"\r\n' +
+    '        }}>{f.role}</div>\r\n' +
+    '        <div style={{ fontSize: 12, fontWeight: 600, marginTop: 6, opacity: 0.85 }}>專長 · {f.spec}</div>\r\n' +
+    '      </div>\r\n' +
+    '    </Panel>\r\n' +
+    '  );\r\n' +
+    '};\r\n' +
+    '\r\n' +
+    '// 系辦行政人員（獨立一排，不併入老師陣容與 13 位老師的統計）\r\n' +
+    'const STAFF = [\r\n' +
+    '  { slug: "rita", name: "曹雨娟", en: "Rita", role: "系助理", duty: "系務行政與參訪安排", ext: "6102", email: "rita@stu.edu.tw",\r\n' +
+    '    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2021/05/14192314/2021-AGDTeachers-rita.jpg" },\r\n' +
+    '];\r\n' +
+    '\r\n' +
+    'const StaffCard = ({ s }) => (\r\n' +
+    '  <Panel\r\n' +
+    '    clickable\r\n' +
+    '    onClick={() => { window.location.hash = "#/admission/visit"; }}\r\n' +
+    '    style={{ padding: 0, display: "flex", flexDirection: "column" }}\r\n' +
+    '  >\r\n' +
+    '    <div style={{ height: "62%", borderBottom: "var(--bw) solid var(--ink)", position: "relative" }}>\r\n' +
+    '      <PH label={`${s.name} portrait`} src={s.photo} alt={`${s.name} ${s.role}`} pos="center top" />\r\n' +
+    '      <div style={{\r\n' +
+    '        position: "absolute", top: 8, left: 8,\r\n' +
+    `        fontFamily: "'Bangers',sans-serif",\r\n` +
+    '        background: "var(--accent-red)", color: "var(--paper)",\r\n' +
+    '        padding: "2px 8px", fontSize: 13, letterSpacing: "0.1em",\r\n' +
+    '        zIndex: 2\r\n' +
+    '      }}>\r\n' +
+    '        STAFF\r\n' +
+    '      </div>\r\n' +
+    '    </div>\r\n' +
+    '    <div style={{ padding: "12px 14px" }}>\r\n' +
+    '      <div className="h-display" style={{ fontSize: 22 }}>{s.name}</div>\r\n' +
+    '      <div style={{ fontSize: 11, fontWeight: 800, opacity: 0.65, letterSpacing: "0.06em" }}>{s.en}</div>\r\n' +
+    '      <div style={{\r\n' +
+    '        fontSize: 12, fontWeight: 800, marginTop: 6,\r\n' +
+    '        background: "var(--ink)", color: "var(--paper)",\r\n' +
+    '        display: "inline-block", padding: "2px 6px"\r\n' +
+    '      }}>{s.role}</div>\r\n' +
+    '      <div style={{ fontSize: 12, fontWeight: 600, marginTop: 6, opacity: 0.85 }}>{s.duty}</div>\r\n' +
+    '      <div style={{ fontSize: 12, fontWeight: 600, marginTop: 2, opacity: 0.85 }}>分機 {s.ext} · '... 39268 more characters
+  
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\tests\works-copy-context.test.cjs:8:375)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '/** @jsx siteCreateElement */\r\n/* 章節 — 師資 / 實驗室 / 作品 / 招生 / 聯絡 — 標準 tier 結構 */\r\n\r\n// CH.05 — 師資登場\r\nconst FACULTY = [\r\n  {\r\n    name: "鄧樹遠", role: "系主任 · 副教授", en: "TENG, SHU-YUAN",\r\n    spec: "遊戲設計 / 劇本創作 / 數位剪輯", color: "red",\r\n    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/09/78pan_0-scaled-e1725608026576-1024x1024.jpg",\r\n    page: "https://www.dgd.stu.edu.tw/treefar/"\r\n  },\r\n  {\r\n    name: "江雅媚", role: "助理教授", en: "CHIANG, YA-MEI",\r\n    spec: "數位媒體設計 / 介面設計 / 角色與場景", color: "yellow",\r\n    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/04/1176pan-scaled-e1712908337437-1024x1024.jpg",\r\n    page: "https://www.dgd.stu.edu.tw/江雅媚/"\r\n  },\r\n  {\r\n    name: "陳重光", role: "助理教授 · 電競娛樂系合聘", en: "CHEN, CHUNG-KUANG",\r\n    spec: "繪本製作 / 角色造型 / 電腦繪圖", color: "blue",\r\n    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/09/1189pan_0-scaled-e1725608414852-1024x1024.jpg",\r\n    page: "https://www.dgd.stu.edu.tw/陳重光/"\r\n  },\r\n  {\r\n    name: "楊智彰", role: "助理教授", en: "YANG, CHIH-CHANG",\r\n    spec: "Unity / VR / 程式設計 / 大數據", color: "blue",\r\n    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/04/1092pan-scaled-e1712909734467-1024x1024.jpg",\r\n    page: "https://www.dgd.stu.edu.tw/楊智彰/"\r\n  },\r\n  {\r\n    name: "陳慶鴻", role: "助理教授", en: "CHEN, CHING-HUNG",\r\n    spec: "數位設計 / 電腦動畫 / 動態影像", color: "",\r\n    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/09/311pan-scaled-e1725608387187-1024x1024.jpg",\r\n    page: "https://www.dgd.stu.edu.tw/陳慶鴻/"\r\n  },\r\n  {\r\n    name: "張純雅", role: "助理教授", en: "CHANG, CHUN-YA",\r\n    spec: "視覺設計 / 字體設計 / 動畫美術", color: "",\r\n    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/04/990pan-YAYA-scaled-e1712910086728-1024x1024.jpg",\r\n    page: "https://www.dgd.stu.edu.tw/張純雅/"\r\n  },\r\n  {\r\n    name: "邱士展", role: "助理教授", en: "CHIU, SHIN-CHAN",\r\n    spec: "電腦動畫 / 動畫導演 / 數位特效 / 鏡頭語言", color: "red",\r\n    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/04/jjjj-scaled-e1712910712234-1024x1024.jpg",\r\n    page: "https://www.dgd.stu.edu.tw/邱士展/"\r\n  },\r\n  {\r\n    name: "陳美蓉", role: "助理教授", en: "CHEN, MEI-JUNG",\r\n    spec: "視覺傳達 / 企業識別 / 推廣與廣告", color: "red",\r\n    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/04/1185pan-scaled-e1712910426723-1024x1024.jpg",\r\n    page: "https://www.dgd.stu.edu.tw/系所成員/陳美蓉/"\r\n  },\r\n  {\r\n    name: "吳焉昇", role: "講師 · 電競娛樂系合聘", en: "WU, YEN-SHEN",\r\n    spec: "平面設計 / 網路多媒體 / 影像處理", color: "blue",\r\n    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/09/513-1024x1024.jpg",\r\n    page: "https://www.dgd.stu.edu.tw/系所成員/吳焉昇/"\r\n  },\r\n  {\r\n    name: "王宗立", role: "助理教授", en: "WANG, TSUNG-LI",\r\n    spec: "3D 角色 / 2D & 3D 動畫 / 影片後製剪輯", color: "yellow",\r\n    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/09/1223pan-scaled-e1725608460881-1024x1024.jpg",\r\n    page: "https://www.dgd.stu.edu.tw/系所成員/王宗立/"\r\n  },\r\n  {\r\n    name: "陳寀瑜", role: "助理教授 · 從聘", en: "CHEN, TSAI-YU",\r\n    spec: "資訊介面 / 數位遊戲理論 / 互動裝置 / 遊戲企劃", color: "",\r\n    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/04/157pan-scaled-e1712912482260-1024x1024.jpg",\r\n    page: "https://www.dgd.stu.edu.tw/系所成員/陳寀瑜/"\r\n  },\r\n  {\r\n    name: "蔣天華", role: "副教授 · 從聘", en: "CHIANG, TIEN-HUA",\r\n    spec: "互動遊戲 / AR VR MR / 物聯網", color: "",\r\n    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/04/1170pan-scaled-e1712911533827-1024x1024.jpg",\r\n    page: "https://www.dgd.stu.edu.tw/系所成員/蔣天華/"\r\n  },\r\n  {\r\n    name: "尹立", role: "助理教授 · 留職停薪", en: "YIN, LI",\r\n    spec: "設計展演 / 設計實務 / 應用設計", color: "red",\r\n    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/09/192pan_0-scaled-e1725608280681-1024x1024.jpg",\r\n    page: "https://www.dgd.stu.edu.tw/系所成員/尹立/"\r\n  },\r\n];\r\n\r\n// Only the directory cards share this crop. The detail page keeps its wider composition.\r\nconst FacultyPortrait = ({ f, slug }) => {\r\n  const [source, setSource] = React.useState(f.photo);\r\n  React.useEffect(() => { setSource(f.photo); }, [f.photo]);\r\n  const crop = FacultyPortraitModel.styleFor(slug, source);\r\n  return (\r\n    <div className="faculty-portrait" data-faculty-slug={slug} data-normalized={crop ? "true" : "false"}\r\n      style={crop ? { backgroundImage: `url("images/faculty-portrait-background/${slug}.png")` } : undefined}>\r\n      {crop && <img className="faculty-portrait-backdrop" alt="" aria-hidden="true"\r\n        src={`images/faculty-portrait-background/${slug}.png`}\r\n        style={{ left: crop.left, transform: `scaleX(${parseFloat(crop.height) / 100}) ${crop.transform}` }} />}\r\n      <img className={crop ? "faculty-portrait-image" : "faculty-portrait-unmeasured"}\r\n        src={source} alt={`${f.name} 老師`} loading="lazy"\r\n        style={crop || undefined}\r\n        onError={() => { if (f.photoFallback && source !== f.photoFallback) setSource(f.photoFallback); }} />\r\n    </div>\r\n  );\r\n};\r\n\r\nconst FacultyCard = ({ f, i }) => {\r\n  const [hover, setHover] = React.useState(false);\r\n  const slug = f.slug || f.en.toLowerCase().replace(/[^a-z]/g, "");\r\n  return (\r\n    <Panel\r\n      clickable\r\n      className="faculty-card"\r\n      onClick={() => { window.location.hash = "#/faculty/" + slug; }}\r\n      bg={f.color === "red" ? "bg-halftone-red" : f.color === "blue" ? "bg-halftone-blue" : "bg-halftone-light"}\r\n      /* 黃底改由位置決定：NO.02 / 04 / 06… 隔一張交錯，不再看資料的 color */\r\n      variant={i % 2 === 1 ? "yellow" : ""}\r\n      style={{ padding: 0, position: "relative", overflow: "hidden" }}\r\n    >\r\n      <div\r\n        className="faculty-portrait-slot"\r\n        onMouseEnter={() => setHover(true)}\r\n        onMouseLeave={() => setHover(false)}\r\n        style={{ height: "62%", borderBottom: "var(--bw) solid var(--ink)", position: "relative" }}\r\n      >\r\n        <FacultyPortrait f={f} slug={slug} />\r\n        <div style={{\r\n          position: "absolute", top: 8, left: 8,\r\n          fontFamily: "\'Bangers\',sans-serif",\r\n          background: "var(--ink)", color: "var(--paper)",\r\n          padding: "2px 8px", fontSize: 13, letterSpacing: "0.1em",\r\n          zIndex: 2\r\n        }}>\r\n          NO. {String(i + 1).padStart(2, "0")}\r\n        </div>\r\n\r\n        {/* Hover popover — 漫畫對話框風 */}\r\n        {hover && (\r\n          <div style={{\r\n            position: "absolute", inset: 0,\r\n            background: "rgba(15,13,10,0.94)", color: "var(--paper)",\r\n            padding: 16, display: "flex", flexDirection: "column", justifyContent: "space-between",\r\n            zIndex: 3, animation: "fadeIn 0.15s",\r\n            border: "var(--bw) solid var(--ink)"\r\n          }}>\r\n            <div>\r\n              <div style={{ fontFamily: "\'Bangers\',sans-serif", fontSize: 12, color: "var(--accent-yellow)", letterSpacing: "0.1em", marginBottom: 6 }}>\r\n                CHARACTER PROFILE\r\n              </div>\r\n              <div className="h-display" style={{ fontSize: 22, lineHeight: 1.1 }}>{f.name}</div>\r\n              {f.research && (\r\n                <div style={{ fontSize: 11, lineHeight: 1.55, marginTop: 8, opacity: 0.92 }}>\r\n                  <b style={{ color: "var(--accent-yellow)" }}>研究專長</b><br/>\r\n                  {f.research}\r\n                </div>\r\n              )}\r\n              {f.courses && (\r\n                <div style={{ fontSize: 11, lineHeight: 1.55, marginTop: 6, opacity: 0.85 }}>\r\n                  <b style={{ color: "var(--accent-yellow)" }}>授課</b> · {f.courses}\r\n                </div>\r\n              )}\r\n            </div>\r\n            <div style={{ fontFamily: "\'Bangers\',sans-serif", fontSize: 12, letterSpacing: "0.1em", color: "var(--accent-yellow)", textAlign: "right" }}>\r\n              點擊看完整 →\r\n            </div>\r\n          </div>\r\n        )}\r\n      </div>\r\n      <div style={{ padding: "12px 14px" }}>\r\n        <div className="h-display" style={{ fontSize: 22 }}>{f.name}</div>\r\n        <div style={{ fontSize: 11, fontWeight: 800, opacity: 0.65, letterSpacing: "0.06em" }}>{f.en}</div>\r\n        <div style={{\r\n          fontSize: 12, fontWeight: 800, marginTop: 6,\r\n          background: "var(--ink)", color: "var(--paper)",\r\n          display: "inline-block", padding: "2px 6px"\r\n        }}>{f.role}</div>\r\n        <div style={{ fontSize: 12, fontWeight: 600, marginTop: 6, opacity: 0.85 }}>專長 · {f.spec}</div>\r\n      </div>\r\n    </Panel>\r\n  );\r\n};\r\n\r\n// 系辦行政人員（獨立一排，不併入老師陣容與 13 位老師的統計）\r\nconst STAFF = [\r\n  { slug: "rita", name: "曹雨娟", en: "Rita", role: "系助理", duty: "系務行政與參訪安排", ext: "6102", email: "rita@stu.edu.tw",\r\n    photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2021/05/14192314/2021-AGDTeachers-rita.jpg" },\r\n];\r\n\r\nconst StaffCard = ({ s }) => (\r\n  <Panel\r\n    clickable\r\n    onClick={() => { window.location.hash = "#/admission/visit"; }}\r\n    style={{ padding: 0, display: "flex", flexDirection: "column" }}\r\n  >\r\n    <div style={{ height: "62%", borderBottom: "var(--bw) solid var(--ink)", position: "relative" }}>\r\n      <PH label={`${s.name} portrait`} src={s.photo} alt={`${s.name} ${s.role}`} pos="center top" />\r\n      <div style={{\r\n        position: "absolute", top: 8, left: 8,\r\n        fontFamily: "\'Bangers\',sans-serif",\r\n        background: "var(--accent-red)", color: "var(--paper)",\r\n        padding: "2px 8px", fontSize: 13, letterSpacing: "0.1em",\r\n        zIndex: 2\r\n      }}>\r\n        STAFF\r\n      </div>\r\n    </div>\r\n    <div style={{ padding: "12px 14px" }}>\r\n      <div className="h-display" style={{ fontSize: 22 }}>{s.name}</div>\r\n      <div style={{ fontSize: 11, fontWeight: 800, opacity: 0.65, letterSpacing: "0.06em" }}>{s.en}</div>\r\n      <div style={{\r\n        fontSize: 12, fontWeight: 800, marginTop: 6,\r\n        background: "var(--ink)", color: "var(--paper)",\r\n        display: "inline-block", padding: "2px 6px"\r\n      }}>{s.role}</div>\r\n      <div style={{ fontSize: 12, fontWeight: 600, marginTop: 6, opacity: 0.85 }}>{s.duty}</div>\r\n      <div style={{ fontSize: 12, fontWeight: 600, marginTop: 2, opacity: 0.85 }}>分機 {s.ext} · '... 39268 more characters,
+    expected: /siteLanguage === "zh" \? <>連載 20 話/,
+    operator: 'match',
+    diff: 'simple'
+  }
