@@ -1,0 +1,148 @@
+{
+  "date": "2026-10-22T16:07:32.348Z",
+  "url": "http://127.0.0.1:8815",
+  "method": "known-solution real DOM regression; not a student blind playtest",
+  "cases": [
+    {
+      "game": "constitution",
+      "lang": "ja",
+      "width": 390,
+      "status": "pass",
+      "checks": {
+        "locale": "yes",
+        "uniqueDOMIds": "yes",
+        "startImages": "yes",
+        "noHorizontalOverflow": "yes",
+        "japaneseContent": "yes",
+        "wrongBlocked": "yes",
+        "completedFromDOM": "yes",
+        "savedActualInputs": "yes",
+        "replayThreeShots": "yes",
+        "replayImages": "yes",
+        "savedCaptionText": "yes",
+        "retryFresh": "yes",
+        "consoleAndNetwork": "yes"
+      },
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "initialProgress": "0/3",
+      "initialScreenshot": "constitution-ja-390-initial.png",
+      "japaneseHelp": "架空の漫画3コマに字幕を作ります。読みやすく、読む時間を残し、人物を隠さない配置に。下の紙枠で、自分の改行や位置を選びましょう。法律クイズではなく制作練習です。",
+      "wrong": {
+        "progress": "0/3",
+        "feedback": "この読者には、もう少し大きな文字が必要です。"
+      },
+      "wrongScreenshot": "constitution-ja-390-wrong.png",
+      "knownSolutionSeconds": 20.27,
+      "score": "100 / 100",
+      "artifact": {
+        "captions": [
+          {
+            "font": 18,
+            "lines": 2,
+            "duration": 6,
+            "x": 50,
+            "y": 78,
+            "tone": "light",
+            "lang": "ja",
+            "words": {
+              "zh": "每個故事，\n都值得被看見。",
+              "en": "Every story is\nworth seeing.",
+              "ja": "どの物語も、\n見る価値がある。"
+            },
+            "stageWidth": 358
+          },
+          {
+            "font": 20,
+            "lines": 2,
+            "duration": 6,
+            "x": 50,
+            "y": 78,
+            "tone": "light",
+            "lang": "ja",
+            "words": {
+              "zh": "字大一些，\n讀慢一些。",
+              "en": "Bigger words.\nTime to read.",
+              "ja": "大きい文字、\n読む時間。"
+            },
+            "stageWidth": 358
+          },
+          {
+            "font": 18,
+            "lines": 2,
+            "duration": 6,
+            "x": 50,
+            "y": 78,
+            "tone": "light",
+            "lang": "ja",
+            "words": {
+              "zh": "這一頁，\n我們一起讀完。",
+              "en": "Read this page\ntogether.",
+              "ja": "このページを、\n一緒に。"
+            },
+            "stageWidth": 358
+          }
+        ],
+        "attempts": 3
+      },
+      "resultScreenshot": "constitution-ja-390-result.png",
+      "replayScreenshot": "constitution-ja-390-replay.png",
+      "replayShots": [
+        {
+          "shot": 0,
+          "caption": "1コマ目・2行・18px：どの物語も、／見る価値がある。",
+          "texts": [
+            "どの物語も、\n見る価値がある。"
+          ]
+        },
+        {
+          "shot": 1,
+          "caption": "2コマ目・2行・20px：大きい文字、／読む時間。",
+          "texts": [
+            "大きい文字、\n読む時間。"
+          ]
+        },
+        {
+          "shot": 2,
+          "caption": "3コマ目・2行・18px：このページを、／一緒に。",
+          "texts": [
+            "このページを、\n一緒に。"
+          ]
+        }
+      ],
+      "retryWrong": {
+        "progress": "0/3",
+        "feedback": "この読者には、もう少し大きな文字が必要です。"
+      },
+      "retryScreenshot": "constitution-ja-390-retry.png"
+    }
+  ],
+  "receipts": {
+    "before": {
+      "runner.mjs": "9741c0545fde86fd50d2306bc9d327b59187c0c1f6515679eb3fdc90d2797e0f",
+      "replay-model.mjs": "202d09d268c31d7d159035cc8958bb15caa84f5406c36736ba646bf09e0757e3",
+      "catalog.mjs": "3ff982b58d12e560e94d90ef3032ec389e48207d50bbec91268f914a56882dad",
+      "lab.css": "22abcac4823d175b1bcbece1948fb0bad33d91b108af7ade4be1b1953da238f8",
+      "games/peace-memory.mjs": "0b4cb80bb7e2574c4001ea6a507a85d2cf0177bdbab46e557aac54eb13542596",
+      "games/qingming.mjs": "3936b5606016b60ca38de77e63d2f2170681592e6dc7e7c9147e29210870cc5f",
+      "games/labor.mjs": "2020df91daa151aa4ca124cc6fa55aa5495e39f7e7f9ae590dd7e211a6c597eb",
+      "games/retrocession.mjs": "64765225ca980c62feb3f673393efaf8d7d479739b908bf3928389cabca21989",
+      "games/constitution.mjs": "98b7d50c69cac1de56867dee9ec1608f97ecdd234ac5b5f78ef79a563e2c0bfb"
+    },
+    "after": {
+      "runner.mjs": "9741c0545fde86fd50d2306bc9d327b59187c0c1f6515679eb3fdc90d2797e0f",
+      "replay-model.mjs": "202d09d268c31d7d159035cc8958bb15caa84f5406c36736ba646bf09e0757e3",
+      "catalog.mjs": "3ff982b58d12e560e94d90ef3032ec389e48207d50bbec91268f914a56882dad",
+      "lab.css": "22abcac4823d175b1bcbece1948fb0bad33d91b108af7ade4be1b1953da238f8",
+      "games/peace-memory.mjs": "0b4cb80bb7e2574c4001ea6a507a85d2cf0177bdbab46e557aac54eb13542596",
+      "games/qingming.mjs": "3936b5606016b60ca38de77e63d2f2170681592e6dc7e7c9147e29210870cc5f",
+      "games/labor.mjs": "2020df91daa151aa4ca124cc6fa55aa5495e39f7e7f9ae590dd7e211a6c597eb",
+      "games/retrocession.mjs": "64765225ca980c62feb3f673393efaf8d7d479739b908bf3928389cabca21989",
+      "games/constitution.mjs": "98b7d50c69cac1de56867dee9ec1608f97ecdd234ac5b5f78ef79a563e2c0bfb"
+    }
+  },
+  "status": "pass",
+  "browser": "151.0.7922.34"
+}

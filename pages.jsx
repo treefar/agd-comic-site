@@ -773,7 +773,16 @@ const AdmissionDetail = ({ slug }) => {
             </Panel>
           </div>
 
-          {/* 招生時程 — 關鍵日期排第一順位 */}
+          {a.content && (
+            <div className="comic-tier tier-1 tier-mid">
+              <Panel style={{ padding: 24 }}>
+                <h2 className="h-display" style={{ fontSize: 22, margin: "0 0 14px" }}>報名資格與流程</h2>
+                <div id="admission-content" style={{ fontSize: 16, lineHeight: 1.85, whiteSpace: "pre-line", overflowWrap: "anywhere" }}>{a.content}</div>
+              </Panel>
+            </div>
+          )}
+
+          {/* 招生時程 — 關鍵日期 */}
           {a.timeline && a.timeline.length > 0 && (
             <div className="comic-tier tier-1 tier-mid">
               <Panel variant="yellow" style={{ padding: 24, position: "relative" }}>

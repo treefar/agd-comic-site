@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+const p='holiday-lab/build-dashboard.mjs';let text=fs.readFileSync(p,'utf8');
+text=text.replace("import fs from 'node:fs';","import moduleProof from './dashboard/current-proof.cjs';\nimport fs from 'node:fs';");
+const start="tool:(extraPass(g)||runs.some(",end="?'pass':'unknown',user:";
+const a=text.indexOf(start),b=text.indexOf(end,a);if(a<0||b<0)throw Error('Expected current module tool rule');text=text.slice(0,a)+"tool:moduleProof(process.cwd(),g.id)"+text.slice(b);
+text=text.replace("report:`holiday-lab/reports/${g.id}.md`","report:moduleProof(process.cwd(),g.id)||`holiday-lab/reports/${g.id}.md`");
+text=text.replace("generated:'2026-10-22'","generated:new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Taipei'}).format(new Date())");
+text=text.replace("label:'逐款通關'","label:'模組功能通關'");
+text=text.replace("工具通過不等於使用者美術或內容確認。","工具通過只核對各款模組SHA及真DOM通關；不是最新整包、文字安全區或使用者確認。");
+text=text.replace("原始exit 1，不能稱全通過","歷史原始exit 1，不能稱本輪全通過");
+fs.writeFileSync(p,text);
+const authority='holiday-lab/dashboard/authority.cjs';let code=fs.readFileSync(authority,'utf8');const old="const extra=JSON.parse(read('holiday-lab/extra-qa/summary.json'));return q.servedSourceSha256[`games/${g.id}.mjs`]===expected||extra.selected.some(c=>c.game===g.id&&c.status==='pass'&&c.receipts.after[`games/${g.id}.mjs`]===expected);";
+const updated="const evidence=require('./current-proof.cjs')(root,g.id);return !!evidence&&g.report===evidence;";
+if(!code.includes(old))throw Error('Expected authority module receipt rule');code=code.replace(old,updated);fs.writeFileSync(authority,code);

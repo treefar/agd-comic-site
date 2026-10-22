@@ -1,0 +1,65 @@
+✖ invalid zh draft remains fully readable without painting outside stage paper (3.7186ms)
+✖ invalid en draft remains fully readable without painting outside stage paper (0.4201ms)
+✖ invalid ja draft remains fully readable without painting outside stage paper (1.8189ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 0
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 216.4084
+
+✖ failing tests:
+
+test at holiday-lab\tests\constitution-draft.test.mjs:3:36
+✖ invalid zh draft remains fully readable without painting outside stage paper (3.7186ms)
+  AssertionError [ERR_ASSERTION]: a complete readable draft must exist in the controls
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/tests/constitution-draft.test.mjs:4:137)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at holiday-lab\tests\constitution-draft.test.mjs:3:36
+✖ invalid en draft remains fully readable without painting outside stage paper (0.4201ms)
+  AssertionError [ERR_ASSERTION]: a complete readable draft must exist in the controls
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/tests/constitution-draft.test.mjs:4:137)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at holiday-lab\tests\constitution-draft.test.mjs:3:36
+✖ invalid ja draft remains fully readable without painting outside stage paper (1.8189ms)
+  AssertionError [ERR_ASSERTION]: a complete readable draft must exist in the controls
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/tests/constitution-draft.test.mjs:4:137)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
