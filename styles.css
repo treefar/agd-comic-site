@@ -1407,3 +1407,5 @@ html[lang='ja'] .h-jojo{font-family:'Bowlby One','Bangers','Yu Gothic','Hiragino
  html:is([lang='en'],[lang='ja']) .topnav nav a{font-size:17px;padding:6px 0;}
 }
 @media(min-width:761px) and (max-width:1180px){.topnav .brand{min-width:0;flex-shrink:1 !important;}.topnav .brand>div{min-width:0;}.topnav .brand>div>span:first-child{white-space:normal;word-break:normal;overflow-wrap:normal;text-wrap:balance;}}
+/* Keep contact shortcuts outside portraits and reading content on ordinary desktop widths too. */
+@media(max-width:1900px){.floating-cta{position:static !important;align-items:stretch !important;margin:20px 16px;}.floating-cta a{white-space:normal;text-align:center;}}

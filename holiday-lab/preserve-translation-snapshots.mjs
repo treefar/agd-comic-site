@@ -1,0 +1,1 @@
+import fs from 'node:fs';import {execFileSync} from 'node:child_process';const p='holiday-lab/translation-review/verification.json';fs.copyFileSync(p,'holiday-lab/reports/translation-snapshot-after-patch.json');fs.writeFileSync(p,execFileSync('git',['show','HEAD:'+p]));console.log('Preserved after-patch snapshot result separately; retained original reviewed baseline report.');
