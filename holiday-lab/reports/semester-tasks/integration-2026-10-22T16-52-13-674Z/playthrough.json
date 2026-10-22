@@ -1,0 +1,2799 @@
+{
+  "runId": "2026-10-22T16-52-13-675Z",
+  "url": "http://127.0.0.1:8820",
+  "method": "headless Chromium, real DOM buttons/ranges, no direct game imports or state mutation",
+  "cases": [
+    {
+      "game": "semester",
+      "lang": "zh",
+      "width": 320,
+      "reducedMotion": "no-preference",
+      "keyboard": false,
+      "status": "pass",
+      "checks": {
+        "locale": "yes",
+        "uniqueIds": "yes",
+        "images": "yes",
+        "initialWrongBlocked": "yes",
+        "noHorizontalOverflow": "yes",
+        "completedFromDOM": "yes",
+        "mutedPlayable": "yes",
+        "taskContactTravel": "yes",
+        "realGuideSearch": "yes",
+        "oldCoordinatesBlocked": "yes",
+        "replay4Shots": "yes",
+        "retryFresh": "yes",
+        "exitArchive": "yes",
+        "browserErrors": "yes"
+      },
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "stylesheetSha256": "d8bb6f5e7d2c3c10b0d903d23fb8525fca222b1aad138d76200eb8206acb3c15",
+      "duplicateIds": [],
+      "missingImages": [],
+      "layoutScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-zh-320-no-preference-layout.png",
+      "stageScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-zh-320-no-preference-stage.png",
+      "horizontalOverflow": false,
+      "semester": {
+        "guides": [
+          {
+            "cardId": "course-selection",
+            "query": "選課加退選",
+            "heading": "選課加退選",
+            "contact": "找誰辦動遊系辦／註冊課務組07-6158000#2016前往承辦單位 ↗",
+            "url": "http://127.0.0.1:8820/?lang=zh#/students/guide",
+            "screenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-zh-320-no-preference-guide-course-selection.png"
+          },
+          {
+            "cardId": "credit-transfer",
+            "query": "學分抵免",
+            "heading": "學分抵免",
+            "contact": "找誰辦開課單位／動遊系辦／註冊課務組07-6158000#2016前往承辦單位 ↗",
+            "url": "http://127.0.0.1:8820/?lang=zh#/students/guide",
+            "screenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-zh-320-no-preference-guide-credit-transfer.png"
+          },
+          {
+            "cardId": "graduation",
+            "query": "畢業檢核",
+            "heading": "畢業檢核",
+            "contact": "找誰辦動遊系辦07-6158000#6102其他協助：教務處註冊課務組（動遊系） · 07-6158000#2016前往承辦單位 ↗",
+            "url": "http://127.0.0.1:8820/?lang=zh#/students/guide",
+            "screenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-zh-320-no-preference-guide-graduation.png"
+          }
+        ],
+        "wrongWindows": [
+          {
+            "task": "course-plan",
+            "hint": "授課教室不是這項任務的程序窗口。可先向系辦或註冊課務組詢問，帶自己的入學年課表與缺項。"
+          },
+          {
+            "task": "course-record",
+            "hint": "授課教室不是這項任務的程序窗口。到課不等於選到。紀錄維護的程序窗口是註冊課務組，先備好課程代碼與問題畫面。"
+          },
+          {
+            "task": "credit",
+            "hint": "授課教室不是這項任務的程序窗口。抵免程序疑問可洽註冊課務組。是否受理與審核順序要看當期規定，諮詢不等於申請成功。"
+          }
+        ],
+        "taskLabels": [
+          "核對必修缺項",
+          "選課紀錄疑問",
+          "抵免程序詢問",
+          "畢業缺項諮詢"
+        ],
+        "oldCoordinatesBlocked": [
+          {
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "progress": "0/3",
+            "hint": "先選你要辦的事，走到座標本身不能完成任務。"
+          },
+          {
+            "position": {
+              "x": 4,
+              "y": 0
+            },
+            "progress": "0/3",
+            "hint": "先選你要辦的事，走到座標本身不能完成任務。"
+          },
+          {
+            "position": {
+              "x": 2,
+              "y": 2
+            },
+            "progress": "0/3",
+            "hint": "先選你要辦的事，走到座標本身不能完成任務。"
+          }
+        ],
+        "thirdScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-zh-320-no-preference-third-choice.png",
+        "replayCaptions": [
+          "核對必修缺項 → 註冊課務組｜諮詢，非核准",
+          "選課紀錄疑問 → 註冊課務組｜諮詢，非核准",
+          "抵免程序詢問 → 註冊課務組｜諮詢，非核准",
+          "畢業缺項諮詢 → 系辦｜諮詢，非核准"
+        ]
+      },
+      "score": "100 / 100",
+      "artifact": {
+        "fictionalMap": true,
+        "consultationOnly": true,
+        "route": [
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 1
+          },
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 4,
+            "y": 0
+          },
+          {
+            "x": 4,
+            "y": 1
+          },
+          {
+            "x": 4,
+            "y": 2
+          },
+          {
+            "x": 3,
+            "y": 2
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 3,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 1
+          },
+          {
+            "x": 4,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 1
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 3,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 1
+          },
+          {
+            "x": 4,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 1
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 3,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 1
+          },
+          {
+            "x": 4,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "visits": [
+          {
+            "round": 0,
+            "taskId": "course-plan",
+            "windowId": "academic",
+            "x": 4,
+            "y": 0,
+            "steps": 18,
+            "cardId": "course-selection",
+            "sourceIds": [
+              "academic-faq",
+              "academic-contact"
+            ]
+          },
+          {
+            "round": 1,
+            "taskId": "course-record",
+            "windowId": "academic",
+            "x": 4,
+            "y": 0,
+            "steps": 26,
+            "cardId": "course-selection",
+            "sourceIds": [
+              "academic-contact",
+              "academic-faq"
+            ]
+          },
+          {
+            "round": 2,
+            "taskId": "credit",
+            "windowId": "academic",
+            "x": 4,
+            "y": 0,
+            "steps": 34,
+            "cardId": "credit-transfer",
+            "sourceIds": [
+              "credit-transfer-115-1",
+              "credit-transfer-procedure"
+            ]
+          },
+          {
+            "round": 2,
+            "taskId": "graduation",
+            "windowId": "department",
+            "x": 0,
+            "y": 0,
+            "steps": 38,
+            "cardId": "graduation",
+            "sourceIds": [
+              "academic-faq",
+              "dept-contact"
+            ]
+          }
+        ],
+        "attempts": 11,
+        "thirdActOrder": [
+          "credit",
+          "graduation"
+        ]
+      },
+      "resultScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-zh-320-no-preference-result.png",
+      "replayScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-zh-320-no-preference-replay.png",
+      "replayShots": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "game": "semester",
+      "lang": "zh",
+      "width": 1440,
+      "reducedMotion": "no-preference",
+      "keyboard": false,
+      "status": "pass",
+      "checks": {
+        "locale": "yes",
+        "uniqueIds": "yes",
+        "images": "yes",
+        "initialWrongBlocked": "yes",
+        "noHorizontalOverflow": "yes",
+        "completedFromDOM": "yes",
+        "mutedPlayable": "yes",
+        "taskContactTravel": "yes",
+        "realGuideSearch": "yes",
+        "oldCoordinatesBlocked": "yes",
+        "replay4Shots": "yes",
+        "retryFresh": "yes",
+        "browserErrors": "yes"
+      },
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "stylesheetSha256": "d8bb6f5e7d2c3c10b0d903d23fb8525fca222b1aad138d76200eb8206acb3c15",
+      "duplicateIds": [],
+      "missingImages": [],
+      "layoutScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-zh-1440-no-preference-layout.png",
+      "stageScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-zh-1440-no-preference-stage.png",
+      "horizontalOverflow": false,
+      "semester": {
+        "guides": [
+          {
+            "cardId": "course-selection",
+            "query": "選課加退選",
+            "heading": "選課加退選",
+            "contact": "找誰辦動遊系辦／註冊課務組07-6158000#2016前往承辦單位 ↗",
+            "url": "http://127.0.0.1:8820/?lang=zh#/students/guide",
+            "screenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-zh-1440-no-preference-guide-course-selection.png"
+          },
+          {
+            "cardId": "graduation",
+            "query": "畢業檢核",
+            "heading": "畢業檢核",
+            "contact": "找誰辦動遊系辦07-6158000#6102其他協助：教務處註冊課務組（動遊系） · 07-6158000#2016前往承辦單位 ↗",
+            "url": "http://127.0.0.1:8820/?lang=zh#/students/guide",
+            "screenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-zh-1440-no-preference-guide-graduation.png"
+          },
+          {
+            "cardId": "credit-transfer",
+            "query": "學分抵免",
+            "heading": "學分抵免",
+            "contact": "找誰辦開課單位／動遊系辦／註冊課務組07-6158000#2016前往承辦單位 ↗",
+            "url": "http://127.0.0.1:8820/?lang=zh#/students/guide",
+            "screenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-zh-1440-no-preference-guide-credit-transfer.png"
+          }
+        ],
+        "wrongWindows": [
+          {
+            "task": "course-plan",
+            "hint": "授課教室不是這項任務的程序窗口。可先向系辦或註冊課務組詢問，帶自己的入學年課表與缺項。"
+          },
+          {
+            "task": "course-record",
+            "hint": "授課教室不是這項任務的程序窗口。到課不等於選到。紀錄維護的程序窗口是註冊課務組，先備好課程代碼與問題畫面。"
+          },
+          {
+            "task": "graduation",
+            "hint": "授課教室不是這項任務的程序窗口。可先帶入學年課表與缺項向系辦或註冊課務組詢問，不把諮詢當作畢業核准。"
+          }
+        ],
+        "taskLabels": [
+          "核對必修缺項",
+          "選課紀錄疑問",
+          "畢業缺項諮詢",
+          "抵免程序詢問"
+        ],
+        "oldCoordinatesBlocked": [
+          {
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "progress": "0/3",
+            "hint": "先選你要辦的事，走到座標本身不能完成任務。"
+          },
+          {
+            "position": {
+              "x": 4,
+              "y": 0
+            },
+            "progress": "0/3",
+            "hint": "先選你要辦的事，走到座標本身不能完成任務。"
+          },
+          {
+            "position": {
+              "x": 2,
+              "y": 2
+            },
+            "progress": "0/3",
+            "hint": "先選你要辦的事，走到座標本身不能完成任務。"
+          }
+        ],
+        "thirdScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-zh-1440-no-preference-third-choice.png",
+        "replayCaptions": [
+          "核對必修缺項 → 系辦｜諮詢，非核准",
+          "選課紀錄疑問 → 註冊課務組｜諮詢，非核准",
+          "畢業缺項諮詢 → 系辦｜諮詢，非核准",
+          "抵免程序詢問 → 註冊課務組｜諮詢，非核准"
+        ]
+      },
+      "score": "100 / 100",
+      "artifact": {
+        "fictionalMap": true,
+        "consultationOnly": true,
+        "route": [
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 1
+          },
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 4,
+            "y": 0
+          },
+          {
+            "x": 4,
+            "y": 1
+          },
+          {
+            "x": 4,
+            "y": 2
+          },
+          {
+            "x": 3,
+            "y": 2
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 1
+          },
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 1
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 3,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 1
+          },
+          {
+            "x": 4,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 1
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 1
+          },
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 4,
+            "y": 0
+          }
+        ],
+        "visits": [
+          {
+            "round": 0,
+            "taskId": "course-plan",
+            "windowId": "department",
+            "x": 0,
+            "y": 0,
+            "steps": 18,
+            "cardId": "course-selection",
+            "sourceIds": [
+              "academic-faq",
+              "academic-contact"
+            ]
+          },
+          {
+            "round": 1,
+            "taskId": "course-record",
+            "windowId": "academic",
+            "x": 4,
+            "y": 0,
+            "steps": 26,
+            "cardId": "course-selection",
+            "sourceIds": [
+              "academic-contact",
+              "academic-faq"
+            ]
+          },
+          {
+            "round": 2,
+            "taskId": "graduation",
+            "windowId": "department",
+            "x": 0,
+            "y": 0,
+            "steps": 34,
+            "cardId": "graduation",
+            "sourceIds": [
+              "academic-faq",
+              "dept-contact"
+            ]
+          },
+          {
+            "round": 2,
+            "taskId": "credit",
+            "windowId": "academic",
+            "x": 4,
+            "y": 0,
+            "steps": 38,
+            "cardId": "credit-transfer",
+            "sourceIds": [
+              "credit-transfer-115-1",
+              "credit-transfer-procedure"
+            ]
+          }
+        ],
+        "attempts": 11,
+        "thirdActOrder": [
+          "graduation",
+          "credit"
+        ]
+      },
+      "resultScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-zh-1440-no-preference-result.png",
+      "replayScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-zh-1440-no-preference-replay.png",
+      "replayShots": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "game": "semester",
+      "lang": "en",
+      "width": 320,
+      "reducedMotion": "no-preference",
+      "keyboard": false,
+      "status": "pass",
+      "checks": {
+        "locale": "yes",
+        "uniqueIds": "yes",
+        "images": "yes",
+        "initialWrongBlocked": "yes",
+        "noHorizontalOverflow": "yes",
+        "completedFromDOM": "yes",
+        "mutedPlayable": "yes",
+        "taskContactTravel": "yes",
+        "realGuideSearch": "yes",
+        "oldCoordinatesBlocked": "yes",
+        "replay4Shots": "yes",
+        "retryFresh": "yes",
+        "exitArchive": "yes",
+        "browserErrors": "yes"
+      },
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "stylesheetSha256": "d8bb6f5e7d2c3c10b0d903d23fb8525fca222b1aad138d76200eb8206acb3c15",
+      "duplicateIds": [],
+      "missingImages": [],
+      "layoutScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-en-320-no-preference-layout.png",
+      "stageScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-en-320-no-preference-stage.png",
+      "horizontalOverflow": false,
+      "semester": {
+        "guides": [
+          {
+            "cardId": "course-selection",
+            "query": "Course Selection and Add/Drop",
+            "heading": "Course Selection and Add/Drop",
+            "contact": "Who to ContactAGD Department Office / Registration and Curriculum Section07-6158000#2016Visit the responsible office’s website ↗",
+            "url": "http://127.0.0.1:8820/?lang=en#/students/guide",
+            "screenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-en-320-no-preference-guide-course-selection.png"
+          },
+          {
+            "cardId": "credit-transfer",
+            "query": "Credit Waiver and Transfer",
+            "heading": "Credit Waiver and Transfer",
+            "contact": "Who to ContactCourse Offering Department / AGD Department Office / Registration and Curriculum Section07-6158000#2016Visit the responsible office’s website ↗",
+            "url": "http://127.0.0.1:8820/?lang=en#/students/guide",
+            "screenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-en-320-no-preference-guide-credit-transfer.png"
+          },
+          {
+            "cardId": "graduation",
+            "query": "Graduation Audit",
+            "heading": "Graduation Audit",
+            "contact": "Who to ContactDepartment of Animation and Game Design Office07-6158000#6102Additional Assistance:Office of Academic Affairs Registration and Curriculum Section (Department of Animation and Game Design) · 07-6158000#2016Visit the responsible office’s website ↗",
+            "url": "http://127.0.0.1:8820/?lang=en#/students/guide",
+            "screenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-en-320-no-preference-guide-graduation.png"
+          }
+        ],
+        "wrongWindows": [
+          {
+            "task": "course-plan",
+            "hint": "Classroom is not the process contact for this question. Ask the department office or Registration and Curriculum Section, with your entry-year plan and missing courses."
+          },
+          {
+            "task": "course-record",
+            "hint": "Classroom is not the process contact for this question. Attendance does not register a course. Registration and Curriculum Section maintains records; bring the course code and a screenshot."
+          },
+          {
+            "task": "credit",
+            "hint": "Classroom is not the process contact for this question. Ask Registration and Curriculum Section about credit-transfer steps. Check current eligibility, dates and review order; advice is not approval."
+          }
+        ],
+        "taskLabels": [
+          "Check required courses",
+          "Ask about a course record",
+          "Ask about credit-transfer steps",
+          "Ask about graduation gaps"
+        ],
+        "oldCoordinatesBlocked": [
+          {
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "progress": "0/3",
+            "hint": "Choose a question first. Reaching coordinates alone does not complete an errand."
+          },
+          {
+            "position": {
+              "x": 4,
+              "y": 0
+            },
+            "progress": "0/3",
+            "hint": "Choose a question first. Reaching coordinates alone does not complete an errand."
+          },
+          {
+            "position": {
+              "x": 2,
+              "y": 2
+            },
+            "progress": "0/3",
+            "hint": "Choose a question first. Reaching coordinates alone does not complete an errand."
+          }
+        ],
+        "thirdScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-en-320-no-preference-third-choice.png",
+        "replayCaptions": [
+          "Check required courses → Registration and Curriculum Section · advice, not approval",
+          "Ask about a course record → Registration and Curriculum Section · advice, not approval",
+          "Ask about credit-transfer steps → Registration and Curriculum Section · advice, not approval",
+          "Ask about graduation gaps → Department office · advice, not approval"
+        ]
+      },
+      "score": "100 / 100",
+      "artifact": {
+        "fictionalMap": true,
+        "consultationOnly": true,
+        "route": [
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 1
+          },
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 4,
+            "y": 0
+          },
+          {
+            "x": 4,
+            "y": 1
+          },
+          {
+            "x": 4,
+            "y": 2
+          },
+          {
+            "x": 3,
+            "y": 2
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 3,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 1
+          },
+          {
+            "x": 4,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 1
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 3,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 1
+          },
+          {
+            "x": 4,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 1
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 3,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 1
+          },
+          {
+            "x": 4,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "visits": [
+          {
+            "round": 0,
+            "taskId": "course-plan",
+            "windowId": "academic",
+            "x": 4,
+            "y": 0,
+            "steps": 18,
+            "cardId": "course-selection",
+            "sourceIds": [
+              "academic-faq",
+              "academic-contact"
+            ]
+          },
+          {
+            "round": 1,
+            "taskId": "course-record",
+            "windowId": "academic",
+            "x": 4,
+            "y": 0,
+            "steps": 26,
+            "cardId": "course-selection",
+            "sourceIds": [
+              "academic-contact",
+              "academic-faq"
+            ]
+          },
+          {
+            "round": 2,
+            "taskId": "credit",
+            "windowId": "academic",
+            "x": 4,
+            "y": 0,
+            "steps": 34,
+            "cardId": "credit-transfer",
+            "sourceIds": [
+              "credit-transfer-115-1",
+              "credit-transfer-procedure"
+            ]
+          },
+          {
+            "round": 2,
+            "taskId": "graduation",
+            "windowId": "department",
+            "x": 0,
+            "y": 0,
+            "steps": 38,
+            "cardId": "graduation",
+            "sourceIds": [
+              "academic-faq",
+              "dept-contact"
+            ]
+          }
+        ],
+        "attempts": 11,
+        "thirdActOrder": [
+          "credit",
+          "graduation"
+        ]
+      },
+      "resultScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-en-320-no-preference-result.png",
+      "replayScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-en-320-no-preference-replay.png",
+      "replayShots": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "game": "semester",
+      "lang": "en",
+      "width": 1440,
+      "reducedMotion": "no-preference",
+      "keyboard": false,
+      "status": "pass",
+      "checks": {
+        "locale": "yes",
+        "uniqueIds": "yes",
+        "images": "yes",
+        "initialWrongBlocked": "yes",
+        "noHorizontalOverflow": "yes",
+        "completedFromDOM": "yes",
+        "mutedPlayable": "yes",
+        "taskContactTravel": "yes",
+        "realGuideSearch": "yes",
+        "oldCoordinatesBlocked": "yes",
+        "replay4Shots": "yes",
+        "retryFresh": "yes",
+        "browserErrors": "yes"
+      },
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "stylesheetSha256": "d8bb6f5e7d2c3c10b0d903d23fb8525fca222b1aad138d76200eb8206acb3c15",
+      "duplicateIds": [],
+      "missingImages": [],
+      "layoutScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-en-1440-no-preference-layout.png",
+      "stageScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-en-1440-no-preference-stage.png",
+      "horizontalOverflow": false,
+      "semester": {
+        "guides": [
+          {
+            "cardId": "course-selection",
+            "query": "Course Selection and Add/Drop",
+            "heading": "Course Selection and Add/Drop",
+            "contact": "Who to ContactAGD Department Office / Registration and Curriculum Section07-6158000#2016Visit the responsible office’s website ↗",
+            "url": "http://127.0.0.1:8820/?lang=en#/students/guide",
+            "screenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-en-1440-no-preference-guide-course-selection.png"
+          },
+          {
+            "cardId": "graduation",
+            "query": "Graduation Audit",
+            "heading": "Graduation Audit",
+            "contact": "Who to ContactDepartment of Animation and Game Design Office07-6158000#6102Additional Assistance:Office of Academic Affairs Registration and Curriculum Section (Department of Animation and Game Design) · 07-6158000#2016Visit the responsible office’s website ↗",
+            "url": "http://127.0.0.1:8820/?lang=en#/students/guide",
+            "screenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-en-1440-no-preference-guide-graduation.png"
+          },
+          {
+            "cardId": "credit-transfer",
+            "query": "Credit Waiver and Transfer",
+            "heading": "Credit Waiver and Transfer",
+            "contact": "Who to ContactCourse Offering Department / AGD Department Office / Registration and Curriculum Section07-6158000#2016Visit the responsible office’s website ↗",
+            "url": "http://127.0.0.1:8820/?lang=en#/students/guide",
+            "screenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-en-1440-no-preference-guide-credit-transfer.png"
+          }
+        ],
+        "wrongWindows": [
+          {
+            "task": "course-plan",
+            "hint": "Classroom is not the process contact for this question. Ask the department office or Registration and Curriculum Section, with your entry-year plan and missing courses."
+          },
+          {
+            "task": "course-record",
+            "hint": "Classroom is not the process contact for this question. Attendance does not register a course. Registration and Curriculum Section maintains records; bring the course code and a screenshot."
+          },
+          {
+            "task": "graduation",
+            "hint": "Classroom is not the process contact for this question. Bring your entry-year plan and gaps to the department office or Registration and Curriculum Section. Advice is not graduation approval."
+          }
+        ],
+        "taskLabels": [
+          "Check required courses",
+          "Ask about a course record",
+          "Ask about graduation gaps",
+          "Ask about credit-transfer steps"
+        ],
+        "oldCoordinatesBlocked": [
+          {
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "progress": "0/3",
+            "hint": "Choose a question first. Reaching coordinates alone does not complete an errand."
+          },
+          {
+            "position": {
+              "x": 4,
+              "y": 0
+            },
+            "progress": "0/3",
+            "hint": "Choose a question first. Reaching coordinates alone does not complete an errand."
+          },
+          {
+            "position": {
+              "x": 2,
+              "y": 2
+            },
+            "progress": "0/3",
+            "hint": "Choose a question first. Reaching coordinates alone does not complete an errand."
+          }
+        ],
+        "thirdScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-en-1440-no-preference-third-choice.png",
+        "replayCaptions": [
+          "Check required courses → Department office · advice, not approval",
+          "Ask about a course record → Registration and Curriculum Section · advice, not approval",
+          "Ask about graduation gaps → Department office · advice, not approval",
+          "Ask about credit-transfer steps → Registration and Curriculum Section · advice, not approval"
+        ]
+      },
+      "score": "100 / 100",
+      "artifact": {
+        "fictionalMap": true,
+        "consultationOnly": true,
+        "route": [
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 1
+          },
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 4,
+            "y": 0
+          },
+          {
+            "x": 4,
+            "y": 1
+          },
+          {
+            "x": 4,
+            "y": 2
+          },
+          {
+            "x": 3,
+            "y": 2
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 1
+          },
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 1
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 3,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 1
+          },
+          {
+            "x": 4,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 1
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 1
+          },
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 4,
+            "y": 0
+          }
+        ],
+        "visits": [
+          {
+            "round": 0,
+            "taskId": "course-plan",
+            "windowId": "department",
+            "x": 0,
+            "y": 0,
+            "steps": 18,
+            "cardId": "course-selection",
+            "sourceIds": [
+              "academic-faq",
+              "academic-contact"
+            ]
+          },
+          {
+            "round": 1,
+            "taskId": "course-record",
+            "windowId": "academic",
+            "x": 4,
+            "y": 0,
+            "steps": 26,
+            "cardId": "course-selection",
+            "sourceIds": [
+              "academic-contact",
+              "academic-faq"
+            ]
+          },
+          {
+            "round": 2,
+            "taskId": "graduation",
+            "windowId": "department",
+            "x": 0,
+            "y": 0,
+            "steps": 34,
+            "cardId": "graduation",
+            "sourceIds": [
+              "academic-faq",
+              "dept-contact"
+            ]
+          },
+          {
+            "round": 2,
+            "taskId": "credit",
+            "windowId": "academic",
+            "x": 4,
+            "y": 0,
+            "steps": 38,
+            "cardId": "credit-transfer",
+            "sourceIds": [
+              "credit-transfer-115-1",
+              "credit-transfer-procedure"
+            ]
+          }
+        ],
+        "attempts": 11,
+        "thirdActOrder": [
+          "graduation",
+          "credit"
+        ]
+      },
+      "resultScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-en-1440-no-preference-result.png",
+      "replayScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-en-1440-no-preference-replay.png",
+      "replayShots": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "game": "semester",
+      "lang": "ja",
+      "width": 320,
+      "reducedMotion": "no-preference",
+      "keyboard": false,
+      "status": "pass",
+      "checks": {
+        "locale": "yes",
+        "uniqueIds": "yes",
+        "images": "yes",
+        "initialWrongBlocked": "yes",
+        "noHorizontalOverflow": "yes",
+        "completedFromDOM": "yes",
+        "mutedPlayable": "yes",
+        "taskContactTravel": "yes",
+        "realGuideSearch": "yes",
+        "oldCoordinatesBlocked": "yes",
+        "replay4Shots": "yes",
+        "retryFresh": "yes",
+        "exitArchive": "yes",
+        "browserErrors": "yes"
+      },
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "stylesheetSha256": "d8bb6f5e7d2c3c10b0d903d23fb8525fca222b1aad138d76200eb8206acb3c15",
+      "duplicateIds": [],
+      "missingImages": [],
+      "layoutScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-ja-320-no-preference-layout.png",
+      "stageScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-ja-320-no-preference-stage.png",
+      "horizontalOverflow": false,
+      "semester": {
+        "guides": [
+          {
+            "cardId": "course-selection",
+            "query": "履修登録・修正（科目追加・取り消し）",
+            "heading": "履修登録・修正（科目追加・取り消し）",
+            "contact": "問い合わせ先アニメとゲームデザイン学科事務室／登録・履修課07-6158000#2016担当窓口へ ↗",
+            "url": "http://127.0.0.1:8820/?lang=ja#/students/guide",
+            "screenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-ja-320-no-preference-guide-course-selection.png"
+          },
+          {
+            "cardId": "credit-transfer",
+            "query": "単位認定・免除",
+            "heading": "単位認定・免除",
+            "contact": "問い合わせ先開講部局／アニメとゲームデザイン学科事務室／登録・履修課07-6158000#2016担当窓口へ ↗",
+            "url": "http://127.0.0.1:8820/?lang=ja#/students/guide",
+            "screenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-ja-320-no-preference-guide-credit-transfer.png"
+          },
+          {
+            "cardId": "graduation",
+            "query": "卒業要件の確認",
+            "heading": "卒業要件の確認",
+            "contact": "問い合わせ先アニメとゲームデザイン学科事務室07-6158000#6102その他のサポート：教務処・註冊課務組（学籍・履修担当／本学科担当） · 07-6158000#2016担当窓口へ ↗",
+            "url": "http://127.0.0.1:8820/?lang=ja#/students/guide",
+            "screenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-ja-320-no-preference-guide-graduation.png"
+          }
+        ],
+        "wrongWindows": [
+          {
+            "task": "course-plan",
+            "hint": "授業の教室は今回の手続き窓口ではありません。入学年度の履修表と不足科目を持ち、学科事務室か註冊課務組（学籍・履修担当）へ。"
+          },
+          {
+            "task": "course-record",
+            "hint": "授業の教室は今回の手続き窓口ではありません。出席だけでは登録されません。記録の手続きは註冊課務組（学籍・履修担当）へ。科目コードと画面を準備。"
+          },
+          {
+            "task": "credit",
+            "hint": "授業の教室は今回の手続き窓口ではありません。単位認定の手順は註冊課務組（学籍・履修担当）へ。当期の資格・期限・審査順を確認。相談は承認ではありません。"
+          }
+        ],
+        "taskLabels": [
+          "必修の不足を相談",
+          "履修記録の疑問",
+          "単位認定の手順を相談",
+          "卒業要件の不足を相談"
+        ],
+        "oldCoordinatesBlocked": [
+          {
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "progress": "0/3",
+            "hint": "先に用事を選ぼう。座標に着くだけでは完了しません。"
+          },
+          {
+            "position": {
+              "x": 4,
+              "y": 0
+            },
+            "progress": "0/3",
+            "hint": "先に用事を選ぼう。座標に着くだけでは完了しません。"
+          },
+          {
+            "position": {
+              "x": 2,
+              "y": 2
+            },
+            "progress": "0/3",
+            "hint": "先に用事を選ぼう。座標に着くだけでは完了しません。"
+          }
+        ],
+        "thirdScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-ja-320-no-preference-third-choice.png",
+        "replayCaptions": [
+          "必修の不足を相談 → 註冊課務組（学籍・履修担当）｜相談であり承認ではありません",
+          "履修記録の疑問 → 註冊課務組（学籍・履修担当）｜相談であり承認ではありません",
+          "単位認定の手順を相談 → 註冊課務組（学籍・履修担当）｜相談であり承認ではありません",
+          "卒業要件の不足を相談 → 学科事務室｜相談であり承認ではありません"
+        ]
+      },
+      "score": "100 / 100",
+      "artifact": {
+        "fictionalMap": true,
+        "consultationOnly": true,
+        "route": [
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 1
+          },
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 4,
+            "y": 0
+          },
+          {
+            "x": 4,
+            "y": 1
+          },
+          {
+            "x": 4,
+            "y": 2
+          },
+          {
+            "x": 3,
+            "y": 2
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 3,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 1
+          },
+          {
+            "x": 4,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 1
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 3,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 1
+          },
+          {
+            "x": 4,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 1
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 3,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 1
+          },
+          {
+            "x": 4,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "visits": [
+          {
+            "round": 0,
+            "taskId": "course-plan",
+            "windowId": "academic",
+            "x": 4,
+            "y": 0,
+            "steps": 18,
+            "cardId": "course-selection",
+            "sourceIds": [
+              "academic-faq",
+              "academic-contact"
+            ]
+          },
+          {
+            "round": 1,
+            "taskId": "course-record",
+            "windowId": "academic",
+            "x": 4,
+            "y": 0,
+            "steps": 26,
+            "cardId": "course-selection",
+            "sourceIds": [
+              "academic-contact",
+              "academic-faq"
+            ]
+          },
+          {
+            "round": 2,
+            "taskId": "credit",
+            "windowId": "academic",
+            "x": 4,
+            "y": 0,
+            "steps": 34,
+            "cardId": "credit-transfer",
+            "sourceIds": [
+              "credit-transfer-115-1",
+              "credit-transfer-procedure"
+            ]
+          },
+          {
+            "round": 2,
+            "taskId": "graduation",
+            "windowId": "department",
+            "x": 0,
+            "y": 0,
+            "steps": 38,
+            "cardId": "graduation",
+            "sourceIds": [
+              "academic-faq",
+              "dept-contact"
+            ]
+          }
+        ],
+        "attempts": 11,
+        "thirdActOrder": [
+          "credit",
+          "graduation"
+        ]
+      },
+      "resultScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-ja-320-no-preference-result.png",
+      "replayScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-ja-320-no-preference-replay.png",
+      "replayShots": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "game": "semester",
+      "lang": "ja",
+      "width": 1440,
+      "reducedMotion": "no-preference",
+      "keyboard": false,
+      "status": "pass",
+      "checks": {
+        "locale": "yes",
+        "uniqueIds": "yes",
+        "images": "yes",
+        "initialWrongBlocked": "yes",
+        "noHorizontalOverflow": "yes",
+        "completedFromDOM": "yes",
+        "mutedPlayable": "yes",
+        "taskContactTravel": "yes",
+        "realGuideSearch": "yes",
+        "oldCoordinatesBlocked": "yes",
+        "replay4Shots": "yes",
+        "retryFresh": "yes",
+        "browserErrors": "yes"
+      },
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "stylesheetSha256": "d8bb6f5e7d2c3c10b0d903d23fb8525fca222b1aad138d76200eb8206acb3c15",
+      "duplicateIds": [],
+      "missingImages": [],
+      "layoutScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-ja-1440-no-preference-layout.png",
+      "stageScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-ja-1440-no-preference-stage.png",
+      "horizontalOverflow": false,
+      "semester": {
+        "guides": [
+          {
+            "cardId": "course-selection",
+            "query": "履修登録・修正（科目追加・取り消し）",
+            "heading": "履修登録・修正（科目追加・取り消し）",
+            "contact": "問い合わせ先アニメとゲームデザイン学科事務室／登録・履修課07-6158000#2016担当窓口へ ↗",
+            "url": "http://127.0.0.1:8820/?lang=ja#/students/guide",
+            "screenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-ja-1440-no-preference-guide-course-selection.png"
+          },
+          {
+            "cardId": "graduation",
+            "query": "卒業要件の確認",
+            "heading": "卒業要件の確認",
+            "contact": "問い合わせ先アニメとゲームデザイン学科事務室07-6158000#6102その他のサポート：教務処・註冊課務組（学籍・履修担当／本学科担当） · 07-6158000#2016担当窓口へ ↗",
+            "url": "http://127.0.0.1:8820/?lang=ja#/students/guide",
+            "screenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-ja-1440-no-preference-guide-graduation.png"
+          },
+          {
+            "cardId": "credit-transfer",
+            "query": "単位認定・免除",
+            "heading": "単位認定・免除",
+            "contact": "問い合わせ先開講部局／アニメとゲームデザイン学科事務室／登録・履修課07-6158000#2016担当窓口へ ↗",
+            "url": "http://127.0.0.1:8820/?lang=ja#/students/guide",
+            "screenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-ja-1440-no-preference-guide-credit-transfer.png"
+          }
+        ],
+        "wrongWindows": [
+          {
+            "task": "course-plan",
+            "hint": "授業の教室は今回の手続き窓口ではありません。入学年度の履修表と不足科目を持ち、学科事務室か註冊課務組（学籍・履修担当）へ。"
+          },
+          {
+            "task": "course-record",
+            "hint": "授業の教室は今回の手続き窓口ではありません。出席だけでは登録されません。記録の手続きは註冊課務組（学籍・履修担当）へ。科目コードと画面を準備。"
+          },
+          {
+            "task": "graduation",
+            "hint": "授業の教室は今回の手続き窓口ではありません。入学年度の履修表と不足項目を持ち、学科事務室か註冊課務組（学籍・履修担当）へ。相談は卒業認定ではありません。"
+          }
+        ],
+        "taskLabels": [
+          "必修の不足を相談",
+          "履修記録の疑問",
+          "卒業要件の不足を相談",
+          "単位認定の手順を相談"
+        ],
+        "oldCoordinatesBlocked": [
+          {
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "progress": "0/3",
+            "hint": "先に用事を選ぼう。座標に着くだけでは完了しません。"
+          },
+          {
+            "position": {
+              "x": 4,
+              "y": 0
+            },
+            "progress": "0/3",
+            "hint": "先に用事を選ぼう。座標に着くだけでは完了しません。"
+          },
+          {
+            "position": {
+              "x": 2,
+              "y": 2
+            },
+            "progress": "0/3",
+            "hint": "先に用事を選ぼう。座標に着くだけでは完了しません。"
+          }
+        ],
+        "thirdScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-ja-1440-no-preference-third-choice.png",
+        "replayCaptions": [
+          "必修の不足を相談 → 学科事務室｜相談であり承認ではありません",
+          "履修記録の疑問 → 註冊課務組（学籍・履修担当）｜相談であり承認ではありません",
+          "卒業要件の不足を相談 → 学科事務室｜相談であり承認ではありません",
+          "単位認定の手順を相談 → 註冊課務組（学籍・履修担当）｜相談であり承認ではありません"
+        ]
+      },
+      "score": "100 / 100",
+      "artifact": {
+        "fictionalMap": true,
+        "consultationOnly": true,
+        "route": [
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 1
+          },
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 4,
+            "y": 0
+          },
+          {
+            "x": 4,
+            "y": 1
+          },
+          {
+            "x": 4,
+            "y": 2
+          },
+          {
+            "x": 3,
+            "y": 2
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 1
+          },
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 1
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 3,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 1
+          },
+          {
+            "x": 4,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 1
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 1
+          },
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 4,
+            "y": 0
+          }
+        ],
+        "visits": [
+          {
+            "round": 0,
+            "taskId": "course-plan",
+            "windowId": "department",
+            "x": 0,
+            "y": 0,
+            "steps": 18,
+            "cardId": "course-selection",
+            "sourceIds": [
+              "academic-faq",
+              "academic-contact"
+            ]
+          },
+          {
+            "round": 1,
+            "taskId": "course-record",
+            "windowId": "academic",
+            "x": 4,
+            "y": 0,
+            "steps": 26,
+            "cardId": "course-selection",
+            "sourceIds": [
+              "academic-contact",
+              "academic-faq"
+            ]
+          },
+          {
+            "round": 2,
+            "taskId": "graduation",
+            "windowId": "department",
+            "x": 0,
+            "y": 0,
+            "steps": 34,
+            "cardId": "graduation",
+            "sourceIds": [
+              "academic-faq",
+              "dept-contact"
+            ]
+          },
+          {
+            "round": 2,
+            "taskId": "credit",
+            "windowId": "academic",
+            "x": 4,
+            "y": 0,
+            "steps": 38,
+            "cardId": "credit-transfer",
+            "sourceIds": [
+              "credit-transfer-115-1",
+              "credit-transfer-procedure"
+            ]
+          }
+        ],
+        "attempts": 11,
+        "thirdActOrder": [
+          "graduation",
+          "credit"
+        ]
+      },
+      "resultScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-ja-1440-no-preference-result.png",
+      "replayScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-ja-1440-no-preference-replay.png",
+      "replayShots": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "game": "semester",
+      "lang": "en",
+      "width": 1440,
+      "reducedMotion": "no-preference",
+      "keyboard": true,
+      "status": "pass",
+      "checks": {
+        "locale": "yes",
+        "uniqueIds": "yes",
+        "images": "yes",
+        "initialWrongBlocked": "yes",
+        "noHorizontalOverflow": "yes",
+        "completedFromDOM": "yes",
+        "mutedPlayable": "yes",
+        "taskContactTravel": "yes",
+        "realGuideSearch": "yes",
+        "oldCoordinatesBlocked": "yes",
+        "replay4Shots": "yes",
+        "retryFresh": "yes",
+        "browserErrors": "yes"
+      },
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "stylesheetSha256": "d8bb6f5e7d2c3c10b0d903d23fb8525fca222b1aad138d76200eb8206acb3c15",
+      "duplicateIds": [],
+      "missingImages": [],
+      "layoutScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-en-1440-keyboard-layout.png",
+      "stageScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-en-1440-keyboard-stage.png",
+      "horizontalOverflow": false,
+      "semester": {
+        "guides": [
+          {
+            "cardId": "course-selection",
+            "query": "Course Selection and Add/Drop",
+            "heading": "Course Selection and Add/Drop",
+            "contact": "Who to ContactAGD Department Office / Registration and Curriculum Section07-6158000#2016Visit the responsible office’s website ↗",
+            "url": "http://127.0.0.1:8820/?lang=en#/students/guide",
+            "screenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-en-1440-keyboard-guide-course-selection.png"
+          },
+          {
+            "cardId": "credit-transfer",
+            "query": "Credit Waiver and Transfer",
+            "heading": "Credit Waiver and Transfer",
+            "contact": "Who to ContactCourse Offering Department / AGD Department Office / Registration and Curriculum Section07-6158000#2016Visit the responsible office’s website ↗",
+            "url": "http://127.0.0.1:8820/?lang=en#/students/guide",
+            "screenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-en-1440-keyboard-guide-credit-transfer.png"
+          },
+          {
+            "cardId": "graduation",
+            "query": "Graduation Audit",
+            "heading": "Graduation Audit",
+            "contact": "Who to ContactDepartment of Animation and Game Design Office07-6158000#6102Additional Assistance:Office of Academic Affairs Registration and Curriculum Section (Department of Animation and Game Design) · 07-6158000#2016Visit the responsible office’s website ↗",
+            "url": "http://127.0.0.1:8820/?lang=en#/students/guide",
+            "screenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-en-1440-keyboard-guide-graduation.png"
+          }
+        ],
+        "wrongWindows": [
+          {
+            "task": "course-plan",
+            "hint": "Classroom is not the process contact for this question. Ask the department office or Registration and Curriculum Section, with your entry-year plan and missing courses."
+          },
+          {
+            "task": "course-record",
+            "hint": "Classroom is not the process contact for this question. Attendance does not register a course. Registration and Curriculum Section maintains records; bring the course code and a screenshot."
+          },
+          {
+            "task": "credit",
+            "hint": "Classroom is not the process contact for this question. Ask Registration and Curriculum Section about credit-transfer steps. Check current eligibility, dates and review order; advice is not approval."
+          }
+        ],
+        "taskLabels": [
+          "Check required courses",
+          "Ask about a course record",
+          "Ask about credit-transfer steps",
+          "Ask about graduation gaps"
+        ],
+        "oldCoordinatesBlocked": [
+          {
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "progress": "0/3",
+            "hint": "Choose a question first. Reaching coordinates alone does not complete an errand."
+          },
+          {
+            "position": {
+              "x": 4,
+              "y": 0
+            },
+            "progress": "0/3",
+            "hint": "Choose a question first. Reaching coordinates alone does not complete an errand."
+          },
+          {
+            "position": {
+              "x": 2,
+              "y": 2
+            },
+            "progress": "0/3",
+            "hint": "Choose a question first. Reaching coordinates alone does not complete an errand."
+          }
+        ],
+        "thirdScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-en-1440-keyboard-third-choice.png",
+        "replayCaptions": [
+          "Check required courses → Registration and Curriculum Section · advice, not approval",
+          "Ask about a course record → Registration and Curriculum Section · advice, not approval",
+          "Ask about credit-transfer steps → Registration and Curriculum Section · advice, not approval",
+          "Ask about graduation gaps → Department office · advice, not approval"
+        ]
+      },
+      "score": "100 / 100",
+      "artifact": {
+        "fictionalMap": true,
+        "consultationOnly": true,
+        "route": [
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 1
+          },
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 4,
+            "y": 0
+          },
+          {
+            "x": 4,
+            "y": 1
+          },
+          {
+            "x": 4,
+            "y": 2
+          },
+          {
+            "x": 3,
+            "y": 2
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 3,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 1
+          },
+          {
+            "x": 4,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 1
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 3,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 1
+          },
+          {
+            "x": 4,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 1
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 3,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 1
+          },
+          {
+            "x": 4,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "visits": [
+          {
+            "round": 0,
+            "taskId": "course-plan",
+            "windowId": "academic",
+            "x": 4,
+            "y": 0,
+            "steps": 18,
+            "cardId": "course-selection",
+            "sourceIds": [
+              "academic-faq",
+              "academic-contact"
+            ]
+          },
+          {
+            "round": 1,
+            "taskId": "course-record",
+            "windowId": "academic",
+            "x": 4,
+            "y": 0,
+            "steps": 26,
+            "cardId": "course-selection",
+            "sourceIds": [
+              "academic-contact",
+              "academic-faq"
+            ]
+          },
+          {
+            "round": 2,
+            "taskId": "credit",
+            "windowId": "academic",
+            "x": 4,
+            "y": 0,
+            "steps": 34,
+            "cardId": "credit-transfer",
+            "sourceIds": [
+              "credit-transfer-115-1",
+              "credit-transfer-procedure"
+            ]
+          },
+          {
+            "round": 2,
+            "taskId": "graduation",
+            "windowId": "department",
+            "x": 0,
+            "y": 0,
+            "steps": 38,
+            "cardId": "graduation",
+            "sourceIds": [
+              "academic-faq",
+              "dept-contact"
+            ]
+          }
+        ],
+        "attempts": 11,
+        "thirdActOrder": [
+          "credit",
+          "graduation"
+        ]
+      },
+      "resultScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-en-1440-keyboard-result.png",
+      "replayScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-en-1440-keyboard-replay.png",
+      "replayShots": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "game": "semester",
+      "lang": "ja",
+      "width": 320,
+      "reducedMotion": "reduce",
+      "keyboard": false,
+      "status": "pass",
+      "checks": {
+        "locale": "yes",
+        "uniqueIds": "yes",
+        "images": "yes",
+        "initialWrongBlocked": "yes",
+        "noHorizontalOverflow": "yes",
+        "completedFromDOM": "yes",
+        "mutedPlayable": "yes",
+        "taskContactTravel": "yes",
+        "realGuideSearch": "yes",
+        "oldCoordinatesBlocked": "yes",
+        "replay4Shots": "yes",
+        "retryFresh": "yes",
+        "exitArchive": "yes",
+        "browserErrors": "yes"
+      },
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "stylesheetSha256": "d8bb6f5e7d2c3c10b0d903d23fb8525fca222b1aad138d76200eb8206acb3c15",
+      "duplicateIds": [],
+      "missingImages": [],
+      "layoutScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-ja-320-reduce-layout.png",
+      "stageScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-ja-320-reduce-stage.png",
+      "horizontalOverflow": false,
+      "semester": {
+        "guides": [
+          {
+            "cardId": "course-selection",
+            "query": "履修登録・修正（科目追加・取り消し）",
+            "heading": "履修登録・修正（科目追加・取り消し）",
+            "contact": "問い合わせ先アニメとゲームデザイン学科事務室／登録・履修課07-6158000#2016担当窓口へ ↗",
+            "url": "http://127.0.0.1:8820/?lang=ja#/students/guide",
+            "screenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-ja-320-reduce-guide-course-selection.png"
+          },
+          {
+            "cardId": "graduation",
+            "query": "卒業要件の確認",
+            "heading": "卒業要件の確認",
+            "contact": "問い合わせ先アニメとゲームデザイン学科事務室07-6158000#6102その他のサポート：教務処・註冊課務組（学籍・履修担当／本学科担当） · 07-6158000#2016担当窓口へ ↗",
+            "url": "http://127.0.0.1:8820/?lang=ja#/students/guide",
+            "screenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-ja-320-reduce-guide-graduation.png"
+          },
+          {
+            "cardId": "credit-transfer",
+            "query": "単位認定・免除",
+            "heading": "単位認定・免除",
+            "contact": "問い合わせ先開講部局／アニメとゲームデザイン学科事務室／登録・履修課07-6158000#2016担当窓口へ ↗",
+            "url": "http://127.0.0.1:8820/?lang=ja#/students/guide",
+            "screenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-ja-320-reduce-guide-credit-transfer.png"
+          }
+        ],
+        "wrongWindows": [
+          {
+            "task": "course-plan",
+            "hint": "授業の教室は今回の手続き窓口ではありません。入学年度の履修表と不足科目を持ち、学科事務室か註冊課務組（学籍・履修担当）へ。"
+          },
+          {
+            "task": "course-record",
+            "hint": "授業の教室は今回の手続き窓口ではありません。出席だけでは登録されません。記録の手続きは註冊課務組（学籍・履修担当）へ。科目コードと画面を準備。"
+          },
+          {
+            "task": "graduation",
+            "hint": "授業の教室は今回の手続き窓口ではありません。入学年度の履修表と不足項目を持ち、学科事務室か註冊課務組（学籍・履修担当）へ。相談は卒業認定ではありません。"
+          }
+        ],
+        "taskLabels": [
+          "必修の不足を相談",
+          "履修記録の疑問",
+          "卒業要件の不足を相談",
+          "単位認定の手順を相談"
+        ],
+        "oldCoordinatesBlocked": [
+          {
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "progress": "0/3",
+            "hint": "先に用事を選ぼう。座標に着くだけでは完了しません。"
+          },
+          {
+            "position": {
+              "x": 4,
+              "y": 0
+            },
+            "progress": "0/3",
+            "hint": "先に用事を選ぼう。座標に着くだけでは完了しません。"
+          },
+          {
+            "position": {
+              "x": 2,
+              "y": 2
+            },
+            "progress": "0/3",
+            "hint": "先に用事を選ぼう。座標に着くだけでは完了しません。"
+          }
+        ],
+        "thirdScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-ja-320-reduce-third-choice.png",
+        "replayCaptions": [
+          "必修の不足を相談 → 学科事務室｜相談であり承認ではありません",
+          "履修記録の疑問 → 註冊課務組（学籍・履修担当）｜相談であり承認ではありません",
+          "卒業要件の不足を相談 → 学科事務室｜相談であり承認ではありません",
+          "単位認定の手順を相談 → 註冊課務組（学籍・履修担当）｜相談であり承認ではありません"
+        ]
+      },
+      "score": "100 / 100",
+      "artifact": {
+        "fictionalMap": true,
+        "consultationOnly": true,
+        "route": [
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 1
+          },
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 4,
+            "y": 0
+          },
+          {
+            "x": 4,
+            "y": 1
+          },
+          {
+            "x": 4,
+            "y": 2
+          },
+          {
+            "x": 3,
+            "y": 2
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 1
+          },
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 1
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 3,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 1
+          },
+          {
+            "x": 4,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 1
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 1
+          },
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 4,
+            "y": 0
+          }
+        ],
+        "visits": [
+          {
+            "round": 0,
+            "taskId": "course-plan",
+            "windowId": "department",
+            "x": 0,
+            "y": 0,
+            "steps": 18,
+            "cardId": "course-selection",
+            "sourceIds": [
+              "academic-faq",
+              "academic-contact"
+            ]
+          },
+          {
+            "round": 1,
+            "taskId": "course-record",
+            "windowId": "academic",
+            "x": 4,
+            "y": 0,
+            "steps": 26,
+            "cardId": "course-selection",
+            "sourceIds": [
+              "academic-contact",
+              "academic-faq"
+            ]
+          },
+          {
+            "round": 2,
+            "taskId": "graduation",
+            "windowId": "department",
+            "x": 0,
+            "y": 0,
+            "steps": 34,
+            "cardId": "graduation",
+            "sourceIds": [
+              "academic-faq",
+              "dept-contact"
+            ]
+          },
+          {
+            "round": 2,
+            "taskId": "credit",
+            "windowId": "academic",
+            "x": 4,
+            "y": 0,
+            "steps": 38,
+            "cardId": "credit-transfer",
+            "sourceIds": [
+              "credit-transfer-115-1",
+              "credit-transfer-procedure"
+            ]
+          }
+        ],
+        "attempts": 11,
+        "thirdActOrder": [
+          "graduation",
+          "credit"
+        ]
+      },
+      "resultScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-ja-320-reduce-result.png",
+      "replayScreenshot": "screenshots/2026-10-22T16-52-13-675Z-semester-ja-320-reduce-replay.png",
+      "replayShots": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "errors": [],
+  "status": "pass",
+  "servedSourceSha256": {
+    "runner.mjs": "724748d5be5d5dda03783b7adff37c0ab06e21e48e93d949eb1d67b474479695",
+    "catalog.mjs": "3ff982b58d12e560e94d90ef3032ec389e48207d50bbec91268f914a56882dad",
+    "lab.css": "d8bb6f5e7d2c3c10b0d903d23fb8525fca222b1aad138d76200eb8206acb3c15",
+    "games/children.mjs": "b314af117311a0869d4517c115975f0091aee21000caa25d8524e7b08ba07c18",
+    "games/constitution.mjs": "de73d0e7b5ecd2de54d6f9d3a234a9a4e88bd3dd4861bf91b138c322290a64d5",
+    "games/dragon-boat.mjs": "12c515a8434ea32cd1fdd6013fa9b362ea76488b2ef24a44b1b4ea02d8da02c7",
+    "games/exhibition.mjs": "1c6370fd2e12424defa18963414adf5546dc32f3c2e17450078a3b9ed27bef6b",
+    "games/labor.mjs": "2020df91daa151aa4ca124cc6fa55aa5495e39f7e7f9ae590dd7e211a6c597eb",
+    "games/lantern.mjs": "a550a9c7b2abaaf2ba4f34ea81963cb61431ed7ce1e5de77a12cabb1fc661c2c",
+    "games/lunar-new-year.mjs": "556a459a44487cc8c8a8207f416ae193e5a6ec3bf4a12df9d865f9905127a170",
+    "games/mid-autumn.mjs": "a8c3bdf7368b51e69a41665e68b4ab8b50829be5f6089ebfd2cf757936f19dd1",
+    "games/national-day.mjs": "cc7fe3f338b7f058274f374cfecbcfba7efec888c13fedfbc5a3306cd65cdb48",
+    "games/new-year.mjs": "a6203561b7d3712508f213baceda92e4de4b4979ddb9bedbbbbe750d1ed9e950",
+    "games/peace-memory.mjs": "0b4cb80bb7e2574c4001ea6a507a85d2cf0177bdbab46e557aac54eb13542596",
+    "games/qingming.mjs": "3936b5606016b60ca38de77e63d2f2170681592e6dc7e7c9147e29210870cc5f",
+    "games/retrocession.mjs": "64765225ca980c62feb3f673393efaf8d7d479739b908bf3928389cabca21989",
+    "games/semester.mjs": "b184437bf226354f8602ed5567c4ac941bff6539176f9575cf737a808d7fbcc9",
+    "games/teachers.mjs": "12d92f06a40629e9ffbd63a51f7894f23a5a068634359f68b4a92410c315759f"
+  },
+  "browserVersion": "151.0.7922.34",
+  "twoTaskOrdersAndRoutes": true,
+  "servedSourceSha256After": {
+    "runner.mjs": "724748d5be5d5dda03783b7adff37c0ab06e21e48e93d949eb1d67b474479695",
+    "catalog.mjs": "3ff982b58d12e560e94d90ef3032ec389e48207d50bbec91268f914a56882dad",
+    "lab.css": "d8bb6f5e7d2c3c10b0d903d23fb8525fca222b1aad138d76200eb8206acb3c15",
+    "games/children.mjs": "b314af117311a0869d4517c115975f0091aee21000caa25d8524e7b08ba07c18",
+    "games/constitution.mjs": "de73d0e7b5ecd2de54d6f9d3a234a9a4e88bd3dd4861bf91b138c322290a64d5",
+    "games/dragon-boat.mjs": "12c515a8434ea32cd1fdd6013fa9b362ea76488b2ef24a44b1b4ea02d8da02c7",
+    "games/exhibition.mjs": "1c6370fd2e12424defa18963414adf5546dc32f3c2e17450078a3b9ed27bef6b",
+    "games/labor.mjs": "2020df91daa151aa4ca124cc6fa55aa5495e39f7e7f9ae590dd7e211a6c597eb",
+    "games/lantern.mjs": "a550a9c7b2abaaf2ba4f34ea81963cb61431ed7ce1e5de77a12cabb1fc661c2c",
+    "games/lunar-new-year.mjs": "556a459a44487cc8c8a8207f416ae193e5a6ec3bf4a12df9d865f9905127a170",
+    "games/mid-autumn.mjs": "a8c3bdf7368b51e69a41665e68b4ab8b50829be5f6089ebfd2cf757936f19dd1",
+    "games/national-day.mjs": "cc7fe3f338b7f058274f374cfecbcfba7efec888c13fedfbc5a3306cd65cdb48",
+    "games/new-year.mjs": "a6203561b7d3712508f213baceda92e4de4b4979ddb9bedbbbbe750d1ed9e950",
+    "games/peace-memory.mjs": "0b4cb80bb7e2574c4001ea6a507a85d2cf0177bdbab46e557aac54eb13542596",
+    "games/qingming.mjs": "3936b5606016b60ca38de77e63d2f2170681592e6dc7e7c9147e29210870cc5f",
+    "games/retrocession.mjs": "64765225ca980c62feb3f673393efaf8d7d479739b908bf3928389cabca21989",
+    "games/semester.mjs": "b184437bf226354f8602ed5567c4ac941bff6539176f9575cf737a808d7fbcc9",
+    "games/teachers.mjs": "12d92f06a40629e9ffbd63a51f7894f23a5a068634359f68b4a92410c315759f"
+  }
+}
