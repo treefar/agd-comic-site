@@ -1,0 +1,294 @@
+✔ Golden plan pinned a11cc9c has 83 original values but only82 approved; exact entire op104 is excluded (70.2219ms)
+✖ Read-only prepare validates82 and historical HC without any product writes (135.0762ms)
+✖ Temporary apply preserves every non-target field, root prior13/1 and About44 updates, all8 students and dates (665.9383ms)
+✖ Actual fixed generators in temporary copy create EN/JA new key and delete both old generated keys (98.6691ms)
+✖ All-target exact old-value drift, including the last target, refuses before first write (122.3446ms)
+✖ Missing existing key and unexpected new override key both refuse safely (158.0717ms)
+✖ JA new canonical key collision refuses even when it holds proposed value (123.6802ms)
+✖ Tampered count, excluded operation reintroduced, non-target path, traversal and extra facts all refuse (95.585ms)
+✖ Duplicate record IDs and canonical historical source drift refuse (107.6043ms)
+✖ Concurrent target changes reject before any write (47.0603ms)
+✖ Concurrent overlay, canonical reader, and generator changes reject before any write (46.9814ms)
+✖ New data-file listing and optional overlay appearance reject (41.5177ms)
+✖ Generated overlay shadow of a target or new canonical key cannot hide wrong translation (84.4623ms)
+✖ Prepared object tampering and second apply both refuse (45.7847ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 1
+ℹ fail 13
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4901.0518
+
+✖ failing tests:
+
+test at holiday-lab\translation-review-news-works-final\apply.test.mjs:8:1
+✖ Read-only prepare validates82 and historical HC without any product writes (135.0762ms)
+  Error: NOT_IMPLEMENTED
+      at prepare (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply-safe.mjs:6:33)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply.test.mjs:8:136)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3)
+
+test at holiday-lab\translation-review-news-works-final\apply.test.mjs:9:1
+✖ Temporary apply preserves every non-target field, root prior13/1 and About44 updates, all8 students and dates (665.9383ms)
+  Error: NOT_IMPLEMENTED
+      at prepare (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply-safe.mjs:6:33)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply.test.mjs:11:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+
+test at holiday-lab\translation-review-news-works-final\apply.test.mjs:13:1
+✖ Actual fixed generators in temporary copy create EN/JA new key and delete both old generated keys (98.6691ms)
+  Error: NOT_IMPLEMENTED
+      at prepare (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply-safe.mjs:6:33)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply.test.mjs:13:156)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+
+test at holiday-lab\translation-review-news-works-final\apply.test.mjs:14:1
+✖ All-target exact old-value drift, including the last target, refuses before first write (122.3446ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /EXACT_MISMATCH/. Input:
+  
+  'Error: NOT_IMPLEMENTED'
+  
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply.test.mjs:14:281)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: NOT_IMPLEMENTED
+        at prepare (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply-safe.mjs:6:33)
+        at file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply.test.mjs:14:292
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply.test.mjs:14:281)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1201:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+        at Test.postRun (node:internal/test_runner/test:1330:19)
+        at Test.run (node:internal/test_runner/test:1258:12),
+    expected: /EXACT_MISMATCH/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review-news-works-final\apply.test.mjs:15:1
+✖ Missing existing key and unexpected new override key both refuse safely (158.0717ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /MISSING_KEY/. Input:
+  
+  'Error: NOT_IMPLEMENTED'
+  
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply.test.mjs:15:373)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: NOT_IMPLEMENTED
+        at prepare (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply-safe.mjs:6:33)
+        at file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply.test.mjs:15:384
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply.test.mjs:15:373)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1201:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+        at Test.postRun (node:internal/test_runner/test:1330:19)
+        at Test.run (node:internal/test_runner/test:1258:12),
+    expected: /MISSING_KEY/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review-news-works-final\apply.test.mjs:16:1
+✖ JA new canonical key collision refuses even when it holds proposed value (123.6802ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /NEW_KEY_COLLISION/. Input:
+  
+  'Error: NOT_IMPLEMENTED'
+  
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply.test.mjs:16:320)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: NOT_IMPLEMENTED
+        at prepare (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply-safe.mjs:6:33)
+        at file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply.test.mjs:16:331
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply.test.mjs:16:320)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1201:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+        at Test.postRun (node:internal/test_runner/test:1330:19)
+        at Test.run (node:internal/test_runner/test:1258:12),
+    expected: /NEW_KEY_COLLISION/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review-news-works-final\apply.test.mjs:17:1
+✖ Tampered count, excluded operation reintroduced, non-target path, traversal and extra facts all refuse (95.585ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /PLAN_SCOPE|PLAN_TAMPER/. Input:
+  
+  'Error: NOT_IMPLEMENTED'
+  
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply.test.mjs:17:446)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: NOT_IMPLEMENTED
+        at prepare (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply-safe.mjs:6:33)
+        at file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply.test.mjs:17:457
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply.test.mjs:17:446)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1201:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+        at Test.postRun (node:internal/test_runner/test:1330:19)
+        at Test.run (node:internal/test_runner/test:1258:12),
+    expected: /PLAN_SCOPE|PLAN_TAMPER/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review-news-works-final\apply.test.mjs:18:1
+✖ Duplicate record IDs and canonical historical source drift refuse (107.6043ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /DUPLICATE_RECORD/. Input:
+  
+  'Error: NOT_IMPLEMENTED'
+  
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply.test.mjs:18:371)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: NOT_IMPLEMENTED
+        at prepare (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply-safe.mjs:6:33)
+        at file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply.test.mjs:18:382
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply.test.mjs:18:371)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1201:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+        at Test.postRun (node:internal/test_runner/test:1330:19)
+        at Test.run (node:internal/test_runner/test:1258:12),
+    expected: /DUPLICATE_RECORD/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review-news-works-final\apply.test.mjs:19:1
+✖ Concurrent target changes reject before any write (47.0603ms)
+  Error: NOT_IMPLEMENTED
+      at prepare (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply-safe.mjs:6:33)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply.test.mjs:19:98)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+
+test at holiday-lab\translation-review-news-works-final\apply.test.mjs:20:1
+✖ Concurrent overlay, canonical reader, and generator changes reject before any write (46.9814ms)
+  Error: NOT_IMPLEMENTED
+      at prepare (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply-safe.mjs:6:33)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply.test.mjs:20:229)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+
+test at holiday-lab\translation-review-news-works-final\apply.test.mjs:21:1
+✖ New data-file listing and optional overlay appearance reject (41.5177ms)
+  Error: NOT_IMPLEMENTED
+      at prepare (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply-safe.mjs:6:33)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply.test.mjs:21:274)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+
+test at holiday-lab\translation-review-news-works-final\apply.test.mjs:22:1
+✖ Generated overlay shadow of a target or new canonical key cannot hide wrong translation (84.4623ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /GENERATED_VALUE_MISMATCH/. Input:
+  
+  'Error: NOT_IMPLEMENTED'
+  
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply.test.mjs:22:401)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: NOT_IMPLEMENTED
+        at prepare (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply-safe.mjs:6:33)
+        at file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply.test.mjs:22:412
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply.test.mjs:22:401)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1201:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+        at Test.postRun (node:internal/test_runner/test:1330:19)
+        at Test.run (node:internal/test_runner/test:1258:12),
+    expected: /GENERATED_VALUE_MISMATCH/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review-news-works-final\apply.test.mjs:23:1
+✖ Prepared object tampering and second apply both refuse (45.7847ms)
+  Error: NOT_IMPLEMENTED
+      at prepare (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply-safe.mjs:6:33)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-news-works-final/apply.test.mjs:23:99)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)

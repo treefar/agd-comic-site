@@ -1,0 +1,24 @@
+{
+  "mode": "dry-run",
+  "baseline": "a11cc9c7cbd34bbda962734c7298fe7fc54988c2",
+  "reviewed_plan_values": 83,
+  "operations": 82,
+  "excluded_pending": 1,
+  "excluded_ids": [
+    "NEWSWORK-a9a863dd86b4-en"
+  ],
+  "canonical_changes": 1,
+  "files": [
+    "data/en/news.json",
+    "data/en/works.json",
+    "data/en/ui.json",
+    "data/en/editorial.json",
+    "data/ja/messages.json",
+    "data/news.json"
+  ],
+  "japanese_key_migration": true,
+  "generated_translation_values": 82,
+  "all_non_target_generated_values_preserved": true,
+  "product_files_written": 0,
+  "notes": "Whole-batch preflight and concurrency rejection before first write; no cross-file atomic-write guarantee. Does not write or build generated locales."
+}
