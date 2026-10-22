@@ -5,7 +5,7 @@ module.exports=function proof(root,id){
  const load=p=>JSON.parse(fs.readFileSync(path.join(root,p),'utf8'));
  const q=load('holiday-lab/qa/playthrough.json');
  for(const r of [...(q.previousRuns||[]),q].reverse())if(r.servedSourceSha256?.[`games/${id}.mjs`]===sha&&r.cases.some(c=>c.game===id&&c.lang==='zh'&&c.width===1440&&c.status==='pass'))return 'holiday-lab/qa/playthrough.json';
- for(const folder of ['new-year-choice','lunar-expression']){
+ for(const folder of ['new-year-choice','lunar-expression','semester-tasks']){
   const dir=`holiday-lab/reports/${folder}`;
   for(const name of fs.readdirSync(path.join(root,dir)).filter(n=>n.startsWith('integration-')).sort().reverse()){
    const file=`${dir}/${name}/playthrough.json`;if(!fs.existsSync(path.join(root,file)))continue;const r=load(file);

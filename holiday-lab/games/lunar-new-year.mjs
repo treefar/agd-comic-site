@@ -39,7 +39,7 @@ const directions=[W('先睜大眼、傾斜眉，張嘴接住驚喜；先別急�
 const feedback={
  invalid:W('這組設定無法演出，請重新調整。','These settings cannot be performed. Adjust them.','この設定では演じられません。調整してください。'),
  'surprise-eyes':W('眼睛還沒睜大，驚喜看不出來。試著把眼睛張開。','The eyes still look relaxed. Open them wider for surprise.','まだ目が落ち着いています。大きく開いて驚きを見せよう。'),
- 'surprise-brow':W('眼睛睜大了，眉毛卻還很平。傾斜眉毛，讓驚喜更鮮明。','The eyes are wide, but the brows still look level. Tilt them to strengthen surprise.','目は大きいのに眉は平ら。眉を傾けて驚きを強めよう。'),
+ 'surprise-brow':W('眼睛睜大了，眉毛還接近平直。把眉毛的傾斜做得更明顯。','The eyes are wide, but the brows are almost level. Give the brows a clearer tilt.','目は大きいのに眉はまだ平らに近いです。眉の傾きをはっきりさせよう。'),
  'surprise-mouth':W('眼眉驚訝，嘴卻閉住了。張嘴，接住看到作品的那一聲。','The eyes and brows are surprised, but the mouth is shut. Open it to react.','目と眉は驚いているのに口が閉じています。口でも反応しよう。'),
  upright:W('身體先鞠躬了，表情反而不突出。這幕先站直演。','The bow distracts from the expression. Stay upright for this act.','お辞儀で表情が目立ちません。この幕は体を起こそう。'),
  'joy-eyes':W('眼睛還像剛被嚇到。放鬆眼神，讓笑口成為重點。','The eyes still look startled. Relax them so the grin becomes the focus.','まだ驚いた目。目をゆるめて笑顔を主役にしよう。'),
@@ -55,7 +55,11 @@ const feedback={
  'reserved-mouth-high':W('笑口比輕鞠躬更誇張。收小一點，保留含蓄的微笑。','The grin overpowers the light bow. Soften it into a smaller smile.','笑顔が軽いお辞儀より大げさ。小さくして控えめに。'),
  'reserved-brow':W('眉毛斜得很搶眼。收回一點，讓眼神與微笑說話。','The tilted brows dominate. Level them a little so the eyes and smile can speak.','眉の傾きが目立ちます。少し戻して目と笑顔で伝えよう。')
 };
-function observation(round,values,intent){const v=evaluateExpression(round,values,intent);return v.ok?[W('眼眉和張嘴一起接住了驚喜，可拍下或再演一版。','The eyes, brows and open mouth convey surprise. Capture it or try another version.','目・眉・口で驚きが伝わります。撮影するか、別の演技を。'),W('放鬆的眼神襯出了笑口，開心看得見。','The relaxed eyes let the grin shine. Joy reads clearly.','やわらかな目が笑顔を引き立て、喜びが伝わります。'),W('表情與鞠躬都接上了你選的問候。','The expression and bow match your chosen greeting.','表情とお辞儀が、選んだあいさつに合っています。')][round]:feedback[v.reason];}
+export function expressionFeedback(reason,values){
+ if(reason==='surprise-brow'&&values.brow>=8)return W('眉毛往另一邊傾斜了。換個方向，搭配睜大的眼睛試試。','The brows tilt the other way. Reverse their tilt to match the wide-eyed surprise.','眉の傾きが逆向きです。大きく開いた目に合わせ、傾きを反対にしてみよう。');
+ return feedback[reason];
+}
+function observation(round,values,intent){const v=evaluateExpression(round,values,intent);return v.ok?[W('眼眉和張嘴一起接住了驚喜，可拍下或再演一版。','The eyes, brows and open mouth convey surprise. Capture it or try another version.','目・眉・口で驚きが伝わります。撮影するか、別の演技を。'),W('放鬆的眼神襯出了笑口，開心看得見。','The relaxed eyes let the grin shine. Joy reads clearly.','やわらかな目が笑顔を引き立て、喜びが伝わります。'),W('表情與鞠躬都接上了你選的問候。','The expression and bow match your chosen greeting.','表情とお辞儀が、選んだあいさつに合っています。')][round]:expressionFeedback(v.reason,values);}
 export function buildResult(state){
  if(!state.done||state.poses.length!==3)throw Error('Three completed expressive acts required');
  return {score:100,summary:W('三幕完成。回放保留你的表情、鞠躬與問候意圖；探索不扣分。','Three acts ready. Replay keeps your expressions, bows and greeting intent. Exploring does not reduce your score.','3幕が完成。自分の表情、お辞儀、あいさつの狙いを再生。試行回数では減点しません。'),artifact:{poses:state.poses.map(p=>({...p,values:{...p.values}})),attempts:state.attempts},replay:state.poses.map((v,i)=>{const p=expressionProps(v.values),label=i===2?INTENTS.find(t=>t.value===v.intent).label:roles[i];return {duration:1500+v.values.pose*15,caption:label,sprites:[{key:`actor${i+1}`,...p.body},{key:'prop1',...p.brow,z:5},{key:'prop2',...p.eyes,z:5},{key:'prop3',...p.mouth,z:5},{key:`token${i+1}`,x:86,y:24,width:20,height:25}]};})};
@@ -85,7 +89,7 @@ export function mount(ctx){
   nodes.push(ctx.ui.button({id:'lny-reset-pose',label:W('表情歸零','Reset expression','表情をリセット'),onClick:()=>{values={brow:0,eyes:1,mouth:0,pose:0};Object.entries(sliders).forEach(([k,s])=>s.setValue(values[k]));draw();observe();}}));
   nodes.push(ctx.ui.button({id:'lny-submit',label:W('拍下這一幕','Capture this act','この幕を撮影'),onClick:()=>{
     if(dead||state.done)return;const r=submit(state,values,intent);state=r.state;
-    if(!r.ok){ctx.sound('error');ctx.hint(feedback[r.reason]);return;}
+    if(!r.ok){ctx.sound('error');ctx.hint(expressionFeedback(r.reason,values));return;}
     ctx.sound('success');ctx.setProgress(state.round,3);
     if(state.done){ctx.complete(buildResult(state));return;}
     update();ctx.hint(W('保留上一幕的表情。看新任務，再決定要改哪裡。','Your expression stays. Read the new act and decide what to change.','前の表情を残しました。次の狙いを見て、変えるところを考えよう。'));
