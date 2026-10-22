@@ -1,0 +1,5 @@
+# Preserve raw evidence locally without committing duplicate full-page PNGs/font binaries.
+# JSON records retain URLs, hashes and the original local paths. These raw files are not backed up by Git.
+/runs/*/*.png
+/runs/*/*.woff2
+/runs/*/scan.json
