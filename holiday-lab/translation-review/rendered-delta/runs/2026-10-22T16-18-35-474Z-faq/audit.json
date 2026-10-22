@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-22T16:18:35.476Z",
+  "base": "http://127.0.0.1:8817",
+  "group": "faq",
+  "run": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\translation-review\\rendered-delta\\runs\\2026-10-22T16-18-35-474Z-faq",
+  "sourcePlans": {
+    "faq": {
+      "path": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\translation-review\\faq-remainder\\exact-plan.json",
+      "sha256": "ef50e00ff6b58a7d9e3bf9ed5cea83d933a8bc5b7357ff75e2db536b30f47ba3"
+    },
+    "eligibility": {
+      "path": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\translation-review\\selection-eligibility\\exact-plan.json",
+      "sha256": "cd564cfdced1df1220a42b6748fba705ccb111b6f1ec71e6333f982de6d4ff55"
+    }
+  },
+  "expectedCases": 34,
+  "cases": [],
+  "pages": [],
+  "receipts": {
+    "before": {
+      "index.html": {
+        "url": "http://127.0.0.1:8817/index.html",
+        "status": 200,
+        "bytes": 138865,
+        "sha256": "bf6b407dfde583cbf6e3c54e203fdf7196139afe80f4087048432c788e462e3f"
+      },
+      "styles.css": {
+        "url": "http://127.0.0.1:8817/styles.css",
+        "status": 200,
+        "bytes": 51492,
+        "sha256": "8517da71ab27d11360c02c5e297104840ba39f7d9f760b9b1330c0753ea23641"
+      },
+      "student-guide.css": {
+        "url": "http://127.0.0.1:8817/student-guide.css",
+        "status": 200,
+        "bytes": 14745,
+        "sha256": "43679385ebd03c8569c45dfe638d843079d2fd5d858b81e88058ee4fa0df07c0"
+      }
+    },
+    "after": {}
+  },
+  "fontResponses": [],
+  "pageErrors": [],
+  "errors": [
+    "Error: RECEIPT locale-en.js 404\n    at receipt (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\translation-review\\rendered-delta\\audit.cjs:16:123)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\translation-review\\rendered-delta\\audit.cjs:20:270"
+  ],
+  "scope": "Only changed 17 FAQ strings and 3 eligibility paragraphs at 390 and 1440; character probes inherit the actual target style, and are not treated as visible product content."
+}

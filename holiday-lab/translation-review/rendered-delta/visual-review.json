@@ -1,0 +1,24 @@
+{
+  "reviewer": "Codex代理視覺抽查；不是使用者確認或母語者驗收",
+  "base": "http://127.0.0.1:8818",
+  "run": "runs/2026-10-22T16-20-10-293Z-all",
+  "viewed": [
+    "admission-zh-390-0.png",
+    "admission-en-390-0.png",
+    "admission-ja-390-0.png",
+    "faq-en-390-6.png",
+    "faq-ja-390-5.png",
+    "faq-ja-390-8.png",
+    "admission-ja-1440-0.png",
+    "admission-en-1440-0.png"
+  ],
+  "observations": [
+    "抽查的三語新資格段、英語諮商預約與日語助學/碩甄文字可辨識，沒有看到豆腐缺字或新資格段橫向裁切。",
+    "英語彎引號/撇號在Noto字型的邊距較寬，university’s/guide’s視覺有空隙；DOM無插入空格且cmap存在，不列真缺字。未擅改字詞或字型。",
+    "element截圖以承載目標文字的真實元素為範圍；招生內容整段共用一個元素，所以還含其它流程，長元素截圖頂部可能出現sticky nav蓋住舊intro。新資格段未被其遮蓋，但沒有把這類截圖當成全頁無遮罩證據。",
+    "另外32個目標元素截圖未逐張代理視覺檢視；其DOM、實際字型/逐字cmap、Range邊界檢查均有數據。"
+  ],
+  "rewrite_proposals_for_true_missing_glyphs": [],
+  "reason": "1844組逐字檢查missing0/unknown0，無需為缺字換句或換字型；人名、職稱、制度原名未動。",
+  "limits": "Range矩形是排版框，不是字形墨跡。未宣稱全站字壓邊、固定導覽遮擋、所有動畫影格或系統上不同作業環境皆通過。"
+}
