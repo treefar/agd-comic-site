@@ -1,0 +1,2340 @@
+{
+  "status": "PARTIAL_RED",
+  "source": "http://127.0.0.1:8818",
+  "at": "2026-10-22T16:40:54.042Z",
+  "sampler_sha256": "72a4e2958d6a4e56fbdf9d5d1aa9e05b3c43a7ef52635a8ddc61b1cb25f7d329",
+  "not_covered": [
+    "full intro playback /2076 contract",
+    "every legal timing and every error branch",
+    "raw files cross-machine backup"
+  ],
+  "completed_current_sampler_games": [
+    "dragon-boat",
+    "mid-autumn",
+    "teachers",
+    "national-day",
+    "semester",
+    "lunar-new-year"
+  ],
+  "rows": [
+    {
+      "matrix": "2026-10-22T16-23-19-889Z",
+      "source": "http://127.0.0.1:8818",
+      "game": "dragon-boat",
+      "status": "routes-complete-layout-unresolved",
+      "frames": 104,
+      "geometry": 3,
+      "sampler_sha256": "72a4e2958d6a4e56fbdf9d5d1aa9e05b3c43a7ef52635a8ddc61b1cb25f7d329",
+      "raw_report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-22T16-30-15-701Z\\report.json",
+      "raw_report_sha256": "a11431324afeaf46b6af8538e12a7446996aa492a3de5af955817f8f823ba667",
+      "same_as_current_sampler": true,
+      "runtime_unchanged": true,
+      "runtime_receipts": {
+        "runner.mjs": "313bfc9f27d2fd864613439e1f44d2c07271af31ca378382deca9a05e2d8bbef",
+        "catalog.mjs": "3ff982b58d12e560e94d90ef3032ec389e48207d50bbec91268f914a56882dad",
+        "lab.css": "e7fe83b79e062ce89d67eb7cbe1eca28b9aa8900384ddea2775aae2888254dd0",
+        "replay-model.mjs": "202d09d268c31d7d159035cc8958bb15caa84f5406c36736ba646bf09e0757e3",
+        "games/dragon-boat.mjs": "12c515a8434ea32cd1fdd6013fa9b362ea76488b2ef24a44b1b4ea02d8da02c7",
+        "assets/constitution/prop1.png": "c7b2c1d365de5062ab1359b168ea69d40da14a4ed29297a73008ba185f47b2cf",
+        "assets/constitution/prop2.png": "89a575bb7272a03ca7ff7b4eadcc737153051862bb4c950f8b98aa1508c26087",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92"
+      },
+      "sessions": [
+        {
+          "game": "dragon-boat",
+          "lang": "zh",
+          "width": 320,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 193,
+            "seen": 193,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "dragon-boat",
+          "lang": "zh",
+          "width": 1440,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 193,
+            "seen": 193,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "dragon-boat",
+          "lang": "en",
+          "width": 320,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 193,
+            "seen": 193,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "dragon-boat",
+          "lang": "en",
+          "width": 1440,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 193,
+            "seen": 193,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "dragon-boat",
+          "lang": "ja",
+          "width": 320,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 193,
+            "seen": 193,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "dragon-boat",
+          "lang": "ja",
+          "width": 1440,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 193,
+            "seen": 193,
+            "missing": [],
+            "unchanged": true
+          }
+        }
+      ],
+      "geometry_cases": [
+        {
+          "id": "dragon-boat/en/game/error-initial",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：dragon-boat/en/game/error-initial/text-12 A fictional paper puzzle: left base, right overlap, then top closure. Fold far enough to cover the filling, pattern inward; a completely flat fold will not hold."
+          ],
+          "screenshot": {
+            "file": "dragon-boat-en-1440-default-game-error-initial-56.webp",
+            "sha256": "e3913a17dfd993689b1e2363e1a6dbfa7bc11bfe0cc5a554cb9f6eebe5fe873a",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "dragon-boat/en/game/phase-1",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：dragon-boat/en/game/phase-1/text-12 A fictional paper puzzle: left base, right overlap, then top closure. Fold far enough to cover the filling, pattern inward; a completely flat fold will not hold."
+          ],
+          "screenshot": {
+            "file": "dragon-boat-en-1440-default-game-phase-1-60.webp",
+            "sha256": "bb4c47d42399106a79c03ae796c4a9b22d8a5b348d453d88c0132fdca403afec",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "dragon-boat/en/game/phase-2",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：dragon-boat/en/game/phase-2/text-12 A fictional paper puzzle: left base, right overlap, then top closure. Fold far enough to cover the filling, pattern inward; a completely flat fold will not hold."
+          ],
+          "screenshot": {
+            "file": "dragon-boat-en-1440-default-game-phase-2-61.webp",
+            "sha256": "b83b2086eaf5144c9b2ea06c3e0086cade9745611fe138bfaa42eaf0649ff453",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        }
+      ]
+    },
+    {
+      "matrix": "2026-10-22T16-23-19-889Z",
+      "source": "http://127.0.0.1:8818",
+      "game": "mid-autumn",
+      "status": "routes-complete-layout-unresolved",
+      "frames": 128,
+      "geometry": 0,
+      "sampler_sha256": "72a4e2958d6a4e56fbdf9d5d1aa9e05b3c43a7ef52635a8ddc61b1cb25f7d329",
+      "raw_report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-22T16-31-17-456Z\\report.json",
+      "raw_report_sha256": "ccf9d16693cdce30c3790b81cd603dfd0c47aca9da2e3882eef0c77b958f73f9",
+      "same_as_current_sampler": true,
+      "runtime_unchanged": true,
+      "runtime_receipts": {
+        "runner.mjs": "313bfc9f27d2fd864613439e1f44d2c07271af31ca378382deca9a05e2d8bbef",
+        "catalog.mjs": "3ff982b58d12e560e94d90ef3032ec389e48207d50bbec91268f914a56882dad",
+        "lab.css": "e7fe83b79e062ce89d67eb7cbe1eca28b9aa8900384ddea2775aae2888254dd0",
+        "replay-model.mjs": "202d09d268c31d7d159035cc8958bb15caa84f5406c36736ba646bf09e0757e3",
+        "games/mid-autumn.mjs": "a8c3bdf7368b51e69a41665e68b4ab8b50829be5f6089ebfd2cf757936f19dd1",
+        "assets/constitution/prop1.png": "c7b2c1d365de5062ab1359b168ea69d40da14a4ed29297a73008ba185f47b2cf",
+        "assets/constitution/prop2.png": "89a575bb7272a03ca7ff7b4eadcc737153051862bb4c950f8b98aa1508c26087",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92"
+      },
+      "sessions": [
+        {
+          "game": "mid-autumn",
+          "lang": "zh",
+          "width": 320,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 220,
+            "seen": 220,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "mid-autumn",
+          "lang": "zh",
+          "width": 1440,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 220,
+            "seen": 220,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "mid-autumn",
+          "lang": "en",
+          "width": 320,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 220,
+            "seen": 220,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "mid-autumn",
+          "lang": "en",
+          "width": 1440,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 220,
+            "seen": 220,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "mid-autumn",
+          "lang": "ja",
+          "width": 320,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 220,
+            "seen": 220,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "mid-autumn",
+          "lang": "ja",
+          "width": 1440,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 220,
+            "seen": 220,
+            "missing": [],
+            "unchanged": true
+          }
+        }
+      ],
+      "geometry_cases": []
+    },
+    {
+      "matrix": "2026-10-22T16-23-19-889Z",
+      "source": "http://127.0.0.1:8818",
+      "game": "teachers",
+      "status": "routes-complete-layout-unresolved",
+      "frames": 120,
+      "geometry": 60,
+      "sampler_sha256": "72a4e2958d6a4e56fbdf9d5d1aa9e05b3c43a7ef52635a8ddc61b1cb25f7d329",
+      "raw_report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-22T16-32-42-962Z\\report.json",
+      "raw_report_sha256": "7043614406d7e069e4d208bbb3db0f48deed6ad92f398597a0a29ccad65aa445",
+      "same_as_current_sampler": true,
+      "runtime_unchanged": true,
+      "runtime_receipts": {
+        "runner.mjs": "313bfc9f27d2fd864613439e1f44d2c07271af31ca378382deca9a05e2d8bbef",
+        "catalog.mjs": "3ff982b58d12e560e94d90ef3032ec389e48207d50bbec91268f914a56882dad",
+        "lab.css": "e7fe83b79e062ce89d67eb7cbe1eca28b9aa8900384ddea2775aae2888254dd0",
+        "replay-model.mjs": "202d09d268c31d7d159035cc8958bb15caa84f5406c36736ba646bf09e0757e3",
+        "games/teachers.mjs": "12d92f06a40629e9ffbd63a51f7894f23a5a068634359f68b4a92410c315759f",
+        "assets/constitution/prop1.png": "c7b2c1d365de5062ab1359b168ea69d40da14a4ed29297a73008ba185f47b2cf",
+        "assets/constitution/prop2.png": "89a575bb7272a03ca7ff7b4eadcc737153051862bb4c950f8b98aa1508c26087",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92"
+      },
+      "sessions": [
+        {
+          "game": "teachers",
+          "lang": "zh",
+          "width": 320,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 173,
+            "seen": 173,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "teachers",
+          "lang": "zh",
+          "width": 1440,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 173,
+            "seen": 173,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "teachers",
+          "lang": "en",
+          "width": 320,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 173,
+            "seen": 173,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "teachers",
+          "lang": "en",
+          "width": 1440,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 173,
+            "seen": 173,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "teachers",
+          "lang": "ja",
+          "width": 320,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 173,
+            "seen": 173,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "teachers",
+          "lang": "ja",
+          "width": 1440,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 173,
+            "seen": 173,
+            "missing": [],
+            "unchanged": true
+          }
+        }
+      ],
+      "geometry_cases": [
+        {
+          "id": "teachers/en/game/initial",
+          "width": 320,
+          "height": 900,
+          "errors": [
+            "文字超出安全區：teachers/en/game/initial/text-23 Thank you for always watching with patience."
+          ],
+          "screenshot": {
+            "file": "teachers-en-320-default-game-initial-42.webp",
+            "sha256": "c0eefa2f588bddc07024a05e5e9b355671d04dbf9df1e27137412b85b341d172",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/en/game/error-initial",
+          "width": 320,
+          "height": 900,
+          "errors": [
+            "文字超出安全區：teachers/en/game/error-initial/text-23 Thank you for always watching with patience."
+          ],
+          "screenshot": {
+            "file": "teachers-en-320-default-game-error-initial-43.webp",
+            "sha256": "f89e2c7619cad6b28e6b30930d3c7492f297a089a4cdb3f23b5c38fe5eb50140",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/en/game/dynamic-min",
+          "width": 320,
+          "height": 900,
+          "errors": [
+            "文字超出安全區：teachers/en/game/dynamic-min/text-23 Thank you for always watching with patience."
+          ],
+          "screenshot": {
+            "file": "teachers-en-320-default-game-dynamic-min-44.webp",
+            "sha256": "0a9d406c718ebe3a8e6005e0b229fc02bc30155530431ea455d3d51e7b66d44c",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/en/game/dynamic-max",
+          "width": 320,
+          "height": 900,
+          "errors": [
+            "文字超出安全區：teachers/en/game/dynamic-max/text-23 Thank you for always watching with patience."
+          ],
+          "screenshot": {
+            "file": "teachers-en-320-default-game-dynamic-max-45.webp",
+            "sha256": "530dd954733493bcdc75716c1d817a12d494309ca63ed3d4505799a52ceb801e",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/en/game/paused",
+          "width": 320,
+          "height": 900,
+          "errors": [
+            "文字超出安全區：teachers/en/game/paused/text-23 Thank you for always watching with patience."
+          ],
+          "screenshot": {
+            "file": "teachers-en-320-default-game-paused-46.webp",
+            "sha256": "f3b6121f6765fa0493ec45cfc1c58afdcf88ae3242fcdb98ae2136a0cdcd61db",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/en/game/preview-0",
+          "width": 320,
+          "height": 900,
+          "errors": [
+            "文字超出安全區：teachers/en/game/preview-0/text-23 Thank you for always watching with patience."
+          ],
+          "screenshot": {
+            "file": "teachers-en-320-default-game-preview-0-47.webp",
+            "sha256": "ba298e92dc78b117b58cc977a430f0b83d3db041066dee4ecbdaed209c3a5637",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/en/game/phase-1",
+          "width": 320,
+          "height": 900,
+          "errors": [
+            "文字超出安全區：teachers/en/game/phase-1/text-23 Thank you for always watching with patience."
+          ],
+          "screenshot": {
+            "file": "teachers-en-320-default-game-phase-1-48.webp",
+            "sha256": "8a545a207d4a2d8d0da0051a12fb9b583153aba77e4cce26432fb141c4a6e835",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/en/game/preview-1",
+          "width": 320,
+          "height": 900,
+          "errors": [
+            "文字超出安全區：teachers/en/game/preview-1/text-23 Thank you for always watching with patience."
+          ],
+          "screenshot": {
+            "file": "teachers-en-320-default-game-preview-1-49.webp",
+            "sha256": "a235d9e3cc4bb119fa415c52fdf7842dca9937fe18e548c8f543fe25cf4cb922",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/en/game/phase-2",
+          "width": 320,
+          "height": 900,
+          "errors": [
+            "文字超出安全區：teachers/en/game/phase-2/text-23 Thank you for always watching with patience."
+          ],
+          "screenshot": {
+            "file": "teachers-en-320-default-game-phase-2-50.webp",
+            "sha256": "873e577c9723fe56b51e086e91f6a830b513fb034d8cfa03d0f980499d420015",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/en/game/preview-2",
+          "width": 320,
+          "height": 900,
+          "errors": [
+            "文字超出安全區：teachers/en/game/preview-2/text-23 Thank you for always watching with patience."
+          ],
+          "screenshot": {
+            "file": "teachers-en-320-default-game-preview-2-51.webp",
+            "sha256": "79857cf6ae534456c54fbab6ef2ee38ff0428efe769085e64fcff1b1f4aaac49",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/en/retry",
+          "width": 320,
+          "height": 900,
+          "errors": [
+            "文字超出安全區：teachers/en/retry/text-23 Thank you for always watching with patience."
+          ],
+          "screenshot": {
+            "file": "teachers-en-320-default-retry-59.webp",
+            "sha256": "c0eefa2f588bddc07024a05e5e9b355671d04dbf9df1e27137412b85b341d172",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/en/game/initial",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：teachers/en/game/initial/text-20 How can I improve this movement?",
+            "文字超出安全區：teachers/en/game/initial/text-22 Thank you for helping me finish my work."
+          ],
+          "screenshot": {
+            "file": "teachers-en-1440-default-game-initial-62.webp",
+            "sha256": "c1b7f92598ca11faee427ca1a74ef48820c987b625bb9ccb114d18d7fd14b24d",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/en/game/error-initial",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：teachers/en/game/error-initial/text-13 Thank you for helping me finish my work.",
+            "文字超出安全區：teachers/en/game/error-initial/text-14 Thank you for always watching with patience.",
+            "文字超出安全區：teachers/en/game/error-initial/text-15 You have found your own approach."
+          ],
+          "screenshot": {
+            "file": "teachers-en-1440-default-game-error-initial-63.webp",
+            "sha256": "1fc408519bde48bb8e3161563061fd4044c88080f663b749e808493efa1cffa2",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/en/game/dynamic-min",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：teachers/en/game/dynamic-min/text-13 Thank you for helping me finish my work.",
+            "文字超出安全區：teachers/en/game/dynamic-min/text-14 Thank you for always watching with patience.",
+            "文字超出安全區：teachers/en/game/dynamic-min/text-15 You have found your own approach."
+          ],
+          "screenshot": {
+            "file": "teachers-en-1440-default-game-dynamic-min-64.webp",
+            "sha256": "1fc408519bde48bb8e3161563061fd4044c88080f663b749e808493efa1cffa2",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/en/game/dynamic-max",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：teachers/en/game/dynamic-max/text-20 How can I improve this movement?",
+            "文字超出安全區：teachers/en/game/dynamic-max/text-22 Thank you for helping me finish my work."
+          ],
+          "screenshot": {
+            "file": "teachers-en-1440-default-game-dynamic-max-65.webp",
+            "sha256": "1fc408519bde48bb8e3161563061fd4044c88080f663b749e808493efa1cffa2",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/en/game/paused",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：teachers/en/game/paused/text-20 How can I improve this movement?",
+            "文字超出安全區：teachers/en/game/paused/text-22 Thank you for helping me finish my work."
+          ],
+          "screenshot": {
+            "file": "teachers-en-1440-default-game-paused-66.webp",
+            "sha256": "645b5ebfa43c7493e7b8e6c86310f178c90c20c8d63d147562634b0634454790",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/en/game/preview-0",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：teachers/en/game/preview-0/text-13 Thank you for helping me finish my work.",
+            "文字超出安全區：teachers/en/game/preview-0/text-14 Thank you for always watching with patience.",
+            "文字超出安全區：teachers/en/game/preview-0/text-15 You have found your own approach."
+          ],
+          "screenshot": {
+            "file": "teachers-en-1440-default-game-preview-0-67.webp",
+            "sha256": "69d1c9a641bc6499c68b5eb06e10905ef60af30d007a8621c886630b1aa1d1da",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/en/game/phase-1",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：teachers/en/game/phase-1/text-12 Could you show me once more?",
+            "文字超出安全區：teachers/en/game/phase-1/text-13 Thank you for helping me finish my work.",
+            "文字超出安全區：teachers/en/game/phase-1/text-14 Thank you for always watching with patience.",
+            "文字超出安全區：teachers/en/game/phase-1/text-15 You have found your own approach."
+          ],
+          "screenshot": {
+            "file": "teachers-en-1440-default-game-phase-1-68.webp",
+            "sha256": "1774633271296c2a96a67ab94317a4eb1a0ac29b36ad5b34b4e9d0be04900bbb",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/en/game/preview-1",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：teachers/en/game/preview-1/text-12 Could you show me once more?",
+            "文字超出安全區：teachers/en/game/preview-1/text-13 Thank you for helping me finish my work.",
+            "文字超出安全區：teachers/en/game/preview-1/text-15 You have found your own approach."
+          ],
+          "screenshot": {
+            "file": "teachers-en-1440-default-game-preview-1-69.webp",
+            "sha256": "c6ca0797131c381f7f89ed4245a961bdca0b208600d77a46ae9926db1b872d80",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/en/game/phase-2",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：teachers/en/game/phase-2/text-12 Could you show me once more?",
+            "文字超出安全區：teachers/en/game/phase-2/text-13 Thank you for helping me finish my work.",
+            "文字超出安全區：teachers/en/game/phase-2/text-14 Thank you for always watching with patience.",
+            "文字超出安全區：teachers/en/game/phase-2/text-15 You have found your own approach."
+          ],
+          "screenshot": {
+            "file": "teachers-en-1440-default-game-phase-2-70.webp",
+            "sha256": "daf7bb564a2c55d3defdedc26ce0e7d2ee0e441d4494642398f62ebaa5e1f88a",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/en/game/preview-2",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：teachers/en/game/preview-2/text-12 How can I improve this movement?",
+            "文字超出安全區：teachers/en/game/preview-2/text-14 Thank you for helping me finish my work.",
+            "文字超出安全區：teachers/en/game/preview-2/text-15 Thank you for always watching with patience.",
+            "文字超出安全區：teachers/en/game/preview-2/text-16 You have found your own approach.",
+            "文字超出安全區：teachers/en/game/preview-2/text-24 Keep this panel"
+          ],
+          "screenshot": {
+            "file": "teachers-en-1440-default-game-preview-2-71.webp",
+            "sha256": "34d6c59d0f4c4536d2e7ac5191d85bbed493bde0b18b56766d1445ce4248ed64",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/en/retry",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：teachers/en/retry/text-20 How can I improve this movement?",
+            "文字超出安全區：teachers/en/retry/text-22 Thank you for helping me finish my work."
+          ],
+          "screenshot": {
+            "file": "teachers-en-1440-default-retry-79.webp",
+            "sha256": "c1b7f92598ca11faee427ca1a74ef48820c987b625bb9ccb114d18d7fd14b24d",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/ja/game/initial",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：teachers/ja/game/initial/text-23 いつも最後まで見てくれて、ありがとう。"
+          ],
+          "screenshot": {
+            "file": "teachers-ja-1440-default-game-initial-102.webp",
+            "sha256": "8bc929abee816dc6eda9b516fcba3708f6ac016436d3fdd25bf72d61649f8970",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/ja/game/error-initial",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：teachers/ja/game/error-initial/text-12 このコマの台詞",
+            "文字超出安全區：teachers/ja/game/error-initial/text-18 その勇気を次の作品にもつなげよう。"
+          ],
+          "screenshot": {
+            "file": "teachers-ja-1440-default-game-error-initial-103.webp",
+            "sha256": "889296cb0a3568f0ac9617cc865a44f22ea39fe4440430e0c264f9398eae3d3b",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/ja/game/dynamic-min",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：teachers/ja/game/dynamic-min/text-12 このコマの台詞",
+            "文字超出安全區：teachers/ja/game/dynamic-min/text-18 その勇気を次の作品にもつなげよう。"
+          ],
+          "screenshot": {
+            "file": "teachers-ja-1440-default-game-dynamic-min-104.webp",
+            "sha256": "889296cb0a3568f0ac9617cc865a44f22ea39fe4440430e0c264f9398eae3d3b",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/ja/game/dynamic-max",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：teachers/ja/game/dynamic-max/text-23 いつも最後まで見てくれて、ありがとう。"
+          ],
+          "screenshot": {
+            "file": "teachers-ja-1440-default-game-dynamic-max-105.webp",
+            "sha256": "889296cb0a3568f0ac9617cc865a44f22ea39fe4440430e0c264f9398eae3d3b",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/ja/game/paused",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：teachers/ja/game/paused/text-23 いつも最後まで見てくれて、ありがとう。"
+          ],
+          "screenshot": {
+            "file": "teachers-ja-1440-default-game-paused-106.webp",
+            "sha256": "73c13ac5c68ef971a5b2f5467762bb9754a80f3f31c9dda0bb917b29f23ac8c9",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/ja/game/preview-0",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：teachers/ja/game/preview-0/text-12 このコマの台詞",
+            "文字超出安全區：teachers/ja/game/preview-0/text-18 その勇気を次の作品にもつなげよう。"
+          ],
+          "screenshot": {
+            "file": "teachers-ja-1440-default-game-preview-0-107.webp",
+            "sha256": "1c917222a8fd823e3a58682cb79398a519a381432076408ebddf3cd2b8427334",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/ja/game/phase-1",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：teachers/ja/game/phase-1/text-17 その勇気を次の作品にもつなげよう。"
+          ],
+          "screenshot": {
+            "file": "teachers-ja-1440-default-game-phase-1-108.webp",
+            "sha256": "78171f5bcaed78c28fabfe9f71dadbabf5cb4c986e906da0b20230e2b72dde54",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/ja/game/preview-1",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：teachers/ja/game/preview-1/text-12 このコマの台詞",
+            "文字超出安全區：teachers/ja/game/preview-1/text-18 その勇気を次の作品にもつなげよう。"
+          ],
+          "screenshot": {
+            "file": "teachers-ja-1440-default-game-preview-1-109.webp",
+            "sha256": "43f2ddedb295e8104c7116ae7c550322a9d158f4b352adda91d304d29a498f51",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/ja/game/phase-2",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：teachers/ja/game/phase-2/text-17 その勇気を次の作品にもつなげよう。"
+          ],
+          "screenshot": {
+            "file": "teachers-ja-1440-default-game-phase-2-110.webp",
+            "sha256": "cd12e6c008e1779ce2de7f67827a94cb650140bfab743f74e1c934be2b135f8b",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/ja/game/preview-2",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：teachers/ja/game/preview-2/text-12 このコマの台詞",
+            "文字超出安全區：teachers/ja/game/preview-2/text-18 その勇気を次の作品にもつなげよう。"
+          ],
+          "screenshot": {
+            "file": "teachers-ja-1440-default-game-preview-2-111.webp",
+            "sha256": "f63a404c59d64fe1b252371941efeae32dd4e9023111a1b13f612c98e2a17309",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "teachers/ja/retry",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：teachers/ja/retry/text-23 いつも最後まで見てくれて、ありがとう。"
+          ],
+          "screenshot": {
+            "file": "teachers-ja-1440-default-retry-119.webp",
+            "sha256": "8bc929abee816dc6eda9b516fcba3708f6ac016436d3fdd25bf72d61649f8970",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        }
+      ]
+    },
+    {
+      "matrix": "2026-10-22T16-23-19-889Z",
+      "source": "http://127.0.0.1:8818",
+      "game": "national-day",
+      "status": "routes-complete-layout-unresolved",
+      "frames": 116,
+      "geometry": 6,
+      "sampler_sha256": "72a4e2958d6a4e56fbdf9d5d1aa9e05b3c43a7ef52635a8ddc61b1cb25f7d329",
+      "raw_report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-22T16-34-19-185Z\\report.json",
+      "raw_report_sha256": "ea12e2b5f27f28dce9633a4e9d54d0b9e439abdb39c479b2544cf30cc3724d35",
+      "same_as_current_sampler": true,
+      "runtime_unchanged": true,
+      "runtime_receipts": {
+        "runner.mjs": "313bfc9f27d2fd864613439e1f44d2c07271af31ca378382deca9a05e2d8bbef",
+        "catalog.mjs": "3ff982b58d12e560e94d90ef3032ec389e48207d50bbec91268f914a56882dad",
+        "lab.css": "e7fe83b79e062ce89d67eb7cbe1eca28b9aa8900384ddea2775aae2888254dd0",
+        "replay-model.mjs": "202d09d268c31d7d159035cc8958bb15caa84f5406c36736ba646bf09e0757e3",
+        "games/national-day.mjs": "cc7fe3f338b7f058274f374cfecbcfba7efec888c13fedfbc5a3306cd65cdb48",
+        "assets/constitution/prop1.png": "c7b2c1d365de5062ab1359b168ea69d40da14a4ed29297a73008ba185f47b2cf",
+        "assets/constitution/prop2.png": "89a575bb7272a03ca7ff7b4eadcc737153051862bb4c950f8b98aa1508c26087",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92"
+      },
+      "sessions": [
+        {
+          "game": "national-day",
+          "lang": "zh",
+          "width": 320,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 414,
+            "seen": 414,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "national-day",
+          "lang": "zh",
+          "width": 1440,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 414,
+            "seen": 414,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "national-day",
+          "lang": "en",
+          "width": 320,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 414,
+            "seen": 414,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "national-day",
+          "lang": "en",
+          "width": 1440,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 414,
+            "seen": 414,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "national-day",
+          "lang": "ja",
+          "width": 320,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 414,
+            "seen": 414,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "national-day",
+          "lang": "ja",
+          "width": 1440,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 414,
+            "seen": 414,
+            "missing": [],
+            "unchanged": true
+          }
+        }
+      ],
+      "geometry_cases": [
+        {
+          "id": "national-day/zh/game/error-initial",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：national-day/zh/game/error-initial/text-12 鏡頭 0／目標 -12；海岸 50.0／55；山 50.0／48；視線被樹擋住"
+          ],
+          "screenshot": {
+            "file": "national-day-zh-1440-default-game-error-initial-23.webp",
+            "sha256": "8afb4045cedeea2fd64481024dca3ee55a648f33a8fc6e23a0e6552f31f65ac6",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null,
+            "region": "full page",
+            "clip": null
+          }
+        },
+        {
+          "id": "national-day/zh/game/phase-1",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：national-day/zh/game/phase-1/text-12 鏡頭 -12／目標 0；海岸 55.0／50；山 48.4／50；視線清楚"
+          ],
+          "screenshot": {
+            "file": "national-day-zh-1440-default-game-phase-1-27.webp",
+            "sha256": "a4228aa6d5dc2bd2c27fccaf236999b3f001d9f48501796b964d6b7f50613e4d",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null,
+            "region": "full page",
+            "clip": null
+          }
+        },
+        {
+          "id": "national-day/zh/game/phase-2",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：national-day/zh/game/phase-2/text-12 鏡頭 0／目標 12；海岸 50.0／45；山 50.0／52；視線清楚"
+          ],
+          "screenshot": {
+            "file": "national-day-zh-1440-default-game-phase-2-28.webp",
+            "sha256": "2bb5ec2d935c968a25b2a97c23a9f0b9bd2144c7233e1a7b93af914b7403f247",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null,
+            "region": "full page",
+            "clip": null
+          }
+        },
+        {
+          "id": "national-day/en/game/error-initial",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：national-day/en/game/error-initial/text-31 Reset this composition"
+          ],
+          "screenshot": {
+            "file": "national-day-en-1440-default-game-error-initial-62.webp",
+            "sha256": "6b1dc2cfb22e64dee095069a720ff87ed97ab9a295c6467163d9af6af6863de4",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null,
+            "region": "full page",
+            "clip": null
+          }
+        },
+        {
+          "id": "national-day/en/game/phase-1",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：national-day/en/game/phase-1/text-31 Reset this composition"
+          ],
+          "screenshot": {
+            "file": "national-day-en-1440-default-game-phase-1-66.webp",
+            "sha256": "ee96216c6a6321aee7c9a66077e798c9f49331a2000d1305e1abecf6cee2a7bb",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null,
+            "region": "full page",
+            "clip": null
+          }
+        },
+        {
+          "id": "national-day/en/game/phase-2",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：national-day/en/game/phase-2/text-31 Reset this composition"
+          ],
+          "screenshot": {
+            "file": "national-day-en-1440-default-game-phase-2-67.webp",
+            "sha256": "fe81a804c22bbdbb5e12ccfb7398c52c8eecb0ab8a4fc9c65600160ce4d3e513",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null,
+            "region": "full page",
+            "clip": null
+          }
+        }
+      ]
+    },
+    {
+      "matrix": "2026-10-22T16-23-19-889Z",
+      "source": "http://127.0.0.1:8818",
+      "game": "semester",
+      "status": "routes-complete-layout-unresolved",
+      "frames": 138,
+      "geometry": 0,
+      "sampler_sha256": "72a4e2958d6a4e56fbdf9d5d1aa9e05b3c43a7ef52635a8ddc61b1cb25f7d329",
+      "raw_report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-22T16-35-32-336Z\\report.json",
+      "raw_report_sha256": "6be2d4379b6fff5e92b97dc692d12b1f3b8bde695ac012f42b11ea4e9fbfc212",
+      "same_as_current_sampler": true,
+      "runtime_unchanged": true,
+      "runtime_receipts": {
+        "runner.mjs": "313bfc9f27d2fd864613439e1f44d2c07271af31ca378382deca9a05e2d8bbef",
+        "catalog.mjs": "3ff982b58d12e560e94d90ef3032ec389e48207d50bbec91268f914a56882dad",
+        "lab.css": "e7fe83b79e062ce89d67eb7cbe1eca28b9aa8900384ddea2775aae2888254dd0",
+        "replay-model.mjs": "202d09d268c31d7d159035cc8958bb15caa84f5406c36736ba646bf09e0757e3",
+        "games/semester.mjs": "31ae5b2b103c7de6f2244523d02691327cbd2eb06250fba917101c708ff810c1",
+        "assets/constitution/prop1.png": "c7b2c1d365de5062ab1359b168ea69d40da14a4ed29297a73008ba185f47b2cf",
+        "assets/constitution/prop2.png": "89a575bb7272a03ca7ff7b4eadcc737153051862bb4c950f8b98aa1508c26087",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92"
+      },
+      "sessions": [
+        {
+          "game": "semester",
+          "lang": "zh",
+          "width": 320,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 299,
+            "seen": 299,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "semester",
+          "lang": "zh",
+          "width": 1440,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 299,
+            "seen": 299,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "semester",
+          "lang": "en",
+          "width": 320,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 299,
+            "seen": 299,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "semester",
+          "lang": "en",
+          "width": 1440,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 299,
+            "seen": 299,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "semester",
+          "lang": "ja",
+          "width": 320,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 299,
+            "seen": 299,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "semester",
+          "lang": "ja",
+          "width": 1440,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 299,
+            "seen": 299,
+            "missing": [],
+            "unchanged": true
+          }
+        }
+      ],
+      "geometry_cases": []
+    },
+    {
+      "matrix": "2026-10-22T16-26-41-446Z",
+      "source": "http://127.0.0.1:8818",
+      "game": "lunar-new-year",
+      "status": "routes-complete-layout-unresolved",
+      "frames": 292,
+      "geometry": 45,
+      "sampler_sha256": "72a4e2958d6a4e56fbdf9d5d1aa9e05b3c43a7ef52635a8ddc61b1cb25f7d329",
+      "raw_report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-22T16-30-34-858Z\\report.json",
+      "raw_report_sha256": "d0c9018c1398d24d21273be479cfd214983db580803a49795bb6bfe76fb8be34",
+      "same_as_current_sampler": true,
+      "runtime_unchanged": true,
+      "runtime_receipts": {
+        "runner.mjs": "313bfc9f27d2fd864613439e1f44d2c07271af31ca378382deca9a05e2d8bbef",
+        "catalog.mjs": "3ff982b58d12e560e94d90ef3032ec389e48207d50bbec91268f914a56882dad",
+        "lab.css": "e7fe83b79e062ce89d67eb7cbe1eca28b9aa8900384ddea2775aae2888254dd0",
+        "replay-model.mjs": "202d09d268c31d7d159035cc8958bb15caa84f5406c36736ba646bf09e0757e3",
+        "games/lunar-new-year.mjs": "556a459a44487cc8c8a8207f416ae193e5a6ec3bf4a12df9d865f9905127a170",
+        "assets/constitution/prop1.png": "c7b2c1d365de5062ab1359b168ea69d40da14a4ed29297a73008ba185f47b2cf",
+        "assets/constitution/prop2.png": "89a575bb7272a03ca7ff7b4eadcc737153051862bb4c950f8b98aa1508c26087",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92"
+      },
+      "sessions": [
+        {
+          "game": "lunar-new-year",
+          "lang": "zh",
+          "width": 320,
+          "intent": "comic",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 302,
+            "seen": 302,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "lunar-new-year",
+          "lang": "zh",
+          "width": 320,
+          "intent": "reserved",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 309,
+            "seen": 309,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "lunar-new-year",
+          "lang": "zh",
+          "width": 1440,
+          "intent": "comic",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 302,
+            "seen": 302,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "lunar-new-year",
+          "lang": "zh",
+          "width": 1440,
+          "intent": "reserved",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 309,
+            "seen": 309,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "lunar-new-year",
+          "lang": "en",
+          "width": 320,
+          "intent": "comic",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 302,
+            "seen": 302,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "lunar-new-year",
+          "lang": "en",
+          "width": 320,
+          "intent": "reserved",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 309,
+            "seen": 309,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "lunar-new-year",
+          "lang": "en",
+          "width": 1440,
+          "intent": "comic",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 302,
+            "seen": 302,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "lunar-new-year",
+          "lang": "en",
+          "width": 1440,
+          "intent": "reserved",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 309,
+            "seen": 309,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "lunar-new-year",
+          "lang": "ja",
+          "width": 320,
+          "intent": "comic",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 302,
+            "seen": 302,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "lunar-new-year",
+          "lang": "ja",
+          "width": 320,
+          "intent": "reserved",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 309,
+            "seen": 309,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "lunar-new-year",
+          "lang": "ja",
+          "width": 1440,
+          "intent": "comic",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 302,
+            "seen": 302,
+            "missing": [],
+            "unchanged": true
+          }
+        },
+        {
+          "game": "lunar-new-year",
+          "lang": "ja",
+          "width": 1440,
+          "intent": "reserved",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": [],
+          "replay_seen": [
+            "0",
+            "1",
+            "2"
+          ],
+          "artifact_scroll": {
+            "expected": 309,
+            "seen": 309,
+            "missing": [],
+            "unchanged": true
+          }
+        }
+      ],
+      "geometry_cases": [
+        {
+          "id": "lunar-new-year/zh/game/error-initial/intent-comic",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/zh/game/error-initial/intent-comic/text-12 眉、眼、嘴一起演戲。看畫面，試出自己的三幕。"
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-zh-1440-comic-game-error-initial-53.webp",
+            "sha256": "943d7a0661ceeb85b3b1081fadd0400a8949a78585b143f192aed5df39643fdb",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/zh/game/phase-1/intent-comic",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/zh/game/phase-1/intent-comic/text-12 眉、眼、嘴一起演戲。看畫面，試出自己的三幕。"
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-zh-1440-comic-game-phase-1-58.webp",
+            "sha256": "0a4416c4d891689a813c727dc1d9a2c4e631c08115903bea98649987d33a84cf",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/zh/game/expression-1/intent-comic",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/zh/game/expression-1/intent-comic/text-32 表情歸零",
+            "文字超出安全區：lunar-new-year/zh/game/expression-1/intent-comic/text-33 拍下這一幕"
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-zh-1440-comic-game-expression-1-59.webp",
+            "sha256": "529a9edd4082fce892f5cf5a5ec3a0576109eeba68c1d70a9b80e5a7724da2bd",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/zh/game/error-wrong-intent/intent-comic",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/zh/game/error-wrong-intent/intent-comic/text-12 眼神放鬆、小小微笑、輕鞠躬，向朋友致意。"
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-zh-1440-comic-game-error-wrong-intent-61.webp",
+            "sha256": "51e0bcd38d731db2b2c46d8575d318861e78e64437eb5ba3373c77142e7abc5d",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/zh/game/intent-comic/intent-comic",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/zh/game/intent-comic/intent-comic/text-12 拜年：向大家鞠躬"
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-zh-1440-comic-game-intent-comic-62.webp",
+            "sha256": "222cff52b7714302a9c984797a06904c2494d4c3706bc05b6486f60eced59620",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/zh/game/expression-2/intent-comic",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/zh/game/expression-2/intent-comic/text-33 誇張喜劇",
+            "文字超出安全區：lunar-new-year/zh/game/expression-2/intent-comic/text-34 含蓄問候"
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-zh-1440-comic-game-expression-2-63.webp",
+            "sha256": "222cff52b7714302a9c984797a06904c2494d4c3706bc05b6486f60eced59620",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/zh/game/error-initial/intent-reserved",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/zh/game/error-initial/intent-reserved/text-12 眉、眼、嘴一起演戲。看畫面，試出自己的三幕。"
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-zh-1440-reserved-game-error-initial-78.webp",
+            "sha256": "943d7a0661ceeb85b3b1081fadd0400a8949a78585b143f192aed5df39643fdb",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/zh/game/phase-1/intent-reserved",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/zh/game/phase-1/intent-reserved/text-12 眉、眼、嘴一起演戲。看畫面，試出自己的三幕。"
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-zh-1440-reserved-game-phase-1-83.webp",
+            "sha256": "a6d0eeefc7ee48f3ddc8eb9c1636b18d42481ed339020b62f52fed74927143e3",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/zh/game/expression-1/intent-reserved",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/zh/game/expression-1/intent-reserved/text-32 表情歸零",
+            "文字超出安全區：lunar-new-year/zh/game/expression-1/intent-reserved/text-33 拍下這一幕"
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-zh-1440-reserved-game-expression-1-84.webp",
+            "sha256": "f1bdab277ef5aac7bbc7c2e3eb483242c80bbf10f380c61e8e4e4e7b7b468621",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/zh/game/error-wrong-intent/intent-reserved",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/zh/game/error-wrong-intent/intent-reserved/text-12 拜年：向大家鞠躬"
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-zh-1440-reserved-game-error-wrong-intent-86.webp",
+            "sha256": "7acd607b08608bd339ed437aa97c8ccef16f1ff3b30d5b26e8bec39fbc444d82",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/en/game/dynamic-max/intent-comic",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/en/game/dynamic-max/intent-comic/text-12 Open the eyes, tilt the brows and open the mouth for surprise. Stay upright."
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-en-1440-comic-game-dynamic-max-153.webp",
+            "sha256": "0e14d5e92446de9d8166b2bf60bfc3e40f37833729e31a491c54a31b0be13bf1",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/en/game/paused/intent-comic",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/en/game/paused/intent-comic/text-29 −",
+            "文字超出安全區：lunar-new-year/en/game/paused/intent-comic/text-30 40",
+            "文字超出安全區：lunar-new-year/en/game/paused/intent-comic/text-31 +"
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-en-1440-comic-game-paused-154.webp",
+            "sha256": "a49e3cb6a85ebaac0ddb3154c8a911ed1b0143401b7bf0cb4a5a34346ea7e715",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/en/game/expression-0/intent-comic",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/en/game/expression-0/intent-comic/text-29 −",
+            "文字超出安全區：lunar-new-year/en/game/expression-0/intent-comic/text-30 0",
+            "文字超出安全區：lunar-new-year/en/game/expression-0/intent-comic/text-31 +"
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-en-1440-comic-game-expression-0-155.webp",
+            "sha256": "17068e3be75926b71ab4a75a44e48a5062fc550b9768aa9900534cb979d00846",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/en/game/phase-1/intent-comic",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/en/game/phase-1/intent-comic/text-12 A friend arrives. Relax the startled eyes and level the brows so the grin stands out."
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-en-1440-comic-game-phase-1-156.webp",
+            "sha256": "923be4c2387607faf0dd08a85319828f3b7cf307006d72fbf8387a7ea87bc95a",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/en/game/expression-1/intent-comic",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/en/game/expression-1/intent-comic/text-12 A friend arrives. Relax the startled eyes and level the brows so the grin stands out."
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-en-1440-comic-game-expression-1-157.webp",
+            "sha256": "3110f661681432b12942dd85a5c6b41aa9290218a7b4e4066739c21b8112da7f",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/en/game/phase-2/intent-comic",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/en/game/phase-2/intent-comic/text-12 Relaxed eyes, a small smile and a light bow greet a friend."
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-en-1440-comic-game-phase-2-158.webp",
+            "sha256": "5852d0c052eb540a7948a63cdf29596fc4c2b5046df056cf6b9c336fa156d480",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/en/game/dynamic-max/intent-reserved",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/en/game/dynamic-max/intent-reserved/text-12 Open the eyes, tilt the brows and open the mouth for surprise. Stay upright."
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-en-1440-reserved-game-dynamic-max-177.webp",
+            "sha256": "0e14d5e92446de9d8166b2bf60bfc3e40f37833729e31a491c54a31b0be13bf1",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/en/game/paused/intent-reserved",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/en/game/paused/intent-reserved/text-29 −",
+            "文字超出安全區：lunar-new-year/en/game/paused/intent-reserved/text-30 40",
+            "文字超出安全區：lunar-new-year/en/game/paused/intent-reserved/text-31 +"
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-en-1440-reserved-game-paused-178.webp",
+            "sha256": "a49e3cb6a85ebaac0ddb3154c8a911ed1b0143401b7bf0cb4a5a34346ea7e715",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/en/game/expression-0/intent-reserved",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/en/game/expression-0/intent-reserved/text-29 −",
+            "文字超出安全區：lunar-new-year/en/game/expression-0/intent-reserved/text-30 10",
+            "文字超出安全區：lunar-new-year/en/game/expression-0/intent-reserved/text-31 +"
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-en-1440-reserved-game-expression-0-179.webp",
+            "sha256": "e1b4627aa4156080dd1e916fa9eb7f65f35a3c9aab3afbc4842b4aea0d9c80b3",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/en/game/phase-1/intent-reserved",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/en/game/phase-1/intent-reserved/text-12 A friend arrives. Relax the startled eyes and level the brows so the grin stands out."
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-en-1440-reserved-game-phase-1-180.webp",
+            "sha256": "c115771d8bf8879eb3ee2dfa3d762de78358b3998ce6a57f19f9c10af866253e",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/en/game/expression-1/intent-reserved",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/en/game/expression-1/intent-reserved/text-12 A friend arrives. Relax the startled eyes and level the brows so the grin stands out."
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-en-1440-reserved-game-expression-1-181.webp",
+            "sha256": "e9e0d745a0f2ebc0931fb9e9a17b1a55537c17f312a40d15012cd0013345baad",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/en/game/phase-2/intent-reserved",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/en/game/phase-2/intent-reserved/text-12 Relaxed eyes, a small smile and a light bow greet a friend."
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-en-1440-reserved-game-phase-2-182.webp",
+            "sha256": "756727da7cad682428dab3a12653beafd3a69d8fc67d57daa7aca16e41862b09",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/ja/game/error-initial/intent-comic",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/ja/game/error-initial/intent-comic/text-12 眉・目・口で演じよう。顔を見ながら、自分だけの3幕に。"
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-ja-1440-comic-game-error-initial-247.webp",
+            "sha256": "c288e9b8f97268d87c6cf0e6d447e7ad8459b10b0a4d6d985973e72ab4b1c2d8",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/ja/game/phase-1/intent-comic",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/ja/game/phase-1/intent-comic/text-12 眉・目・口で演じよう。顔を見ながら、自分だけの3幕に。"
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-ja-1440-comic-game-phase-1-252.webp",
+            "sha256": "5c4396b564920ae3736522cbcf116f4aedb327794d99d37cdfbe23c9a72219e3",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/ja/game/phase-2/intent-comic",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/ja/game/phase-2/intent-comic/text-12 眉・目・口で演じよう。顔を見ながら、自分だけの3幕に。"
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-ja-1440-comic-game-phase-2-254.webp",
+            "sha256": "5ce7e0787a61d16d7e71ceb4a97874a655b382d7a245dac8ede24e228ef6ab93",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/ja/game/error-wrong-intent/intent-comic",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/ja/game/error-wrong-intent/intent-comic/text-12 お辞儀が深いです。浅くして静かなあいさつに。"
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-ja-1440-comic-game-error-wrong-intent-255.webp",
+            "sha256": "d7c836985b6009c8188f43ec6212c3a05450672a3e1ff81911feb92605c00322",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/ja/game/intent-comic/intent-comic",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/ja/game/intent-comic/intent-comic/text-12 表情とお辞儀が、選んだあいさつに合っています。"
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-ja-1440-comic-game-intent-comic-256.webp",
+            "sha256": "2c6d74b14bc6e78a2cb6b97be135ede51dde2ed76e5856587cf894df172ece75",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/ja/game/expression-2/intent-comic",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/ja/game/expression-2/intent-comic/text-32 最後はどんなあいさつ？"
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-ja-1440-comic-game-expression-2-257.webp",
+            "sha256": "2c6d74b14bc6e78a2cb6b97be135ede51dde2ed76e5856587cf894df172ece75",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/ja/game/error-initial/intent-reserved",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/ja/game/error-initial/intent-reserved/text-12 眉・目・口で演じよう。顔を見ながら、自分だけの3幕に。"
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-ja-1440-reserved-game-error-initial-271.webp",
+            "sha256": "c288e9b8f97268d87c6cf0e6d447e7ad8459b10b0a4d6d985973e72ab4b1c2d8",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/ja/game/phase-1/intent-reserved",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/ja/game/phase-1/intent-reserved/text-12 眉・目・口で演じよう。顔を見ながら、自分だけの3幕に。"
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-ja-1440-reserved-game-phase-1-276.webp",
+            "sha256": "95dd5a8d6aa482bf39c4d0f9d6f7b917cf691df03277f300aadf3247ecd044c1",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/ja/game/phase-2/intent-reserved",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/ja/game/phase-2/intent-reserved/text-12 眉・目・口で演じよう。顔を見ながら、自分だけの3幕に。"
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-ja-1440-reserved-game-phase-2-278.webp",
+            "sha256": "ac4a59097b0305cc14917c6cbeabd4122aae9d8731197519356ed228b5207fab",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/ja/game/error-wrong-intent/intent-reserved",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/ja/game/error-wrong-intent/intent-reserved/text-12 喜劇には動きも大きく。お辞儀を深くしよう。"
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-ja-1440-reserved-game-error-wrong-intent-279.webp",
+            "sha256": "65f11f06ef5d30f2da6b74fe4a26b4e3c442adfcc501b4e800182a6a03fa9cce",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/ja/game/intent-reserved/intent-reserved",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/ja/game/intent-reserved/intent-reserved/text-12 表情とお辞儀が、選んだあいさつに合っています。"
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-ja-1440-reserved-game-intent-reserved-280.webp",
+            "sha256": "9354c5e7190a6a8debf33876735ade29e1094372c836b2720b9653223d521d48",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        },
+        {
+          "id": "lunar-new-year/ja/game/expression-2/intent-reserved",
+          "width": 1440,
+          "height": 1000,
+          "errors": [
+            "文字超出安全區：lunar-new-year/ja/game/expression-2/intent-reserved/text-32 最後はどんなあいさつ？"
+          ],
+          "screenshot": {
+            "file": "lunar-new-year-ja-1440-reserved-game-expression-2-281.webp",
+            "sha256": "9354c5e7190a6a8debf33876735ade29e1094372c836b2720b9653223d521d48",
+            "same_shot_verified": true,
+            "shot_before": null,
+            "shot_after": null
+          }
+        }
+      ]
+    }
+  ],
+  "diagnostic_superseded": [
+    {
+      "matrix": "2026-10-22T16-23-19-889Z",
+      "source": "http://127.0.0.1:8818",
+      "game": "constitution",
+      "status": "routes-complete-layout-unresolved",
+      "frames": 165,
+      "geometry": 159,
+      "sampler_sha256": "a6ea670ad2554fbd198e8ad6b166737698119d658f8760d610a06a26b754f503",
+      "raw_report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-22T16-23-20-520Z\\report.json",
+      "raw_report_sha256": "b65b1c5c6f790be80e3b45265580dfa77aba097b558bdc74304547b42dd3aafa",
+      "same_as_current_sampler": false,
+      "runtime_unchanged": true,
+      "reason": "different sampler OR different served source/build; original raw remains local; do not mix totals into current evidence"
+    },
+    {
+      "matrix": "2026-10-22T16-23-19-889Z",
+      "source": "http://127.0.0.1:8818",
+      "game": "lunar-new-year",
+      "status": "routes-complete-layout-unresolved",
+      "frames": 292,
+      "geometry": 149,
+      "sampler_sha256": "a6ea670ad2554fbd198e8ad6b166737698119d658f8760d610a06a26b754f503",
+      "raw_report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-22T16-23-20-569Z\\report.json",
+      "raw_report_sha256": "aa2b2d9163d3be2a8ec5024ab08fb35a908b7fe6bfa0756e3654e8a3045d5a6c",
+      "same_as_current_sampler": false,
+      "runtime_unchanged": true,
+      "reason": "different sampler OR different served source/build; original raw remains local; do not mix totals into current evidence"
+    },
+    {
+      "matrix": "2026-10-22T16-23-19-889Z",
+      "source": "http://127.0.0.1:8818",
+      "game": "new-year",
+      "status": "route-failures",
+      "frames": 731,
+      "geometry": 419,
+      "sampler_sha256": "8c7eb283c8784efb20363589d4d773c8cbaa577a1ba2bcd9a05e2b0f2992f623",
+      "raw_report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-22T16-25-45-240Z\\report.json",
+      "raw_report_sha256": "eb267c72cbc5d2af0089cfd4a2356614accbe5f139deac2be3fd2d299b7a9349",
+      "same_as_current_sampler": false,
+      "runtime_unchanged": true,
+      "reason": "different sampler OR different served source/build; original raw remains local; do not mix totals into current evidence"
+    },
+    {
+      "matrix": "2026-10-22T16-23-19-889Z",
+      "source": "http://127.0.0.1:8818",
+      "game": "lantern",
+      "status": "routes-complete-layout-unresolved",
+      "frames": 110,
+      "geometry": 83,
+      "sampler_sha256": "8c7eb283c8784efb20363589d4d773c8cbaa577a1ba2bcd9a05e2b0f2992f623",
+      "raw_report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-22T16-27-15-149Z\\report.json",
+      "raw_report_sha256": "42834afb9839d5f0858854e7a157ed5a2ecb31c91e66c0c14eb289fe9715c5a9",
+      "same_as_current_sampler": false,
+      "runtime_unchanged": true,
+      "reason": "different sampler OR different served source/build; original raw remains local; do not mix totals into current evidence"
+    },
+    {
+      "matrix": "2026-10-22T16-23-19-889Z",
+      "source": "http://127.0.0.1:8818",
+      "game": "children",
+      "status": "routes-complete-layout-unresolved",
+      "frames": 120,
+      "geometry": 84,
+      "sampler_sha256": "8c7eb283c8784efb20363589d4d773c8cbaa577a1ba2bcd9a05e2b0f2992f623",
+      "raw_report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-22T16-28-15-671Z\\report.json",
+      "raw_report_sha256": "59fbf1aa97034d2d6f6090310e67062d4be12b4341a9c330849ae1b2521407a4",
+      "same_as_current_sampler": false,
+      "runtime_unchanged": true,
+      "reason": "different sampler OR different served source/build; original raw remains local; do not mix totals into current evidence"
+    },
+    {
+      "matrix": "2026-10-22T16-26-41-446Z",
+      "source": "http://127.0.0.1:8818",
+      "game": "constitution",
+      "status": "routes-complete-layout-unresolved",
+      "frames": 165,
+      "geometry": 159,
+      "sampler_sha256": "8c7eb283c8784efb20363589d4d773c8cbaa577a1ba2bcd9a05e2b0f2992f623",
+      "raw_report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-22T16-26-42-021Z\\report.json",
+      "raw_report_sha256": "d5a6ba7d8936c83f95c123a6fd56ab1d3bddc20dde643542a69f307577567c80",
+      "same_as_current_sampler": false,
+      "runtime_unchanged": true,
+      "reason": "different sampler OR different served source/build; original raw remains local; do not mix totals into current evidence"
+    }
+  ],
+  "backup_limitation": "Only this compact index and selected actual frames are versioned. Original raw runs remain at listed local paths, not copied to another machine by this commit."
+}
