@@ -1,14 +1,16 @@
 # 共用外框與首頁：獨立 QA
 
-執行：2026-10-22T13:17:24.994Z；網址：http://127.0.0.1:8800。
+執行：2026-10-22T13:19:26.081Z；網址：http://127.0.0.1:8800。
 
-命令：`node holiday-lab/qa/shell.cjs --base=http://127.0.0.1:8800 --only=intro-first-RAF`
+命令：`node holiday-lab/qa/shell.cjs --base=http://127.0.0.1:8800 --only=guide-preservation`
 
-結果：yes 0／no 1／總計 1。
+結果：yes 3／no 0／總計 3。
 
 | 驗收 | yes/no | 實際證據或錯誤 |
 |---|---|---|
-| intro-first-RAF-timestamp-regression | no | "Opening requested cg-0: http://127.0.0.1:8800/holiday-lab/assets/children/cg-0.webp" |
+| guide-preservation-zh | yes | {"cards":15,"details":47,"faq":30,"sources":15,"faqExpanded":true,"consoleErrors":[]} |
+| guide-preservation-en | yes | {"cards":15,"details":47,"faq":30,"sources":15,"faqExpanded":true,"consoleErrors":[]} |
+| guide-preservation-ja | yes | {"cards":15,"details":47,"faq":30,"sources":15,"faqExpanded":true,"consoleErrors":[]} |
 
 完整輸出、時間、各尺寸量測與失敗詳情見 shell.json。截圖在 screenshots/。
 
