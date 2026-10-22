@@ -14,3 +14,40 @@ test('sprite and control DOM ids are unique while stable slider ids remain uncha
  assert.deepEqual(sliderIds,['lny-brow','lny-eyes','lny-mouth','lny-pose']);
  assert.ok(ids.includes('lny-brow-sprite'));assert.ok(ids.includes('lny-eyes-sprite'));assert.ok(ids.includes('lny-mouth-sprite'));
 });
+test('bow rotates feature anchors rigidly around the fixed body centre in a 16:10 stage',()=>{
+ const neutral=expressionProps({brow:0,eyes:1,mouth:0.5,pose:0});
+ const aspect=16/10,epsilon=1e-10;
+ for(const pose of [7,19,30,40]){
+  const p=expressionProps({brow:0,eyes:1,mouth:0.5,pose});
+  assert.deepEqual([p.body.x,p.body.y],[neutral.body.x,neutral.body.y],'bow must not translate the body pivot');
+  for(const feature of ['brow','eyes','mouth']){
+   const a={x:(neutral[feature].x-neutral.body.x)*aspect,y:neutral[feature].y-neutral.body.y};
+   const b={x:(p[feature].x-p.body.x)*aspect,y:p[feature].y-p.body.y};
+   const radius=Math.hypot(a.x,a.y);assert.ok(Math.abs(Math.hypot(b.x,b.y)-radius)<epsilon,'rigid rotation preserves anchor distance');
+   const dot=(a.x*b.x+a.y*b.y)/(radius*radius),cross=(a.x*b.y-a.y*b.x)/(radius*radius);
+   assert.ok(Math.abs(dot-Math.cos(pose*Math.PI/180))<epsilon,'feature follows body rotation angle');
+   assert.ok(Math.abs(cross-Math.sin(pose*Math.PI/180))<epsilon,'feature rotates clockwise with the sprite');
+  }
+ }
+});
+test('blank-face feature proportions fit the face, and mount and replay share the same geometry',()=>{
+ const buttons={},sliders={},sprites=new Map(),captures=[],results=[];const node=()=>({append(){}});
+ const ctx={controls:node(),reducedMotion:true,ui:{text:node,setText(){},button:o=>{buttons[o.id]=o.onClick;return node();},slider:o=>{sliders[o.id]=o;return {element:node(),setValue(){}};}},sprite:(key,props)=>{const data={...props};sprites.set(key,data);return {update:p=>Object.assign(data,p),remove(){}};},hint(){},sound(){},setProgress(){},complete:r=>results.push(r),onFrame:()=>()=>{}};
+ const game=mount(ctx),body=sprites.get('actor1');
+ for(const key of ['prop1','prop2','prop3']){
+  const p=sprites.get(key);assert.ok(p.width<=body.width*0.4,'features fit inside the blank face width');
+  assert.ok(p.height<=body.height*0.15,'features fit inside the blank face height');
+  assert.ok(p.y>body.y-body.height*0.4&&p.y<body.y,'features stay within the upper face, away from the horns');
+ }
+ for(const [i,t]of TARGETS.entries()){
+  for(const [key,value]of Object.entries(t))sliders[`lny-${key}`].onInput(value);
+  captures.push([`actor${i+1}`,'prop1','prop2','prop3'].map(key=>({key,...sprites.get(key)})));
+  buttons['lny-submit']();
+ }
+ const geometry=['x','y','width','height','rotation','scaleY'];
+ for(const[i,shot]of results[0].replay.entries())for(const shown of captures[i]){
+  const saved=shot.sprites.find(s=>s.key===shown.key);
+  for(const field of geometry)assert.equal(saved[field],shown[field],`${shown.key} ${field} differs between stage and replay`);
+ }
+ game.destroy();
+});

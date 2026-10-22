@@ -91,3 +91,53 @@ warning: in the working copy of 'holiday-lab/games/lunar-new-year.mjs', LF will 
 warning: in the working copy of 'holiday-lab/tests/lunar-new-year.test.mjs', LF will be replaced by CRLF the next time Git touches it
 exit code 0
 ```
+
+## 空白臉角色五官對位與旋轉修正
+
+2026-10-22。唯讀檢視主控Codex生成原圖C:/agywork/agd-holiday-prototypes/holiday-lab/art-source/nian-rig.png：同一正面空白臉年獸，五官由生成圖層組合。未修改素材。
+
+body固定中心(49,59)、40×58舞台百分比；眉/眼/嘴基準X=50.4，Y依序43/47.5/52，尺寸依序13×7、14×7、9×7。三幕的mount、更新與replay都呼叫expressionProps取得同一套位置與尺寸，不再覆寫舊22寬等數值。保留TARGETS、滑桿id、錯誤提示、玩家scale與眉角控制。
+
+五官與body都繞(49,59)旋轉。因舞台16:10，先將dx乘1.6換成等比例座標，做標準二維旋轉，再將x除回1.6；同時納入五官X偏移。移除原來pose/5讓body往下平移的舊公式。
+
+| 驗收 | yes/no | 證據 |
+|---|---|---|
+| 先以測試重現舊幾何問題 | yes | 修復前tests7/pass5/fail2，exit1，body pivot實際y60.4非59，五官寬超出臉部比例 |
+| 旋轉幾何測試 | yes | 7/19/30/40度逐一驗證固定pivot、半徑不變、dot=cos、cross=sin；非只比對寫死座標 |
+| 舞台與重播尺寸位置一致 | yes | fake ctx拍下三幕實際update後幾何，再逐欄對照完整result replay |
+| 五官位於上半臉且尺寸不超出臉部比例 | yes | 比對feature與body相對界限，非宣稱人工美術通過 |
+| 原規則與DOM id回歸 | yes | 原5測試仍通過，新增2測試，共7/7 |
+| 真實畫面與整合Build | no | 待主控整合空白臉素材後獨立複驗 |
+
+紅燈實際命令node --test holiday-lab/tests/lunar-new-year.test.mjs，exit1，duration80.5455ms。兩個AssertionError依序為bow must not translate the body pivot（actual [49,60.4] / expected [49,59]），features fit inside the blank face width。
+
+修復後本次實際指令輸出：
+
+```text
+node --test holiday-lab/tests/lunar-new-year.test.mjs
+✔ neutral expression never wins; rejects missing or nonfinite controls (0.9764ms)
+✔ surprise then smile then bow are separate tasks (0.3478ms)
+✔ different accepted expressions change saved creation and transforms (1.4034ms)
+✔ mounted sliders capture three actual poses and clean up frame subscription (1.1385ms)
+✔ sprite and control DOM ids are unique while stable slider ids remain unchanged (0.4601ms)
+✔ bow rotates feature anchors rigidly around the fixed body centre in a 16:10 stage (0.2968ms)
+✔ blank-face feature proportions fit the face, and mount and replay share the same geometry (0.6637ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 85.3363
+exit code 0
+
+node --check holiday-lab/games/lunar-new-year.mjs
+(無輸出)
+exit code 0
+
+git diff --check
+warning: in the working copy of 'holiday-lab/games/lunar-new-year.mjs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'holiday-lab/tests/lunar-new-year.test.mjs', LF will be replaced by CRLF the next time Git touches it
+exit code 0
+```

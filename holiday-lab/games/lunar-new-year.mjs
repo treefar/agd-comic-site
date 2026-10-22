@@ -12,9 +12,15 @@ export function submit(state,values){
   return {ok:true,state:{round:state.round+1,poses,attempts:state.attempts+1,done:poses.length===3}};
 }
 export function expressionProps(v){
-  const angle=v.pose*Math.PI/180;
-  const center=(y)=>({x:49-(y-59)*Math.sin(angle),y:59+v.pose/5+(y-59)*Math.cos(angle),rotation:v.pose});
-  return {brow:{...center(31-v.brow/12),rotation:v.pose+v.brow},eyes:{...center(41),scaleY:v.eyes},mouth:{...center(51),scaleY:0.3+v.mouth*1.2},body:{x:49,rotation:v.pose,y:59+v.pose/5}};
+  const angle=v.pose*Math.PI/180,aspect=16/10,cx=49,cy=59;
+  // Percent axes have different pixel scales: rotate in height units first.
+  const center=(x,y)=>{const dx=(x-cx)*aspect,dy=y-cy;return {x:cx+(dx*Math.cos(angle)-dy*Math.sin(angle))/aspect,y:cy+dx*Math.sin(angle)+dy*Math.cos(angle),rotation:v.pose};};
+  return {
+    brow:{...center(50.4,43),width:13,height:7,rotation:v.pose+v.brow},
+    eyes:{...center(50.4,47.5),width:14,height:7,scaleY:v.eyes},
+    mouth:{...center(50.4,52),width:9,height:7,scaleY:0.3+v.mouth*1.2},
+    body:{x:cx,y:cy,width:40,height:58,rotation:v.pose}
+  };
 }
 const W=(zh,en,ja)=>({zh,en,ja});
 const roles=[W('驚喜：看到新作品','Surprise: discovering new art','驚き：新しい作品を発見'),W('開心：朋友來了','Joy: a friend arrives','喜び：友だちが来た'),W('拜年：向大家鞠躬','Greeting: bow to everyone','新年の挨拶：みんなにお辞儀')];
@@ -24,10 +30,11 @@ export function mount(ctx){
   nodes.push(ctx.ui.text('lny-intro',W('用眉、眼、嘴和鞠躬幅度，演出三幕。參考卡給方向，滑桿保留自己的表演。','Direct three acts with brows, eyes, mouth and a bow. Use the reference, then add your own variation.','眉・目・口・お辞儀で3幕を演出。見本を参考に、自分らしい変化を。')));
   const role=ctx.ui.text('lny-role',roles[0]);nodes.push(role);
   const reference=ctx.ui.text('lny-reference',W('','',''));nodes.push(reference);
-  const bodies=[0,1,2].map(i=>ctx.sprite(`actor${i+1}`,{id:`lny-body-${i}`,x:49,y:59,width:40,height:58,opacity:i===0?1:0}));
-  const brow=ctx.sprite('prop1',{id:'lny-brow-sprite',x:49,y:31,width:22,height:11,z:5});
-  const eyes=ctx.sprite('prop2',{id:'lny-eyes-sprite',x:49,y:41,width:22,height:10,z:5});
-  const mouth=ctx.sprite('prop3',{id:'lny-mouth-sprite',x:49,y:51,width:13,height:10,z:5});
+  const initial=expressionProps(values);
+  const bodies=[0,1,2].map(i=>ctx.sprite(`actor${i+1}`,{id:`lny-body-${i}`,...initial.body,opacity:i===0?1:0}));
+  const brow=ctx.sprite('prop1',{id:'lny-brow-sprite',...initial.brow,z:5});
+  const eyes=ctx.sprite('prop2',{id:'lny-eyes-sprite',...initial.eyes,z:5});
+  const mouth=ctx.sprite('prop3',{id:'lny-mouth-sprite',...initial.mouth,z:5});
   const card=ctx.sprite('token1',{id:'lny-card-surprise',x:86,y:24,width:20,height:25});
   const card2=ctx.sprite('token2',{id:'lny-card-smile',x:86,y:52,width:20,height:25,opacity:0});
   const card3=ctx.sprite('token3',{id:'lny-card-bow',x:86,y:80,width:20,height:25,opacity:0});
@@ -41,7 +48,7 @@ export function mount(ctx){
     if(dead||state.done)return;const r=submit(state,values);state=r.state;
     if(!r.ok){ctx.sound('error');ctx.hint(W('表演還沒到位。驚喜要睜眼，開心要展笑，拜年要鞠躬。','Not quite there. Open the eyes for surprise, smile for joy, and bow for the greeting.','もう少し。驚きは目を開き、喜びは笑顔、挨拶はお辞儀。'));return;}
     ctx.sound('success');ctx.setProgress(state.round,3);
-    if(state.done){ctx.complete({score:Math.round(state.poses.reduce((a,v)=>a+v.score,0)/3),summary:W('年獸三幕表演完成，重播你調出的表情與動作。','The Nian’s three-act performance is ready. Replay your expressions and bow.','年獣の3幕が完成。調整した表情とお辞儀を再生。'),artifact:{poses:state.poses,attempts:state.attempts},replay:state.poses.map((v,i)=>{const p=expressionProps(v.values);return {duration:1500+v.values.pose*15,caption:roles[i],sprites:[{key:`actor${i+1}`,...p.body,width:40,height:58},{key:'prop1',...p.brow,width:22,height:11,z:5},{key:'prop2',...p.eyes,width:22,height:10,z:5},{key:'prop3',...p.mouth,width:13,height:10,z:5},{key:`token${i+1}`,x:86,y:24,width:20,height:25}]};})});return;}
+    if(state.done){ctx.complete({score:Math.round(state.poses.reduce((a,v)=>a+v.score,0)/3),summary:W('年獸三幕表演完成，重播你調出的表情與動作。','The Nian’s three-act performance is ready. Replay your expressions and bow.','年獣の3幕が完成。調整した表情とお辞儀を再生。'),artifact:{poses:state.poses,attempts:state.attempts},replay:state.poses.map((v,i)=>{const p=expressionProps(v.values);return {duration:1500+v.values.pose*15,caption:roles[i],sprites:[{key:`actor${i+1}`,...p.body},{key:'prop1',...p.brow,z:5},{key:'prop2',...p.eyes,z:5},{key:'prop3',...p.mouth,z:5},{key:`token${i+1}`,x:86,y:24,width:20,height:25}]};})});return;}
     values={brow:0,eyes:1,mouth:0,pose:0};Object.entries(sliders).forEach(([k,s])=>s.setValue(values[k]));update();ctx.hint(W('換下一幕，調整同一隻年獸的演出。','Next act: direct the same Nian in a new mood.','次の幕。同じ年獣に別の演技をつけよう。'));
   }}));
   ctx.controls.append(...nodes);update();
