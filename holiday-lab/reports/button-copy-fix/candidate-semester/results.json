@@ -1,0 +1,50 @@
+{
+  "at": "2026-10-22T17:19:57.266Z",
+  "mode": "candidate-semester",
+  "base": "http://127.0.0.1:8819",
+  "cases": [
+    {
+      "game": "semester",
+      "id": "semester-window-1",
+      "lang": "en",
+      "width": 1440,
+      "states": [],
+      "pass": false,
+      "errors": [],
+      "error": "locator.scrollIntoViewIfNeeded: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#semester-window-1')\u001b[22m\n\n    at C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\button-copy-fix\\browser.cjs:27:223"
+    }
+  ],
+  "errors": [],
+  "samplerSha": "fd2a5296d570a112348f2f2726e9cf543dfe7d4641b8b883288810040b145ba7",
+  "assetMapSha": "8351f581bde09800358aa86af67b43ffbba166640df9f67d3a7d3fb27fca05f8",
+  "before": {
+    "runner.mjs": {
+      "bytes": 17492,
+      "sha256": "724748d5be5d5dda03783b7adff37c0ab06e21e48e93d949eb1d67b474479695"
+    },
+    "lab.css": {
+      "bytes": 6395,
+      "sha256": "d8bb6f5e7d2c3c10b0d903d23fb8525fca222b1aad138d76200eb8206acb3c15"
+    },
+    "games/semester.mjs": {
+      "bytes": 6177,
+      "sha256": "31ae5b2b103c7de6f2244523d02691327cbd2eb06250fba917101c708ff810c1"
+    }
+  },
+  "after": {
+    "runner.mjs": {
+      "bytes": 17492,
+      "sha256": "724748d5be5d5dda03783b7adff37c0ab06e21e48e93d949eb1d67b474479695"
+    },
+    "lab.css": {
+      "bytes": 6395,
+      "sha256": "d8bb6f5e7d2c3c10b0d903d23fb8525fca222b1aad138d76200eb8206acb3c15"
+    },
+    "games/semester.mjs": {
+      "bytes": 6177,
+      "sha256": "31ae5b2b103c7de6f2244523d02691327cbd2eb06250fba917101c708ff810c1"
+    }
+  },
+  "sourceStable": true,
+  "pass": false
+}

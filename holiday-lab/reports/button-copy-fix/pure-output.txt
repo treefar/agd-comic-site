@@ -1,0 +1,66 @@
+✔ dependencies, overlap, breaks, workload and bounds are real constraints (4.135ms)
+✔ multiple legitimate production schedules change the saved replay (4.2738ms)
+✔ resource failures explain rest, conflicting jobs and excessive work distinctly (0.4836ms)
+✔ three-language schedule callbacks and preview cleanup zh (3.4744ms)
+✔ three-language schedule callbacks and preview cleanup en (0.864ms)
+✔ three-language schedule callbacks and preview cleanup ja (2.2115ms)
+✔ camera produces different parallax at three depths (2.711ms)
+✔ occlusion, wrong depth order, and invalid inputs prevent a shot (1.5418ms)
+✔ three checked camera positions produce a real sequence, reset and alternate layout differ (14.1794ms)
+✔ all three languages can capture using UI callbacks and sprite centers match sightline geometry (7.297ms)
+✔ partial and clipped listening never complete; different orders preserve different work (10.7301ms)
+✔ leaving the reading window resets partial attention and rejects illegal inputs (0.6616ms)
+✔ three-language mount and teardown zh (5.0237ms)
+✔ three-language mount and teardown en (2.1033ms)
+✔ three-language mount and teardown ja (1.0425ms)
+✔ 漫畫不能空白完成，動作台詞和節奏都要配合 (1.9091ms)
+✔ 三格台詞作品保留實際停頓，重新開始不殘留 (6.111ms)
+✖ 三語漫畫操作、錯誤阻擋與預覽清理：zh (4.0042ms)
+✖ 三語漫畫操作、錯誤阻擋與預覽清理：en (0.7053ms)
+✖ 三語漫畫操作、錯誤阻擋與預覽清理：ja (0.7716ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 17
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 244.7109
+
+✖ failing tests:
+
+test at holiday-lab\tests\teachers.test.mjs:24:36
+✖ 三語漫畫操作、錯誤阻擋與預覽清理：zh (4.0042ms)
+  TypeError: line.element.querySelector is not a function
+      at mount (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/games/teachers.mjs:19:15)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/tests/teachers.test.mjs:25:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+
+test at holiday-lab\tests\teachers.test.mjs:24:36
+✖ 三語漫畫操作、錯誤阻擋與預覽清理：en (0.7053ms)
+  TypeError: line.element.querySelector is not a function
+      at mount (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/games/teachers.mjs:19:15)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/tests/teachers.test.mjs:25:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+
+test at holiday-lab\tests\teachers.test.mjs:24:36
+✖ 三語漫畫操作、錯誤阻擋與預覽清理：ja (0.7716ms)
+  TypeError: line.element.querySelector is not a function
+      at mount (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/games/teachers.mjs:19:15)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/tests/teachers.test.mjs:25:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)

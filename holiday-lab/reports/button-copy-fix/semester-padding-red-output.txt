@@ -1,0 +1,87 @@
+✖ three-language task/contact choices, real guide link and cleanup zh (3.3442ms)
+✖ three-language task/contact choices, real guide link and cleanup en (1.4374ms)
+✖ three-language task/contact choices, real guide link and cleanup ja (0.339ms)
+✔ arrow keys move from the map but never steal keys from controls or links (1.0822ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 1
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 105.6671
+
+✖ failing tests:
+
+test at holiday-lab\tests\semester.test.mjs:10:36
+✖ three-language task/contact choices, real guide link and cleanup zh (3.3442ms)
+  AssertionError [ERR_ASSERTION]: only the formal registration contact receives extra horizontal paper
+  + actual - expected
+  
+  + {}
+  - {
+  -   paddingInline: '40px'
+  - }
+  
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/tests/semester.test.mjs:12:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: {},
+    expected: { paddingInline: '40px' },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\tests\semester.test.mjs:10:36
+✖ three-language task/contact choices, real guide link and cleanup en (1.4374ms)
+  AssertionError [ERR_ASSERTION]: only the formal registration contact receives extra horizontal paper
+  + actual - expected
+  
+  + {}
+  - {
+  -   paddingInline: '40px'
+  - }
+  
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/tests/semester.test.mjs:12:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: {},
+    expected: { paddingInline: '40px' },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\tests\semester.test.mjs:10:36
+✖ three-language task/contact choices, real guide link and cleanup ja (0.339ms)
+  AssertionError [ERR_ASSERTION]: only the formal registration contact receives extra horizontal paper
+  + actual - expected
+  
+  + {}
+  - {
+  -   paddingInline: '40px'
+  - }
+  
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/tests/semester.test.mjs:12:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: {},
+    expected: { paddingInline: '40px' },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

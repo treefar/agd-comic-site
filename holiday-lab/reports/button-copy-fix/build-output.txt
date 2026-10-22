@@ -1,0 +1,36 @@
+MEASUREMENT ONLY: test build for layout capture; not cleared for packaging or delivery.
+{
+  "pass": true,
+  "project": "C:\\agywork\\agd-holiday-prototypes",
+  "assets": 257,
+  "screens": 9,
+  "errors": []
+}
+Translations: 2315 Static candidates: 14 Unpaired paths: 21
+Japanese exact translations: 2344
+▲ [WARNING] Duplicate key "color" in object literal [duplicate-object-key]
+
+    ssr-entry.jsx:6981:44:
+      6981 │         background: "var(--accent-yellow)", color: "var(--ink)",
+           ╵                                             ~~~~~
+
+  The original key "color" is here:
+
+    ssr-entry.jsx:6980:8:
+      6980 │         color: "inherit", textDecoration: "none", fontFamily: "'...
+           ╵         ~~~~~
+
+▲ [WARNING] Duplicate key "color" in object literal [duplicate-object-key]
+
+    client-entry.jsx:6980:44:
+      6980 │         background: "var(--accent-yellow)", color: "var(--ink)",
+           ╵                                             ~~~~~
+
+  The original key "color" is here:
+
+    client-entry.jsx:6979:8:
+      6979 │         color: "inherit", textDecoration: "none", fontFamily: "'...
+           ╵         ~~~~~
+
+[build] 完成：.measure-button-copy-01/index.html 135.6 KB、app-35FXRUI2.js 1165.5 KB
+MEASUREMENT_ONLY: .measure-button-copy-01; 356 files; no publication performed.

@@ -44,7 +44,7 @@ export function mount(ctx){
     if(state.level===3){finished=true;ctx.setProgress(3,3);ctx.complete(result(state));return;}
     render();
   }});
-  ctx.ui.button({id:'island-reset-shot',label:w('重排這個鏡頭','Reset this composition','この構図をリセット'),onClick:()=>{
+  ctx.ui.button({id:'island-reset-shot',label:w('重排這個鏡頭','Reset composition','この構図をリセット'),onClick:()=>{
     if(finished)return;
     state={...state,camera:0,fore:0,mid:0,far:0,feedback:'intro'};
     Object.values(controls).forEach(c=>c.setValue(0));render();

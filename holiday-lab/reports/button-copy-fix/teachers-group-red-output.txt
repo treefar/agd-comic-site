@@ -1,0 +1,93 @@
+✔ 漫畫不能空白完成，動作台詞和節奏都要配合 (0.8589ms)
+✔ 三格台詞作品保留實際停頓，重新開始不殘留 (0.9562ms)
+✖ 三語漫畫操作、錯誤阻擋與預覽清理：zh (2.8137ms)
+✖ 三語漫畫操作、錯誤阻擋與預覽清理：en (0.3539ms)
+✖ 三語漫畫操作、錯誤阻擋與預覽清理：ja (0.2041ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 2
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 100.3679
+
+✖ failing tests:
+
+test at holiday-lab\tests\teachers.test.mjs:24:36
+✖ 三語漫畫操作、錯誤阻擋與預覽清理：zh (2.8137ms)
+  AssertionError [ERR_ASSERTION]: all dialogue options receive enough original paper interior
+  + actual - expected
+  
+  + {}
+  - {
+  -   paddingBlock: '18px',
+  -   paddingInline: '40px'
+  - }
+  
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/tests/teachers.test.mjs:27:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: {},
+    expected: { paddingBlock: '18px', paddingInline: '40px' },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\tests\teachers.test.mjs:24:36
+✖ 三語漫畫操作、錯誤阻擋與預覽清理：en (0.3539ms)
+  AssertionError [ERR_ASSERTION]: all dialogue options receive enough original paper interior
+  + actual - expected
+  
+  + {}
+  - {
+  -   paddingBlock: '18px',
+  -   paddingInline: '40px'
+  - }
+  
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/tests/teachers.test.mjs:27:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: {},
+    expected: { paddingBlock: '18px', paddingInline: '40px' },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\tests\teachers.test.mjs:24:36
+✖ 三語漫畫操作、錯誤阻擋與預覽清理：ja (0.2041ms)
+  AssertionError [ERR_ASSERTION]: all dialogue options receive enough original paper interior
+  + actual - expected
+  
+  + {}
+  - {
+  -   paddingBlock: '18px',
+  -   paddingInline: '40px'
+  - }
+  
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/tests/teachers.test.mjs:27:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: {},
+    expected: { paddingBlock: '18px', paddingInline: '40px' },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
