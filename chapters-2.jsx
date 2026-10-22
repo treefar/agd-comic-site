@@ -83,12 +83,32 @@ const FACULTY = [
   },
 ];
 
+// Only the directory cards share this crop. The detail page keeps its wider composition.
+const FacultyPortrait = ({ f, slug }) => {
+  const [source, setSource] = React.useState(f.photo);
+  React.useEffect(() => { setSource(f.photo); }, [f.photo]);
+  const crop = FacultyPortraitModel.styleFor(slug, source);
+  return (
+    <div className="faculty-portrait" data-faculty-slug={slug} data-normalized={crop ? "true" : "false"}
+      style={crop ? { backgroundImage: `url("images/faculty-portrait-background/${slug}.png")` } : undefined}>
+      {crop && <img className="faculty-portrait-backdrop" alt="" aria-hidden="true"
+        src={`images/faculty-portrait-background/${slug}.png`}
+        style={{ left: crop.left, transform: `scaleX(${parseFloat(crop.height) / 100}) ${crop.transform}` }} />}
+      <img className={crop ? "faculty-portrait-image" : "faculty-portrait-unmeasured"}
+        src={source} alt={`${f.name} 老師`} loading="lazy"
+        style={crop || undefined}
+        onError={() => { if (f.photoFallback && source !== f.photoFallback) setSource(f.photoFallback); }} />
+    </div>
+  );
+};
+
 const FacultyCard = ({ f, i }) => {
   const [hover, setHover] = React.useState(false);
   const slug = f.slug || f.en.toLowerCase().replace(/[^a-z]/g, "");
   return (
     <Panel
       clickable
+      className="faculty-card"
       onClick={() => { window.location.hash = "#/faculty/" + slug; }}
       bg={f.color === "red" ? "bg-halftone-red" : f.color === "blue" ? "bg-halftone-blue" : "bg-halftone-light"}
       /* 黃底改由位置決定：NO.02 / 04 / 06… 隔一張交錯，不再看資料的 color */
@@ -96,11 +116,12 @@ const FacultyCard = ({ f, i }) => {
       style={{ padding: 0, position: "relative", overflow: "hidden" }}
     >
       <div
+        className="faculty-portrait-slot"
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
         style={{ height: "62%", borderBottom: "var(--bw) solid var(--ink)", position: "relative" }}
       >
-        <PH label={`${f.name} portrait`} src={f.photo} fallback={f.photoFallback} alt={`${f.name} 老師`} pos="center top" />
+        <FacultyPortrait f={f} slug={slug} />
         <div style={{
           position: "absolute", top: 8, left: 8,
           fontFamily: "'Bangers',sans-serif",
