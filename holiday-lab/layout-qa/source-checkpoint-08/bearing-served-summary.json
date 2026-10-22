@@ -1,0 +1,42 @@
+{
+  "base": "http://127.0.0.1:8845",
+  "served_product": true,
+  "candidate_css": null,
+  "product_written": false,
+  "pass": true,
+  "sampler_sha256": "c247641156d929b0de7d6aa70e509510e293a29d7d6ff45aaac99ad931e0dc1a",
+  "raw": {
+    "file": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\controls-bearing-served-08\\report.json",
+    "sha256": "c9f5ce1d60c6177745dca6507b92395c78ca7a006d6436816b3eed80b4cd52a7"
+  },
+  "sessions": [
+    {
+      "width": 320,
+      "frames": 42,
+      "geometry": 0,
+      "horizontalclip": 0,
+      "raw_methods": 0,
+      "buttons": 13,
+      "expected": 339,
+      "seen": 339,
+      "scroll_all": true,
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "frames": 43,
+      "geometry": 0,
+      "horizontalclip": 0,
+      "raw_methods": 44,
+      "buttons": 13,
+      "expected": 339,
+      "seen": 339,
+      "scroll_all": true,
+      "pass": true
+    }
+  ],
+  "limits": [
+    "Actual served product sample, but only the original bearing cases; full mandatory matrix remains NO.",
+    "Vertical masked-content raw flags are retained with actual full scroll union, not silently cleared."
+  ]
+}
