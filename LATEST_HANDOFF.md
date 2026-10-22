@@ -2,6 +2,16 @@
 
 最後更新：2026-10-22，TF-GO／Codex（僅英文版獲授權公開發布；遊戲留本機）。
 
+## 2026-10-22 最新：在校指南改為官網版型，仍待審閱
+
+- 依使用者最新指示，已將在校指南接入官網TopNav/BackBar/Footer與漫畫CSS；新分支codex/student-guide-ui，提交65af4643d0c729bb5d09056247aeafab68e9d4a2；工作樹C:/agywork/agd-student-guide-preview。基底main 1b8322e。未push、未發布、未刪來源檔，C節未動。
+- 入口#/students/guide；八類、七快捷、14項短說明，各最多三步並附窗口及官方入口，後面集中28題FAQ。分類/搜尋同步篩FAQ。每項summary最長48字，每步最長18字，FAQ答案最長70字。
+- 34官方來源重新取回，12有內容、22阻擋/空內容；讀取限制列research.md。現行專題、英檢及下一屆海外甄選待承辦確認；不把索引當全文、不把過期115-1期限當仍受理。研究技術細節收進折疊來源，學生頁只寫白話確認方式。
+- 新3項測試0/3轉3/3，加原中英共11/11；npm run build/check成功，app-5VY3MYMQ.js。1440/1280/768/390/320五尺寸分類、搜尋、七快捷與FAQ鍵盤操作皆過，0錯誤、無頁面橫溢。文字審查1440/390/320、FAQ收合/全展開6組0壓線，刻意不良背景負向控制可抓到；本次commit已透過.githooks/pre-commit執行。既有duplicate color警告、真手機未測保留。
+- 單檔審閱成果：本輪Codex對話outputs/student-guide-official/index.html；原repo備份work-orders/20261022/student-guide-official-review/index.html。已內建樣式、程式與資料；字型及學校外連仍需網路。報告VERIFY-site-draft.md、研究research.md、工具證據JSON同層。
+- 本機預覽http://127.0.0.1:8797/#/students/guide，Node伺服器目前執行中；8785遊戲未動。單檔已實測14卡、28FAQ、搜尋海外1項、無頁面錯誤。離線狀態dashboard/index.html於2026-10-22重產，22/22格式及權威驗證、桌機/手機搜尋篩選通過；使用者確認仍0。
+- 下一步先讓主任看新版與確認內容，取得缺少的當期正式文件後才準備上線；此授權不包含發布在校指南或遊戲。原學生紙上期刊版已被本官網版型審閱稿取代，下方紀錄供歷史追溯。
+
 ## 2026-10-22 最新：英文共用介面已上線；在校指南另交審閱
 
 - 使用者已於對話授權驗證後將英文共用介面上 main，保留正式站更新，遊戲不得發布。發布工作樹 C:/agywork/agd-en-publish、分支 codex/en-shared-interface，基底56b61b9，提交1b8322e69d84549db220d849afb1aac0fb9d7c2a；一般fast-forward push origin HEAD:main成功。GitHub Pages run39743799524 build/deploy success。
@@ -34,7 +44,7 @@
 
 ## 下一輪第一件事
 1. 先核對發布工作樹codex/en-shared-interface與origin/main為1b8322e，讀work-orders/20261022/shared-interface-release/VERIFY-shared-interface.md；不要重做已上線的英文重構。
-2. 讓主任審閱student-guide-review/index.html及5個待確認問題；補現行專題文件、海外甄選與處室分工後再提出具體上線稿，未確認前不發布。
+2. 讓主任審閱student-guide-official-review/index.html官網版型與28題FAQ；補現行專題文件、英檢條件、海外甄選及處室分工後再準備上線，未確認前不發布。
 3. 本機遊戲等使用者試玩回饋。C節其餘待決項維持，禁止整條feature合併或順帶發布遊戲。
 4. 開工前先查git status／HEAD，主專案與clone以本機fetch及ff-only同步；正式站main只接受另外獲授權的發布內容。
 

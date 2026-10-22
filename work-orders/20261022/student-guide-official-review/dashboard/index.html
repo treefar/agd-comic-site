@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>在校指南｜官網版型審閱狀態</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff; --fg: #1a1a1a; --muted: #5b5b66; --bg2: #f5f5f7; --bg3: #e8e8ec;
+  --border: #d0d0d6; --accent: #2563eb;
+  --ok-bg: #dcfce7; --ok-fg: #166534; --ok-bd: #86efac;
+  --warn-bg: #fef9c3; --warn-fg: #854d0e; --warn-bd: #fde047;
+  --blocked-bg: #e5e7eb; --blocked-fg: #374151; --blocked-bd: #9ca3af;
+  --danger-bg: #fee2e2; --danger-fg: #991b1b; --danger-bd: #fca5a5;
+  --info-bg: #dbeafe; --info-fg: #1e40af; --info-bd: #93c5fd;
+  --shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #18181b; --fg: #e4e4e7; --muted: #a1a1aa; --bg2: #232327; --bg3: #3f3f46;
+    --border: #52525b; --accent: #60a5fa;
+    --ok-bg: #052e16; --ok-fg: #86efac; --ok-bd: #166534;
+    --warn-bg: #422006; --warn-fg: #fde047; --warn-bd: #854d0e;
+    --blocked-bg: #374151; --blocked-fg: #d1d5db; --blocked-bd: #6b7280;
+    --danger-bg: #450a0a; --danger-fg: #fca5a5; --danger-bd: #991b1b;
+    --info-bg: #1e3a5f; --info-fg: #93c5fd; --info-bd: #1e40af;
+    --shadow: 0 1px 3px rgba(0,0,0,0.4);
+  }
+}
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
+  background: var(--bg); color: var(--fg);
+  margin: 0; line-height: 1.6; overflow-x: hidden;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 16px; }
+h1 { font-size: 1.5rem; margin: 0 0 4px; }
+h2 { font-size: 1.2rem; margin: 28px 0 8px; border-bottom: 2px solid var(--accent); padding-bottom: 4px; display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+h3 { font-size: 0.95rem; margin: 14px 0 6px; color: var(--muted); }
+.sub { margin: 0; color: var(--muted); font-size: 0.9rem; }
+.meta-line { margin: 4px 0 0; color: var(--muted); font-size: 0.8rem; }
+.count { font-size: 0.8rem; font-weight: 400; color: var(--muted); }
+
+/* 摘要卡（依三層分列） */
+.layer { margin: 8px 0; }
+.layer-empty { font-size: 0.8rem; color: var(--muted); margin: 0; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+.card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 12px; text-align: center; box-shadow: var(--shadow); }
+.card .num { font-size: 1.8rem; font-weight: 700; color: var(--accent); line-height: 1.2; }
+.card .label { font-size: 0.85rem; }
+.card .scope { display: inline-block; font-size: 0.72rem; border: 1px solid var(--border); border-radius: 10px; padding: 0 6px; margin-top: 2px; color: var(--muted); }
+.card .den { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+
+/* 搜尋與篩選 */
+.controls { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 8px; align-items: center; position: sticky; top: 0; z-index: 5; background: var(--bg); padding: 8px 0; }
+.search-box { flex: 1 1 240px; min-width: 0; padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 1rem; background: var(--bg2); color: var(--fg); font-family: inherit; }
+.filter-btn { padding: 6px 14px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg2); color: var(--fg); cursor: pointer; font-size: 0.85rem; font-family: inherit; }
+.filter-btn:hover { background: var(--bg3); }
+.filter-btn[aria-pressed="true"] { background: var(--accent); color: #fff; border-color: var(--accent); }
+.match-count { font-size: 0.8rem; color: var(--muted); flex-basis: 100%; }
+
+/* 表格 */
+.section-desc { font-size: 0.85rem; color: var(--muted); margin: 0 0 6px; }
+.na-note { font-size: 0.85rem; color: var(--muted); margin: 4px 0; }
+.table-wrap { overflow: auto; max-height: 75vh; margin: 8px 0 16px; border-radius: 8px; border: 1px solid var(--border); }
+table { width: max-content; min-width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th { position: sticky; top: 0; background: var(--bg3); text-align: left; padding: 10px 12px; border-bottom: 2px solid var(--border); white-space: nowrap; z-index: 2; }
+td { padding: 8px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.t-text { min-width: 6em; max-width: 26em; }
+td.t-tag, td.t-code, td.t-bool { white-space: nowrap; }
+tbody tr.row.zebra { background: var(--bg2); }
+tbody tr.row:hover { background: var(--bg3); }
+tr.row.expandable { cursor: pointer; }
+tr.row.expandable td:first-child::before { content: "▶"; font-size: 0.65rem; margin-right: 6px; display: inline-block; transition: transform 0.15s; color: var(--muted); }
+tr.row.expandable.open td:first-child::before { transform: rotate(90deg); }
+tr.detail td { background: var(--bg2); padding: 12px 16px; }
+.detail-grid { display: grid; grid-template-columns: max-content 1fr; gap: 4px 16px; font-size: 0.85rem; margin: 0; }
+.detail-grid dt { font-weight: 600; }
+.detail-grid dd { margin: 0; overflow-wrap: anywhere; }
+.null { color: var(--muted); }
+code { font-family: Consolas, "Courier New", monospace; font-size: 0.85em; background: var(--bg3); padding: 0 4px; border-radius: 3px; }
+
+/* 狀態標籤：一律有文字，顏色只是輔助 */
+.tag { display: inline-block; padding: 1px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; white-space: nowrap; border: 1px solid; margin: 1px 2px 1px 0; }
+.tone-ok { background: var(--ok-bg); color: var(--ok-fg); border-color: var(--ok-bd); }
+.tone-warn { background: var(--warn-bg); color: var(--warn-fg); border-color: var(--warn-bd); }
+.tone-blocked { background: var(--blocked-bg); color: var(--blocked-fg); border-color: var(--blocked-bd); }
+.tone-danger { background: var(--danger-bg); color: var(--danger-fg); border-color: var(--danger-bd); }
+.tone-info { background: var(--info-bg); color: var(--info-fg); border-color: var(--info-bd); }
+
+/* 資料缺口與來源 */
+.box { border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; background: var(--bg2); font-size: 0.88rem; }
+.box.unknowns { border-left: 4px solid var(--warn-bd); }
+.box ul { margin: 4px 0; padding-left: 20px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: 0.8rem; }
+@media (max-width: 640px) {
+  .controls { position: static; }
+  .detail-grid { position: sticky; left: 16px; width: calc(100vw - 88px); }
+}
+.footer { text-align: center; font-size: 0.8rem; color: var(--muted); margin: 32px 0 16px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1 id="title"></h1>
+    <p class="sub" id="subtitle"></p>
+    <p class="meta-line" id="meta-line"></p>
+  </header>
+
+  <section id="summary" aria-label="摘要"></section>
+
+  <div class="controls">
+    <input type="search" class="search-box" id="search" placeholder="搜尋任何欄位⋯⋯" autocomplete="off" aria-label="搜尋">
+    <span id="filter-bar" role="group" aria-label="狀態篩選" style="display:contents"></span>
+    <span class="match-count" id="match-count" aria-live="polite"></span>
+  </div>
+
+  <main id="sections"></main>
+
+  <h2>資料缺口（unknowns）<span class="count" id="unknown-count"></span></h2>
+  <div class="box unknowns" id="unknowns"></div>
+
+  <h2>權威來源</h2>
+  <div class="box" id="authorities"></div>
+
+  <h2>狀態圖例</h2>
+  <div class="box"><div class="legend" id="legend"></div></div>
+
+  <div class="footer" id="footer"></div>
+</div>
+
+<script id="dashboard-data" type="application/json">{"schema_version":1,"meta":{"project":"系網漫畫版_AGDComicSite","title":"在校指南｜官網版型審閱狀態","generated":"2026-10-22","authorities":[{"path":"student-copy.json","role":"卡片、FAQ與官方來源"},{"path":"validation.json / smoke.json / text-audit.json","role":"資料、操作與文字檢查"}],"notes":["待使用者審閱；未公開發布。來源讀取限制保留在研究底稿。"]},"status_levels":[{"key":"draft","label":"審閱稿已建","tone":"info","layer":"data"},{"key":"pass","label":"工具通過","tone":"ok","layer":"tool"},{"key":"fail","label":"未通過","tone":"danger","layer":"tool"},{"key":"pending","label":"待審閱","tone":"warn","layer":"user"},{"key":"confirmed","label":"使用者已確認","tone":"ok","layer":"user"}],"summary_cards":[{"id":"cards","label":"短說明","layer":"data","rule":{"count":"cards"},"value":14},{"id":"faq","label":"常見問題","layer":"data","rule":{"count":"faq"},"value":28},{"id":"sources","label":"官方來源","layer":"data","rule":{"count":"sources"},"value":34},{"id":"checks","label":"資料／操作／文字檢查","layer":"tool","rule":{"count":"checks","where":{"tool":"pass"}},"value":28},{"id":"user","label":"使用者確認","layer":"user","rule":{"count":"cards","where":{"user":"confirmed"}},"value":0}],"sections":[{"id":"cards","title":"學生資訊","columns":[{"key":"name","title":"項目","type":"text"},{"key":"tool","title":"狀態","type":"tag"},{"key":"user","title":"使用者確認","type":"tag"}],"detail_fields":[],"search_fields":["name"],"rows":[{"name":"畢業檢核","tool":"draft","user":"pending"},{"name":"校外實習","tool":"draft","user":"pending"},{"name":"證照認列","tool":"draft","user":"pending"},{"name":"我要請假","tool":"draft","user":"pending"},{"name":"選課加退選","tool":"draft","user":"pending"},{"name":"學分抵免","tool":"draft","user":"pending"},{"name":"專題製作","tool":"draft","user":"pending"},{"name":"英文門檻","tool":"draft","user":"pending"},{"name":"休學復學與兵役","tool":"draft","user":"pending"},{"name":"獎助與急難協助","tool":"draft","user":"pending"},{"name":"遇到困難找誰","tool":"draft","user":"pending"},{"name":"就業資源","tool":"draft","user":"pending"},{"name":"繼續升學","tool":"draft","user":"pending"},{"name":"海外實習","tool":"draft","user":"pending"}],"row_count":14},{"id":"faq","title":"常見問題","columns":[{"key":"name","title":"項目","type":"text"},{"key":"tool","title":"狀態","type":"tag"},{"key":"user","title":"使用者確認","type":"tag"}],"detail_fields":[],"search_fields":["name"],"rows":[{"name":"外系選修都能算進畢業學分嗎？","tool":"draft","user":"pending"},{"name":"一般班最低要幾學分？技優班也一樣嗎？","tool":"draft","user":"pending"},{"name":"校外實習要做多久？","tool":"draft","user":"pending"},{"name":"可以直接拿打工時數抵實習嗎？","tool":"draft","user":"pending"},{"name":"入學前考的證照也有獎助嗎？","tool":"draft","user":"pending"},{"name":"老師已幫我登錄，還要申請獎助嗎？","tool":"draft","user":"pending"},{"name":"送出後一直沒回覆，可以當作准假嗎？","tool":"draft","user":"pending"},{"name":"兩天以上一定只在線上處理嗎？","tool":"draft","user":"pending"},{"name":"老師同意、也去上課，就算選到了嗎？","tool":"draft","user":"pending"},{"name":"這學期還能直接加退選嗎？","tool":"draft","user":"pending"},{"name":"表格送出去，就可以不修那門課嗎？","tool":"draft","user":"pending"},{"name":"現在能補交115-1抵免嗎？","tool":"draft","user":"pending"},{"name":"專題是選修嗎？","tool":"draft","user":"pending"},{"name":"組員人數、退組或補審要看哪裡？","tool":"draft","user":"pending"},{"name":"英文分級免修，學分就不用補了嗎？","tool":"draft","user":"pending"},{"name":"可以直接照網路上的英檢分數準備嗎？","tool":"draft","user":"pending"},{"name":"領了休學表，晚一點再交可以嗎？","tool":"draft","user":"pending"},{"name":"休學後如何知道復學時間？","tool":"draft","user":"pending"},{"name":"錯過一項助學截止日，就不能再問其他協助嗎？","tool":"draft","user":"pending"},{"name":"可以同時領好幾種補助嗎？","tool":"draft","user":"pending"},{"name":"線上諮商預約從哪裡進？","tool":"draft","user":"pending"},{"name":"一般申訴與性平可以共用同一張表嗎？","tool":"draft","user":"pending"},{"name":"還沒畢業，也可以先做職涯準備嗎？","tool":"draft","user":"pending"},{"name":"徵才活動或職缺一定每學期都一樣嗎？","tool":"draft","user":"pending"},{"name":"應屆生還沒拿到畢業證書，能報本校116碩甄嗎？","tool":"draft","user":"pending"},{"name":"本校116碩甄何時截止？其他學校也一樣嗎？","tool":"draft","user":"pending"},{"name":"境外生也一定可以領學海補助嗎？","tool":"draft","user":"pending"},{"name":"出國實習的保險和簽證，可以自己隨便買辦嗎？","tool":"draft","user":"pending"}],"row_count":28},{"id":"sources","title":"官方來源（不代表均已讀到全文）","columns":[{"key":"name","title":"項目","type":"text"},{"key":"tool","title":"狀態","type":"tag"},{"key":"user","title":"使用者確認","type":"tag"}],"detail_fields":[],"search_fields":["name"],"rows":[{"name":"教務處歷年各系課程規劃表","tool":"draft","user":"pending"},{"name":"動遊系112學年度四技日間部入學生課程表","tool":"draft","user":"pending"},{"name":"動遊系113學年度四技日間部入學生課程表","tool":"draft","user":"pending"},{"name":"動遊系114學年度四技日間部入學生課程表","tool":"draft","user":"pending"},{"name":"動遊系115學年度四技日間部入學生課程表","tool":"draft","user":"pending"},{"name":"114-2學期證照獎助金申請公告","tool":"draft","user":"pending"},{"name":"學生請假與獎懲簽核公告","tool":"draft","user":"pending"},{"name":"學生請假規則（舊PDF）","tool":"draft","user":"pending"},{"name":"115-1加退選公告","tool":"draft","user":"pending"},{"name":"115-1學分抵免申請公告","tool":"draft","user":"pending"},{"name":"教務處常見問答","tool":"draft","user":"pending"},{"name":"教務處組織簡介與分工","tool":"draft","user":"pending"},{"name":"115-1休學退學注意事項","tool":"draft","user":"pending"},{"name":"四技日間部英文畢業門檻注意事項","tool":"draft","user":"pending"},{"name":"通識英文及外語修課","tool":"draft","user":"pending"},{"name":"職發中心業務與成員","tool":"draft","user":"pending"},{"name":"校務公開網：校外實習制度說明","tool":"draft","user":"pending"},{"name":"115-1不利處境學生助學辦理須知","tool":"draft","user":"pending"},{"name":"115-1教育部學產基金低收入戶助學金須知","tool":"draft","user":"pending"},{"name":"急難慰助專區撥款方式","tool":"draft","user":"pending"},{"name":"生活輔導組組織與職掌","tool":"draft","user":"pending"},{"name":"學校在校學生入口","tool":"draft","user":"pending"},{"name":"115年度職場不法侵害調查公告","tool":"draft","user":"pending"},{"name":"性平會活動官方聯絡資訊","tool":"draft","user":"pending"},{"name":"學校最新公告列表","tool":"draft","user":"pending"},{"name":"動遊系課程介紹與系辦聯絡資訊","tool":"draft","user":"pending"},{"name":"動遊系常用表單","tool":"draft","user":"pending"},{"name":"招生簡章查詢：116學年度碩士班甄試","tool":"draft","user":"pending"},{"name":"116學年度碩士班甄試招生簡章","tool":"draft","user":"pending"},{"name":"116碩士班甄試官方報名說明","tool":"draft","user":"pending"},{"name":"教育部出國研修或國外專業實習補助要點","tool":"draft","user":"pending"},{"name":"115年學海計畫第2次甄選作業時程","tool":"draft","user":"pending"},{"name":"國際及兩岸事務處：出國交流","tool":"draft","user":"pending"},{"name":"動遊系第九屆赴日HC實習成果","tool":"draft","user":"pending"}],"row_count":34},{"id":"checks","title":"本輪工具驗證","columns":[{"key":"name","title":"項目","type":"text"},{"key":"tool","title":"狀態","type":"tag"},{"key":"user","title":"使用者確認","type":"tag"}],"detail_fields":[],"search_fields":["name"],"rows":[{"name":"14張卡片","tool":"pass","user":"pending"},{"name":"8個白話分類","tool":"pass","user":"pending"},{"name":"來源保留34筆且id不重複","tool":"pass","user":"pending"},{"name":"來源必要欄位齊全","tool":"pass","user":"pending"},{"name":"分類對應筆數與14卡一致","tool":"pass","user":"pending"},{"name":"每張summary不超過80字","tool":"pass","user":"pending"},{"name":"每張最多3步且每步不超過45字","tool":"pass","user":"pending"},{"name":"每卡1至2題FAQ且總數至少14","tool":"pass","user":"pending"},{"name":"FAQ每答不超過120字","tool":"pass","user":"pending"},{"name":"每卡及FAQ來源全部可解析","tool":"pass","user":"pending"},{"name":"contact維持office結構","tool":"pass","user":"pending"},{"name":"舊截止日不寫入summary或steps","tool":"pass","user":"pending"},{"name":"三個明確短標與海外獨立卡","tool":"pass","user":"pending"},{"name":"7快捷全部可解析","tool":"pass","user":"pending"},{"name":"主文來源讀取限制保留","tool":"pass","user":"pending"},{"name":"學生可見欄位無研究讀取術語","tool":"pass","user":"pending"},{"name":"每卡有官方洽詢入口","tool":"pass","user":"pending"},{"name":"1440px分類／搜尋／FAQ","tool":"pass","user":"pending"},{"name":"1280px分類／搜尋／FAQ","tool":"pass","user":"pending"},{"name":"768px分類／搜尋／FAQ","tool":"pass","user":"pending"},{"name":"390px分類／搜尋／FAQ","tool":"pass","user":"pending"},{"name":"320px分類／搜尋／FAQ","tool":"pass","user":"pending"},{"name":"1440px文字檢查／展開false","tool":"pass","user":"pending"},{"name":"1440px文字檢查／展開true","tool":"pass","user":"pending"},{"name":"390px文字檢查／展開false","tool":"pass","user":"pending"},{"name":"390px文字檢查／展開true","tool":"pass","user":"pending"},{"name":"320px文字檢查／展開false","tool":"pass","user":"pending"},{"name":"320px文字檢查／展開true","tool":"pass","user":"pending"}],"row_count":28}],"filters":[{"id":"qa","label":"只看驗證","conditions":{"checks":true}}],"unknowns":["部分學校現行文件仍待承辦確認；22筆來源重取阻擋或空內容，詳research.md。","實體手機未測；此版本未推送、未上線。"],"build":{"generator":"project-dashboard/build-dashboard.js","schema_version":1}}</script>
+<script>
+(function () {
+  'use strict';
+  var matchWhere = function matchWhere(row, where) {
+  if (where === true || where == null) return true;
+  if (where === false) return false;
+  function isEmpty(v) { return v === null || v === undefined || v === '' || (Array.isArray(v) && v.length === 0); }
+  function test(v, cond) {
+    if (cond === null || typeof cond !== 'object' || Array.isArray(cond)) {
+      if (Array.isArray(v)) return v.indexOf(cond) >= 0;
+      return v === cond || (cond === null && v === undefined);
+    }
+    var ks = Object.keys(cond);
+    for (var i = 0; i < ks.length; i++) {
+      var op = ks[i], a = cond[op], ok;
+      if (op === 'eq') ok = v === a;
+      else if (op === 'ne') ok = v !== a;
+      else if (op === 'in') ok = a.indexOf(v) >= 0;
+      else if (op === 'nin') ok = a.indexOf(v) < 0;
+      else if (op === 'gt') ok = typeof v === 'number' && v > a;
+      else if (op === 'gte') ok = typeof v === 'number' && v >= a;
+      else if (op === 'lt') ok = typeof v === 'number' && v < a;
+      else if (op === 'lte') ok = typeof v === 'number' && v <= a;
+      else if (op === 'contains') ok = Array.isArray(v) ? v.indexOf(a) >= 0 : (typeof v === 'string' && v.indexOf(a) >= 0);
+      else if (op === 'empty') ok = isEmpty(v) === !!a;
+      else ok = false;
+      if (!ok) return false;
+    }
+    return true;
+  }
+  var keys = Object.keys(where);
+  for (var j = 0; j < keys.length; j++) {
+    var k = keys[j], c = where[k];
+    if (k === '$any') { var anyOk = false; for (var m = 0; m < c.length; m++) if (matchWhere(row, c[m])) { anyOk = true; break; } if (!anyOk) return false; }
+    else if (k === '$all') { for (var n = 0; n < c.length; n++) if (!matchWhere(row, c[n])) return false; }
+    else if (k === '$not') { if (matchWhere(row, c)) return false; }
+    else if (!test(row[k], c)) return false;
+  }
+  return true;
+};
+  var D = JSON.parse(document.getElementById('dashboard-data').textContent);
+  var LAYER_LABEL = { data: '資料層已建', tool: '工具驗證', user: '使用者確認' };
+  var LAYER_HINT = {
+    data: '資料或檔案已存在；不代表可用',
+    tool: 'GM、測試、腳本等工具跑過；不代表使用者認可',
+    user: '使用者本人在對話中確認；只有這層算真正完成'
+  };
+  var STATUS = {};
+  D.status_levels.forEach(function (s) { STATUS[s.key] = s; });
+
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
+  function isNull(v) { return v === null || v === undefined; }
+  var NULL_HTML = '<span class="null" title="無資料">—</span>';
+
+  function tagHtml(key) {
+    var s = STATUS[key];
+    if (!s) return '<span class="tag tone-danger">未定義狀態：' + esc(key) + '</span>';
+    return '<span class="tag tone-' + s.tone + '" data-status="' + esc(key) + '">' + esc(s.label) + '</span>';
+  }
+
+  function cellHtml(col, row) {
+    var v = row[col.key];
+    if (isNull(v) || (Array.isArray(v) && v.length === 0)) return NULL_HTML;
+    var h;
+    if (col.type === 'tag') h = tagHtml(v);
+    else if (col.type === 'bool') h = v ? '是' : '否';
+    else if (col.type === 'code') h = '<code>' + esc(v) + '</code>';
+    else if (col.type === 'number') h = esc(v);
+    else if (col.type === 'list') {
+      h = v.map(function (x) {
+        if (col.item_type === 'tag') return tagHtml(x);
+        if (col.item_type === 'code') return '<code>' + esc(x) + '</code>';
+        return esc(x);
+      }).join(col.item_type === 'tag' ? ' ' : '、');
+    } else h = esc(v);
+    if (col.suffix_key && !isNull(row[col.suffix_key]) && row[col.suffix_key] !== 0 && row[col.suffix_key] !== '') {
+      h += '（' + esc(row[col.suffix_key]) + '）';
+    }
+    return h;
+  }
+
+  function searchText(sec, row) {
+    var parts = [];
+    sec.search_fields.forEach(function (k) {
+      var v = row[k];
+      if (isNull(v)) return;
+      (Array.isArray(v) ? v : [v]).forEach(function (x) {
+        parts.push(String(x));
+        if (STATUS[x]) parts.push(STATUS[x].label);
+      });
+    });
+    return parts.join(' ').toLowerCase();
+  }
+
+  // ---- 頁首 ----
+  document.getElementById('title').textContent = D.meta.title;
+  document.getElementById('subtitle').textContent = D.meta.subtitle || '';
+  document.getElementById('meta-line').textContent = '專案：' + D.meta.project + '　產生日期：' + D.meta.generated;
+
+  // ---- 摘要卡（三層分開呈現） ----
+  var sumEl = document.getElementById('summary');
+  ['data', 'tool', 'user'].forEach(function (layer) {
+    var box = el('div', 'layer');
+    box.setAttribute('data-layer', layer);
+    box.appendChild(el('h3', null, esc(LAYER_LABEL[layer]) + '　<span class="count">' + esc(LAYER_HINT[layer]) + '</span>'));
+    var cards = D.summary_cards.filter(function (c) { return c.layer === layer; });
+    if (!cards.length) { box.appendChild(el('p', 'layer-empty', '此層尚未定義摘要卡')); sumEl.appendChild(box); return; }
+    var grid = el('div', 'cards');
+    cards.forEach(function (c) {
+      var card = el('div', 'card');
+      card.setAttribute('data-card', c.id);
+      card.innerHTML = '<div class="num">' + esc(c.value) + '</div>' +
+        '<div class="label">' + esc(c.label) + '</div>' +
+        (c.scope ? '<div class="scope">' + esc(c.scope) + '</div>' : '') +
+        (c.denominator ? '<div class="den">分母：' + esc(c.denominator) + '</div>' : '') +
+        (c.hint ? '<div class="den">' + esc(c.hint) + '</div>' : '');
+      grid.appendChild(card);
+    });
+    box.appendChild(grid);
+    sumEl.appendChild(box);
+  });
+
+  // ---- 表格 ----
+  var secWrap = document.getElementById('sections');
+  var tables = [];
+  D.sections.forEach(function (sec) {
+    var h2 = el('h2', null, esc(sec.title) + ' <span class="count" data-count-for="' + esc(sec.id) + '"></span>');
+    h2.id = 'sec-' + sec.id;
+    secWrap.appendChild(h2);
+    if (sec.description) secWrap.appendChild(el('p', 'section-desc', esc(sec.description)));
+    var na = el('p', 'na-note'); na.hidden = true; secWrap.appendChild(na);
+    var wrap = el('div', 'table-wrap');
+    var table = el('table');
+    table.setAttribute('data-section', sec.id);
+    var thead = el('thead');
+    var htr = el('tr');
+    sec.columns.forEach(function (c) { htr.appendChild(el('th', null, esc(c.title))); });
+    thead.appendChild(htr);
+    table.appendChild(thead);
+    var tbody = el('tbody');
+    var hasDetail = sec.detail_fields && sec.detail_fields.length > 0;
+    var entries = [];
+    sec.rows.forEach(function (row, i) {
+      var tr = el('tr', 'row' + (hasDetail ? ' expandable' : ''));
+      tr.setAttribute('data-index', i);
+      sec.columns.forEach(function (c) {
+        tr.appendChild(el('td', 't-' + c.type + (c.type === 'number' ? ' num' : ''), cellHtml(c, row)));
+      });
+      tbody.appendChild(tr);
+      var dr = null;
+      if (hasDetail) {
+        dr = el('tr', 'detail');
+        dr.hidden = true;
+        var dl = '<dl class="detail-grid">';
+        sec.detail_fields.forEach(function (f) { dl += '<dt>' + esc(f.title) + '</dt><dd>' + cellHtml(f, row) + '</dd>'; });
+        dr.appendChild(el('td', null, dl + '</dl>'));
+        dr.firstChild.colSpan = sec.columns.length;
+        tbody.appendChild(dr);
+        tr.setAttribute('aria-expanded', 'false');
+        tr.tabIndex = 0;
+        var toggle = function () {
+          var open = !tr.classList.contains('open');
+          tr.classList.toggle('open', open);
+          tr.setAttribute('aria-expanded', String(open));
+          dr.hidden = !open;
+        };
+        tr.addEventListener('click', toggle);
+        tr.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+      }
+      entries.push({ row: row, tr: tr, dr: dr, text: searchText(sec, row) });
+    });
+    table.appendChild(tbody);
+    wrap.appendChild(table);
+    secWrap.appendChild(wrap);
+    tables.push({ sec: sec, entries: entries, na: na, countEl: h2.querySelector('[data-count-for]') });
+  });
+
+  // ---- 篩選按鈕 ----
+  var filters = [{ id: 'all', label: '全部', conditions: null }].concat(D.filters);
+  var current = 'all';
+  var bar = document.getElementById('filter-bar');
+  filters.forEach(function (f) {
+    var b = el('button', 'filter-btn', esc(f.label));
+    b.type = 'button';
+    b.setAttribute('data-filter', f.id);
+    b.setAttribute('aria-pressed', f.id === current ? 'true' : 'false');
+    b.addEventListener('click', function () {
+      current = f.id;
+      bar.querySelectorAll('.filter-btn').forEach(function (x) { x.setAttribute('aria-pressed', x.getAttribute('data-filter') === current ? 'true' : 'false'); });
+      apply();
+    });
+    bar.appendChild(b);
+  });
+
+  var searchEl = document.getElementById('search');
+  function apply() {
+    var q = searchEl.value.trim().toLowerCase();
+    var f = filters.filter(function (x) { return x.id === current; })[0];
+    var summary = [];
+    tables.forEach(function (t) {
+      var applicable = !f.conditions || Object.prototype.hasOwnProperty.call(f.conditions, t.sec.id);
+      var where = f.conditions ? f.conditions[t.sec.id] : true;
+      t.na.hidden = applicable;
+      if (!applicable) t.na.textContent = '篩選「' + f.label + '」不適用本表，已隱藏全部列。';
+      var vis = 0;
+      t.entries.forEach(function (e) {
+        var show = applicable && (!q || e.text.indexOf(q) >= 0) && matchWhere(e.row, where);
+        e.tr.hidden = !show;
+        if (show) { e.tr.classList.toggle('zebra', vis % 2 === 1); vis++; }
+        if (e.dr) e.dr.hidden = !(show && e.tr.classList.contains('open'));
+      });
+      t.countEl.textContent = '顯示 ' + vis + '／' + t.entries.length;
+      t.countEl.setAttribute('data-visible', vis);
+      summary.push(t.sec.title + ' ' + vis + '／' + t.entries.length);
+    });
+    document.getElementById('match-count').textContent = '顯示：' + summary.join('　');
+  }
+  searchEl.addEventListener('input', apply);
+  apply();
+
+  // ---- 資料缺口、權威來源、圖例、頁尾 ----
+  var uk = document.getElementById('unknowns');
+  document.getElementById('unknown-count').textContent = D.unknowns.length + ' 條';
+  uk.innerHTML = D.unknowns.length
+    ? '<ul>' + D.unknowns.map(function (u) { return '<li>' + esc(u) + '</li>'; }).join('') + '</ul>'
+    : '<p>目前沒有登記的資料缺口。</p>';
+
+  document.getElementById('authorities').innerHTML = '<ul>' + D.meta.authorities.map(function (a) {
+    return '<li><code>' + esc(a.path) + '</code>：' + esc(a.role) + (a.note ? '（' + esc(a.note) + '）' : '') + '</li>';
+  }).join('') + '</ul>';
+
+  document.getElementById('legend').innerHTML = D.status_levels.map(function (s) {
+    return '<span>' + tagHtml(s.key) + (s.layer ? '<span class="count">' + esc(LAYER_LABEL[s.layer]) + '</span>' : '') + '</span>';
+  }).join('');
+
+  document.getElementById('footer').innerHTML = (D.meta.notes || []).map(esc).join('<br>') +
+    ((D.meta.notes || []).length ? '<br>' : '') + '離線單檔儀表板，摘要數字由產生器依規則計算';
+
+  window.projectDashboard = { data: D, apply: apply, matchWhere: matchWhere };
+})();
+</script>
+</body>
+</html>
