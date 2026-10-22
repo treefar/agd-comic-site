@@ -41,28 +41,40 @@ async function auditLayout(page){return page.evaluate(()=>{
  return {viewport:vw,issues};
 });}
 // Pixel audit mirrors text_on_border_audit.py thresholds. Temporary DOM styling is removed immediately.
-async function auditButtonPixels(page){
- const rects=await page.evaluate(()=>{
+async function auditButtonPixels(page,selection='button,#game-hint,.marquee'){
+ const rects=await page.evaluate(selection=>{
   const out=[];
-  for(const e of document.querySelectorAll('button,#game-hint,.marquee')){
+  for(const e of document.querySelectorAll(selection)){
    const bounds=e.getBoundingClientRect();if(!bounds.width||!bounds.height||bounds.bottom<0||bounds.top>innerHeight)continue;
    const cs=getComputedStyle(e),foreground=(cs.color.match(/[\d.]+/g)||[]).slice(0,3).map(Number),large=parseFloat(cs.fontSize)>=24||(parseFloat(cs.fontSize)>=18.66&&Number(cs.fontWeight)>=700);
    // Overflow clips to the client box, not the decorative outer border-image rectangle.
    const clips=[];for(let a=e;a&&a!==document.documentElement;a=a.parentElement){const s=getComputedStyle(a);if(s.overflow!=='visible'||s.overflowX!=='visible'||s.overflowY!=='visible'){const box=a.getBoundingClientRect(),left=box.left+a.clientLeft,top=box.top+a.clientTop;clips.push({left,top,right:left+a.clientWidth,bottom:top+a.clientHeight});}}
+   function addBox(box,text,extra={}){
+     const clip={left:0,top:0,right:innerWidth,bottom:innerHeight};for(const c of clips){clip.left=Math.max(clip.left,c.left);clip.top=Math.max(clip.top,c.top);clip.right=Math.min(clip.right,c.right);clip.bottom=Math.min(clip.bottom,c.bottom);}
+     const left=Math.max(box.left,clip.left),top=Math.max(box.top,clip.top),right=Math.min(box.right,clip.right),bottom=Math.min(box.bottom,clip.bottom);
+     if(right-left<=2||bottom-top<=2)return;
+     out.push({id:e.id||e.className,text:text.trim().slice(0,35),x:left,y:top,w:right-left,h:bottom-top,foreground,contrastMinimum:large?3:4.5,clip,...extra});
+   }
+   if(e.tagName==='SELECT'){
+    // Native closed selects expose no text Range. Measure the chosen label with its actual computed font.
+    const text=e.selectedOptions[0]?.textContent||'',span=document.createElement('span');
+    Object.assign(span.style,{position:'fixed',visibility:'hidden',whiteSpace:'pre',font:cs.font,letterSpacing:cs.letterSpacing});span.textContent=text;document.body.append(span);
+    const range=document.createRange();range.selectNodeContents(span);const measured=range.getBoundingClientRect();span.remove();
+    const left=bounds.left+e.clientLeft+parseFloat(cs.paddingLeft),top=bounds.top+(bounds.height-measured.height)/2,available=e.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight)-20;
+    addBox({left,top,right:left+Math.min(measured.width,available),bottom:top+measured.height},text,{nativeSelectFontMeasurement:true,naturalLabelWidth:measured.width});continue;
+   }
    const walker=document.createTreeWalker(e,NodeFilter.SHOW_TEXT);
    for(let n;(n=walker.nextNode());){
     if(!n.textContent.trim())continue;const range=document.createRange();range.selectNodeContents(n);
     for(const box of range.getClientRects()){
-     const clip={left:0,top:0,right:innerWidth,bottom:innerHeight};for(const c of clips){clip.left=Math.max(clip.left,c.left);clip.top=Math.max(clip.top,c.top);clip.right=Math.min(clip.right,c.right);clip.bottom=Math.min(clip.bottom,c.bottom);}
-     const left=Math.max(box.left,clip.left),top=Math.max(box.top,clip.top),right=Math.min(box.right,clip.right),bottom=Math.min(box.bottom,clip.bottom);
-     if(right-left<=2||bottom-top<=2)continue;
-     out.push({id:e.id||e.className,text:n.textContent.trim().slice(0,35),x:left,y:top,w:right-left,h:bottom-top,foreground,contrastMinimum:large?3:4.5,clip});
+     addBox(box,n.textContent);
     }
    }
   }
   return out;
- });
- const hide=await page.addStyleTag({content:'button,button *,#game-hint,.marquee,.marquee *{color:transparent!important;text-shadow:none!important;-webkit-text-stroke:0!important}'});
+ },selection);
+ const hiddenSelectors=selection.split(',').flatMap(s=>[s,`${s} *`]).join(',');
+ const hide=await page.addStyleTag({content:`${hiddenSelectors}{color:transparent!important;text-shadow:none!important;-webkit-text-stroke:0!important}`});
  let shot;try{shot=await page.screenshot();}finally{await hide.evaluate(e=>e.remove());}
  const {data,info}=await sharp(shot).removeAlpha().raw().toBuffer({resolveWithObject:true}),issues=[],contrasts=[];
  const luminance=rgb=>rgb.map(x=>{x/=255;return x<=.04045?x/12.92:((x+.055)/1.055)**2.4;}).reduce((s,v,i)=>s+v*[.2126,.7152,.0722][i],0);
@@ -75,10 +87,12 @@ async function homeChecks(){
  for(const lang of ['zh','en','ja'])await check(`homepage-${lang}`,async()=>{
   const c=await context(),p=await c.newPage(),seen=observe(p);
   try{await navigate(p,`${BASE}/?lang=${lang}#hero`);const sections=await p.locator('#hero,#news,#about,#works,#faculty,#labs,#join,#contact').evaluateAll(es=>es.map(e=>e.id));ok(sections.length===8,`Missing homepage sections: ${sections}`);ok(await p.locator('#festival-select option').count()===10,'Expected ten prototype choices');ok(await p.locator('iframe').count()===0,'Iframe loaded before click');const eager=seen.requests.filter(x=>/\/games\/[^/]+\.mjs|\/audio\//.test(x));ok(!eager.length,`Eager game/audio requests ${eager}`);
+   await p.locator('#festival-select').scrollIntoViewIfNeeded();
+   const homePixels=await auditButtonPixels(p,'#festival-select,#festival-start,.festival-copy a.festival-button');ok(!homePixels.issues.length,`Homepage entry text: ${JSON.stringify(homePixels.issues)}`);
    const initialListeners=await p.evaluate(()=>Object.fromEntries([...window.__shellQA.records].map(([k,v])=>[k,v.size])));
    for(let i=0;i<4;i++){await p.locator('#festival-start').click();const frame=p.frameLocator('.festival-modal iframe');await frame.locator('#intro-skip').waitFor();await p.locator('.festival-close').click();await p.locator('.festival-modal iframe').waitFor({state:'detached'});await p.waitForFunction(()=>document.activeElement?.id==='festival-start');}
    const finalListeners=await p.evaluate(()=>Object.fromEntries([...window.__shellQA.records].map(([k,v])=>[k,v.size])));ok((initialListeners['document:keydown']||0)===(finalListeners['document:keydown']||0),`Key listeners grew: ${JSON.stringify({initialListeners,finalListeners})}`);
-   await snap(p,`homepage-${lang}`);await navigate(p,`${BASE}/?lang=${lang}#/students/guide`);await p.locator('[data-guide-card]').first().waitFor();const cards=await p.locator('[data-guide-card]').count(),details=await p.locator('[data-step-detail]').count();ok(cards===15&&details===47,`Guide data changed: ${cards} cards ${details} details`);ok(!seen.errors.length,seen.errors.join('; '));return {sections,guide:{cards,details},lazy:eager.length,open_close_cycles:4,focus_restored:true,listeners:{initialListeners,finalListeners},consoleErrors:seen.errors};
+   await snap(p,`homepage-${lang}`);await navigate(p,`${BASE}/?lang=${lang}#/students/guide`);await p.locator('[data-guide-card]').first().waitFor();const cards=await p.locator('[data-guide-card]').count(),details=await p.locator('[data-step-detail]').count();ok(cards===15&&details===47,`Guide data changed: ${cards} cards ${details} details`);ok(!seen.errors.length,seen.errors.join('; '));return {sections,guide:{cards,details},homepageEntryPixels:{rectangles:homePixels.rectangles,contrast:homePixels.contrasts,issues:homePixels.issues},lazy:eager.length,open_close_cycles:4,focus_restored:true,listeners:{initialListeners,finalListeners},consoleErrors:seen.errors};
   }finally{await c.close();}
  });
 }
