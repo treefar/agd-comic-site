@@ -11,7 +11,7 @@
 | 條件 | yes/no | 證據 |
 |---|---|---|
 | 測試先紅 | yes | 實跑 `node --test holiday-lab/tests/mid-autumn.test.mjs` → exit 1，`ERR_MODULE_NOT_FOUND`，`tests 1 / pass 0 / fail 1` |
-| 非法輸入、壞剪接、不會自動完成、重置與變化保留 | yes | 最新同指令 exit 0，`tests 4 / pass 4 / fail 0 / cancelled 0 / skipped 0 / todo 0`，duration 74.4452 ms |
+| 非法輸入、壞剪接、不會自動完成、重置與變化保留 | yes | 中心座標修正後重跑同指令 exit 0，`tests 4 / pass 4 / fail 0 / cancelled 0 / skipped 0 / todo 0`，duration 97.6116 ms |
 | 契約互動三幕、試剪閘門與取消 frame | yes | 第4個測試 `mounted cut requires fresh preview, retains edits, and unsubscribes`；測試 ctx 非畫面證據 |
 | ES module 語法 | yes | `node --check holiday-lab/games/mid-autumn.mjs` → exit 0，stdout 空白 |
 | 中英日全部可見字串 | yes | 標籤、參考、差異、結果均三語；尚未母語校閱 |
@@ -36,6 +36,8 @@
 ```
 
 ## 主控瀏覽器解法
+
+全部 Sprite 與解法 x 都是中心百分比。最少有效試剪共2.85秒，目標30–90秒是操作閱讀時間，不靠倒數拖長。
 
 穩定 id：`ma-time`、`ma-x`、`ma-size`；設值並觸發 input，按 `ma-preview`，正常 ctx.onFrame 跑滿所選時間，按 `ma-submit`。
 

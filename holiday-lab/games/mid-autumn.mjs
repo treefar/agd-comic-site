@@ -21,13 +21,13 @@ export function mount(ctx){
   const info=ctx.ui.text('ma-target',W('','',''));nodes.push(info);
   const actors=[0,1,2].map(i=>ctx.sprite(`actor${i+1}`,{id:`ma-actor-${i}`,x:10,y:40,width:12,height:12,opacity:i===0?1:0}));
   const target=ctx.sprite('target',{id:'ma-reference',x:35,y:40,width:20,height:20,opacity:0.6,z:0});
-  const board=ctx.sprite('prop1',{id:'ma-board',x:5,y:4,width:24,height:20});
+  const board=ctx.sprite('prop1',{id:'ma-board',x:17,y:15,width:24,height:20});
   const camera=ctx.sprite('prop2',{id:'ma-camera',x:75,y:72,width:20,height:20});
-  const shots=[0,1,2].map(i=>ctx.sprite(`token${i+1}`,{id:`ma-shot-${i}`,x:35+i*21,y:4,width:18,height:22,opacity:i===0?1:0.4}));
+  const shots=[0,1,2].map(i=>ctx.sprite(`token${i+1}`,{id:`ma-shot-${i}`,x:35+i*21,y:16,width:18,height:22,opacity:i===0?1:0.4}));
   function draw(t=values.time){const ref=TARGETS[state.round],x=cutPosition(values.x,ref.speed,t);actors.forEach((s,i)=>s.update({x,y:40,width:values.size,height:values.size,opacity:i===state.round?1:0}));target.update({x:ref.x,y:40,width:ref.size,height:ref.size});}
   const specs=[['time',W('剪接時間（毫秒）','Cut time (ms)','カット時刻（ミリ秒）'),300,1600,50],['x',W('圓的起始位置（％）','Circle starting position (%)','円の開始位置（％）'),0,80,0.5],['size',W('圓形大小（％）','Circle size (%)','円の大きさ（％）'),10,32,1]];
   const sliders={};specs.forEach(([key,label,min,max,step])=>{const s=ctx.ui.slider({id:`ma-${key}`,label,min,max,step,value:values[key],onInput:v=>{values[key]=Number(v);playing=false;previewed=false;draw();}});sliders[key]=s;nodes.push(s.element);});
-  function update(){const t=TARGETS[state.round],name=names[state.round];ctx.ui.setText(info,W(`${name.zh}｜在 ${t.time} 毫秒切換；參考圈左緣 ${t.x}％、大小 ${t.size}％；速度 ${t.speed}％／秒。`,` ${name.en} | Cut at ${t.time} ms; reference left ${t.x}%, size ${t.size}%; speed ${t.speed}%/s.`,`${name.ja}｜${t.time}ミリ秒で切替。見本の左端${t.x}％・大きさ${t.size}％・速度${t.speed}％/秒。`));ctx.setProgress(state.round,3);shots.forEach((s,i)=>s.update({opacity:i===state.round?1:0.4}));draw();}
+  function update(){const t=TARGETS[state.round],name=names[state.round];ctx.ui.setText(info,W(`${name.zh}｜在 ${t.time} 毫秒切換；參考圈中心 ${t.x}％、大小 ${t.size}％；速度 ${t.speed}％／秒。`,`${name.en} | Cut at ${t.time} ms; reference center ${t.x}%, size ${t.size}%; speed ${t.speed}%/s.`,`${name.ja}｜${t.time}ミリ秒で切替。見本の中心${t.x}％・大きさ${t.size}％・速度${t.speed}％/秒。`));ctx.setProgress(state.round,3);shots.forEach((s,i)=>s.update({opacity:i===state.round?1:0.4}));draw();}
   nodes.push(ctx.ui.button({id:'ma-preview',label:W('試剪這一段','Preview this cut','このカットを試写'),onClick:()=>{clock=0;playing=true;previewed=false;ctx.sound('paper');}}));
   nodes.push(ctx.ui.button({id:'ma-submit',label:W('保留剪接','Keep this cut','このカットを採用'),onClick:()=>{
     if(dead||state.done)return;
