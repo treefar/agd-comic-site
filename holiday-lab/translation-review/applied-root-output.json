@@ -1,0 +1,210 @@
+{
+  "checked_at": "2026-10-22T15:15:04.817Z",
+  "project": "C:\\agywork\\agd-holiday-prototypes",
+  "mode": "read-only post-application verification",
+  "scope": "Twelve exact P1 JSON values, their active generated locale entries, retained ranks and undecided admission term only.",
+  "data": {
+    "yes": 12,
+    "no": 0,
+    "total": 12
+  },
+  "locale": {
+    "yes": 0,
+    "no": 12,
+    "total": 12
+  },
+  "checks": [
+    {
+      "issue": "JA-JOINT-01",
+      "file": "data/ja/messages.json",
+      "pointer": "/助理教授 · 電競娛樂系合聘",
+      "expected": "助教・eスポーツエンターテインメント学科との共同任用（原職：助理教授・合聘）",
+      "data": {
+        "result": "yes",
+        "actual": "助教・eスポーツエンターテインメント学科との共同任用（原職：助理教授・合聘）"
+      },
+      "locale": {
+        "result": "no",
+        "actual": "助教・eスポーツエンターテインメント学科兼任"
+      }
+    },
+    {
+      "issue": "JA-JOINT-02",
+      "file": "data/ja/messages.json",
+      "pointer": "/講師 · 電競娛樂系合聘",
+      "expected": "講師・eスポーツエンターテインメント学科との共同任用（原職：講師・合聘）",
+      "data": {
+        "result": "yes",
+        "actual": "講師・eスポーツエンターテインメント学科との共同任用（原職：講師・合聘）"
+      },
+      "locale": {
+        "result": "no",
+        "actual": "講師 · eスポーツ・エンターテインメント学科兼任"
+      }
+    },
+    {
+      "issue": "JA-SECONDARY-01",
+      "file": "data/ja/messages.json",
+      "pointer": "/助理教授 · 從聘",
+      "expected": "助教・共同任用（本学科は従たる所属）",
+      "data": {
+        "result": "yes",
+        "actual": "助教・共同任用（本学科は従たる所属）"
+      },
+      "locale": {
+        "result": "no",
+        "actual": "助教 · 兼任"
+      }
+    },
+    {
+      "issue": "JA-SECONDARY-02",
+      "file": "data/ja/messages.json",
+      "pointer": "/副教授 · 從聘",
+      "expected": "准教授・共同任用（本学科は従たる所属）",
+      "data": {
+        "result": "yes",
+        "actual": "准教授・共同任用（本学科は従たる所属）"
+      },
+      "locale": {
+        "result": "no",
+        "actual": "准教授 · 兼任"
+      }
+    },
+    {
+      "issue": "JA-UNPAID",
+      "file": "data/ja/messages.json",
+      "pointer": "/助理教授 · 留職停薪",
+      "expected": "助教・無給休職中",
+      "data": {
+        "result": "yes",
+        "actual": "助教・無給休職中"
+      },
+      "locale": {
+        "result": "no",
+        "actual": "助教 · 休職中"
+      }
+    },
+    {
+      "issue": "EN-ABSENCE",
+      "file": "data/en/student-guide-ui.json",
+      "pointer": "/學生請假與獎懲簽核公告",
+      "expected": "Announcement on Student Absence Requests and Approval of Rewards and Disciplinary Measures",
+      "data": {
+        "result": "yes",
+        "actual": "Announcement on Student Absence Requests and Approval of Rewards and Disciplinary Measures"
+      },
+      "locale": {
+        "result": "no",
+        "actual": "Announcement on Student Leave of Absence and Reward/Discipline Sign-off"
+      }
+    },
+    {
+      "issue": "EN-ACADEMIC-LEAVE",
+      "file": "data/en/student-guide-ui.json",
+      "pointer": "/休學復學與兵役",
+      "expected": "Leave of Absence, Return to Study and Military Service",
+      "data": {
+        "result": "yes",
+        "actual": "Leave of Absence, Return to Study and Military Service"
+      },
+      "locale": {
+        "result": "no",
+        "actual": "Suspension of Studies, Resumption of Studies, and Military Service"
+      }
+    },
+    {
+      "issue": "EN-STATUS-NOTICE",
+      "file": "data/en/student-guide-ui.json",
+      "pointer": "/115-1休學退學注意事項",
+      "expected": "Leave of Absence and Withdrawal: Semester 115-1",
+      "data": {
+        "result": "yes",
+        "actual": "Leave of Absence and Withdrawal: Semester 115-1"
+      },
+      "locale": {
+        "result": "no",
+        "actual": "Notes on Suspension and Withdrawal for Semester 115-1"
+      }
+    },
+    {
+      "issue": "JA-OFFICE-01",
+      "file": "data/ja/messages.json",
+      "pointer": "/教務處註冊課務組（動遊系）",
+      "expected": "教務処・註冊課務組（学籍・履修担当／本学科担当）",
+      "data": {
+        "result": "yes",
+        "actual": "教務処・註冊課務組（学籍・履修担当／本学科担当）"
+      },
+      "locale": {
+        "result": "no",
+        "actual": "教務処学籍・教務課（アニメとゲームデザイン学科担当）"
+      }
+    },
+    {
+      "issue": "JA-OFFICE-02",
+      "file": "data/ja/messages.json",
+      "pointer": "/考試相關另洽教務處註冊課務組",
+      "expected": "試験については、教務処・註冊課務組（学籍・履修担当）へ",
+      "data": {
+        "result": "yes",
+        "actual": "試験については、教務処・註冊課務組（学籍・履修担当）へ"
+      },
+      "locale": {
+        "result": "no",
+        "actual": "試験関連は別途教務処登録・履修課にお問い合わせください"
+      }
+    },
+    {
+      "issue": "JA-OFFICE-03",
+      "file": "data/ja/messages.json",
+      "pointer": "/註冊課務組（動遊系）",
+      "expected": "註冊課務組（学籍・履修担当／本学科担当）",
+      "data": {
+        "result": "yes",
+        "actual": "註冊課務組（学籍・履修担当／本学科担当）"
+      },
+      "locale": {
+        "result": "no",
+        "actual": "登録・履修課（アニメとゲームデザイン学科担当）"
+      }
+    },
+    {
+      "issue": "EN-SKILLS-CLASS",
+      "file": "data/en/student-guide-ui.json",
+      "pointer": "/這份指南以日間四技在校生為主。一般班、技優班與不同入學年度可能不同；申請資格和日期請以各處室當期公告為準。",
+      "expected": "This guide is mainly for students in the four-year undergraduate day program. Rules may differ by entry year and class, including regular classes and skills-excellence classes (技優班). Check the current notice from the responsible office for eligibility and dates.",
+      "data": {
+        "result": "yes",
+        "actual": "This guide is mainly for students in the four-year undergraduate day program. Rules may differ by entry year and class, including regular classes and skills-excellence classes (技優班). Check the current notice from the responsible office for eligibility and dates."
+      },
+      "locale": {
+        "result": "no",
+        "actual": "This guide is primarily for current students in the day division Four-year program. General classes, the Special Talent Program, and different admission years may vary; please refer to current announcements from respective administrative offices for application eligibility and dates."
+      }
+    }
+  ],
+  "guards": [
+    {
+      "issue": "JA-RANK-KEEP",
+      "expected": "助教",
+      "actual": "助教",
+      "result": "yes"
+    },
+    {
+      "issue": "JA-ASSOC-KEEP",
+      "expected": "学科長・准教授",
+      "actual": "学科長・准教授",
+      "result": "yes"
+    },
+    {
+      "issue": "JA-SELECTION-HOLD",
+      "expected": "推薦選抜入試",
+      "actual": "推薦選抜入試",
+      "result": "yes"
+    }
+  ],
+  "pass": false,
+  "semantic_full_site_verified": false,
+  "rendered_ui_verified": false,
+  "product_files_written": 0
+}

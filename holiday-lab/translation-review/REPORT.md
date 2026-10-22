@@ -93,3 +93,23 @@ verify.cjs預設exit0只表示審校資料結構與來源錨點檢查通過；--
 主控閱讀原→新與diff後，可執行 `node holiday-lab/translation-review/apply-p1.mjs --apply`。只會寫 `data/ja/messages.json`、`data/en/student-guide-ui.json`，每一筆先要求原值完全一致；所有檔案的前置比對都成功後才開始寫檔，任何漂移即停止。未處理的P2、核定保留職稱與待確認甄選名稱均不套用。之後用原建置流程重產locale並驗證中文原文未變、職稱/窗口/請假與休學、版面/缺字。
 
 注意：這12筆先修明列位置；註冊課務組在其餘長句中仍有其他日譯，完整窗口一致性仍需後續逐筆處理。若主控想縮短教師卡文字，保留共同任用/從聘關係，原職說明移詳頁；不要只為短句退回兼任或把助教當誤譯。
+
+## 套用後驗證：與初審快照分開
+
+前述 `verify.cjs` 是「審校前快照」的來源與建議資料驗證。8／8 是當時的實際結果，保留不改寫。產品其後更新照片、runner、語系時，來源 SHA 不同會使它回報快照過期；也不會自動把舊 recommendations 的 applied 旗標當作當前狀態。此結果不能解讀為12筆 P1 的新資料失敗，亦不可用初審舊綠燈證明套用成功。
+
+套用後請另執行：
+
+```text
+node holiday-lab/translation-review/verify-applied.mjs --project C:/agywork/agd-holiday-prototypes
+```
+
+此程式只讀參數指定專案，不 Build、不重產 locale、不寫任何產品檔。依12筆已審計畫逐一檢查：
+
+- 兩個來源 JSON 的新值完全相同。
+- 重建後的 locale-en.js / locale-ja.js 活躍字典使用同樣新值，而非仍有舊譯。
+- 助理教授／副教授保留核定職級，未決甄選名稱未自行套用。
+
+本輪對 root 的實測（詳 applied-root-output.json）：來源 JSON 12 yes／0 no；生成語系 0 yes／12 no；exit 1。這表示 root 已正確套用資料，但當下生成 locale 仍待既有 Build 流程更新，不能宣稱畫面已生效。沒有在這個驗證器內自行建置或替 root 修改檔案。重建後以同指令重跑，來源與生成字典皆12 yes且3個保留條件通過，才會 exit 0。
+
+驗證器回歸實跑：`node --test holiday-lab/translation-review/verify-applied.test.mjs`，7／7 pass。涵蓋完整套用、舊值拒絕、資料已改但locale過期、單筆來源漂移、職級誤改、未決詞擅改、縮小為11筆不得過關；另比對讀取前後的所有 fixture 產品檔 SHA 相同。測試 fixture 只寫本審校資料夾，非 root 產品。未因這7個合成情境通過而宣稱全站翻譯或真實畫面驗證完成。
