@@ -1,13 +1,14 @@
-## 2026-10-23 最新：翻譯審校與三款玩法深化（本機驗證中）
+## 2026-10-23 最新：整句翻譯與固定按鈕框（整合驗證中）
 
-- 本輪有實際進展：root報告 C:/agywork/agd-holiday-prototypes/holiday-lab/reports/integration-20261023.md；原始/失敗/修正後輸出與截圖均保留，不push、不發布、不碰main、不刪檔。穩定8800仍.review-local-09，舊local09 ZIP未替換。內部.measure-layout-07 / 8819(session76777)僅供測量，非新試玩交付。
-- 跨年及年獸兩款已合併：三幕意圖、不同合法創作、具體回饋、探索不扣分、保存實際輸入回放。root新06各8/8三語320/1440+keyboard/reduced通關，純測試15/16；不是學生盲測或美術確認。新生圖任務/窗口版本已回件14pure/8DOM/24次真指南查找，待窗口名稱一致性補件後整合。
-- 30組FAQ全部日英逐句審完，兩批聯集30組/120字串與canonical/編譯字典一致；18FAQ續批17修正已套。4個115招生原文錯誤依正式簡章校正，保留普通科跨選例外與群類/校系限制。AdmissionDetail原漏a.content，8817真缺席→補官網紙格→8818三語可見，名額/日期/其餘既有更新由精確允許欄位基準保護。
-- rendered-delta：新17FAQ+3資格段，06/8818兩寬40案例、1844逐字配對missing0/unknown0。師資13位349來源欄/698目標值審校，9修正已套(8生效、1原已正確raw同步)；07 faculty-rendered 18案例/660逐字配對missing0/unknown0、13位姓名/職級source與compiled約束不變。正式專名/學位類型未核者仍列待確認，沒有冒稱全站母語認證。
-- 字幕超大/出位時完整草稿移到可讀控制紙面，沒有裁掉內容或偷偷改玩家設定；有效幾何仍保留低對比/時間試驗。作品JSON/控制區都改固定原生成紙框外包、內部捲動，原strict紅轉小批0，562/562作品字可讀。07原180ms短shot亦取得九鏡同ID實際截圖，未freeze/seek。
-- layout-qa已補真實捲頁圖層檢查/內捲anchoring保持/固定無框紙面8px承載區，保留紙框原圖內框與負例。26ebb96、PHASE-REPORT及各checkpoint可回查。07十四款phase矩陣正在分款跑，semester暫跳過，不能把小批0當2076必要案例全過；官方完整gate仍RED，不能產新版ZIP。
-- 最近日誌node-tests-20261023-fixed.txt為163/163；精確翻譯各固定基準測試另10/10。dashboard/out已重產，23/23權威檢查、桌淺/手機深搜尋篩選展開2/2；15模組功能通關由當前模組SHA取證，歷史外框56yes/1未驗分列，使用者確認0。儀表板不是整包完成證明。
-- TF-BASE WebGL仍待原始專案/結果：2026-10-23 Drive交接夾實查只有5份工單/腳本。沒有重送舊queue、沒有啟Unity或更動遠端權限。下一輪先回收semester術語補件與矩陣真失敗，固定整合來源後補足完整UI必要案例，過官方gate才出新包；其餘新聞/作品等長文仍待翻譯續審。
+- source_agent: codex。本機分支codex/holiday-prototypes，未push、未發布、未碰main、未刪檔。8800/.review-local-09與舊local09 ZIP保留；最新08/.measure-integrated-08在8845僅內部量測，不當新版交付。產品與root證據已提交80286ca，整合續報 holiday-lab/reports/integration-20261023-08.md。
+- 三款創作深化已合併；semester真整合8/8、24次真指南、每組4次諮詢/4回放。獨立代理實際探索三款各兩作品，保留08年獸錯眉向P2；root09已分正向傾斜/近水平提示，6/6提示複驗、8/8功能回歸，原紅與54張viewport留存。不冒稱真人學生測試。
+- 共用按鈕原整圖縮放會使長句貼框；改原生成素材四向九宮格、固定12px框，slider保44px不被flex壓窄。06由固定sampler一次46/46組、138態及當前可讀DOM geometry0，20次窄版真range進退、3語窗口移動皆過。所有03/04局部padding、05窄stepper失敗保留；這不是全scroll/fullphase gate，FINAL-06.md列明限制。
+- 日英審校完成FAQ30組/120值、師資13位349來源欄/698值，及另組13位職階忠實對照13/13。首頁消息/作品/About/Labs的盤點348唯一鍵，前8、19、103、218精確分工完成語義審查；並非全站2310字串母語認證，正式專名/六筆碩士類型/部分原事實衝突仍待確認。
+- 本輪13消息作品譯值+一處canonical公司名已套；主控讀合作方官方about確認株式会社オートクチュール/hautecouture Inc.及松山/樹德合作，JA長key與EN生成鍵連動。舊編譯守門真紅→重建後verify-applied通過；03真DOM28/28、4188字元配對missing0/unknown0。首輪17/28是等待#root過早的工具假缺席，改等真正目標文字後全過，舊輸出保留。
+- About/Labs44與News/Works82已套，合計本輪13+44+82=139譯值；另兩處canonical僅修合作方正式公司名，中文其他內容由基準測試保護。開拓全段1筆因作品資格矛盾排除，沒有擅改原條件。08 build exit0，三批生成校對13/44/82皆yes。About整句07獨立12/12、764字元樣式cmap missing0/unknown0；Works完整標題保中文20話與黃色重點，3測試通過。08新增44/82可見DOM及字體由第二位翻譯代理續驗。
+- 使用者追加專職英日翻譯組，已由兩位代理分工。職稱組f052eb4：JST/MEXT逐筆查證，助理教授→Assistant Professor→助教是通用對照，與TA及舊助教授分開；13位職稱/26個英日頁/144文字值真DOM通過，0JS錯誤，來源SHA穩定。六筆碩士細分類與九筆證照仍缺一手依據，沒有冒稱最新人事或個人資格認證。短報translation-review-title-check/final-specialist/SHORT.md。
+- 原英文T字左側真1px截切，root controls加左右2px；08獨立原case85frames、26按鈕三態、339/339全文捲動與geometry0，來源278逐byte相同/5編譯或QA輸入另列。root08全Node187/187、四款label變更功能4/4（教師/國慶/和平/勞動，含通關/三回放/重試）、dashboard23/23及smoke2/2，15模組SHA收據可追查，不等於整包layout核准。舊175/176、179/180及局部padding真紅保留。
+- 08完整phase/all-errors/按鈕三態及front90+archive6仍在跑；06活批次保留未重啟，sampler/assetmap仍freeze。官方ui-layout-policy尚未合成2076必要case，仍不得出新版包。TF-BASE交接夾仍只有5份工單/腳本、兩遊戲源及WebGL待回；未啟Unity或更改遠端權限。下一輪第一件事：核對08兩矩陣live PID/輸出，回收08主站44/82真DOM/字體報告與缺口，完成正式gate後才產新試玩包。C節SHA維持95ae06fb0e647d1d212fd467120bd209132c8c904cf193085f47fe806f293680。
 
 ## 2026-10-22 日英審校第二批本機套用（尚未取代09試玩版）
 

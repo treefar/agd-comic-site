@@ -1,43 +1,141 @@
 {
-  "runId": "2026-10-22T16-20-52-991Z",
-  "url": "http://127.0.0.1:8818",
+  "runId": "2026-10-22T23-47-54-912Z",
+  "url": "http://127.0.0.1:8845",
   "method": "headless Chromium, real DOM buttons/ranges, no direct game imports or state mutation",
   "cases": [
     {
-      "game": "lunar-new-year",
+      "game": "teachers",
       "lang": "zh",
-      "width": 320,
+      "width": 1440,
       "reducedMotion": "reduce",
       "keyboard": false,
-      "status": "fail",
+      "status": "pass",
       "checks": {
         "locale": "yes",
         "uniqueIds": "yes",
         "images": "yes",
         "initialWrongBlocked": "yes",
-        "noHorizontalOverflow": "yes"
+        "noHorizontalOverflow": "yes",
+        "completedFromDOM": "yes",
+        "replay3Shots": "yes",
+        "retryFresh": "yes",
+        "browserErrors": "yes"
       },
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
-      "stylesheetSha256": "e7fe83b79e062ce89d67eb7cbe1eca28b9aa8900384ddea2775aae2888254dd0",
+      "stylesheetSha256": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
       "duplicateIds": [],
       "missingImages": [],
-      "layoutScreenshot": "screenshots/2026-10-22T16-20-52-991Z-lunar-new-year-zh-320-reduce-layout.png",
-      "stageScreenshot": "screenshots/2026-10-22T16-20-52-991Z-lunar-new-year-zh-320-reduce-stage.png",
+      "layoutScreenshot": "screenshots/2026-10-22T23-47-54-912Z-teachers-zh-1440-reduce-layout.png",
+      "stageScreenshot": "screenshots/2026-10-22T23-47-54-912Z-teachers-zh-1440-reduce-stage.png",
       "horizontalOverflow": false,
-      "error": "locator.waitFor: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#result-score') to be visible\u001b[22m\n\n    at oneCase (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\qa\\playthrough.cjs:87:62)\n    at async C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\qa\\playthrough.cjs:97:1657",
-      "failureScreenshot": "screenshots/2026-10-22T16-20-52-991Z-lunar-new-year-zh-320-reduce-failure.png"
-    }
-  ],
-  "errors": [
+      "score": "97 / 100",
+      "artifact": {
+        "panels": [
+          {
+            "action": "listen",
+            "line": "ask",
+            "pause": 900
+          },
+          {
+            "action": "thanks",
+            "line": "thank-patient",
+            "pause": 1400
+          },
+          {
+            "action": "reply",
+            "line": "reply",
+            "pause": 1100
+          }
+        ],
+        "attempts": 4
+      },
+      "resultScreenshot": "screenshots/2026-10-22T23-47-54-912Z-teachers-zh-1440-reduce-result.png",
+      "replayScreenshot": "screenshots/2026-10-22T23-47-54-912Z-teachers-zh-1440-reduce-replay.png",
+      "replayShots": [
+        0,
+        1,
+        2
+      ]
+    },
     {
-      "game": "lunar-new-year",
+      "game": "national-day",
       "lang": "zh",
-      "error": "locator.waitFor: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#result-score') to be visible\u001b[22m\n"
+      "width": 1440,
+      "reducedMotion": "reduce",
+      "keyboard": false,
+      "status": "pass",
+      "checks": {
+        "locale": "yes",
+        "uniqueIds": "yes",
+        "images": "yes",
+        "initialWrongBlocked": "yes",
+        "noHorizontalOverflow": "yes",
+        "completedFromDOM": "yes",
+        "replay3Shots": "yes",
+        "retryFresh": "yes",
+        "browserErrors": "yes"
+      },
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "stylesheetSha256": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+      "duplicateIds": [],
+      "missingImages": [],
+      "layoutScreenshot": "screenshots/2026-10-22T23-47-54-912Z-national-day-zh-1440-reduce-layout.png",
+      "stageScreenshot": "screenshots/2026-10-22T23-47-54-912Z-national-day-zh-1440-reduce-stage.png",
+      "horizontalOverflow": false,
+      "score": "96 / 100",
+      "artifact": {
+        "shots": [
+          {
+            "camera": -12,
+            "fore": 22,
+            "mid": -1,
+            "far": -4,
+            "order": "normal",
+            "screen_fore": 82.8,
+            "screen_mid": 55,
+            "screen_far": 48.4,
+            "screen_subject": 57.2
+          },
+          {
+            "camera": 0,
+            "fore": 22,
+            "mid": 0,
+            "far": 0,
+            "order": "normal",
+            "screen_fore": 72,
+            "screen_mid": 50,
+            "screen_far": 50,
+            "screen_subject": 50
+          },
+          {
+            "camera": 12,
+            "fore": 22,
+            "mid": 1,
+            "far": 4,
+            "order": "normal",
+            "screen_fore": 61.2,
+            "screen_mid": 45,
+            "screen_far": 51.6,
+            "screen_subject": 42.8
+          }
+        ],
+        "misses": 1
+      },
+      "resultScreenshot": "screenshots/2026-10-22T23-47-54-912Z-national-day-zh-1440-reduce-result.png",
+      "replayScreenshot": "screenshots/2026-10-22T23-47-54-912Z-national-day-zh-1440-reduce-replay.png",
+      "replayShots": [
+        0,
+        1,
+        2
+      ]
     }
   ],
-  "status": "fail",
+  "errors": [],
+  "status": "pass",
   "previousRuns": [
     {
       "runId": "2026-10-22T13-06-06-447Z",
@@ -2764,21 +2862,92 @@
         "games/exhibition.mjs": "1c6370fd2e12424defa18963414adf5546dc32f3c2e17450078a3b9ed27bef6b"
       },
       "browserVersion": "151.0.7922.34"
+    },
+    {
+      "runId": "2026-10-22T16-20-52-991Z",
+      "url": "http://127.0.0.1:8818",
+      "method": "headless Chromium, real DOM buttons/ranges, no direct game imports or state mutation",
+      "cases": [
+        {
+          "game": "lunar-new-year",
+          "lang": "zh",
+          "width": 320,
+          "reducedMotion": "reduce",
+          "keyboard": false,
+          "status": "fail",
+          "checks": {
+            "locale": "yes",
+            "uniqueIds": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "stylesheetSha256": "e7fe83b79e062ce89d67eb7cbe1eca28b9aa8900384ddea2775aae2888254dd0",
+          "duplicateIds": [],
+          "missingImages": [],
+          "layoutScreenshot": "screenshots/2026-10-22T16-20-52-991Z-lunar-new-year-zh-320-reduce-layout.png",
+          "stageScreenshot": "screenshots/2026-10-22T16-20-52-991Z-lunar-new-year-zh-320-reduce-stage.png",
+          "horizontalOverflow": false,
+          "error": "locator.waitFor: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#result-score') to be visible\u001b[22m\n\n    at oneCase (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\qa\\playthrough.cjs:87:62)\n    at async C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\qa\\playthrough.cjs:97:1657",
+          "failureScreenshot": "screenshots/2026-10-22T16-20-52-991Z-lunar-new-year-zh-320-reduce-failure.png"
+        }
+      ],
+      "errors": [
+        {
+          "game": "lunar-new-year",
+          "lang": "zh",
+          "error": "locator.waitFor: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#result-score') to be visible\u001b[22m\n"
+        }
+      ],
+      "status": "fail",
+      "servedSourceSha256": {
+        "runner.mjs": "313bfc9f27d2fd864613439e1f44d2c07271af31ca378382deca9a05e2d8bbef",
+        "catalog.mjs": "3ff982b58d12e560e94d90ef3032ec389e48207d50bbec91268f914a56882dad",
+        "games/new-year.mjs": "a6203561b7d3712508f213baceda92e4de4b4979ddb9bedbbbbe750d1ed9e950",
+        "games/lunar-new-year.mjs": "556a459a44487cc8c8a8207f416ae193e5a6ec3bf4a12df9d865f9905127a170",
+        "games/lantern.mjs": "a550a9c7b2abaaf2ba4f34ea81963cb61431ed7ce1e5de77a12cabb1fc661c2c",
+        "games/children.mjs": "b314af117311a0869d4517c115975f0091aee21000caa25d8524e7b08ba07c18",
+        "games/dragon-boat.mjs": "12c515a8434ea32cd1fdd6013fa9b362ea76488b2ef24a44b1b4ea02d8da02c7",
+        "games/mid-autumn.mjs": "a8c3bdf7368b51e69a41665e68b4ab8b50829be5f6089ebfd2cf757936f19dd1",
+        "games/teachers.mjs": "12d92f06a40629e9ffbd63a51f7894f23a5a068634359f68b4a92410c315759f",
+        "games/national-day.mjs": "cc7fe3f338b7f058274f374cfecbcfba7efec888c13fedfbc5a3306cd65cdb48",
+        "games/semester.mjs": "31ae5b2b103c7de6f2244523d02691327cbd2eb06250fba917101c708ff810c1",
+        "games/exhibition.mjs": "1c6370fd2e12424defa18963414adf5546dc32f3c2e17450078a3b9ed27bef6b"
+      },
+      "browserVersion": "151.0.7922.34"
     }
   ],
   "servedSourceSha256": {
-    "runner.mjs": "313bfc9f27d2fd864613439e1f44d2c07271af31ca378382deca9a05e2d8bbef",
+    "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
     "catalog.mjs": "3ff982b58d12e560e94d90ef3032ec389e48207d50bbec91268f914a56882dad",
     "games/new-year.mjs": "a6203561b7d3712508f213baceda92e4de4b4979ddb9bedbbbbe750d1ed9e950",
-    "games/lunar-new-year.mjs": "556a459a44487cc8c8a8207f416ae193e5a6ec3bf4a12df9d865f9905127a170",
+    "games/lunar-new-year.mjs": "79981ce5881980141fa9be5e996901ca4875eb0c41a2a21547724f28a2b78bf7",
     "games/lantern.mjs": "a550a9c7b2abaaf2ba4f34ea81963cb61431ed7ce1e5de77a12cabb1fc661c2c",
     "games/children.mjs": "b314af117311a0869d4517c115975f0091aee21000caa25d8524e7b08ba07c18",
     "games/dragon-boat.mjs": "12c515a8434ea32cd1fdd6013fa9b362ea76488b2ef24a44b1b4ea02d8da02c7",
     "games/mid-autumn.mjs": "a8c3bdf7368b51e69a41665e68b4ab8b50829be5f6089ebfd2cf757936f19dd1",
-    "games/teachers.mjs": "12d92f06a40629e9ffbd63a51f7894f23a5a068634359f68b4a92410c315759f",
-    "games/national-day.mjs": "cc7fe3f338b7f058274f374cfecbcfba7efec888c13fedfbc5a3306cd65cdb48",
-    "games/semester.mjs": "31ae5b2b103c7de6f2244523d02691327cbd2eb06250fba917101c708ff810c1",
+    "games/teachers.mjs": "7438262d1d96d921d5a13a243494c24f16e29002c5149c0b0146d625506c00fb",
+    "games/national-day.mjs": "9c697f08c24f9eae89ac55b71fc37bcfe8546c65b7ca3264a88155b5a63891fa",
+    "games/semester.mjs": "b184437bf226354f8602ed5567c4ac941bff6539176f9575cf737a808d7fbcc9",
     "games/exhibition.mjs": "1c6370fd2e12424defa18963414adf5546dc32f3c2e17450078a3b9ed27bef6b"
   },
-  "browserVersion": "151.0.7922.34"
+  "browserVersion": "151.0.7922.34",
+  "invalidatedFullMatrix": {
+    "runId": "2026-10-22T13-20-56-816Z",
+    "changedSourceFiles": [
+      "runner.mjs",
+      "catalog.mjs",
+      "games/new-year.mjs",
+      "games/lunar-new-year.mjs",
+      "games/children.mjs",
+      "games/mid-autumn.mjs",
+      "games/teachers.mjs",
+      "games/national-day.mjs",
+      "games/semester.mjs"
+    ],
+    "note": "Only the explicitly selected cases are verified; old full-matrix evidence is not reused."
+  }
 }
