@@ -10,6 +10,7 @@ if(typeof document !== 'undefined' && /^#\/en\//.test(window.location.hash)) {
 }
 const siteLanguage = typeof document !== 'undefined' && new URLSearchParams(window.location.search).get('lang')==='en' ? 'en' : 'zh';
 const siteLanguageUrl = (language, hash) => {
+ if(window.__STUDENT_GUIDE_FILE__ && language==='en')return 'https://treefar.link/agd-comic-site/?lang=en';
  if(typeof document==='undefined')return language==='en'?'?lang=en#hero':'#hero';
  const url=new URL(window.location.href);
  if(language==='en')url.searchParams.set('lang','en');else url.searchParams.delete('lang');
@@ -31,6 +32,7 @@ const siteText = value => {
 };
 const siteChildren = child => Array.isArray(child)?child.map(siteChildren):typeof child==='string'?siteText(child):child;
 function siteCreateElement(type, props, ...children) {
+ if(window.__STUDENT_GUIDE_FILE__ && type==='a' && props?.href?.startsWith('#') && !props.href.startsWith('#/students/'))props={...props,href:'https://treefar.link/agd-comic-site/'+props.href};
  if(typeof type==='string' && siteLanguage==='en') {
   props=props?{...props}:{};
   for(const key of ['title','alt','aria-label','placeholder'])if(typeof props[key]==='string')props[key]=siteText(props[key]);

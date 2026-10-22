@@ -1,0 +1,4 @@
+#!/bin/sh
+set -eu
+node --test tests/student-guide.test.cjs
+"${GUIDE_QA_PYTHON:-C:/agywork/agd-guide-qa-venv/Scripts/python.exe}" scripts/student-guide-text-audit.py

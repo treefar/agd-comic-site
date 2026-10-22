@@ -1837,5 +1837,6 @@ const SITE_EN_MESSAGES = {
   "8 題 · 約 1 分鐘 · 第 5 / 8 題": "8 QUESTIONS · ABOUT 1 MINUTE · QUESTION 5 / 8",
   "8 題 · 約 1 分鐘 · 第 6 / 8 題": "8 QUESTIONS · ABOUT 1 MINUTE · QUESTION 6 / 8",
   "8 題 · 約 1 分鐘 · 第 7 / 8 題": "8 QUESTIONS · ABOUT 1 MINUTE · QUESTION 7 / 8",
-  "8 題 · 約 1 分鐘 · 第 8 / 8 題": "8 QUESTIONS · ABOUT 1 MINUTE · QUESTION 8 / 8"
+  "8 題 · 約 1 分鐘 · 第 8 / 8 題": "8 QUESTIONS · ABOUT 1 MINUTE · QUESTION 8 / 8",
+  "在校指南": "Student Guide"
 };

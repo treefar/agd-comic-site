@@ -420,6 +420,7 @@ const TopNav = () => {
     { label: "師資陣容", href: "#faculty" },
     { label: "實驗室",   href: "#labs" },
     { label: "招生資訊", href: "#join" },
+    { label: "在校指南", href: siteLanguageUrl("zh", "#/students/guide") },
     { label: "聯絡我們", href: "#contact" },
   ];
   const [open, setOpen] = React.useState(false);

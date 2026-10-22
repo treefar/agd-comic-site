@@ -15,12 +15,12 @@ const NODE_ENV = JSON.stringify(DEV ? "development" : "production");
 const TMP = path.join(ROOT, ".build-tmp");
 
 // 載入順序必須和 index.html 的 text/babel script 一致（彼此靠全域名稱串接）
-const SOURCES = ["locale-en.js", "en-pages.jsx", "tweaks-panel.jsx", "comic-components.jsx", "chapters-1.jsx", "chapters-2.jsx", "pages.jsx", "app.jsx"];
+const SOURCES = ["locale-en.js", "en-pages.jsx", "tweaks-panel.jsx", "comic-components.jsx", "chapters-1.jsx", "chapters-2.jsx", "pages.jsx", "student-guide-model.js", "student-guide.jsx", "app.jsx"];
 // 首頁一定要出現在預渲染 HTML 的章節錨點
 const REQUIRED_IDS = ["hero", "news", "about", "works", "faculty", "labs", "join", "contact"];
 // 不複製進 dist 的來源/建置檔
 const EXCLUDE = new Set([
-  ".git", ".github", ".gitignore", "node_modules", "dist", ".build-dev", "scripts", ".build-tmp", "_prerender-check",
+  ".git", ".github", ".githooks", ".gitignore", "node_modules", "dist", ".build-dev", "scripts", ".build-tmp", "_prerender-check",
   "package.json", "package-lock.json", "index.html", "README.md", "CLAUDE.md", "AGENTS.md", "LATEST_HANDOFF.md", "tests", "docs", "uploads", ".claude",
   ...SOURCES,
 ]);

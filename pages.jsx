@@ -2389,6 +2389,7 @@ const FloatingCTA = () => {
 const DetailView = ({ type, slug }) => {
   React.useEffect(() => { window.scrollTo(0, 0); }, [type, slug]);
   switch (type) {
+    case "students": return <StudentGuideDetail />;
     case "news":     return <NewsDetail slug={slug} />;
     case "faculty":  return <FacultyDetail slug={slug} />;
     case "labs":     return <LabDetail slug={slug} />;
