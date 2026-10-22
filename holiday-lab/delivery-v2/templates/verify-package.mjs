@@ -1,0 +1,3 @@
+import fs from 'node:fs';import path from 'node:path';import crypto from 'node:crypto';import {fileURLToPath} from 'node:url';
+const root=path.dirname(fileURLToPath(import.meta.url));const manifest=JSON.parse(fs.readFileSync(path.join(root,'SHA256SUMS.json'),'utf8'));
+let n=0;for(const f of manifest.files){if(f.path.startsWith('/')||f.path.includes('..')||f.path.includes('\\'))throw Error('Unsafe path');const p=path.join(root,f.path);const bytes=fs.readFileSync(p);if(bytes.length!==f.bytes||crypto.createHash('sha256').update(bytes).digest('hex')!==f.sha256)throw Error('SHA256 mismatch: '+f.path);n++;}console.log('PASS SHA256 '+n+' listed files. Runtime logs/state are not included in the manifest.');

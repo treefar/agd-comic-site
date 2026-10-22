@@ -1,0 +1,3 @@
+import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';
+const root=path.dirname(fileURLToPath(import.meta.url));
+try{const info=JSON.parse(fs.readFileSync(path.join(root,'preview-server.json'),'utf8'));const pkg=JSON.parse(fs.readFileSync(path.join(root,'package-id.json'),'utf8'));const res=await fetch(info.url+'_preview-health',{signal:AbortSignal.timeout(1000)});const current=await res.json();if(current.packageID!==pkg.packageID||current.pid!==info.pid)throw Error('Server identity differs; nothing was stopped.');process.kill(info.pid);console.log('STOPPED own preview PID='+info.pid);}catch(e){console.error('No confirmed preview server was stopped: '+e.message);process.exitCode=1;}
