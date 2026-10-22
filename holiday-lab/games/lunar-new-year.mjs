@@ -25,9 +25,9 @@ export function mount(ctx){
   const role=ctx.ui.text('lny-role',roles[0]);nodes.push(role);
   const reference=ctx.ui.text('lny-reference',W('','',''));nodes.push(reference);
   const bodies=[0,1,2].map(i=>ctx.sprite(`actor${i+1}`,{id:`lny-body-${i}`,x:49,y:59,width:40,height:58,opacity:i===0?1:0}));
-  const brow=ctx.sprite('prop1',{id:'lny-brow',x:49,y:31,width:22,height:11,z:5});
-  const eyes=ctx.sprite('prop2',{id:'lny-eyes',x:49,y:41,width:22,height:10,z:5});
-  const mouth=ctx.sprite('prop3',{id:'lny-mouth',x:49,y:51,width:13,height:10,z:5});
+  const brow=ctx.sprite('prop1',{id:'lny-brow-sprite',x:49,y:31,width:22,height:11,z:5});
+  const eyes=ctx.sprite('prop2',{id:'lny-eyes-sprite',x:49,y:41,width:22,height:10,z:5});
+  const mouth=ctx.sprite('prop3',{id:'lny-mouth-sprite',x:49,y:51,width:13,height:10,z:5});
   const card=ctx.sprite('token1',{id:'lny-card-surprise',x:86,y:24,width:20,height:25});
   const card2=ctx.sprite('token2',{id:'lny-card-smile',x:86,y:52,width:20,height:25,opacity:0});
   const card3=ctx.sprite('token3',{id:'lny-card-bow',x:86,y:80,width:20,height:25,opacity:0});

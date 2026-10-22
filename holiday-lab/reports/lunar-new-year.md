@@ -48,3 +48,46 @@
 | 拜年 | 0 | 0.7 | 0.5 | 30 |
 
 負面驗證：初始中性直接拍照不能前進；第一幕不能用拜年數值跳過；成功三幕後才出結果。變體 -16/1.4/0.8/0 也可通過第一幕，artifact 及重播眉嘴的變形必須隨之改變。鍵盤 Tab／原生 range 方向鍵／Enter，無強迫拖曳。目標遊玩30–90秒，尚待主控實測可讀性與節奏。
+
+## P1複驗：圖層與輸入DOM id衝突
+
+2026-10-22。只將三個Sprite id改為lny-brow-sprite、lny-eyes-sprite、lny-mouth-sprite，原輸入id與玩法都不變。
+
+| 驗收 | yes/no | 實際證據 |
+|---|---|---|
+| 回歸測試確實抓到三個重複id | yes | 修復前5 tests / pass 4 / fail 1；AssertionError實際duplicates為lny-brow、lny-eyes、lny-mouth |
+| 修復後所有DOM id唯一 | yes | 新增測試同時收集sprite、text、button、slider的id；下列5/5綠燈 |
+| 原滑桿id保持不變 | yes | 測試逐筆比對lny-brow、lny-eyes、lny-mouth、lny-pose |
+| 語法與差異檢查 | yes | 下列各exit code 0 |
+| 真實瀏覽器與整合Build | no | 由主控cherry-pick後獨立複驗，本次只跑所屬模組測試 |
+
+紅燈實際命令：node --test holiday-lab/tests/lunar-new-year.test.mjs，exit code 1，duration 90.8615 ms。錯誤：AssertionError [ERR_ASSERTION]: DOM ids shared by sprites and input controls must never collide，actual [lny-brow, lny-eyes, lny-mouth]，expected []。
+
+修復後本次完整輸出：
+
+```text
+node --test holiday-lab/tests/lunar-new-year.test.mjs
+✔ neutral expression never wins; rejects missing or nonfinite controls (0.8454ms)
+✔ surprise then smile then bow are separate tasks (0.2614ms)
+✔ different accepted expressions change saved creation and transforms (0.7463ms)
+✔ mounted sliders capture three actual poses and clean up frame subscription (2.0063ms)
+✔ sprite and control DOM ids are unique while stable slider ids remain unchanged (0.4429ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 85.4334
+exit code 0
+
+node --check holiday-lab/games/lunar-new-year.mjs
+(無輸出)
+exit code 0
+
+git diff --check
+warning: in the working copy of 'holiday-lab/games/lunar-new-year.mjs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'holiday-lab/tests/lunar-new-year.test.mjs', LF will be replaced by CRLF the next time Git touches it
+exit code 0
+```
