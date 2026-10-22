@@ -6,3 +6,8 @@
 #lab .hint,#lab .marquee-window{border:18px solid transparent;border-image:url('assets/ui/panel.png') 48 fill stretch;background-image:none;padding:12px 16px}
 #lab .choice-options .button{padding:16px 32px;max-width:100%;min-width:0;overflow-wrap:anywhere}
 .replay-text{position:absolute;transform:translate(-50%,-50%);margin:0;display:flex;align-items:center;white-space:pre-line;font-weight:750;z-index:5;pointer-events:none}
+
+/* Clip narration inside the generated panel's writable area, not its outer frame. */
+.marquee-viewport{width:100%;max-width:100%;overflow:hidden;padding:2px 0;}
+.marquee{line-height:1.7;}
+@media(prefers-reduced-motion:reduce){#lab .marquee-window{max-height:none;overflow:visible;}.marquee-viewport{max-height:120px;overflow:auto;}.marquee{padding:0;}}

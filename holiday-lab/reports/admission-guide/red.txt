@@ -1,0 +1,53 @@
+✖ Eligible-category certificates are not excluded by high school type (1.3735ms)
+✔ Ordinary routes and explicit evening preference remain available (0.6165ms)
+✖ The guide offers routes, not a guarantee for arbitrary certificates (0.2016ms)
+✔ All combinations stay within existing admission slugs and two distinct suggestions (1.1636ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 2
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 87.772
+
+✖ failing tests:
+
+test at tests\admission-guide-eligibility.test.cjs:2:1
+✖ Eligible-category certificates are not excluded by high school type (1.3735ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'high-school-application'
+  - 'tech-elite'
+  
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\tests\admission-guide-eligibility.test.cjs:2:88)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'high-school-application',
+    expected: 'tech-elite',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\admission-guide-eligibility.test.cjs:4:1
+✖ The guide offers routes, not a guarantee for arbitrary certificates (0.2016ms)
+  AssertionError [ERR_ASSERTION]: certificate option must state issuing authority and category condition
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\tests\admission-guide-eligibility.test.cjs:4:88)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
