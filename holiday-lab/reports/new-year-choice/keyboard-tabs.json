@@ -1,0 +1,121 @@
+{
+  "at": "2026-10-22T15:56:54.051Z",
+  "build": ".review-newyear-choice-01",
+  "method": "Normal-speed real DOM controls; no module imports, no complete calls and no state injection. Agent has fixture solutions; not a student blind test.",
+  "cases": [
+    {
+      "id": "B-keyboard",
+      "lang": "zh",
+      "width": 1440,
+      "takes": [
+        [
+          560,
+          240,
+          400
+        ],
+        [
+          320,
+          680,
+          300
+        ],
+        [
+          220,
+          240,
+          620
+        ]
+      ],
+      "focus": 2,
+      "keyboard": true,
+      "pass": true,
+      "initialBrief": "第1幕｜俐落跨門。讓騰空明顯短於前後，落地仍看得清楚。",
+      "freshPreviewRequired": true,
+      "retainedAcrossBriefs": true,
+      "selectedIntent": "落地主導：收住動作，讓這一步站得踏實。",
+      "artifact": {
+        "takes": [
+          {
+            "brief": "quick-leap",
+            "focus": "quick",
+            "timing": [
+              560,
+              240,
+              400
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 1200,
+              "shares": [
+                0.4666666666666667,
+                0.2,
+                0.3333333333333333
+              ]
+            }
+          },
+          {
+            "brief": "floating",
+            "focus": "flight",
+            "timing": [
+              320,
+              680,
+              300
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 1300,
+              "shares": [
+                0.24615384615384617,
+                0.5230769230769231,
+                0.23076923076923078
+              ]
+            }
+          },
+          {
+            "brief": "your-ending",
+            "focus": "landing",
+            "timing": [
+              220,
+              240,
+              620
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 1080,
+              "shares": [
+                0.2037037037037037,
+                0.2222222222222222,
+                0.5740740740740741
+              ]
+            }
+          }
+        ],
+        "attempts": 3
+      },
+      "mutedPlayable": true,
+      "replayFirstPosition": {
+        "x": 29.7536,
+        "y": 61.8482,
+        "shot": "0"
+      },
+      "replayCaptions": [
+        "第1幕・起步 560毫秒｜俐落跨門",
+        "第1幕・騰空 240毫秒｜俐落跨門",
+        "第1幕・落地 400毫秒｜俐落跨門",
+        "第2幕・起步 320毫秒｜留住騰空",
+        "第2幕・騰空 680毫秒｜留住騰空",
+        "第2幕・落地 300毫秒｜留住騰空",
+        "第3幕・起步 220毫秒｜站穩落地",
+        "第3幕・騰空 240毫秒｜站穩落地",
+        "第3幕・落地 620毫秒｜站穩落地"
+      ],
+      "retryResets": true
+    }
+  ],
+  "errors": [],
+  "server": {
+    "pid": 2192,
+    "log": "Local review: http://127.0.0.1:8807/ · C:\\agywork\\agd-newyear-choice\\.review-newyear-choice-01\n"
+  },
+  "sourceSha256": "a6203561b7d3712508f213baceda92e4de4b4979ddb9bedbbbbe750d1ed9e950",
+  "browser": "151.0.7922.34",
+  "pass": true
+}

@@ -1,0 +1,456 @@
+{
+  "at": "2026-10-22T15:54:04.284Z",
+  "build": ".review-newyear-choice-01",
+  "method": "Normal-speed real DOM controls; no module imports, no complete calls and no state injection. Agent has fixture solutions; not a student blind test.",
+  "cases": [
+    {
+      "id": "A",
+      "lang": "zh",
+      "width": 1440,
+      "takes": [
+        [
+          360,
+          180,
+          360
+        ],
+        [
+          240,
+          600,
+          240
+        ],
+        [
+          600,
+          220,
+          260
+        ]
+      ],
+      "focus": 0,
+      "explore": true,
+      "pass": true,
+      "initialBrief": "第1幕｜俐落跨門。讓騰空明顯短於前後，落地仍看得清楚。",
+      "freshPreviewRequired": true,
+      "badFeedback": "空中的動作來不及看清。替騰空多留一點時間。",
+      "invalidRetainsValues": true,
+      "actionSamples": {
+        "first": {
+          "x": "30.1667%",
+          "y": "61.9319%",
+          "opacity": "1"
+        },
+        "second": {
+          "x": "56.0222%",
+          "y": "21.0001%",
+          "opacity": "1"
+        }
+      },
+      "retainedAcrossBriefs": true,
+      "secondBriefRejectsOldRhythm": "空中還不夠醒目。從起步或落地挪一點時間給騰空。",
+      "selectedIntent": "起步主導：多留一拍蹲身準備，再躍出去。",
+      "intentChangeHint": "先完整試播。改時間或心情後，都要再看一次。",
+      "changedIntentInvalidatesPreview": true,
+      "artifact": {
+        "takes": [
+          {
+            "brief": "quick-leap",
+            "focus": "quick",
+            "timing": [
+              360,
+              180,
+              360
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 900,
+              "shares": [
+                0.4,
+                0.2,
+                0.4
+              ]
+            }
+          },
+          {
+            "brief": "floating",
+            "focus": "flight",
+            "timing": [
+              240,
+              600,
+              240
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 1080,
+              "shares": [
+                0.2222222222222222,
+                0.5555555555555556,
+                0.2222222222222222
+              ]
+            }
+          },
+          {
+            "brief": "your-ending",
+            "focus": "launch",
+            "timing": [
+              600,
+              220,
+              260
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 1080,
+              "shares": [
+                0.5555555555555556,
+                0.2037037037037037,
+                0.24074074074074073
+              ]
+            }
+          }
+        ],
+        "attempts": 5
+      },
+      "mutedPlayable": true,
+      "replayFirstPosition": {
+        "x": 32.1806,
+        "y": 61.8562,
+        "shot": "0"
+      },
+      "replayCaptions": [
+        "第1幕・起步 360毫秒｜俐落跨門",
+        "第1幕・騰空 180毫秒｜俐落跨門",
+        "第1幕・落地 360毫秒｜俐落跨門",
+        "第2幕・起步 240毫秒｜留住騰空",
+        "第2幕・騰空 600毫秒｜留住騰空",
+        "第2幕・落地 240毫秒｜留住騰空",
+        "第3幕・起步 600毫秒｜期待起步",
+        "第3幕・騰空 220毫秒｜期待起步",
+        "第3幕・落地 260毫秒｜期待起步"
+      ],
+      "retryResets": true
+    },
+    {
+      "id": "B-keyboard",
+      "lang": "zh",
+      "width": 1440,
+      "takes": [
+        [
+          560,
+          240,
+          400
+        ],
+        [
+          320,
+          680,
+          300
+        ],
+        [
+          220,
+          240,
+          620
+        ]
+      ],
+      "focus": 2,
+      "keyboard": true,
+      "pass": true,
+      "initialBrief": "第1幕｜俐落跨門。讓騰空明顯短於前後，落地仍看得清楚。",
+      "freshPreviewRequired": true,
+      "retainedAcrossBriefs": true,
+      "selectedIntent": "落地主導：收住動作，讓這一步站得踏實。",
+      "artifact": {
+        "takes": [
+          {
+            "brief": "quick-leap",
+            "focus": "quick",
+            "timing": [
+              560,
+              240,
+              400
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 1200,
+              "shares": [
+                0.4666666666666667,
+                0.2,
+                0.3333333333333333
+              ]
+            }
+          },
+          {
+            "brief": "floating",
+            "focus": "flight",
+            "timing": [
+              320,
+              680,
+              300
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 1300,
+              "shares": [
+                0.24615384615384617,
+                0.5230769230769231,
+                0.23076923076923078
+              ]
+            }
+          },
+          {
+            "brief": "your-ending",
+            "focus": "landing",
+            "timing": [
+              220,
+              240,
+              620
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 1080,
+              "shares": [
+                0.2037037037037037,
+                0.2222222222222222,
+                0.5740740740740741
+              ]
+            }
+          }
+        ],
+        "attempts": 3
+      },
+      "mutedPlayable": true,
+      "replayFirstPosition": {
+        "x": 29.9143,
+        "y": 61.8678,
+        "shot": "0"
+      },
+      "replayCaptions": [
+        "第1幕・起步 560毫秒｜俐落跨門",
+        "第1幕・騰空 240毫秒｜俐落跨門",
+        "第1幕・落地 400毫秒｜俐落跨門",
+        "第2幕・起步 320毫秒｜留住騰空",
+        "第2幕・騰空 680毫秒｜留住騰空",
+        "第2幕・落地 300毫秒｜留住騰空",
+        "第3幕・起步 220毫秒｜站穩落地",
+        "第3幕・騰空 240毫秒｜站穩落地",
+        "第3幕・落地 620毫秒｜站穩落地"
+      ],
+      "retryResets": true
+    },
+    {
+      "id": "C-flight",
+      "lang": "ja",
+      "width": 390,
+      "takes": [
+        [
+          360,
+          180,
+          360
+        ],
+        [
+          240,
+          600,
+          240
+        ],
+        [
+          240,
+          620,
+          260
+        ]
+      ],
+      "focus": 1,
+      "pass": true,
+      "initialBrief": "第1幕｜軽やかに越える。空中を前後より短くし、着地も見えるテンポに。",
+      "freshPreviewRequired": true,
+      "retainedAcrossBriefs": true,
+      "selectedIntent": "空中を強調：門を越える瞬間をゆっくり見せる。",
+      "artifact": {
+        "takes": [
+          {
+            "brief": "quick-leap",
+            "focus": "quick",
+            "timing": [
+              360,
+              180,
+              360
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 900,
+              "shares": [
+                0.4,
+                0.2,
+                0.4
+              ]
+            }
+          },
+          {
+            "brief": "floating",
+            "focus": "flight",
+            "timing": [
+              240,
+              600,
+              240
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 1080,
+              "shares": [
+                0.2222222222222222,
+                0.5555555555555556,
+                0.2222222222222222
+              ]
+            }
+          },
+          {
+            "brief": "your-ending",
+            "focus": "flight",
+            "timing": [
+              240,
+              620,
+              260
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 1120,
+              "shares": [
+                0.21428571428571427,
+                0.5535714285714286,
+                0.23214285714285715
+              ]
+            }
+          }
+        ],
+        "attempts": 3
+      },
+      "mutedPlayable": true,
+      "replayFirstPosition": {
+        "x": 31.8222,
+        "y": 61.8999,
+        "shot": "0"
+      },
+      "replayCaptions": [
+        "第1幕・踏み出し 360ミリ秒｜軽やかに越える",
+        "第1幕・空中 180ミリ秒｜軽やかに越える",
+        "第1幕・着地 360ミリ秒｜軽やかに越える",
+        "第2幕・踏み出し 240ミリ秒｜空中を味わう",
+        "第2幕・空中 600ミリ秒｜空中を味わう",
+        "第2幕・着地 240ミリ秒｜空中を味わう",
+        "第3幕・踏み出し 240ミリ秒｜空中を楽しむ",
+        "第3幕・空中 620ミリ秒｜空中を楽しむ",
+        "第3幕・着地 260ミリ秒｜空中を楽しむ"
+      ],
+      "retryResets": true
+    },
+    {
+      "id": "B-reduced",
+      "lang": "en",
+      "width": 390,
+      "takes": [
+        [
+          560,
+          240,
+          400
+        ],
+        [
+          320,
+          680,
+          300
+        ],
+        [
+          220,
+          240,
+          620
+        ]
+      ],
+      "focus": 2,
+      "reduced": true,
+      "pass": true,
+      "initialBrief": "Scene 1 · A quick leap. Keep flight noticeably shorter than launch and landing, with a readable finish.",
+      "freshPreviewRequired": true,
+      "retainedAcrossBriefs": true,
+      "selectedIntent": "Emphasize landing: give the final pose time to settle.",
+      "artifact": {
+        "takes": [
+          {
+            "brief": "quick-leap",
+            "focus": "quick",
+            "timing": [
+              560,
+              240,
+              400
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 1200,
+              "shares": [
+                0.4666666666666667,
+                0.2,
+                0.3333333333333333
+              ]
+            }
+          },
+          {
+            "brief": "floating",
+            "focus": "flight",
+            "timing": [
+              320,
+              680,
+              300
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 1300,
+              "shares": [
+                0.24615384615384617,
+                0.5230769230769231,
+                0.23076923076923078
+              ]
+            }
+          },
+          {
+            "brief": "your-ending",
+            "focus": "landing",
+            "timing": [
+              220,
+              240,
+              620
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 1080,
+              "shares": [
+                0.2037037037037037,
+                0.2222222222222222,
+                0.5740740740740741
+              ]
+            }
+          }
+        ],
+        "attempts": 3
+      },
+      "mutedPlayable": true,
+      "replayFirstPosition": {
+        "x": 36,
+        "y": 60,
+        "shot": "0"
+      },
+      "replayCaptions": [
+        "Scene 1 · Launch: 560 ms · A quick leap",
+        "Scene 1 · Flight: 240 ms · A quick leap",
+        "Scene 1 · Landing: 400 ms · A quick leap",
+        "Scene 2 · Launch: 320 ms · Savor flight",
+        "Scene 2 · Flight: 680 ms · Savor flight",
+        "Scene 2 · Landing: 300 ms · Savor flight",
+        "Scene 3 · Launch: 220 ms · Settle the landing",
+        "Scene 3 · Flight: 240 ms · Settle the landing",
+        "Scene 3 · Landing: 620 ms · Settle the landing"
+      ],
+      "retryResets": true
+    }
+  ],
+  "errors": [],
+  "server": {
+    "pid": 26060,
+    "log": "Local review: http://127.0.0.1:8807/ · C:\\agywork\\agd-newyear-choice\\.review-newyear-choice-01\n"
+  },
+  "sourceSha256": "a6203561b7d3712508f213baceda92e4de4b4979ddb9bedbbbbe750d1ed9e950",
+  "browser": "151.0.7922.34",
+  "twoDistinctWorks": true,
+  "pass": true
+}
