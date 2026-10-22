@@ -1,0 +1,958 @@
+{
+  "source_commit": "c8d4e3563dcddd0f2a16277075e6deb71ab09d15",
+  "checked_at": "2026-10-23",
+  "excluded_previously_reviewed": [
+    "faq/graduation/0",
+    "faq/graduation/1",
+    "faq/credit-transfer/0",
+    "faq/credit-transfer/1",
+    "faq/english/0",
+    "faq/english/1",
+    "faq/status-military/0",
+    "faq/status-military/1",
+    "faq/overseas-internship/0",
+    "faq/overseas-internship/1",
+    "faq/overseas-study-visit/0",
+    "faq/overseas-study-visit/1"
+  ],
+  "counts": {
+    "faq_pairs": 18,
+    "target_strings": 72
+  },
+  "units": [
+    {
+      "id": "faq/internship/0",
+      "card": "校外實習",
+      "source_ids": [
+        "curriculum-112",
+        "curriculum-113",
+        "curriculum-114",
+        "curriculum-115"
+      ],
+      "question": {
+        "zh": "校外實習要做多久？",
+        "en": "How long must the off-campus internship last?",
+        "ja": "学外インターンシップはどのくらいの期間行う必要がありますか？"
+      },
+      "answer": {
+        "zh": "112至115入學一般日四技課表列校外實習2學分、160小時。時數計算、可認列內容與成果文件，仍依本系當期規定。",
+        "en": "Curriculum for 112 to 115 entry regular day four-year program lists off-campus internship as 2 credits and 160 hours. Hour calculations, eligible recognized duties, and outcome documentation are still subject to current department regulations.",
+        "ja": "112〜115年度入学生の一般日間部4年制課程カリキュラムでは、学外インターンシップは2単位、160時間と定められています。時間数の計算、認定対象となる内容、成果物書類については、本学科の当該期の規定に準じます。"
+      },
+      "review": {
+        "decision": "retain",
+        "note": "保留兩語問答。112–115、2學分、160小時及當期認列規定均對應原文；eligible recognized duties略生硬但沒有漏掉認列限制。不重驗課表制度。",
+        "strings": [
+          {
+            "part": "question",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "How long must the off-campus internship last?"
+          },
+          {
+            "part": "question",
+            "lang": "ja",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "学外インターンシップはどのくらいの期間行う必要がありますか？"
+          },
+          {
+            "part": "answer",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "Curriculum for 112 to 115 entry regular day four-year program lists off-campus internship as 2 credits and 160 hours. Hour calculations, eligible recognized duties, and outcome documentation are still subject to current department regulations."
+          },
+          {
+            "part": "answer",
+            "lang": "ja",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "112〜115年度入学生の一般日間部4年制課程カリキュラムでは、学外インターンシップは2単位、160時間と定められています。時間数の計算、認定対象となる内容、成果物書類については、本学科の当該期の規定に準じます。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "faq/internship/1",
+      "card": "校外實習",
+      "source_ids": [
+        "career-contact",
+        "dept-contact"
+      ],
+      "question": {
+        "zh": "可以直接拿打工時數抵實習嗎？",
+        "en": "Can part-time work hours be directly used to waive the internship?",
+        "ja": "アルバイトの勤務時間をそのままインターンシップに充当（振替認定）できますか？"
+      },
+      "answer": {
+        "zh": "不一定。請先把公司、職務與工作內容交系辦或實習指導老師確認，取得認列回覆後再安排。",
+        "en": "Not necessarily. Please submit the company, position, and job duties to the department office or internship faculty advisor for confirmation, and make arrangements only after receiving credit recognition approval.",
+        "ja": "必ずしも認められるとは限りません。まずは企業名、職種、業務内容を学科事務室またはインターンシップ指導教員に提出して確認を受け、認定可否の回答を得てから手配を進めてください。"
+      },
+      "review": {
+        "decision": "revise",
+        "note": "日文保留。英文問句waive可能讓人以為整個實習義務被免除，改工作時數能否計入實習要求；答案不把等待認列回覆強化成已獲學分核准。公司、職務、工作內容與先確認再安排仍完整。",
+        "strings": [
+          {
+            "part": "question",
+            "lang": "en",
+            "decision": "revise",
+            "reason": "抵實習是認列時數，不等於waive整個義務。",
+            "proposed": "Can my part-time work hours count toward the internship requirement?"
+          },
+          {
+            "part": "question",
+            "lang": "ja",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "アルバイトの勤務時間をそのままインターンシップに充当（振替認定）できますか？"
+          },
+          {
+            "part": "answer",
+            "lang": "en",
+            "decision": "revise",
+            "reason": "把認列回覆譯清楚，不先宣稱已核准學分。",
+            "proposed": "Not necessarily. First ask the department office or your internship faculty advisor to review the company, position, and job duties. Wait for confirmation of whether the work can be recognized before making arrangements."
+          },
+          {
+            "part": "answer",
+            "lang": "ja",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "必ずしも認められるとは限りません。まずは企業名、職種、業務内容を学科事務室またはインターンシップ指導教員に提出して確認を受け、認定可否の回答を得てから手配を進めてください。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "faq/certification/0",
+      "card": "證照認列",
+      "source_ids": [
+        "cert-award"
+      ],
+      "question": {
+        "zh": "入學前考的證照也有獎助嗎？",
+        "en": "Are certifications obtained before admission eligible for subsidies as well?",
+        "ja": "入学前に取得した資格・検定も奨励金の対象になりますか？"
+      },
+      "answer": {
+        "zh": "已核對的114-2公告不補助入學前證照；能否作本系畢業認列仍須對清單。當期獎助資格請洽職發中心1713。",
+        "en": "Verified 114-2 announcement does not subsidize certifications obtained before admission; whether it can count toward department graduation recognition must still be checked against the list. For current subsidy eligibility, please contact Career Development Center at ext. 1713.",
+        "ja": "確認済みの114-2公示では入学前の資格・検定は補助対象外とされています。本学科の卒業要件として認定可能かは一覧との照合が必要です。当該期の奨励金資格はキャリア開発センター（内線1713）までお問い合わせください。"
+      },
+      "review": {
+        "decision": "retain",
+        "note": "兩語保留。114-2歷史公告限定、入學前證照不補助、畢業認列須另核清單、1713均保留；沒有把獎助與畢業門檻混為同一資格。未重驗當期獎助全文。",
+        "strings": [
+          {
+            "part": "question",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "Are certifications obtained before admission eligible for subsidies as well?"
+          },
+          {
+            "part": "question",
+            "lang": "ja",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "入学前に取得した資格・検定も奨励金の対象になりますか？"
+          },
+          {
+            "part": "answer",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "Verified 114-2 announcement does not subsidize certifications obtained before admission; whether it can count toward department graduation recognition must still be checked against the list. For current subsidy eligibility, please contact Career Development Center at ext. 1713."
+          },
+          {
+            "part": "answer",
+            "lang": "ja",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "確認済みの114-2公示では入学前の資格・検定は補助対象外とされています。本学科の卒業要件として認定可能かは一覧との照合が必要です。当該期の奨励金資格はキャリア開発センター（内線1713）までお問い合わせください。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "faq/certification/1",
+      "card": "證照認列",
+      "source_ids": [
+        "cert-award"
+      ],
+      "question": {
+        "zh": "老師已幫我登錄，還要申請獎助嗎？",
+        "en": "My teacher already registered it for me; do I still need to apply for the subsidy?",
+        "ja": "教員がすでに登録してくれた場合でも、奨励金の申請は必要ですか？"
+      },
+      "answer": {
+        "zh": "114-2公告將證照登錄與獎助申請分開，團體登錄後仍可能要追加申請。公告列證照生效半年內；請先問1713自己的案件適用期限。",
+        "en": "The 114-2 announcement separates certification registration from subsidy application; an additional application may still be required after group registration. The announcement states within six months of certification effective date; please check with ext. 1713 for the deadline applicable to your case.",
+        "ja": "114-2公示では資格・検定の登録と奨励金の申請が分かれており、一括登録後も追加申請が必要となる場合があります。公示では資格の発効から半年以内と定められています。ご自身の適用期限については、事前に内線1713にお問い合わせください。"
+      },
+      "review": {
+        "decision": "retain",
+        "note": "兩語保留。登錄與申請分開、一括登錄後仍可能另申請、證照生效半年內、先問個案期限均保留。日文公示/発効較正式但可理解，不為風格全面重譯。",
+        "strings": [
+          {
+            "part": "question",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "My teacher already registered it for me; do I still need to apply for the subsidy?"
+          },
+          {
+            "part": "question",
+            "lang": "ja",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "教員がすでに登録してくれた場合でも、奨励金の申請は必要ですか？"
+          },
+          {
+            "part": "answer",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "The 114-2 announcement separates certification registration from subsidy application; an additional application may still be required after group registration. The announcement states within six months of certification effective date; please check with ext. 1713 for the deadline applicable to your case."
+          },
+          {
+            "part": "answer",
+            "lang": "ja",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "114-2公示では資格・検定の登録と奨励金の申請が分かれており、一括登録後も追加申請が必要となる場合があります。公示では資格の発効から半年以内と定められています。ご自身の適用期限については、事前に内線1713にお問い合わせください。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "faq/leave/0",
+      "card": "我要請假",
+      "source_ids": [
+        "leave-2026"
+      ],
+      "question": {
+        "zh": "送出後一直沒回覆，可以當作准假嗎？",
+        "en": "If there has been no reply after submitting, can it be assumed that the leave is approved?",
+        "ja": "提出後ずっと返答がない場合、休暇が認められたとみなしてよいですか？"
+      },
+      "answer": {
+        "zh": "不能；要以系統最後核准結果為準。若一直沒有回覆，主動找導師追蹤，別把假單送出當成核准。",
+        "en": "No; the final approval status in the system governs. If there is no response, actively follow up with your class advisor; do not equate submitting a leave request with approval.",
+        "ja": "認められません。システムの最終承認結果が基準となります。返答がない場合は、申請の提出をもって承認とみなさず、自主的に担任教員へご確認ください。"
+      },
+      "review": {
+        "decision": "revise",
+        "note": "英問答、日答保留。日文問題休暇易被理解成休假，改欠席申請。兩語仍明確未回覆不等於核准、以系統最終結果為準、向導師追蹤。",
+        "strings": [
+          {
+            "part": "question",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "If there has been no reply after submitting, can it be assumed that the leave is approved?"
+          },
+          {
+            "part": "question",
+            "lang": "ja",
+            "decision": "revise",
+            "reason": "使用學生缺席申請，避免休暇的休假語感。",
+            "proposed": "申請後も返答がない場合、欠席申請が承認されたと考えてよいですか？"
+          },
+          {
+            "part": "answer",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "No; the final approval status in the system governs. If there is no response, actively follow up with your class advisor; do not equate submitting a leave request with approval."
+          },
+          {
+            "part": "answer",
+            "lang": "ja",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "認められません。システムの最終承認結果が基準となります。返答がない場合は、申請の提出をもって承認とみなさず、自主的に担任教員へご確認ください。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "faq/leave/1",
+      "card": "我要請假",
+      "source_ids": [
+        "leave-2026",
+        "leave-old",
+        "life-contact"
+      ],
+      "question": {
+        "zh": "兩天以上一定只在線上處理嗎？",
+        "en": "Must leaves of two or more days be handled strictly online?",
+        "ja": "2日以上の休暇は必ずオンラインのみで処理されますか？"
+      },
+      "answer": {
+        "zh": "請先問導師或生輔組2114，確認需要的證明與簽核方式；遇考試或長假，不確定時再向註冊課務組確認。",
+        "en": "Please first check with your class advisor or the Student Assistance Section at ext. 2114 to confirm required documentation and approval procedures; during exam periods or extended breaks, check with the Registration and Curriculum Section if unsure.",
+        "ja": "担任教員または生活指導組（内線2114）に事前確認し、必要な証明書類と承認方式をご確認ください。試験期間や長期休暇に重なり不明な点がある場合は、登録・履修課にもお問い合わせください。"
+      },
+      "review": {
+        "decision": "revise",
+        "note": "兩語問題將請假申請說清楚。英文extended breaks與日文長期休暇可能被理解成學校放假，按本卡請假脈絡改較長期間的缺席；保留2日以上、2114、導師/生輔先確認及考試/長假再詢註冊課務。未新增准假標準。",
+        "strings": [
+          {
+            "part": "question",
+            "lang": "en",
+            "decision": "revise",
+            "reason": "修正leaves語法並保留一定/只在線上兩個限定。",
+            "proposed": "Can absence requests for two or more days always be handled entirely online?"
+          },
+          {
+            "part": "question",
+            "lang": "ja",
+            "decision": "revise",
+            "reason": "請假是欠席申請，非學校休假。",
+            "proposed": "2日以上の欠席申請は、必ずオンラインだけで手続きできますか？"
+          },
+          {
+            "part": "answer",
+            "lang": "en",
+            "decision": "revise",
+            "reason": "長假在請假脈絡指較長缺席，不能譯成學校extended breaks。",
+            "proposed": "First ask your class advisor or the Student Assistance Section at ext. 2114 about the required documents and approval process. If your absence involves exams or a longer period, also check with the Registration and Curriculum Section if you are unsure."
+          },
+          {
+            "part": "answer",
+            "lang": "ja",
+            "decision": "revise",
+            "reason": "長期休暇改成長期間の欠席；不新增流程規則。",
+            "proposed": "まず担任教員または生活指導組（内線2114）に、必要な証明書類と承認手続きを確認してください。試験に重なる場合や長期間の欠席で不明な点がある場合は、登録・履修課にも確認してください。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "faq/course-selection/0",
+      "card": "選課加退選",
+      "source_ids": [
+        "academic-faq"
+      ],
+      "question": {
+        "zh": "老師同意、也去上課，就算選到了嗎？",
+        "en": "If the instructor agreed and I attended classes, does that count as enrolled?",
+        "ja": "担当教員の了承を得て授業にも出席していれば、履修登録完了とみなされますか？"
+      },
+      "answer": {
+        "zh": "仍要以校務系統的選課紀錄為準，請核對課程是否確實列入自己的課表。",
+        "en": "The course selection records in the Academic Information System remain the sole authority; please verify that the course is indeed listed on your personal schedule.",
+        "ja": "校務システムの履修登録履歴が基準となります。該当科目がご自身の時間割に確実に反映されているかご確認ください。"
+      },
+      "review": {
+        "decision": "revise",
+        "note": "兩語問句與日答保留。英答sole authority較原文強硬，改直接核對校務系統課表，保留實際登錄才算數，沒有新加排他法律效力。",
+        "strings": [
+          {
+            "part": "question",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "If the instructor agreed and I attended classes, does that count as enrolled?"
+          },
+          {
+            "part": "question",
+            "lang": "ja",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "担当教員の了承を得て授業にも出席していれば、履修登録完了とみなされますか？"
+          },
+          {
+            "part": "answer",
+            "lang": "en",
+            "decision": "revise",
+            "reason": "刪去原文沒有的sole authority強化語氣，保留正式紀錄。",
+            "proposed": "Check the course registration record in the Academic Information System and make sure the course actually appears on your schedule."
+          },
+          {
+            "part": "answer",
+            "lang": "ja",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "校務システムの履修登録履歴が基準となります。該当科目がご自身の時間割に確実に反映されているかご確認ください。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "faq/course-selection/1",
+      "card": "選課加退選",
+      "source_ids": [
+        "enrollment-115-1",
+        "academic-faq"
+      ],
+      "question": {
+        "zh": "這學期還能直接加退選嗎？",
+        "en": "Can courses still be added or dropped directly this semester?",
+        "ja": "今学期はまだ直接履修追加・取り消しができますか？"
+      },
+      "answer": {
+        "zh": "已核對的115-1加退選於2026/9/14上午9時截止，現在不能當作仍開放。棄選或特殊情況是否可辦，請查當期公告並洽註冊課務組。",
+        "en": "The verified 115-1 add/drop period closed on 2026/9/14 at 9:00 AM and cannot be assumed to remain open. For course withdrawal or special circumstances, please check current announcements and contact the Registration and Curriculum Section.",
+        "ja": "確認済みの115-1学期の履修登録変更は2026/9/14午前9時に締め切られており、現在は受付期間中とはみなせません。履修放棄や特別措置の申請可否については、当該期の公示を確認の上、登録・履修課にお問い合わせください。"
+      },
+      "review": {
+        "decision": "retain",
+        "note": "兩語保留。115-1、2026/9/14上午9時已截止及棄選/特殊情況另問均完整；不改成仍可一般加退選，亦不改歷史日期。日文窗口名全站統一不在本輪範圍。",
+        "strings": [
+          {
+            "part": "question",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "Can courses still be added or dropped directly this semester?"
+          },
+          {
+            "part": "question",
+            "lang": "ja",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "今学期はまだ直接履修追加・取り消しができますか？"
+          },
+          {
+            "part": "answer",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "The verified 115-1 add/drop period closed on 2026/9/14 at 9:00 AM and cannot be assumed to remain open. For course withdrawal or special circumstances, please check current announcements and contact the Registration and Curriculum Section."
+          },
+          {
+            "part": "answer",
+            "lang": "ja",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "確認済みの115-1学期の履修登録変更は2026/9/14午前9時に締め切られており、現在は受付期間中とはみなせません。履修放棄や特別措置の申請可否については、当該期の公示を確認の上、登録・履修課にお問い合わせください。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "faq/capstone/0",
+      "card": "專題製作",
+      "source_ids": [
+        "curriculum-112",
+        "curriculum-113",
+        "curriculum-114",
+        "curriculum-115"
+      ],
+      "question": {
+        "zh": "專題是選修嗎？",
+        "en": "Is the capstone project an elective?",
+        "ja": "卒業制作は選択科目ですか？"
+      },
+      "answer": {
+        "zh": "已核對的112至115入學一般班課表將專題設計Ⅰ、Ⅱ列為必修。請按自己的入學年課表修課，不把其他班別規定直接套用。",
+        "en": "Verified standard class curriculum charts for entry years 112 to 115 list Capstone Design Ⅰ and Ⅱ as required courses. Please take courses according to the curriculum chart of your entry year and do not directly apply regulations from other class types.",
+        "ja": "確認済みの112〜115年度入学生の一般クラスカリキュラムでは、專題設計（卒業制作）Ⅰ、Ⅱは必修科目として定められています。他のクラス区分の規定をそのまま適用せず、ご自身の入学年度のカリキュラムに従って履修してください。"
+      },
+      "review": {
+        "decision": "retain",
+        "note": "兩語保留。112–115、一般班、專題設計ⅠⅡ必修、依入學年度、不可跨班套用完整。日文保留台灣原課名並加卒業制作說明；英文Capstone Design為解釋性課名，未宣稱官方課名對照已核。",
+        "strings": [
+          {
+            "part": "question",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "Is the capstone project an elective?"
+          },
+          {
+            "part": "question",
+            "lang": "ja",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "卒業制作は選択科目ですか？"
+          },
+          {
+            "part": "answer",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "Verified standard class curriculum charts for entry years 112 to 115 list Capstone Design Ⅰ and Ⅱ as required courses. Please take courses according to the curriculum chart of your entry year and do not directly apply regulations from other class types."
+          },
+          {
+            "part": "answer",
+            "lang": "ja",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "確認済みの112〜115年度入学生の一般クラスカリキュラムでは、專題設計（卒業制作）Ⅰ、Ⅱは必修科目として定められています。他のクラス区分の規定をそのまま適用せず、ご自身の入学年度のカリキュラムに従って履修してください。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "faq/capstone/1",
+      "card": "專題製作",
+      "source_ids": [
+        "dept-forms"
+      ],
+      "question": {
+        "zh": "組員人數、退組或補審要看哪裡？",
+        "en": "Where can I check team size limits, team withdrawal, or supplementary review rules?",
+        "ja": "メンバーの人数、グループ脱退、または追審査の規定はどこを確認すればよいですか？"
+      },
+      "answer": {
+        "zh": "請向系辦索取當屆正式辦法，確認組隊、異動與補審；不要套用他系或往年規則。",
+        "en": "Please obtain your cohort's official regulations from the department office to confirm team formation, changes, and supplementary reviews; do not apply rules from other departments or previous years.",
+        "ja": "学科事務室から当該年度の正式な要領を取り寄せ、チーム編成、メンバー変更、追審査の規定をご確認ください。他学科や過去年度の規則をそのまま適用しないでください。"
+      },
+      "review": {
+        "decision": "revise",
+        "note": "英文保留。日文追審査不自然且容易猜測重考機制，改保留本系原詞補審並加追加の審査說明；組隊、異動、向系辦取當屆辦法及不可套往年均保留。不定義補審的實際資格或次數。",
+        "strings": [
+          {
+            "part": "question",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "Where can I check team size limits, team withdrawal, or supplementary review rules?"
+          },
+          {
+            "part": "question",
+            "lang": "ja",
+            "decision": "revise",
+            "reason": "保留本系原詞補審並用通用說明，不猜重考/複審制度。",
+            "proposed": "チームの人数、脱退、「補審」（追加の審査）の規定はどこで確認できますか？"
+          },
+          {
+            "part": "answer",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "Please obtain your cohort's official regulations from the department office to confirm team formation, changes, and supplementary reviews; do not apply rules from other departments or previous years."
+          },
+          {
+            "part": "answer",
+            "lang": "ja",
+            "decision": "revise",
+            "reason": "追審査改原詞加說明；保留當屆、異動與不可套他系舊規。",
+            "proposed": "学科事務室から自分たちの年度に適用される正式な規定を入手し、チーム編成、メンバー変更、「補審」（追加の審査）について確認してください。他学科や過去年度の規則をそのまま適用しないでください。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "faq/financial-aid/0",
+      "card": "獎助與急難協助",
+      "source_ids": [
+        "aid-115-1",
+        "low-income-115-1",
+        "hardship",
+        "life-contact"
+      ],
+      "question": {
+        "zh": "錯過一項助學截止日，就不能再問其他協助嗎？",
+        "en": "If I missed the deadline for one aid program, can I no longer inquire about other assistance?",
+        "ja": "ある就学支援制度の締め切りを過ぎてしまった場合、他の支援についても相談できなくなりますか？"
+      },
+      "answer": {
+        "zh": "不同方案分開辦理。115-1不利處境助學10/20、學產低收10/8都已截止；急難協助另依事件與方案判斷，請先洽生輔組2124。",
+        "en": "Different programs are handled separately. For 115-1, disadvantaged student aid on 10/20 and Ministry of Education student aid for low-income families on 10/8 have both closed; emergency assistance is assessed separately based on individual events and programs, so please first contact the Student Assistance Section at ext. 2124.",
+        "ja": "制度ごとに個別に処理されます。115-1学期の修学困難者支援は10/20、学産低所得世帯支援は10/8にすでに締め切られています。緊急救済支援については事案や制度ごとに判断されますので、まずは生活指導組（内線2124）へお問い合わせください。"
+      },
+      "review": {
+        "decision": "revise",
+        "note": "英文保留。日文學産低所得世帯支援對台灣方案辨識不足，改保留中文顯示標籤不利處境助學/學產低收並加功能說明；115-1、10/20、10/8及2124都不動。不捏造官方日文方案名，沒有重新確認截止日是否延期。",
+        "strings": [
+          {
+            "part": "question",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "If I missed the deadline for one aid program, can I no longer inquire about other assistance?"
+          },
+          {
+            "part": "question",
+            "lang": "ja",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "ある就学支援制度の締め切りを過ぎてしまった場合、他の支援についても相談できなくなりますか？"
+          },
+          {
+            "part": "answer",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "Different programs are handled separately. For 115-1, disadvantaged student aid on 10/20 and Ministry of Education student aid for low-income families on 10/8 have both closed; emergency assistance is assessed separately based on individual events and programs, so please first contact the Student Assistance Section at ext. 2124."
+          },
+          {
+            "part": "answer",
+            "lang": "ja",
+            "decision": "revise",
+            "reason": "保留台灣方案的中文顯示標籤，解釋性日文不是官方名稱。",
+            "proposed": "制度ごとに個別に手続きします。115-1学期の「不利處境助學」（就学支援）は10/20、「學產低收」（低所得世帯向け支援）は10/8にすでに締め切られています。緊急時の支援は事案と制度によって異なるため、まずは生活指導組（内線2124）に相談してください。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "faq/financial-aid/1",
+      "card": "獎助與急難協助",
+      "source_ids": [
+        "hardship",
+        "life-contact"
+      ],
+      "question": {
+        "zh": "可以同時領好幾種補助嗎？",
+        "en": "Can I receive multiple types of financial aid at the same time?",
+        "ja": "複数の支援金・補助金を同時に受給することはできますか？"
+      },
+      "answer": {
+        "zh": "先把已申請或已領的補助告訴承辦，各方案可能有重複請領限制，不能只看名稱不同就認為可併領。",
+        "en": "First inform the coordinator of the subsidies you have applied for or received; each program may have duplicate funding restrictions, and different titles alone do not mean they can be combined.",
+        "ja": "申請済みまたは受給中の補助について事前に担当窓口へお伝えください。各制度には重複受給の制限が設けられている場合があるため、名称が異なるだけで併給可能と判断しないでください。"
+      },
+      "review": {
+        "decision": "retain",
+        "note": "兩語保留。先告知申請/已領案件、可能重複請領限制、名稱不同不代表併領均完整；沒有新增一律不得併領的規則。",
+        "strings": [
+          {
+            "part": "question",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "Can I receive multiple types of financial aid at the same time?"
+          },
+          {
+            "part": "question",
+            "lang": "ja",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "複数の支援金・補助金を同時に受給することはできますか？"
+          },
+          {
+            "part": "answer",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "First inform the coordinator of the subsidies you have applied for or received; each program may have duplicate funding restrictions, and different titles alone do not mean they can be combined."
+          },
+          {
+            "part": "answer",
+            "lang": "ja",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "申請済みまたは受給中の補助について事前に担当窓口へお伝えください。各制度には重複受給の制限が設けられている場合があるため、名称が異なるだけで併給可能と判断しないでください。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "faq/support-rights/0",
+      "card": "遇到困難找誰",
+      "source_ids": [
+        "student-portal"
+      ],
+      "question": {
+        "zh": "線上諮商預約從哪裡進？",
+        "en": "Where do I access online counseling appointments?",
+        "ja": "オンラインカウンセリングの予約はどこからできますか？"
+      },
+      "answer": {
+        "zh": "學校「在校學生」頁列有線上預約諮商入口。預約方式與時段以服務頁為準；若找不到入口，可請導師協助聯繫。",
+        "en": "The university's 'Current Students' page lists the access point for online counseling appointments. Booking methods and available time slots follow the service page; if you cannot locate the portal, you can ask your class advisor for help contacting them.",
+        "ja": "本学の「在校生」ページにオンラインカウンセリング予約の入口が掲載されています。予約方法および時間枠はサービス案内ページに準じます。入口が見つからない場合は、クラス担任に連絡のサポートを依頼してください。"
+      },
+      "review": {
+        "decision": "revise",
+        "note": "兩語都將線上預約誤讀成線上諮商服務，問題與答案改成在線上辦理諮商預約；不承諾遠距服務。服務頁決定方式/時段、找不到請導師協助仍保留。",
+        "strings": [
+          {
+            "part": "question",
+            "lang": "en",
+            "decision": "revise",
+            "reason": "線上是預約管道，非承諾遠距諮商。",
+            "proposed": "Where can I book a counseling appointment online?"
+          },
+          {
+            "part": "question",
+            "lang": "ja",
+            "decision": "revise",
+            "reason": "修正オンラインカウンセリング服務方式誤讀。",
+            "proposed": "カウンセリングをオンラインで予約するには、どこから手続きすればよいですか？"
+          },
+          {
+            "part": "answer",
+            "lang": "en",
+            "decision": "revise",
+            "reason": "區別online booking和online counseling，保留服務頁及導師協助。",
+            "proposed": "The university’s “Current Students” page has a link for booking counseling appointments online. Check the service page for booking instructions and available time slots. If you cannot find the link, ask your class advisor to help you contact the service."
+          },
+          {
+            "part": "answer",
+            "lang": "ja",
+            "decision": "revise",
+            "reason": "不把預約入口當成遠距諮商服務。",
+            "proposed": "本学の「在校生」ページに、カウンセリングをオンラインで予約するためのリンクがあります。予約方法と時間枠はサービス案内ページで確認してください。リンクが見つからない場合は、担任教員に連絡のサポートを依頼してください。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "faq/support-rights/1",
+      "card": "遇到困難找誰",
+      "source_ids": [
+        "student-portal"
+      ],
+      "question": {
+        "zh": "一般申訴與性平可以共用同一張表嗎？",
+        "en": "Can general grievances and gender equity complaints share the same form?",
+        "ja": "一般の申し立てと性別平等事案で同じ申請書を共用できますか？"
+      },
+      "answer": {
+        "zh": "不要先假設表單共用。請導師協助找對承辦，確認案件類型、受理方式與期限後，再使用對應表單。",
+        "en": "Do not assume forms can be shared. Ask your class advisor to help locate the correct coordinator, confirm the case type, submission procedure, and deadline, and then use the corresponding form.",
+        "ja": "同じ申請書を使用できると思い込まないでください。クラス担任の協力を得て適切な担当部署を確認し、事案の種別、受付方法および期限を確かめた上で、所定の申請書を使用してください。"
+      },
+      "review": {
+        "decision": "retain",
+        "note": "兩語保留。不要假設共用、請導師找承辦、先確認案件類型/方式/期限再用對表均完整。gender equity/性別平等屬台灣制度解釋；未引入他國申訴制度或承辦人。",
+        "strings": [
+          {
+            "part": "question",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "Can general grievances and gender equity complaints share the same form?"
+          },
+          {
+            "part": "question",
+            "lang": "ja",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "一般の申し立てと性別平等事案で同じ申請書を共用できますか？"
+          },
+          {
+            "part": "answer",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "Do not assume forms can be shared. Ask your class advisor to help locate the correct coordinator, confirm the case type, submission procedure, and deadline, and then use the corresponding form."
+          },
+          {
+            "part": "answer",
+            "lang": "ja",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "同じ申請書を使用できると思い込まないでください。クラス担任の協力を得て適切な担当部署を確認し、事案の種別、受付方法および期限を確かめた上で、所定の申請書を使用してください。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "faq/career/0",
+      "card": "就業資源",
+      "source_ids": [
+        "career-contact"
+      ],
+      "question": {
+        "zh": "還沒畢業，也可以先做職涯準備嗎？",
+        "en": "Can I start preparing for my career before graduating?",
+        "ja": "卒業前でも、早期にキャリア準備を進めることはできますか？"
+      },
+      "answer": {
+        "zh": "職發中心職掌列有學生職涯規劃、UCAN職能檢測、講座與就業輔導；可先洽中心確認當期可使用的資源。",
+        "en": "The Career Development Center's duties include student career planning, UCAN competency assessments, lectures, and employment counseling; contact the center first to confirm currently available resources.",
+        "ja": "キャリア開発センターの業務には、学生のキャリアプランニング、UCAN職能診断、各種セミナー、就職指導などが含まれています。まずはセンターに問い合わせて、現在利用可能な支援リソースを確認してください。"
+      },
+      "review": {
+        "decision": "retain",
+        "note": "兩語保留。職涯規劃、UCAN職能檢測、講座、就業輔導及當期資源確認都在；不把職掌清單說成每項服務必定現正開放。",
+        "strings": [
+          {
+            "part": "question",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "Can I start preparing for my career before graduating?"
+          },
+          {
+            "part": "question",
+            "lang": "ja",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "卒業前でも、早期にキャリア準備を進めることはできますか？"
+          },
+          {
+            "part": "answer",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "The Career Development Center's duties include student career planning, UCAN competency assessments, lectures, and employment counseling; contact the center first to confirm currently available resources."
+          },
+          {
+            "part": "answer",
+            "lang": "ja",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "キャリア開発センターの業務には、学生のキャリアプランニング、UCAN職能診断、各種セミナー、就職指導などが含まれています。まずはセンターに問い合わせて、現在利用可能な支援リソースを確認してください。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "faq/career/1",
+      "card": "就業資源",
+      "source_ids": [
+        "career-contact"
+      ],
+      "question": {
+        "zh": "徵才活動或職缺一定每學期都一樣嗎？",
+        "en": "Are recruitment events or job openings always the same every semester?",
+        "ja": "採用イベントや求人情報は、毎学期必ず同じですか？"
+      },
+      "answer": {
+        "zh": "不一定。中心辦理就業相關活動，但實際日期與職缺要看當期公告；不要直接沿用過往海報的報名連結。",
+        "en": "Not necessarily. The center organizes employment-related events, but actual dates and job openings depend on current announcements; do not directly reuse registration links from past posters.",
+        "ja": "必ずしも同じではありません。センターでは就業関連のイベントを実施していますが、実際の日程や求人内容は各学期のお知らせに準じます。過去のポスターに記載された申し込みリンクをそのまま使用しないでください。"
+      },
+      "review": {
+        "decision": "retain",
+        "note": "兩語保留。活動日期/職缺看當期公告、過往報名連結不可直接沿用均完整；沒有補辦理頻率或保證職缺。",
+        "strings": [
+          {
+            "part": "question",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "Are recruitment events or job openings always the same every semester?"
+          },
+          {
+            "part": "question",
+            "lang": "ja",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "採用イベントや求人情報は、毎学期必ず同じですか？"
+          },
+          {
+            "part": "answer",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "Not necessarily. The center organizes employment-related events, but actual dates and job openings depend on current announcements; do not directly reuse registration links from past posters."
+          },
+          {
+            "part": "answer",
+            "lang": "ja",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "必ずしも同じではありません。センターでは就業関連のイベントを実施していますが、実際の日程や求人内容は各学期のお知らせに準じます。過去のポスターに記載された申し込みリンクをそのまま使用しないでください。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "faq/graduate-study/0",
+      "card": "繼續升學",
+      "source_ids": [
+        "graduate-handbook-116"
+      ],
+      "question": {
+        "zh": "應屆生還沒拿到畢業證書，能報本校116碩甄嗎？",
+        "en": "Can graduating seniors apply for the university's 116 Master's early admissions before receiving their diploma?",
+        "ja": "卒業見込生でまだ卒業証明書を受け取っていませんが、本学の116学年度大学院推薦選抜に出願できますか？"
+      },
+      "answer": {
+        "zh": "116簡章允許115學年度應屆畢業生依規定報考，須交附表一並經教務單位核章；錄取後仍須取得學士資格才能註冊。",
+        "en": "The 116 admissions brochure allows graduating seniors of the 115 academic year to apply according to regulations; Appendix 1 must be submitted with verification stamp from the academic affairs office. Admitted students must still obtain their bachelor's degree qualification before registering.",
+        "ja": "116学年度募集要項では、115学年度の卒業見込生が規定に沿って出願することを認めています。付表1を提出し、教務担当部署の押印を受ける必要があります。合格後も、学士の資格を取得しなければ入学登録できません。"
+      },
+      "review": {
+        "decision": "revise",
+        "note": "英問答與日答保留。日問推薦選抜多加推薦制度概念，官方116系統實讀用碩士班甄試，改修士課程の甄試（選抜入試）解釋。115應屆可依規定報考、附表一/核章、註冊前學士資格不變。未逐所驗推薦函要求。",
+        "strings": [
+          {
+            "part": "question",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "Can graduating seniors apply for the university's 116 Master's early admissions before receiving their diploma?"
+          },
+          {
+            "part": "question",
+            "lang": "ja",
+            "decision": "revise",
+            "reason": "官方原詞是碩士班甄試，不憑中文簡稱加入日本推薦選抜制度。",
+            "proposed": "卒業見込みでまだ卒業証明書を受け取っていませんが、本学の116学年度修士課程の甄試（選抜入試）に出願できますか？"
+          },
+          {
+            "part": "answer",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "The 116 admissions brochure allows graduating seniors of the 115 academic year to apply according to regulations; Appendix 1 must be submitted with verification stamp from the academic affairs office. Admitted students must still obtain their bachelor's degree qualification before registering."
+          },
+          {
+            "part": "answer",
+            "lang": "ja",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "116学年度募集要項では、115学年度の卒業見込生が規定に沿って出願することを認めています。付表1を提出し、教務担当部署の押印を受ける必要があります。合格後も、学士の資格を取得しなければ入学登録できません。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "faq/graduate-study/1",
+      "card": "繼續升學",
+      "source_ids": [
+        "graduate-handbook-116",
+        "graduate-application-116"
+      ],
+      "question": {
+        "zh": "本校116碩甄何時截止？其他學校也一樣嗎？",
+        "en": "When is the deadline for the university's 116 Master's early admissions? Is it the same for other universities?",
+        "ja": "本学の116学年度大学院推薦選抜の出願締切はいつですか？他大学も同じですか？"
+      },
+      "answer": {
+        "zh": "本校一般網路報名至2026/11/2下午4時，部分境外學歷或專業資格同等學力為10/27截止。其他校系請各查自己的116簡章，不能共用期限。",
+        "en": "General online registration for our university ends on 2026/11/2 at 4:00 PM; the deadline for certain overseas academic credentials or equivalent professional qualifications is 10/27. For other universities and departments, please check their respective 116 admissions brochures, as deadlines cannot be shared.",
+        "ja": "本学の一般的なインターネット出願は2026/11/2午後4時まで、一部の海外学歴または専門資格による同等学力での出願は10/27締切です。他大学・専攻はそれぞれの116学年度募集要項を確認してください。締切日は共通ではありません。"
+      },
+      "review": {
+        "decision": "revise",
+        "note": "英問答與日答保留。日問題同樣逐句對官方116碩士班甄試名稱核對後去除推薦，非從大學甄選單樣本套用。2026/11/2下午4時、特定資格10/27及他校各查116簡章均完整。",
+        "strings": [
+          {
+            "part": "question",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "When is the deadline for the university's 116 Master's early admissions? Is it the same for other universities?"
+          },
+          {
+            "part": "question",
+            "lang": "ja",
+            "decision": "revise",
+            "reason": "逐筆核對116碩士班甄試；明示修士層級，去除推薦。",
+            "proposed": "本学の116学年度修士課程の甄試（選抜入試）の出願締切はいつですか？他大学も同じですか？"
+          },
+          {
+            "part": "answer",
+            "lang": "en",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "General online registration for our university ends on 2026/11/2 at 4:00 PM; the deadline for certain overseas academic credentials or equivalent professional qualifications is 10/27. For other universities and departments, please check their respective 116 admissions brochures, as deadlines cannot be shared."
+          },
+          {
+            "part": "answer",
+            "lang": "ja",
+            "decision": "retain",
+            "reason": "已逐句對照：原意、限制、數字與聯繫方式保留；無需為風格改寫。",
+            "proposed": "本学の一般的なインターネット出願は2026/11/2午後4時まで、一部の海外学歴または専門資格による同等学力での出願は10/27締切です。他大学・専攻はそれぞれの116学年度募集要項を確認してください。締切日は共通ではありません。"
+          }
+        ]
+      }
+    }
+  ],
+  "scope": "Only the remaining 18 FAQ pairs; semantic comparison, not recertification of all underlying school rules or native-speaker certification."
+}

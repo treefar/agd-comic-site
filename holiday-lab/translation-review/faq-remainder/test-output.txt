@@ -1,0 +1,18 @@
+✔ All remaining 18 FAQ pairs and 72 target strings have explicit per-string decisions (6.0108ms)
+✔ Each reviewed Chinese/English/Japanese source equals the fixed baseline active locale (661.3527ms)
+✔ Every planned old/new pair is exactly the reviewed string; no extra product targets (0.9436ms)
+✔ Fixed baseline dry-run preflights all 17 operations without writing any files (54.6593ms)
+✔ A changed old value is caught before any product write (54.5098ms)
+✔ Only planned values change and unrelated root content/canonical Chinese survive application (250.7708ms)
+✔ A concurrent edit after preflight prevents every write (115.0878ms)
+✔ Unexpected files and duplicate targets are rejected (43.5135ms)
+✔ Dates, numerals, extensions, and canonical Chinese keys are not changed (1.1786ms)
+✔ Changed FAQ keys are not overridden by a later locale dictionary (20306.2125ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 23093.196
