@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英文共用介面與在校指南｜狀態</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff; --fg: #1a1a1a; --muted: #5b5b66; --bg2: #f5f5f7; --bg3: #e8e8ec;
+  --border: #d0d0d6; --accent: #2563eb;
+  --ok-bg: #dcfce7; --ok-fg: #166534; --ok-bd: #86efac;
+  --warn-bg: #fef9c3; --warn-fg: #854d0e; --warn-bd: #fde047;
+  --blocked-bg: #e5e7eb; --blocked-fg: #374151; --blocked-bd: #9ca3af;
+  --danger-bg: #fee2e2; --danger-fg: #991b1b; --danger-bd: #fca5a5;
+  --info-bg: #dbeafe; --info-fg: #1e40af; --info-bd: #93c5fd;
+  --shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #18181b; --fg: #e4e4e7; --muted: #a1a1aa; --bg2: #232327; --bg3: #3f3f46;
+    --border: #52525b; --accent: #60a5fa;
+    --ok-bg: #052e16; --ok-fg: #86efac; --ok-bd: #166534;
+    --warn-bg: #422006; --warn-fg: #fde047; --warn-bd: #854d0e;
+    --blocked-bg: #374151; --blocked-fg: #d1d5db; --blocked-bd: #6b7280;
+    --danger-bg: #450a0a; --danger-fg: #fca5a5; --danger-bd: #991b1b;
+    --info-bg: #1e3a5f; --info-fg: #93c5fd; --info-bd: #1e40af;
+    --shadow: 0 1px 3px rgba(0,0,0,0.4);
+  }
+}
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
+  background: var(--bg); color: var(--fg);
+  margin: 0; line-height: 1.6; overflow-x: hidden;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 16px; }
+h1 { font-size: 1.5rem; margin: 0 0 4px; }
+h2 { font-size: 1.2rem; margin: 28px 0 8px; border-bottom: 2px solid var(--accent); padding-bottom: 4px; display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+h3 { font-size: 0.95rem; margin: 14px 0 6px; color: var(--muted); }
+.sub { margin: 0; color: var(--muted); font-size: 0.9rem; }
+.meta-line { margin: 4px 0 0; color: var(--muted); font-size: 0.8rem; }
+.count { font-size: 0.8rem; font-weight: 400; color: var(--muted); }
+
+/* 摘要卡（依三層分列） */
+.layer { margin: 8px 0; }
+.layer-empty { font-size: 0.8rem; color: var(--muted); margin: 0; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+.card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 12px; text-align: center; box-shadow: var(--shadow); }
+.card .num { font-size: 1.8rem; font-weight: 700; color: var(--accent); line-height: 1.2; }
+.card .label { font-size: 0.85rem; }
+.card .scope { display: inline-block; font-size: 0.72rem; border: 1px solid var(--border); border-radius: 10px; padding: 0 6px; margin-top: 2px; color: var(--muted); }
+.card .den { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+
+/* 搜尋與篩選 */
+.controls { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 8px; align-items: center; position: sticky; top: 0; z-index: 5; background: var(--bg); padding: 8px 0; }
+.search-box { flex: 1 1 240px; min-width: 0; padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 1rem; background: var(--bg2); color: var(--fg); font-family: inherit; }
+.filter-btn { padding: 6px 14px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg2); color: var(--fg); cursor: pointer; font-size: 0.85rem; font-family: inherit; }
+.filter-btn:hover { background: var(--bg3); }
+.filter-btn[aria-pressed="true"] { background: var(--accent); color: #fff; border-color: var(--accent); }
+.match-count { font-size: 0.8rem; color: var(--muted); flex-basis: 100%; }
+
+/* 表格 */
+.section-desc { font-size: 0.85rem; color: var(--muted); margin: 0 0 6px; }
+.na-note { font-size: 0.85rem; color: var(--muted); margin: 4px 0; }
+.table-wrap { overflow: auto; max-height: 75vh; margin: 8px 0 16px; border-radius: 8px; border: 1px solid var(--border); }
+table { width: max-content; min-width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th { position: sticky; top: 0; background: var(--bg3); text-align: left; padding: 10px 12px; border-bottom: 2px solid var(--border); white-space: nowrap; z-index: 2; }
+td { padding: 8px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.t-text { min-width: 6em; max-width: 26em; }
+td.t-tag, td.t-code, td.t-bool { white-space: nowrap; }
+tbody tr.row.zebra { background: var(--bg2); }
+tbody tr.row:hover { background: var(--bg3); }
+tr.row.expandable { cursor: pointer; }
+tr.row.expandable td:first-child::before { content: "▶"; font-size: 0.65rem; margin-right: 6px; display: inline-block; transition: transform 0.15s; color: var(--muted); }
+tr.row.expandable.open td:first-child::before { transform: rotate(90deg); }
+tr.detail td { background: var(--bg2); padding: 12px 16px; }
+.detail-grid { display: grid; grid-template-columns: max-content 1fr; gap: 4px 16px; font-size: 0.85rem; margin: 0; }
+.detail-grid dt { font-weight: 600; }
+.detail-grid dd { margin: 0; overflow-wrap: anywhere; }
+.null { color: var(--muted); }
+code { font-family: Consolas, "Courier New", monospace; font-size: 0.85em; background: var(--bg3); padding: 0 4px; border-radius: 3px; }
+
+/* 狀態標籤：一律有文字，顏色只是輔助 */
+.tag { display: inline-block; padding: 1px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; white-space: nowrap; border: 1px solid; margin: 1px 2px 1px 0; }
+.tone-ok { background: var(--ok-bg); color: var(--ok-fg); border-color: var(--ok-bd); }
+.tone-warn { background: var(--warn-bg); color: var(--warn-fg); border-color: var(--warn-bd); }
+.tone-blocked { background: var(--blocked-bg); color: var(--blocked-fg); border-color: var(--blocked-bd); }
+.tone-danger { background: var(--danger-bg); color: var(--danger-fg); border-color: var(--danger-bd); }
+.tone-info { background: var(--info-bg); color: var(--info-fg); border-color: var(--info-bd); }
+
+/* 資料缺口與來源 */
+.box { border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; background: var(--bg2); font-size: 0.88rem; }
+.box.unknowns { border-left: 4px solid var(--warn-bd); }
+.box ul { margin: 4px 0; padding-left: 20px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: 0.8rem; }
+@media (max-width: 640px) {
+  .controls { position: static; }
+  .detail-grid { position: sticky; left: 16px; width: calc(100vw - 88px); }
+}
+.footer { text-align: center; font-size: 0.8rem; color: var(--muted); margin: 32px 0 16px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1 id="title"></h1>
+    <p class="sub" id="subtitle"></p>
+    <p class="meta-line" id="meta-line"></p>
+  </header>
+
+  <section id="summary" aria-label="摘要"></section>
+
+  <div class="controls">
+    <input type="search" class="search-box" id="search" placeholder="搜尋任何欄位⋯⋯" autocomplete="off" aria-label="搜尋">
+    <span id="filter-bar" role="group" aria-label="狀態篩選" style="display:contents"></span>
+    <span class="match-count" id="match-count" aria-live="polite"></span>
+  </div>
+
+  <main id="sections"></main>
+
+  <h2>資料缺口（unknowns）<span class="count" id="unknown-count"></span></h2>
+  <div class="box unknowns" id="unknowns"></div>
+
+  <h2>權威來源</h2>
+  <div class="box" id="authorities"></div>
+
+  <h2>狀態圖例</h2>
+  <div class="box"><div class="legend" id="legend"></div></div>
+
+  <div class="footer" id="footer"></div>
+</div>
+
+<script id="dashboard-data" type="application/json">{"schema_version":1,"meta":{"project":"系網漫畫版_AGDComicSite","title":"英文共用介面與在校指南｜狀態","generated":"2026-10-22","authorities":[{"path":"outputs/shared-language/release/results.json","role":"瀏覽器檢查逐項紀錄"},{"path":"outputs/shared-language/release/actions.json","role":"測驗及招生導引操作紀錄"},{"path":"outputs/student-guide/student-guide-draft.json","role":"學生專區審閱稿"},{"path":"outputs/student-guide/verification.json","role":"專區基本檢查"},{"path":"outputs/student-guide/verification-categories.json","role":"專區分類與快捷檢查"}],"notes":["工具通過不代表使用者已驗收。遊戲仍留本機；在校指南尚未公開。"]},"status_levels":[{"key":"draft","label":"審閱稿已建","tone":"info","layer":"data"},{"key":"pass","label":"通過","tone":"ok","layer":"tool"},{"key":"fail","label":"未通過","tone":"danger","layer":"tool"},{"key":"pending","label":"待使用者審閱","tone":"info","layer":"user"},{"key":"confirmed","label":"使用者已確認","tone":"ok","layer":"user"}],"summary_cards":[{"id":"guide","label":"學生專區卡片","layer":"data","rule":{"count":"guide"},"value":14},{"id":"pages","label":"全站語言／尺寸檢查","layer":"tool","rule":{"count":"pages","where":{"tool":"pass"}},"value":212},{"id":"actions","label":"測驗與導引操作","layer":"tool","rule":{"count":"actions","where":{"tool":"pass"}},"value":20},{"id":"guidechecks","label":"學生專區檢查","layer":"tool","rule":{"count":"guidechecks","where":{"tool":"pass"}},"value":48},{"id":"confirmed","label":"專區使用者確認","layer":"user","rule":{"count":"guide","where":{"user":"confirmed"}},"value":0}],"sections":[{"id":"pages","title":"全站檢查","row_key":"name","columns":[{"key":"name","title":"項目","type":"text"},{"key":"tool","title":"工具驗證","type":"tag"},{"key":"user","title":"使用者確認","type":"tag"}],"detail_fields":[{"key":"note","title":"說明","type":"text"}],"search_fields":["name","note"],"rows":[{"name":"1440 zh #hero","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #hero","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/news/2026-10-06-unity-115-1","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/news/2026-10-06-unity-115-1","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/news/2026-10-06-after-effects-115-1","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/news/2026-10-06-after-effects-115-1","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/news/2026-10-06-photoshop-115-1","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/news/2026-10-06-photoshop-115-1","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/news/2026-08-19-obsessive-reality-5-more-festivals","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/news/2026-08-19-obsessive-reality-5-more-festivals","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/news/2026-08-04-japan-internship-9th","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/news/2026-08-04-japan-internship-9th","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/news/2026-06-16-dear-all-robots","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/news/2026-06-16-dear-all-robots","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/news/2026-04-29-awards-showcase","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/news/2026-04-29-awards-showcase","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/news/2026-04-25-international-festivals","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/news/2026-04-25-international-festivals","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/news/2026-04-08-unity-114-2","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/news/2026-04-08-unity-114-2","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/news/2026-03-31-after-effect","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/news/2026-03-31-after-effect","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/news/2026-03-24-kaituo","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/news/2026-03-24-kaituo","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/news/2026-03-17-acp-illustrator","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/news/2026-03-17-acp-illustrator","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/news/2026-01-27-open-day","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/news/2026-01-27-open-day","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/news/2025-10-20-unity-114-1","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/news/2025-10-20-unity-114-1","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/news/2025-09-25-top-2-percent-scientists","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/news/2025-09-25-top-2-percent-scientists","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/news/2025-08-28-bahamut-acg","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/news/2025-08-28-bahamut-acg","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/news/2025-07-25-japan-hc-internship","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/news/2025-07-25-japan-hc-internship","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/news/2025-07-04-times-golden-pin","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/news/2025-07-04-times-golden-pin","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/news/2025-06-17-stolen-recipe","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/news/2025-06-17-stolen-recipe","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/news/2025-05-21-fangshi-2025","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/news/2025-05-21-fangshi-2025","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/news/2025-05-08-dongyou-week","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/news/2025-05-08-dongyou-week","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/faculty/tengshuyuan","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/faculty/tengshuyuan","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/faculty/chiangyamei","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/faculty/chiangyamei","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/faculty/chenchungkuang","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/faculty/chenchungkuang","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/faculty/yangchihchang","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/faculty/yangchihchang","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/faculty/chenchinghung","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/faculty/chenchinghung","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/faculty/changchunya","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/faculty/changchunya","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/faculty/chiushinchan","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/faculty/chiushinchan","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/faculty/chenmeijung","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/faculty/chenmeijung","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/faculty/wuyenshen","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/faculty/wuyenshen","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/faculty/wangtsungli","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/faculty/wangtsungli","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/faculty/chentsaiyu","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/faculty/chentsaiyu","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/faculty/chiangtienhua","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/faculty/chiangtienhua","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/faculty/yinli","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/faculty/yinli","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/labs/d0604","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/labs/d0604","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/labs/d0628","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/labs/d0628","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/labs/d0631","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/labs/d0631","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/labs/d0633","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/labs/d0633","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/labs/d0637","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/labs/d0637","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/labs/db101-1","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/labs/db101-1","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/labs/db104","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/labs/db104","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/labs/db105","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/labs/db105","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/labs/h0201","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/labs/h0201","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/labs/multimedia-classroom","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/labs/multimedia-classroom","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/labs/esports-classroom","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/labs/esports-classroom","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/labs/startup-base","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/labs/startup-base","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/works/clipstudio-grand-prize","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/works/clipstudio-grand-prize","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/works/stolen-recipe","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/works/stolen-recipe","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/works/soothing-sounds","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/works/soothing-sounds","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/works/bahamut-acg","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/works/bahamut-acg","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/works/times-pin","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/works/times-pin","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/works/fangshi-2025","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/works/fangshi-2025","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/works/top-2-scientists","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/works/top-2-scientists","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/admission/visit","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/admission/visit","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/admission/high-school-application","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/admission/high-school-application","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/admission/selection","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/admission/selection","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/admission/tech-star","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/admission/tech-star","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/admission/tech-elite","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/admission/tech-elite","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/admission/joint","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/admission/joint","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/admission/evening","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/admission/evening","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/admission/scholarship","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/admission/scholarship","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/videos/y0GLRAaN_P8","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/videos/y0GLRAaN_P8","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/videos/oFMueTOvkX0","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/videos/oFMueTOvkX0","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/videos/g63HmiIJoiQ","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/videos/g63HmiIJoiQ","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/videos/J8RuvZ4ocsw","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/videos/J8RuvZ4ocsw","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/videos/Sm1PXkjm-Wg","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/videos/Sm1PXkjm-Wg","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/videos/g2NCdRRU0rQ","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/videos/g2NCdRRU0rQ","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/videos/VQRloyiQsmA","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/videos/VQRloyiQsmA","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/videos/qpt34h__Ggc","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/videos/qpt34h__Ggc","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/videos/q4Pc2IJ8xe8","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/videos/q4Pc2IJ8xe8","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/videos/7lM3seaPts0","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/videos/7lM3seaPts0","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/videos/SzqpjqHlHCU","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/videos/SzqpjqHlHCU","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/videos/_4gPmPB-OsE","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/videos/_4gPmPB-OsE","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/videos/8RrNXXclhBo","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/videos/8RrNXXclhBo","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/videos/eudJH4f4aRs","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/videos/eudJH4f4aRs","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/videos/qrnD5xgIeJg","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/videos/qrnD5xgIeJg","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/videos/82KAgx_tCwk","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/videos/82KAgx_tCwk","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/videos/NLD-n4AEk6E","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/videos/NLD-n4AEk6E","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/videos/IgQFfELYyDw","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/videos/IgQFfELYyDw","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/videos/ti06XRT5gpM","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/videos/ti06XRT5gpM","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/videos/JsmtcNRN8PU","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/videos/JsmtcNRN8PU","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/stats/awards","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/stats/awards","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/stats/partners","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/stats/partners","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/stats/employment","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/stats/employment","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/stats/biz-mentors","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/stats/biz-mentors","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/stats/teacher-materials","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/stats/teacher-materials","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/stats/international","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/stats/international","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/stats/honors","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/stats/honors","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/stats/certifications","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/stats/certifications","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/curriculum/map","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/curriculum/map","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/works/all","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/works/all","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/parents/guide","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/parents/guide","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/guide/start","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/guide/start","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/quiz/start","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/quiz/start","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 zh #/reels/all","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"1440 en #/reels/all","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"390 zh #hero","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"390 en #hero","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"390 zh #/faculty/tengshuyuan","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"390 en #/faculty/tengshuyuan","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"390 zh #/labs/d0604","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"390 en #/labs/d0604","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"390 zh #/curriculum/map","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"390 en #/curriculum/map","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"390 zh #/works/all","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"390 en #/works/all","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"390 zh #/admission/visit","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"390 en #/admission/visit","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"390 zh #/parents/guide","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"390 en #/parents/guide","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"390 zh #/guide/start","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"390 en #/guide/start","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"390 zh #/quiz/start","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"390 en #/quiz/start","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"390 zh #/stats/honors","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"},{"name":"390 en #/stats/honors","note":"同一路由中英DOM結構相同；頁面無橫向溢位、無JS錯誤","tool":"pass","user":"pending"}],"row_count":212},{"id":"actions","title":"測驗與招生導引","row_key":"name","columns":[{"key":"name","title":"項目","type":"text"},{"key":"tool","title":"工具驗證","type":"tag"},{"key":"user","title":"使用者確認","type":"tag"}],"detail_fields":[{"key":"note","title":"說明","type":"text"}],"search_fields":["name","note"],"rows":[{"name":"quiz 1","note":"{\"kind\":\"quiz\",\"answers\":[0,0,0,0,0,0,0,0],\"winner\":\"anim\",\"shareEnglish\":true}","tool":"pass","user":"pending"},{"name":"quiz 2","note":"{\"kind\":\"quiz\",\"answers\":[1,1,1,1,1,1,1,1],\"winner\":\"game\",\"shareEnglish\":true}","tool":"pass","user":"pending"},{"name":"quiz 3","note":"{\"kind\":\"quiz\",\"answers\":[2,2,2,2,2,2,2,2],\"winner\":\"art\",\"shareEnglish\":true}","tool":"pass","user":"pending"},{"name":"quiz 4","note":"{\"kind\":\"quiz\",\"answers\":[3,3,3,3,3,3,3,3],\"winner\":\"cross\",\"shareEnglish\":true}","tool":"pass","user":"pending"},{"name":"quiz 5","note":"{\"kind\":\"quiz\",\"answers\":[0,1,0,1,0,1,0,1],\"winner\":\"game\",\"shareEnglish\":true}","tool":"pass","user":"pending"},{"name":"quiz 6","note":"{\"kind\":\"quiz\",\"answers\":[0,1,2,3,0,1,2,3],\"winner\":\"cross\",\"shareEnglish\":true}","tool":"pass","user":"pending"},{"name":"quiz 7","note":"{\"kind\":\"quiz\",\"answers\":[3,2,1,0,3,2,1,0],\"winner\":\"anim\",\"shareEnglish\":true}","tool":"pass","user":"pending"},{"name":"quiz 8","note":"{\"kind\":\"quiz\",\"answers\":[0,0,0,1,1,2,2,3],\"winner\":\"anim\",\"shareEnglish\":true}","tool":"pass","user":"pending"},{"name":"quiz 9","note":"{\"kind\":\"quiz\",\"answers\":[1,1,1,2,2,0,0,3],\"winner\":\"game\",\"shareEnglish\":true}","tool":"pass","user":"pending"},{"name":"quiz 10","note":"{\"kind\":\"quiz\",\"answers\":[2,2,2,3,3,0,0,1],\"winner\":\"art\",\"shareEnglish\":true}","tool":"pass","user":"pending"},{"name":"guide 11","note":"{\"kind\":\"guide\",\"answers\":[0,0,0],\"expected\":\"high-school-application\"}","tool":"pass","user":"pending"},{"name":"guide 12","note":"{\"kind\":\"guide\",\"answers\":[0,2,1],\"expected\":\"joint\"}","tool":"pass","user":"pending"},{"name":"guide 13","note":"{\"kind\":\"guide\",\"answers\":[1,0,1],\"expected\":\"tech-elite\"}","tool":"pass","user":"pending"},{"name":"guide 14","note":"{\"kind\":\"guide\",\"answers\":[1,1,1],\"expected\":\"selection\"}","tool":"pass","user":"pending"},{"name":"guide 15","note":"{\"kind\":\"guide\",\"answers\":[1,2,2],\"expected\":\"tech-star\"}","tool":"pass","user":"pending"},{"name":"guide 16","note":"{\"kind\":\"guide\",\"answers\":[1,2,3],\"expected\":\"selection\"}","tool":"pass","user":"pending"},{"name":"guide 17","note":"{\"kind\":\"guide\",\"answers\":[1,2,0],\"expected\":\"selection\"}","tool":"pass","user":"pending"},{"name":"guide 18","note":"{\"kind\":\"guide\",\"answers\":[1,0,2],\"expected\":\"tech-elite\"}","tool":"pass","user":"pending"},{"name":"guide 19","note":"{\"kind\":\"guide\",\"answers\":[0,1,2],\"expected\":\"high-school-application\"}","tool":"pass","user":"pending"},{"name":"guide 20","note":"{\"kind\":\"guide\",\"answers\":[2],\"expected\":\"evening\"}","tool":"pass","user":"pending"}],"row_count":20},{"id":"guidechecks","title":"在校指南操作檢查","row_key":"name","columns":[{"key":"name","title":"項目","type":"text"},{"key":"tool","title":"工具驗證","type":"tag"},{"key":"user","title":"使用者確認","type":"tag"}],"detail_fields":[{"key":"note","title":"說明","type":"text"}],"search_fields":["name","note"],"rows":[{"name":"14張卡片","note":"14","tool":"pass","user":"pending"},{"name":"34筆原始來源","note":"34","tool":"pass","user":"pending"},{"name":"5項主任審閱問題","note":"5","tool":"pass","user":"pending"},{"name":"醒目待審閱標示","note":"\"待主任審閱，尚未上線\"","tool":"pass","user":"pending"},{"name":"搜尋可篩選","note":"1","tool":"pass","user":"pending"},{"name":"優先順序可篩選","note":"4","tool":"pass","user":"pending"},{"name":"全部展開","note":"14","tool":"pass","user":"pending"},{"name":"已過期選課顯示截止","note":"\"115-1加退選已截止；本學期棄選的確切開放日期尚未查得。\"","tool":"pass","user":"pending"},{"name":"來源與班別有內容","note":"51","tool":"pass","user":"pending"},{"name":"手機沒有水平溢位","note":"{\"scroll\":390,\"width\":390}","tool":"pass","user":"pending"},{"name":"無頁面JavaScript錯誤","note":"[]","tool":"pass","user":"pending"},{"name":"短標題四字","note":"\"在校指南\"","tool":"pass","user":"pending"},{"name":"八類對應2/2/2/1/2/2/1/2且合計14","note":"[{\"title\":\"選課抵免\",\"count\":2},{\"title\":\"請假休學\",\"count\":2},{\"title\":\"畢業門檻\",\"count\":2},{\"title\":\"專題製作\",\"count\":1},{\"title\":\"實習機會\",\"count\":2},{\"title\":\"證照就業\",\"count\":2},{\"title\":\"繼續升學\",\"count\":1},{\"title\":\"獎助協助\",\"count\":2}]","tool":"pass","user":"pending"},{"name":"選課抵免可篩選","note":"2","tool":"pass","user":"pending"},{"name":"請假休學可篩選","note":"2","tool":"pass","user":"pending"},{"name":"畢業門檻可篩選","note":"2","tool":"pass","user":"pending"},{"name":"專題製作可篩選","note":"1","tool":"pass","user":"pending"},{"name":"實習機會可篩選","note":"2","tool":"pass","user":"pending"},{"name":"證照就業可篩選","note":"2","tool":"pass","user":"pending"},{"name":"繼續升學可篩選","note":"1","tool":"pass","user":"pending"},{"name":"獎助協助可篩選","note":"2","tool":"pass","user":"pending"},{"name":"分類和搜尋交叉","note":"1","tool":"pass","user":"pending"},{"name":"保留搜尋後切分類無誤配","note":"0","tool":"pass","user":"pending"},{"name":"我要請假清篩選並展開","note":"\"leave\"","tool":"pass","user":"pending"},{"name":"我要請假保留待確認警示","note":"\"尚待確認\"","tool":"pass","user":"pending"},{"name":"我要請假捲至可見位置","note":"190","tool":"pass","user":"pending"},{"name":"我要實習清篩選並展開","note":"\"internship\"","tool":"pass","user":"pending"},{"name":"我要實習保留待確認警示","note":"\"尚待確認\"","tool":"pass","user":"pending"},{"name":"我要實習捲至可見位置","note":"190","tool":"pass","user":"pending"},{"name":"證照認列清篩選並展開","note":"\"certification\"","tool":"pass","user":"pending"},{"name":"證照認列保留待確認警示","note":"\"尚待確認\"","tool":"pass","user":"pending"},{"name":"證照認列捲至可見位置","note":"190","tool":"pass","user":"pending"},{"name":"畢業檢核清篩選並展開","note":"\"graduation\"","tool":"pass","user":"pending"},{"name":"畢業檢核保留待確認警示","note":"\"尚待確認\"","tool":"pass","user":"pending"},{"name":"畢業檢核捲至可見位置","note":"190","tool":"pass","user":"pending"},{"name":"專題製作清篩選並展開","note":"\"capstone\"","tool":"pass","user":"pending"},{"name":"專題製作保留待確認警示","note":"\"尚待確認\"","tool":"pass","user":"pending"},{"name":"專題製作捲至可見位置","note":"190","tool":"pass","user":"pending"},{"name":"繼續升學清篩選並展開","note":"\"graduate-study\"","tool":"pass","user":"pending"},{"name":"繼續升學保留待確認警示","note":"\"尚待確認\"","tool":"pass","user":"pending"},{"name":"繼續升學捲至可見位置","note":"190","tool":"pass","user":"pending"},{"name":"海外實習清篩選並展開","note":"\"overseas-internship\"","tool":"pass","user":"pending"},{"name":"海外實習保留待確認警示","note":"\"尚待確認\"","tool":"pass","user":"pending"},{"name":"海外實習捲至可見位置","note":"190","tool":"pass","user":"pending"},{"name":"14個任務承辦窗口","note":"14","tool":"pass","user":"pending"},{"name":"窗口入口保留截止警示","note":"\"115-1加退選已截止；本學期棄選的確切開放日期尚未查得。\"","tool":"pass","user":"pending"},{"name":"390px無水平溢位","note":"{\"scroll\":390,\"width\":390}","tool":"pass","user":"pending"},{"name":"無JavaScript錯誤","note":"[]","tool":"pass","user":"pending"}],"row_count":48},{"id":"guide","title":"在校指南審閱卡片","row_key":"name","columns":[{"key":"name","title":"項目","type":"text"},{"key":"tool","title":"工具驗證","type":"tag"},{"key":"user","title":"使用者確認","type":"tag"}],"detail_fields":[{"key":"note","title":"說明","type":"text"}],"search_fields":["name","note"],"rows":[{"name":"graduation","note":"我離畢業還差什麼？；現行文件缺口仍待確認","tool":"draft","user":"pending"},{"name":"internship","note":"想去實習，先做哪一步？；現行文件缺口仍待確認","tool":"draft","user":"pending"},{"name":"certification","note":"證照要認列，考試費能補助嗎？；現行文件缺口仍待確認","tool":"draft","user":"pending"},{"name":"leave","note":"不能到課，請假怎樣才算完成？；現行文件缺口仍待確認","tool":"draft","user":"pending"},{"name":"course-selection","note":"選錯課、必修漏選，現在怎麼辦？；現行文件缺口仍待確認","tool":"draft","user":"pending"},{"name":"credit-transfer","note":"以前修過的課，能不能抵免？；現行文件缺口仍待確認","tool":"draft","user":"pending"},{"name":"capstone","note":"專題製作；現行文件缺口仍待確認","tool":"draft","user":"pending"},{"name":"english","note":"英文課修完，就通過英文門檻了嗎？；現行文件缺口仍待確認","tool":"draft","user":"pending"},{"name":"status-military","note":"休學復學與兵役；現行文件缺口仍待確認","tool":"draft","user":"pending"},{"name":"financial-aid","note":"學費或生活費突然不夠，找誰？；現行文件缺口仍待確認","tool":"draft","user":"pending"},{"name":"support-rights","note":"壓力太大、被不當對待，該找誰？；現行文件缺口仍待確認","tool":"draft","user":"pending"},{"name":"career","note":"就業資源；現行文件缺口仍待確認","tool":"draft","user":"pending"},{"name":"graduate-study","note":"繼續升學；現行文件缺口仍待確認","tool":"draft","user":"pending"},{"name":"overseas-internship","note":"海外實習；現行文件缺口仍待確認","tool":"draft","user":"pending"}],"row_count":14}],"filters":[{"id":"review","label":"學生專區","conditions":{"guide":true,"guidechecks":true}},{"id":"english","label":"英文檢查","conditions":{"pages":{"name":{"contains":" en "}},"actions":true}}],"unknowns":["專題當期細則與表單、下一屆海外實習甄選及部分承辦分工待確認。","真手機未測；人名、片名與機構官方英文仍依既有來源覆核狀態。"],"build":{"generator":"project-dashboard/build-dashboard.js","schema_version":1}}</script>
+<script>
+(function () {
+  'use strict';
+  var matchWhere = function matchWhere(row, where) {
+  if (where === true || where == null) return true;
+  if (where === false) return false;
+  function isEmpty(v) { return v === null || v === undefined || v === '' || (Array.isArray(v) && v.length === 0); }
+  function test(v, cond) {
+    if (cond === null || typeof cond !== 'object' || Array.isArray(cond)) {
+      if (Array.isArray(v)) return v.indexOf(cond) >= 0;
+      return v === cond || (cond === null && v === undefined);
+    }
+    var ks = Object.keys(cond);
+    for (var i = 0; i < ks.length; i++) {
+      var op = ks[i], a = cond[op], ok;
+      if (op === 'eq') ok = v === a;
+      else if (op === 'ne') ok = v !== a;
+      else if (op === 'in') ok = a.indexOf(v) >= 0;
+      else if (op === 'nin') ok = a.indexOf(v) < 0;
+      else if (op === 'gt') ok = typeof v === 'number' && v > a;
+      else if (op === 'gte') ok = typeof v === 'number' && v >= a;
+      else if (op === 'lt') ok = typeof v === 'number' && v < a;
+      else if (op === 'lte') ok = typeof v === 'number' && v <= a;
+      else if (op === 'contains') ok = Array.isArray(v) ? v.indexOf(a) >= 0 : (typeof v === 'string' && v.indexOf(a) >= 0);
+      else if (op === 'empty') ok = isEmpty(v) === !!a;
+      else ok = false;
+      if (!ok) return false;
+    }
+    return true;
+  }
+  var keys = Object.keys(where);
+  for (var j = 0; j < keys.length; j++) {
+    var k = keys[j], c = where[k];
+    if (k === '$any') { var anyOk = false; for (var m = 0; m < c.length; m++) if (matchWhere(row, c[m])) { anyOk = true; break; } if (!anyOk) return false; }
+    else if (k === '$all') { for (var n = 0; n < c.length; n++) if (!matchWhere(row, c[n])) return false; }
+    else if (k === '$not') { if (matchWhere(row, c)) return false; }
+    else if (!test(row[k], c)) return false;
+  }
+  return true;
+};
+  var D = JSON.parse(document.getElementById('dashboard-data').textContent);
+  var LAYER_LABEL = { data: '資料層已建', tool: '工具驗證', user: '使用者確認' };
+  var LAYER_HINT = {
+    data: '資料或檔案已存在；不代表可用',
+    tool: 'GM、測試、腳本等工具跑過；不代表使用者認可',
+    user: '使用者本人在對話中確認；只有這層算真正完成'
+  };
+  var STATUS = {};
+  D.status_levels.forEach(function (s) { STATUS[s.key] = s; });
+
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
+  function isNull(v) { return v === null || v === undefined; }
+  var NULL_HTML = '<span class="null" title="無資料">—</span>';
+
+  function tagHtml(key) {
+    var s = STATUS[key];
+    if (!s) return '<span class="tag tone-danger">未定義狀態：' + esc(key) + '</span>';
+    return '<span class="tag tone-' + s.tone + '" data-status="' + esc(key) + '">' + esc(s.label) + '</span>';
+  }
+
+  function cellHtml(col, row) {
+    var v = row[col.key];
+    if (isNull(v) || (Array.isArray(v) && v.length === 0)) return NULL_HTML;
+    var h;
+    if (col.type === 'tag') h = tagHtml(v);
+    else if (col.type === 'bool') h = v ? '是' : '否';
+    else if (col.type === 'code') h = '<code>' + esc(v) + '</code>';
+    else if (col.type === 'number') h = esc(v);
+    else if (col.type === 'list') {
+      h = v.map(function (x) {
+        if (col.item_type === 'tag') return tagHtml(x);
+        if (col.item_type === 'code') return '<code>' + esc(x) + '</code>';
+        return esc(x);
+      }).join(col.item_type === 'tag' ? ' ' : '、');
+    } else h = esc(v);
+    if (col.suffix_key && !isNull(row[col.suffix_key]) && row[col.suffix_key] !== 0 && row[col.suffix_key] !== '') {
+      h += '（' + esc(row[col.suffix_key]) + '）';
+    }
+    return h;
+  }
+
+  function searchText(sec, row) {
+    var parts = [];
+    sec.search_fields.forEach(function (k) {
+      var v = row[k];
+      if (isNull(v)) return;
+      (Array.isArray(v) ? v : [v]).forEach(function (x) {
+        parts.push(String(x));
+        if (STATUS[x]) parts.push(STATUS[x].label);
+      });
+    });
+    return parts.join(' ').toLowerCase();
+  }
+
+  // ---- 頁首 ----
+  document.getElementById('title').textContent = D.meta.title;
+  document.getElementById('subtitle').textContent = D.meta.subtitle || '';
+  document.getElementById('meta-line').textContent = '專案：' + D.meta.project + '　產生日期：' + D.meta.generated;
+
+  // ---- 摘要卡（三層分開呈現） ----
+  var sumEl = document.getElementById('summary');
+  ['data', 'tool', 'user'].forEach(function (layer) {
+    var box = el('div', 'layer');
+    box.setAttribute('data-layer', layer);
+    box.appendChild(el('h3', null, esc(LAYER_LABEL[layer]) + '　<span class="count">' + esc(LAYER_HINT[layer]) + '</span>'));
+    var cards = D.summary_cards.filter(function (c) { return c.layer === layer; });
+    if (!cards.length) { box.appendChild(el('p', 'layer-empty', '此層尚未定義摘要卡')); sumEl.appendChild(box); return; }
+    var grid = el('div', 'cards');
+    cards.forEach(function (c) {
+      var card = el('div', 'card');
+      card.setAttribute('data-card', c.id);
+      card.innerHTML = '<div class="num">' + esc(c.value) + '</div>' +
+        '<div class="label">' + esc(c.label) + '</div>' +
+        (c.scope ? '<div class="scope">' + esc(c.scope) + '</div>' : '') +
+        (c.denominator ? '<div class="den">分母：' + esc(c.denominator) + '</div>' : '') +
+        (c.hint ? '<div class="den">' + esc(c.hint) + '</div>' : '');
+      grid.appendChild(card);
+    });
+    box.appendChild(grid);
+    sumEl.appendChild(box);
+  });
+
+  // ---- 表格 ----
+  var secWrap = document.getElementById('sections');
+  var tables = [];
+  D.sections.forEach(function (sec) {
+    var h2 = el('h2', null, esc(sec.title) + ' <span class="count" data-count-for="' + esc(sec.id) + '"></span>');
+    h2.id = 'sec-' + sec.id;
+    secWrap.appendChild(h2);
+    if (sec.description) secWrap.appendChild(el('p', 'section-desc', esc(sec.description)));
+    var na = el('p', 'na-note'); na.hidden = true; secWrap.appendChild(na);
+    var wrap = el('div', 'table-wrap');
+    var table = el('table');
+    table.setAttribute('data-section', sec.id);
+    var thead = el('thead');
+    var htr = el('tr');
+    sec.columns.forEach(function (c) { htr.appendChild(el('th', null, esc(c.title))); });
+    thead.appendChild(htr);
+    table.appendChild(thead);
+    var tbody = el('tbody');
+    var hasDetail = sec.detail_fields && sec.detail_fields.length > 0;
+    var entries = [];
+    sec.rows.forEach(function (row, i) {
+      var tr = el('tr', 'row' + (hasDetail ? ' expandable' : ''));
+      tr.setAttribute('data-index', i);
+      sec.columns.forEach(function (c) {
+        tr.appendChild(el('td', 't-' + c.type + (c.type === 'number' ? ' num' : ''), cellHtml(c, row)));
+      });
+      tbody.appendChild(tr);
+      var dr = null;
+      if (hasDetail) {
+        dr = el('tr', 'detail');
+        dr.hidden = true;
+        var dl = '<dl class="detail-grid">';
+        sec.detail_fields.forEach(function (f) { dl += '<dt>' + esc(f.title) + '</dt><dd>' + cellHtml(f, row) + '</dd>'; });
+        dr.appendChild(el('td', null, dl + '</dl>'));
+        dr.firstChild.colSpan = sec.columns.length;
+        tbody.appendChild(dr);
+        tr.setAttribute('aria-expanded', 'false');
+        tr.tabIndex = 0;
+        var toggle = function () {
+          var open = !tr.classList.contains('open');
+          tr.classList.toggle('open', open);
+          tr.setAttribute('aria-expanded', String(open));
+          dr.hidden = !open;
+        };
+        tr.addEventListener('click', toggle);
+        tr.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+      }
+      entries.push({ row: row, tr: tr, dr: dr, text: searchText(sec, row) });
+    });
+    table.appendChild(tbody);
+    wrap.appendChild(table);
+    secWrap.appendChild(wrap);
+    tables.push({ sec: sec, entries: entries, na: na, countEl: h2.querySelector('[data-count-for]') });
+  });
+
+  // ---- 篩選按鈕 ----
+  var filters = [{ id: 'all', label: '全部', conditions: null }].concat(D.filters);
+  var current = 'all';
+  var bar = document.getElementById('filter-bar');
+  filters.forEach(function (f) {
+    var b = el('button', 'filter-btn', esc(f.label));
+    b.type = 'button';
+    b.setAttribute('data-filter', f.id);
+    b.setAttribute('aria-pressed', f.id === current ? 'true' : 'false');
+    b.addEventListener('click', function () {
+      current = f.id;
+      bar.querySelectorAll('.filter-btn').forEach(function (x) { x.setAttribute('aria-pressed', x.getAttribute('data-filter') === current ? 'true' : 'false'); });
+      apply();
+    });
+    bar.appendChild(b);
+  });
+
+  var searchEl = document.getElementById('search');
+  function apply() {
+    var q = searchEl.value.trim().toLowerCase();
+    var f = filters.filter(function (x) { return x.id === current; })[0];
+    var summary = [];
+    tables.forEach(function (t) {
+      var applicable = !f.conditions || Object.prototype.hasOwnProperty.call(f.conditions, t.sec.id);
+      var where = f.conditions ? f.conditions[t.sec.id] : true;
+      t.na.hidden = applicable;
+      if (!applicable) t.na.textContent = '篩選「' + f.label + '」不適用本表，已隱藏全部列。';
+      var vis = 0;
+      t.entries.forEach(function (e) {
+        var show = applicable && (!q || e.text.indexOf(q) >= 0) && matchWhere(e.row, where);
+        e.tr.hidden = !show;
+        if (show) { e.tr.classList.toggle('zebra', vis % 2 === 1); vis++; }
+        if (e.dr) e.dr.hidden = !(show && e.tr.classList.contains('open'));
+      });
+      t.countEl.textContent = '顯示 ' + vis + '／' + t.entries.length;
+      t.countEl.setAttribute('data-visible', vis);
+      summary.push(t.sec.title + ' ' + vis + '／' + t.entries.length);
+    });
+    document.getElementById('match-count').textContent = '顯示：' + summary.join('　');
+  }
+  searchEl.addEventListener('input', apply);
+  apply();
+
+  // ---- 資料缺口、權威來源、圖例、頁尾 ----
+  var uk = document.getElementById('unknowns');
+  document.getElementById('unknown-count').textContent = D.unknowns.length + ' 條';
+  uk.innerHTML = D.unknowns.length
+    ? '<ul>' + D.unknowns.map(function (u) { return '<li>' + esc(u) + '</li>'; }).join('') + '</ul>'
+    : '<p>目前沒有登記的資料缺口。</p>';
+
+  document.getElementById('authorities').innerHTML = '<ul>' + D.meta.authorities.map(function (a) {
+    return '<li><code>' + esc(a.path) + '</code>：' + esc(a.role) + (a.note ? '（' + esc(a.note) + '）' : '') + '</li>';
+  }).join('') + '</ul>';
+
+  document.getElementById('legend').innerHTML = D.status_levels.map(function (s) {
+    return '<span>' + tagHtml(s.key) + (s.layer ? '<span class="count">' + esc(LAYER_LABEL[s.layer]) + '</span>' : '') + '</span>';
+  }).join('');
+
+  document.getElementById('footer').innerHTML = (D.meta.notes || []).map(esc).join('<br>') +
+    ((D.meta.notes || []).length ? '<br>' : '') + '離線單檔儀表板，摘要數字由產生器依規則計算';
+
+  window.projectDashboard = { data: D, apply: apply, matchWhere: matchWhere };
+})();
+</script>
+</body>
+</html>

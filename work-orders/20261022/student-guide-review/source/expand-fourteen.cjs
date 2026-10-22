@@ -1,0 +1,35 @@
+const fs=require('node:fs'),path=require('node:path');const root=__dirname,p=path.join(root,'student-guide-draft.json'),d=JSON.parse(fs.readFileSync(p));
+const src=(id,title,url,date,readability,note)=>({id,title,url,published_or_document_date:date,checked_at:'2026-10-22',readability,note});
+const indexed='官方搜尋索引可讀；即時頁面403，現行完整內容與附件未核實';
+const additions=[
+src('dept-forms','動遊系常用表單','https://www.dgd.stu.edu.tw/常用表單/','頁面未標現行規章日期；搜尋顯示近期2026文章',indexed,'主內容為iframe，未取得內嵌表單清單；不能聲稱已取得現行專題辦法或可下載表單。'),
+src('graduate-handbook-index','招生簡章查詢：116學年度碩士班甄試','https://info.stu.edu.tw/aca/newirs/qryIRSpdf/qryIRSCourse.asp','116學年度查詢表；2026-10-22查核','官方網頁全文可讀','逐筆點選116／A1連結，確認指向116A1.pdf，沒有套用115簡章。'),
+src('graduate-handbook-116','116學年度碩士班甄試招生簡章','https://info.stu.edu.tw/attachfile/upload/IRS/file/116A1.pdf','重要日程載2026-09-07公告','官方PDF已下載並擷取文字；重要日程與報考資格影像已讀','PDF檔案37頁，正文編號34頁；本稿重點讀印刷p2至p4，未逐所審核p7至p15，未推薦報考校系。'),
+src('graduate-application-116','116碩士班甄試官方報名說明','https://info.stu.edu.tw/aca/NEWIRS/A1app.asp','116學年度；2026-10-22查核','官方網頁全文可讀','系統與116簡章交叉核對網路填表時程；招生試務分機與簡章皆支持2004、2015。'),
+src('moe-studyabroad-rules','教育部出國研修或國外專業實習補助要點','https://edu.law.moe.gov.tw/LawContent.aspx?id=FL038574','2025-11-04修正','官方法規全文可讀','已核對資格第4點、實習期限第5點、校內甄選第6點、保險簽證及學籍第9點；不等於樹德當期學生申請公告。'),
+src('moe-studyabroad-round2-115','115年學海計畫第2次甄選作業時程','https://www.studyabroad.moe.gov.tw/new/index/news.detail/sn/415','2026-07-14','官方網頁全文可讀','8/1至9/30是學校上傳計畫期間，10至11月審查；不是10/22仍開放學生報名。'),
+src('oica-outbound','國際及兩岸事務處：出國交流','https://www.oica.stu.edu.tw/出國交流/','未標現行公告日期；頁內花絮2017至2019',indexed,'證明校級交流管道；當期學海業務承辦以職涯中心成員頁為交叉依據，研發處現行海外實習分工尚未取得。'),
+src('hc-internship-2026','動遊系第九屆赴日HC實習成果','https://www.stu.edu.tw/latestnews-single/?id=223564','2026-08-07','官方搜尋索引可讀；開啟曾回正文後再次403，屬成果新聞','本稿僅取本系曾與HC推動實習並獲學海支持、經作品與日文等遴選；不列學生姓名、不推論新一屆報名或保證補助。')
+];for(const s of additions){const i=d.sources.findIndex(x=>x.id===s.id);if(i<0)d.sources.push(s);else d.sources[i]=s}
+const cap=d.cards.find(c=>c.id==='capstone');cap.short_title='專題製作';cap.source_ids=[...new Set([...cap.source_ids,'dept-forms'])];cap.plain_language.push('已找到系上「常用表單」入口，但內嵌內容未能讀取；本屆專題辦法、審查時程與下載表單仍待系辦提供，不能用成果新聞代替。');
+const job=d.cards.find(c=>c.id==='career');job.short_title='就業資源';job.title='準備找工作，先整理什麼、找誰協助？';job.summary='先整理作品與履歷，再使用職涯中心資源，職缺與活動看當期。';job.plain_language=job.plain_language.filter(x=>!x.includes('升學'));job.plain_language.push('升學規劃已另列「繼續升學」，海外實習另列專卡，避免把不同申請流程混在一起。');job.flow.steps=['整理作品集、履歷與想做的工作','找系上師長討論專業方向','向職涯中心查詢當期職缺、徵才與輔導資源','按職缺要求投件並追蹤回覆'];job.pending_confirmation=['請職涯中心確認當期就業輔導、職缺與徵才活動入口。'];
+const mk=(id,short_title,title,summary,plain_language,steps,documents,timing,office,source_ids,pending_confirmation,applicability)=>({id,short_title,priority:'P1',title,summary,plain_language,flow:{kind:'editorial_summary',steps},documents,timing,office,source_ids,pending_confirmation,applicability,status:'待系辦確認'});
+const cards=[mk('graduate-study','繼續升學','想讀研究所，先看簡章哪幾欄？','先確認報考年度、資格與研究方向，再準備指定資料；各校各所的要求不同。',[
+'本卡提供升學規劃順序與本校116碩甄官方入口，不預設哪個研究所適合你。研究方向可先帶作品、專題或研究興趣與導師、專題指導老師討論；本系統一升學諮詢窗口尚待確認。',
+'116簡章允許具學士資格或115學年度應屆畢業生等符合條件者報考；應屆生須交附表一並經教務單位核章，錄取後仍須取得學士資格才能註冊。',
+'本校116碩甄網路填表與上傳期間：2026/9/29 10:00至11/2 16:00；部分境外學歷與專業資格同等學力身分另有10/27截止，不能一律套用11/2。',
+'先對簡章各所指定的書審資料、口試規定與繳費期限；填完、上傳、繳費及確認送出都要核對，不把系統填表當報名完成。其他校系須另查該校116簡章。'
+],['確認報考年度與身分','從官方簡章查資格、所別分則與期限','依簡章準備書審資料與應屆證明','完成繳費、上傳與確認送出，再追蹤口試／放榜'],['報考校系當年度簡章','簡章指定學歷／應屆證明與成績資料','作品、研究或讀書計畫等僅在所別要求時繳交'],{type:'announced_window',text:'查核日2026/10/22，本校116碩甄一般網路報名期間尚未截止（11/2 16:00）；特殊資格可能10/27截止。其他校與管道另看自己的簡章。'},{primary:'教務處招生選才組（本校報名試務）',phone:'07-6158000#2004、2015',secondary:'導師／專題指導老師（規劃討論；統一窗口待確認）'},['graduate-handbook-index','graduate-handbook-116','graduate-application-116','dept-contact'],['請系辦確認本系升學諮詢師長、說明會與可公開的輔導入口；不憑研究興趣自動推薦校系。'],{audience:'日間四技一般班有升學需求者',entry_years:'報考資格看招生年度與身分；本稿核對116碩甄，不限於特定入學年皆可先規劃',class_difference:'日四技一般班應屆生按簡章資格檢核；技優班及其他身分仍各自對照，不保證符合資格'}),
+mk('overseas-internship','海外實習','想出國實習，資格、費用與文件先問誰？','先找當期計畫與甄選辦法，再確認資格、補助及合法出國文件；過往實習成果不是招生公告。',[
+'動遊系2026年HC赴日實習新聞證明計畫曾辦理，曾採作品、專業能力與日文面試等遴選；尚未找到新一屆學生申請公告、名額、截止與固定語言級數。',
+'學海補助由學校申請。教育部現行要點要求具中華民國國籍與臺灣戶籍、同教育階段在學一學期以上（不含在職專班），並通過校方專業及語言條件；境外生能否參與與是否能領此補助須分開確認。',
+'學海實習通常須連續至少28日，印尼25日，交通日不算；補助與自付額須看核定契約，不能承諾人人補助或全額免費。期間須保有學籍且未休學。',
+'學校需協助醫療、意外保險及符合實習地法令的簽證；由計畫主持人與承辦確認後辦理，不能預設觀光簽證可實習。',
+'校內職涯中心成員頁明列1711承辦校外實習與學海計畫；本系計畫先問系辦／主持老師。國際及兩岸事務處提供交流入口，研發處最新分工尚未取得，不自行指定它受理。'
+],['問系辦與職涯中心有無當期公開甄選','逐項核對身分、語言、作品與名額','確認實習認列、核定補助及自付費用','錄取後依契約辦理保險、合法實習簽證及行前程序','完成實習、返校報到與成果核結'],['當期甄選簡章與正式申請表（待取得）','依計畫要求的身分、在學、作品與語言證明','錄取後核定契約、保險、護照與適用簽證等文件'],{type:'unverified',text:'未查得本系新一屆學生報名期限。115年第2次學海作業的9/30為學校送件期限，已過期；10至11月是教育部審查，不表示現在可報名。'},{primary:'動遊系辦／本系海外實習計畫主持老師',phone:'07-6158000#6102',secondary:'職涯發展暨校友服務中心（學海業務）',secondary_phone:'07-6158000#1711'},['hc-internship-2026','moe-studyabroad-rules','moe-studyabroad-round2-115','career-contact','oica-outbound','dept-contact'],['請確認下一屆正式簡章、名額、日語／其他語言要求、國籍與班別適用、補助與自付項目、表單及截止。','請確認系辦、職涯中心、國際處與研發處的現行分工，以及出國保險、簽證、緊急聯絡與返校認列流程。'],{audience:'日四技一般班有海外實習意願者；補助身分另核',entry_years:'依當期計畫年級與學籍限制；現行教育部要點要求同教育階段就讀一學期以上',class_difference:'一般班與技優班均不保證錄取；非本國籍／無臺灣戶籍者不可據本卡推定符合學海補助資格'})];
+for(const c of cards){const i=d.cards.findIndex(x=>x.id===c.id);if(i<0)d.cards.push(c);else d.cards[i]=c}
+d.review_questions[3]='請確認本屆專題製作／畢展正式辦法、審查與補救時程、表單及成果授權；另指定升學諮詢窗口與海外實習下一屆簡章、補助、語言、簽證保險及各處室分工。';fs.writeFileSync(p,JSON.stringify(d,null,2));
+let f=path.join(root,'make-report.cjs'),s=fs.readFileSync(f,'utf8');s=s.replace("if(d.cards.length!==12)throw Error('card count');", "if(d.cards.length!==14)throw Error('card count');");s=s.replace("console.log('Validated: 12 cards, 26 sources, all source references resolved, Markdown and CSV written.');","console.log('Validated: '+d.cards.length+' cards, '+d.sources.length+' sources, all source references resolved, Markdown and CSV written.');");s=s.replace('## ${c.priority} ${c.title}','## ${c.short_title||c.title}');fs.writeFileSync(f,s);
+f=path.join(root,'build-review-categories.cjs');s=fs.readFileSync(f,'utf8').replace("title:'實習職涯',card_ids:['internship','certification','career']","title:'實習升學',card_ids:['internship','certification','career','graduate-study','overseas-internship']").replace('size!==12','size!==14').replace("{title:'畢業檢核',card_id:'graduation'}","{title:'畢業檢核',card_id:'graduation'},{title:'專題製作',card_id:'capstone'},{title:'繼續升學',card_id:'graduate-study'},{title:'海外實習',card_id:'overseas-internship'}").replace('頁尾依12項任務','頁尾依14項任務');fs.writeFileSync(f,s);
+f=path.join(root,'build-review.cjs');s=fs.readFileSync(f,'utf8').replace("e(c.title)+'</h3><p>'+e(c.summary)","e(c.short_title||c.title)+'</h3>'+(c.short_title?'<p>'+e(c.title)+'</p>':'')+'<p>'+e(c.summary)");s=s.replace("['graduation','internship','certification','capstone','english'].includes(c.id)?'本稿", "['graduation','internship','certification','capstone','english'].includes(c.id)?'本稿");s=s.replace('c.applicability={audience:','c.applicability=c.applicability||{audience:');fs.writeFileSync(f,s);
+console.log('Expanded: '+d.cards.length+' cards, '+d.sources.length+' sources.');

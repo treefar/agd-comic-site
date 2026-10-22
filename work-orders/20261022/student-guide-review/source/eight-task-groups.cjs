@@ -1,0 +1,12 @@
+const fs=require('node:fs'),path=require('node:path');const root=__dirname,p=path.join(root,'build-review-categories.cjs');let s=fs.readFileSync(p,'utf8');const start=s.indexOf('d.categories=['),end=s.indexOf(';',start);
+s=s.slice(0,start)+"d.categories=[{id:'courses',title:'選課抵免',card_ids:['course-selection','credit-transfer']},{id:'leave-status',title:'請假休學',card_ids:['leave','status-military']},{id:'graduation',title:'畢業門檻',card_ids:['graduation','english']},{id:'capstone',title:'專題製作',card_ids:['capstone']},{id:'internships',title:'實習機會',card_ids:['internship','overseas-internship']},{id:'jobs',title:'證照就業',card_ids:['certification','career']},{id:'graduate',title:'繼續升學',card_ids:['graduate-study']},{id:'help',title:'獎助協助',subtitle:'獎助學金／遇到困難找誰',card_ids:['financial-aid','support-rights']}]"+s.slice(end);
+s=s.replace("e(g.title)+\\' <span>\\'", "e(g.title)+\\' <span>\\'");
+s=s.replace("d.categories.map(g=>'| '+g.title+' | '","d.categories.map(g=>'| '+g.title+(g.subtitle?'（'+g.subtitle+'）':'')+' | '");
+// 類別副標緊鄰按鈕；沒有新增資料來源或第五／其他類。
+s=s.replace('<nav id="category-tabs" class="category-tabs" aria-label="辦事分類"></nav>','<nav id="category-tabs" class="category-tabs" aria-label="辦事分類"></nav><p class="muted">獎助協助：獎助學金／遇到困難找誰</p>');
+fs.writeFileSync(p,s);
+const jf=path.join(root,'student-guide-draft.json'),d=JSON.parse(fs.readFileSync(jf));d.cards.find(c=>c.id==='status-military').short_title='休學復學與兵役';fs.writeFileSync(jf,JSON.stringify(d,null,2));
+for(const f of ['verify-review.cjs','verify-categories.cjs']){const file=path.join(root,f);let t=fs.readFileSync(file,'utf8');t=t.replace("const results=[];", "const dataExpected=JSON.parse(fs.readFileSync(path.join(out,'student-guide-draft.json')));const results=[];");t=t.replaceAll("12張卡片","14張卡片").replaceAll("26筆原始來源","34筆原始來源").replaceAll("===12","===14").replaceAll("<12","<14").replaceAll("===26","===34").replaceAll(">26",">34").replaceAll("12個任務承辦窗口","14個任務承辦窗口");t=t.replaceAll("分類對應3/4/3/2且合計12","八類對應2/2/2/1/2/2/1/2且合計14").replaceAll("'[3,4,3,2]'","'[2,2,2,1,2,2,1,2]'").replaceAll('[data-group="academic"]','[data-group="leave-status"]').replaceAll('[data-group="study"]','[data-group="capstone"]');
+fs.writeFileSync(file,t)}
+const report=path.join(root,'make-report.cjs');let r=fs.readFileSync(report,'utf8').replace('/^agd-curriculum-/','/^(agd-curriculum-|graduate-116)/');fs.writeFileSync(report,r);
+console.log('8 direct task categories configured.');

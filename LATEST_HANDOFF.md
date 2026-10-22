@@ -2,7 +2,18 @@
 
 最後更新：2026-10-22，TF-GO／Codex（僅英文版獲授權公開發布；遊戲留本機）。
 
-## 2026-10-22 職稱更新與英文一致性方向
+## 2026-10-22 最新：英文共用介面已上線；在校指南另交審閱
+
+- 使用者已於對話授權驗證後將英文共用介面上 main，保留正式站更新，遊戲不得發布。發布工作樹 C:/agywork/agd-en-publish、分支 codex/en-shared-interface，基底56b61b9，提交1b8322e69d84549db220d849afb1aac0fb9d7c2a；一般fast-forward push origin HEAD:main成功。GitHub Pages run39743799524 build/deploy success。
+- 新英文入口 https://treefar.link/agd-comic-site/?lang=en ，舊 #/en/intro 等入口自動轉換。中文與英文共用首頁、詳情、導覽、頁尾、影片、測驗及招生導引元件；新聞與論文不再截短。鄧樹遠中英職稱皆不含電競代理主任。
+- 中文canonical JSON逐檔SHA與56b61b9一致、styles.css未變；英文同步近期名額46、6學年129件、實習22人、16年／130+件及新公告。8項回歸測試通過；全站96路由桌機中英加10路由手機中英共212組通過，最後字典修正再驗28組、測驗/導引20組、正式站16組，0頁面JS／站內HTTP錯誤。
+- 正式站app-7MF5K2G6.js與本機建置bytes一致，SHA256 f966a21d967755d4656860cc99cbe55135ff473c0ee6d0bb06fc3498512f7c78。data/play.json與play/creative-line/index.html仍HTTP404。未發布遊戲、未刪來源檔、未改C節；既有duplicate color警告保留，真手機未測。專名沿用既有翻譯，不能宣稱全面重新官方查證。
+- 英文發布報告、命令輸出與結果：work-orders/20261022/shared-interface-release/VERIFY-shared-interface.md。離線狀態儀表板：同層dashboard/index.html，2026-10-22重產；22/22權威/格式檢查與桌機/390px搜尋篩選展開均通過，工具通過與使用者確認分開。
+- 在校指南為離線審閱稿，未進公開工作樹。14卡、34官方來源、七快捷、八白話分類：選課抵免2／請假休學2／畢業門檻2／專題製作1／實習機會2／證照就業2／繼續升學1／獎助協助2。另有專題製作、繼續升學、海外實習直達快捷。48項工具檢查通過。
+- 專區入口 work-orders/20261022/student-guide-review/index.html；主任先審5個待確認問題。當期專題細則/表單、下一屆海外實習甄選/名額/費用/語言條件與部分處室分工未取得；部分校方網站僅可讀搜尋索引，逐筆標來源限制，過期日期標截止。不得把過去HC新聞當目前可報名，不得將草稿當現行完整規章。
+- 原本機遊戲分支仍codex/remove-acting-chair-local，保留完整試玩版；不可把整條舊feature直接合進main。以下run4與舊英文七頁紀錄僅供歷史追溯，以本節為現況。
+
+## 2026-10-22 職稱更新與英文一致性方向（歷史）
 
 - 使用者要求中英文移除鄧樹遠「電競代理主任」。正式站已發布56b61b92f595ba503924dbd7b81d5b94a511dd6c，Pages run 39738977558成功；中文為「系主任 · 副教授」，英文為「Department Chair · Associate Professor」。首頁靜態師資卡、中文師資JSON、英文師資JSON三處均已改。
 - 正式站HTTP200的中英JSON已重新讀取比對；首頁與app-KQGOEBYM.js不含舊職稱。npm run build、npm run check成功，發布測試5/5。
@@ -22,12 +33,12 @@
 - 驗收報告與截圖：本次Codex對話outputs/en-release/VERIFY-en-release.md、smoke.json、live-delivery.json。
 
 ## 下一輪第一件事
-1. 使用者試玩：完整解壓 AGDComicSite-Playtest-20261021.zip，雙擊 START.cmd 進入五款試玩區。試玩包位於本次Codex對話outputs/run4/，ZIP約60MB；完整SHA256見下。
-2. 接手代理先讀 work-orders/20261022/VERIFY-run4.md 與 run4/acceptance.json；報告附逐項yes/no、真實指令輸出及負向控制。不要再把B表當未做待辦。
-3. 在clone C:/agywork/agd-site-codex 或主專案開始前先 git status 與 git rev-parse HEAD。feature/en-site-and-play-zone 已整合六條分支；玩家程式／啟動器基準212f9a1，之後提交只補驗收與交接文件。兩邊用本機fetch＋ff-only同步，未push。
-4. C節保持待使用者決定；不自動push、不刪檔、不做真手機代調、不補未知製作者授權、不定案格鬥規格。C節原文保持，原提交數是舊交接數字，現況以git查詢。
+1. 先核對發布工作樹codex/en-shared-interface與origin/main為1b8322e，讀work-orders/20261022/shared-interface-release/VERIFY-shared-interface.md；不要重做已上線的英文重構。
+2. 讓主任審閱student-guide-review/index.html及5個待確認問題；補現行專題文件、海外甄選與處室分工後再提出具體上線稿，未確認前不發布。
+3. 本機遊戲等使用者試玩回饋。C節其餘待決項維持，禁止整條feature合併或順帶發布遊戲。
+4. 開工前先查git status／HEAD，主專案與clone以本機fetch及ff-only同步；正式站main只接受另外獲授權的發布內容。
 
-## 目前狀態
+## run4整合時狀態（歷史）
 - 主專案：C:/Projects/系網漫畫版_AGDComicSite；執行clone：C:/agywork/agd-site-codex。分支均feature/en-site-and-play-zone。
 - 本輪六條：codex/hide-pending 2576ae7、codex/tune-collapsed efe4204、codex/tuning-roundtrip 2fd7f99、codex/spring-backgrounds be6da33、codex/faculty-punctuation 5bb779b、codex/en-check-batch2 8ca0a85。全數獨立重跑後合併，合併點d0e7eb1，0衝突。
 - 獨立驗收工作樹：C:/agywork/agd-run4-verifier，保留未清理。六分支相關測試分別17/16/16/16/16/16，全通過。
