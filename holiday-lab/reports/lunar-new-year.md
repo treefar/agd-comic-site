@@ -11,7 +11,7 @@
 | 條件 | yes/no | 證據 |
 |---|---|---|
 | 測試先紅 | yes | 實跑 `node --test holiday-lab/tests/lunar-new-year.test.mjs` → exit 1，`ERR_MODULE_NOT_FOUND`，`tests 1 / pass 0 / fail 1` |
-| 非法表情、錯誤順序、不會自動完成、重置、變化保留 | yes | 最新同指令 exit 0，`tests 4 / pass 4 / fail 0 / cancelled 0 / skipped 0 / todo 0`，duration 72.6665 ms |
+| 非法表情、錯誤順序、不會自動完成、重置、變化保留 | yes | 中心座標修正後重跑同指令 exit 0，`tests 4 / pass 4 / fail 0 / cancelled 0 / skipped 0 / todo 0`，duration 95.4412 ms |
 | 契約互動走三幕、實際輸入寫入結果、取消 frame | yes | 第4個測試 `mounted sliders capture three actual poses and clean up frame subscription`；測試 ctx 非畫面證據 |
 | ES module 語法 | yes | `node --check holiday-lab/games/lunar-new-year.mjs` → exit 0，stdout 空白 |
 | 中英日所有可見字串 | yes | 各標籤、數值參考、成功失敗均為三語物件；尚未母語校閱 |
@@ -36,6 +36,8 @@
 ```
 
 ## 主控瀏覽器解法
+
+全部 Sprite 以中心百分比定位；臉部圖層會隨鞠躬中心旋轉，不固定懸在原位置。目標30–60秒，沒有強制等待時間。
 
 穩定滑桿 id 是 `lny-brow`、`lny-eyes`、`lny-mouth`、`lny-pose`，每次設值觸發 input，再按 `lny-submit`。按鈕 `lny-reset-pose` 只重置目前表情，不清掉已完成幕。
 
