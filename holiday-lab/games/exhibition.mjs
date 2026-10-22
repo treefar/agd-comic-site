@@ -10,7 +10,7 @@ export function mount(ctx){
  ctx.sprite('target',{id:'exhibition-floorplan',x:50,y:50,width:94,height:94,opacity:0.65});
  ctx.sprite('prop3',{id:'exhibition-entrance-arrow',x:50,y:85,width:20,height:16,z:2});
  const works=state.works.map((w,i)=>ctx.sprite(`actor${i+1}`,{id:`exhibition-work-${i}`,x:w.x,y:w.y,width:20,height:30,z:3+i}));
- const cards=state.works.map((w,i)=>ctx.sprite(`token${i+1}`,{id:`exhibition-info-${i}`,x:w.x,y:w.y+20,width:16,height:10,opacity:0,z:6}));
+ const cards=state.works.map((w,i)=>ctx.sprite(`token${i+1}`,{id:`exhibition-card-sprite-${i}`,x:w.x,y:w.y+20,width:16,height:10,opacity:0,z:6}));
  const focus=ctx.sprite('prop2',{id:'exhibition-focus',x:50,y:55,width:12,height:15,z:8});
  ctx.ui.text('exhibition-help',W('替三件虛構作品安排展位：入口在下方，每件作品中心 Y 不超過 55，每件相距至少 24，並放上資訊卡。選作品後可用滑桿或方向鍵微調。','Curate three fictional works: entrance below, centres at Y55 or less, at least 24 units apart, each with an info card. Select a work and use sliders or arrow keys.','架空の3作品を展示。入口は下。中心はY55以下、作品間は24以上離し、情報カードも付けます。選んだ作品をスライダーや矢印キーで調整。'));
  const status=ctx.ui.text('exhibition-status',W('','',''));

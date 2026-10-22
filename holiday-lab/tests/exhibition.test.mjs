@@ -27,3 +27,12 @@ for(const lang of ['zh','en','ja'])test('三語策展操作、阻擋、巡覽與
  h.controls.get('exhibition-save').click();assert.deepEqual(h.result.artifact.visitorOrder,[0,1,2]);
  life.destroy();assert.equal(h.frames.size,0);assert.equal(h.keys.size,0);
 });
+test('Sprite ids never collide with sliders or generated choice-option button ids',()=>{
+ const ids=[],optionIds=[],sliderIds=[];const node=()=>({append(){}});const add=id=>{if(id)ids.push(id);return node();};
+ const ctx={reducedMotion:true,controls:node(),ui:{text:(id)=>add(id),setText(){},group:(id)=>add(id),button:o=>add(o.id),slider:o=>{sliderIds.push(o.id);return {element:add(o.id),setValue(){}};},choice:o=>{add(o.id);o.options.forEach((_,i)=>{const id=`${o.id}-${i}`;optionIds.push(id);add(id);});return {element:node(),setValue(){}};}},sprite:(key,props)=>{add(props.id);return {update(){},remove(){}};},onFrame:()=>()=>{},onKey:()=>()=>{},setProgress(){},sound(){},hint(){},complete(){}};
+ const life=mount(ctx);life.destroy();
+ assert.deepEqual(ids.filter((id,i)=>ids.indexOf(id)!==i),[],'every sprite and generated control must have a unique DOM id');
+ assert.deepEqual(sliderIds,['exhibition-x','exhibition-y']);
+ assert.ok(optionIds.includes('exhibition-info-0'));assert.ok(optionIds.includes('exhibition-info-1'));
+ for(let i=0;i<3;i++)assert.ok(ids.includes(`exhibition-card-sprite-${i}`));
+});

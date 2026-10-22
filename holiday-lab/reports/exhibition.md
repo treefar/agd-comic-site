@@ -68,3 +68,47 @@ exit code 0
 onFrame每1.4秒將生成燈具焦點依實際左右順序移往下一展位，4.2秒巡覽結束。展板、資訊卡位置依玩家配置更新。結果visitorOrder與鏡頭座標來自實際配置。
 
 只用ctx.ui、生成Sprite與動態文字，沒有Canvas、SVG、程序繪製面板、外連音訊、帳號或真實學生作品。Sprite座標採中心點，width/height是舞台百分比；材質/台詞/座標/路線存入結果artifact。共享replay外框須按各shot的duration播放並呈現轉場；未以固定假作品代替玩家成果。
+
+## P1複驗：資訊卡圖層與選項DOM id衝突
+
+2026-10-22。只將三張資訊卡Sprite id改為exhibition-card-sprite-0/1/2，保留exhibition-info與其選項id，其他玩法不變。
+
+| 驗收 | yes/no | 實際證據 |
+|---|---|---|
+| 先以回歸測試重現 | yes | 修復前tests 6 / pass 5 / fail 1，exit 1，actual duplicates為exhibition-info-0與exhibition-info-1 |
+| 收集全部Sprite、slider、choice-option id後無重複 | yes | 新增回歸測試；下列修復後tests 6 / pass 6 / fail 0 |
+| 輸入與選項識別字保持原樣 | yes | slider逐筆核對exhibition-x/y、choice-option確認exhibition-info-0/1 |
+| 語法與差異檢查 | yes | 下列各exit 0 |
+| 整合Build及真實瀏覽器複驗 | no | 等主控cherry-pick後進行，本子任務未代替整合驗證 |
+
+紅燈命令node --test holiday-lab/tests/exhibition.test.mjs，exit 1，duration 89.7723 ms。AssertionError [ERR_ASSERTION]: every sprite and generated control must have a unique DOM id；actual [exhibition-info-0, exhibition-info-1]；expected []。
+
+最新實際輸出：
+
+```text
+node --test holiday-lab/tests/exhibition.test.mjs
+✔ 展位需有動線間距、入口視線、資訊 (1.2566ms)
+✔ 策展位置資訊與順序可變，成品必須跟著改變 (1.1037ms)
+✔ 三語策展操作、阻擋、巡覽與清理：zh (3.7223ms)
+✔ 三語策展操作、阻擋、巡覽與清理：en (0.3119ms)
+✔ 三語策展操作、阻擋、巡覽與清理：ja (0.2612ms)
+✔ Sprite ids never collide with sliders or generated choice-option button ids (0.5313ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 96.6106
+exit code 0
+
+node --check holiday-lab/games/exhibition.mjs
+(無輸出)
+exit code 0
+
+git diff --check
+warning: in the working copy of 'holiday-lab/games/exhibition.mjs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'holiday-lab/tests/exhibition.test.mjs', LF will be replaced by CRLF the next time Git touches it
+exit code 0
+```
