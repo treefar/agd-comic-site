@@ -1391,3 +1391,19 @@ body::before {
   .foot-banner { font-size: 12px !important; padding: 4px 12px !important; white-space: nowrap; }
   .foot { padding-top: 44px; }
 }
+/* Small-screen contact links stay in page flow, leaving play controls unobstructed. */
+@media(max-width:760px){.floating-cta{position:static !important;align-items:stretch !important;margin:20px 16px;}.floating-cta a{white-space:normal;text-align:center;}}
+/* Decorative Latin headings keep the site's existing CJK families in their fallback chain. */
+.h-jojo{font-family:'Bowlby One','Bangers','Reggae One','Noto Sans TC',system-ui,sans-serif;}
+html[lang='ja'] .h-jojo{font-family:'Bowlby One','Bangers','Yu Gothic','Hiragino Kaku Gothic ProN',Meiryo,'Noto Sans TC',sans-serif;}
+/* Keep each navigation label intact; translated menus collapse before space runs out. */
+.topnav nav a,.topnav>a:not(.brand){white-space:nowrap;flex-shrink:0;}
+.topnav nav{flex-shrink:0;}
+@media(min-width:761px) and (max-width:1900px){
+ html:is([lang='en'],[lang='ja']) .topnav .hamburger{display:flex;flex-shrink:0;}
+ html:is([lang='en'],[lang='ja']) .topnav .nav-divider{display:none;}
+ html:is([lang='en'],[lang='ja']) .topnav nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--ink);border-top:3px solid var(--paper);padding:12px 24px;flex-direction:column;gap:14px;z-index:60;max-height:calc(100dvh - 100px);overflow-y:auto;}
+ html:is([lang='en'],[lang='ja']) .topnav.is-open nav{display:flex;}
+ html:is([lang='en'],[lang='ja']) .topnav nav a{font-size:17px;padding:6px 0;}
+}
+@media(min-width:761px) and (max-width:1180px){.topnav .brand{min-width:0;flex-shrink:1 !important;}.topnav .brand>div{min-width:0;}.topnav .brand>div>span:first-child{white-space:normal;word-break:normal;overflow-wrap:normal;text-wrap:balance;}}
