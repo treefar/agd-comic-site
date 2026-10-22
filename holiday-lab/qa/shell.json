@@ -356,6 +356,462 @@
         "no": 16,
         "total": 27
       }
+    },
+    {
+      "started_at": "2026-10-22T13:16:17.353Z",
+      "base": "http://127.0.0.1:8800",
+      "scope": "Independent homepage and shared shell; no gameplay pass substituted",
+      "checks": [
+        {
+          "name": "button-contrast-zh-390",
+          "pass": false,
+          "evidence": {
+            "issues": [
+              {
+                "game": "exhibition",
+                "id": "exhibition-select-0",
+                "text": "虛構動畫作品",
+                "x": 52,
+                "y": 953.5,
+                "w": 84,
+                "h": 18,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "contrast": 4.37,
+                "kind": "low-median-contrast"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text-on-border-zh-390",
+          "pass": false,
+          "evidence": {
+            "threshold": 0.004,
+            "issues": [
+              {
+                "id": "audio-toggle",
+                "text": "聲音：關",
+                "x": 245.921875,
+                "y": 86,
+                "w": 56,
+                "h": 18,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.4061,
+                "medianContrast": 9.45,
+                "kind": "text-over-artwork"
+              },
+              {
+                "id": "open-new-year",
+                "text": "開始創作",
+                "x": 167,
+                "y": 634.828125,
+                "w": 56,
+                "h": 18,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.4121,
+                "medianContrast": 10.09,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "new-year",
+                "id": "audio-toggle",
+                "text": "聲音：關",
+                "x": 245.921875,
+                "y": 86,
+                "w": 56,
+                "h": 18,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.4174,
+                "medianContrast": 9.91,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "new-year",
+                "id": "pause-game",
+                "text": "暫停",
+                "x": 40,
+                "y": 282.03125,
+                "w": 28,
+                "h": 18,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.4105,
+                "medianContrast": 9.96,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "new-year",
+                "id": "leave-game",
+                "text": "回作品列表",
+                "x": 124,
+                "y": 282.03125,
+                "w": 70,
+                "h": 18,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.4214,
+                "medianContrast": 9.88,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "new-year",
+                "id": "ny-hold-0-minus",
+                "text": "減",
+                "x": 49,
+                "y": 895.125,
+                "w": 14,
+                "h": 18,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.4369,
+                "medianContrast": 9.79,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "new-year",
+                "id": "ny-hold-0-plus",
+                "text": "加",
+                "x": 327,
+                "y": 895.125,
+                "w": 14,
+                "h": 18,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.4419,
+                "medianContrast": 9.89,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "new-year",
+                "id": "ny-hold-1-minus",
+                "text": "減",
+                "x": 49,
+                "y": 987.125,
+                "w": 14,
+                "h": 18,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.1741,
+                "medianContrast": 9.87,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "new-year",
+                "id": "ny-hold-1-plus",
+                "text": "加",
+                "x": 327,
+                "y": 987.125,
+                "w": 14,
+                "h": 18,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.1778,
+                "medianContrast": 9.87,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "national-day",
+                "id": "audio-toggle",
+                "text": "聲音：關",
+                "x": 245.921875,
+                "y": 86,
+                "w": 56,
+                "h": 18,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.4144,
+                "medianContrast": 9.82,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "national-day",
+                "id": "pause-game",
+                "text": "暫停",
+                "x": 40,
+                "y": 282.03125,
+                "w": 28,
+                "h": 18,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.4105,
+                "medianContrast": 9.89,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "national-day",
+                "id": "leave-game",
+                "text": "回作品列表",
+                "x": 124,
+                "y": 282.03125,
+                "w": 70,
+                "h": 18,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.4226,
+                "medianContrast": 9.91,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "national-day",
+                "id": "island-fore-minus",
+                "text": "減",
+                "x": 49,
+                "y": 955.90625,
+                "w": 14,
+                "h": 18,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.3939,
+                "medianContrast": 9.91,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "national-day",
+                "id": "island-fore-plus",
+                "text": "加",
+                "x": 327,
+                "y": 955.90625,
+                "w": 14,
+                "h": 18,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.3939,
+                "medianContrast": 9.89,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "exhibition",
+                "id": "audio-toggle",
+                "text": "聲音：關",
+                "x": 245.921875,
+                "y": 86,
+                "w": 56,
+                "h": 18,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.4144,
+                "medianContrast": 9.82,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "exhibition",
+                "id": "pause-game",
+                "text": "暫停",
+                "x": 40,
+                "y": 282.03125,
+                "w": 28,
+                "h": 18,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.4119,
+                "medianContrast": 9.98,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "exhibition",
+                "id": "leave-game",
+                "text": "回作品列表",
+                "x": 124,
+                "y": 282.03125,
+                "w": 70,
+                "h": 18,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.4226,
+                "medianContrast": 9.91,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "exhibition",
+                "id": "exhibition-select-0",
+                "text": "虛構動畫作品",
+                "x": 52,
+                "y": 953.5,
+                "w": 84,
+                "h": 18,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0785,
+                "medianContrast": 4.37,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "exhibition",
+                "id": "exhibition-select-1",
+                "text": "虛構遊戲作品",
+                "x": 180,
+                "y": 953.5,
+                "w": 84,
+                "h": 18,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.4437,
+                "medianContrast": 9.89,
+                "kind": "text-over-artwork"
+              }
+            ]
+          }
+        },
+        {
+          "name": "responsive-zh-390",
+          "pass": false,
+          "error": "404 http://127.0.0.1:8800/holiday-lab/assets/children/cg-0.webp; 404 http://127.0.0.1:8800/holiday-lab/assets/mid-autumn/cg-0.webp"
+        }
+      ],
+      "errors": [],
+      "screenshots": [
+        "20261022131617353-archive-zh-390.webp",
+        "20261022131617353-controls-zh-390.webp"
+      ],
+      "only": [
+        "responsive-zh-390"
+      ],
+      "command": "node holiday-lab/qa/shell.cjs --base=http://127.0.0.1:8800 --only=responsive-zh-390",
+      "script_sha256": "c859942538f4ba10ec5ced538500dbc20c724405790a9ff00182bcaf1fd84cb5",
+      "finished_at": "2026-10-22T13:16:25.976Z",
+      "summary": {
+        "yes": 0,
+        "no": 3,
+        "total": 3
+      }
+    },
+    {
+      "started_at": "2026-10-22T13:17:05.254Z",
+      "base": "http://127.0.0.1:8800",
+      "scope": "Independent homepage and shared shell; no gameplay pass substituted",
+      "checks": [
+        {
+          "name": "intro-first-RAF-timestamp-regression",
+          "pass": true,
+          "evidence": {
+            "callbackFixture": "first browser RAF callback uses a timestamp 25ms before current performance.now; application source untouched",
+            "initialCG": "1 / 5",
+            "invalidRequests": 0
+          }
+        }
+      ],
+      "errors": [],
+      "screenshots": [],
+      "only": [
+        "intro-first-RAF"
+      ],
+      "command": "node holiday-lab/qa/shell.cjs --base=http://127.0.0.1:8800 --only=intro-first-RAF",
+      "script_sha256": "5ca19f5e86230a78959fc9cc19c27ffed7058645d91812a70191d6b373e681b5",
+      "finished_at": "2026-10-22T13:17:06.146Z",
+      "summary": {
+        "yes": 1,
+        "no": 0,
+        "total": 1
+      }
+    },
+    {
+      "started_at": "2026-10-22T13:17:24.994Z",
+      "base": "http://127.0.0.1:8800",
+      "scope": "Independent homepage and shared shell; no gameplay pass substituted",
+      "checks": [
+        {
+          "name": "intro-first-RAF-timestamp-regression",
+          "pass": false,
+          "error": "Opening requested cg-0: http://127.0.0.1:8800/holiday-lab/assets/children/cg-0.webp"
+        }
+      ],
+      "errors": [],
+      "screenshots": [],
+      "only": [
+        "intro-first-RAF"
+      ],
+      "command": "node holiday-lab/qa/shell.cjs --base=http://127.0.0.1:8800 --only=intro-first-RAF",
+      "script_sha256": "13012d05df456c6548fd7515dd5509b5a22fdb998249104b7cdd6a655c29f24d",
+      "finished_at": "2026-10-22T13:17:25.884Z",
+      "summary": {
+        "yes": 0,
+        "no": 1,
+        "total": 1
+      }
     }
   ]
 }
