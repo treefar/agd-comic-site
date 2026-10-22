@@ -20,3 +20,5 @@
 動畫取證修改過程：第一次移到故事後的候選雖故事完整，但已進選單，不能算開場按鈕，該候選不合格；正式 collector 改成獨立真 opening context 並檢查 intro-skip 仍可見。舊紀錄保留，不重寫原始來源。
 
 正式 driver 修正複驗 yes：`LAYOUT_QA_URL=http://127.0.0.1:8843 node holiday-lab/layout-qa/front-collect.cjs --games=new-year --languages=ja --widths=320 --intro-button-states=1` → `FRONT_PARTIAL 32 frames`。原故事76/76、missing[]、mask全在viewport、reduced完整可讀、geometry0、source pre/post相同。開場按鈕在獨立真opening context，intro-skip仍可見；摘要front-ja320-corrected-summary.json。僅該32frames完成，並非全矩陣通過。
+
+中秋動態語意補證：served06 三個 TARGETS 逐筆讀取，斷言實際 cutPosition/誤差公式，三語template只允許原有3個數值插值。`node holiday-lab/layout-qa/error-source-audit.cjs --reports=<原三份raw> --out=error-audit-checkpoint-06/original-recipes-dynamic-recheck.json` → matches150 / mismatches1 / unmatched31；增加24筆中秋 exact match，原和平錯路由仍留紅、31筆舊來源不同仍不給通過。未解最大ink與全分支覆蓋。
