@@ -33,4 +33,3 @@ result={'method':'fontTools TTFont getBestCmap, excluding .notdef; downloaded su
 for f in result['families']: print(f['family'],f['downloaded_union_codepoints'],{l:''.join(c['char'] for c in m) for l,m in f['missing_sample'].items()})
 for f in candidates: print('CANDIDATE',f['family'],f['glyph_codepoints'],{l:''.join(c['char'] for c in m) for l,m in f['missing_by_language'].items()})
 print('ERRORS',len(errors))
-
