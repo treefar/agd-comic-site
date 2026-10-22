@@ -868,6 +868,2713 @@
         "no": 0,
         "total": 3
       }
+    },
+    {
+      "started_at": "2026-10-22T13:20:47.430Z",
+      "base": "http://127.0.0.1:8800",
+      "scope": "Independent homepage and shared shell; no gameplay pass substituted",
+      "checks": [
+        {
+          "name": "button-contrast-zh-390",
+          "pass": true,
+          "evidence": {
+            "issues": []
+          }
+        },
+        {
+          "name": "text-on-border-zh-390",
+          "pass": true,
+          "evidence": {
+            "threshold": 0.004,
+            "issues": []
+          }
+        },
+        {
+          "name": "responsive-zh-390",
+          "pass": true,
+          "evidence": {
+            "archiveButtons": 10,
+            "checkedGameControls": 10,
+            "samples": [
+              {
+                "screen": "archive",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "new-year",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "lunar-new-year",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "lantern",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "children",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "dragon-boat",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "mid-autumn",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "teachers",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "national-day",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "semester",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "exhibition",
+                "viewport": 390,
+                "issues": []
+              }
+            ],
+            "pixelIssueCount": 0,
+            "contrastIssueCount": 0,
+            "textureIssueCount": 0,
+            "consoleErrors": []
+          }
+        },
+        {
+          "name": "intro-first-RAF-timestamp-regression",
+          "pass": true,
+          "evidence": {
+            "callbackFixture": "first browser RAF callback uses a timestamp 25ms before RAF registration; application source untouched",
+            "initialCG": "1 / 5",
+            "invalidRequests": 0
+          }
+        }
+      ],
+      "errors": [],
+      "screenshots": [
+        "20261022132047430-archive-zh-390.webp",
+        "20261022132047430-controls-zh-390.webp"
+      ],
+      "only": [
+        "intro-first-RAF",
+        "responsive-zh-390"
+      ],
+      "command": "node holiday-lab/qa/shell.cjs --base=http://127.0.0.1:8800 --only=intro-first-RAF,responsive-zh-390",
+      "script_sha256": "4c781c21cfeb8c24ab6e8af510285f01bbad4d30bfa8f3c36970cde727ebf4ad",
+      "finished_at": "2026-10-22T13:20:57.477Z",
+      "summary": {
+        "yes": 4,
+        "no": 0,
+        "total": 4
+      }
+    },
+    {
+      "started_at": "2026-10-22T13:21:45.872Z",
+      "base": "http://127.0.0.1:8800",
+      "scope": "Independent homepage and shared shell; no gameplay pass substituted",
+      "checks": [
+        {
+          "name": "homepage-zh",
+          "pass": true,
+          "evidence": {
+            "sections": [
+              "hero",
+              "news",
+              "about",
+              "works",
+              "faculty",
+              "labs",
+              "join",
+              "contact"
+            ],
+            "guide": {
+              "cards": 15,
+              "details": 47
+            },
+            "lazy": 0,
+            "open_close_cycles": 4,
+            "focus_restored": true,
+            "listeners": {
+              "initialListeners": {
+                "window:test": 0,
+                "document:selectionchange": 1,
+                "window:hashchange": 2,
+                "document:click": 2,
+                "window:message": 1,
+                "window:__playwright_global_listeners_check__": 1,
+                "window:mousemove": 1,
+                "window:pointerdown": 1,
+                "window:pointerup": 1,
+                "window:touchstart": 1,
+                "window:touchend": 1,
+                "window:touchcancel": 1,
+                "window:mousedown": 1,
+                "window:mouseup": 1,
+                "window:click": 1,
+                "window:auxclick": 1,
+                "window:dblclick": 1,
+                "window:contextmenu": 1
+              },
+              "finalListeners": {
+                "window:test": 0,
+                "document:selectionchange": 1,
+                "window:hashchange": 2,
+                "document:click": 2,
+                "window:message": 1,
+                "window:__playwright_global_listeners_check__": 1,
+                "window:mousemove": 1,
+                "window:pointerdown": 1,
+                "window:pointerup": 1,
+                "window:touchstart": 1,
+                "window:touchend": 1,
+                "window:touchcancel": 1,
+                "window:mousedown": 1,
+                "window:mouseup": 1,
+                "window:click": 1,
+                "window:auxclick": 1,
+                "window:dblclick": 1,
+                "window:contextmenu": 1,
+                "document:keydown": 0
+              }
+            },
+            "consoleErrors": []
+          }
+        },
+        {
+          "name": "homepage-en",
+          "pass": true,
+          "evidence": {
+            "sections": [
+              "hero",
+              "news",
+              "about",
+              "works",
+              "faculty",
+              "labs",
+              "join",
+              "contact"
+            ],
+            "guide": {
+              "cards": 15,
+              "details": 47
+            },
+            "lazy": 0,
+            "open_close_cycles": 4,
+            "focus_restored": true,
+            "listeners": {
+              "initialListeners": {
+                "window:test": 0,
+                "document:selectionchange": 1,
+                "window:hashchange": 2,
+                "document:click": 2,
+                "window:message": 1,
+                "window:__playwright_global_listeners_check__": 1,
+                "window:mousemove": 1,
+                "window:pointerdown": 1,
+                "window:pointerup": 1,
+                "window:touchstart": 1,
+                "window:touchend": 1,
+                "window:touchcancel": 1,
+                "window:mousedown": 1,
+                "window:mouseup": 1,
+                "window:click": 1,
+                "window:auxclick": 1,
+                "window:dblclick": 1,
+                "window:contextmenu": 1
+              },
+              "finalListeners": {
+                "window:test": 0,
+                "document:selectionchange": 1,
+                "window:hashchange": 2,
+                "document:click": 2,
+                "window:message": 1,
+                "window:__playwright_global_listeners_check__": 1,
+                "window:mousemove": 1,
+                "window:pointerdown": 1,
+                "window:pointerup": 1,
+                "window:touchstart": 1,
+                "window:touchend": 1,
+                "window:touchcancel": 1,
+                "window:mousedown": 1,
+                "window:mouseup": 1,
+                "window:click": 1,
+                "window:auxclick": 1,
+                "window:dblclick": 1,
+                "window:contextmenu": 1,
+                "document:keydown": 0
+              }
+            },
+            "consoleErrors": []
+          }
+        },
+        {
+          "name": "homepage-ja",
+          "pass": true,
+          "evidence": {
+            "sections": [
+              "hero",
+              "news",
+              "about",
+              "works",
+              "faculty",
+              "labs",
+              "join",
+              "contact"
+            ],
+            "guide": {
+              "cards": 15,
+              "details": 47
+            },
+            "lazy": 0,
+            "open_close_cycles": 4,
+            "focus_restored": true,
+            "listeners": {
+              "initialListeners": {
+                "window:test": 0,
+                "document:selectionchange": 1,
+                "window:hashchange": 2,
+                "document:click": 2,
+                "window:message": 1,
+                "window:__playwright_global_listeners_check__": 1,
+                "window:mousemove": 1,
+                "window:pointerdown": 1,
+                "window:pointerup": 1,
+                "window:touchstart": 1,
+                "window:touchend": 1,
+                "window:touchcancel": 1,
+                "window:mousedown": 1,
+                "window:mouseup": 1,
+                "window:click": 1,
+                "window:auxclick": 1,
+                "window:dblclick": 1,
+                "window:contextmenu": 1
+              },
+              "finalListeners": {
+                "window:test": 0,
+                "document:selectionchange": 1,
+                "window:hashchange": 2,
+                "document:click": 2,
+                "window:message": 1,
+                "window:__playwright_global_listeners_check__": 1,
+                "window:mousemove": 1,
+                "window:pointerdown": 1,
+                "window:pointerup": 1,
+                "window:touchstart": 1,
+                "window:touchend": 1,
+                "window:touchcancel": 1,
+                "window:mousedown": 1,
+                "window:mouseup": 1,
+                "window:click": 1,
+                "window:auxclick": 1,
+                "window:dblclick": 1,
+                "window:contextmenu": 1,
+                "document:keydown": 0
+              }
+            },
+            "consoleErrors": []
+          }
+        },
+        {
+          "name": "iframe-escape-and-focus",
+          "pass": true,
+          "evidence": {
+            "iframeEscape": true,
+            "focusRestored": true
+          }
+        },
+        {
+          "name": "guide-preservation-zh",
+          "pass": true,
+          "evidence": {
+            "cards": 15,
+            "details": 47,
+            "faq": 30,
+            "sources": 15,
+            "faqExpanded": true,
+            "consoleErrors": []
+          }
+        },
+        {
+          "name": "guide-preservation-en",
+          "pass": true,
+          "evidence": {
+            "cards": 15,
+            "details": 47,
+            "faq": 30,
+            "sources": 15,
+            "faqExpanded": true,
+            "consoleErrors": []
+          }
+        },
+        {
+          "name": "guide-preservation-ja",
+          "pass": true,
+          "evidence": {
+            "cards": 15,
+            "details": 47,
+            "faq": 30,
+            "sources": 15,
+            "faqExpanded": true,
+            "consoleErrors": []
+          }
+        },
+        {
+          "name": "button-contrast-zh-320",
+          "pass": true,
+          "evidence": {
+            "issues": []
+          }
+        },
+        {
+          "name": "text-on-border-zh-320",
+          "pass": false,
+          "evidence": {
+            "threshold": 0.004,
+            "issues": [
+              {
+                "game": "new-year",
+                "id": "game-hint",
+                "text": "調整關鍵格停留時間，讓跨年一躍動得順。",
+                "x": 40,
+                "y": 466.40625,
+                "w": 240,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0982,
+                "medianContrast": 15.22,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "new-year",
+                "id": "game-hint",
+                "text": "調整關鍵格停留時間，讓跨年一躍動得順。",
+                "x": 40,
+                "y": 492,
+                "w": 64,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0717,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "national-day",
+                "id": "game-hint",
+                "text": "先把樹往旁邊移，再對齊鏡頭、海岸與山。",
+                "x": 40,
+                "y": 466.40625,
+                "w": 240,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0982,
+                "medianContrast": 15.22,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "national-day",
+                "id": "game-hint",
+                "text": "先把樹往旁邊移，再對齊鏡頭、海岸與山。",
+                "x": 40,
+                "y": 492,
+                "w": 64,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0717,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "exhibition",
+                "id": "game-hint",
+                "text": "把三種原創虛構作品排成好走、看得懂的展覽。",
+                "x": 40,
+                "y": 466.40625,
+                "w": 240,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0982,
+                "medianContrast": 15.22,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "exhibition",
+                "id": "game-hint",
+                "text": "把三種原創虛構作品排成好走、看得懂的展覽。",
+                "x": 40,
+                "y": 492,
+                "w": 96,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0488,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              }
+            ]
+          }
+        },
+        {
+          "name": "responsive-zh-320",
+          "pass": true,
+          "evidence": {
+            "archiveButtons": 10,
+            "checkedGameControls": 10,
+            "samples": [
+              {
+                "screen": "archive",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "new-year",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "lunar-new-year",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "lantern",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "children",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "dragon-boat",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "mid-autumn",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "teachers",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "national-day",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "semester",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "exhibition",
+                "viewport": 320,
+                "issues": []
+              }
+            ],
+            "pixelIssueCount": 6,
+            "contrastIssueCount": 0,
+            "textureIssueCount": 6,
+            "consoleErrors": []
+          }
+        },
+        {
+          "name": "button-contrast-zh-390",
+          "pass": true,
+          "evidence": {
+            "issues": []
+          }
+        },
+        {
+          "name": "text-on-border-zh-390",
+          "pass": false,
+          "evidence": {
+            "threshold": 0.004,
+            "issues": [
+              {
+                "game": "new-year",
+                "id": "game-hint",
+                "text": "調整關鍵格停留時間，讓跨年一躍動得順。",
+                "x": 40,
+                "y": 396.015625,
+                "w": 304,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0381,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "national-day",
+                "id": "game-hint",
+                "text": "先把樹往旁邊移，再對齊鏡頭、海岸與山。",
+                "x": 40,
+                "y": 396.015625,
+                "w": 304,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0381,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "exhibition",
+                "id": "game-hint",
+                "text": "把三種原創虛構作品排成好走、看得懂的展覽。",
+                "x": 40,
+                "y": 396.015625,
+                "w": 304,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.1034,
+                "medianContrast": 15.22,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "exhibition",
+                "id": "game-hint",
+                "text": "把三種原創虛構作品排成好走、看得懂的展覽。",
+                "x": 40,
+                "y": 421.609375,
+                "w": 32,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.2303,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              }
+            ]
+          }
+        },
+        {
+          "name": "responsive-zh-390",
+          "pass": true,
+          "evidence": {
+            "archiveButtons": 10,
+            "checkedGameControls": 10,
+            "samples": [
+              {
+                "screen": "archive",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "new-year",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "lunar-new-year",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "lantern",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "children",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "dragon-boat",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "mid-autumn",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "teachers",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "national-day",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "semester",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "exhibition",
+                "viewport": 390,
+                "issues": []
+              }
+            ],
+            "pixelIssueCount": 4,
+            "contrastIssueCount": 0,
+            "textureIssueCount": 4,
+            "consoleErrors": []
+          }
+        },
+        {
+          "name": "button-contrast-zh-768",
+          "pass": true,
+          "evidence": {
+            "issues": []
+          }
+        },
+        {
+          "name": "text-on-border-zh-768",
+          "pass": false,
+          "evidence": {
+            "threshold": 0.004,
+            "issues": [
+              {
+                "game": "new-year",
+                "id": "game-hint",
+                "text": "調整關鍵格停留時間，讓跨年一躍動得順。",
+                "x": 40,
+                "y": 366.671875,
+                "w": 304,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.119,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "national-day",
+                "id": "game-hint",
+                "text": "先把樹往旁邊移，再對齊鏡頭、海岸與山。",
+                "x": 40,
+                "y": 366.671875,
+                "w": 304,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.119,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "exhibition",
+                "id": "game-hint",
+                "text": "把三種原創虛構作品排成好走、看得懂的展覽。",
+                "x": 40,
+                "y": 366.671875,
+                "w": 336,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.1078,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              }
+            ]
+          }
+        },
+        {
+          "name": "responsive-zh-768",
+          "pass": true,
+          "evidence": {
+            "archiveButtons": 10,
+            "checkedGameControls": 10,
+            "samples": [
+              {
+                "screen": "archive",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "new-year",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "lunar-new-year",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "lantern",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "children",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "dragon-boat",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "mid-autumn",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "teachers",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "national-day",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "semester",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "exhibition",
+                "viewport": 768,
+                "issues": []
+              }
+            ],
+            "pixelIssueCount": 3,
+            "contrastIssueCount": 0,
+            "textureIssueCount": 3,
+            "consoleErrors": []
+          }
+        },
+        {
+          "name": "button-contrast-zh-1440",
+          "pass": true,
+          "evidence": {
+            "issues": []
+          }
+        },
+        {
+          "name": "text-on-border-zh-1440",
+          "pass": false,
+          "evidence": {
+            "threshold": 0.004,
+            "issues": [
+              {
+                "game": "new-year",
+                "id": "game-hint",
+                "text": "調整關鍵格停留時間，讓跨年一躍動得順。",
+                "x": 216,
+                "y": 406.390625,
+                "w": 304,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.1924,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "national-day",
+                "id": "game-hint",
+                "text": "先把樹往旁邊移，再對齊鏡頭、海岸與山。",
+                "x": 216,
+                "y": 406.390625,
+                "w": 304,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.1924,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "exhibition",
+                "id": "game-hint",
+                "text": "把三種原創虛構作品排成好走、看得懂的展覽。",
+                "x": 216,
+                "y": 406.390625,
+                "w": 336,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.1743,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              }
+            ]
+          }
+        },
+        {
+          "name": "responsive-zh-1440",
+          "pass": true,
+          "evidence": {
+            "archiveButtons": 10,
+            "checkedGameControls": 10,
+            "samples": [
+              {
+                "screen": "archive",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "new-year",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "lunar-new-year",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "lantern",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "children",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "dragon-boat",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "mid-autumn",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "teachers",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "national-day",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "semester",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "exhibition",
+                "viewport": 1440,
+                "issues": []
+              }
+            ],
+            "pixelIssueCount": 3,
+            "contrastIssueCount": 0,
+            "textureIssueCount": 3,
+            "consoleErrors": []
+          }
+        },
+        {
+          "name": "button-contrast-en-320",
+          "pass": true,
+          "evidence": {
+            "issues": []
+          }
+        },
+        {
+          "name": "text-on-border-en-320",
+          "pass": false,
+          "evidence": {
+            "threshold": 0.004,
+            "issues": [
+              {
+                "game": "new-year",
+                "id": "game-hint",
+                "text": "Time three keyframes for a fluid Ne",
+                "x": 40,
+                "y": 466.40625,
+                "w": 236.59375,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0901,
+                "medianContrast": 15.22,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "new-year",
+                "id": "game-hint",
+                "text": "Time three keyframes for a fluid Ne",
+                "x": 40,
+                "y": 492,
+                "w": 109.734375,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0431,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "national-day",
+                "id": "game-hint",
+                "text": "Move the tree aside, then align cam",
+                "x": 40,
+                "y": 466.40625,
+                "w": 231.0625,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0839,
+                "medianContrast": 15.22,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "national-day",
+                "id": "game-hint",
+                "text": "Move the tree aside, then align cam",
+                "x": 40,
+                "y": 492,
+                "w": 223.09375,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0226,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "exhibition",
+                "id": "game-hint",
+                "text": "Curate three fictional projects for",
+                "x": 40,
+                "y": 466.40625,
+                "w": 221.40625,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.1376,
+                "medianContrast": 15.09,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "exhibition",
+                "id": "game-hint",
+                "text": "Curate three fictional projects for",
+                "x": 40,
+                "y": 492,
+                "w": 235.953125,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.015,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "exhibition",
+                "id": "game-hint",
+                "text": "Curate three fictional projects for",
+                "x": 40,
+                "y": 517.59375,
+                "w": 34.796875,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.2412,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              }
+            ]
+          }
+        },
+        {
+          "name": "responsive-en-320",
+          "pass": true,
+          "evidence": {
+            "archiveButtons": 10,
+            "checkedGameControls": 10,
+            "samples": [
+              {
+                "screen": "archive",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "new-year",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "lunar-new-year",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "lantern",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "children",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "dragon-boat",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "mid-autumn",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "teachers",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "national-day",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "semester",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "exhibition",
+                "viewport": 320,
+                "issues": []
+              }
+            ],
+            "pixelIssueCount": 7,
+            "contrastIssueCount": 0,
+            "textureIssueCount": 7,
+            "consoleErrors": []
+          }
+        },
+        {
+          "name": "button-contrast-en-390",
+          "pass": true,
+          "evidence": {
+            "issues": []
+          }
+        },
+        {
+          "name": "text-on-border-en-390",
+          "pass": false,
+          "evidence": {
+            "threshold": 0.004,
+            "issues": [
+              {
+                "game": "new-year",
+                "id": "game-hint",
+                "text": "Time three keyframes for a fluid Ne",
+                "x": 40,
+                "y": 396.015625,
+                "w": 274.890625,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0886,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "new-year",
+                "id": "game-hint",
+                "text": "Time three keyframes for a fluid Ne",
+                "x": 40,
+                "y": 421.609375,
+                "w": 71.4375,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.115,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "national-day",
+                "id": "game-hint",
+                "text": "Move the tree aside, then align cam",
+                "x": 40,
+                "y": 422.40625,
+                "w": 294.015625,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0966,
+                "medianContrast": 15.22,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "national-day",
+                "id": "game-hint",
+                "text": "Move the tree aside, then align cam",
+                "x": 40,
+                "y": 448,
+                "w": 160.140625,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0544,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "exhibition",
+                "id": "game-hint",
+                "text": "Curate three fictional projects for",
+                "x": 40,
+                "y": 422.40625,
+                "w": 286.625,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0918,
+                "medianContrast": 15.22,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "exhibition",
+                "id": "game-hint",
+                "text": "Curate three fictional projects for",
+                "x": 40,
+                "y": 448,
+                "w": 209.53125,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0419,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              }
+            ]
+          }
+        },
+        {
+          "name": "responsive-en-390",
+          "pass": true,
+          "evidence": {
+            "archiveButtons": 10,
+            "checkedGameControls": 10,
+            "samples": [
+              {
+                "screen": "archive",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "new-year",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "lunar-new-year",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "lantern",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "children",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "dragon-boat",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "mid-autumn",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "teachers",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "national-day",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "semester",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "exhibition",
+                "viewport": 390,
+                "issues": []
+              }
+            ],
+            "pixelIssueCount": 6,
+            "contrastIssueCount": 0,
+            "textureIssueCount": 6,
+            "consoleErrors": []
+          }
+        },
+        {
+          "name": "button-contrast-en-768",
+          "pass": true,
+          "evidence": {
+            "issues": []
+          }
+        },
+        {
+          "name": "text-on-border-en-768",
+          "pass": false,
+          "evidence": {
+            "threshold": 0.004,
+            "issues": [
+              {
+                "game": "new-year",
+                "id": "game-hint",
+                "text": "Time three keyframes for a fluid Ne",
+                "x": 40,
+                "y": 366.671875,
+                "w": 350.328125,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.1036,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "national-day",
+                "id": "game-hint",
+                "text": "Move the tree aside, then align cam",
+                "x": 40,
+                "y": 366.671875,
+                "w": 458.140625,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0795,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "exhibition",
+                "id": "game-hint",
+                "text": "Curate three fictional projects for",
+                "x": 40,
+                "y": 366.671875,
+                "w": 500.15625,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0729,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              }
+            ]
+          }
+        },
+        {
+          "name": "responsive-en-768",
+          "pass": true,
+          "evidence": {
+            "archiveButtons": 10,
+            "checkedGameControls": 10,
+            "samples": [
+              {
+                "screen": "archive",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "new-year",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "lunar-new-year",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "lantern",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "children",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "dragon-boat",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "mid-autumn",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "teachers",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "national-day",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "semester",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "exhibition",
+                "viewport": 768,
+                "issues": []
+              }
+            ],
+            "pixelIssueCount": 3,
+            "contrastIssueCount": 0,
+            "textureIssueCount": 3,
+            "consoleErrors": []
+          }
+        },
+        {
+          "name": "button-contrast-en-1440",
+          "pass": true,
+          "evidence": {
+            "issues": []
+          }
+        },
+        {
+          "name": "text-on-border-en-1440",
+          "pass": false,
+          "evidence": {
+            "threshold": 0.004,
+            "issues": [
+              {
+                "game": "new-year",
+                "id": "game-hint",
+                "text": "Time three keyframes for a fluid Ne",
+                "x": 216,
+                "y": 406.390625,
+                "w": 350.328125,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.1674,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "national-day",
+                "id": "game-hint",
+                "text": "Move the tree aside, then align cam",
+                "x": 216,
+                "y": 406.390625,
+                "w": 458.140625,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.1282,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "exhibition",
+                "id": "game-hint",
+                "text": "Curate three fictional projects for",
+                "x": 216,
+                "y": 406.390625,
+                "w": 500.15625,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.1176,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "exhibition",
+                "id": "exhibition-select-2",
+                "text": "Fictional interactive work",
+                "x": 923.265625,
+                "y": 766.53125,
+                "w": 168.9375,
+                "h": 18,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0399,
+                "medianContrast": 15.21,
+                "kind": "text-over-artwork"
+              }
+            ]
+          }
+        },
+        {
+          "name": "responsive-en-1440",
+          "pass": true,
+          "evidence": {
+            "archiveButtons": 10,
+            "checkedGameControls": 10,
+            "samples": [
+              {
+                "screen": "archive",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "new-year",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "lunar-new-year",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "lantern",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "children",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "dragon-boat",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "mid-autumn",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "teachers",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "national-day",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "semester",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "exhibition",
+                "viewport": 1440,
+                "issues": []
+              }
+            ],
+            "pixelIssueCount": 4,
+            "contrastIssueCount": 0,
+            "textureIssueCount": 4,
+            "consoleErrors": []
+          }
+        },
+        {
+          "name": "button-contrast-ja-320",
+          "pass": true,
+          "evidence": {
+            "issues": []
+          }
+        },
+        {
+          "name": "text-on-border-ja-320",
+          "pass": false,
+          "evidence": {
+            "threshold": 0.004,
+            "issues": [
+              {
+                "game": "new-year",
+                "id": "game-hint",
+                "text": "3枚のキーフレームで、年を越えるジャンプをつなごう。",
+                "x": 40,
+                "y": 466.40625,
+                "w": 233.28125,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0854,
+                "medianContrast": 15.22,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "new-year",
+                "id": "game-hint",
+                "text": "3枚のキーフレームで、年を越えるジャンプをつなごう。",
+                "x": 40,
+                "y": 492,
+                "w": 176,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0271,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "national-day",
+                "id": "game-hint",
+                "text": "まず木を横へ。その後カメラ・海岸・山を合わせます。",
+                "x": 40,
+                "y": 466.40625,
+                "w": 240,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0982,
+                "medianContrast": 15.22,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "national-day",
+                "id": "game-hint",
+                "text": "まず木を横へ。その後カメラ・海岸・山を合わせます。",
+                "x": 40,
+                "y": 492,
+                "w": 160,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0297,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "exhibition",
+                "id": "game-hint",
+                "text": "架空の3作品を、歩きやすく伝わる展示に。",
+                "x": 40,
+                "y": 466.40625,
+                "w": 233.28125,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0854,
+                "medianContrast": 15.22,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "exhibition",
+                "id": "game-hint",
+                "text": "架空の3作品を、歩きやすく伝わる展示に。",
+                "x": 40,
+                "y": 492,
+                "w": 80,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.058,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              }
+            ]
+          }
+        },
+        {
+          "name": "responsive-ja-320",
+          "pass": true,
+          "evidence": {
+            "archiveButtons": 10,
+            "checkedGameControls": 10,
+            "samples": [
+              {
+                "screen": "archive",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "new-year",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "lunar-new-year",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "lantern",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "children",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "dragon-boat",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "mid-autumn",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "teachers",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "national-day",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "semester",
+                "viewport": 320,
+                "issues": []
+              },
+              {
+                "screen": "exhibition",
+                "viewport": 320,
+                "issues": []
+              }
+            ],
+            "pixelIssueCount": 6,
+            "contrastIssueCount": 0,
+            "textureIssueCount": 6,
+            "consoleErrors": []
+          }
+        },
+        {
+          "name": "button-contrast-ja-390",
+          "pass": true,
+          "evidence": {
+            "issues": []
+          }
+        },
+        {
+          "name": "text-on-border-ja-390",
+          "pass": false,
+          "evidence": {
+            "threshold": 0.004,
+            "issues": [
+              {
+                "game": "new-year",
+                "id": "game-hint",
+                "text": "3枚のキーフレームで、年を越えるジャンプをつなごう。",
+                "x": 40,
+                "y": 422.40625,
+                "w": 297.28125,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0981,
+                "medianContrast": 15.22,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "new-year",
+                "id": "game-hint",
+                "text": "3枚のキーフレームで、年を越えるジャンプをつなごう。",
+                "x": 40,
+                "y": 448,
+                "w": 112,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0769,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "national-day",
+                "id": "game-hint",
+                "text": "まず木を横へ。その後カメラ・海岸・山を合わせます。",
+                "x": 40,
+                "y": 422.40625,
+                "w": 304,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.1078,
+                "medianContrast": 15.22,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "national-day",
+                "id": "game-hint",
+                "text": "まず木を横へ。その後カメラ・海岸・山を合わせます。",
+                "x": 40,
+                "y": 448,
+                "w": 96,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0892,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "exhibition",
+                "id": "game-hint",
+                "text": "架空の3作品を、歩きやすく伝わる展示に。",
+                "x": 40,
+                "y": 396.015625,
+                "w": 281.28125,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0911,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "exhibition",
+                "id": "game-hint",
+                "text": "架空の3作品を、歩きやすく伝わる展示に。",
+                "x": 40,
+                "y": 421.609375,
+                "w": 32,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.2303,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              }
+            ]
+          }
+        },
+        {
+          "name": "responsive-ja-390",
+          "pass": true,
+          "evidence": {
+            "archiveButtons": 10,
+            "checkedGameControls": 10,
+            "samples": [
+              {
+                "screen": "archive",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "new-year",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "lunar-new-year",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "lantern",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "children",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "dragon-boat",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "mid-autumn",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "teachers",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "national-day",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "semester",
+                "viewport": 390,
+                "issues": []
+              },
+              {
+                "screen": "exhibition",
+                "viewport": 390,
+                "issues": []
+              }
+            ],
+            "pixelIssueCount": 6,
+            "contrastIssueCount": 0,
+            "textureIssueCount": 6,
+            "consoleErrors": []
+          }
+        },
+        {
+          "name": "button-contrast-ja-768",
+          "pass": true,
+          "evidence": {
+            "issues": []
+          }
+        },
+        {
+          "name": "text-on-border-ja-768",
+          "pass": false,
+          "evidence": {
+            "threshold": 0.004,
+            "issues": [
+              {
+                "game": "new-year",
+                "id": "game-hint",
+                "text": "3枚のキーフレームで、年を越えるジャンプをつなごう。",
+                "x": 40,
+                "y": 366.671875,
+                "w": 409.28125,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.089,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "national-day",
+                "id": "game-hint",
+                "text": "まず木を横へ。その後カメラ・海岸・山を合わせます。",
+                "x": 40,
+                "y": 366.671875,
+                "w": 400,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.091,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "exhibition",
+                "id": "game-hint",
+                "text": "架空の3作品を、歩きやすく伝わる展示に。",
+                "x": 40,
+                "y": 366.671875,
+                "w": 313.28125,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.1157,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              }
+            ]
+          }
+        },
+        {
+          "name": "responsive-ja-768",
+          "pass": true,
+          "evidence": {
+            "archiveButtons": 10,
+            "checkedGameControls": 10,
+            "samples": [
+              {
+                "screen": "archive",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "new-year",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "lunar-new-year",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "lantern",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "children",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "dragon-boat",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "mid-autumn",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "teachers",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "national-day",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "semester",
+                "viewport": 768,
+                "issues": []
+              },
+              {
+                "screen": "exhibition",
+                "viewport": 768,
+                "issues": []
+              }
+            ],
+            "pixelIssueCount": 3,
+            "contrastIssueCount": 0,
+            "textureIssueCount": 3,
+            "consoleErrors": []
+          }
+        },
+        {
+          "name": "button-contrast-ja-1440",
+          "pass": true,
+          "evidence": {
+            "issues": []
+          }
+        },
+        {
+          "name": "text-on-border-ja-1440",
+          "pass": false,
+          "evidence": {
+            "threshold": 0.004,
+            "issues": [
+              {
+                "game": "new-year",
+                "id": "game-hint",
+                "text": "3枚のキーフレームで、年を越えるジャンプをつなごう。",
+                "x": 216,
+                "y": 406.390625,
+                "w": 409.28125,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.1435,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "national-day",
+                "id": "game-hint",
+                "text": "まず木を横へ。その後カメラ・海岸・山を合わせます。",
+                "x": 216,
+                "y": 406.390625,
+                "w": 400,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.1467,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "exhibition",
+                "id": "game-hint",
+                "text": "架空の3作品を、歩きやすく伝わる展示に。",
+                "x": 216,
+                "y": 406.390625,
+                "w": 313.28125,
+                "h": 20,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.1869,
+                "medianContrast": 15.23,
+                "kind": "text-over-artwork"
+              },
+              {
+                "game": "exhibition",
+                "id": "exhibition-select-2",
+                "text": "架空のインタラクティブ作品",
+                "x": 923.265625,
+                "y": 766.53125,
+                "w": 182,
+                "h": 18,
+                "foreground": [
+                  25,
+                  29,
+                  34
+                ],
+                "contrastMinimum": 4.5,
+                "ratio": 0.0506,
+                "medianContrast": 15.21,
+                "kind": "text-over-artwork"
+              }
+            ]
+          }
+        },
+        {
+          "name": "responsive-ja-1440",
+          "pass": true,
+          "evidence": {
+            "archiveButtons": 10,
+            "checkedGameControls": 10,
+            "samples": [
+              {
+                "screen": "archive",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "new-year",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "lunar-new-year",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "lantern",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "children",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "dragon-boat",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "mid-autumn",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "teachers",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "national-day",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "semester",
+                "viewport": 1440,
+                "issues": []
+              },
+              {
+                "screen": "exhibition",
+                "viewport": 1440,
+                "issues": []
+              }
+            ],
+            "pixelIssueCount": 4,
+            "contrastIssueCount": 0,
+            "textureIssueCount": 4,
+            "consoleErrors": []
+          }
+        },
+        {
+          "name": "five-CG-marquee-and-intro-input",
+          "pass": true,
+          "evidence": {
+            "frames": [
+              "assets/new-year/cg-1.webp",
+              "assets/new-year/cg-2.webp",
+              "assets/new-year/cg-3.webp",
+              "assets/new-year/cg-4.webp",
+              "assets/new-year/cg-5.webp"
+            ],
+            "narration": "新的一年，先畫下起跑的姿勢。準備三張關鍵格。停太久，動作就卡住；太快，又看不清。試著調整節奏，讓每一格接上下一格。把今年的第一個跳躍，送往明天。",
+            "marqueeAnimation": "marquee",
+            "skipClick": true,
+            "skipKeyboard": true
+          }
+        },
+        {
+          "name": "intro-first-RAF-timestamp-regression",
+          "pass": true,
+          "evidence": {
+            "callbackFixture": "first browser RAF callback uses a timestamp 25ms before RAF registration; application source untouched",
+            "initialCG": "1 / 5",
+            "invalidRequests": 0
+          }
+        },
+        {
+          "name": "menu-help-settings-zh",
+          "pass": true,
+          "evidence": {
+            "helpLength": 219,
+            "menuActions": 5,
+            "settings": true,
+            "exit": true
+          }
+        },
+        {
+          "name": "menu-help-settings-en",
+          "pass": true,
+          "evidence": {
+            "helpLength": 518,
+            "menuActions": 5,
+            "settings": true,
+            "exit": true
+          }
+        },
+        {
+          "name": "menu-help-settings-ja",
+          "pass": true,
+          "evidence": {
+            "helpLength": 259,
+            "menuActions": 5,
+            "settings": true,
+            "exit": true
+          }
+        },
+        {
+          "name": "pause-inert-resume-and-listener-cleanup",
+          "pass": true,
+          "evidence": {
+            "frozenStyle": true,
+            "pointerBlocked": true,
+            "resume": true,
+            "cycles": 4,
+            "listeners": {
+              "baseline": {
+                "window:popstate": 1,
+                "window:pagehide": 1,
+                "window:keydown": 1,
+                "document:keydown": 1,
+                "document:visibilitychange": 1,
+                "window:__playwright_global_listeners_check__": 1,
+                "window:mousemove": 1,
+                "window:pointerdown": 1,
+                "window:pointerup": 1,
+                "window:touchstart": 1,
+                "window:touchend": 1,
+                "window:touchcancel": 1,
+                "window:mousedown": 1,
+                "window:mouseup": 1,
+                "window:click": 1,
+                "window:auxclick": 1,
+                "window:dblclick": 1,
+                "window:contextmenu": 1
+              },
+              "final": {
+                "window:popstate": 1,
+                "window:pagehide": 1,
+                "window:keydown": 1,
+                "document:keydown": 1,
+                "document:visibilitychange": 1,
+                "window:__playwright_global_listeners_check__": 1,
+                "window:mousemove": 1,
+                "window:pointerdown": 1,
+                "window:pointerup": 1,
+                "window:touchstart": 1,
+                "window:touchend": 1,
+                "window:touchcancel": 1,
+                "window:mousedown": 1,
+                "window:mouseup": 1,
+                "window:click": 1,
+                "window:auxclick": 1,
+                "window:dblclick": 1,
+                "window:contextmenu": 1
+              }
+            }
+          }
+        },
+        {
+          "name": "audio-default-gate-decode-and-volume",
+          "pass": true,
+          "evidence": {
+            "mutedRequests": 0,
+            "native": [
+              {
+                "src": "http://127.0.0.1:8800/holiday-lab/audio/click.ogg",
+                "volume": 0.35,
+                "readyState": 4,
+                "error": null
+              }
+            ],
+            "decoded": [
+              {
+                "kind": "click",
+                "duration": 0.09710416666666667,
+                "channels": 1,
+                "sampleRate": 48000,
+                "peak": 0.8554027080535889
+              },
+              {
+                "kind": "success",
+                "duration": 0.2869375,
+                "channels": 1,
+                "sampleRate": 48000,
+                "peak": 0.8978842496871948
+              },
+              {
+                "kind": "error",
+                "duration": 0.16164583333333332,
+                "channels": 2,
+                "sampleRate": 48000,
+                "peak": 1.0033423900604248
+              },
+              {
+                "kind": "paper",
+                "duration": 0.7970833333333334,
+                "channels": 1,
+                "sampleRate": 48000,
+                "peak": 0.789531946182251
+              },
+              {
+                "kind": "wood",
+                "duration": 0.2626875,
+                "channels": 2,
+                "sampleRate": 48000,
+                "peak": 0.8565630912780762
+              },
+              {
+                "kind": "metal",
+                "duration": 0.37295833333333334,
+                "channels": 2,
+                "sampleRate": 48000,
+                "peak": 0.8722923994064331
+              }
+            ],
+            "actualListening": "not performed; headless media decode is not listening evidence"
+          }
+        },
+        {
+          "name": "real-browser-background-suspension",
+          "pass": false,
+          "error": "Headless Chromium kept both tabs visible; no genuine visibilitychange evidence (no JS visibility override used)"
+        },
+        {
+          "name": "reduced-motion-zh",
+          "pass": true,
+          "evidence": {
+            "image": "none",
+            "marquee": "none",
+            "whiteSpace": "normal",
+            "text": "新的一年，先畫下起跑的姿勢。準備三張關鍵格。停太久，動作就卡住；太快，又看不清。試著調整節奏，讓每一格接上下一格。把今年的第一個跳躍，送往明天。",
+            "overflow": "auto"
+          }
+        },
+        {
+          "name": "reduced-motion-en",
+          "pass": true,
+          "evidence": {
+            "image": "none",
+            "marquee": "none",
+            "whiteSpace": "normal",
+            "text": "A new year begins with a pose. Prepare three keyframes. Hold too long and the motion stalls; rush and it disappears. Adjust the rhythm so each frame leads into the next. Send your first leap into tomorrow.",
+            "overflow": "auto"
+          }
+        },
+        {
+          "name": "reduced-motion-ja",
+          "pass": true,
+          "evidence": {
+            "image": "none",
+            "marquee": "none",
+            "whiteSpace": "normal",
+            "text": "新しい年は一つのポーズから。3枚の原画を用意しよう。長すぎると止まり、短すぎると見えなくなる。コマ同士がつながるリズムを探そう。最初のジャンプを明日へ。",
+            "overflow": "auto"
+          }
+        },
+        {
+          "name": "auditor-negative-control",
+          "pass": true,
+          "evidence": {
+            "injected": "30px button, zero padding, nowrap; browser-only temporary defect",
+            "detected": [
+              {
+                "kind": "button-text-safe-area",
+                "id": "start-game",
+                "text": [
+                  16,
+                  645.328125,
+                  56,
+                  18
+                ],
+                "button": [
+                  16,
+                  631.125,
+                  30,
+                  48
+                ]
+              },
+              {
+                "kind": "button-content-overflow",
+                "id": "start-game"
+              }
+            ]
+          }
+        }
+      ],
+      "errors": [],
+      "screenshots": [
+        "20261022132145872-homepage-zh.webp",
+        "20261022132145872-homepage-en.webp",
+        "20261022132145872-homepage-ja.webp",
+        "20261022132145872-archive-zh-320.webp",
+        "20261022132145872-controls-zh-320.webp",
+        "20261022132145872-archive-zh-390.webp",
+        "20261022132145872-controls-zh-390.webp",
+        "20261022132145872-archive-zh-768.webp",
+        "20261022132145872-controls-zh-768.webp",
+        "20261022132145872-archive-zh-1440.webp",
+        "20261022132145872-controls-zh-1440.webp",
+        "20261022132145872-archive-en-320.webp",
+        "20261022132145872-controls-en-320.webp",
+        "20261022132145872-archive-en-390.webp",
+        "20261022132145872-controls-en-390.webp",
+        "20261022132145872-archive-en-768.webp",
+        "20261022132145872-controls-en-768.webp",
+        "20261022132145872-archive-en-1440.webp",
+        "20261022132145872-controls-en-1440.webp",
+        "20261022132145872-archive-ja-320.webp",
+        "20261022132145872-controls-ja-320.webp",
+        "20261022132145872-archive-ja-390.webp",
+        "20261022132145872-controls-ja-390.webp",
+        "20261022132145872-archive-ja-768.webp",
+        "20261022132145872-controls-ja-768.webp",
+        "20261022132145872-archive-ja-1440.webp",
+        "20261022132145872-controls-ja-1440.webp",
+        "20261022132145872-intro-1.webp",
+        "20261022132145872-intro-2.webp",
+        "20261022132145872-intro-3.webp",
+        "20261022132145872-intro-4.webp",
+        "20261022132145872-intro-5.webp",
+        "20261022132145872-reduced-zh.webp",
+        "20261022132145872-reduced-en.webp",
+        "20261022132145872-reduced-ja.webp"
+      ],
+      "only": [],
+      "command": "node holiday-lab/qa/shell.cjs --base=http://127.0.0.1:8800",
+      "script_sha256": "3908e45a0019c17173e20c69ec5fe03dca6dd3def228574932badc750a502413",
+      "finished_at": "2026-10-22T13:24:28.739Z",
+      "summary": {
+        "yes": 42,
+        "no": 13,
+        "total": 55
+      }
+    },
+    {
+      "started_at": "2026-10-22T13:25:29.950Z",
+      "base": "http://127.0.0.1:8800",
+      "scope": "Independent homepage and shared shell; no gameplay pass substituted",
+      "checks": [
+        {
+          "name": "intro-narration-text-background",
+          "pass": false,
+          "error": "[{\"id\":\"marquee\",\"text\":\"新的一年，先畫下起跑的姿勢。準備三張關鍵格。停太久，動作就卡住；太快，\",\"x\":110.03707885742188,\"y\":680.421875,\"w\":263.9629211425781,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.0934,\"medianContrast\":15.23,\"kind\":\"text-over-artwork\"}]"
+        },
+        {
+          "name": "reduced-motion-zh",
+          "pass": false,
+          "error": "[{\"id\":\"marquee\",\"text\":\"新的一年，先畫下起跑的姿勢。準備三張關鍵格。停太久，動作就卡住；太快，\",\"x\":36,\"y\":683.421875,\"w\":304,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.2258,\"medianContrast\":14.52,\"kind\":\"text-over-artwork\"},{\"id\":\"marquee\",\"text\":\"新的一年，先畫下起跑的姿勢。準備三張關鍵格。停太久，動作就卡住；太快，\",\"x\":36,\"y\":710.609375,\"w\":304,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.0373,\"medianContrast\":15.23,\"kind\":\"text-over-artwork\"},{\"id\":\"marquee\",\"text\":\"新的一年，先畫下起跑的姿勢。準備三張關鍵格。停太久，動作就卡住；太快，\",\"x\":36,\"y\":737.796875,\"w\":304,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.0337,\"medianContrast\":15.23,\"kind\":\"text-over-artwork\"},{\"id\":\"marquee\",\"text\":\"新的一年，先畫下起跑的姿勢。準備三張關鍵格。停太久，動作就卡住；太快，\",\"x\":36,\"y\":764.984375,\"w\":240,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.1127,\"medianContrast\":15.36,\"kind\":\"text-over-artwork\"}]"
+        },
+        {
+          "name": "reduced-motion-en",
+          "pass": false,
+          "error": "[{\"id\":\"marquee\",\"text\":\"A new year begins with a pose. Prep\",\"x\":36,\"y\":683.421875,\"w\":299.921875,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.2444,\"medianContrast\":14.5,\"kind\":\"text-over-artwork\"},{\"id\":\"marquee\",\"text\":\"A new year begins with a pose. Prep\",\"x\":36,\"y\":710.609375,\"w\":302.078125,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.0432,\"medianContrast\":15.23,\"kind\":\"text-over-artwork\"},{\"id\":\"marquee\",\"text\":\"A new year begins with a pose. Prep\",\"x\":36,\"y\":737.796875,\"w\":281.4375,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.0325,\"medianContrast\":15.23,\"kind\":\"text-over-artwork\"},{\"id\":\"marquee\",\"text\":\"A new year begins with a pose. Prep\",\"x\":36,\"y\":764.984375,\"w\":295.71875,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.0659,\"medianContrast\":15.36,\"kind\":\"text-over-artwork\"},{\"id\":\"marquee\",\"text\":\"A new year begins with a pose. Prep\",\"x\":36,\"y\":792.171875,\"w\":290.015625,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.9393,\"medianContrast\":11.19,\"kind\":\"text-over-artwork\"}]"
+        },
+        {
+          "name": "reduced-motion-ja",
+          "pass": false,
+          "error": "[{\"id\":\"marquee\",\"text\":\"新しい年は一つのポーズから。3枚の原画を用意しよう。長すぎると止まり、\",\"x\":36,\"y\":709.8125,\"w\":313.53125,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.2635,\"medianContrast\":14.51,\"kind\":\"text-over-artwork\"},{\"id\":\"marquee\",\"text\":\"新しい年は一つのポーズから。3枚の原画を用意しよう。長すぎると止まり、\",\"x\":36,\"y\":737,\"w\":304,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.0373,\"medianContrast\":15.23,\"kind\":\"text-over-artwork\"},{\"id\":\"marquee\",\"text\":\"新しい年は一つのポーズから。3枚の原画を用意しよう。長すぎると止まり、\",\"x\":36,\"y\":764.1875,\"w\":304,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.0337,\"medianContrast\":15.23,\"kind\":\"text-over-artwork\"},{\"id\":\"marquee\",\"text\":\"新しい年は一つのポーズから。3枚の原画を用意しよう。長すぎると止まり、\",\"x\":36,\"y\":791.375,\"w\":288,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.1039,\"medianContrast\":15.36,\"kind\":\"text-over-artwork\"}]"
+        }
+      ],
+      "errors": [],
+      "screenshots": [
+        "20261022132529950-narration-normal.webp",
+        "20261022132529950-reduced-zh.webp",
+        "20261022132529950-reduced-en.webp",
+        "20261022132529950-reduced-ja.webp"
+      ],
+      "only": [
+        "intro-narration",
+        "reduced-motion"
+      ],
+      "command": "node holiday-lab/qa/shell.cjs --base=http://127.0.0.1:8800 --only=intro-narration,reduced-motion",
+      "script_sha256": "1c50804c8e48dbf148d13988f0b64d5fc37fd07f6a2ea751bbd916d6da8ac9ee",
+      "finished_at": "2026-10-22T13:25:33.284Z",
+      "summary": {
+        "yes": 0,
+        "no": 4,
+        "total": 4
+      }
     }
   ]
 }

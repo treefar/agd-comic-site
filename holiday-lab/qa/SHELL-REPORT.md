@@ -1,16 +1,17 @@
 # 共用外框與首頁：獨立 QA
 
-執行：2026-10-22T13:19:26.081Z；網址：http://127.0.0.1:8800。
+執行：2026-10-22T13:25:29.950Z；網址：http://127.0.0.1:8800。
 
-命令：`node holiday-lab/qa/shell.cjs --base=http://127.0.0.1:8800 --only=guide-preservation`
+命令：`node holiday-lab/qa/shell.cjs --base=http://127.0.0.1:8800 --only=intro-narration,reduced-motion`
 
-結果：yes 3／no 0／總計 3。
+結果：yes 0／no 4／總計 4。
 
 | 驗收 | yes/no | 實際證據或錯誤 |
 |---|---|---|
-| guide-preservation-zh | yes | {"cards":15,"details":47,"faq":30,"sources":15,"faqExpanded":true,"consoleErrors":[]} |
-| guide-preservation-en | yes | {"cards":15,"details":47,"faq":30,"sources":15,"faqExpanded":true,"consoleErrors":[]} |
-| guide-preservation-ja | yes | {"cards":15,"details":47,"faq":30,"sources":15,"faqExpanded":true,"consoleErrors":[]} |
+| intro-narration-text-background | no | "[{\"id\":\"marquee\",\"text\":\"新的一年，先畫下起跑的姿勢。準備三張關鍵格。停太久，動作就卡住；太快，\",\"x\":110.03707885742188,\"y\":680.421875,\"w\":263.9629211425781,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.0934,\"medianContrast\":15.23,\"kind\":\"text-over-artwork\"}]" |
+| reduced-motion-zh | no | "[{\"id\":\"marquee\",\"text\":\"新的一年，先畫下起跑的姿勢。準備三張關鍵格。停太久，動作就卡住；太快，\",\"x\":36,\"y\":683.421875,\"w\":304,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.2258,\"medianContrast\":14.52,\"kind\":\"text-over-artwork\"},{\"id\":\"marquee\",\"text\":\"新的一年，先畫下起跑的姿勢。準備三張關鍵格。停太久，動作就卡住；太快，\",\"x\":36,\"y\":710.609375,\"w\":304,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.0373,\"medianContrast\":15.23,\"kind\":\"text-over-artwork\"},{\"id\":\"marquee\",\"text\":\"新的一年，先畫下起跑的姿勢。準備三張關鍵格。停太久，動作就卡住；太快，\",\"x\":36,\"y\":737.796875,\"w\":304,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.0337,\"medianContrast\":15.23,\"kind\":\"text-over-artwork\"},{\"id\":\"marquee\",\"text\":\"新的一年，先畫下起跑的姿勢。準備三張關鍵格。停太久，動作就卡住；太快，\",\"x\":36,\"y\":764.984375,\"w\":240,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.1127,\"medianContrast\":15.36,\"kind\":\"text-over-artwork\"}]" |
+| reduced-motion-en | no | "[{\"id\":\"marquee\",\"text\":\"A new year begins with a pose. Prep\",\"x\":36,\"y\":683.421875,\"w\":299.921875,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.2444,\"medianContrast\":14.5,\"kind\":\"text-over-artwork\"},{\"id\":\"marquee\",\"text\":\"A new year begins with a pose. Prep\",\"x\":36,\"y\":710.609375,\"w\":302.078125,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.0432,\"medianContrast\":15.23,\"kind\":\"text-over-artwork\"},{\"id\":\"marquee\",\"text\":\"A new year begins with a pose. Prep\",\"x\":36,\"y\":737.796875,\"w\":281.4375,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.0325,\"medianContrast\":15.23,\"kind\":\"text-over-artwork\"},{\"id\":\"marquee\",\"text\":\"A new year begins with a pose. Prep\",\"x\":36,\"y\":764.984375,\"w\":295.71875,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.0659,\"medianContrast\":15.36,\"kind\":\"text-over-artwork\"},{\"id\":\"marquee\",\"text\":\"A new year begins with a pose. Prep\",\"x\":36,\"y\":792.171875,\"w\":290.015625,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.9393,\"medianContrast\":11.19,\"kind\": |
+| reduced-motion-ja | no | "[{\"id\":\"marquee\",\"text\":\"新しい年は一つのポーズから。3枚の原画を用意しよう。長すぎると止まり、\",\"x\":36,\"y\":709.8125,\"w\":313.53125,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.2635,\"medianContrast\":14.51,\"kind\":\"text-over-artwork\"},{\"id\":\"marquee\",\"text\":\"新しい年は一つのポーズから。3枚の原画を用意しよう。長すぎると止まり、\",\"x\":36,\"y\":737,\"w\":304,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.0373,\"medianContrast\":15.23,\"kind\":\"text-over-artwork\"},{\"id\":\"marquee\",\"text\":\"新しい年は一つのポーズから。3枚の原画を用意しよう。長すぎると止まり、\",\"x\":36,\"y\":764.1875,\"w\":304,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.0337,\"medianContrast\":15.23,\"kind\":\"text-over-artwork\"},{\"id\":\"marquee\",\"text\":\"新しい年は一つのポーズから。3枚の原画を用意しよう。長すぎると止まり、\",\"x\":36,\"y\":791.375,\"w\":288,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"ratio\":0.1039,\"medianContrast\":15.36,\"kind\":\"text-over-artwork\"}]" |
 
 完整輸出、時間、各尺寸量測與失敗詳情見 shell.json。截圖在 screenshots/。
 
