@@ -14,6 +14,7 @@ export function submit(state,values){
 }
 const W=(zh,en,ja)=>({zh,en,ja});
 const names=[W('月亮 → 車輪','Moon → wheel','月 → 車輪'),W('車輪 → 圓燈','Wheel → round lamp','車輪 → 丸い照明'),W('圓燈 → 月亮','Round lamp → moon','丸い照明 → 月')];
+export function buildReplay(cuts){return cuts.flatMap((cut,i)=>[{duration:cut.time,caption:W(`${names[i].zh}：切換前`,`${names[i].en}: before the cut`,`${names[i].ja}：切替前`),sprites:[{key:`actor${i+1}`,x:cut.x,y:40,width:cut.size,height:cut.size,frames:[{at:0,x:cut.x},{at:cut.time,x:cut.endX}]},{key:'target',x:TARGETS[i].x,y:40,width:TARGETS[i].size,height:TARGETS[i].size,opacity:0.4}]},{duration:1000,caption:W(`在 ${cut.time} 毫秒切換，圓的位置 ${cut.endX.toFixed(1)}％`,`Cut at ${cut.time} ms; circle at ${cut.endX.toFixed(1)}%`,`${cut.time}ミリ秒で切替・位置${cut.endX.toFixed(1)}％`),sprites:[{key:`actor${(i+1)%3+1}`,x:cut.endX,y:40,width:cut.size,height:cut.size}]}]);}
 export function mount(ctx){
   let state=createState(),values={time:500,x:10,size:12},clock=0,playing=false,previewed=false,dead=false;
   const nodes=[];
@@ -35,7 +36,7 @@ export function mount(ctx){
     const r=submit(state,values);state=r.state;
     if(!r.ok){ctx.sound('error');const e=r.errors;if(e){ctx.hint(W(`還差一點：時間誤差 ${Math.round(e.time)} 毫秒、位置 ${e.x.toFixed(1)}％、大小 ${e.size.toFixed(1)}％。`,`Almost: timing error ${Math.round(e.time)} ms, position ${e.x.toFixed(1)}%, size ${e.size.toFixed(1)}%.`,`もう少し：時刻の差${Math.round(e.time)}ミリ秒・位置${e.x.toFixed(1)}％・大きさ${e.size.toFixed(1)}％。`));}return;}
     ctx.sound('success');ctx.setProgress(state.round,3);
-    if(state.done){ctx.complete({score:Math.round(state.cuts.reduce((s,v)=>s+v.score,0)/3),summary:W('月光剪接完成。重播保留你選的時間、位置與大小。','Your moonlight edit is complete. Replay your chosen timing, position and size.','月光の編集が完成。選んだ時刻・位置・大きさで再生。'),artifact:{cuts:state.cuts,attempts:state.attempts},replay:state.cuts.flatMap((cut,i)=>[{duration:cut.time,caption:W(`${names[i].zh}：切換前`,`${names[i].en}: before the cut`,`${names[i].ja}：切替前`),sprites:[{key:`actor${i+1}`,x:cut.x,y:40,width:cut.size,height:cut.size},{key:'target',x:TARGETS[i].x,y:40,width:TARGETS[i].size,height:TARGETS[i].size,opacity:0.4}]},{duration:1000,caption:W(`在 ${cut.time} 毫秒切換，圓的位置 ${cut.endX.toFixed(1)}％`,`Cut at ${cut.time} ms; circle at ${cut.endX.toFixed(1)}%`,`${cut.time}ミリ秒で切替・位置${cut.endX.toFixed(1)}％`),sprites:[{key:`actor${(i+1)%3+1}`,x:cut.endX,y:40,width:cut.size,height:cut.size}]}])});return;}
+    if(state.done){ctx.complete({score:Math.round(state.cuts.reduce((s,v)=>s+v.score,0)/3),summary:W('月光剪接完成。重播保留你選的時間、位置與大小。','Your moonlight edit is complete. Replay your chosen timing, position and size.','月光の編集が完成。選んだ時刻・位置・大きさで再生。'),artifact:{cuts:state.cuts,attempts:state.attempts},replay:buildReplay(state.cuts)});return;}
     values={time:500,x:10,size:12};Object.entries(sliders).forEach(([k,s])=>s.setValue(values[k]));playing=false;previewed=false;update();ctx.hint(W('下一段的速度不同，剪接點也要跟著調整。','The next shot moves differently. Reconsider the cut.','次のショットは速度が違います。カットも調整。'));
   }}));
   ctx.controls.append(...nodes);update();
