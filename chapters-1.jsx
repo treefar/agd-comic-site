@@ -7,6 +7,7 @@ const HeroChapter = () => (
   <section className="chapter" id="hero" data-screen-label="01 Hero">
     <div className="container">
       <div className="comic-page">
+        <HolidayHome />
 
         {/* TIER 1 — splash 全寬主格 — tier 設 position:relative 給 bubble 用 */}
         <div className="comic-tier tier-1-1 tier-splash" style={{ position: "relative" }}>

@@ -8,14 +8,18 @@ import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+if (!process.argv.includes('--local-review')) {
+  console.error('[build] REVIEW_ONLY: this branch contains unpublished prototypes. Use holiday-lab/build-review.mjs; public builds are blocked.');
+  process.exit(1);
+}
 // --dev：React development 版、不壓縮，輸出到 .build-dev/（只供本機查 hydration 警告，不發布）
 const DEV = process.argv.includes("--dev");
-const DIST = path.join(ROOT, DEV ? ".build-dev" : "dist");
+const DIST = path.join(ROOT, process.argv.find(a => a.startsWith('--out='))?.slice(6) || (DEV ? ".build-dev" : "dist"));
 const NODE_ENV = JSON.stringify(DEV ? "development" : "production");
 const TMP = path.join(ROOT, ".build-tmp");
 
 // 載入順序必須和 index.html 的 text/babel script 一致（彼此靠全域名稱串接）
-const SOURCES = ["locale-en.js", "locale-ja.js", "en-pages.jsx", "tweaks-panel.jsx", "comic-components.jsx", "chapters-1.jsx", "chapters-2.jsx", "pages.jsx", "student-guide-model.js", "student-guide.jsx", "app.jsx"];
+const SOURCES = ["locale-en.js", "locale-ja.js", "en-pages.jsx", "tweaks-panel.jsx", "comic-components.jsx", "holiday-home.jsx", "chapters-1.jsx", "chapters-2.jsx", "pages.jsx", "student-guide-model.js", "student-guide.jsx", "app.jsx"];
 // 首頁一定要出現在預渲染 HTML 的章節錨點
 const REQUIRED_IDS = ["hero", "news", "about", "works", "faculty", "labs", "join", "contact"];
 // 不複製進 dist 的來源/建置檔
@@ -34,6 +38,7 @@ const body = SOURCES.map((f) => `// ---- ${f} ----\n` + fs.readFileSync(path.joi
 
 const CLIENT_PRELUDE = `import React from "react";
 import * as ReactDOM from "react-dom/client";
+import { createPortal } from "react-dom";
 `;
 // 伺服端沒有 window/document：給最小替身，只供 render 階段讀到的屬性（effect 不會在伺服端執行）
 const SERVER_PRELUDE = `import React from "react";
@@ -106,6 +111,7 @@ fs.writeFileSync(path.join(DIST, "index.html"), html, "utf8");
 // 4) 複製靜態資源：根目錄下 EXCLUDE 以外的全部（目前是 styles.css、data/、images/、.nojekyll；日後新增的資源資料夾自動帶上）
 for (const name of fs.readdirSync(ROOT)) {
   if (EXCLUDE.has(name)) continue;
+  if (!["data", "images", "styles.css", "student-guide.css", "holiday-home.css", ".nojekyll"].includes(name)) continue;
   fs.cpSync(path.join(ROOT, name), path.join(DIST, name), { recursive: true });
 }
 // Preserve temporary build output for this review's reproducibility.
