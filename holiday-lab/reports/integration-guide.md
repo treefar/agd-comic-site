@@ -22,3 +22,5 @@
 root程式變更：student-guide-model.js、student-guide.jsx、student-guide.css、styles.css、holiday-home.jsx、catalog.mjs。手機floating CTA改頁內流，避免遮住遊戲開始；h-jojo補既有CJK字體備援，未引入新字體。後兩項仍需最新build畫面複驗。
 
 導覽不落單字：node tests/navigation-wrap-browser.cjs，三語×9寬（390/768/1180/1280/1440/1680/1920/2048/2484）27/27 yes。保持完整字串、不改名稱，空間不足用選單；全部項目同列、無橫溢。首個檢查把同一行不同字型片段數當行數而失敗，已改按實際矩形行中線分組，產品不因該驗證錯誤變更。日文1440/2484截圖及JSON在nav-wrap；2484實際畫面已檢視。
+
+原10款新模組完整通關複驗：HOLIDAY_QA_URL=http://127.0.0.1:8805 node holiday-lab/qa/playthrough.cjs，首輪11/12通過，英文390只在回列表期待舊10款時失敗（實際15）。修測試預期後 HOLIDAY_QA_CASE=new-year/en/390 重跑1/1通過；前輪10款中文＋年獸日文已pass，原始失敗和補測均保留playthrough.json.previousRuns。沒有重跑已綠的11組。dashboard按每筆成功case及該輪模組SHA計算，15/15有目前模組通關證據，23/23 authority pass；外框仍04歷史56yes/1未驗，不混成最新整包全部驗收。
