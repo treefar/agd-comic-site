@@ -1,3 +1,4 @@
+/** @jsx siteCreateElement */
 /* 本地頁面：路由 + 詳情頁渲染（漫畫風延用） */
 
 // Hash router — listen to window.location.hash, parse "#/type/slug"
@@ -41,7 +42,7 @@ const localHref = (type, slug) => `#/${type}/${encodeURIComponent(slug)}`;
 
 // Data cache (loaded once per type)
 // _BUILD_VER 跟 Comic Site.html 的 jsx ?v= 同步 bump，避免瀏覽器 cache JSON 舊版
-const _BUILD_VER = '20261022role';
+const _BUILD_VER = '20261022shared';
 const _dataCache = {};
 const _MIN_LOAD_MS = 850; // Loading 至少顯示這麼久（讓動畫看得到）
 const useDataset = (type) => {
@@ -1709,11 +1710,11 @@ const QuizDetail = ({ slug }) => {
     // 系網首頁的 iframe 不會轉交 #/quiz/...，分享改走 share/<派>.html：有專屬預覽圖，點開再轉到結果頁
     // 分享連結帶各派的預覽圖（share/<派>.html 的 og:image）；結果頁本身改放得獎作品，不放插圖
     const QUIZ_SHARE_PREVIEW = true; // 使用者 2026-10-08 同意公開
-    const shareUrl = "https://treefar.link/agd-comic-site/share/" + resultKey + ".html";
+    const shareUrl = siteLanguage === "en" ? "https://treefar.link/agd-comic-site/?lang=en#/quiz/" + resultKey : "https://treefar.link/agd-comic-site/share/" + resultKey + ".html";
     const share = async () => {
-      const text = `我是動遊系的「${r.name}」！你是哪一派？`;
+      const text = siteText(`我是動遊系的「${r.name}」！你是哪一派？`);
       try {
-        if (navigator.share) { await navigator.share({ title: "你是動畫派還是遊戲派？", text, url: shareUrl }); return; }
+        if (navigator.share) { await navigator.share({ title: siteText("你是動畫派還是遊戲派？"), text, url: shareUrl }); return; }
         await navigator.clipboard.writeText(text + " " + shareUrl);
         setCopied(true); setTimeout(() => setCopied(false), 2000);
       } catch (e) { /* 使用者取消分享 */ }

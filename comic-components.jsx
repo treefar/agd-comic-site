@@ -1,3 +1,4 @@
+/** @jsx siteCreateElement */
 /* 漫畫格元件 — 樹德動遊系 */
 const { useState, useEffect, useRef } = React;
 
@@ -448,10 +449,10 @@ const TopNav = () => {
           display: "inline-block", width: 2, height: 16, background: "var(--paper)",
           opacity: 0.4, alignSelf: "center"
         }} />
-        <a href="#/en/intro" title="English introduction for international students" style={{
+        <a href={siteLanguageUrl(siteLanguage === "en" ? "zh" : "en")} title={siteLanguage === "en" ? "切換中文版" : "Switch to English"} style={{
           color: "var(--accent-yellow)", letterSpacing: "0.08em",
           fontFamily: "'Bangers',sans-serif", fontWeight: 900
-        }}>🌐 EN</a>
+        }}>🌐 {siteLanguage === "en" ? "中文" : "EN"}</a>
       </nav>
       {/* 漢堡按鈕：只在 ≤760px 顯示（CSS 控制） */}
       <button

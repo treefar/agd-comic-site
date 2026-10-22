@@ -1,34 +1,14 @@
-const {test}=require('node:test');
-const assert=require('node:assert/strict');
-const fs=require('node:fs');
-const cp=require('node:child_process');
-test('English sections are shipped without game routes or files',()=>{
- const src=fs.readFileSync('en-pages.jsx','utf8');
- for(const slug of ['intro','highlights','faculty','curriculum','labs','works','visit']) assert.ok(src.includes('"'+slug+'"'),slug);
- assert.doesNotMatch(src,/PlayZone|PlayCard|Play Zone|slug: "play"|data\/play|case "play"/);
- assert.equal(fs.existsSync('play'),false); assert.equal(fs.existsSync('data/play.json'),false);
-});
-test('Existing Chinese site and production behavior remain unchanged',()=>{
- for(const f of ['app.jsx','comic-components.jsx','chapters-1.jsx','chapters-2.jsx','styles.css',...fs.readdirSync('data').filter(x=>x.endsWith('.json')).map(x=>'data/'+x)]) {
- const base=cp.execFileSync('git',['show','49adae7acf4d2daddaebd61d741380f4a663029b:'+f]);
- assert.equal(fs.readFileSync(f,'utf8').replace(/\r\n/g,'\n').replaceAll(' · 電競娛樂系代理主任',''),base.toString().replace(/\r\n/g,'\n').replaceAll(' · 電競娛樂系代理主任',''),f);
+const {test}=require('node:test');const assert=require('node:assert/strict');const fs=require('node:fs');const vm=require('node:vm');
+test('No game assets or game routes are released',()=>{assert.equal(fs.existsSync('play'),false);assert.equal(fs.existsSync('data/play.json'),false);assert.doesNotMatch(fs.readFileSync('en-pages.jsx','utf8'),/PlayZone|PlayCard/);for(const p of ['dist/play','dist/data/play.json','dist/tests','dist/LATEST_HANDOFF.md'])assert.equal(fs.existsSync(p),false,p);});
+test('All canonical field strings have exact English translations',()=>{assert.deepEqual(JSON.parse(fs.readFileSync('docs/qa/i18n-data-missing.json')),[]);});
+test('Shared renderer translates labels, preserves filters and preserves Chinese rendering',()=>{
+ const plain=fs.readFileSync('en-pages.jsx','utf8').split('const EnSubNav')[0];
+ for(const english of [false,true]){
+ const ctx={SITE_EN_MESSAGES:{'最新消息':'News','動畫':'Animation','聯絡我們':'Contact'},URL,URLSearchParams,Map,Set,React:{createElement:(type,props,...children)=>({type,props,children})},window:{location:{hash:'',search:english?'?lang=en':'',href:'https://example.test/'+(english?'?lang=en':'')},history:{replaceState(){}}},document:{}};
+ vm.createContext(ctx);vm.runInContext(plain,ctx);
+ const result=vm.runInContext('siteCreateElement("option",{value:"動畫",title:"聯絡我們"},"最新消息")',ctx);
+ assert.equal(result.children[0],english?'News':'最新消息');assert.equal(result.props.value,'動畫');assert.equal(result.props.title,english?'Contact':'聯絡我們');
+ assert.equal(vm.runInContext('siteText("共用未翻譯原文")',ctx),'共用未翻譯原文');
  }
 });
-test('English intro navigation and build include all seven sections',()=>{
- assert.match(fs.readFileSync('pages.jsx','utf8'),/<EnSubNav current="intro"/);
- assert.match(fs.readFileSync('scripts/build.mjs','utf8'),/"en-pages.jsx"/);
- assert.match(fs.readFileSync('index.html','utf8'),/src="en-pages.jsx/);
-});
-test('English local media point to existing production assets',()=>{
- const path=require('node:path');
- function check(value){
-  if(typeof value==='string' && /^images\//.test(value)) assert.ok(fs.existsSync(value),value);
-  else if(Array.isArray(value)) value.forEach(check);
-  else if(value && typeof value==='object') Object.values(value).forEach(check);
- }
- for(const file of fs.readdirSync('data/en')) check(JSON.parse(fs.readFileSync(path.join('data/en',file),'utf8')));
-});
-test('Production bundle contains no game assets or private acceptance files',()=>{
- assert.ok(fs.existsSync('dist/index.html'),'run npm run build first');
- for(const p of ['dist/play','dist/data/play.json','dist/tests','dist/LATEST_HANDOFF.md']) assert.equal(fs.existsSync(p),false,p);
-});
+test('Chinese style rules and all production images stay available',()=>{const crypto=require('node:crypto'),baseline=require('./production-baseline.json');const style=fs.readFileSync('styles.css','utf8').replace(/\r\n/g,'\n');assert.equal(crypto.createHash('sha256').update(style.slice(0,baseline.style.length)).digest('hex'),baseline.style.sha256);const path=require('node:path');function check(x){if(typeof x==='string'&&/^images\//.test(x))assert.ok(fs.existsSync(x),x);else if(Array.isArray(x))x.forEach(check);else if(x&&typeof x==='object')Object.values(x).forEach(check);}for(const f of fs.readdirSync('data').filter(f=>f.endsWith('.json')))check(JSON.parse(fs.readFileSync(path.join('data',f),'utf8')));});

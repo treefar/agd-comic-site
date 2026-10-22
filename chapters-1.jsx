@@ -1,3 +1,4 @@
+/** @jsx siteCreateElement */
 /* 章節版型 — 標準漫畫 tier 結構 */
 const { useState: useS } = React;
 

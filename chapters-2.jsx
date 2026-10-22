@@ -1,3 +1,4 @@
+/** @jsx siteCreateElement */
 /* 章節 — 師資 / 實驗室 / 作品 / 招生 / 聯絡 — 標準 tier 結構 */
 
 // CH.05 — 師資登場

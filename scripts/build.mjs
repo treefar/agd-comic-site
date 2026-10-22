@@ -15,7 +15,7 @@ const NODE_ENV = JSON.stringify(DEV ? "development" : "production");
 const TMP = path.join(ROOT, ".build-tmp");
 
 // 載入順序必須和 index.html 的 text/babel script 一致（彼此靠全域名稱串接）
-const SOURCES = ["tweaks-panel.jsx", "comic-components.jsx", "chapters-1.jsx", "chapters-2.jsx", "pages.jsx", "en-pages.jsx", "app.jsx"];
+const SOURCES = ["locale-en.js", "en-pages.jsx", "tweaks-panel.jsx", "comic-components.jsx", "chapters-1.jsx", "chapters-2.jsx", "pages.jsx", "app.jsx"];
 // 首頁一定要出現在預渲染 HTML 的章節錨點
 const REQUIRED_IDS = ["hero", "news", "about", "works", "faculty", "labs", "join", "contact"];
 // 不複製進 dist 的來源/建置檔
@@ -28,6 +28,7 @@ const EXCLUDE = new Set([
 const fail = (msg) => { console.error("[build] 失敗：" + msg); process.exit(1); };
 
 // 讀全部 JSX，依序接成同一個模組（等同原本多支 classic script 共用全域作用域）
+createRequire(import.meta.url)('./build-translations.cjs');
 const body = SOURCES.map((f) => `// ---- ${f} ----\n` + fs.readFileSync(path.join(ROOT, f), "utf8")).join("\n\n");
 
 const CLIENT_PRELUDE = `import React from "react";
@@ -49,7 +50,7 @@ for (const n of fs.readdirSync(DIST)) fs.rmSync(path.join(DIST, n), { recursive:
 fs.rmSync(TMP, { recursive: true, force: true });
 fs.mkdirSync(TMP, { recursive: true });
 
-const common = { bundle: true, jsx: "transform", charset: "utf8", logLevel: "warning", legalComments: "none" };
+const common = { bundle: true, jsx: "transform", jsxFactory: "siteCreateElement", charset: "utf8", logLevel: "warning", legalComments: "none" };
 
 // 1) 伺服端 bundle → 預渲染
 await build({
