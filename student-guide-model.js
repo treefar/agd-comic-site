@@ -3,7 +3,7 @@ const StudentGuideModel = {
   filter(cards, category, query, translate = value => value) {
     const needle = query.normalize('NFKC').trim().toLocaleLowerCase();
     return cards.filter(card => (category === 'all' || card.category === category) &&
-      [card.title, card.summary, ...card.steps, ...(card.step_details||[]).map(x=>x.detail), ...Object.values(card.contact),
+      [card.title, card.summary, ...card.steps, ...(card.step_details||[]).map(x=>x.detail), ...(card.flow||[]).map(x=>x.label), card.flow_note, ...Object.values(card.contact),
         ...card.faq.flatMap(f => [f.q, f.a])].filter(Boolean).flatMap(s => [s,translate(s)]).join(' ').normalize('NFKC').toLocaleLowerCase().includes(needle));
   },
   phone(value) { return 'tel:' + value.replace(/#/g, ',').replace(/[^+0-9,]/g, ''); },

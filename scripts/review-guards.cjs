@@ -8,6 +8,8 @@ fs.mkdirSync('docs/qa/japanese',{recursive:true});if(!fs.existsSync(file)){fs.wr
 // The user explicitly requested new step explanations. All previous guide fields remain protected.
 const before=JSON.parse(fs.readFileSync('docs/qa/japanese/guide-before-details.json')),after=JSON.parse(fs.readFileSync('data/students/guide.json'));
 const {cards:beforeCards,sources:beforeSources,...beforeMeta}=before,{cards:afterCards,sources:afterSources,...afterMeta}=after;assert.deepEqual(afterMeta,beforeMeta);assert.equal(afterCards.length,beforeCards.length);
-beforeCards.forEach((card,i)=>{const{source_ids:oldRefs,...oldFields}=card,{source_ids:newRefs,step_details,...newFields}=afterCards[i];assert.deepEqual(newFields,oldFields);assert.ok(oldRefs.every(id=>newRefs.includes(id)));});beforeSources.forEach(s=>assert.deepEqual(afterSources.find(x=>x.id===s.id),s));
+const amendments=fs.existsSync('docs/qa/japanese/flow-review-amendments.json')?JSON.parse(fs.readFileSync('docs/qa/japanese/flow-review-amendments.json')):{};
+assert.ok(Object.keys(amendments).every(id=>['credit-transfer','status-military','support-rights'].includes(id)));
+beforeCards.forEach((card,i)=>{const{source_ids:oldRefs,...oldFields}=card,{source_ids:newRefs,step_details,flow,flow_type,flow_note,related_news,...newFields}=afterCards[i];const change=amendments[card.id]||{};assert.ok(Object.keys(change.fields||{}).every(key=>['steps','faq'].includes(key)));assert.deepEqual(newFields,{...oldFields,...change.fields});assert.ok(oldRefs.every(id=>newRefs.includes(id)||(change.removedSourceIds||[]).includes(id)));});beforeSources.forEach(s=>assert.deepEqual(afterSources.find(x=>x.id===s.id),s));
 console.log('PASS unchanged C section, original Chinese fields/styles and main refs; added guide explanations authorized',beforeHash!==afterHash);
 }

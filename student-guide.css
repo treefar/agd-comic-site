@@ -123,6 +123,23 @@ body:has(.student-guide) .floating-cta { display:none !important; }
 .student-guide .sg-card-heading h3 { border-left:6px solid var(--accent-red); padding-left:12px; }
 .student-guide .sg-category-tag { transform:rotate(-2deg); }
 html[lang="en"] .student-guide .sg-category-tag { transform:none; }
+.sg-process { margin:0 24px 20px; padding:16px; background:var(--paper-2); border:2px dashed var(--ink); }
+.sg-process h4,.sg-detail-heading { margin:0 0 12px; font-size:15px; font-weight:900; }
+.sg-detail-heading { padding:0 24px; }
+.sg-flow { margin:0; padding:0; list-style:none; }
+.sg-flow li { min-width:0; }
+.student-guide .sg-flow button { display:flex; align-items:center; gap:12px; width:100%; text-align:left; font-size:14px; line-height:1.65; padding:10px 12px; background:var(--accent-yellow); }
+.sg-flow button>span { flex-shrink:0; font-weight:900; }
+.sg-flow button strong { min-width:0; }
+.sg-flow-arrow { display:block; width:24px; height:36px; margin:4px auto; text-align:center; font:20px/36px Arial,sans-serif !important; }
+.sg-process:is([data-flow-type='choices'],[data-flow-type='branch']) .sg-flow { display:grid; gap:10px; }
+.student-guide .sg-flow-note { margin-top:12px; font-size:13px; line-height:1.8; }
+.sg-steps li { scroll-margin-top:100px; }
+.sg-related-news { margin:18px 24px; }
+.sg-related-news h4 { margin:0 0 8px; font-size:14px; }
+.student-guide .sg-related-news p { font-size:14px; line-height:1.9; overflow-wrap:anywhere; }
+.sg-related-news small { display:block; font-size:12px; }
+@media(max-width:600px){.sg-process { margin-left:16px; margin-right:16px; padding:12px; }.sg-detail-heading { padding:0 16px; }}
 .student-guide .sg-editor-note + a { background:var(--paper) !important; margin-top:20px !important; }
 html[lang='ja'] body { font-family:'Yu Gothic','Hiragino Kaku Gothic ProN',Meiryo,'Noto Sans TC',sans-serif; }
 html[lang='ja'] :is(.student-guide,.topnav,.foot) :is(h1,h2,h3,p,a,button,input,label,li,div,span,strong,summary) { font-family:'Yu Gothic','Hiragino Kaku Gothic ProN',Meiryo,'Noto Sans TC',sans-serif; }

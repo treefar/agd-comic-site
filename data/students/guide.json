@@ -642,6 +642,70 @@
       "url": "https://life.sao.stu.edu.tw/急難救助/急難慰問/",
       "checked_at": "2026-10-22",
       "readability": "官方搜尋索引可讀；直接開啟403或202空內容，未讀即時全文。"
+    },
+    {
+      "id": "credit-transfer-procedure",
+      "title": "教務處抵免學分：115-1申請程序",
+      "url": "https://www.aca.stu.edu.tw/抵免學分/",
+      "checked_at": "2026-10-22",
+      "readability": "官方搜尋索引可讀；直接開啟403或202空內容，未讀即時全文。",
+      "note": "115-1已截止；取程序及角色，不宣稱現受理"
+    },
+    {
+      "id": "credit-transfer-form",
+      "title": "教務處抵免學分申請書",
+      "url": "https://wpc.stu.edu.tw/wp-content/uploads/sites/34/2021/02/抵免學分申請書.pdf",
+      "checked_at": "2026-10-22",
+      "readability": "官方搜尋索引可讀；直接開啟403或202空內容，未讀即時全文。",
+      "note": "公開表單索引，版本適用性請承辦確認"
+    },
+    {
+      "id": "certificate-system",
+      "title": "校方學生證照系統首頁與流程",
+      "url": "https://info.stu.edu.tw/sao/certificate/item/index.asp",
+      "checked_at": "2026-10-22",
+      "readability": "官方網頁全文已讀；未登入個人系統。",
+      "note": "公開首頁；未登入學生或承辦帳號"
+    },
+    {
+      "id": "internship-contract-history",
+      "title": "113校務發展計畫：線上合約書檢核流程",
+      "url": "https://wpc.stu.edu.tw/wp-content/uploads/sites/5/2025/02/113校務發展及年度經費支用計畫書_1130614_核章版-全.pdf",
+      "checked_at": "2026-10-22",
+      "readability": "官方搜尋索引可讀；直接開啟403或202空內容，未讀即時全文。",
+      "note": "歷史制度描述，第70頁；不可作本期本系辦法"
+    },
+    {
+      "id": "aid-award-directory",
+      "title": "生輔組校內獎助學金目錄",
+      "url": "https://life.sao.stu.edu.tw/獎助學金/校內獎助學金/",
+      "checked_at": "2026-10-22",
+      "readability": "官方搜尋索引可讀；直接開啟403或202空內容，未讀即時全文。",
+      "note": "目錄與各方案分流；不逐項替代方案全文"
+    },
+    {
+      "id": "aid-tuition-announcement",
+      "title": "生輔組學雜費減免申請公告",
+      "url": "https://life.sao.stu.edu.tw/學雜費減免/教育部學雜費減免/學雜費減免辦理公告/",
+      "checked_at": "2026-10-22",
+      "readability": "官方搜尋索引可讀；直接開啟403或202空內容，未讀即時全文。",
+      "note": "可見115-1及115-2時程，本文不硬寫期限"
+    },
+    {
+      "id": "student-appeal-organization-history",
+      "title": "學生申訴評議委員會組織辦法（108核定歷史版）",
+      "url": "https://s3-ap-northeast-1.amazonaws.com/stu-wordpress/wp-content/uploads/sites/74/2019/05/22112636/new樹德科技大學學生申訴評議委員會組織辦法-教育部核定.pdf",
+      "checked_at": "2026-10-22",
+      "readability": "官方搜尋索引可讀；直接開啟403或202空內容，未讀即時全文。",
+      "note": "歷史組織辦法，非現行申訴作業全文"
+    },
+    {
+      "id": "dept-news-index",
+      "title": "動遊系官方相關消息索引",
+      "url": "https://www.dgd.stu.edu.tw/support/",
+      "checked_at": "2026-10-22",
+      "readability": "官方搜尋索引可讀；直接開啟403或202空內容，未讀即時全文。",
+      "note": "官方頁側欄消息標題與月份索引；不是現行辦法全文"
     }
   ],
   "cards": [
@@ -727,7 +791,35 @@
             "academic-faq"
           ]
         }
-      ]
+      ],
+      "flow_type": "sequence",
+      "flow": [
+        {
+          "label": "核對入學年度",
+          "step_index": 0,
+          "source_ids": [
+            "course-index",
+            "curriculum-115"
+          ]
+        },
+        {
+          "label": "整理未通過項目",
+          "step_index": 1,
+          "source_ids": [
+            "curriculum-115",
+            "student-portal"
+          ]
+        },
+        {
+          "label": "向系辦確認補修",
+          "step_index": 2,
+          "source_ids": [
+            "dept-contact",
+            "academic-faq"
+          ]
+        }
+      ],
+      "flow_note": "不同入學年與班別分開核對；有缺項就找系辦確認補修或認列。"
     },
     {
       "id": "internship",
@@ -754,7 +846,8 @@
         "career-contact",
         "internship-school",
         "dept-contact",
-        "dept-forms"
+        "dept-forms",
+        "internship-contract-history"
       ],
       "warning": "自找公司、打工時數認列或中止實習，請先向系辦確認適用規定。",
       "faq": [
@@ -803,7 +896,35 @@
             "internship-school"
           ]
         }
-      ]
+      ],
+      "flow_type": "sequence",
+      "flow": [
+        {
+          "label": "取得當期實習規定",
+          "step_index": 0,
+          "source_ids": [
+            "dept-contact",
+            "dept-forms"
+          ]
+        },
+        {
+          "label": "確認單位與老師",
+          "step_index": 1,
+          "source_ids": [
+            "career-contact",
+            "internship-school"
+          ]
+        },
+        {
+          "label": "完成合約保險確認",
+          "step_index": 2,
+          "source_ids": [
+            "career-contact",
+            "internship-contract-history"
+          ]
+        }
+      ],
+      "flow_note": "這是開始實習前的準備；實習中怎麼聯絡老師、結束後交什麼，也請先問清楚。"
     },
     {
       "id": "certification",
@@ -825,7 +946,9 @@
       "source_ids": [
         "curriculum-115",
         "cert-award",
-        "dept-contact"
+        "dept-contact",
+        "certificate-system",
+        "career-contact"
       ],
       "warning": "技優班條件另核；畢業認列與獎助資格，請分別向系辦、職發中心確認。",
       "faq": [
@@ -867,6 +990,41 @@
           "source_ids": [
             "cert-award"
           ]
+        }
+      ],
+      "flow_type": "sequence",
+      "flow": [
+        {
+          "label": "先查系上認列範圍",
+          "step_index": 0,
+          "source_ids": [
+            "dept-contact",
+            "curriculum-115"
+          ]
+        },
+        {
+          "label": "考取後登錄證明",
+          "step_index": 1,
+          "source_ids": [
+            "certificate-system"
+          ]
+        },
+        {
+          "label": "另查獎助資格送件",
+          "step_index": 2,
+          "source_ids": [
+            "cert-award",
+            "career-contact"
+          ]
+        }
+      ],
+      "flow_note": "畢業認列與獎助是兩件事；獎助須另查當期資格及期限。",
+      "related_news": [
+        {
+          "title": "114-2 Unity及AE證照班（系網消息索引）",
+          "url": "https://www.dgd.stu.edu.tw/support/",
+          "date": null,
+          "status_label": "過去學期，非當期報名"
         }
       ]
     },
@@ -938,7 +1096,35 @@
             "academic-contact"
           ]
         }
-      ]
+      ],
+      "flow_type": "sequence",
+      "flow": [
+        {
+          "label": "確認假別與證明",
+          "step_index": 0,
+          "source_ids": [
+            "leave-2026",
+            "life-contact"
+          ]
+        },
+        {
+          "label": "到系統提出申請",
+          "step_index": 1,
+          "source_ids": [
+            "leave-2026",
+            "student-portal"
+          ]
+        },
+        {
+          "label": "追蹤簽核結果",
+          "step_index": 2,
+          "source_ids": [
+            "leave-2026",
+            "academic-contact"
+          ]
+        }
+      ],
+      "flow_note": "有考試、較長假期或緊急狀況，先向承辦確認另外要辦的事。"
     },
     {
       "id": "course-selection",
@@ -959,7 +1145,8 @@
         "enrollment-115-1",
         "academic-faq",
         "academic-contact",
-        "curriculum-115"
+        "curriculum-115",
+        "course-index"
       ],
       "warning": "",
       "faq": [
@@ -1004,7 +1191,35 @@
             "academic-contact"
           ]
         }
-      ]
+      ],
+      "flow_type": "sequence",
+      "flow": [
+        {
+          "label": "先核對必修與時間",
+          "step_index": 0,
+          "source_ids": [
+            "curriculum-115",
+            "course-index"
+          ]
+        },
+        {
+          "label": "依公告初選加退選",
+          "step_index": 1,
+          "source_ids": [
+            "enrollment-115-1",
+            "academic-faq"
+          ]
+        },
+        {
+          "label": "重開系統確認結果",
+          "step_index": 2,
+          "source_ids": [
+            "academic-faq",
+            "academic-contact"
+          ]
+        }
+      ],
+      "flow_note": "選課成功與課程異動都要再查；已截止的時程不代表仍可補選。"
     },
     {
       "id": "credit-transfer",
@@ -1012,9 +1227,11 @@
       "title": "學分抵免",
       "summary": "修過類似課程不等於自動抵免。準備原始成績與申請表，依開課單位、系所及教務處順序審核。",
       "steps": [
-        "先問自己的身分與課程能否提出申請",
-        "系統填表，備成績證明並依規定送審",
-        "查核准結果，再確認課表是否須調整"
+        "到系統填寫申請並印出紙本",
+        "送請開課單位與就讀系所主管初審",
+        "依初審結果自行辦理加退選",
+        "將申請表及證明交註冊課務組",
+        "回到系統查詢核定結果"
       ],
       "contact": {
         "primary": "開課單位／動遊系辦／註冊課務組",
@@ -1024,7 +1241,9 @@
       "source_ids": [
         "credit-transfer-115-1",
         "academic-faq",
-        "academic-contact"
+        "academic-contact",
+        "credit-transfer-procedure",
+        "credit-transfer-form"
       ],
       "warning": "",
       "faq": [
@@ -1046,29 +1265,90 @@
       ],
       "step_details": [
         {
-          "title": "先問自己的身分與課程能否提出申請",
-          "detail": "先說明自己是新生、轉學生、轉系生或其他身分，帶原修課程與成績資料詢問。請承辦確認本期是否仍受理及適用規定，別只因課名相似就認為可抵免。",
+          "title": "到系統填寫申請並印出紙本",
+          "detail": "先確認申請身分與當期截止日，再到校務系統填寫並印表。備妥原校歷年成績單正本及適用的證明，一次整理齊全。",
           "source_ids": [
-            "credit-transfer-115-1",
-            "academic-faq"
+            "credit-transfer-procedure",
+            "credit-transfer-form"
           ]
         },
         {
-          "title": "系統填表，備成績證明並依規定送審",
-          "detail": "在可申請的期間填寫抵免系統並列印表格，備妥原校成績證明正本。依公告送開課單位與就讀系所簽核，再交註冊課務組複審，別只完成線上輸入。",
+          "title": "送請開課單位與就讀系所主管初審",
+          "detail": "把申請資料交給開課單位與自己就讀的系所主管審查。哪些課程可以抵免，先依這個初審結果確認。",
           "source_ids": [
-            "credit-transfer-115-1"
+            "credit-transfer-procedure",
+            "credit-transfer-form"
           ]
         },
         {
-          "title": "查核准結果，再確認課表是否須調整",
-          "detail": "先查已核准抵免的科目，再問是否仍需自行調整本學期課表。若結果和申請內容不同，拿申請表及成績證明詢問，不要把送件或初審當成全部完成。",
+          "title": "依初審結果自行辦理加退選",
+          "detail": "初審通過的課程如果仍在課表裡，要自行處理退選；也一起確認需要補選哪些課。不要等最後核定後才開始處理。",
           "source_ids": [
-            "credit-transfer-115-1",
-            "academic-faq"
+            "credit-transfer-procedure",
+            "credit-transfer-form"
+          ]
+        },
+        {
+          "title": "將申請表及證明交註冊課務組",
+          "detail": "依規定把經初審的申請表與證明資料交到教務處註冊課務組。資料請一次備齊，送件仍須在當期受理期間內完成。",
+          "source_ids": [
+            "credit-transfer-procedure",
+            "credit-transfer-form"
+          ]
+        },
+        {
+          "title": "回到系統查詢核定結果",
+          "detail": "送件後回校務系統查詢最後核定情形，再與自己的課表及畢業檢核核對。有落差時，帶結果找註冊課務組確認。",
+          "source_ids": [
+            "credit-transfer-procedure",
+            "credit-transfer-form"
           ]
         }
-      ]
+      ],
+      "flow_type": "sequence",
+      "flow": [
+        {
+          "label": "系統填寫並印表",
+          "step_index": 0,
+          "source_ids": [
+            "credit-transfer-procedure",
+            "credit-transfer-form"
+          ]
+        },
+        {
+          "label": "送交系所初審",
+          "step_index": 1,
+          "source_ids": [
+            "credit-transfer-procedure",
+            "credit-transfer-form"
+          ]
+        },
+        {
+          "label": "依初審調整選課",
+          "step_index": 2,
+          "source_ids": [
+            "credit-transfer-procedure",
+            "credit-transfer-form"
+          ]
+        },
+        {
+          "label": "文件交註冊課務組",
+          "step_index": 3,
+          "source_ids": [
+            "credit-transfer-procedure",
+            "credit-transfer-form"
+          ]
+        },
+        {
+          "label": "查詢最後核定結果",
+          "step_index": 4,
+          "source_ids": [
+            "credit-transfer-procedure",
+            "credit-transfer-form"
+          ]
+        }
+      ],
+      "flow_note": "先核對可申請身分與當期期限；初審後的加退選要自己辦，不等最後核定才處理。"
     },
     {
       "id": "capstone",
@@ -1138,6 +1418,42 @@
             "dept-contact"
           ]
         }
+      ],
+      "flow_type": "sequence",
+      "flow": [
+        {
+          "label": "先取當屆辦法表單",
+          "step_index": 0,
+          "source_ids": [
+            "dept-forms",
+            "dept-contact"
+          ]
+        },
+        {
+          "label": "與老師排審查進度",
+          "step_index": 1,
+          "source_ids": [
+            "curriculum-115",
+            "dept-contact"
+          ]
+        },
+        {
+          "label": "依要求交作品文件",
+          "step_index": 2,
+          "source_ids": [
+            "dept-forms",
+            "dept-contact"
+          ]
+        }
+      ],
+      "flow_note": "分組、審查日期、作品格式與展演要求，先取得當屆文件再排進度。",
+      "related_news": [
+        {
+          "title": "畢展與專題競賽成果（系網消息索引）",
+          "url": "https://www.dgd.stu.edu.tw/support/",
+          "date": null,
+          "status_label": "僅消息索引，非當屆規定"
+        }
       ]
     },
     {
@@ -1206,7 +1522,35 @@
             "english-course"
           ]
         }
-      ]
+      ],
+      "flow_type": "sequence",
+      "flow": [
+        {
+          "label": "核對分級與外語學分",
+          "step_index": 0,
+          "source_ids": [
+            "english-course",
+            "curriculum-115"
+          ]
+        },
+        {
+          "label": "確認門檻通過方式",
+          "step_index": 1,
+          "source_ids": [
+            "english-threshold",
+            "academic-faq"
+          ]
+        },
+        {
+          "label": "完成認列再查檢核",
+          "step_index": 2,
+          "source_ids": [
+            "english-course",
+            "academic-faq"
+          ]
+        }
+      ],
+      "flow_note": "英文課程學分與英文能力門檻要分開確認；分級免修也要問清楚補足方式。"
     },
     {
       "id": "status-military",
@@ -1214,9 +1558,9 @@
       "title": "休學復學與兵役",
       "summary": "休學、復學要完成正式程序；兵役資料另找生輔組確認。先聯絡承辦，避免只停課卻沒有辦好學籍。",
       "steps": [
-        "先向系辦及註冊課務組確認程序",
-        "備文件並在當期期限內完成離校或復學",
-        "役男另向生輔組確認兵役資料"
+        "休學：先聯繫系所，再到教務處領表",
+        "復學或續休：依通知回覆並辦理",
+        "兵役：另向生輔組確認資料"
       ],
       "contact": {
         "primary": "註冊課務組（動遊系）",
@@ -1253,29 +1597,55 @@
       ],
       "step_details": [
         {
-          "title": "先向系辦及註冊課務組確認程序",
-          "detail": "辦理前先聯絡系辦與註冊課務組，說明要休學或復學，以及自己的學籍情況。詢問導師或代理人可辦理的時間，再安排到校，避免領表後找不到簽核人員。",
+          "title": "休學：先聯繫系所，再到教務處領表",
+          "detail": "先約好導師或系所承辦，再到註冊課務組登記領表。依當期公告完成訪談、離校與交回文件；領表日期會影響退費計算。",
           "source_ids": [
             "academic-status-current"
           ]
         },
         {
-          "title": "備文件並在當期期限內完成離校或復學",
-          "detail": "休學先備學生證；委託代辦時確認委託書，領表後按公告期限完成離校及繳件。復學則依本人收到的通知辦理，並確認通訊資料正確，別只停止上課。",
+          "title": "復學或續休：依通知回覆並辦理",
+          "detail": "收到復學通知後，依通知期限回覆復學或繼續休學，確認下一學期的註冊安排。若因服役辦理休復學，另問註冊課務組需要哪些證明。",
           "source_ids": [
-            "academic-status-current",
-            "academic-faq"
+            "academic-faq",
+            "academic-status-current"
           ]
         },
         {
-          "title": "役男另向生輔組確認兵役資料",
-          "detail": "若是復學、轉入、轉系或延畢，主動向生輔組說明役男身分，確認需補哪些兵役文件。把學籍變動和兵役資料分開追蹤，不假設其中一項完成就全部辦妥。",
+          "title": "兵役：另向生輔組確認資料",
+          "detail": "轉入、復學或延畢等學籍有變動時，另向生輔組確認兵役資料及緩徵或儘後召集是否要辦理。不要把學籍手續視為兵役也已完成。",
           "source_ids": [
             "school-news",
             "life-contact"
           ]
         }
-      ]
+      ],
+      "flow_type": "branch",
+      "flow": [
+        {
+          "label": "想辦休學或退學",
+          "step_index": 0,
+          "source_ids": [
+            "academic-status-current"
+          ]
+        },
+        {
+          "label": "準備復學或續休",
+          "step_index": 1,
+          "source_ids": [
+            "academic-faq"
+          ]
+        },
+        {
+          "label": "另查自己的兵役事項",
+          "step_index": 2,
+          "source_ids": [
+            "school-news",
+            "life-contact"
+          ]
+        }
+      ],
+      "flow_note": "休學與復學依目前狀況擇一辦理；役男另向生輔組確認兵役，不以完成學籍程序代替。"
     },
     {
       "id": "financial-aid",
@@ -1299,7 +1669,9 @@
         "low-income-115-1",
         "hardship",
         "life-contact",
-        "hardship-application-details"
+        "hardship-application-details",
+        "aid-award-directory",
+        "aid-tuition-announcement"
       ],
       "warning": "",
       "faq": [
@@ -1346,7 +1718,36 @@
             "hardship"
           ]
         }
-      ]
+      ],
+      "flow_type": "sequence",
+      "flow": [
+        {
+          "label": "說明困難與已領補助",
+          "step_index": 0,
+          "source_ids": [
+            "hardship-application-details",
+            "life-contact"
+          ]
+        },
+        {
+          "label": "確認方案備妥資料",
+          "step_index": 1,
+          "source_ids": [
+            "aid-115-1",
+            "hardship-application-details",
+            "aid-award-directory"
+          ]
+        },
+        {
+          "label": "依期限送件追蹤補件",
+          "step_index": 2,
+          "source_ids": [
+            "hardship-application-details",
+            "aid-tuition-announcement"
+          ]
+        }
+      ],
+      "flow_note": "急難慰助、助學金與學雜費減免各有資格和期限，先請承辦協助選方案。"
     },
     {
       "id": "support-rights",
@@ -1365,9 +1766,8 @@
       },
       "source_ids": [
         "student-portal",
-        "gender-contact",
-        "gender-event",
-        "academic-faq"
+        "academic-faq",
+        "dept-contact"
       ],
       "warning": "申訴或性平案件，請先確認受理窗口與正式期限，再使用對應表單送件。",
       "faq": [
@@ -1382,8 +1782,7 @@
           "q": "一般申訴與性平可以共用同一張表嗎？",
           "a": "不要先假設表單共用。請導師協助找對承辦，確認案件類型、受理方式與期限後，再使用對應表單。",
           "source_ids": [
-            "student-portal",
-            "gender-contact"
+            "student-portal"
           ]
         }
       ],
@@ -1410,7 +1809,33 @@
             "academic-faq"
           ]
         }
-      ]
+      ],
+      "flow_type": "choices",
+      "flow": [
+        {
+          "label": "先找師長協助轉介",
+          "step_index": 0,
+          "source_ids": [
+            "dept-contact",
+            "student-portal"
+          ]
+        },
+        {
+          "label": "需要時預約諮商",
+          "step_index": 1,
+          "source_ids": [
+            "student-portal"
+          ]
+        },
+        {
+          "label": "權益事件找正式窗口",
+          "step_index": 2,
+          "source_ids": [
+            "student-portal"
+          ]
+        }
+      ],
+      "flow_note": "依需求直接找窗口，不必先諮商才能提出權益問題。"
     },
     {
       "id": "career",
@@ -1474,7 +1899,32 @@
             "career-contact"
           ]
         }
-      ]
+      ],
+      "flow_type": "sequence",
+      "flow": [
+        {
+          "label": "準備履歷與作品集",
+          "step_index": 0,
+          "source_ids": [
+            "dept-contact"
+          ]
+        },
+        {
+          "label": "詢問師長職發資源",
+          "step_index": 1,
+          "source_ids": [
+            "career-contact"
+          ]
+        },
+        {
+          "label": "依職缺投件並追蹤",
+          "step_index": 2,
+          "source_ids": [
+            "career-contact"
+          ]
+        }
+      ],
+      "flow_note": "可同步找師長討論與使用職發資源，依各職缺要求準備作品。"
     },
     {
       "id": "graduate-study",
@@ -1540,7 +1990,33 @@
             "graduate-application-116"
           ]
         }
-      ]
+      ],
+      "flow_type": "sequence",
+      "flow": [
+        {
+          "label": "帶作品討論升學方向",
+          "step_index": 0,
+          "source_ids": [
+            "dept-contact"
+          ]
+        },
+        {
+          "label": "查當年度簡章資格",
+          "step_index": 1,
+          "source_ids": [
+            "graduate-handbook-index",
+            "graduate-handbook-116"
+          ]
+        },
+        {
+          "label": "完成報名並追蹤審查",
+          "step_index": 2,
+          "source_ids": [
+            "graduate-application-116"
+          ]
+        }
+      ],
+      "flow_note": "本校與外校各看自己的簡章；送出後仍要查資格審查與補件狀態。"
     },
     {
       "id": "overseas-internship",
@@ -1608,6 +2084,42 @@
           "source_ids": [
             "moe-studyabroad-rules"
           ]
+        }
+      ],
+      "flow_type": "sequence",
+      "flow": [
+        {
+          "label": "先查當期甄選機會",
+          "step_index": 0,
+          "source_ids": [
+            "dept-contact",
+            "career-contact"
+          ]
+        },
+        {
+          "label": "核對資格費用與補助",
+          "step_index": 1,
+          "source_ids": [
+            "moe-studyabroad-rules",
+            "career-contact"
+          ]
+        },
+        {
+          "label": "錄取後完成行前準備",
+          "step_index": 2,
+          "source_ids": [
+            "moe-studyabroad-rules",
+            "career-contact"
+          ]
+        }
+      ],
+      "flow_note": "海外實習的甄選、補助與出國文件分開確認；歷屆成果不代表本期已開放。",
+      "related_news": [
+        {
+          "title": "第九屆赴日HC實習成果",
+          "url": "https://www.stu.edu.tw/latestnews-single/?id=223564",
+          "date": "2026-08",
+          "status_label": "歷屆成果，非當期甄選"
         }
       ]
     },
@@ -1677,7 +2189,35 @@
             "dept-contact"
           ]
         }
-      ]
+      ],
+      "flow_type": "sequence",
+      "flow": [
+        {
+          "label": "詢問當期見學或課程",
+          "step_index": 0,
+          "source_ids": [
+            "dept-contact",
+            "oica-outbound"
+          ]
+        },
+        {
+          "label": "核對行程費用與認列",
+          "step_index": 1,
+          "source_ids": [
+            "dept-contact",
+            "oica-outbound"
+          ]
+        },
+        {
+          "label": "依文件報名準備出國",
+          "step_index": 2,
+          "source_ids": [
+            "dept-contact",
+            "oica-outbound"
+          ]
+        }
+      ],
+      "flow_note": "見學、交換與海外實習的申請和補助不同，依正在招募的團或課程辦理。"
     }
   ]
 }
