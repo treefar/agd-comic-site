@@ -12,3 +12,5 @@ test('Category and student wording searches combine without hiding FAQ-only matc
  const vm=require('node:vm'),ctx={};vm.createContext(ctx);vm.runInContext(fs.readFileSync('student-guide-model.js','utf8')+';this.model=StudentGuideModel',ctx);const m=ctx.model;const cards=[{id:'a',category:'courses',title:'選課',summary:'加退選',steps:['確認學分'],contact:{primary:'註冊課務組'},faq:[{q:'忘記選課？',a:'洽承辦'}]},{id:'b',category:'internships',title:'海外實習',summary:'赴日',steps:[],contact:{primary:'職涯中心'},faq:[{q:'有補助嗎？',a:'看當期甄選'}]}];
  assert.deepEqual(m.filter(cards,'courses','忘記').map(x=>x.id),['a']);assert.equal(m.filter(cards,'courses','補助').length,0);assert.deepEqual(m.filter(cards,'all',' 職涯 ').map(x=>x.id),['b']);assert.equal(m.filter(cards,'all','查無此資料').length,0);assert.equal(m.filter(cards,'all','').length,2);
 });
+
+test('Opening panel is a category index without promotional filler',()=>{const s=fs.readFileSync('student-guide.jsx','utf8');assert.doesNotMatch(s,/要辦什麼事，|先找到這一格|從選課到畢業，先看重點/);assert.ok(s.indexOf('aria-label="資訊分類"')<s.indexOf('<aside className="sg-note">'));});

@@ -36,20 +36,19 @@ const StudentGuideDetail = () => {
         <div className="sg-hero-copy">
           <div className="sg-eyebrow">STUDENT GUIDE · 動遊在校生</div>
           <h1 id="student-guide-title">在校指南</h1>
-          <p className="sg-intro">要辦什麼事，<br/>先找到這一格。</p>
-          <p className="sg-hero-note">從選課到畢業，先看重點、照步驟辦，<br className="sg-desktop-break"/>有疑問再找對的窗口。</p>
-          <div className="sg-index"><span>{data.categories.length} 個分類</span><span>{data.cards.length} 項常用資訊</span><button onClick={() => document.getElementById('student-faq').scrollIntoView({block:'start',behavior:'instant'})}>常見問題 ↓</button></div>
+          <h2 className="sg-directory-title">分類索引</h2>
+        <div className="sg-categories sg-directory" role="group" aria-label="資訊分類">
+          <button aria-pressed={category==='all'} onClick={()=>{setCategory('all');document.getElementById("student-topics").scrollIntoView({block:"start",behavior:"instant"});}}>全部 <span>{data.cards.length}</span></button>
+          {data.categories.map(c=><button key={c.id} aria-pressed={category===c.id} onClick={()=>{setCategory(c.id);document.getElementById("student-topics").scrollIntoView({block:"start",behavior:"instant"});}}>{c.title} <span>{data.cards.filter(x=>x.category===c.id).length}</span></button>)}
         </div>
-        <div className="sg-start"><h2>現在想做什麼？</h2><div className="sg-shortcuts">{data.quick_links.map(x=><button key={x.card_id||x.target||x.id} onClick={()=>jump(x.card_id||x.target||x.id)}>{x.label||x.title}<span aria-hidden="true">↗</span></button>)}</div></div>
+          <button onClick={() => document.getElementById("student-faq").scrollIntoView({block:"start",behavior:"instant"})}>常見問題 ↓</button>
+        </div>
+        <div className="sg-start"><h2>常用項目</h2><div className="sg-shortcuts">{data.quick_links.map(x=><button key={x.card_id||x.target||x.id} onClick={()=>jump(x.card_id||x.target||x.id)}>{x.label||x.title}<span aria-hidden="true">↗</span></button>)}</div></div>
       </section>
       <aside className="sg-note"><strong>畢業規則先看「入學年度＋班別」</strong><p>這份指南以日間四技在校生為主。一般班、技優班與不同入學年度可能不同；申請資格和日期請以各處室當期公告為準。</p></aside>
-      <section className="sg-browse" aria-labelledby="student-topics-title">
-        <div className="sg-section-heading"><span className="sg-number">01</span><div><h2 id="student-topics-title">先找到要辦的事</h2><p>選分類，或直接搜尋「補助」「請假」「實習」。</p></div></div>
+      <section id="student-topics" className="sg-browse" aria-labelledby="student-topics-title">
+        <div className="sg-section-heading"><span className="sg-number">01</span><div><h2 id="student-topics-title">辦理資訊</h2></div></div>
         <div className="sg-toolbar"><label htmlFor="student-search">搜尋資訊<input id="student-search" ref={input} type="search" placeholder="輸入問題或關鍵字" value={query} onChange={e=>setQuery(e.target.value)}/></label><button className="sg-clear" onClick={()=>{setCategory('all');setQuery('');input.current?.focus();}}>清除篩選</button></div>
-        <div className="sg-categories" role="group" aria-label="資訊分類">
-          <button aria-pressed={category==='all'} onClick={()=>setCategory('all')}>全部 <span>{data.cards.length}</span></button>
-          {data.categories.map(c=><button key={c.id} aria-pressed={category===c.id} onClick={()=>setCategory(c.id)}>{c.title} <span>{data.cards.filter(x=>x.category===c.id).length}</span></button>)}
-        </div>
         <p className="sg-count" role="status">顯示 {cards.length}／{data.cards.length} 項資訊</p>
         {cards.length===0?<div className="sg-empty"><h3>沒有找到符合的資訊</h3><p>換個關鍵字，或按「清除篩選」看全部項目。</p></div>:<div className="sg-card-grid">{cards.map(card=><article id={'student-'+card.id} className="sg-card" key={card.id} tabIndex="-1" data-guide-card={card.id}>
           <div className="sg-card-heading"><span className="sg-category-tag">{categoryName(card.category)}</span><h3>{card.title}</h3><p className="sg-summary">{card.summary}</p></div>
@@ -60,7 +59,7 @@ const StudentGuideDetail = () => {
         </article>)}</div>}
       </section>
       <section id="student-faq" className="sg-faq" aria-labelledby="student-faq-title">
-        <div className="sg-section-heading"><span className="sg-number">02</span><div><h2 id="student-faq-title">常見問題</h2><p>答案跟著上方分類與搜尋一起篩選。</p></div></div>
+        <div className="sg-section-heading"><span className="sg-number">02</span><div><h2 id="student-faq-title">常見問題</h2></div></div>
         <div className="sg-faq-list">{cards.flatMap(card=>card.faq.map((faq,i)=><details className="sg-faq-item" key={card.id+'-'+i}><summary><span><small>{categoryName(card.category)}</small>{faq.q}</span><b aria-hidden="true">＋</b></summary><div className="sg-faq-answer"><p>{faq.a}</p><div className="sg-faq-links">{faq.source_ids.map(id=>sourceMap[id]).filter(Boolean).map(s=><a key={s.id} href={s.url} target="_blank" rel="noopener noreferrer">{s.title} ↗</a>)}</div></div></details>))}</div>
         {!cards.length&&<p className="sg-empty">目前的篩選沒有相關問題。</p>}
       </section>
