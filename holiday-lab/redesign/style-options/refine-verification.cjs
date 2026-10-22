@@ -1,0 +1,1 @@
+const fs=require('node:fs'),path=require('node:path');const f=path.join(__dirname,'verify.cjs');let s=fs.readFileSync(f,'utf8').replace('let m=await p.evaluate','await p.evaluate(()=>Promise.all([...document.images].map(i=>i.decode().catch(()=>{}))));let m=await p.evaluate');fs.writeFileSync(f,s);
