@@ -1,0 +1,183 @@
+✖ All 78 exact operations preflight without writing any product file (31.9738ms)
+✔ A changed JSON old value stops before any write (38.1202ms)
+✖ A changed game token stops before any write (21.099ms)
+✖ New UI key collisions are not silently overwritten (21.3344ms)
+✖ Renamed canonical dictionary keys cannot overwrite an existing target (23.5986ms)
+✖ Unrelated root edits survive the exact plan (19.6954ms)
+✖ A concurrent edit after preflight prevents all writes (20.0055ms)
+✖ Canonical eligibility corrections retain quotas, dates and every translated key (16.7336ms)
+✖ Game rules and threshold ASTs are unchanged; new captions remain playable (18.078ms)
+✖ All nine P2 decisions and four bilingual guide UI options are explicitly covered (17.621ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 1
+ℹ fail 9
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 346.7378
+
+✖ failing tests:
+
+test at holiday-lab\translation-review\followup\apply-safe.test.mjs:6:1
+✖ All 78 exact operations preflight without writing any product file (31.9738ms)
+  Error: OLD_EXACT_MISMATCH EN-RETURN
+      at prepare (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/followup/apply-safe.mjs:6:357)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/followup/apply-safe.test.mjs:6:132)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17)
+
+test at holiday-lab\translation-review\followup\apply-safe.test.mjs:8:1
+✖ A changed game token stops before any write (21.099ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /TOKEN_EXACT_MISMATCH/. Input:
+  
+  'Error: OLD_EXACT_MISMATCH EN-RETURN'
+  
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/followup/apply-safe.test.mjs:8:261)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: OLD_EXACT_MISMATCH EN-RETURN
+        at prepare (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/followup/apply-safe.mjs:6:357)
+        at file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/followup/apply-safe.test.mjs:8:272
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/followup/apply-safe.test.mjs:8:261)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1201:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+        at Test.postRun (node:internal/test_runner/test:1330:19)
+        at Test.run (node:internal/test_runner/test:1258:12),
+    expected: /TOKEN_EXACT_MISMATCH/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\followup\apply-safe.test.mjs:9:1
+✖ New UI key collisions are not silently overwritten (21.3344ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /EXPECTED_ABSENT/. Input:
+  
+  'Error: OLD_EXACT_MISMATCH EN-RETURN'
+  
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/followup/apply-safe.test.mjs:9:272)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: OLD_EXACT_MISMATCH EN-RETURN
+        at prepare (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/followup/apply-safe.mjs:6:357)
+        at file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/followup/apply-safe.test.mjs:9:283
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/followup/apply-safe.test.mjs:9:272)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1201:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+        at Test.postRun (node:internal/test_runner/test:1330:19)
+        at Test.run (node:internal/test_runner/test:1258:12),
+    expected: /EXPECTED_ABSENT/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\followup\apply-safe.test.mjs:10:1
+✖ Renamed canonical dictionary keys cannot overwrite an existing target (23.5986ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /RENAME_EXACT_MISMATCH/. Input:
+  
+  'Error: OLD_EXACT_MISMATCH EN-RETURN'
+  
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/followup/apply-safe.test.mjs:10:311)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: OLD_EXACT_MISMATCH EN-RETURN
+        at prepare (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/followup/apply-safe.mjs:6:357)
+        at file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/followup/apply-safe.test.mjs:10:322
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/followup/apply-safe.test.mjs:10:311)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1201:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+        at Test.postRun (node:internal/test_runner/test:1330:19)
+        at Test.run (node:internal/test_runner/test:1258:12),
+    expected: /RENAME_EXACT_MISMATCH/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\followup\apply-safe.test.mjs:11:1
+✖ Unrelated root edits survive the exact plan (19.6954ms)
+  Error: OLD_EXACT_MISMATCH EN-RETURN
+      at prepare (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/followup/apply-safe.mjs:6:357)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/followup/apply-safe.test.mjs:11:373)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+
+test at holiday-lab\translation-review\followup\apply-safe.test.mjs:12:1
+✖ A concurrent edit after preflight prevents all writes (20.0055ms)
+  Error: OLD_EXACT_MISMATCH EN-RETURN
+      at prepare (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/followup/apply-safe.mjs:6:357)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/followup/apply-safe.test.mjs:12:102)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+
+test at holiday-lab\translation-review\followup\apply-safe.test.mjs:13:1
+✖ Canonical eligibility corrections retain quotas, dates and every translated key (16.7336ms)
+  Error: OLD_EXACT_MISMATCH EN-RETURN
+      at prepare (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/followup/apply-safe.mjs:6:357)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/followup/apply-safe.test.mjs:13:101)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+
+test at holiday-lab\translation-review\followup\apply-safe.test.mjs:14:1
+✖ Game rules and threshold ASTs are unchanged; new captions remain playable (18.078ms)
+  Error: OLD_EXACT_MISMATCH EN-RETURN
+      at prepare (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/followup/apply-safe.mjs:6:357)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/followup/apply-safe.test.mjs:14:100)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+
+test at holiday-lab\translation-review\followup\apply-safe.test.mjs:15:1
+✖ All nine P2 decisions and four bilingual guide UI options are explicitly covered (17.621ms)
+  Error: OLD_EXACT_MISMATCH EN-RETURN
+      at prepare (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/followup/apply-safe.mjs:6:357)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/followup/apply-safe.test.mjs:15:210)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)

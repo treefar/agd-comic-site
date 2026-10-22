@@ -1,6 +1,9 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';import {createHash} from 'node:crypto';import {createRequire} from 'node:module';import {prepare,applyPrepared} from './apply-safe.mjs';
 const dir=path.dirname(fileURLToPath(import.meta.url)),repo=path.resolve(dir,'../../..'),plan=JSON.parse(fs.readFileSync(path.join(dir,'exact-plan.json'))),norm=s=>s.replace(/\s+/g,' ').trim(),sha=s=>createHash('sha256').update(s).digest('hex');
-function fixture(name){const root=path.join(dir,'fixtures',name);for(const f of plan.files){fs.mkdirSync(path.dirname(path.join(root,f.file)),{recursive:true});fs.copyFileSync(path.join(repo,f.file),path.join(root,f.file));}return root;}
+// Fixed pre-application inputs: never seed regression tests from mutable product files.
+const {execFileSync}=await import('node:child_process');
+const baselineFiles=new Map(plan.files.map(f=>[f.file,execFileSync('git',['show',`${plan.source_commit}:${f.file}`],{cwd:repo,maxBuffer:10*1024*1024})]));
+function fixture(name){const root=path.join(dir,'fixtures',name);for(const f of plan.files){fs.mkdirSync(path.dirname(path.join(root,f.file)),{recursive:true});fs.writeFileSync(path.join(root,f.file),baselineFiles.get(f.file));}return root;}
 function hashes(root){return Object.fromEntries(plan.files.map(f=>[f.file,sha(fs.readFileSync(path.join(root,f.file)))]));}
 const parsed=(p,file)=>JSON.parse(p.texts.get(file));
 test('All 78 exact operations preflight without writing any product file',()=>{const root=fixture('dry-run'),before=hashes(root),p=prepare(root);assert.equal(p.report.operations,78);assert.equal(p.texts.size,9);assert.deepEqual(hashes(root),before);});
