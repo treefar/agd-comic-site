@@ -1,0 +1,14 @@
+import fs from 'node:fs';import os from 'node:os';import path from 'node:path';import {spawnSync} from 'node:child_process';import {fileURLToPath} from 'node:url';
+const dir=path.dirname(fileURLToPath(import.meta.url)),source=path.join(dir,'inspect-tf-base.ps1');
+// Stage UTF-8 BOM in TEMP, verify its bytes, then copy the complete file in one write.
+const content=fs.readFileSync(source,'utf8').replace(/^\uFEFF/,'');const temp=path.join(os.tmpdir(),`student-webgl-preflight-${Date.now()}.ps1`);fs.writeFileSync(temp,'\uFEFF'+content);const b=fs.readFileSync(temp);if(!b.subarray(0,3).equals(Buffer.from([239,187,191])))throw Error('Missing BOM');fs.copyFileSync(temp,source);
+const results=[];function run(command,args,expected,match){const p=spawnSync(command,args,{encoding:'utf8',timeout:20000,windowsHide:true}),stdout=p.stdout||'',stderr=p.stderr||'';const pass=p.status===expected&&(!match||stdout.includes(match));results.push({command:[command,...args].join(' '),exit_code:p.status,expected_exit_code:expected,stdout,stderr,yes:pass});return p;}
+const quoted=source.replaceAll("'","''"),parse=`$e=$null;$t=$null;[System.Management.Automation.Language.Parser]::ParseFile('${quoted}',[ref]$t,[ref]$e)|Out-Null;'PARSE_ERRORS='+$e.Count;if($e.Count){exit 1}`;
+run('powershell',['-NoProfile','-Command',parse],0,'PARSE_ERRORS=0');
+const pwsh=spawnSync('powershell',['-NoProfile','-Command',"(Get-Command pwsh -ErrorAction SilentlyContinue).Source"],{encoding:'utf8'}).stdout.trim();
+if(pwsh)run(pwsh,['-NoProfile','-Command',parse],0,'PARSE_ERRORS=0');else results.push({command:'Get-Command pwsh',yes:false,stdout:'PowerShell 7 unavailable; not substituted.'});
+if(os.hostname().toLowerCase()!=='laptop-5k6l9a6m')run('powershell',['-NoProfile','-File',source],2,'WRONG_MACHINE');
+run('powershell',['-NoProfile','-File','C:/AIHome/claude/skills/unity-version-guard/scripts/assert-unity-version.ps1','-EditorOnly','-Json'],0,'6000.5.10f1');
+run(process.execPath,[path.join(dir,'send-inspection.mjs')],0,'EXISTING');
+const queued=JSON.parse(fs.readFileSync(path.join(dir,'queued-inspection.json')));results.push({command:'Read-only queued job state check',yes:queued.state==='queued-not-executed',stdout:JSON.stringify(queued)});
+const out={at:new Date().toISOString(),machine:os.hostname(),bom_hex:b.subarray(0,3).toString('hex'),scope:'Preflight parser, wrong-machine guard, local Editor only; NOT a TF-BASE execution or game Build.',results};fs.writeFileSync(path.join(dir,'preflight-verification.json'),JSON.stringify(out,null,2));fs.writeFileSync(path.join(dir,'preflight-output.txt'),results.map(r=>`${r.yes?'yes':'no'} ${r.command}\nexit=${r.exit_code??'n/a'}\n${r.stdout||''}${r.stderr||''}`).join('\n'));for(const r of results)console.log(`${r.yes?'YES':'NO'} ${r.command.split(' -')[0]} exit=${r.exit_code??'n/a'}`);if(results.some(r=>!r.yes))process.exitCode=1;

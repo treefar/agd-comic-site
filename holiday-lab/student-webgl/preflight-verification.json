@@ -1,0 +1,53 @@
+{
+  "at": "2026-10-22T14:21:43.527Z",
+  "machine": "treefarNB",
+  "bom_hex": "efbbbf",
+  "scope": "Preflight parser, wrong-machine guard, local Editor only; NOT a TF-BASE execution or game Build.",
+  "results": [
+    {
+      "command": "powershell -NoProfile -Command $e=$null;$t=$null;[System.Management.Automation.Language.Parser]::ParseFile('C:\\agywork\\agd-student-webgl\\holiday-lab\\student-webgl\\inspect-tf-base.ps1',[ref]$t,[ref]$e)|Out-Null;'PARSE_ERRORS='+$e.Count;if($e.Count){exit 1}",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "PARSE_ERRORS=0\r\n",
+      "stderr": "",
+      "yes": true
+    },
+    {
+      "command": "C:\\Users\\treef\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe -NoProfile -Command $e=$null;$t=$null;[System.Management.Automation.Language.Parser]::ParseFile('C:\\agywork\\agd-student-webgl\\holiday-lab\\student-webgl\\inspect-tf-base.ps1',[ref]$t,[ref]$e)|Out-Null;'PARSE_ERRORS='+$e.Count;if($e.Count){exit 1}",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "PARSE_ERRORS=0\r\n",
+      "stderr": "",
+      "yes": true
+    },
+    {
+      "command": "powershell -NoProfile -File C:\\agywork\\agd-student-webgl\\holiday-lab\\student-webgl\\inspect-tf-base.ps1",
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "stdout": "{\r\n    \"host\":  \"TREEFARNB\",\r\n    \"expectedHost\":  \"LAPTOP-5K6L9A6M\",\r\n    \"timestamp\":  \"2026-10-22T22:21:42.1950826+08:00\",\r\n    \"editorGuard\":  null,\r\n    \"webglModule\":  false,\r\n    \"candidates\":  [\r\n\r\n                   ],\r\n    \"visited\":  0,\r\n    \"truncated\":  false,\r\n    \"errors\":  [\r\n                   \"WRONG_MACHINE: run this inventory on TF-BASE.\"\r\n               ]\r\n}\r\n",
+      "stderr": "",
+      "yes": true
+    },
+    {
+      "command": "powershell -NoProfile -File C:/AIHome/claude/skills/unity-version-guard/scripts/assert-unity-version.ps1 -EditorOnly -Json",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "{\"machine\":null,\"state\":\"PASS_EDITOR\",\"requiredVersion\":\"6000.5.10f1\",\"editorPath\":\"C:\\\\Program Files\\\\Unity\\\\Hub\\\\Editor\\\\6000.5.10f1\\\\Editor\\\\Unity.exe\",\"projectPath\":\"\",\"projectVersion\":\"\",\"detail\":\"Exact Editor is installed.\"}\r\n",
+      "stderr": "",
+      "yes": true
+    },
+    {
+      "command": "C:\\Program Files\\nodejs\\node.exe C:\\agywork\\agd-student-webgl\\holiday-lab\\student-webgl\\send-inspection.mjs",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "EXISTING 20261022-221358-tf-go-1412; no duplicate was queued.\n",
+      "stderr": "",
+      "yes": true
+    },
+    {
+      "command": "Read-only queued job state check",
+      "yes": true,
+      "stdout": "{\"jobId\":\"20261022-221358-tf-go-1412\",\"target\":\"TF-BASE\",\"queued_at\":\"2026-10-22T14:13:58.904Z\",\"state\":\"queued-not-executed\",\"payload\":\"inspect-tf-base.ps1\",\"mechanism\":\"existing C:/AIHome/claude/scripts/fleet-job.ps1\",\"timeoutSec\":180}"
+    }
+  ]
+}
