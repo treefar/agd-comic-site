@@ -7,7 +7,7 @@ if(fs.existsSync(out))throw Error('Use a fresh output directory; previous builds
 execFileSync(process.execPath,['C:/AIHome/claude/skills/game-ui-art/scripts/ui-policy.cjs','--project',process.cwd()],{stdio:'inherit'});
 execFileSync(process.execPath,['scripts/build.mjs','--local-review',`--out=${out}`],{stdio:'inherit'});
 const lab=path.join(out,'holiday-lab');fs.mkdirSync(lab,{recursive:true});
-for(const name of ['index.html','lab.css','runner.mjs','catalog.mjs','games','assets','audio']){
+for(const name of ['index.html','lab.css','runner.mjs','replay-model.mjs','catalog.mjs','games','assets','audio']){
  if(!fs.existsSync(`holiday-lab/${name}`))throw Error(`Missing runtime ${name}`);
  fs.cpSync(`holiday-lab/${name}`,path.join(lab,name),{recursive:true});
 }

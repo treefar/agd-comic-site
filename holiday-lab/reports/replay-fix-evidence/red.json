@@ -1,0 +1,139 @@
+{
+  "at": "2026-10-22T14:52:42.173Z",
+  "baseline": true,
+  "cases": [
+    {
+      "name": "children replay plays wood, metal and paper at the saved cues",
+      "pass": false,
+      "artifact": {
+        "takes": [
+          {
+            "material": "wood",
+            "cue": 750,
+            "error": 50
+          },
+          {
+            "material": "metal",
+            "cue": 1200,
+            "error": 0
+          },
+          {
+            "material": "paper",
+            "cue": 1700,
+            "error": 0
+          }
+        ],
+        "attempts": 3
+      },
+      "error": "page.waitForFunction: Timeout 10000ms exceeded.\n    at C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\tests\\replay-browser.test.cjs:34:13\n    at async check (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\tests\\replay-browser.test.cjs:23:82)\n    at async C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\tests\\replay-browser.test.cjs:28:3"
+    },
+    {
+      "name": "mid-autumn replay interpolates saved motion and pauses on hidden signal",
+      "pass": false,
+      "artifact": {
+        "cuts": [
+          {
+            "time": 900,
+            "x": 21.5,
+            "size": 20,
+            "endX": 35,
+            "speed": 15,
+            "score": 100
+          },
+          {
+            "time": 1200,
+            "x": 38,
+            "size": 26,
+            "endX": 62,
+            "speed": 20,
+            "score": 100
+          },
+          {
+            "time": 750,
+            "x": 56.5,
+            "size": 18,
+            "endX": 45.25,
+            "speed": -15,
+            "score": 99
+          }
+        ],
+        "attempts": 3
+      },
+      "first": {
+        "shot": "0",
+        "left": 21.5
+      },
+      "moving": {
+        "shot": "0",
+        "left": 21.5
+      },
+      "error": "AssertionError [ERR_ASSERTION]: must move within shot: 21.5 -> 21.5\n    at C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\tests\\replay-browser.test.cjs:45:158\n    at async check (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\tests\\replay-browser.test.cjs:23:82)\n    at async C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\tests\\replay-browser.test.cjs:40:3"
+    },
+    {
+      "name": "constitution replay keeps actual multiline captions and resizes their saved type",
+      "pass": false,
+      "artifact": {
+        "captions": [
+          {
+            "font": 18,
+            "lines": 2,
+            "duration": 6,
+            "x": 50,
+            "y": 78,
+            "tone": "light",
+            "lang": "ja",
+            "words": {
+              "zh": "每個故事，\n都值得被看見。",
+              "en": "Every story\ncan be seen.",
+              "ja": "みんなの物語を、\n大切に。"
+            },
+            "stageWidth": 659
+          },
+          {
+            "font": 20,
+            "lines": 2,
+            "duration": 6,
+            "x": 50,
+            "y": 78,
+            "tone": "light",
+            "lang": "ja",
+            "words": {
+              "zh": "字大一些，\n讀慢一些。",
+              "en": "Bigger words.\nTime to read.",
+              "ja": "大きい文字、\n読む時間。"
+            },
+            "stageWidth": 659
+          },
+          {
+            "font": 18,
+            "lines": 2,
+            "duration": 6,
+            "x": 50,
+            "y": 78,
+            "tone": "light",
+            "lang": "ja",
+            "words": {
+              "zh": "這一頁，\n我們一起讀完。",
+              "en": "Read this page\ntogether.",
+              "ja": "このページを、\n一緒に。"
+            },
+            "stageWidth": 659
+          }
+        ],
+        "attempts": 3
+      },
+      "error": "locator.waitFor: Timeout 1500ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.replay-text') to be visible\u001b[22m\n\n    at C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\tests\\replay-browser.test.cjs:56:37\n    at async check (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\tests\\replay-browser.test.cjs:23:82)\n    at async C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\tests\\replay-browser.test.cjs:52:3"
+    }
+  ],
+  "errors": [],
+  "limitations": [
+    "Visibility regression uses a simulated document.hidden signal, not a real background tab.",
+    "Automated DOM playthrough is not a student blind test or user artwork approval."
+  ],
+  "server": {
+    "pid": 5220,
+    "log": "Local review: http://127.0.0.1:8803/ · C:\\agywork\\agd-holiday-prototypes\n"
+  },
+  "browser": "151.0.7922.34",
+  "pass": false
+}

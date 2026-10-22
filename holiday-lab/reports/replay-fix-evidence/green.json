@@ -1,0 +1,222 @@
+{
+  "at": "2026-10-22T14:57:21.655Z",
+  "baseline": false,
+  "base": "http://127.0.0.1:8803",
+  "cases": [
+    {
+      "name": "children replay plays wood, metal and paper at the saved cues",
+      "pass": true,
+      "artifact": {
+        "takes": [
+          {
+            "material": "wood",
+            "cue": 750,
+            "error": 50
+          },
+          {
+            "material": "metal",
+            "cue": 1200,
+            "error": 0
+          },
+          {
+            "material": "paper",
+            "cue": 1700,
+            "error": 0
+          }
+        ],
+        "attempts": 3
+      },
+      "simulatedHiddenStopsSound": true,
+      "replayAudio": [
+        {
+          "type": "play",
+          "src": "http://127.0.0.1:8803/holiday-lab/audio/click.ogg",
+          "at": 9206.300000011921,
+          "started": false,
+          "error": "The play() request was interrupted by a call to pause(). https://goo.gl/LdLk22"
+        },
+        {
+          "type": "play",
+          "src": "http://127.0.0.1:8803/holiday-lab/audio/wood.ogg",
+          "at": 9970.900000035763,
+          "shot": "0",
+          "started": true
+        },
+        {
+          "type": "play",
+          "src": "http://127.0.0.1:8803/holiday-lab/audio/metal.ogg",
+          "at": 14152.900000035763,
+          "shot": "1",
+          "started": true
+        },
+        {
+          "type": "play",
+          "src": "http://127.0.0.1:8803/holiday-lab/audio/paper.ogg",
+          "at": 17269.5,
+          "shot": "2",
+          "started": true
+        }
+      ],
+      "exitStopsReplay": true
+    },
+    {
+      "name": "mid-autumn replay interpolates saved motion and pauses on hidden signal",
+      "pass": true,
+      "artifact": {
+        "cuts": [
+          {
+            "time": 900,
+            "x": 21.5,
+            "size": 20,
+            "endX": 35,
+            "speed": 15,
+            "score": 100
+          },
+          {
+            "time": 1200,
+            "x": 38,
+            "size": 26,
+            "endX": 62,
+            "speed": 20,
+            "score": 100
+          },
+          {
+            "time": 750,
+            "x": 56.5,
+            "size": 18,
+            "endX": 45.25,
+            "speed": -15,
+            "score": 99
+          }
+        ],
+        "attempts": 3
+      },
+      "first": {
+        "shot": "0",
+        "left": 21.605
+      },
+      "moving": {
+        "shot": "0",
+        "left": 26.354
+      },
+      "hiddenBefore": {
+        "shot": "0",
+        "left": 26.354
+      },
+      "hiddenAfter": {
+        "shot": "0",
+        "left": 26.354
+      },
+      "resumed": {
+        "shot": "0",
+        "left": 28.034
+      },
+      "afterCut": {
+        "shot": "1",
+        "left": 35
+      }
+    },
+    {
+      "name": "constitution replay keeps actual multiline captions and resizes their saved type",
+      "pass": true,
+      "artifact": {
+        "captions": [
+          {
+            "font": 18,
+            "lines": 2,
+            "duration": 6,
+            "x": 50,
+            "y": 78,
+            "tone": "light",
+            "lang": "ja",
+            "words": {
+              "zh": "每個故事，\n都值得被看見。",
+              "en": "Every story\ncan be seen.",
+              "ja": "みんなの物語を、\n大切に。"
+            },
+            "stageWidth": 659
+          },
+          {
+            "font": 20,
+            "lines": 2,
+            "duration": 6,
+            "x": 50,
+            "y": 78,
+            "tone": "light",
+            "lang": "ja",
+            "words": {
+              "zh": "字大一些，\n讀慢一些。",
+              "en": "Bigger words.\nTime to read.",
+              "ja": "大きい文字、\n読む時間。"
+            },
+            "stageWidth": 659
+          },
+          {
+            "font": 18,
+            "lines": 2,
+            "duration": 6,
+            "x": 50,
+            "y": 78,
+            "tone": "light",
+            "lang": "ja",
+            "words": {
+              "zh": "這一頁，\n我們一起讀完。",
+              "en": "Read this page\ntogether.",
+              "ja": "このページを、\n一緒に。"
+            },
+            "stageWidth": 659
+          }
+        ],
+        "attempts": 3
+      },
+      "desktop": {
+        "words": "みんなの物語を、\n大切に。",
+        "fontSize": 28.8437,
+        "stageWidth": 1056,
+        "left": "50%",
+        "top": "78%",
+        "whiteSpace": "pre-line",
+        "rect": {
+          "width": 633.59375,
+          "height": 237.59375
+        },
+        "overflow": false
+      },
+      "mobile": {
+        "words": "みんなの物語を、\n大切に。",
+        "fontSize": 16,
+        "stageWidth": 358,
+        "left": "50%",
+        "top": "78%",
+        "whiteSpace": "pre-line",
+        "rect": {
+          "width": 214.796875,
+          "height": 80.546875
+        },
+        "overflow": false
+      },
+      "allCaptions": [
+        "みんなの物語を、\n大切に。",
+        "大きい文字、\n読む時間。",
+        "このページを、\n一緒に。"
+      ],
+      "exitRemovesText": true
+    }
+  ],
+  "errors": [],
+  "limitations": [
+    "Visibility regression uses a simulated document.hidden signal, not a real background tab.",
+    "Automated DOM playthrough is not a student blind test or user artwork approval."
+  ],
+  "server": {
+    "pid": 38264,
+    "log": "Local review: http://127.0.0.1:8803/ · C:\\agywork\\agd-holiday-prototypes\\.review-replay-02\n"
+  },
+  "runtimeSha256": {
+    "runner.mjs": "d6ad87dd8b90f1759f49ebb49026bfb4cca065358f644b9edec99c8a1c2702c1",
+    "replay-model.mjs": "202d09d268c31d7d159035cc8958bb15caa84f5406c36736ba646bf09e0757e3",
+    "lab.css": "226357de5930f0d0eccf3e43cad50dbc83285fd1e4d11f7e3a16c08c55e692ac"
+  },
+  "browser": "151.0.7922.34",
+  "pass": true
+}
