@@ -1,0 +1,1 @@
+import fs from 'node:fs';const p='tests/navigation-wrap-browser.cjs';let s=fs.readFileSync(p,'utf8');s=s.replace("lines:[...r.getClientRects()].length", "lines:new Set([...r.getClientRects()].map(r=>Math.round((r.top+r.bottom)/2/8))).size");fs.writeFileSync(p,s);
