@@ -24,9 +24,9 @@ try:
             time.sleep(.1)
     with sync_playwright() as p:
         browser = p.chromium.launch()
-        for width in [1440, 390, 320]:
+        for language, width in [(lang, w) for lang in os.environ.get('QA_LANGS', 'zh').split(',') for w in [1440, 390, 320]]:
             page = browser.new_page(viewport={'width': width, 'height': 950})
-            page.goto(url)
+            page.goto(url.replace('/#', ('/?lang=' + language if language != 'zh' else '/') + '#'))
             page.locator('[data-guide-card]').first.wait_for()
             page.evaluate('document.fonts.ready')
             # The audit is scoped to the guide. Hide the existing sticky header's
@@ -41,8 +41,8 @@ try:
                 violations = []
                 for top in range(0, height, 8200):
                     page.evaluate('(top)=>scrollTo({top,behavior:"instant"})', top)
-                    violations.extend(approved.audit_text_on_border(page, f'{width}-expanded-{expanded}', '#student-guide'))
-                results.append({'width': width, 'expanded': expanded, 'violations': violations})
+                    violations.extend(approved.audit_text_on_border(page, f'{language}-{width}-expanded-{expanded}', '#student-guide'))
+                results.append({'language': language, 'width': width, 'expanded': expanded, 'violations': violations})
             # A deliberately striped text background must fail the pixel-based checker.
             page.evaluate('document.querySelector(".sg-summary").style.background="repeating-linear-gradient(90deg,#000 0 4px,#fff 4px 8px)"')
             page.evaluate('scrollTo({top:0,behavior:"instant"})')
@@ -52,7 +52,7 @@ try:
         browser.close()
     (out / 'text-audit.json').write_text(json.dumps({'results': results, 'negative_control_detected': True}, ensure_ascii=False, indent=2), encoding='utf-8')
     for row in results:
-        print(row['width'], 'expanded='+str(row['expanded']), 'violations='+str(len(row['violations'])))
+        print(row['language'], row['width'], 'expanded='+str(row['expanded']), 'violations='+str(len(row['violations'])))
         if row['violations']:
             print(json.dumps(row['violations'][:8], ensure_ascii=False))
     print('negative-control detected')

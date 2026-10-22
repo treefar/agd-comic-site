@@ -42,12 +42,12 @@ const SFX = ({ children, color = "red", rotate = -8, size = 64, anim = "wobble",
 );
 
 // 章節標籤
-const ChapterTag = ({ num, title, jp }) => (
+const ChapterTag = ({ num, title, jp, headingId }) => (
   <div className="chapter-header">
     <div className="chapter-tag">
       <span>第</span><span className="num">{num}</span><span>話</span>
     </div>
-    <div className="title h-display">{title}</div>
+    {headingId ? <h2 id={headingId} className="title h-display">{title}</h2> : <div className="title h-display">{title}</div>}
     {jp && <div className="sub">— {jp} —</div>}
   </div>
 );
@@ -214,12 +214,13 @@ const GlobalClickFx = () => {
   const [sfxs, setSfxs] = React.useState([]);
   React.useEffect(() => {
     const onClick = (e) => {
+      if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
       // 表單元素不打擾
       if (e.target.matches?.("input, textarea, select, [contenteditable='true']")) return;
 
       // ZONE A — 純功能元件 / 標題 / 選單 → 無任何效果，避免干擾功能性
       if (e.target.closest?.(
-        "a[href], button, [role='button'], " +
+        "a[href], button, summary, [role='button'], " +
         ".topnav, .chapter-tag, .chapter-header, " +
         ".h-display, .h-jojo, .hero-tagline, " +
         "[data-no-fx='true'], [data-no-splat='true']"
@@ -420,15 +421,17 @@ const TopNav = () => {
     { label: "師資陣容", href: "#faculty" },
     { label: "實驗室",   href: "#labs" },
     { label: "招生資訊", href: "#join" },
-    { label: "在校指南", href: siteLanguageUrl("zh", "#/students/guide") },
+    { label: "在校指南", href: siteLanguageUrl(siteLanguage, "#/students/guide") },
     { label: "聯絡我們", href: "#contact" },
   ];
   const [open, setOpen] = React.useState(false);
+  const [languageHash, setLanguageHash] = React.useState('#hero');
   // 點到 nav 內任何連結 → 自動關閉抽屜
   const closeOnNav = () => setOpen(false);
   // hash 變動（任何頁內跳轉）→ 自動關抽屜
   React.useEffect(() => {
-    const onHash = () => setOpen(false);
+    const onHash = () => { setOpen(false); setLanguageHash(window.location.hash||'#hero'); };
+    onHash();
     window.addEventListener("hashchange", onHash);
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
@@ -450,10 +453,10 @@ const TopNav = () => {
           display: "inline-block", width: 2, height: 16, background: "var(--paper)",
           opacity: 0.4, alignSelf: "center"
         }} />
-        <a href={siteLanguageUrl(siteLanguage === "en" ? "zh" : "en")} title={siteLanguage === "en" ? "切換中文版" : "Switch to English"} style={{
+        {['zh','en','ja'].filter(language=>language!==siteLanguage).map(language=><a key={language} data-language-choice="true" href={siteLanguageUrl(language,languageHash)} lang={language==='zh'?'zh-Hant':language} title={{zh:'切換中文版',en:'Switch to English',ja:'日本語に切り替え'}[language]} style={{
           color: "var(--accent-yellow)", letterSpacing: "0.08em",
           fontFamily: "'Bangers',sans-serif", fontWeight: 900
-        }}>🌐 {siteLanguage === "en" ? "中文" : "EN"}</a>
+        }}>🌐 {{zh:'中文',en:'EN',ja:'日本語'}[language]}</a>)}
       </nav>
       {/* 漢堡按鈕：只在 ≤760px 顯示（CSS 控制） */}
       <button

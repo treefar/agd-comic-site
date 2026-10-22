@@ -628,6 +628,20 @@
       "checked_at": "2026-10-22",
       "readability": "官方PDF的搜尋索引可讀，2026-10-22直接開啟403；未讀取PDF全文或核對頁面影像",
       "note": "索引標示正文p60附近，列動遊系2023日本東京第六屆動漫、遊戲、電競國際展演營，以及海外見學、競賽、互訪之推動。僅支持曾有相關活動；未證實當期開團、費用、補助或學分。"
+    },
+    {
+      "id": "academic-status-current",
+      "title": "教務處學生休學、復學及退學",
+      "url": "https://www.aca.stu.edu.tw/學生休學、復學及退學/",
+      "checked_at": "2026-10-22",
+      "readability": "官方搜尋索引可讀；直接開啟403或202空內容，未讀即時全文。"
+    },
+    {
+      "id": "hardship-application-details",
+      "title": "生輔組急難慰助專區申請須知",
+      "url": "https://life.sao.stu.edu.tw/急難救助/急難慰問/",
+      "checked_at": "2026-10-22",
+      "readability": "官方搜尋索引可讀；直接開啟403或202空內容，未讀即時全文。"
     }
   ],
   "cards": [
@@ -655,7 +669,9 @@
         "curriculum-114",
         "curriculum-115",
         "leave-school-115-1",
-        "dept-contact"
+        "dept-contact",
+        "student-portal",
+        "academic-faq"
       ],
       "warning": "技優班條件另核，請帶自己的入學年度課表向系辦確認。",
       "faq": [
@@ -677,6 +693,38 @@
             "curriculum-113",
             "curriculum-114",
             "curriculum-115"
+          ]
+        }
+      ],
+      "step_details": [
+        {
+          "title": "找到自己的入學年度課表",
+          "detail": "從教務處歷年課程表找到「動遊系」，先核對入學年與一般班、技優班。把自己的那一份存下來，之後選課與畢業檢核都用它比對。",
+          "source_ids": [
+            "course-index",
+            "curriculum-112",
+            "curriculum-113",
+            "curriculum-114",
+            "curriculum-115"
+          ]
+        },
+        {
+          "title": "對照系統畢業檢核，列出缺項",
+          "detail": "把系統未通過的項目分成課程、英文、證照、實習與專題，註明缺哪一項。零學分必修也一起看，不要只看總學分是否足夠。",
+          "source_ids": [
+            "curriculum-112",
+            "curriculum-113",
+            "curriculum-114",
+            "curriculum-115",
+            "student-portal"
+          ]
+        },
+        {
+          "title": "帶檢核結果找系辦確認補修或認列",
+          "detail": "找系辦時一起帶入學年課表、成績與未通過項目的畫面，直接問缺課要補哪門、已有證明如何認列。若涉及抵免或學籍，再請註冊課務組協助確認。",
+          "source_ids": [
+            "dept-contact",
+            "academic-faq"
           ]
         }
       ]
@@ -704,7 +752,9 @@
         "curriculum-114",
         "curriculum-115",
         "career-contact",
-        "internship-school"
+        "internship-school",
+        "dept-contact",
+        "dept-forms"
       ],
       "warning": "自找公司、打工時數認列或中止實習，請先向系辦確認適用規定。",
       "faq": [
@@ -724,6 +774,33 @@
           "source_ids": [
             "career-contact",
             "dept-contact"
+          ]
+        }
+      ],
+      "step_details": [
+        {
+          "title": "先向系辦取得當期實習規定",
+          "detail": "先向系辦說明自己的入學年、班別與預計實習期間，索取適用的辦法及申請表。也一起問時數怎麼算、結束後要交什麼，避免只知道最低時數。",
+          "source_ids": [
+            "dept-contact",
+            "curriculum-115",
+            "dept-forms"
+          ]
+        },
+        {
+          "title": "確認單位、工作內容與指導老師",
+          "detail": "把公司名稱、職務說明、預計做的事與工作期間整理給系辦或指導老師看。自找公司或原本的打工能否認列，要先確認，不能做完才補問。",
+          "source_ids": [
+            "career-contact",
+            "dept-contact"
+          ]
+        },
+        {
+          "title": "完成合約及保險確認後，再依規定開始",
+          "detail": "請實習承辦確認合約由誰簽、保險何時生效，以及出了問題要找誰。拿到需補文件的清單後再安排開始日期，不把公司口頭答應當成學校程序完成。",
+          "source_ids": [
+            "career-contact",
+            "internship-school"
           ]
         }
       ]
@@ -747,7 +824,8 @@
       },
       "source_ids": [
         "curriculum-115",
-        "cert-award"
+        "cert-award",
+        "dept-contact"
       ],
       "warning": "技優班條件另核；畢業認列與獎助資格，請分別向系辦、職發中心確認。",
       "faq": [
@@ -761,6 +839,31 @@
         {
           "q": "老師已幫我登錄，還要申請獎助嗎？",
           "a": "114-2公告將證照登錄與獎助申請分開，團體登錄後仍可能要追加申請。公告列證照生效半年內；請先問1713自己的案件適用期限。",
+          "source_ids": [
+            "cert-award"
+          ]
+        }
+      ],
+      "step_details": [
+        {
+          "title": "考照前先問系辦是否認列",
+          "detail": "把證照全名、發照單位與預計考取版本交給系辦，問是否適用自己的入學年與班別。先確認能認列，再安排報名與費用，別只看別人考過哪一張。",
+          "source_ids": [
+            "curriculum-115",
+            "dept-contact"
+          ]
+        },
+        {
+          "title": "取得證明後完成認列登錄",
+          "detail": "準備清楚的證照或成績證明，先核對姓名、證照名稱與生效日期。再向系辦確認登錄位置、是否另交文件，以及畢業檢核何時可查到結果。",
+          "source_ids": [
+            "cert-award",
+            "dept-contact"
+          ]
+        },
+        {
+          "title": "另向職發中心查獎助資格並送件",
+          "detail": "先向職發中心確認當期獎助資格，並檢查本人匯款帳戶資料是否已交出納組。若老師已團體登錄證照，仍要確認是否需要另外追加獎助申請。",
           "source_ids": [
             "cert-award"
           ]
@@ -788,7 +891,8 @@
         "leave-2026",
         "leave-old",
         "life-contact",
-        "student-portal"
+        "student-portal",
+        "academic-contact"
       ],
       "warning": "考試、長假或補請假，先向導師確認流程；考試處理另洽註冊課務組。",
       "faq": [
@@ -806,6 +910,32 @@
             "leave-2026",
             "leave-old",
             "life-contact"
+          ]
+        }
+      ],
+      "step_details": [
+        {
+          "title": "確認假別、日期與需要的證明",
+          "detail": "先整理不能到課的日期、節次與原因，再向導師或生輔組確認假別及證明。遇到考試、心理假或較長期間，先問清楚是否還有其他辦理方式。",
+          "source_ids": [
+            "leave-2026",
+            "life-contact"
+          ]
+        },
+        {
+          "title": "到校務系統提出申請",
+          "detail": "從學校「在校學生」入口進入請假服務，依系統填寫資料並確認是否送出。若找不到操作項目，帶著畫面問導師或生輔組，不要只在通訊軟體告知就當完成。",
+          "source_ids": [
+            "student-portal",
+            "leave-2026"
+          ]
+        },
+        {
+          "title": "追蹤簽核；有考試或長假再向承辦確認",
+          "detail": "送件後回到系統查看是否核准；沒有回覆時，主動找導師追蹤。若會影響考試或需請長假，再向導師與註冊課務組確認後續，別把送出當核准。",
+          "source_ids": [
+            "leave-2026",
+            "academic-contact"
           ]
         }
       ]
@@ -828,7 +958,8 @@
       "source_ids": [
         "enrollment-115-1",
         "academic-faq",
-        "academic-contact"
+        "academic-contact",
+        "curriculum-115"
       ],
       "warning": "",
       "faq": [
@@ -845,6 +976,32 @@
           "source_ids": [
             "enrollment-115-1",
             "academic-faq"
+          ]
+        }
+      ],
+      "step_details": [
+        {
+          "title": "對照必修、學分數與上課時間",
+          "detail": "把入學年課表與本學期系統課表並排，先看必修是否漏選，再檢查學分與衝堂。若有抵免、重修或補修，另外列出來，選課前一起問系辦。",
+          "source_ids": [
+            "academic-faq",
+            "curriculum-115"
+          ]
+        },
+        {
+          "title": "依當期公告辦理初選或加退選",
+          "detail": "到教務處確認現在屬於初選、加退選還是棄選，再依該階段公告辦理。過去的加退選日期不能繼續使用；遇到逾期或特殊情況，先問註冊課務組。",
+          "source_ids": [
+            "academic-faq",
+            "enrollment-115-1"
+          ]
+        },
+        {
+          "title": "重開系統確認結果，有問題找註冊課務組",
+          "detail": "操作後重新開啟系統課表，確認課名、班別與時間真的正確。若和預期不同，記下課程代碼及問題畫面找註冊課務組，不以出席或老師同意代替系統結果。",
+          "source_ids": [
+            "academic-faq",
+            "academic-contact"
           ]
         }
       ]
@@ -884,6 +1041,31 @@
           "a": "公告列2026/8/3至9/21受理，已截止且註明逾期不受理。不要自行假設可補交；有特殊身分或程序疑義，請洽註冊課務組。",
           "source_ids": [
             "credit-transfer-115-1"
+          ]
+        }
+      ],
+      "step_details": [
+        {
+          "title": "先問自己的身分與課程能否提出申請",
+          "detail": "先說明自己是新生、轉學生、轉系生或其他身分，帶原修課程與成績資料詢問。請承辦確認本期是否仍受理及適用規定，別只因課名相似就認為可抵免。",
+          "source_ids": [
+            "credit-transfer-115-1",
+            "academic-faq"
+          ]
+        },
+        {
+          "title": "系統填表，備成績證明並依規定送審",
+          "detail": "在可申請的期間填寫抵免系統並列印表格，備妥原校成績證明正本。依公告送開課單位與就讀系所簽核，再交註冊課務組複審，別只完成線上輸入。",
+          "source_ids": [
+            "credit-transfer-115-1"
+          ]
+        },
+        {
+          "title": "查核准結果，再確認課表是否須調整",
+          "detail": "先查已核准抵免的科目，再問是否仍需自行調整本學期課表。若結果和申請內容不同，拿申請表及成績證明詢問，不要把送件或初審當成全部完成。",
+          "source_ids": [
+            "credit-transfer-115-1",
+            "academic-faq"
           ]
         }
       ]
@@ -930,6 +1112,32 @@
             "dept-forms"
           ]
         }
+      ],
+      "step_details": [
+        {
+          "title": "向系辦取得當屆辦法與表單",
+          "detail": "向系辦確認自己這一屆要用哪份專題辦法，並一次詢問組隊、異動、審查與補審的表單。先核對版本與適用對象，不直接沿用學長姐留下的檔案。",
+          "source_ids": [
+            "dept-forms",
+            "dept-contact"
+          ]
+        },
+        {
+          "title": "和指導老師排定審查及交件進度",
+          "detail": "把作品目前完成度與待辦清單給指導老師，詢問各次審查要展示哪些內容。再按當屆公告倒排製作與整理文件的時間，留出修改空間，不自行猜截止日。",
+          "source_ids": [
+            "dept-contact",
+            "curriculum-115"
+          ]
+        },
+        {
+          "title": "依規定提交作品、文件與展演成果",
+          "detail": "交件前請老師確認作品、說明文件、展演資料與授權是否都需要，並逐項對照指定格式。完成後確認承辦有收到、是否需補件，不把作品做完當作程序結束。",
+          "source_ids": [
+            "dept-forms",
+            "dept-contact"
+          ]
+        }
       ]
     },
     {
@@ -971,6 +1179,33 @@
             "english-course"
           ]
         }
+      ],
+      "step_details": [
+        {
+          "title": "核對入學年度、分級與外語學分",
+          "detail": "先找出入學分級結果及已修、抵免的英文與外語課，和自己的課表核對。若有免修，向通識中心確認還需補哪些外語學分，別直接把免修當學分已補足。",
+          "source_ids": [
+            "english-course",
+            "curriculum-114",
+            "curriculum-115"
+          ]
+        },
+        {
+          "title": "向語文承辦確認現行門檻與替代方案",
+          "detail": "向通識中心說明入學年與目前成績，請協助找到語文承辦。報考檢定前先確認測驗、分數、證明效期與替代方案，別拿別校或獎助金標準直接套用。",
+          "source_ids": [
+            "english-course",
+            "english-threshold"
+          ]
+        },
+        {
+          "title": "完成課程及證明認列後，再查畢業檢核",
+          "detail": "把修課成績和語文承辦要求的證明分開整理，問清楚交件位置與認列方式。辦完再查畢業檢核；若仍顯示未通過，拿送件紀錄找承辦核對。",
+          "source_ids": [
+            "academic-faq",
+            "english-course"
+          ]
+        }
       ]
     },
     {
@@ -992,7 +1227,10 @@
       },
       "source_ids": [
         "leave-school-115-1",
-        "school-news"
+        "school-news",
+        "academic-status-current",
+        "academic-faq",
+        "life-contact"
       ],
       "warning": "個人緩徵、儘召與兵役文件期限須由承辦判定；學籍辦妥不代表兵役資料已完成。",
       "faq": [
@@ -1010,6 +1248,31 @@
             "academic-faq",
             "leave-school-115-1",
             "school-news"
+          ]
+        }
+      ],
+      "step_details": [
+        {
+          "title": "先向系辦及註冊課務組確認程序",
+          "detail": "辦理前先聯絡系辦與註冊課務組，說明要休學或復學，以及自己的學籍情況。詢問導師或代理人可辦理的時間，再安排到校，避免領表後找不到簽核人員。",
+          "source_ids": [
+            "academic-status-current"
+          ]
+        },
+        {
+          "title": "備文件並在當期期限內完成離校或復學",
+          "detail": "休學先備學生證；委託代辦時確認委託書，領表後按公告期限完成離校及繳件。復學則依本人收到的通知辦理，並確認通訊資料正確，別只停止上課。",
+          "source_ids": [
+            "academic-status-current",
+            "academic-faq"
+          ]
+        },
+        {
+          "title": "役男另向生輔組確認兵役資料",
+          "detail": "若是復學、轉入、轉系或延畢，主動向生輔組說明役男身分，確認需補哪些兵役文件。把學籍變動和兵役資料分開追蹤，不假設其中一項完成就全部辦妥。",
+          "source_ids": [
+            "school-news",
+            "life-contact"
           ]
         }
       ]
@@ -1035,7 +1298,8 @@
         "aid-115-1",
         "low-income-115-1",
         "hardship",
-        "life-contact"
+        "life-contact",
+        "hardship-application-details"
       ],
       "warning": "",
       "faq": [
@@ -1055,6 +1319,31 @@
           "source_ids": [
             "hardship",
             "life-contact"
+          ]
+        }
+      ],
+      "step_details": [
+        {
+          "title": "先說明困難與目前已領的補助",
+          "detail": "先向生輔組說明困難發生時間、目前最急的支出，以及已申請或已領的補助。請承辦協助判斷適用方案，別只因錯過一項公告，就以為所有協助都結束。",
+          "source_ids": [
+            "hardship-application-details",
+            "life-contact"
+          ]
+        },
+        {
+          "title": "依承辦指定方案準備證明",
+          "detail": "依承辦指定方案準備申請表、在學證明與事件相關文件，例如醫療或失業證明。所得、財產或戶籍資料是否需要、要哪個版本，也先問清楚再申請文件。",
+          "source_ids": [
+            "hardship-application-details"
+          ]
+        },
+        {
+          "title": "在該方案期限內送件並追蹤補件",
+          "detail": "送件前確認由自己交件還是學校統一辦理，並問清楚本案期限與補件方式。再核對姓名及款項資料是否正確；各方案期限不同，不沿用別張公告的日期。",
+          "source_ids": [
+            "hardship-application-details",
+            "hardship"
           ]
         }
       ]
@@ -1077,7 +1366,8 @@
       "source_ids": [
         "student-portal",
         "gender-contact",
-        "gender-event"
+        "gender-event",
+        "academic-faq"
       ],
       "warning": "申訴或性平案件，請先確認受理窗口與正式期限，再使用對應表單送件。",
       "faq": [
@@ -1094,6 +1384,30 @@
           "source_ids": [
             "student-portal",
             "gender-contact"
+          ]
+        }
+      ],
+      "step_details": [
+        {
+          "title": "先找願意協助的導師或校內承辦",
+          "detail": "先用自己能接受的方式告訴導師或校內承辦，目前是情緒、相處還是權益上的困難。若不知道該找誰，可以先請對方協助轉介，不必先替自己判定案件類型。",
+          "source_ids": [
+            "student-portal"
+          ]
+        },
+        {
+          "title": "需要諮商時由在校學生入口查詢",
+          "detail": "到學校「在校學生」頁尋找線上預約諮商，依服務頁確認預約方式與可用時段。入口無法使用或不知道怎麼填時，請導師協助聯繫，別套用其他學校的流程。",
+          "source_ids": [
+            "student-portal"
+          ]
+        },
+        {
+          "title": "涉及權益時確認正式受理單位與期限",
+          "detail": "把收到的通知、事情發生日期與想反映的問題整理好，先請承辦確認應走哪種程序。再問正式表單、送件方式與期限，不把一般申訴和性平案件當成同一件事。",
+          "source_ids": [
+            "student-portal",
+            "academic-faq"
           ]
         }
       ]
@@ -1135,6 +1449,31 @@
             "career-contact"
           ]
         }
+      ],
+      "step_details": [
+        {
+          "title": "整理作品集、履歷與職務方向",
+          "detail": "先選出能代表能力的作品，註明自己負責的部分，並把作品連結實際點開檢查。履歷依想應徵的工作整理，不用一次塞入所有作業，讓師長更容易給建議。",
+          "source_ids": [
+            "career-contact",
+            "dept-contact"
+          ]
+        },
+        {
+          "title": "向系上師長及職發中心詢問資源",
+          "detail": "帶作品與履歷向相關領域老師討論，再問職發中心目前有哪些職涯諮詢、職能檢測或徵才活動。把不確定的職務與技能列成問題，別只詢問有沒有工作。",
+          "source_ids": [
+            "career-contact",
+            "dept-contact"
+          ]
+        },
+        {
+          "title": "依當期職缺要求投件並追蹤",
+          "detail": "每個職缺都重新核對工作內容、應交資料與投件期限，再依公司指定方式送出。保留投件日期與聯絡紀錄；過往徵才海報只能參考，不代表職缺現在仍開放。",
+          "source_ids": [
+            "career-contact"
+          ]
+        }
       ]
     },
     {
@@ -1171,6 +1510,31 @@
         {
           "q": "本校116碩甄何時截止？其他學校也一樣嗎？",
           "a": "本校一般網路報名至2026/11/2下午4時，部分境外學歷或專業資格同等學力為10/27截止。其他校系請各查自己的116簡章，不能共用期限。",
+          "source_ids": [
+            "graduate-handbook-116",
+            "graduate-application-116"
+          ]
+        }
+      ],
+      "step_details": [
+        {
+          "title": "帶作品或研究興趣和師長討論",
+          "detail": "先挑一兩件作品或專題，整理自己想繼續研究的問題，再找導師或專題老師討論。一起確認適合的領域、準備方向與作品呈現方式，再依興趣找研究所。",
+          "source_ids": [
+            "dept-contact"
+          ]
+        },
+        {
+          "title": "讀當年度簡章的資格與所別要求",
+          "detail": "從報考學校官方入口下載當年度簡章，逐項看身分資格、所別書審與面試要求。本校應屆生還要核對簡章指定證明；其他校所不能共用同一份清單。",
+          "source_ids": [
+            "graduate-handbook-index",
+            "graduate-handbook-116"
+          ]
+        },
+        {
+          "title": "依期限完成證明、上傳、繳費與確認送出",
+          "detail": "依簡章確認繳費期限與上傳格式，完成後檢查是否已確認送出，不是只把檔案放上去。再從官方系統追蹤審查或通知；不同身分可能有不同截止日。",
           "source_ids": [
             "graduate-handbook-116",
             "graduate-application-116"
@@ -1220,6 +1584,31 @@
             "moe-studyabroad-rules"
           ]
         }
+      ],
+      "step_details": [
+        {
+          "title": "問系辦與職發中心有無當期甄選",
+          "detail": "先問系辦與職發中心目前是否有公開甄選，再索取這一梯次的條件與表單。過去赴日實習新聞只能看成果，不能拿它當現在仍有名額或固定補助的依據。",
+          "source_ids": [
+            "career-contact",
+            "hc-internship-2026",
+            "dept-contact"
+          ]
+        },
+        {
+          "title": "核對身分、語言、補助及自付費用",
+          "detail": "把國籍、學籍、語言與作品條件逐項對照甄選文件，另外問補助包含什麼、自己要付多少。能參加實習不等於能領學海補助，金額及資格都要依核定文件確認。",
+          "source_ids": [
+            "moe-studyabroad-rules"
+          ]
+        },
+        {
+          "title": "錄取後依契約完成保險、簽證與行前程序",
+          "detail": "錄取後先核對契約中的實習機構、期間與補助，再請承辦協助確認醫療、意外保險及合法實習簽證。也問清楚行前說明、當地聯絡與返校成果要怎麼辦理。",
+          "source_ids": [
+            "moe-studyabroad-rules"
+          ]
+        }
       ]
     },
     {
@@ -1260,6 +1649,32 @@
           "source_ids": [
             "overseas-visit-plan-113",
             "oica-outbound"
+          ]
+        }
+      ],
+      "step_details": [
+        {
+          "title": "向系辦詢問目前有無見學或移地教學",
+          "detail": "向系辦說明想參訪的領域與可出國時間，問目前有沒有見學或短期移地教學。先拿到當期安排再規劃，不把往年展演營或交流照片當作正在招募。",
+          "source_ids": [
+            "overseas-visit-plan-113",
+            "dept-contact"
+          ]
+        },
+        {
+          "title": "確認行程、費用、補助與認列方式",
+          "detail": "報名前把行程、自付費用、可能補助與取消條件問清楚；若想認列課程或實習，也先取得系辦確認。參訪交流與職場實習不同，不能只因出國就直接計入。",
+          "source_ids": [
+            "oica-outbound",
+            "dept-contact"
+          ]
+        },
+        {
+          "title": "依當期文件確認報名及出國準備",
+          "detail": "有當期公告後，再依主辦單位要求核對報名文件、護照、保險與入境準備。也確認帶隊或緊急聯絡方式及返校是否要交成果，不直接沿用海外實習的文件清單。",
+          "source_ids": [
+            "oica-outbound",
+            "dept-contact"
           ]
         }
       ]

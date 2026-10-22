@@ -1710,7 +1710,7 @@ const QuizDetail = ({ slug }) => {
     // 系網首頁的 iframe 不會轉交 #/quiz/...，分享改走 share/<派>.html：有專屬預覽圖，點開再轉到結果頁
     // 分享連結帶各派的預覽圖（share/<派>.html 的 og:image）；結果頁本身改放得獎作品，不放插圖
     const QUIZ_SHARE_PREVIEW = true; // 使用者 2026-10-08 同意公開
-    const shareUrl = siteLanguage === "en" ? "https://treefar.link/agd-comic-site/?lang=en#/quiz/" + resultKey : "https://treefar.link/agd-comic-site/share/" + resultKey + ".html";
+    const shareUrl = siteLanguage !== "zh" ? "https://treefar.link/agd-comic-site/?lang=" + siteLanguage + "#/quiz/" + resultKey : "https://treefar.link/agd-comic-site/share/" + resultKey + ".html";
     const share = async () => {
       const text = siteText(`我是動遊系的「${r.name}」！你是哪一派？`);
       try {

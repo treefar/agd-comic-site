@@ -15,7 +15,7 @@ const NODE_ENV = JSON.stringify(DEV ? "development" : "production");
 const TMP = path.join(ROOT, ".build-tmp");
 
 // 載入順序必須和 index.html 的 text/babel script 一致（彼此靠全域名稱串接）
-const SOURCES = ["locale-en.js", "en-pages.jsx", "tweaks-panel.jsx", "comic-components.jsx", "chapters-1.jsx", "chapters-2.jsx", "pages.jsx", "student-guide-model.js", "student-guide.jsx", "app.jsx"];
+const SOURCES = ["locale-en.js", "locale-ja.js", "en-pages.jsx", "tweaks-panel.jsx", "comic-components.jsx", "chapters-1.jsx", "chapters-2.jsx", "pages.jsx", "student-guide-model.js", "student-guide.jsx", "app.jsx"];
 // 首頁一定要出現在預渲染 HTML 的章節錨點
 const REQUIRED_IDS = ["hero", "news", "about", "works", "faculty", "labs", "join", "contact"];
 // 不複製進 dist 的來源/建置檔
@@ -29,6 +29,7 @@ const fail = (msg) => { console.error("[build] 失敗：" + msg); process.exit(1
 
 // 讀全部 JSX，依序接成同一個模組（等同原本多支 classic script 共用全域作用域）
 createRequire(import.meta.url)('./build-translations.cjs');
+createRequire(import.meta.url)('./build-ja-translations.cjs');
 const body = SOURCES.map((f) => `// ---- ${f} ----\n` + fs.readFileSync(path.join(ROOT, f), "utf8")).join("\n\n");
 
 const CLIENT_PRELUDE = `import React from "react";
@@ -44,10 +45,9 @@ const SERVER_EPILOGUE = `
 export const renderApp = () => renderToString(React.createElement(App));
 `;
 
-// 清空輸出資料夾的內容（不刪資料夾本身：Windows 上若有本機伺服器開在裡面，刪資料夾會 EPERM）
+// 審閱工單禁止刪檔：保留已存在的輸出與暫存，覆寫目前引用的建置檔。
 fs.mkdirSync(DIST, { recursive: true });
-for (const n of fs.readdirSync(DIST)) fs.rmSync(path.join(DIST, n), { recursive: true, force: true });
-fs.rmSync(TMP, { recursive: true, force: true });
+// Review builds retain earlier generated files, in accordance with the no-deletion work order.
 fs.mkdirSync(TMP, { recursive: true });
 
 const common = { bundle: true, jsx: "transform", jsxFactory: "siteCreateElement", charset: "utf8", logLevel: "warning", legalComments: "none" };
@@ -108,7 +108,7 @@ for (const name of fs.readdirSync(ROOT)) {
   if (EXCLUDE.has(name)) continue;
   fs.cpSync(path.join(ROOT, name), path.join(DIST, name), { recursive: true });
 }
-fs.rmSync(TMP, { recursive: true, force: true });
+// Preserve temporary build output for this review's reproducibility.
 
 const kb = (n) => (n / 1024).toFixed(1) + " KB";
 console.log(`[build] 完成：${path.relative(ROOT, DIST)}/index.html ${kb(Buffer.byteLength(html))}、${bundleName} ${kb(fs.statSync(path.join(DIST, bundleName)).size)}`);

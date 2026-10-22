@@ -222,7 +222,7 @@ const App = () => {
 if (typeof document !== "undefined") {
   const container = document.getElementById("root");
   const onDetail = window.location.hash.startsWith("#/");
-  if (window.__AGD_PRERENDERED__ && container.firstChild && !onDetail && siteLanguage !== "en" && ReactDOM.hydrateRoot) {
+  if (window.__AGD_PRERENDERED__ && container.firstChild && !onDetail && siteLanguage === "zh" && ReactDOM.hydrateRoot) {
     ReactDOM.hydrateRoot(container, <App />);
   } else {
     container.textContent = "";
