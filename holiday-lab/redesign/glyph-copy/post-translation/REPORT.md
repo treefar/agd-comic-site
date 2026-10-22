@@ -42,12 +42,29 @@ RESULT 12/12 YES; 272 non-whitespace character/string pairs; 3 pages; no product
 |中日／拉丁／符號逐字真實字型+cmap|yes|coverage-output.txt；272／272、missing0／unknown0|
 |保留既有字體與原意|yes|沒有產品寫入、沒有替換句|
 |同輪所有詳頁／所有語言／裝置通過|no|只驗指定12筆、1440px Windows Chromium3頁|
-|後續04整包畫面已驗|no|本報告取樣03，不把背景CSS調整宣稱成整包視覺通過|
+|最終05整包畫面已驗|no|本報告實際渲染取樣03；05文字／字型依賴另已比對一致，不把背景CSS調整宣稱成整包視覺通過|
 
-提供04逐檔receipt：`audit.json` 的receipts含index、bundle、styles、student-guide CSS、兩份JSON與faculty-portrait CSS的SHA／大小。root可跑：
+提供最終05逐檔receipt：`audit.json` 的receipts含03 index、bundle、styles、student-guide CSS、兩份JSON與faculty-portrait CSS的SHA／大小。實際執行：
 
 ```powershell
-node holiday-lab/redesign/glyph-copy/post-translation/compare-build.cjs .review-faculty-04
+node holiday-lab/redesign/glyph-copy/post-translation/compare-build.cjs .review-faculty-05 .review-faculty-03
 ```
 
-helper要求字型／文字依賴與03相同；`faculty-portrait.css` 是預期可差異的照片補邊CSS，會明確顯示 `ALLOWED_PHOTO_CSS_DELTA`，不把差異藏掉。即使receipt一致，也不取代04整包畫面檢查。
+03→05 的 index／bundle 因師資照片背景DOM增加而可變，不能硬要求整個bundle SHA相同。helper以Babel AST找出兩語完整字典，靜態讀StringLiteral與無插值TemplateLiteral，不執行bundle；逐鍵排序序列化後計算SHA。完整compiled locale與CSS字型鏈、兩份JSON結果如下，原文見 `receipt-05-corrected-output.txt`／`locale-font-receipts.json`：
+
+```text
+YES styles.css 24568f90a3e5eb6140043db56af68c7148ff7e12148081cf9bcffe7a409ca666
+YES student-guide.css 43679385ebd03c8569c45dfe638d843079d2fd5d858b81e88058ee4fa0df07c0
+YES data/ja/messages.json 2adc801b34da61e24aa0e69a7efc292e79129bfaaa648690eeadb6f9d4fd652d
+YES data/en/student-guide-ui.json de6bb2add613822e75664ccac8803d8b8ebb1eeb82f6eed254fa363ade4ebfcd
+ALLOWED_LAYOUT_BUNDLE_DELTA app-MPI5UJSD.js → app-K6E6TA3D.js
+YES compiled locale-en 2310 entries b5749851d46e192f65033409b2d49b0d23867663502777dfd239b7555b0abb8c
+YES compiled locale-ja 2339 entries 7bc7f4b859724c6b2ba13e47139f8446b78af1bbdfe8cc70c3030edbb393064a
+YES font-family declaration chain 225339d782adf0fcfe3e77a49e9b5033c3cf9f794d36d7aeb6552ee33fe25ad0
+ALLOWED_PHOTO_CSS_DELTA faculty-portrait.css
+FONT_TEXT_RECEIPT_MISMATCHES 0; does not replace a full next-build visual check
+```
+
+首次AST helper未處理esbuild把多行純字串改成無插值TemplateLiteral，未找出字典；失敗輸出保留在 `receipt-05-output.txt`。修正靜態字串型別後重新完整解析，兩語各唯一字典、全字典SHA比對通過。未把parser失敗當成產品文字變更。
+
+`faculty-portrait.css` 是預期可差異的照片補邊CSS，明確列出允許差異；font-family鏈另取三CSS的宣告清單核對。05依賴一致，可沿用03的12筆新值字形證據；仍不取代05整包畫面檢查。helper需本機03與05完整build，以及專案的 `@babel/parser`。
