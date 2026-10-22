@@ -1,0 +1,34 @@
+{
+  "method": "moved an existing generated sprite above real text while game paused; restore exact parent/sibling/style afterwards",
+  "state": {
+    "source": "assets/new-year/actor1.png",
+    "originalStyle": "left: 12%; top: 60%; width: 20%; height: 28%; transform: translate(-50%, -50%) rotate(0deg) scale(1, 1); opacity: 1; z-index: 1;",
+    "originalParent": "game-stage",
+    "originalNext": "ny-actor-2",
+    "target": {
+      "x": 29,
+      "y": 33,
+      "width": 47,
+      "height": 14
+    }
+  },
+  "beforeDetected": false,
+  "negativeDetected": true,
+  "restoredDetected": false,
+  "restoredInfo": true,
+  "beforeErrors": [],
+  "negativeErrors": [
+    "文字壓到控制項／圖示：new-year/zh/negative-effect/text-0 / unregistered-effect-negative"
+  ],
+  "restoredErrors": [],
+  "actualNegativeBlocker": {
+    "id": "unregistered-effect-negative",
+    "bounds": {
+      "x": 5.5,
+      "y": 19,
+      "width": 94,
+      "height": 42
+    },
+    "kind": "actual image found above text by paint hit order; alpha footprint remains conservative AABB"
+  }
+}
