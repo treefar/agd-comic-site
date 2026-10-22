@@ -1,0 +1,31 @@
+Use case: illustration-story
+Generate EXACTLY ONE high-resolution square raster image, one single 4 by 4 contact sheet containing exactly 16 equal square cells. No alternatives. Entire canvas partitioned at exactly 25%, 50%, 75% horizontally and vertically. Row-major reading order. No gutters, no outer margin, no grid lines, no labels, NO readable text or lettering anywhere. All subjects/objects remain inside their own cell with 10% clear margin. Backgrounds extend to cell edges. No cross-cell overlap.
+
+Original hand-inked Taiwanese youth comic illustration. Thick expressive black ink contours, warm cream paper, visible halftone, charcoal navy, vermilion red, mustard yellow and turquoise. Tactile printed illustration, NOT vector, NOT glossy 3D, no UI gradients, no logos.
+Theme 把話聽完整: choose the order to listen to three fictional people, move a paper reading viewfinder, keep each person's full visual message inside it while patiently listening, then offer a response without interrupting. Express only through images. No historical quiz, no disaster racing. All people and memories fictional. No historical photographs, victim imagery, real portraits, archival writing, enemies, hitting, war, disaster reenactment, or celebratory confetti.
+Maintain consistent character identities: actor1 original calm young student; actor2 a visually distinct young classmate; actor3 a gentle original elder holding a blank memory booklet. No additional main characters required.
+
+EXACT CELL CONTENTS, in order:
+ROW 1:
+Cell 0: OPAQUE distinct narrative comic scene: a student wants to put different people's perspectives on one comic page but sees only their own angle. Show the student thoughtfully viewing a page through a narrow perspective, without text.
+Cell 1: OPAQUE distinct narrative comic scene: preparation of a blank paper memory booklet and broad reading viewfinder, calm student preparing to listen.
+Cell 2: OPAQUE distinct narrative comic scene: discovering a too-narrow frame clips another person's pictorial message; student pauses thoughtfully to look again. Illustrate cropped pictorial imagery, no words.
+Cell 3: OPAQUE distinct narrative comic scene: patiently listening in turn to all three fictional perspectives and arranging their pictorial viewpoints in a booklet, clear calm listening.
+ROW 2:
+Cell 4: OPAQUE distinct narrative comic scene: the three people calmly read the same comic booklet together, which preserves different pictorial perspectives.
+Cell 5: OPAQUE EMPTY GAMEPLAY BACKGROUND: quiet bright comic reading room, eye-level camera. Central floor area and three speaking positions deliberately empty, no people. No war or disaster reenactment.
+Cell 6: ISOLATED SPRITE actor1: original young student, calmly speaking, complete full body standing, no cropping.
+Cell 7: ISOLATED SPRITE actor2: distinct original young classmate, seated sharing, complete full body and seat, no cropping.
+ROW 3:
+Cell 8: ISOLATED SPRITE actor3: original elder holding a blank memory booklet, gently sharing, complete full body, not a real victim portrait.
+Cell 9: ISOLATED SPRITE prop1: broad blank paper reading viewfinder, wide empty center; front-facing rectangular paper frame with center solid pure magenta for later removal.
+Cell 10: ISOLATED SPRITE prop2: blank memory booklet, no lettering.
+Cell 11: ISOLATED SPRITE prop3: warm paper divider page, blank, no lettering.
+ROW 4:
+Cell 12: ISOLATED SPRITE target: blank dialogue reading window, paper border, wide empty center solid pure magenta for later removal.
+Cell 13: ISOLATED SPRITE token1: young student's viewpoint illustration card, pictorial image only, no words.
+Cell 14: ISOLATED SPRITE token2: young classmate's distinct viewpoint illustration card, pictorial image only, no words.
+Cell 15: ISOLATED SPRITE token3: elder's distinct viewpoint illustration card, pictorial image only, no words.
+
+Cells 0 through 5 must be fully opaque cream-toned narrative/environment scenes.
+Cells 6 through 15 must EACH have uniform flat PURE HOT MAGENTA RGB(255,0,255) / #FF00FF background, absolutely no texture, shadow, gradient or decoration on the magenta. Frame/window interiors in cells 9 and 12 must also be pure #FF00FF. These are chroma-key interiors, not actual alpha. All sprites fully contained within their cells, with generous 10% clear magenta margin on all sides. Comic ink and halftone textures only within the objects. No grid outlines. Exact aligned 4x4 geometry is critical.

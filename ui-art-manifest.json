@@ -16,7 +16,12 @@
     "holiday-lab/games/teachers.mjs",
     "holiday-lab/games/national-day.mjs",
     "holiday-lab/games/semester.mjs",
-    "holiday-lab/games/exhibition.mjs"
+    "holiday-lab/games/exhibition.mjs",
+    "holiday-lab/games/peace-memory.mjs",
+    "holiday-lab/games/qingming.mjs",
+    "holiday-lab/games/labor.mjs",
+    "holiday-lab/games/retrocession.mjs",
+    "holiday-lab/games/constitution.mjs"
   ],
   "assets": [
     {
@@ -3361,6 +3366,1526 @@
       "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
     },
     {
+      "id": "peace-memory-cg-1",
+      "path": "holiday-lab/assets/peace-memory/cg-1.webp",
+      "sha256": "116353384ba5a89d73ae8b45a01e8abcab0c2bbb2f7c9e1baf134ad59c2a2945",
+      "prompt_file": "holiday-lab/art-source/peace-memory.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:10.373Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/peace-memory.png",
+        "sha256": "1d2554c3714b3db4c65f6fba3e5e343325af5530ba5dc4b66df8f24afce9df3b",
+        "cell": 0,
+        "session_id": "01a163ee-8265-7273-8727-fcc36575e344",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "peace-memory-cg-2",
+      "path": "holiday-lab/assets/peace-memory/cg-2.webp",
+      "sha256": "28a542815974a461bcd613e203a73f013b3144e283150489ea5048dc9ec3dcde",
+      "prompt_file": "holiday-lab/art-source/peace-memory.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:10.373Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/peace-memory.png",
+        "sha256": "1d2554c3714b3db4c65f6fba3e5e343325af5530ba5dc4b66df8f24afce9df3b",
+        "cell": 1,
+        "session_id": "01a163ee-8265-7273-8727-fcc36575e344",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "peace-memory-cg-3",
+      "path": "holiday-lab/assets/peace-memory/cg-3.webp",
+      "sha256": "49420281204d8001bc8d1310a7daafa66ede91127104ee7264e4b0810f1b2c8d",
+      "prompt_file": "holiday-lab/art-source/peace-memory.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:10.373Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/peace-memory.png",
+        "sha256": "1d2554c3714b3db4c65f6fba3e5e343325af5530ba5dc4b66df8f24afce9df3b",
+        "cell": 2,
+        "session_id": "01a163ee-8265-7273-8727-fcc36575e344",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "peace-memory-cg-4",
+      "path": "holiday-lab/assets/peace-memory/cg-4.webp",
+      "sha256": "787086cd9ed9c702afb491d2834daa155859f98bbafb26406a7a6302dba1ffb9",
+      "prompt_file": "holiday-lab/art-source/peace-memory.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:10.373Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/peace-memory.png",
+        "sha256": "1d2554c3714b3db4c65f6fba3e5e343325af5530ba5dc4b66df8f24afce9df3b",
+        "cell": 3,
+        "session_id": "01a163ee-8265-7273-8727-fcc36575e344",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "peace-memory-cg-5",
+      "path": "holiday-lab/assets/peace-memory/cg-5.webp",
+      "sha256": "a18a8a862b243d10b61b1eec83bfb72a3e6ceb244d04c02c16e1c76f592f91d5",
+      "prompt_file": "holiday-lab/art-source/peace-memory.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:10.373Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/peace-memory.png",
+        "sha256": "1d2554c3714b3db4c65f6fba3e5e343325af5530ba5dc4b66df8f24afce9df3b",
+        "cell": 4,
+        "session_id": "01a163ee-8265-7273-8727-fcc36575e344",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "peace-memory-scene",
+      "path": "holiday-lab/assets/peace-memory/scene.webp",
+      "sha256": "49e50e73c8413bcd8cea865a29f5f11be145cc4bc1f951ade0202b92d1ec711c",
+      "prompt_file": "holiday-lab/art-source/peace-memory.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:10.373Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/peace-memory.png",
+        "sha256": "1d2554c3714b3db4c65f6fba3e5e343325af5530ba5dc4b66df8f24afce9df3b",
+        "cell": 5,
+        "session_id": "01a163ee-8265-7273-8727-fcc36575e344",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "peace-memory-actor1",
+      "path": "holiday-lab/assets/peace-memory/actor1.png",
+      "sha256": "b8a63c1a22a8f012a7e37ab3f46c620c5ebfdad53652922b119132a9abe1e315",
+      "prompt_file": "holiday-lab/art-source/peace-memory.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:10.373Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/peace-memory.png",
+        "sha256": "1d2554c3714b3db4c65f6fba3e5e343325af5530ba5dc4b66df8f24afce9df3b",
+        "cell": 6,
+        "session_id": "01a163ee-8265-7273-8727-fcc36575e344",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "peace-memory-actor2",
+      "path": "holiday-lab/assets/peace-memory/actor2.png",
+      "sha256": "a6fb48aec6d4b248b45717daea80b56f83a51588473981b19713bf9810d60d4f",
+      "prompt_file": "holiday-lab/art-source/peace-memory.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:10.373Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/peace-memory.png",
+        "sha256": "1d2554c3714b3db4c65f6fba3e5e343325af5530ba5dc4b66df8f24afce9df3b",
+        "cell": 7,
+        "session_id": "01a163ee-8265-7273-8727-fcc36575e344",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "peace-memory-actor3",
+      "path": "holiday-lab/assets/peace-memory/actor3.png",
+      "sha256": "25af0257b6ea7aa002da09cb93ee2c91acb1d14b1c3f03b35ca19b7ee176cefc",
+      "prompt_file": "holiday-lab/art-source/peace-memory.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:10.373Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/peace-memory.png",
+        "sha256": "1d2554c3714b3db4c65f6fba3e5e343325af5530ba5dc4b66df8f24afce9df3b",
+        "cell": 8,
+        "session_id": "01a163ee-8265-7273-8727-fcc36575e344",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "peace-memory-prop1",
+      "path": "holiday-lab/assets/peace-memory/prop1.png",
+      "sha256": "b3a203ebc19d0c3114210933c5dbe07b2228c9cd80f87d0c9328c346fb41a1f4",
+      "prompt_file": "holiday-lab/art-source/peace-memory.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:10.373Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/peace-memory.png",
+        "sha256": "1d2554c3714b3db4c65f6fba3e5e343325af5530ba5dc4b66df8f24afce9df3b",
+        "cell": 9,
+        "session_id": "01a163ee-8265-7273-8727-fcc36575e344",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "peace-memory-prop2",
+      "path": "holiday-lab/assets/peace-memory/prop2.png",
+      "sha256": "3f54e3175331857581d2f281be1c1c911c046cc028b204485669d8f8f2286e6f",
+      "prompt_file": "holiday-lab/art-source/peace-memory.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:10.373Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/peace-memory.png",
+        "sha256": "1d2554c3714b3db4c65f6fba3e5e343325af5530ba5dc4b66df8f24afce9df3b",
+        "cell": 10,
+        "session_id": "01a163ee-8265-7273-8727-fcc36575e344",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "peace-memory-prop3",
+      "path": "holiday-lab/assets/peace-memory/prop3.png",
+      "sha256": "1e15debdb2a35ea7885174e224681ad7d11e4dcc4d4cf9153b923b308d593161",
+      "prompt_file": "holiday-lab/art-source/peace-memory.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:10.373Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/peace-memory.png",
+        "sha256": "1d2554c3714b3db4c65f6fba3e5e343325af5530ba5dc4b66df8f24afce9df3b",
+        "cell": 11,
+        "session_id": "01a163ee-8265-7273-8727-fcc36575e344",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "peace-memory-target",
+      "path": "holiday-lab/assets/peace-memory/target.png",
+      "sha256": "a5ada065d1f5edb64984ce2891deffab03ddc6159ce2c90fc673ddd8b6cde199",
+      "prompt_file": "holiday-lab/art-source/peace-memory.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:10.373Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/peace-memory.png",
+        "sha256": "1d2554c3714b3db4c65f6fba3e5e343325af5530ba5dc4b66df8f24afce9df3b",
+        "cell": 12,
+        "session_id": "01a163ee-8265-7273-8727-fcc36575e344",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "peace-memory-token1",
+      "path": "holiday-lab/assets/peace-memory/token1.png",
+      "sha256": "a359288cadc8d119700529e89f6594ea75ad56fe590e3e20690b20131c23407d",
+      "prompt_file": "holiday-lab/art-source/peace-memory.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:10.373Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/peace-memory.png",
+        "sha256": "1d2554c3714b3db4c65f6fba3e5e343325af5530ba5dc4b66df8f24afce9df3b",
+        "cell": 13,
+        "session_id": "01a163ee-8265-7273-8727-fcc36575e344",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "peace-memory-token2",
+      "path": "holiday-lab/assets/peace-memory/token2.png",
+      "sha256": "64e71bbc9771ce5674b68bfb85e982a7659395e44a79b62697aa3acd15d0790c",
+      "prompt_file": "holiday-lab/art-source/peace-memory.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:10.373Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/peace-memory.png",
+        "sha256": "1d2554c3714b3db4c65f6fba3e5e343325af5530ba5dc4b66df8f24afce9df3b",
+        "cell": 14,
+        "session_id": "01a163ee-8265-7273-8727-fcc36575e344",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "peace-memory-token3",
+      "path": "holiday-lab/assets/peace-memory/token3.png",
+      "sha256": "39c3c3c7a9ec8af022f0992a9a8abfd47bd694cec6df93a42a0f94acaaff51d4",
+      "prompt_file": "holiday-lab/art-source/peace-memory.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:10.373Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/peace-memory.png",
+        "sha256": "1d2554c3714b3db4c65f6fba3e5e343325af5530ba5dc4b66df8f24afce9df3b",
+        "cell": 15,
+        "session_id": "01a163ee-8265-7273-8727-fcc36575e344",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "qingming-cg-1",
+      "path": "holiday-lab/assets/qingming/cg-1.webp",
+      "sha256": "445e31bd58f8db1799ec35483a65602a0f57883da10416552d6fe05502b77eb5",
+      "prompt_file": "holiday-lab/art-source/qingming.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:06.644Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/qingming.png",
+        "sha256": "a37de3b9409b34390d1c88ddd718b90cf1447e283f78a8dd65595bb9225b203a",
+        "cell": 0,
+        "session_id": "01a163ee-82ad-7042-b420-320cf87d9d03",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "qingming-cg-2",
+      "path": "holiday-lab/assets/qingming/cg-2.webp",
+      "sha256": "3badc9b94a384d5f25b2cad7254d2ff1e68481c3511a99a869c9d8461a982fe7",
+      "prompt_file": "holiday-lab/art-source/qingming.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:06.644Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/qingming.png",
+        "sha256": "a37de3b9409b34390d1c88ddd718b90cf1447e283f78a8dd65595bb9225b203a",
+        "cell": 1,
+        "session_id": "01a163ee-82ad-7042-b420-320cf87d9d03",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "qingming-cg-3",
+      "path": "holiday-lab/assets/qingming/cg-3.webp",
+      "sha256": "f268177cb89f80a884eb3a7dfb07de0f57bf7ef36b150413197f1b2e537c9815",
+      "prompt_file": "holiday-lab/art-source/qingming.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:06.644Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/qingming.png",
+        "sha256": "a37de3b9409b34390d1c88ddd718b90cf1447e283f78a8dd65595bb9225b203a",
+        "cell": 2,
+        "session_id": "01a163ee-82ad-7042-b420-320cf87d9d03",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "qingming-cg-4",
+      "path": "holiday-lab/assets/qingming/cg-4.webp",
+      "sha256": "fb067ec0095619b351f8a4fcd6592fcca152ebbd27f5b29e7c80fdf85d1ea8ef",
+      "prompt_file": "holiday-lab/art-source/qingming.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:06.644Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/qingming.png",
+        "sha256": "a37de3b9409b34390d1c88ddd718b90cf1447e283f78a8dd65595bb9225b203a",
+        "cell": 3,
+        "session_id": "01a163ee-82ad-7042-b420-320cf87d9d03",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "qingming-cg-5",
+      "path": "holiday-lab/assets/qingming/cg-5.webp",
+      "sha256": "72ddc691387d9e9d2e2b644a1f28ed6b0869cf9e303103155bf4300403f7c155",
+      "prompt_file": "holiday-lab/art-source/qingming.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:06.644Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/qingming.png",
+        "sha256": "a37de3b9409b34390d1c88ddd718b90cf1447e283f78a8dd65595bb9225b203a",
+        "cell": 4,
+        "session_id": "01a163ee-82ad-7042-b420-320cf87d9d03",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "qingming-scene",
+      "path": "holiday-lab/assets/qingming/scene.webp",
+      "sha256": "6f1b5c1d787593c9ec27783c6aa3fc52a0cd0fa698c2d2140b5ded8ce71c9f1b",
+      "prompt_file": "holiday-lab/art-source/qingming.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:06.644Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/qingming.png",
+        "sha256": "a37de3b9409b34390d1c88ddd718b90cf1447e283f78a8dd65595bb9225b203a",
+        "cell": 5,
+        "session_id": "01a163ee-82ad-7042-b420-320cf87d9d03",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "qingming-actor1",
+      "path": "holiday-lab/assets/qingming/actor1.png",
+      "sha256": "15fbd0271895c610026bb53c518504366987a34ce6c38d368962a8162be3ac2d",
+      "prompt_file": "holiday-lab/art-source/qingming.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:06.644Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/qingming.png",
+        "sha256": "a37de3b9409b34390d1c88ddd718b90cf1447e283f78a8dd65595bb9225b203a",
+        "cell": 6,
+        "session_id": "01a163ee-82ad-7042-b420-320cf87d9d03",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "qingming-actor2",
+      "path": "holiday-lab/assets/qingming/actor2.png",
+      "sha256": "8a46d98338d42b2d20a112614c98fc1aa0f344d6de381a5b482da3ec5db6489c",
+      "prompt_file": "holiday-lab/art-source/qingming.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:06.644Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/qingming.png",
+        "sha256": "a37de3b9409b34390d1c88ddd718b90cf1447e283f78a8dd65595bb9225b203a",
+        "cell": 7,
+        "session_id": "01a163ee-82ad-7042-b420-320cf87d9d03",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "qingming-actor3",
+      "path": "holiday-lab/assets/qingming/actor3.png",
+      "sha256": "547e33d076e67c9573ae1596e9d2668be3c89747edc26be1747490b2ddb4c82e",
+      "prompt_file": "holiday-lab/art-source/qingming.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:06.644Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/qingming.png",
+        "sha256": "a37de3b9409b34390d1c88ddd718b90cf1447e283f78a8dd65595bb9225b203a",
+        "cell": 8,
+        "session_id": "01a163ee-82ad-7042-b420-320cf87d9d03",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "qingming-prop1",
+      "path": "holiday-lab/assets/qingming/prop1.png",
+      "sha256": "c5a6c37db06963e9945201dc59ba10811d47cdfe6f528d7ce89a8cedcc511844",
+      "prompt_file": "holiday-lab/art-source/qingming.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:06.644Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/qingming.png",
+        "sha256": "a37de3b9409b34390d1c88ddd718b90cf1447e283f78a8dd65595bb9225b203a",
+        "cell": 9,
+        "session_id": "01a163ee-82ad-7042-b420-320cf87d9d03",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "qingming-prop2",
+      "path": "holiday-lab/assets/qingming/prop2.png",
+      "sha256": "8337e42858c396e4345ea83849fc762a720709c989baab8f00d7caa4e7d643fb",
+      "prompt_file": "holiday-lab/art-source/qingming.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:06.644Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/qingming.png",
+        "sha256": "a37de3b9409b34390d1c88ddd718b90cf1447e283f78a8dd65595bb9225b203a",
+        "cell": 10,
+        "session_id": "01a163ee-82ad-7042-b420-320cf87d9d03",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "qingming-prop3",
+      "path": "holiday-lab/assets/qingming/prop3.png",
+      "sha256": "0ded604f675a071abd2fac336c7def33706a58b6b5b0004eb3d405b0922f63c3",
+      "prompt_file": "holiday-lab/art-source/qingming.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:06.644Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/qingming.png",
+        "sha256": "a37de3b9409b34390d1c88ddd718b90cf1447e283f78a8dd65595bb9225b203a",
+        "cell": 11,
+        "session_id": "01a163ee-82ad-7042-b420-320cf87d9d03",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "qingming-target",
+      "path": "holiday-lab/assets/qingming/target.png",
+      "sha256": "c2b506fbabfd491ca0b2348df0effb0000d1e90db1b47a97d99d30ccb948bf4b",
+      "prompt_file": "holiday-lab/art-source/qingming.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:06.644Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/qingming.png",
+        "sha256": "a37de3b9409b34390d1c88ddd718b90cf1447e283f78a8dd65595bb9225b203a",
+        "cell": 12,
+        "session_id": "01a163ee-82ad-7042-b420-320cf87d9d03",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "qingming-token1",
+      "path": "holiday-lab/assets/qingming/token1.png",
+      "sha256": "f93e2b6211f44f4d4c20a8348323a77797b436d0d8c82618671e8f4dbe7fbe1b",
+      "prompt_file": "holiday-lab/art-source/qingming.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:06.644Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/qingming.png",
+        "sha256": "a37de3b9409b34390d1c88ddd718b90cf1447e283f78a8dd65595bb9225b203a",
+        "cell": 13,
+        "session_id": "01a163ee-82ad-7042-b420-320cf87d9d03",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "qingming-token2",
+      "path": "holiday-lab/assets/qingming/token2.png",
+      "sha256": "eec310b8508b605c947b184420d3c508f82885694d1d2699214e3e43e3b6bc3b",
+      "prompt_file": "holiday-lab/art-source/qingming.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:06.644Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/qingming.png",
+        "sha256": "a37de3b9409b34390d1c88ddd718b90cf1447e283f78a8dd65595bb9225b203a",
+        "cell": 14,
+        "session_id": "01a163ee-82ad-7042-b420-320cf87d9d03",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "qingming-token3",
+      "path": "holiday-lab/assets/qingming/token3.png",
+      "sha256": "b8babc280173254d05f88992d7bac50da658187082f705b66df58d57c3ee1247",
+      "prompt_file": "holiday-lab/art-source/qingming.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:07:06.644Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/qingming.png",
+        "sha256": "a37de3b9409b34390d1c88ddd718b90cf1447e283f78a8dd65595bb9225b203a",
+        "cell": 15,
+        "session_id": "01a163ee-82ad-7042-b420-320cf87d9d03",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "labor-cg-1",
+      "path": "holiday-lab/assets/labor/cg-1.webp",
+      "sha256": "41022371bad6c37596aa8387e379cb464dfce01d4346c00c40ca359c4b0aa2ea",
+      "prompt_file": "holiday-lab/art-source/labor.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:09:11.511Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/labor.png",
+        "sha256": "ddfabcd79302391f42098c5ac2c091fef32c97f9d48aed2feb6d0fa707d04f21",
+        "cell": 0,
+        "session_id": "01a163f0-33e0-7440-8146-153546d226f2",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "labor-cg-2",
+      "path": "holiday-lab/assets/labor/cg-2.webp",
+      "sha256": "81ff5315af1378cf6b835e03e04b9eaf839b66082b78ac039a274204ea5368c4",
+      "prompt_file": "holiday-lab/art-source/labor.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:09:11.511Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/labor.png",
+        "sha256": "ddfabcd79302391f42098c5ac2c091fef32c97f9d48aed2feb6d0fa707d04f21",
+        "cell": 1,
+        "session_id": "01a163f0-33e0-7440-8146-153546d226f2",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "labor-cg-3",
+      "path": "holiday-lab/assets/labor/cg-3.webp",
+      "sha256": "23822b0e14dd55e8a7ee4d5c85e7345f85a040d46ec1b5f6f0ca82f2141ea93c",
+      "prompt_file": "holiday-lab/art-source/labor.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:09:11.511Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/labor.png",
+        "sha256": "ddfabcd79302391f42098c5ac2c091fef32c97f9d48aed2feb6d0fa707d04f21",
+        "cell": 2,
+        "session_id": "01a163f0-33e0-7440-8146-153546d226f2",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "labor-cg-4",
+      "path": "holiday-lab/assets/labor/cg-4.webp",
+      "sha256": "57c5bee70b6739b8cd6e27f94ab5a02181143c35a63bbe6dc429b09906ee029f",
+      "prompt_file": "holiday-lab/art-source/labor.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:09:11.511Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/labor.png",
+        "sha256": "ddfabcd79302391f42098c5ac2c091fef32c97f9d48aed2feb6d0fa707d04f21",
+        "cell": 3,
+        "session_id": "01a163f0-33e0-7440-8146-153546d226f2",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "labor-cg-5",
+      "path": "holiday-lab/assets/labor/cg-5.webp",
+      "sha256": "02f53f345b66c14ff901f8253a75ddf91066de5a65134cfebe8a627a095dae75",
+      "prompt_file": "holiday-lab/art-source/labor.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:09:11.511Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/labor.png",
+        "sha256": "ddfabcd79302391f42098c5ac2c091fef32c97f9d48aed2feb6d0fa707d04f21",
+        "cell": 4,
+        "session_id": "01a163f0-33e0-7440-8146-153546d226f2",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "labor-scene",
+      "path": "holiday-lab/assets/labor/scene.webp",
+      "sha256": "e43b1fb133df4ade08cf6e5a751ea348e7a93f0594ab2898d99a61754c55047c",
+      "prompt_file": "holiday-lab/art-source/labor.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:09:11.511Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/labor.png",
+        "sha256": "ddfabcd79302391f42098c5ac2c091fef32c97f9d48aed2feb6d0fa707d04f21",
+        "cell": 5,
+        "session_id": "01a163f0-33e0-7440-8146-153546d226f2",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "labor-actor1",
+      "path": "holiday-lab/assets/labor/actor1.png",
+      "sha256": "cc075de01b82a6278f2513d24012ba3aaaad2e0e852b06b09a903daee7ac741e",
+      "prompt_file": "holiday-lab/art-source/labor.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:09:11.511Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/labor.png",
+        "sha256": "ddfabcd79302391f42098c5ac2c091fef32c97f9d48aed2feb6d0fa707d04f21",
+        "cell": 6,
+        "session_id": "01a163f0-33e0-7440-8146-153546d226f2",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "labor-actor2",
+      "path": "holiday-lab/assets/labor/actor2.png",
+      "sha256": "bd979104bf5b739abdbb79b8aa01624b7786d9541b7501ec876cd1286c211bc1",
+      "prompt_file": "holiday-lab/art-source/labor.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:09:11.511Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/labor.png",
+        "sha256": "ddfabcd79302391f42098c5ac2c091fef32c97f9d48aed2feb6d0fa707d04f21",
+        "cell": 7,
+        "session_id": "01a163f0-33e0-7440-8146-153546d226f2",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "labor-actor3",
+      "path": "holiday-lab/assets/labor/actor3.png",
+      "sha256": "920ddc5415c0b8202eee23cfbc51c657d6e202ea49699c6a0b0fc880730eca6f",
+      "prompt_file": "holiday-lab/art-source/labor.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:09:11.511Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/labor.png",
+        "sha256": "ddfabcd79302391f42098c5ac2c091fef32c97f9d48aed2feb6d0fa707d04f21",
+        "cell": 8,
+        "session_id": "01a163f0-33e0-7440-8146-153546d226f2",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "labor-prop1",
+      "path": "holiday-lab/assets/labor/prop1.png",
+      "sha256": "8f07a30d354980727b62469b3d2086611b999abaab5d2bcae31ac180292064d0",
+      "prompt_file": "holiday-lab/art-source/labor.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:09:11.511Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/labor.png",
+        "sha256": "ddfabcd79302391f42098c5ac2c091fef32c97f9d48aed2feb6d0fa707d04f21",
+        "cell": 9,
+        "session_id": "01a163f0-33e0-7440-8146-153546d226f2",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "labor-prop2",
+      "path": "holiday-lab/assets/labor/prop2.png",
+      "sha256": "90cb2fd6bb14faf4fcdbc5b05e446e0bce03d7ac57f27c082e258323e70d11fe",
+      "prompt_file": "holiday-lab/art-source/labor.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:09:11.511Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/labor.png",
+        "sha256": "ddfabcd79302391f42098c5ac2c091fef32c97f9d48aed2feb6d0fa707d04f21",
+        "cell": 10,
+        "session_id": "01a163f0-33e0-7440-8146-153546d226f2",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "labor-prop3",
+      "path": "holiday-lab/assets/labor/prop3.png",
+      "sha256": "b8092182d170f4c7c39bd379af66881d340184f5807bb5610cd0567f667ded60",
+      "prompt_file": "holiday-lab/art-source/labor.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:09:11.511Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/labor.png",
+        "sha256": "ddfabcd79302391f42098c5ac2c091fef32c97f9d48aed2feb6d0fa707d04f21",
+        "cell": 11,
+        "session_id": "01a163f0-33e0-7440-8146-153546d226f2",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "labor-target",
+      "path": "holiday-lab/assets/labor/target.png",
+      "sha256": "d70fc6242a284de536b2c16a1a9511e3429dce1b8f0df4752cf19d5e9308b35f",
+      "prompt_file": "holiday-lab/art-source/labor.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:09:11.511Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/labor.png",
+        "sha256": "ddfabcd79302391f42098c5ac2c091fef32c97f9d48aed2feb6d0fa707d04f21",
+        "cell": 12,
+        "session_id": "01a163f0-33e0-7440-8146-153546d226f2",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "labor-token1",
+      "path": "holiday-lab/assets/labor/token1.png",
+      "sha256": "cf27fe681252b16cf525744b287f44e58e925e6ec53987a91d9deb6a99cedc59",
+      "prompt_file": "holiday-lab/art-source/labor.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:09:11.511Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/labor.png",
+        "sha256": "ddfabcd79302391f42098c5ac2c091fef32c97f9d48aed2feb6d0fa707d04f21",
+        "cell": 13,
+        "session_id": "01a163f0-33e0-7440-8146-153546d226f2",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "labor-token2",
+      "path": "holiday-lab/assets/labor/token2.png",
+      "sha256": "f39179c6bd4ce4dad7bf03d05c684dec674d88d5fb111abc6539a3444ddf5e9a",
+      "prompt_file": "holiday-lab/art-source/labor.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:09:11.511Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/labor.png",
+        "sha256": "ddfabcd79302391f42098c5ac2c091fef32c97f9d48aed2feb6d0fa707d04f21",
+        "cell": 14,
+        "session_id": "01a163f0-33e0-7440-8146-153546d226f2",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "labor-token3",
+      "path": "holiday-lab/assets/labor/token3.png",
+      "sha256": "91b8e77d8ea532018d727447e7d68d4bae4c0f231fca2ed6098d5eba79c8d71f",
+      "prompt_file": "holiday-lab/art-source/labor.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:09:11.511Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/labor.png",
+        "sha256": "ddfabcd79302391f42098c5ac2c091fef32c97f9d48aed2feb6d0fa707d04f21",
+        "cell": 15,
+        "session_id": "01a163f0-33e0-7440-8146-153546d226f2",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "retrocession-cg-1",
+      "path": "holiday-lab/assets/retrocession/cg-1.webp",
+      "sha256": "55da88533227b9290c4ec0349b5b196e0fde183f2036a0270ee1e2df7ee905a6",
+      "prompt_file": "holiday-lab/art-source/retrocession.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:10:46.577Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/retrocession.png",
+        "sha256": "cf91e349fe1b61dc96f2eb29789d3d26d3ed81df64041e51d0a6b3c73f5af619",
+        "cell": 0,
+        "session_id": "01a163f0-87bd-7ec2-bd0b-08f741c731b3",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "retrocession-cg-2",
+      "path": "holiday-lab/assets/retrocession/cg-2.webp",
+      "sha256": "f1a0d08df4612b8a80e58a58fd17ae9f6a2be094af1f25a1411615853540530a",
+      "prompt_file": "holiday-lab/art-source/retrocession.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:10:46.577Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/retrocession.png",
+        "sha256": "cf91e349fe1b61dc96f2eb29789d3d26d3ed81df64041e51d0a6b3c73f5af619",
+        "cell": 1,
+        "session_id": "01a163f0-87bd-7ec2-bd0b-08f741c731b3",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "retrocession-cg-3",
+      "path": "holiday-lab/assets/retrocession/cg-3.webp",
+      "sha256": "2ea21b81f4daefd51484bcfe79f0930df6a0681b0716e0688cdc697d89af807f",
+      "prompt_file": "holiday-lab/art-source/retrocession.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:10:46.577Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/retrocession.png",
+        "sha256": "cf91e349fe1b61dc96f2eb29789d3d26d3ed81df64041e51d0a6b3c73f5af619",
+        "cell": 2,
+        "session_id": "01a163f0-87bd-7ec2-bd0b-08f741c731b3",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "retrocession-cg-4",
+      "path": "holiday-lab/assets/retrocession/cg-4.webp",
+      "sha256": "b023c952982cd28f720503a4ca0f01bee44e05d9a5db3b54737f973ce6e3be6b",
+      "prompt_file": "holiday-lab/art-source/retrocession.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:10:46.577Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/retrocession.png",
+        "sha256": "cf91e349fe1b61dc96f2eb29789d3d26d3ed81df64041e51d0a6b3c73f5af619",
+        "cell": 3,
+        "session_id": "01a163f0-87bd-7ec2-bd0b-08f741c731b3",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "retrocession-cg-5",
+      "path": "holiday-lab/assets/retrocession/cg-5.webp",
+      "sha256": "894ea910a101ffb35351cfbb407a4de3277e3974dacf0eccc257790e0ef561b7",
+      "prompt_file": "holiday-lab/art-source/retrocession.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:10:46.577Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/retrocession.png",
+        "sha256": "cf91e349fe1b61dc96f2eb29789d3d26d3ed81df64041e51d0a6b3c73f5af619",
+        "cell": 4,
+        "session_id": "01a163f0-87bd-7ec2-bd0b-08f741c731b3",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "retrocession-scene",
+      "path": "holiday-lab/assets/retrocession/scene.webp",
+      "sha256": "82b57cf52ffc18cc469375222f1fd3ff8c0daf98c2303e93c0d57a12c074a0d9",
+      "prompt_file": "holiday-lab/art-source/retrocession.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:10:46.577Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/retrocession.png",
+        "sha256": "cf91e349fe1b61dc96f2eb29789d3d26d3ed81df64041e51d0a6b3c73f5af619",
+        "cell": 5,
+        "session_id": "01a163f0-87bd-7ec2-bd0b-08f741c731b3",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "retrocession-actor1",
+      "path": "holiday-lab/assets/retrocession/actor1.png",
+      "sha256": "5db54b31a76b0a93b3261036a7247a39ab7e4b071c919b39e757c86bbfc2514b",
+      "prompt_file": "holiday-lab/art-source/retrocession.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:10:46.577Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/retrocession.png",
+        "sha256": "cf91e349fe1b61dc96f2eb29789d3d26d3ed81df64041e51d0a6b3c73f5af619",
+        "cell": 6,
+        "session_id": "01a163f0-87bd-7ec2-bd0b-08f741c731b3",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "retrocession-actor2",
+      "path": "holiday-lab/assets/retrocession/actor2.png",
+      "sha256": "964108365cfbe7bca0b7764ce1388a5f5ce24a7f77d69d6734aea00a20d8af93",
+      "prompt_file": "holiday-lab/art-source/retrocession.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:10:46.577Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/retrocession.png",
+        "sha256": "cf91e349fe1b61dc96f2eb29789d3d26d3ed81df64041e51d0a6b3c73f5af619",
+        "cell": 7,
+        "session_id": "01a163f0-87bd-7ec2-bd0b-08f741c731b3",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "retrocession-actor3",
+      "path": "holiday-lab/assets/retrocession/actor3.png",
+      "sha256": "7353e33a329dc803735c76e72bc896d1f99cc15f47b6939247d6c4be6229043a",
+      "prompt_file": "holiday-lab/art-source/retrocession.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:10:46.577Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/retrocession.png",
+        "sha256": "cf91e349fe1b61dc96f2eb29789d3d26d3ed81df64041e51d0a6b3c73f5af619",
+        "cell": 8,
+        "session_id": "01a163f0-87bd-7ec2-bd0b-08f741c731b3",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "retrocession-prop1",
+      "path": "holiday-lab/assets/retrocession/prop1.png",
+      "sha256": "e08af30966ad6af750159aceba3d7a81e3775b271b8c8409fcee207d0e57d1a4",
+      "prompt_file": "holiday-lab/art-source/retrocession.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:10:46.577Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/retrocession.png",
+        "sha256": "cf91e349fe1b61dc96f2eb29789d3d26d3ed81df64041e51d0a6b3c73f5af619",
+        "cell": 9,
+        "session_id": "01a163f0-87bd-7ec2-bd0b-08f741c731b3",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "retrocession-prop2",
+      "path": "holiday-lab/assets/retrocession/prop2.png",
+      "sha256": "483869ffcf8d6ebd6d59cdbe9b646b9067e5bb5f1953f70ec98c75f411021ddf",
+      "prompt_file": "holiday-lab/art-source/retrocession.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:10:46.577Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/retrocession.png",
+        "sha256": "cf91e349fe1b61dc96f2eb29789d3d26d3ed81df64041e51d0a6b3c73f5af619",
+        "cell": 10,
+        "session_id": "01a163f0-87bd-7ec2-bd0b-08f741c731b3",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "retrocession-prop3",
+      "path": "holiday-lab/assets/retrocession/prop3.png",
+      "sha256": "0567469d452567c5927be0c30efc32b55d91ce0535f63796a9752cb14a5860bd",
+      "prompt_file": "holiday-lab/art-source/retrocession.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:10:46.577Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/retrocession.png",
+        "sha256": "cf91e349fe1b61dc96f2eb29789d3d26d3ed81df64041e51d0a6b3c73f5af619",
+        "cell": 11,
+        "session_id": "01a163f0-87bd-7ec2-bd0b-08f741c731b3",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "retrocession-target",
+      "path": "holiday-lab/assets/retrocession/target.png",
+      "sha256": "6d30b90a54dde7e2406913cebb6c7da817f2bd5690c171f4d4cb8106470daf8c",
+      "prompt_file": "holiday-lab/art-source/retrocession.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:10:46.577Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/retrocession.png",
+        "sha256": "cf91e349fe1b61dc96f2eb29789d3d26d3ed81df64041e51d0a6b3c73f5af619",
+        "cell": 12,
+        "session_id": "01a163f0-87bd-7ec2-bd0b-08f741c731b3",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "retrocession-token1",
+      "path": "holiday-lab/assets/retrocession/token1.png",
+      "sha256": "dc5b8896ae7a2520c6259530e15e6325949a88028d6960f0c557f2e1020462a3",
+      "prompt_file": "holiday-lab/art-source/retrocession.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:10:46.577Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/retrocession.png",
+        "sha256": "cf91e349fe1b61dc96f2eb29789d3d26d3ed81df64041e51d0a6b3c73f5af619",
+        "cell": 13,
+        "session_id": "01a163f0-87bd-7ec2-bd0b-08f741c731b3",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "retrocession-token2",
+      "path": "holiday-lab/assets/retrocession/token2.png",
+      "sha256": "a15aac7d4c3e54c6cb5b147521579f0ef108ea463569cf0043ee39a1c6b8c7e9",
+      "prompt_file": "holiday-lab/art-source/retrocession.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:10:46.577Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/retrocession.png",
+        "sha256": "cf91e349fe1b61dc96f2eb29789d3d26d3ed81df64041e51d0a6b3c73f5af619",
+        "cell": 14,
+        "session_id": "01a163f0-87bd-7ec2-bd0b-08f741c731b3",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "retrocession-token3",
+      "path": "holiday-lab/assets/retrocession/token3.png",
+      "sha256": "d3b65c85eace82abb7abccd44bd7b2f55a184c3206e2aa1dfbec379ec1714e62",
+      "prompt_file": "holiday-lab/art-source/retrocession.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:10:46.577Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/retrocession.png",
+        "sha256": "cf91e349fe1b61dc96f2eb29789d3d26d3ed81df64041e51d0a6b3c73f5af619",
+        "cell": 15,
+        "session_id": "01a163f0-87bd-7ec2-bd0b-08f741c731b3",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "constitution-cg-1",
+      "path": "holiday-lab/assets/constitution/cg-1.webp",
+      "sha256": "9f7c7d77caf8e7d2de64c7208756ec8498e3cb39e8da05645e5b43f4d1d3d915",
+      "prompt_file": "holiday-lab/art-source/constitution.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:11:27.628Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/constitution.png",
+        "sha256": "28d070aedc0d69d3072967406a19edacab315903e1219ffe635e9636ec05de09",
+        "cell": 0,
+        "session_id": "01a163f2-4fed-7d10-92ce-8ce9f9b29365",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "constitution-cg-2",
+      "path": "holiday-lab/assets/constitution/cg-2.webp",
+      "sha256": "c9d646ff2533825648d571d63e367bd89f3421d2b1e78c288460268453ef4f70",
+      "prompt_file": "holiday-lab/art-source/constitution.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:11:27.628Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/constitution.png",
+        "sha256": "28d070aedc0d69d3072967406a19edacab315903e1219ffe635e9636ec05de09",
+        "cell": 1,
+        "session_id": "01a163f2-4fed-7d10-92ce-8ce9f9b29365",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "constitution-cg-3",
+      "path": "holiday-lab/assets/constitution/cg-3.webp",
+      "sha256": "24dbd9dc0342d0ac02ef601463c1ef726ea3db04c21e0b82aeddff5a814f50bb",
+      "prompt_file": "holiday-lab/art-source/constitution.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:11:27.628Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/constitution.png",
+        "sha256": "28d070aedc0d69d3072967406a19edacab315903e1219ffe635e9636ec05de09",
+        "cell": 2,
+        "session_id": "01a163f2-4fed-7d10-92ce-8ce9f9b29365",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "constitution-cg-4",
+      "path": "holiday-lab/assets/constitution/cg-4.webp",
+      "sha256": "1ae176094399c82ed2537e86d34b75416c48550a16c1727e3ebfb526a41bb34e",
+      "prompt_file": "holiday-lab/art-source/constitution.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:11:27.628Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/constitution.png",
+        "sha256": "28d070aedc0d69d3072967406a19edacab315903e1219ffe635e9636ec05de09",
+        "cell": 3,
+        "session_id": "01a163f2-4fed-7d10-92ce-8ce9f9b29365",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "constitution-cg-5",
+      "path": "holiday-lab/assets/constitution/cg-5.webp",
+      "sha256": "2fde94289e5c11d63eaa43e5239577edbdd7b7089645919d6ae47880de5c5516",
+      "prompt_file": "holiday-lab/art-source/constitution.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:11:27.628Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/constitution.png",
+        "sha256": "28d070aedc0d69d3072967406a19edacab315903e1219ffe635e9636ec05de09",
+        "cell": 4,
+        "session_id": "01a163f2-4fed-7d10-92ce-8ce9f9b29365",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "constitution-scene",
+      "path": "holiday-lab/assets/constitution/scene.webp",
+      "sha256": "7b1ee7b69c70a452d2642efaa85b4e01a66bf0b7929dc419d968938d783cbd54",
+      "prompt_file": "holiday-lab/art-source/constitution.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:11:27.628Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/constitution.png",
+        "sha256": "28d070aedc0d69d3072967406a19edacab315903e1219ffe635e9636ec05de09",
+        "cell": 5,
+        "session_id": "01a163f2-4fed-7d10-92ce-8ce9f9b29365",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; WebP quality 87"
+    },
+    {
+      "id": "constitution-actor1",
+      "path": "holiday-lab/assets/constitution/actor1.png",
+      "sha256": "a2961037206fdd6332e73434b7119f424fb3e5482a95a755a5e2763635bba5c3",
+      "prompt_file": "holiday-lab/art-source/constitution.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:11:27.628Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/constitution.png",
+        "sha256": "28d070aedc0d69d3072967406a19edacab315903e1219ffe635e9636ec05de09",
+        "cell": 6,
+        "session_id": "01a163f2-4fed-7d10-92ce-8ce9f9b29365",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "constitution-actor2",
+      "path": "holiday-lab/assets/constitution/actor2.png",
+      "sha256": "2fc17519f090c4f40a014fa63d169b0f55bf19af7df721196928e19486c1bf21",
+      "prompt_file": "holiday-lab/art-source/constitution.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:11:27.628Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/constitution.png",
+        "sha256": "28d070aedc0d69d3072967406a19edacab315903e1219ffe635e9636ec05de09",
+        "cell": 7,
+        "session_id": "01a163f2-4fed-7d10-92ce-8ce9f9b29365",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "constitution-actor3",
+      "path": "holiday-lab/assets/constitution/actor3.png",
+      "sha256": "de57b880f54a3e2f4c00bd4c68129b474b4c61964a83e2b573d56ec9470cab53",
+      "prompt_file": "holiday-lab/art-source/constitution.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:11:27.628Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/constitution.png",
+        "sha256": "28d070aedc0d69d3072967406a19edacab315903e1219ffe635e9636ec05de09",
+        "cell": 8,
+        "session_id": "01a163f2-4fed-7d10-92ce-8ce9f9b29365",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "constitution-prop1",
+      "path": "holiday-lab/assets/constitution/prop1.png",
+      "sha256": "c7b2c1d365de5062ab1359b168ea69d40da14a4ed29297a73008ba185f47b2cf",
+      "prompt_file": "holiday-lab/art-source/constitution.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:11:27.628Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/constitution.png",
+        "sha256": "28d070aedc0d69d3072967406a19edacab315903e1219ffe635e9636ec05de09",
+        "cell": 9,
+        "session_id": "01a163f2-4fed-7d10-92ce-8ce9f9b29365",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "constitution-prop2",
+      "path": "holiday-lab/assets/constitution/prop2.png",
+      "sha256": "89a575bb7272a03ca7ff7b4eadcc737153051862bb4c950f8b98aa1508c26087",
+      "prompt_file": "holiday-lab/art-source/constitution.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:11:27.628Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/constitution.png",
+        "sha256": "28d070aedc0d69d3072967406a19edacab315903e1219ffe635e9636ec05de09",
+        "cell": 10,
+        "session_id": "01a163f2-4fed-7d10-92ce-8ce9f9b29365",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "constitution-prop3",
+      "path": "holiday-lab/assets/constitution/prop3.png",
+      "sha256": "5411f6d099c1f0d130047ef9a244ad71512b4bd0ec447f29d547944ba0d08230",
+      "prompt_file": "holiday-lab/art-source/constitution.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:11:27.628Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/constitution.png",
+        "sha256": "28d070aedc0d69d3072967406a19edacab315903e1219ffe635e9636ec05de09",
+        "cell": 11,
+        "session_id": "01a163f2-4fed-7d10-92ce-8ce9f9b29365",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "constitution-target",
+      "path": "holiday-lab/assets/constitution/target.png",
+      "sha256": "542526b731a0b7f05422d6b11cc3fe87b493483da73e3d0127f8f2e5ceffb339",
+      "prompt_file": "holiday-lab/art-source/constitution.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:11:27.628Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/constitution.png",
+        "sha256": "28d070aedc0d69d3072967406a19edacab315903e1219ffe635e9636ec05de09",
+        "cell": 12,
+        "session_id": "01a163f2-4fed-7d10-92ce-8ce9f9b29365",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "constitution-token1",
+      "path": "holiday-lab/assets/constitution/token1.png",
+      "sha256": "6e92512e2c8380c6ce0a40dfe1d8b8b11edb467bbeedcc61d8e9b559f506724a",
+      "prompt_file": "holiday-lab/art-source/constitution.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:11:27.628Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/constitution.png",
+        "sha256": "28d070aedc0d69d3072967406a19edacab315903e1219ffe635e9636ec05de09",
+        "cell": 13,
+        "session_id": "01a163f2-4fed-7d10-92ce-8ce9f9b29365",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "constitution-token2",
+      "path": "holiday-lab/assets/constitution/token2.png",
+      "sha256": "94867b4fc875e3d0610f0b91ae997c200de810f48d294b8653ab7ca9e2fc8de2",
+      "prompt_file": "holiday-lab/art-source/constitution.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:11:27.628Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/constitution.png",
+        "sha256": "28d070aedc0d69d3072967406a19edacab315903e1219ffe635e9636ec05de09",
+        "cell": 14,
+        "session_id": "01a163f2-4fed-7d10-92ce-8ce9f9b29365",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
+      "id": "constitution-token3",
+      "path": "holiday-lab/assets/constitution/token3.png",
+      "sha256": "d7f14fe44b57322c38687d88cd9de8222a347d231b4a85f523863238bfc99e0b",
+      "prompt_file": "holiday-lab/art-source/constitution.prompt.txt",
+      "generator": {
+        "producer": "codex",
+        "entry": "codex-image",
+        "generated_at": "2026-10-22T14:11:27.628Z"
+      },
+      "source": {
+        "atlas": "holiday-lab/art-source/constitution.png",
+        "sha256": "28d070aedc0d69d3072967406a19edacab315903e1219ffe635e9636ec05de09",
+        "cell": 15,
+        "session_id": "01a163f2-4fed-7d10-92ce-8ce9f9b29365",
+        "recoveredFrom": null
+      },
+      "postprocess": "equal-cell crop; magenta chroma removal; exact alpha bounding box"
+    },
+    {
       "id": "ui-paper",
       "path": "holiday-lab/assets/ui/paper.png",
       "sha256": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
@@ -3560,6 +5085,86 @@
         "exhibition-token1",
         "exhibition-token2",
         "exhibition-token3",
+        "peace-memory-cg-1",
+        "peace-memory-cg-2",
+        "peace-memory-cg-3",
+        "peace-memory-cg-4",
+        "peace-memory-cg-5",
+        "peace-memory-scene",
+        "peace-memory-actor1",
+        "peace-memory-actor2",
+        "peace-memory-actor3",
+        "peace-memory-prop1",
+        "peace-memory-prop2",
+        "peace-memory-prop3",
+        "peace-memory-target",
+        "peace-memory-token1",
+        "peace-memory-token2",
+        "peace-memory-token3",
+        "qingming-cg-1",
+        "qingming-cg-2",
+        "qingming-cg-3",
+        "qingming-cg-4",
+        "qingming-cg-5",
+        "qingming-scene",
+        "qingming-actor1",
+        "qingming-actor2",
+        "qingming-actor3",
+        "qingming-prop1",
+        "qingming-prop2",
+        "qingming-prop3",
+        "qingming-target",
+        "qingming-token1",
+        "qingming-token2",
+        "qingming-token3",
+        "labor-cg-1",
+        "labor-cg-2",
+        "labor-cg-3",
+        "labor-cg-4",
+        "labor-cg-5",
+        "labor-scene",
+        "labor-actor1",
+        "labor-actor2",
+        "labor-actor3",
+        "labor-prop1",
+        "labor-prop2",
+        "labor-prop3",
+        "labor-target",
+        "labor-token1",
+        "labor-token2",
+        "labor-token3",
+        "retrocession-cg-1",
+        "retrocession-cg-2",
+        "retrocession-cg-3",
+        "retrocession-cg-4",
+        "retrocession-cg-5",
+        "retrocession-scene",
+        "retrocession-actor1",
+        "retrocession-actor2",
+        "retrocession-actor3",
+        "retrocession-prop1",
+        "retrocession-prop2",
+        "retrocession-prop3",
+        "retrocession-target",
+        "retrocession-token1",
+        "retrocession-token2",
+        "retrocession-token3",
+        "constitution-cg-1",
+        "constitution-cg-2",
+        "constitution-cg-3",
+        "constitution-cg-4",
+        "constitution-cg-5",
+        "constitution-scene",
+        "constitution-actor1",
+        "constitution-actor2",
+        "constitution-actor3",
+        "constitution-prop1",
+        "constitution-prop2",
+        "constitution-prop3",
+        "constitution-target",
+        "constitution-token1",
+        "constitution-token2",
+        "constitution-token3",
         "ui-paper"
       ]
     },
@@ -3742,6 +5347,86 @@
         "exhibition-token1",
         "exhibition-token2",
         "exhibition-token3",
+        "peace-memory-cg-1",
+        "peace-memory-cg-2",
+        "peace-memory-cg-3",
+        "peace-memory-cg-4",
+        "peace-memory-cg-5",
+        "peace-memory-scene",
+        "peace-memory-actor1",
+        "peace-memory-actor2",
+        "peace-memory-actor3",
+        "peace-memory-prop1",
+        "peace-memory-prop2",
+        "peace-memory-prop3",
+        "peace-memory-target",
+        "peace-memory-token1",
+        "peace-memory-token2",
+        "peace-memory-token3",
+        "qingming-cg-1",
+        "qingming-cg-2",
+        "qingming-cg-3",
+        "qingming-cg-4",
+        "qingming-cg-5",
+        "qingming-scene",
+        "qingming-actor1",
+        "qingming-actor2",
+        "qingming-actor3",
+        "qingming-prop1",
+        "qingming-prop2",
+        "qingming-prop3",
+        "qingming-target",
+        "qingming-token1",
+        "qingming-token2",
+        "qingming-token3",
+        "labor-cg-1",
+        "labor-cg-2",
+        "labor-cg-3",
+        "labor-cg-4",
+        "labor-cg-5",
+        "labor-scene",
+        "labor-actor1",
+        "labor-actor2",
+        "labor-actor3",
+        "labor-prop1",
+        "labor-prop2",
+        "labor-prop3",
+        "labor-target",
+        "labor-token1",
+        "labor-token2",
+        "labor-token3",
+        "retrocession-cg-1",
+        "retrocession-cg-2",
+        "retrocession-cg-3",
+        "retrocession-cg-4",
+        "retrocession-cg-5",
+        "retrocession-scene",
+        "retrocession-actor1",
+        "retrocession-actor2",
+        "retrocession-actor3",
+        "retrocession-prop1",
+        "retrocession-prop2",
+        "retrocession-prop3",
+        "retrocession-target",
+        "retrocession-token1",
+        "retrocession-token2",
+        "retrocession-token3",
+        "constitution-cg-1",
+        "constitution-cg-2",
+        "constitution-cg-3",
+        "constitution-cg-4",
+        "constitution-cg-5",
+        "constitution-scene",
+        "constitution-actor1",
+        "constitution-actor2",
+        "constitution-actor3",
+        "constitution-prop1",
+        "constitution-prop2",
+        "constitution-prop3",
+        "constitution-target",
+        "constitution-token1",
+        "constitution-token2",
+        "constitution-token3",
         "ui-paper"
       ]
     },
@@ -3924,6 +5609,86 @@
         "exhibition-token1",
         "exhibition-token2",
         "exhibition-token3",
+        "peace-memory-cg-1",
+        "peace-memory-cg-2",
+        "peace-memory-cg-3",
+        "peace-memory-cg-4",
+        "peace-memory-cg-5",
+        "peace-memory-scene",
+        "peace-memory-actor1",
+        "peace-memory-actor2",
+        "peace-memory-actor3",
+        "peace-memory-prop1",
+        "peace-memory-prop2",
+        "peace-memory-prop3",
+        "peace-memory-target",
+        "peace-memory-token1",
+        "peace-memory-token2",
+        "peace-memory-token3",
+        "qingming-cg-1",
+        "qingming-cg-2",
+        "qingming-cg-3",
+        "qingming-cg-4",
+        "qingming-cg-5",
+        "qingming-scene",
+        "qingming-actor1",
+        "qingming-actor2",
+        "qingming-actor3",
+        "qingming-prop1",
+        "qingming-prop2",
+        "qingming-prop3",
+        "qingming-target",
+        "qingming-token1",
+        "qingming-token2",
+        "qingming-token3",
+        "labor-cg-1",
+        "labor-cg-2",
+        "labor-cg-3",
+        "labor-cg-4",
+        "labor-cg-5",
+        "labor-scene",
+        "labor-actor1",
+        "labor-actor2",
+        "labor-actor3",
+        "labor-prop1",
+        "labor-prop2",
+        "labor-prop3",
+        "labor-target",
+        "labor-token1",
+        "labor-token2",
+        "labor-token3",
+        "retrocession-cg-1",
+        "retrocession-cg-2",
+        "retrocession-cg-3",
+        "retrocession-cg-4",
+        "retrocession-cg-5",
+        "retrocession-scene",
+        "retrocession-actor1",
+        "retrocession-actor2",
+        "retrocession-actor3",
+        "retrocession-prop1",
+        "retrocession-prop2",
+        "retrocession-prop3",
+        "retrocession-target",
+        "retrocession-token1",
+        "retrocession-token2",
+        "retrocession-token3",
+        "constitution-cg-1",
+        "constitution-cg-2",
+        "constitution-cg-3",
+        "constitution-cg-4",
+        "constitution-cg-5",
+        "constitution-scene",
+        "constitution-actor1",
+        "constitution-actor2",
+        "constitution-actor3",
+        "constitution-prop1",
+        "constitution-prop2",
+        "constitution-prop3",
+        "constitution-target",
+        "constitution-token1",
+        "constitution-token2",
+        "constitution-token3",
         "ui-paper"
       ]
     },
@@ -4106,6 +5871,86 @@
         "exhibition-token1",
         "exhibition-token2",
         "exhibition-token3",
+        "peace-memory-cg-1",
+        "peace-memory-cg-2",
+        "peace-memory-cg-3",
+        "peace-memory-cg-4",
+        "peace-memory-cg-5",
+        "peace-memory-scene",
+        "peace-memory-actor1",
+        "peace-memory-actor2",
+        "peace-memory-actor3",
+        "peace-memory-prop1",
+        "peace-memory-prop2",
+        "peace-memory-prop3",
+        "peace-memory-target",
+        "peace-memory-token1",
+        "peace-memory-token2",
+        "peace-memory-token3",
+        "qingming-cg-1",
+        "qingming-cg-2",
+        "qingming-cg-3",
+        "qingming-cg-4",
+        "qingming-cg-5",
+        "qingming-scene",
+        "qingming-actor1",
+        "qingming-actor2",
+        "qingming-actor3",
+        "qingming-prop1",
+        "qingming-prop2",
+        "qingming-prop3",
+        "qingming-target",
+        "qingming-token1",
+        "qingming-token2",
+        "qingming-token3",
+        "labor-cg-1",
+        "labor-cg-2",
+        "labor-cg-3",
+        "labor-cg-4",
+        "labor-cg-5",
+        "labor-scene",
+        "labor-actor1",
+        "labor-actor2",
+        "labor-actor3",
+        "labor-prop1",
+        "labor-prop2",
+        "labor-prop3",
+        "labor-target",
+        "labor-token1",
+        "labor-token2",
+        "labor-token3",
+        "retrocession-cg-1",
+        "retrocession-cg-2",
+        "retrocession-cg-3",
+        "retrocession-cg-4",
+        "retrocession-cg-5",
+        "retrocession-scene",
+        "retrocession-actor1",
+        "retrocession-actor2",
+        "retrocession-actor3",
+        "retrocession-prop1",
+        "retrocession-prop2",
+        "retrocession-prop3",
+        "retrocession-target",
+        "retrocession-token1",
+        "retrocession-token2",
+        "retrocession-token3",
+        "constitution-cg-1",
+        "constitution-cg-2",
+        "constitution-cg-3",
+        "constitution-cg-4",
+        "constitution-cg-5",
+        "constitution-scene",
+        "constitution-actor1",
+        "constitution-actor2",
+        "constitution-actor3",
+        "constitution-prop1",
+        "constitution-prop2",
+        "constitution-prop3",
+        "constitution-target",
+        "constitution-token1",
+        "constitution-token2",
+        "constitution-token3",
         "ui-paper"
       ]
     },
@@ -4288,6 +6133,86 @@
         "exhibition-token1",
         "exhibition-token2",
         "exhibition-token3",
+        "peace-memory-cg-1",
+        "peace-memory-cg-2",
+        "peace-memory-cg-3",
+        "peace-memory-cg-4",
+        "peace-memory-cg-5",
+        "peace-memory-scene",
+        "peace-memory-actor1",
+        "peace-memory-actor2",
+        "peace-memory-actor3",
+        "peace-memory-prop1",
+        "peace-memory-prop2",
+        "peace-memory-prop3",
+        "peace-memory-target",
+        "peace-memory-token1",
+        "peace-memory-token2",
+        "peace-memory-token3",
+        "qingming-cg-1",
+        "qingming-cg-2",
+        "qingming-cg-3",
+        "qingming-cg-4",
+        "qingming-cg-5",
+        "qingming-scene",
+        "qingming-actor1",
+        "qingming-actor2",
+        "qingming-actor3",
+        "qingming-prop1",
+        "qingming-prop2",
+        "qingming-prop3",
+        "qingming-target",
+        "qingming-token1",
+        "qingming-token2",
+        "qingming-token3",
+        "labor-cg-1",
+        "labor-cg-2",
+        "labor-cg-3",
+        "labor-cg-4",
+        "labor-cg-5",
+        "labor-scene",
+        "labor-actor1",
+        "labor-actor2",
+        "labor-actor3",
+        "labor-prop1",
+        "labor-prop2",
+        "labor-prop3",
+        "labor-target",
+        "labor-token1",
+        "labor-token2",
+        "labor-token3",
+        "retrocession-cg-1",
+        "retrocession-cg-2",
+        "retrocession-cg-3",
+        "retrocession-cg-4",
+        "retrocession-cg-5",
+        "retrocession-scene",
+        "retrocession-actor1",
+        "retrocession-actor2",
+        "retrocession-actor3",
+        "retrocession-prop1",
+        "retrocession-prop2",
+        "retrocession-prop3",
+        "retrocession-target",
+        "retrocession-token1",
+        "retrocession-token2",
+        "retrocession-token3",
+        "constitution-cg-1",
+        "constitution-cg-2",
+        "constitution-cg-3",
+        "constitution-cg-4",
+        "constitution-cg-5",
+        "constitution-scene",
+        "constitution-actor1",
+        "constitution-actor2",
+        "constitution-actor3",
+        "constitution-prop1",
+        "constitution-prop2",
+        "constitution-prop3",
+        "constitution-target",
+        "constitution-token1",
+        "constitution-token2",
+        "constitution-token3",
         "ui-paper"
       ]
     },
@@ -4470,6 +6395,86 @@
         "exhibition-token1",
         "exhibition-token2",
         "exhibition-token3",
+        "peace-memory-cg-1",
+        "peace-memory-cg-2",
+        "peace-memory-cg-3",
+        "peace-memory-cg-4",
+        "peace-memory-cg-5",
+        "peace-memory-scene",
+        "peace-memory-actor1",
+        "peace-memory-actor2",
+        "peace-memory-actor3",
+        "peace-memory-prop1",
+        "peace-memory-prop2",
+        "peace-memory-prop3",
+        "peace-memory-target",
+        "peace-memory-token1",
+        "peace-memory-token2",
+        "peace-memory-token3",
+        "qingming-cg-1",
+        "qingming-cg-2",
+        "qingming-cg-3",
+        "qingming-cg-4",
+        "qingming-cg-5",
+        "qingming-scene",
+        "qingming-actor1",
+        "qingming-actor2",
+        "qingming-actor3",
+        "qingming-prop1",
+        "qingming-prop2",
+        "qingming-prop3",
+        "qingming-target",
+        "qingming-token1",
+        "qingming-token2",
+        "qingming-token3",
+        "labor-cg-1",
+        "labor-cg-2",
+        "labor-cg-3",
+        "labor-cg-4",
+        "labor-cg-5",
+        "labor-scene",
+        "labor-actor1",
+        "labor-actor2",
+        "labor-actor3",
+        "labor-prop1",
+        "labor-prop2",
+        "labor-prop3",
+        "labor-target",
+        "labor-token1",
+        "labor-token2",
+        "labor-token3",
+        "retrocession-cg-1",
+        "retrocession-cg-2",
+        "retrocession-cg-3",
+        "retrocession-cg-4",
+        "retrocession-cg-5",
+        "retrocession-scene",
+        "retrocession-actor1",
+        "retrocession-actor2",
+        "retrocession-actor3",
+        "retrocession-prop1",
+        "retrocession-prop2",
+        "retrocession-prop3",
+        "retrocession-target",
+        "retrocession-token1",
+        "retrocession-token2",
+        "retrocession-token3",
+        "constitution-cg-1",
+        "constitution-cg-2",
+        "constitution-cg-3",
+        "constitution-cg-4",
+        "constitution-cg-5",
+        "constitution-scene",
+        "constitution-actor1",
+        "constitution-actor2",
+        "constitution-actor3",
+        "constitution-prop1",
+        "constitution-prop2",
+        "constitution-prop3",
+        "constitution-target",
+        "constitution-token1",
+        "constitution-token2",
+        "constitution-token3",
         "ui-paper"
       ]
     },
@@ -4652,6 +6657,86 @@
         "exhibition-token1",
         "exhibition-token2",
         "exhibition-token3",
+        "peace-memory-cg-1",
+        "peace-memory-cg-2",
+        "peace-memory-cg-3",
+        "peace-memory-cg-4",
+        "peace-memory-cg-5",
+        "peace-memory-scene",
+        "peace-memory-actor1",
+        "peace-memory-actor2",
+        "peace-memory-actor3",
+        "peace-memory-prop1",
+        "peace-memory-prop2",
+        "peace-memory-prop3",
+        "peace-memory-target",
+        "peace-memory-token1",
+        "peace-memory-token2",
+        "peace-memory-token3",
+        "qingming-cg-1",
+        "qingming-cg-2",
+        "qingming-cg-3",
+        "qingming-cg-4",
+        "qingming-cg-5",
+        "qingming-scene",
+        "qingming-actor1",
+        "qingming-actor2",
+        "qingming-actor3",
+        "qingming-prop1",
+        "qingming-prop2",
+        "qingming-prop3",
+        "qingming-target",
+        "qingming-token1",
+        "qingming-token2",
+        "qingming-token3",
+        "labor-cg-1",
+        "labor-cg-2",
+        "labor-cg-3",
+        "labor-cg-4",
+        "labor-cg-5",
+        "labor-scene",
+        "labor-actor1",
+        "labor-actor2",
+        "labor-actor3",
+        "labor-prop1",
+        "labor-prop2",
+        "labor-prop3",
+        "labor-target",
+        "labor-token1",
+        "labor-token2",
+        "labor-token3",
+        "retrocession-cg-1",
+        "retrocession-cg-2",
+        "retrocession-cg-3",
+        "retrocession-cg-4",
+        "retrocession-cg-5",
+        "retrocession-scene",
+        "retrocession-actor1",
+        "retrocession-actor2",
+        "retrocession-actor3",
+        "retrocession-prop1",
+        "retrocession-prop2",
+        "retrocession-prop3",
+        "retrocession-target",
+        "retrocession-token1",
+        "retrocession-token2",
+        "retrocession-token3",
+        "constitution-cg-1",
+        "constitution-cg-2",
+        "constitution-cg-3",
+        "constitution-cg-4",
+        "constitution-cg-5",
+        "constitution-scene",
+        "constitution-actor1",
+        "constitution-actor2",
+        "constitution-actor3",
+        "constitution-prop1",
+        "constitution-prop2",
+        "constitution-prop3",
+        "constitution-target",
+        "constitution-token1",
+        "constitution-token2",
+        "constitution-token3",
         "ui-paper"
       ]
     },
@@ -4834,6 +6919,86 @@
         "exhibition-token1",
         "exhibition-token2",
         "exhibition-token3",
+        "peace-memory-cg-1",
+        "peace-memory-cg-2",
+        "peace-memory-cg-3",
+        "peace-memory-cg-4",
+        "peace-memory-cg-5",
+        "peace-memory-scene",
+        "peace-memory-actor1",
+        "peace-memory-actor2",
+        "peace-memory-actor3",
+        "peace-memory-prop1",
+        "peace-memory-prop2",
+        "peace-memory-prop3",
+        "peace-memory-target",
+        "peace-memory-token1",
+        "peace-memory-token2",
+        "peace-memory-token3",
+        "qingming-cg-1",
+        "qingming-cg-2",
+        "qingming-cg-3",
+        "qingming-cg-4",
+        "qingming-cg-5",
+        "qingming-scene",
+        "qingming-actor1",
+        "qingming-actor2",
+        "qingming-actor3",
+        "qingming-prop1",
+        "qingming-prop2",
+        "qingming-prop3",
+        "qingming-target",
+        "qingming-token1",
+        "qingming-token2",
+        "qingming-token3",
+        "labor-cg-1",
+        "labor-cg-2",
+        "labor-cg-3",
+        "labor-cg-4",
+        "labor-cg-5",
+        "labor-scene",
+        "labor-actor1",
+        "labor-actor2",
+        "labor-actor3",
+        "labor-prop1",
+        "labor-prop2",
+        "labor-prop3",
+        "labor-target",
+        "labor-token1",
+        "labor-token2",
+        "labor-token3",
+        "retrocession-cg-1",
+        "retrocession-cg-2",
+        "retrocession-cg-3",
+        "retrocession-cg-4",
+        "retrocession-cg-5",
+        "retrocession-scene",
+        "retrocession-actor1",
+        "retrocession-actor2",
+        "retrocession-actor3",
+        "retrocession-prop1",
+        "retrocession-prop2",
+        "retrocession-prop3",
+        "retrocession-target",
+        "retrocession-token1",
+        "retrocession-token2",
+        "retrocession-token3",
+        "constitution-cg-1",
+        "constitution-cg-2",
+        "constitution-cg-3",
+        "constitution-cg-4",
+        "constitution-cg-5",
+        "constitution-scene",
+        "constitution-actor1",
+        "constitution-actor2",
+        "constitution-actor3",
+        "constitution-prop1",
+        "constitution-prop2",
+        "constitution-prop3",
+        "constitution-target",
+        "constitution-token1",
+        "constitution-token2",
+        "constitution-token3",
         "ui-paper"
       ]
     },
@@ -5016,6 +7181,86 @@
         "exhibition-token1",
         "exhibition-token2",
         "exhibition-token3",
+        "peace-memory-cg-1",
+        "peace-memory-cg-2",
+        "peace-memory-cg-3",
+        "peace-memory-cg-4",
+        "peace-memory-cg-5",
+        "peace-memory-scene",
+        "peace-memory-actor1",
+        "peace-memory-actor2",
+        "peace-memory-actor3",
+        "peace-memory-prop1",
+        "peace-memory-prop2",
+        "peace-memory-prop3",
+        "peace-memory-target",
+        "peace-memory-token1",
+        "peace-memory-token2",
+        "peace-memory-token3",
+        "qingming-cg-1",
+        "qingming-cg-2",
+        "qingming-cg-3",
+        "qingming-cg-4",
+        "qingming-cg-5",
+        "qingming-scene",
+        "qingming-actor1",
+        "qingming-actor2",
+        "qingming-actor3",
+        "qingming-prop1",
+        "qingming-prop2",
+        "qingming-prop3",
+        "qingming-target",
+        "qingming-token1",
+        "qingming-token2",
+        "qingming-token3",
+        "labor-cg-1",
+        "labor-cg-2",
+        "labor-cg-3",
+        "labor-cg-4",
+        "labor-cg-5",
+        "labor-scene",
+        "labor-actor1",
+        "labor-actor2",
+        "labor-actor3",
+        "labor-prop1",
+        "labor-prop2",
+        "labor-prop3",
+        "labor-target",
+        "labor-token1",
+        "labor-token2",
+        "labor-token3",
+        "retrocession-cg-1",
+        "retrocession-cg-2",
+        "retrocession-cg-3",
+        "retrocession-cg-4",
+        "retrocession-cg-5",
+        "retrocession-scene",
+        "retrocession-actor1",
+        "retrocession-actor2",
+        "retrocession-actor3",
+        "retrocession-prop1",
+        "retrocession-prop2",
+        "retrocession-prop3",
+        "retrocession-target",
+        "retrocession-token1",
+        "retrocession-token2",
+        "retrocession-token3",
+        "constitution-cg-1",
+        "constitution-cg-2",
+        "constitution-cg-3",
+        "constitution-cg-4",
+        "constitution-cg-5",
+        "constitution-scene",
+        "constitution-actor1",
+        "constitution-actor2",
+        "constitution-actor3",
+        "constitution-prop1",
+        "constitution-prop2",
+        "constitution-prop3",
+        "constitution-target",
+        "constitution-token1",
+        "constitution-token2",
+        "constitution-token3",
         "ui-paper"
       ]
     }
