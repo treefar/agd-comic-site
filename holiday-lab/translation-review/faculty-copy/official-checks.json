@@ -1,0 +1,14 @@
+{
+  "checked_at": "2026-10-23",
+  "checks": [
+    {"topic":"教師本人/系所原始頁","url":"https://www.dgd.stu.edu.tw/","result":"本輪直接讀首頁403；以姓名+官網網域查找未找到可用的13位完整個人原頁。嘗試WordPress ID及姓名路徑未能存取，不能假設猜的路徑就是真正個人頁。","use":"canonical來源可作翻譯對照，不當成學歷取得/個人持證/正式英文姓名全部重新驗實。未自行改姓名拼寫。"},
+    {"topic":"見城館官方英文","url":"https://takao.kcg.gov.tw/article/1030","result":"高雄市政府新聞局官方文章的搜尋索引Information並列The Center of Old Fongshan City History與見城館，地址157-2 Gueishan Lane。直接open先可取得部分頁，再find未取得對應段、重取timeout；證據層級標官方索引，未假稱已完整重讀英文全文。","use":"Hsingtiengu Museum不是此原名對照，提出修正。只核館名，不將論文英文標題宣稱為原發表正式題名。"},
+    {"topic":"見城館日文原名","url":"https://takao.kcg.gov.tw/article/1025","result":"官方日文頁可讀，使用見城館並加歷史博物館說明。","use":"支持保留日文既有見城館原名，不再生造日文館名。"},
+    {"topic":"MTA英文考試名","url":"https://learn.microsoft.com/en-us/credentials/certifications/mta-retirement-faqs","result":"Microsoft官方頁全文可讀，考試表列Database Administration Fundamentals及Windows Operating System Fundamentals。","use":"修raw英文資料Adminstration Fundmentals/Operationg拼字。canonical原英文已正確；目前真實英文runtime沿用canonical，不能報成畫面漏修。未以此確認教師本人持證或改成新證照。"},
+    {"topic":"通聯/通契範/豆油瓶/出日頭公司英文","queries":["通聯行動創意科技有限公司 英文","通契範文教創意股份有限公司 英文","豆油瓶影像動畫 English","出日頭電影有限公司 English"],"result":"未取得公司/本人官方英文對照；第三方工商站有UNION U INC.摘要，但非一手，因此未據此把Tonglian改成UNION U。","use":"公司原中文及任期保留，英文正式名列待確認。其他公司逐欄亦列未核，沒有從單筆推出音譯規律。"},
+    {"topic":"人造人/失竊的祕方等正式英文作品名","result":"搜尋未取得足以核定原作者正式英文標題的一手頁；目前不同位置有Android/Cyborg及The Stolen Recipe/The Stolen Secret Recipe等不一致。","use":"列待確認，不從單一譯名推整站替換。唯一可精確修的是原中文祕字，回到canonical而不重拼英文作品名。"},
+    {"topic":"六筆碩士的MA/MFA/MSc/MDesign類型","result":"canonical只說碩士；本人/系所原頁未取得，無法逐人核定額外英文學位類型。","use":"changchunya、chiushinchan、chenmeijung、wuyenshen、chiangtienhua、yinli列待確認；本輪不擅改學位或聲稱已驗實。歷史國立交通大學不改成現名，保留取得時校名。"}
+  ],
+  "non_primary_excluded": "搜尋回傳的Wikipedia、第三方工商站、他校STUST與他人師資，不用來推定本系教師正式名稱/資格。",
+  "limits": "276個非年份欄位完成語義對照，並不等於全部236筆含專名的來源欄位都拿到官方英日名稱認證；年份73欄另外保留對照，沒有冒充長文審閱。"
+}
