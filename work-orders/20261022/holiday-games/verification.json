@@ -1,0 +1,65 @@
+{
+  "checked_at": "2026-10-22T12:42:52.531Z",
+  "scope": "documents_and_data_only",
+  "results": [
+    {
+      "name": "8候選ID唯一，方向已確認但未承諾各款遊戲完成",
+      "pass": true,
+      "actual": {
+        "candidates": 8,
+        "preferences": "使用者2026-10-22對話確認"
+      }
+    },
+    {
+      "name": "8個正日逐筆對研究候選表，非跨年套日期",
+      "pass": true,
+      "actual": [
+        "元旦 2027-01-01",
+        "春節初一 2027-02-06",
+        "元宵 2027-02-20",
+        "兒童節 2027-04-04",
+        "端午 2027-06-09",
+        "中秋 2027-09-15",
+        "教師節 2027-09-28",
+        "國慶 2027-10-10"
+      ]
+    },
+    {
+      "name": "日期星期與Asia/Taipei一致",
+      "pass": true,
+      "actual": 8
+    },
+    {
+      "name": "法定假性質與學校停課分開，校園日期不猜",
+      "pass": true,
+      "actual": {
+        "holidayCandidates": 7,
+        "culturalDay": 1,
+        "schoolUnconfirmed": 8,
+        "campusUnconfirmed": 2
+      }
+    },
+    {
+      "name": "3份研究檔與8個Google案例都有來源",
+      "pass": true,
+      "actual": {
+        "reports": 3,
+        "googleCases": 8
+      }
+    },
+    {
+      "name": "節日與內容規格分開，候選都有玩法與系所連結",
+      "pass": true,
+      "actual": "本案已確認方向，非Google標準或實測"
+    },
+    {
+      "name": "官網工作樹與正式站ref未動、C節SHA保持",
+      "pass": true,
+      "actual": {
+        "preview": "ee0e251",
+        "production": "1b8322e",
+        "cSection": "95ae06fb0e647d1d212fd467120bd209132c8c904cf193085f47fe806f293680"
+      }
+    }
+  ]
+}
