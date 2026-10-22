@@ -1,6 +1,6 @@
-# 按鈕文案與紙面安全區 L2：歷史證據與待複驗
+# 按鈕文案與紙面安全區 L2：06 限定複驗完成
 
-2026-10-23（台灣）。目前產品僅保留四款自然短句；所有教師節／開學的局部 padding 與其 mock DOM/style 測試修改已依主控指示撤回。**目前尚未宣稱版面修完**，等待主控共用原圖九宮格與 sampler 新映射的凍結版，再跑本目錄回歸。
+2026-10-23（台灣）。產品僅保留四款自然短句；所有教師節／開學的局部 padding 與其 mock DOM/style 測試修改已撤回。主控共用原圖九宮格＋步進按鈕修正的06版（8843）已使用同一凍結 sampler 完整重跑 **46/46，138態通過，當前可讀DOM全頁geometry0**。正式窗口全名保留。完整最新收據、命令、限制見 [FINAL-06.md](FINAL-06.md)；下方所有01–05均為歷史，不能取代06。
 
 ## 最終保留的產品差異
 
@@ -68,9 +68,9 @@ node --test holiday-lab/tests/teachers.test.mjs holiday-lab/tests/national-day.t
 | 目前僅四個產品檔有label差異，semester及兩fixture無diff | yes，verify-code及git diff已核 |
 | 局部padding、所有誤標／失敗／歷史證據保留 | yes |
 | 最新label-only純測試34/34 | yes |
-| 最新通用九宮格版三語兩寬三態與全頁geometry已複驗 | no，等待主控凍結URL |
+| 最新通用九宮格版三語兩寬三態與當前可讀DOM全頁geometry已複驗 | yes，06同一凍結sampler完整46/46，不混兩套量測器 |
 | 所有全頁、所有捲動、所有狀態layoutgate完成 | no，限定證據不能替代全矩陣 |
 | 全部逐張人工／使用者美術確認、真人盲測 | no；代理已實看原三紅、候選教師節與勞動英日代表截圖，未冒稱美術確認 |
 | push、發布、碰main、刪檔、Unity | no |
 
-下一步：主控提供九宮格新凍結URL後，設定BUTTON_BASE，以新目錄跑product-all-complete，再核對真全頁errors與served SHA；不覆蓋03／04歷史。
+本工單限定回歸已完成。其餘全phase、所有捲動與截斷診斷由主控量測專線處理；不覆蓋03／04或05歷史。

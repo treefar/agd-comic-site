@@ -1,0 +1,27 @@
+node:assert:152
+  throw new AssertionError(obj);
+  ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ '194f85f3127518a6cd80d757e5260c5f364604556c4a319cd0125b0f059e95ad'
+- 'c247641156d929b0de7d6aa70e509510e293a29d7d6ff45aaac99ad931e0dc1a'
+
+    at Object.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\reports\button-copy-fix\combine-six.cjs:4:132)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: '194f85f3127518a6cd80d757e5260c5f364604556c4a319cd0125b0f059e95ad',
+  expected: 'c247641156d929b0de7d6aa70e509510e293a29d7d6ff45aaac99ad931e0dc1a',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.15.0
