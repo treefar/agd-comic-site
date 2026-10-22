@@ -619,6 +619,25 @@ const NewsChapter = () => (
 );
 
 // CH.03 — 系所介紹（標準 tier：3:2 大格 + 三格主軸）
+// Translate complete sentences before applying emphasis; fragment order differs by language.
+function AboutLocalizedCopy({ kind }) {
+  const bold = text => React.createElement("b", null, text);
+  const tone = (text, color) => React.createElement("span", { style: { color: `var(--accent-${color})` } }, text);
+  const copy = {
+    en: {
+      intro: ["We train professionals in ", tone("animation", "red"), ", ", tone("game design", "blue"), ", audiovisual post-production and interactive design (AR / VR)."],
+      history: ["Founded in ", bold("2006"), " as Taiwan’s first ", bold("Department of Digital Game Design"), ", the department was renamed the ", bold("Department of Animation and Game Design"), " in ", bold("2011"), " to meet industry needs. A comprehensive curriculum and industry partnerships connect students and faculty with regular company visits and professional talks, keeping them in touch with industry developments. The department continues to achieve strong results at ", bold("Vision Get Wild"), ", ", bold("Bahamut ACG"), ", the ", bold("Times Young Creative Awards"), " and other competitions."]
+    },
+    ja: {
+      intro: [tone("アニメーション制作", "red"), "、", tone("ゲームデザイン", "blue"), "、映像・音声のポストプロダクション、インタラクティブデザイン（AR / VR）に携わる専門人材を育成します。"],
+      history: [bold("2006"), "年に台湾初の「", bold("デジタルゲームデザイン学科"), "」として設立され、", bold("2011"), "年に産業界の人材ニーズに応じて「", bold("アニメとゲームデザイン学科"), "」へ名称を変更しました。充実した専門カリキュラムと産学連携の仕組みにより、教員と学生は定期的に企業見学や特別講座に参加し、業界の動向を学んでいます。また、", bold("放視大賞"), "、", bold("巴哈姆特 ACG"), "、", bold("金犢獎"), "などのコンテストで継続して優れた成果を収めています。"]
+    }
+  };
+  const parts = copy[siteLanguage]?.[kind];
+  if (!parts) throw new Error("Unknown localized About sentence");
+  return React.createElement(React.Fragment, null, ...parts);
+}
+
 const AboutChapter = () => (
   <section className="chapter" id="about" data-screen-label="03 About">
     <div className="container">
@@ -633,13 +652,13 @@ const AboutChapter = () => (
                 「動遊系到底在學什麼？」
               </Bubble>
             </div>
-            <div className="h-display" style={{ fontSize: "clamp(24px,3vw,40px)", margin: "10px 0 12px" }}>
-              培育<span style={{ color: "var(--accent-red)" }}>動畫創作</span>、
+            <div className="h-display" data-copy-id="about-main-sentence" style={{ fontSize: "clamp(24px,3vw,40px)", margin: "10px 0 12px" }}>
+              {siteLanguage === "zh" ? <>培育<span style={{ color: "var(--accent-red)" }}>動畫創作</span>、
               <span style={{ color: "var(--accent-blue)" }}>遊戲設計</span>、
-              影音後製、互動設計（AR / VR）<br/>所需的專業人才。
+              影音後製、互動設計（AR / VR）<br/>所需的專業人才。</> : <AboutLocalizedCopy kind="intro" />}
             </div>
-            <div style={{ fontSize: 14, lineHeight: 1.75, fontWeight: 500 }}>
-              <b>2006</b> 年成立全國第一所「<b>數位遊戲設計系</b>」，<b>2011</b> 年依產業人才需求更名為「<b>動畫與遊戲設計系</b>」。完整的專業學習課程＋產學合作機制，師生定期參與企業參訪、教學講座，掌握產業脈動；持續在<b>放視大賞</b>、<b>巴哈姆特 ACG</b>、<b>金犢獎</b>等競賽屢獲佳績。
+            <div data-copy-id="about-history-paragraph" style={{ fontSize: 14, lineHeight: 1.75, fontWeight: 500 }}>
+              {siteLanguage === "zh" ? <><b>2006</b> 年成立全國第一所「<b>數位遊戲設計系</b>」，<b>2011</b> 年依產業人才需求更名為「<b>動畫與遊戲設計系</b>」。完整的專業學習課程＋產學合作機制，師生定期參與企業參訪、教學講座，掌握產業脈動；持續在<b>放視大賞</b>、<b>巴哈姆特 ACG</b>、<b>金犢獎</b>等競賽屢獲佳績。</> : <AboutLocalizedCopy kind="history" />}
             </div>
             {/* 課程地圖 CTA — 塞進主獨白 panel 底部 */}
             <a href="#/curriculum/map" style={{

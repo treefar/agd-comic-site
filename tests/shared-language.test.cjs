@@ -3,11 +3,19 @@ test('English uses the same home and detail components',()=>{
 const i=fs.readFileSync('en-pages.jsx','utf8');assert.match(i,/siteCreateElement/);assert.doesNotMatch(i,/const EnFaculty|const EnWorks|slice\(0, 10\)|slice\(0, 5\)/);
 assert.match(fs.readFileSync('app.jsx','utf8'),/siteLanguage/);
 });
-test('Canonical Chinese data preserve published updates except explicitly reviewed admission corrections',()=>{
+test('Canonical Chinese data preserve published updates except reviewed admissions and the verified partner name',()=>{
  const crypto=require('node:crypto'),{execFileSync}=require('node:child_process'),baseline=require('./production-baseline.json');
  const hash=s=>crypto.createHash('sha256').update(s.replace(/\r\n/g,'\n')).digest('hex');
  for(const [file,digest]of Object.entries(baseline.data)){
   const current=fs.readFileSync('data/'+file,'utf8');
+  if(file==='news.json'){
+   const old=execFileSync('git',['show','904ac79937407d748e1bfdbce22517d38acbf8f3:data/news.json'],{encoding:'utf8'});assert.equal(hash(old),digest,'fixed news must match the published baseline');
+   const expected=JSON.parse(old),record=expected[4];assert.equal(record.id,7180);
+   const before='「オートクチュール株式会社」',after='「株式会社オートクチュール」';assert.equal(record.content.split(before).length-1,1,'one exact erroneous company name only');record.content=record.content.replace(before,after);
+   const historical=expected[16];assert.equal(historical.id,6753);assert.equal(historical.slug,'2025-07-25-japan-hc-internship');
+   const oldName='オートクチュール株式会社（Hautecouture Inc.',newName='株式会社オートクチュール（hautecouture Inc.';assert.equal(historical.content.split(oldName).length-1,1);historical.content=historical.content.replace(oldName,newName);
+   assert.deepEqual(JSON.parse(current),expected,'only the verified Japanese partner name may change; all other news facts and records remain protected');continue;
+  }
   if(file!=='admission.json'){assert.equal(hash(current),digest,file);continue;}
   const old=execFileSync('git',['show','904ac79937407d748e1bfdbce22517d38acbf8f3:data/admission.json'],{encoding:'utf8'});assert.equal(hash(old),digest,'the fixed pre-review data must still match the published baseline');
   const expected=JSON.parse(old),plan=require('../holiday-lab/translation-review/followup/exact-plan.json');

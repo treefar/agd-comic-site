@@ -17,5 +17,23 @@
 
 /* Fixed generated paper frame; scroll only the writable interior. */
 .controls-paper{min-width:0;}
-#lab .controls{padding:0;border:0;background-image:none;max-height:582px;}
+#lab .controls{padding:0 2px;border:0;background-image:none;max-height:582px;}
 @media(max-width:780px){#lab .controls{max-height:none;}}
+
+/* Keep the generated ink frame fixed while the paper grows with wrapped labels. */
+#lab .button,#lab .choice-options .button,#lab .slider-row .button{
+  border:12px solid transparent;
+  border-image-source:var(--normal);
+  border-image-slice:34 31 35 31 fill;
+  border-image-repeat:stretch;
+  background-image:none;
+  padding:8px 12px;
+  min-height:48px;
+  max-width:100%;
+  min-width:0;
+  overflow-wrap:anywhere;
+}
+#lab .slider-row .button{padding-inline:6px;min-width:44px;flex-shrink:0;}
+#lab .button:hover{border-image-source:var(--hover);border-image-slice:34 31 36 31 fill;}
+#lab .button:active,#lab .button[aria-pressed=true]{border-image-source:var(--pressed);border-image-slice:34 31 35 31 fill;}
+#lab .button:disabled{border-image-source:url('assets/ui/disabled.png');border-image-slice:34 31 36 31 fill;}

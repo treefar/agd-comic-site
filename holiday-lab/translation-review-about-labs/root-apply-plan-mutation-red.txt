@@ -1,0 +1,33 @@
+✔ dry-run retains all product bytes (256.6796ms)
+✔ apply edits exactly44 values and preserves unrelated concurrent additions before preflight (248.4636ms)
+✔ old-value drift or a widened plan rejects without writing any file (445.7295ms)
+✔ any post-preflight file change rejects the complete batch (235.6826ms)
+✖ mutating the exported plan cannot silently approve a different replacement (194.3969ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1621.4321
+
+✖ failing tests:
+
+test at holiday-lab\translation-review-about-labs\apply.test.mjs:10:1
+✖ mutating the exported plan cannot silently approve a different replacement (194.3969ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-about-labs/apply.test.mjs:10:209)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /UNAPPROVED_PLAN/,
+    operator: 'throws',
+    diff: 'simple'
+  }

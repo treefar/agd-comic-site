@@ -1,0 +1,88 @@
+✖ About en/intro joins as the complete reviewed sentence (55.0945ms)
+✖ About en/history joins as the complete reviewed sentence (13.7222ms)
+✖ About ja/intro joins as the complete reviewed sentence (13.0829ms)
+✖ About ja/history joins as the complete reviewed sentence (8.7397ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 0
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 468.9545
+
+✖ failing tests:
+
+test at tests\about-copy-context.test.cjs:7:125
+✖ About en/intro joins as the complete reviewed sentence (55.0945ms)
+  AssertionError [ERR_ASSERTION]: the actual shared About component needs a whole-sentence renderer
+      at render (C:\agywork\agd-holiday-prototypes\tests\about-copy-context.test.cjs:6:241)
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\tests\about-copy-context.test.cjs:8:15)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\about-copy-context.test.cjs:7:125
+✖ About en/history joins as the complete reviewed sentence (13.7222ms)
+  AssertionError [ERR_ASSERTION]: the actual shared About component needs a whole-sentence renderer
+      at render (C:\agywork\agd-holiday-prototypes\tests\about-copy-context.test.cjs:6:241)
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\tests\about-copy-context.test.cjs:8:15)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\about-copy-context.test.cjs:7:125
+✖ About ja/intro joins as the complete reviewed sentence (13.0829ms)
+  AssertionError [ERR_ASSERTION]: the actual shared About component needs a whole-sentence renderer
+      at render (C:\agywork\agd-holiday-prototypes\tests\about-copy-context.test.cjs:6:241)
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\tests\about-copy-context.test.cjs:8:15)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\about-copy-context.test.cjs:7:125
+✖ About ja/history joins as the complete reviewed sentence (8.7397ms)
+  AssertionError [ERR_ASSERTION]: the actual shared About component needs a whole-sentence renderer
+      at render (C:\agywork\agd-holiday-prototypes\tests\about-copy-context.test.cjs:6:241)
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\tests\about-copy-context.test.cjs:8:15)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
