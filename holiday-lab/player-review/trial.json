@@ -1,0 +1,624 @@
+{
+  "at": "2026-10-22T14:03:00.687Z",
+  "method": "代理自動DOM操作，非學生盲測、非新手平均時間。繼承脈絡已有解法，僅評可見說明是否足夠。",
+  "games": [
+    {
+      "id": "new-year",
+      "pass": true,
+      "observations": [],
+      "visibleInstructions": "調整三格停留時間，讓起步、騰空、落地順暢。先試播，再送出。\n\n第 1 幕｜導演節拍：400 / 180 / 380 毫秒。每格可差 65 毫秒。\n\n起步（毫秒）\n減\n600\n加\n騰空（毫秒）\n減\n500\n加\n落地（毫秒）\n減\n100\n加\n試播動作送出這幕",
+      "initialScreenshot": "screenshots/2026-10-22T14-03-00-687Z-new-year-initial.webp",
+      "failureFeedback": "先試播到落地，再判斷節奏。",
+      "wrongBlocked": true,
+      "failureScreenshot": "screenshots/2026-10-22T14-03-00-687Z-new-year-wrong.webp",
+      "flatTimingFeedback": "停格太久或太短。對照導演節拍，保留你喜歡的變化。",
+      "flatTimingRejected": true,
+      "secondsToResult": 5.93,
+      "score": "96 / 100",
+      "artifact": {
+        "takes": [
+          {
+            "timing": [
+              440,
+              160,
+              400
+            ],
+            "score": 87
+          },
+          {
+            "timing": [
+              320,
+              140,
+              320
+            ],
+            "score": 100
+          },
+          {
+            "timing": [
+              500,
+              220,
+              420
+            ],
+            "score": 100
+          }
+        ],
+        "attempts": 4
+      },
+      "resultScreenshot": "screenshots/2026-10-22T14-03-00-687Z-new-year-result.webp",
+      "previewAudio": [],
+      "replayCaptions": [
+        "第1幕・第1格 440毫秒",
+        "第1幕・第2格 160毫秒",
+        "第1幕・第3格 400毫秒"
+      ],
+      "replayAudio": [],
+      "replayScreenshot": "screenshots/2026-10-22T14-03-00-687Z-new-year-replay.webp",
+      "reset": true
+    },
+    {
+      "id": "lunar-new-year",
+      "pass": true,
+      "observations": [],
+      "visibleInstructions": "用眉、眼、嘴和鞠躬幅度，演出三幕。參考卡給方向，滑桿保留自己的表演。\n\n驚喜：看到新作品\n\n參考：眉 -20°、眼 1.4、嘴 0.7、鞠躬 0°。可有小幅變化。\n\n眉毛角度\n減\n0\n加\n眼睛張開\n減\n1\n加\n嘴形張開\n減\n0\n加\n鞠躬角度\n減\n0\n加\n表情歸零拍下這一幕",
+      "initialScreenshot": "screenshots/2026-10-22T14-03-00-687Z-lunar-new-year-initial.webp",
+      "failureFeedback": "表演還沒到位。驚喜要睜眼，開心要展笑，拜年要鞠躬。",
+      "wrongBlocked": true,
+      "failureScreenshot": "screenshots/2026-10-22T14-03-00-687Z-lunar-new-year-wrong.webp",
+      "exaggeratedSurpriseFeedback": "表演還沒到位。驚喜要睜眼，開心要展笑，拜年要鞠躬。",
+      "exaggeratedSurpriseRejected": true,
+      "surpriseScreenshot": "screenshots/2026-10-22T14-03-00-687Z-lunar-new-year-exaggerated-surprise.webp",
+      "secondsToResult": 1.34,
+      "score": "98 / 100",
+      "artifact": {
+        "poses": [
+          {
+            "values": {
+              "brow": -16,
+              "eyes": 1.4,
+              "mouth": 0.8,
+              "pose": 0
+            },
+            "score": 93,
+            "role": 0
+          },
+          {
+            "values": {
+              "brow": 10,
+              "eyes": 0.8,
+              "mouth": 1,
+              "pose": 0
+            },
+            "score": 100,
+            "role": 1
+          },
+          {
+            "values": {
+              "brow": 0,
+              "eyes": 0.7,
+              "mouth": 0.5,
+              "pose": 30
+            },
+            "score": 100,
+            "role": 2
+          }
+        ],
+        "attempts": 5
+      },
+      "resultScreenshot": "screenshots/2026-10-22T14-03-00-687Z-lunar-new-year-result.webp",
+      "previewAudio": [],
+      "replayCaptions": [
+        "驚喜：看到新作品",
+        "開心：朋友來了",
+        "拜年：向大家鞠躬"
+      ],
+      "replayAudio": [],
+      "replayScreenshot": "screenshots/2026-10-22T14-03-00-687Z-lunar-new-year-replay.webp",
+      "reset": true
+    },
+    {
+      "id": "lantern",
+      "pass": true,
+      "observations": [],
+      "visibleInstructions": "第 1 幕：紙鶴\n\n移動燈與紙藝，讓黑影的位置、大小和前後順序符合淡色參考。\n\n影子橫位 35.0／目標 65；距離 0／目標 20；目標順序：前\n\n燈的位置\n減\n30\n加\n紙藝的位置\n減\n35\n加\n紙藝離屏幕的距離\n減\n0\n加\n\n影子的重疊順序\n\n放在前方\n放在後方\n亮燈試演這幕重排",
+      "initialScreenshot": "screenshots/2026-10-22T14-03-00-687Z-lantern-initial.webp",
+      "failureFeedback": "影子還沒對齊。燈往左移，影子會往右走。",
+      "wrongBlocked": true,
+      "failureScreenshot": "screenshots/2026-10-22T14-03-00-687Z-lantern-wrong.webp",
+      "secondsToResult": 1.66,
+      "score": "96 / 100",
+      "artifact": {
+        "shots": [
+          {
+            "lamp": 20,
+            "paper": 58,
+            "depth": 20,
+            "order": "front",
+            "x": 65.6,
+            "scale": 1.2
+          },
+          {
+            "lamp": 20,
+            "paper": 43.3,
+            "depth": 50,
+            "order": "back",
+            "x": 54.949999999999996,
+            "scale": 1.5
+          },
+          {
+            "lamp": 20,
+            "paper": 48.6,
+            "depth": 75,
+            "order": "front",
+            "x": 70.05,
+            "scale": 1.75
+          }
+        ],
+        "misses": 1
+      },
+      "resultScreenshot": "screenshots/2026-10-22T14-03-00-687Z-lantern-result.webp",
+      "previewAudio": [],
+      "replayCaptions": [
+        "第 1 幕：燈位 20、距離 20",
+        "第 2 幕：燈位 20、距離 50",
+        "第 3 幕：燈位 20、距離 75"
+      ],
+      "replayAudio": [],
+      "replayScreenshot": "screenshots/2026-10-22T14-03-00-687Z-lantern-replay.webp",
+      "reset": true
+    },
+    {
+      "id": "children",
+      "pass": true,
+      "observations": [],
+      "visibleInstructions": "第 1 段：木頭玩具\n\n先配材質，再把聲音移到碰撞瞬間。按「預覽」看動畫；靜音時依材質文字與碰撞標記也能完成。\n\n聲音材質\n\n木頭\n金屬\n紙張\n聲音位置（毫秒）\n減\n300\n加\n\n按預覽觀察碰撞時點。\n\n預覽這一段放入配音作品",
+      "initialScreenshot": "screenshots/2026-10-22T14-03-00-687Z-children-initial.webp",
+      "failureFeedback": "材質不對。觀察玩具是木、金屬還是紙。",
+      "wrongBlocked": true,
+      "failureScreenshot": "screenshots/2026-10-22T14-03-00-687Z-children-wrong.webp",
+      "secondsToResult": 9.86,
+      "score": "92 / 100",
+      "artifact": {
+        "takes": [
+          {
+            "material": "wood",
+            "cue": 750,
+            "error": 50
+          },
+          {
+            "material": "metal",
+            "cue": 1200,
+            "error": 0
+          },
+          {
+            "material": "paper",
+            "cue": 1700,
+            "error": 0
+          }
+        ],
+        "attempts": 4
+      },
+      "resultScreenshot": "screenshots/2026-10-22T14-03-00-687Z-children-result.webp",
+      "previewAudio": [
+        {
+          "src": "http://127.0.0.1:8800/holiday-lab/audio/click.ogg",
+          "at": 1868.800000011921
+        },
+        {
+          "src": "http://127.0.0.1:8800/holiday-lab/audio/click.ogg",
+          "at": 1921
+        },
+        {
+          "src": "http://127.0.0.1:8800/holiday-lab/audio/click.ogg",
+          "at": 2021.6000000238419
+        },
+        {
+          "src": "http://127.0.0.1:8800/holiday-lab/audio/wood.ogg",
+          "at": 2760
+        },
+        {
+          "src": "http://127.0.0.1:8800/holiday-lab/audio/click.ogg",
+          "at": 4792
+        },
+        {
+          "src": "http://127.0.0.1:8800/holiday-lab/audio/success.ogg",
+          "at": 4792.100000023842
+        },
+        {
+          "src": "http://127.0.0.1:8800/holiday-lab/audio/click.ogg",
+          "at": 4868.199999988079
+        },
+        {
+          "src": "http://127.0.0.1:8800/holiday-lab/audio/click.ogg",
+          "at": 4944.800000011921
+        },
+        {
+          "src": "http://127.0.0.1:8800/holiday-lab/audio/metal.ogg",
+          "at": 6160.100000023842
+        },
+        {
+          "src": "http://127.0.0.1:8800/holiday-lab/audio/click.ogg",
+          "at": 7720.699999988079
+        },
+        {
+          "src": "http://127.0.0.1:8800/holiday-lab/audio/success.ogg",
+          "at": 7720.900000035763
+        },
+        {
+          "src": "http://127.0.0.1:8800/holiday-lab/audio/click.ogg",
+          "at": 7773.699999988079
+        },
+        {
+          "src": "http://127.0.0.1:8800/holiday-lab/audio/click.ogg",
+          "at": 7849.5
+        },
+        {
+          "src": "http://127.0.0.1:8800/holiday-lab/audio/paper.ogg",
+          "at": 9560.600000023842
+        },
+        {
+          "src": "http://127.0.0.1:8800/holiday-lab/audio/click.ogg",
+          "at": 10626.699999988079
+        },
+        {
+          "src": "http://127.0.0.1:8800/holiday-lab/audio/success.ogg",
+          "at": 10626.900000035763
+        }
+      ],
+      "replayCaptions": [
+        "木頭聲，750 毫秒",
+        "金屬聲，1200 毫秒",
+        "紙張聲，1700 毫秒"
+      ],
+      "replayAudio": [
+        {
+          "src": "http://127.0.0.1:8800/holiday-lab/audio/click.ogg",
+          "at": 11087.5
+        }
+      ],
+      "replayScreenshot": "screenshots/2026-10-22T14-03-00-687Z-children-replay.webp",
+      "reset": true
+    },
+    {
+      "id": "dragon-boat",
+      "pass": true,
+      "observations": [],
+      "visibleInstructions": "第 1 摺：左葉\n\n這是虛構紙藝：左葉打底、右葉交疊、上葉封口。調整摺角覆蓋紙餡料，紋路朝內；太平的摺面無法扣住。\n\n目前覆蓋 0%；角度 0 度。左、右約 140 度，上葉約 160 度。\n\n操作哪片葉\n\n左葉\n右葉\n上葉\n摺角（度）\n減\n0\n加\n\n紋路朝向\n\n朝內\n朝外\n壓住這一摺展開上一摺全部展開",
+      "initialScreenshot": "screenshots/2026-10-22T14-03-00-687Z-dragon-boat-initial.webp",
+      "failureFeedback": "還有紙餡料露出，增加摺角再試。",
+      "wrongBlocked": true,
+      "failureScreenshot": "screenshots/2026-10-22T14-03-00-687Z-dragon-boat-wrong.webp",
+      "secondsToResult": 1.75,
+      "score": "96 / 100",
+      "artifact": {
+        "folds": [
+          {
+            "leaf": "left",
+            "angle": 140,
+            "face": "inside",
+            "coverage": 1
+          },
+          {
+            "leaf": "right",
+            "angle": 140,
+            "face": "inside",
+            "coverage": 1
+          },
+          {
+            "leaf": "top",
+            "angle": 160,
+            "face": "inside",
+            "coverage": 1
+          }
+        ],
+        "misses": 1
+      },
+      "resultScreenshot": "screenshots/2026-10-22T14-03-00-687Z-dragon-boat-result.webp",
+      "previewAudio": [],
+      "replayCaptions": [
+        "左葉：140 度",
+        "右葉：140 度",
+        "上葉：160 度"
+      ],
+      "replayAudio": [],
+      "replayScreenshot": "screenshots/2026-10-22T14-03-00-687Z-dragon-boat-replay.webp",
+      "reset": true
+    },
+    {
+      "id": "mid-autumn",
+      "pass": true,
+      "observations": [],
+      "visibleInstructions": "調整剪接點、起始位置和圓形大小，讓移動中的圓在切換時接上參考圈。先試剪，再送出。\n\n月亮 → 車輪｜在 900 毫秒切換；參考圈中心 35％、大小 20％；速度 15％／秒。\n\n剪接時間（毫秒）\n減\n500\n加\n圓的起始位置（％）\n減\n10\n加\n圓形大小（％）\n減\n12\n加\n試剪這一段保留剪接",
+      "initialScreenshot": "screenshots/2026-10-22T14-03-00-687Z-mid-autumn-initial.webp",
+      "failureFeedback": "先試剪，看圓形在切換時有沒有對上。",
+      "wrongBlocked": true,
+      "failureScreenshot": "screenshots/2026-10-22T14-03-00-687Z-mid-autumn-wrong.webp",
+      "secondsToResult": 4.46,
+      "score": "100 / 100",
+      "artifact": {
+        "cuts": [
+          {
+            "time": 900,
+            "x": 21.5,
+            "size": 20,
+            "endX": 35,
+            "speed": 15,
+            "score": 100
+          },
+          {
+            "time": 1200,
+            "x": 38,
+            "size": 26,
+            "endX": 62,
+            "speed": 20,
+            "score": 100
+          },
+          {
+            "time": 750,
+            "x": 56.5,
+            "size": 18,
+            "endX": 45.25,
+            "speed": -15,
+            "score": 99
+          }
+        ],
+        "attempts": 3
+      },
+      "resultScreenshot": "screenshots/2026-10-22T14-03-00-687Z-mid-autumn-result.webp",
+      "previewAudio": [],
+      "replayCaptions": [
+        "月亮 → 車輪：切換前",
+        "在 900 毫秒切換，圓的位置 35.0％",
+        "車輪 → 圓燈：切換前"
+      ],
+      "replayAudio": [],
+      "replayScreenshot": "screenshots/2026-10-22T14-03-00-687Z-mid-autumn-replay.webp",
+      "reset": true
+    },
+    {
+      "id": "teachers",
+      "pass": true,
+      "observations": [],
+      "visibleInstructions": "第 1 格：聆聽提問\n\n你已經找到自己的方法了。\n\n依「聆聽 → 感謝 → 回應」編成三格。每格選動作、台詞，再調停頓；感謝那一格要多留一點閱讀時間。\n\n這格的動作\n\n聆聽提問\n送上感謝畫作\n老師回應\n\n這格的台詞\n\n老師，這個動作要怎麼改？\n可以再示範一次嗎？\n謝謝你陪我把作品做好。\n謝謝你每次都耐心看完。\n你已經找到自己的方法了。\n把這份勇氣帶到下一個作品吧。\n停頓（毫秒）\n減\n400\n加\n\n可先預覽台詞的停留時間。\n\n預覽停頓排入漫畫",
+      "initialScreenshot": "screenshots/2026-10-22T14-03-00-687Z-teachers-initial.webp",
+      "failureFeedback": "這一格的動作順序還沒接上。先聆聽，再感謝，最後回應。",
+      "wrongBlocked": true,
+      "failureScreenshot": "screenshots/2026-10-22T14-03-00-687Z-teachers-wrong.webp",
+      "secondsToResult": 7.62,
+      "score": "97 / 100",
+      "artifact": {
+        "panels": [
+          {
+            "action": "listen",
+            "line": "ask",
+            "pause": 900
+          },
+          {
+            "action": "thanks",
+            "line": "thank-patient",
+            "pause": 1400
+          },
+          {
+            "action": "reply",
+            "line": "reply",
+            "pause": 1100
+          }
+        ],
+        "attempts": 4
+      },
+      "resultScreenshot": "screenshots/2026-10-22T14-03-00-687Z-teachers-result.webp",
+      "previewAudio": [],
+      "replayCaptions": [
+        "老師，這個動作要怎麼改？",
+        "謝謝你每次都耐心看完。",
+        "你已經找到自己的方法了。"
+      ],
+      "replayAudio": [],
+      "replayScreenshot": "screenshots/2026-10-22T14-03-00-687Z-teachers-replay.webp",
+      "reset": true
+    },
+    {
+      "id": "national-day",
+      "pass": true,
+      "observations": [],
+      "visibleInstructions": "第 1 鏡：島嶼橫移\n\n排好城市前景、海岸中景與山遠景。移動鏡頭拍三張：樹不能擋住學生，海岸與山也要對到參考位置。\n\n鏡頭 0／目標 -12；海岸 50.0／55；山 50.0／48；視線被樹擋住\n\n前景與樹的位移\n減\n0\n加\n海岸位移\n減\n0\n加\n山景位移\n減\n0\n加\n攝影機橫移\n減\n0\n加\n\n場景層次\n\n城市前、海岸中、山在後\n山在前、城市在後\n拍下這個鏡頭重排這個鏡頭",
+      "initialScreenshot": "screenshots/2026-10-22T14-03-00-687Z-national-day-initial.webp",
+      "failureFeedback": "學生被樹遮住了，移開前景，留下清楚視線。",
+      "wrongBlocked": true,
+      "failureScreenshot": "screenshots/2026-10-22T14-03-00-687Z-national-day-wrong.webp",
+      "secondsToResult": 1.51,
+      "score": "96 / 100",
+      "artifact": {
+        "shots": [
+          {
+            "camera": -12,
+            "fore": 22,
+            "mid": -1,
+            "far": -4,
+            "order": "normal",
+            "screen_fore": 82.8,
+            "screen_mid": 55,
+            "screen_far": 48.4,
+            "screen_subject": 57.2
+          },
+          {
+            "camera": 0,
+            "fore": 22,
+            "mid": 0,
+            "far": 0,
+            "order": "normal",
+            "screen_fore": 72,
+            "screen_mid": 50,
+            "screen_far": 50,
+            "screen_subject": 50
+          },
+          {
+            "camera": 12,
+            "fore": 22,
+            "mid": 1,
+            "far": 4,
+            "order": "normal",
+            "screen_fore": 61.2,
+            "screen_mid": 45,
+            "screen_far": 51.6,
+            "screen_subject": 42.8
+          }
+        ],
+        "misses": 1
+      },
+      "resultScreenshot": "screenshots/2026-10-22T14-03-00-687Z-national-day-result.webp",
+      "previewAudio": [],
+      "replayCaptions": [
+        "鏡頭 1：攝影機 -12，主角保持可見",
+        "鏡頭 2：攝影機 0，主角保持可見",
+        "鏡頭 3：攝影機 12，主角保持可見"
+      ],
+      "replayAudio": [],
+      "replayScreenshot": "screenshots/2026-10-22T14-03-00-687Z-national-day-replay.webp",
+      "reset": true
+    },
+    {
+      "id": "semester",
+      "pass": true,
+      "observations": [],
+      "visibleInstructions": "先到系辦找到選課諮詢窗口。\n\n目前：1列3行，0 步\n\n漫畫示意地圖，非真實校園路線。用方向鍵或四個方向按鈕移動，再按「辦理任務」。座標由左到右 1–5、由上到下 1–3。\n\n系辦：1列1行｜教室：5列1行｜作品室：3列3行\n\n往上往左往下往右\n辦理這站任務",
+      "initialScreenshot": "screenshots/2026-10-22T14-03-00-687Z-semester-initial.webp",
+      "failureFeedback": "還沒到這次任務的地點，先看任務與座標。",
+      "wrongBlocked": true,
+      "failureScreenshot": "screenshots/2026-10-22T14-03-00-687Z-semester-wrong.webp",
+      "secondsToResult": 0.97,
+      "score": "100 / 100",
+      "artifact": {
+        "route": [
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 1
+          },
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 4,
+            "y": 0
+          },
+          {
+            "x": 4,
+            "y": 1
+          },
+          {
+            "x": 4,
+            "y": 2
+          },
+          {
+            "x": 3,
+            "y": 2
+          },
+          {
+            "x": 2,
+            "y": 2
+          }
+        ],
+        "visits": [
+          {
+            "index": 0,
+            "x": 0,
+            "y": 0,
+            "steps": 2
+          },
+          {
+            "index": 1,
+            "x": 4,
+            "y": 0,
+            "steps": 6
+          },
+          {
+            "index": 2,
+            "x": 2,
+            "y": 2,
+            "steps": 10
+          }
+        ],
+        "fictionalMap": true
+      },
+      "resultScreenshot": "screenshots/2026-10-22T14-03-00-687Z-semester-result.webp",
+      "previewAudio": [],
+      "replayCaptions": [
+        "系辦：走了 2 步抵達",
+        "教室：走了 6 步抵達",
+        "作品室：走了 10 步抵達"
+      ],
+      "replayAudio": [],
+      "replayScreenshot": "screenshots/2026-10-22T14-03-00-687Z-semester-replay.webp",
+      "reset": true
+    },
+    {
+      "id": "exhibition",
+      "pass": true,
+      "observations": [],
+      "visibleInstructions": "替三件虛構作品安排展位：入口在下方，每件作品中心 Y 不超過 55，每件相距至少 24，並放上資訊卡。選作品後可用滑桿或方向鍵微調。\n\n已備妥資訊與動線的作品：0/3\n\n目前編輯的作品\n\n虛構動畫作品\n虛構遊戲作品\n虛構互動作品\n左右位置 X\n減\n50\n加\n上下位置 Y（上20，下80）\n減\n78\n加\n\n作品資訊\n\n未放資訊卡\n放上資訊卡\n試走展場完成策展",
+      "initialScreenshot": "screenshots/2026-10-22T14-03-00-687Z-exhibition-initial.webp",
+      "failureFeedback": "作品擋住入口。把每件作品往上移到 Y55 以內。",
+      "wrongBlocked": true,
+      "failureScreenshot": "screenshots/2026-10-22T14-03-00-687Z-exhibition-wrong.webp",
+      "secondsToResult": 5.27,
+      "score": "100 / 100",
+      "artifact": {
+        "works": [
+          {
+            "id": 0,
+            "x": 22,
+            "y": 30,
+            "info": true
+          },
+          {
+            "id": 1,
+            "x": 52,
+            "y": 30,
+            "info": true
+          },
+          {
+            "id": 2,
+            "x": 82,
+            "y": 30,
+            "info": true
+          }
+        ],
+        "visitorOrder": [
+          0,
+          1,
+          2
+        ],
+        "edits": 15,
+        "fictionalWorks": true
+      },
+      "resultScreenshot": "screenshots/2026-10-22T14-03-00-687Z-exhibition-result.webp",
+      "previewAudio": [],
+      "replayCaptions": [
+        "虛構動畫作品：位置 22, 30，資訊已放好",
+        "虛構遊戲作品：位置 52, 30，資訊已放好",
+        "虛構互動作品：位置 82, 30，資訊已放好"
+      ],
+      "replayAudio": [],
+      "replayScreenshot": "screenshots/2026-10-22T14-03-00-687Z-exhibition-replay.webp",
+      "reset": true
+    }
+  ],
+  "errors": [],
+  "browser": "151.0.7922.34"
+}

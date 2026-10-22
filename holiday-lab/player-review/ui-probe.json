@@ -1,0 +1,621 @@
+[
+  {
+    "id": "new-year",
+    "controls": "調整三格停留時間，讓起步、騰空、落地順暢。先試播，再送出。\n\n第 1 幕｜導演節拍：400 / 180 / 380 毫秒。每格可差 65 毫秒。\n\n起步（毫秒）\n減\n600\n加\n騰空（毫秒）\n減\n500\n加\n落地（毫秒）\n減\n100\n加\n試播動作送出這幕",
+    "hint": "調整關鍵格停留時間，讓跨年一躍動得順。",
+    "inputs": [
+      {
+        "id": "ny-hold-0",
+        "value": "600",
+        "min": "80",
+        "max": "700",
+        "step": "10"
+      },
+      {
+        "id": "ny-hold-1",
+        "value": "500",
+        "min": "80",
+        "max": "700",
+        "step": "10"
+      },
+      {
+        "id": "ny-hold-2",
+        "value": "100",
+        "min": "80",
+        "max": "700",
+        "step": "10"
+      }
+    ],
+    "buttons": [
+      {
+        "id": "ny-hold-0-minus",
+        "text": "減"
+      },
+      {
+        "id": "ny-hold-0-plus",
+        "text": "加"
+      },
+      {
+        "id": "ny-hold-1-minus",
+        "text": "減"
+      },
+      {
+        "id": "ny-hold-1-plus",
+        "text": "加"
+      },
+      {
+        "id": "ny-hold-2-minus",
+        "text": "減"
+      },
+      {
+        "id": "ny-hold-2-plus",
+        "text": "加"
+      },
+      {
+        "id": "ny-preview",
+        "text": "試播動作"
+      },
+      {
+        "id": "ny-submit",
+        "text": "送出這幕"
+      }
+    ]
+  },
+  {
+    "id": "lunar-new-year",
+    "controls": "用眉、眼、嘴和鞠躬幅度，演出三幕。參考卡給方向，滑桿保留自己的表演。\n\n驚喜：看到新作品\n\n參考：眉 -20°、眼 1.4、嘴 0.7、鞠躬 0°。可有小幅變化。\n\n眉毛角度\n減\n0\n加\n眼睛張開\n減\n1\n加\n嘴形張開\n減\n0\n加\n鞠躬角度\n減\n0\n加\n表情歸零拍下這一幕",
+    "hint": "幫原創年獸練習驚喜、開心與拜年。",
+    "inputs": [
+      {
+        "id": "lny-brow",
+        "value": "0",
+        "min": "-30",
+        "max": "30",
+        "step": "1"
+      },
+      {
+        "id": "lny-eyes",
+        "value": "1",
+        "min": "0.5",
+        "max": "1.5",
+        "step": "0.1"
+      },
+      {
+        "id": "lny-mouth",
+        "value": "0",
+        "min": "0",
+        "max": "1",
+        "step": "0.1"
+      },
+      {
+        "id": "lny-pose",
+        "value": "0",
+        "min": "0",
+        "max": "40",
+        "step": "1"
+      }
+    ],
+    "buttons": [
+      {
+        "id": "lny-brow-minus",
+        "text": "減"
+      },
+      {
+        "id": "lny-brow-plus",
+        "text": "加"
+      },
+      {
+        "id": "lny-eyes-minus",
+        "text": "減"
+      },
+      {
+        "id": "lny-eyes-plus",
+        "text": "加"
+      },
+      {
+        "id": "lny-mouth-minus",
+        "text": "減"
+      },
+      {
+        "id": "lny-mouth-plus",
+        "text": "加"
+      },
+      {
+        "id": "lny-pose-minus",
+        "text": "減"
+      },
+      {
+        "id": "lny-pose-plus",
+        "text": "加"
+      },
+      {
+        "id": "lny-reset-pose",
+        "text": "表情歸零"
+      },
+      {
+        "id": "lny-submit",
+        "text": "拍下這一幕"
+      }
+    ]
+  },
+  {
+    "id": "lantern",
+    "controls": "第 1 幕：紙鶴\n\n移動燈與紙藝，讓黑影的位置、大小和前後順序符合淡色參考。\n\n影子橫位 35.0／目標 65；距離 0／目標 20；目標順序：前\n\n燈的位置\n減\n30\n加\n紙藝的位置\n減\n35\n加\n紙藝離屏幕的距離\n減\n0\n加\n\n影子的重疊順序\n\n放在前方\n放在後方\n亮燈試演這幕重排",
+    "hint": "先調距離決定影子大小，再移動燈和紙藝對齊位置。",
+    "inputs": [
+      {
+        "id": "lan-lamp",
+        "value": "30",
+        "min": "10",
+        "max": "40",
+        "step": "1"
+      },
+      {
+        "id": "lan-paper",
+        "value": "35",
+        "min": "25",
+        "max": "75",
+        "step": "0.1"
+      },
+      {
+        "id": "lan-depth",
+        "value": "0",
+        "min": "0",
+        "max": "100",
+        "step": "1"
+      }
+    ],
+    "buttons": [
+      {
+        "id": "lan-lamp-minus",
+        "text": "減"
+      },
+      {
+        "id": "lan-lamp-plus",
+        "text": "加"
+      },
+      {
+        "id": "lan-paper-minus",
+        "text": "減"
+      },
+      {
+        "id": "lan-paper-plus",
+        "text": "加"
+      },
+      {
+        "id": "lan-depth-minus",
+        "text": "減"
+      },
+      {
+        "id": "lan-depth-plus",
+        "text": "加"
+      },
+      {
+        "id": "lan-order-0",
+        "text": "放在前方"
+      },
+      {
+        "id": "lan-order-1",
+        "text": "放在後方"
+      },
+      {
+        "id": "lan-check",
+        "text": "亮燈試演"
+      },
+      {
+        "id": "lan-reset",
+        "text": "這幕重排"
+      }
+    ]
+  },
+  {
+    "id": "children",
+    "controls": "第 1 段：木頭玩具\n\n先配材質，再把聲音移到碰撞瞬間。按「預覽」看動畫；靜音時依材質文字與碰撞標記也能完成。\n\n聲音材質\n\n木頭\n金屬\n紙張\n聲音位置（毫秒）\n減\n300\n加\n\n按預覽觀察碰撞時點。\n\n預覽這一段放入配音作品",
+    "hint": "辨認木、金屬與紙，對準動畫碰撞的瞬間。",
+    "inputs": [
+      {
+        "id": "children-cue",
+        "value": "300",
+        "min": "0",
+        "max": "2400",
+        "step": "50"
+      }
+    ],
+    "buttons": [
+      {
+        "id": "children-material-0",
+        "text": "木頭"
+      },
+      {
+        "id": "children-material-1",
+        "text": "金屬"
+      },
+      {
+        "id": "children-material-2",
+        "text": "紙張"
+      },
+      {
+        "id": "children-cue-minus",
+        "text": "減"
+      },
+      {
+        "id": "children-cue-plus",
+        "text": "加"
+      },
+      {
+        "id": "children-preview",
+        "text": "預覽這一段"
+      },
+      {
+        "id": "children-save",
+        "text": "放入配音作品"
+      }
+    ]
+  },
+  {
+    "id": "dragon-boat",
+    "controls": "第 1 摺：左葉\n\n這是虛構紙藝：左葉打底、右葉交疊、上葉封口。調整摺角覆蓋紙餡料，紋路朝內；太平的摺面無法扣住。\n\n目前覆蓋 0%；角度 0 度。左、右約 140 度，上葉約 160 度。\n\n操作哪片葉\n\n左葉\n右葉\n上葉\n摺角（度）\n減\n0\n加\n\n紋路朝向\n\n朝內\n朝外\n壓住這一摺展開上一摺全部展開",
+    "hint": "先選左葉，拉動角度，看葉面往中間覆蓋。",
+    "inputs": [
+      {
+        "id": "fold-angle",
+        "value": "0",
+        "min": "0",
+        "max": "180",
+        "step": "1"
+      }
+    ],
+    "buttons": [
+      {
+        "id": "fold-leaf-0",
+        "text": "左葉"
+      },
+      {
+        "id": "fold-leaf-1",
+        "text": "右葉"
+      },
+      {
+        "id": "fold-leaf-2",
+        "text": "上葉"
+      },
+      {
+        "id": "fold-angle-minus",
+        "text": "減"
+      },
+      {
+        "id": "fold-angle-plus",
+        "text": "加"
+      },
+      {
+        "id": "fold-face-0",
+        "text": "朝內"
+      },
+      {
+        "id": "fold-face-1",
+        "text": "朝外"
+      },
+      {
+        "id": "fold-commit",
+        "text": "壓住這一摺"
+      },
+      {
+        "id": "fold-unfold",
+        "text": "展開上一摺"
+      },
+      {
+        "id": "fold-reset",
+        "text": "全部展開"
+      }
+    ]
+  },
+  {
+    "id": "mid-autumn",
+    "controls": "調整剪接點、起始位置和圓形大小，讓移動中的圓在切換時接上參考圈。先試剪，再送出。\n\n月亮 → 車輪｜在 900 毫秒切換；參考圈中心 35％、大小 20％；速度 15％／秒。\n\n剪接時間（毫秒）\n減\n500\n加\n圓的起始位置（％）\n減\n10\n加\n圓形大小（％）\n減\n12\n加\n試剪這一段保留剪接",
+    "hint": "用形狀與時機，把月亮剪接到車輪與街燈。",
+    "inputs": [
+      {
+        "id": "ma-time",
+        "value": "500",
+        "min": "300",
+        "max": "1600",
+        "step": "50"
+      },
+      {
+        "id": "ma-x",
+        "value": "10",
+        "min": "0",
+        "max": "80",
+        "step": "0.5"
+      },
+      {
+        "id": "ma-size",
+        "value": "12",
+        "min": "10",
+        "max": "32",
+        "step": "1"
+      }
+    ],
+    "buttons": [
+      {
+        "id": "ma-time-minus",
+        "text": "減"
+      },
+      {
+        "id": "ma-time-plus",
+        "text": "加"
+      },
+      {
+        "id": "ma-x-minus",
+        "text": "減"
+      },
+      {
+        "id": "ma-x-plus",
+        "text": "加"
+      },
+      {
+        "id": "ma-size-minus",
+        "text": "減"
+      },
+      {
+        "id": "ma-size-plus",
+        "text": "加"
+      },
+      {
+        "id": "ma-preview",
+        "text": "試剪這一段"
+      },
+      {
+        "id": "ma-submit",
+        "text": "保留剪接"
+      }
+    ]
+  },
+  {
+    "id": "teachers",
+    "controls": "第 1 格：聆聽提問\n\n你已經找到自己的方法了。\n\n依「聆聽 → 感謝 → 回應」編成三格。每格選動作、台詞，再調停頓；感謝那一格要多留一點閱讀時間。\n\n這格的動作\n\n聆聽提問\n送上感謝畫作\n老師回應\n\n這格的台詞\n\n老師，這個動作要怎麼改？\n可以再示範一次嗎？\n謝謝你陪我把作品做好。\n謝謝你每次都耐心看完。\n你已經找到自己的方法了。\n把這份勇氣帶到下一個作品吧。\n停頓（毫秒）\n減\n400\n加\n\n可先預覽台詞的停留時間。\n\n預覽停頓排入漫畫",
+    "hint": "安排動作、台詞與停頓，完成三格感謝漫畫。",
+    "inputs": [
+      {
+        "id": "teachers-pause",
+        "value": "400",
+        "min": "200",
+        "max": "2400",
+        "step": "100"
+      }
+    ],
+    "buttons": [
+      {
+        "id": "teachers-action-0",
+        "text": "聆聽提問"
+      },
+      {
+        "id": "teachers-action-1",
+        "text": "送上感謝畫作"
+      },
+      {
+        "id": "teachers-action-2",
+        "text": "老師回應"
+      },
+      {
+        "id": "teachers-line-0",
+        "text": "老師，這個動作要怎麼改？"
+      },
+      {
+        "id": "teachers-line-1",
+        "text": "可以再示範一次嗎？"
+      },
+      {
+        "id": "teachers-line-2",
+        "text": "謝謝你陪我把作品做好。"
+      },
+      {
+        "id": "teachers-line-3",
+        "text": "謝謝你每次都耐心看完。"
+      },
+      {
+        "id": "teachers-line-4",
+        "text": "你已經找到自己的方法了。"
+      },
+      {
+        "id": "teachers-line-5",
+        "text": "把這份勇氣帶到下一個作品吧。"
+      },
+      {
+        "id": "teachers-pause-minus",
+        "text": "減"
+      },
+      {
+        "id": "teachers-pause-plus",
+        "text": "加"
+      },
+      {
+        "id": "teachers-preview",
+        "text": "預覽停頓"
+      },
+      {
+        "id": "teachers-save",
+        "text": "排入漫畫"
+      }
+    ]
+  },
+  {
+    "id": "national-day",
+    "controls": "第 1 鏡：島嶼橫移\n\n排好城市前景、海岸中景與山遠景。移動鏡頭拍三張：樹不能擋住學生，海岸與山也要對到參考位置。\n\n鏡頭 0／目標 -12；海岸 50.0／55；山 50.0／48；視線被樹擋住\n\n前景與樹的位移\n減\n0\n加\n海岸位移\n減\n0\n加\n山景位移\n減\n0\n加\n攝影機橫移\n減\n0\n加\n\n場景層次\n\n城市前、海岸中、山在後\n山在前、城市在後\n拍下這個鏡頭重排這個鏡頭",
+    "hint": "先把樹往旁邊移，再對齊鏡頭、海岸與山。",
+    "inputs": [
+      {
+        "id": "island-fore",
+        "value": "0",
+        "min": "-30",
+        "max": "30",
+        "step": "1"
+      },
+      {
+        "id": "island-mid",
+        "value": "0",
+        "min": "-30",
+        "max": "30",
+        "step": "1"
+      },
+      {
+        "id": "island-far",
+        "value": "0",
+        "min": "-30",
+        "max": "30",
+        "step": "1"
+      },
+      {
+        "id": "island-camera",
+        "value": "0",
+        "min": "-20",
+        "max": "20",
+        "step": "1"
+      }
+    ],
+    "buttons": [
+      {
+        "id": "island-fore-minus",
+        "text": "減"
+      },
+      {
+        "id": "island-fore-plus",
+        "text": "加"
+      },
+      {
+        "id": "island-mid-minus",
+        "text": "減"
+      },
+      {
+        "id": "island-mid-plus",
+        "text": "加"
+      },
+      {
+        "id": "island-far-minus",
+        "text": "減"
+      },
+      {
+        "id": "island-far-plus",
+        "text": "加"
+      },
+      {
+        "id": "island-camera-minus",
+        "text": "減"
+      },
+      {
+        "id": "island-camera-plus",
+        "text": "加"
+      },
+      {
+        "id": "island-order-0",
+        "text": "城市前、海岸中、山在後"
+      },
+      {
+        "id": "island-order-1",
+        "text": "山在前、城市在後"
+      },
+      {
+        "id": "island-capture",
+        "text": "拍下這個鏡頭"
+      },
+      {
+        "id": "island-reset-shot",
+        "text": "重排這個鏡頭"
+      }
+    ]
+  },
+  {
+    "id": "semester",
+    "controls": "先到系辦找到選課諮詢窗口。\n\n目前：1列3行，0 步\n\n漫畫示意地圖，非真實校園路線。用方向鍵或四個方向按鈕移動，再按「辦理任務」。座標由左到右 1–5、由上到下 1–3。\n\n系辦：1列1行｜教室：5列1行｜作品室：3列3行\n\n往上往左往下往右\n辦理這站任務",
+    "hint": "在虛構漫畫地圖完成任務，再連到真正的在校指南。",
+    "inputs": [],
+    "buttons": [
+      {
+        "id": "semester-up",
+        "text": "往上"
+      },
+      {
+        "id": "semester-left",
+        "text": "往左"
+      },
+      {
+        "id": "semester-down",
+        "text": "往下"
+      },
+      {
+        "id": "semester-right",
+        "text": "往右"
+      },
+      {
+        "id": "semester-visit",
+        "text": "辦理這站任務"
+      }
+    ]
+  },
+  {
+    "id": "exhibition",
+    "controls": "替三件虛構作品安排展位：入口在下方，每件作品中心 Y 不超過 55，每件相距至少 24，並放上資訊卡。選作品後可用滑桿或方向鍵微調。\n\n已備妥資訊與動線的作品：0/3\n\n目前編輯的作品\n\n虛構動畫作品\n虛構遊戲作品\n虛構互動作品\n左右位置 X\n減\n50\n加\n上下位置 Y（上20，下80）\n減\n78\n加\n\n作品資訊\n\n未放資訊卡\n放上資訊卡\n試走展場完成策展",
+    "hint": "把三種原創虛構作品排成好走、看得懂的展覽。",
+    "inputs": [
+      {
+        "id": "exhibition-x",
+        "value": "50",
+        "min": "10",
+        "max": "90",
+        "step": "1"
+      },
+      {
+        "id": "exhibition-y",
+        "value": "78",
+        "min": "20",
+        "max": "80",
+        "step": "1"
+      }
+    ],
+    "buttons": [
+      {
+        "id": "exhibition-select-0",
+        "text": "虛構動畫作品"
+      },
+      {
+        "id": "exhibition-select-1",
+        "text": "虛構遊戲作品"
+      },
+      {
+        "id": "exhibition-select-2",
+        "text": "虛構互動作品"
+      },
+      {
+        "id": "exhibition-x-minus",
+        "text": "減"
+      },
+      {
+        "id": "exhibition-x-plus",
+        "text": "加"
+      },
+      {
+        "id": "exhibition-y-minus",
+        "text": "減"
+      },
+      {
+        "id": "exhibition-y-plus",
+        "text": "加"
+      },
+      {
+        "id": "exhibition-info-0",
+        "text": "未放資訊卡"
+      },
+      {
+        "id": "exhibition-info-1",
+        "text": "放上資訊卡"
+      },
+      {
+        "id": "exhibition-preview",
+        "text": "試走展場"
+      },
+      {
+        "id": "exhibition-save",
+        "text": "完成策展"
+      }
+    ]
+  }
+]
