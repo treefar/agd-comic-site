@@ -1,0 +1,23 @@
+✔ Pinned baseline and plan are fixed, not inferred from mutable working product files (77.6599ms)
+✔ Dry run validates all13 + company-only canonical + new JA/EN keys without writes (1033.1941ms)
+✔ Apply in temporary fixed-baseline copy changes only authorized fields, preserves unrelated additions (1642.5746ms)
+✔ Actual pinned generator writes new English and Japanese keys in temp copy; stale on-disk locales rejected (2179.0565ms)
+✔ Any late target old-value drift rejects entire preflight without writes (245.8303ms)
+✔ Missing old Japanese dictionary key fails without writes (212.3807ms)
+✔ Any new Japanese key collision is rejected even if it holds desired translation (201.4984ms)
+✔ Out-of-scope file/path, altered replacement, missing operation and broader canonical rewrite are rejected (630.134ms)
+✔ Canonical drift and duplicate record-key ambiguity fail; unrelated fields stay intact (360.6845ms)
+✔ Post-preflight target concurrency rejects before first product write (750.0659ms)
+✔ Post-preflight overlay/generator source concurrency also rejects before all writes (671.1807ms)
+✔ A new data file appearing after preflight cannot silently change later generation (543.9777ms)
+✔ Unapproved overlay cannot hide replacement or new translated company key (413.7717ms)
+✔ Tampering with prepared text cannot widen changes or bypass recheck (411.7925ms)
+✔ Second apply is rejected; source facts beyond company name remain exact (532.3758ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 12916.3638

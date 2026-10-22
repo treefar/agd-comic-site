@@ -1,0 +1,94 @@
+node:internal/modules/cjs/loader:1479
+  throw err;
+  ^
+
+Error: Cannot find module '@babel/parser'
+Require stack:
+- C:\Users\treef\AppData\Local\Temp\agd-content-generated-yfwZya\scripts\build-translations.cjs
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1476:15)
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+    at Module._load (node:internal/modules/cjs/loader:1262:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.require (node:internal/modules/cjs/loader:1576:12)
+    at require (node:internal/modules/helpers:153:16)
+    at Object.<anonymous> (C:\Users\treef\AppData\Local\Temp\agd-content-generated-yfwZya\scripts\build-translations.cjs:2:43)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\Users\\treef\\AppData\\Local\\Temp\\agd-content-generated-yfwZya\\scripts\\build-translations.cjs'
+  ]
+}
+
+Node.js v24.15.0
+✔ Pinned baseline and plan are fixed, not inferred from mutable working product files (49.5231ms)
+✔ Dry run validates all13 + company-only canonical + new JA/EN keys without writes (534.8905ms)
+✔ Apply in temporary fixed-baseline copy changes only authorized fields, preserves unrelated additions (1531.1328ms)
+✖ Actual pinned generator writes new English and Japanese keys in temp copy; stale on-disk locales rejected (1348.1334ms)
+✔ Any late target old-value drift rejects entire preflight without writes (295.0917ms)
+✔ Missing old Japanese dictionary key fails without writes (288.5319ms)
+✔ Any new Japanese key collision is rejected even if it holds desired translation (187.2024ms)
+✔ Out-of-scope file/path, altered replacement, missing operation and broader canonical rewrite are rejected (398.7673ms)
+✔ Canonical drift and duplicate record-key ambiguity fail; unrelated fields stay intact (240.9387ms)
+✔ Post-preflight target concurrency rejects before first product write (462.4704ms)
+✔ Post-preflight overlay/generator source concurrency also rejects before all writes (506.9352ms)
+✔ Unapproved overlay cannot hide replacement or new translated company key (470.8218ms)
+✔ Tampering with prepared text cannot widen changes or bypass recheck (447.938ms)
+✔ Second apply is rejected; source facts beyond company name remain exact (486.3825ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 13
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10092.7673
+
+✖ failing tests:
+
+test at holiday-lab\translation-review-content-next\review.test.mjs:14:1
+✖ Actual pinned generator writes new English and Japanese keys in temp copy; stale on-disk locales rejected (1348.1334ms)
+  Error: Command failed: C:\Program Files\nodejs\node.exe C:\Users\treef\AppData\Local\Temp\agd-content-generated-yfwZya\scripts\build-translations.cjs
+  node:internal/modules/cjs/loader:1479
+    throw err;
+    ^
+  
+  Error: Cannot find module '@babel/parser'
+  Require stack:
+  - C:\Users\treef\AppData\Local\Temp\agd-content-generated-yfwZya\scripts\build-translations.cjs
+      at Module._resolveFilename (node:internal/modules/cjs/loader:1476:15)
+      at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+      at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+      at Module._load (node:internal/modules/cjs/loader:1262:25)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+      at Module.require (node:internal/modules/cjs/loader:1576:12)
+      at require (node:internal/modules/helpers:153:16)
+      at Object.<anonymous> (C:\Users\treef\AppData\Local\Temp\agd-content-generated-yfwZya\scripts\build-translations.cjs:2:43)
+      at Module._compile (node:internal/modules/cjs/loader:1830:14) {
+    code: 'MODULE_NOT_FOUND',
+    requireStack: [
+      'C:\\Users\\treef\\AppData\\Local\\Temp\\agd-content-generated-yfwZya\\scripts\\build-translations.cjs'
+    ]
+  }
+  
+  Node.js v24.15.0
+  
+      at genericNodeError (node:internal/errors:985:15)
+      at wrappedFn (node:internal/errors:539:14)
+      at checkExecSyncError (node:child_process:925:11)
+      at execFileSync (node:child_process:961:15)
+      at TestContext.<anonymous> (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review-content-next/review.test.mjs:14:345)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12) {
+    status: 1,
+    signal: null,
+    output: [ null, <Buffer >, <Buffer 6e 6f 64 65 3a 69 6e 74 65 72 6e 61 6c 2f 6d 6f 64 75 6c 65 73 2f 63 6a 73 2f 6c 6f 61 64 65 72 3a 31 34 37 39 0d 0a 20 20 74 68 72 6f 77 20 65 72 72 ... 1101 more bytes> ],
+    pid: 8436,
+    stdout: <Buffer >,
+    stderr: <Buffer 6e 6f 64 65 3a 69 6e 74 65 72 6e 61 6c 2f 6d 6f 64 75 6c 65 73 2f 63 6a 73 2f 6c 6f 61 64 65 72 3a 31 34 37 39 0d 0a 20 20 74 68 72 6f 77 20 65 72 72 ... 1101 more bytes>
+  }

@@ -87,3 +87,34 @@
 首次編譯抽取只有31/38，原因是工具只認StringLiteral，但esbuild把七個多行英文值編成無插值TemplateLiteral。讀實際bundle後補靜態template解析，才得到38/38；初次紅燈完整保留`verification-first-compiled-red.json`及txt。沒有把工具漏抽誤報成產品缺譯，也沒有放寬來源精確相等條件。
 
 原始輸出`verify-output.txt`，完整機器收據`verification.json`。主控採用後應照原建置流程重建locale，對變更的首頁與對應詳頁做英日窄版／桌面、字型及長文顯示檢查；公司名修正須連同canonical與長鍵遷移一起處理。此只讀驗證器檢查的是採用前精確基準，不可在採用後把old值漂移當成修正失敗。
+
+## 補交：安全套用器與固定基準回歸
+
+主控已核准本批canonical公司名更正。新增`apply-safe.mjs`，預設dry-run；本代理仍未對root執行apply。
+
+```text
+node holiday-lab/translation-review-content-next/apply-safe.mjs --project C:/agywork/agd-holiday-prototypes
+node holiday-lab/translation-review-content-next/apply-safe.mjs --project C:/agywork/agd-holiday-prototypes --apply
+node holiday-lab/translation-review-content-next/apply-safe.mjs --project C:/agywork/agd-holiday-prototypes --verify-applied
+```
+
+最後一條以真實固定版本build scripts的虛擬輸出，驗證新英文與日文長鍵均不遺漏，但不寫locale檔。主控照既有流程真正重建locale後，再加`--verify-applied --require-generated`，會額外核對磁碟上的兩份locale，舊字典會被拒絕。這仍不能取代新譯文的真頁面排版與字型檢查。
+
+- 計畫與全部fixture來源固定在`d48f5d9a479db1449d932b815a6cff4d0a827f76`，使用git show，沒有拿可變工作樹產品充當期望基準。計畫、13筆數量、檔案／pointer、old/new或canonical超出公司名的變更，均拒絕。
+- 全4檔先讀取，核13筆exact old、canonical只變公司名、JA舊鍵存在及新鍵不碰撞，再於記憶體中改值和遷移鍵。任何一筆preflight失敗都不寫產品。
+- 以固定版本的實際英文／日文生成器及當前真overlay，在虛擬檔案輸出中生成字典，逐筆核13個新值及公司名新鍵，舊長鍵不殘留。不是另寫一個可能忽略overlay順序的簡化生成器。讀取的JSON、JSX、build scripts、可選檔案存在狀態與data目錄清單均保留供並行重驗。
+- apply前再比較所有已讀來源、可選檔與目錄清單；target、overlay、build來源或新增data檔並行變更均拒絕。prepare回傳物被竄改亦拒絕。保留非目標欄位和其他新增資料；不重寫整個根目錄。
+- 真正apply只依序寫4個JSON檔，不宣稱跨檔原子交易；磁碟I/O故障仍可能留下部分寫入，主控應檢查git diff與輸出。沒有用清檔、重設或還原其他代理改動處理失敗。
+
+實測：
+
+|驗收|yes／no|實際輸出|
+|---|---|---|
+|固定基準回歸測試|yes|`node --test holiday-lab/translation-review-content-next/review.test.mjs` → 15 pass、0 fail；`apply-test-green.txt`|
+|root只讀preflight|yes|`node apply-safe.mjs --project C:/agywork/agd-holiday-prototypes` → operations13、canonical_changes1、generated_translation_values13、product_files_written0；`root-apply-dry-run.json`|
+|root來源前後SHA相同|yes|`node prove-root-dry-run.mjs C:/agywork/agd-holiday-prototypes` → source_unchanged true；`root-dry-run-evidence.json`含4檔JSON及兩份locale前後SHA|
+|實際套用／重建／驗新鍵|yes|只在TEMP固定基準副本中執行，4JSON套用、真pinned build scripts產locale、verify-applied requireGenerated通過；非root產品|
+|漂移、越界、缺鍵、碰撞、並行、overlay遮蓋有拒絕測試|yes|15測試逐項明列；完整非目標JSON深比、額外root欄位保留，before/after SHA驗拒絕無寫入|
+|本代理已替root套用|no|沒有執行root --apply；由主控操作|
+
+最初測試因尚未實作套用器而紅，原輸出保留`apply-test-red.txt`。第一輪實作13/14，唯一失敗是TEMP執行真生成器找不到Babel依賴；測試子行程明確提供現有NODE_PATH後轉綠。它不是產品失敗，也沒有跳過真生成器測試。追加來源目錄並行案例後，最終15/15；暫存副本清單保留`fixture-locations.json`，未刪除。
