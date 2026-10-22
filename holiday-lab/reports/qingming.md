@@ -1,5 +1,45 @@
 # qingming：獨立本機試作
 
+## 追加：真實路徑回放（2026-10-22）
+
+|驗收|yes/no|實際證據|
+|---|---|---|
+|9靜態圖改成3段逐點飛行|yes|sprite.frames取樣實際path，末點等於實際capture|
+|重試紀錄不偽造成連續路線|yes|成功回放從該段最後重試開始，失敗路線仍留artifact|
+|實際角度與時間次序|yes|取樣rotation、單調at、最後2400ms；每段2700ms含停格|
+|root外框實際回放驗證|no|待獨立瀏覽器QA，本分支不修改runner|
+
+```text
+node --test holiday-lab/tests/qingming.test.mjs
+✖ replay follows sampled successful flight, including actual angle and capture endpoint
+AssertionError: 9 !== 3
+tests 6 / pass 5 / fail 1
+exit code 1
+
+node --test holiday-lab/tests/qingming.test.mjs
+✔ replay follows sampled successful flight, including actual angle and capture endpoint (5.167ms)
+✔ continuous line control reaches three different wind windows and saves actual flight (2.3158ms)
+✔ fixed-step flight is stable across frame sizes; bad controls and retry do not invent captures (1.8287ms)
+✔ successful replay starts at the final retry while artifact keeps failed flight (1.6346ms)
+✔ three-language live flight and teardown zh (3.3285ms)
+✔ three-language live flight and teardown en (1.6227ms)
+✔ three-language live flight and teardown ja (1.3362ms)
+ℹ tests 7
+ℹ pass 7
+ℹ fail 0
+ℹ duration_ms 123.603
+exit code 0
+
+node --check holiday-lab/games/qingming.mjs
+(無輸出)
+exit code 0
+git diff --cached --check
+(無輸出)
+exit code 0
+```
+
+回放保留caption及artifact；縮時有明確標示。以下為前一版基礎驗證紀錄，追加版已將靜態圖改為上述frames。
+
 source_agent: codex；2026-10-22。唯一所有權games/tests/reports三檔；不push、不碰main、不刪檔、不改共用外框/C節。
 
 |驗收|yes/no|實際證據|
