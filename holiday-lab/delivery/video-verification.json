@@ -1,0 +1,52 @@
+{
+  "programs": [],
+  "stream_groups": [],
+  "streams": [
+    {
+      "codec_name": "h264",
+      "codec_type": "video",
+      "width": 1280,
+      "height": 720,
+      "r_frame_rate": "25/1"
+    },
+    {
+      "codec_name": "aac",
+      "codec_type": "audio",
+      "sample_rate": "48000",
+      "channels": 2,
+      "r_frame_rate": "0/0"
+    }
+  ],
+  "format": {
+    "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+    "duration": "38.560000",
+    "size": "1697793"
+  },
+  "sha256": "a6e8866b3a4e9d1d6022901292ca1138c1f8a9616396fa8caf3f0f5646f87ad4",
+  "faststart": true,
+  "atoms": [
+    {
+      "type": "ftyp",
+      "offset": 0,
+      "size": 32
+    },
+    {
+      "type": "moov",
+      "offset": 32,
+      "size": 30284
+    },
+    {
+      "type": "free",
+      "offset": 30316,
+      "size": 8
+    },
+    {
+      "type": "mdat",
+      "offset": 30324,
+      "size": 1667469
+    }
+  ],
+  "originalMuted": true,
+  "silentAACAdded": true,
+  "conversionCommand": "New-MobilePreview.ps1 -Path source/recording-silent-aac.mkv -OutDir delivery -OutName holiday-preview.mp4 -MaxMB 14"
+}
