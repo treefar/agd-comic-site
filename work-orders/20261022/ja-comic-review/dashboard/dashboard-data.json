@@ -1,0 +1,1517 @@
+{
+  "schema_version": 1,
+  "meta": {
+    "project": "系網漫畫版_AGDComicSite",
+    "title": "漫畫整合、三語網站與在校指南審閱",
+    "generated": "2026-10-22",
+    "authorities": [
+      {
+        "path": "student-copy.json",
+        "role": "卡片、流程與段落說明、FAQ及來源記錄"
+      },
+      {
+        "path": "verification.json / browser/results.json / text-audit.json",
+        "role": "實際工具驗證"
+      },
+      {
+        "path": "catalog-audit.json",
+        "role": "語言覆蓋"
+      }
+    ],
+    "notes": [
+      "先交審閱版；未 push、未發布、未改 main、未發布遊戲。",
+      "數字由原始資料計算；工具通過與使用者確認分開。"
+    ]
+  },
+  "status_levels": [
+    {
+      "key": "draft",
+      "label": "資料已建",
+      "tone": "info",
+      "layer": "data"
+    },
+    {
+      "key": "pass",
+      "label": "工具通過",
+      "tone": "ok",
+      "layer": "tool"
+    },
+    {
+      "key": "fail",
+      "label": "未通過",
+      "tone": "danger",
+      "layer": "tool"
+    },
+    {
+      "key": "pending",
+      "label": "待審閱",
+      "tone": "warn",
+      "layer": "user"
+    },
+    {
+      "key": "confirmed",
+      "label": "使用者已確認",
+      "tone": "ok",
+      "layer": "user"
+    }
+  ],
+  "summary_cards": [
+    {
+      "id": "cards",
+      "label": "學生項目",
+      "layer": "data",
+      "rule": {
+        "count": "cards"
+      },
+      "value": 15
+    },
+    {
+      "id": "details",
+      "label": "步驟小說明",
+      "layer": "data",
+      "rule": {
+        "count": "details"
+      },
+      "value": 47
+    },
+    {
+      "id": "faq",
+      "label": "常見問題",
+      "layer": "data",
+      "rule": {
+        "count": "faq"
+      },
+      "value": 30
+    },
+    {
+      "id": "sources",
+      "label": "來源記錄",
+      "layer": "data",
+      "rule": {
+        "count": "sources"
+      },
+      "value": 45
+    },
+    {
+      "id": "languages",
+      "label": "語言版本",
+      "layer": "data",
+      "rule": {
+        "count": "languages"
+      },
+      "value": 3
+    },
+    {
+      "id": "checks",
+      "label": "工具通過項目",
+      "layer": "tool",
+      "rule": {
+        "count": "checks",
+        "where": {
+          "tool": "pass"
+        }
+      },
+      "value": 95
+    },
+    {
+      "id": "confirmed",
+      "label": "使用者已確認",
+      "layer": "user",
+      "rule": {
+        "count": "cards",
+        "where": {
+          "user": "confirmed"
+        }
+      },
+      "value": 0
+    }
+  ],
+  "sections": [
+    {
+      "id": "cards",
+      "title": "在校指南項目",
+      "columns": [
+        {
+          "key": "name",
+          "title": "項目",
+          "type": "text"
+        },
+        {
+          "key": "tool",
+          "title": "工具狀態",
+          "type": "tag"
+        },
+        {
+          "key": "user",
+          "title": "使用者確認",
+          "type": "tag"
+        }
+      ],
+      "detail_fields": [],
+      "search_fields": [
+        "name"
+      ],
+      "rows": [
+        {
+          "name": "畢業檢核",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "校外實習",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "證照認列",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "我要請假",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "選課加退選",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "學分抵免",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "專題製作",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "英文門檻",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "休學復學與兵役",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "獎助與急難協助",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "遇到困難找誰",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "就業資源",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "繼續升學",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "海外實習",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "海外見學",
+          "tool": "draft",
+          "user": "pending"
+        }
+      ],
+      "row_count": 15
+    },
+    {
+      "id": "details",
+      "title": "每步驟下方說明",
+      "columns": [
+        {
+          "key": "name",
+          "title": "項目",
+          "type": "text"
+        },
+        {
+          "key": "tool",
+          "title": "工具狀態",
+          "type": "tag"
+        },
+        {
+          "key": "user",
+          "title": "使用者確認",
+          "type": "tag"
+        }
+      ],
+      "detail_fields": [],
+      "search_fields": [
+        "name"
+      ],
+      "rows": [
+        {
+          "name": "畢業檢核／找到自己的入學年度課表",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "畢業檢核／對照系統畢業檢核，列出缺項",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "畢業檢核／帶檢核結果找系辦確認補修或認列",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "校外實習／先向系辦取得當期實習規定",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "校外實習／確認單位、工作內容與指導老師",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "校外實習／完成合約及保險確認後，再依規定開始",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "證照認列／考照前先問系辦是否認列",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "證照認列／取得證明後完成認列登錄",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "證照認列／另向職發中心查獎助資格並送件",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "我要請假／確認假別、日期與需要的證明",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "我要請假／到校務系統提出申請",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "我要請假／追蹤簽核；有考試或長假再向承辦確認",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "選課加退選／對照必修、學分數與上課時間",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "選課加退選／依當期公告辦理初選或加退選",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "選課加退選／重開系統確認結果，有問題找註冊課務組",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "學分抵免／到系統填寫申請並印出紙本",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "學分抵免／送請開課單位與就讀系所主管初審",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "學分抵免／依初審結果自行辦理加退選",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "學分抵免／將申請表及證明交註冊課務組",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "學分抵免／回到系統查詢核定結果",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "專題製作／向系辦取得當屆辦法與表單",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "專題製作／和指導老師排定審查及交件進度",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "專題製作／依規定提交作品、文件與展演成果",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "英文門檻／核對入學年度、分級與外語學分",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "英文門檻／向語文承辦確認現行門檻與替代方案",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "英文門檻／完成課程及證明認列後，再查畢業檢核",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "休學復學與兵役／休學：先聯繫系所，再到教務處領表",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "休學復學與兵役／復學或續休：依通知回覆並辦理",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "休學復學與兵役／兵役：另向生輔組確認資料",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "獎助與急難協助／先說明困難與目前已領的補助",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "獎助與急難協助／依承辦指定方案準備證明",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "獎助與急難協助／在該方案期限內送件並追蹤補件",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "遇到困難找誰／先找願意協助的導師或校內承辦",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "遇到困難找誰／需要諮商時由在校學生入口查詢",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "遇到困難找誰／涉及權益時確認正式受理單位與期限",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "就業資源／整理作品集、履歷與職務方向",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "就業資源／向系上師長及職發中心詢問資源",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "就業資源／依當期職缺要求投件並追蹤",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "繼續升學／帶作品或研究興趣和師長討論",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "繼續升學／讀當年度簡章的資格與所別要求",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "繼續升學／依期限完成證明、上傳、繳費與確認送出",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "海外實習／問系辦與職發中心有無當期甄選",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "海外實習／核對身分、語言、補助及自付費用",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "海外實習／錄取後依契約完成保險、簽證與行前程序",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "海外見學／向系辦詢問目前有無見學或移地教學",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "海外見學／確認行程、費用、補助與認列方式",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "海外見學／依當期文件確認報名及出國準備",
+          "tool": "draft",
+          "user": "pending"
+        }
+      ],
+      "row_count": 47
+    },
+    {
+      "id": "faq",
+      "title": "常見問題",
+      "columns": [
+        {
+          "key": "name",
+          "title": "項目",
+          "type": "text"
+        },
+        {
+          "key": "tool",
+          "title": "工具狀態",
+          "type": "tag"
+        },
+        {
+          "key": "user",
+          "title": "使用者確認",
+          "type": "tag"
+        }
+      ],
+      "detail_fields": [],
+      "search_fields": [
+        "name"
+      ],
+      "rows": [
+        {
+          "name": "外系選修都能算進畢業學分嗎？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "一般班最低要幾學分？技優班也一樣嗎？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "校外實習要做多久？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "可以直接拿打工時數抵實習嗎？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "入學前考的證照也有獎助嗎？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "老師已幫我登錄，還要申請獎助嗎？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "送出後一直沒回覆，可以當作准假嗎？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "兩天以上一定只在線上處理嗎？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "老師同意、也去上課，就算選到了嗎？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "這學期還能直接加退選嗎？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "表格送出去，就可以不修那門課嗎？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "現在能補交115-1抵免嗎？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "專題是選修嗎？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "組員人數、退組或補審要看哪裡？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "英文分級免修，學分就不用補了嗎？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "可以直接照網路上的英檢分數準備嗎？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "領了休學表，晚一點再交可以嗎？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "休學後如何知道復學時間？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "錯過一項助學截止日，就不能再問其他協助嗎？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "可以同時領好幾種補助嗎？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "線上諮商預約從哪裡進？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "一般申訴與性平可以共用同一張表嗎？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "還沒畢業，也可以先做職涯準備嗎？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "徵才活動或職缺一定每學期都一樣嗎？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "應屆生還沒拿到畢業證書，能報本校116碩甄嗎？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "本校116碩甄何時截止？其他學校也一樣嗎？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "境外生也一定可以領學海補助嗎？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "出國實習的保險和簽證，可以自己隨便買辦嗎？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "海外見學可以直接算實習時數或畢業學分嗎？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "看到以前的日本展演營或交流照片，現在也能報名嗎？",
+          "tool": "draft",
+          "user": "pending"
+        }
+      ],
+      "row_count": 30
+    },
+    {
+      "id": "sources",
+      "title": "來源記錄",
+      "columns": [
+        {
+          "key": "name",
+          "title": "項目",
+          "type": "text"
+        },
+        {
+          "key": "tool",
+          "title": "工具狀態",
+          "type": "tag"
+        },
+        {
+          "key": "user",
+          "title": "使用者確認",
+          "type": "tag"
+        }
+      ],
+      "detail_fields": [],
+      "search_fields": [
+        "name"
+      ],
+      "rows": [
+        {
+          "name": "教務處歷年各系課程規劃表",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "動遊系112學年度四技日間部入學生課程表",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "動遊系113學年度四技日間部入學生課程表",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "動遊系114學年度四技日間部入學生課程表",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "動遊系115學年度四技日間部入學生課程表",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "114-2學期證照獎助金申請公告",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "學生請假與獎懲簽核公告",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "學生請假規則（舊PDF）",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "115-1加退選公告",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "115-1學分抵免申請公告",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "教務處常見問答",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "教務處組織簡介與分工",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "115-1休學退學注意事項",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "四技日間部英文畢業門檻注意事項",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "通識英文及外語修課",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "職發中心業務與成員",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "校務公開網：校外實習制度說明",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "115-1不利處境學生助學辦理須知",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "115-1教育部學產基金低收入戶助學金須知",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "急難慰助專區撥款方式",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "生活輔導組組織與職掌",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "學校在校學生入口",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "115年度職場不法侵害調查公告",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "性平會活動官方聯絡資訊",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "學校最新公告列表",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "系所介紹與課程地圖｜動遊系四年學什麼？",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "動遊系常用表單",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "招生簡章查詢：116學年度碩士班甄試",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "116學年度碩士班甄試招生簡章",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "116碩士班甄試官方報名說明",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "教育部出國研修或國外專業實習補助要點",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "115年學海計畫第2次甄選作業時程",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "國際及兩岸事務處：出國交流",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "動遊系第九屆赴日HC實習成果",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "113校務發展及年度經費支用計畫書：國際見學與動遊系東京展演營紀錄",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "教務處學生休學、復學及退學",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "生輔組急難慰助專區申請須知",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "教務處抵免學分：115-1申請程序",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "教務處抵免學分申請書",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "校方學生證照系統首頁與流程",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "113校務發展計畫：線上合約書檢核流程",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "生輔組校內獎助學金目錄",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "生輔組學雜費減免申請公告",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "學生申訴評議委員會組織辦法（108核定歷史版）",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "動遊系官方相關消息索引",
+          "tool": "draft",
+          "user": "pending"
+        }
+      ],
+      "row_count": 45
+    },
+    {
+      "id": "languages",
+      "title": "語言版本",
+      "columns": [
+        {
+          "key": "name",
+          "title": "項目",
+          "type": "text"
+        },
+        {
+          "key": "tool",
+          "title": "工具狀態",
+          "type": "tag"
+        },
+        {
+          "key": "user",
+          "title": "使用者確認",
+          "type": "tag"
+        }
+      ],
+      "detail_fields": [],
+      "search_fields": [
+        "name"
+      ],
+      "rows": [
+        {
+          "name": "中文",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "English",
+          "tool": "draft",
+          "user": "pending"
+        },
+        {
+          "name": "日本語",
+          "tool": "draft",
+          "user": "pending"
+        }
+      ],
+      "row_count": 3
+    },
+    {
+      "id": "checks",
+      "title": "實際驗證",
+      "columns": [
+        {
+          "key": "name",
+          "title": "項目",
+          "type": "text"
+        },
+        {
+          "key": "tool",
+          "title": "工具狀態",
+          "type": "tag"
+        },
+        {
+          "key": "user",
+          "title": "使用者確認",
+          "type": "tag"
+        }
+      ],
+      "detail_fields": [],
+      "search_fields": [
+        "name"
+      ],
+      "rows": [
+        {
+          "name": "node scripts/build.mjs",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "node scripts/check-dist.mjs",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "node --test tests/student-guide.test.cjs tests/japanese.test.cjs tests/en-release.test.cjs tests/shared-language.test.cjs",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "node scripts/audit-review-translations.cjs",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "node scripts/review-guards.cjs",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 1440px #hero",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 1440px #hero",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 1440px #hero",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 1440px #/faculty/tengshuyuan",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 1440px #/faculty/tengshuyuan",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 1440px #/faculty/tengshuyuan",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 1440px #/curriculum/map",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 1440px #/curriculum/map",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 1440px #/curriculum/map",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 1440px #/works/all",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 1440px #/works/all",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 1440px #/works/all",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 1440px #/admission/visit",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 1440px #/admission/visit",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 1440px #/admission/visit",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 1440px #/parents/guide",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 1440px #/parents/guide",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 1440px #/parents/guide",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 1440px #/guide/start",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 1440px #/guide/start",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 1440px #/guide/start",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 1440px #/quiz/start",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 1440px #/quiz/start",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 1440px #/quiz/start",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 1440px #/stats/honors",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 1440px #/stats/honors",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 1440px #/stats/honors",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 1440px #/students/guide",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 1440px #/students/guide",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 1440px #/students/guide",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 390px #hero",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 390px #hero",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 390px #hero",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 390px #/faculty/tengshuyuan",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 390px #/faculty/tengshuyuan",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 390px #/faculty/tengshuyuan",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 390px #/curriculum/map",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 390px #/curriculum/map",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 390px #/curriculum/map",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 390px #/works/all",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 390px #/works/all",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 390px #/works/all",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 390px #/admission/visit",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 390px #/admission/visit",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 390px #/admission/visit",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 390px #/parents/guide",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 390px #/parents/guide",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 390px #/parents/guide",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 390px #/guide/start",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 390px #/guide/start",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 390px #/guide/start",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 390px #/quiz/start",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 390px #/quiz/start",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 390px #/quiz/start",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 390px #/stats/honors",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 390px #/stats/honors",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 390px #/stats/honors",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 390px #/students/guide",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 390px #/students/guide",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 390px #/students/guide",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 1440px 分類／搜尋／流程與段落／FAQ／特效",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 1440px 分類／搜尋／流程與段落／FAQ／特效",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 1440px 分類／搜尋／流程與段落／FAQ／特效",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 768px 分類／搜尋／流程與段落／FAQ／特效",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 768px 分類／搜尋／流程與段落／FAQ／特效",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 768px 分類／搜尋／流程與段落／FAQ／特效",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 390px 分類／搜尋／流程與段落／FAQ／特效",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 390px 分類／搜尋／流程與段落／FAQ／特效",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 390px 分類／搜尋／流程與段落／FAQ／特效",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 320px 分類／搜尋／流程與段落／FAQ／特效",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 320px 分類／搜尋／流程與段落／FAQ／特效",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 320px 分類／搜尋／流程與段落／FAQ／特效",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 1440px 文字／展開false",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 1440px 文字／展開true",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 390px 文字／展開false",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 390px 文字／展開true",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 320px 文字／展開false",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "zh 320px 文字／展開true",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 1440px 文字／展開false",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 1440px 文字／展開true",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 390px 文字／展開false",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 390px 文字／展開true",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 320px 文字／展開false",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "en 320px 文字／展開true",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 1440px 文字／展開false",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 1440px 文字／展開true",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 390px 文字／展開false",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 390px 文字／展開true",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 320px 文字／展開false",
+          "tool": "pass",
+          "user": "pending"
+        },
+        {
+          "name": "ja 320px 文字／展開true",
+          "tool": "pass",
+          "user": "pending"
+        }
+      ],
+      "row_count": 95
+    }
+  ],
+  "filters": [
+    {
+      "id": "passed",
+      "label": "工具通過",
+      "conditions": {
+        "checks": {
+          "tool": "pass"
+        }
+      }
+    },
+    {
+      "id": "pending",
+      "label": "待使用者審閱",
+      "conditions": {
+        "cards": {
+          "user": "pending"
+        },
+        "details": {
+          "user": "pending"
+        },
+        "faq": {
+          "user": "pending"
+        },
+        "sources": {
+          "user": "pending"
+        },
+        "languages": {
+          "user": "pending"
+        },
+        "checks": {
+          "user": "pending"
+        }
+      }
+    }
+  ],
+  "unknowns": [
+    "當屆專題、證照及實習完整細則、英文現行門檻、請假及學生權益受理文件、當期海外甄選及見學辦法仍須確認。",
+    "尚未由日文母語者審校及實體手機試用。"
+  ],
+  "build": {
+    "generator": "project-dashboard/build-dashboard.js",
+    "schema_version": 1
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "checked_at": "2026-10-22T12:01:10.439Z",
+  "results": [
+    {
+      "id": "build",
+      "command": "node scripts/build.mjs",
+      "exitCode": 0,
+      "output": "Translations: 2203 Static candidates: 14 Unpaired paths: 21\nJapanese exact translations: 2232\n[build] 完成：dist/index.html 129.3 KB、app-SJ2U24TZ.js 1103.4 KB\n▲ [WARNING] Duplicate key \"color\" in object literal [duplicate-object-key]\n\n    ssr-entry.jsx:6519:44:\n      6519 │         background: \"var(--accent-yellow)\", color: \"var(--ink)\",\n           ╵                                             ~~~~~\n\n  The original key \"color\" is here:\n\n    ssr-entry.jsx:6518:8:\n      6518 │         color: \"inherit\", textDecoration: \"none\", fontFamily: \"'...\n           ╵         ~~~~~\n\n▲ [WARNING] Duplicate key \"color\" in object literal [duplicate-object-key]\n\n    client-entry.jsx:6517:44:\n      6517 │         background: \"var(--accent-yellow)\", color: \"var(--ink)\",\n           ╵                                             ~~~~~\n\n  The original key \"color\" is here:\n\n    client-entry.jsx:6516:8:\n      6516 │         color: \"inherit\", textDecoration: \"none\", fontFamily: \"'...\n           ╵         ~~~~~\n\n",
+      "pass": true
+    },
+    {
+      "id": "check",
+      "command": "node scripts/check-dist.mjs",
+      "exitCode": 0,
+      "output": "[check] 通過：8 個章節、6378 字、head 標記一致、bundle app-SJ2U24TZ.js\n",
+      "pass": true
+    },
+    {
+      "id": "tests",
+      "command": "node --test tests/student-guide.test.cjs tests/japanese.test.cjs tests/en-release.test.cjs tests/shared-language.test.cjs",
+      "exitCode": 0,
+      "output": "✔ No game assets or game routes are released (1.6169ms)\n✔ All canonical field strings have exact English translations (1.5408ms)\n✔ Shared renderer translates labels, preserves filters and preserves Chinese rendering (2.6226ms)\n✔ Chinese style rules and all production images stay available (16.1696ms)\n✔ Japanese renderer translates visible and accessible text without changing canonical values (2.0604ms)\n✔ Prerendered navigation keeps guide route and base-path-independent language URLs (0.77ms)\n✔ Translation preserves separators beside dynamic values (1.3736ms)\n✔ Japanese guide search matches translated words as well as original Chinese (1.7266ms)\n✔ Student guide reuses comic panels and chapter headings without changing the functional index (0.5312ms)\n✔ Japanese includes native navigation, footer and English functional button labels (0.4462ms)\n✔ Japanese guide search accepts half-width katakana (0.9571ms)\n✔ Japanese covers every English catalog entry and every student guide field (12.3177ms)\n✔ English uses the same home and detail components (1.0666ms)\n✔ Canonical Chinese data preserve published updates (11.5756ms)\n✔ English translation contains the shared navigation and footer (1.6351ms)\n✔ Recent published facts remain current in English (7.0093ms)\n✔ Overseas partner country count stays three in English as in canonical Chinese (3.9978ms)\n✔ Student guide uses existing site components and has an FAQ section (1.5107ms)\n✔ Reviewed student copy has concise steps and traceable FAQ sources (1.8415ms)\n✔ Category and student wording searches combine without hiding FAQ-only matches (1.5643ms)\n✔ Opening panel is a category index without promotional filler (0.3857ms)\n✔ Every numbered step has a sourced explanation under the short title (1.7788ms)\n✔ Search finds explanation-only terms and their translations (0.9229ms)\nℹ tests 23\nℹ suites 0\nℹ pass 23\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 114.2873\n",
+      "pass": true
+    },
+    {
+      "id": "catalog",
+      "command": "node scripts/audit-review-translations.cjs",
+      "exitCode": 0,
+      "output": "EXACT COVERAGE 2203 keys\nen missing 0 unresolved numeric 0 short-paragraph review 0\nja missing 0 unresolved numeric 0 short-paragraph review 0\n",
+      "pass": true
+    },
+    {
+      "id": "guards",
+      "command": "node scripts/review-guards.cjs",
+      "exitCode": 0,
+      "output": "PASS unchanged C section, original Chinese fields/styles and main refs; added guide explanations authorized true\n",
+      "pass": true
+    }
+  ]
+}

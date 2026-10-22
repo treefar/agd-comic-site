@@ -1,0 +1,74 @@
+{
+  "checked_at": "2026-10-22",
+  "command": "node work/student-guide-details/verify-details.cjs",
+  "results": [
+    {
+      "name": "15卡45步全部覆蓋",
+      "pass": true,
+      "actual": {
+        "cards": 15,
+        "steps": 45
+      }
+    },
+    {
+      "name": "步驟標題與目前原始資料逐字相同",
+      "pass": true,
+      "actual": 45
+    },
+    {
+      "name": "每段35至85字",
+      "pass": true,
+      "actual": {
+        "min": 55,
+        "max": 70
+      }
+    },
+    {
+      "name": "每段最多2句",
+      "pass": true,
+      "actual": 2
+    },
+    {
+      "name": "每步含信心及具體查核註記",
+      "pass": true,
+      "actual": {
+        "verified_primary": 5,
+        "official_index": 21,
+        "guidance_pending": 19
+      }
+    },
+    {
+      "name": "來源id唯一且每步可解析",
+      "pass": true,
+      "actual": {
+        "sources": 30,
+        "references": 89
+      }
+    },
+    {
+      "name": "每筆來源欄位完整且摘錄不超過30字",
+      "pass": true,
+      "actual": 18
+    },
+    {
+      "name": "來源均為學校或教育部官方域名",
+      "pass": true,
+      "actual": 30
+    },
+    {
+      "name": "學生段落不含研究讀取術語",
+      "pass": true,
+      "actual": 45
+    },
+    {
+      "name": "無過期申請日期或保證核准補助",
+      "pass": true,
+      "actual": 45
+    },
+    {
+      "name": "重大缺漏文件明列",
+      "pass": true,
+      "actual": 7
+    }
+  ]
+}
