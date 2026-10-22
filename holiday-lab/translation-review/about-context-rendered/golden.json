@@ -1,0 +1,43 @@
+{
+  "sourceCommit": "cbcfed1",
+  "context_fixes": [
+    {
+      "id": "about-main-sentence",
+      "rows": [
+        39,
+        40,
+        41,
+        42,
+        43
+      ],
+      "source_file": "chapters-1.jsx",
+      "component": "AboutChapter",
+      "source_anchor": "培育<span style={{ color: \"var(--accent-red)\" }}>動畫創作</span>",
+      "zh": "培育動畫創作、遊戲設計、影音後製、互動設計（AR / VR）所需的專業人才。",
+      "en": "We train professionals in animation, game design, audiovisual post-production and interactive design (AR / VR).",
+      "ja": "アニメーション制作、ゲームデザイン、映像・音声のポストプロダクション、インタラクティブデザイン（AR / VR）に携わる専門人材を育成します。",
+      "reason": "Actual EN inanimation + Chinese enumeration mark; JA front-loaded育成 leaves no finite predicate. Requires whole-sentence/rich-text localized template, preserving red/blue spans and all fields, not a global punctuation mapping."
+    },
+    {
+      "id": "about-history-paragraph",
+      "rows": [
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52
+      ],
+      "source_file": "chapters-1.jsx",
+      "component": "AboutChapter",
+      "source_anchor": "<b>2006</b> 年成立全國第一所",
+      "zh": "2006 年成立全國第一所「數位遊戲設計系」，2011 年依產業人才需求更名為「動畫與遊戲設計系」。完整的專業學習課程＋產學合作機制，師生定期參與企業參訪、教學講座，掌握產業脈動；持續在放視大賞、巴哈姆特 ACG、金犢獎等競賽屢獲佳績。",
+      "en": "Founded in 2006 as Taiwan’s first Department of Digital Game Design, the department was renamed the Department of Animation and Game Design in 2011 to meet industry needs. A comprehensive curriculum and industry partnerships connect students and faculty with regular company visits and professional talks, keeping them in touch with industry developments. The department continues to achieve strong results at Vision Get Wild, Bahamut ACG, the Times Young Creative Awards and other competitions.",
+      "ja": "2006年に台湾初の「デジタルゲームデザイン学科」として設立され、2011年に産業界の人材ニーズに応じて「アニメとゲームデザイン学科」へ名称を変更しました。充実した専門カリキュラムと産学連携の仕組みにより、教員と学生は定期的に企業見学や特別講座に参加し、業界の動向を学んでいます。また、放視大賞、巴哈姆特 ACG、金犢獎などのコンテストで継続して優れた成果を収めています。",
+      "reason": "Actual EN firstDepartment/asAnimation/inVision/Awardsand and residual Chinese punctuation. Restore faculty participation and staying connected to industry; JA needs the 2006 founding predicate. Use one localized rich-text paragraph with year/bold spans, not standalone fragment acceptance."
+    }
+  ]
+}
