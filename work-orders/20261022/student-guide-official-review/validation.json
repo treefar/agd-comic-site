@@ -1,190 +1,60 @@
 {
   "checked_at": "2026-10-22",
-  "command": "node work/student-guide-official/verify-student-copy.cjs",
+  "command": "node work/student-guide-official/refresh-current-evidence.cjs",
   "results": [
     {
-      "name": "14張卡片",
+      "name": "15個獨立項目",
       "pass": true,
-      "actual": 14
+      "actual": 15
     },
     {
-      "name": "8個白話分類",
+      "name": "八分類均有項目",
       "pass": true,
       "actual": [
         "選課抵免",
         "請假休學",
         "畢業門檻",
         "專題製作",
-        "實習機會",
+        "實習見學",
         "證照就業",
         "繼續升學",
         "獎助協助"
       ]
     },
     {
-      "name": "來源保留34筆且id不重複",
+      "name": "官方來源id不重複",
       "pass": true,
-      "actual": 34
+      "actual": 35
     },
     {
-      "name": "來源必要欄位齊全",
+      "name": "摘要不超過80字",
       "pass": true,
-      "actual": 34
+      "actual": 48
     },
     {
-      "name": "分類對應筆數與14卡一致",
-      "pass": true,
-      "actual": [
-        {
-          "title": "選課抵免",
-          "count": 2
-        },
-        {
-          "title": "請假休學",
-          "count": 2
-        },
-        {
-          "title": "畢業門檻",
-          "count": 2
-        },
-        {
-          "title": "專題製作",
-          "count": 1
-        },
-        {
-          "title": "實習機會",
-          "count": 2
-        },
-        {
-          "title": "證照就業",
-          "count": 2
-        },
-        {
-          "title": "繼續升學",
-          "count": 1
-        },
-        {
-          "title": "獎助協助",
-          "count": 2
-        }
-      ]
-    },
-    {
-      "name": "每張summary不超過80字",
-      "pass": true,
-      "actual": [
-        {
-          "id": "graduation",
-          "length": 38
-        },
-        {
-          "id": "internship",
-          "length": 36
-        },
-        {
-          "id": "certification",
-          "length": 40
-        },
-        {
-          "id": "leave",
-          "length": 39
-        },
-        {
-          "id": "course-selection",
-          "length": 40
-        },
-        {
-          "id": "credit-transfer",
-          "length": 42
-        },
-        {
-          "id": "capstone",
-          "length": 43
-        },
-        {
-          "id": "english",
-          "length": 45
-        },
-        {
-          "id": "status-military",
-          "length": 44
-        },
-        {
-          "id": "financial-aid",
-          "length": 48
-        },
-        {
-          "id": "support-rights",
-          "length": 41
-        },
-        {
-          "id": "career",
-          "length": 44
-        },
-        {
-          "id": "graduate-study",
-          "length": 45
-        },
-        {
-          "id": "overseas-internship",
-          "length": 46
-        }
-      ]
-    },
-    {
-      "name": "每張最多3步且每步不超過45字",
+      "name": "每項最多三步、每步45字內",
       "pass": true,
       "actual": 18
     },
     {
-      "name": "每卡1至2題FAQ且總數至少14",
+      "name": "30題FAQ答案不超過120字",
       "pass": true,
-      "actual": 28
+      "actual": 30
     },
     {
-      "name": "FAQ每答不超過120字",
+      "name": "卡片與FAQ來源全部可解析",
       "pass": true,
-      "actual": 70
+      "actual": 119
     },
     {
-      "name": "每卡及FAQ來源全部可解析",
+      "name": "八快捷都有實際目標",
       "pass": true,
-      "actual": 112
+      "actual": 8
     },
     {
-      "name": "contact維持office結構",
+      "name": "承辦窗口及官方入口齊全",
       "pass": true,
-      "actual": 14
-    },
-    {
-      "name": "舊截止日不寫入summary或steps",
-      "pass": true,
-      "actual": true
-    },
-    {
-      "name": "三個明確短標與海外獨立卡",
-      "pass": true,
-      "actual": true
-    },
-    {
-      "name": "7快捷全部可解析",
-      "pass": true,
-      "actual": 7
-    },
-    {
-      "name": "主文來源讀取限制保留",
-      "pass": true,
-      "actual": 22
-    },
-    {
-      "name": "學生可見欄位無研究讀取術語",
-      "pass": true,
-      "actual": true
-    },
-    {
-      "name": "每卡有官方洽詢入口",
-      "pass": true,
-      "actual": 14
+      "actual": 15
     }
   ]
 }

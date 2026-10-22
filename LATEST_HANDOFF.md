@@ -2,6 +2,13 @@
 
 最後更新：2026-10-22，TF-GO／Codex（僅英文版獲授權公開發布；遊戲留本機）。
 
+## 2026-10-22 最新：分類索引與海外見學
+
+- 使用者刪除開頭宣傳式文句，改為可點八分類索引，點選後篩選並跳至辦理資訊；提交b3b5719。另新增海外見學獨立卡、快捷與2FAQ，分類名實習見學（id internships不變），提交7a345a328694521527bf17e78bbd6de8f850bc19。分支codex/student-guide-ui，未push、未發布，main/遊戲/C節均未動。
+- 最新為15卡、30FAQ、8快捷、35官方來源；本期見學團/費用/補助/認列查不到，不以歷史展演營或交流照片保證目前可報名。來源限制保留。
+- 12項回歸、build/check、五尺寸操作、六組字壓框皆過；單檔實測15/30、見學可開、口號不存在。狀態dashboard按最新JSON重產，22/22權威驗證，使用者確認仍0。當期文件與真手機仍待確認。
+- 最新入口仍work-orders/20261022/student-guide-official-review/index.html；報告改讀REVISION-index-and-study-visit.md，初版14/28報告留作歷史。下輪先讓主任看更新稿，未獲專區公開授權前不發布。
+
 ## 2026-10-22 最新：在校指南改為官網版型，仍待審閱
 
 - 依使用者最新指示，已將在校指南接入官網TopNav/BackBar/Footer與漫畫CSS；新分支codex/student-guide-ui，提交65af4643d0c729bb5d09056247aeafab68e9d4a2；工作樹C:/agywork/agd-student-guide-preview。基底main 1b8322e。未push、未發布、未刪來源檔，C節未動。
