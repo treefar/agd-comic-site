@@ -1,0 +1,4057 @@
+{
+  "base": "http://127.0.0.1:8843",
+  "status": "PARTIAL: native-layout candidates do not yet certify globally maximal actual ink",
+  "raw": {
+    "path": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\longest-runs\\2026-10-22T23-33-53-772Z\\report.json",
+    "bytes": 9340555,
+    "sha256": "786e24adbfbc54fee4f5ea36f2f1244582e1aab1b0b0a53339c3e8b658fb365b"
+  },
+  "sampler_sha256": "c247641156d929b0de7d6aa70e509510e293a29d7d6ff45aaac99ad931e0dc1a",
+  "source_receipts": {
+    "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+    "lab.css": "e1973a54395e0e9c52f87ceb3af30d622354f9336b7b6c7e50e9e0a6cb109290",
+    "games/mid-autumn.mjs": "a8c3bdf7368b51e69a41665e68b4ab8b50829be5f6089ebfd2cf757936f19dd1"
+  },
+  "targets": [
+    {
+      "time": 900,
+      "x": 35,
+      "size": 20,
+      "speed": 15
+    },
+    {
+      "time": 1200,
+      "x": 62,
+      "size": 26,
+      "speed": 20
+    },
+    {
+      "time": 750,
+      "x": 45,
+      "size": 18,
+      "speed": -15
+    }
+  ],
+  "sessions": [
+    {
+      "lang": "zh",
+      "width": 320,
+      "status": "native-search-and-real-candidates-complete",
+      "phases": [
+        {
+          "phase": 0,
+          "search": {
+            "limits": {
+              "time": {
+                "min": 300,
+                "max": 1600,
+                "step": 50
+              },
+              "x": {
+                "min": 0,
+                "max": 80,
+                "step": 0.5
+              },
+              "size": {
+                "min": 10,
+                "max": 32,
+                "step": 1
+              }
+            },
+            "content_width": 220,
+            "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+            "line_height": "25.6px",
+            "combinations": 99981,
+            "rejected": 99400,
+            "valid": 581,
+            "distinct_feedback": 24908,
+            "max_native_height": 76.78125,
+            "max_line_advance": 218.546875,
+            "top": [
+              {
+                "time": 300,
+                "x": 0,
+                "size": 10,
+                "error": {
+                  "time": 600,
+                  "x": 30.5,
+                  "size": 10
+                },
+                "text": "還差一點：時間誤差 600 毫秒、位置 30.5％、大小 10.0％。",
+                "native_height": 76.78125,
+                "max_line_advance": 195.828125,
+                "rects": [
+                  {
+                    "x": 0,
+                    "y": 2,
+                    "width": 195.828125,
+                    "height": 20
+                  },
+                  {
+                    "x": 0,
+                    "y": 27.59375,
+                    "width": 163.515625,
+                    "height": 20
+                  },
+                  {
+                    "x": 0,
+                    "y": 53.1875,
+                    "width": 63.515625,
+                    "height": 20
+                  }
+                ]
+              }
+            ],
+            "method": "Every legal DOM slider combination enumerated; each distinct rejected feedback string measured in a same-font/width unframed hidden native text box. This ranks native line geometry, not globally maximal actual glyph ink."
+          },
+          "candidates": [
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-zh-320-0-0.webp",
+                "sha256": "569253b2be31fb41d0522b528f8be817fc4a337b46b3c751834a65a6c3db315d",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 81,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/zh/longest-search-phase-0-candidate-0"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-zh-320-0-1.webp",
+                "sha256": "47755d5286eab1003991964e820ab75317f8b4296c610949b5a8d4cc71a11ead",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 81,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/zh/longest-search-phase-0-candidate-1"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-zh-320-0-2.webp",
+                "sha256": "98ee67dc4d926dfb177979bd17d2b95412396a7e121bfb2990e2386d05e326f5",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 81,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/zh/longest-search-phase-0-candidate-2"
+            }
+          ]
+        },
+        {
+          "phase": 1,
+          "search": {
+            "limits": {
+              "time": {
+                "min": 300,
+                "max": 1600,
+                "step": 50
+              },
+              "x": {
+                "min": 0,
+                "max": 80,
+                "step": 0.5
+              },
+              "size": {
+                "min": 10,
+                "max": 32,
+                "step": 1
+              }
+            },
+            "content_width": 220,
+            "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+            "line_height": "25.6px",
+            "combinations": 99981,
+            "rejected": 99386,
+            "valid": 595,
+            "distinct_feedback": 31801,
+            "max_native_height": 76.78125,
+            "max_line_advance": 218.546875,
+            "top": [
+              {
+                "time": 300,
+                "x": 0,
+                "size": 10,
+                "error": {
+                  "time": 900,
+                  "x": 56,
+                  "size": 16
+                },
+                "text": "還差一點：時間誤差 900 毫秒、位置 56.0％、大小 16.0％。",
+                "native_height": 76.78125,
+                "max_line_advance": 195.828125,
+                "rects": [
+                  {
+                    "x": 0,
+                    "y": 2,
+                    "width": 195.828125,
+                    "height": 20
+                  },
+                  {
+                    "x": 0,
+                    "y": 27.59375,
+                    "width": 163.515625,
+                    "height": 20
+                  },
+                  {
+                    "x": 0,
+                    "y": 53.1875,
+                    "width": 63.515625,
+                    "height": 20
+                  }
+                ]
+              }
+            ],
+            "method": "Every legal DOM slider combination enumerated; each distinct rejected feedback string measured in a same-font/width unframed hidden native text box. This ranks native line geometry, not globally maximal actual glyph ink."
+          },
+          "candidates": [
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-zh-320-1-0.webp",
+                "sha256": "9dc4299a3274ef70ad0003e21d44896643a4810e7cc41e468e778a6cc258bfd2",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 81,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/zh/longest-search-phase-1-candidate-0"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-zh-320-1-1.webp",
+                "sha256": "98e3c769b0962b4464bd7e28e59ccfbf3d47eff93233fdf2234675d0d60f6833",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 81,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/zh/longest-search-phase-1-candidate-1"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-zh-320-1-2.webp",
+                "sha256": "b50f534336fa0b9d3abf03baa6ed39637f6801d3937a11c9ae6d7b7db843cf28",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 81,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/zh/longest-search-phase-1-candidate-2"
+            }
+          ]
+        },
+        {
+          "phase": 2,
+          "search": {
+            "limits": {
+              "time": {
+                "min": 300,
+                "max": 1600,
+                "step": 50
+              },
+              "x": {
+                "min": 0,
+                "max": 80,
+                "step": 0.5
+              },
+              "size": {
+                "min": 10,
+                "max": 32,
+                "step": 1
+              }
+            },
+            "content_width": 220,
+            "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+            "line_height": "25.6px",
+            "combinations": 99981,
+            "rejected": 99407,
+            "valid": 574,
+            "distinct_feedback": 33920,
+            "max_native_height": 76.78125,
+            "max_line_advance": 218.546875,
+            "top": [
+              {
+                "time": 300,
+                "x": 0,
+                "size": 10,
+                "error": {
+                  "time": 450,
+                  "x": 49.5,
+                  "size": 8
+                },
+                "text": "還差一點：時間誤差 450 毫秒、位置 49.5％、大小 8.0％。",
+                "native_height": 76.78125,
+                "max_line_advance": 195.828125,
+                "rects": [
+                  {
+                    "x": 0,
+                    "y": 2,
+                    "width": 195.828125,
+                    "height": 20
+                  },
+                  {
+                    "x": 0,
+                    "y": 27.59375,
+                    "width": 163.515625,
+                    "height": 20
+                  },
+                  {
+                    "x": 0,
+                    "y": 53.1875,
+                    "width": 54.234375,
+                    "height": 20
+                  }
+                ]
+              }
+            ],
+            "method": "Every legal DOM slider combination enumerated; each distinct rejected feedback string measured in a same-font/width unframed hidden native text box. This ranks native line geometry, not globally maximal actual glyph ink."
+          },
+          "candidates": [
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-zh-320-2-0.webp",
+                "sha256": "19634f7e0d5bc16dfc0c0c8e9918434df99e438d7b1645344e41cc91ce83dc37",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 81,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/zh/longest-search-phase-2-candidate-0"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-zh-320-2-1.webp",
+                "sha256": "42202d310605fd033c91c0b6e5a4a8c1e1e19e8172663dd5fa9f319a6d0a3a66",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 81,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/zh/longest-search-phase-2-candidate-1"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-zh-320-2-2.webp",
+                "sha256": "3579e477221c2c9005ae927bf22aa79983d7d32467500f2a6a87854f93b406b9",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 81,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/zh/longest-search-phase-2-candidate-2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "lang": "zh",
+      "width": 1440,
+      "status": "native-search-and-real-candidates-complete",
+      "phases": [
+        {
+          "phase": 0,
+          "search": {
+            "limits": {
+              "time": {
+                "min": 300,
+                "max": 1600,
+                "step": 50
+              },
+              "x": {
+                "min": 0,
+                "max": 80,
+                "step": 0.5
+              },
+              "size": {
+                "min": 10,
+                "max": 32,
+                "step": 1
+              }
+            },
+            "content_width": 988,
+            "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+            "line_height": "25.6px",
+            "combinations": 99981,
+            "rejected": 99400,
+            "valid": 581,
+            "distinct_feedback": 24908,
+            "max_native_height": 25.59375,
+            "max_line_advance": 426.84375,
+            "top": [
+              {
+                "time": 300,
+                "x": 0,
+                "size": 10,
+                "error": {
+                  "time": 600,
+                  "x": 30.5,
+                  "size": 10
+                },
+                "text": "還差一點：時間誤差 600 毫秒、位置 30.5％、大小 10.0％。",
+                "native_height": 25.59375,
+                "max_line_advance": 426.84375,
+                "rects": [
+                  {
+                    "x": 0,
+                    "y": 2,
+                    "width": 426.84375,
+                    "height": 20
+                  }
+                ]
+              }
+            ],
+            "method": "Every legal DOM slider combination enumerated; each distinct rejected feedback string measured in a same-font/width unframed hidden native text box. This ranks native line geometry, not globally maximal actual glyph ink."
+          },
+          "candidates": [
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-zh-1440-0-0.webp",
+                "sha256": "68d9676bef28133387b4c59d34d0f81fb67a73f25a716dd48e945ec293bdae39",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 166,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 166,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 166,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/zh/longest-search-phase-0-candidate-0"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-zh-1440-0-1.webp",
+                "sha256": "17d04ed49ee599e5f209c3f1a84e11141f82a4d9a322196b2252ad6e10ae3468",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 166,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 166,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 166,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/zh/longest-search-phase-0-candidate-1"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-zh-1440-0-2.webp",
+                "sha256": "57f3f50dccd4ee3b6d1771b72596d337210fa7d25696086a96101b98cc9d52f7",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 166,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 166,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 166,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/zh/longest-search-phase-0-candidate-2"
+            }
+          ]
+        },
+        {
+          "phase": 1,
+          "search": {
+            "limits": {
+              "time": {
+                "min": 300,
+                "max": 1600,
+                "step": 50
+              },
+              "x": {
+                "min": 0,
+                "max": 80,
+                "step": 0.5
+              },
+              "size": {
+                "min": 10,
+                "max": 32,
+                "step": 1
+              }
+            },
+            "content_width": 988,
+            "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+            "line_height": "25.6px",
+            "combinations": 99981,
+            "rejected": 99386,
+            "valid": 595,
+            "distinct_feedback": 31801,
+            "max_native_height": 25.59375,
+            "max_line_advance": 426.84375,
+            "top": [
+              {
+                "time": 300,
+                "x": 0,
+                "size": 10,
+                "error": {
+                  "time": 900,
+                  "x": 56,
+                  "size": 16
+                },
+                "text": "還差一點：時間誤差 900 毫秒、位置 56.0％、大小 16.0％。",
+                "native_height": 25.59375,
+                "max_line_advance": 426.84375,
+                "rects": [
+                  {
+                    "x": 0,
+                    "y": 2,
+                    "width": 426.84375,
+                    "height": 20
+                  }
+                ]
+              }
+            ],
+            "method": "Every legal DOM slider combination enumerated; each distinct rejected feedback string measured in a same-font/width unframed hidden native text box. This ranks native line geometry, not globally maximal actual glyph ink."
+          },
+          "candidates": [
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-zh-1440-1-0.webp",
+                "sha256": "1dd18da34054e70ae0621df7432870b247b0526e1fe3861fd118cab6786358e0",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 166,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 166,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 166,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/zh/longest-search-phase-1-candidate-0"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-zh-1440-1-1.webp",
+                "sha256": "4b77d6145de569d2fca9795fd5fe32c055e5666a51f369e4df576cefb936d507",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 166,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 166,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 166,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/zh/longest-search-phase-1-candidate-1"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-zh-1440-1-2.webp",
+                "sha256": "d49992629bc90299bdb649fafbe7bbb898283624b7410b491b49179ac610b89d",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 166,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 166,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 166,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/zh/longest-search-phase-1-candidate-2"
+            }
+          ]
+        },
+        {
+          "phase": 2,
+          "search": {
+            "limits": {
+              "time": {
+                "min": 300,
+                "max": 1600,
+                "step": 50
+              },
+              "x": {
+                "min": 0,
+                "max": 80,
+                "step": 0.5
+              },
+              "size": {
+                "min": 10,
+                "max": 32,
+                "step": 1
+              }
+            },
+            "content_width": 988,
+            "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+            "line_height": "25.6px",
+            "combinations": 99981,
+            "rejected": 99407,
+            "valid": 574,
+            "distinct_feedback": 33920,
+            "max_native_height": 25.59375,
+            "max_line_advance": 426.84375,
+            "top": [
+              {
+                "time": 300,
+                "x": 0,
+                "size": 28,
+                "error": {
+                  "time": 450,
+                  "x": 49.5,
+                  "size": 10
+                },
+                "text": "還差一點：時間誤差 450 毫秒、位置 49.5％、大小 10.0％。",
+                "native_height": 25.59375,
+                "max_line_advance": 426.84375,
+                "rects": [
+                  {
+                    "x": 0,
+                    "y": 2,
+                    "width": 426.84375,
+                    "height": 20
+                  }
+                ]
+              }
+            ],
+            "method": "Every legal DOM slider combination enumerated; each distinct rejected feedback string measured in a same-font/width unframed hidden native text box. This ranks native line geometry, not globally maximal actual glyph ink."
+          },
+          "candidates": [
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-zh-1440-2-0.webp",
+                "sha256": "9877549071620fa275dd224bb448f8e3527e365f0591499e6001d9bbead813be",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 166,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 166,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 166,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/zh/longest-search-phase-2-candidate-0"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-zh-1440-2-1.webp",
+                "sha256": "cb767f89148aebbfaf61e935257a4da126d70a24cc64e7cc22fd0f5f35ccdc91",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 166,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 166,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 166,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/zh/longest-search-phase-2-candidate-1"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-zh-1440-2-2.webp",
+                "sha256": "b91bb997d0f4b52d5ac4806fd26ffe131b26e6aaafd3300a3e977b82a2b0f1d6",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 166,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 166,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 166,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/zh/longest-search-phase-2-candidate-2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "lang": "en",
+      "width": 320,
+      "status": "native-search-and-real-candidates-complete",
+      "phases": [
+        {
+          "phase": 0,
+          "search": {
+            "limits": {
+              "time": {
+                "min": 300,
+                "max": 1600,
+                "step": 50
+              },
+              "x": {
+                "min": 0,
+                "max": 80,
+                "step": 0.5
+              },
+              "size": {
+                "min": 10,
+                "max": 32,
+                "step": 1
+              }
+            },
+            "content_width": 220,
+            "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+            "line_height": "25.6px",
+            "combinations": 99981,
+            "rejected": 99400,
+            "valid": 581,
+            "distinct_feedback": 24908,
+            "max_native_height": 51.1875,
+            "max_line_advance": 212.109375,
+            "top": [
+              {
+                "time": 300,
+                "x": 0,
+                "size": 10,
+                "error": {
+                  "time": 600,
+                  "x": 30.5,
+                  "size": 10
+                },
+                "text": "Almost: timing error 600 ms, position 30.5%, size 10.0%.",
+                "native_height": 51.1875,
+                "max_line_advance": 212.109375,
+                "rects": [
+                  {
+                    "x": 0,
+                    "y": 2,
+                    "width": 212.109375,
+                    "height": 20
+                  },
+                  {
+                    "x": 0,
+                    "y": 27.59375,
+                    "width": 200.25,
+                    "height": 20
+                  }
+                ]
+              }
+            ],
+            "method": "Every legal DOM slider combination enumerated; each distinct rejected feedback string measured in a same-font/width unframed hidden native text box. This ranks native line geometry, not globally maximal actual glyph ink."
+          },
+          "candidates": [
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-en-320-0-0.webp",
+                "sha256": "bc754689fba15edaa11ea6aac0abe8cdae6059d3e0b61afc21ee62d7f49c0c07",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 68,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 68,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 68,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/en/longest-search-phase-0-candidate-0"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-en-320-0-1.webp",
+                "sha256": "ba455d72dc1358e91ed7a881ec4802084b4e789c7f4d9349325c8a8569218fc1",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 68,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 68,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 68,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/en/longest-search-phase-0-candidate-1"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-en-320-0-2.webp",
+                "sha256": "810d78a869e146eda3d89aba24f7932a4eea9b4487a37d89f1602697e552c0e0",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 68,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 68,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 68,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/en/longest-search-phase-0-candidate-2"
+            }
+          ]
+        },
+        {
+          "phase": 1,
+          "search": {
+            "limits": {
+              "time": {
+                "min": 300,
+                "max": 1600,
+                "step": 50
+              },
+              "x": {
+                "min": 0,
+                "max": 80,
+                "step": 0.5
+              },
+              "size": {
+                "min": 10,
+                "max": 32,
+                "step": 1
+              }
+            },
+            "content_width": 220,
+            "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+            "line_height": "25.6px",
+            "combinations": 99981,
+            "rejected": 99386,
+            "valid": 595,
+            "distinct_feedback": 31801,
+            "max_native_height": 51.1875,
+            "max_line_advance": 212.109375,
+            "top": [
+              {
+                "time": 300,
+                "x": 0,
+                "size": 10,
+                "error": {
+                  "time": 900,
+                  "x": 56,
+                  "size": 16
+                },
+                "text": "Almost: timing error 900 ms, position 56.0%, size 16.0%.",
+                "native_height": 51.1875,
+                "max_line_advance": 212.109375,
+                "rects": [
+                  {
+                    "x": 0,
+                    "y": 2,
+                    "width": 212.109375,
+                    "height": 20
+                  },
+                  {
+                    "x": 0,
+                    "y": 27.59375,
+                    "width": 200.25,
+                    "height": 20
+                  }
+                ]
+              }
+            ],
+            "method": "Every legal DOM slider combination enumerated; each distinct rejected feedback string measured in a same-font/width unframed hidden native text box. This ranks native line geometry, not globally maximal actual glyph ink."
+          },
+          "candidates": [
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-en-320-1-0.webp",
+                "sha256": "0181f490628c2681b2e4b58ca6d30338d9283f6539fcb58b931bb08a0f6da42e",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 68,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 68,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 68,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/en/longest-search-phase-1-candidate-0"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-en-320-1-1.webp",
+                "sha256": "0d2a72dc899750c1bf44517a76f9622f0754feb48248d56128d7f58542da0318",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 68,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 68,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 68,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/en/longest-search-phase-1-candidate-1"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-en-320-1-2.webp",
+                "sha256": "693d65dd1d742907c63a24242e60cbe7c72d979a95b41649d36f4aee9918ad4d",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 68,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 68,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 68,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/en/longest-search-phase-1-candidate-2"
+            }
+          ]
+        },
+        {
+          "phase": 2,
+          "search": {
+            "limits": {
+              "time": {
+                "min": 300,
+                "max": 1600,
+                "step": 50
+              },
+              "x": {
+                "min": 0,
+                "max": 80,
+                "step": 0.5
+              },
+              "size": {
+                "min": 10,
+                "max": 32,
+                "step": 1
+              }
+            },
+            "content_width": 220,
+            "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+            "line_height": "25.6px",
+            "combinations": 99981,
+            "rejected": 99407,
+            "valid": 574,
+            "distinct_feedback": 33920,
+            "max_native_height": 51.1875,
+            "max_line_advance": 212.109375,
+            "top": [
+              {
+                "time": 300,
+                "x": 0,
+                "size": 10,
+                "error": {
+                  "time": 450,
+                  "x": 49.5,
+                  "size": 8
+                },
+                "text": "Almost: timing error 450 ms, position 49.5%, size 8.0%.",
+                "native_height": 51.1875,
+                "max_line_advance": 212.109375,
+                "rects": [
+                  {
+                    "x": 0,
+                    "y": 2,
+                    "width": 212.109375,
+                    "height": 20
+                  },
+                  {
+                    "x": 0,
+                    "y": 27.59375,
+                    "width": 190.96875,
+                    "height": 20
+                  }
+                ]
+              }
+            ],
+            "method": "Every legal DOM slider combination enumerated; each distinct rejected feedback string measured in a same-font/width unframed hidden native text box. This ranks native line geometry, not globally maximal actual glyph ink."
+          },
+          "candidates": [
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-en-320-2-0.webp",
+                "sha256": "18824ea145764d7bc14fd931abae9923fcb5be3ae1ae52f2135f11408a9903b6",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 68,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 68,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 68,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/en/longest-search-phase-2-candidate-0"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-en-320-2-1.webp",
+                "sha256": "3faaadd04fc1db8aa97c3feb0642641089ce83bf8d50f50282d127e3827ff9ee",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 68,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 68,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 68,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/en/longest-search-phase-2-candidate-1"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-en-320-2-2.webp",
+                "sha256": "af07ed9bafef825d786d0a0c1ebdd287c91480683ab71e197609639e35cd1617",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 68,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 68,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 68,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/en/longest-search-phase-2-candidate-2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "lang": "en",
+      "width": 1440,
+      "status": "native-search-and-real-candidates-complete",
+      "phases": [
+        {
+          "phase": 0,
+          "search": {
+            "limits": {
+              "time": {
+                "min": 300,
+                "max": 1600,
+                "step": 50
+              },
+              "x": {
+                "min": 0,
+                "max": 80,
+                "step": 0.5
+              },
+              "size": {
+                "min": 10,
+                "max": 32,
+                "step": 1
+              }
+            },
+            "content_width": 988,
+            "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+            "line_height": "25.6px",
+            "combinations": 99981,
+            "rejected": 99400,
+            "valid": 581,
+            "distinct_feedback": 24908,
+            "max_native_height": 25.59375,
+            "max_line_advance": 416.34375,
+            "top": [
+              {
+                "time": 300,
+                "x": 0,
+                "size": 10,
+                "error": {
+                  "time": 600,
+                  "x": 30.5,
+                  "size": 10
+                },
+                "text": "Almost: timing error 600 ms, position 30.5%, size 10.0%.",
+                "native_height": 25.59375,
+                "max_line_advance": 416.34375,
+                "rects": [
+                  {
+                    "x": 0,
+                    "y": 2,
+                    "width": 416.34375,
+                    "height": 20
+                  }
+                ]
+              }
+            ],
+            "method": "Every legal DOM slider combination enumerated; each distinct rejected feedback string measured in a same-font/width unframed hidden native text box. This ranks native line geometry, not globally maximal actual glyph ink."
+          },
+          "candidates": [
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-en-1440-0-0.webp",
+                "sha256": "a21420d85bf0370d2e99c018c2082aaba59c11702131caaf73ca2fc7d1770f1f",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 202,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 52,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 52,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/en/longest-search-phase-0-candidate-0"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-en-1440-0-1.webp",
+                "sha256": "6efad0a1bc16025181fcbc70b7f8c5f0726ad0d79f3d0494ab715422cb614492",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 202,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 52,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 52,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/en/longest-search-phase-0-candidate-1"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-en-1440-0-2.webp",
+                "sha256": "4be128b93bcca41cb68698cff59513a1e00b8ab2cb289b715c4aeb65b769bf59",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 202,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 52,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 52,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/en/longest-search-phase-0-candidate-2"
+            }
+          ]
+        },
+        {
+          "phase": 1,
+          "search": {
+            "limits": {
+              "time": {
+                "min": 300,
+                "max": 1600,
+                "step": 50
+              },
+              "x": {
+                "min": 0,
+                "max": 80,
+                "step": 0.5
+              },
+              "size": {
+                "min": 10,
+                "max": 32,
+                "step": 1
+              }
+            },
+            "content_width": 988,
+            "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+            "line_height": "25.6px",
+            "combinations": 99981,
+            "rejected": 99386,
+            "valid": 595,
+            "distinct_feedback": 31801,
+            "max_native_height": 25.59375,
+            "max_line_advance": 416.34375,
+            "top": [
+              {
+                "time": 300,
+                "x": 0,
+                "size": 10,
+                "error": {
+                  "time": 900,
+                  "x": 56,
+                  "size": 16
+                },
+                "text": "Almost: timing error 900 ms, position 56.0%, size 16.0%.",
+                "native_height": 25.59375,
+                "max_line_advance": 416.34375,
+                "rects": [
+                  {
+                    "x": 0,
+                    "y": 2,
+                    "width": 416.34375,
+                    "height": 20
+                  }
+                ]
+              }
+            ],
+            "method": "Every legal DOM slider combination enumerated; each distinct rejected feedback string measured in a same-font/width unframed hidden native text box. This ranks native line geometry, not globally maximal actual glyph ink."
+          },
+          "candidates": [
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-en-1440-1-0.webp",
+                "sha256": "7cea350c933ddf95105ad707484a2505c9117144efd981d9c249d72ff70794d6",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 202,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 79,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 79,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/en/longest-search-phase-1-candidate-0"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-en-1440-1-1.webp",
+                "sha256": "c49b2316fb0af3d5baefd42db90d3ae0974bc860e10c31bc365e7c1b6f3d43db",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 202,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 79,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 79,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/en/longest-search-phase-1-candidate-1"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-en-1440-1-2.webp",
+                "sha256": "a3c6c38cf243a43f52a481a5be32d2b56f371df51bffc0fa894d8c86e78e0135",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 202,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 79,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 79,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/en/longest-search-phase-1-candidate-2"
+            }
+          ]
+        },
+        {
+          "phase": 2,
+          "search": {
+            "limits": {
+              "time": {
+                "min": 300,
+                "max": 1600,
+                "step": 50
+              },
+              "x": {
+                "min": 0,
+                "max": 80,
+                "step": 0.5
+              },
+              "size": {
+                "min": 10,
+                "max": 32,
+                "step": 1
+              }
+            },
+            "content_width": 988,
+            "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+            "line_height": "25.6px",
+            "combinations": 99981,
+            "rejected": 99407,
+            "valid": 574,
+            "distinct_feedback": 33920,
+            "max_native_height": 25.59375,
+            "max_line_advance": 416.34375,
+            "top": [
+              {
+                "time": 300,
+                "x": 0,
+                "size": 28,
+                "error": {
+                  "time": 450,
+                  "x": 49.5,
+                  "size": 10
+                },
+                "text": "Almost: timing error 450 ms, position 49.5%, size 10.0%.",
+                "native_height": 25.59375,
+                "max_line_advance": 416.34375,
+                "rects": [
+                  {
+                    "x": 0,
+                    "y": 2,
+                    "width": 416.34375,
+                    "height": 20
+                  }
+                ]
+              }
+            ],
+            "method": "Every legal DOM slider combination enumerated; each distinct rejected feedback string measured in a same-font/width unframed hidden native text box. This ranks native line geometry, not globally maximal actual glyph ink."
+          },
+          "candidates": [
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-en-1440-2-0.webp",
+                "sha256": "5dce262cf5dd20190029ad7d77a6942075d316292ea9ed1b29a16d5d49dc5d41",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 202,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 79,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 79,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/en/longest-search-phase-2-candidate-0"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-en-1440-2-1.webp",
+                "sha256": "a2c237a9e6f7d93f9322963e13bd2140ddd2d4842ee30281a75c57909259acc7",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 202,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 79,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 79,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/en/longest-search-phase-2-candidate-1"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-en-1440-2-2.webp",
+                "sha256": "1624e661fc853fa6c8ab7fc04d6461c30faca81c5972a9ea57971146eda79970",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 202,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 79,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 79,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/en/longest-search-phase-2-candidate-2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "lang": "ja",
+      "width": 320,
+      "status": "native-search-and-real-candidates-complete",
+      "phases": [
+        {
+          "phase": 0,
+          "search": {
+            "limits": {
+              "time": {
+                "min": 300,
+                "max": 1600,
+                "step": 50
+              },
+              "x": {
+                "min": 0,
+                "max": 80,
+                "step": 0.5
+              },
+              "size": {
+                "min": 10,
+                "max": 32,
+                "step": 1
+              }
+            },
+            "content_width": 220,
+            "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+            "line_height": "25.6px",
+            "combinations": 99981,
+            "rejected": 99400,
+            "valid": 581,
+            "distinct_feedback": 24908,
+            "max_native_height": 76.78125,
+            "max_line_advance": 217.28125,
+            "top": [
+              {
+                "time": 300,
+                "x": 0,
+                "size": 10,
+                "error": {
+                  "time": 600,
+                  "x": 30.5,
+                  "size": 10
+                },
+                "text": "もう少し：時刻の差600ミリ秒・位置30.5％・大きさ10.0％。",
+                "native_height": 76.78125,
+                "max_line_advance": 203.828125,
+                "rects": [
+                  {
+                    "x": 0,
+                    "y": 2,
+                    "width": 203.828125,
+                    "height": 20
+                  },
+                  {
+                    "x": 0,
+                    "y": 27.59375,
+                    "width": 175.515625,
+                    "height": 20
+                  },
+                  {
+                    "x": 0,
+                    "y": 53.1875,
+                    "width": 63.515625,
+                    "height": 20
+                  }
+                ]
+              }
+            ],
+            "method": "Every legal DOM slider combination enumerated; each distinct rejected feedback string measured in a same-font/width unframed hidden native text box. This ranks native line geometry, not globally maximal actual glyph ink."
+          },
+          "candidates": [
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-ja-320-0-0.webp",
+                "sha256": "7b26b704a0f40dba97599170635959303e5da6490d682cb07902480181240c78",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 81,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/ja/longest-search-phase-0-candidate-0"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-ja-320-0-1.webp",
+                "sha256": "ca95e17ae757b27c9d37d5f23b45edee09146349d6d44b710732354c76641159",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 81,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/ja/longest-search-phase-0-candidate-1"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-ja-320-0-2.webp",
+                "sha256": "6755c499302ae137ed0a7694876bdf061e43a2f78de848a6949ed3f34682953a",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 81,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/ja/longest-search-phase-0-candidate-2"
+            }
+          ]
+        },
+        {
+          "phase": 1,
+          "search": {
+            "limits": {
+              "time": {
+                "min": 300,
+                "max": 1600,
+                "step": 50
+              },
+              "x": {
+                "min": 0,
+                "max": 80,
+                "step": 0.5
+              },
+              "size": {
+                "min": 10,
+                "max": 32,
+                "step": 1
+              }
+            },
+            "content_width": 220,
+            "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+            "line_height": "25.6px",
+            "combinations": 99981,
+            "rejected": 99386,
+            "valid": 595,
+            "distinct_feedback": 31801,
+            "max_native_height": 76.78125,
+            "max_line_advance": 217.28125,
+            "top": [
+              {
+                "time": 300,
+                "x": 0,
+                "size": 10,
+                "error": {
+                  "time": 900,
+                  "x": 56,
+                  "size": 16
+                },
+                "text": "もう少し：時刻の差900ミリ秒・位置56.0％・大きさ16.0％。",
+                "native_height": 76.78125,
+                "max_line_advance": 203.828125,
+                "rects": [
+                  {
+                    "x": 0,
+                    "y": 2,
+                    "width": 203.828125,
+                    "height": 20
+                  },
+                  {
+                    "x": 0,
+                    "y": 27.59375,
+                    "width": 175.515625,
+                    "height": 20
+                  },
+                  {
+                    "x": 0,
+                    "y": 53.1875,
+                    "width": 63.515625,
+                    "height": 20
+                  }
+                ]
+              }
+            ],
+            "method": "Every legal DOM slider combination enumerated; each distinct rejected feedback string measured in a same-font/width unframed hidden native text box. This ranks native line geometry, not globally maximal actual glyph ink."
+          },
+          "candidates": [
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-ja-320-1-0.webp",
+                "sha256": "2fea430a09ae4b444656076bd02d18b264d69fdbdfe320871bcc31a86ef24714",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 81,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/ja/longest-search-phase-1-candidate-0"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-ja-320-1-1.webp",
+                "sha256": "b83c229401089ca3df98caca7ebf5409e35b5bbb8a76b1e8b80425a91b42b82c",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 81,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/ja/longest-search-phase-1-candidate-1"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-ja-320-1-2.webp",
+                "sha256": "5b955c054061b04c24c5578019282c768d7a136b1b47caa704924de5b06a7909",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 81,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/ja/longest-search-phase-1-candidate-2"
+            }
+          ]
+        },
+        {
+          "phase": 2,
+          "search": {
+            "limits": {
+              "time": {
+                "min": 300,
+                "max": 1600,
+                "step": 50
+              },
+              "x": {
+                "min": 0,
+                "max": 80,
+                "step": 0.5
+              },
+              "size": {
+                "min": 10,
+                "max": 32,
+                "step": 1
+              }
+            },
+            "content_width": 220,
+            "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+            "line_height": "25.6px",
+            "combinations": 99981,
+            "rejected": 99407,
+            "valid": 574,
+            "distinct_feedback": 33920,
+            "max_native_height": 76.78125,
+            "max_line_advance": 217.28125,
+            "top": [
+              {
+                "time": 300,
+                "x": 0,
+                "size": 10,
+                "error": {
+                  "time": 450,
+                  "x": 49.5,
+                  "size": 8
+                },
+                "text": "もう少し：時刻の差450ミリ秒・位置49.5％・大きさ8.0％。",
+                "native_height": 76.78125,
+                "max_line_advance": 203.828125,
+                "rects": [
+                  {
+                    "x": 0,
+                    "y": 2,
+                    "width": 203.828125,
+                    "height": 20
+                  },
+                  {
+                    "x": 0,
+                    "y": 27.59375,
+                    "width": 175.515625,
+                    "height": 20
+                  },
+                  {
+                    "x": 0,
+                    "y": 53.1875,
+                    "width": 54.234375,
+                    "height": 20
+                  }
+                ]
+              }
+            ],
+            "method": "Every legal DOM slider combination enumerated; each distinct rejected feedback string measured in a same-font/width unframed hidden native text box. This ranks native line geometry, not globally maximal actual glyph ink."
+          },
+          "candidates": [
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-ja-320-2-0.webp",
+                "sha256": "e3a87f947927e8050972c8b59d9fee96cb0f6792300eeefefe9235345f256b54",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 81,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/ja/longest-search-phase-2-candidate-0"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-ja-320-2-1.webp",
+                "sha256": "e2adab5e53390afe79ae4e94b7214807d0b3e3b53a4992cbc7e3995a4fffc4af",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 81,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/ja/longest-search-phase-2-candidate-1"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-ja-320-2-2.webp",
+                "sha256": "3900cf663b2daa4654b2af60dbe9f0ba115e1fcb54b14a51def2c31fef506b2a",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 81,
+                    "width": 320,
+                    "height": 900,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 81,
+                      "width": 320,
+                      "height": 900
+                    },
+                    "internal": []
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/ja/longest-search-phase-2-candidate-2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "lang": "ja",
+      "width": 1440,
+      "status": "native-search-and-real-candidates-complete",
+      "phases": [
+        {
+          "phase": 0,
+          "search": {
+            "limits": {
+              "time": {
+                "min": 300,
+                "max": 1600,
+                "step": 50
+              },
+              "x": {
+                "min": 0,
+                "max": 80,
+                "step": 0.5
+              },
+              "size": {
+                "min": 10,
+                "max": 32,
+                "step": 1
+              }
+            },
+            "content_width": 988,
+            "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+            "line_height": "25.6px",
+            "combinations": 99981,
+            "rejected": 99400,
+            "valid": 581,
+            "distinct_feedback": 24908,
+            "max_native_height": 25.59375,
+            "max_line_advance": 442.84375,
+            "top": [
+              {
+                "time": 300,
+                "x": 0,
+                "size": 10,
+                "error": {
+                  "time": 600,
+                  "x": 30.5,
+                  "size": 10
+                },
+                "text": "もう少し：時刻の差600ミリ秒・位置30.5％・大きさ10.0％。",
+                "native_height": 25.59375,
+                "max_line_advance": 442.84375,
+                "rects": [
+                  {
+                    "x": 0,
+                    "y": 2,
+                    "width": 442.84375,
+                    "height": 20
+                  }
+                ]
+              }
+            ],
+            "method": "Every legal DOM slider combination enumerated; each distinct rejected feedback string measured in a same-font/width unframed hidden native text box. This ranks native line geometry, not globally maximal actual glyph ink."
+          },
+          "candidates": [
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-ja-1440-0-0.webp",
+                "sha256": "ab4a416fcf2bcf2e7f9ec9be93a77b45834058ed58405174655e51e6dc4d8eef",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 202,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 26,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 26,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/ja/longest-search-phase-0-candidate-0"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-ja-1440-0-1.webp",
+                "sha256": "70eacdeed60aed374cb8822a5c7d757cad8d5c8467f99d0311fd8959ec368212",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 202,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 26,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 26,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/ja/longest-search-phase-0-candidate-1"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-ja-1440-0-2.webp",
+                "sha256": "6b10e5dacfc38f35ac1fa92e64d3ea124415ea98644a2664ab32b7f580f937d6",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 202,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 26,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 26,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/ja/longest-search-phase-0-candidate-2"
+            }
+          ]
+        },
+        {
+          "phase": 1,
+          "search": {
+            "limits": {
+              "time": {
+                "min": 300,
+                "max": 1600,
+                "step": 50
+              },
+              "x": {
+                "min": 0,
+                "max": 80,
+                "step": 0.5
+              },
+              "size": {
+                "min": 10,
+                "max": 32,
+                "step": 1
+              }
+            },
+            "content_width": 988,
+            "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+            "line_height": "25.6px",
+            "combinations": 99981,
+            "rejected": 99386,
+            "valid": 595,
+            "distinct_feedback": 31801,
+            "max_native_height": 25.59375,
+            "max_line_advance": 442.84375,
+            "top": [
+              {
+                "time": 300,
+                "x": 0,
+                "size": 10,
+                "error": {
+                  "time": 900,
+                  "x": 56,
+                  "size": 16
+                },
+                "text": "もう少し：時刻の差900ミリ秒・位置56.0％・大きさ16.0％。",
+                "native_height": 25.59375,
+                "max_line_advance": 442.84375,
+                "rects": [
+                  {
+                    "x": 0,
+                    "y": 2,
+                    "width": 442.84375,
+                    "height": 20
+                  }
+                ]
+              }
+            ],
+            "method": "Every legal DOM slider combination enumerated; each distinct rejected feedback string measured in a same-font/width unframed hidden native text box. This ranks native line geometry, not globally maximal actual glyph ink."
+          },
+          "candidates": [
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-ja-1440-1-0.webp",
+                "sha256": "1e4fb0c1c79ffb45d98e5e520712e4b15185f92c42fdd505eb6609e59c99f921",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 202,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 52,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 52,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/ja/longest-search-phase-1-candidate-0"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-ja-1440-1-1.webp",
+                "sha256": "f9963d6c0a6a3b77ed912068567f9cf0694593fed57e066bafde4c08e9605399",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 202,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 52,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 52,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/ja/longest-search-phase-1-candidate-1"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-ja-1440-1-2.webp",
+                "sha256": "4efe42ad84000ef2a8d9ced319f1a65affb72fc23e096dde754720bde9be135c",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 202,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 52,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 52,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/ja/longest-search-phase-1-candidate-2"
+            }
+          ]
+        },
+        {
+          "phase": 2,
+          "search": {
+            "limits": {
+              "time": {
+                "min": 300,
+                "max": 1600,
+                "step": 50
+              },
+              "x": {
+                "min": 0,
+                "max": 80,
+                "step": 0.5
+              },
+              "size": {
+                "min": 10,
+                "max": 32,
+                "step": 1
+              }
+            },
+            "content_width": 988,
+            "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+            "line_height": "25.6px",
+            "combinations": 99981,
+            "rejected": 99407,
+            "valid": 574,
+            "distinct_feedback": 33920,
+            "max_native_height": 25.59375,
+            "max_line_advance": 442.84375,
+            "top": [
+              {
+                "time": 300,
+                "x": 0,
+                "size": 28,
+                "error": {
+                  "time": 450,
+                  "x": 49.5,
+                  "size": 10
+                },
+                "text": "もう少し：時刻の差450ミリ秒・位置49.5％・大きさ10.0％。",
+                "native_height": 25.59375,
+                "max_line_advance": 442.84375,
+                "rects": [
+                  {
+                    "x": 0,
+                    "y": 2,
+                    "width": 442.84375,
+                    "height": 20
+                  }
+                ]
+              }
+            ],
+            "method": "Every legal DOM slider combination enumerated; each distinct rejected feedback string measured in a same-font/width unframed hidden native text box. This ranks native line geometry, not globally maximal actual glyph ink."
+          },
+          "candidates": [
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-ja-1440-2-0.webp",
+                "sha256": "90137e9d5d1a233cfe209c76923fe1acba52e8ba0a13f452b1fb5ff31455d0a3",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 202,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 26,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 26,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/ja/longest-search-phase-2-candidate-0"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-ja-1440-2-1.webp",
+                "sha256": "d53b9acb9972b3224ced4b68dc9df1dd483fc75f286a76d6c0bd4cbfeed43520",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 202,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 26,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 26,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/ja/longest-search-phase-2-candidate-1"
+            },
+            {
+              "keys": [
+                "id",
+                "width",
+                "height",
+                "nodes",
+                "blockers",
+                "inputs",
+                "screenshot",
+                "geometry_errors",
+                "hint_ink",
+                "method_violations"
+              ],
+              "geometry_errors": [],
+              "screenshot": {
+                "file": "ma-ja-1440-2-2.webp",
+                "sha256": "dc4c892786248ba8d024ccd2fb9d850a154cf09d3b0935caca4881ee3f336446",
+                "viewport_proof": {
+                  "clip": {
+                    "x": 0,
+                    "y": 202,
+                    "width": 1440,
+                    "height": 1000,
+                    "scale": 1
+                  },
+                  "before": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 26,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "after": {
+                    "window": {
+                      "x": 0,
+                      "y": 202,
+                      "width": 1440,
+                      "height": 1000
+                    },
+                    "internal": [
+                      {
+                        "id": "game-controls",
+                        "top": 26,
+                        "left": 0
+                      }
+                    ]
+                  },
+                  "scroll_unchanged": true,
+                  "region": "actual viewport; document coordinates in clip; no viewport resizing"
+                }
+              },
+              "id": "mid-autumn/ja/longest-search-phase-2-candidate-2"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

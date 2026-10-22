@@ -1,0 +1,66 @@
+{
+  "source": "http://127.0.0.1:8843",
+  "candidate_css": "#lab .controls{padding-inline:2px}",
+  "product_written": false,
+  "sampler_sha256": "c247641156d929b0de7d6aa70e509510e293a29d7d6ff45aaac99ad931e0dc1a",
+  "pass": true,
+  "raw_report": {
+    "path": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\controls-bearing-candidate\\report.json",
+    "sha256": "04470b7261e9ca6b3c3891edd7be9e7cc8f6498b76d8ebc2248a50e5e0a3938f"
+  },
+  "sessions": [
+    {
+      "width": 320,
+      "frames": 42,
+      "geometry_errors": 0,
+      "horizontal_clip": 0,
+      "raw_method_violations": 0,
+      "buttons": 13,
+      "scroll": {
+        "expected": 339,
+        "seen": 339,
+        "all_content_reachable": true
+      },
+      "outer_paper_unchanged": true,
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "frames": 43,
+      "geometry_errors": 0,
+      "horizontal_clip": 0,
+      "raw_method_violations": 44,
+      "buttons": 13,
+      "scroll": {
+        "expected": 339,
+        "seen": 339,
+        "all_content_reachable": true
+      },
+      "outer_paper_unchanged": true,
+      "pass": true
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "320-initial.webp",
+      "sha256": "1460f46affd1a53c7b7b2dbaff4392b3f16f85ba4c369b90d3485a0e36fcf904"
+    },
+    {
+      "file": "320-real-error.webp",
+      "sha256": "11f7f50f431547720c16e4b4b378e129ab446010acbac1ddc5d1faa95177bbf8"
+    },
+    {
+      "file": "1440-initial.webp",
+      "sha256": "5b764b5571ec98df2751f18b100fd4014188716d5cc0e20c658eeb6f2fee4f0b"
+    },
+    {
+      "file": "1440-real-error.webp",
+      "sha256": "f639d0244b9e869fa543b3d58530e15da624af670b317794af3acc591f5bfcef"
+    }
+  ],
+  "limits": [
+    "Temporary DOM candidate only; final served source must be retested.",
+    "Raw 1440 method flags are vertical scroll content, retained and accompanied by complete 339/339 actual Range union.",
+    "Raw large runs are local only, not portable backups. Full 2076 contract remains NO."
+  ]
+}
