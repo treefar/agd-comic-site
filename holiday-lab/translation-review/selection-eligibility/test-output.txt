@@ -1,0 +1,18 @@
+✔ Three exact operations preflight on the fixed baseline without writing (80.5873ms)
+✔ Only the three eligibility paragraphs differ; every other byte of the content string survives (99.8456ms)
+✔ All admission records, quotas, dates, codes and existing processes remain unchanged except selection.content (4152.3094ms)
+✔ Japanese canonical key is migrated exactly, retaining every unrelated dictionary entry (98.7748ms)
+✔ An edited content value aborts before writing any file (410.036ms)
+✔ A Japanese new-key collision aborts before writing any file (1014.8788ms)
+✔ Concurrent edits and out-of-scope operations are rejected (255.6606ms)
+✔ Unrelated changes survive application; tests still work after the fixture is applied (337.3197ms)
+✔ No English or Japanese later dictionary overrides old or new canonical content keys (5431.6512ms)
+✔ All three summaries retain year, specialized-course thresholds, exam/department limits and youth-group separation (1.7047ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13591.8229

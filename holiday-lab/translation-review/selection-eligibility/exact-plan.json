@@ -1,0 +1,60 @@
+{
+  "checked_at": "2026-10-23",
+  "source_commit": "329da94a490f24f80c998aceb5b637de22090987",
+  "scope": "Selection admission eligibility paragraph only; proposal, not product changes",
+  "files": [
+    {
+      "file": "data/admission.json",
+      "before_sha256": "f9bd74e0d94010c47024fb52d3d916e62e5b4c8b3ff0eb88040667b0878365ff"
+    },
+    {
+      "file": "data/en/admission.json",
+      "before_sha256": "39c35d96a3eb6079cc972e67f51f5e61a27b49615ac4c6fcd4bd1ade39bc96c2"
+    },
+    {
+      "file": "data/ja/messages.json",
+      "before_sha256": "6b91d1b3e23e5912c677e42e5bd75a4e1dbfc0ae797744c017df816b1b5580a3"
+    }
+  ],
+  "paragraphs": {
+    "old": {
+      "zh": "適用對象：高職 / 綜合高中應屆畢業生（採統測成績）",
+      "en": "Target Audience: Graduating seniors from vocational high schools / comprehensive high schools (using TCTE scores)",
+      "ja": "適用対象：専門高校／総合高校の卒業見込者（統測成績を利用）"
+    },
+    "proposed": {
+      "zh": "115學年度一般組：高職等專業群科畢業生不限應屆；普通科畢業滿1年，或符合簡章同等學力等資格者也可申請。綜高應屆須截至高三上修畢專門學程25學分。普通科應屆原則不適用；若截至高三上跨選專業群科或專門學程達25學分或450小時，依簡章另核。須取得115統測成績，且符合群類、校系及其他資格限制；青年儲蓄帳戶組另核。",
+      "en": "General group, Academic Year 115: Eligible graduates and graduating students of vocational/professional programs, general-track high school graduates who graduated at least one year ago, and applicants meeting the guide’s equivalent-qualification or other eligibility provisions may apply. Graduating comprehensive high school students must have completed 25 credits in a specialized program by the end of the first semester of their final year. Current-year general-track graduates are generally ineligible; those who have completed 25 credits or 450 hours of cross-enrolled vocational/professional or specialized-program courses by that semester require separate assessment under the guide. Applicants must have AY 115 TCTE scores and meet examination-category, program and other eligibility restrictions. The Youth Savings Account group has separate requirements.",
+      "ja": "115学年度一般枠：専門群科の卒業者・条件を満たす卒業見込者、普通科卒業後1年以上の者、募集要項の同等学力等の条件を満たす者が対象です。総合高校の卒業見込者は、高校最終学年の前期末までに専門課程（專門學程）25単位の修得が必要です。普通科の卒業見込者は原則対象外ですが、その時点までに専門群科または専門課程の科目を跨選（他課程の科目履修）して25単位または450時間に達する場合は、募集要項に基づく個別確認が必要です。115学年度の統測成績に加え、受験区分、志望学科等の条件とその他の出願資格制限も満たす必要があります。青年貯蓄口座枠は別途確認してください。"
+    }
+  },
+  "changes": [
+    {
+      "id": "selection-content-zh",
+      "kind": "set-record",
+      "file": "data/admission.json",
+      "slug": "selection",
+      "field": "content",
+      "old": "四技日間部甄選入學 — 透過聯合招生，採統測 + 校系自辦指定項目甄試的入學管道。\n\n適用對象：高職 / 綜合高中應屆畢業生（採統測成績）\n\n樹德動遊系一次開出 4 個招生代碼（一般組 3 群 + 青年儲蓄帳戶組），115學年度甄選入學最多可申請6個校系科（組）、學程，各校得另限制可報名該校的系科數；請依當年簡章核對。\n\n錄取流程：\n1. 統測成績進入第一階段篩選\n2. 通過篩選者上傳第二階段備審資料\n3. 第二階段甄試到校 — 書審 + 面試 + 實作（設計群）\n4. 公告總成績 + 正備取名單\n5. 登記就讀志願序 → 統一分發 → 報到\n\n須備：學習歷程檔案、作品集（設計群）、自傳、讀書計畫",
+      "new": "四技日間部甄選入學 — 透過聯合招生，採統測 + 校系自辦指定項目甄試的入學管道。\n\n115學年度一般組：高職等專業群科畢業生不限應屆；普通科畢業滿1年，或符合簡章同等學力等資格者也可申請。綜高應屆須截至高三上修畢專門學程25學分。普通科應屆原則不適用；若截至高三上跨選專業群科或專門學程達25學分或450小時，依簡章另核。須取得115統測成績，且符合群類、校系及其他資格限制；青年儲蓄帳戶組另核。\n\n樹德動遊系一次開出 4 個招生代碼（一般組 3 群 + 青年儲蓄帳戶組），115學年度甄選入學最多可申請6個校系科（組）、學程，各校得另限制可報名該校的系科數；請依當年簡章核對。\n\n錄取流程：\n1. 統測成績進入第一階段篩選\n2. 通過篩選者上傳第二階段備審資料\n3. 第二階段甄試到校 — 書審 + 面試 + 實作（設計群）\n4. 公告總成績 + 正備取名單\n5. 登記就讀志願序 → 統一分發 → 報到\n\n須備：學習歷程檔案、作品集（設計群）、自傳、讀書計畫"
+    },
+    {
+      "id": "selection-content-en",
+      "kind": "set-record",
+      "file": "data/en/admission.json",
+      "slug": "selection",
+      "field": "content",
+      "old": "Four-Year College Day Division Selection-Based Admission (甄選入學) — An admission pathway through joint admissions based on TCTE + department-administered designated examinations.\n\nTarget Audience: Graduating seniors from vocational high schools / comprehensive high schools (using TCTE scores)\n\nShu-Te AGD offers 4 admission codes at once (3 general groups + Youth Savings Account group); for Academic Year 115, applicants may apply to at most six departments, divisions or degree programs in total. Individual universities may impose their own per-university limit; check that year’s official guide.\n\nAdmission Process:\n1. TCTE scores enter Stage 1 screening\n2. Those who pass screening upload Stage 2 review documents\n3. Stage 2 on-campus examination — documentary review + interview + practical test (Design Group)\n4. Announcement of total scores + admitted/waitlisted lists\n5. Registering department preferences → centralized placement → registration\n\nRequired: Student Learning Portfolio, portfolio (Design Group), autobiography, study plan",
+      "new": "Four-Year College Day Division Selection-Based Admission (甄選入學) — An admission pathway through joint admissions based on TCTE + department-administered designated examinations.\n\nGeneral group, Academic Year 115: Eligible graduates and graduating students of vocational/professional programs, general-track high school graduates who graduated at least one year ago, and applicants meeting the guide’s equivalent-qualification or other eligibility provisions may apply. Graduating comprehensive high school students must have completed 25 credits in a specialized program by the end of the first semester of their final year. Current-year general-track graduates are generally ineligible; those who have completed 25 credits or 450 hours of cross-enrolled vocational/professional or specialized-program courses by that semester require separate assessment under the guide. Applicants must have AY 115 TCTE scores and meet examination-category, program and other eligibility restrictions. The Youth Savings Account group has separate requirements.\n\nShu-Te AGD offers 4 admission codes at once (3 general groups + Youth Savings Account group); for Academic Year 115, applicants may apply to at most six departments, divisions or degree programs in total. Individual universities may impose their own per-university limit; check that year’s official guide.\n\nAdmission Process:\n1. TCTE scores enter Stage 1 screening\n2. Those who pass screening upload Stage 2 review documents\n3. Stage 2 on-campus examination — documentary review + interview + practical test (Design Group)\n4. Announcement of total scores + admitted/waitlisted lists\n5. Registering department preferences → centralized placement → registration\n\nRequired: Student Learning Portfolio, portfolio (Design Group), autobiography, study plan"
+    },
+    {
+      "id": "selection-content-ja",
+      "kind": "rename-key",
+      "file": "data/ja/messages.json",
+      "oldKey": "四技日間部甄選入學 — 透過聯合招生，採統測 + 校系自辦指定項目甄試的入學管道。 適用對象：高職 / 綜合高中應屆畢業生（採統測成績） 樹德動遊系一次開出 4 個招生代碼（一般組 3 群 + 青年儲蓄帳戶組），115學年度甄選入學最多可申請6個校系科（組）、學程，各校得另限制可報名該校的系科數；請依當年簡章核對。 錄取流程： 1. 統測成績進入第一階段篩選 2. 通過篩選者上傳第二階段備審資料 3. 第二階段甄試到校 — 書審 + 面試 + 實作（設計群） 4. 公告總成績 + 正備取名單 5. 登記就讀志願序 → 統一分發 → 報到 須備：學習歷程檔案、作品集（設計群）、自傳、讀書計畫",
+      "newKey": "四技日間部甄選入學 — 透過聯合招生，採統測 + 校系自辦指定項目甄試的入學管道。 115學年度一般組：高職等專業群科畢業生不限應屆；普通科畢業滿1年，或符合簡章同等學力等資格者也可申請。綜高應屆須截至高三上修畢專門學程25學分。普通科應屆原則不適用；若截至高三上跨選專業群科或專門學程達25學分或450小時，依簡章另核。須取得115統測成績，且符合群類、校系及其他資格限制；青年儲蓄帳戶組另核。 樹德動遊系一次開出 4 個招生代碼（一般組 3 群 + 青年儲蓄帳戶組），115學年度甄選入學最多可申請6個校系科（組）、學程，各校得另限制可報名該校的系科數；請依當年簡章核對。 錄取流程： 1. 統測成績進入第一階段篩選 2. 通過篩選者上傳第二階段備審資料 3. 第二階段甄試到校 — 書審 + 面試 + 實作（設計群） 4. 公告總成績 + 正備取名單 5. 登記就讀志願序 → 統一分發 → 報到 須備：學習歷程檔案、作品集（設計群）、自傳、讀書計畫",
+      "old": "4年制課程昼間部 甄選入学（選抜入試） — 合同募集を通じ、統測成績＋大学学科独自の指定選考を実施する入試制度。適用対象：専門高校／総合高校の卒業見込者（統測成績を利用） 樹徳科技大学アニメとゲームデザイン学科では4つの募集コード（一般枠3群＋青年貯蓄口座枠）を開設しており、115学年度は、大学・学科（専攻・学位課程）の選択を合計6件まで申請できます。各大学が自校の出願先数を別途制限する場合もあるため、当該年度の募集要項で確認してください。選考プロセス：1. 統測成績による第1段階スクリーニング 2. 通過者による第2段階審査書類のアップロード 3. 第2段階の来校選考 — 書類選考＋面接＋実技試験（デザイン群） 4. 総合点発表＋合格・補欠合格者リスト公表 5. 進学志望順位登録 → 統一割当 → 入学手続き 提出書類：学習履歴ファイル、ポートフォリオ（デザイン群）、自己推薦書、学習計画書",
+      "new": "4年制課程昼間部 甄選入学（選抜入試） — 合同募集を通じ、統測成績＋大学学科独自の指定選考を実施する入試制度。115学年度一般枠：専門群科の卒業者・条件を満たす卒業見込者、普通科卒業後1年以上の者、募集要項の同等学力等の条件を満たす者が対象です。総合高校の卒業見込者は、高校最終学年の前期末までに専門課程（專門學程）25単位の修得が必要です。普通科の卒業見込者は原則対象外ですが、その時点までに専門群科または専門課程の科目を跨選（他課程の科目履修）して25単位または450時間に達する場合は、募集要項に基づく個別確認が必要です。115学年度の統測成績に加え、受験区分、志望学科等の条件とその他の出願資格制限も満たす必要があります。青年貯蓄口座枠は別途確認してください。 樹徳科技大学アニメとゲームデザイン学科では4つの募集コード（一般枠3群＋青年貯蓄口座枠）を開設しており、115学年度は、大学・学科（専攻・学位課程）の選択を合計6件まで申請できます。各大学が自校の出願先数を別途制限する場合もあるため、当該年度の募集要項で確認してください。選考プロセス：1. 統測成績による第1段階スクリーニング 2. 通過者による第2段階審査書類のアップロード 3. 第2段階の来校選考 — 書類選考＋面接＋実技試験（デザイン群） 4. 総合点発表＋合格・補欠合格者リスト公表 5. 進学志望順位登録 → 統一割当 → 入学手続き 提出書類：学習履歴ファイル、ポートフォリオ（デザイン群）、自己推薦書、学習計画書"
+    }
+  ]
+}
