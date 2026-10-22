@@ -3,7 +3,7 @@
 // CH.05 — 師資登場
 const FACULTY = [
   {
-    name: "鄧樹遠", role: "系主任 · 副教授 · 電競娛樂系代理主任", en: "TENG, SHU-YUAN",
+    name: "鄧樹遠", role: "系主任 · 副教授", en: "TENG, SHU-YUAN",
     spec: "遊戲設計 / 劇本創作 / 數位剪輯", color: "red",
     photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/09/78pan_0-scaled-e1725608026576-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/treefar/"

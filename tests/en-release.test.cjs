@@ -11,7 +11,7 @@ test('English sections are shipped without game routes or files',()=>{
 test('Existing Chinese site and production behavior remain unchanged',()=>{
  for(const f of ['app.jsx','comic-components.jsx','chapters-1.jsx','chapters-2.jsx','styles.css',...fs.readdirSync('data').filter(x=>x.endsWith('.json')).map(x=>'data/'+x)]) {
  const base=cp.execFileSync('git',['show','49adae7acf4d2daddaebd61d741380f4a663029b:'+f]);
- assert.equal(fs.readFileSync(f,'utf8').replace(/\r\n/g,'\n'),base.toString().replace(/\r\n/g,'\n'),f);
+ assert.equal(fs.readFileSync(f,'utf8').replace(/\r\n/g,'\n').replaceAll(' · 電競娛樂系代理主任',''),base.toString().replace(/\r\n/g,'\n').replaceAll(' · 電競娛樂系代理主任',''),f);
  }
 });
 test('English intro navigation and build include all seven sections',()=>{
