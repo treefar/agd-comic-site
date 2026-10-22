@@ -1,6 +1,18 @@
 # 系網漫畫版 交接檔（LATEST_HANDOFF）
 
-最後更新：2026-10-21，TF-GO／Codex（六分支獨立驗收與整合、試玩包交付）。
+最後更新：2026-10-22，TF-GO／Codex（僅英文版獲授權公開發布；遊戲留本機）。
+
+## 2026-10-22 英文版已獨立上線（遊戲保留本機）
+
+- 使用者於2026-10-22對話明確授權：本次只將英文版合併並推上main上線；遊戲不發布，保留線上既有更新。此授權僅適用本次英文版，其餘C節待決項不變。
+- 以遠端main的49adae7acf4d2daddaebd61d741380f4a663029b為底，建立codex/en-publish-only；工作樹C:/agywork/agd-en-publish。
+- 已公開提交8f16c20b1676a8c25a00d88659f39f086d19417c；git push origin HEAD:main成功（一般fast-forward）。GitHub Pages run 39727684727成功，網址https://github.com/treefar/agd-comic-site/actions/runs/39727684727。
+- 英文入口：https://treefar.link/agd-comic-site/#/en/intro 。七分頁：intro、highlights、faculty、curriculum、labs、works、visit；保留main既有英文首頁內容，新增導覽及其餘頁面。中文資料與app、共用元件、首頁章節、styles.css均與原main一致。
+- 英文圖片依每筆slug/id使用main既有照片，沒有移入遊戲資產。線上data/play.json與play/creative-line/index.html均HTTP404；線上app-WFAVOGDV.js與本機建置位元組相同。
+- npm run build、npm run check:report成功；node --test tests/en-release.test.cjs 5/5；本機桌機1440與手機390共14組頁面驗證通過。既有duplicate color警告未改；真手機未測。
+- 原feature/en-site-and-play-zone仍保留完整遊戲整合版；不可把整條feature直接合進main，會帶回舊版站台與尚未核准發布的遊戲。未來遊戲上線也應從當時最新main另開分支選移。
+- 本次範圍只推上述英文發布提交。遊戲、舊美術刪除、真手機手感、格鬥規格、未知授權與清理均未處理。
+- 驗收報告與截圖：本次Codex對話outputs/en-release/VERIFY-en-release.md、smoke.json、live-delivery.json。
 
 ## 下一輪第一件事
 1. 使用者試玩：完整解壓 AGDComicSite-Playtest-20261021.zip，雙擊 START.cmd 進入五款試玩區。試玩包位於本次Codex對話outputs/run4/，ZIP約60MB；完整SHA256見下。
