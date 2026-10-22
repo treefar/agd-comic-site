@@ -41,7 +41,7 @@ const localHref = (type, slug) => `#/${type}/${encodeURIComponent(slug)}`;
 
 // Data cache (loaded once per type)
 // _BUILD_VER 跟 Comic Site.html 的 jsx ?v= 同步 bump，避免瀏覽器 cache JSON 舊版
-const _BUILD_VER = '20261008l';
+const _BUILD_VER = '20261022en';
 const _dataCache = {};
 const _MIN_LOAD_MS = 850; // Loading 至少顯示這麼久（讓動畫看得到）
 const useDataset = (type) => {
@@ -1315,12 +1315,12 @@ const NotFound = ({ type, slug }) => (
 // =========================================================
 // EN — English page for international students
 // =========================================================
-const EnglishDetail = ({ slug }) => {
-  // Single landing page — slug currently ignored (only "intro")
+const EnglishIntro = () => {
   return (
-    <section className="chapter" id="en-intro">
+    <section className="chapter" id="en-intro" lang="en">
       <div className="container">
         <BackBar label="HOME" />
+        <EnSubNav current="intro" />
         <div className="chapter-header" style={{ marginBottom: 24 }}>
           <div className="chapter-tag">
             <span>EN</span>
@@ -1448,7 +1448,7 @@ const EnglishDetail = ({ slug }) => {
                 <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 14, color: "var(--accent-red)", letterSpacing: "0.1em" }}>
                   RECENT INTERNATIONAL HONORS ★
                 </div>
-                <a href="#/stats/honors" style={{ fontSize: 12, color: "var(--ink)", textDecoration: "underline", fontWeight: 800 }}>FULL ARCHIVE →</a>
+                <a href="#/en/works" style={{ fontSize: 12, color: "var(--ink)", textDecoration: "underline", fontWeight: 800 }}>FULL ARCHIVE →</a>
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 10, fontSize: 12, lineHeight: 1.6 }}>
                 {[
