@@ -1,0 +1,51 @@
+// Technical proof data. It never edits game DOM/state, paints text, or certifies native layout.
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),crypto=require('node:crypto'),parser=require('@babel/parser'),M=require('./numeric-model.cjs');
+const dir=__dirname,root=path.resolve(dir,'../../..'),sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const read=f=>JSON.parse(fs.readFileSync(f)),ref=f=>{const bytes=fs.readFileSync(f);return {path:path.relative(root,f).replaceAll('\\','/'),bytes:bytes.length,sha256:sha(bytes)};};
+const file=name=>path.join(dir,name),domainDir=path.resolve(dir,'../semester-error-domain');
+const walk=(n,fn)=>{if(!n||typeof n!=='object')return;if(n.type)fn(n);for(const [k,v]of Object.entries(n))if(!['loc','start','end'].includes(k)){if(Array.isArray(v))v.forEach(x=>walk(x,fn));else if(v&&typeof v==='object')walk(v,fn);}};
+function verifyRefs(refs){for(const r of refs){const b=fs.readFileSync(path.resolve(root,r.path));assert.equal(b.length,r.bytes);assert.equal(sha(b),r.sha256,r.path);}}
+(async()=>{
+ const d=read(path.join(domainDir,'domain.json')),fa=read(file('font-audit.json')),sources=read(path.join(domainDir,'source-receipts.json')),game=sources.rows.find(r=>r.file==='games/semester.mjs');
+ const source=fs.readFileSync(game.local_file,'utf8'),sourceSha=sha(Buffer.from(source));assert.equal(sourceSha,game.sha256);assert.equal(sourceSha,d.source.game_sha256);assert.equal(sha(fs.readFileSync(path.join(root,'holiday-lab/games/semester.mjs'))),sourceSha);
+ const refs=[ref(path.join(domainDir,'domain.json')),ref(path.join(domainDir,'domain.cjs')),ref(path.join(domainDir,'source-receipts.json')),ref(game.local_file),ref(path.join(root,'holiday-lab/games/semester.mjs')),ref(path.join(root,'holiday-lab/lab.css')),ref(path.join(root,'holiday-lab/runner.mjs')),ref(file('font-audit.json')),ref(file('audit-fonts.py')),ref(file('numeric-model.cjs')),ref(file('prove.cjs'))];
+ for(const f of fa.fonts){const b=fs.readFileSync(f.font.path);assert.equal(sha(b),f.font.sha256);assert.equal(b.length,f.font.bytes);assert.equal(f.family,'Microsoft JhengHei UI');assert.equal(f.face_index,1);assert.equal(f.upem,2048);assert.ok(f.all_digits_equal_advance&&f.digits_within_advance_slots);assert.deepEqual(f.digit_kern_pairs,[]);assert.deepEqual(f.unsupported_kern,[]);assert.deepEqual(f.other_shaping_tables_present,[]);for(const tag of ['GSUB','GPOS'])assert.deepEqual(f.tables[tag].digit_references,[]);refs.push(ref(f.table_xml.path));}
+ const ast=parser.parse(source,{sourceType:'module'});let expression;
+ walk(ast,n=>{if(n.type==='CallExpression'&&source.slice(n.callee.start,n.callee.end)==='ctx.ui.setText'&&n.arguments[0]?.name==='location'){assert.ok(!expression);expression=n.arguments[1];}});
+ assert.equal(source.slice(expression.start,expression.end),d.other_write_audit.find(x=>x.owner==='location').expression);assert.equal(expression.callee.name,'W');assert.equal(expression.arguments.length,3);
+ const templates=[];
+ for(let x=0;x<5;x++)for(let y=0;y<3;y++)for(const [index,lang]of ['zh','en','ja'].entries()){
+  const node=expression.arguments[index];assert.equal(node.type,'TemplateLiteral');let text='',numericCount=0;
+  for(let i=0;i<node.quasis.length;i++){text+=node.quasis[i].value.cooked;if(i<node.expressions.length){const s=source.slice(node.expressions[i].start,node.expressions[i].end);if(s==='state.route.length-1'){text+='{{STEPS}}';numericCount++;}else{assert.ok(['state.position.x+1','state.position.y+1'].includes(s));text+=s.includes('.x')?x+1:y+1;}}}
+  assert.equal(numericCount,1);templates.push({lang,x,y,text,prefix:text.split('{{STEPS}}')[0],suffix:text.split('{{STEPS}}')[1],source_span:{start:node.start,end:node.end,line:node.loc.start.line},source_template:source.slice(node.start,node.end)});
+ }
+ fs.writeFileSync(file('templates.json'),JSON.stringify({source_sha256:sourceSha,templates,technical_probe_only:true,native_equivalence:false},null,2));
+ const guards=[...new Map(d.states.map(s=>[`${s.min_moves}/${s.min_moves%2}`,{min:s.min_moves,max:M.CEILING,parity:s.min_moves%2}])).values()].sort((a,b)=>a.min-b.min);
+ const setup=await require('../semester-error-domain/domain.cjs').setup(),pure=setup.mod;
+ function replay(actions,state=pure.newTrip()){for(const a of actions){if(a.type==='resume')continue;const r=a.type==='task'?pure.selectTask(state,a.id):a.type==='window'?pure.selectWindow(state,a.id):a.type==='move'?pure.move(state,a.id):pure.interact(state);state=r.state;}return state;}
+ const loop=[{type:'move',id:'up'},{type:'move',id:'down'}];assert.deepEqual(replay(loop).position,pure.newTrip().position);
+ const stateMap=[];
+ for(const s of d.states){const actual=replay(s.witness);assert.equal(actual.route.length-1,s.min_moves);assert.deepEqual(actual.position,s.position);assert.equal(s.min_moves%2,(s.position.x+s.position.y)%2);const detour=replay(s.witness,replay(loop));assert.equal(detour.route.length-1,s.min_moves+2);assert.deepEqual(detour.position,s.position);assert.equal(detour.round,actual.round);assert.equal(detour.selectedTask,actual.selectedTask);assert.equal(detour.selectedWindow,actual.selectedWindow);assert.deepEqual(detour.visits.map(v=>[v.taskId,v.windowId]),actual.visits.map(v=>[v.taskId,v.windowId]));stateMap.push({state_index:s.index,guard_index:guards.findIndex(g=>g.min===s.min_moves),x:s.position.x,y:s.position.y,base_witness_ref:`domain.json#/states/${s.index}/witness`,detour_recipe:'prepend [up,down] repeated (n-min_moves)/2 times, then original witness; successful allocations conditional'});}
+ fs.writeFileSync(file('state-map.json'),JSON.stringify({domain_ref:refs[0],states:stateMap,loop,conditional_on_successful_Array_allocations:true,native_witnesses_executed:false},null,2));
+ const all=[],counts={guard_count:guards.length,source_states:d.states.length,templates:templates.length,metric_classes:0,fragment_bounds:0,prefix_nodes:0,largest_layer:0};
+ for(const font of fa.fonts)for(const guard of guards){
+  const whole=M.classes(guard,font.digits),fragments=[];
+  for(let length=1;length<=10;length++)for(let start=0;start<length;start++)for(let end=start+1;end<=length;end++){
+   const rows=M.classes(guard,font.digits,{length,segment:[start,end]});if(!rows.length)continue;
+   const b=M.bounds(rows);for(const value of Object.values(b))for(const witness of [value.lower_witness,value.upper_witness]){assert.ok(Number(witness)>=guard.min&&Number(witness)<=guard.max&&Number(witness)%2===guard.parity);}
+   fragments.push({length,segment:[start,end],bounds:b,exact_metric_class_count:rows.length,prefix_stats:rows.stats});
+  }
+  counts.metric_classes+=whole.length;counts.fragment_bounds+=fragments.length;counts.prefix_nodes+=whole.stats.reduce((n,s)=>n+s.prefix_states_visited,0);counts.largest_layer=Math.max(counts.largest_layer,...whole.stats.map(s=>s.largest_layer));
+  all.push({font:font.subfamily,font_sha256:font.font.sha256,face_index:font.face_index,guard,whole_numeric_run:{classes:whole,conservative_bounds:M.bounds(whole),prefix_stats:whole.stats},all_contiguous_fragment_extrema:fragments});
+ }
+ fs.writeFileSync(file('representatives.json'),JSON.stringify({type:'complete-outline-metric-and-fragment-extrema-witnesses-v1',font_audit_ref:ref(file('font-audit.json')),domain_ref:refs[0],groups:all,technical_probe_only:true,native_equivalence:false},null,2));
+ refs.push(ref(file('templates.json')),ref(file('state-map.json')),ref(file('representatives.json')));verifyRefs(refs);
+ const native=read(path.join(domainDir,'native-calibration/report.json'));refs.push(ref(path.join(domainDir,'native-calibration/report.json')));
+ const calibration=native.sessions.map(s=>{const sample=read(s.sample_file),f=s.fonts_after.find(x=>x.selector==='#semester-position'),node=sample.nodes.find(n=>n.owner==='semester-position');assert.ok(f&&node);refs.push(ref(s.sample_file));assert.equal(f.computed.fontWeight,'400');assert.equal(f.computed.fontSize,'16px');assert.ok(f.platform.every(p=>p.familyName==='Microsoft JhengHei UI'&&!p.isCustomFont));return {lang:s.lang,width:s.width,position_text:f.computed.text,font:f.computed,platform:f.platform,sample_ref:ref(s.sample_file),measured_line_fragments:node.measurements.map(m=>m.text),numeric_steps_tested:10,new_equivalence_calibration:false};});
+ const result={type:'sourcebound-symbolic-decimal-outline-proof-v1',created_at:new Date().toISOString(),counts,guards,evidence_refs:refs,font_files:fa.fonts.map(f=>f.font),source_template_span:{start:expression.start,end:expression.end,line:expression.loc.start.line},
+  mathematical_model_proven:true,all_4695_minimum_and_two_step_detour_witnesses_checked:true,ten_digit_language_ceiling_is_prior_known_fact:true,
+  complete_representatives_scope:'All exact unwrapped numeric outline metric classes. For ANY contiguous wrap fragment, independent min/max of advance/xMin/xMax/yMin/yMax each has a legal symbolic numeric witness. Joint fragment extrema need not occur in one number; conservative envelope is valid.',
+  conditional_invariance:'Given the audited face, literal decimal glyphs, no extra shaping/font features, normal letter-spacing, and native-confirmed digit-value-independent run segmentation/line breaks: changing digits at fixed length cannot change advances or shape nonnumeric prefix/suffix. Numeric ink depends on each line fragment endpoints and its yMin/yMax, not merely digit count. This is conditional, not a browser certification.',
+  existing_native_calibration:calibration,unresolved_NO:['Actual Range/Canvas matches scaled outline metrics or a proven conservative native error bound at 16px/DPR','Browser run segmentation, bidi resolution and overflow-wrap:anywhere break positions independent of digit value for all 45 language-position templates','Font selection/pre-run SHA for any future technical or native batch','All high-step symbolic witnesses physically allocatable/executed in normal UI','All owners and six semester error-longest layout cases closed'],browser_or_native_run_started:false,native_equivalence:false,global_approved:false};
+ fs.writeFileSync(file('proof.json'),JSON.stringify(result,null,2));console.log(JSON.stringify({pass:true,counts,native_equivalence:false,global_approved:false},null,2));
+})().catch(e=>{console.error(e.message);process.exitCode=1;});

@@ -1,0 +1,293 @@
+{
+  "date": "2026-10-23T05:51:31.857Z",
+  "method": "read-only local source and retained evidence; no browser/native",
+  "sources": {
+    "games/national-day.mjs": {
+      "sha256": "9c697f08c24f9eae89ac55b71fc37bcfe8546c65b7ca3264a88155b5a63891fa",
+      "bytes": 8736,
+      "matches_prior_receipt": true
+    },
+    "runner.mjs": {
+      "sha256": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+      "bytes": 17486,
+      "matches_prior_receipt": true
+    },
+    "lab.css": {
+      "sha256": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+      "bytes": 7217,
+      "matches_prior_receipt": true
+    },
+    "assets/ui/panel.png": {
+      "sha256": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+      "bytes": 99587,
+      "matches_prior_receipt": true
+    }
+  },
+  "reports": [
+    {
+      "file": "holiday-lab/layout-qa/national-readout-finite-native/pilot-01/report.json",
+      "sha256": "6f24aed3adf141ff7d54298c8e2b0e477986ef3f8ef53480a4d649caef4c5c77"
+    },
+    {
+      "file": "holiday-lab/layout-qa/national-readout-finite-native/pilot-02/report.json",
+      "sha256": "065b2ea1f94a265edb1f7eeb4e512b06f11cceab8d2df6e23f3046e94f180036"
+    },
+    {
+      "file": "holiday-lab/layout-qa/national-readout-finite-native/verification.json",
+      "sha256": "ff5eb6a4704b7c200cd57371abcd7803aff5e9f0c222ddadd9a5ee3a528f6ef5"
+    }
+  ],
+  "true_cases": [
+    {
+      "index": 0,
+      "lang": "zh",
+      "phase": 0,
+      "input": {
+        "camera": -20,
+        "mid": -30,
+        "far": -30,
+        "fore": 0
+      },
+      "png_sha256": "0d13ee1c818d9d2aa9631d8a68d1c17973f3315720e77a895d3dbe71c24b13b7",
+      "matches_prior_verification": true,
+      "owner": "island-readout",
+      "node_id": "text-14",
+      "original_flags": [],
+      "target_paint_flags": [],
+      "source_context_width": 320,
+      "viewport_height_from_pilot_source": 1000,
+      "owner_crop_png_width": 216,
+      "owner_crop_png_height": 80
+    },
+    {
+      "index": 1,
+      "lang": "en",
+      "phase": 0,
+      "input": {
+        "camera": 20,
+        "mid": 30,
+        "far": 30,
+        "fore": 30
+      },
+      "png_sha256": "609046c2ebe2c8378ccb3553f7d8c4b131a3416c68650c202d675a312e2c9453",
+      "matches_prior_verification": true,
+      "owner": "island-readout",
+      "node_id": "text-14",
+      "original_flags": [
+        "TEXT_CLIPPED_OR_UNREAD_SCROLL_CONTENT layout-owner-15 Camera travel",
+        "SCROLL_CONTENT_PENDING 8 text nodes require additional actual scroll captures",
+        "PAINT_HIT_TARGET_UNRESOLVED image:island-scene-0/text-12",
+        "PAINT_HIT_TARGET_UNRESOLVED image:island-scene-0/text-13",
+        "PAINT_HIT_TARGET_UNRESOLVED image:island-scene-1/text-13",
+        "PAINT_HIT_TARGET_UNRESOLVED image:island-scene-1/text-14",
+        "PAINT_HIT_TARGET_UNRESOLVED image:island-scene-1/text-15"
+      ],
+      "target_paint_flags": [
+        "PAINT_HIT_TARGET_UNRESOLVED image:island-scene-1/text-14"
+      ],
+      "source_context_width": 1440,
+      "viewport_height_from_pilot_source": 1000,
+      "owner_crop_png_width": 305,
+      "owner_crop_png_height": 54
+    },
+    {
+      "index": 2,
+      "lang": "ja",
+      "phase": 1,
+      "input": {
+        "camera": -1,
+        "mid": 0,
+        "far": 0,
+        "fore": 0
+      },
+      "png_sha256": "f442615553aa942fbfd2504136d4cbc95f758378d55540f081a16bba18d0e065",
+      "matches_prior_verification": true,
+      "owner": "island-readout",
+      "node_id": "text-14",
+      "original_flags": [],
+      "target_paint_flags": [],
+      "source_context_width": 320,
+      "viewport_height_from_pilot_source": 1000,
+      "owner_crop_png_width": 216,
+      "owner_crop_png_height": 80
+    },
+    {
+      "index": 3,
+      "lang": "zh",
+      "phase": 1,
+      "input": {
+        "camera": 0,
+        "mid": -30,
+        "far": 30,
+        "fore": 30
+      },
+      "png_sha256": "0649e95e06d8e3d81a187e133a30a129e63debd5fe6c5e94fa19047b488a5e5f",
+      "matches_prior_verification": true,
+      "owner": "island-readout",
+      "node_id": "text-14",
+      "original_flags": [
+        "TEXT_CLIPPED_OR_UNREAD_SCROLL_CONTENT island-camera-minus 減",
+        "TEXT_CLIPPED_OR_UNREAD_SCROLL_CONTENT layout-owner-16 0",
+        "TEXT_CLIPPED_OR_UNREAD_SCROLL_CONTENT island-camera-plus 加",
+        "SCROLL_CONTENT_PENDING 5 text nodes require additional actual scroll captures",
+        "PAINT_HIT_TARGET_UNRESOLVED image:island-scene-0/text-12",
+        "PAINT_HIT_TARGET_UNRESOLVED image:island-scene-0/text-13",
+        "PAINT_HIT_TARGET_UNRESOLVED image:island-scene-0/text-14",
+        "PAINT_HIT_TARGET_UNRESOLVED image:island-scene-2/text-19",
+        "PAINT_HIT_TARGET_UNRESOLVED image:island-scene-2/text-20"
+      ],
+      "target_paint_flags": [
+        "PAINT_HIT_TARGET_UNRESOLVED image:island-scene-0/text-14"
+      ],
+      "source_context_width": 1440,
+      "viewport_height_from_pilot_source": 1000,
+      "owner_crop_png_width": 305,
+      "owner_crop_png_height": 54
+    },
+    {
+      "index": 4,
+      "lang": "en",
+      "phase": 2,
+      "input": {
+        "camera": 1,
+        "mid": 30,
+        "far": -30,
+        "fore": 0
+      },
+      "png_sha256": "1e9fd9729eed2be61cab1e91cd568f8af92623eaff52c90212f6cbae64ce0e9d",
+      "matches_prior_verification": true,
+      "owner": "island-readout",
+      "node_id": "text-14",
+      "original_flags": [],
+      "target_paint_flags": [],
+      "source_context_width": 320,
+      "viewport_height_from_pilot_source": 1000,
+      "owner_crop_png_width": 216,
+      "owner_crop_png_height": 80
+    },
+    {
+      "index": 5,
+      "lang": "ja",
+      "phase": 2,
+      "input": {
+        "camera": -20,
+        "mid": 30,
+        "far": -30,
+        "fore": 30
+      },
+      "png_sha256": "bb43d8c86710dd2643cac8665b30e7d0b0e4f476472ccef0ccd3d59d2c1258d8",
+      "matches_prior_verification": true,
+      "owner": "island-readout",
+      "node_id": "text-14",
+      "original_flags": [
+        "TEXT_CLIPPED_OR_UNREAD_SCROLL_CONTENT layout-owner-16 -20",
+        "SCROLL_CONTENT_PENDING 5 text nodes require additional actual scroll captures",
+        "PAINT_HIT_TARGET_UNRESOLVED image:island-scene-1/text-13",
+        "PAINT_HIT_TARGET_UNRESOLVED image:island-scene-1/text-14",
+        "PAINT_HIT_TARGET_UNRESOLVED image:island-scene-1/text-15",
+        "PAINT_HIT_TARGET_UNRESOLVED image:island-scene-1/text-16",
+        "PAINT_HIT_TARGET_UNRESOLVED image:island-scene-2/text-19",
+        "PAINT_HIT_TARGET_UNRESOLVED image:island-scene-2/text-20"
+      ],
+      "target_paint_flags": [
+        "PAINT_HIT_TARGET_UNRESOLVED image:island-scene-1/text-14"
+      ],
+      "source_context_width": 1440,
+      "viewport_height_from_pilot_source": 1000,
+      "owner_crop_png_width": 305,
+      "owner_crop_png_height": 54
+    },
+    {
+      "index": 6,
+      "lang": "zh",
+      "phase": 2,
+      "input": {
+        "camera": 20,
+        "mid": -30,
+        "far": 30,
+        "fore": 0
+      },
+      "png_sha256": "7c13962ff398d6433d4471a81d2140382fb06b8cb66356ba57c8162a389281d7",
+      "matches_prior_verification": true,
+      "owner": "island-readout",
+      "node_id": "text-14",
+      "original_flags": [],
+      "target_paint_flags": [],
+      "source_context_width": 320,
+      "viewport_height_from_pilot_source": 1000,
+      "owner_crop_png_width": 216,
+      "owner_crop_png_height": 80
+    },
+    {
+      "index": 7,
+      "lang": "en",
+      "phase": 1,
+      "input": {
+        "camera": 11,
+        "mid": -1,
+        "far": 1,
+        "fore": 30
+      },
+      "png_sha256": "10a5bfa6ce3870e5f9bab39a1dea22bb2e493e53e9780ca1ace107bc20fb1451",
+      "matches_prior_verification": true,
+      "owner": "island-readout",
+      "node_id": "text-14",
+      "original_flags": [
+        "TEXT_CLIPPED_OR_UNREAD_SCROLL_CONTENT layout-owner-15 Camera travel",
+        "SCROLL_CONTENT_PENDING 8 text nodes require additional actual scroll captures",
+        "PAINT_HIT_TARGET_UNRESOLVED image:island-scene-2/text-15",
+        "PAINT_HIT_TARGET_UNRESOLVED image:island-scene-2/text-19"
+      ],
+      "target_paint_flags": [],
+      "source_context_width": 1440,
+      "viewport_height_from_pilot_source": 1000,
+      "owner_crop_png_width": 305,
+      "owner_crop_png_height": 54
+    },
+    {
+      "index": 8,
+      "lang": "ja",
+      "phase": 0,
+      "input": {
+        "camera": -11,
+        "mid": 1,
+        "far": -1,
+        "fore": 0
+      },
+      "png_sha256": "48ba776fbd09d1545bcb21e9190e4be0402ab179d8290a1b1ec0e8fa00f9bac4",
+      "matches_prior_verification": true,
+      "owner": "island-readout",
+      "node_id": "text-14",
+      "original_flags": [],
+      "target_paint_flags": [],
+      "source_context_width": 320,
+      "viewport_height_from_pilot_source": 1000,
+      "owner_crop_png_width": 216,
+      "owner_crop_png_height": 80
+    },
+    {
+      "index": 9,
+      "lang": "en",
+      "phase": 0,
+      "input": {
+        "camera": 0,
+        "mid": 0,
+        "far": 0,
+        "fore": 30
+      },
+      "png_sha256": "09cba90b56d33bc81a60c1e0fa99f4f21c28130b19a9eb305b31e01a7b8b1b71",
+      "matches_prior_verification": true,
+      "owner": "island-readout",
+      "node_id": "text-14",
+      "original_flags": [],
+      "target_paint_flags": [],
+      "source_context_width": 320,
+      "viewport_height_from_pilot_source": 1000,
+      "owner_crop_png_width": 216,
+      "owner_crop_png_height": 80
+    }
+  ],
+  "new_native_measurements": 0,
+  "coverage_changed": false,
+  "global_bound_proven": false
+}

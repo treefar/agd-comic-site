@@ -1,0 +1,5 @@
+// Freezes only this explicitly listed offline method/result batch. Does not change old evidence.
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),dir=__dirname,root=path.resolve(dir,'../../..');
+const names=['audit-fonts.py','audit-template-fonts.py','font-audit.json','msjh.ttc-ui-tables.ttx','msjhbd.ttc-ui-tables.ttx','numeric-model.cjs','numeric-model.test.cjs','verifier.test.cjs','prove.cjs','verify.cjs','freeze.cjs','templates.json','template-font-audit.json','state-map.json','representatives.json','proof.json','REPORT.md','CALIBRATION-PLAN.md'];
+const refs=names.map(n=>{const p=path.join(dir,n),b=fs.readFileSync(p);return {path:path.relative(root,p).replaceAll('\\','/'),bytes:b.length,sha256:crypto.createHash('sha256').update(b).digest('hex')};});
+fs.writeFileSync(path.join(dir,'freeze.json'),JSON.stringify({type:'offline-numeric-method-freeze-v1',at:new Date().toISOString(),refs,native_equivalence:false,global_approved:false},null,2));console.log(JSON.stringify({frozen_files:refs.length,native_equivalence:false,global_approved:false}));

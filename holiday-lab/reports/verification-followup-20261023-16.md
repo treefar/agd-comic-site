@@ -31,3 +31,15 @@
 - 清明／開學／國慶：只在各自新QA目錄工作，不改產品、sampler、map、舊證據。新的browser批次須主控讀實碼與測試後再批准。
 
 原247中秋證據已在先前本機commit保全；正在增長的續接輸出與勞動全集尚非完成封存。原673MB中秋raw仍ignored本機資料，未宣稱跨機備份。
+
+## 主控畫面檢視與本機保全
+
+主控實際開圖 `mid-autumn-ui-validation-20261023/runs/root-ui-04/records/000581/viewport.png`（JA320，source-index23613）：被測錯誤提示全文在紙面內；頁面上方說明仍有短末行「ごう。」，下方操作說明亦有短末行。這是已看見的排版缺口，不把目標文字測試通過說成整頁排版／日文／美術通過。驗證期間不改凍結產品；後續在新版本修正並重驗受影響範圍。
+
+136個完成檔已保全到本機commit `c3a8e47`，包含來源帳本、恢復／勞動工具與本報告；QA index blob逐一與工作檔位元組一致。程式／Markdown的cached diff --check exit0，git fsck --connectivity-only exit0。未納入仍增長的native輸出，不把本機commit說成已push或跨機備份。
+
+## 後續離線複驗
+
+- 開學：root實跑 `node --test holiday-lab/layout-qa/semester-numeric-proof-20261023/numeric-model.test.cjs holiday-lab/layout-qa/semester-numeric-proof-20261023/verifier.test.cjs` → tests5 pass5 fail0、exit0。含真font的10位上界／兩parity／跨位數與substring負例。
+- root實跑 `node holiday-lab/layout-qa/semester-numeric-proof-20261023/verify.cjs` → exit0；pass=true, refs41,groups38,metric_classes33365,fragment_bounds8342,all_fragment_DP_recomputed=true,native_equivalence=false,global_approved=false。已讀model/prove/verify實碼。這是字型outline模型與來源證明，未替代瀏覽器逐行墨跡驗證。
+- 國慶：root實跑 `node --test holiday-lab/layout-qa/national-independent-review-20261023/projection.test.cjs` → tests6 pass6 fail0、exit0。十筆舊真頁有三筆命中readout自身paint unresolved，原PNG也只是元素crop；手機viewport為320×1000，不能充當320×900完整畫面。代理已交精確來源域與上限39筆正常UI校準方案；僅批准準備工具／故障測試，尚未批准啟動browser。

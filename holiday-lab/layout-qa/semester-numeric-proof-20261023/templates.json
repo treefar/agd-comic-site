@@ -1,0 +1,637 @@
+{
+  "source_sha256": "b184437bf226354f8602ed5567c4ac941bff6539176f9575cf737a808d7fbcc9",
+  "templates": [
+    {
+      "lang": "zh",
+      "x": 0,
+      "y": 0,
+      "text": "目前：第1列、第1行，走了{{STEPS}}步。方向按鈕或方向鍵皆可移動。",
+      "prefix": "目前：第1列、第1行，走了",
+      "suffix": "步。方向按鈕或方向鍵皆可移動。",
+      "source_span": {
+        "start": 10649,
+        "end": 10742,
+        "line": 58
+      },
+      "source_template": "`目前：第${state.position.x+1}列、第${state.position.y+1}行，走了${state.route.length-1}步。方向按鈕或方向鍵皆可移動。`"
+    },
+    {
+      "lang": "en",
+      "x": 0,
+      "y": 0,
+      "text": "Position: column 1, row 1; {{STEPS}} steps. Use direction buttons or arrow keys.",
+      "prefix": "Position: column 1, row 1; ",
+      "suffix": " steps. Use direction buttons or arrow keys.",
+      "source_span": {
+        "start": 10743,
+        "end": 10879,
+        "line": 58
+      },
+      "source_template": "`Position: column ${state.position.x+1}, row ${state.position.y+1}; ${state.route.length-1} steps. Use direction buttons or arrow keys.`"
+    },
+    {
+      "lang": "ja",
+      "x": 0,
+      "y": 0,
+      "text": "現在：1列1行、{{STEPS}}歩。方向ボタンか矢印キーで移動。",
+      "prefix": "現在：1列1行、",
+      "suffix": "歩。方向ボタンか矢印キーで移動。",
+      "source_span": {
+        "start": 10880,
+        "end": 10969,
+        "line": 58
+      },
+      "source_template": "`現在：${state.position.x+1}列${state.position.y+1}行、${state.route.length-1}歩。方向ボタンか矢印キーで移動。`"
+    },
+    {
+      "lang": "zh",
+      "x": 0,
+      "y": 1,
+      "text": "目前：第1列、第2行，走了{{STEPS}}步。方向按鈕或方向鍵皆可移動。",
+      "prefix": "目前：第1列、第2行，走了",
+      "suffix": "步。方向按鈕或方向鍵皆可移動。",
+      "source_span": {
+        "start": 10649,
+        "end": 10742,
+        "line": 58
+      },
+      "source_template": "`目前：第${state.position.x+1}列、第${state.position.y+1}行，走了${state.route.length-1}步。方向按鈕或方向鍵皆可移動。`"
+    },
+    {
+      "lang": "en",
+      "x": 0,
+      "y": 1,
+      "text": "Position: column 1, row 2; {{STEPS}} steps. Use direction buttons or arrow keys.",
+      "prefix": "Position: column 1, row 2; ",
+      "suffix": " steps. Use direction buttons or arrow keys.",
+      "source_span": {
+        "start": 10743,
+        "end": 10879,
+        "line": 58
+      },
+      "source_template": "`Position: column ${state.position.x+1}, row ${state.position.y+1}; ${state.route.length-1} steps. Use direction buttons or arrow keys.`"
+    },
+    {
+      "lang": "ja",
+      "x": 0,
+      "y": 1,
+      "text": "現在：1列2行、{{STEPS}}歩。方向ボタンか矢印キーで移動。",
+      "prefix": "現在：1列2行、",
+      "suffix": "歩。方向ボタンか矢印キーで移動。",
+      "source_span": {
+        "start": 10880,
+        "end": 10969,
+        "line": 58
+      },
+      "source_template": "`現在：${state.position.x+1}列${state.position.y+1}行、${state.route.length-1}歩。方向ボタンか矢印キーで移動。`"
+    },
+    {
+      "lang": "zh",
+      "x": 0,
+      "y": 2,
+      "text": "目前：第1列、第3行，走了{{STEPS}}步。方向按鈕或方向鍵皆可移動。",
+      "prefix": "目前：第1列、第3行，走了",
+      "suffix": "步。方向按鈕或方向鍵皆可移動。",
+      "source_span": {
+        "start": 10649,
+        "end": 10742,
+        "line": 58
+      },
+      "source_template": "`目前：第${state.position.x+1}列、第${state.position.y+1}行，走了${state.route.length-1}步。方向按鈕或方向鍵皆可移動。`"
+    },
+    {
+      "lang": "en",
+      "x": 0,
+      "y": 2,
+      "text": "Position: column 1, row 3; {{STEPS}} steps. Use direction buttons or arrow keys.",
+      "prefix": "Position: column 1, row 3; ",
+      "suffix": " steps. Use direction buttons or arrow keys.",
+      "source_span": {
+        "start": 10743,
+        "end": 10879,
+        "line": 58
+      },
+      "source_template": "`Position: column ${state.position.x+1}, row ${state.position.y+1}; ${state.route.length-1} steps. Use direction buttons or arrow keys.`"
+    },
+    {
+      "lang": "ja",
+      "x": 0,
+      "y": 2,
+      "text": "現在：1列3行、{{STEPS}}歩。方向ボタンか矢印キーで移動。",
+      "prefix": "現在：1列3行、",
+      "suffix": "歩。方向ボタンか矢印キーで移動。",
+      "source_span": {
+        "start": 10880,
+        "end": 10969,
+        "line": 58
+      },
+      "source_template": "`現在：${state.position.x+1}列${state.position.y+1}行、${state.route.length-1}歩。方向ボタンか矢印キーで移動。`"
+    },
+    {
+      "lang": "zh",
+      "x": 1,
+      "y": 0,
+      "text": "目前：第2列、第1行，走了{{STEPS}}步。方向按鈕或方向鍵皆可移動。",
+      "prefix": "目前：第2列、第1行，走了",
+      "suffix": "步。方向按鈕或方向鍵皆可移動。",
+      "source_span": {
+        "start": 10649,
+        "end": 10742,
+        "line": 58
+      },
+      "source_template": "`目前：第${state.position.x+1}列、第${state.position.y+1}行，走了${state.route.length-1}步。方向按鈕或方向鍵皆可移動。`"
+    },
+    {
+      "lang": "en",
+      "x": 1,
+      "y": 0,
+      "text": "Position: column 2, row 1; {{STEPS}} steps. Use direction buttons or arrow keys.",
+      "prefix": "Position: column 2, row 1; ",
+      "suffix": " steps. Use direction buttons or arrow keys.",
+      "source_span": {
+        "start": 10743,
+        "end": 10879,
+        "line": 58
+      },
+      "source_template": "`Position: column ${state.position.x+1}, row ${state.position.y+1}; ${state.route.length-1} steps. Use direction buttons or arrow keys.`"
+    },
+    {
+      "lang": "ja",
+      "x": 1,
+      "y": 0,
+      "text": "現在：2列1行、{{STEPS}}歩。方向ボタンか矢印キーで移動。",
+      "prefix": "現在：2列1行、",
+      "suffix": "歩。方向ボタンか矢印キーで移動。",
+      "source_span": {
+        "start": 10880,
+        "end": 10969,
+        "line": 58
+      },
+      "source_template": "`現在：${state.position.x+1}列${state.position.y+1}行、${state.route.length-1}歩。方向ボタンか矢印キーで移動。`"
+    },
+    {
+      "lang": "zh",
+      "x": 1,
+      "y": 1,
+      "text": "目前：第2列、第2行，走了{{STEPS}}步。方向按鈕或方向鍵皆可移動。",
+      "prefix": "目前：第2列、第2行，走了",
+      "suffix": "步。方向按鈕或方向鍵皆可移動。",
+      "source_span": {
+        "start": 10649,
+        "end": 10742,
+        "line": 58
+      },
+      "source_template": "`目前：第${state.position.x+1}列、第${state.position.y+1}行，走了${state.route.length-1}步。方向按鈕或方向鍵皆可移動。`"
+    },
+    {
+      "lang": "en",
+      "x": 1,
+      "y": 1,
+      "text": "Position: column 2, row 2; {{STEPS}} steps. Use direction buttons or arrow keys.",
+      "prefix": "Position: column 2, row 2; ",
+      "suffix": " steps. Use direction buttons or arrow keys.",
+      "source_span": {
+        "start": 10743,
+        "end": 10879,
+        "line": 58
+      },
+      "source_template": "`Position: column ${state.position.x+1}, row ${state.position.y+1}; ${state.route.length-1} steps. Use direction buttons or arrow keys.`"
+    },
+    {
+      "lang": "ja",
+      "x": 1,
+      "y": 1,
+      "text": "現在：2列2行、{{STEPS}}歩。方向ボタンか矢印キーで移動。",
+      "prefix": "現在：2列2行、",
+      "suffix": "歩。方向ボタンか矢印キーで移動。",
+      "source_span": {
+        "start": 10880,
+        "end": 10969,
+        "line": 58
+      },
+      "source_template": "`現在：${state.position.x+1}列${state.position.y+1}行、${state.route.length-1}歩。方向ボタンか矢印キーで移動。`"
+    },
+    {
+      "lang": "zh",
+      "x": 1,
+      "y": 2,
+      "text": "目前：第2列、第3行，走了{{STEPS}}步。方向按鈕或方向鍵皆可移動。",
+      "prefix": "目前：第2列、第3行，走了",
+      "suffix": "步。方向按鈕或方向鍵皆可移動。",
+      "source_span": {
+        "start": 10649,
+        "end": 10742,
+        "line": 58
+      },
+      "source_template": "`目前：第${state.position.x+1}列、第${state.position.y+1}行，走了${state.route.length-1}步。方向按鈕或方向鍵皆可移動。`"
+    },
+    {
+      "lang": "en",
+      "x": 1,
+      "y": 2,
+      "text": "Position: column 2, row 3; {{STEPS}} steps. Use direction buttons or arrow keys.",
+      "prefix": "Position: column 2, row 3; ",
+      "suffix": " steps. Use direction buttons or arrow keys.",
+      "source_span": {
+        "start": 10743,
+        "end": 10879,
+        "line": 58
+      },
+      "source_template": "`Position: column ${state.position.x+1}, row ${state.position.y+1}; ${state.route.length-1} steps. Use direction buttons or arrow keys.`"
+    },
+    {
+      "lang": "ja",
+      "x": 1,
+      "y": 2,
+      "text": "現在：2列3行、{{STEPS}}歩。方向ボタンか矢印キーで移動。",
+      "prefix": "現在：2列3行、",
+      "suffix": "歩。方向ボタンか矢印キーで移動。",
+      "source_span": {
+        "start": 10880,
+        "end": 10969,
+        "line": 58
+      },
+      "source_template": "`現在：${state.position.x+1}列${state.position.y+1}行、${state.route.length-1}歩。方向ボタンか矢印キーで移動。`"
+    },
+    {
+      "lang": "zh",
+      "x": 2,
+      "y": 0,
+      "text": "目前：第3列、第1行，走了{{STEPS}}步。方向按鈕或方向鍵皆可移動。",
+      "prefix": "目前：第3列、第1行，走了",
+      "suffix": "步。方向按鈕或方向鍵皆可移動。",
+      "source_span": {
+        "start": 10649,
+        "end": 10742,
+        "line": 58
+      },
+      "source_template": "`目前：第${state.position.x+1}列、第${state.position.y+1}行，走了${state.route.length-1}步。方向按鈕或方向鍵皆可移動。`"
+    },
+    {
+      "lang": "en",
+      "x": 2,
+      "y": 0,
+      "text": "Position: column 3, row 1; {{STEPS}} steps. Use direction buttons or arrow keys.",
+      "prefix": "Position: column 3, row 1; ",
+      "suffix": " steps. Use direction buttons or arrow keys.",
+      "source_span": {
+        "start": 10743,
+        "end": 10879,
+        "line": 58
+      },
+      "source_template": "`Position: column ${state.position.x+1}, row ${state.position.y+1}; ${state.route.length-1} steps. Use direction buttons or arrow keys.`"
+    },
+    {
+      "lang": "ja",
+      "x": 2,
+      "y": 0,
+      "text": "現在：3列1行、{{STEPS}}歩。方向ボタンか矢印キーで移動。",
+      "prefix": "現在：3列1行、",
+      "suffix": "歩。方向ボタンか矢印キーで移動。",
+      "source_span": {
+        "start": 10880,
+        "end": 10969,
+        "line": 58
+      },
+      "source_template": "`現在：${state.position.x+1}列${state.position.y+1}行、${state.route.length-1}歩。方向ボタンか矢印キーで移動。`"
+    },
+    {
+      "lang": "zh",
+      "x": 2,
+      "y": 1,
+      "text": "目前：第3列、第2行，走了{{STEPS}}步。方向按鈕或方向鍵皆可移動。",
+      "prefix": "目前：第3列、第2行，走了",
+      "suffix": "步。方向按鈕或方向鍵皆可移動。",
+      "source_span": {
+        "start": 10649,
+        "end": 10742,
+        "line": 58
+      },
+      "source_template": "`目前：第${state.position.x+1}列、第${state.position.y+1}行，走了${state.route.length-1}步。方向按鈕或方向鍵皆可移動。`"
+    },
+    {
+      "lang": "en",
+      "x": 2,
+      "y": 1,
+      "text": "Position: column 3, row 2; {{STEPS}} steps. Use direction buttons or arrow keys.",
+      "prefix": "Position: column 3, row 2; ",
+      "suffix": " steps. Use direction buttons or arrow keys.",
+      "source_span": {
+        "start": 10743,
+        "end": 10879,
+        "line": 58
+      },
+      "source_template": "`Position: column ${state.position.x+1}, row ${state.position.y+1}; ${state.route.length-1} steps. Use direction buttons or arrow keys.`"
+    },
+    {
+      "lang": "ja",
+      "x": 2,
+      "y": 1,
+      "text": "現在：3列2行、{{STEPS}}歩。方向ボタンか矢印キーで移動。",
+      "prefix": "現在：3列2行、",
+      "suffix": "歩。方向ボタンか矢印キーで移動。",
+      "source_span": {
+        "start": 10880,
+        "end": 10969,
+        "line": 58
+      },
+      "source_template": "`現在：${state.position.x+1}列${state.position.y+1}行、${state.route.length-1}歩。方向ボタンか矢印キーで移動。`"
+    },
+    {
+      "lang": "zh",
+      "x": 2,
+      "y": 2,
+      "text": "目前：第3列、第3行，走了{{STEPS}}步。方向按鈕或方向鍵皆可移動。",
+      "prefix": "目前：第3列、第3行，走了",
+      "suffix": "步。方向按鈕或方向鍵皆可移動。",
+      "source_span": {
+        "start": 10649,
+        "end": 10742,
+        "line": 58
+      },
+      "source_template": "`目前：第${state.position.x+1}列、第${state.position.y+1}行，走了${state.route.length-1}步。方向按鈕或方向鍵皆可移動。`"
+    },
+    {
+      "lang": "en",
+      "x": 2,
+      "y": 2,
+      "text": "Position: column 3, row 3; {{STEPS}} steps. Use direction buttons or arrow keys.",
+      "prefix": "Position: column 3, row 3; ",
+      "suffix": " steps. Use direction buttons or arrow keys.",
+      "source_span": {
+        "start": 10743,
+        "end": 10879,
+        "line": 58
+      },
+      "source_template": "`Position: column ${state.position.x+1}, row ${state.position.y+1}; ${state.route.length-1} steps. Use direction buttons or arrow keys.`"
+    },
+    {
+      "lang": "ja",
+      "x": 2,
+      "y": 2,
+      "text": "現在：3列3行、{{STEPS}}歩。方向ボタンか矢印キーで移動。",
+      "prefix": "現在：3列3行、",
+      "suffix": "歩。方向ボタンか矢印キーで移動。",
+      "source_span": {
+        "start": 10880,
+        "end": 10969,
+        "line": 58
+      },
+      "source_template": "`現在：${state.position.x+1}列${state.position.y+1}行、${state.route.length-1}歩。方向ボタンか矢印キーで移動。`"
+    },
+    {
+      "lang": "zh",
+      "x": 3,
+      "y": 0,
+      "text": "目前：第4列、第1行，走了{{STEPS}}步。方向按鈕或方向鍵皆可移動。",
+      "prefix": "目前：第4列、第1行，走了",
+      "suffix": "步。方向按鈕或方向鍵皆可移動。",
+      "source_span": {
+        "start": 10649,
+        "end": 10742,
+        "line": 58
+      },
+      "source_template": "`目前：第${state.position.x+1}列、第${state.position.y+1}行，走了${state.route.length-1}步。方向按鈕或方向鍵皆可移動。`"
+    },
+    {
+      "lang": "en",
+      "x": 3,
+      "y": 0,
+      "text": "Position: column 4, row 1; {{STEPS}} steps. Use direction buttons or arrow keys.",
+      "prefix": "Position: column 4, row 1; ",
+      "suffix": " steps. Use direction buttons or arrow keys.",
+      "source_span": {
+        "start": 10743,
+        "end": 10879,
+        "line": 58
+      },
+      "source_template": "`Position: column ${state.position.x+1}, row ${state.position.y+1}; ${state.route.length-1} steps. Use direction buttons or arrow keys.`"
+    },
+    {
+      "lang": "ja",
+      "x": 3,
+      "y": 0,
+      "text": "現在：4列1行、{{STEPS}}歩。方向ボタンか矢印キーで移動。",
+      "prefix": "現在：4列1行、",
+      "suffix": "歩。方向ボタンか矢印キーで移動。",
+      "source_span": {
+        "start": 10880,
+        "end": 10969,
+        "line": 58
+      },
+      "source_template": "`現在：${state.position.x+1}列${state.position.y+1}行、${state.route.length-1}歩。方向ボタンか矢印キーで移動。`"
+    },
+    {
+      "lang": "zh",
+      "x": 3,
+      "y": 1,
+      "text": "目前：第4列、第2行，走了{{STEPS}}步。方向按鈕或方向鍵皆可移動。",
+      "prefix": "目前：第4列、第2行，走了",
+      "suffix": "步。方向按鈕或方向鍵皆可移動。",
+      "source_span": {
+        "start": 10649,
+        "end": 10742,
+        "line": 58
+      },
+      "source_template": "`目前：第${state.position.x+1}列、第${state.position.y+1}行，走了${state.route.length-1}步。方向按鈕或方向鍵皆可移動。`"
+    },
+    {
+      "lang": "en",
+      "x": 3,
+      "y": 1,
+      "text": "Position: column 4, row 2; {{STEPS}} steps. Use direction buttons or arrow keys.",
+      "prefix": "Position: column 4, row 2; ",
+      "suffix": " steps. Use direction buttons or arrow keys.",
+      "source_span": {
+        "start": 10743,
+        "end": 10879,
+        "line": 58
+      },
+      "source_template": "`Position: column ${state.position.x+1}, row ${state.position.y+1}; ${state.route.length-1} steps. Use direction buttons or arrow keys.`"
+    },
+    {
+      "lang": "ja",
+      "x": 3,
+      "y": 1,
+      "text": "現在：4列2行、{{STEPS}}歩。方向ボタンか矢印キーで移動。",
+      "prefix": "現在：4列2行、",
+      "suffix": "歩。方向ボタンか矢印キーで移動。",
+      "source_span": {
+        "start": 10880,
+        "end": 10969,
+        "line": 58
+      },
+      "source_template": "`現在：${state.position.x+1}列${state.position.y+1}行、${state.route.length-1}歩。方向ボタンか矢印キーで移動。`"
+    },
+    {
+      "lang": "zh",
+      "x": 3,
+      "y": 2,
+      "text": "目前：第4列、第3行，走了{{STEPS}}步。方向按鈕或方向鍵皆可移動。",
+      "prefix": "目前：第4列、第3行，走了",
+      "suffix": "步。方向按鈕或方向鍵皆可移動。",
+      "source_span": {
+        "start": 10649,
+        "end": 10742,
+        "line": 58
+      },
+      "source_template": "`目前：第${state.position.x+1}列、第${state.position.y+1}行，走了${state.route.length-1}步。方向按鈕或方向鍵皆可移動。`"
+    },
+    {
+      "lang": "en",
+      "x": 3,
+      "y": 2,
+      "text": "Position: column 4, row 3; {{STEPS}} steps. Use direction buttons or arrow keys.",
+      "prefix": "Position: column 4, row 3; ",
+      "suffix": " steps. Use direction buttons or arrow keys.",
+      "source_span": {
+        "start": 10743,
+        "end": 10879,
+        "line": 58
+      },
+      "source_template": "`Position: column ${state.position.x+1}, row ${state.position.y+1}; ${state.route.length-1} steps. Use direction buttons or arrow keys.`"
+    },
+    {
+      "lang": "ja",
+      "x": 3,
+      "y": 2,
+      "text": "現在：4列3行、{{STEPS}}歩。方向ボタンか矢印キーで移動。",
+      "prefix": "現在：4列3行、",
+      "suffix": "歩。方向ボタンか矢印キーで移動。",
+      "source_span": {
+        "start": 10880,
+        "end": 10969,
+        "line": 58
+      },
+      "source_template": "`現在：${state.position.x+1}列${state.position.y+1}行、${state.route.length-1}歩。方向ボタンか矢印キーで移動。`"
+    },
+    {
+      "lang": "zh",
+      "x": 4,
+      "y": 0,
+      "text": "目前：第5列、第1行，走了{{STEPS}}步。方向按鈕或方向鍵皆可移動。",
+      "prefix": "目前：第5列、第1行，走了",
+      "suffix": "步。方向按鈕或方向鍵皆可移動。",
+      "source_span": {
+        "start": 10649,
+        "end": 10742,
+        "line": 58
+      },
+      "source_template": "`目前：第${state.position.x+1}列、第${state.position.y+1}行，走了${state.route.length-1}步。方向按鈕或方向鍵皆可移動。`"
+    },
+    {
+      "lang": "en",
+      "x": 4,
+      "y": 0,
+      "text": "Position: column 5, row 1; {{STEPS}} steps. Use direction buttons or arrow keys.",
+      "prefix": "Position: column 5, row 1; ",
+      "suffix": " steps. Use direction buttons or arrow keys.",
+      "source_span": {
+        "start": 10743,
+        "end": 10879,
+        "line": 58
+      },
+      "source_template": "`Position: column ${state.position.x+1}, row ${state.position.y+1}; ${state.route.length-1} steps. Use direction buttons or arrow keys.`"
+    },
+    {
+      "lang": "ja",
+      "x": 4,
+      "y": 0,
+      "text": "現在：5列1行、{{STEPS}}歩。方向ボタンか矢印キーで移動。",
+      "prefix": "現在：5列1行、",
+      "suffix": "歩。方向ボタンか矢印キーで移動。",
+      "source_span": {
+        "start": 10880,
+        "end": 10969,
+        "line": 58
+      },
+      "source_template": "`現在：${state.position.x+1}列${state.position.y+1}行、${state.route.length-1}歩。方向ボタンか矢印キーで移動。`"
+    },
+    {
+      "lang": "zh",
+      "x": 4,
+      "y": 1,
+      "text": "目前：第5列、第2行，走了{{STEPS}}步。方向按鈕或方向鍵皆可移動。",
+      "prefix": "目前：第5列、第2行，走了",
+      "suffix": "步。方向按鈕或方向鍵皆可移動。",
+      "source_span": {
+        "start": 10649,
+        "end": 10742,
+        "line": 58
+      },
+      "source_template": "`目前：第${state.position.x+1}列、第${state.position.y+1}行，走了${state.route.length-1}步。方向按鈕或方向鍵皆可移動。`"
+    },
+    {
+      "lang": "en",
+      "x": 4,
+      "y": 1,
+      "text": "Position: column 5, row 2; {{STEPS}} steps. Use direction buttons or arrow keys.",
+      "prefix": "Position: column 5, row 2; ",
+      "suffix": " steps. Use direction buttons or arrow keys.",
+      "source_span": {
+        "start": 10743,
+        "end": 10879,
+        "line": 58
+      },
+      "source_template": "`Position: column ${state.position.x+1}, row ${state.position.y+1}; ${state.route.length-1} steps. Use direction buttons or arrow keys.`"
+    },
+    {
+      "lang": "ja",
+      "x": 4,
+      "y": 1,
+      "text": "現在：5列2行、{{STEPS}}歩。方向ボタンか矢印キーで移動。",
+      "prefix": "現在：5列2行、",
+      "suffix": "歩。方向ボタンか矢印キーで移動。",
+      "source_span": {
+        "start": 10880,
+        "end": 10969,
+        "line": 58
+      },
+      "source_template": "`現在：${state.position.x+1}列${state.position.y+1}行、${state.route.length-1}歩。方向ボタンか矢印キーで移動。`"
+    },
+    {
+      "lang": "zh",
+      "x": 4,
+      "y": 2,
+      "text": "目前：第5列、第3行，走了{{STEPS}}步。方向按鈕或方向鍵皆可移動。",
+      "prefix": "目前：第5列、第3行，走了",
+      "suffix": "步。方向按鈕或方向鍵皆可移動。",
+      "source_span": {
+        "start": 10649,
+        "end": 10742,
+        "line": 58
+      },
+      "source_template": "`目前：第${state.position.x+1}列、第${state.position.y+1}行，走了${state.route.length-1}步。方向按鈕或方向鍵皆可移動。`"
+    },
+    {
+      "lang": "en",
+      "x": 4,
+      "y": 2,
+      "text": "Position: column 5, row 3; {{STEPS}} steps. Use direction buttons or arrow keys.",
+      "prefix": "Position: column 5, row 3; ",
+      "suffix": " steps. Use direction buttons or arrow keys.",
+      "source_span": {
+        "start": 10743,
+        "end": 10879,
+        "line": 58
+      },
+      "source_template": "`Position: column ${state.position.x+1}, row ${state.position.y+1}; ${state.route.length-1} steps. Use direction buttons or arrow keys.`"
+    },
+    {
+      "lang": "ja",
+      "x": 4,
+      "y": 2,
+      "text": "現在：5列3行、{{STEPS}}歩。方向ボタンか矢印キーで移動。",
+      "prefix": "現在：5列3行、",
+      "suffix": "歩。方向ボタンか矢印キーで移動。",
+      "source_span": {
+        "start": 10880,
+        "end": 10969,
+        "line": 58
+      },
+      "source_template": "`現在：${state.position.x+1}列${state.position.y+1}行、${state.route.length-1}歩。方向ボタンか矢印キーで移動。`"
+    }
+  ],
+  "technical_probe_only": true,
+  "native_equivalence": false
+}
