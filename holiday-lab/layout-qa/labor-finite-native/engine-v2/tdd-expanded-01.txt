@@ -1,0 +1,41 @@
+✔ contract dimensions are exact, never inherit wide900 (1.2738ms)
+✔ TDD full store roundtrip retains full nodes/blockers/sample and identities (70.1098ms)
+✔ duplicate append and missing target identity fail closed (51.8908ms)
+✔ partial NDJSON write and duplicated record are rejected (89.2647ms)
+✔ partial target at each write stage is not silently reused (125.3037ms)
+✔ PNG/sample/full case tampering is rejected (175.2824ms)
+✔ changed method/source/fonts/plan approval and checkpoint binding fail closed (43.7877ms)
+✔ expected full DOM/input/source/viewport differences are rejected (67.5135ms)
+✔ resume requires explicit flag and definitively terminated PID+creation (0.5681ms)
+✔ partial or foreign lease identity is not interpreted as a dead process (0.3819ms)
+✖ lease/checkpoint tampering and missing lease receipt fail closed (86.7513ms)
+✔ previous failed target cannot be skipped on resume (52.5943ms)
+✔ full plan contracts, complete inputs and job identities are deterministic (218.0287ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 12
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1084.7777
+
+✖ failing tests:
+
+test at holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.test.cjs:20:1
+✖ lease/checkpoint tampering and missing lease receipt fail closed (86.7513ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.test.cjs:20:279)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /SHA|size|checkpoint/,
+    operator: 'throws',
+    diff: 'simple'
+  }

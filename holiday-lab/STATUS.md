@@ -2,11 +2,11 @@
 
 - source_agent: codex。上一goal輪為實際進展，本輪再次推進：清明90、和平/光復有限錯句12、窄版提示24，合計126份完整case納入新索引。最新2040/2076、缺36、geometry0；與1914基準逐key/來源綁定比較，全保留無降級。權威索引 holiday-lab/layout-qa/supplement-integration-20261023/v3/coverage-current.json；plan-current/plan.json同2040，126新wrapper全nodes/blockers/SHA指標獨立重算相符，正式R0不寫。
 - 主控24/24 tests與索引/assembly/check-plan真exit0。補了證據後讀的raw manifest/case/sample/image SHA、source map與完整case比對；獨立VM真紅接受90→修後正常90、改source/改payload各精確拒絕，最新profile helper再複驗同樣通過。不同collector的sampler欄位依實讀schema處理，不用名稱猜語意。原首次234小索引為誤用舊矩陣名、v2缺欄位拒絕均留檔不採用；v3實際正確phase23-47-50-142/front23-48-00-964。
-- 剩36：中秋/國慶/開學/清明/勞動 game/error-longest各6，和平真聆聽preview6已有獨立原生證據但尚未接索引。中秋同一engine18628/driver68760仍按原prepared-01跑；本次真程序觀測{"Id":18628,"StartTime":"/Date(1792726288842)/","CPU":516.53125}，最近checkpoint CHECKPOINT ja-320 53248/67448 total=323552/404688 GLOBAL=NO（2026-10-23T04:16:03.683Z）。不得改runtime/manifest或逾時重啟，全集後尚須串流、極值、seeded真UI驗證，GLOBAL仍NO。
+- 剩36：中秋/國慶/開學/清明/勞動 error-longest各6、和平preview6。中秋原18628/68760已04:23:46.635Z terminal exit0，404688/404688；root完整stream verify04:25:44 exit0、6ctx各67448/132批、missing0，驗證SHA79cfb47fba92eedaa312dc5c65c7af7efe18df947d58993d68ac4e827c809da5。中秋6 canonical仍NO，必須768 seed＋42 extrema正常UI檢查後才可閉合。component報告mid-autumn-domain-verified-20261023/REPORT.md；不重啟原job。
 - 三代理續分工：labor-v2凍結未跑，獨立真負例指出resume雙owner、flags可被洗與截斷PNG三缺口，另開v3修復，不改v2證據或批full；mid-autumn-full-witnesses工具準備中，等全集後seed128/context與極值真UI。national-fast-domain僅設計，手機900/快法等價未證；semester投影/6native校準不代表無上限步數已證。清明剩6錯句域另排。
 - 主報告 holiday-lab/reports/verification-followup-20261023-14.md；詳細yes/no與實際stdout見integration目錄。新網站Build/新ZIP/發布/push/main/刪檔均無，8800與舊ZIP保留，C節SHA不變；TF-BASE實查仍5工單，無來源/WebGL，不啟Unity。大型raw只本機，沒有跨機備份宣稱。
 - 離線儀表板已重產 holiday-lab/dashboard/out/index.html（本機原目錄，不新造另一套），主控重跑build/authority27/27、4正式負例tests、桌機/手機smoke2/2皆exit0；顯示2040/2076、缺36、整包UI0/1與使用者確認0。另國慶/開學/勞動來源/存檔27正式tests主控27/27。stdout在supplement-integration-20261023/root-dashboard-*與root-domain-*；沒有新網站Build或發布。
-- 下一輪第一件事：查同18628/68760真狀態與log，完成才串流驗全集並取真正極值/128seed每context；回收labor-v2/semester/國慶設計後先查碼再啟指定測量。接和平既有6preview、清明6有限/動態域，再重產索引。所有UI method flags、來源283的非served/build provenance、日文短末行與使用者實玩/美術確認尚未閉合，禁止以2040/2076或geometry0宣稱全案完成。
+- 下一輪第一件事：中秋原18628/68760已terminal不可重啟，完整offline驗證已過；讀mid-autumn-ui-validation-20261023工具/plan與故障tests後root審碼，才啟單一正常UI seed/extrema驗證。和平另run修唯一EN1440可見性，不抹原失敗；Labor-v3修三真負例，原v2凍結且不可啟full。之後統一接6preview並更新索引/plan/dashboard。剩全部method flags/source provenance/短末行/使用者確認仍NO。
 
 ## 2026-10-23 最新：嚴格可見覆蓋1914項、中秋全集已啟動
 

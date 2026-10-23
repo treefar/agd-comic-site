@@ -1,0 +1,2 @@
+'use strict';
+require('./binding.cjs').createFreeze().then(r=>console.log(JSON.stringify({new_freeze:r.file,freeze_sha256:r.sha256,code_files:Object.keys(r.binding.code).length,body_bytes:Object.keys(r.binding.bodies).length,font_files:Object.keys(r.binding.fonts).length,viewports:r.binding.viewports,target_count:r.binding.target_count,approval:false,full_run_started:false,global_bound:false},null,2))).catch(e=>{console.error(e);process.exitCode=1;});

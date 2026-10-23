@@ -1,0 +1,66 @@
+✖ P1 two stale resume prechecks cannot install a second owner after first owner took lease (49.4447ms)
+✖ P1 complete fullcase cannot launder original sample method violations (35.337ms)
+✖ P2 truncated PNG signature and dimensions are not a complete screenshot (0.2784ms)
+✔ positive existing guards reject foreign input, uncertain/live/reused PID and module-only approval (2.0642ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 1
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 244.0197
+
+✖ failing tests:
+
+test at holiday-lab\layout-qa\labor-finite-native\engine-v2\independent-review\repro.test.cjs:8:1
+✖ P1 two stale resume prechecks cannot install a second owner after first owner took lease (49.4447ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception: Must reject stale check-and-lease interleaving before second native job
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\independent-review\repro.test.cjs:8:402)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at holiday-lab\layout-qa\labor-finite-native\engine-v2\independent-review\repro.test.cjs:9:1
+✖ P1 complete fullcase cannot launder original sample method violations (35.337ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception: Fullcase must retain original sample method flags
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\independent-review\repro.test.cjs:9:152)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at holiday-lab\layout-qa\labor-finite-native\engine-v2\independent-review\repro.test.cjs:10:1
+✖ P2 truncated PNG signature and dimensions are not a complete screenshot (0.2784ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception: Missing IHDR body/CRC, IDAT and IEND must reject
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\independent-review\repro.test.cjs:10:110)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }

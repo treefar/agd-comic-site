@@ -1,0 +1,146 @@
+✔ contract dimensions are exact, never inherit wide900 (2.6564ms)
+✖ TDD full store roundtrip retains full nodes/blockers/sample and identities (7.9087ms)
+✖ duplicate append and missing target identity fail closed (5.5161ms)
+✖ partial NDJSON write and duplicated record are rejected (5.3134ms)
+✖ partial target at each write stage is not silently reused (5.4838ms)
+✖ PNG/sample/full case tampering is rejected (5.7609ms)
+✖ changed method/source/fonts/plan approval and checkpoint binding fail closed (6.7069ms)
+✖ expected full DOM/input/source/viewport differences are rejected (5.3502ms)
+✔ resume requires explicit flag and definitively terminated PID+creation (1.1453ms)
+✔ partial or foreign lease identity is not interpreted as a dead process (0.5273ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 3
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 168.0774
+
+✖ failing tests:
+
+test at holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.test.cjs:11:1
+✖ TDD full store roundtrip retains full nodes/blockers/sample and identities (7.9087ms)
+  Error: EPERM: operation not permitted, fsync
+      at Object.fsyncSync (node:fs:1285:11)
+      at writeJSON (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.cjs:8:134)
+      at Object.createRun (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.cjs:24:2)
+      at store (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.test.cjs:9:51)
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.test.cjs:11:102)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12) {
+    errno: -4048,
+    code: 'EPERM',
+    syscall: 'fsync'
+  }
+
+test at holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.test.cjs:12:1
+✖ duplicate append and missing target identity fail closed (5.5161ms)
+  Error: EPERM: operation not permitted, fsync
+      at Object.fsyncSync (node:fs:1285:11)
+      at writeJSON (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.cjs:8:134)
+      at Object.createRun (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.cjs:24:2)
+      at store (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.test.cjs:9:51)
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.test.cjs:12:80)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12) {
+    errno: -4048,
+    code: 'EPERM',
+    syscall: 'fsync'
+  }
+
+test at holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.test.cjs:13:1
+✖ partial NDJSON write and duplicated record are rejected (5.3134ms)
+  Error: EPERM: operation not permitted, fsync
+      at Object.fsyncSync (node:fs:1285:11)
+      at writeJSON (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.cjs:8:134)
+      at Object.createRun (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.cjs:24:2)
+      at store (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.test.cjs:9:51)
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.test.cjs:13:75)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12) {
+    errno: -4048,
+    code: 'EPERM',
+    syscall: 'fsync'
+  }
+
+test at holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.test.cjs:14:1
+✖ partial target at each write stage is not silently reused (5.4838ms)
+  Error: EPERM: operation not permitted, fsync
+      at Object.fsyncSync (node:fs:1285:11)
+      at writeJSON (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.cjs:8:134)
+      at Object.createRun (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.cjs:24:2)
+      at store (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.test.cjs:9:51)
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.test.cjs:14:165)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12) {
+    errno: -4048,
+    code: 'EPERM',
+    syscall: 'fsync'
+  }
+
+test at holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.test.cjs:15:1
+✖ PNG/sample/full case tampering is rejected (5.7609ms)
+  Error: EPERM: operation not permitted, fsync
+      at Object.fsyncSync (node:fs:1285:11)
+      at writeJSON (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.cjs:8:134)
+      at Object.createRun (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.cjs:24:2)
+      at store (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.test.cjs:9:51)
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.test.cjs:15:116)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12) {
+    errno: -4048,
+    code: 'EPERM',
+    syscall: 'fsync'
+  }
+
+test at holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.test.cjs:16:1
+✖ changed method/source/fonts/plan approval and checkpoint binding fail closed (6.7069ms)
+  Error: EPERM: operation not permitted, fsync
+      at Object.fsyncSync (node:fs:1285:11)
+      at writeJSON (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.cjs:8:134)
+      at Object.createRun (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.cjs:24:2)
+      at store (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.test.cjs:9:51)
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.test.cjs:16:386)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12) {
+    errno: -4048,
+    code: 'EPERM',
+    syscall: 'fsync'
+  }
+
+test at holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.test.cjs:17:1
+✖ expected full DOM/input/source/viewport differences are rejected (5.3502ms)
+  Error: EPERM: operation not permitted, fsync
+      at Object.fsyncSync (node:fs:1285:11)
+      at writeJSON (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.cjs:8:134)
+      at Object.createRun (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.cjs:24:2)
+      at store (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.test.cjs:9:51)
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v2\engine.test.cjs:17:268)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12) {
+    errno: -4048,
+    code: 'EPERM',
+    syscall: 'fsync'
+  }

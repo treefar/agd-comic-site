@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "review_scope": "labor-engine-v2-read-only-independent-review",
+  "frozen_methods_changed": false,
+  "source_pre_post_equal": true,
+  "original_tests_isolated": { "tests": 15, "passed": 15, "failed": 0, "exit_code": 0 },
+  "independent_counterexamples": { "tests": 4, "passed": 1, "failed": 3, "exit_code": 1, "failure_meaning": "Missing expected rejection in original engine-v2" },
+  "issues": [
+    { "priority": "P1", "id": "resume-claim-toctou", "reproduced": true, "file": "../collect.cjs", "line": 10 },
+    { "priority": "P1", "id": "fullcase-method-flags-not-bound", "reproduced": true, "file": "../engine.cjs", "line": 15 },
+    { "priority": "P2", "id": "truncated-png-accepted", "reproduced": true, "file": "../engine.cjs", "line": 26 }
+  ],
+  "new_native_measurements": 0,
+  "browser_started": false,
+  "full_run_approved": false,
+  "full_project_approved": false
+}
