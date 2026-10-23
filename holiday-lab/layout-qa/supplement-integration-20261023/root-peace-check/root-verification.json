@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-23T04:45:57.102Z",
+  "baseline_red_observed": {
+    "command": "node --test holiday-lab/tests/coverage-baseline.test.cjs",
+    "pass": 3,
+    "fail": 1,
+    "error": "Missing expected exception",
+    "reason": "Prior adapter fingerprints/eligible keys were not compared"
+  },
+  "results": [
+    {
+      "command": "C:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "--test",
+        "holiday-lab/tests/coverage-baseline.test.cjs",
+        "holiday-lab/tests/peace-preview-evidence.test.cjs"
+      ],
+      "started": "2026-10-23T04:45:54.422Z",
+      "ended": "2026-10-23T04:45:54.615Z",
+      "exit_code": 0,
+      "stdout": "✔ new exact coverage preserves every previous canonical key and source run (2.4709ms)\n✔ wrong matrix selection cannot report success after dropping prior coverage (1.6005ms)\n✔ sampler, source snapshot, duplicate missing keys and geometry changes reject (1.1589ms)\n✔ typed evidence retains exact method fingerprints and eligible keys from prior index (1.9108ms)\n✔ true active listening with direct completion permits only exact preview context (1.9281ms)\n✔ invisible status, residue text, wrong height and unobserved completion remain NO (7.5519ms)\n✔ changed proof/method or canonical eligibility set cannot inherit indexed approval (6.5803ms)\nℹ tests 7\nℹ suites 0\nℹ pass 7\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 122.7612\n",
+      "stderr": ""
+    },
+    {
+      "command": "C:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "holiday-lab/layout-qa/supplement-integration-20261023/root-peace-check/check.cjs"
+      ],
+      "started": "2026-10-23T04:45:54.616Z",
+      "ended": "2026-10-23T04:45:57.101Z",
+      "exit_code": 0,
+      "stdout": "{\"pass\":true,\"cases\":6,\"indexed_roundtrip\":6,\"nodes\":180,\"blockers\":218,\"method_flags\":[0,2,0,1,0,2],\"full_project_approved\":false}\n",
+      "stderr": ""
+    }
+  ],
+  "full_project_approved": false
+}

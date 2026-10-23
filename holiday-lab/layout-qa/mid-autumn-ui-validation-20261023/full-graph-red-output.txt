@@ -1,0 +1,79 @@
+✔ non-target flags stay verbatim and never grant global approval (2.2199ms)
+✔ target, unknown and incomplete pending evidence cannot pass target scope (0.2619ms)
+✖ actual failed UI sample keeps whole node/blocker reference graph; genuine geometry remains blocking (9.2614ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 2
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 117.3634
+
+✖ failing tests:
+
+test at holiday-lab\layout-qa\mid-autumn-ui-validation-20261023\scope.test.cjs:4:1
+✖ actual failed UI sample keeps whole node/blocker reference graph; genuine geometry remains blocking (9.2614ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/control:layout-owner-1 / text-0',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/control:layout-owner-2 / text-1',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/control:layout-owner-3 / text-2',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/control:layout-owner-4 / text-3',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/control:audio-toggle / text-4',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/control:pause-game / text-8',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/control:leave-game / text-9',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/control:ma-time-minus / text-15',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/control:ma-time-plus / text-17',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/control:ma-x-minus / text-19',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/control:ma-x-plus / text-21',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/control:ma-size-minus / text-23',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/control:ma-size-plus / text-25',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/control:ma-preview / text-26',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/control:ma-submit / text-27',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:audio-toggle / text-4',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:pause-game / text-8',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:leave-game / text-9',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-12',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-13',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-14',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-15',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-16',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-17',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-18',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-19',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-20',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-21',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-22',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-23',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-24',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-25',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-26',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-27',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:ma-time-minus / text-15',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:ma-time-plus / text-17',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:ma-x-minus / text-19',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:ma-x-plus / text-21',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:ma-size-minus / text-23',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:ma-size-plus / text-25',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:ma-preview / text-26',
+  +   '底圖關聯到不存在文字：retained-original-ui-fixture/skin:ma-submit / text-27'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\mid-autumn-ui-validation-20261023\scope.test.cjs:4:467)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '底圖關聯到不存在文字：retained-original-ui-fixture/control:layout-owner-1 / text-0', '底圖關聯到不存在文字：retained-original-ui-fixture/control:layout-owner-2 / text-1', '底圖關聯到不存在文字：retained-original-ui-fixture/control:layout-owner-3 / text-2', '底圖關聯到不存在文字：retained-original-ui-fixture/control:layout-owner-4 / text-3', '底圖關聯到不存在文字：retained-original-ui-fixture/control:audio-toggle / text-4', '底圖關聯到不存在文字：retained-original-ui-fixture/control:pause-game / text-8', '底圖關聯到不存在文字：retained-original-ui-fixture/control:leave-game / text-9', '底圖關聯到不存在文字：retained-original-ui-fixture/control:ma-time-minus / text-15', '底圖關聯到不存在文字：retained-original-ui-fixture/control:ma-time-plus / text-17', '底圖關聯到不存在文字：retained-original-ui-fixture/control:ma-x-minus / text-19', '底圖關聯到不存在文字：retained-original-ui-fixture/control:ma-x-plus / text-21', '底圖關聯到不存在文字：retained-original-ui-fixture/control:ma-size-minus / text-23', '底圖關聯到不存在文字：retained-original-ui-fixture/control:ma-size-plus / text-25', '底圖關聯到不存在文字：retained-original-ui-fixture/control:ma-preview / text-26', '底圖關聯到不存在文字：retained-original-ui-fixture/control:ma-submit / text-27', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:audio-toggle / text-4', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:pause-game / text-8', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:leave-game / text-9', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-12', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-13', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-14', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-15', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-16', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-17', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-18', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-19', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-20', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-21', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-22', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-23', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-24', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-25', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-26', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:layout-owner-8 / text-27', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:ma-time-minus / text-15', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:ma-time-plus / text-17', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:ma-x-minus / text-19', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:ma-x-plus / text-21', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:ma-size-minus / text-23', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:ma-size-plus / text-25', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:ma-preview / text-26', '底圖關聯到不存在文字：retained-original-ui-fixture/skin:ma-submit / text-27' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

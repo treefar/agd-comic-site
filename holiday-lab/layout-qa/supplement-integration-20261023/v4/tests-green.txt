@@ -1,0 +1,295 @@
+✖ optional peace flag adds exactly six cases through dedicated strict loader with exact source options (14.0996ms)
+✔ without peace flag old coverage remains unchanged and loader is not invoked (12.325ms)
+✖ coverage propagates strict peace proof rejection rather than counting source-only cases (9.3319ms)
+✖ assembly reloads dedicated peace run and retains every full node/blocker/flag/sample metadata in wrapper SHA (7.4308ms)
+✖ assembly propagates strict indexed proof rejection (7.0146ms)
+✔ an index without peace run cannot silently import peace evidence (17.833ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 2
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 173.3216
+
+✖ failing tests:
+
+test at holiday-lab\tests\peace-preview-integration.test.cjs:17:1
+✖ optional peace flag adds exactly six cases through dedicated strict loader with exact source options (14.0996ms)
+  node:assert:152
+    throw new AssertionError(obj);
+    ^
+  
+  AssertionError [ERR_ASSERTION]: Values have same structure but are not reference-equal:
+  
+  [
+    {
+      height: 900,
+      id: 'peace-memory/zh/game/preview',
+      width: 320
+    },
+    {
+      height: 1000,
+      id: 'peace-memory/zh/game/preview',
+      width: 1440
+    },
+    {
+      height: 900,
+      id: 'peace-memory/en/game/preview',
+      width: 320
+    },
+    {
+      height: 1000,
+      id: 'peace-memory/en/game/preview',
+      width: 1440
+    },
+    {
+      height: 900,
+      id: 'peace-memory/ja/game/preview',
+      width: 320
+    },
+    {
+      height: 1000,
+      id: 'peace-memory/ja/game/preview',
+      width: 1440
+    }
+  ]
+  
+      at Object.loadPeacePreview (C:\agywork\agd-holiday-prototypes\holiday-lab\tests\peace-preview-integration.test.cjs:12:506)
+      at coverage-index.cjs:12:79
+      at Script.runInContext (node:vm:149:12)
+      at Script.runInNewContext (node:vm:154:17)
+      at Object.runInNewContext (node:vm:310:38)
+      at execute (C:\agywork\agd-holiday-prototypes\holiday-lab\tests\peace-preview-integration.test.cjs:14:5)
+      at index (C:\agywork\agd-holiday-prototypes\holiday-lab\tests\peace-preview-integration.test.cjs:15:92)
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\tests\peace-preview-integration.test.cjs:17:134)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { id: 'peace-memory/zh/game/preview', width: 320, height: 900 }, { id: 'peace-memory/zh/game/preview', width: 1440, height: 1000 }, { id: 'peace-memory/en/game/preview', width: 320, height: 900 }, { id: 'peace-memory/en/game/preview', width: 1440, height: 1000 }, { id: 'peace-memory/ja/game/preview', width: 320, height: 900 }, { id: 'peace-memory/ja/game/preview', width: 1440, height: 1000 } ],
+    expected: [ { id: 'peace-memory/zh/game/preview', width: 320, height: 900 }, { id: 'peace-memory/zh/game/preview', width: 1440, height: 1000 }, { id: 'peace-memory/en/game/preview', width: 320, height: 900 }, { id: 'peace-memory/en/game/preview', width: 1440, height: 1000 }, { id: 'peace-memory/ja/game/preview', width: 320, height: 900 }, { id: 'peace-memory/ja/game/preview', width: 1440, height: 1000 } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\tests\peace-preview-integration.test.cjs:19:1
+✖ coverage propagates strict peace proof rejection rather than counting source-only cases (9.3319ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /immutable peace proof rejected/. Input:
+  
+  'AssertionError [ERR_ASSERTION]: Values have same structure but are not reference-equal:\n' +
+    '\n' +
+    '[\n' +
+    '  {\n' +
+    '    height: 900,\n' +
+    "    id: 'peace-memory/zh/game/preview',\n" +
+    '    width: 320\n' +
+    '  },\n' +
+    '  {\n' +
+    '    height: 1000,\n' +
+    "    id: 'peace-memory/zh/game/preview',\n" +
+    '    width: 1440\n' +
+    '  },\n' +
+    '  {\n' +
+    '    height: 900,\n' +
+    "    id: 'peace-memory/en/game/preview',\n" +
+    '    width: 320\n' +
+    '  },\n' +
+    '  {\n' +
+    '    height: 1000,\n' +
+    "    id: 'peace-memory/en/game/preview',\n" +
+    '    width: 1440\n' +
+    '  },\n' +
+    '  {\n' +
+    '    height: 900,\n' +
+    "    id: 'peace-memory/ja/game/preview',\n" +
+    '    width: 320\n' +
+    '  },\n' +
+    '  {\n' +
+    '    height: 1000,\n' +
+    "    id: 'peace-memory/ja/game/preview',\n" +
+    '    width: 1440\n' +
+    '  }\n' +
+    ']\n'
+  
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\tests\peace-preview-integration.test.cjs:19:126)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: node:assert:152
+      throw new AssertionError(obj);
+      ^
+    
+    AssertionError [ERR_ASSERTION]: Values have same structure but are not reference-equal:
+    
+    [
+      {
+        height: 900,
+        id: 'peace-memory/zh/game/preview',
+        width: 320
+      },
+      {
+        height: 1000,
+        id: 'peace-memory/zh/game/preview',
+        width: 1440
+      },
+      {
+        height: 900,
+        id: 'peace-memory/en/game/preview',
+        width: 320
+      },
+      {
+        height: 1000,
+        id: 'peace-memory/en/game/preview',
+        width: 1440
+      },
+      {
+        height: 900,
+        id: 'peace-memory/ja/game/preview',
+        width: 320
+      },
+      {
+        height: 1000,
+        id: 'peace-memory/ja/game/preview',
+        width: 1440
+      }
+    ]
+    
+        at Object.loadPeacePreview (C:\agywork\agd-holiday-prototypes\holiday-lab\tests\peace-preview-integration.test.cjs:12:506)
+        at coverage-index.cjs:12:79
+        at Script.runInContext (node:vm:149:12)
+        at Script.runInNewContext (node:vm:154:17)
+        at Object.runInNewContext (node:vm:310:38)
+        at execute (C:\agywork\agd-holiday-prototypes\holiday-lab\tests\peace-preview-integration.test.cjs:14:5)
+        at index (C:\agywork\agd-holiday-prototypes\holiday-lab\tests\peace-preview-integration.test.cjs:15:92)
+        at C:\agywork\agd-holiday-prototypes\holiday-lab\tests\peace-preview-integration.test.cjs:19:137
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24),
+    expected: /immutable peace proof rejected/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at holiday-lab\tests\peace-preview-integration.test.cjs:20:1
+✖ assembly reloads dedicated peace run and retains every full node/blocker/flag/sample metadata in wrapper SHA (7.4308ms)
+  node:assert:152
+    throw new AssertionError(obj);
+    ^
+  
+  AssertionError [ERR_ASSERTION]: Values have same structure but are not reference-equal:
+  
+  [
+    {
+      height: 900,
+      id: 'peace-memory/zh/game/preview',
+      width: 320
+    },
+    {
+      height: 1000,
+      id: 'peace-memory/zh/game/preview',
+      width: 1440
+    },
+    {
+      height: 900,
+      id: 'peace-memory/en/game/preview',
+      width: 320
+    },
+    {
+      height: 1000,
+      id: 'peace-memory/en/game/preview',
+      width: 1440
+    },
+    {
+      height: 900,
+      id: 'peace-memory/ja/game/preview',
+      width: 320
+    },
+    {
+      height: 1000,
+      id: 'peace-memory/ja/game/preview',
+      width: 1440
+    }
+  ]
+  
+      at Object.loadPeacePreview (C:\agywork\agd-holiday-prototypes\holiday-lab\tests\peace-preview-integration.test.cjs:12:506)
+      at coverage-index.cjs:12:79
+      at Script.runInContext (node:vm:149:12)
+      at Script.runInNewContext (node:vm:154:17)
+      at Object.runInNewContext (node:vm:310:38)
+      at execute (C:\agywork\agd-holiday-prototypes\holiday-lab\tests\peace-preview-integration.test.cjs:14:5)
+      at index (C:\agywork\agd-holiday-prototypes\holiday-lab\tests\peace-preview-integration.test.cjs:15:92)
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\tests\peace-preview-integration.test.cjs:20:142)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { id: 'peace-memory/zh/game/preview', width: 320, height: 900 }, { id: 'peace-memory/zh/game/preview', width: 1440, height: 1000 }, { id: 'peace-memory/en/game/preview', width: 320, height: 900 }, { id: 'peace-memory/en/game/preview', width: 1440, height: 1000 }, { id: 'peace-memory/ja/game/preview', width: 320, height: 900 }, { id: 'peace-memory/ja/game/preview', width: 1440, height: 1000 } ],
+    expected: [ { id: 'peace-memory/zh/game/preview', width: 320, height: 900 }, { id: 'peace-memory/zh/game/preview', width: 1440, height: 1000 }, { id: 'peace-memory/en/game/preview', width: 320, height: 900 }, { id: 'peace-memory/en/game/preview', width: 1440, height: 1000 }, { id: 'peace-memory/ja/game/preview', width: 320, height: 900 }, { id: 'peace-memory/ja/game/preview', width: 1440, height: 1000 } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\tests\peace-preview-integration.test.cjs:21:1
+✖ assembly propagates strict indexed proof rejection (7.0146ms)
+  node:assert:152
+    throw new AssertionError(obj);
+    ^
+  
+  AssertionError [ERR_ASSERTION]: Values have same structure but are not reference-equal:
+  
+  [
+    {
+      height: 900,
+      id: 'peace-memory/zh/game/preview',
+      width: 320
+    },
+    {
+      height: 1000,
+      id: 'peace-memory/zh/game/preview',
+      width: 1440
+    },
+    {
+      height: 900,
+      id: 'peace-memory/en/game/preview',
+      width: 320
+    },
+    {
+      height: 1000,
+      id: 'peace-memory/en/game/preview',
+      width: 1440
+    },
+    {
+      height: 900,
+      id: 'peace-memory/ja/game/preview',
+      width: 320
+    },
+    {
+      height: 1000,
+      id: 'peace-memory/ja/game/preview',
+      width: 1440
+    }
+  ]
+  
+      at Object.loadPeacePreview (C:\agywork\agd-holiday-prototypes\holiday-lab\tests\peace-preview-integration.test.cjs:12:506)
+      at coverage-index.cjs:12:79
+      at Script.runInContext (node:vm:149:12)
+      at Script.runInNewContext (node:vm:154:17)
+      at Object.runInNewContext (node:vm:310:38)
+      at execute (C:\agywork\agd-holiday-prototypes\holiday-lab\tests\peace-preview-integration.test.cjs:14:5)
+      at index (C:\agywork\agd-holiday-prototypes\holiday-lab\tests\peace-preview-integration.test.cjs:15:92)
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\tests\peace-preview-integration.test.cjs:21:84)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { id: 'peace-memory/zh/game/preview', width: 320, height: 900 }, { id: 'peace-memory/zh/game/preview', width: 1440, height: 1000 }, { id: 'peace-memory/en/game/preview', width: 320, height: 900 }, { id: 'peace-memory/en/game/preview', width: 1440, height: 1000 }, { id: 'peace-memory/ja/game/preview', width: 320, height: 900 }, { id: 'peace-memory/ja/game/preview', width: 1440, height: 1000 } ],
+    expected: [ { id: 'peace-memory/zh/game/preview', width: 320, height: 900 }, { id: 'peace-memory/zh/game/preview', width: 1440, height: 1000 }, { id: 'peace-memory/en/game/preview', width: 320, height: 900 }, { id: 'peace-memory/en/game/preview', width: 1440, height: 1000 }, { id: 'peace-memory/ja/game/preview', width: 320, height: 900 }, { id: 'peace-memory/ja/game/preview', width: 1440, height: 1000 } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

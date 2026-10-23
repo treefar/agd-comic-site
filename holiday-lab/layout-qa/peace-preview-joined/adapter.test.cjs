@@ -1,0 +1,7 @@
+const test=require('node:test'),assert=require('node:assert/strict');
+const {build,verify}=require('./adapter.cjs');
+test('six actual listening previews keep complete original payloads and flags',async()=>{const d=await build();assert.equal((await verify(d)).candidates,6);assert.equal(d.full_project_approved,false);assert.equal(d.numeric_domain_proven,false);});
+test('missing original fullcase fails closed',async()=>{const d=await build();delete d.candidates[0].full_original_case;await assert.rejects(()=>verify(d));});
+test('wrong context/height fails closed',async()=>{for(const change of [c=>c.lang='ja',c=>c.height=1000]){const d=await build();change(d.candidates[0]);await assert.rejects(()=>verify(d));}});
+test('source drift and non-listening/nonnatural completion fail closed',async()=>{for(const change of [c=>c.source_before['games/peace-memory.mjs']='0'.repeat(64),c=>c.listening_receipt.before.progress='1',c=>c.listening_receipt.after.status='not listening',c=>c.listening_receipt.natural_completion='not completed']){const d=await build();change(d.candidates[0]);await assert.rejects(()=>verify(d));}});
+test('PNG/sample bytes and washed original flags fail closed',async()=>{for(const change of [d=>d.candidates[0].screenshot.sha256='0'.repeat(64),d=>d.candidates[0].sample.canonical_json_sha256='0'.repeat(64),d=>d.candidates.find(c=>c.original_method_flags.length).original_method_flags=[]]){const d=await build();change(d);await assert.rejects(()=>verify(d));}});

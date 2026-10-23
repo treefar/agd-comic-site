@@ -1,0 +1,28 @@
+✖ P2 RED-to-GREEN: pass true cannot contradict false checks or nonempty original flags (94.222ms)
+✔ pass false remains complete original evidence and cannot be resumed as completed (237.1051ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 1
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 462.1259
+
+✖ failing tests:
+
+test at holiday-lab\layout-qa\labor-finite-native\engine-v4\pass-consistency.test.cjs:3:1
+✖ P2 RED-to-GREEN: pass true cannot contradict false checks or nonempty original flags (94.222ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v4\pass-consistency.test.cjs:3:201)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /pass.*checks|checks.*pass/,
+    operator: 'throws',
+    diff: 'simple'
+  }

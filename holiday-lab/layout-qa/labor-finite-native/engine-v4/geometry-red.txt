@@ -1,0 +1,31 @@
+✔ P2 RED-to-GREEN: pass true cannot contradict false checks or nonempty original flags (81.0296ms)
+✔ pass false remains complete original evidence and cannot be resumed as completed (189.593ms)
+✖ geometry RED-to-GREEN: a stored red geometry array cannot claim geometry_clear true (56.4996ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 2
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 435.5067
+
+✖ failing tests:
+
+test at holiday-lab\layout-qa\labor-finite-native\engine-v4\pass-consistency.test.cjs:5:1
+✖ geometry RED-to-GREEN: a stored red geometry array cannot claim geometry_clear true (56.4996ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\labor-finite-native\engine-v4\pass-consistency.test.cjs:5:275)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /geometry/,
+    operator: 'throws',
+    diff: 'simple'
+  }

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "中秋完整法真UI複驗資料結構（實際守門由store.cjs執行）",
+  "$defs": {
+    "reference": { "type": "object", "required": ["file", "sha256", "bytes"], "properties": { "file": {"type":"string"}, "sha256":{"type":"string"}, "bytes":{"type":"integer","minimum":0} } },
+    "source": { "type":"object", "required":["row","line_sha256","row_canonical_json_sha256","rolling_at_row","checkpoint_file","checkpoint_sha256","source_before","source_after","fullnode","fullnode_status"], "properties":{"row":{"type":"object"},"fullnode":{"type":["object","null"]},"fullnode_status":{"enum":["original-batch-extremum-fullnode","field_not_recorded_for_non_extremum_fast_row"]}} },
+    "obligation": { "type":"object", "required":["id","context","index","job_id","kind"], "properties":{"kind":{"enum":["seed","extremum"]},"index":{"type":"integer","minimum":0,"maximum":67447},"metric":{"enum":["left","right","top","bottom","width","height","lines"]}} },
+    "case": { "type":"object", "required":["id","job_sha256","width","height","phase","inputs_before","inputs_after","progress_before","progress_after","dom_before","dom_after","source_before","source_after","fonts_before","fonts_after","trace","nodes","blockers","method_violations","geometry_errors","full_measurement","comparison","checks","pass","screenshot"], "properties":{"width":{"enum":[320,1440]},"height":{"enum":[900,1000]},"phase":{"type":"integer","minimum":0,"maximum":2},"nodes":{"type":"array"},"blockers":{"type":"array"},"method_violations":{"type":"array"},"pass":{"type":"boolean"}}, "additionalProperties":true },
+    "checkpoint": { "type":"object", "required":["seq","event_hash","journal_bytes"], "properties":{"seq":{"type":"integer","minimum":0},"event_hash":{"type":"string"},"journal_bytes":{"type":"integer","minimum":0}},"additionalProperties":false }
+  },
+  "type":"object",
+  "required":["schema_version","type","root_verified_sha256","seed_obligations","extrema_obligations","unique_jobs","jobs","obligations","approved_to_run"],
+  "properties": {
+    "type":{"const":"mid-autumn-real-ui-full-frozen-validation-v1"},
+    "seed_obligations":{"const":768},"extrema_obligations":{"const":42},
+    "unique_jobs":{"type":"integer","minimum":768,"maximum":810},
+    "obligations":{"type":"array","minItems":810,"maxItems":810,"items":{"$ref":"#/$defs/obligation"}},
+    "approved_to_run":{"const":false}
+  },
+  "additionalProperties":true
+}

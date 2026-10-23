@@ -1,0 +1,92 @@
+✖ optional peace flag adds exactly six cases through dedicated strict loader with exact source options (18.6605ms)
+✔ without peace flag old coverage remains unchanged and loader is not invoked (10.6044ms)
+✖ coverage propagates strict peace proof rejection rather than counting source-only cases (11.8828ms)
+✖ assembly reloads dedicated peace run and retains every full node/blocker/flag/sample metadata in wrapper SHA (25.9341ms)
+✖ assembly propagates strict indexed proof rejection (22.1656ms)
+✔ an index without peace run cannot silently import peace evidence (21.9492ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 2
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 217.3718
+
+✖ failing tests:
+
+test at holiday-lab\tests\peace-preview-integration.test.cjs:17:1
+✖ optional peace flag adds exactly six cases through dedicated strict loader with exact source options (18.6605ms)
+  AssertionError [ERR_ASSERTION]: new optional flag must call strict loader
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\tests\peace-preview-integration.test.cjs:17:150)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\tests\peace-preview-integration.test.cjs:19:1
+✖ coverage propagates strict peace proof rejection rather than counting source-only cases (11.8828ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\tests\peace-preview-integration.test.cjs:19:126)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /immutable peace proof rejected/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at holiday-lab\tests\peace-preview-integration.test.cjs:20:1
+✖ assembly reloads dedicated peace run and retains every full node/blocker/flag/sample metadata in wrapper SHA (25.9341ms)
+  AssertionError [ERR_ASSERTION]: assembly must revalidate peace run
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\tests\peace-preview-integration.test.cjs:20:178)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\tests\peace-preview-integration.test.cjs:21:1
+✖ assembly propagates strict indexed proof rejection (22.1656ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\tests\peace-preview-integration.test.cjs:21:100)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /immutable peace proof rejected/,
+    operator: 'throws',
+    diff: 'simple'
+  }

@@ -1,0 +1,82 @@
+✖ fullcase/sample/PNG/shards and journal roundtrip retains all original values (36.005ms)
+✔ every half-write and begun-but-uncommitted native attempt remains uncredited and refuses resume (163.6957ms)
+✖ partialNDJSON, PNG/sample tamper, source/input drift and flags laundering reject (119.2517ms)
+✔ 0.05px original comparison is not loosened; missing glyph count cannot pass (4.483ms)
+✖ full original non-target flags survive shard roundtrip without global approval (32.076ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 2
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 526.1899
+
+✖ failing tests:
+
+test at holiday-lab\layout-qa\mid-autumn-ui-validation-20261023\store-faults.test.cjs:6:1
+✖ fullcase/sample/PNG/shards and journal roundtrip retains all original values (36.005ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at validateCapture (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\mid-autumn-ui-validation-20261023\store.cjs:15:1410)
+      at Object.append (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\mid-autumn-ui-validation-20261023\store.cjs:22:895)
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\mid-autumn-ui-validation-20261023\store-faults.test.cjs:6:149)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\layout-qa\mid-autumn-ui-validation-20261023\store-faults.test.cjs:8:1
+✖ partialNDJSON, PNG/sample tamper, source/input drift and flags laundering reject (119.2517ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at validateCapture (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\mid-autumn-ui-validation-20261023\store.cjs:15:1410)
+      at Object.append (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\mid-autumn-ui-validation-20261023\store.cjs:22:895)
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\mid-autumn-ui-validation-20261023\store-faults.test.cjs:8:424)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\layout-qa\mid-autumn-ui-validation-20261023\store-faults.test.cjs:11:1
+✖ full original non-target flags survive shard roundtrip without global approval (32.076ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at validateCapture (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\mid-autumn-ui-validation-20261023\store.cjs:15:1410)
+      at Object.append (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\mid-autumn-ui-validation-20261023\store.cjs:22:895)
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\mid-autumn-ui-validation-20261023\store-faults.test.cjs:11:475)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

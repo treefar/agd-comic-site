@@ -1,0 +1,4 @@
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),{decodePNG}=require('./png.cjs');
+const dir=path.resolve(__dirname,'../finite-hints-native-20261023/runs/run-01'),file=fs.readdirSync(dir).find(n=>n.endsWith('.png')),bytes=fs.readFileSync(path.join(dir,file));
+test('existing actual320x900 screenshot fully decodes through CRC/zlib/scanline filters',()=>{const r=decodePNG(bytes,320,900);assert.equal(r.decoded,true);assert.ok(r.pixel_sha256);});
+test('truncated header, missingIEND, wrongdimensions and CRC mutation reject',()=>{assert.throws(()=>decodePNG(bytes.subarray(0,24),320,900));assert.throws(()=>decodePNG(bytes.subarray(0,bytes.length-12),320,900));assert.throws(()=>decodePNG(bytes,320,1000));const changed=Buffer.from(bytes);changed[50]^=1;assert.throws(()=>decodePNG(changed,320,900));});

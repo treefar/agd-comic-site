@@ -1,0 +1,29 @@
+{
+  "accessed_at": "2026-10-23",
+  "method": "web primary-source search and direct open; indexed text and full-page access are distinguished",
+  "sources": [
+    {"id":"jst","url":"https://jrecin.jst.go.jp/html/app/seek/dsc_jobtype_j.html","publisher":"JST/JREC-IN","access":"full_html_yes","supports":"教授/准教授/講師/助教四職階逐列英譯；助手另屬研究教育補助。不是台日任用制度完全等同聲明。"},
+    {"id":"mext","url":"https://www.mext.go.jp/b_menu/shingi/chukyo/chukyo4/003/gijiroku/06062315/006.htm","publisher":"文部科学省","access":"full_html_yes","document_date":"2006-05-17通知；2007-04-01制度施行","supports":"助教從事教育研究；助手職務另別；不訂准教授/助教的公定唯一英文名稱。"},
+    {"id":"tsukuba-ta","url":"https://www.sie.tsukuba.ac.jp/student/ta/","publisher":"筑波大学","access":"full_html_yes","supports":"TA為大學院學生從事教育補助之制度，日稱ティーチング・アシスタント。"},
+    {"id":"chair","url":"https://www.lit.otsuma.ac.jp/english/message.html","publisher":"大妻女子大学","access":"full_html_yes","supports":"同頁學科長與Department Chair用法；不拿它認定樹德現任主任。"},
+    {"id":"stu-faculty","url":"https://www.dgd.stu.edu.tw/系所成員/","publisher":"樹德科技大學動遊系","access":"official_search_index_yes_direct_403","supports":"只有官方搜尋索引，沒有本輪完整人事頁重取證。"},
+    {"id":"stu-department","url":"https://www.dgd.stu.edu.tw/英文/","publisher":"樹德科技大學動遊系","access":"official_search_index_yes_direct_403","supports":"Department of Animation and Game Design、Chair、Assistant Professor用語；頁含舊成員資料，不當目前人事權威。"},
+    {"id":"stu-office","url":"https://www.aca.stu.edu.tw/服務對象-services/","publisher":"樹德科技大學教務處","access":"official_search_index_yes_direct_403","supports":"註冊課務組對應Registration and Curriculum Division；抵免對應Credit Transfer。不是現行全部程序的全文認證。"},
+    {"id":"degrees","url":"https://www.mext.go.jp/content/250317-mxt_syogai03-000040967_8.pdf","publisher":"文部科学省會議資料","access":"official_search_index_yes_direct_timeout","supports":"一般學位層級用語可見Master's degree/修士；文件為枠組み案，不當作個人學位或法定細類認證。"},
+    {"id":"credits","url":"https://www.gg.design.kyushu-u.ac.jp/en/current_students/accreditation-of-credits-obtained-credit-transfer","publisher":"九州大学","access":"full_html_yes","supports":"Credit Transfer與單位認定用語；不把該校審核條件移植樹德。"},
+    {"id":"procedures","url":"https://www.sie.tsukuba.ac.jp/student/procedure/","publisher":"筑波大学","access":"full_html_yes","supports":"履修登録、休学、復学、単位認定各自為不同程序名稱。"},
+    {"id":"leave","url":"https://www.med.kyoto-u.ac.jp/for_students/affairs_m/overseas-student/notice/","publisher":"京都大学","access":"official_search_index_yes_direct_503","supports":"休學之leave of absence用語；不採該校程序或日期當樹德規則。"}
+  ],
+  "queries_executed": [
+    "site.mext.go.jp 助教 助手 准教授 平成19年 英語名称 公定",
+    "site.sie.tsukuba.ac.jp student ta ティーチング アシスタント",
+    "site.stu.edu.tw 動畫 遊戲 設計系 助理教授 系主任 鄧樹遠",
+    "site.aca.stu.edu.tw Registration and Curriculum",
+    "site.stu.edu.tw Department Animation and Game Design",
+    "site.kyoto-u.ac.jp 休学 leave of absence",
+    "site.kyoto-u.ac.jp 単位認定 credit transfer",
+    "site.mext.go.jp 学士 修士 博士 bachelor master doctor degree",
+    "site.lit.otsuma.ac.jp 学科長 Department Chair"
+  ],
+  "not_used": "搜尋中其他國家／外校、維基與論壇結果未當樹德人事/政策權威。"
+}

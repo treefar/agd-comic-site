@@ -1,0 +1,42 @@
+{
+  "reviewed_freeze_sha256": "8736fe3b16e9d423c7b89764969398067094dd30cebf250bbc35bb2523883ddb",
+  "probes": [
+    {
+      "kind": "none",
+      "accepted": true,
+      "injected": false
+    },
+    {
+      "kind": "font",
+      "accepted": false,
+      "injected": true,
+      "error": "font-file drift"
+    },
+    {
+      "kind": "body",
+      "accepted": false,
+      "injected": true,
+      "error": "frozen body bytes drift"
+    },
+    {
+      "kind": "actual_collect_no_approval",
+      "exit_code": 1,
+      "rejected": true,
+      "error": "explicit root engine-v3 approval required",
+      "run_not_created": true
+    },
+    {
+      "kind": "pass_flag_consistency",
+      "guard_closed": false,
+      "accepted_true_with_nonempty_original_flags": true,
+      "original_flags_preserved": true,
+      "open_appender_skips_target": true,
+      "fixture_only_not_observed_native": true,
+      "run": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\labor-finite-native\\engine-v3-independent-review-20261023\\test-runs\\pass-flag-diagnostic-1d93b5ab-081c-4b3d-a8ba-114e31ed054b"
+    }
+  ],
+  "browser_started": false,
+  "native_started": false,
+  "full_started": false,
+  "global_bound": false
+}

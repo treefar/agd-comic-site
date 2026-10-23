@@ -1,3 +1,13 @@
+## 2026-10-23 最新：覆蓋2046項、中秋正常UI驗證已啟動
+
+- source_agent: codex。本輪實際進展：和平preview6補齊，v4索引2046/2076、缺30、geometry0；root獨立check-plan/compare exit0，2040舊selected及全部來源/方法綁定保留，126舊＋6新wrapper SHA完整核對。權威為holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json（SHA48921202d1a5427010632a3da320dc2b31775d4b8803ea9d61536a5d93c36eeb）；原index ExitCode未取得null如實保留，assembly真exit0，不重跑index。
+- Root相關13tests、和平6payload往返、180nodes/218blockers/原flags均保留。離線dashboard/out/index.html已改v4並重產；27/27、4tests、1440light/390dark smoke2/2全過，UI整包0/1及使用者0；首次authority還讀v3真紅26/27已保留並修正。
+- 中秋原404688完整stream驗證已過且不重啟；真UI plan768 seed＋42 extrema合併783工作。freeze03唯一root-ui-03於04:49:38 exit1：工具hint-only nodes卻帶全blockers造成42斷引用假紅，原完整幾何0/比對[]及失敗全部保留。freeze04改全nodes+全blockers，root20tests/原真sample/三真geometry負例及30HTTP/2font live核對已過，明確新核准後單一root-ui-04啟動。
+- root-ui-04 driver51568/runner43892，creation04:51:46.2473260Z，session46854；2026-10-23T04:53:15.523Z root實查present、26筆journal、無terminal，首筆checks全true/compare[]/flags[]/geometry[]/PNG完整解碼一致。freeze04 SHA55ef47dc52f9a1ff8ca36157cc3649aff64566b1b9495a26ee9da2bea7b52ab6、approval8262fb3dc71f189165873a5bc2430d21048a65e324afc29abb41576a8008ba8c；尚未完783，不得重啟或算canonical6完成。
+- 勞動v3三漏洞由另一代理23tests獨立複驗，另P2 pass矛盾實證；新v4加pass公式/geometry收緊，代理30tests已凍結，另一代理獨立審查與受限6context pilot準備中，未准full。正式v4不是全域PASS。 另位代理隔離30tests全過，卻再實證9個checks鍵可刪除safe後繞過；不准full，另備精確9鍵與fresh/no-resume的12筆有界native校準工具，尚未啟動。日英增量已核13職階/6學位中性化整合，9資格仍待一手證明，Division/Section差異留P2，不改凍結遊戲。
+- 報告holiday-lab/reports/verification-followup-20261023-15.md；剩中秋/國慶/開學/清明/勞動error-longest各6、所有method flags/provenance/使用者確認仍NO。TF-BASE本輪仍5工單無來源/WebGL，未啟Unity。未新網站Build/ZIP/推送/發布/碰main/刪檔；8800與舊ZIP保留，C節不動。大raw本機ignored，非跨機備份。
+- 下一輪第一件事：核同43892 creation及session46854/launches/root-ui-04，活著追同job，terminal讀原failure不要自動重啟；完後逐case/sample/PNG驗783與810義務。回收勞動v4獨立審查/有界pilot工具，先審再核准新native，不啟full。
+
 ## 2026-10-23 最新：覆蓋2040項、126份完整證據已整合
 
 - source_agent: codex。上一goal輪為實際進展，本輪再次推進：清明90、和平/光復有限錯句12、窄版提示24，合計126份完整case納入新索引。最新2040/2076、缺36、geometry0；與1914基準逐key/來源綁定比較，全保留無降級。權威索引 holiday-lab/layout-qa/supplement-integration-20261023/v3/coverage-current.json；plan-current/plan.json同2040，126新wrapper全nodes/blockers/SHA指標獨立重算相符，正式R0不寫。

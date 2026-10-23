@@ -1,0 +1,105 @@
+✖ six actual listening previews keep complete original payloads and flags (240.6889ms)
+✖ missing original fullcase fails closed (164.3355ms)
+✖ wrong context/height fails closed (160.2375ms)
+✖ source drift and non-listening/nonnatural completion fail closed (152.7202ms)
+✖ PNG/sample bytes and washed original flags fail closed (167.1523ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 0
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 968.8375
+
+✖ failing tests:
+
+test at holiday-lab\layout-qa\peace-preview-joined\adapter.test.cjs:3:1
+✖ six actual listening previews keep complete original payloads and flags (240.6889ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at expected (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\peace-preview-joined\adapter.cjs:32:511)
+      at async TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\peace-preview-joined\adapter.test.cjs:3:98)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\layout-qa\peace-preview-joined\adapter.test.cjs:4:1
+✖ missing original fullcase fails closed (164.3355ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at expected (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\peace-preview-joined\adapter.cjs:32:511)
+      at async TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\peace-preview-joined\adapter.test.cjs:4:65)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\layout-qa\peace-preview-joined\adapter.test.cjs:5:1
+✖ wrong context/height fails closed (160.2375ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at expected (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\peace-preview-joined\adapter.cjs:32:511)
+      at async TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\peace-preview-joined\adapter.test.cjs:5:115)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\layout-qa\peace-preview-joined\adapter.test.cjs:6:1
+✖ source drift and non-listening/nonnatural completion fail closed (152.7202ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at expected (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\peace-preview-joined\adapter.cjs:32:511)
+      at async TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\peace-preview-joined\adapter.test.cjs:6:327)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\layout-qa\peace-preview-joined\adapter.test.cjs:7:1
+✖ PNG/sample bytes and washed original flags fail closed (167.1523ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at expected (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\peace-preview-joined\adapter.cjs:32:511)
+      at async TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\peace-preview-joined\adapter.test.cjs:7:300)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

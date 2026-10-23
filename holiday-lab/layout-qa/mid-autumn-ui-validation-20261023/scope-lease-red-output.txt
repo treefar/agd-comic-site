@@ -1,0 +1,61 @@
+node:internal/modules/cjs/loader:1479
+  throw err;
+  ^
+
+Error: Cannot find module './scope.cjs'
+Require stack:
+- C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\mid-autumn-ui-validation-20261023\scope.test.cjs
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1476:15)
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+    at Module._load (node:internal/modules/cjs/loader:1262:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.require (node:internal/modules/cjs/loader:1576:12)
+    at require (node:internal/modules/helpers:153:16)
+    at Object.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\mid-autumn-ui-validation-20261023\scope.test.cjs:1:82)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\mid-autumn-ui-validation-20261023\\scope.test.cjs'
+  ]
+}
+
+Node.js v24.15.0
+✖ holiday-lab\layout-qa\mid-autumn-ui-validation-20261023\scope.test.cjs (77.6267ms)
+✔ atomic claim pins checked predecessor: nested competing resume cannot take two generations (37.2743ms)
+✔ live, reused, uncertain PID and half-written claim all fail closed (54.4438ms)
+✔ original sample flags cannot be laundered and missing full payload rejected (1.1096ms)
+✖ post-reservation predecessor reprobe denies revived owner and poisons incomplete claim (18.8213ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 3
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 273.4749
+
+✖ failing tests:
+
+test at holiday-lab\layout-qa\mid-autumn-ui-validation-20261023\scope.test.cjs:1:1
+✖ holiday-lab\layout-qa\mid-autumn-ui-validation-20261023\scope.test.cjs (77.6267ms)
+  'test failed'
+
+test at holiday-lab\layout-qa\mid-autumn-ui-validation-20261023\store.test.cjs:6:1
+✖ post-reservation predecessor reprobe denies revived owner and poisons incomplete claim (18.8213ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\mid-autumn-ui-validation-20261023\store.test.cjs:6:236)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }

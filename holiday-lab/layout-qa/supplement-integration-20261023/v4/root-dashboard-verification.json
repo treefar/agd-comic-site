@@ -1,0 +1,150 @@
+{
+  "date": "2026-10-23T04:56:24.058Z",
+  "root_executed_commands": [
+    {
+      "command": "node holiday-lab/build-dashboard.mjs",
+      "exit_code": 0,
+      "actual_output": "27/27 PASS; UI來源case覆蓋2046/2076; UI尚缺case30; 完整UI0/1; 使用者已確認0"
+    },
+    {
+      "command": "node --test holiday-lab/dashboard/ui-authority.test.cjs",
+      "exit_code": 0,
+      "actual_output": "tests 4; pass 4; fail 0"
+    },
+    {
+      "command": "node holiday-lab/dashboard/smoke.cjs",
+      "exit_code": 0,
+      "actual_output": "DASHBOARD_SMOKE 2/2 PASS"
+    }
+  ],
+  "smoke": {
+    "cases": [
+      {
+        "width": 1440,
+        "colorScheme": "light",
+        "initial": {
+          "ui_scope": 16,
+          "ui_gate": 3,
+          "games": 15,
+          "shell": 57
+        },
+        "searches": {
+          "跨年": {
+            "ui_scope": 0,
+            "ui_gate": 0,
+            "games": 0,
+            "shell": 0
+          },
+          "new-year": {
+            "ui_scope": 2,
+            "ui_gate": 0,
+            "games": 2,
+            "shell": 13
+          },
+          "zzz-不存在的字": {
+            "ui_scope": 0,
+            "ui_gate": 0,
+            "games": 0,
+            "shell": 0
+          }
+        },
+        "filters": {
+          "pending": {
+            "ui_scope": 0,
+            "ui_gate": 0,
+            "games": 15,
+            "shell": 0
+          },
+          "ui-missing": {
+            "ui_scope": 5,
+            "ui_gate": 1,
+            "games": 0,
+            "shell": 0
+          }
+        },
+        "expand": {
+          "before": true,
+          "after": false,
+          "closedAgain": true
+        },
+        "cards": {
+          "built": "15",
+          "ui-covered": "2046／2076",
+          "ui-missing": "30",
+          "ui-gate": "0／1",
+          "played": "15",
+          "shell": "56",
+          "unverified": "1",
+          "confirmed": "0"
+        },
+        "unknownsShown": 4,
+        "pageOverflow": false,
+        "problems": []
+      },
+      {
+        "width": 390,
+        "colorScheme": "dark",
+        "initial": {
+          "ui_scope": 16,
+          "ui_gate": 3,
+          "games": 15,
+          "shell": 57
+        },
+        "searches": {
+          "跨年": {
+            "ui_scope": 0,
+            "ui_gate": 0,
+            "games": 0,
+            "shell": 0
+          },
+          "new-year": {
+            "ui_scope": 2,
+            "ui_gate": 0,
+            "games": 2,
+            "shell": 13
+          },
+          "zzz-不存在的字": {
+            "ui_scope": 0,
+            "ui_gate": 0,
+            "games": 0,
+            "shell": 0
+          }
+        },
+        "filters": {
+          "pending": {
+            "ui_scope": 0,
+            "ui_gate": 0,
+            "games": 15,
+            "shell": 0
+          },
+          "ui-missing": {
+            "ui_scope": 5,
+            "ui_gate": 1,
+            "games": 0,
+            "shell": 0
+          }
+        },
+        "expand": {
+          "before": true,
+          "after": false,
+          "closedAgain": true
+        },
+        "cards": {
+          "built": "15",
+          "ui-covered": "2046／2076",
+          "ui-missing": "30",
+          "ui-gate": "0／1",
+          "played": "15",
+          "shell": "56",
+          "unverified": "1",
+          "confirmed": "0"
+        },
+        "unknownsShown": 4,
+        "pageOverflow": false,
+        "problems": []
+      }
+    ],
+    "errors": []
+  },
+  "full_project_approved": false
+}

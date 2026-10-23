@@ -1,0 +1,5 @@
+// Timeline data only; the renderer transforms generated sprites and binds dynamic text.
+export function spriteAt(sprite,elapsed){const base={...sprite};delete base.frames;const frames=sprite.frames;if(!Array.isArray(frames)||!frames.length)return base;let a=frames[0],b=a;for(const f of frames){if(f.at<=elapsed)a=f;if(f.at>=elapsed){b=f;break;}b=f;}if(elapsed>=frames.at(-1).at)a=b=frames.at(-1);const t=a.at===b.at?0:Math.max(0,Math.min(1,(elapsed-a.at)/(b.at-a.at)));const result={...base};for(const k of ['x','y','width','height','rotation','opacity','scaleX','scaleY']){const av=Number.isFinite(a[k])?a[k]:base[k],bv=Number.isFinite(b[k])?b[k]:av;if(Number.isFinite(av))result[k]=av+(bv-av)*t;}return result;}
+export function cuesBetween(shot,previous,elapsed){return (shot.audio||[]).filter(c=>Number.isFinite(c.at)&&c.at>=0&&c.at>previous&&c.at<=elapsed&&['wood','metal','paper','click','success','error'].includes(c.kind));}
+// Preserve the saved composition at larger sizes; avoid unreadable text when it is shrunk.
+export function captionFontSize(layer,stageWidth){return Math.max(16,layer.fontSize*stageWidth/1280);}
