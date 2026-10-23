@@ -1,3 +1,15 @@
+## 2026-10-23 最新：學生作品首頁與策展示範完成；本機8863待審
+
+- source_agent: codex。工作樹C:/agywork/agd-holiday-prototypes，分支codex/hero-festival-review，本機commit d16d2ebc76652f59cff08ed6b223da4bf6ebec83（git fsck通過）。本輪依使用者三題確認：首頁不用AI插畫、學生作品＋小互動入口、遊戲先一款示範再決定擴大；方向確認不等同畫面已確認。
+- 首頁主格改三件完整學生海報與完整署名／作品消息連結；節日試作折進「畫出來，動起來」同格，不再獨立大區塊。點擊前不載節日插畫或生成UI背景；小型favicon仍沿用既有生成播放圖示，不宣稱零AI位元。沒有逐件查證學生作品製程或新增公開改編授權。
+- 獨立策展示範 student-curation.html：同三作品、安排三展位、資訊卡與入口淨空、三語／鍵盤／重設。原14遊戲未改美術；283個原lab runtime與前輪UI-polish03逐byte一致，勞動節維持暫緩。
+- 最新.measure-student-hero-20261023-02（360檔），http://127.0.0.1:8863/ ，示範 /holiday-lab/student-curation.html?lang=zh ，儀表板 /progress/ 。8862為手機孤尾01，8861為舊生成CG候選，不當最新版。重啟：node scripts/serve-local-review.cjs --site=.measure-student-hero-20261023-02 --dashboard=holiday-lab/dashboard/out --port=8863 。
+- 最後獨立v2於09:48:25Z新run：9首頁＋9示範＋2嵌入、47PNG、54份字型loaded量測，issues／orphans0，17來源前後相同；root嚴格重核及跨release同build SHA通過。raw SHA f0f201431cdc084410379424dca589f8f48ee4f653da98938493f5d3059731ea。發布工具12yes／0no／1unknown，360檔HTTP/body SHA一致；真背景hidden仍unknown。
+- 原01六手機孤尾真RED、02首次collector表面pass但root因11份fontStatus loading拒絕、測試harness失敗全部保留；另凍結新v2逐狀態等字型，再以verify-v3.test完成12/12。不能拿表面pass當通過。姓名完整換行，不改字級、人名或原意。
+- 主報告 holiday-lab/reports/hero-release-20261023/REPORT.md；摘要verification-followup-20261023-19.md；root/student-verification.json可重核。儀表板分學生首頁、單款示範與發布補驗，資料／工具／使用者三層分開；最後重產、回歸、smoke及本機保全結果見主報告追加。
+- 完整UI gate仍NO，固定08歷史2046/2076不是本輪完成率；24個非勞動最長動態字串、完整墨跡／來源義務、實體裝置與母語校對另列。未產新ZIP、push、發布、碰main、刪檔或啟Unity；C節SHA95ae06fb0e647d1d212fd467120bd209132c8c904cf193085f47fe806f293680不變。
+- 下一輪第一件事：先看8863首頁與單款策展示範，回收使用者具體畫面／操作意見後再決定擴大，不自行發布、改編學生角色或續跑勞動／舊巨量工作。
+
 ## 2026-10-23 最新：14款遊戲UI修整與字型核對完成；新版本機8860
 
 - source_agent: codex。分支codex/game-ui-polish。原字型、字級與漫畫素材保留；只加均衡／長段落換行CSS，修日文320孤字末行。另修開學遊戲英文抵免搜尋詞與指南標題不符的真bug：Credit Transfer。勞動節暫緩，原檔與上輪凍結build byte SHA相同，未啟動其遊戲或續接。
