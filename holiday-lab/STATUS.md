@@ -1,3 +1,13 @@
+## 2026-10-23 最新：清明404已修復並獨立驗收；本機成果與進度儀表板可看
+
+- source_agent: codex。本輪分支 codex/qingming-local-review；不推送、不發布、不碰main、不刪檔，C節保持原SHA。使用者指定勞動節暫緩，覆蓋下方舊「下一輪先做勞動2453」指示；本輪沒有啟動勞動續接或Unity。
+- 實際修正首頁與holiday-lab明確宣告既有PNG favicon；本機server /favicon.ico 回真PNG200，未知資源仍404。新增favicon與server回歸／故障注入測試3/3通過。
+- 新內部審閱建置 .measure-local-qingming-20261023-01（357檔）。獨立清明 zh/en/ja ×320/1440 六組真UI完整流程6/6、錯誤0、84張PNG、424個response body核SHA；全357檔與9來源前後不變。另2個完整Chrome headless context證明自動圖示200。root唯讀verify exit0；僅404與核心流程，不冒稱全UI/canonical通過。原v2失敗與v3未批准狀態保留。
+- 獨立網站smoke：zh/en/ja ×1440/390 六組通過；指南15卡、47步驟含說明、30FAQ，搜尋／身分／語言切換均通過；13教師照片實載與容器一致，不等於頭部對齊人工確認。
+- 儀表板已有四欄：可以先看、正在處理、待確認、明確暫緩。資料／工具／使用者確認分開；build-dashboard 34/34、回歸9/9、DASHBOARD_SMOKE 2/2 + OFFLINE PASS。2046/2076僅固定08歷史覆蓋，並非新build完整通過率；完整UI gate仍0/1，未交ZIP。
+- 本機首頁 http://127.0.0.1:8856/ ，指南 /#/students/guide ，清明 /holiday-lab/?game=qingming&lang=zh ，進度 /progress/ 。server僅綁127.0.0.1；若關閉，以工作樹下 node scripts/serve-local-review.cjs --site=.measure-local-qingming-20261023-01 --dashboard=holiday-lab/dashboard/out --port=8856 重啟。
+- 主報告 holiday-lab/reports/verification-followup-20261023-17.md；獨立原始驗收 holiday-lab/layout-qa/qingming-favicon-independent-20261023/REPORT.md、holiday-lab/reports/current-preview-smoke-20261023/REPORT.md。下一步先由使用者看本機成果；依回饋修既有版面與內容，勞動節保持暫緩，C節不動。
+
 ## 2026-10-23 最新接續點：中秋目標驗證完成；兩個失敗批次已保全
 
 - source_agent: codex。中秋root-ui-04已783/783真exit0，root完整重核810義務、PNG/來源/字型/原比較皆過，geometry0；518原旗標空、265保其他owner旗標，global/canonical仍NO。完整資料本機commit5064130（8484 QA檔/549249014 bytes逐一index核對）。

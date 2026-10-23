@@ -1,0 +1,150 @@
+{
+  "type": "offline-synthetic-diagnostic-counterexamples",
+  "source": {
+    "file": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\qingming-native-v3-20261023\\diagnostics.cjs",
+    "sha256": "5d46ab15b5828ac9fa4f9af196d3cc893e8a93e545d32f6afdae2a626889eb72"
+  },
+  "rows": [
+    {
+      "name": "response-before-request",
+      "decision": {
+        "scope": "qingming-native-v3-favicon-scoped-pilot-v1",
+        "target_clear": true,
+        "target_errors": [],
+        "non_target": [
+          {
+            "kind": "network-response",
+            "index": 0,
+            "request_index": 1,
+            "requestId": "r1",
+            "url": "http://127.0.0.1:8845/favicon.ico",
+            "status": 404,
+            "resourceType": "Other",
+            "classification": "exact-observed-favicon404Other"
+          },
+          {
+            "kind": "console",
+            "index": 0,
+            "response_indices": [
+              0
+            ],
+            "url": "http://127.0.0.1:8845/favicon.ico",
+            "status": 404,
+            "resourceType": "Other",
+            "classification": "exact-observed-favicon404Other"
+          }
+        ],
+        "original_console_errors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ],
+        "original_http_errors": [],
+        "original_page_errors": [],
+        "global_method_clear": false,
+        "full_project_approved": false
+      },
+      "expected_target_clear": false
+    },
+    {
+      "name": "empty-requestId",
+      "decision": {
+        "scope": "qingming-native-v3-favicon-scoped-pilot-v1",
+        "target_clear": true,
+        "target_errors": [],
+        "non_target": [
+          {
+            "kind": "network-response",
+            "index": 1,
+            "request_index": 0,
+            "requestId": "",
+            "url": "http://127.0.0.1:8845/favicon.ico",
+            "status": 404,
+            "resourceType": "Other",
+            "classification": "exact-observed-favicon404Other"
+          },
+          {
+            "kind": "console",
+            "index": 0,
+            "response_indices": [
+              1
+            ],
+            "url": "http://127.0.0.1:8845/favicon.ico",
+            "status": 404,
+            "resourceType": "Other",
+            "classification": "exact-observed-favicon404Other"
+          }
+        ],
+        "original_console_errors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ],
+        "original_http_errors": [],
+        "original_page_errors": [],
+        "global_method_clear": false,
+        "full_project_approved": false
+      },
+      "expected_target_clear": false
+    },
+    {
+      "name": "late-response-validates-prefix-hash-only",
+      "prefix_decision": {
+        "scope": "qingming-native-v3-favicon-scoped-pilot-v1",
+        "target_clear": false,
+        "target_errors": [
+          {
+            "kind": "console",
+            "index": 0,
+            "reason": "unknown error or missing exact favicon evidence"
+          }
+        ],
+        "non_target": [],
+        "original_console_errors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ],
+        "original_http_errors": [],
+        "original_page_errors": [],
+        "global_method_clear": false,
+        "full_project_approved": false
+      },
+      "full_decision": {
+        "scope": "qingming-native-v3-favicon-scoped-pilot-v1",
+        "target_clear": true,
+        "target_errors": [],
+        "non_target": [
+          {
+            "kind": "network-response",
+            "index": 1,
+            "request_index": 0,
+            "requestId": "r1",
+            "url": "http://127.0.0.1:8845/favicon.ico",
+            "status": 404,
+            "resourceType": "Other",
+            "classification": "exact-observed-favicon404Other"
+          },
+          {
+            "kind": "console",
+            "index": 0,
+            "response_indices": [
+              1
+            ],
+            "url": "http://127.0.0.1:8845/favicon.ico",
+            "status": 404,
+            "resourceType": "Other",
+            "classification": "exact-observed-favicon404Other"
+          }
+        ],
+        "original_console_errors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ],
+        "original_http_errors": [],
+        "original_page_errors": [],
+        "global_method_clear": false,
+        "full_project_approved": false
+      },
+      "prefix_hash_accepted": true,
+      "expected_prefix_eligible": false
+    }
+  ],
+  "v3_approved": false,
+  "browser_native_HTTP": false,
+  "website404_repaired": false,
+  "global_approved": false
+}

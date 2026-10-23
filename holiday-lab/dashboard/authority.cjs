@@ -13,3 +13,12 @@ checks.push({name:'UI覆蓋分母與缺項由合約和權威v4索引逐筆重算
 {name:'baseline與plan確實綁定同一權威索引及合約',pass:baseline.pass===true&&plan.pass===true&&baseline.files.new_index.sha256===hash(base+'coverage-current.json')&&baseline.files.contract.sha256===hash('ui-layout-contract.json')&&baseline.after===source.covered&&plan.selected===source.covered&&plan.required===source.required&&plan.missing===source.missing_count&&plan.official_unchanged===true},
 {name:'完整UI仍NO且不把功能通關升格',pass:source.status==='PARTIAL_RED'&&baseline.full_project_approved===false&&plan.full_project_approved===false&&gate.find(r=>r.id==='global')?.result==='gate_no'&&gate.find(r=>r.id==='baseline')?.result==='pass'&&gate.find(r=>r.id==='plan')?.result==='pass'},
 {name:'使用者確認仍由對話授權，這批保持零',pass:ctx.section('games').filter(r=>r.user==='confirmed').length===0&&ctx.section('games').every(r=>r.user==='pending')});return checks;};
+const qaAuthority=module.exports;
+module.exports=ctx=>{const checks=qaAuthority(ctx),root=path.resolve(__dirname,'../..'),p=require('./progress-adapter.cjs')(root),actual=ctx.section('progress'),same=(a,b)=>JSON.stringify(a)===JSON.stringify(b),find=id=>actual.find(r=>r.id===id);
+ checks.push({name:'進度總覽逐項由來源adapter重算，不信頁面自述',pass:same(actual,p.rows)},
+ {name:'勞動依本輪使用者指示明確暫緩，未升格驗收',pass:find('labor')?.workflow==='paused'&&find('labor')?.tool==='unknown'&&find('labor')?.built==='preserved'},
+ {name:'資料、工具、使用者三層分開且使用者仍待確認',pass:actual.every(r=>r.built&&r.tool&&r.user==='pending')&&find('ui')?.tool==='gate_no'},
+ {name:'清明新收據缺失或未知schema不得寫pass',pass:same(find('qingming'),p.rows.find(r=>r.id==='qingming'))&&(!p.qingming.verified?find('qingming').tool==='unknown':true)},
+ {name:'WebGL工單／排程不當成Build或可玩成功',pass:find('webgl')?.built==='prepared'&&find('webgl')?.tool==='unknown'&&find('webgl')?.workflow==='waiting'},
+ {name:'所有本機成果連結逐一驗實檔且不連外',pass:actual.flatMap(r=>r.links).every(l=>!(/^(?:https?:|\/\/)/u.test(l.href))&&require('./progress-adapter.cjs').resolveLink(root,l.href).exists)},
+ {name:'摘要未把QA來源覆蓋稱為整體完成率',pass:ctx.data?ctx.data.summary_cards.filter(c=>c.id==='ui-covered').every(c=>c.scope.includes('非UI通過率')&&c.denominator.includes('required_cases')):true});return checks;};

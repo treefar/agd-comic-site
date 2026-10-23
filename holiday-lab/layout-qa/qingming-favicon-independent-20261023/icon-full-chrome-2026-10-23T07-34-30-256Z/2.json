@@ -1,0 +1,1072 @@
+{
+  "row": {
+    "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+    "icon": "http://127.0.0.1:8854/holiday-lab/assets/ui/play.png",
+    "automatic": [
+      {
+        "url": "http://127.0.0.1:8854/holiday-lab/assets/ui/play.png",
+        "status": 200
+      }
+    ],
+    "explicit_status": 200,
+    "sha256": "356075a7feaaa023f1998b1214823c4371af8b70436427fdc7b7e282cb55efc1",
+    "errors": []
+  },
+  "events": [
+    {
+      "kind": "Network.requestWillBeSent",
+      "raw": {
+        "requestId": "5A2B8234BDA3481094BB57D6FB4AEBD3",
+        "loaderId": "5A2B8234BDA3481094BB57D6FB4AEBD3",
+        "documentURL": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+        "request": {
+          "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+          "method": "GET",
+          "headers": {
+            "Upgrade-Insecure-Requests": "1",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"151\", \"Not=A?Brand\";v=\"99\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "mixedContentType": "none",
+          "initialPriority": "VeryHigh",
+          "referrerPolicy": "unsafe-url",
+          "isSameSite": true
+        },
+        "timestamp": 501747.39371,
+        "wallTime": 1792740876.077476,
+        "initiator": {
+          "type": "other"
+        },
+        "redirectHasExtraInfo": false,
+        "type": "Document",
+        "frameId": "ACEB97722FB1F6170E9AAE1C929AE316",
+        "hasUserGesture": false
+      },
+      "time": "2026-10-23T07:34:36.077Z"
+    },
+    {
+      "kind": "Network.responseReceived",
+      "raw": {
+        "requestId": "5A2B8234BDA3481094BB57D6FB4AEBD3",
+        "loaderId": "5A2B8234BDA3481094BB57D6FB4AEBD3",
+        "timestamp": 501747.399308,
+        "type": "Document",
+        "response": {
+          "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+          "status": 200,
+          "statusText": "OK",
+          "headers": {
+            "Cache-Control": "no-store",
+            "Connection": "keep-alive",
+            "Content-Type": "text/html; charset=utf-8",
+            "Date": "Fri, 23 Oct 2026 07:34:36 GMT",
+            "Keep-Alive": "timeout=5",
+            "Transfer-Encoding": "chunked",
+            "X-Content-Type-Options": "nosniff"
+          },
+          "mimeType": "text/html",
+          "charset": "utf-8",
+          "connectionReused": true,
+          "connectionId": 793,
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8854,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "fromPrefetchCache": false,
+          "encodedDataLength": 229,
+          "timing": {
+            "requestTime": 501747.394643,
+            "proxyStart": -1,
+            "proxyEnd": -1,
+            "dnsStart": -1,
+            "dnsEnd": -1,
+            "connectStart": -1,
+            "connectEnd": -1,
+            "sslStart": -1,
+            "sslEnd": -1,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 0.221,
+            "sendEnd": 0.358,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 2.847,
+            "receiveHeadersEnd": 2.942
+          },
+          "responseTime": 1792740876081.19,
+          "protocol": "http/1.1",
+          "alternateProtocolUsage": "unspecifiedReason",
+          "securityState": "secure"
+        },
+        "hasExtraInfo": true,
+        "frameId": "ACEB97722FB1F6170E9AAE1C929AE316"
+      },
+      "time": "2026-10-23T07:34:36.083Z"
+    },
+    {
+      "kind": "Network.requestWillBeSent",
+      "raw": {
+        "requestId": "27460.2",
+        "loaderId": "5A2B8234BDA3481094BB57D6FB4AEBD3",
+        "documentURL": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+        "request": {
+          "url": "http://127.0.0.1:8854/holiday-lab/lab.css",
+          "method": "GET",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "Referer": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"151\", \"Not=A?Brand\";v=\"99\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "mixedContentType": "none",
+          "initialPriority": "VeryHigh",
+          "referrerPolicy": "strict-origin-when-cross-origin",
+          "isSameSite": true
+        },
+        "timestamp": 501747.406756,
+        "wallTime": 1792740876.09055,
+        "initiator": {
+          "type": "parser",
+          "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+          "lineNumber": 1,
+          "columnNumber": 285
+        },
+        "redirectHasExtraInfo": false,
+        "type": "Stylesheet",
+        "frameId": "ACEB97722FB1F6170E9AAE1C929AE316",
+        "hasUserGesture": false,
+        "renderBlockingBehavior": "Blocking"
+      },
+      "time": "2026-10-23T07:34:36.104Z"
+    },
+    {
+      "kind": "Network.requestWillBeSent",
+      "raw": {
+        "requestId": "27460.3",
+        "loaderId": "5A2B8234BDA3481094BB57D6FB4AEBD3",
+        "documentURL": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+        "request": {
+          "url": "http://127.0.0.1:8854/holiday-lab/runner.mjs",
+          "method": "GET",
+          "headers": {
+            "Origin": "http://127.0.0.1:8854",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "Referer": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"151\", \"Not=A?Brand\";v=\"99\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "mixedContentType": "none",
+          "initialPriority": "High",
+          "referrerPolicy": "strict-origin-when-cross-origin",
+          "isSameSite": true
+        },
+        "timestamp": 501747.407228,
+        "wallTime": 1792740876.090961,
+        "initiator": {
+          "type": "parser",
+          "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+          "lineNumber": 1,
+          "columnNumber": 406
+        },
+        "redirectHasExtraInfo": false,
+        "type": "Script",
+        "frameId": "ACEB97722FB1F6170E9AAE1C929AE316",
+        "hasUserGesture": false,
+        "renderBlockingBehavior": "NonBlocking"
+      },
+      "time": "2026-10-23T07:34:36.104Z"
+    },
+    {
+      "kind": "Network.loadingFinished",
+      "raw": {
+        "requestId": "5A2B8234BDA3481094BB57D6FB4AEBD3",
+        "timestamp": 501747.398036,
+        "encodedDataLength": 723
+      },
+      "time": "2026-10-23T07:34:36.106Z"
+    },
+    {
+      "kind": "Network.responseReceived",
+      "raw": {
+        "requestId": "27460.2",
+        "loaderId": "5A2B8234BDA3481094BB57D6FB4AEBD3",
+        "timestamp": 501747.42044,
+        "type": "Stylesheet",
+        "response": {
+          "url": "http://127.0.0.1:8854/holiday-lab/lab.css",
+          "status": 200,
+          "statusText": "OK",
+          "headers": {
+            "Transfer-Encoding": "chunked",
+            "Cache-Control": "no-store",
+            "Keep-Alive": "timeout=5",
+            "Date": "Fri, 23 Oct 2026 07:34:36 GMT",
+            "Content-Type": "text/css; charset=utf-8",
+            "Connection": "keep-alive",
+            "X-Content-Type-Options": "nosniff"
+          },
+          "mimeType": "text/css",
+          "charset": "utf-8",
+          "connectionReused": true,
+          "connectionId": 793,
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8854,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "fromPrefetchCache": false,
+          "encodedDataLength": 228,
+          "timing": {
+            "requestTime": 501747.413523,
+            "proxyStart": -1,
+            "proxyEnd": -1,
+            "dnsStart": -1,
+            "dnsEnd": -1,
+            "connectStart": -1,
+            "connectEnd": -1,
+            "sslStart": -1,
+            "sslEnd": -1,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 0.669,
+            "sendEnd": 0.818,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 4.709,
+            "receiveHeadersEnd": 4.769
+          },
+          "responseTime": 1792740876101.932,
+          "protocol": "http/1.1",
+          "alternateProtocolUsage": "unspecifiedReason",
+          "securityState": "secure"
+        },
+        "hasExtraInfo": true,
+        "frameId": "ACEB97722FB1F6170E9AAE1C929AE316"
+      },
+      "time": "2026-10-23T07:34:36.106Z"
+    },
+    {
+      "kind": "Network.loadingFinished",
+      "raw": {
+        "requestId": "27460.2",
+        "timestamp": 501747.41891,
+        "encodedDataLength": 7458
+      },
+      "time": "2026-10-23T07:34:36.107Z"
+    },
+    {
+      "kind": "Network.responseReceived",
+      "raw": {
+        "requestId": "27460.3",
+        "loaderId": "5A2B8234BDA3481094BB57D6FB4AEBD3",
+        "timestamp": 501747.423377,
+        "type": "Script",
+        "response": {
+          "url": "http://127.0.0.1:8854/holiday-lab/runner.mjs",
+          "status": 200,
+          "statusText": "OK",
+          "headers": {
+            "Transfer-Encoding": "chunked",
+            "Cache-Control": "no-store",
+            "Keep-Alive": "timeout=5",
+            "Date": "Fri, 23 Oct 2026 07:34:36 GMT",
+            "Content-Type": "text/javascript; charset=utf-8",
+            "Connection": "keep-alive",
+            "X-Content-Type-Options": "nosniff"
+          },
+          "mimeType": "text/javascript",
+          "charset": "utf-8",
+          "connectionReused": false,
+          "connectionId": 807,
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8854,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "fromPrefetchCache": false,
+          "encodedDataLength": 235,
+          "timing": {
+            "requestTime": 501747.41458,
+            "proxyStart": -1,
+            "proxyEnd": -1,
+            "dnsStart": 0.297,
+            "dnsEnd": 0.319,
+            "connectStart": 0.319,
+            "connectEnd": 1.467,
+            "sslStart": -1,
+            "sslEnd": -1,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 1.562,
+            "sendEnd": 1.692,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 4.532,
+            "receiveHeadersEnd": 4.585
+          },
+          "responseTime": 1792740876102.812,
+          "protocol": "http/1.1",
+          "alternateProtocolUsage": "unspecifiedReason",
+          "securityState": "secure"
+        },
+        "hasExtraInfo": true,
+        "frameId": "ACEB97722FB1F6170E9AAE1C929AE316"
+      },
+      "time": "2026-10-23T07:34:36.113Z"
+    },
+    {
+      "kind": "Network.loadingFinished",
+      "raw": {
+        "requestId": "27460.3",
+        "timestamp": 501747.419528,
+        "encodedDataLength": 17734
+      },
+      "time": "2026-10-23T07:34:36.113Z"
+    },
+    {
+      "kind": "Network.requestWillBeSent",
+      "raw": {
+        "requestId": "27460.6",
+        "loaderId": "5A2B8234BDA3481094BB57D6FB4AEBD3",
+        "documentURL": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+        "request": {
+          "url": "http://127.0.0.1:8854/holiday-lab/assets/ui/paper.png",
+          "method": "GET",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "Referer": "http://127.0.0.1:8854/holiday-lab/lab.css",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"151\", \"Not=A?Brand\";v=\"99\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "mixedContentType": "none",
+          "initialPriority": "Low",
+          "referrerPolicy": "strict-origin-when-cross-origin",
+          "isSameSite": true
+        },
+        "timestamp": 501747.424599,
+        "wallTime": 1792740876.108353,
+        "initiator": {
+          "type": "parser",
+          "url": "http://127.0.0.1:8854/holiday-lab/lab.css"
+        },
+        "redirectHasExtraInfo": false,
+        "type": "Image",
+        "frameId": "ACEB97722FB1F6170E9AAE1C929AE316",
+        "hasUserGesture": false
+      },
+      "time": "2026-10-23T07:34:36.120Z"
+    },
+    {
+      "kind": "Network.responseReceived",
+      "raw": {
+        "requestId": "27460.6",
+        "loaderId": "5A2B8234BDA3481094BB57D6FB4AEBD3",
+        "timestamp": 501747.436646,
+        "type": "Image",
+        "response": {
+          "url": "http://127.0.0.1:8854/holiday-lab/assets/ui/paper.png",
+          "status": 200,
+          "statusText": "OK",
+          "headers": {
+            "Transfer-Encoding": "chunked",
+            "Cache-Control": "no-store",
+            "Keep-Alive": "timeout=5",
+            "Date": "Fri, 23 Oct 2026 07:34:36 GMT",
+            "Content-Type": "image/png",
+            "Connection": "keep-alive",
+            "X-Content-Type-Options": "nosniff"
+          },
+          "mimeType": "image/png",
+          "charset": "",
+          "connectionReused": true,
+          "connectionId": 807,
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8854,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "fromPrefetchCache": false,
+          "encodedDataLength": 214,
+          "timing": {
+            "requestTime": 501747.42514,
+            "proxyStart": -1,
+            "proxyEnd": -1,
+            "dnsStart": -1,
+            "dnsEnd": -1,
+            "connectStart": -1,
+            "connectEnd": -1,
+            "sslStart": -1,
+            "sslEnd": -1,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 0.371,
+            "sendEnd": 0.526,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 3.467,
+            "receiveHeadersEnd": 3.528
+          },
+          "responseTime": 1792740876112.307,
+          "protocol": "http/1.1",
+          "alternateProtocolUsage": "unspecifiedReason",
+          "securityState": "secure"
+        },
+        "hasExtraInfo": true,
+        "frameId": "ACEB97722FB1F6170E9AAE1C929AE316"
+      },
+      "time": "2026-10-23T07:34:36.121Z"
+    },
+    {
+      "kind": "Network.loadingFinished",
+      "raw": {
+        "requestId": "27460.6",
+        "timestamp": 501747.429103,
+        "encodedDataLength": 3342
+      },
+      "time": "2026-10-23T07:34:36.121Z"
+    },
+    {
+      "kind": "Network.requestWillBeSent",
+      "raw": {
+        "requestId": "27460.7",
+        "loaderId": "5A2B8234BDA3481094BB57D6FB4AEBD3",
+        "documentURL": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+        "request": {
+          "url": "http://127.0.0.1:8854/holiday-lab/catalog.mjs",
+          "method": "GET",
+          "headers": {
+            "Origin": "http://127.0.0.1:8854",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "Referer": "http://127.0.0.1:8854/holiday-lab/runner.mjs",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"151\", \"Not=A?Brand\";v=\"99\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "mixedContentType": "none",
+          "initialPriority": "High",
+          "referrerPolicy": "strict-origin-when-cross-origin",
+          "isSameSite": true
+        },
+        "timestamp": 501747.437334,
+        "wallTime": 1792740876.121077,
+        "initiator": {
+          "type": "script",
+          "url": "http://127.0.0.1:8854/holiday-lab/runner.mjs",
+          "lineNumber": 0,
+          "columnNumber": 25
+        },
+        "redirectHasExtraInfo": false,
+        "type": "Script",
+        "frameId": "ACEB97722FB1F6170E9AAE1C929AE316",
+        "hasUserGesture": false,
+        "renderBlockingBehavior": "NonBlocking"
+      },
+      "time": "2026-10-23T07:34:36.121Z"
+    },
+    {
+      "kind": "Network.requestWillBeSent",
+      "raw": {
+        "requestId": "27460.8",
+        "loaderId": "5A2B8234BDA3481094BB57D6FB4AEBD3",
+        "documentURL": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+        "request": {
+          "url": "http://127.0.0.1:8854/holiday-lab/replay-model.mjs",
+          "method": "GET",
+          "headers": {
+            "Origin": "http://127.0.0.1:8854",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "Referer": "http://127.0.0.1:8854/holiday-lab/runner.mjs",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"151\", \"Not=A?Brand\";v=\"99\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "mixedContentType": "none",
+          "initialPriority": "High",
+          "referrerPolicy": "strict-origin-when-cross-origin",
+          "isSameSite": true
+        },
+        "timestamp": 501747.437475,
+        "wallTime": 1792740876.121199,
+        "initiator": {
+          "type": "script",
+          "url": "http://127.0.0.1:8854/holiday-lab/runner.mjs",
+          "lineNumber": 1,
+          "columnNumber": 51
+        },
+        "redirectHasExtraInfo": false,
+        "type": "Script",
+        "frameId": "ACEB97722FB1F6170E9AAE1C929AE316",
+        "hasUserGesture": false,
+        "renderBlockingBehavior": "NonBlocking"
+      },
+      "time": "2026-10-23T07:34:36.121Z"
+    },
+    {
+      "kind": "Network.responseReceived",
+      "raw": {
+        "requestId": "27460.7",
+        "loaderId": "5A2B8234BDA3481094BB57D6FB4AEBD3",
+        "timestamp": 501747.445524,
+        "type": "Script",
+        "response": {
+          "url": "http://127.0.0.1:8854/holiday-lab/catalog.mjs",
+          "status": 200,
+          "statusText": "OK",
+          "headers": {
+            "Transfer-Encoding": "chunked",
+            "Cache-Control": "no-store",
+            "Keep-Alive": "timeout=5",
+            "Date": "Fri, 23 Oct 2026 07:34:36 GMT",
+            "Content-Type": "text/javascript; charset=utf-8",
+            "Connection": "keep-alive",
+            "X-Content-Type-Options": "nosniff"
+          },
+          "mimeType": "text/javascript",
+          "charset": "utf-8",
+          "connectionReused": true,
+          "connectionId": 807,
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8854,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "fromPrefetchCache": false,
+          "encodedDataLength": 235,
+          "timing": {
+            "requestTime": 501747.438394,
+            "proxyStart": -1,
+            "proxyEnd": -1,
+            "dnsStart": -1,
+            "dnsEnd": -1,
+            "connectStart": -1,
+            "connectEnd": -1,
+            "sslStart": -1,
+            "sslEnd": -1,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 0.313,
+            "sendEnd": 0.458,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 4.696,
+            "receiveHeadersEnd": 4.761
+          },
+          "responseTime": 1792740876126.789,
+          "protocol": "http/1.1",
+          "alternateProtocolUsage": "unspecifiedReason",
+          "securityState": "secure"
+        },
+        "hasExtraInfo": true,
+        "frameId": "ACEB97722FB1F6170E9AAE1C929AE316"
+      },
+      "time": "2026-10-23T07:34:36.129Z"
+    },
+    {
+      "kind": "Network.loadingFinished",
+      "raw": {
+        "requestId": "27460.7",
+        "timestamp": 501747.443632,
+        "encodedDataLength": 17704
+      },
+      "time": "2026-10-23T07:34:36.130Z"
+    },
+    {
+      "kind": "Network.responseReceived",
+      "raw": {
+        "requestId": "27460.8",
+        "loaderId": "5A2B8234BDA3481094BB57D6FB4AEBD3",
+        "timestamp": 501747.445966,
+        "type": "Script",
+        "response": {
+          "url": "http://127.0.0.1:8854/holiday-lab/replay-model.mjs",
+          "status": 200,
+          "statusText": "OK",
+          "headers": {
+            "Transfer-Encoding": "chunked",
+            "Cache-Control": "no-store",
+            "Keep-Alive": "timeout=5",
+            "Date": "Fri, 23 Oct 2026 07:34:36 GMT",
+            "Content-Type": "text/javascript; charset=utf-8",
+            "Connection": "keep-alive",
+            "X-Content-Type-Options": "nosniff"
+          },
+          "mimeType": "text/javascript",
+          "charset": "utf-8",
+          "connectionReused": true,
+          "connectionId": 793,
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8854,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "fromPrefetchCache": false,
+          "encodedDataLength": 235,
+          "timing": {
+            "requestTime": 501747.439027,
+            "proxyStart": -1,
+            "proxyEnd": -1,
+            "dnsStart": -1,
+            "dnsEnd": -1,
+            "connectStart": -1,
+            "connectEnd": -1,
+            "sslStart": -1,
+            "sslEnd": -1,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 0.209,
+            "sendEnd": 0.291,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 5.163,
+            "receiveHeadersEnd": 5.211
+          },
+          "responseTime": 1792740876127.89,
+          "protocol": "http/1.1",
+          "alternateProtocolUsage": "unspecifiedReason",
+          "securityState": "secure"
+        },
+        "hasExtraInfo": true,
+        "frameId": "ACEB97722FB1F6170E9AAE1C929AE316"
+      },
+      "time": "2026-10-23T07:34:36.130Z"
+    },
+    {
+      "kind": "Network.loadingFinished",
+      "raw": {
+        "requestId": "27460.8",
+        "timestamp": 501747.444887,
+        "encodedDataLength": 1376
+      },
+      "time": "2026-10-23T07:34:36.130Z"
+    },
+    {
+      "kind": "Network.requestWillBeSent",
+      "raw": {
+        "requestId": "27460.9",
+        "loaderId": "5A2B8234BDA3481094BB57D6FB4AEBD3",
+        "documentURL": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+        "request": {
+          "url": "http://127.0.0.1:8854/holiday-lab/assets/ui/normal.png",
+          "method": "GET",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "Referer": "http://127.0.0.1:8854/holiday-lab/lab.css",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"151\", \"Not=A?Brand\";v=\"99\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "mixedContentType": "none",
+          "initialPriority": "Low",
+          "referrerPolicy": "strict-origin-when-cross-origin",
+          "isSameSite": true
+        },
+        "timestamp": 501747.451168,
+        "wallTime": 1792740876.134944,
+        "initiator": {
+          "type": "parser",
+          "url": "http://127.0.0.1:8854/holiday-lab/lab.css"
+        },
+        "redirectHasExtraInfo": false,
+        "type": "Image",
+        "frameId": "ACEB97722FB1F6170E9AAE1C929AE316",
+        "hasUserGesture": false
+      },
+      "time": "2026-10-23T07:34:36.178Z"
+    },
+    {
+      "kind": "Network.requestWillBeSent",
+      "raw": {
+        "requestId": "27460.10",
+        "loaderId": "5A2B8234BDA3481094BB57D6FB4AEBD3",
+        "documentURL": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+        "request": {
+          "url": "http://127.0.0.1:8854/holiday-lab/assets/ui/panel.png",
+          "method": "GET",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "Referer": "http://127.0.0.1:8854/holiday-lab/lab.css",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"151\", \"Not=A?Brand\";v=\"99\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "mixedContentType": "none",
+          "initialPriority": "Low",
+          "referrerPolicy": "strict-origin-when-cross-origin",
+          "isSameSite": true
+        },
+        "timestamp": 501747.453401,
+        "wallTime": 1792740876.137157,
+        "initiator": {
+          "type": "parser",
+          "url": "http://127.0.0.1:8854/holiday-lab/lab.css"
+        },
+        "redirectHasExtraInfo": false,
+        "type": "Image",
+        "frameId": "ACEB97722FB1F6170E9AAE1C929AE316",
+        "hasUserGesture": false
+      },
+      "time": "2026-10-23T07:34:36.178Z"
+    },
+    {
+      "kind": "Network.requestWillBeSent",
+      "raw": {
+        "requestId": "27460.11",
+        "loaderId": "5A2B8234BDA3481094BB57D6FB4AEBD3",
+        "documentURL": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+        "request": {
+          "url": "http://127.0.0.1:8854/holiday-lab/assets/qingming/cg-1.webp",
+          "method": "GET",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "Referer": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"151\", \"Not=A?Brand\";v=\"99\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "mixedContentType": "none",
+          "initialPriority": "Low",
+          "referrerPolicy": "strict-origin-when-cross-origin",
+          "isSameSite": true
+        },
+        "timestamp": 501747.493769,
+        "wallTime": 1792740876.17757,
+        "initiator": {
+          "type": "parser",
+          "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+          "lineNumber": 2,
+          "columnNumber": 1
+        },
+        "redirectHasExtraInfo": false,
+        "type": "Image",
+        "frameId": "ACEB97722FB1F6170E9AAE1C929AE316",
+        "hasUserGesture": false
+      },
+      "time": "2026-10-23T07:34:36.178Z"
+    },
+    {
+      "kind": "Network.responseReceived",
+      "raw": {
+        "requestId": "27460.9",
+        "loaderId": "5A2B8234BDA3481094BB57D6FB4AEBD3",
+        "timestamp": 501747.494708,
+        "type": "Image",
+        "response": {
+          "url": "http://127.0.0.1:8854/holiday-lab/assets/ui/normal.png",
+          "status": 200,
+          "statusText": "OK",
+          "headers": {
+            "Transfer-Encoding": "chunked",
+            "Cache-Control": "no-store",
+            "Keep-Alive": "timeout=5",
+            "Date": "Fri, 23 Oct 2026 07:34:36 GMT",
+            "Content-Type": "image/png",
+            "Connection": "keep-alive",
+            "X-Content-Type-Options": "nosniff"
+          },
+          "mimeType": "image/png",
+          "charset": "",
+          "connectionReused": true,
+          "connectionId": 793,
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8854,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "fromPrefetchCache": false,
+          "encodedDataLength": 214,
+          "timing": {
+            "requestTime": 501747.452784,
+            "proxyStart": -1,
+            "proxyEnd": -1,
+            "dnsStart": -1,
+            "dnsEnd": -1,
+            "connectStart": -1,
+            "connectEnd": -1,
+            "sslStart": -1,
+            "sslEnd": -1,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 0.276,
+            "sendEnd": 0.427,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 3.873,
+            "receiveHeadersEnd": 3.936
+          },
+          "responseTime": 1792740876140.357,
+          "protocol": "http/1.1",
+          "alternateProtocolUsage": "unspecifiedReason",
+          "securityState": "secure"
+        },
+        "hasExtraInfo": true,
+        "frameId": "ACEB97722FB1F6170E9AAE1C929AE316"
+      },
+      "time": "2026-10-23T07:34:36.179Z"
+    },
+    {
+      "kind": "Network.loadingFinished",
+      "raw": {
+        "requestId": "27460.9",
+        "timestamp": 501747.457464,
+        "encodedDataLength": 74977
+      },
+      "time": "2026-10-23T07:34:36.179Z"
+    },
+    {
+      "kind": "Network.responseReceived",
+      "raw": {
+        "requestId": "27460.10",
+        "loaderId": "5A2B8234BDA3481094BB57D6FB4AEBD3",
+        "timestamp": 501747.495672,
+        "type": "Image",
+        "response": {
+          "url": "http://127.0.0.1:8854/holiday-lab/assets/ui/panel.png",
+          "status": 200,
+          "statusText": "OK",
+          "headers": {
+            "Transfer-Encoding": "chunked",
+            "Cache-Control": "no-store",
+            "Keep-Alive": "timeout=5",
+            "Date": "Fri, 23 Oct 2026 07:34:36 GMT",
+            "Content-Type": "image/png",
+            "Connection": "keep-alive",
+            "X-Content-Type-Options": "nosniff"
+          },
+          "mimeType": "image/png",
+          "charset": "",
+          "connectionReused": true,
+          "connectionId": 807,
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8854,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "fromPrefetchCache": false,
+          "encodedDataLength": 214,
+          "timing": {
+            "requestTime": 501747.45397,
+            "proxyStart": -1,
+            "proxyEnd": -1,
+            "dnsStart": -1,
+            "dnsEnd": -1,
+            "connectStart": -1,
+            "connectEnd": -1,
+            "sslStart": -1,
+            "sslEnd": -1,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 0.238,
+            "sendEnd": 0.347,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 3.129,
+            "receiveHeadersEnd": 3.152
+          },
+          "responseTime": 1792740876140.799,
+          "protocol": "http/1.1",
+          "alternateProtocolUsage": "unspecifiedReason",
+          "securityState": "secure"
+        },
+        "hasExtraInfo": true,
+        "frameId": "ACEB97722FB1F6170E9AAE1C929AE316"
+      },
+      "time": "2026-10-23T07:34:36.179Z"
+    },
+    {
+      "kind": "Network.loadingFinished",
+      "raw": {
+        "requestId": "27460.10",
+        "timestamp": 501747.457631,
+        "encodedDataLength": 99823
+      },
+      "time": "2026-10-23T07:34:36.180Z"
+    },
+    {
+      "kind": "Network.responseReceived",
+      "raw": {
+        "requestId": "27460.11",
+        "loaderId": "5A2B8234BDA3481094BB57D6FB4AEBD3",
+        "timestamp": 501747.500307,
+        "type": "Image",
+        "response": {
+          "url": "http://127.0.0.1:8854/holiday-lab/assets/qingming/cg-1.webp",
+          "status": 200,
+          "statusText": "OK",
+          "headers": {
+            "Transfer-Encoding": "chunked",
+            "Cache-Control": "no-store",
+            "Keep-Alive": "timeout=5",
+            "Date": "Fri, 23 Oct 2026 07:34:36 GMT",
+            "Content-Type": "image/webp",
+            "Connection": "keep-alive",
+            "X-Content-Type-Options": "nosniff"
+          },
+          "mimeType": "image/webp",
+          "charset": "",
+          "connectionReused": true,
+          "connectionId": 807,
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8854,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "fromPrefetchCache": false,
+          "encodedDataLength": 215,
+          "timing": {
+            "requestTime": 501747.494409,
+            "proxyStart": -1,
+            "proxyEnd": -1,
+            "dnsStart": -1,
+            "dnsEnd": -1,
+            "connectStart": -1,
+            "connectEnd": -1,
+            "sslStart": -1,
+            "sslEnd": -1,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 0.35,
+            "sendEnd": 0.499,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 3.862,
+            "receiveHeadersEnd": 3.924
+          },
+          "responseTime": 1792740876181.971,
+          "protocol": "http/1.1",
+          "alternateProtocolUsage": "unspecifiedReason",
+          "securityState": "secure"
+        },
+        "hasExtraInfo": true,
+        "frameId": "ACEB97722FB1F6170E9AAE1C929AE316"
+      },
+      "time": "2026-10-23T07:34:36.185Z"
+    },
+    {
+      "kind": "Network.loadingFinished",
+      "raw": {
+        "requestId": "27460.11",
+        "timestamp": 501747.498889,
+        "encodedDataLength": 51294
+      },
+      "time": "2026-10-23T07:34:36.185Z"
+    },
+    {
+      "kind": "Network.requestWillBeSent",
+      "raw": {
+        "requestId": "27460.12",
+        "loaderId": "5A2B8234BDA3481094BB57D6FB4AEBD3",
+        "documentURL": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+        "request": {
+          "url": "http://127.0.0.1:8854/holiday-lab/assets/ui/play.png",
+          "method": "GET",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "Referer": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"151\", \"Not=A?Brand\";v=\"99\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "mixedContentType": "none",
+          "initialPriority": "High",
+          "referrerPolicy": "strict-origin-when-cross-origin",
+          "isSameSite": true
+        },
+        "timestamp": 501747.506083,
+        "wallTime": 1792740876.189846,
+        "initiator": {
+          "type": "other"
+        },
+        "redirectHasExtraInfo": false,
+        "type": "Other",
+        "frameId": "ACEB97722FB1F6170E9AAE1C929AE316",
+        "hasUserGesture": false
+      },
+      "time": "2026-10-23T07:34:36.192Z"
+    },
+    {
+      "kind": "Network.responseReceived",
+      "raw": {
+        "requestId": "27460.12",
+        "loaderId": "5A2B8234BDA3481094BB57D6FB4AEBD3",
+        "timestamp": 501747.512065,
+        "type": "Other",
+        "response": {
+          "url": "http://127.0.0.1:8854/holiday-lab/assets/ui/play.png",
+          "status": 200,
+          "statusText": "OK",
+          "headers": {
+            "Transfer-Encoding": "chunked",
+            "Cache-Control": "no-store",
+            "Keep-Alive": "timeout=5",
+            "Date": "Fri, 23 Oct 2026 07:34:36 GMT",
+            "Content-Type": "image/png",
+            "Connection": "keep-alive",
+            "X-Content-Type-Options": "nosniff"
+          },
+          "mimeType": "image/png",
+          "charset": "",
+          "connectionReused": true,
+          "connectionId": 807,
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8854,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "fromPrefetchCache": false,
+          "encodedDataLength": 214,
+          "timing": {
+            "requestTime": 501747.506571,
+            "proxyStart": -1,
+            "proxyEnd": -1,
+            "dnsStart": -1,
+            "dnsEnd": -1,
+            "connectStart": -1,
+            "connectEnd": -1,
+            "sslStart": -1,
+            "sslEnd": -1,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 0.294,
+            "sendEnd": 0.445,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 3.855,
+            "receiveHeadersEnd": 3.923
+          },
+          "responseTime": 1792740876194.126,
+          "protocol": "http/1.1",
+          "alternateProtocolUsage": "unspecifiedReason",
+          "securityState": "secure"
+        },
+        "hasExtraInfo": true,
+        "frameId": "ACEB97722FB1F6170E9AAE1C929AE316"
+      },
+      "time": "2026-10-23T07:34:36.198Z"
+    },
+    {
+      "kind": "Network.loadingFinished",
+      "raw": {
+        "requestId": "27460.12",
+        "timestamp": 501747.511225,
+        "encodedDataLength": 66397
+      },
+      "time": "2026-10-23T07:34:36.198Z"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+'use strict';
+const test=require('node:test'),assert=require('node:assert/strict'),{errors,artifact}=require('./run.cjs');
+test('all actual error channels reject, unrelated informational events remain',()=>{const bad=[{kind:'console',type:'error'},{kind:'pageerror'},{kind:'requestfailed'},{kind:'response',status:404},{kind:'Network.loadingFailed'}];assert.equal(errors([...bad,{kind:'console',type:'info'},{kind:'response',status:200}]).length,5);});
+test('result rejects incomplete captures and fabricated reset omission',()=>{const a={captures:[0,1,2].map((phase)=>({phase,controls:{angle:0,length:100,tension:phase===1?.44:0}})),resets:2,seconds:20,path:[1,2,3,4]};assert.equal(artifact(a),true);assert.throws(()=>artifact({...a,resets:1}));assert.throws(()=>artifact({...a,captures:a.captures.slice(0,2)}));assert.throws(()=>artifact({...a,captures:a.captures.map(c=>({...c,phase:0}))}));});

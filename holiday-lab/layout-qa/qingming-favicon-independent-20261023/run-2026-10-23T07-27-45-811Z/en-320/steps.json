@@ -1,0 +1,903 @@
+[
+  {
+    "action": "icon-receipt",
+    "label": "homepage",
+    "url": "http://127.0.0.1:8854/images/site-icon.png",
+    "status": 200,
+    "sha256": "356075a7feaaa023f1998b1214823c4371af8b70436427fdc7b7e282cb55efc1",
+    "bytes": 66162,
+    "contentType": "image/png"
+  },
+  {
+    "name": "01-homepage",
+    "time": "2026-10-23T07:28:56.840Z",
+    "event_length": 646,
+    "state": {
+      "url": "http://127.0.0.1:8854/?lang=en",
+      "lang": "en",
+      "viewport": {
+        "width": 320,
+        "height": 900
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "inputs": [],
+      "buttons": [
+        {
+          "id": "",
+          "text": ""
+        },
+        {
+          "id": "festival-start",
+          "text": "Play prototype"
+        }
+      ]
+    }
+  },
+  {
+    "action": "icon-receipt",
+    "label": "holiday-lab",
+    "url": "http://127.0.0.1:8854/holiday-lab/assets/ui/play.png",
+    "status": 200,
+    "sha256": "356075a7feaaa023f1998b1214823c4371af8b70436427fdc7b7e282cb55efc1",
+    "bytes": 66162,
+    "contentType": "image/png"
+  },
+  {
+    "name": "02-intro",
+    "time": "2026-10-23T07:28:57.476Z",
+    "event_length": 700,
+    "state": {
+      "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=en",
+      "lang": "en",
+      "viewport": {
+        "width": 320,
+        "height": 900
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "inputs": [],
+      "buttons": [
+        {
+          "id": "audio-toggle",
+          "text": "Sound: off"
+        },
+        {
+          "id": "intro-skip",
+          "text": "Skip introduction"
+        }
+      ]
+    }
+  },
+  {
+    "action": "click",
+    "selector": "#intro-skip",
+    "time": "2026-10-23T07:28:57.477Z"
+  },
+  {
+    "name": "03-menu",
+    "time": "2026-10-23T07:28:57.609Z",
+    "event_length": 718,
+    "state": {
+      "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=en",
+      "lang": "en",
+      "viewport": {
+        "width": 320,
+        "height": 900
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "inputs": [],
+      "buttons": [
+        {
+          "id": "audio-toggle",
+          "text": "Sound: off"
+        },
+        {
+          "id": "start-game",
+          "text": "Start creating"
+        },
+        {
+          "id": "show-help",
+          "text": "How to play"
+        },
+        {
+          "id": "show-settings",
+          "text": "Settings"
+        },
+        {
+          "id": "watch-intro",
+          "text": "Watch introduction"
+        },
+        {
+          "id": "exit-game",
+          "text": "All prototypes"
+        }
+      ]
+    }
+  },
+  {
+    "action": "click",
+    "selector": "#start-game",
+    "time": "2026-10-23T07:28:57.610Z"
+  },
+  {
+    "name": "04-game",
+    "time": "2026-10-23T07:28:57.824Z",
+    "event_length": 760,
+    "state": {
+      "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=en",
+      "lang": "en",
+      "viewport": {
+        "width": 320,
+        "height": 900
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "progress": "0 / 3",
+      "status": "Look at the cloud window, then launch.",
+      "hint": "Adjust line and tension to guide a kite through spring winds.",
+      "inputs": [
+        {
+          "id": "kite-angle",
+          "type": "range",
+          "value": "0"
+        },
+        {
+          "id": "kite-length",
+          "type": "range",
+          "value": "60"
+        },
+        {
+          "id": "kite-tension",
+          "type": "range",
+          "value": "0.8"
+        }
+      ],
+      "buttons": [
+        {
+          "id": "audio-toggle",
+          "text": "Sound: off"
+        },
+        {
+          "id": "pause-game",
+          "text": "Pause"
+        },
+        {
+          "id": "leave-game",
+          "text": "All prototypes"
+        },
+        {
+          "id": "kite-angle-minus",
+          "text": "−"
+        },
+        {
+          "id": "kite-angle-plus",
+          "text": "+"
+        },
+        {
+          "id": "kite-length-minus",
+          "text": "−"
+        },
+        {
+          "id": "kite-length-plus",
+          "text": "+"
+        },
+        {
+          "id": "kite-tension-minus",
+          "text": "−"
+        },
+        {
+          "id": "kite-tension-plus",
+          "text": "+"
+        },
+        {
+          "id": "kite-play",
+          "text": "Fly / continue this wind"
+        },
+        {
+          "id": "kite-retry",
+          "text": "Retry this wind"
+        }
+      ]
+    }
+  },
+  {
+    "action": "range-fill",
+    "selector": "#kite-angle",
+    "value": 0,
+    "time": "2026-10-23T07:28:57.829Z"
+  },
+  {
+    "action": "range-fill",
+    "selector": "#kite-length",
+    "value": 150,
+    "time": "2026-10-23T07:28:57.833Z"
+  },
+  {
+    "action": "range-fill",
+    "selector": "#kite-tension",
+    "value": 1,
+    "time": "2026-10-23T07:28:57.840Z"
+  },
+  {
+    "action": "click",
+    "selector": "#kite-play",
+    "time": "2026-10-23T07:28:57.840Z"
+  },
+  {
+    "name": "05-missed",
+    "time": "2026-10-23T07:28:59.531Z",
+    "event_length": 760,
+    "state": {
+      "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=en",
+      "lang": "en",
+      "viewport": {
+        "width": 320,
+        "height": 900
+      },
+      "scroll": {
+        "x": 0,
+        "y": 745
+      },
+      "progress": "0 / 3",
+      "status": "The kite missed the window and returned to this wind’s start.",
+      "hint": "Adjust line and tension to guide a kite through spring winds.",
+      "inputs": [
+        {
+          "id": "kite-angle",
+          "type": "range",
+          "value": "0"
+        },
+        {
+          "id": "kite-length",
+          "type": "range",
+          "value": "150"
+        },
+        {
+          "id": "kite-tension",
+          "type": "range",
+          "value": "1"
+        }
+      ],
+      "buttons": [
+        {
+          "id": "audio-toggle",
+          "text": "Sound: off"
+        },
+        {
+          "id": "pause-game",
+          "text": "Pause"
+        },
+        {
+          "id": "leave-game",
+          "text": "All prototypes"
+        },
+        {
+          "id": "kite-angle-minus",
+          "text": "−"
+        },
+        {
+          "id": "kite-angle-plus",
+          "text": "+"
+        },
+        {
+          "id": "kite-length-minus",
+          "text": "−"
+        },
+        {
+          "id": "kite-length-plus",
+          "text": "+"
+        },
+        {
+          "id": "kite-tension-minus",
+          "text": "−"
+        },
+        {
+          "id": "kite-tension-plus",
+          "text": "+"
+        },
+        {
+          "id": "kite-play",
+          "text": "Fly / continue this wind"
+        },
+        {
+          "id": "kite-retry",
+          "text": "Retry this wind"
+        }
+      ]
+    }
+  },
+  {
+    "action": "click",
+    "selector": "#kite-retry",
+    "time": "2026-10-23T07:28:59.532Z"
+  },
+  {
+    "name": "06-retry",
+    "time": "2026-10-23T07:28:59.673Z",
+    "event_length": 760,
+    "state": {
+      "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=en",
+      "lang": "en",
+      "viewport": {
+        "width": 320,
+        "height": 900
+      },
+      "scroll": {
+        "x": 0,
+        "y": 81
+      },
+      "progress": "0 / 3",
+      "status": "The kite missed the window and returned to this wind’s start.",
+      "hint": "Earlier frames are kept. Adjust the line and retry this wind.",
+      "inputs": [
+        {
+          "id": "kite-angle",
+          "type": "range",
+          "value": "0"
+        },
+        {
+          "id": "kite-length",
+          "type": "range",
+          "value": "150"
+        },
+        {
+          "id": "kite-tension",
+          "type": "range",
+          "value": "1"
+        }
+      ],
+      "buttons": [
+        {
+          "id": "audio-toggle",
+          "text": "Sound: off"
+        },
+        {
+          "id": "pause-game",
+          "text": "Pause"
+        },
+        {
+          "id": "leave-game",
+          "text": "All prototypes"
+        },
+        {
+          "id": "kite-angle-minus",
+          "text": "−"
+        },
+        {
+          "id": "kite-angle-plus",
+          "text": "+"
+        },
+        {
+          "id": "kite-length-minus",
+          "text": "−"
+        },
+        {
+          "id": "kite-length-plus",
+          "text": "+"
+        },
+        {
+          "id": "kite-tension-minus",
+          "text": "−"
+        },
+        {
+          "id": "kite-tension-plus",
+          "text": "+"
+        },
+        {
+          "id": "kite-play",
+          "text": "Fly / continue this wind"
+        },
+        {
+          "id": "kite-retry",
+          "text": "Retry this wind"
+        }
+      ]
+    }
+  },
+  {
+    "action": "range-fill",
+    "selector": "#kite-angle",
+    "value": 0,
+    "time": "2026-10-23T07:28:59.677Z"
+  },
+  {
+    "action": "range-fill",
+    "selector": "#kite-length",
+    "value": 100,
+    "time": "2026-10-23T07:28:59.682Z"
+  },
+  {
+    "action": "range-fill",
+    "selector": "#kite-tension",
+    "value": 0,
+    "time": "2026-10-23T07:28:59.688Z"
+  },
+  {
+    "action": "click",
+    "selector": "#kite-play",
+    "time": "2026-10-23T07:28:59.688Z"
+  },
+  {
+    "name": "07-captured-0",
+    "time": "2026-10-23T07:29:04.597Z",
+    "event_length": 760,
+    "state": {
+      "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=en",
+      "lang": "en",
+      "viewport": {
+        "width": 320,
+        "height": 900
+      },
+      "scroll": {
+        "x": 0,
+        "y": 615
+      },
+      "progress": "1 / 3",
+      "status": "One frame is saved. The next wind has changed.",
+      "hint": "Watch the new window height. Loosen or tighten the line, then continue.",
+      "inputs": [
+        {
+          "id": "kite-angle",
+          "type": "range",
+          "value": "0"
+        },
+        {
+          "id": "kite-length",
+          "type": "range",
+          "value": "100"
+        },
+        {
+          "id": "kite-tension",
+          "type": "range",
+          "value": "0"
+        }
+      ],
+      "buttons": [
+        {
+          "id": "audio-toggle",
+          "text": "Sound: off"
+        },
+        {
+          "id": "pause-game",
+          "text": "Pause"
+        },
+        {
+          "id": "leave-game",
+          "text": "All prototypes"
+        },
+        {
+          "id": "kite-angle-minus",
+          "text": "−"
+        },
+        {
+          "id": "kite-angle-plus",
+          "text": "+"
+        },
+        {
+          "id": "kite-length-minus",
+          "text": "−"
+        },
+        {
+          "id": "kite-length-plus",
+          "text": "+"
+        },
+        {
+          "id": "kite-tension-minus",
+          "text": "−"
+        },
+        {
+          "id": "kite-tension-plus",
+          "text": "+"
+        },
+        {
+          "id": "kite-play",
+          "text": "Fly / continue this wind"
+        },
+        {
+          "id": "kite-retry",
+          "text": "Retry this wind"
+        }
+      ]
+    }
+  },
+  {
+    "action": "range-fill",
+    "selector": "#kite-angle",
+    "value": 0,
+    "time": "2026-10-23T07:29:04.606Z"
+  },
+  {
+    "action": "range-fill",
+    "selector": "#kite-length",
+    "value": 100,
+    "time": "2026-10-23T07:29:04.614Z"
+  },
+  {
+    "action": "range-fill",
+    "selector": "#kite-tension",
+    "value": 0.44,
+    "time": "2026-10-23T07:29:04.622Z"
+  },
+  {
+    "action": "click",
+    "selector": "#kite-play",
+    "time": "2026-10-23T07:29:04.622Z"
+  },
+  {
+    "name": "07-captured-1",
+    "time": "2026-10-23T07:29:12.512Z",
+    "event_length": 760,
+    "state": {
+      "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=en",
+      "lang": "en",
+      "viewport": {
+        "width": 320,
+        "height": 900
+      },
+      "scroll": {
+        "x": 0,
+        "y": 615
+      },
+      "progress": "2 / 3",
+      "status": "One frame is saved. The next wind has changed.",
+      "hint": "Watch the new window height. Loosen or tighten the line, then continue.",
+      "inputs": [
+        {
+          "id": "kite-angle",
+          "type": "range",
+          "value": "0"
+        },
+        {
+          "id": "kite-length",
+          "type": "range",
+          "value": "100"
+        },
+        {
+          "id": "kite-tension",
+          "type": "range",
+          "value": "0.44"
+        }
+      ],
+      "buttons": [
+        {
+          "id": "audio-toggle",
+          "text": "Sound: off"
+        },
+        {
+          "id": "pause-game",
+          "text": "Pause"
+        },
+        {
+          "id": "leave-game",
+          "text": "All prototypes"
+        },
+        {
+          "id": "kite-angle-minus",
+          "text": "−"
+        },
+        {
+          "id": "kite-angle-plus",
+          "text": "+"
+        },
+        {
+          "id": "kite-length-minus",
+          "text": "−"
+        },
+        {
+          "id": "kite-length-plus",
+          "text": "+"
+        },
+        {
+          "id": "kite-tension-minus",
+          "text": "−"
+        },
+        {
+          "id": "kite-tension-plus",
+          "text": "+"
+        },
+        {
+          "id": "kite-play",
+          "text": "Fly / continue this wind"
+        },
+        {
+          "id": "kite-retry",
+          "text": "Retry this wind"
+        }
+      ]
+    }
+  },
+  {
+    "action": "range-fill",
+    "selector": "#kite-angle",
+    "value": 0,
+    "time": "2026-10-23T07:29:12.522Z"
+  },
+  {
+    "action": "range-fill",
+    "selector": "#kite-length",
+    "value": 100,
+    "time": "2026-10-23T07:29:12.530Z"
+  },
+  {
+    "action": "range-fill",
+    "selector": "#kite-tension",
+    "value": 0,
+    "time": "2026-10-23T07:29:12.537Z"
+  },
+  {
+    "action": "click",
+    "selector": "#kite-play",
+    "time": "2026-10-23T07:29:12.537Z"
+  },
+  {
+    "name": "08-result",
+    "time": "2026-10-23T07:29:21.172Z",
+    "event_length": 760,
+    "state": {
+      "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=en",
+      "lang": "en",
+      "viewport": {
+        "width": 320,
+        "height": 900
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "inputs": [],
+      "buttons": [
+        {
+          "id": "audio-toggle",
+          "text": "Sound: off"
+        },
+        {
+          "id": "play-result",
+          "text": "Play my creation"
+        },
+        {
+          "id": "retry-game",
+          "text": "Create again"
+        },
+        {
+          "id": "result-exit",
+          "text": "All prototypes"
+        }
+      ]
+    }
+  },
+  {
+    "action": "click",
+    "selector": "#play-result",
+    "time": "2026-10-23T07:29:21.174Z"
+  },
+  {
+    "name": "09-replay-0",
+    "time": "2026-10-23T07:29:21.344Z",
+    "event_length": 760,
+    "state": {
+      "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=en",
+      "lang": "en",
+      "viewport": {
+        "width": 320,
+        "height": 900
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "shot": "0",
+      "caption": "Wind 1 · successful flight (time-lapse)",
+      "inputs": [],
+      "buttons": [
+        {
+          "id": "audio-toggle",
+          "text": "Sound: off"
+        },
+        {
+          "id": "replay-back",
+          "text": "Close"
+        }
+      ]
+    }
+  },
+  {
+    "name": "09-replay-1",
+    "time": "2026-10-23T07:29:24.042Z",
+    "event_length": 766,
+    "state": {
+      "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=en",
+      "lang": "en",
+      "viewport": {
+        "width": 320,
+        "height": 900
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "shot": "1",
+      "caption": "Wind 2 · successful flight (time-lapse)",
+      "inputs": [],
+      "buttons": [
+        {
+          "id": "audio-toggle",
+          "text": "Sound: off"
+        },
+        {
+          "id": "replay-back",
+          "text": "Close"
+        }
+      ]
+    }
+  },
+  {
+    "name": "09-replay-2",
+    "time": "2026-10-23T07:29:26.760Z",
+    "event_length": 772,
+    "state": {
+      "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=en",
+      "lang": "en",
+      "viewport": {
+        "width": 320,
+        "height": 900
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "shot": "2",
+      "caption": "Wind 3 · successful flight (time-lapse)",
+      "inputs": [],
+      "buttons": [
+        {
+          "id": "audio-toggle",
+          "text": "Sound: off"
+        },
+        {
+          "id": "replay-back",
+          "text": "Close"
+        }
+      ]
+    }
+  },
+  {
+    "action": "click",
+    "selector": "#replay-back",
+    "time": "2026-10-23T07:29:26.761Z"
+  },
+  {
+    "name": "10-replay-return",
+    "time": "2026-10-23T07:29:26.908Z",
+    "event_length": 772,
+    "state": {
+      "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=en",
+      "lang": "en",
+      "viewport": {
+        "width": 320,
+        "height": 900
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "inputs": [],
+      "buttons": [
+        {
+          "id": "audio-toggle",
+          "text": "Sound: off"
+        },
+        {
+          "id": "play-result",
+          "text": "Play my creation"
+        },
+        {
+          "id": "retry-game",
+          "text": "Create again"
+        },
+        {
+          "id": "result-exit",
+          "text": "All prototypes"
+        }
+      ]
+    }
+  },
+  {
+    "action": "click",
+    "selector": "#result-exit",
+    "time": "2026-10-23T07:29:26.909Z"
+  },
+  {
+    "name": "11-archive",
+    "time": "2026-10-23T07:29:27.141Z",
+    "event_length": 859,
+    "state": {
+      "url": "http://127.0.0.1:8854/holiday-lab/?lang=en",
+      "lang": "en",
+      "viewport": {
+        "width": 320,
+        "height": 900
+      },
+      "scroll": {
+        "x": 0,
+        "y": 6282
+      },
+      "inputs": [],
+      "buttons": [
+        {
+          "id": "audio-toggle",
+          "text": "Sound: off"
+        },
+        {
+          "id": "open-new-year",
+          "text": "Start creating"
+        },
+        {
+          "id": "open-lunar-new-year",
+          "text": "Start creating"
+        },
+        {
+          "id": "open-lantern",
+          "text": "Start creating"
+        },
+        {
+          "id": "open-children",
+          "text": "Start creating"
+        },
+        {
+          "id": "open-dragon-boat",
+          "text": "Start creating"
+        },
+        {
+          "id": "open-mid-autumn",
+          "text": "Start creating"
+        },
+        {
+          "id": "open-teachers",
+          "text": "Start creating"
+        },
+        {
+          "id": "open-national-day",
+          "text": "Start creating"
+        },
+        {
+          "id": "open-semester",
+          "text": "Start creating"
+        },
+        {
+          "id": "open-exhibition",
+          "text": "Start creating"
+        },
+        {
+          "id": "open-peace-memory",
+          "text": "Start creating"
+        },
+        {
+          "id": "open-qingming",
+          "text": "Start creating"
+        },
+        {
+          "id": "open-labor",
+          "text": "Start creating"
+        },
+        {
+          "id": "open-retrocession",
+          "text": "Start creating"
+        },
+        {
+          "id": "open-constitution",
+          "text": "Start creating"
+        }
+      ]
+    }
+  }
+]

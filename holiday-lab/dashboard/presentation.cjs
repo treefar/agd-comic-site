@@ -1,0 +1,3 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path');
+module.exports=function present(file){let html=fs.readFileSync(file,'utf8');const css=fs.readFileSync(path.join(__dirname,'presentation.css'),'utf8'),js=fs.readFileSync(path.join(__dirname,'presentation.js'),'utf8');html=html.replace('</head>','<style id="project-presentation">'+css+'</style>\n</head>').replace('<section id="summary"','<section id="project-overview" aria-label="本機進度總覽"></section>\n<section id="summary"').replace('</body>','<script id="project-presentation-script">'+js+'</script>\n</body>');fs.writeFileSync(file,html,'utf8');};

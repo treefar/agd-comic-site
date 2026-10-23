@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "scope": "favicon404-and-qingming-core-flow-only",
+  "cwd": "C:/agywork/agd-holiday-prototypes",
+  "command": "node holiday-lab/layout-qa/qingming-favicon-independent-20261023/verify.cjs holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z holiday-lab/layout-qa/qingming-favicon-independent-20261023/icon-full-chrome-2026-10-23T07-34-30-256Z",
+  "exit_code": 0,
+  "result": {
+    "pass": true,
+    "contexts": 6,
+    "explicit_icon_http_receipts": 12,
+    "automatic_icon_fetch_proven_by_core_run": false,
+    "supplemental_automatic_icon_contexts": 2,
+    "port8856_favicon_png": true,
+    "unknown_resource_404": true,
+    "screenshots": 84,
+    "response_bodies": 424,
+    "build_files": 357,
+    "source_files_http_before_after": 9,
+    "coreflow_errors": 0,
+    "full_project_approved": false,
+    "canonical_eligible": false
+  },
+  "stdout": "verify-final-output.txt",
+  "core_run": "run-2026-10-23T07-27-45-811Z/result.json",
+  "icon_supplement": "icon-full-chrome-2026-10-23T07-34-30-256Z/result.json",
+  "preserved_red": "verify-output.txt",
+  "red_meaning": "Initial offline verifier incorrectly required automatic tab-icon network requests from the default headless core run. The original RED is preserved; core run proves 12 explicit real HTTP icon receipts, supplemental explicit full-Chrome headless probe proves 2 automatic icon contexts.",
+  "tests": {"command": "node --test holiday-lab/layout-qa/qingming-favicon-independent-20261023/helpers.test.cjs", "exit_code": 0, "passed": 2, "stdout": "helpers-test-output.txt"},
+  "limitations": [
+    "Not a full UI/layout/2076/canonical gate; no old Qingming v3 classification approval.",
+    "Core run runtime.json executable field is chromium.executablePath() API default, not independently observed launched process path. Supplemental explicitly passes executablePath and records its SHA.",
+    "Extra icon-headed diagnostic started before parent's no-headed instruction arrived; it completed and browser closed. Its incomplete automatic-icon result is retained and excluded from acceptance. No further headed launch.",
+    "Port8856 independent proof covers favicon PNG and unknown-resource real404 only; the six core flows used immutable new build served on8854."
+  ]
+}

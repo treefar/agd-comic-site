@@ -1,0 +1,903 @@
+[
+  {
+    "action": "icon-receipt",
+    "label": "homepage",
+    "url": "http://127.0.0.1:8854/images/site-icon.png",
+    "status": 200,
+    "sha256": "356075a7feaaa023f1998b1214823c4371af8b70436427fdc7b7e282cb55efc1",
+    "bytes": 66162,
+    "contentType": "image/png"
+  },
+  {
+    "name": "01-homepage",
+    "time": "2026-10-23T07:28:22.139Z",
+    "event_length": 580,
+    "state": {
+      "url": "http://127.0.0.1:8854/?lang=zh",
+      "lang": "zh-Hant",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "inputs": [],
+      "buttons": [
+        {
+          "id": "",
+          "text": ""
+        },
+        {
+          "id": "festival-start",
+          "text": "開始試玩"
+        }
+      ]
+    }
+  },
+  {
+    "action": "icon-receipt",
+    "label": "holiday-lab",
+    "url": "http://127.0.0.1:8854/holiday-lab/assets/ui/play.png",
+    "status": 200,
+    "sha256": "356075a7feaaa023f1998b1214823c4371af8b70436427fdc7b7e282cb55efc1",
+    "bytes": 66162,
+    "contentType": "image/png"
+  },
+  {
+    "name": "02-intro",
+    "time": "2026-10-23T07:28:23.159Z",
+    "event_length": 634,
+    "state": {
+      "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+      "lang": "zh-Hant",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "inputs": [],
+      "buttons": [
+        {
+          "id": "audio-toggle",
+          "text": "聲音：關"
+        },
+        {
+          "id": "intro-skip",
+          "text": "跳過開場"
+        }
+      ]
+    }
+  },
+  {
+    "action": "click",
+    "selector": "#intro-skip",
+    "time": "2026-10-23T07:28:23.160Z"
+  },
+  {
+    "name": "03-menu",
+    "time": "2026-10-23T07:28:23.532Z",
+    "event_length": 652,
+    "state": {
+      "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+      "lang": "zh-Hant",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "inputs": [],
+      "buttons": [
+        {
+          "id": "audio-toggle",
+          "text": "聲音：關"
+        },
+        {
+          "id": "start-game",
+          "text": "開始創作"
+        },
+        {
+          "id": "show-help",
+          "text": "操作說明"
+        },
+        {
+          "id": "show-settings",
+          "text": "設定"
+        },
+        {
+          "id": "watch-intro",
+          "text": "再看開場"
+        },
+        {
+          "id": "exit-game",
+          "text": "回作品列表"
+        }
+      ]
+    }
+  },
+  {
+    "action": "click",
+    "selector": "#start-game",
+    "time": "2026-10-23T07:28:23.533Z"
+  },
+  {
+    "name": "04-game",
+    "time": "2026-10-23T07:28:23.871Z",
+    "event_length": 694,
+    "state": {
+      "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+      "lang": "zh-Hant",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "progress": "0 / 3",
+      "status": "先觀察雲窗，再放飛。",
+      "hint": "調整牽線與張力，讓紙鳶借春風穿過取景窗。",
+      "inputs": [
+        {
+          "id": "kite-angle",
+          "type": "range",
+          "value": "0"
+        },
+        {
+          "id": "kite-length",
+          "type": "range",
+          "value": "60"
+        },
+        {
+          "id": "kite-tension",
+          "type": "range",
+          "value": "0.8"
+        }
+      ],
+      "buttons": [
+        {
+          "id": "audio-toggle",
+          "text": "聲音：關"
+        },
+        {
+          "id": "pause-game",
+          "text": "暫停"
+        },
+        {
+          "id": "leave-game",
+          "text": "回作品列表"
+        },
+        {
+          "id": "kite-angle-minus",
+          "text": "減"
+        },
+        {
+          "id": "kite-angle-plus",
+          "text": "加"
+        },
+        {
+          "id": "kite-length-minus",
+          "text": "減"
+        },
+        {
+          "id": "kite-length-plus",
+          "text": "加"
+        },
+        {
+          "id": "kite-tension-minus",
+          "text": "減"
+        },
+        {
+          "id": "kite-tension-plus",
+          "text": "加"
+        },
+        {
+          "id": "kite-play",
+          "text": "放飛／繼續這段風"
+        },
+        {
+          "id": "kite-retry",
+          "text": "重試這段風"
+        }
+      ]
+    }
+  },
+  {
+    "action": "range-fill",
+    "selector": "#kite-angle",
+    "value": 0,
+    "time": "2026-10-23T07:28:23.884Z"
+  },
+  {
+    "action": "range-fill",
+    "selector": "#kite-length",
+    "value": 150,
+    "time": "2026-10-23T07:28:23.891Z"
+  },
+  {
+    "action": "range-fill",
+    "selector": "#kite-tension",
+    "value": 1,
+    "time": "2026-10-23T07:28:23.899Z"
+  },
+  {
+    "action": "click",
+    "selector": "#kite-play",
+    "time": "2026-10-23T07:28:23.899Z"
+  },
+  {
+    "name": "05-missed",
+    "time": "2026-10-23T07:28:25.774Z",
+    "event_length": 694,
+    "state": {
+      "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+      "lang": "zh-Hant",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scroll": {
+        "x": 0,
+        "y": 166
+      },
+      "progress": "0 / 3",
+      "status": "這次沒進雲窗，已回到本段起點。",
+      "hint": "調整牽線與張力，讓紙鳶借春風穿過取景窗。",
+      "inputs": [
+        {
+          "id": "kite-angle",
+          "type": "range",
+          "value": "0"
+        },
+        {
+          "id": "kite-length",
+          "type": "range",
+          "value": "150"
+        },
+        {
+          "id": "kite-tension",
+          "type": "range",
+          "value": "1"
+        }
+      ],
+      "buttons": [
+        {
+          "id": "audio-toggle",
+          "text": "聲音：關"
+        },
+        {
+          "id": "pause-game",
+          "text": "暫停"
+        },
+        {
+          "id": "leave-game",
+          "text": "回作品列表"
+        },
+        {
+          "id": "kite-angle-minus",
+          "text": "減"
+        },
+        {
+          "id": "kite-angle-plus",
+          "text": "加"
+        },
+        {
+          "id": "kite-length-minus",
+          "text": "減"
+        },
+        {
+          "id": "kite-length-plus",
+          "text": "加"
+        },
+        {
+          "id": "kite-tension-minus",
+          "text": "減"
+        },
+        {
+          "id": "kite-tension-plus",
+          "text": "加"
+        },
+        {
+          "id": "kite-play",
+          "text": "放飛／繼續這段風"
+        },
+        {
+          "id": "kite-retry",
+          "text": "重試這段風"
+        }
+      ]
+    }
+  },
+  {
+    "action": "click",
+    "selector": "#kite-retry",
+    "time": "2026-10-23T07:28:25.775Z"
+  },
+  {
+    "name": "06-retry",
+    "time": "2026-10-23T07:28:26.137Z",
+    "event_length": 694,
+    "state": {
+      "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+      "lang": "zh-Hant",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scroll": {
+        "x": 0,
+        "y": 166
+      },
+      "progress": "0 / 3",
+      "status": "這次沒進雲窗，已回到本段起點。",
+      "hint": "已保留前面的紀錄。調整牽線，再放飛這一段。",
+      "inputs": [
+        {
+          "id": "kite-angle",
+          "type": "range",
+          "value": "0"
+        },
+        {
+          "id": "kite-length",
+          "type": "range",
+          "value": "150"
+        },
+        {
+          "id": "kite-tension",
+          "type": "range",
+          "value": "1"
+        }
+      ],
+      "buttons": [
+        {
+          "id": "audio-toggle",
+          "text": "聲音：關"
+        },
+        {
+          "id": "pause-game",
+          "text": "暫停"
+        },
+        {
+          "id": "leave-game",
+          "text": "回作品列表"
+        },
+        {
+          "id": "kite-angle-minus",
+          "text": "減"
+        },
+        {
+          "id": "kite-angle-plus",
+          "text": "加"
+        },
+        {
+          "id": "kite-length-minus",
+          "text": "減"
+        },
+        {
+          "id": "kite-length-plus",
+          "text": "加"
+        },
+        {
+          "id": "kite-tension-minus",
+          "text": "減"
+        },
+        {
+          "id": "kite-tension-plus",
+          "text": "加"
+        },
+        {
+          "id": "kite-play",
+          "text": "放飛／繼續這段風"
+        },
+        {
+          "id": "kite-retry",
+          "text": "重試這段風"
+        }
+      ]
+    }
+  },
+  {
+    "action": "range-fill",
+    "selector": "#kite-angle",
+    "value": 0,
+    "time": "2026-10-23T07:28:26.151Z"
+  },
+  {
+    "action": "range-fill",
+    "selector": "#kite-length",
+    "value": 100,
+    "time": "2026-10-23T07:28:26.166Z"
+  },
+  {
+    "action": "range-fill",
+    "selector": "#kite-tension",
+    "value": 0,
+    "time": "2026-10-23T07:28:26.178Z"
+  },
+  {
+    "action": "click",
+    "selector": "#kite-play",
+    "time": "2026-10-23T07:28:26.178Z"
+  },
+  {
+    "name": "07-captured-0",
+    "time": "2026-10-23T07:28:31.348Z",
+    "event_length": 694,
+    "state": {
+      "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+      "lang": "zh-Hant",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scroll": {
+        "x": 0,
+        "y": 166
+      },
+      "progress": "1 / 3",
+      "status": "收下了一格，下一段風換方向了。",
+      "hint": "看新的雲窗高度，鬆線或收緊後繼續。",
+      "inputs": [
+        {
+          "id": "kite-angle",
+          "type": "range",
+          "value": "0"
+        },
+        {
+          "id": "kite-length",
+          "type": "range",
+          "value": "100"
+        },
+        {
+          "id": "kite-tension",
+          "type": "range",
+          "value": "0"
+        }
+      ],
+      "buttons": [
+        {
+          "id": "audio-toggle",
+          "text": "聲音：關"
+        },
+        {
+          "id": "pause-game",
+          "text": "暫停"
+        },
+        {
+          "id": "leave-game",
+          "text": "回作品列表"
+        },
+        {
+          "id": "kite-angle-minus",
+          "text": "減"
+        },
+        {
+          "id": "kite-angle-plus",
+          "text": "加"
+        },
+        {
+          "id": "kite-length-minus",
+          "text": "減"
+        },
+        {
+          "id": "kite-length-plus",
+          "text": "加"
+        },
+        {
+          "id": "kite-tension-minus",
+          "text": "減"
+        },
+        {
+          "id": "kite-tension-plus",
+          "text": "加"
+        },
+        {
+          "id": "kite-play",
+          "text": "放飛／繼續這段風"
+        },
+        {
+          "id": "kite-retry",
+          "text": "重試這段風"
+        }
+      ]
+    }
+  },
+  {
+    "action": "range-fill",
+    "selector": "#kite-angle",
+    "value": 0,
+    "time": "2026-10-23T07:28:31.361Z"
+  },
+  {
+    "action": "range-fill",
+    "selector": "#kite-length",
+    "value": 100,
+    "time": "2026-10-23T07:28:31.371Z"
+  },
+  {
+    "action": "range-fill",
+    "selector": "#kite-tension",
+    "value": 0.44,
+    "time": "2026-10-23T07:28:31.382Z"
+  },
+  {
+    "action": "click",
+    "selector": "#kite-play",
+    "time": "2026-10-23T07:28:31.382Z"
+  },
+  {
+    "name": "07-captured-1",
+    "time": "2026-10-23T07:28:39.475Z",
+    "event_length": 694,
+    "state": {
+      "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+      "lang": "zh-Hant",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scroll": {
+        "x": 0,
+        "y": 166
+      },
+      "progress": "2 / 3",
+      "status": "收下了一格，下一段風換方向了。",
+      "hint": "看新的雲窗高度，鬆線或收緊後繼續。",
+      "inputs": [
+        {
+          "id": "kite-angle",
+          "type": "range",
+          "value": "0"
+        },
+        {
+          "id": "kite-length",
+          "type": "range",
+          "value": "100"
+        },
+        {
+          "id": "kite-tension",
+          "type": "range",
+          "value": "0.44"
+        }
+      ],
+      "buttons": [
+        {
+          "id": "audio-toggle",
+          "text": "聲音：關"
+        },
+        {
+          "id": "pause-game",
+          "text": "暫停"
+        },
+        {
+          "id": "leave-game",
+          "text": "回作品列表"
+        },
+        {
+          "id": "kite-angle-minus",
+          "text": "減"
+        },
+        {
+          "id": "kite-angle-plus",
+          "text": "加"
+        },
+        {
+          "id": "kite-length-minus",
+          "text": "減"
+        },
+        {
+          "id": "kite-length-plus",
+          "text": "加"
+        },
+        {
+          "id": "kite-tension-minus",
+          "text": "減"
+        },
+        {
+          "id": "kite-tension-plus",
+          "text": "加"
+        },
+        {
+          "id": "kite-play",
+          "text": "放飛／繼續這段風"
+        },
+        {
+          "id": "kite-retry",
+          "text": "重試這段風"
+        }
+      ]
+    }
+  },
+  {
+    "action": "range-fill",
+    "selector": "#kite-angle",
+    "value": 0,
+    "time": "2026-10-23T07:28:39.489Z"
+  },
+  {
+    "action": "range-fill",
+    "selector": "#kite-length",
+    "value": 100,
+    "time": "2026-10-23T07:28:39.500Z"
+  },
+  {
+    "action": "range-fill",
+    "selector": "#kite-tension",
+    "value": 0,
+    "time": "2026-10-23T07:28:39.512Z"
+  },
+  {
+    "action": "click",
+    "selector": "#kite-play",
+    "time": "2026-10-23T07:28:39.512Z"
+  },
+  {
+    "name": "08-result",
+    "time": "2026-10-23T07:28:48.155Z",
+    "event_length": 694,
+    "state": {
+      "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+      "lang": "zh-Hant",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "inputs": [],
+      "buttons": [
+        {
+          "id": "audio-toggle",
+          "text": "聲音：關"
+        },
+        {
+          "id": "play-result",
+          "text": "播放我的作品"
+        },
+        {
+          "id": "retry-game",
+          "text": "重新創作"
+        },
+        {
+          "id": "result-exit",
+          "text": "回作品列表"
+        }
+      ]
+    }
+  },
+  {
+    "action": "click",
+    "selector": "#play-result",
+    "time": "2026-10-23T07:28:48.155Z"
+  },
+  {
+    "name": "09-replay-0",
+    "time": "2026-10-23T07:28:48.506Z",
+    "event_length": 694,
+    "state": {
+      "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+      "lang": "zh-Hant",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "shot": "0",
+      "caption": "春風第1段・成功飛行軌跡（縮時）",
+      "inputs": [],
+      "buttons": [
+        {
+          "id": "audio-toggle",
+          "text": "聲音：關"
+        },
+        {
+          "id": "replay-back",
+          "text": "關閉"
+        }
+      ]
+    }
+  },
+  {
+    "name": "09-replay-1",
+    "time": "2026-10-23T07:28:51.317Z",
+    "event_length": 700,
+    "state": {
+      "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+      "lang": "zh-Hant",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "shot": "1",
+      "caption": "春風第2段・成功飛行軌跡（縮時）",
+      "inputs": [],
+      "buttons": [
+        {
+          "id": "audio-toggle",
+          "text": "聲音：關"
+        },
+        {
+          "id": "replay-back",
+          "text": "關閉"
+        }
+      ]
+    }
+  },
+  {
+    "name": "09-replay-2",
+    "time": "2026-10-23T07:28:53.958Z",
+    "event_length": 706,
+    "state": {
+      "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+      "lang": "zh-Hant",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "shot": "2",
+      "caption": "春風第3段・成功飛行軌跡（縮時）",
+      "inputs": [],
+      "buttons": [
+        {
+          "id": "audio-toggle",
+          "text": "聲音：關"
+        },
+        {
+          "id": "replay-back",
+          "text": "關閉"
+        }
+      ]
+    }
+  },
+  {
+    "action": "click",
+    "selector": "#replay-back",
+    "time": "2026-10-23T07:28:53.959Z"
+  },
+  {
+    "name": "10-replay-return",
+    "time": "2026-10-23T07:28:54.118Z",
+    "event_length": 706,
+    "state": {
+      "url": "http://127.0.0.1:8854/holiday-lab/?game=qingming&lang=zh",
+      "lang": "zh-Hant",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "inputs": [],
+      "buttons": [
+        {
+          "id": "audio-toggle",
+          "text": "聲音：關"
+        },
+        {
+          "id": "play-result",
+          "text": "播放我的作品"
+        },
+        {
+          "id": "retry-game",
+          "text": "重新創作"
+        },
+        {
+          "id": "result-exit",
+          "text": "回作品列表"
+        }
+      ]
+    }
+  },
+  {
+    "action": "click",
+    "selector": "#result-exit",
+    "time": "2026-10-23T07:28:54.118Z"
+  },
+  {
+    "name": "11-archive",
+    "time": "2026-10-23T07:28:54.490Z",
+    "event_length": 796,
+    "state": {
+      "url": "http://127.0.0.1:8854/holiday-lab/?lang=zh",
+      "lang": "zh-Hant",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scroll": {
+        "x": 0,
+        "y": 1701
+      },
+      "inputs": [],
+      "buttons": [
+        {
+          "id": "audio-toggle",
+          "text": "聲音：關"
+        },
+        {
+          "id": "open-new-year",
+          "text": "開始創作"
+        },
+        {
+          "id": "open-lunar-new-year",
+          "text": "開始創作"
+        },
+        {
+          "id": "open-lantern",
+          "text": "開始創作"
+        },
+        {
+          "id": "open-children",
+          "text": "開始創作"
+        },
+        {
+          "id": "open-dragon-boat",
+          "text": "開始創作"
+        },
+        {
+          "id": "open-mid-autumn",
+          "text": "開始創作"
+        },
+        {
+          "id": "open-teachers",
+          "text": "開始創作"
+        },
+        {
+          "id": "open-national-day",
+          "text": "開始創作"
+        },
+        {
+          "id": "open-semester",
+          "text": "開始創作"
+        },
+        {
+          "id": "open-exhibition",
+          "text": "開始創作"
+        },
+        {
+          "id": "open-peace-memory",
+          "text": "開始創作"
+        },
+        {
+          "id": "open-qingming",
+          "text": "開始創作"
+        },
+        {
+          "id": "open-labor",
+          "text": "開始創作"
+        },
+        {
+          "id": "open-retrocession",
+          "text": "開始創作"
+        },
+        {
+          "id": "open-constitution",
+          "text": "開始創作"
+        }
+      ]
+    }
+  }
+]

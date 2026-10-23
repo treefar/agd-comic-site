@@ -3,7 +3,27 @@
     {
       "width": 1440,
       "colorScheme": "light",
+      "hero": [
+        {
+          "text": "查看首頁",
+          "href": "/"
+        },
+        {
+          "text": "查看在校指南",
+          "href": "/#/students/guide"
+        },
+        {
+          "text": "試玩清明",
+          "href": "/holiday-lab/?game=qingming&lang=zh"
+        }
+      ],
+      "navigation": {
+        "url": "http://127.0.0.1:8856/holiday-lab/?game=new-year&lang=zh",
+        "intro_skip_visible": true
+      },
+      "technical_expand_collapse": true,
       "initial": {
+        "progress": 11,
         "ui_scope": 16,
         "ui_gate": 3,
         "games": 15,
@@ -11,18 +31,21 @@
       },
       "searches": {
         "跨年": {
+          "progress": 0,
           "ui_scope": 0,
           "ui_gate": 0,
           "games": 0,
           "shell": 0
         },
         "new-year": {
+          "progress": 0,
           "ui_scope": 2,
           "ui_gate": 0,
           "games": 2,
           "shell": 13
         },
         "zzz-不存在的字": {
+          "progress": 0,
           "ui_scope": 0,
           "ui_gate": 0,
           "games": 0,
@@ -31,14 +54,44 @@
       },
       "filters": {
         "pending": {
+          "progress": 11,
           "ui_scope": 0,
           "ui_gate": 0,
           "games": 15,
           "shell": 0
         },
         "ui-missing": {
+          "progress": 1,
           "ui_scope": 5,
           "ui_gate": 1,
+          "games": 0,
+          "shell": 0
+        },
+        "local-results": {
+          "progress": 5,
+          "ui_scope": 0,
+          "ui_gate": 0,
+          "games": 15,
+          "shell": 0
+        },
+        "working": {
+          "progress": 2,
+          "ui_scope": 0,
+          "ui_gate": 0,
+          "games": 0,
+          "shell": 0
+        },
+        "waiting": {
+          "progress": 3,
+          "ui_scope": 0,
+          "ui_gate": 0,
+          "games": 0,
+          "shell": 0
+        },
+        "paused": {
+          "progress": 1,
+          "ui_scope": 0,
+          "ui_gate": 0,
           "games": 0,
           "shell": 0
         }
@@ -50,22 +103,45 @@
       },
       "cards": {
         "built": "15",
+        "progress-working": "2",
+        "progress-paused": "1",
         "ui-covered": "2046／2076",
         "ui-missing": "30",
         "ui-gate": "0／1",
         "played": "15",
         "shell": "56",
         "unverified": "1",
-        "confirmed": "0"
+        "confirmed": "0",
+        "progress-waiting": "3"
       },
-      "unknownsShown": 4,
+      "unknownsShown": 6,
       "pageOverflow": false,
       "problems": []
     },
     {
       "width": 390,
       "colorScheme": "dark",
+      "hero": [
+        {
+          "text": "查看首頁",
+          "href": "/"
+        },
+        {
+          "text": "查看在校指南",
+          "href": "/#/students/guide"
+        },
+        {
+          "text": "試玩清明",
+          "href": "/holiday-lab/?game=qingming&lang=zh"
+        }
+      ],
+      "navigation": {
+        "url": "http://127.0.0.1:8856/holiday-lab/?game=new-year&lang=zh",
+        "intro_skip_visible": true
+      },
+      "technical_expand_collapse": true,
       "initial": {
+        "progress": 11,
         "ui_scope": 16,
         "ui_gate": 3,
         "games": 15,
@@ -73,18 +149,21 @@
       },
       "searches": {
         "跨年": {
+          "progress": 0,
           "ui_scope": 0,
           "ui_gate": 0,
           "games": 0,
           "shell": 0
         },
         "new-year": {
+          "progress": 0,
           "ui_scope": 2,
           "ui_gate": 0,
           "games": 2,
           "shell": 13
         },
         "zzz-不存在的字": {
+          "progress": 0,
           "ui_scope": 0,
           "ui_gate": 0,
           "games": 0,
@@ -93,14 +172,44 @@
       },
       "filters": {
         "pending": {
+          "progress": 11,
           "ui_scope": 0,
           "ui_gate": 0,
           "games": 15,
           "shell": 0
         },
         "ui-missing": {
+          "progress": 1,
           "ui_scope": 5,
           "ui_gate": 1,
+          "games": 0,
+          "shell": 0
+        },
+        "local-results": {
+          "progress": 5,
+          "ui_scope": 0,
+          "ui_gate": 0,
+          "games": 15,
+          "shell": 0
+        },
+        "working": {
+          "progress": 2,
+          "ui_scope": 0,
+          "ui_gate": 0,
+          "games": 0,
+          "shell": 0
+        },
+        "waiting": {
+          "progress": 3,
+          "ui_scope": 0,
+          "ui_gate": 0,
+          "games": 0,
+          "shell": 0
+        },
+        "paused": {
+          "progress": 1,
+          "ui_scope": 0,
+          "ui_gate": 0,
           "games": 0,
           "shell": 0
         }
@@ -112,18 +221,26 @@
       },
       "cards": {
         "built": "15",
+        "progress-working": "2",
+        "progress-paused": "1",
         "ui-covered": "2046／2076",
         "ui-missing": "30",
         "ui-gate": "0／1",
         "played": "15",
         "shell": "56",
         "unverified": "1",
-        "confirmed": "0"
+        "confirmed": "0",
+        "progress-waiting": "3"
       },
-      "unknownsShown": 4,
+      "unknownsShown": 6,
       "pageOverflow": false,
       "problems": []
     }
   ],
-  "errors": []
+  "errors": [],
+  "offline": {
+    "website_links_disabled": true,
+    "local_files_available": true
+  },
+  "pass": true
 }
