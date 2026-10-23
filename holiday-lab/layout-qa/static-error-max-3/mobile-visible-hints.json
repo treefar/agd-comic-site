@@ -1,0 +1,1085 @@
+{
+  "scope": "Only12 existing width320 canonical phase0 static error witnesses, actual source/inputs/text/scroll. Original raw cases and original viewport pictures remain untouched.",
+  "source_pre": {
+    "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+    "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+    "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+    "games/dragon-boat.mjs": "12c515a8434ea32cd1fdd6013fa9b362ea76488b2ef24a44b1b4ea02d8da02c7",
+    "games/teachers.mjs": "7438262d1d96d921d5a13a243494c24f16e29002c5149c0b0146d625506c00fb",
+    "games/national-day.mjs": "9c697f08c24f9eae89ac55b71fc37bcfe8546c65b7ca3264a88155b5a63891fa",
+    "games/exhibition.mjs": "1c6370fd2e12424defa18963414adf5546dc32f3c2e17450078a3b9ed27bef6b"
+  },
+  "error_driver_sha256": "fac0ddcdcd479a4d88bab47a12c0abc83698cc86c4d24ee01b1d09608628ae5c",
+  "cases": [
+    {
+      "game": "dragon-boat",
+      "lang": "zh",
+      "width": 320,
+      "height": 900,
+      "key": "face",
+      "phase": 0,
+      "canonical_id": "dragon-boat/zh/game/error-longest",
+      "original_case_id": "dragon-boat/zh/game/errors/phase-0/face",
+      "original_report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-23T00-15-12-436Z\\report.json",
+      "original_report_sha256": "6ee09aa57808473fcf93b8662572abd16dfcb1e77231567453548901a2df38bc",
+      "original_screenshot": {
+        "file": "dragon-boat-zh-320-default-game-errors-phase-0-face-72.webp",
+        "sha256": "e9845bdaba9e138cd57be7f07eb003ff1aff7d984d041255c64a63087201fafc",
+        "same_shot_verified": true,
+        "shot_before": null,
+        "shot_after": null,
+        "region": "actual viewport; no full-page resize",
+        "clip": null,
+        "viewport_proof": {
+          "clip": {
+            "x": 0,
+            "y": 663,
+            "width": 320,
+            "height": 900,
+            "scale": 1
+          },
+          "before": {
+            "window": {
+              "x": 0,
+              "y": 663,
+              "width": 320,
+              "height": 900
+            },
+            "internal": []
+          },
+          "after": {
+            "window": {
+              "x": 0,
+              "y": 663,
+              "width": 320,
+              "height": 900
+            },
+            "internal": []
+          },
+          "scroll_unchanged": true,
+          "region": "actual viewport; document coordinates in clip; no viewport resizing"
+        }
+      },
+      "original_retained_screenshot": {
+        "file": "representatives/dragon-boat-zh-320.webp",
+        "sha256": "e9845bdaba9e138cd57be7f07eb003ff1aff7d984d041255c64a63087201fafc"
+      },
+      "recipe_from_existing_error_driver": {
+        "values": {
+          "fold-angle": 160
+        },
+        "choices": {
+          "fold-leaf": 0,
+          "fold-face": 1
+        }
+      },
+      "expected": "紋路露在外面了，先把它轉成朝內。",
+      "actual": "紋路露在外面了，先把它轉成朝內。",
+      "before_scroll": {
+        "scrollX": 0,
+        "scrollY": 663,
+        "text": "紋路露在外面了，先把它轉成朝內。"
+      },
+      "visible_after_scroll": {
+        "x": 16,
+        "y": 394.015625,
+        "width": 288,
+        "height": 111.1875,
+        "viewportHeight": 900,
+        "fully_in_viewport": true,
+        "text": "紋路露在外面了，先把它轉成朝內。",
+        "scrollX": 0,
+        "scrollY": 42
+      },
+      "file": "visible-hint-dragon-boat-zh-320.png",
+      "sha256": "2c3e3d5c3a1a17a4c4c0437c4a81f6afbd42486f6e4e4c771790e49961daed85",
+      "page_errors": [],
+      "relation": "Same fixed source, phase0 rejected candidate, exact static full sentence and error-driver control recipe. This newly photographed hint is supplemental evidence; the complete original nodes/blockers/case and old image remain the canonical record."
+    },
+    {
+      "game": "dragon-boat",
+      "lang": "en",
+      "width": 320,
+      "height": 900,
+      "key": "coverage",
+      "phase": 0,
+      "canonical_id": "dragon-boat/en/game/error-longest",
+      "original_case_id": "dragon-boat/en/game/errors/phase-0/coverage",
+      "original_report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-23T00-15-12-436Z\\report.json",
+      "original_report_sha256": "6ee09aa57808473fcf93b8662572abd16dfcb1e77231567453548901a2df38bc",
+      "original_screenshot": {
+        "file": "dragon-boat-en-320-default-game-errors-phase-0-coverage-347.webp",
+        "sha256": "0fb3f4c29fcd4579e1aca89e2b7c076bf75a6455617387335e8274831ec390df",
+        "same_shot_verified": true,
+        "shot_before": null,
+        "shot_after": null,
+        "region": "actual viewport; no full-page resize",
+        "clip": null,
+        "viewport_proof": {
+          "clip": {
+            "x": 0,
+            "y": 834,
+            "width": 320,
+            "height": 900,
+            "scale": 1
+          },
+          "before": {
+            "window": {
+              "x": 0,
+              "y": 834,
+              "width": 320,
+              "height": 900
+            },
+            "internal": []
+          },
+          "after": {
+            "window": {
+              "x": 0,
+              "y": 834,
+              "width": 320,
+              "height": 900
+            },
+            "internal": []
+          },
+          "scroll_unchanged": true,
+          "region": "actual viewport; document coordinates in clip; no viewport resizing"
+        }
+      },
+      "original_retained_screenshot": {
+        "file": "representatives/dragon-boat-en-320.webp",
+        "sha256": "0fb3f4c29fcd4579e1aca89e2b7c076bf75a6455617387335e8274831ec390df"
+      },
+      "recipe_from_existing_error_driver": {
+        "values": {
+          "fold-angle": 0
+        },
+        "choices": {
+          "fold-leaf": 0,
+          "fold-face": 0
+        }
+      },
+      "expected": "Some filling is exposed. Increase the fold angle and retry.",
+      "actual": "Some filling is exposed. Increase the fold angle and retry.",
+      "before_scroll": {
+        "scrollX": 0,
+        "scrollY": 771,
+        "text": "Some filling is exposed. Increase the fold angle and retry."
+      },
+      "visible_after_scroll": {
+        "x": 16,
+        "y": 381.40625,
+        "width": 288,
+        "height": 136.78125,
+        "viewportHeight": 900,
+        "fully_in_viewport": true,
+        "text": "Some filling is exposed. Increase the fold angle and retry.",
+        "scrollX": 0,
+        "scrollY": 81
+      },
+      "file": "visible-hint-dragon-boat-en-320.png",
+      "sha256": "88ddbf9466f07db5dd6c1fd8339e5a4b7c1541d8817351a621e68265756390fb",
+      "page_errors": [],
+      "relation": "Same fixed source, phase0 rejected candidate, exact static full sentence and error-driver control recipe. This newly photographed hint is supplemental evidence; the complete original nodes/blockers/case and old image remain the canonical record."
+    },
+    {
+      "game": "dragon-boat",
+      "lang": "ja",
+      "width": 320,
+      "height": 900,
+      "key": "order",
+      "phase": 0,
+      "canonical_id": "dragon-boat/ja/game/error-longest",
+      "original_case_id": "dragon-boat/ja/game/errors/phase-0/order",
+      "original_report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-23T00-15-12-436Z\\report.json",
+      "original_report_sha256": "6ee09aa57808473fcf93b8662572abd16dfcb1e77231567453548901a2df38bc",
+      "original_screenshot": {
+        "file": "dragon-boat-ja-320-default-game-errors-phase-0-order-599.webp",
+        "sha256": "d647f1989528bab03d4c32452aee5f94a5a4b6be7258c73fbb7ca361be6333f8",
+        "same_shot_verified": true,
+        "shot_before": null,
+        "shot_after": null,
+        "region": "actual viewport; no full-page resize",
+        "clip": null,
+        "viewport_proof": {
+          "clip": {
+            "x": 0,
+            "y": 715,
+            "width": 320,
+            "height": 900,
+            "scale": 1
+          },
+          "before": {
+            "window": {
+              "x": 0,
+              "y": 715,
+              "width": 320,
+              "height": 900
+            },
+            "internal": []
+          },
+          "after": {
+            "window": {
+              "x": 0,
+              "y": 715,
+              "width": 320,
+              "height": 900
+            },
+            "internal": []
+          },
+          "scroll_unchanged": true,
+          "region": "actual viewport; document coordinates in clip; no viewport resizing"
+        }
+      },
+      "original_retained_screenshot": {
+        "file": "representatives/dragon-boat-ja-320.webp",
+        "sha256": "d647f1989528bab03d4c32452aee5f94a5a4b6be7258c73fbb7ca361be6333f8"
+      },
+      "recipe_from_existing_error_driver": {
+        "values": {
+          "fold-angle": 160
+        },
+        "choices": {
+          "fold-leaf": 1,
+          "fold-face": 0
+        }
+      },
+      "expected": "この葉はまだ支えがありません。左、右、上の順に重ねましょう。",
+      "actual": "この葉はまだ支えがありません。左、右、上の順に重ねましょう。",
+      "before_scroll": {
+        "scrollX": 0,
+        "scrollY": 715,
+        "text": "この葉はまだ支えがありません。左、右、上の順に重ねましょう。"
+      },
+      "visible_after_scroll": {
+        "x": 16,
+        "y": 382.015625,
+        "width": 288,
+        "height": 136.78125,
+        "viewportHeight": 900,
+        "fully_in_viewport": true,
+        "text": "この葉はまだ支えがありません。左、右、上の順に重ねましょう。",
+        "scrollX": 0,
+        "scrollY": 54
+      },
+      "file": "visible-hint-dragon-boat-ja-320.png",
+      "sha256": "dc00bd63fa81f7f9dd109b1c9adeb3ca9bff6c38c52c7361a30721f1a33f9ac0",
+      "page_errors": [],
+      "relation": "Same fixed source, phase0 rejected candidate, exact static full sentence and error-driver control recipe. This newly photographed hint is supplemental evidence; the complete original nodes/blockers/case and old image remain the canonical record."
+    },
+    {
+      "game": "teachers",
+      "lang": "zh",
+      "width": 320,
+      "height": 900,
+      "key": "line",
+      "phase": 0,
+      "canonical_id": "teachers/zh/game/error-longest",
+      "original_case_id": "teachers/zh/game/errors/phase-0/line",
+      "original_report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-23T00-30-54-758Z\\report.json",
+      "original_report_sha256": "5f6fbb74d44d76ff2efcfed46f3bcd7e2582c0ff988566f0901bc494c3efaf8d",
+      "original_screenshot": {
+        "file": "teachers-zh-320-default-game-errors-phase-0-line-90.webp",
+        "sha256": "8ac01062bc51ae4715bc4cc545623445a26c1df3f39d3de7cfb78939ff90056e",
+        "same_shot_verified": true,
+        "shot_before": null,
+        "shot_after": null,
+        "region": "actual viewport; no full-page resize",
+        "clip": null,
+        "viewport_proof": {
+          "clip": {
+            "x": 0,
+            "y": 1056,
+            "width": 320,
+            "height": 900,
+            "scale": 1
+          },
+          "before": {
+            "window": {
+              "x": 0,
+              "y": 1056,
+              "width": 320,
+              "height": 900
+            },
+            "internal": []
+          },
+          "after": {
+            "window": {
+              "x": 0,
+              "y": 1056,
+              "width": 320,
+              "height": 900
+            },
+            "internal": []
+          },
+          "scroll_unchanged": true,
+          "region": "actual viewport; document coordinates in clip; no viewport resizing"
+        }
+      },
+      "original_retained_screenshot": {
+        "file": "representatives/teachers-zh-320.webp",
+        "sha256": "8ac01062bc51ae4715bc4cc545623445a26c1df3f39d3de7cfb78939ff90056e"
+      },
+      "recipe_from_existing_error_driver": {
+        "values": {
+          "teachers-pause": 900
+        },
+        "choices": {
+          "teachers-action": 0,
+          "teachers-line": 2
+        }
+      },
+      "expected": "台詞和這格動作不一致，換一句試試。",
+      "actual": "台詞和這格動作不一致，換一句試試。",
+      "before_scroll": {
+        "scrollX": 0,
+        "scrollY": 1102,
+        "text": "台詞和這格動作不一致，換一句試試。"
+      },
+      "visible_after_scroll": {
+        "x": 16,
+        "y": 394.40625,
+        "width": 288,
+        "height": 111.1875,
+        "viewportHeight": 900,
+        "fully_in_viewport": true,
+        "text": "台詞和這格動作不一致，換一句試試。",
+        "scrollX": 0,
+        "scrollY": 68
+      },
+      "file": "visible-hint-teachers-zh-320.png",
+      "sha256": "47b760c179a0782b17972ca62bc15bb9c1d9e7694687139983f810224b451afa",
+      "page_errors": [],
+      "relation": "Same fixed source, phase0 rejected candidate, exact static full sentence and error-driver control recipe. This newly photographed hint is supplemental evidence; the complete original nodes/blockers/case and old image remain the canonical record."
+    },
+    {
+      "game": "teachers",
+      "lang": "en",
+      "width": 320,
+      "height": 900,
+      "key": "action",
+      "phase": 0,
+      "canonical_id": "teachers/en/game/error-longest",
+      "original_case_id": "teachers/en/game/errors/phase-0/action",
+      "original_report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-23T00-30-54-758Z\\report.json",
+      "original_report_sha256": "5f6fbb74d44d76ff2efcfed46f3bcd7e2582c0ff988566f0901bc494c3efaf8d",
+      "original_screenshot": {
+        "file": "teachers-en-320-default-game-errors-phase-0-action-410.webp",
+        "sha256": "4db6eae8bc4ff07200b559f7002fc812c12bf5df6926000b8afbd4e4cf4bcaa0",
+        "same_shot_verified": true,
+        "shot_before": null,
+        "shot_after": null,
+        "region": "actual viewport; no full-page resize",
+        "clip": null,
+        "viewport_proof": {
+          "clip": {
+            "x": 0,
+            "y": 1384,
+            "width": 320,
+            "height": 900,
+            "scale": 1
+          },
+          "before": {
+            "window": {
+              "x": 0,
+              "y": 1384,
+              "width": 320,
+              "height": 900
+            },
+            "internal": []
+          },
+          "after": {
+            "window": {
+              "x": 0,
+              "y": 1384,
+              "width": 320,
+              "height": 900
+            },
+            "internal": []
+          },
+          "scroll_unchanged": true,
+          "region": "actual viewport; document coordinates in clip; no viewport resizing"
+        }
+      },
+      "original_retained_screenshot": {
+        "file": "representatives/teachers-en-320.webp",
+        "sha256": "4db6eae8bc4ff07200b559f7002fc812c12bf5df6926000b8afbd4e4cf4bcaa0"
+      },
+      "recipe_from_existing_error_driver": {
+        "values": {
+          "teachers-pause": 900
+        },
+        "choices": {
+          "teachers-action": 1,
+          "teachers-line": 0
+        }
+      },
+      "expected": "This action breaks the sequence: listen, thank, then respond.",
+      "actual": "This action breaks the sequence: listen, thank, then respond.",
+      "before_scroll": {
+        "scrollX": 0,
+        "scrollY": 1384,
+        "text": "This action breaks the sequence: listen, thank, then respond."
+      },
+      "visible_after_scroll": {
+        "x": 16,
+        "y": 381.40625,
+        "width": 288,
+        "height": 136.78125,
+        "viewportHeight": 900,
+        "fully_in_viewport": true,
+        "text": "This action breaks the sequence: listen, thank, then respond.",
+        "scrollX": 0,
+        "scrollY": 81
+      },
+      "file": "visible-hint-teachers-en-320.png",
+      "sha256": "ebdf0355097a14276bfda8329968d22bfba666b33d3fe223b3e2a4b757e2fd1e",
+      "page_errors": [],
+      "relation": "Same fixed source, phase0 rejected candidate, exact static full sentence and error-driver control recipe. This newly photographed hint is supplemental evidence; the complete original nodes/blockers/case and old image remain the canonical record."
+    },
+    {
+      "game": "teachers",
+      "lang": "ja",
+      "width": 320,
+      "height": 900,
+      "key": "action",
+      "phase": 0,
+      "canonical_id": "teachers/ja/game/error-longest",
+      "original_case_id": "teachers/ja/game/errors/phase-0/action",
+      "original_report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-23T00-30-54-758Z\\report.json",
+      "original_report_sha256": "5f6fbb74d44d76ff2efcfed46f3bcd7e2582c0ff988566f0901bc494c3efaf8d",
+      "original_screenshot": {
+        "file": "teachers-ja-320-default-game-errors-phase-0-action-766.webp",
+        "sha256": "7cfa90665a2dcb5de33d69ba2571e5bedc8e61991834c7fd031eb5c3c2d7fc2d",
+        "same_shot_verified": true,
+        "shot_before": null,
+        "shot_after": null,
+        "region": "actual viewport; no full-page resize",
+        "clip": null,
+        "viewport_proof": {
+          "clip": {
+            "x": 0,
+            "y": 1338,
+            "width": 320,
+            "height": 900,
+            "scale": 1
+          },
+          "before": {
+            "window": {
+              "x": 0,
+              "y": 1338,
+              "width": 320,
+              "height": 900
+            },
+            "internal": []
+          },
+          "after": {
+            "window": {
+              "x": 0,
+              "y": 1338,
+              "width": 320,
+              "height": 900
+            },
+            "internal": []
+          },
+          "scroll_unchanged": true,
+          "region": "actual viewport; document coordinates in clip; no viewport resizing"
+        }
+      },
+      "original_retained_screenshot": {
+        "file": "representatives/teachers-ja-320.webp",
+        "sha256": "7cfa90665a2dcb5de33d69ba2571e5bedc8e61991834c7fd031eb5c3c2d7fc2d"
+      },
+      "recipe_from_existing_error_driver": {
+        "values": {
+          "teachers-pause": 900
+        },
+        "choices": {
+          "teachers-action": 1,
+          "teachers-line": 0
+        }
+      },
+      "expected": "動作の順がつながっていません。聞く、感謝、返事の順に。",
+      "actual": "動作の順がつながっていません。聞く、感謝、返事の順に。",
+      "before_scroll": {
+        "scrollX": 0,
+        "scrollY": 1338,
+        "text": "動作の順がつながっていません。聞く、感謝、返事の順に。"
+      },
+      "visible_after_scroll": {
+        "x": 16,
+        "y": 381.40625,
+        "width": 288,
+        "height": 136.78125,
+        "viewportHeight": 900,
+        "fully_in_viewport": true,
+        "text": "動作の順がつながっていません。聞く、感謝、返事の順に。",
+        "scrollX": 0,
+        "scrollY": 81
+      },
+      "file": "visible-hint-teachers-ja-320.png",
+      "sha256": "69486e0fa4217cd92296bff3863e1f233327cb16226ca146d4b861eab3b165d2",
+      "page_errors": [],
+      "relation": "Same fixed source, phase0 rejected candidate, exact static full sentence and error-driver control recipe. This newly photographed hint is supplemental evidence; the complete original nodes/blockers/case and old image remain the canonical record."
+    },
+    {
+      "game": "national-day",
+      "lang": "zh",
+      "width": 320,
+      "height": 900,
+      "key": "camera",
+      "phase": 0,
+      "canonical_id": "national-day/zh/game/error-longest",
+      "original_case_id": "national-day/zh/game/errors/phase-0/camera",
+      "original_report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-23T00-38-13-975Z\\report.json",
+      "original_report_sha256": "18be3c8a628f884ec1dd61b70c04818d3f273e6466129bb00d8a817b7d7d8990",
+      "original_screenshot": {
+        "file": "national-day-zh-320-default-game-errors-phase-0-camera-81.webp",
+        "sha256": "1b997d5b70e573ef436f54cf6626d87e03b21bc0e1916e25f6a6e90f8493f2e7",
+        "same_shot_verified": true,
+        "shot_before": null,
+        "shot_after": null,
+        "region": "actual viewport; no full-page resize",
+        "clip": null,
+        "viewport_proof": {
+          "clip": {
+            "x": 0,
+            "y": 956,
+            "width": 320,
+            "height": 900,
+            "scale": 1
+          },
+          "before": {
+            "window": {
+              "x": 0,
+              "y": 956,
+              "width": 320,
+              "height": 900
+            },
+            "internal": []
+          },
+          "after": {
+            "window": {
+              "x": 0,
+              "y": 956,
+              "width": 320,
+              "height": 900
+            },
+            "internal": []
+          },
+          "scroll_unchanged": true,
+          "region": "actual viewport; document coordinates in clip; no viewport resizing"
+        }
+      },
+      "original_retained_screenshot": {
+        "file": "representatives/national-day-zh-320.webp",
+        "sha256": "1b997d5b70e573ef436f54cf6626d87e03b21bc0e1916e25f6a6e90f8493f2e7"
+      },
+      "recipe_from_existing_error_driver": {
+        "values": {
+          "island-fore": -30,
+          "island-mid": -1,
+          "island-far": -4,
+          "island-camera": 20
+        },
+        "choices": {
+          "island-order": 0
+        }
+      },
+      "expected": "鏡頭還不在拍攝位置，先對齊目標鏡頭數字。",
+      "actual": "鏡頭還不在拍攝位置，先對齊目標鏡頭數字。",
+      "before_scroll": {
+        "scrollX": 0,
+        "scrollY": 956,
+        "text": "鏡頭還不在拍攝位置，先對齊目標鏡頭數字。"
+      },
+      "visible_after_scroll": {
+        "x": 16,
+        "y": 394.40625,
+        "width": 288,
+        "height": 111.1875,
+        "viewportHeight": 900,
+        "fully_in_viewport": true,
+        "text": "鏡頭還不在拍攝位置，先對齊目標鏡頭數字。",
+        "scrollX": 0,
+        "scrollY": 68
+      },
+      "file": "visible-hint-national-day-zh-320.png",
+      "sha256": "1653bf3da7fde86694e3155b52de3ea83552eceef4a2cb8e3cb203f10fa6df4c",
+      "page_errors": [],
+      "relation": "Same fixed source, phase0 rejected candidate, exact static full sentence and error-driver control recipe. This newly photographed hint is supplemental evidence; the complete original nodes/blockers/case and old image remain the canonical record."
+    },
+    {
+      "game": "national-day",
+      "lang": "en",
+      "width": 320,
+      "height": 900,
+      "key": "blocked",
+      "phase": 0,
+      "canonical_id": "national-day/en/game/error-longest",
+      "original_case_id": "national-day/en/game/errors/phase-0/blocked",
+      "original_report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-23T00-38-13-975Z\\report.json",
+      "original_report_sha256": "18be3c8a628f884ec1dd61b70c04818d3f273e6466129bb00d8a817b7d7d8990",
+      "original_screenshot": {
+        "file": "national-day-en-320-default-game-errors-phase-0-blocked-362.webp",
+        "sha256": "1352c7b4e1d1fc5cfdce0b94182c3902d606e64741338a589c6a7d74d0c10d45",
+        "same_shot_verified": true,
+        "shot_before": null,
+        "shot_after": null,
+        "region": "actual viewport; no full-page resize",
+        "clip": null,
+        "viewport_proof": {
+          "clip": {
+            "x": 0,
+            "y": 1061,
+            "width": 320,
+            "height": 900,
+            "scale": 1
+          },
+          "before": {
+            "window": {
+              "x": 0,
+              "y": 1061,
+              "width": 320,
+              "height": 900
+            },
+            "internal": []
+          },
+          "after": {
+            "window": {
+              "x": 0,
+              "y": 1061,
+              "width": 320,
+              "height": 900
+            },
+            "internal": []
+          },
+          "scroll_unchanged": true,
+          "region": "actual viewport; document coordinates in clip; no viewport resizing"
+        }
+      },
+      "original_retained_screenshot": {
+        "file": "representatives/national-day-en-320.webp",
+        "sha256": "1352c7b4e1d1fc5cfdce0b94182c3902d606e64741338a589c6a7d74d0c10d45"
+      },
+      "recipe_from_existing_error_driver": {
+        "values": {
+          "island-fore": -4,
+          "island-mid": -1,
+          "island-far": -4,
+          "island-camera": -12
+        },
+        "choices": {
+          "island-order": 0
+        }
+      },
+      "expected": "The tree hides the student. Move the foreground aside for a clear sightline.",
+      "actual": "The tree hides the student. Move the foreground aside for a clear sightline.",
+      "before_scroll": {
+        "scrollX": 0,
+        "scrollY": 1061,
+        "text": "The tree hides the student. Move the foreground aside for a clear sightline."
+      },
+      "visible_after_scroll": {
+        "x": 16,
+        "y": 381.40625,
+        "width": 288,
+        "height": 136.78125,
+        "viewportHeight": 900,
+        "fully_in_viewport": true,
+        "text": "The tree hides the student. Move the foreground aside for a clear sightline.",
+        "scrollX": 0,
+        "scrollY": 81
+      },
+      "file": "visible-hint-national-day-en-320.png",
+      "sha256": "ff8f932f959b13904d7e2db9bd15a134d9b30d396858caacb2438241dad0c044",
+      "page_errors": [],
+      "relation": "Same fixed source, phase0 rejected candidate, exact static full sentence and error-driver control recipe. This newly photographed hint is supplemental evidence; the complete original nodes/blockers/case and old image remain the canonical record."
+    },
+    {
+      "game": "national-day",
+      "lang": "ja",
+      "width": 320,
+      "height": 900,
+      "key": "blocked",
+      "phase": 0,
+      "canonical_id": "national-day/ja/game/error-longest",
+      "original_case_id": "national-day/ja/game/errors/phase-0/blocked",
+      "original_report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-23T00-38-13-975Z\\report.json",
+      "original_report_sha256": "18be3c8a628f884ec1dd61b70c04818d3f273e6466129bb00d8a817b7d7d8990",
+      "original_screenshot": {
+        "file": "national-day-ja-320-default-game-errors-phase-0-blocked-666.webp",
+        "sha256": "35f778c169dab51b5315c069061f7c411920402d69982aa45d93292f04c846c5",
+        "same_shot_verified": true,
+        "shot_before": null,
+        "shot_after": null,
+        "region": "actual viewport; no full-page resize",
+        "clip": null,
+        "viewport_proof": {
+          "clip": {
+            "x": 0,
+            "y": 981,
+            "width": 320,
+            "height": 900,
+            "scale": 1
+          },
+          "before": {
+            "window": {
+              "x": 0,
+              "y": 981,
+              "width": 320,
+              "height": 900
+            },
+            "internal": []
+          },
+          "after": {
+            "window": {
+              "x": 0,
+              "y": 981,
+              "width": 320,
+              "height": 900
+            },
+            "internal": []
+          },
+          "scroll_unchanged": true,
+          "region": "actual viewport; document coordinates in clip; no viewport resizing"
+        }
+      },
+      "original_retained_screenshot": {
+        "file": "representatives/national-day-ja-320.webp",
+        "sha256": "35f778c169dab51b5315c069061f7c411920402d69982aa45d93292f04c846c5"
+      },
+      "recipe_from_existing_error_driver": {
+        "values": {
+          "island-fore": -4,
+          "island-mid": -1,
+          "island-far": -4,
+          "island-camera": -12
+        },
+        "choices": {
+          "island-order": 0
+        }
+      },
+      "expected": "木が人物を隠しています。手前をずらし、視線を確保しましょう。",
+      "actual": "木が人物を隠しています。手前をずらし、視線を確保しましょう。",
+      "before_scroll": {
+        "scrollX": 0,
+        "scrollY": 981,
+        "text": "木が人物を隠しています。手前をずらし、視線を確保しましょう。"
+      },
+      "visible_after_scroll": {
+        "x": 16,
+        "y": 381.40625,
+        "width": 288,
+        "height": 136.78125,
+        "viewportHeight": 900,
+        "fully_in_viewport": true,
+        "text": "木が人物を隠しています。手前をずらし、視線を確保しましょう。",
+        "scrollX": 0,
+        "scrollY": 81
+      },
+      "file": "visible-hint-national-day-ja-320.png",
+      "sha256": "5fd57a783bec07945a5e846678d6b0f368831771ea6cb62e79489fb336e5adb1",
+      "page_errors": [],
+      "relation": "Same fixed source, phase0 rejected candidate, exact static full sentence and error-driver control recipe. This newly photographed hint is supplemental evidence; the complete original nodes/blockers/case and old image remain the canonical record."
+    },
+    {
+      "game": "exhibition",
+      "lang": "zh",
+      "width": 320,
+      "height": 900,
+      "key": "walkway",
+      "phase": 0,
+      "canonical_id": "exhibition/zh/game/error-longest",
+      "original_case_id": "exhibition/zh/game/errors/phase-0/walkway",
+      "original_report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-23T00-45-10-222Z\\report.json",
+      "original_report_sha256": "4988e2a8db680f07730ea176ae954bcff47fec01bd602174aadf1dc9f3a0013c",
+      "original_screenshot": {
+        "file": "exhibition-zh-320-default-game-errors-phase-0-walkway-69.webp",
+        "sha256": "f0e6c8bea4af28e4a194c133e986a42aca9f892d2582bf04821ac457aaa8e8e7",
+        "same_shot_verified": true,
+        "shot_before": null,
+        "shot_after": null,
+        "region": "actual viewport; no full-page resize",
+        "clip": null,
+        "viewport_proof": {
+          "clip": {
+            "x": 0,
+            "y": 900,
+            "width": 320,
+            "height": 900,
+            "scale": 1
+          },
+          "before": {
+            "window": {
+              "x": 0,
+              "y": 900,
+              "width": 320,
+              "height": 900
+            },
+            "internal": []
+          },
+          "after": {
+            "window": {
+              "x": 0,
+              "y": 900,
+              "width": 320,
+              "height": 900
+            },
+            "internal": []
+          },
+          "scroll_unchanged": true,
+          "region": "actual viewport; document coordinates in clip; no viewport resizing"
+        }
+      },
+      "original_retained_screenshot": {
+        "file": "representatives/exhibition-zh-320.webp",
+        "sha256": "f0e6c8bea4af28e4a194c133e986a42aca9f892d2582bf04821ac457aaa8e8e7"
+      },
+      "recipe_from_existing_error_driver": {
+        "values": {
+          "xs": [
+            20,
+            50,
+            80
+          ],
+          "ys": [
+            80,
+            30,
+            30
+          ],
+          "info": [
+            1,
+            1,
+            1
+          ]
+        },
+        "choices": {}
+      },
+      "expected": "作品擋住入口。把每件作品往上移到 Y55 以內。",
+      "actual": "作品擋住入口。把每件作品往上移到 Y55 以內。",
+      "before_scroll": {
+        "scrollX": 0,
+        "scrollY": 900,
+        "text": "作品擋住入口。把每件作品往上移到 Y55 以內。"
+      },
+      "visible_after_scroll": {
+        "x": 16,
+        "y": 394.40625,
+        "width": 288,
+        "height": 111.1875,
+        "viewportHeight": 900,
+        "fully_in_viewport": true,
+        "text": "作品擋住入口。把每件作品往上移到 Y55 以內。",
+        "scrollX": 0,
+        "scrollY": 68
+      },
+      "file": "visible-hint-exhibition-zh-320.png",
+      "sha256": "7ebe43f0f1330325f8b599bfc0410ffb7b98ebea7b804b80e2c7e7cbdf20cf62",
+      "page_errors": [],
+      "relation": "Same fixed source, phase0 rejected candidate, exact static full sentence and error-driver control recipe. This newly photographed hint is supplemental evidence; the complete original nodes/blockers/case and old image remain the canonical record."
+    },
+    {
+      "game": "exhibition",
+      "lang": "en",
+      "width": 320,
+      "height": 900,
+      "key": "walkway",
+      "phase": 0,
+      "canonical_id": "exhibition/en/game/error-longest",
+      "original_case_id": "exhibition/en/game/errors/phase-0/walkway",
+      "original_report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-23T00-45-10-222Z\\report.json",
+      "original_report_sha256": "4988e2a8db680f07730ea176ae954bcff47fec01bd602174aadf1dc9f3a0013c",
+      "original_screenshot": {
+        "file": "exhibition-en-320-default-game-errors-phase-0-walkway-323.webp",
+        "sha256": "ab5f6947bf8dbdaa92d59a8f5451f3a53deb86e6b882453b6685c1c433b5c8e1",
+        "same_shot_verified": true,
+        "shot_before": null,
+        "shot_after": null,
+        "region": "actual viewport; no full-page resize",
+        "clip": null,
+        "viewport_proof": {
+          "clip": {
+            "x": 0,
+            "y": 1051,
+            "width": 320,
+            "height": 900,
+            "scale": 1
+          },
+          "before": {
+            "window": {
+              "x": 0,
+              "y": 1051,
+              "width": 320,
+              "height": 900
+            },
+            "internal": []
+          },
+          "after": {
+            "window": {
+              "x": 0,
+              "y": 1051,
+              "width": 320,
+              "height": 900
+            },
+            "internal": []
+          },
+          "scroll_unchanged": true,
+          "region": "actual viewport; document coordinates in clip; no viewport resizing"
+        }
+      },
+      "original_retained_screenshot": {
+        "file": "representatives/exhibition-en-320.webp",
+        "sha256": "ab5f6947bf8dbdaa92d59a8f5451f3a53deb86e6b882453b6685c1c433b5c8e1"
+      },
+      "recipe_from_existing_error_driver": {
+        "values": {
+          "xs": [
+            20,
+            50,
+            80
+          ],
+          "ys": [
+            80,
+            30,
+            30
+          ],
+          "info": [
+            1,
+            1,
+            1
+          ]
+        },
+        "choices": {}
+      },
+      "expected": "A work blocks the entrance. Move every centre to Y55 or less.",
+      "actual": "A work blocks the entrance. Move every centre to Y55 or less.",
+      "before_scroll": {
+        "scrollX": 0,
+        "scrollY": 1051,
+        "text": "A work blocks the entrance. Move every centre to Y55 or less."
+      },
+      "visible_after_scroll": {
+        "x": 16,
+        "y": 381.40625,
+        "width": 288,
+        "height": 136.78125,
+        "viewportHeight": 900,
+        "fully_in_viewport": true,
+        "text": "A work blocks the entrance. Move every centre to Y55 or less.",
+        "scrollX": 0,
+        "scrollY": 81
+      },
+      "file": "visible-hint-exhibition-en-320.png",
+      "sha256": "04039afa045f398ad9604a813e905248f58cb689bd4e81db65a3042490ff27d8",
+      "page_errors": [],
+      "relation": "Same fixed source, phase0 rejected candidate, exact static full sentence and error-driver control recipe. This newly photographed hint is supplemental evidence; the complete original nodes/blockers/case and old image remain the canonical record."
+    },
+    {
+      "game": "exhibition",
+      "lang": "ja",
+      "width": 320,
+      "height": 900,
+      "key": "spacing",
+      "phase": 0,
+      "canonical_id": "exhibition/ja/game/error-longest",
+      "original_case_id": "exhibition/ja/game/errors/phase-0/spacing",
+      "original_report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-23T00-45-10-222Z\\report.json",
+      "original_report_sha256": "4988e2a8db680f07730ea176ae954bcff47fec01bd602174aadf1dc9f3a0013c",
+      "original_screenshot": {
+        "file": "exhibition-ja-320-default-game-errors-phase-0-spacing-604.webp",
+        "sha256": "46d9e4edbf6c9f8f745880f09f258cca33475ce143463b79df4727bfb897c417",
+        "same_shot_verified": true,
+        "shot_before": null,
+        "shot_after": null,
+        "region": "actual viewport; no full-page resize",
+        "clip": null,
+        "viewport_proof": {
+          "clip": {
+            "x": 0,
+            "y": 979,
+            "width": 320,
+            "height": 900,
+            "scale": 1
+          },
+          "before": {
+            "window": {
+              "x": 0,
+              "y": 979,
+              "width": 320,
+              "height": 900
+            },
+            "internal": []
+          },
+          "after": {
+            "window": {
+              "x": 0,
+              "y": 979,
+              "width": 320,
+              "height": 900
+            },
+            "internal": []
+          },
+          "scroll_unchanged": true,
+          "region": "actual viewport; document coordinates in clip; no viewport resizing"
+        }
+      },
+      "original_retained_screenshot": {
+        "file": "representatives/exhibition-ja-320.webp",
+        "sha256": "46d9e4edbf6c9f8f745880f09f258cca33475ce143463b79df4727bfb897c417"
+      },
+      "recipe_from_existing_error_driver": {
+        "values": {
+          "xs": [
+            50,
+            50,
+            50
+          ],
+          "ys": [
+            30,
+            30,
+            30
+          ],
+          "info": [
+            1,
+            1,
+            1
+          ]
+        },
+        "choices": {}
+      },
+      "expected": "作品が近すぎます。中心を24以上離して。",
+      "actual": "作品が近すぎます。中心を24以上離して。",
+      "before_scroll": {
+        "scrollX": 0,
+        "scrollY": 979,
+        "text": "作品が近すぎます。中心を24以上離して。"
+      },
+      "visible_after_scroll": {
+        "x": 16,
+        "y": 394.40625,
+        "width": 288,
+        "height": 111.1875,
+        "viewportHeight": 900,
+        "fully_in_viewport": true,
+        "text": "作品が近すぎます。中心を24以上離して。",
+        "scrollX": 0,
+        "scrollY": 68
+      },
+      "file": "visible-hint-exhibition-ja-320.png",
+      "sha256": "9336190a67c8e8376471c364c7aa60a14e282024ef9ca386477cf4cf0dbdb13a",
+      "page_errors": [],
+      "relation": "Same fixed source, phase0 rejected candidate, exact static full sentence and error-driver control recipe. This newly photographed hint is supplemental evidence; the complete original nodes/blockers/case and old image remain the canonical record."
+    }
+  ],
+  "source_post": {
+    "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+    "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+    "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+    "games/dragon-boat.mjs": "12c515a8434ea32cd1fdd6013fa9b362ea76488b2ef24a44b1b4ea02d8da02c7",
+    "games/teachers.mjs": "7438262d1d96d921d5a13a243494c24f16e29002c5149c0b0146d625506c00fb",
+    "games/national-day.mjs": "9c697f08c24f9eae89ac55b71fc37bcfe8546c65b7ca3264a88155b5a63891fa",
+    "games/exhibition.mjs": "1c6370fd2e12424defa18963414adf5546dc32f3c2e17450078a3b9ed27bef6b"
+  },
+  "source_stable": true,
+  "pass": true
+}
