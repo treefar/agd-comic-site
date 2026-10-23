@@ -1,0 +1,453 @@
+✖ EN-STUDENT-ASSISTANCE-01 replaces only the supported name, source and generated locale (5.1042ms)
+✖ EN-STUDENT-ASSISTANCE-02 replaces only the supported name, source and generated locale (2.0259ms)
+✖ EN-STUDENT-ASSISTANCE-03 replaces only the supported name, source and generated locale (1.715ms)
+✖ EN-STUDENT-ASSISTANCE-04 replaces only the supported name, source and generated locale (1.6761ms)
+✖ EN-STUDENT-ASSISTANCE-05 replaces only the supported name, source and generated locale (2.0277ms)
+✖ EN-STUDENT-ASSISTANCE-06 replaces only the supported name, source and generated locale (1.6038ms)
+✖ EN-STUDENT-ASSISTANCE-07 replaces only the supported name, source and generated locale (1.9693ms)
+✖ EN-STUDENT-ASSISTANCE-08 replaces only the supported name, source and generated locale (1.5797ms)
+✖ EN-STUDENT-ASSISTANCE-09 replaces only the supported name, source and generated locale (1.4405ms)
+✖ EN-STUDENT-ASSISTANCE-10 replaces only the supported name, source and generated locale (1.5365ms)
+✖ JA-QUALIFICATION-NAME-01 replaces only the supported name, source and generated locale (9.0568ms)
+✖ JA-QUALIFICATION-NAME-02 replaces only the supported name, source and generated locale (7.7136ms)
+✖ all source keys and every value outside the twelve exact pointers remain unchanged (2.9663ms)
+✔ the original twelve meaning-preserving changes remain in data and locales (106.0945ms)
+✖ en locale contains exactly new name deltas and no other changes (17.2265ms)
+✖ ja locale contains exactly new name deltas and no other changes (15.358ms)
+✖ en new phase covers both approved batches against the original preimage (16.1338ms)
+✖ ja new phase covers both approved batches against the original preimage (14.5592ms)
+✔ four PROGRAM values and their Chinese canonical records stay byte/value unchanged (38.5801ms)
+✔ Chinese, prior layout, non-target inputs, and original dirty files are preserved (7.3597ms)
+✔ reviewed input packet remains identical to its copied source (1.7968ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 4
+ℹ fail 17
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 362.3155
+
+✖ failing tests:
+
+test at holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:5:23
+✖ EN-STUDENT-ASSISTANCE-01 replaces only the supported name, source and generated locale (5.1042ms)
+  AssertionError [ERR_ASSERTION]: data/en/step-details-ui.json/生輔組急難慰助專區申請須知
+  + actual - expected
+  
+  + 'Student Assistance Division: Emergency Financial Aid Application Guidelines'
+  - 'Student Assistance Section: Emergency Financial Aid Application Guidelines'
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:8:40)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'Student Assistance Division: Emergency Financial Aid Application Guidelines',
+    expected: 'Student Assistance Section: Emergency Financial Aid Application Guidelines',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:5:23
+✖ EN-STUDENT-ASSISTANCE-02 replaces only the supported name, source and generated locale (2.0259ms)
+  AssertionError [ERR_ASSERTION]: data/en/flow-ui.json/生輔組校內獎助學金目錄
+  + actual - expected
+  
+  + 'Student Life Guidance: university aid directory'
+  - 'Student Assistance Section: university aid directory'
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:8:40)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'Student Life Guidance: university aid directory',
+    expected: 'Student Assistance Section: university aid directory',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:5:23
+✖ EN-STUDENT-ASSISTANCE-03 replaces only the supported name, source and generated locale (1.715ms)
+  AssertionError [ERR_ASSERTION]: data/en/flow-ui.json/生輔組學雜費減免申請公告
+  + actual - expected
+  
+  + 'Student Life Guidance: tuition reduction announcement'
+  - 'Student Assistance Section: tuition reduction announcement'
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:8:40)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'Student Life Guidance: tuition reduction announcement',
+    expected: 'Student Assistance Section: tuition reduction announcement',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:5:23
+✖ EN-STUDENT-ASSISTANCE-04 replaces only the supported name, source and generated locale (1.6761ms)
+  AssertionError [ERR_ASSERTION]: data/en/step-details-ui.json/先整理不能到課的日期、節次與原因，再向導師或生輔組確認假別及證明。遇到考試、心理假或較長期間，先問清楚是否還有其他辦理方式。
+  + actual - expected
+  
+  + 'Organize the dates, class periods, and reasons for your absence, then verify the leave category and required proof with your class advisor or the Student Assistance Division. For exam periods, mental health leave, or extended absences, ask clearly in advance whether additional procedures apply.'
+  - 'Organize the dates, class periods, and reasons for your absence, then verify the leave category and required proof with your class advisor or the Student Assistance Section. For exam periods, mental health leave, or extended absences, ask clearly in advance whether additional procedures apply.'
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:8:40)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'Organize the dates, class periods, and reasons for your absence, then verify the leave category and required proof with your class advisor or the Student Assistance Division. For exam periods, mental health leave, or extended absences, ask clearly in advance whether additional procedures apply.',
+    expected: 'Organize the dates, class periods, and reasons for your absence, then verify the leave category and required proof with your class advisor or the Student Assistance Section. For exam periods, mental health leave, or extended absences, ask clearly in advance whether additional procedures apply.',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:5:23
+✖ EN-STUDENT-ASSISTANCE-05 replaces only the supported name, source and generated locale (2.0277ms)
+  AssertionError [ERR_ASSERTION]: data/en/step-details-ui.json/從學校「在校學生」入口進入請假服務，依系統填寫資料並確認是否送出。若找不到操作項目，帶著畫面問導師或生輔組，不要只在通訊軟體告知就當完成。
+  + actual - expected
+  
+  + "Log into the leave application service via the school's 'Current Students' portal, fill in the details in the system, and confirm submission. If you cannot find the required option, bring your screen to consult your advisor or the Student Assistance Division; do not assume notifying someone via messaging apps completes the process."
+  - "Log into the leave application service via the school's 'Current Students' portal, fill in the details in the system, and confirm submission. If you cannot find the required option, bring your screen to consult your advisor or the Student Assistance Section; do not assume notifying someone via messaging apps completes the process."
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:8:40)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: "Log into the leave application service via the school's 'Current Students' portal, fill in the details in the system, and confirm submission. If you cannot find the required option, bring your screen to consult your advisor or the Student Assistance Division; do not assume notifying someone via messaging apps completes the process.",
+    expected: "Log into the leave application service via the school's 'Current Students' portal, fill in the details in the system, and confirm submission. If you cannot find the required option, bring your screen to consult your advisor or the Student Assistance Section; do not assume notifying someone via messaging apps completes the process.",
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:5:23
+✖ EN-STUDENT-ASSISTANCE-06 replaces only the supported name, source and generated locale (1.6038ms)
+  AssertionError [ERR_ASSERTION]: data/en/flow-ui.json/兵役：另向生輔組確認資料
+  + actual - expected
+  
+  + 'Military service: check separately with Student Life Guidance'
+  - 'Military service: check separately with Student Assistance Section'
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:8:40)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'Military service: check separately with Student Life Guidance',
+    expected: 'Military service: check separately with Student Assistance Section',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:5:23
+✖ EN-STUDENT-ASSISTANCE-07 replaces only the supported name, source and generated locale (1.9693ms)
+  AssertionError [ERR_ASSERTION]: data/en/student-guide-ui.json/教務處FAQ說明，休學期滿前會寄送復學通知，應依通知辦理。地址、信箱與電話有變動要更新；兵役問題另向生輔組確認。
+  + actual - expected
+  
+  + 'The Office of Academic Affairs FAQ says a return-to-study notice will be sent before your leave of absence ends. Follow that notice and update any changes to your address, email or phone number. Check military-service matters separately with the Student Life Guidance Section.'
+  - 'The Office of Academic Affairs FAQ says a return-to-study notice will be sent before your leave of absence ends. Follow that notice and update any changes to your address, email or phone number. Check military-service matters separately with the Student Assistance Section.'
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:8:40)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'The Office of Academic Affairs FAQ says a return-to-study notice will be sent before your leave of absence ends. Follow that notice and update any changes to your address, email or phone number. Check military-service matters separately with the Student Life Guidance Section.',
+    expected: 'The Office of Academic Affairs FAQ says a return-to-study notice will be sent before your leave of absence ends. Follow that notice and update any changes to your address, email or phone number. Check military-service matters separately with the Student Assistance Section.',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:5:23
+✖ EN-STUDENT-ASSISTANCE-08 replaces only the supported name, source and generated locale (1.5797ms)
+  AssertionError [ERR_ASSERTION]: data/en/flow-ui.json/轉入、復學或延畢等學籍有變動時，另向生輔組確認兵役資料及緩徵或儘後召集是否要辦理。不要把學籍手續視為兵役也已完成。
+  + actual - expected
+  
+  + 'When transferring, returning or extending your studies, check your military-service records and any deferment or reserve-call procedures separately with Student Life Guidance. Completing academic-status procedures does not complete military-service procedures.'
+  - 'When transferring, returning or extending your studies, check your military-service records and any deferment or reserve-call procedures separately with Student Assistance Section. Completing academic-status procedures does not complete military-service procedures.'
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:8:40)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'When transferring, returning or extending your studies, check your military-service records and any deferment or reserve-call procedures separately with Student Life Guidance. Completing academic-status procedures does not complete military-service procedures.',
+    expected: 'When transferring, returning or extending your studies, check your military-service records and any deferment or reserve-call procedures separately with Student Assistance Section. Completing academic-status procedures does not complete military-service procedures.',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:5:23
+✖ EN-STUDENT-ASSISTANCE-09 replaces only the supported name, source and generated locale (1.4405ms)
+  AssertionError [ERR_ASSERTION]: data/en/flow-ui.json/休學與復學依目前狀況擇一辦理；役男另向生輔組確認兵役，不以完成學籍程序代替。
+  + actual - expected
+  
+  + 'Apply for leave or return according to your situation. Students subject to military service must also check with Student Life Guidance; academic-status procedures do not replace military-service procedures.'
+  - 'Apply for leave or return according to your situation. Students subject to military service must also check with Student Assistance Section; academic-status procedures do not replace military-service procedures.'
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:8:40)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'Apply for leave or return according to your situation. Students subject to military service must also check with Student Life Guidance; academic-status procedures do not replace military-service procedures.',
+    expected: 'Apply for leave or return according to your situation. Students subject to military service must also check with Student Assistance Section; academic-status procedures do not replace military-service procedures.',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:5:23
+✖ EN-STUDENT-ASSISTANCE-10 replaces only the supported name, source and generated locale (1.5365ms)
+  AssertionError [ERR_ASSERTION]: data/en/step-details-ui.json/先向生輔組說明困難發生時間、目前最急的支出，以及已申請或已領的補助。請承辦協助判斷適用方案，別只因錯過一項公告，就以為所有協助都結束。
+  + actual - expected
+  
+  + 'First explain to the Student Assistance Division when the hardship occurred, your most urgent expenses, and any subsidies already applied for or received. Ask the coordinator to help assess applicable assistance plans; do not assume all aid is unavailable just because you missed one announcement.'
+  - 'First explain to the Student Assistance Section when the hardship occurred, your most urgent expenses, and any subsidies already applied for or received. Ask the coordinator to help assess applicable assistance plans; do not assume all aid is unavailable just because you missed one announcement.'
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:8:40)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'First explain to the Student Assistance Division when the hardship occurred, your most urgent expenses, and any subsidies already applied for or received. Ask the coordinator to help assess applicable assistance plans; do not assume all aid is unavailable just because you missed one announcement.',
+    expected: 'First explain to the Student Assistance Section when the hardship occurred, your most urgent expenses, and any subsidies already applied for or received. Ask the coordinator to help assess applicable assistance plans; do not assume all aid is unavailable just because you missed one announcement.',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:5:23
+✖ JA-QUALIFICATION-NAME-01 replaces only the supported name, source and generated locale (9.0568ms)
+  AssertionError [ERR_ASSERTION]: data/ja/messages.json/技優甄審入學 — 依115學年度簡章審查技藝技能競賽優勝、採認證照等資格的入學管道。 適用對象：符合當年簡章學歷與資格規定者，不只限應屆畢業生。可採認的資格包括競賽優勝、勞動部乙級（含）以上技術士證等；證照職（種）類與招生類別須符合簡章，並非持任一乙級證照即可報名本系。 錄取流程： 1. 第一階段：報名 + 繳費 + 上傳當年簡章要求的資格證明 ~1 作品集 2. 第二階段：書面審查（樹德動遊系不含現場實作） 3. 公告甄審結果 → 登記志願序 → 統一分發 → 報到
+  + actual - expected
+  
+  + '技優甄審入試 — 115学年度の募集要項に基づき、技能競技大会の入賞や対象資格などを審査する入試制度。対象者：当該年度の学歴・資格要件を満たす方。卒業見込者だけに限りません。対象となる資格には、所定の競技大会での入賞、台湾の労働部発行の乙級以上の技能士資格などがあります。資格の職種と募集区分は要項に適合する必要があり、任意の乙級資格を持っていれば本学科へ出願できるわけではありません。 選考プロセス： 1. 第1段階：出願 + 納付 + 当該年度の要項が求める資格証明書／ポートフォリオの提出 2. 第2段階：書類審査（樹徳科技大学アニメとゲームデザイン学科は実技試験なし） 3. 選考結果発表 → 志望順位登録 → 一括配分 → 入学手続き'
+  - '技優甄審入試 — 115学年度の募集要項に基づき、技能競技大会の入賞や対象資格などを審査する入試制度。対象者：当該年度の学歴・資格要件を満たす方。卒業見込者だけに限りません。対象となる資格には、所定の競技大会での入賞、台湾の労働部発行の乙級以上の「技術士證」（台湾の技能検定資格）などがあります。資格の職種と募集区分は要項に適合する必要があり、任意の乙級資格を持っていれば本学科へ出願できるわけではありません。 選考プロセス： 1. 第1段階：出願 + 納付 + 当該年度の要項が求める資格証明書／ポートフォリオの提出 2. 第2段階：書類審査（樹徳科技大学アニメとゲームデザイン学科は実技試験なし） 3. 選考結果発表 → 志望順位登録 → 一括配分 → 入学手続き'
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:8:40)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '技優甄審入試 — 115学年度の募集要項に基づき、技能競技大会の入賞や対象資格などを審査する入試制度。対象者：当該年度の学歴・資格要件を満たす方。卒業見込者だけに限りません。対象となる資格には、所定の競技大会での入賞、台湾の労働部発行の乙級以上の技能士資格などがあります。資格の職種と募集区分は要項に適合する必要があり、任意の乙級資格を持っていれば本学科へ出願できるわけではありません。 選考プロセス： 1. 第1段階：出願 + 納付 + 当該年度の要項が求める資格証明書／ポートフォリオの提出 2. 第2段階：書類審査（樹徳科技大学アニメとゲームデザイン学科は実技試験なし） 3. 選考結果発表 → 志望順位登録 → 一括配分 → 入学手続き',
+    expected: '技優甄審入試 — 115学年度の募集要項に基づき、技能競技大会の入賞や対象資格などを審査する入試制度。対象者：当該年度の学歴・資格要件を満たす方。卒業見込者だけに限りません。対象となる資格には、所定の競技大会での入賞、台湾の労働部発行の乙級以上の「技術士證」（台湾の技能検定資格）などがあります。資格の職種と募集区分は要項に適合する必要があり、任意の乙級資格を持っていれば本学科へ出願できるわけではありません。 選考プロセス： 1. 第1段階：出願 + 納付 + 当該年度の要項が求める資格証明書／ポートフォリオの提出 2. 第2段階：書類審査（樹徳科技大学アニメとゲームデザイン学科は実技試験なし） 3. 選考結果発表 → 志望順位登録 → 一括配分 → 入学手続き',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:5:23
+✖ JA-QUALIFICATION-NAME-02 replaces only the supported name, source and generated locale (7.7136ms)
+  AssertionError [ERR_ASSERTION]: data/ja/messages.json/📜 依115簡章審查競賽優勝、勞動部乙級（含）以上技術士證等資格；須符合招生職種與類別。
+  + actual - expected
+  
+  + '📜 115学年度の要項に基づき、所定の競技大会入賞、台湾の労働部発行の乙級以上技能士資格などを審査。職種・募集区分の適合が必要です。'
+  - '📜 115学年度の要項に基づき、所定の競技大会入賞、台湾の労働部発行の乙級以上「技術士證」（台湾の技能検定資格）などを審査。職種・募集区分の適合が必要です。'
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:8:40)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '📜 115学年度の要項に基づき、所定の競技大会入賞、台湾の労働部発行の乙級以上技能士資格などを審査。職種・募集区分の適合が必要です。',
+    expected: '📜 115学年度の要項に基づき、所定の競技大会入賞、台湾の労働部発行の乙級以上「技術士證」（台湾の技能検定資格）などを審査。職種・募集区分の適合が必要です。',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:11:1
+✖ all source keys and every value outside the twelve exact pointers remain unchanged (2.9663ms)
+  AssertionError [ERR_ASSERTION]: data/en/step-details-ui.json exact allowed delta
+  + actual - expected
+  
+  + [
+  +   '生輔組急難慰助專區申請須知',
+  +   '先整理不能到課的日期、節次與原因，再向導師或生輔組確認假別及證明。遇到考試、心理假或較長期間，先問清楚是否還有其他辦理方式。',
+  +   '從學校「在校學生」入口進入請假服務，依系統填寫資料並確認是否送出。若找不到操作項目，帶著畫面問導師或生輔組，不要只在通訊軟體告知就當完成。',
+  +   '先向生輔組說明困難發生時間、目前最急的支出，以及已申請或已領的補助。請承辦協助判斷適用方案，別只因錯過一項公告，就以為所有協助都結束。'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:15:82)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ '生輔組急難慰助專區申請須知', '先整理不能到課的日期、節次與原因，再向導師或生輔組確認假別及證明。遇到考試、心理假或較長期間，先問清楚是否還有其他辦理方式。', '從學校「在校學生」入口進入請假服務，依系統填寫資料並確認是否送出。若找不到操作項目，帶著畫面問導師或生輔組，不要只在通訊軟體告知就當完成。', '先向生輔組說明困難發生時間、目前最急的支出，以及已申請或已領的補助。請承辦協助判斷適用方案，別只因錯過一項公告，就以為所有協助都結束。' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:23:31
+✖ en locale contains exactly new name deltas and no other changes (17.2265ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   '教務處FAQ說明，休學期滿前會寄送復學通知，應依通知辦理。地址、信箱與電話有變動要更新；兵役問題另向生輔組確認。',
+  +   '生輔組急難慰助專區申請須知',
+  +   '先整理不能到課的日期、節次與原因，再向導師或生輔組確認假別及證明。遇到考試、心理假或較長期間，先問清楚是否還有其他辦理方式。',
+  +   '從學校「在校學生」入口進入請假服務，依系統填寫資料並確認是否送出。若找不到操作項目，帶著畫面問導師或生輔組，不要只在通訊軟體告知就當完成。',
+  +   '先向生輔組說明困難發生時間、目前最急的支出，以及已申請或已領的補助。請承辦協助判斷適用方案，別只因錯過一項公告，就以為所有協助都結束。',
+  +   '休學與復學依目前狀況擇一辦理；役男另向生輔組確認兵役，不以完成學籍程序代替。',
+  +   '兵役：另向生輔組確認資料',
+  +   '轉入、復學或延畢等學籍有變動時，另向生輔組確認兵役資料及緩徵或儘後召集是否要辦理。不要把學籍手續視為兵役也已完成。',
+  +   '生輔組校內獎助學金目錄',
+  +   '生輔組學雜費減免申請公告'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:26:69)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '教務處FAQ說明，休學期滿前會寄送復學通知，應依通知辦理。地址、信箱與電話有變動要更新；兵役問題另向生輔組確認。', '生輔組急難慰助專區申請須知', '先整理不能到課的日期、節次與原因，再向導師或生輔組確認假別及證明。遇到考試、心理假或較長期間，先問清楚是否還有其他辦理方式。', '從學校「在校學生」入口進入請假服務，依系統填寫資料並確認是否送出。若找不到操作項目，帶著畫面問導師或生輔組，不要只在通訊軟體告知就當完成。', '先向生輔組說明困難發生時間、目前最急的支出，以及已申請或已領的補助。請承辦協助判斷適用方案，別只因錯過一項公告，就以為所有協助都結束。', '休學與復學依目前狀況擇一辦理；役男另向生輔組確認兵役，不以完成學籍程序代替。', '兵役：另向生輔組確認資料', '轉入、復學或延畢等學籍有變動時，另向生輔組確認兵役資料及緩徵或儘後召集是否要辦理。不要把學籍手續視為兵役也已完成。', '生輔組校內獎助學金目錄', '生輔組學雜費減免申請公告' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:23:31
+✖ ja locale contains exactly new name deltas and no other changes (15.358ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   '技優甄審入學 — 依115學年度簡章審查技藝技能競賽優勝、採認證照等資格的入學管道。 適用對象：符合當年簡章學歷與資格規定者，不只限應屆畢業生。可採認的資格包括競賽優勝、勞動部乙級（含）以上技術士證等；證照職（種）類與招生類別須符合簡章，並非持任一乙級證照即可報名本系。 錄取流程： 1. 第一階段：報名 + 繳費 + 上傳當年簡章要求的資格證明 / 作品集 2. 第二階段：書面審查（樹德動遊系不含現場實作） 3. 公告甄審結果 → 登記志願序 → 統一分發 → 報到',
+  +   '📜 依115簡章審查競賽優勝、勞動部乙級（含）以上技術士證等資格；須符合招生職種與類別。'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:26:69)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '技優甄審入學 — 依115學年度簡章審查技藝技能競賽優勝、採認證照等資格的入學管道。 適用對象：符合當年簡章學歷與資格規定者，不只限應屆畢業生。可採認的資格包括競賽優勝、勞動部乙級（含）以上技術士證等；證照職（種）類與招生類別須符合簡章，並非持任一乙級證照即可報名本系。 錄取流程： 1. 第一階段：報名 + 繳費 + 上傳當年簡章要求的資格證明 / 作品集 2. 第二階段：書面審查（樹德動遊系不含現場實作） 3. 公告甄審結果 → 登記志願序 → 統一分發 → 報到', '📜 依115簡章審查競賽優勝、勞動部乙級（含）以上技術士證等資格；須符合招生職種與類別。' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:28:31
+✖ en new phase covers both approved batches against the original preimage (16.1338ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   '教務處FAQ說明，休學期滿前會寄送復學通知，應依通知辦理。地址、信箱與電話有變動要更新；兵役問題另向生輔組確認。',
+  +   '生輔組急難慰助專區申請須知',
+  +   '先整理不能到課的日期、節次與原因，再向導師或生輔組確認假別及證明。遇到考試、心理假或較長期間，先問清楚是否還有其他辦理方式。',
+  +   '從學校「在校學生」入口進入請假服務，依系統填寫資料並確認是否送出。若找不到操作項目，帶著畫面問導師或生輔組，不要只在通訊軟體告知就當完成。',
+  +   '先向生輔組說明困難發生時間、目前最急的支出，以及已申請或已領的補助。請承辦協助判斷適用方案，別只因錯過一項公告，就以為所有協助都結束。',
+  +   '休學與復學依目前狀況擇一辦理；役男另向生輔組確認兵役，不以完成學籍程序代替。',
+  +   '兵役：另向生輔組確認資料',
+  +   '轉入、復學或延畢等學籍有變動時，另向生輔組確認兵役資料及緩徵或儘後召集是否要辦理。不要把學籍手續視為兵役也已完成。',
+  +   '生輔組校內獎助學金目錄',
+  +   '生輔組學雜費減免申請公告'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:32:69)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '教務處FAQ說明，休學期滿前會寄送復學通知，應依通知辦理。地址、信箱與電話有變動要更新；兵役問題另向生輔組確認。', '生輔組急難慰助專區申請須知', '先整理不能到課的日期、節次與原因，再向導師或生輔組確認假別及證明。遇到考試、心理假或較長期間，先問清楚是否還有其他辦理方式。', '從學校「在校學生」入口進入請假服務，依系統填寫資料並確認是否送出。若找不到操作項目，帶著畫面問導師或生輔組，不要只在通訊軟體告知就當完成。', '先向生輔組說明困難發生時間、目前最急的支出，以及已申請或已領的補助。請承辦協助判斷適用方案，別只因錯過一項公告，就以為所有協助都結束。', '休學與復學依目前狀況擇一辦理；役男另向生輔組確認兵役，不以完成學籍程序代替。', '兵役：另向生輔組確認資料', '轉入、復學或延畢等學籍有變動時，另向生輔組確認兵役資料及緩徵或儘後召集是否要辦理。不要把學籍手續視為兵役也已完成。', '生輔組校內獎助學金目錄', '生輔組學雜費減免申請公告' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:28:31
+✖ ja new phase covers both approved batches against the original preimage (14.5592ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   '技優甄審入學 — 依115學年度簡章審查技藝技能競賽優勝、採認證照等資格的入學管道。 適用對象：符合當年簡章學歷與資格規定者，不只限應屆畢業生。可採認的資格包括競賽優勝、勞動部乙級（含）以上技術士證等；證照職（種）類與招生類別須符合簡章，並非持任一乙級證照即可報名本系。 錄取流程： 1. 第一階段：報名 + 繳費 + 上傳當年簡章要求的資格證明 / 作品集 2. 第二階段：書面審查（樹德動遊系不含現場實作） 3. 公告甄審結果 → 登記志願序 → 統一分發 → 報到',
+  +   '📜 依115簡章審查競賽優勝、勞動部乙級（含）以上技術士證等資格；須符合招生職種與類別。'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\official-guide-names-20261023\names.test.cjs:32:69)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '技優甄審入學 — 依115學年度簡章審查技藝技能競賽優勝、採認證照等資格的入學管道。 適用對象：符合當年簡章學歷與資格規定者，不只限應屆畢業生。可採認的資格包括競賽優勝、勞動部乙級（含）以上技術士證等；證照職（種）類與招生類別須符合簡章，並非持任一乙級證照即可報名本系。 錄取流程： 1. 第一階段：報名 + 繳費 + 上傳當年簡章要求的資格證明 / 作品集 2. 第二階段：書面審查（樹德動遊系不含現場實作） 3. 公告甄審結果 → 登記志願序 → 統一分發 → 報到', '📜 依115簡章審查競賽優勝、勞動部乙級（含）以上技術士證等資格；須符合招生職種與類別。' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

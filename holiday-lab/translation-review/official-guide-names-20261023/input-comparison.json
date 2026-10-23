@@ -1,0 +1,1351 @@
+{
+  "created_at": "2026-10-23T10:59:16.831Z",
+  "scope": "16候選逐筆primary名稱查證；不改產品，不構成母語審核或發布批准",
+  "input": {
+    "file": "holiday-lab/reports/comprehensive-audit-20261023/translation-candidates.json",
+    "sha256_before": "af09e4a8764b3a86adbd6d4ffbd3ecd5cb896a6e1f4386e091ff97dbdc0456b2",
+    "sha256_after": "af09e4a8764b3a86adbd6d4ffbd3ecd5cb896a6e1f4386e091ff97dbdc0456b2",
+    "unchanged": true
+  },
+  "counts": {
+    "values": 16,
+    "primary_supported": 12,
+    "retain_pending": 4,
+    "rejected": 0
+  },
+  "negative_searches": [
+    {
+      "queries": [
+        "site:life.sao.stu.edu.tw \"Student Assistance\" 日本語",
+        "site:stu.edu.tw \"生活輔導組\" \"日本語\""
+      ],
+      "result": "未找到可證正式日文名的校方頁；不宣稱不存在。"
+    },
+    {
+      "queries": [
+        "site:mol.gov.tw 技術士證 日本語",
+        "site:mol.gov.tw \"技術士證\" \"日本\" \"翻譯\""
+      ],
+      "result": "未找到官方日文資格名稱或日台等同性聲明；保留台灣原名。"
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "title": "學務處英文組織與服務",
+      "url": "https://en.sao.stu.edu.tw/organization/",
+      "owner": "官方原始來源",
+      "accessed_at": "2026-10-23",
+      "access_method": "web 搜尋服務擷取官方頁文字；直接請求未取得全文",
+      "read_scope": "Student Assistance Section 標題及其職掌段落",
+      "claims": [
+        "生活輔導組對應英文為 Student Assistance Section；職掌涵蓋減免、獎助、請假及兵役。"
+      ],
+      "limitations": [
+        "直接開啟403；本次讀到搜尋服務擷取文字，不聲稱即時網頁全文。",
+        "搜尋metadata的舊刊登日期不等於目前內文更新日期。"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "生活輔導組組織與成員",
+      "url": "https://life.sao.stu.edu.tw/en/單位介紹/組織與成員/",
+      "owner": "官方原始來源",
+      "accessed_at": "2026-10-23",
+      "access_method": "web 搜尋服務擷取官方頁文字；直接請求未取得全文",
+      "read_scope": "中文頁首、組長單位及各職掌表中急難／獎助／減免／請假／兵役項目",
+      "claims": [
+        "中文單位確為生活輔導組，職掌與S1對應。"
+      ],
+      "limitations": [
+        "URL含/en/但實讀是中文，不冒稱正式英文或日文頁。",
+        "不抄用姓名電話，避免不同舊頁承辦人資訊不一致。"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "學務處英文簡介",
+      "url": "https://en.sao.stu.edu.tw/introduction/",
+      "owner": "官方原始來源",
+      "accessed_at": "2026-10-23",
+      "access_method": "web 搜尋服務擷取官方頁文字；直接請求未取得全文",
+      "read_scope": "Organization 列表",
+      "claims": [
+        "同樣使用 Student Assistance Section。"
+      ],
+      "limitations": [
+        "其他單位英文列法與組織頁不同；不能推論全處所有英文名稱已同步。"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "急難慰助申請須知",
+      "url": "https://life.sao.stu.edu.tw/急難救助/急難慰問/",
+      "owner": "官方原始來源",
+      "accessed_at": "2026-10-23",
+      "access_method": "web 搜尋服務擷取官方頁文字；直接請求未取得全文",
+      "read_scope": "頁首、申請須知、對象及依各方案期限申請段落",
+      "claims": [
+        "該急難專區由生活輔導組網站提供。"
+      ],
+      "limitations": [
+        "直接開啟403；不在本輪重新核定所得門檻或申請期限。"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "校內獎助學金",
+      "url": "https://life.sao.stu.edu.tw/獎助學金/校內獎助學金/",
+      "owner": "官方原始來源",
+      "accessed_at": "2026-10-23",
+      "access_method": "web 搜尋服務擷取官方頁文字；直接請求未取得全文",
+      "read_scope": "標題與生活輔導組頁首",
+      "claims": [
+        "中文候選來源目錄確在生活輔導組。"
+      ],
+      "limitations": [
+        "本次擷取範圍只有目錄標題與頁首，非各獎助方案全文。"
+      ]
+    },
+    {
+      "id": "S6",
+      "title": "學雜費減免申請公告",
+      "url": "https://life.sao.stu.edu.tw/學雜費減免/教育部學雜費減免/學雜費減免辦理公告/",
+      "owner": "官方原始來源",
+      "accessed_at": "2026-10-23",
+      "access_method": "web 搜尋服務擷取官方頁文字；直接請求未取得全文",
+      "read_scope": "標題、115第一學期公告及第二學期約略時程段落",
+      "claims": [
+        "該減免公告在生活輔導組網站。"
+      ],
+      "limitations": [
+        "不同學期須依新公告；本輪不把約略時程寫成固定期限。"
+      ]
+    },
+    {
+      "id": "S7",
+      "title": "看見樹德英文簡介",
+      "url": "https://about.stu.edu.tw/en",
+      "owner": "官方原始來源",
+      "accessed_at": "2026-10-23",
+      "access_method": "web 搜尋服務擷取官方頁文字；直接請求未取得全文",
+      "read_scope": "Educational systems 所在段落",
+      "claims": [
+        "四年制：four-year undergraduate programs；二年制進修：two-year continuing education programs；二專：two-year associate degree programs。"
+      ],
+      "limitations": [
+        "內文有2022統計；©2026不是內文更新日期，不能當115招生簡章。"
+      ]
+    },
+    {
+      "id": "S8",
+      "title": "看見樹德日文簡介",
+      "url": "https://about.stu.edu.tw/jp",
+      "owner": "官方原始來源",
+      "accessed_at": "2026-10-23",
+      "access_method": "web 搜尋服務擷取官方頁文字；直接請求未取得全文",
+      "read_scope": "学制としては 所在段落",
+      "claims": [
+        "學校實際日文用語為四年制大学部／二年制進学部／二年制専科進学部。"
+      ],
+      "limitations": [
+        "候選的學士課程及専科学校課程屬解說，不是此頁逐字正式名稱。",
+        "內文年代未標，統計及例子含2022以前。"
+      ]
+    },
+    {
+      "id": "S9",
+      "title": "社會工作學程英文簡介",
+      "url": "https://www.sw.stu.edu.tw/home?lang=en-US",
+      "owner": "官方原始來源",
+      "accessed_at": "2026-10-23",
+      "access_method": "web 搜尋服務擷取官方頁文字；直接請求未取得全文",
+      "read_scope": "Education System 及 Professional Recognition 學士段落",
+      "claims": [
+        "該校該學程英文有 Four-year Bachelor's Program 及 Two-year Bachelor's Program (for continuing education)。"
+      ],
+      "limitations": [
+        "只證該學程用語，不由此推全部科系招生條件；英文頁仍稱學程。"
+      ]
+    },
+    {
+      "id": "S10",
+      "title": "社工系介紹",
+      "url": "https://www.sw.stu.edu.tw/社工介紹/",
+      "owner": "官方原始來源",
+      "accessed_at": "2026-10-23",
+      "access_method": "web 搜尋服務擷取官方頁文字；直接請求未取得全文",
+      "read_scope": "104設學程、106設二技進修及112改系沿革",
+      "claims": [
+        "中文頁記112年8月1日升格社工系，英文頁學程稱呼有年代差。"
+      ],
+      "limitations": []
+    },
+    {
+      "id": "S11",
+      "title": "115學年度核定招生系所與名額",
+      "url": "https://reg.aca.stu.edu.tw/【115學年度】招生系所與名額",
+      "owner": "官方原始來源",
+      "accessed_at": "2026-10-23",
+      "access_method": "web 搜尋服務擷取官方頁文字；直接請求未取得全文",
+      "read_scope": "核定員額表欄位與動遊系列；技優招生群類表動遊系列",
+      "claims": [
+        "核定員額列動遊系進四技30名；進二技與進二專空白。技優動遊系列85商設。"
+      ],
+      "limitations": [
+        "讀到官方表格的搜尋擷取結構；未取得原生網頁截圖，數值應交招生承辦覆核後修改中文。",
+        "表格員額不等於今天仍受理招生，首頁已顯示115招生結束。"
+      ]
+    },
+    {
+      "id": "S12",
+      "title": "115四技二專技優甄審簡章",
+      "url": "https://www.jctv.ntut.edu.tw/downloads/115/skill/115_enter42_rule.pdf#page=11",
+      "owner": "官方原始來源",
+      "accessed_at": "2026-10-23",
+      "access_method": "web open 官方PDF全文文字；只讀所列頁段，未逐頁讀72頁",
+      "read_scope": "實際PDF：封面、實體第11–12頁／印刷第1–2頁報名資格；第13頁對照表欄名",
+      "claims": [
+        "報名須兼具學歷與適合招生類別職種；乙級以上技術士證及相當等級單一級為其一資格，非勞動部核發不得以此報名。"
+      ],
+      "limitations": [
+        "封面114年12月，重要日程114年12月4日起公告；是115四技二專，不混用115二技技優。",
+        "未讀本系指定項目完整分則，不借名稱修正重新批准整段實作考試等細節。"
+      ]
+    },
+    {
+      "id": "S13",
+      "title": "技術士技能檢定及發證辦法英文條文",
+      "url": "https://laws.mol.gov.tw/Eng/FLAWDAT0201.aspx?id=FL015100",
+      "owner": "官方原始來源",
+      "accessed_at": "2026-10-23",
+      "access_method": "web 搜尋服務擷取官方頁文字；直接請求未取得全文",
+      "read_scope": "標題修改日、Art.5分級與Art.47–48證書核發／記載",
+      "claims": [
+        "官方英文可證 technician certificates，乙級對應Class B；不是日本資格等同性認定。"
+      ],
+      "limitations": [
+        "頁面標2023.11.02 Modified；法規沿革其他英文新聞標年出現不一致，採條文本頁標示並保留，不推最新2026修法狀態。",
+        "官方日文未查得。"
+      ]
+    },
+    {
+      "id": "S14",
+      "title": "教育部Higher-Level TVE",
+      "url": "https://english.moe.gov.tw/public/Data/New182910424171.pdf",
+      "owner": "官方原始來源",
+      "accessed_at": "2026-10-23",
+      "access_method": "web 搜尋服務擷取官方頁文字；直接請求未取得全文",
+      "read_scope": "搜尋擷取中技專學制與學位段落",
+      "claims": [
+        "技專體系二技及四技屬學士層次、專科為associate層次，可支持學制說明方向。"
+      ],
+      "limitations": [
+        "歷史PDF約15年前，僅補強學位層次，不當成115招生政策；擷取末段有疑似誤植，不引用該句。"
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "id": "PROGRAM-01",
+      "lang": "en",
+      "key": "包含二技 / 四技 / 二專進修部與產學攜手。目前頁面未列出動遊系名額 — 請洽樹德進修部專區。",
+      "priority": "P2",
+      "kind": "program-wording",
+      "direct_semantic_subset": false,
+      "current": "Includes two-year college / four-year college / two-year junior college continuing education and industry-academia collaboration programs. Currently no AGD quotas listed on this page — please consult the Shu-Te Continuing Education Division portal.",
+      "candidate": "Includes two-year bachelor’s programs / four-year bachelor’s programs / two-year junior-college programs continuing education and industry-academia collaboration programs. Currently no AGD quotas listed on this page — please consult the Shu-Te Continuing Education Division portal.",
+      "decision": "retain-proposal",
+      "reason": "二技學士與二專層次不可只用two-year college混在一起；保留原稱及本系名額待公告限制。JASSO本次全文可確認台灣専科学校及副學士，非日本資格法律等同。EN建議列舉語法可再順寫，不影響學制修正方向。",
+      "definitions": [
+        {
+          "file": "data/en/admission.json",
+          "pointer": "/6/summary",
+          "sha256": "aa1b5c3f4706eec932b08a82563407105421990b4c044e2158e085264d18366a",
+          "raw_matches": true,
+          "expected_raw": "Includes two-year college / four-year college / two-year junior college continuing education and industry-academia collaboration programs. Currently no AGD quotas listed on this page — please consult the Shu-Te Continuing Education Division portal."
+        }
+      ],
+      "canonical_locations": [
+        {
+          "file": "data/admission.json",
+          "pointer": "/6/summary",
+          "line": null,
+          "kind": "canonical-data",
+          "canonical_matches": "yes",
+          "canonical_raw": "包含二技 / 四技 / 二專進修部與產學攜手。目前頁面未列出動遊系名額 — 請洽樹德進修部專區。",
+          "comparison": "whitespace-normalized canonical display key; original raw retained"
+        }
+      ],
+      "source_urls": [
+        "https://www.sw.stu.edu.tw/home?lang=en-US",
+        "https://ryugaku.jasso.go.jp/oversea_info/region/asia/taiwan/info_tw_university.html"
+      ],
+      "current_checks": [
+        {
+          "file": "data/en/admission.json",
+          "pointer": "/6/summary",
+          "matches": true
+        }
+      ],
+      "canonical_checks": [
+        {
+          "file": "data/admission.json",
+          "pointer": "/6/summary",
+          "matches": true
+        }
+      ],
+      "review": {
+        "classification": "原文待確認需維持",
+        "implementation_scope": "不直接套用整句；先核中文115進四技名額與跨管道條件，另寫新候選。維持是本輪不改產品，不代表原文已正確。",
+        "candidate_as_name_change_supported": false,
+        "official_english_name": {
+          "four_year": "four-year undergraduate programs",
+          "two_year_continuing": "two-year continuing education programs",
+          "two_year_associate": "two-year associate degree programs"
+        },
+        "official_japanese_name": {
+          "four_year": "四年制大学部",
+          "two_year_continuing": "二年制進学部",
+          "two_year_associate": "二年制専科進学部"
+        },
+        "japanese_status": "校方簡介有日文用語；候選括號文字是說明譯法",
+        "primary_sources": [
+          "S7",
+          "S8",
+          "S9",
+          "S10",
+          "S11",
+          "S14"
+        ],
+        "reason": "學位層次修正方向有支持，但整句仍稱本系未列名額，與115官方表動遊系進四技30名產生差異。英文候選列舉也須順寫，不能照貼。",
+        "conservative_description": "Continuing education: two-year and four-year bachelor’s programs, and two-year associate-degree programs. Availability and admission requirements vary by program.",
+        "description_status": "供新候選審閱，非校方逐字正式名稱，不已套產品"
+      }
+    },
+    {
+      "id": "PROGRAM-01",
+      "lang": "ja",
+      "key": "包含二技 / 四技 / 二專進修部與產學攜手。目前頁面未列出動遊系名額 — 請洽樹德進修部專區。",
+      "priority": "P2",
+      "kind": "program-wording",
+      "direct_semantic_subset": false,
+      "current": "2年制大学／4年制課程／2年制短期大学の進修部および産学連携プログラムを含みます。現在ページ上にアニメとゲームデザイン学科の定員は記載されていません — 樹徳科技大学進修部特設ページへお問い合わせください。",
+      "candidate": "二技（2年制の学士課程）／四技（4年制の学士課程）／二專（2年制の専科学校課程）の進修部および産学連携プログラムを含みます。現在ページ上にアニメとゲームデザイン学科の定員は記載されていません — 樹徳科技大学進修部特設ページへお問い合わせください。",
+      "decision": "retain-proposal",
+      "reason": "二技學士與二專層次不可只用two-year college混在一起；保留原稱及本系名額待公告限制。JASSO本次全文可確認台灣専科学校及副學士，非日本資格法律等同。EN建議列舉語法可再順寫，不影響學制修正方向。",
+      "definitions": [
+        {
+          "file": "data/ja/messages.json",
+          "pointer": "/包含二技 ~1 四技 ~1 二專進修部與產學攜手。目前頁面未列出動遊系名額 — 請洽樹德進修部專區。",
+          "sha256": "ad407a3ed0015af9bce77531198ed21ac0360408ba03c22a21ee5bb99e4a7484",
+          "raw_matches": true,
+          "expected_raw": "2年制大学／4年制課程／2年制短期大学の進修部および産学連携プログラムを含みます。現在ページ上にアニメとゲームデザイン学科の定員は記載されていません — 樹徳科技大学進修部特設ページへお問い合わせください。"
+        }
+      ],
+      "canonical_locations": [
+        {
+          "file": "data/admission.json",
+          "pointer": "/6/summary",
+          "line": null,
+          "kind": "canonical-data",
+          "canonical_matches": "yes",
+          "canonical_raw": "包含二技 / 四技 / 二專進修部與產學攜手。目前頁面未列出動遊系名額 — 請洽樹德進修部專區。",
+          "comparison": "whitespace-normalized canonical display key; original raw retained"
+        }
+      ],
+      "source_urls": [
+        "https://www.sw.stu.edu.tw/home?lang=en-US",
+        "https://ryugaku.jasso.go.jp/oversea_info/region/asia/taiwan/info_tw_university.html"
+      ],
+      "current_checks": [
+        {
+          "file": "data/ja/messages.json",
+          "pointer": "/包含二技 ~1 四技 ~1 二專進修部與產學攜手。目前頁面未列出動遊系名額 — 請洽樹德進修部專區。",
+          "matches": true
+        }
+      ],
+      "canonical_checks": [
+        {
+          "file": "data/admission.json",
+          "pointer": "/6/summary",
+          "matches": true
+        }
+      ],
+      "review": {
+        "classification": "原文待確認需維持",
+        "implementation_scope": "不直接套用整句；先核中文115進四技名額與跨管道條件，另寫新候選。維持是本輪不改產品，不代表原文已正確。",
+        "candidate_as_name_change_supported": false,
+        "official_english_name": {
+          "four_year": "four-year undergraduate programs",
+          "two_year_continuing": "two-year continuing education programs",
+          "two_year_associate": "two-year associate degree programs"
+        },
+        "official_japanese_name": {
+          "four_year": "四年制大学部",
+          "two_year_continuing": "二年制進学部",
+          "two_year_associate": "二年制専科進学部"
+        },
+        "japanese_status": "校方簡介有日文用語；候選括號文字是說明譯法",
+        "primary_sources": [
+          "S7",
+          "S8",
+          "S9",
+          "S10",
+          "S11",
+          "S14"
+        ],
+        "reason": "學位層次修正方向有支持，但整句仍稱本系未列名額，與115官方表動遊系進四技30名產生差異。英文候選列舉也須順寫，不能照貼。",
+        "conservative_description": "進修部：二技（2年制の学士課程）、四技（4年制の学士課程）、二專（2年制の専科課程）。募集の有無と出願条件は各募集要項を確認してください。",
+        "description_status": "供新候選審閱，非校方逐字正式名稱，不已套產品"
+      }
+    },
+    {
+      "id": "PROGRAM-02",
+      "lang": "en",
+      "key": "進修部相關招生 — 涵蓋二技 / 四技 / 二專進修部與產學攜手計畫，採書審 + 面試（免統測 / 學測）的彈性入學管道。 適用對象：在職人士、想兼顧工作與學業者、二度就讀者 上課時間：典型週一至五晚上 18:30-21:30 + 部分假日課程。 ※ 各管道是否開放動遊系名額，請以樹德招生網對應專區公告為準。",
+      "priority": "P2",
+      "kind": "program-wording",
+      "direct_semantic_subset": false,
+      "current": "Continuing Education Division Admissions (進修部相關招生) — Encompassing two-year college / four-year college / two-year junior college continuing education and industry-academia collaboration programs, a flexible admission pathway using documentary review + interview (exempt from TCTE / GSAT).\n\nTarget Audience: Working professionals, those seeking to balance work and studies, second-degree seekers\n\nClass Hours: Typically Monday to Friday evenings 18:30-21:30 + selected weekend courses.\n\n* Please refer to announcements on the Shu-Te Admissions website to confirm whether AGD quotas are open for each pathway.",
+      "candidate": "Continuing Education Division Admissions (進修部相關招生) — Encompassing two-year bachelor’s programs / four-year bachelor’s programs / two-year junior-college programs continuing education and industry-academia collaboration programs, a flexible admission pathway using documentary review + interview (exempt from TCTE / GSAT).\n\nTarget Audience: Working professionals, those seeking to balance work and studies, second-degree seekers\n\nClass Hours: Typically Monday to Friday evenings 18:30-21:30 + selected weekend courses.\n\n* Please refer to announcements on the Shu-Te Admissions website to confirm whether AGD quotas are open for each pathway.",
+      "decision": "retain-proposal",
+      "reason": "二技學士與二專層次不可只用two-year college混在一起；保留原稱及本系名額待公告限制。JASSO本次全文可確認台灣専科学校及副學士，非日本資格法律等同。EN建議列舉語法可再順寫，不影響學制修正方向。",
+      "definitions": [
+        {
+          "file": "data/en/admission.json",
+          "pointer": "/6/content",
+          "sha256": "aa1b5c3f4706eec932b08a82563407105421990b4c044e2158e085264d18366a",
+          "raw_matches": true,
+          "expected_raw": "Continuing Education Division Admissions (進修部相關招生) — Encompassing two-year college / four-year college / two-year junior college continuing education and industry-academia collaboration programs, a flexible admission pathway using documentary review + interview (exempt from TCTE / GSAT).\n\nTarget Audience: Working professionals, those seeking to balance work and studies, second-degree seekers\n\nClass Hours: Typically Monday to Friday evenings 18:30-21:30 + selected weekend courses.\n\n* Please refer to announcements on the Shu-Te Admissions website to confirm whether AGD quotas are open for each pathway."
+        }
+      ],
+      "canonical_locations": [
+        {
+          "file": "data/admission.json",
+          "pointer": "/6/content",
+          "line": null,
+          "kind": "canonical-data",
+          "canonical_matches": "yes",
+          "canonical_raw": "進修部相關招生 — 涵蓋二技 / 四技 / 二專進修部與產學攜手計畫，採書審 + 面試（免統測 / 學測）的彈性入學管道。\n\n適用對象：在職人士、想兼顧工作與學業者、二度就讀者\n\n上課時間：典型週一至五晚上 18:30-21:30 + 部分假日課程。\n\n※ 各管道是否開放動遊系名額，請以樹德招生網對應專區公告為準。",
+          "comparison": "whitespace-normalized canonical display key; original raw retained"
+        }
+      ],
+      "source_urls": [
+        "https://www.sw.stu.edu.tw/home?lang=en-US",
+        "https://ryugaku.jasso.go.jp/oversea_info/region/asia/taiwan/info_tw_university.html"
+      ],
+      "current_checks": [
+        {
+          "file": "data/en/admission.json",
+          "pointer": "/6/content",
+          "matches": true
+        }
+      ],
+      "canonical_checks": [
+        {
+          "file": "data/admission.json",
+          "pointer": "/6/content",
+          "matches": true
+        }
+      ],
+      "review": {
+        "classification": "原文待確認需維持",
+        "implementation_scope": "不直接套用整句；先核中文115進四技名額與跨管道條件，另寫新候選。維持是本輪不改產品，不代表原文已正確。",
+        "candidate_as_name_change_supported": false,
+        "official_english_name": {
+          "four_year": "four-year undergraduate programs",
+          "two_year_continuing": "two-year continuing education programs",
+          "two_year_associate": "two-year associate degree programs"
+        },
+        "official_japanese_name": {
+          "four_year": "四年制大学部",
+          "two_year_continuing": "二年制進学部",
+          "two_year_associate": "二年制専科進学部"
+        },
+        "japanese_status": "校方簡介有日文用語；候選括號文字是說明譯法",
+        "primary_sources": [
+          "S7",
+          "S8",
+          "S9",
+          "S10",
+          "S11",
+          "S14"
+        ],
+        "reason": "學位層次有支持，但整段統一書審＋面試、免統測／學測、夜間時段未按各115管道簡章逐一證成；學制名稱修正不能連帶批准整段。",
+        "conservative_description": "Continuing education: two-year and four-year bachelor’s programs, and two-year associate-degree programs. Availability and admission requirements vary by program.",
+        "description_status": "供新候選審閱，非校方逐字正式名稱，不已套產品"
+      }
+    },
+    {
+      "id": "PROGRAM-02",
+      "lang": "ja",
+      "key": "進修部相關招生 — 涵蓋二技 / 四技 / 二專進修部與產學攜手計畫，採書審 + 面試（免統測 / 學測）的彈性入學管道。 適用對象：在職人士、想兼顧工作與學業者、二度就讀者 上課時間：典型週一至五晚上 18:30-21:30 + 部分假日課程。 ※ 各管道是否開放動遊系名額，請以樹德招生網對應專區公告為準。",
+      "priority": "P2",
+      "kind": "program-wording",
+      "direct_semantic_subset": false,
+      "current": "進修部関連募集 — 2年制大学／4年制課程／2年制短期大学の進修部および産学連携プログラムを網羅し、書類審査 + 面接（統測／学測不要）で実施される柔軟な入試制度です。 適用対象：社会人、仕事と学業を両立したい方、学び直し希望者 授業時間：通常は月曜日〜金曜日夜間 18:30-21:30 + 一部休日の授業。 ※ 各入試枠におけるアニメとゲームデザイン学科の定員の有無は、樹徳科技大学受験生向けサイトの各募集特設ページのご案内をご確認ください。",
+      "candidate": "進修部関連募集 — 二技（2年制の学士課程）／四技（4年制の学士課程）／二專（2年制の専科学校課程）の進修部および産学連携プログラムを網羅し、書類審査 + 面接（統測／学測不要）で実施される柔軟な入試制度です。 適用対象：社会人、仕事と学業を両立したい方、学び直し希望者 授業時間：通常は月曜日〜金曜日夜間 18:30-21:30 + 一部休日の授業。 ※ 各入試枠におけるアニメとゲームデザイン学科の定員の有無は、樹徳科技大学受験生向けサイトの各募集特設ページのご案内をご確認ください。",
+      "decision": "retain-proposal",
+      "reason": "二技學士與二專層次不可只用two-year college混在一起；保留原稱及本系名額待公告限制。JASSO本次全文可確認台灣専科学校及副學士，非日本資格法律等同。EN建議列舉語法可再順寫，不影響學制修正方向。",
+      "definitions": [
+        {
+          "file": "data/ja/messages.json",
+          "pointer": "/進修部相關招生 — 涵蓋二技 ~1 四技 ~1 二專進修部與產學攜手計畫，採書審 + 面試（免統測 ~1 學測）的彈性入學管道。 適用對象：在職人士、想兼顧工作與學業者、二度就讀者 上課時間：典型週一至五晚上 18:30-21:30 + 部分假日課程。 ※ 各管道是否開放動遊系名額，請以樹德招生網對應專區公告為準。",
+          "sha256": "ad407a3ed0015af9bce77531198ed21ac0360408ba03c22a21ee5bb99e4a7484",
+          "raw_matches": true,
+          "expected_raw": "進修部関連募集 — 2年制大学／4年制課程／2年制短期大学の進修部および産学連携プログラムを網羅し、書類審査 + 面接（統測／学測不要）で実施される柔軟な入試制度です。 適用対象：社会人、仕事と学業を両立したい方、学び直し希望者 授業時間：通常は月曜日〜金曜日夜間 18:30-21:30 + 一部休日の授業。 ※ 各入試枠におけるアニメとゲームデザイン学科の定員の有無は、樹徳科技大学受験生向けサイトの各募集特設ページのご案内をご確認ください。"
+        }
+      ],
+      "canonical_locations": [
+        {
+          "file": "data/admission.json",
+          "pointer": "/6/content",
+          "line": null,
+          "kind": "canonical-data",
+          "canonical_matches": "yes",
+          "canonical_raw": "進修部相關招生 — 涵蓋二技 / 四技 / 二專進修部與產學攜手計畫，採書審 + 面試（免統測 / 學測）的彈性入學管道。\n\n適用對象：在職人士、想兼顧工作與學業者、二度就讀者\n\n上課時間：典型週一至五晚上 18:30-21:30 + 部分假日課程。\n\n※ 各管道是否開放動遊系名額，請以樹德招生網對應專區公告為準。",
+          "comparison": "whitespace-normalized canonical display key; original raw retained"
+        }
+      ],
+      "source_urls": [
+        "https://www.sw.stu.edu.tw/home?lang=en-US",
+        "https://ryugaku.jasso.go.jp/oversea_info/region/asia/taiwan/info_tw_university.html"
+      ],
+      "current_checks": [
+        {
+          "file": "data/ja/messages.json",
+          "pointer": "/進修部相關招生 — 涵蓋二技 ~1 四技 ~1 二專進修部與產學攜手計畫，採書審 + 面試（免統測 ~1 學測）的彈性入學管道。 適用對象：在職人士、想兼顧工作與學業者、二度就讀者 上課時間：典型週一至五晚上 18:30-21:30 + 部分假日課程。 ※ 各管道是否開放動遊系名額，請以樹德招生網對應專區公告為準。",
+          "matches": true
+        }
+      ],
+      "canonical_checks": [
+        {
+          "file": "data/admission.json",
+          "pointer": "/6/content",
+          "matches": true
+        }
+      ],
+      "review": {
+        "classification": "原文待確認需維持",
+        "implementation_scope": "不直接套用整句；先核中文115進四技名額與跨管道條件，另寫新候選。維持是本輪不改產品，不代表原文已正確。",
+        "candidate_as_name_change_supported": false,
+        "official_english_name": {
+          "four_year": "four-year undergraduate programs",
+          "two_year_continuing": "two-year continuing education programs",
+          "two_year_associate": "two-year associate degree programs"
+        },
+        "official_japanese_name": {
+          "four_year": "四年制大学部",
+          "two_year_continuing": "二年制進学部",
+          "two_year_associate": "二年制専科進学部"
+        },
+        "japanese_status": "校方簡介有日文用語；候選括號文字是說明譯法",
+        "primary_sources": [
+          "S7",
+          "S8",
+          "S9",
+          "S10",
+          "S11",
+          "S14"
+        ],
+        "reason": "學位層次有支持，但整段統一書審＋面試、免統測／學測、夜間時段未按各115管道簡章逐一證成；學制名稱修正不能連帶批准整段。",
+        "conservative_description": "進修部：二技（2年制の学士課程）、四技（4年制の学士課程）、二專（2年制の専科課程）。募集の有無と出願条件は各募集要項を確認してください。",
+        "description_status": "供新候選審閱，非校方逐字正式名稱，不已套產品"
+      }
+    },
+    {
+      "id": "EN-STUDENT-ASSISTANCE-01",
+      "lang": "en",
+      "key": "生輔組急難慰助專區申請須知",
+      "priority": "P2",
+      "kind": "office-name",
+      "direct_semantic_subset": false,
+      "current": "Student Assistance Division: Emergency Financial Aid Application Guidelines",
+      "candidate": "Student Assistance Section: Emergency Financial Aid Application Guidelines",
+      "decision": "retain-proposal",
+      "reason": "逐筆中文皆生輔組；英文Section有樹德學務處官方索引支持，僅名稱統一而不重派窗口或承諾受理。",
+      "definitions": [
+        {
+          "file": "data/en/step-details-ui.json",
+          "pointer": "/生輔組急難慰助專區申請須知",
+          "sha256": "f263ae58a2dd534f49534673b1f1b573c0df6e249d80f1e2365849f8f63bd589",
+          "raw_matches": true,
+          "expected_raw": "Student Assistance Division: Emergency Financial Aid Application Guidelines"
+        }
+      ],
+      "canonical_locations": [
+        {
+          "file": "data/students/guide.json",
+          "pointer": "/sources/36/title",
+          "line": null,
+          "kind": "canonical-data",
+          "canonical_matches": "yes",
+          "canonical_raw": "生輔組急難慰助專區申請須知",
+          "comparison": "whitespace-normalized canonical display key; original raw retained"
+        }
+      ],
+      "source_urls": [
+        "https://en.sao.stu.edu.tw/organization/"
+      ],
+      "current_checks": [
+        {
+          "file": "data/en/step-details-ui.json",
+          "pointer": "/生輔組急難慰助專區申請須知",
+          "matches": true
+        }
+      ],
+      "canonical_checks": [
+        {
+          "file": "data/students/guide.json",
+          "pointer": "/sources/36/title",
+          "matches": true
+        }
+      ],
+      "review": {
+        "classification": "已有primary支持可實作",
+        "implementation_scope": "僅該筆生輔組英文名稱替換；不重新認定整段學務程序、時效或補助資格。",
+        "candidate_as_name_change_supported": true,
+        "official_english_name": "Student Assistance Section",
+        "official_japanese_name": null,
+        "japanese_status": "未查得",
+        "row_service": "急難慰助",
+        "primary_sources": [
+          "S1",
+          "S2",
+          "S3",
+          "S4"
+        ],
+        "reason": "逐筆原中文pointer含生輔組，且該項職掌由S1英文及S2中文互證。",
+        "conservative_description": null
+      }
+    },
+    {
+      "id": "EN-STUDENT-ASSISTANCE-02",
+      "lang": "en",
+      "key": "生輔組校內獎助學金目錄",
+      "priority": "P2",
+      "kind": "office-name",
+      "direct_semantic_subset": false,
+      "current": "Student Life Guidance: university aid directory",
+      "candidate": "Student Assistance Section: university aid directory",
+      "decision": "retain-proposal",
+      "reason": "逐筆中文皆生輔組；英文Section有樹德學務處官方索引支持，僅名稱統一而不重派窗口或承諾受理。",
+      "definitions": [
+        {
+          "file": "data/en/flow-ui.json",
+          "pointer": "/生輔組校內獎助學金目錄",
+          "sha256": "9b849adad27b912c38301712324b99eff1524db51f81a5204d31d7f95023e678",
+          "raw_matches": true,
+          "expected_raw": "Student Life Guidance: university aid directory"
+        }
+      ],
+      "canonical_locations": [
+        {
+          "file": "data/students/guide.json",
+          "pointer": "/sources/41/title",
+          "line": null,
+          "kind": "canonical-data",
+          "canonical_matches": "yes",
+          "canonical_raw": "生輔組校內獎助學金目錄",
+          "comparison": "whitespace-normalized canonical display key; original raw retained"
+        }
+      ],
+      "source_urls": [
+        "https://en.sao.stu.edu.tw/organization/"
+      ],
+      "current_checks": [
+        {
+          "file": "data/en/flow-ui.json",
+          "pointer": "/生輔組校內獎助學金目錄",
+          "matches": true
+        }
+      ],
+      "canonical_checks": [
+        {
+          "file": "data/students/guide.json",
+          "pointer": "/sources/41/title",
+          "matches": true
+        }
+      ],
+      "review": {
+        "classification": "已有primary支持可實作",
+        "implementation_scope": "僅該筆生輔組英文名稱替換；不重新認定整段學務程序、時效或補助資格。",
+        "candidate_as_name_change_supported": true,
+        "official_english_name": "Student Assistance Section",
+        "official_japanese_name": null,
+        "japanese_status": "未查得",
+        "row_service": "校內獎助學金",
+        "primary_sources": [
+          "S1",
+          "S2",
+          "S3",
+          "S5"
+        ],
+        "reason": "逐筆原中文pointer含生輔組，且該項職掌由S1英文及S2中文互證。",
+        "conservative_description": null
+      }
+    },
+    {
+      "id": "EN-STUDENT-ASSISTANCE-03",
+      "lang": "en",
+      "key": "生輔組學雜費減免申請公告",
+      "priority": "P2",
+      "kind": "office-name",
+      "direct_semantic_subset": false,
+      "current": "Student Life Guidance: tuition reduction announcement",
+      "candidate": "Student Assistance Section: tuition reduction announcement",
+      "decision": "retain-proposal",
+      "reason": "逐筆中文皆生輔組；英文Section有樹德學務處官方索引支持，僅名稱統一而不重派窗口或承諾受理。",
+      "definitions": [
+        {
+          "file": "data/en/flow-ui.json",
+          "pointer": "/生輔組學雜費減免申請公告",
+          "sha256": "9b849adad27b912c38301712324b99eff1524db51f81a5204d31d7f95023e678",
+          "raw_matches": true,
+          "expected_raw": "Student Life Guidance: tuition reduction announcement"
+        }
+      ],
+      "canonical_locations": [
+        {
+          "file": "data/students/guide.json",
+          "pointer": "/sources/42/title",
+          "line": null,
+          "kind": "canonical-data",
+          "canonical_matches": "yes",
+          "canonical_raw": "生輔組學雜費減免申請公告",
+          "comparison": "whitespace-normalized canonical display key; original raw retained"
+        }
+      ],
+      "source_urls": [
+        "https://en.sao.stu.edu.tw/organization/"
+      ],
+      "current_checks": [
+        {
+          "file": "data/en/flow-ui.json",
+          "pointer": "/生輔組學雜費減免申請公告",
+          "matches": true
+        }
+      ],
+      "canonical_checks": [
+        {
+          "file": "data/students/guide.json",
+          "pointer": "/sources/42/title",
+          "matches": true
+        }
+      ],
+      "review": {
+        "classification": "已有primary支持可實作",
+        "implementation_scope": "僅該筆生輔組英文名稱替換；不重新認定整段學務程序、時效或補助資格。",
+        "candidate_as_name_change_supported": true,
+        "official_english_name": "Student Assistance Section",
+        "official_japanese_name": null,
+        "japanese_status": "未查得",
+        "row_service": "學雜費減免",
+        "primary_sources": [
+          "S1",
+          "S2",
+          "S3",
+          "S6"
+        ],
+        "reason": "逐筆原中文pointer含生輔組，且該項職掌由S1英文及S2中文互證。",
+        "conservative_description": null
+      }
+    },
+    {
+      "id": "EN-STUDENT-ASSISTANCE-04",
+      "lang": "en",
+      "key": "先整理不能到課的日期、節次與原因，再向導師或生輔組確認假別及證明。遇到考試、心理假或較長期間，先問清楚是否還有其他辦理方式。",
+      "priority": "P2",
+      "kind": "office-name",
+      "direct_semantic_subset": false,
+      "current": "Organize the dates, class periods, and reasons for your absence, then verify the leave category and required proof with your class advisor or the Student Assistance Division. For exam periods, mental health leave, or extended absences, ask clearly in advance whether additional procedures apply.",
+      "candidate": "Organize the dates, class periods, and reasons for your absence, then verify the leave category and required proof with your class advisor or the Student Assistance Section. For exam periods, mental health leave, or extended absences, ask clearly in advance whether additional procedures apply.",
+      "decision": "retain-proposal",
+      "reason": "逐筆中文皆生輔組；英文Section有樹德學務處官方索引支持，僅名稱統一而不重派窗口或承諾受理。",
+      "definitions": [
+        {
+          "file": "data/en/step-details-ui.json",
+          "pointer": "/先整理不能到課的日期、節次與原因，再向導師或生輔組確認假別及證明。遇到考試、心理假或較長期間，先問清楚是否還有其他辦理方式。",
+          "sha256": "f263ae58a2dd534f49534673b1f1b573c0df6e249d80f1e2365849f8f63bd589",
+          "raw_matches": true,
+          "expected_raw": "Organize the dates, class periods, and reasons for your absence, then verify the leave category and required proof with your class advisor or the Student Assistance Division. For exam periods, mental health leave, or extended absences, ask clearly in advance whether additional procedures apply."
+        }
+      ],
+      "canonical_locations": [
+        {
+          "file": "data/students/guide.json",
+          "pointer": "/cards/3/step_details/0/detail",
+          "line": null,
+          "kind": "canonical-data",
+          "canonical_matches": "yes",
+          "canonical_raw": "先整理不能到課的日期、節次與原因，再向導師或生輔組確認假別及證明。遇到考試、心理假或較長期間，先問清楚是否還有其他辦理方式。",
+          "comparison": "whitespace-normalized canonical display key; original raw retained"
+        }
+      ],
+      "source_urls": [
+        "https://en.sao.stu.edu.tw/organization/"
+      ],
+      "current_checks": [
+        {
+          "file": "data/en/step-details-ui.json",
+          "pointer": "/先整理不能到課的日期、節次與原因，再向導師或生輔組確認假別及證明。遇到考試、心理假或較長期間，先問清楚是否還有其他辦理方式。",
+          "matches": true
+        }
+      ],
+      "canonical_checks": [
+        {
+          "file": "data/students/guide.json",
+          "pointer": "/cards/3/step_details/0/detail",
+          "matches": true
+        }
+      ],
+      "review": {
+        "classification": "已有primary支持可實作",
+        "implementation_scope": "僅該筆生輔組英文名稱替換；不重新認定整段學務程序、時效或補助資格。",
+        "candidate_as_name_change_supported": true,
+        "official_english_name": "Student Assistance Section",
+        "official_japanese_name": null,
+        "japanese_status": "未查得",
+        "row_service": "請假假別／證明詢問",
+        "primary_sources": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "reason": "逐筆原中文pointer含生輔組，且該項職掌由S1英文及S2中文互證。",
+        "conservative_description": null
+      }
+    },
+    {
+      "id": "EN-STUDENT-ASSISTANCE-05",
+      "lang": "en",
+      "key": "從學校「在校學生」入口進入請假服務，依系統填寫資料並確認是否送出。若找不到操作項目，帶著畫面問導師或生輔組，不要只在通訊軟體告知就當完成。",
+      "priority": "P2",
+      "kind": "office-name",
+      "direct_semantic_subset": false,
+      "current": "Log into the leave application service via the school's 'Current Students' portal, fill in the details in the system, and confirm submission. If you cannot find the required option, bring your screen to consult your advisor or the Student Assistance Division; do not assume notifying someone via messaging apps completes the process.",
+      "candidate": "Log into the leave application service via the school's 'Current Students' portal, fill in the details in the system, and confirm submission. If you cannot find the required option, bring your screen to consult your advisor or the Student Assistance Section; do not assume notifying someone via messaging apps completes the process.",
+      "decision": "retain-proposal",
+      "reason": "逐筆中文皆生輔組；英文Section有樹德學務處官方索引支持，僅名稱統一而不重派窗口或承諾受理。",
+      "definitions": [
+        {
+          "file": "data/en/step-details-ui.json",
+          "pointer": "/從學校「在校學生」入口進入請假服務，依系統填寫資料並確認是否送出。若找不到操作項目，帶著畫面問導師或生輔組，不要只在通訊軟體告知就當完成。",
+          "sha256": "f263ae58a2dd534f49534673b1f1b573c0df6e249d80f1e2365849f8f63bd589",
+          "raw_matches": true,
+          "expected_raw": "Log into the leave application service via the school's 'Current Students' portal, fill in the details in the system, and confirm submission. If you cannot find the required option, bring your screen to consult your advisor or the Student Assistance Division; do not assume notifying someone via messaging apps completes the process."
+        }
+      ],
+      "canonical_locations": [
+        {
+          "file": "data/students/guide.json",
+          "pointer": "/cards/3/step_details/1/detail",
+          "line": null,
+          "kind": "canonical-data",
+          "canonical_matches": "yes",
+          "canonical_raw": "從學校「在校學生」入口進入請假服務，依系統填寫資料並確認是否送出。若找不到操作項目，帶著畫面問導師或生輔組，不要只在通訊軟體告知就當完成。",
+          "comparison": "whitespace-normalized canonical display key; original raw retained"
+        }
+      ],
+      "source_urls": [
+        "https://en.sao.stu.edu.tw/organization/"
+      ],
+      "current_checks": [
+        {
+          "file": "data/en/step-details-ui.json",
+          "pointer": "/從學校「在校學生」入口進入請假服務，依系統填寫資料並確認是否送出。若找不到操作項目，帶著畫面問導師或生輔組，不要只在通訊軟體告知就當完成。",
+          "matches": true
+        }
+      ],
+      "canonical_checks": [
+        {
+          "file": "data/students/guide.json",
+          "pointer": "/cards/3/step_details/1/detail",
+          "matches": true
+        }
+      ],
+      "review": {
+        "classification": "已有primary支持可實作",
+        "implementation_scope": "僅該筆生輔組英文名稱替換；不重新認定整段學務程序、時效或補助資格。",
+        "candidate_as_name_change_supported": true,
+        "official_english_name": "Student Assistance Section",
+        "official_japanese_name": null,
+        "japanese_status": "未查得",
+        "row_service": "請假系統詢問",
+        "primary_sources": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "reason": "逐筆原中文pointer含生輔組，且該項職掌由S1英文及S2中文互證。",
+        "conservative_description": null
+      }
+    },
+    {
+      "id": "EN-STUDENT-ASSISTANCE-06",
+      "lang": "en",
+      "key": "兵役：另向生輔組確認資料",
+      "priority": "P2",
+      "kind": "office-name",
+      "direct_semantic_subset": false,
+      "current": "Military service: check separately with Student Life Guidance",
+      "candidate": "Military service: check separately with Student Assistance Section",
+      "decision": "retain-proposal",
+      "reason": "逐筆中文皆生輔組；英文Section有樹德學務處官方索引支持，僅名稱統一而不重派窗口或承諾受理。",
+      "definitions": [
+        {
+          "file": "data/en/flow-ui.json",
+          "pointer": "/兵役：另向生輔組確認資料",
+          "sha256": "9b849adad27b912c38301712324b99eff1524db51f81a5204d31d7f95023e678",
+          "raw_matches": true,
+          "expected_raw": "Military service: check separately with Student Life Guidance"
+        }
+      ],
+      "canonical_locations": [
+        {
+          "file": "data/students/guide.json",
+          "pointer": "/cards/8/steps/2",
+          "line": null,
+          "kind": "canonical-data",
+          "canonical_matches": "yes",
+          "canonical_raw": "兵役：另向生輔組確認資料",
+          "comparison": "whitespace-normalized canonical display key; original raw retained"
+        },
+        {
+          "file": "data/students/guide.json",
+          "pointer": "/cards/8/step_details/2/title",
+          "line": null,
+          "kind": "canonical-data",
+          "canonical_matches": "yes",
+          "canonical_raw": "兵役：另向生輔組確認資料",
+          "comparison": "whitespace-normalized canonical display key; original raw retained"
+        }
+      ],
+      "source_urls": [
+        "https://en.sao.stu.edu.tw/organization/"
+      ],
+      "current_checks": [
+        {
+          "file": "data/en/flow-ui.json",
+          "pointer": "/兵役：另向生輔組確認資料",
+          "matches": true
+        }
+      ],
+      "canonical_checks": [
+        {
+          "file": "data/students/guide.json",
+          "pointer": "/cards/8/steps/2",
+          "matches": true
+        },
+        {
+          "file": "data/students/guide.json",
+          "pointer": "/cards/8/step_details/2/title",
+          "matches": true
+        }
+      ],
+      "review": {
+        "classification": "已有primary支持可實作",
+        "implementation_scope": "僅該筆生輔組英文名稱替換；不重新認定整段學務程序、時效或補助資格。",
+        "candidate_as_name_change_supported": true,
+        "official_english_name": "Student Assistance Section",
+        "official_japanese_name": null,
+        "japanese_status": "未查得",
+        "row_service": "兵役窗口",
+        "primary_sources": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "reason": "逐筆原中文pointer含生輔組，且該項職掌由S1英文及S2中文互證。",
+        "conservative_description": null
+      }
+    },
+    {
+      "id": "EN-STUDENT-ASSISTANCE-07",
+      "lang": "en",
+      "key": "教務處FAQ說明，休學期滿前會寄送復學通知，應依通知辦理。地址、信箱與電話有變動要更新；兵役問題另向生輔組確認。",
+      "priority": "P2",
+      "kind": "office-name",
+      "direct_semantic_subset": false,
+      "current": "The Office of Academic Affairs FAQ says a return-to-study notice will be sent before your leave of absence ends. Follow that notice and update any changes to your address, email or phone number. Check military-service matters separately with the Student Life Guidance Section.",
+      "candidate": "The Office of Academic Affairs FAQ says a return-to-study notice will be sent before your leave of absence ends. Follow that notice and update any changes to your address, email or phone number. Check military-service matters separately with the Student Assistance Section.",
+      "decision": "retain-proposal",
+      "reason": "逐筆中文皆生輔組；英文Section有樹德學務處官方索引支持，僅名稱統一而不重派窗口或承諾受理。",
+      "definitions": [
+        {
+          "file": "data/en/student-guide-ui.json",
+          "pointer": "/教務處FAQ說明，休學期滿前會寄送復學通知，應依通知辦理。地址、信箱與電話有變動要更新；兵役問題另向生輔組確認。",
+          "sha256": "d84b23f01491c3cd2f8ffdf03c460183abdda5c81b40cc463242e3648e3d54f4",
+          "raw_matches": true,
+          "expected_raw": "The Office of Academic Affairs FAQ says a return-to-study notice will be sent before your leave of absence ends. Follow that notice and update any changes to your address, email or phone number. Check military-service matters separately with the Student Life Guidance Section."
+        }
+      ],
+      "canonical_locations": [
+        {
+          "file": "data/students/guide.json",
+          "pointer": "/cards/8/faq/1/a",
+          "line": null,
+          "kind": "canonical-data",
+          "canonical_matches": "yes",
+          "canonical_raw": "教務處FAQ說明，休學期滿前會寄送復學通知，應依通知辦理。地址、信箱與電話有變動要更新；兵役問題另向生輔組確認。",
+          "comparison": "whitespace-normalized canonical display key; original raw retained"
+        }
+      ],
+      "source_urls": [
+        "https://en.sao.stu.edu.tw/organization/"
+      ],
+      "current_checks": [
+        {
+          "file": "data/en/student-guide-ui.json",
+          "pointer": "/教務處FAQ說明，休學期滿前會寄送復學通知，應依通知辦理。地址、信箱與電話有變動要更新；兵役問題另向生輔組確認。",
+          "matches": true
+        }
+      ],
+      "canonical_checks": [
+        {
+          "file": "data/students/guide.json",
+          "pointer": "/cards/8/faq/1/a",
+          "matches": true
+        }
+      ],
+      "review": {
+        "classification": "已有primary支持可實作",
+        "implementation_scope": "僅該筆生輔組英文名稱替換；不重新認定整段學務程序、時效或補助資格。",
+        "candidate_as_name_change_supported": true,
+        "official_english_name": "Student Assistance Section",
+        "official_japanese_name": null,
+        "japanese_status": "未查得",
+        "row_service": "復學FAQ中的兵役窗口",
+        "primary_sources": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "reason": "逐筆原中文pointer含生輔組，且該項職掌由S1英文及S2中文互證。",
+        "conservative_description": null
+      }
+    },
+    {
+      "id": "EN-STUDENT-ASSISTANCE-08",
+      "lang": "en",
+      "key": "轉入、復學或延畢等學籍有變動時，另向生輔組確認兵役資料及緩徵或儘後召集是否要辦理。不要把學籍手續視為兵役也已完成。",
+      "priority": "P2",
+      "kind": "office-name",
+      "direct_semantic_subset": false,
+      "current": "When transferring, returning or extending your studies, check your military-service records and any deferment or reserve-call procedures separately with Student Life Guidance. Completing academic-status procedures does not complete military-service procedures.",
+      "candidate": "When transferring, returning or extending your studies, check your military-service records and any deferment or reserve-call procedures separately with Student Assistance Section. Completing academic-status procedures does not complete military-service procedures.",
+      "decision": "retain-proposal",
+      "reason": "逐筆中文皆生輔組；英文Section有樹德學務處官方索引支持，僅名稱統一而不重派窗口或承諾受理。",
+      "definitions": [
+        {
+          "file": "data/en/flow-ui.json",
+          "pointer": "/轉入、復學或延畢等學籍有變動時，另向生輔組確認兵役資料及緩徵或儘後召集是否要辦理。不要把學籍手續視為兵役也已完成。",
+          "sha256": "9b849adad27b912c38301712324b99eff1524db51f81a5204d31d7f95023e678",
+          "raw_matches": true,
+          "expected_raw": "When transferring, returning or extending your studies, check your military-service records and any deferment or reserve-call procedures separately with Student Life Guidance. Completing academic-status procedures does not complete military-service procedures."
+        }
+      ],
+      "canonical_locations": [
+        {
+          "file": "data/students/guide.json",
+          "pointer": "/cards/8/step_details/2/detail",
+          "line": null,
+          "kind": "canonical-data",
+          "canonical_matches": "yes",
+          "canonical_raw": "轉入、復學或延畢等學籍有變動時，另向生輔組確認兵役資料及緩徵或儘後召集是否要辦理。不要把學籍手續視為兵役也已完成。",
+          "comparison": "whitespace-normalized canonical display key; original raw retained"
+        }
+      ],
+      "source_urls": [
+        "https://en.sao.stu.edu.tw/organization/"
+      ],
+      "current_checks": [
+        {
+          "file": "data/en/flow-ui.json",
+          "pointer": "/轉入、復學或延畢等學籍有變動時，另向生輔組確認兵役資料及緩徵或儘後召集是否要辦理。不要把學籍手續視為兵役也已完成。",
+          "matches": true
+        }
+      ],
+      "canonical_checks": [
+        {
+          "file": "data/students/guide.json",
+          "pointer": "/cards/8/step_details/2/detail",
+          "matches": true
+        }
+      ],
+      "review": {
+        "classification": "已有primary支持可實作",
+        "implementation_scope": "僅該筆生輔組英文名稱替換；不重新認定整段學務程序、時效或補助資格。",
+        "candidate_as_name_change_supported": true,
+        "official_english_name": "Student Assistance Section",
+        "official_japanese_name": null,
+        "japanese_status": "未查得",
+        "row_service": "學籍變動後兵役窗口",
+        "primary_sources": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "reason": "逐筆原中文pointer含生輔組，且該項職掌由S1英文及S2中文互證。",
+        "conservative_description": null
+      }
+    },
+    {
+      "id": "EN-STUDENT-ASSISTANCE-09",
+      "lang": "en",
+      "key": "休學與復學依目前狀況擇一辦理；役男另向生輔組確認兵役，不以完成學籍程序代替。",
+      "priority": "P2",
+      "kind": "office-name",
+      "direct_semantic_subset": false,
+      "current": "Apply for leave or return according to your situation. Students subject to military service must also check with Student Life Guidance; academic-status procedures do not replace military-service procedures.",
+      "candidate": "Apply for leave or return according to your situation. Students subject to military service must also check with Student Assistance Section; academic-status procedures do not replace military-service procedures.",
+      "decision": "retain-proposal",
+      "reason": "逐筆中文皆生輔組；英文Section有樹德學務處官方索引支持，僅名稱統一而不重派窗口或承諾受理。",
+      "definitions": [
+        {
+          "file": "data/en/flow-ui.json",
+          "pointer": "/休學與復學依目前狀況擇一辦理；役男另向生輔組確認兵役，不以完成學籍程序代替。",
+          "sha256": "9b849adad27b912c38301712324b99eff1524db51f81a5204d31d7f95023e678",
+          "raw_matches": true,
+          "expected_raw": "Apply for leave or return according to your situation. Students subject to military service must also check with Student Life Guidance; academic-status procedures do not replace military-service procedures."
+        }
+      ],
+      "canonical_locations": [
+        {
+          "file": "data/students/guide.json",
+          "pointer": "/cards/8/flow_note",
+          "line": null,
+          "kind": "canonical-data",
+          "canonical_matches": "yes",
+          "canonical_raw": "休學與復學依目前狀況擇一辦理；役男另向生輔組確認兵役，不以完成學籍程序代替。",
+          "comparison": "whitespace-normalized canonical display key; original raw retained"
+        }
+      ],
+      "source_urls": [
+        "https://en.sao.stu.edu.tw/organization/"
+      ],
+      "current_checks": [
+        {
+          "file": "data/en/flow-ui.json",
+          "pointer": "/休學與復學依目前狀況擇一辦理；役男另向生輔組確認兵役，不以完成學籍程序代替。",
+          "matches": true
+        }
+      ],
+      "canonical_checks": [
+        {
+          "file": "data/students/guide.json",
+          "pointer": "/cards/8/flow_note",
+          "matches": true
+        }
+      ],
+      "review": {
+        "classification": "已有primary支持可實作",
+        "implementation_scope": "僅該筆生輔組英文名稱替換；不重新認定整段學務程序、時效或補助資格。",
+        "candidate_as_name_change_supported": true,
+        "official_english_name": "Student Assistance Section",
+        "official_japanese_name": null,
+        "japanese_status": "未查得",
+        "row_service": "休復學流程中兵役窗口",
+        "primary_sources": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "reason": "逐筆原中文pointer含生輔組，且該項職掌由S1英文及S2中文互證。",
+        "conservative_description": null
+      }
+    },
+    {
+      "id": "EN-STUDENT-ASSISTANCE-10",
+      "lang": "en",
+      "key": "先向生輔組說明困難發生時間、目前最急的支出，以及已申請或已領的補助。請承辦協助判斷適用方案，別只因錯過一項公告，就以為所有協助都結束。",
+      "priority": "P2",
+      "kind": "office-name",
+      "direct_semantic_subset": false,
+      "current": "First explain to the Student Assistance Division when the hardship occurred, your most urgent expenses, and any subsidies already applied for or received. Ask the coordinator to help assess applicable assistance plans; do not assume all aid is unavailable just because you missed one announcement.",
+      "candidate": "First explain to the Student Assistance Section when the hardship occurred, your most urgent expenses, and any subsidies already applied for or received. Ask the coordinator to help assess applicable assistance plans; do not assume all aid is unavailable just because you missed one announcement.",
+      "decision": "retain-proposal",
+      "reason": "逐筆中文皆生輔組；英文Section有樹德學務處官方索引支持，僅名稱統一而不重派窗口或承諾受理。",
+      "definitions": [
+        {
+          "file": "data/en/step-details-ui.json",
+          "pointer": "/先向生輔組說明困難發生時間、目前最急的支出，以及已申請或已領的補助。請承辦協助判斷適用方案，別只因錯過一項公告，就以為所有協助都結束。",
+          "sha256": "f263ae58a2dd534f49534673b1f1b573c0df6e249d80f1e2365849f8f63bd589",
+          "raw_matches": true,
+          "expected_raw": "First explain to the Student Assistance Division when the hardship occurred, your most urgent expenses, and any subsidies already applied for or received. Ask the coordinator to help assess applicable assistance plans; do not assume all aid is unavailable just because you missed one announcement."
+        }
+      ],
+      "canonical_locations": [
+        {
+          "file": "data/students/guide.json",
+          "pointer": "/cards/9/step_details/0/detail",
+          "line": null,
+          "kind": "canonical-data",
+          "canonical_matches": "yes",
+          "canonical_raw": "先向生輔組說明困難發生時間、目前最急的支出，以及已申請或已領的補助。請承辦協助判斷適用方案，別只因錯過一項公告，就以為所有協助都結束。",
+          "comparison": "whitespace-normalized canonical display key; original raw retained"
+        }
+      ],
+      "source_urls": [
+        "https://en.sao.stu.edu.tw/organization/"
+      ],
+      "current_checks": [
+        {
+          "file": "data/en/step-details-ui.json",
+          "pointer": "/先向生輔組說明困難發生時間、目前最急的支出，以及已申請或已領的補助。請承辦協助判斷適用方案，別只因錯過一項公告，就以為所有協助都結束。",
+          "matches": true
+        }
+      ],
+      "canonical_checks": [
+        {
+          "file": "data/students/guide.json",
+          "pointer": "/cards/9/step_details/0/detail",
+          "matches": true
+        }
+      ],
+      "review": {
+        "classification": "已有primary支持可實作",
+        "implementation_scope": "僅該筆生輔組英文名稱替換；不重新認定整段學務程序、時效或補助資格。",
+        "candidate_as_name_change_supported": true,
+        "official_english_name": "Student Assistance Section",
+        "official_japanese_name": null,
+        "japanese_status": "未查得",
+        "row_service": "急難協助詢問",
+        "primary_sources": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "reason": "逐筆原中文pointer含生輔組，且該項職掌由S1英文及S2中文互證。",
+        "conservative_description": null
+      }
+    },
+    {
+      "id": "JA-QUALIFICATION-NAME-01",
+      "lang": "ja",
+      "key": "技優甄審入學 — 依115學年度簡章審查技藝技能競賽優勝、採認證照等資格的入學管道。 適用對象：符合當年簡章學歷與資格規定者，不只限應屆畢業生。可採認的資格包括競賽優勝、勞動部乙級（含）以上技術士證等；證照職（種）類與招生類別須符合簡章，並非持任一乙級證照即可報名本系。 錄取流程： 1. 第一階段：報名 + 繳費 + 上傳當年簡章要求的資格證明 / 作品集 2. 第二階段：書面審查（樹德動遊系不含現場實作） 3. 公告甄審結果 → 登記志願序 → 統一分發 → 報到",
+      "priority": "P2",
+      "kind": "qualification-original-name",
+      "direct_semantic_subset": false,
+      "current": "技優甄審入試 — 115学年度の募集要項に基づき、技能競技大会の入賞や対象資格などを審査する入試制度。対象者：当該年度の学歴・資格要件を満たす方。卒業見込者だけに限りません。対象となる資格には、所定の競技大会での入賞、台湾の労働部発行の乙級以上の技能士資格などがあります。資格の職種と募集区分は要項に適合する必要があり、任意の乙級資格を持っていれば本学科へ出願できるわけではありません。 選考プロセス： 1. 第1段階：出願 + 納付 + 当該年度の要項が求める資格証明書／ポートフォリオの提出 2. 第2段階：書類審査（樹徳科技大学アニメとゲームデザイン学科は実技試験なし） 3. 選考結果発表 → 志望順位登録 → 一括配分 → 入学手続き",
+      "candidate": "技優甄審入試 — 115学年度の募集要項に基づき、技能競技大会の入賞や対象資格などを審査する入試制度。対象者：当該年度の学歴・資格要件を満たす方。卒業見込者だけに限りません。対象となる資格には、所定の競技大会での入賞、台湾の労働部発行の乙級以上の「技術士證」（台湾の技能検定資格）などがあります。資格の職種と募集区分は要項に適合する必要があり、任意の乙級資格を持っていれば本学科へ出願できるわけではありません。 選考プロセス： 1. 第1段階：出願 + 納付 + 当該年度の要項が求める資格証明書／ポートフォリオの提出 2. 第2段階：書類審査（樹徳科技大学アニメとゲームデザイン学科は実技試験なし） 3. 選考結果発表 → 志望順位登録 → 一括配分 → 入学手続き",
+      "decision": "retain-proposal",
+      "reason": "維持台灣勞動部乙級以上與職種限制；保留技術士證原名並說明台灣技能檢定，不建立日本技能士資格等同。",
+      "definitions": [
+        {
+          "file": "data/ja/messages.json",
+          "pointer": "/技優甄審入學 — 依115學年度簡章審查技藝技能競賽優勝、採認證照等資格的入學管道。 適用對象：符合當年簡章學歷與資格規定者，不只限應屆畢業生。可採認的資格包括競賽優勝、勞動部乙級（含）以上技術士證等；證照職（種）類與招生類別須符合簡章，並非持任一乙級證照即可報名本系。 錄取流程： 1. 第一階段：報名 + 繳費 + 上傳當年簡章要求的資格證明 ~1 作品集 2. 第二階段：書面審查（樹德動遊系不含現場實作） 3. 公告甄審結果 → 登記志願序 → 統一分發 → 報到",
+          "sha256": "ad407a3ed0015af9bce77531198ed21ac0360408ba03c22a21ee5bb99e4a7484",
+          "raw_matches": true,
+          "expected_raw": "技優甄審入試 — 115学年度の募集要項に基づき、技能競技大会の入賞や対象資格などを審査する入試制度。対象者：当該年度の学歴・資格要件を満たす方。卒業見込者だけに限りません。対象となる資格には、所定の競技大会での入賞、台湾の労働部発行の乙級以上の技能士資格などがあります。資格の職種と募集区分は要項に適合する必要があり、任意の乙級資格を持っていれば本学科へ出願できるわけではありません。 選考プロセス： 1. 第1段階：出願 + 納付 + 当該年度の要項が求める資格証明書／ポートフォリオの提出 2. 第2段階：書類審査（樹徳科技大学アニメとゲームデザイン学科は実技試験なし） 3. 選考結果発表 → 志望順位登録 → 一括配分 → 入学手続き"
+        }
+      ],
+      "canonical_locations": [
+        {
+          "file": "data/admission.json",
+          "pointer": "/4/content",
+          "line": null,
+          "kind": "canonical-data",
+          "canonical_matches": "yes",
+          "canonical_raw": "技優甄審入學 — 依115學年度簡章審查技藝技能競賽優勝、採認證照等資格的入學管道。\n\n適用對象：符合當年簡章學歷與資格規定者，不只限應屆畢業生。可採認的資格包括競賽優勝、勞動部乙級（含）以上技術士證等；證照職（種）類與招生類別須符合簡章，並非持任一乙級證照即可報名本系。\n\n錄取流程：\n1. 第一階段：報名 + 繳費 + 上傳當年簡章要求的資格證明 / 作品集\n2. 第二階段：書面審查（樹德動遊系不含現場實作）\n3. 公告甄審結果 → 登記志願序 → 統一分發 → 報到",
+          "comparison": "whitespace-normalized canonical display key; original raw retained"
+        }
+      ],
+      "source_urls": [],
+      "current_checks": [
+        {
+          "file": "data/ja/messages.json",
+          "pointer": "/技優甄審入學 — 依115學年度簡章審查技藝技能競賽優勝、採認證照等資格的入學管道。 適用對象：符合當年簡章學歷與資格規定者，不只限應屆畢業生。可採認的資格包括競賽優勝、勞動部乙級（含）以上技術士證等；證照職（種）類與招生類別須符合簡章，並非持任一乙級證照即可報名本系。 錄取流程： 1. 第一階段：報名 + 繳費 + 上傳當年簡章要求的資格證明 ~1 作品集 2. 第二階段：書面審查（樹德動遊系不含現場實作） 3. 公告甄審結果 → 登記志願序 → 統一分發 → 報到",
+          "matches": true
+        }
+      ],
+      "canonical_checks": [
+        {
+          "file": "data/admission.json",
+          "pointer": "/4/content",
+          "matches": true
+        }
+      ],
+      "review": {
+        "classification": "已有primary支持可實作",
+        "implementation_scope": "只將技能士資格換成台灣原名「技術士證」＋說明；不改115年度、職種類別限制，不重新批准整段指定項目或全部例外。",
+        "candidate_as_name_change_supported": true,
+        "official_english_name": "technician certificates; Class B（乙級）",
+        "official_japanese_name": null,
+        "japanese_status": "未查得官方日文名稱；候選括號是保守說明而非正式日文名",
+        "primary_sources": [
+          "S12",
+          "S13"
+        ],
+        "reason": "115四技二專正式簡章及主管法規均以台灣技術士證制度為準。保留原名可避免未經查證映射成日本技能士資格；乙級與招生類別限制仍保留。",
+        "conservative_description": "「技術士證」（台湾の技能検定資格）",
+        "description_status": "描述性日文；不是日本技能検定之等同性聲明"
+      }
+    },
+    {
+      "id": "JA-QUALIFICATION-NAME-02",
+      "lang": "ja",
+      "key": "📜 依115簡章審查競賽優勝、勞動部乙級（含）以上技術士證等資格；須符合招生職種與類別。",
+      "priority": "P2",
+      "kind": "qualification-original-name",
+      "direct_semantic_subset": false,
+      "current": "📜 115学年度の要項に基づき、所定の競技大会入賞、台湾の労働部発行の乙級以上技能士資格などを審査。職種・募集区分の適合が必要です。",
+      "candidate": "📜 115学年度の要項に基づき、所定の競技大会入賞、台湾の労働部発行の乙級以上「技術士證」（台湾の技能検定資格）などを審査。職種・募集区分の適合が必要です。",
+      "decision": "retain-proposal",
+      "reason": "維持台灣勞動部乙級以上與職種限制；保留技術士證原名並說明台灣技能檢定，不建立日本技能士資格等同。",
+      "definitions": [
+        {
+          "file": "data/ja/messages.json",
+          "pointer": "/📜 依115簡章審查競賽優勝、勞動部乙級（含）以上技術士證等資格；須符合招生職種與類別。",
+          "sha256": "ad407a3ed0015af9bce77531198ed21ac0360408ba03c22a21ee5bb99e4a7484",
+          "raw_matches": true,
+          "expected_raw": "📜 115学年度の要項に基づき、所定の競技大会入賞、台湾の労働部発行の乙級以上技能士資格などを審査。職種・募集区分の適合が必要です。"
+        }
+      ],
+      "canonical_locations": [
+        {
+          "file": "data/admission.json",
+          "pointer": "/4/key_notes/0",
+          "line": null,
+          "kind": "canonical-data",
+          "canonical_matches": "yes",
+          "canonical_raw": "📜 依115簡章審查競賽優勝、勞動部乙級（含）以上技術士證等資格；須符合招生職種與類別。",
+          "comparison": "whitespace-normalized canonical display key; original raw retained"
+        }
+      ],
+      "source_urls": [],
+      "current_checks": [
+        {
+          "file": "data/ja/messages.json",
+          "pointer": "/📜 依115簡章審查競賽優勝、勞動部乙級（含）以上技術士證等資格；須符合招生職種與類別。",
+          "matches": true
+        }
+      ],
+      "canonical_checks": [
+        {
+          "file": "data/admission.json",
+          "pointer": "/4/key_notes/0",
+          "matches": true
+        }
+      ],
+      "review": {
+        "classification": "已有primary支持可實作",
+        "implementation_scope": "只將技能士資格換成台灣原名「技術士證」＋說明；不改115年度、職種類別限制，不重新批准整段指定項目或全部例外。",
+        "candidate_as_name_change_supported": true,
+        "official_english_name": "technician certificates; Class B（乙級）",
+        "official_japanese_name": null,
+        "japanese_status": "未查得官方日文名稱；候選括號是保守說明而非正式日文名",
+        "primary_sources": [
+          "S12",
+          "S13"
+        ],
+        "reason": "115四技二專正式簡章及主管法規均以台灣技術士證制度為準。保留原名可避免未經查證映射成日本技能士資格；乙級與招生類別限制仍保留。",
+        "conservative_description": "「技術士證」（台湾の技能検定資格）",
+        "description_status": "描述性日文；不是日本技能検定之等同性聲明"
+      }
+    }
+  ],
+  "product_written": false,
+  "full_project_approved": false
+}

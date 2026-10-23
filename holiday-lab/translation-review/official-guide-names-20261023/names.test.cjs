@@ -1,0 +1,48 @@
+const fs=require('fs'),path=require('path'),vm=require('vm'),assert=require('assert/strict'),test=require('node:test'),crypto=require('crypto');
+const dir=__dirname,read=f=>JSON.parse(fs.readFileSync(f,'utf8')),plan=read(path.join(dir,'plan.json')),base=read(path.join(dir,'baseline.json')),packet=read(path.join(dir,'input-comparison.json')),prior=read('holiday-lab/translation-review/plain-copy-20261023/input.json');
+const ptr=(obj,p)=>p.split('/').slice(1).reduce((a,k)=>a[k.replace(/~1/g,'/').replace(/~0/g,'~')],obj),norm=s=>s.replace(/\s+/g,' ').trim(),hash=f=>crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');
+function locale(file){const c={};vm.runInNewContext(fs.readFileSync(file,'utf8')+';globalThis.M=typeof SITE_EN_MESSAGES!=="undefined"?SITE_EN_MESSAGES:SITE_JA_MESSAGES;',c);return JSON.parse(JSON.stringify(c.M));}
+for(const row of plan)test(row.id+' replaces only the supported name, source and generated locale',()=>{
+ const before=ptr(read(path.join(dir,'preimage',row.definitions[0].file)),row.definitions[0].pointer);
+ assert.equal(before.replace(row.fromName,row.toName),row.expected,'reviewed name-only result');
+ for(const d of row.definitions)assert.equal(ptr(read(d.file),d.pointer),row.expected,d.file+d.pointer);
+ assert.equal(locale('locale-'+row.lang+'.js')[norm(row.key)],row.expected,'generated public dictionary');
+});
+test('all source keys and every value outside the twelve exact pointers remain unchanged',()=>{
+ for(const file of [...new Set(plan.flatMap(r=>r.definitions.map(d=>d.file)))]){
+  const before=read(path.join(dir,'preimage',file)),after=read(file),expected=structuredClone(before);
+  for(const row of plan)for(const d of row.definitions.filter(x=>x.file===file)){const keys=d.pointer.split('/').slice(1).map(k=>k.replace(/~1/g,'/').replace(/~0/g,'~'));let obj=expected;for(const k of keys.slice(0,-1))obj=obj[k];obj[keys.at(-1)]=row.expected;}
+  assert.deepEqual(Object.keys(after),Object.keys(expected),file+' keys');assert.deepEqual(Object.keys(expected).filter(k=>after[k]!==expected[k]),[],file+' exact allowed delta');assert.deepEqual(Object.keys(after),Object.keys(before),file+' key order/set');
+ }
+});
+test('the original twelve meaning-preserving changes remain in data and locales',()=>{
+ const rows=prior.rows.filter(r=>r.direct_semantic_subset);assert.equal(rows.length,12);
+ for(const row of rows){for(const d of row.definitions)assert.equal(ptr(read(d.file),d.pointer),row.candidate,row.id);assert.equal(locale('locale-'+row.lang+'.js')[norm(row.key)],row.candidate,row.id+' locale');}
+ assert(prior.rows.some(r=>r.candidate.includes('financial awards or subsidies')),'reviewed financial wording retained');
+});
+for(const lang of ['en','ja'])test(lang+' locale contains exactly new name deltas and no other changes',()=>{
+ const file='locale-'+lang+'.js',actual=locale(file),before=locale(path.join(dir,'preimage',file)),expected=structuredClone(before),rows=plan.filter(r=>r.lang===lang);
+ for(const row of rows)expected[norm(row.key)]=row.expected;
+ assert.deepEqual(Object.keys(actual),Object.keys(expected));assert.deepEqual(Object.keys(expected).filter(k=>actual[k]!==expected[k]),[]);assert.equal(Object.keys(actual).filter(k=>actual[k]!==before[k]).length,lang==='en'?10:2);
+});
+for(const lang of ['en','ja'])test(lang+' new phase covers both approved batches against the original preimage',()=>{
+ const file='locale-'+lang+'.js',before=locale('holiday-lab/translation-review/plain-copy-20261023/preimage/'+file),actual=locale(file),expected=structuredClone(before);
+ for(const r of prior.rows.filter(r=>r.direct_semantic_subset&&r.lang===lang))expected[norm(r.key)]=r.candidate;
+ for(const r of plan.filter(r=>r.lang===lang))expected[norm(r.key)]=r.expected;
+ assert.deepEqual(Object.keys(actual),Object.keys(expected));assert.deepEqual(Object.keys(expected).filter(k=>actual[k]!==expected[k]),[]);assert.equal(Object.keys(actual).filter(k=>actual[k]!==before[k]).length,lang==='en'?15:9);
+});
+test('four PROGRAM values and their Chinese canonical records stay byte/value unchanged',()=>{
+ const rows=packet.rows.filter(r=>r.id.startsWith('PROGRAM'));assert.equal(rows.length,4);
+ for(const row of rows){for(const d of row.definitions)assert.equal(ptr(read(d.file),d.pointer),d.expected_raw,row.lang+row.id);assert.equal(locale('locale-'+row.lang+'.js')[norm(row.key)],row.current,row.lang+row.id+' locale');for(const loc of row.canonical_locations)assert.equal(ptr(read(loc.file),loc.pointer),loc.canonical_raw,row.id+' Chinese');}
+});
+test('Chinese, prior layout, non-target inputs, and original dirty files are preserved',()=>{
+ const mutable=new Set([...plan.flatMap(r=>r.definitions.map(d=>d.file)),'locale-en.js','locale-ja.js','holiday-lab/latest-build.json']);
+ for(const f of base.files)if(!mutable.has(f.file))assert.equal(hash(f.file),f.sha256,f.file+' preservation');
+});
+test('reviewed input packet remains identical to its copied source',()=>{
+ assert.equal(hash(path.join(dir,'input-comparison.json')),base.input_comparison_sha256);
+ assert.equal(hash('C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/proper-names-research-20261023/comparison.json'),base.input_comparison_sha256);
+ assert.equal(hash(path.join(dir,'input-REPORT.md')),base.input_report_sha256);
+ assert.equal(plan.length,12);assert.equal(plan.filter(r=>r.lang==='en').length,10);assert.equal(plan.filter(r=>r.lang==='ja').length,2);
+});
+
