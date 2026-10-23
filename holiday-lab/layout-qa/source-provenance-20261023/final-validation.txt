@@ -1,0 +1,22 @@
+COMMAND node --test holiday-lab/layout-qa/source-provenance-20261023/provenance.test.cjs
+✔ every declared input is unique and exact original/current/served identities stay separate (3.1407ms)
+✔ bound paths reject traversal, wrong bytes and falsely relabeled source (19.0892ms)
+✔ served source identity rejects a same-byte unrelated file, missing source and original mismatch (49.25ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 216.843
+exit=0
+COMMAND node holiday-lab/layout-qa/source-provenance-20261023/provenance.cjs
+{
+  "pass": true,
+  "inputs": 283,
+  "references": 1284,
+  "global_approved": false,
+  "historical_http_receipts_replayed": false
+}
+exit=0

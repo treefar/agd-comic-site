@@ -1,5 +1,11 @@
 # 來源追溯暫停點
 
+## 2026-10-23 接續結果
+
+本段更新取代下方「尚未建立」的歷史狀態。已建立 `REPORT.md`、`ledger.json`、`membership.json`、`build-analysis.json`、`native-audit.json`、`manifest-audit.json` 及唯讀 `provenance.cjs`。實際跑過原generator的隔離root為 `isolated-1792733490376/root/`，exit0、55 inputs未變、37 outputs；build11 bundle內容精確相同，08/10不同，原08完整bundle重現仍NO。283 contract、282 current=snapshot、278歷史same-path served；runtime subtree283交集277，六audio runtime-only、holiday-home.css與五非served inputs contract-only。
+
+原缺module紅測已轉綠，新增same-bytes unrelated served path真RED（缺拒絕）→修正expected build path→3 tests GREEN。獨立唯讀核JA18 raw/sample/shot/JPEG/hash/geometry與兩寬原生140ms觀察；舊min140六fail保留。`global_approved=false`，未新增browser/native、HTTP或正式build。下一步由主控決定current-source剩餘case重測與原08完整snapshot缺口，禁止把本輪結果整批回填到舊來源。
+
 2026-10-23，source_agent: codex。使用者要求到段落暫停以重開程式，依主控訊息立刻停止新功能／新測試／native。此檔是現況，不是完成報告。
 
 ## 實際已落地

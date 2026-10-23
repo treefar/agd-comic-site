@@ -1,0 +1,32 @@
+✔ every declared input is unique and exact original/current/served identities stay separate (1.5857ms)
+✔ bound paths reject traversal, wrong bytes and falsely relabeled source (10.1357ms)
+✖ served source identity rejects a same-byte unrelated file, missing source and original mismatch (31.8236ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 2
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 164.3095
+
+✖ failing tests:
+
+test at holiday-lab\layout-qa\source-provenance-20261023\provenance.test.cjs:4:1
+✖ served source identity rejects a same-byte unrelated file, missing source and original mismatch (31.8236ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\source-provenance-20261023\provenance.test.cjs:12:106)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /served.*path/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+exit=1

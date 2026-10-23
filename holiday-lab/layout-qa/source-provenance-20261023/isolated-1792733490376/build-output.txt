@@ -1,0 +1,29 @@
+Translations: 2315 Static candidates: 26 Unpaired paths: 21
+Japanese exact translations: 2344
+[build] 完成：out/index.html 135.7 KB、app-AACGKXYS.js 1169.3 KB
+▲ [WARNING] Duplicate key "color" in object literal [duplicate-object-key]
+
+    ssr-entry.jsx:7000:44:
+      7000 │         background: "var(--accent-yellow)", color: "var(--ink)",
+           ╵                                             ~~~~~
+
+  The original key "color" is here:
+
+    ssr-entry.jsx:6999:8:
+      6999 │         color: "inherit", textDecoration: "none", fontFamily: "'...
+           ╵         ~~~~~
+
+▲ [WARNING] Duplicate key "color" in object literal [duplicate-object-key]
+
+    client-entry.jsx:6999:44:
+      6999 │         background: "var(--accent-yellow)", color: "var(--ink)",
+           ╵                                             ~~~~~
+
+  The original key "color" is here:
+
+    client-entry.jsx:6998:8:
+      6998 │         color: "inherit", textDecoration: "none", fontFamily: "'...
+           ╵         ~~~~~
+
+
+exit=0

@@ -1,0 +1,11 @@
+/* Directory portraits only: unchanged source pixels, one uniform scale, measured eye baseline. */
+#faculty .comic-tier.tier-1-1-1-1 > .faculty-card { display:flex; flex-direction:column; }
+/* Empty cells need the same negative gutter as real panels, including the final row. */
+#faculty .faculty-card ~ .faculty-spacer { margin:calc(var(--bw) * -0.5); }
+#faculty .comic-tier.tier-1-1-1-1 > .panel.faculty-card > .faculty-portrait-slot {
+  height:auto !important; aspect-ratio:1; flex:0 0 auto !important; overflow:hidden;
+}
+#faculty .faculty-portrait { position:absolute; inset:0 0 var(--bw) 0; overflow:hidden; background-color:var(--paper); background-size:100% 100%; background-repeat:no-repeat; }
+#faculty .faculty-portrait-image { position:absolute; width:auto; max-width:none; display:block; object-fit:fill; z-index:1; }
+#faculty .faculty-portrait-backdrop { position:absolute; top:0; height:100%; width:auto; aspect-ratio:1; max-width:none; object-fit:fill; transform-origin:0 0; pointer-events:none; }
+#faculty .faculty-portrait-unmeasured { width:100%; height:100%; display:block; object-fit:cover; object-position:center top; }

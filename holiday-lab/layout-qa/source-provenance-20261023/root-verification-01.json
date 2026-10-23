@@ -1,0 +1,20 @@
+{
+  "time": "2026-10-23T05:48:24.672Z",
+  "reviewer": "root",
+  "steps": [
+    {
+      "command": "node --test holiday-lab/layout-qa/source-provenance-20261023/provenance.test.cjs",
+      "status": 0,
+      "stdout": "✔ every declared input is unique and exact original/current/served identities stay separate (2.6022ms)\n✔ bound paths reject traversal, wrong bytes and falsely relabeled source (33.0522ms)\n✔ served source identity rejects a same-byte unrelated file, missing source and original mismatch (84.7098ms)\nℹ tests 3\nℹ suites 0\nℹ pass 3\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 327.2307\n",
+      "stderr": ""
+    },
+    {
+      "command": "node holiday-lab/layout-qa/source-provenance-20261023/provenance.cjs",
+      "status": 0,
+      "stdout": "{\n  \"pass\": true,\n  \"inputs\": 283,\n  \"references\": 1284,\n  \"global_approved\": false,\n  \"historical_http_receipts_replayed\": false\n}\n",
+      "stderr": ""
+    }
+  ],
+  "pass": true,
+  "global_approved": false
+}

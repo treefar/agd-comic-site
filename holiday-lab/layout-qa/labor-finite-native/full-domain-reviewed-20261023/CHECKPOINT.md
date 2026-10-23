@@ -1,4 +1,8 @@
-# 勞動完整有限域工具：暫停交接
+# 勞動完整有限域工具：工具完成，待主控審碼
+
+2026-10-23 恢復後已實作 `full.cjs`、`guard.cjs`、`store.cjs`、`full.test.cjs`，9/9 測試通過；新完整 plan/freeze 與 preflight 完成。詳見同目錄 `REPORT.md` 與實際 stdout。新 freeze SHA `972bda82020a5f60241a0105e858d64545d565c3e18368492d05bdaeac37cd3c`。固定 2784 targets／2754 context-jobs；原 12 筆只讀驗證，原 false/flags 未動。`full-run` 不存在，沒有新 approval/native/browser。下一步是主控唯讀審碼；接受後才能寫本 scope 的 approval，不能重用任何舊批准。
+
+以下保留暫停時原始狀態，供回溯，不代表目前工具仍未實作：
 
 2026-10-23。使用者要求到段落暫停、重開程式，主控已要求立即停止新功能／測試／native。本檔是本工單唯一新增檔案，**工具未實作、未 ready、未 freeze、未批准採集**。
 
