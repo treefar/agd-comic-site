@@ -1,18 +1,81 @@
 {
   "status": "PARTIAL_RED",
-  "date": "2026-10-22T23:54:47.840Z",
+  "date": "2026-10-23T00:04:05.797Z",
   "base": "http://127.0.0.1:8845",
   "expected_sampler_sha256": "c247641156d929b0de7d6aa70e509510e293a29d7d6ff45aaac99ad931e0dc1a",
   "required": 2076,
-  "covered": 0,
-  "missing_count": 2076,
+  "covered": 138,
+  "missing_count": 1938,
   "geometry_errors": 0,
   "runs": [
     {
       "kind": "phase",
       "game": "constitution",
-      "status": "running",
-      "pid": 13920
+      "status": "routes-complete-layout-unresolved",
+      "pid": 13920,
+      "raw_file": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-22T23-47-50-569Z\\report.json",
+      "raw_sha256": "1a2346f97f6b056a3feaa42cce34dacd6e382a7e5e4c16f4ccbe96e46b784a96",
+      "sampler_sha256": "c247641156d929b0de7d6aa70e509510e293a29d7d6ff45aaac99ad931e0dc1a",
+      "source": "http://127.0.0.1:8845",
+      "source_stable": true,
+      "frames": 1276,
+      "geometry": 0,
+      "sessions": [
+        {
+          "lang": "zh",
+          "width": 320,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": []
+        },
+        {
+          "lang": "zh",
+          "width": 1440,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": []
+        },
+        {
+          "lang": "en",
+          "width": 320,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": []
+        },
+        {
+          "lang": "en",
+          "width": 1440,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": []
+        },
+        {
+          "lang": "ja",
+          "width": 320,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": []
+        },
+        {
+          "lang": "ja",
+          "width": 1440,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": []
+        }
+      ]
     },
     {
       "kind": "phase",
@@ -21,55 +84,126 @@
       "pid": 57180
     },
     {
-      "kind": "front",
+      "kind": "phase",
       "game": "new-year",
       "status": "running",
-      "pid": 8420
+      "pid": 24960
+    },
+    {
+      "kind": "front",
+      "game": "new-year",
+      "status": "front-complete",
+      "pid": 8420,
+      "raw_file": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\front-runs\\2026-10-22T23-48-01-353Z\\report.json",
+      "raw_sha256": "031a84d2684d03dbb52912085077bd1f2e466c0aae9cc5046aa90e2b33f2ab49",
+      "sampler_sha256": "c247641156d929b0de7d6aa70e509510e293a29d7d6ff45aaac99ad931e0dc1a",
+      "source": "http://127.0.0.1:8845",
+      "source_stable": true,
+      "frames": 486,
+      "geometry": 0,
+      "sessions": [
+        {
+          "lang": "zh",
+          "width": 320,
+          "status": "complete"
+        },
+        {
+          "lang": "zh",
+          "width": 320,
+          "status": "complete",
+          "normal_story": {
+            "missing": [],
+            "mask_fully_in_viewport": true
+          },
+          "reduced_complete": true
+        },
+        {
+          "lang": "zh",
+          "width": 1440,
+          "status": "complete"
+        },
+        {
+          "lang": "zh",
+          "width": 1440,
+          "status": "complete",
+          "normal_story": {
+            "missing": [],
+            "mask_fully_in_viewport": true
+          },
+          "reduced_complete": true
+        },
+        {
+          "lang": "en",
+          "width": 320,
+          "status": "complete"
+        },
+        {
+          "lang": "en",
+          "width": 320,
+          "status": "complete",
+          "normal_story": {
+            "missing": [],
+            "mask_fully_in_viewport": true
+          },
+          "reduced_complete": true
+        },
+        {
+          "lang": "en",
+          "width": 1440,
+          "status": "complete"
+        },
+        {
+          "lang": "en",
+          "width": 1440,
+          "status": "complete",
+          "normal_story": {
+            "missing": [],
+            "mask_fully_in_viewport": true
+          },
+          "reduced_complete": true
+        },
+        {
+          "lang": "ja",
+          "width": 320,
+          "status": "complete"
+        },
+        {
+          "lang": "ja",
+          "width": 320,
+          "status": "complete",
+          "normal_story": {
+            "missing": [],
+            "mask_fully_in_viewport": true
+          },
+          "reduced_complete": true
+        },
+        {
+          "lang": "ja",
+          "width": 1440,
+          "status": "complete"
+        },
+        {
+          "lang": "ja",
+          "width": 1440,
+          "status": "complete",
+          "normal_story": {
+            "missing": [],
+            "mask_fully_in_viewport": true
+          },
+          "reduced_complete": true
+        }
+      ]
+    },
+    {
+      "kind": "front",
+      "game": "lunar-new-year",
+      "status": "running",
+      "pid": 69656
     }
   ],
   "rejected": [],
   "missing": [
     {
-      "id": "archive/zh",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/zh/intro/start",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/zh/intro/middle",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/zh/intro/end",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/zh/menu/normal",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/zh/menu/hover",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/zh/menu/pressed",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/zh/menu/disabled-or-reachability-proof",
-      "width": 320,
-      "height": 900
-    },
-    {
       "id": "new-year/zh/help",
       "width": 320,
       "height": 900
@@ -1680,122 +1814,7 @@
       "height": 900
     },
     {
-      "id": "constitution/zh/help",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/zh/settings",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/zh/game/initial",
-      "width": 320,
-      "height": 900
-    },
-    {
       "id": "constitution/zh/game/error-longest",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/zh/game/dynamic-min",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/zh/game/dynamic-max",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/zh/game/paused",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/zh/game/preview",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/zh/game/phase-1",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/zh/game/phase-2",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/zh/result/summary",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/zh/result/artifact-open",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/zh/replay/shot-0",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/zh/replay/shot-1",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/zh/replay/shot-2",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/zh/retry",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "archive/en",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/en/intro/start",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/en/intro/middle",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/en/intro/end",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/en/menu/normal",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/en/menu/hover",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/en/menu/pressed",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/en/menu/disabled-or-reachability-proof",
       "width": 320,
       "height": 900
     },
@@ -3410,122 +3429,7 @@
       "height": 900
     },
     {
-      "id": "constitution/en/help",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/en/settings",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/en/game/initial",
-      "width": 320,
-      "height": 900
-    },
-    {
       "id": "constitution/en/game/error-longest",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/en/game/dynamic-min",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/en/game/dynamic-max",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/en/game/paused",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/en/game/preview",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/en/game/phase-1",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/en/game/phase-2",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/en/result/summary",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/en/result/artifact-open",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/en/replay/shot-0",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/en/replay/shot-1",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/en/replay/shot-2",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/en/retry",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "archive/ja",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/ja/intro/start",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/ja/intro/middle",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/ja/intro/end",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/ja/menu/normal",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/ja/menu/hover",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/ja/menu/pressed",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/ja/menu/disabled-or-reachability-proof",
       "width": 320,
       "height": 900
     },
@@ -5140,124 +5044,9 @@
       "height": 900
     },
     {
-      "id": "constitution/ja/help",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/ja/settings",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/ja/game/initial",
-      "width": 320,
-      "height": 900
-    },
-    {
       "id": "constitution/ja/game/error-longest",
       "width": 320,
       "height": 900
-    },
-    {
-      "id": "constitution/ja/game/dynamic-min",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/ja/game/dynamic-max",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/ja/game/paused",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/ja/game/preview",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/ja/game/phase-1",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/ja/game/phase-2",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/ja/result/summary",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/ja/result/artifact-open",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/ja/replay/shot-0",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/ja/replay/shot-1",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/ja/replay/shot-2",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "constitution/ja/retry",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "archive/zh",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/zh/intro/start",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/zh/intro/middle",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/zh/intro/end",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/zh/menu/normal",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/zh/menu/hover",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/zh/menu/pressed",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/zh/menu/disabled-or-reachability-proof",
-      "width": 1440,
-      "height": 1000
     },
     {
       "id": "new-year/zh/help",
@@ -6870,122 +6659,7 @@
       "height": 1000
     },
     {
-      "id": "constitution/zh/help",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/zh/settings",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/zh/game/initial",
-      "width": 1440,
-      "height": 1000
-    },
-    {
       "id": "constitution/zh/game/error-longest",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/zh/game/dynamic-min",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/zh/game/dynamic-max",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/zh/game/paused",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/zh/game/preview",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/zh/game/phase-1",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/zh/game/phase-2",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/zh/result/summary",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/zh/result/artifact-open",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/zh/replay/shot-0",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/zh/replay/shot-1",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/zh/replay/shot-2",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/zh/retry",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "archive/en",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/en/intro/start",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/en/intro/middle",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/en/intro/end",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/en/menu/normal",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/en/menu/hover",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/en/menu/pressed",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/en/menu/disabled-or-reachability-proof",
       "width": 1440,
       "height": 1000
     },
@@ -8600,122 +8274,7 @@
       "height": 1000
     },
     {
-      "id": "constitution/en/help",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/en/settings",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/en/game/initial",
-      "width": 1440,
-      "height": 1000
-    },
-    {
       "id": "constitution/en/game/error-longest",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/en/game/dynamic-min",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/en/game/dynamic-max",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/en/game/paused",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/en/game/preview",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/en/game/phase-1",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/en/game/phase-2",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/en/result/summary",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/en/result/artifact-open",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/en/replay/shot-0",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/en/replay/shot-1",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/en/replay/shot-2",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/en/retry",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "archive/ja",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/ja/intro/start",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/ja/intro/middle",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/ja/intro/end",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/ja/menu/normal",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/ja/menu/hover",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/ja/menu/pressed",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/ja/menu/disabled-or-reachability-proof",
       "width": 1440,
       "height": 1000
     },
@@ -10330,82 +9889,7 @@
       "height": 1000
     },
     {
-      "id": "constitution/ja/help",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/ja/settings",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/ja/game/initial",
-      "width": 1440,
-      "height": 1000
-    },
-    {
       "id": "constitution/ja/game/error-longest",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/ja/game/dynamic-min",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/ja/game/dynamic-max",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/ja/game/paused",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/ja/game/preview",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/ja/game/phase-1",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/ja/game/phase-2",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/ja/result/summary",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/ja/result/artifact-open",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/ja/replay/shot-0",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/ja/replay/shot-1",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/ja/replay/shot-2",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "constitution/ja/retry",
       "width": 1440,
       "height": 1000
     }

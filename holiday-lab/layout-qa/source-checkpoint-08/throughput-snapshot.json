@@ -1,0 +1,90 @@
+{
+  "at": "2026-10-23T00:02:52.592Z",
+  "rows": [
+    {
+      "kind": "phase",
+      "game": "constitution",
+      "status": "routes-complete-layout-unresolved",
+      "pid": 13920,
+      "started": "2026-10-22T23:47:50.145Z",
+      "observed_frames": 1276,
+      "elapsed_minutes": 15.040783333333334,
+      "frames_per_minute": 84.83600698988417,
+      "button_frames": 654,
+      "scroll_frames": 388,
+      "error_frames": 396,
+      "geometry_red_frames": 0,
+      "last": "FRAME constitution/ja/retry/controls-scroll-3 1440 nodes=26 geometry=0 limitations=2 screenshotSameShot=true",
+      "log": {
+        "path": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\matrix-runs\\2026-10-22T23-47-50-142Z\\constitution.log",
+        "bytes": 156584,
+        "sha256": "ffdc4c05d3534b503148747fbd08b5a81c9893fd3662a7d93a670ef5b18e37d3"
+      }
+    },
+    {
+      "kind": "phase",
+      "game": "lunar-new-year",
+      "status": "running",
+      "pid": 57180,
+      "started": "2026-10-22T23:47:50.160Z",
+      "observed_frames": 1697,
+      "elapsed_minutes": 15.040533333333334,
+      "frames_per_minute": 112.82844579979432,
+      "button_frames": 861,
+      "scroll_frames": 400,
+      "error_frames": 485,
+      "geometry_red_frames": 0,
+      "last": "FRAME lunar-new-year/ja/result/summary/button-play-result/normal 1440 nodes=15 geometry=0 limitations=0 screenshotSameShot=true",
+      "log": {
+        "path": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\matrix-runs\\2026-10-22T23-47-50-142Z\\lunar-new-year.log",
+        "bytes": 221871,
+        "sha256": "7b34ad8e290b47afb6b588c2aa05a7559fc1b8daab22e74748ada58f4ee8a735"
+      }
+    },
+    {
+      "kind": "phase",
+      "game": "new-year",
+      "status": "running",
+      "pid": 24960,
+      "started": "2026-10-23T00:02:29.344Z",
+      "observed_frames": 58,
+      "elapsed_minutes": 0.3874666666666667,
+      "frames_per_minute": 149.69029593943566,
+      "button_frames": 50,
+      "scroll_frames": 0,
+      "error_frames": 1,
+      "geometry_red_frames": 0,
+      "last": "FRAME new-year/zh/game/errors/phase-0/preview-required 320 nodes=30 geometry=0 limitations=0 screenshotSameShot=true",
+      "log": {
+        "path": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\matrix-runs\\2026-10-22T23-47-50-142Z\\new-year.log",
+        "bytes": 6730,
+        "sha256": "eb4ff6625dba61b06c02ad930f21799eb99173db2f14e256a622020db8e5a388"
+      }
+    },
+    {
+      "kind": "front",
+      "game": "new-year",
+      "status": "running",
+      "pid": 8420,
+      "started": "2026-10-22T23:48:00.968Z",
+      "observed_frames": 462,
+      "elapsed_minutes": 14.8604,
+      "frames_per_minute": 31.08933810664585,
+      "button_frames": 413,
+      "scroll_frames": 5,
+      "error_frames": 0,
+      "geometry_red_frames": 0,
+      "last": "FRONT new-year/ja/intro/buttons-separate-actual-opening/button-intro-skip/hover 1440 geometry=0",
+      "log": {
+        "path": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\front-matrix-runs\\2026-10-22T23-48-00-964Z\\new-year.log",
+        "bytes": 31708,
+        "sha256": "6caa50a1197c82f16e3085c90a0b20bf1fac094f39cd417ac875c8f71f91ff32"
+      }
+    }
+  ],
+  "limits": [
+    "Actual log prefix at snapshot, not a fixed ETA. Logs continue growing; snapshot SHA is of the retained prefix at this time.",
+    "Per-route identical button signatures deduplicated. Cross-intent shared chrome remains redundant in this already-running batch.",
+    "The remaining14 front games require3537.222 seconds of serial story playback by exact catalog/runner formula, plus measurement and interaction time. No guaranteed completion time."
+  ]
+}
