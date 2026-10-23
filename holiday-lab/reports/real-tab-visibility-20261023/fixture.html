@@ -1,0 +1,14 @@
+<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><title>背景暫停觀察｜僅本機 QA</title>
+<style>body{font:16px system-ui;margin:12px}iframe{width:100%;height:75vh;border:1px solid #777}pre{white-space:pre-wrap}button{padding:8px}</style>
+<h1>背景暫停觀察（僅本機 QA）</h1><p>這頁只讀取遊戲 DOM 與真實 visibilitychange，不改寫遊戲狀態。開啟遊戲後，切至另一分頁數秒再返回。</p>
+<button id="report">整理觀察紀錄</button><pre id="summary">等待遊戲載入</pre><iframe id="game" title="原版年獸遊戲" src="/holiday-lab/?game=lunar-new-year&amp;lang=zh"></iframe><pre id="receipt"></pre>
+<script>
+'use strict';
+const started=new Date().toISOString(),frame=document.querySelector('#game'),samples=[],events=[];
+const read=kind=>{let row={kind,at:new Date().toISOString(),millis:Date.now(),parentHidden:document.hidden,parentVisibility:document.visibilityState};try{const d=frame.contentDocument;Object.assign(row,{childHidden:d.hidden,childVisibility:d.visibilityState,url:frame.contentWindow.location.href,actor:d.querySelector('#lny-body-0')?.getAttribute('style')||null,pause:d.querySelector('#pause-game')?.getAttribute('aria-pressed')||null,progress:d.querySelector('#game-progress')?.textContent||null});}catch(e){row.error=e.message;}return row;};
+const add=kind=>{const r=read(kind);samples.push(r);if(samples.length>1600)samples.shift();return r;};
+document.addEventListener('visibilitychange',()=>{const r=add('visibilitychange');events.push(r);});
+frame.addEventListener('load',()=>{add('iframe-load');document.querySelector('#summary').textContent='原版遊戲已載入；請在下方跳過開場、開始創作。';});
+setInterval(()=>add('timer'),100);
+document.querySelector('#report').addEventListener('click',()=>{const r={schema:1,started,finished:new Date().toISOString(),scope:'Real browser visibility events and read-only iframe DOM observations; lunar-new-year representative only',origin:location.origin,events,samples,game_state_modified:false,visibility_overridden:false,public_release:false,full_project_approved:false};document.querySelector('#receipt').textContent=JSON.stringify(r);document.querySelector('#summary').textContent=`事件 ${events.length}；樣本 ${samples.length}；背景樣本 ${samples.filter(s=>s.parentHidden&&s.childHidden&&s.actor).length}`;});
+</script></html>

@@ -1,0 +1,4 @@
+// Loopback-only QA fixture. All product requests proxy the unchanged frozen review.
+const fs=require('node:fs'),path=require('node:path'),http=require('node:http');
+const server=http.createServer((req,res)=>{if(req.url==='/__visibility_qa__.html'){res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store'});return res.end(fs.readFileSync(path.join(__dirname,'fixture.html')));}const proxy=http.request({hostname:'127.0.0.1',port:8866,path:req.url,method:req.method,headers:{...req.headers,host:'127.0.0.1:8866'}},upstream=>{res.writeHead(upstream.statusCode,upstream.headers);upstream.pipe(res);});proxy.on('error',e=>{res.writeHead(502,{'Content-Type':'text/plain'});res.end('QA upstream unavailable');});req.pipe(proxy);});
+server.listen(8868,'127.0.0.1',()=>console.log('VISIBILITY_QA http://127.0.0.1:8868/__visibility_qa__.html -> unchanged 8866'));
