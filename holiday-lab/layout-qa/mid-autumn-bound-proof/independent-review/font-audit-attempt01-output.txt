@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\mid-autumn-bound-proof\independent-review\font-audit.py", line 8, in <module>
+    cert=json.loads((author/'font-bound.json').read_text())
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\pathlib\__init__.py", line 788, in read_text
+    return f.read()
+           ~~~~~~^^
+UnicodeDecodeError: 'cp950' codec can't decode byte 0xe3 in position 1004: illegal multibyte sequence
