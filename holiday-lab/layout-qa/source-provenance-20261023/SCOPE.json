@@ -1,0 +1,15 @@
+{
+  "type": "source-provenance-review-scope-v1",
+  "write_scope": "holiday-lab/layout-qa/source-provenance-20261023/",
+  "runtime_or_browser_execution": false,
+  "source_snapshot_rewrite": false,
+  "global_approved": false,
+  "five_inputs": [
+    {"file":"holiday-home.jsx","role":"client/SSR build input"},
+    {"file":"holiday-lab/layout-qa/asset-safe-regions.json","role":"QA native measurement options, not player runtime"},
+    {"file":"holiday-lab/layout-qa/browser-sampler.cjs","role":"QA function serialized into actual browser evaluation"},
+    {"file":"holiday-lab/layout-qa/collect.cjs","role":"historic R0 QA entry point; not current phase collector"},
+    {"file":"ui-art-manifest.json","role":"build preflight policy input; not compiled into player bundle"}
+  ],
+  "new_year_change": "Compare original snapshot08/current/served exact bytes; trace existing later native receipts without reclassifying old cases."
+}

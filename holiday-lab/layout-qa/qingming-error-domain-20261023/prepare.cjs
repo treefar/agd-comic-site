@@ -1,0 +1,10 @@
+// Snapshot existing point-receipt bytes only; no browser or game execution.
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),assert=require('node:assert/strict');
+const dir=__dirname,qa=path.resolve(dir,'..'),hash=b=>crypto.createHash('sha256').update(b).digest('hex'),read=f=>JSON.parse(fs.readFileSync(f));
+const inputFile=path.join(qa,'qingming-session-composite/inputs.json'),inputs=read(inputFile),evidenceFile=inputs.evidence_file,evidence=read(evidenceFile),pointFile=inputs.files.source_points,points=read(pointFile);
+assert.equal(evidence.full_project_approved,false);assert.equal(evidence.original_after_receipt_available,false);assert.equal(evidence.original_missing_terminal_flags,1);
+const target=path.join(dir,'source');assert.ok(!fs.existsSync(target),'new snapshot only');fs.mkdirSync(target);
+const rows=[];for(const r of points.rows){const b=fs.readFileSync(r.content_file);assert.equal(hash(b),r.after_sha256);assert.equal(b.length,r.bytes);assert.equal(r.status,200);assert.equal(r.old_before_sha256,r.after_sha256);assert.equal(r.fresh_before_sha256,r.after_sha256);let local_file=null;if(['games/qingming.mjs','runner.mjs','catalog.mjs'].includes(r.file)){local_file=path.join(target,path.basename(r.file));fs.writeFileSync(local_file,b,{flag:'wx'});}rows.push({file:r.file,sha256:hash(b),bytes:b.length,original_content_file:r.content_file,local_file,original_point_started:r.started,original_point_finished:r.finished});}
+const out={schema_version:1,base:points.base,source_scope:'inherited_explicit_point_receipts_not_continuous',original_after_available:false,original_unknown_flags:1,full_project_approved:false,rows,inputs:{file:inputFile,sha256:hash(fs.readFileSync(inputFile))},composite:{file:evidenceFile,sha256:hash(fs.readFileSync(evidenceFile))},points:{file:pointFile,sha256:hash(fs.readFileSync(pointFile))}};
+fs.writeFileSync(path.join(dir,'source-receipts.json'),JSON.stringify(out,null,2)+'\n',{flag:'wx'});console.log('SNAPSHOT source13 exact point bytes; copied3; originalAfterfalse unknown1 continuousfalse GLOBAL=NO');
