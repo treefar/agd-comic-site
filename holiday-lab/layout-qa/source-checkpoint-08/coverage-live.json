@@ -1,11 +1,11 @@
 {
   "status": "PARTIAL_RED",
-  "date": "2026-10-23T00:06:38.422Z",
+  "date": "2026-10-23T00:14:15.491Z",
   "base": "http://127.0.0.1:8845",
   "expected_sampler_sha256": "c247641156d929b0de7d6aa70e509510e293a29d7d6ff45aaac99ad931e0dc1a",
   "required": 2076,
-  "covered": 228,
-  "missing_count": 1848,
+  "covered": 378,
+  "missing_count": 1698,
   "geometry_errors": 0,
   "runs": [
     {
@@ -209,8 +209,77 @@
     {
       "kind": "phase",
       "game": "lantern",
+      "status": "routes-complete-layout-unresolved",
+      "pid": 70520,
+      "raw_file": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-23T00-05-39-086Z\\report.json",
+      "raw_sha256": "ed815f422853cace49d3c5e2100ef8a6e373d4f27298a4cd66fa34fe69f02c30",
+      "sampler_sha256": "c247641156d929b0de7d6aa70e509510e293a29d7d6ff45aaac99ad931e0dc1a",
+      "source": "http://127.0.0.1:8845",
+      "source_stable": true,
+      "frames": 716,
+      "geometry": 0,
+      "sessions": [
+        {
+          "lang": "zh",
+          "width": 320,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": []
+        },
+        {
+          "lang": "zh",
+          "width": 1440,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": []
+        },
+        {
+          "lang": "en",
+          "width": 320,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": []
+        },
+        {
+          "lang": "en",
+          "width": 1440,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": []
+        },
+        {
+          "lang": "ja",
+          "width": 320,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": []
+        },
+        {
+          "lang": "ja",
+          "width": 1440,
+          "intent": "default",
+          "status": "route-complete-layout-not-certified",
+          "console_errors": [],
+          "page_errors": [],
+          "http_errors": []
+        }
+      ]
+    },
+    {
+      "kind": "phase",
+      "game": "children",
       "status": "running",
-      "pid": 70520
+      "pid": 35236
     },
     {
       "kind": "front",
@@ -320,8 +389,96 @@
     {
       "kind": "front",
       "game": "lunar-new-year",
+      "status": "front-complete",
+      "pid": 69656,
+      "raw_file": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\front-runs\\2026-10-23T00-03-41-550Z\\report.json",
+      "raw_sha256": "cb36a1396ca200f1283e785a81039188a3cd3115cfa3532ede811c88982bf153",
+      "sampler_sha256": "c247641156d929b0de7d6aa70e509510e293a29d7d6ff45aaac99ad931e0dc1a",
+      "source": "http://127.0.0.1:8845",
+      "source_stable": true,
+      "frames": 192,
+      "geometry": 0,
+      "sessions": [
+        {
+          "lang": "zh",
+          "width": 320,
+          "status": "complete",
+          "normal_story": {
+            "missing": [],
+            "mask_fully_in_viewport": true
+          },
+          "reduced_complete": true
+        },
+        {
+          "lang": "zh",
+          "width": 1440,
+          "status": "complete",
+          "normal_story": {
+            "missing": [],
+            "mask_fully_in_viewport": true
+          },
+          "reduced_complete": true
+        },
+        {
+          "lang": "en",
+          "width": 320,
+          "status": "complete",
+          "normal_story": {
+            "missing": [],
+            "mask_fully_in_viewport": true
+          },
+          "reduced_complete": true
+        },
+        {
+          "lang": "en",
+          "width": 1440,
+          "status": "complete",
+          "normal_story": {
+            "missing": [],
+            "mask_fully_in_viewport": true
+          },
+          "reduced_complete": true
+        },
+        {
+          "lang": "ja",
+          "width": 320,
+          "status": "complete",
+          "normal_story": {
+            "missing": [],
+            "mask_fully_in_viewport": true
+          },
+          "reduced_complete": true
+        },
+        {
+          "lang": "ja",
+          "width": 1440,
+          "status": "complete",
+          "normal_story": {
+            "missing": [],
+            "mask_fully_in_viewport": true
+          },
+          "reduced_complete": true
+        }
+      ]
+    },
+    {
+      "kind": "front",
+      "game": "lantern",
       "status": "running",
-      "pid": 69656
+      "pid": 23204
+    },
+    {
+      "kind": "standalone-min140",
+      "original_collector_status": "failed",
+      "postprocess_verified_file": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\newyear-min140\\runs\\2026-10-23T00-05-50-129Z\\verified.json",
+      "postprocess_verified_sha256": "52979d2de366c2466b0895dd21cf604f419d623b6b1c0bee08b7b217007038e3",
+      "raw_file": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\newyear-min140\\runs\\2026-10-23T00-05-50-129Z\\report.json",
+      "raw_sha256": "9b637f40bd7bff41c243dfaf1cde515e216155a8d3a97ae59341a4ea327d5f00",
+      "source": "http://127.0.0.1:8845",
+      "source_stable": true,
+      "sampler_sha256": "c247641156d929b0de7d6aa70e509510e293a29d7d6ff45aaac99ad931e0dc1a",
+      "frames": 54,
+      "scope": "Only actual same-shot replay cases; not a completed full game matrix"
     }
   ],
   "rejected": [],
@@ -387,57 +544,7 @@
       "height": 900
     },
     {
-      "id": "new-year/zh/replay/shot-0",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/zh/replay/shot-1",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/zh/replay/shot-2",
-      "width": 320,
-      "height": 900
-    },
-    {
       "id": "new-year/zh/retry",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lunar-new-year/zh/intro/start",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lunar-new-year/zh/intro/middle",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lunar-new-year/zh/intro/end",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lunar-new-year/zh/menu/normal",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lunar-new-year/zh/menu/hover",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lunar-new-year/zh/menu/pressed",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lunar-new-year/zh/menu/disabled-or-reachability-proof",
       "width": 320,
       "height": 900
     },
@@ -482,82 +589,7 @@
       "height": 900
     },
     {
-      "id": "lantern/zh/help",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/zh/settings",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/zh/game/initial",
-      "width": 320,
-      "height": 900
-    },
-    {
       "id": "lantern/zh/game/error-longest",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/zh/game/dynamic-min",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/zh/game/dynamic-max",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/zh/game/paused",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/zh/game/preview",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/zh/game/phase-1",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/zh/game/phase-2",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/zh/result/summary",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/zh/result/artifact-open",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/zh/replay/shot-0",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/zh/replay/shot-1",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/zh/replay/shot-2",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/zh/retry",
       "width": 320,
       "height": 900
     },
@@ -1927,57 +1959,7 @@
       "height": 900
     },
     {
-      "id": "new-year/en/replay/shot-0",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/en/replay/shot-1",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/en/replay/shot-2",
-      "width": 320,
-      "height": 900
-    },
-    {
       "id": "new-year/en/retry",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lunar-new-year/en/intro/start",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lunar-new-year/en/intro/middle",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lunar-new-year/en/intro/end",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lunar-new-year/en/menu/normal",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lunar-new-year/en/menu/hover",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lunar-new-year/en/menu/pressed",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lunar-new-year/en/menu/disabled-or-reachability-proof",
       "width": 320,
       "height": 900
     },
@@ -2022,82 +2004,7 @@
       "height": 900
     },
     {
-      "id": "lantern/en/help",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/en/settings",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/en/game/initial",
-      "width": 320,
-      "height": 900
-    },
-    {
       "id": "lantern/en/game/error-longest",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/en/game/dynamic-min",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/en/game/dynamic-max",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/en/game/paused",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/en/game/preview",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/en/game/phase-1",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/en/game/phase-2",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/en/result/summary",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/en/result/artifact-open",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/en/replay/shot-0",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/en/replay/shot-1",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/en/replay/shot-2",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/en/retry",
       "width": 320,
       "height": 900
     },
@@ -3467,57 +3374,7 @@
       "height": 900
     },
     {
-      "id": "new-year/ja/replay/shot-0",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/ja/replay/shot-1",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "new-year/ja/replay/shot-2",
-      "width": 320,
-      "height": 900
-    },
-    {
       "id": "new-year/ja/retry",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lunar-new-year/ja/intro/start",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lunar-new-year/ja/intro/middle",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lunar-new-year/ja/intro/end",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lunar-new-year/ja/menu/normal",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lunar-new-year/ja/menu/hover",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lunar-new-year/ja/menu/pressed",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lunar-new-year/ja/menu/disabled-or-reachability-proof",
       "width": 320,
       "height": 900
     },
@@ -3562,82 +3419,7 @@
       "height": 900
     },
     {
-      "id": "lantern/ja/help",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/ja/settings",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/ja/game/initial",
-      "width": 320,
-      "height": 900
-    },
-    {
       "id": "lantern/ja/game/error-longest",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/ja/game/dynamic-min",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/ja/game/dynamic-max",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/ja/game/paused",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/ja/game/preview",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/ja/game/phase-1",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/ja/game/phase-2",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/ja/result/summary",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/ja/result/artifact-open",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/ja/replay/shot-0",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/ja/replay/shot-1",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/ja/replay/shot-2",
-      "width": 320,
-      "height": 900
-    },
-    {
-      "id": "lantern/ja/retry",
       "width": 320,
       "height": 900
     },
@@ -5007,57 +4789,7 @@
       "height": 1000
     },
     {
-      "id": "new-year/zh/replay/shot-0",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/zh/replay/shot-1",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/zh/replay/shot-2",
-      "width": 1440,
-      "height": 1000
-    },
-    {
       "id": "new-year/zh/retry",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lunar-new-year/zh/intro/start",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lunar-new-year/zh/intro/middle",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lunar-new-year/zh/intro/end",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lunar-new-year/zh/menu/normal",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lunar-new-year/zh/menu/hover",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lunar-new-year/zh/menu/pressed",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lunar-new-year/zh/menu/disabled-or-reachability-proof",
       "width": 1440,
       "height": 1000
     },
@@ -5102,82 +4834,7 @@
       "height": 1000
     },
     {
-      "id": "lantern/zh/help",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/zh/settings",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/zh/game/initial",
-      "width": 1440,
-      "height": 1000
-    },
-    {
       "id": "lantern/zh/game/error-longest",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/zh/game/dynamic-min",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/zh/game/dynamic-max",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/zh/game/paused",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/zh/game/preview",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/zh/game/phase-1",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/zh/game/phase-2",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/zh/result/summary",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/zh/result/artifact-open",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/zh/replay/shot-0",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/zh/replay/shot-1",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/zh/replay/shot-2",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/zh/retry",
       "width": 1440,
       "height": 1000
     },
@@ -6547,57 +6204,7 @@
       "height": 1000
     },
     {
-      "id": "new-year/en/replay/shot-0",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/en/replay/shot-1",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/en/replay/shot-2",
-      "width": 1440,
-      "height": 1000
-    },
-    {
       "id": "new-year/en/retry",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lunar-new-year/en/intro/start",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lunar-new-year/en/intro/middle",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lunar-new-year/en/intro/end",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lunar-new-year/en/menu/normal",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lunar-new-year/en/menu/hover",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lunar-new-year/en/menu/pressed",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lunar-new-year/en/menu/disabled-or-reachability-proof",
       "width": 1440,
       "height": 1000
     },
@@ -6642,82 +6249,7 @@
       "height": 1000
     },
     {
-      "id": "lantern/en/help",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/en/settings",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/en/game/initial",
-      "width": 1440,
-      "height": 1000
-    },
-    {
       "id": "lantern/en/game/error-longest",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/en/game/dynamic-min",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/en/game/dynamic-max",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/en/game/paused",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/en/game/preview",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/en/game/phase-1",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/en/game/phase-2",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/en/result/summary",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/en/result/artifact-open",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/en/replay/shot-0",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/en/replay/shot-1",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/en/replay/shot-2",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/en/retry",
       "width": 1440,
       "height": 1000
     },
@@ -8087,57 +7619,7 @@
       "height": 1000
     },
     {
-      "id": "new-year/ja/replay/shot-0",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/ja/replay/shot-1",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "new-year/ja/replay/shot-2",
-      "width": 1440,
-      "height": 1000
-    },
-    {
       "id": "new-year/ja/retry",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lunar-new-year/ja/intro/start",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lunar-new-year/ja/intro/middle",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lunar-new-year/ja/intro/end",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lunar-new-year/ja/menu/normal",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lunar-new-year/ja/menu/hover",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lunar-new-year/ja/menu/pressed",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lunar-new-year/ja/menu/disabled-or-reachability-proof",
       "width": 1440,
       "height": 1000
     },
@@ -8182,82 +7664,7 @@
       "height": 1000
     },
     {
-      "id": "lantern/ja/help",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/ja/settings",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/ja/game/initial",
-      "width": 1440,
-      "height": 1000
-    },
-    {
       "id": "lantern/ja/game/error-longest",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/ja/game/dynamic-min",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/ja/game/dynamic-max",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/ja/game/paused",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/ja/game/preview",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/ja/game/phase-1",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/ja/game/phase-2",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/ja/result/summary",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/ja/result/artifact-open",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/ja/replay/shot-0",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/ja/replay/shot-1",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/ja/replay/shot-2",
-      "width": 1440,
-      "height": 1000
-    },
-    {
-      "id": "lantern/ja/retry",
       "width": 1440,
       "height": 1000
     },
