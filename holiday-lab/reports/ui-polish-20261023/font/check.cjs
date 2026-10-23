@@ -1,0 +1,10 @@
+'use strict';
+const fs=require('fs'),path=require('path'),assert=require('assert/strict');
+const file=path.join(__dirname,process.argv[2]||'after','result.json'),data=JSON.parse(fs.readFileSync(file));
+assert.equal(data.results.length,6);
+const orphans=data.results.flatMap(r=>r.states.flatMap(s=>s.rows.filter(n=>/^H[12]$/.test(n.tag)&&n.orphan).map(n=>({language:r.lang,width:r.width,state:s.label,text:n.text,lines:n.lines}))));
+assert.deepEqual(orphans,[],'game headings must not leave one character on their final line');
+assert.deepEqual(data.results.flatMap(r=>r.errors),[],'no console or page errors');
+assert.deepEqual(data.results.flatMap(r=>r.states.flatMap(s=>s.overflow)),[],'no measured text box overflows');
+assert.ok(data.results.every(r=>r.states.every(s=>s.pageWidth.scroll<=s.pageWidth.inner+1)));
+console.log('FONT_WRAP 6/6 PASS; headings orphan0, measured overflow0, errors0');

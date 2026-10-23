@@ -37,3 +37,17 @@
 #lab .button:hover{border-image-source:var(--hover);border-image-slice:34 31 36 31 fill;}
 #lab .button:active,#lab .button[aria-pressed=true]{border-image-source:var(--pressed);border-image-slice:34 31 35 31 fill;}
 #lab .button:disabled{border-image-source:url('assets/ui/disabled.png');border-image-slice:34 31 36 31 fill;}
+
+/* Keep short titles and control labels balanced without changing the chosen font. */
+#lab :is(h1,h2,.button,.control-label){text-wrap:balance;}
+html[lang='ja'] #lab :is(h1,h2,.button,.control-label){line-break:strict;}
+
+/* Balance compact status summaries as well as headings; keep full-size, selectable text. */
+#lab .controls > p{text-wrap:balance;}
+#lab .hint{text-wrap:pretty;}
+
+/* Reduce stranded endings in help/settings copy without squeezing or clipping text. */
+#lab > p,#lab header > p{text-wrap:pretty;}
+
+/* Long instructions exceed the browser's balanced-line limit; use paragraph wrapping. */
+#lab #caption-help{text-wrap:pretty;}

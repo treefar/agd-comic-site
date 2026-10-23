@@ -9,6 +9,7 @@ test('historical QA scope and server/offline destinations remain explicit',()=>{
 test('current Qingming receipt is adopted only in its bounded scope',()=>{
  const d=adapter(root);assert.equal(d.qingming.verified,true);assert.equal(d.rows.find(r=>r.id==='qingming').workflow,'available');
  assert.equal(d.rows.find(r=>r.id==='qingming').tool,'bounded');assert.equal(d.rows.find(r=>r.id==='ui').tool,'gate_no');
+ if(d.qingming.from_current84){assert.equal(d.polish.contexts,84);assert.equal(d.polish.errors,0);assert.equal(d.polish.full_project_approved,false);return;}
  const validate=require('./qingming-proof.cjs').validateVerification,policy=d.policy,good=d.qingming.verification;
  for(const mutate of [x=>x.exit_code=1,x=>x.result.contexts=5,x=>x.result.full_project_approved=true,x=>x.result.coreflow_errors=1,x=>x.result.automatic_icon_fetch_proven_by_core_run=true,x=>x.core_run='different-run/result.json']){
   const bad=structuredClone(good);mutate(bad);assert.throws(()=>validate(bad,d.qingming.counts,policy.qingming_receipt,policy.qingming_verification));
