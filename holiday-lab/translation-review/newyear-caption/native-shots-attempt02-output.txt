@@ -1,0 +1,22 @@
+YES native shot1 320
+node:internal/process/promises:394
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ '第1幕・着地 360ミリ秒｜軽く跳ぶ'
+- '第1幕・空中 140ミリ秒｜軽く跳ぶ'
+       ^
+
+    at C:\agywork\agd-newyear-ja-caption\holiday-lab\translation-review\newyear-caption\native-shot.cjs:6:545 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: '第1幕・着地 360ミリ秒｜軽く跳ぶ',
+  expected: '第1幕・空中 140ミリ秒｜軽く跳ぶ',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.15.0

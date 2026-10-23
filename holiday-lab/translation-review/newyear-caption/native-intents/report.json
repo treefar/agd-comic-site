@@ -1,0 +1,5411 @@
+{
+  "base": "http://127.0.0.1:8851",
+  "cases": [
+    {
+      "intent": "flight",
+      "width": 320,
+      "timings": [
+        [
+          360,
+          180,
+          360
+        ],
+        [
+          240,
+          600,
+          240
+        ],
+        [
+          240,
+          600,
+          240
+        ]
+      ],
+      "pageErrors": [],
+      "artifact": {
+        "takes": [
+          {
+            "brief": "quick-leap",
+            "focus": "quick",
+            "timing": [
+              360,
+              180,
+              360
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 900,
+              "shares": [
+                0.4,
+                0.2,
+                0.4
+              ]
+            }
+          },
+          {
+            "brief": "floating",
+            "focus": "flight",
+            "timing": [
+              240,
+              600,
+              240
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 1080,
+              "shares": [
+                0.2222222222222222,
+                0.5555555555555556,
+                0.2222222222222222
+              ]
+            }
+          },
+          {
+            "brief": "your-ending",
+            "focus": "flight",
+            "timing": [
+              240,
+              600,
+              240
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 1080,
+              "shares": [
+                0.2222222222222222,
+                0.5555555555555556,
+                0.2222222222222222
+              ]
+            }
+          }
+        ],
+        "attempts": 3
+      },
+      "originalOutput": {
+        "score": 100,
+        "summary": {
+          "zh": "三幕跨年動作完成。重播會保留你的時間與收尾心情；嘗試次數不扣分。",
+          "en": "Three New Year actions are ready. Replay keeps your timing and chosen ending. Trying things does not reduce your score.",
+          "ja": "年越しアクション3幕が完成。自分の時間配分と締めくくりを再生します。試行回数では減点しません。"
+        },
+        "artifact": {
+          "takes": [
+            {
+              "brief": "quick-leap",
+              "focus": "quick",
+              "timing": [
+                360,
+                180,
+                360
+              ],
+              "score": 100,
+              "metrics": {
+                "total": 900,
+                "shares": [
+                  0.4,
+                  0.2,
+                  0.4
+                ]
+              }
+            },
+            {
+              "brief": "floating",
+              "focus": "flight",
+              "timing": [
+                240,
+                600,
+                240
+              ],
+              "score": 100,
+              "metrics": {
+                "total": 1080,
+                "shares": [
+                  0.2222222222222222,
+                  0.5555555555555556,
+                  0.2222222222222222
+                ]
+              }
+            },
+            {
+              "brief": "your-ending",
+              "focus": "flight",
+              "timing": [
+                240,
+                600,
+                240
+              ],
+              "score": 100,
+              "metrics": {
+                "total": 1080,
+                "shares": [
+                  0.2222222222222222,
+                  0.5555555555555556,
+                  0.2222222222222222
+                ]
+              }
+            }
+          ],
+          "attempts": 3
+        },
+        "replay": [
+          {
+            "duration": 360,
+            "caption": {
+              "zh": "第1幕・起步 360毫秒｜俐落跨門",
+              "en": "Scene 1 · Launch: 360 ms · A quick leap",
+              "ja": "第1幕・踏み出し 360ミリ秒｜軽やかに越える"
+            },
+            "sprites": [
+              {
+                "key": "actor1",
+                "x": 26,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "scaleX": 1,
+                "scaleY": 1,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor1",
+                    "x": 26,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 45,
+                    "key": "actor1",
+                    "x": 27.25,
+                    "y": 60.76536686473018,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0191341716182545,
+                    "scaleY": 0.9693853254107928
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor1",
+                    "x": 28.5,
+                    "y": 61.41421356237309,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0353553390593273,
+                    "scaleY": 0.9434314575050762
+                  },
+                  {
+                    "at": 135,
+                    "key": "actor1",
+                    "x": 29.75,
+                    "y": 61.84775906502257,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0461939766255643,
+                    "scaleY": 0.926089637399097
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor1",
+                    "x": 31,
+                    "y": 62,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.05,
+                    "scaleY": 0.92
+                  },
+                  {
+                    "at": 225,
+                    "key": "actor1",
+                    "x": 32.25,
+                    "y": 61.84775906502257,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0461939766255643,
+                    "scaleY": 0.926089637399097
+                  },
+                  {
+                    "at": 270,
+                    "key": "actor1",
+                    "x": 33.5,
+                    "y": 61.41421356237309,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0353553390593273,
+                    "scaleY": 0.9434314575050762
+                  },
+                  {
+                    "at": 315,
+                    "key": "actor1",
+                    "x": 34.75,
+                    "y": 60.76536686473018,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0191341716182545,
+                    "scaleY": 0.9693853254107928
+                  },
+                  {
+                    "at": 360,
+                    "key": "actor1",
+                    "x": 36,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 180,
+            "caption": {
+              "zh": "第1幕・騰空 180毫秒｜俐落跨門",
+              "en": "Scene 1 · Flight: 180 ms · A quick leap",
+              "ja": "第1幕・空中 180ミリ秒｜軽やかに越える"
+            },
+            "sprites": [
+              {
+                "key": "actor2",
+                "x": 36,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor2",
+                    "x": 36,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 22.5,
+                    "key": "actor2",
+                    "x": 41,
+                    "y": 45.0753461377615,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 45,
+                    "key": "actor2",
+                    "x": 46,
+                    "y": 32.42283553372465,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 67.5,
+                    "key": "actor2",
+                    "x": 51,
+                    "y": 23.968698232059815,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor2",
+                    "x": 56,
+                    "y": 21,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 112.5,
+                    "key": "actor2",
+                    "x": 61,
+                    "y": 23.968698232059815,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 135,
+                    "key": "actor2",
+                    "x": 66,
+                    "y": 32.422835533724644,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 157.5,
+                    "key": "actor2",
+                    "x": 71,
+                    "y": 45.07534613776149,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor2",
+                    "x": 76,
+                    "y": 59.99999999999999,
+                    "width": 20,
+                    "height": 28
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 360,
+            "caption": {
+              "zh": "第1幕・落地 360毫秒｜俐落跨門",
+              "en": "Scene 1 · Landing: 360 ms · A quick leap",
+              "ja": "第1幕・着地 360ミリ秒｜軽やかに越える"
+            },
+            "sprites": [
+              {
+                "key": "actor3",
+                "x": 76,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "scaleX": 1,
+                "scaleY": 1,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor3",
+                    "x": 76,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 45,
+                    "key": "actor3",
+                    "x": 77,
+                    "y": 61.45796072900973,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0388789527735927,
+                    "scaleY": 0.9611210472264073
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor3",
+                    "x": 78,
+                    "y": 61.417099658223044,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0377893242192813,
+                    "scaleY": 0.9622106757807188
+                  },
+                  {
+                    "at": 135,
+                    "key": "actor3",
+                    "x": 79,
+                    "y": 60.6886918835941,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0183651168958427,
+                    "scaleY": 0.9816348831041574
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 225,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 270,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 315,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 360,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 240,
+            "caption": {
+              "zh": "第2幕・起步 240毫秒｜留住騰空",
+              "en": "Scene 2 · Launch: 240 ms · Savor flight",
+              "ja": "第2幕・踏み出し 240ミリ秒｜空中を味わう"
+            },
+            "sprites": [
+              {
+                "key": "actor1",
+                "x": 26,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "scaleX": 1,
+                "scaleY": 1,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor1",
+                    "x": 26,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 30,
+                    "key": "actor1",
+                    "x": 27.25,
+                    "y": 60.76536686473018,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0191341716182545,
+                    "scaleY": 0.9693853254107928
+                  },
+                  {
+                    "at": 60,
+                    "key": "actor1",
+                    "x": 28.5,
+                    "y": 61.41421356237309,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0353553390593273,
+                    "scaleY": 0.9434314575050762
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor1",
+                    "x": 29.75,
+                    "y": 61.84775906502257,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0461939766255643,
+                    "scaleY": 0.926089637399097
+                  },
+                  {
+                    "at": 120,
+                    "key": "actor1",
+                    "x": 31,
+                    "y": 62,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.05,
+                    "scaleY": 0.92
+                  },
+                  {
+                    "at": 150,
+                    "key": "actor1",
+                    "x": 32.25,
+                    "y": 61.84775906502257,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0461939766255643,
+                    "scaleY": 0.926089637399097
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor1",
+                    "x": 33.5,
+                    "y": 61.41421356237309,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0353553390593273,
+                    "scaleY": 0.9434314575050762
+                  },
+                  {
+                    "at": 210,
+                    "key": "actor1",
+                    "x": 34.75,
+                    "y": 60.76536686473018,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0191341716182545,
+                    "scaleY": 0.9693853254107928
+                  },
+                  {
+                    "at": 240,
+                    "key": "actor1",
+                    "x": 36,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 600,
+            "caption": {
+              "zh": "第2幕・騰空 600毫秒｜留住騰空",
+              "en": "Scene 2 · Flight: 600 ms · Savor flight",
+              "ja": "第2幕・空中 600ミリ秒｜空中を味わう"
+            },
+            "sprites": [
+              {
+                "key": "actor2",
+                "x": 36,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor2",
+                    "x": 36,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 75,
+                    "key": "actor2",
+                    "x": 41,
+                    "y": 45.0753461377615,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 150,
+                    "key": "actor2",
+                    "x": 46,
+                    "y": 32.42283553372465,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 225,
+                    "key": "actor2",
+                    "x": 51,
+                    "y": 23.968698232059815,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 300,
+                    "key": "actor2",
+                    "x": 56,
+                    "y": 21,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 375,
+                    "key": "actor2",
+                    "x": 61,
+                    "y": 23.968698232059815,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 450,
+                    "key": "actor2",
+                    "x": 66,
+                    "y": 32.422835533724644,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 525,
+                    "key": "actor2",
+                    "x": 71,
+                    "y": 45.07534613776149,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 600,
+                    "key": "actor2",
+                    "x": 76,
+                    "y": 59.99999999999999,
+                    "width": 20,
+                    "height": 28
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 240,
+            "caption": {
+              "zh": "第2幕・落地 240毫秒｜留住騰空",
+              "en": "Scene 2 · Landing: 240 ms · Savor flight",
+              "ja": "第2幕・着地 240ミリ秒｜空中を味わう"
+            },
+            "sprites": [
+              {
+                "key": "actor3",
+                "x": 76,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "scaleX": 1,
+                "scaleY": 1,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor3",
+                    "x": 76,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 30,
+                    "key": "actor3",
+                    "x": 77,
+                    "y": 61.45796072900973,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0388789527735927,
+                    "scaleY": 0.9611210472264073
+                  },
+                  {
+                    "at": 60,
+                    "key": "actor3",
+                    "x": 78,
+                    "y": 61.417099658223044,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0377893242192813,
+                    "scaleY": 0.9622106757807188
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor3",
+                    "x": 79,
+                    "y": 60.6886918835941,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0183651168958427,
+                    "scaleY": 0.9816348831041574
+                  },
+                  {
+                    "at": 120,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 150,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 210,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 240,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 240,
+            "caption": {
+              "zh": "第3幕・起步 240毫秒｜享受騰空",
+              "en": "Scene 3 · Launch: 240 ms · Savor flight",
+              "ja": "第3幕・踏み出し 240ミリ秒｜空中を楽しむ"
+            },
+            "sprites": [
+              {
+                "key": "actor1",
+                "x": 26,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "scaleX": 1,
+                "scaleY": 1,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor1",
+                    "x": 26,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 30,
+                    "key": "actor1",
+                    "x": 27.25,
+                    "y": 60.76536686473018,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0191341716182545,
+                    "scaleY": 0.9693853254107928
+                  },
+                  {
+                    "at": 60,
+                    "key": "actor1",
+                    "x": 28.5,
+                    "y": 61.41421356237309,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0353553390593273,
+                    "scaleY": 0.9434314575050762
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor1",
+                    "x": 29.75,
+                    "y": 61.84775906502257,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0461939766255643,
+                    "scaleY": 0.926089637399097
+                  },
+                  {
+                    "at": 120,
+                    "key": "actor1",
+                    "x": 31,
+                    "y": 62,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.05,
+                    "scaleY": 0.92
+                  },
+                  {
+                    "at": 150,
+                    "key": "actor1",
+                    "x": 32.25,
+                    "y": 61.84775906502257,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0461939766255643,
+                    "scaleY": 0.926089637399097
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor1",
+                    "x": 33.5,
+                    "y": 61.41421356237309,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0353553390593273,
+                    "scaleY": 0.9434314575050762
+                  },
+                  {
+                    "at": 210,
+                    "key": "actor1",
+                    "x": 34.75,
+                    "y": 60.76536686473018,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0191341716182545,
+                    "scaleY": 0.9693853254107928
+                  },
+                  {
+                    "at": 240,
+                    "key": "actor1",
+                    "x": 36,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 600,
+            "caption": {
+              "zh": "第3幕・騰空 600毫秒｜享受騰空",
+              "en": "Scene 3 · Flight: 600 ms · Savor flight",
+              "ja": "第3幕・空中 600ミリ秒｜空中を楽しむ"
+            },
+            "sprites": [
+              {
+                "key": "actor2",
+                "x": 36,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor2",
+                    "x": 36,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 75,
+                    "key": "actor2",
+                    "x": 41,
+                    "y": 45.0753461377615,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 150,
+                    "key": "actor2",
+                    "x": 46,
+                    "y": 32.42283553372465,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 225,
+                    "key": "actor2",
+                    "x": 51,
+                    "y": 23.968698232059815,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 300,
+                    "key": "actor2",
+                    "x": 56,
+                    "y": 21,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 375,
+                    "key": "actor2",
+                    "x": 61,
+                    "y": 23.968698232059815,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 450,
+                    "key": "actor2",
+                    "x": 66,
+                    "y": 32.422835533724644,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 525,
+                    "key": "actor2",
+                    "x": 71,
+                    "y": 45.07534613776149,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 600,
+                    "key": "actor2",
+                    "x": 76,
+                    "y": 59.99999999999999,
+                    "width": 20,
+                    "height": 28
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 240,
+            "caption": {
+              "zh": "第3幕・落地 240毫秒｜享受騰空",
+              "en": "Scene 3 · Landing: 240 ms · Savor flight",
+              "ja": "第3幕・着地 240ミリ秒｜空中を楽しむ"
+            },
+            "sprites": [
+              {
+                "key": "actor3",
+                "x": 76,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "scaleX": 1,
+                "scaleY": 1,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor3",
+                    "x": 76,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 30,
+                    "key": "actor3",
+                    "x": 77,
+                    "y": 61.45796072900973,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0388789527735927,
+                    "scaleY": 0.9611210472264073
+                  },
+                  {
+                    "at": 60,
+                    "key": "actor3",
+                    "x": 78,
+                    "y": 61.417099658223044,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0377893242192813,
+                    "scaleY": 0.9622106757807188
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor3",
+                    "x": 79,
+                    "y": 60.6886918835941,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0183651168958427,
+                    "scaleY": 0.9816348831041574
+                  },
+                  {
+                    "at": 120,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 150,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 210,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 240,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          }
+        ]
+      },
+      "shots": [
+        {
+          "shot": 0,
+          "text": "第1幕・踏み出し 360ミリ秒｜軽く跳ぶ",
+          "lines": [
+            {
+              "y": 543.421875,
+              "text": "第1幕・踏み出し 360ミリ秒｜軽く跳ぶ"
+            }
+          ],
+          "epoch": 1792715845284,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 1,
+          "text": "第1幕・空中 180ミリ秒｜軽く跳ぶ",
+          "lines": [
+            {
+              "y": 543.421875,
+              "text": "第1幕・空中 180ミリ秒｜軽く跳ぶ"
+            }
+          ],
+          "epoch": 1792715845667.9,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 2,
+          "text": "第1幕・着地 360ミリ秒｜軽く跳ぶ",
+          "lines": [
+            {
+              "y": 543.421875,
+              "text": "第1幕・着地 360ミリ秒｜軽く跳ぶ"
+            }
+          ],
+          "epoch": 1792715845850.9,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 3,
+          "text": "第2幕・踏み出し 240ミリ秒｜空中を味わう",
+          "lines": [
+            {
+              "y": 543.421875,
+              "text": "第2幕・踏み出し 240ミリ秒｜空中を味"
+            },
+            {
+              "y": 569.8125,
+              "text": "わう"
+            }
+          ],
+          "epoch": 1792715846217.9,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 4,
+          "text": "第2幕・空中 600ミリ秒｜空中を味わう",
+          "lines": [
+            {
+              "y": 543.421875,
+              "text": "第2幕・空中 600ミリ秒｜空中を味わう"
+            }
+          ],
+          "epoch": 1792715846467.7,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 5,
+          "text": "第2幕・着地 240ミリ秒｜空中を味わう",
+          "lines": [
+            {
+              "y": 543.421875,
+              "text": "第2幕・着地 240ミリ秒｜空中を味わう"
+            }
+          ],
+          "epoch": 1792715847083.7,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 6,
+          "text": "第3幕・踏み出し 240ミリ秒｜空中を楽しむ",
+          "lines": [
+            {
+              "y": 543.421875,
+              "text": "第3幕・踏み出し 240ミリ秒｜空中を楽"
+            },
+            {
+              "y": 569.8125,
+              "text": "しむ"
+            }
+          ],
+          "epoch": 1792715847334.0999,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 7,
+          "text": "第3幕・空中 600ミリ秒｜空中を楽しむ",
+          "lines": [
+            {
+              "y": 543.421875,
+              "text": "第3幕・空中 600ミリ秒｜空中を楽しむ"
+            }
+          ],
+          "epoch": 1792715847584.9,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 8,
+          "text": "第3幕・着地 240ミリ秒｜空中を楽しむ",
+          "lines": [
+            {
+              "y": 543.421875,
+              "text": "第3幕・着地 240ミリ秒｜空中を楽しむ"
+            }
+          ],
+          "epoch": 1792715848200.5999,
+          "horizontalOverflow": false
+        }
+      ],
+      "pass": true
+    },
+    {
+      "intent": "flight",
+      "width": 1440,
+      "timings": [
+        [
+          360,
+          180,
+          360
+        ],
+        [
+          240,
+          600,
+          240
+        ],
+        [
+          240,
+          600,
+          240
+        ]
+      ],
+      "pageErrors": [],
+      "artifact": {
+        "takes": [
+          {
+            "brief": "quick-leap",
+            "focus": "quick",
+            "timing": [
+              360,
+              180,
+              360
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 900,
+              "shares": [
+                0.4,
+                0.2,
+                0.4
+              ]
+            }
+          },
+          {
+            "brief": "floating",
+            "focus": "flight",
+            "timing": [
+              240,
+              600,
+              240
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 1080,
+              "shares": [
+                0.2222222222222222,
+                0.5555555555555556,
+                0.2222222222222222
+              ]
+            }
+          },
+          {
+            "brief": "your-ending",
+            "focus": "flight",
+            "timing": [
+              240,
+              600,
+              240
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 1080,
+              "shares": [
+                0.2222222222222222,
+                0.5555555555555556,
+                0.2222222222222222
+              ]
+            }
+          }
+        ],
+        "attempts": 3
+      },
+      "originalOutput": {
+        "score": 100,
+        "summary": {
+          "zh": "三幕跨年動作完成。重播會保留你的時間與收尾心情；嘗試次數不扣分。",
+          "en": "Three New Year actions are ready. Replay keeps your timing and chosen ending. Trying things does not reduce your score.",
+          "ja": "年越しアクション3幕が完成。自分の時間配分と締めくくりを再生します。試行回数では減点しません。"
+        },
+        "artifact": {
+          "takes": [
+            {
+              "brief": "quick-leap",
+              "focus": "quick",
+              "timing": [
+                360,
+                180,
+                360
+              ],
+              "score": 100,
+              "metrics": {
+                "total": 900,
+                "shares": [
+                  0.4,
+                  0.2,
+                  0.4
+                ]
+              }
+            },
+            {
+              "brief": "floating",
+              "focus": "flight",
+              "timing": [
+                240,
+                600,
+                240
+              ],
+              "score": 100,
+              "metrics": {
+                "total": 1080,
+                "shares": [
+                  0.2222222222222222,
+                  0.5555555555555556,
+                  0.2222222222222222
+                ]
+              }
+            },
+            {
+              "brief": "your-ending",
+              "focus": "flight",
+              "timing": [
+                240,
+                600,
+                240
+              ],
+              "score": 100,
+              "metrics": {
+                "total": 1080,
+                "shares": [
+                  0.2222222222222222,
+                  0.5555555555555556,
+                  0.2222222222222222
+                ]
+              }
+            }
+          ],
+          "attempts": 3
+        },
+        "replay": [
+          {
+            "duration": 360,
+            "caption": {
+              "zh": "第1幕・起步 360毫秒｜俐落跨門",
+              "en": "Scene 1 · Launch: 360 ms · A quick leap",
+              "ja": "第1幕・踏み出し 360ミリ秒｜軽やかに越える"
+            },
+            "sprites": [
+              {
+                "key": "actor1",
+                "x": 26,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "scaleX": 1,
+                "scaleY": 1,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor1",
+                    "x": 26,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 45,
+                    "key": "actor1",
+                    "x": 27.25,
+                    "y": 60.76536686473018,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0191341716182545,
+                    "scaleY": 0.9693853254107928
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor1",
+                    "x": 28.5,
+                    "y": 61.41421356237309,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0353553390593273,
+                    "scaleY": 0.9434314575050762
+                  },
+                  {
+                    "at": 135,
+                    "key": "actor1",
+                    "x": 29.75,
+                    "y": 61.84775906502257,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0461939766255643,
+                    "scaleY": 0.926089637399097
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor1",
+                    "x": 31,
+                    "y": 62,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.05,
+                    "scaleY": 0.92
+                  },
+                  {
+                    "at": 225,
+                    "key": "actor1",
+                    "x": 32.25,
+                    "y": 61.84775906502257,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0461939766255643,
+                    "scaleY": 0.926089637399097
+                  },
+                  {
+                    "at": 270,
+                    "key": "actor1",
+                    "x": 33.5,
+                    "y": 61.41421356237309,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0353553390593273,
+                    "scaleY": 0.9434314575050762
+                  },
+                  {
+                    "at": 315,
+                    "key": "actor1",
+                    "x": 34.75,
+                    "y": 60.76536686473018,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0191341716182545,
+                    "scaleY": 0.9693853254107928
+                  },
+                  {
+                    "at": 360,
+                    "key": "actor1",
+                    "x": 36,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 180,
+            "caption": {
+              "zh": "第1幕・騰空 180毫秒｜俐落跨門",
+              "en": "Scene 1 · Flight: 180 ms · A quick leap",
+              "ja": "第1幕・空中 180ミリ秒｜軽やかに越える"
+            },
+            "sprites": [
+              {
+                "key": "actor2",
+                "x": 36,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor2",
+                    "x": 36,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 22.5,
+                    "key": "actor2",
+                    "x": 41,
+                    "y": 45.0753461377615,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 45,
+                    "key": "actor2",
+                    "x": 46,
+                    "y": 32.42283553372465,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 67.5,
+                    "key": "actor2",
+                    "x": 51,
+                    "y": 23.968698232059815,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor2",
+                    "x": 56,
+                    "y": 21,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 112.5,
+                    "key": "actor2",
+                    "x": 61,
+                    "y": 23.968698232059815,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 135,
+                    "key": "actor2",
+                    "x": 66,
+                    "y": 32.422835533724644,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 157.5,
+                    "key": "actor2",
+                    "x": 71,
+                    "y": 45.07534613776149,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor2",
+                    "x": 76,
+                    "y": 59.99999999999999,
+                    "width": 20,
+                    "height": 28
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 360,
+            "caption": {
+              "zh": "第1幕・落地 360毫秒｜俐落跨門",
+              "en": "Scene 1 · Landing: 360 ms · A quick leap",
+              "ja": "第1幕・着地 360ミリ秒｜軽やかに越える"
+            },
+            "sprites": [
+              {
+                "key": "actor3",
+                "x": 76,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "scaleX": 1,
+                "scaleY": 1,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor3",
+                    "x": 76,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 45,
+                    "key": "actor3",
+                    "x": 77,
+                    "y": 61.45796072900973,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0388789527735927,
+                    "scaleY": 0.9611210472264073
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor3",
+                    "x": 78,
+                    "y": 61.417099658223044,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0377893242192813,
+                    "scaleY": 0.9622106757807188
+                  },
+                  {
+                    "at": 135,
+                    "key": "actor3",
+                    "x": 79,
+                    "y": 60.6886918835941,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0183651168958427,
+                    "scaleY": 0.9816348831041574
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 225,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 270,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 315,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 360,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 240,
+            "caption": {
+              "zh": "第2幕・起步 240毫秒｜留住騰空",
+              "en": "Scene 2 · Launch: 240 ms · Savor flight",
+              "ja": "第2幕・踏み出し 240ミリ秒｜空中を味わう"
+            },
+            "sprites": [
+              {
+                "key": "actor1",
+                "x": 26,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "scaleX": 1,
+                "scaleY": 1,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor1",
+                    "x": 26,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 30,
+                    "key": "actor1",
+                    "x": 27.25,
+                    "y": 60.76536686473018,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0191341716182545,
+                    "scaleY": 0.9693853254107928
+                  },
+                  {
+                    "at": 60,
+                    "key": "actor1",
+                    "x": 28.5,
+                    "y": 61.41421356237309,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0353553390593273,
+                    "scaleY": 0.9434314575050762
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor1",
+                    "x": 29.75,
+                    "y": 61.84775906502257,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0461939766255643,
+                    "scaleY": 0.926089637399097
+                  },
+                  {
+                    "at": 120,
+                    "key": "actor1",
+                    "x": 31,
+                    "y": 62,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.05,
+                    "scaleY": 0.92
+                  },
+                  {
+                    "at": 150,
+                    "key": "actor1",
+                    "x": 32.25,
+                    "y": 61.84775906502257,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0461939766255643,
+                    "scaleY": 0.926089637399097
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor1",
+                    "x": 33.5,
+                    "y": 61.41421356237309,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0353553390593273,
+                    "scaleY": 0.9434314575050762
+                  },
+                  {
+                    "at": 210,
+                    "key": "actor1",
+                    "x": 34.75,
+                    "y": 60.76536686473018,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0191341716182545,
+                    "scaleY": 0.9693853254107928
+                  },
+                  {
+                    "at": 240,
+                    "key": "actor1",
+                    "x": 36,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 600,
+            "caption": {
+              "zh": "第2幕・騰空 600毫秒｜留住騰空",
+              "en": "Scene 2 · Flight: 600 ms · Savor flight",
+              "ja": "第2幕・空中 600ミリ秒｜空中を味わう"
+            },
+            "sprites": [
+              {
+                "key": "actor2",
+                "x": 36,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor2",
+                    "x": 36,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 75,
+                    "key": "actor2",
+                    "x": 41,
+                    "y": 45.0753461377615,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 150,
+                    "key": "actor2",
+                    "x": 46,
+                    "y": 32.42283553372465,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 225,
+                    "key": "actor2",
+                    "x": 51,
+                    "y": 23.968698232059815,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 300,
+                    "key": "actor2",
+                    "x": 56,
+                    "y": 21,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 375,
+                    "key": "actor2",
+                    "x": 61,
+                    "y": 23.968698232059815,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 450,
+                    "key": "actor2",
+                    "x": 66,
+                    "y": 32.422835533724644,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 525,
+                    "key": "actor2",
+                    "x": 71,
+                    "y": 45.07534613776149,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 600,
+                    "key": "actor2",
+                    "x": 76,
+                    "y": 59.99999999999999,
+                    "width": 20,
+                    "height": 28
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 240,
+            "caption": {
+              "zh": "第2幕・落地 240毫秒｜留住騰空",
+              "en": "Scene 2 · Landing: 240 ms · Savor flight",
+              "ja": "第2幕・着地 240ミリ秒｜空中を味わう"
+            },
+            "sprites": [
+              {
+                "key": "actor3",
+                "x": 76,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "scaleX": 1,
+                "scaleY": 1,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor3",
+                    "x": 76,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 30,
+                    "key": "actor3",
+                    "x": 77,
+                    "y": 61.45796072900973,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0388789527735927,
+                    "scaleY": 0.9611210472264073
+                  },
+                  {
+                    "at": 60,
+                    "key": "actor3",
+                    "x": 78,
+                    "y": 61.417099658223044,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0377893242192813,
+                    "scaleY": 0.9622106757807188
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor3",
+                    "x": 79,
+                    "y": 60.6886918835941,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0183651168958427,
+                    "scaleY": 0.9816348831041574
+                  },
+                  {
+                    "at": 120,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 150,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 210,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 240,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 240,
+            "caption": {
+              "zh": "第3幕・起步 240毫秒｜享受騰空",
+              "en": "Scene 3 · Launch: 240 ms · Savor flight",
+              "ja": "第3幕・踏み出し 240ミリ秒｜空中を楽しむ"
+            },
+            "sprites": [
+              {
+                "key": "actor1",
+                "x": 26,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "scaleX": 1,
+                "scaleY": 1,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor1",
+                    "x": 26,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 30,
+                    "key": "actor1",
+                    "x": 27.25,
+                    "y": 60.76536686473018,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0191341716182545,
+                    "scaleY": 0.9693853254107928
+                  },
+                  {
+                    "at": 60,
+                    "key": "actor1",
+                    "x": 28.5,
+                    "y": 61.41421356237309,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0353553390593273,
+                    "scaleY": 0.9434314575050762
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor1",
+                    "x": 29.75,
+                    "y": 61.84775906502257,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0461939766255643,
+                    "scaleY": 0.926089637399097
+                  },
+                  {
+                    "at": 120,
+                    "key": "actor1",
+                    "x": 31,
+                    "y": 62,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.05,
+                    "scaleY": 0.92
+                  },
+                  {
+                    "at": 150,
+                    "key": "actor1",
+                    "x": 32.25,
+                    "y": 61.84775906502257,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0461939766255643,
+                    "scaleY": 0.926089637399097
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor1",
+                    "x": 33.5,
+                    "y": 61.41421356237309,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0353553390593273,
+                    "scaleY": 0.9434314575050762
+                  },
+                  {
+                    "at": 210,
+                    "key": "actor1",
+                    "x": 34.75,
+                    "y": 60.76536686473018,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0191341716182545,
+                    "scaleY": 0.9693853254107928
+                  },
+                  {
+                    "at": 240,
+                    "key": "actor1",
+                    "x": 36,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 600,
+            "caption": {
+              "zh": "第3幕・騰空 600毫秒｜享受騰空",
+              "en": "Scene 3 · Flight: 600 ms · Savor flight",
+              "ja": "第3幕・空中 600ミリ秒｜空中を楽しむ"
+            },
+            "sprites": [
+              {
+                "key": "actor2",
+                "x": 36,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor2",
+                    "x": 36,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 75,
+                    "key": "actor2",
+                    "x": 41,
+                    "y": 45.0753461377615,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 150,
+                    "key": "actor2",
+                    "x": 46,
+                    "y": 32.42283553372465,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 225,
+                    "key": "actor2",
+                    "x": 51,
+                    "y": 23.968698232059815,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 300,
+                    "key": "actor2",
+                    "x": 56,
+                    "y": 21,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 375,
+                    "key": "actor2",
+                    "x": 61,
+                    "y": 23.968698232059815,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 450,
+                    "key": "actor2",
+                    "x": 66,
+                    "y": 32.422835533724644,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 525,
+                    "key": "actor2",
+                    "x": 71,
+                    "y": 45.07534613776149,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 600,
+                    "key": "actor2",
+                    "x": 76,
+                    "y": 59.99999999999999,
+                    "width": 20,
+                    "height": 28
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 240,
+            "caption": {
+              "zh": "第3幕・落地 240毫秒｜享受騰空",
+              "en": "Scene 3 · Landing: 240 ms · Savor flight",
+              "ja": "第3幕・着地 240ミリ秒｜空中を楽しむ"
+            },
+            "sprites": [
+              {
+                "key": "actor3",
+                "x": 76,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "scaleX": 1,
+                "scaleY": 1,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor3",
+                    "x": 76,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 30,
+                    "key": "actor3",
+                    "x": 77,
+                    "y": 61.45796072900973,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0388789527735927,
+                    "scaleY": 0.9611210472264073
+                  },
+                  {
+                    "at": 60,
+                    "key": "actor3",
+                    "x": 78,
+                    "y": 61.417099658223044,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0377893242192813,
+                    "scaleY": 0.9622106757807188
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor3",
+                    "x": 79,
+                    "y": 60.6886918835941,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0183651168958427,
+                    "scaleY": 0.9816348831041574
+                  },
+                  {
+                    "at": 120,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 150,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 210,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 240,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          }
+        ]
+      },
+      "shots": [
+        {
+          "shot": 0,
+          "text": "第1幕・踏み出し 360ミリ秒｜軽く跳ぶ",
+          "lines": [
+            {
+              "y": 960.609375,
+              "text": "第1幕・踏み出し 360ミリ秒｜軽く跳ぶ"
+            }
+          ],
+          "epoch": 1792715853234.7998,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 1,
+          "text": "第1幕・空中 180ミリ秒｜軽く跳ぶ",
+          "lines": [
+            {
+              "y": 960.609375,
+              "text": "第1幕・空中 180ミリ秒｜軽く跳ぶ"
+            }
+          ],
+          "epoch": 1792715853601.0999,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 2,
+          "text": "第1幕・着地 360ミリ秒｜軽く跳ぶ",
+          "lines": [
+            {
+              "y": 960.609375,
+              "text": "第1幕・着地 360ミリ秒｜軽く跳ぶ"
+            }
+          ],
+          "epoch": 1792715853784,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 3,
+          "text": "第2幕・踏み出し 240ミリ秒｜空中を味わう",
+          "lines": [
+            {
+              "y": 960.609375,
+              "text": "第2幕・踏み出し 240ミリ秒｜空中を味わう"
+            }
+          ],
+          "epoch": 1792715854151.5999,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 4,
+          "text": "第2幕・空中 600ミリ秒｜空中を味わう",
+          "lines": [
+            {
+              "y": 960.609375,
+              "text": "第2幕・空中 600ミリ秒｜空中を味わう"
+            }
+          ],
+          "epoch": 1792715854400.5999,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 5,
+          "text": "第2幕・着地 240ミリ秒｜空中を味わう",
+          "lines": [
+            {
+              "y": 960.609375,
+              "text": "第2幕・着地 240ミリ秒｜空中を味わう"
+            }
+          ],
+          "epoch": 1792715855000.7998,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 6,
+          "text": "第3幕・踏み出し 240ミリ秒｜空中を楽しむ",
+          "lines": [
+            {
+              "y": 960.609375,
+              "text": "第3幕・踏み出し 240ミリ秒｜空中を楽しむ"
+            }
+          ],
+          "epoch": 1792715855250.7,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 7,
+          "text": "第3幕・空中 600ミリ秒｜空中を楽しむ",
+          "lines": [
+            {
+              "y": 960.609375,
+              "text": "第3幕・空中 600ミリ秒｜空中を楽しむ"
+            }
+          ],
+          "epoch": 1792715855502.5,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 8,
+          "text": "第3幕・着地 240ミリ秒｜空中を楽しむ",
+          "lines": [
+            {
+              "y": 960.609375,
+              "text": "第3幕・着地 240ミリ秒｜空中を楽しむ"
+            }
+          ],
+          "epoch": 1792715856117.2998,
+          "horizontalOverflow": false
+        }
+      ],
+      "pass": true
+    },
+    {
+      "intent": "landing",
+      "width": 320,
+      "timings": [
+        [
+          360,
+          180,
+          360
+        ],
+        [
+          240,
+          600,
+          240
+        ],
+        [
+          240,
+          180,
+          600
+        ]
+      ],
+      "pageErrors": [],
+      "artifact": {
+        "takes": [
+          {
+            "brief": "quick-leap",
+            "focus": "quick",
+            "timing": [
+              360,
+              180,
+              360
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 900,
+              "shares": [
+                0.4,
+                0.2,
+                0.4
+              ]
+            }
+          },
+          {
+            "brief": "floating",
+            "focus": "flight",
+            "timing": [
+              240,
+              600,
+              240
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 1080,
+              "shares": [
+                0.2222222222222222,
+                0.5555555555555556,
+                0.2222222222222222
+              ]
+            }
+          },
+          {
+            "brief": "your-ending",
+            "focus": "landing",
+            "timing": [
+              240,
+              180,
+              600
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 1020,
+              "shares": [
+                0.23529411764705882,
+                0.17647058823529413,
+                0.5882352941176471
+              ]
+            }
+          }
+        ],
+        "attempts": 3
+      },
+      "originalOutput": {
+        "score": 100,
+        "summary": {
+          "zh": "三幕跨年動作完成。重播會保留你的時間與收尾心情；嘗試次數不扣分。",
+          "en": "Three New Year actions are ready. Replay keeps your timing and chosen ending. Trying things does not reduce your score.",
+          "ja": "年越しアクション3幕が完成。自分の時間配分と締めくくりを再生します。試行回数では減点しません。"
+        },
+        "artifact": {
+          "takes": [
+            {
+              "brief": "quick-leap",
+              "focus": "quick",
+              "timing": [
+                360,
+                180,
+                360
+              ],
+              "score": 100,
+              "metrics": {
+                "total": 900,
+                "shares": [
+                  0.4,
+                  0.2,
+                  0.4
+                ]
+              }
+            },
+            {
+              "brief": "floating",
+              "focus": "flight",
+              "timing": [
+                240,
+                600,
+                240
+              ],
+              "score": 100,
+              "metrics": {
+                "total": 1080,
+                "shares": [
+                  0.2222222222222222,
+                  0.5555555555555556,
+                  0.2222222222222222
+                ]
+              }
+            },
+            {
+              "brief": "your-ending",
+              "focus": "landing",
+              "timing": [
+                240,
+                180,
+                600
+              ],
+              "score": 100,
+              "metrics": {
+                "total": 1020,
+                "shares": [
+                  0.23529411764705882,
+                  0.17647058823529413,
+                  0.5882352941176471
+                ]
+              }
+            }
+          ],
+          "attempts": 3
+        },
+        "replay": [
+          {
+            "duration": 360,
+            "caption": {
+              "zh": "第1幕・起步 360毫秒｜俐落跨門",
+              "en": "Scene 1 · Launch: 360 ms · A quick leap",
+              "ja": "第1幕・踏み出し 360ミリ秒｜軽やかに越える"
+            },
+            "sprites": [
+              {
+                "key": "actor1",
+                "x": 26,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "scaleX": 1,
+                "scaleY": 1,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor1",
+                    "x": 26,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 45,
+                    "key": "actor1",
+                    "x": 27.25,
+                    "y": 60.76536686473018,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0191341716182545,
+                    "scaleY": 0.9693853254107928
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor1",
+                    "x": 28.5,
+                    "y": 61.41421356237309,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0353553390593273,
+                    "scaleY": 0.9434314575050762
+                  },
+                  {
+                    "at": 135,
+                    "key": "actor1",
+                    "x": 29.75,
+                    "y": 61.84775906502257,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0461939766255643,
+                    "scaleY": 0.926089637399097
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor1",
+                    "x": 31,
+                    "y": 62,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.05,
+                    "scaleY": 0.92
+                  },
+                  {
+                    "at": 225,
+                    "key": "actor1",
+                    "x": 32.25,
+                    "y": 61.84775906502257,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0461939766255643,
+                    "scaleY": 0.926089637399097
+                  },
+                  {
+                    "at": 270,
+                    "key": "actor1",
+                    "x": 33.5,
+                    "y": 61.41421356237309,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0353553390593273,
+                    "scaleY": 0.9434314575050762
+                  },
+                  {
+                    "at": 315,
+                    "key": "actor1",
+                    "x": 34.75,
+                    "y": 60.76536686473018,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0191341716182545,
+                    "scaleY": 0.9693853254107928
+                  },
+                  {
+                    "at": 360,
+                    "key": "actor1",
+                    "x": 36,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 180,
+            "caption": {
+              "zh": "第1幕・騰空 180毫秒｜俐落跨門",
+              "en": "Scene 1 · Flight: 180 ms · A quick leap",
+              "ja": "第1幕・空中 180ミリ秒｜軽やかに越える"
+            },
+            "sprites": [
+              {
+                "key": "actor2",
+                "x": 36,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor2",
+                    "x": 36,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 22.5,
+                    "key": "actor2",
+                    "x": 41,
+                    "y": 45.0753461377615,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 45,
+                    "key": "actor2",
+                    "x": 46,
+                    "y": 32.42283553372465,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 67.5,
+                    "key": "actor2",
+                    "x": 51,
+                    "y": 23.968698232059815,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor2",
+                    "x": 56,
+                    "y": 21,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 112.5,
+                    "key": "actor2",
+                    "x": 61,
+                    "y": 23.968698232059815,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 135,
+                    "key": "actor2",
+                    "x": 66,
+                    "y": 32.422835533724644,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 157.5,
+                    "key": "actor2",
+                    "x": 71,
+                    "y": 45.07534613776149,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor2",
+                    "x": 76,
+                    "y": 59.99999999999999,
+                    "width": 20,
+                    "height": 28
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 360,
+            "caption": {
+              "zh": "第1幕・落地 360毫秒｜俐落跨門",
+              "en": "Scene 1 · Landing: 360 ms · A quick leap",
+              "ja": "第1幕・着地 360ミリ秒｜軽やかに越える"
+            },
+            "sprites": [
+              {
+                "key": "actor3",
+                "x": 76,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "scaleX": 1,
+                "scaleY": 1,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor3",
+                    "x": 76,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 45,
+                    "key": "actor3",
+                    "x": 77,
+                    "y": 61.45796072900973,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0388789527735927,
+                    "scaleY": 0.9611210472264073
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor3",
+                    "x": 78,
+                    "y": 61.417099658223044,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0377893242192813,
+                    "scaleY": 0.9622106757807188
+                  },
+                  {
+                    "at": 135,
+                    "key": "actor3",
+                    "x": 79,
+                    "y": 60.6886918835941,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0183651168958427,
+                    "scaleY": 0.9816348831041574
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 225,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 270,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 315,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 360,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 240,
+            "caption": {
+              "zh": "第2幕・起步 240毫秒｜留住騰空",
+              "en": "Scene 2 · Launch: 240 ms · Savor flight",
+              "ja": "第2幕・踏み出し 240ミリ秒｜空中を味わう"
+            },
+            "sprites": [
+              {
+                "key": "actor1",
+                "x": 26,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "scaleX": 1,
+                "scaleY": 1,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor1",
+                    "x": 26,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 30,
+                    "key": "actor1",
+                    "x": 27.25,
+                    "y": 60.76536686473018,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0191341716182545,
+                    "scaleY": 0.9693853254107928
+                  },
+                  {
+                    "at": 60,
+                    "key": "actor1",
+                    "x": 28.5,
+                    "y": 61.41421356237309,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0353553390593273,
+                    "scaleY": 0.9434314575050762
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor1",
+                    "x": 29.75,
+                    "y": 61.84775906502257,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0461939766255643,
+                    "scaleY": 0.926089637399097
+                  },
+                  {
+                    "at": 120,
+                    "key": "actor1",
+                    "x": 31,
+                    "y": 62,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.05,
+                    "scaleY": 0.92
+                  },
+                  {
+                    "at": 150,
+                    "key": "actor1",
+                    "x": 32.25,
+                    "y": 61.84775906502257,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0461939766255643,
+                    "scaleY": 0.926089637399097
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor1",
+                    "x": 33.5,
+                    "y": 61.41421356237309,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0353553390593273,
+                    "scaleY": 0.9434314575050762
+                  },
+                  {
+                    "at": 210,
+                    "key": "actor1",
+                    "x": 34.75,
+                    "y": 60.76536686473018,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0191341716182545,
+                    "scaleY": 0.9693853254107928
+                  },
+                  {
+                    "at": 240,
+                    "key": "actor1",
+                    "x": 36,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 600,
+            "caption": {
+              "zh": "第2幕・騰空 600毫秒｜留住騰空",
+              "en": "Scene 2 · Flight: 600 ms · Savor flight",
+              "ja": "第2幕・空中 600ミリ秒｜空中を味わう"
+            },
+            "sprites": [
+              {
+                "key": "actor2",
+                "x": 36,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor2",
+                    "x": 36,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 75,
+                    "key": "actor2",
+                    "x": 41,
+                    "y": 45.0753461377615,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 150,
+                    "key": "actor2",
+                    "x": 46,
+                    "y": 32.42283553372465,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 225,
+                    "key": "actor2",
+                    "x": 51,
+                    "y": 23.968698232059815,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 300,
+                    "key": "actor2",
+                    "x": 56,
+                    "y": 21,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 375,
+                    "key": "actor2",
+                    "x": 61,
+                    "y": 23.968698232059815,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 450,
+                    "key": "actor2",
+                    "x": 66,
+                    "y": 32.422835533724644,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 525,
+                    "key": "actor2",
+                    "x": 71,
+                    "y": 45.07534613776149,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 600,
+                    "key": "actor2",
+                    "x": 76,
+                    "y": 59.99999999999999,
+                    "width": 20,
+                    "height": 28
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 240,
+            "caption": {
+              "zh": "第2幕・落地 240毫秒｜留住騰空",
+              "en": "Scene 2 · Landing: 240 ms · Savor flight",
+              "ja": "第2幕・着地 240ミリ秒｜空中を味わう"
+            },
+            "sprites": [
+              {
+                "key": "actor3",
+                "x": 76,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "scaleX": 1,
+                "scaleY": 1,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor3",
+                    "x": 76,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 30,
+                    "key": "actor3",
+                    "x": 77,
+                    "y": 61.45796072900973,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0388789527735927,
+                    "scaleY": 0.9611210472264073
+                  },
+                  {
+                    "at": 60,
+                    "key": "actor3",
+                    "x": 78,
+                    "y": 61.417099658223044,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0377893242192813,
+                    "scaleY": 0.9622106757807188
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor3",
+                    "x": 79,
+                    "y": 60.6886918835941,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0183651168958427,
+                    "scaleY": 0.9816348831041574
+                  },
+                  {
+                    "at": 120,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 150,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 210,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 240,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 240,
+            "caption": {
+              "zh": "第3幕・起步 240毫秒｜站穩落地",
+              "en": "Scene 3 · Launch: 240 ms · Settle the landing",
+              "ja": "第3幕・踏み出し 240ミリ秒｜着地を決める"
+            },
+            "sprites": [
+              {
+                "key": "actor1",
+                "x": 26,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "scaleX": 1,
+                "scaleY": 1,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor1",
+                    "x": 26,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 30,
+                    "key": "actor1",
+                    "x": 27.25,
+                    "y": 60.76536686473018,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0191341716182545,
+                    "scaleY": 0.9693853254107928
+                  },
+                  {
+                    "at": 60,
+                    "key": "actor1",
+                    "x": 28.5,
+                    "y": 61.41421356237309,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0353553390593273,
+                    "scaleY": 0.9434314575050762
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor1",
+                    "x": 29.75,
+                    "y": 61.84775906502257,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0461939766255643,
+                    "scaleY": 0.926089637399097
+                  },
+                  {
+                    "at": 120,
+                    "key": "actor1",
+                    "x": 31,
+                    "y": 62,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.05,
+                    "scaleY": 0.92
+                  },
+                  {
+                    "at": 150,
+                    "key": "actor1",
+                    "x": 32.25,
+                    "y": 61.84775906502257,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0461939766255643,
+                    "scaleY": 0.926089637399097
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor1",
+                    "x": 33.5,
+                    "y": 61.41421356237309,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0353553390593273,
+                    "scaleY": 0.9434314575050762
+                  },
+                  {
+                    "at": 210,
+                    "key": "actor1",
+                    "x": 34.75,
+                    "y": 60.76536686473018,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0191341716182545,
+                    "scaleY": 0.9693853254107928
+                  },
+                  {
+                    "at": 240,
+                    "key": "actor1",
+                    "x": 36,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 180,
+            "caption": {
+              "zh": "第3幕・騰空 180毫秒｜站穩落地",
+              "en": "Scene 3 · Flight: 180 ms · Settle the landing",
+              "ja": "第3幕・空中 180ミリ秒｜着地を決める"
+            },
+            "sprites": [
+              {
+                "key": "actor2",
+                "x": 36,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor2",
+                    "x": 36,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 22.5,
+                    "key": "actor2",
+                    "x": 41,
+                    "y": 45.0753461377615,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 45,
+                    "key": "actor2",
+                    "x": 46,
+                    "y": 32.42283553372465,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 67.5,
+                    "key": "actor2",
+                    "x": 51,
+                    "y": 23.968698232059815,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor2",
+                    "x": 56,
+                    "y": 21,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 112.5,
+                    "key": "actor2",
+                    "x": 61,
+                    "y": 23.968698232059815,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 135,
+                    "key": "actor2",
+                    "x": 66,
+                    "y": 32.422835533724644,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 157.5,
+                    "key": "actor2",
+                    "x": 71,
+                    "y": 45.07534613776149,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor2",
+                    "x": 76,
+                    "y": 59.99999999999999,
+                    "width": 20,
+                    "height": 28
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 600,
+            "caption": {
+              "zh": "第3幕・落地 600毫秒｜站穩落地",
+              "en": "Scene 3 · Landing: 600 ms · Settle the landing",
+              "ja": "第3幕・着地 600ミリ秒｜着地を決める"
+            },
+            "sprites": [
+              {
+                "key": "actor3",
+                "x": 76,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "scaleX": 1,
+                "scaleY": 1,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor3",
+                    "x": 76,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 75,
+                    "key": "actor3",
+                    "x": 77,
+                    "y": 61.45796072900973,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0388789527735927,
+                    "scaleY": 0.9611210472264073
+                  },
+                  {
+                    "at": 150,
+                    "key": "actor3",
+                    "x": 78,
+                    "y": 61.417099658223044,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0377893242192813,
+                    "scaleY": 0.9622106757807188
+                  },
+                  {
+                    "at": 225,
+                    "key": "actor3",
+                    "x": 79,
+                    "y": 60.6886918835941,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0183651168958427,
+                    "scaleY": 0.9816348831041574
+                  },
+                  {
+                    "at": 300,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 375,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 450,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 525,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 600,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          }
+        ]
+      },
+      "shots": [
+        {
+          "shot": 0,
+          "text": "第1幕・踏み出し 360ミリ秒｜軽く跳ぶ",
+          "lines": [
+            {
+              "y": 543.421875,
+              "text": "第1幕・踏み出し 360ミリ秒｜軽く跳ぶ"
+            }
+          ],
+          "epoch": 1792715861034.3,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 1,
+          "text": "第1幕・空中 180ミリ秒｜軽く跳ぶ",
+          "lines": [
+            {
+              "y": 543.421875,
+              "text": "第1幕・空中 180ミリ秒｜軽く跳ぶ"
+            }
+          ],
+          "epoch": 1792715861418,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 2,
+          "text": "第1幕・着地 360ミリ秒｜軽く跳ぶ",
+          "lines": [
+            {
+              "y": 543.421875,
+              "text": "第1幕・着地 360ミリ秒｜軽く跳ぶ"
+            }
+          ],
+          "epoch": 1792715861599.9001,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 3,
+          "text": "第2幕・踏み出し 240ミリ秒｜空中を味わう",
+          "lines": [
+            {
+              "y": 543.421875,
+              "text": "第2幕・踏み出し 240ミリ秒｜空中を味"
+            },
+            {
+              "y": 569.8125,
+              "text": "わう"
+            }
+          ],
+          "epoch": 1792715861967,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 4,
+          "text": "第2幕・空中 600ミリ秒｜空中を味わう",
+          "lines": [
+            {
+              "y": 543.421875,
+              "text": "第2幕・空中 600ミリ秒｜空中を味わう"
+            }
+          ],
+          "epoch": 1792715862216.6,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 5,
+          "text": "第2幕・着地 240ミリ秒｜空中を味わう",
+          "lines": [
+            {
+              "y": 543.421875,
+              "text": "第2幕・着地 240ミリ秒｜空中を味わう"
+            }
+          ],
+          "epoch": 1792715862817.6,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 6,
+          "text": "第3幕・踏み出し 240ミリ秒｜着地を決める",
+          "lines": [
+            {
+              "y": 543.421875,
+              "text": "第3幕・踏み出し 240ミリ秒｜着地を決"
+            },
+            {
+              "y": 569.8125,
+              "text": "める"
+            }
+          ],
+          "epoch": 1792715863067.8,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 7,
+          "text": "第3幕・空中 180ミリ秒｜着地を決める",
+          "lines": [
+            {
+              "y": 543.421875,
+              "text": "第3幕・空中 180ミリ秒｜着地を決める"
+            }
+          ],
+          "epoch": 1792715863316.7002,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 8,
+          "text": "第3幕・着地 600ミリ秒｜着地を決める",
+          "lines": [
+            {
+              "y": 543.421875,
+              "text": "第3幕・着地 600ミリ秒｜着地を決める"
+            }
+          ],
+          "epoch": 1792715863499.9001,
+          "horizontalOverflow": false
+        }
+      ],
+      "pass": true
+    },
+    {
+      "intent": "landing",
+      "width": 1440,
+      "timings": [
+        [
+          360,
+          180,
+          360
+        ],
+        [
+          240,
+          600,
+          240
+        ],
+        [
+          240,
+          180,
+          600
+        ]
+      ],
+      "pageErrors": [],
+      "artifact": {
+        "takes": [
+          {
+            "brief": "quick-leap",
+            "focus": "quick",
+            "timing": [
+              360,
+              180,
+              360
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 900,
+              "shares": [
+                0.4,
+                0.2,
+                0.4
+              ]
+            }
+          },
+          {
+            "brief": "floating",
+            "focus": "flight",
+            "timing": [
+              240,
+              600,
+              240
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 1080,
+              "shares": [
+                0.2222222222222222,
+                0.5555555555555556,
+                0.2222222222222222
+              ]
+            }
+          },
+          {
+            "brief": "your-ending",
+            "focus": "landing",
+            "timing": [
+              240,
+              180,
+              600
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 1020,
+              "shares": [
+                0.23529411764705882,
+                0.17647058823529413,
+                0.5882352941176471
+              ]
+            }
+          }
+        ],
+        "attempts": 3
+      },
+      "originalOutput": {
+        "score": 100,
+        "summary": {
+          "zh": "三幕跨年動作完成。重播會保留你的時間與收尾心情；嘗試次數不扣分。",
+          "en": "Three New Year actions are ready. Replay keeps your timing and chosen ending. Trying things does not reduce your score.",
+          "ja": "年越しアクション3幕が完成。自分の時間配分と締めくくりを再生します。試行回数では減点しません。"
+        },
+        "artifact": {
+          "takes": [
+            {
+              "brief": "quick-leap",
+              "focus": "quick",
+              "timing": [
+                360,
+                180,
+                360
+              ],
+              "score": 100,
+              "metrics": {
+                "total": 900,
+                "shares": [
+                  0.4,
+                  0.2,
+                  0.4
+                ]
+              }
+            },
+            {
+              "brief": "floating",
+              "focus": "flight",
+              "timing": [
+                240,
+                600,
+                240
+              ],
+              "score": 100,
+              "metrics": {
+                "total": 1080,
+                "shares": [
+                  0.2222222222222222,
+                  0.5555555555555556,
+                  0.2222222222222222
+                ]
+              }
+            },
+            {
+              "brief": "your-ending",
+              "focus": "landing",
+              "timing": [
+                240,
+                180,
+                600
+              ],
+              "score": 100,
+              "metrics": {
+                "total": 1020,
+                "shares": [
+                  0.23529411764705882,
+                  0.17647058823529413,
+                  0.5882352941176471
+                ]
+              }
+            }
+          ],
+          "attempts": 3
+        },
+        "replay": [
+          {
+            "duration": 360,
+            "caption": {
+              "zh": "第1幕・起步 360毫秒｜俐落跨門",
+              "en": "Scene 1 · Launch: 360 ms · A quick leap",
+              "ja": "第1幕・踏み出し 360ミリ秒｜軽やかに越える"
+            },
+            "sprites": [
+              {
+                "key": "actor1",
+                "x": 26,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "scaleX": 1,
+                "scaleY": 1,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor1",
+                    "x": 26,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 45,
+                    "key": "actor1",
+                    "x": 27.25,
+                    "y": 60.76536686473018,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0191341716182545,
+                    "scaleY": 0.9693853254107928
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor1",
+                    "x": 28.5,
+                    "y": 61.41421356237309,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0353553390593273,
+                    "scaleY": 0.9434314575050762
+                  },
+                  {
+                    "at": 135,
+                    "key": "actor1",
+                    "x": 29.75,
+                    "y": 61.84775906502257,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0461939766255643,
+                    "scaleY": 0.926089637399097
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor1",
+                    "x": 31,
+                    "y": 62,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.05,
+                    "scaleY": 0.92
+                  },
+                  {
+                    "at": 225,
+                    "key": "actor1",
+                    "x": 32.25,
+                    "y": 61.84775906502257,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0461939766255643,
+                    "scaleY": 0.926089637399097
+                  },
+                  {
+                    "at": 270,
+                    "key": "actor1",
+                    "x": 33.5,
+                    "y": 61.41421356237309,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0353553390593273,
+                    "scaleY": 0.9434314575050762
+                  },
+                  {
+                    "at": 315,
+                    "key": "actor1",
+                    "x": 34.75,
+                    "y": 60.76536686473018,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0191341716182545,
+                    "scaleY": 0.9693853254107928
+                  },
+                  {
+                    "at": 360,
+                    "key": "actor1",
+                    "x": 36,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 180,
+            "caption": {
+              "zh": "第1幕・騰空 180毫秒｜俐落跨門",
+              "en": "Scene 1 · Flight: 180 ms · A quick leap",
+              "ja": "第1幕・空中 180ミリ秒｜軽やかに越える"
+            },
+            "sprites": [
+              {
+                "key": "actor2",
+                "x": 36,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor2",
+                    "x": 36,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 22.5,
+                    "key": "actor2",
+                    "x": 41,
+                    "y": 45.0753461377615,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 45,
+                    "key": "actor2",
+                    "x": 46,
+                    "y": 32.42283553372465,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 67.5,
+                    "key": "actor2",
+                    "x": 51,
+                    "y": 23.968698232059815,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor2",
+                    "x": 56,
+                    "y": 21,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 112.5,
+                    "key": "actor2",
+                    "x": 61,
+                    "y": 23.968698232059815,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 135,
+                    "key": "actor2",
+                    "x": 66,
+                    "y": 32.422835533724644,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 157.5,
+                    "key": "actor2",
+                    "x": 71,
+                    "y": 45.07534613776149,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor2",
+                    "x": 76,
+                    "y": 59.99999999999999,
+                    "width": 20,
+                    "height": 28
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 360,
+            "caption": {
+              "zh": "第1幕・落地 360毫秒｜俐落跨門",
+              "en": "Scene 1 · Landing: 360 ms · A quick leap",
+              "ja": "第1幕・着地 360ミリ秒｜軽やかに越える"
+            },
+            "sprites": [
+              {
+                "key": "actor3",
+                "x": 76,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "scaleX": 1,
+                "scaleY": 1,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor3",
+                    "x": 76,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 45,
+                    "key": "actor3",
+                    "x": 77,
+                    "y": 61.45796072900973,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0388789527735927,
+                    "scaleY": 0.9611210472264073
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor3",
+                    "x": 78,
+                    "y": 61.417099658223044,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0377893242192813,
+                    "scaleY": 0.9622106757807188
+                  },
+                  {
+                    "at": 135,
+                    "key": "actor3",
+                    "x": 79,
+                    "y": 60.6886918835941,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0183651168958427,
+                    "scaleY": 0.9816348831041574
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 225,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 270,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 315,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 360,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 240,
+            "caption": {
+              "zh": "第2幕・起步 240毫秒｜留住騰空",
+              "en": "Scene 2 · Launch: 240 ms · Savor flight",
+              "ja": "第2幕・踏み出し 240ミリ秒｜空中を味わう"
+            },
+            "sprites": [
+              {
+                "key": "actor1",
+                "x": 26,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "scaleX": 1,
+                "scaleY": 1,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor1",
+                    "x": 26,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 30,
+                    "key": "actor1",
+                    "x": 27.25,
+                    "y": 60.76536686473018,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0191341716182545,
+                    "scaleY": 0.9693853254107928
+                  },
+                  {
+                    "at": 60,
+                    "key": "actor1",
+                    "x": 28.5,
+                    "y": 61.41421356237309,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0353553390593273,
+                    "scaleY": 0.9434314575050762
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor1",
+                    "x": 29.75,
+                    "y": 61.84775906502257,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0461939766255643,
+                    "scaleY": 0.926089637399097
+                  },
+                  {
+                    "at": 120,
+                    "key": "actor1",
+                    "x": 31,
+                    "y": 62,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.05,
+                    "scaleY": 0.92
+                  },
+                  {
+                    "at": 150,
+                    "key": "actor1",
+                    "x": 32.25,
+                    "y": 61.84775906502257,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0461939766255643,
+                    "scaleY": 0.926089637399097
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor1",
+                    "x": 33.5,
+                    "y": 61.41421356237309,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0353553390593273,
+                    "scaleY": 0.9434314575050762
+                  },
+                  {
+                    "at": 210,
+                    "key": "actor1",
+                    "x": 34.75,
+                    "y": 60.76536686473018,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0191341716182545,
+                    "scaleY": 0.9693853254107928
+                  },
+                  {
+                    "at": 240,
+                    "key": "actor1",
+                    "x": 36,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 600,
+            "caption": {
+              "zh": "第2幕・騰空 600毫秒｜留住騰空",
+              "en": "Scene 2 · Flight: 600 ms · Savor flight",
+              "ja": "第2幕・空中 600ミリ秒｜空中を味わう"
+            },
+            "sprites": [
+              {
+                "key": "actor2",
+                "x": 36,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor2",
+                    "x": 36,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 75,
+                    "key": "actor2",
+                    "x": 41,
+                    "y": 45.0753461377615,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 150,
+                    "key": "actor2",
+                    "x": 46,
+                    "y": 32.42283553372465,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 225,
+                    "key": "actor2",
+                    "x": 51,
+                    "y": 23.968698232059815,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 300,
+                    "key": "actor2",
+                    "x": 56,
+                    "y": 21,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 375,
+                    "key": "actor2",
+                    "x": 61,
+                    "y": 23.968698232059815,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 450,
+                    "key": "actor2",
+                    "x": 66,
+                    "y": 32.422835533724644,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 525,
+                    "key": "actor2",
+                    "x": 71,
+                    "y": 45.07534613776149,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 600,
+                    "key": "actor2",
+                    "x": 76,
+                    "y": 59.99999999999999,
+                    "width": 20,
+                    "height": 28
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 240,
+            "caption": {
+              "zh": "第2幕・落地 240毫秒｜留住騰空",
+              "en": "Scene 2 · Landing: 240 ms · Savor flight",
+              "ja": "第2幕・着地 240ミリ秒｜空中を味わう"
+            },
+            "sprites": [
+              {
+                "key": "actor3",
+                "x": 76,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "scaleX": 1,
+                "scaleY": 1,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor3",
+                    "x": 76,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 30,
+                    "key": "actor3",
+                    "x": 77,
+                    "y": 61.45796072900973,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0388789527735927,
+                    "scaleY": 0.9611210472264073
+                  },
+                  {
+                    "at": 60,
+                    "key": "actor3",
+                    "x": 78,
+                    "y": 61.417099658223044,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0377893242192813,
+                    "scaleY": 0.9622106757807188
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor3",
+                    "x": 79,
+                    "y": 60.6886918835941,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0183651168958427,
+                    "scaleY": 0.9816348831041574
+                  },
+                  {
+                    "at": 120,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 150,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 210,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 240,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 240,
+            "caption": {
+              "zh": "第3幕・起步 240毫秒｜站穩落地",
+              "en": "Scene 3 · Launch: 240 ms · Settle the landing",
+              "ja": "第3幕・踏み出し 240ミリ秒｜着地を決める"
+            },
+            "sprites": [
+              {
+                "key": "actor1",
+                "x": 26,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "scaleX": 1,
+                "scaleY": 1,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor1",
+                    "x": 26,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 30,
+                    "key": "actor1",
+                    "x": 27.25,
+                    "y": 60.76536686473018,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0191341716182545,
+                    "scaleY": 0.9693853254107928
+                  },
+                  {
+                    "at": 60,
+                    "key": "actor1",
+                    "x": 28.5,
+                    "y": 61.41421356237309,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0353553390593273,
+                    "scaleY": 0.9434314575050762
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor1",
+                    "x": 29.75,
+                    "y": 61.84775906502257,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0461939766255643,
+                    "scaleY": 0.926089637399097
+                  },
+                  {
+                    "at": 120,
+                    "key": "actor1",
+                    "x": 31,
+                    "y": 62,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.05,
+                    "scaleY": 0.92
+                  },
+                  {
+                    "at": 150,
+                    "key": "actor1",
+                    "x": 32.25,
+                    "y": 61.84775906502257,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0461939766255643,
+                    "scaleY": 0.926089637399097
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor1",
+                    "x": 33.5,
+                    "y": 61.41421356237309,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0353553390593273,
+                    "scaleY": 0.9434314575050762
+                  },
+                  {
+                    "at": 210,
+                    "key": "actor1",
+                    "x": 34.75,
+                    "y": 60.76536686473018,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0191341716182545,
+                    "scaleY": 0.9693853254107928
+                  },
+                  {
+                    "at": 240,
+                    "key": "actor1",
+                    "x": 36,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 180,
+            "caption": {
+              "zh": "第3幕・騰空 180毫秒｜站穩落地",
+              "en": "Scene 3 · Flight: 180 ms · Settle the landing",
+              "ja": "第3幕・空中 180ミリ秒｜着地を決める"
+            },
+            "sprites": [
+              {
+                "key": "actor2",
+                "x": 36,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor2",
+                    "x": 36,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 22.5,
+                    "key": "actor2",
+                    "x": 41,
+                    "y": 45.0753461377615,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 45,
+                    "key": "actor2",
+                    "x": 46,
+                    "y": 32.42283553372465,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 67.5,
+                    "key": "actor2",
+                    "x": 51,
+                    "y": 23.968698232059815,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 90,
+                    "key": "actor2",
+                    "x": 56,
+                    "y": 21,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 112.5,
+                    "key": "actor2",
+                    "x": 61,
+                    "y": 23.968698232059815,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 135,
+                    "key": "actor2",
+                    "x": 66,
+                    "y": 32.422835533724644,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 157.5,
+                    "key": "actor2",
+                    "x": 71,
+                    "y": 45.07534613776149,
+                    "width": 20,
+                    "height": 28
+                  },
+                  {
+                    "at": 180,
+                    "key": "actor2",
+                    "x": 76,
+                    "y": 59.99999999999999,
+                    "width": 20,
+                    "height": 28
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          },
+          {
+            "duration": 600,
+            "caption": {
+              "zh": "第3幕・落地 600毫秒｜站穩落地",
+              "en": "Scene 3 · Landing: 600 ms · Settle the landing",
+              "ja": "第3幕・着地 600ミリ秒｜着地を決める"
+            },
+            "sprites": [
+              {
+                "key": "actor3",
+                "x": 76,
+                "y": 60,
+                "width": 20,
+                "height": 28,
+                "scaleX": 1,
+                "scaleY": 1,
+                "frames": [
+                  {
+                    "at": 0,
+                    "key": "actor3",
+                    "x": 76,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 75,
+                    "key": "actor3",
+                    "x": 77,
+                    "y": 61.45796072900973,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0388789527735927,
+                    "scaleY": 0.9611210472264073
+                  },
+                  {
+                    "at": 150,
+                    "key": "actor3",
+                    "x": 78,
+                    "y": 61.417099658223044,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0377893242192813,
+                    "scaleY": 0.9622106757807188
+                  },
+                  {
+                    "at": 225,
+                    "key": "actor3",
+                    "x": 79,
+                    "y": 60.6886918835941,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1.0183651168958427,
+                    "scaleY": 0.9816348831041574
+                  },
+                  {
+                    "at": 300,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 375,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 450,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 525,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  },
+                  {
+                    "at": 600,
+                    "key": "actor3",
+                    "x": 80,
+                    "y": 60,
+                    "width": 20,
+                    "height": 28,
+                    "scaleX": 1,
+                    "scaleY": 1
+                  }
+                ]
+              },
+              {
+                "key": "prop2",
+                "x": 48,
+                "y": 52,
+                "width": 20,
+                "height": 56,
+                "z": 0
+              },
+              {
+                "key": "target",
+                "x": 80,
+                "y": 76,
+                "width": 16,
+                "height": 10,
+                "z": 0
+              }
+            ]
+          }
+        ]
+      },
+      "shots": [
+        {
+          "shot": 0,
+          "text": "第1幕・踏み出し 360ミリ秒｜軽く跳ぶ",
+          "lines": [
+            {
+              "y": 960.609375,
+              "text": "第1幕・踏み出し 360ミリ秒｜軽く跳ぶ"
+            }
+          ],
+          "epoch": 1792715868417,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 1,
+          "text": "第1幕・空中 180ミリ秒｜軽く跳ぶ",
+          "lines": [
+            {
+              "y": 960.609375,
+              "text": "第1幕・空中 180ミリ秒｜軽く跳ぶ"
+            }
+          ],
+          "epoch": 1792715868801.5,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 2,
+          "text": "第1幕・着地 360ミリ秒｜軽く跳ぶ",
+          "lines": [
+            {
+              "y": 960.609375,
+              "text": "第1幕・着地 360ミリ秒｜軽く跳ぶ"
+            }
+          ],
+          "epoch": 1792715868983.4001,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 3,
+          "text": "第2幕・踏み出し 240ミリ秒｜空中を味わう",
+          "lines": [
+            {
+              "y": 960.609375,
+              "text": "第2幕・踏み出し 240ミリ秒｜空中を味わう"
+            }
+          ],
+          "epoch": 1792715869350.4001,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 4,
+          "text": "第2幕・空中 600ミリ秒｜空中を味わう",
+          "lines": [
+            {
+              "y": 960.609375,
+              "text": "第2幕・空中 600ミリ秒｜空中を味わう"
+            }
+          ],
+          "epoch": 1792715869600.3,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 5,
+          "text": "第2幕・着地 240ミリ秒｜空中を味わう",
+          "lines": [
+            {
+              "y": 960.609375,
+              "text": "第2幕・着地 240ミリ秒｜空中を味わう"
+            }
+          ],
+          "epoch": 1792715870200,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 6,
+          "text": "第3幕・踏み出し 240ミリ秒｜着地を決める",
+          "lines": [
+            {
+              "y": 960.609375,
+              "text": "第3幕・踏み出し 240ミリ秒｜着地を決める"
+            }
+          ],
+          "epoch": 1792715870449.8,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 7,
+          "text": "第3幕・空中 180ミリ秒｜着地を決める",
+          "lines": [
+            {
+              "y": 960.609375,
+              "text": "第3幕・空中 180ミリ秒｜着地を決める"
+            }
+          ],
+          "epoch": 1792715870700.3,
+          "horizontalOverflow": false
+        },
+        {
+          "shot": 8,
+          "text": "第3幕・着地 600ミリ秒｜着地を決める",
+          "lines": [
+            {
+              "y": 960.609375,
+              "text": "第3幕・着地 600ミリ秒｜着地を決める"
+            }
+          ],
+          "epoch": 1792715870883.3,
+          "horizontalOverflow": false
+        }
+      ],
+      "pass": true
+    }
+  ],
+  "before": {
+    "games/new-year.mjs": "42565e8c5c9e60240f686254a430c62e027c4d93a91a32e20c419799b15be7e7",
+    "runner.mjs": "d3aa7a3e044315eb48b5e64bdf7cd3d12c70b4c85e653878f0bcc6ef1749e736",
+    "replay-model.mjs": "175bd1db596accd94445f78d3fe2021bb9c63ff5fd6e97fb9fe1ec39942c80a6",
+    "lab.css": "c53feb08d6cb3434f7abb6b0a30a5673d025778ede7a4e0ca8629a04e1ca33ed"
+  },
+  "after": {
+    "games/new-year.mjs": "42565e8c5c9e60240f686254a430c62e027c4d93a91a32e20c419799b15be7e7",
+    "runner.mjs": "d3aa7a3e044315eb48b5e64bdf7cd3d12c70b4c85e653878f0bcc6ef1749e736",
+    "replay-model.mjs": "175bd1db596accd94445f78d3fe2021bb9c63ff5fd6e97fb9fe1ec39942c80a6",
+    "lab.css": "c53feb08d6cb3434f7abb6b0a30a5673d025778ede7a4e0ca8629a04e1ca33ed"
+  },
+  "sourceStable": true,
+  "pass": true
+}

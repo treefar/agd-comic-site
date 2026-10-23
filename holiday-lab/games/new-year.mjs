@@ -63,7 +63,7 @@ function previewFeedback(round,verdict){if(!verdict.ok)return feedback[verdict.r
 export function buildResult(state){
  if(!state.done||state.takes.length!==3)throw Error('Three completed expressive briefs required');
  const replay=state.takes.flatMap((take,scene)=>take.timing.map((duration,index)=>{
-  const focus=scene===2?FOCUS.find(x=>x.value===take.focus).label:scene===0?W('俐落跨門','A quick leap','軽やかに越える'):W('留住騰空','Savor flight','空中を味わう');
+  const focus=scene===2?FOCUS.find(x=>x.value===take.focus).label:scene===0?W('俐落跨門','A quick leap','軽く跳ぶ'):W('留住騰空','Savor flight','空中を味わう');
   return {duration,caption:W(`第${scene+1}幕・${phases[index].zh} ${duration}毫秒｜${focus.zh}`,`Scene ${scene+1} · ${phases[index].en}: ${duration} ms · ${focus.en}`,`第${scene+1}幕・${phases[index].ja} ${duration}ミリ秒｜${focus.ja}`),sprites:[{...poseForPhase(index,0),frames:Array.from({length:9},(_,j)=>({at:duration*j/8,...poseForPhase(index,j/8)}))},{key:'prop2',x:48,y:52,width:20,height:56,z:0},{key:'target',x:80,y:76,width:16,height:10,z:0}]};
  }));
  return {score:100,summary:W('三幕跨年動作完成。重播會保留你的時間與收尾心情；嘗試次數不扣分。','Three New Year actions are ready. Replay keeps your timing and chosen ending. Trying things does not reduce your score.','年越しアクション3幕が完成。自分の時間配分と締めくくりを再生します。試行回数では減点しません。'),artifact:{takes:state.takes.map(t=>({...t,timing:[...t.timing]})),attempts:state.attempts},replay};
