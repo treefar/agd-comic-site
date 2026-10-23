@@ -1,3 +1,13 @@
+## 2026-10-23 最新：嚴格可見覆蓋1914項、中秋全集已啟動
+
+- source_agent: codex。本輪實際進展：開學補採684 frames完成，舊10個完成session與新2個session嚴格組合90個canonical案例。新增選中畫面viewport稽核，撤回24個窄版過度計入項；故1848舊快照減24加90，最新1914/2076、缺162、geometry0。索引 semester-session-composite/coverage-bound-current.json；plan-current/plan.json與plan-consistency.json逐key相符。這是PARTIAL_RED，不是正式gate通過。
+- 主控實跑相關28 tests全過；中秋全集工具7工程測試及繼承3072筆串流核對已過。中秋單一engine 18628／driver 68760已在2026-10-23T03:31:28.847Z啟動，當次觀測2026-10-23T03:47:28.476Z：CHECKPOINT zh-1440 51712/67448 total=121208/404688 GLOBAL=NO。prepared-01 freeze SHA 64b5b6840c243d33cee047b1c3e206ea43a30904b134636d920387505b6d3448。觀測後數字會變，先查同PID及log，不因等待逾時重啟；全域完整性、真正極值與seeded full UI仍未驗完。
+- 清明原46996已terminal exit1，原因為舊聚合JSON字串爆限；1042案例恢復並重驗，原after缺與未知旗標1保留NO。僅缺的ja1440路線另補採collector2352／driver57024／session52328，最近實查仍live。原開學補採22768已正常結束，不再重跑。
+- 窄版8款×3語：150真拒絕、165新PNG、96 secondary義務（新15＋舊81跨run逐筆核對）離線verify主控exit0；source/font穩定、Range/safe/clip/viewport及全case geometry0。finite-hints-native-20261023/REPORT.md。尚須strict typed adapter才計入覆蓋，不改舊eligible。新peace/retro60張與constitution真6011.5ms收尾亦已補證；60張trace派生輸入另存，不能假稱原case有inputs，完整join仍未完。
+- 日英專責組正獨立複核既有26key/28候選與13人職級；13/13現譯值核對過，助理教授→Assistant Professor→助教有官方來源，TA另列；個人最新聘任與正式機構名仍待確認。未把候選套入產品。窄版日文「に。」「く。」孤行為P3待處理，未用geometry0掩蓋可讀性問題。
+- 主報告 holiday-lab/reports/verification-followup-20261023-13.md。沒有新網站Build、ZIP或8800替換；8852仍11內部量測。官方R0不變，遊戲不發布，未push／未碰main／未刪檔，C節SHA不變。TF-BASE來源/WebGL仍待回，未啟Unity。大raw僅本機，未宣稱跨機備份。
+- 下一輪第一件事：查同18628/68760與2352/57024真程序及log；完成後串流驗全集/分片，再採用獨立typed join更新索引與assembly，保留原失敗、缺after與unknown。中秋極值/seeded實UI、國慶完整數值域、其餘error-longest及來源provenance仍必須完成；不能以部分綠燈產正式包。
+
 ## 2026-10-23 最新：分片存檔修復、2964案例復原與獨立複驗
 
 - source_agent: codex。前一輪完成翻譯專責派工；本輪為實際進展：模組9/9、獨立8/8及六種負例、真DOM21frames與三段回放，v1/v2 coverage一致14/2076，組裝計畫56wrapper SHA全同。主報告：C:/agywork/agd-holiday-prototypes/holiday-lab/reports/verification-followup-20261023-12.md。本輪沒有網站Build12，8852仍11內部量測，8800與舊ZIP保留。
