@@ -1,0 +1,614 @@
+{
+  "sourceFile": "holiday-lab/layout-qa/browser-sampler.cjs",
+  "sourceSHA": "0346d164923e507a4f7df7888a93482fa00ae7871016e96f5f2343c05703e207",
+  "functionSHA": "c247641156d929b0de7d6aa70e509510e293a29d7d6ff45aaac99ad931e0dc1a",
+  "statements": [
+    {
+      "index": 0,
+      "type": "ExpressionStatement",
+      "declared": [],
+      "line": 3,
+      "first": "await document.fonts.ready;"
+    },
+    {
+      "index": 1,
+      "type": "ExpressionStatement",
+      "declared": [],
+      "line": 4,
+      "first": "document.querySelectorAll('[data-layout-owner]').forEach(el=>el.removeAttribute('data-layout-owner'));"
+    },
+    {
+      "index": 2,
+      "type": "ExpressionStatement",
+      "declared": [],
+      "line": 5,
+      "first": "(document.querySelector('#lab')||document.body).normalize();"
+    },
+    {
+      "index": 3,
+      "type": "VariableDeclaration",
+      "declared": [
+        "nodes",
+        "blockers",
+        "violations",
+        "evidence"
+      ],
+      "line": 6,
+      "first": "const nodes=[],blockers=[],violations=[],evidence={method:'real DOM Range; zero-size baseline marker; Canvas actualBoundingBox; fixed source-image paper rectangles',fonts:[],hidden"
+    },
+    {
+      "index": 4,
+      "type": "VariableDeclaration",
+      "declared": [
+        "offset",
+        "canvas",
+        "ctx"
+      ],
+      "line": 7,
+      "first": "const offset={x:scrollX,y:scrollY},canvas=document.createElement('canvas'),ctx=canvas.getContext('2d');"
+    },
+    {
+      "index": 5,
+      "type": "VariableDeclaration",
+      "declared": [
+        "scrollGuards"
+      ],
+      "line": 8,
+      "first": "const scrollGuards=[...document.querySelectorAll('#lab *')].filter(e=>e.scrollHeight>e.clientHeight&&/auto|scroll/.test(getComputedStyle(e).overflowY)).map(e=>({e,top:e.scrollTop,l"
+    },
+    {
+      "index": 6,
+      "type": "ForOfStatement",
+      "declared": [],
+      "line": 8,
+      "first": "for(const g of scrollGuards)g.e.style.overflowAnchor='none';"
+    },
+    {
+      "index": 7,
+      "type": "VariableDeclaration",
+      "declared": [
+        "lockInternalScroll"
+      ],
+      "line": 9,
+      "first": "const lockInternalScroll=()=>{for(const g of scrollGuards){if(g.e.scrollTop!==g.top)g.e.scrollTop=g.top;if(g.e.scrollLeft!==g.left)g.e.scrollLeft=g.left;}};"
+    },
+    {
+      "index": 8,
+      "type": "VariableDeclaration",
+      "declared": [
+        "rect"
+      ],
+      "line": 10,
+      "first": "const rect=r=>({x:r.x+offset.x,y:r.y+offset.y,width:r.width,height:r.height});"
+    },
+    {
+      "index": 9,
+      "type": "VariableDeclaration",
+      "declared": [
+        "union"
+      ],
+      "line": 11,
+      "first": "const union=(a,b)=>!a?b:({x:Math.min(a.x,b.x),y:Math.min(a.y,b.y),width:Math.max(a.x+a.width,b.x+b.width)-Math.min(a.x,b.x),height:Math.max(a.y+a.height,b.y+b.height)-Math.min(a.y,"
+    },
+    {
+      "index": 10,
+      "type": "VariableDeclaration",
+      "declared": [
+        "intersect"
+      ],
+      "line": 12,
+      "first": "const intersect=(a,b)=>{const x=Math.max(a.x,b.x),y=Math.max(a.y,b.y),r=Math.min(a.x+a.width,b.x+b.width),d=Math.min(a.y+a.height,b.y+b.height);return r>x&&d>y?{x,y,width:r-x,heigh"
+    },
+    {
+      "index": 11,
+      "type": "VariableDeclaration",
+      "declared": [
+        "num",
+        "basename"
+      ],
+      "line": 13,
+      "first": "const num=v=>Number.parseFloat(v)||0,basename=v=>{const m=v.match(/url\\([\"']?([^\"')]+)[\"']?\\)/);return m?new URL(m[1],location.href).pathname.split('/').at(-1):null;};"
+    },
+    {
+      "index": 12,
+      "type": "VariableDeclaration",
+      "declared": [
+        "owners",
+        "nodeOwners",
+        "images"
+      ],
+      "line": 14,
+      "first": "const owners=new Map(),nodeOwners=new Map(),images=[...document.images];"
+    },
+    {
+      "index": 13,
+      "type": "VariableDeclaration",
+      "declared": [
+        "ownerId"
+      ],
+      "line": 14,
+      "first": "let ownerId=0;"
+    },
+    {
+      "index": 14,
+      "type": "VariableDeclaration",
+      "declared": [
+        "tiledAsset",
+        "bodyStyle"
+      ],
+      "line": 15,
+      "first": "const tiledAsset=options.assets.tiled_surfaces?.['paper.png'],bodyStyle=getComputedStyle(document.body);"
+    },
+    {
+      "index": 15,
+      "type": "VariableDeclaration",
+      "declared": [
+        "tiledVerified",
+        "tiledReceipt"
+      ],
+      "line": 15,
+      "first": "let tiledVerified=false,tiledReceipt=null;"
+    },
+    {
+      "index": 16,
+      "type": "IfStatement",
+      "declared": [],
+      "line": 16,
+      "first": "if(tiledAsset&&basename(bodyStyle.backgroundImage)==='paper.png'&&bodyStyle.backgroundSize===tiledAsset.background_size&&bodyStyle.backgroundRepeat===tiledAsset.background_repeat){"
+    },
+    {
+      "index": 17,
+      "type": "ExpressionStatement",
+      "declared": [],
+      "line": 17,
+      "first": "evidence.tiled_surface_receipt=tiledReceipt;"
+    },
+    {
+      "index": 18,
+      "type": "VariableDeclaration",
+      "declared": [
+        "borderReceipts"
+      ],
+      "line": 18,
+      "first": "const borderReceipts=new Map();"
+    },
+    {
+      "index": 19,
+      "type": "VariableDeclaration",
+      "declared": [
+        "borderUrls"
+      ],
+      "line": 18,
+      "first": "const borderUrls=new Map();"
+    },
+    {
+      "index": 20,
+      "type": "ForOfStatement",
+      "declared": [],
+      "line": 18,
+      "first": "for(const el of document.querySelectorAll('#lab,#lab *')){const value=getComputedStyle(el).borderImageSource,name=basename(value);if(name&&options.assets.nine_slice?.[name])borderU"
+    },
+    {
+      "index": 21,
+      "type": "ExpressionStatement",
+      "declared": [],
+      "line": 19,
+      "first": "await Promise.all([...borderUrls].map(async([name,value])=>{const asset=options.assets.assets[name];try{const match=value.match(/url\\([\"']?([^\"')]+)[\"']?\\)/),url=new URL(match[1],l"
+    },
+    {
+      "index": 22,
+      "type": "ExpressionStatement",
+      "declared": [],
+      "line": 19,
+      "first": "evidence.nine_slice_asset_receipts=Object.fromEntries(borderReceipts);"
+    },
+    {
+      "index": 23,
+      "type": "FunctionDeclaration",
+      "declared": [
+        "owner"
+      ],
+      "line": 21,
+      "first": "function owner(el){if(!owners.has(el)){const id=el.id||`layout-owner-${++ownerId}`;owners.set(el,id);el.dataset.layoutOwner=id;}return owners.get(el);}"
+    },
+    {
+      "index": 24,
+      "type": "FunctionDeclaration",
+      "declared": [
+        "visible"
+      ],
+      "line": 22,
+      "first": "function visible(el){for(let e=el;e&&e!==document;e=e.parentElement){const s=getComputedStyle(e);if(s.display==='none'||s.visibility==='hidden'||num(s.opacity)===0)return false;if("
+    },
+    {
+      "index": 25,
+      "type": "FunctionDeclaration",
+      "declared": [
+        "contentBox"
+      ],
+      "line": 23,
+      "first": "function contentBox(el){const s=getComputedStyle(el),r=rect(el.getBoundingClientRect()),sx=r.width/(el.offsetWidth||r.width),sy=r.height/(el.offsetHeight||r.height);const l=(num(s."
+    },
+    {
+      "index": 26,
+      "type": "FunctionDeclaration",
+      "declared": [
+        "skin"
+      ],
+      "line": 24,
+      "first": "function skin(el){const s=getComputedStyle(el),border=basename(s.borderImageSource),bg=basename(s.backgroundImage),name=border||bg,asset=options.assets.assets[name];if(!asset)retur"
+    },
+    {
+      "index": 27,
+      "type": "FunctionDeclaration",
+      "declared": [
+        "clips"
+      ],
+      "line": 32,
+      "first": "function clips(el){let result=null;const list=[];for(let p=el;p;p=p.parentElement){const s=getComputedStyle(p);if(/hidden|clip|auto|scroll/.test(s.overflowX+' '+s.overflowY)){const"
+    },
+    {
+      "index": 28,
+      "type": "FunctionDeclaration",
+      "declared": [
+        "paintedBounds"
+      ],
+      "line": 33,
+      "first": "function paintedBounds(el,bounds){const clip=clips(el);return {bounds:clip.list.length?(clip.rect?intersect(bounds,clip.rect):null):bounds,unclipped_bounds:bounds,clip_sources:clip"
+    },
+    {
+      "index": 29,
+      "type": "FunctionDeclaration",
+      "declared": [
+        "stagePaper"
+      ],
+      "line": 34,
+      "first": "function stagePaper(image){const source=new URL(image.currentSrc||image.src,location.href).pathname,asset=Object.values(options.assets.stage_papers||{}).find(a=>source.endsWith('/'"
+    },
+    {
+      "index": 30,
+      "type": "FunctionDeclaration",
+      "declared": [
+        "safeFor"
+      ],
+      "line": 35,
+      "first": "function safeFor(el){let result=null;const sources=[];for(let p=el;p&&p!==document.body;p=p.parentElement){const k=skin(p);if(k){result=result?intersect(result,k.rect):k.rect;sourc"
+    },
+    {
+      "index": 31,
+      "type": "VariableDeclaration",
+      "declared": [
+        "walker",
+        "texts"
+      ],
+      "line": 40,
+      "first": "const walker=document.createTreeWalker(document.querySelector('#lab')||document.body,NodeFilter.SHOW_TEXT),texts=[];"
+    },
+    {
+      "index": 32,
+      "type": "VariableDeclaration",
+      "declared": [
+        "n"
+      ],
+      "line": 40,
+      "first": "let n;"
+    },
+    {
+      "index": 33,
+      "type": "WhileStatement",
+      "declared": [],
+      "line": 40,
+      "first": "while(n=walker.nextNode())if(n.textContent.trim()&&n.parentElement&&!n.parentElement.closest('script,style')&&visible(n.parentElement))texts.push(n);"
+    },
+    {
+      "index": 34,
+      "type": "ForOfStatement",
+      "declared": [],
+      "line": 41,
+      "first": "for(const textNode of texts){if(!textNode.isConnected)continue;const el=textNode.parentElement,s=getComputedStyle(el),text=textNode.textContent;if(!text.trim())continue;const id='t"
+    },
+    {
+      "index": 35,
+      "type": "IfStatement",
+      "declared": [],
+      "line": 52,
+      "first": "if(evidence.hidden_scroll_text.length)violations.push('SCROLL_CONTENT_PENDING '+evidence.hidden_scroll_text.length+' text nodes require additional actual scroll captures');"
+    },
+    {
+      "index": 36,
+      "type": "ForOfStatement",
+      "declared": [],
+      "line": 53,
+      "first": "for(const el of document.querySelectorAll('button,a,input[type=range]')){if(!visible(el))continue;const painted=paintedBounds(el,rect(el.getBoundingClientRect()));if(!painted.bound"
+    },
+    {
+      "index": 37,
+      "type": "ForOfStatement",
+      "declared": [],
+      "line": 54,
+      "first": "for(const el of owners.keys()){const k=skin(el);if(!k)continue;const painted=paintedBounds(el,rect(el.getBoundingClientRect()));if(!painted.bounds)continue;blockers.push({id:'skin:"
+    },
+    {
+      "index": 38,
+      "type": "ForOfStatement",
+      "declared": [],
+      "line": 55,
+      "first": "for(const image of images){const paper=stagePaper(image);if(!paper)continue;const painted=paintedBounds(image,paper.draw);if(!painted.bounds)continue;blockers.push({id:'stage-paper"
+    },
+    {
+      "index": 39,
+      "type": "VariableDeclaration",
+      "declared": [
+        "imageBounds",
+        "ownerBounds"
+      ],
+      "line": 56,
+      "first": "const imageBounds=new Map(images.map(image=>[image,rect(image.getBoundingClientRect())])),ownerBounds=new Map([...nodeOwners.values()].map(el=>[el,rect(el.getBoundingClientRect())]"
+    },
+    {
+      "index": 40,
+      "type": "VariableDeclaration",
+      "declared": [
+        "settle"
+      ],
+      "line": 57,
+      "first": "const settle=()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));"
+    },
+    {
+      "index": 41,
+      "type": "VariableDeclaration",
+      "declared": [
+        "currentDocRect"
+      ],
+      "line": 58,
+      "first": "const currentDocRect=el=>{const r=el.getBoundingClientRect();return {x:r.x+scrollX,y:r.y+scrollY,width:r.width,height:r.height};};"
+    },
+    {
+      "index": 42,
+      "type": "TryStatement",
+      "declared": [],
+      "line": 59,
+      "first": "try{for(const image of images){if(!visible(image))continue;const bounds=imageBounds.get(image);if(!bounds.width||!bounds.height)continue;const imageId=image.dataset.layoutNegative?"
+    },
+    {
+      "index": 43,
+      "type": "ExpressionStatement",
+      "declared": [],
+      "line": 61,
+      "first": "evidence.replay_shot_end=document.querySelector('#replay-stage')?.dataset.shot??null;"
+    },
+    {
+      "index": 44,
+      "type": "IfStatement",
+      "declared": [],
+      "line": 61,
+      "first": "if(evidence.replay_shot_start!==evidence.replay_shot_end)violations.push('REPLAY_SHOT_CHANGED_DURING_SAMPLE');"
+    },
+    {
+      "index": 45,
+      "type": "ExpressionStatement",
+      "declared": [],
+      "line": 62,
+      "first": "(document.querySelector('#lab')||document.body).normalize();"
+    },
+    {
+      "index": 46,
+      "type": "ExpressionStatement",
+      "declared": [],
+      "line": 63,
+      "first": "lockInternalScroll();"
+    },
+    {
+      "index": 47,
+      "type": "ForOfStatement",
+      "declared": [],
+      "line": 63,
+      "first": "for(const g of scrollGuards)g.e.style.overflowAnchor=g.anchor;"
+    },
+    {
+      "index": 48,
+      "type": "ExpressionStatement",
+      "declared": [],
+      "line": 63,
+      "first": "evidence.internal_scroll_preserved=scrollGuards.map(g=>({id:g.e.id,top:g.top,actual:g.e.scrollTop,restored_anchor:g.e.style.overflowAnchor===g.anchor}));"
+    },
+    {
+      "index": 49,
+      "type": "ReturnStatement",
+      "declared": [],
+      "line": 64,
+      "first": "return {nodes,blockers,violations:[...new Set(violations)],evidence,coordinate_space:'document CSS pixels; window scroll offset included; internal scroll remains current actual pos"
+    }
+  ],
+  "inkPrefixStatements": [
+    {
+      "index": 0,
+      "type": "IfStatement",
+      "line": 41,
+      "source": "if(!textNode.isConnected)continue;"
+    },
+    {
+      "index": 1,
+      "type": "VariableDeclaration",
+      "line": 41,
+      "source": "const el=textNode.parentElement,s=getComputedStyle(el),text=textNode.textContent;"
+    },
+    {
+      "index": 2,
+      "type": "IfStatement",
+      "line": 41,
+      "source": "if(!text.trim())continue;"
+    },
+    {
+      "index": 3,
+      "type": "VariableDeclaration",
+      "line": 41,
+      "source": "const id='text-'+nodes.length,domOwner=owner(el),scaleBox=el.getBoundingClientRect(),sx=el.offsetWidth?scaleBox.width/el.offsetWidth:1,sy=el.offsetHeight?scaleBox.height/el.offsetHeight:1;"
+    },
+    {
+      "index": 4,
+      "type": "ForStatement",
+      "line": 42,
+      "source": "for(let a=el;a&&a!==document.body;a=a.parentElement){const t=getComputedStyle(a).transform;if(t!=='none'&&t.startsWith('matrix(')){const m=t.slice(7,-1).split(',').map(Number);if(Math.abs(m[1])>.0001||Math.abs(m[2])>.0001)violations.push('UNSUPPORTED_ROTATION_OR_SKEW '+domOwner+' '+t);}}"
+    },
+    {
+      "index": 5,
+      "type": "ExpressionStatement",
+      "line": 43,
+      "source": "ctx.font=s.font||`${s.fontStyle} ${s.fontWeight} ${s.fontSize} ${s.fontFamily}`;"
+    },
+    {
+      "index": 6,
+      "type": "ExpressionStatement",
+      "line": 43,
+      "source": "ctx.textBaseline='alphabetic';"
+    },
+    {
+      "index": 7,
+      "type": "ExpressionStatement",
+      "line": 43,
+      "source": "ctx.textAlign='left';"
+    },
+    {
+      "index": 8,
+      "type": "IfStatement",
+      "line": 43,
+      "source": "if('letterSpacing'in ctx)ctx.letterSpacing=s.letterSpacing==='normal'?'0px':s.letterSpacing;"
+    },
+    {
+      "index": 9,
+      "type": "IfStatement",
+      "line": 43,
+      "source": "if('wordSpacing'in ctx)ctx.wordSpacing=s.wordSpacing;"
+    },
+    {
+      "index": 10,
+      "type": "VariableDeclaration",
+      "line": 44,
+      "source": "let baselineHost=null,baselineWrapperVerified=null;"
+    },
+    {
+      "index": 11,
+      "type": "IfStatement",
+      "line": 44,
+      "source": "if(/flex|grid/.test(s.display)){const probe=document.createRange();probe.selectNodeContents(textNode);const before=[...probe.getClientRects()].map(r=>({x:r.x,y:r.y,width:r.width,height:r.height}));baselineHost=document.createElement('span');baselineHost.dataset.layoutInkWrapper='';baselineHost.style.cssText='display:block;min-width:0;white-space:inherit;line-height:inherit;text-align:inherit';el.insertBefore(baselineHost,textNode);baselineHost.append(textNode);probe.selectNodeContents(textNode);const after=[...probe.getClientRects()].map(r=>({x:r.x,y:r.y,width:r.width,height:r.height}));baselineWrapperVerified=before.length===after.length&&before.every((r,i)=>['x','y','width','height'].every(k=>Math.abs(r[k]-after[i][k])<.5));if(!baselineWrapperVerified)violations.push('FLEX_BASELINE_WRAPPER_CHANGED_LAYOUT '+domOwner);}"
+    },
+    {
+      "index": 12,
+      "type": "VariableDeclaration",
+      "line": 45,
+      "source": "const lines=[];"
+    },
+    {
+      "index": 13,
+      "type": "VariableDeclaration",
+      "line": 45,
+      "source": "const seg=[...new Intl.Segmenter(document.documentElement.lang||'zh',{granularity:'grapheme'}).segment(text)];"
+    },
+    {
+      "index": 14,
+      "type": "ForOfStatement",
+      "line": 45,
+      "source": "for(const part of seg){const range=document.createRange();range.setStart(textNode,part.index);range.setEnd(textNode,part.index+part.segment.length);const r=range.getBoundingClientRect();if(!r.width||!r.height)continue;let line=lines.find(l=>Math.abs(l.top-r.top)<.5);if(!line){line={top:r.top,start:part.index,end:part.index+part.segment.length,advance:rect(r)};lines.push(line);}else{line.start=Math.min(line.start,part.index);line.end=Math.max(line.end,part.index+part.segment.length);line.advance=union(line.advance,rect(r));}}"
+    },
+    {
+      "index": 15,
+      "type": "VariableDeclaration",
+      "line": 46,
+      "source": "let ink=null;"
+    },
+    {
+      "index": 16,
+      "type": "VariableDeclaration",
+      "line": 46,
+      "source": "const measurements=[];"
+    },
+    {
+      "index": 17,
+      "type": "ForOfStatement",
+      "line": 46,
+      "source": "for(const line of [...lines].sort((a,b)=>b.end-a.end)){const value=text.slice(line.start,line.end);if(!value.trim())continue;let baseline=null,baselineProbe=null;const first=[...new Intl.Segmenter(document.documentElement.lang||'zh',{granularity:'grapheme'}).segment(value)][0]?.segment.length||1;for(const insertion of [...new Set([line.end,line.start,Math.min(line.end,line.start+first)])]){const measured=document.createRange();measured.setStart(textNode,line.start);measured.setEnd(textNode,line.end);const before=[...measured.getClientRects()].filter(r=>r.width>0&&r.height>0).map(rect).reduce(union,null),range=document.createRange();range.setStart(textNode,insertion);range.collapse(true);const marker=document.createElement('span');marker.setAttribute('data-layout-baseline','');marker.style.cssText='display:inline-block;width:0;height:0;padding:0;margin:0;border:0;vertical-align:baseline;line-height:0;pointer-events:none';range.insertNode(marker);lockInternalScroll();const candidate=marker.getBoundingClientRect().top+offset.y,after=[...measured.getClientRects()].filter(r=>r.width>0&&r.height>0).map(rect).reduce(union,null),unchanged=!!before&&!!after&&['x','y','width','height'].every(k=>Math.abs(before[k]-after[k])<.1),onOriginalLine=candidate>=line.advance.y-.1&&candidate<=line.advance.y+line.advance.height+.1;const splitTail=marker.nextSibling;marker.remove();if(splitTail?.nodeType===Node.TEXT_NODE){textNode.appendData(splitTail.data);splitTail.remove();}lockInternalScroll();if(unchanged&&onOriginalLine){baseline=candidate;baselineProbe={insertion,range_unchanged:true,on_original_line:true,before,after};break;}evidence.notes.push({kind:'baseline_marker_rejected',owner:domOwner,insertion,candidate,original_range:line.advance,before,after,range_unchanged:unchanged,on_original_line:onOriginalLine});}if(baseline===null&&/^[\\x21-\\x7E\\u2212]$/.test(value)){const native=document.createElement('span');native.style.cssText='position:fixed;left:0;top:0;display:block;width:max-content;max-width:none;visibility:hidden;pointer-events:none;margin:0;padding:0;border:0;white-space:pre';for(const key of ['font','fontKerning','fontFeatureSettings','fontVariationSettings','fontVariantLigatures','letterSpacing','wordSpacing'])native.style[key]=s[key];native.lang=el.closest('[lang]')?.lang||document.documentElement.lang;const glyph=document.createTextNode(value),mark=document.createElement('span');mark.style.cssText='display:inline-block;width:0;height:0;padding:0;margin:0;border:0;vertical-align:baseline;line-height:0';native.append(glyph,mark);document.body.append(native);const r=document.createRange();r.selectNodeContents(glyph);const box=r.getBoundingClientRect(),nativeBaseline=mark.getBoundingClientRect().top,probe=document.createRange();probe.setStart(textNode,line.start);probe.setEnd(textNode,line.end);const original=rect(probe.getBoundingClientRect()),sameGlyphBox=Math.abs(box.width-line.advance.width)<.1&&Math.abs(box.height-line.advance.height)<.1,unchanged=['x','y','width','height'].every(k=>Math.abs(original[k]-line.advance[k])<.1);if(sameGlyphBox&&unchanged&&nativeBaseline>=box.top&&nativeBaseline<=box.bottom){baseline=line.advance.y+(nativeBaseline-box.y);baselineProbe={method:'native out-of-flow single-glyph same-font calibration; source Range unchanged; no line-wrap modification',range_unchanged:true,on_original_line:true,source_range:original,calibration_range:{width:box.width,height:box.height},native_baseline_offset:nativeBaseline-box.y};}native.remove();lockInternalScroll();}if(baseline===null){violations.push('BASELINE_MARKER_CANNOT_VERIFY_ORIGINAL_LINE '+domOwner+' '+value);continue;}const m=ctx.measureText(value),stroke=num(s.webkitTextStrokeWidth)/2;const b={x:line.advance.x-m.actualBoundingBoxLeft*sx-stroke,y:baseline-m.actualBoundingBoxAscent*sy-stroke,width:(m.actualBoundingBoxLeft+m.actualBoundingBoxRight)*sx+stroke*2,height:(m.actualBoundingBoxAscent+m.actualBoundingBoxDescent)*sy+stroke*2};if(b.width<=0||b.height<=0){violations.push('NO_VALID_INK '+domOwner+' '+value);continue;}ink=union(ink,b);measurements.push({text:value,baseline,baseline_probe:baselineProbe,advance:line.advance,ink:b,actualBoundingBox:{left:m.actualBoundingBoxLeft,right:m.actualBoundingBoxRight,ascent:m.actualBoundingBoxAscent,descent:m.actualBoundingBoxDescent}});}"
+    },
+    {
+      "index": 18,
+      "type": "IfStatement",
+      "line": 47,
+      "source": "if(baselineHost)baselineHost.replaceWith(...baselineHost.childNodes);"
+    },
+    {
+      "index": 19,
+      "type": "IfStatement",
+      "line": 48,
+      "source": "if(!ink){violations.push('UNMEASURED_NONEMPTY_TEXT '+domOwner+' '+text);continue;}"
+    },
+    {
+      "index": 20,
+      "type": "IfStatement",
+      "line": 48,
+      "source": "if(s.textShadow!=='none'||s.filter!=='none'){violations.push('UNMODELED_SHADOW_OR_FILTER '+domOwner+' '+s.textShadow+' '+s.filter);}"
+    }
+  ],
+  "omittedAfterBoundary": [
+    {
+      "index": 21,
+      "type": "VariableDeclaration",
+      "line": 49,
+      "first": "const clipping=clips(el),originalInk=ink,marquee=!!el.closest('.marquee'),safe=safeFor(el);"
+    },
+    {
+      "index": 22,
+      "type": "IfStatement",
+      "line": 49,
+      "first": "if(clipping.rect){const shown=intersect(ink,clipping.rect);if(!shown){evidence.hidden_scroll_text.pu"
+    },
+    {
+      "index": 23,
+      "type": "IfStatement",
+      "line": 50,
+      "first": "if(marquee){violations.push('MARQUEE_COMPLETE_CONTENT_NOT_YET_PROVEN '+domOwner);evidence.notes.push"
+    },
+    {
+      "index": 24,
+      "type": "VariableDeclaration",
+      "line": 51,
+      "first": "const result={id,text:text.trim(),ink,safe:safe.rect||{},owner:domOwner,computed:{family:s.fontFamil"
+    },
+    {
+      "index": 25,
+      "type": "ExpressionStatement",
+      "line": 51,
+      "first": "nodes.push(result);"
+    },
+    {
+      "index": 26,
+      "type": "ExpressionStatement",
+      "line": 51,
+      "first": "nodeOwners.set(id,el);"
+    },
+    {
+      "index": 27,
+      "type": "ExpressionStatement",
+      "line": 51,
+      "first": "evidence.fonts.push(result.computed);"
+    }
+  ],
+  "requiredDependencies": [
+    "document.fonts.ready",
+    "DOM normalization/visibility/owner identity",
+    "canvas context and original font/letterSpacing/wordSpacing settings",
+    "rect/num/union helpers",
+    "scrollGuards/lockInternalScroll and cleanup",
+    "original grapheme Range segmentation",
+    "original baseline marker insertion, range-unchanged/on-original-line checks",
+    "native single-glyph baseline fallback and same-glyph-box check",
+    "source scaling sx/sy and actualBoundingBox calculation",
+    "flex baseline wrapper and cleanup",
+    "shadow/filter/transform rejection"
+  ],
+  "excludedWorkNotApprovedAsSkippedGate": [
+    "per-sample immutable panel/paper SHA receipts may be verified per batch only in a future explicitly bounded experiment",
+    "safeFor/skin/clips and cross-node blockers/paint order are outside the extracted ink-only prefix; must not be mislabeled full gate",
+    "full-frozen worst-candidate checks and source/font/style receipts still required"
+  ],
+  "secondPilotNotStarted": true
+}

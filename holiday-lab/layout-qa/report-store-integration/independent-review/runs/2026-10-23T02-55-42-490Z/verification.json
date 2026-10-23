@@ -1,0 +1,54 @@
+{
+  "raw": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-23T02-50-42-725Z\\report.json",
+  "raw_sha256": "654db420ab08c1a6f62e6e0fcf297448e41ac751c22fb5855fdb4a5de5781fd4",
+  "source_files": {
+    "layout-report-store.cjs": "371187796f6418c49b3c8fc12eab6960f4cd173756fa39414fe8acef327c810a",
+    "phase-collect.cjs": "4c6d7b55479864db55476f948eeb620b27016be719f927dd28aaabfcf9991a33",
+    "phase-matrix.cjs": "02088e8151a9d676ed1736feb86f5fab04b00564771875d40aba9e342742b152",
+    "coverage-index.cjs": "328393b62a80d7452253ef3d5b2b97439e731b31640a977f3686040e6bfc9ffa",
+    "error-source-audit.cjs": "c603308ec312b1a2ce94eeca6fcead6a45935df78eca4fd4ccfd83e857a9fe24"
+  },
+  "checks": [
+    {
+      "name": "real_smoke_full_cases",
+      "yes": true,
+      "detail": "21/21 exact saved case equality, order/ID unchanged; nodes=684 blockers=810; 21 screenshot SHA verified"
+    },
+    {
+      "name": "manifest_and_header",
+      "yes": true,
+      "detail": "manifest does not accumulate nodes; original metadata, violations and source receipts retained in verified header"
+    },
+    {
+      "name": "bounded_case_cache",
+      "yes": true,
+      "detail": "lazy Array; zero initial case loads; cache1 eviction actually re-reads"
+    },
+    {
+      "name": "negative_fail_closed",
+      "yes": true,
+      "detail": "6/6: case SHA/header SHA/identity/index/path/missing shard rejected; all fixtures local"
+    },
+    {
+      "name": "unicode_metadata_violations",
+      "yes": true,
+      "detail": "legacy/v2 full deep equality, control character and split-boundary surrogate retained"
+    },
+    {
+      "name": "exact_coverage_consumer",
+      "yes": true,
+      "detail": "unchanged copied coverage-index executes v1/v2: both14/2076, geometry0, identical missing list, full shards verified; outputs isolated"
+    },
+    {
+      "name": "collector_matrix_wiring",
+      "yes": true,
+      "detail": "opt-in preserves unflagged legacy; new matrix flag and reader present; sharded retention excludes nodes/blockers"
+    },
+    {
+      "name": "read_only",
+      "yes": true,
+      "detail": "original smoke + five reviewed files unchanged during independent verification"
+    }
+  ],
+  "full_project_approved": false
+}

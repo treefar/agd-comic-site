@@ -1,0 +1,9 @@
+YES real_smoke_full_cases: 21/21 exact saved case equality, order/ID unchanged; nodes=684 blockers=810; 21 screenshot SHA verified
+YES manifest_and_header: manifest does not accumulate nodes; original metadata, violations and source receipts retained in verified header
+YES bounded_case_cache: lazy Array; zero initial case loads; cache1 eviction actually re-reads
+YES negative_fail_closed: 6/6: case SHA/header SHA/identity/index/path/missing shard rejected; all fixtures local
+YES unicode_metadata_violations: legacy/v2 full deep equality, control character and split-boundary surrogate retained
+YES exact_coverage_consumer: unchanged copied coverage-index executes v1/v2: both14/2076, geometry0, identical missing list, full shards verified; outputs isolated
+YES collector_matrix_wiring: opt-in preserves unflagged legacy; new matrix flag and reader present; sharded retention excludes nodes/blockers
+YES read_only: original smoke + five reviewed files unchanged during independent verification
+INDEPENDENT_REVIEW 8/8 focused checks; full UI gate remains NO

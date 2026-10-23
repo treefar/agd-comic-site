@@ -1,0 +1,19 @@
+✔ legacy aggregate low-limit reproduction; sharded writer never aggregate-stringifies (66.2757ms)
+✔ v1 backward compatibility and v2 lazy true Array with bounded LRU (79.5072ms)
+✔ summaries preserve repeated IDs, width and intent without hydrating missing shards (49.2773ms)
+✔ SHA mismatch, identity mismatch, duplicate indices and escaping paths fail closed (160.0193ms)
+✔ incremental append preserves old checkpoint and full case snapshots (28.1015ms)
+✔ append snapshot remains immutable when caller changes its original object (14.8748ms)
+✔ stream serializer matches JSON semantics with Unicode, control chars and omission (30.0462ms)
+✔ partial write failure does not replace previous committed manifest (42.8253ms)
+✔ header SHA verified before exposing metadata; unsupported versions rejected (41.908ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 639.2592
+
+exit_code=0

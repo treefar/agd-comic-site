@@ -1,0 +1,10 @@
+// Recheck immutable captures without launching a browser or changing game state.
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),crypto=require('node:crypto');
+const {inspectReport}=require('C:/AIHome/claude/skills/game-ui-art/scripts/ui-layout-policy.cjs');
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const latest=JSON.parse(fs.readFileSync(path.join(__dirname,'latest.json'))),dir=path.resolve(__dirname,latest.run),report=JSON.parse(fs.readFileSync(path.join(dir,'report.json')));
+const freeze=JSON.parse(fs.readFileSync(path.join(__dirname,'../sampler-freeze-06.json')));
+assert.equal(report.sampler_sha256,freeze.function_sha256);assert.equal(report.pass,true);assert.equal(report.source_stable,true);assert.deepEqual(report.before,report.after);assert.equal(report.cases.length,6);
+const expected={zh:'正在聆聽，讓閱讀框先停留。',en:'Listening. Keep the reading frame still.',ja:'聴いています。枠をそのままに。'},seen=new Set();
+for(const row of report.cases){const key=row.lang+'/'+row.width;assert.ok(!seen.has(key));seen.add(key);assert.ok(Object.hasOwn(expected,row.lang));assert.ok([320,1440].includes(row.width));assert.equal(row.status,'pass');assert.deepEqual(row.page_errors,[]);assert.equal(row.before.status,expected[row.lang]);assert.equal(row.after.status,expected[row.lang]);assert.equal(row.before.progress,'0');assert.equal(row.after.progress,'0');assert.ok(row.after.time>=row.before.time);assert.ok(row.natural_completion);assert.equal(row.full_case.id,'peace-memory/'+row.lang+'/game/preview');assert.equal(row.full_case.height,row.width===320?900:1000);assert.deepEqual(row.full_case.nodes,row.sample.nodes);assert.deepEqual(row.full_case.blockers,row.sample.blockers);assert.deepEqual(inspectReport({schema_version:1,source_fingerprints:{},cases:[row.full_case]}),[]);assert.equal(sha(fs.readFileSync(path.join(dir,row.screenshot))),row.screenshot_sha256);console.log('YES '+key+' actual listening stable, full geometry, PNG SHA, natural completion');}
+assert.equal(report.full_project_approved,false);console.log('YES 6/6 preview captures; full UI gate remains unproven');

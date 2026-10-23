@@ -1,0 +1,37 @@
+INVENTORY {"frames":2964,"continuous":true,"sessions":11,"complete":10,"canonical_complete":5,"original_postreceipt_present":[]}
+RECOVERED 200/2964
+RECOVERED 400/2964
+RECOVERED 600/2964
+RECOVERED 800/2964
+RECOVERED 1000/2964
+RECOVERED 1200/2964
+RECOVERED 1400/2964
+RECOVERED 1600/2964
+RECOVERED 1800/2964
+RECOVERED 2000/2964
+RECOVERED 2200/2964
+RECOVERED 2400/2964
+RECOVERED 2600/2964
+RECOVERED 2800/2964
+node:internal/assert/utils:77
+    throw err;
+    ^
+
+AssertionError [ERR_ASSERTION]: Reconstructed violation count differs from progress; stop before committing manifest
+    at Object.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\semester-recovery-20261023\recovery.cjs:28:8)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.15.0

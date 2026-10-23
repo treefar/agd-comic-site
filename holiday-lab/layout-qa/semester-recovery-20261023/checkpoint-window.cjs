@@ -1,0 +1,9 @@
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),crypto=require('node:crypto');
+const dir=__dirname,file=path.resolve(dir,'../phase-runs/2026-10-23T00-38-18-660Z/report.json'),size=fs.statSync(file).size,bytes=4*1024*1024,fd=fs.openSync(file,'r'),windows=[];
+function window(start){const b=Buffer.alloc(bytes);assert.equal(fs.readSync(fd,b,0,bytes,start),bytes);windows.push({start,bytes,sha256:crypto.createHash('sha256').update(b).digest('hex')});return b.toString('utf8');}
+try{
+ let start=Math.max(0,size-fs.statSync(path.join(path.dirname(file),'progress.json')).size-2*1024*1024),text=window(start),m=text.indexOf('\n  "metadata": {');assert.ok(m>=0);const metadataOffset=start+Buffer.byteLength(text.slice(0,m));
+ start=metadataOffset-bytes+64;text=window(start);let v=text.lastIndexOf('\n  "violations": ['),end=text.lastIndexOf('\n  "metadata": {');console.log(JSON.stringify({v,end,metadataOffset}));assert.ok(v>=0&&end>v,'Violations exceed bounded4MB window or exact boundary absent');
+ const violations=JSON.parse(text.slice(v+'\n  "violations": '.length,end).trim().replace(/,$/,'')),shots=[...text.slice(0,v).matchAll(/"file": "([^"\n]+)-(\d+)\.(webp|jpg)"/g)];assert.ok(shots.length);const last=shots.at(-1),result={original_report_file:file,original_report_bytes:size,windows,last_checkpoint_capture_index:Number(last[2]),last_checkpoint_frames:Number(last[2])+1,last_checkpoint_image:last[1]+'-'+last[2]+'.'+last[3],checkpoint_violations:violations.length};
+ fs.writeFileSync(path.join(dir,'checkpoint-violations.json'),JSON.stringify(violations,null,2));fs.writeFileSync(path.join(dir,'checkpoint-tail.json'),JSON.stringify(result,null,2));console.log(JSON.stringify({last_checkpoint_frames:result.last_checkpoint_frames,checkpoint_violations:result.checkpoint_violations},null,2));
+}finally{fs.closeSync(fd);}
