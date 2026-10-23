@@ -171,3 +171,9 @@ html[lang='en'] .sg-directory button { font-size:13px; gap:6px; padding:10px 8px
 .sg-card-detail[open]>summary {margin-bottom:12px;}
 @media(max-width:1100px){.sg-card-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
 @media(max-width:760px){.sg-card-grid{grid-template-columns:1fr;}}
+
+/* Keep whole shortcut labels together; longer reading copy keeps its original size. */
+.student-guide .sg-shortcuts button { overflow-wrap:normal; word-break:normal; text-wrap:balance; }
+.student-guide :is(p, .sg-source-note) { text-wrap:pretty; }
+.student-guide :is(h1,h2,h3,h4,button,summary,label,strong,small,.sg-summary,.sg-identity-note,.sg-bottom-note >p,.sg-contact p) { text-wrap:balance; }
+@media(max-width:760px){ .student-guide .sg-shortcuts { grid-template-columns:1fr; } }
