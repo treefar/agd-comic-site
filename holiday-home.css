@@ -27,6 +27,11 @@
 .festival-prototypes{font-size:13px;line-height:1.7;}
 .festival-prototypes>summary{cursor:pointer;padding:8px 0;min-height:44px;text-decoration:underline;text-underline-offset:.25em;}
 .festival-copy{padding-top:8px;}
+.festival-home--bottom{margin:28px 0;padding:24px;border:3px solid var(--ink);background:var(--paper);}
+.festival-home--bottom .festival-copy{max-width:960px;margin:auto;}
+.festival-home--bottom h2{font-size:clamp(26px,4vw,40px);margin:0 0 12px;}
+.festival-home--bottom .student-curation-entry{text-align:left;}
+.festival-home--bottom :is(a,button,select,summary):focus-visible{outline:3px solid #1476a4;outline-offset:3px;}
 .festival-copy label{display:block;font-size:13px;font-weight:800;margin:10px 0 6px;}
 .festival-copy select{width:100%;max-width:100%;min-width:0;font:inherit;color:inherit;border:1px solid currentColor;background:var(--paper);padding:10px 12px;line-height:1.5;}
 .festival-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px 20px;margin-top:8px;}

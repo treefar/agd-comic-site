@@ -177,6 +177,9 @@ const App = () => {
           <FacultyChapter />
           <LabsChapter />
           <JoinChapter />
+          <section className="chapter" id="student-play" aria-labelledby="student-play-title">
+            <div className="container"><HolidayHome placement="games" /></div>
+          </section>
         </>
       )}
       <FooterChapter />

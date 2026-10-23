@@ -37,8 +37,9 @@ const STUDENT_HERO_WORKS = Object.freeze([
     "sourceHref": "#/news/2026-04-29-awards-showcase/work-06"
   }
 ]);
-// Student work and a small practice entry share the splash. Existing games still load after a click.
-const HolidayHome = () => {
+// The splash shows student work. Playtest controls render separately at the page bottom.
+const HolidayHome = ({placement='hero'}={}) => {
+ const gamesOnly=placement==='games';
  const [selected,setSelected]=React.useState('new-year');
  const [playing,setPlaying]=React.useState(false);
  const [studentIndex,setStudentIndex]=React.useState(0);
@@ -46,7 +47,7 @@ const HolidayHome = () => {
  const frame=React.useRef(null),trigger=React.useRef(null),dialog=React.useRef(null),closeButton=React.useRef(null),detachFrame=React.useRef(()=>{});
  const words=(zh,en,ja)=>({zh,en,ja})[siteLanguage];
  const entries=[['new-year','明年的第一格','The First Frame Ahead','新しい年の最初のコマ'],['lunar-new-year','年獸表演課','Nian Performance Class','年獣の演技レッスン'],['lantern','燈影借位','Shadow Stage','灯りと影の舞台'],['children','玩具聲音偵探','Toy Sound Detective','おもちゃ音の探偵'],['dragon-boat','粽葉折疊局','Leaf Folding Studio','葉っぱ折りスタジオ'],['mid-autumn','月光剪接台','Moonlight Editing Desk','月明かりの編集室'],['teachers','老師，這格謝謝你','A Panel of Thanks','先生へ、感謝の一コマ'],['national-day','島嶼場景工作室','Island Scene Studio','島の風景スタジオ'],['semester','新生第一張地圖','Your First Campus Map','はじめてのキャンパスマップ'],['exhibition','畢展策展接力','Exhibition Curator Relay','卒展キュレーターリレー'],['peace-memory','把話聽完整','Listen to the Whole Story','最後まで聴こう'],['qingming','紙鳶借風','A Kite Borrows the Wind','風を借りる凧'],['retrocession','時光對照室','The Time Comparison Room','時の見比べアトリエ'],['constitution','同一頁，都看懂','One Page for Everyone','同じページを、みんなに']];
- React.useEffect(()=>{let live=true;import('./holiday-lab/catalog.mjs').then(({festivalAt})=>{const active=festivalAt(Date.now());if(live&&active&&active.id!=='labor')setSelected(active.id);}).catch(()=>{});return()=>{live=false;};},[]);
+ React.useEffect(()=>{if(!gamesOnly)return;let live=true;import('./holiday-lab/catalog.mjs').then(({festivalAt})=>{const active=festivalAt(Date.now());if(live&&active&&active.id!=='labor')setSelected(active.id);}).catch(()=>{});return()=>{live=false;};},[gamesOnly]);
  const name=entries.find(e=>e[0]===selected)[{zh:1,en:2,ja:3}[siteLanguage]];
  const close=()=>setPlaying(false);
  const focusable=doc=>[...doc.querySelectorAll('button:not([disabled]),a[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])')].filter(n=>!n.closest('[inert]')&&n.getClientRects().length&&getComputedStyle(n).visibility!=='hidden');
@@ -76,14 +77,14 @@ const HolidayHome = () => {
   document.addEventListener('keydown',key);document.addEventListener('focusin',guard);window.addEventListener('message',message);
   return()=>{detachFrame.current();detachFrame.current=()=>{};document.removeEventListener('keydown',key);document.removeEventListener('focusin',guard);window.removeEventListener('message',message);oldInert.forEach(([n,value])=>{n.inert=value;});document.body.style.overflow=oldOverflow;trigger.current?.focus();};
  },[playing]);
- return <div id="festival-preview" className="festival-home festival-home--integrated" data-no-fx="true" data-no-splat="true">
-  <div className="hero-identity">
+ return <div id={gamesOnly?'student-play-zone':'festival-preview'} className={gamesOnly?'festival-home festival-home--bottom':'festival-home festival-home--integrated'} data-no-fx="true" data-no-splat="true">
+  {!gamesOnly&&<div className="hero-identity">
    <p className="hero-kicker">SHU-TE UNIVERSITY · ANIMATION &amp; GAME DESIGN</p>
    <h1 id="hero-title" className="h-display hero-integrated-title"><span>{words('畫出來，','Draw it.','描こう。')}</span><span>{words('動起來。','Bring it to life.','動かそう。')}</span></h1>
    <p className="hero-summary">{words('動畫、遊戲、互動媒體。把腦內的世界，變成會動的角色與故事。','Animation, games and interactive media. Turn the worlds in your head into characters and stories that move.','アニメ、ゲーム、インタラクティブメディア。頭の中の世界を、動くキャラクターと物語に。')}</p>
    <a className="hero-news-link" href="#news">{words('看系上消息','Department news','学科ニュース')} <span aria-hidden="true">↓</span></a>
-  </div>
-  <div className="festival-work student-hero-work">
+  </div>}
+  {!gamesOnly&&<div className="festival-work student-hero-work">
    <figure className="student-work-figure">
     <a className="student-poster-link" href={student.sourceHref} aria-label={words('查看作品消息','Read the work’s news','作品の記事を見る')}><img id="student-work-poster" className="student-work-poster" src={student.image} alt={student.title} width="1200" height="1697" /></a>
     <figcaption>
@@ -99,6 +100,9 @@ const HolidayHome = () => {
     <span id="student-work-position" aria-live="polite">{studentIndex+1} / {STUDENT_HERO_WORKS.length}</span>
     <button id="student-work-next" className="student-text-button" onClick={()=>setStudentIndex(i=>(i+1)%STUDENT_HERO_WORKS.length)}>{words('下一件','Next','次の作品')}</button>
    </div>
+  </div>}
+  {gamesOnly&&<div className="festival-copy">
+   <h2 id="student-play-title" className="h-display">{words('創作試玩','Creative Playtests','創作の試遊')}</h2>
    <p className="student-curation-entry"><a id="student-curation-start" href={`holiday-lab/student-curation.html?lang=${siteLanguage}`}>{words('試做一場小型策展','Try a small curation exercise','小さな展示を組んでみよう')} <span aria-hidden="true">→</span></a></p>
    <details id="festival-prototypes" className="festival-prototypes">
     <summary>{words('節日創作試作','Seasonal creation prototypes','季節の制作プロトタイプ')}</summary>
@@ -109,12 +113,12 @@ const HolidayHome = () => {
      <div className="festival-actions"><button ref={trigger} id="festival-start" className="festival-button" onClick={()=>setPlaying(true)}>{words('開啟試作','Open prototype','試作を開く')}</button><a className="festival-archive-link" href={`holiday-lab/?lang=${siteLanguage}`}>{words('全部試作','All prototypes','試作一覧')}</a></div>
     </div>
    </details>
-  </div>
-  <nav className="hero-highlights" aria-label={words('系所亮點','Department highlights','学科の特徴')}>
+  </div>}
+  {!gamesOnly&&<nav className="hero-highlights" aria-label={words('系所亮點','Department highlights','学科の特徴')}>
    <a href="#about">{words('全台第一所動畫與遊戲科系','Taiwan’s first animation and game department','台湾初のアニメ・ゲーム学科')}</a>
    <a href="#/stats/international">{words('日本海外實習・第9屆','Japan internships · ninth cohort','日本での海外実習・第9期')}</a>
    <a href="#labs">{words('12間實驗室・動作捕捉／虛擬製片棚','12 labs · motion capture and virtual production','12の実習室・モーションキャプチャ／バーチャル制作')}</a>
-  </nav>
+  </nav>}
   {playing&&createPortal(<div ref={dialog} className="festival-modal" role="dialog" aria-modal="true" aria-label={name}>
    <button ref={closeButton} id="festival-close" className="festival-button festival-close" onClick={close}>{words('關閉試玩 Esc','Close playtest · Esc','試遊を閉じる Esc')}</button>
    <iframe ref={frame} id="festival-game-frame" title={name} src={`holiday-lab/?lang=${siteLanguage}&game=${selected}`} onLoad={attachFrame} allow="autoplay" />

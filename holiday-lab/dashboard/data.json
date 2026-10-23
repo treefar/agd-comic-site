@@ -246,11 +246,11 @@
         "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
       },
       {
-        "path": "holiday-lab/reports/shutdown-20261023/independent/run05/result.json",
+        "path": "holiday-lab/reports/games-bottom-20261023/green-r2/result.json",
         "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
       },
       {
-        "path": "holiday-lab/reports/shutdown-20261023/independent/receipt.json",
+        "path": "holiday-lab/reports/games-bottom-20261023/green-r2/receipt.json",
         "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
       },
       {
@@ -259,6 +259,22 @@
       },
       {
         "path": "holiday-home.css",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "app.jsx",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "styles.css",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "comic-components.jsx",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "pages.jsx",
         "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
       },
       {
@@ -290,27 +306,11 @@
         "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
       },
       {
-        "path": "holiday-lab/reports/nav-language-desktop-20261023/proof.json",
+        "path": "holiday-lab/reports/games-bottom-20261023/navigation-proof.json",
         "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
       },
       {
-        "path": "holiday-lab/reports/nav-language-desktop-20261023/green-r2/result.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "styles.css",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "comic-components.jsx",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "app.jsx",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "pages.jsx",
+        "path": "holiday-lab/reports/games-bottom-20261023/navigation/result.json",
         "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
       },
       {
@@ -666,14 +666,16 @@
           "id": "website",
           "title": "系網中／英／日版本",
           "workflow": "available",
-          "headline": "三語桌面完整導覽已恢復，最新版在8872。",
-          "proof_summary": "本輪18組三語／六寬真瀏覽器驗收；桌面完整導覽、手機平板展開及章節標題定位通過。",
+          "headline": "三語桌面完整導覽保留，遊戲已移到頁底；最新版8873。",
+          "proof_summary": "本輪18組三語／六寬真瀏覽器驗收；桌面完整導覽、手機平板展開及章節標題定位通過。 頁首無遊戲入口，試玩在招生之後／頁尾之前；三語手機／桌面6組開關／Esc／焦點／原作品複驗通過。",
           "limitation": "只驗本次主導覽與定位，不是全站或全部遊戲發布驗收。",
           "source_files": [
             "holiday-lab/reports/guide-index-evidence/result.json",
             "holiday-lab/reports/floating-cta-result.json",
             "holiday-lab/STATUS.md",
-            "holiday-lab/reports/nav-language-desktop-20261023/proof.json"
+            "holiday-lab/reports/games-bottom-20261023/navigation-proof.json",
+            "holiday-lab/reports/games-bottom-20261023/green-r2/result.json",
+            "holiday-lab/reports/games-bottom-20261023/green-r2/receipt.json"
           ],
           "links": [
             {
@@ -694,6 +696,11 @@
             {
               "label": "導覽修正逐條驗收",
               "href": "../../../holiday-lab/reports/nav-language-desktop-20261023/REPORT.md",
+              "kind": "local-file"
+            },
+            {
+              "label": "遊戲移至頁底驗收",
+              "href": "../../../holiday-lab/reports/games-bottom-20261023/REPORT.md",
               "kind": "local-file"
             }
           ]
@@ -919,14 +926,14 @@
           "id": "hero-integrated",
           "title": "學生作品首頁審閱",
           "workflow": "waiting",
-          "headline": "小颯手繪首圖與原三件作品已合入8870；三語手機／桌面獨立短驗收通過，等你看。",
-          "proof_summary": "前版限定範圍收據：9組三語手機／桌機首頁與2條嵌入玩法通過；不載節日插畫或生成UI背景。 8870小颯首圖另驗6組、24個作品狀態、30PNG，署名、完整原圖及來源連結通過。",
+          "headline": "小颯作品保留在首屏，遊戲試玩已移到頁尾前。",
+          "proof_summary": "前版限定範圍收據：9組三語手機／桌機首頁與2條嵌入玩法通過；不載節日插畫或生成UI背景。 本輪頁首作品／頁底試玩複驗6組、24個作品狀態、36PNG，署名、完整原圖及來源連結通過。",
           "limitation": "使用者已選：首頁不用AI插畫，採學生作品＋小型互動入口；遊戲素材分批調整，先看一款示範。這是方向確認，尚非畫面確認。 小型favicon沿用既有生成播放圖示，沒有宣稱所有素材零AI。 此項不等於8872全站驗收。",
           "source_files": [
             "holiday-lab/reports/integrated-review-20261023/home/runs/2026-10-23T10-55-01-190Z/result.json",
             "data/news.json",
-            "holiday-lab/reports/shutdown-20261023/independent/run05/result.json",
-            "holiday-lab/reports/shutdown-20261023/independent/receipt.json"
+            "holiday-lab/reports/games-bottom-20261023/green-r2/result.json",
+            "holiday-lab/reports/games-bottom-20261023/green-r2/receipt.json"
           ],
           "links": [
             {
@@ -1138,7 +1145,7 @@
           "id": "review",
           "title": "等你確認的畫面與內容",
           "workflow": "waiting",
-          "headline": "8872三語導覽修正版可看；照片、美術與其他內容仍待使用者確認。",
+          "headline": "8873頁底試玩版可看，尚未發布。",
           "proof_summary": "實體手機、真人試玩與母語逐句審閱未全完成。",
           "limitation": "資料已建、工具驗證與使用者確認分開；沒有把代理通過當成你的認可。",
           "source_files": [
@@ -2268,10 +2275,14 @@
       "data/ja/messages.json": "../../../data/ja/messages.json",
       "holiday-lab/reports/official-names-followup-20261023/root/integration-result.json": "../../../holiday-lab/reports/official-names-followup-20261023/root/integration-result.json",
       "holiday-lab/reports/tfbase-shutdown-check-20261023/result.json": "../../../holiday-lab/reports/tfbase-shutdown-check-20261023/result.json",
-      "holiday-lab/reports/shutdown-20261023/independent/run05/result.json": "../../../holiday-lab/reports/shutdown-20261023/independent/run05/result.json",
-      "holiday-lab/reports/shutdown-20261023/independent/receipt.json": "../../../holiday-lab/reports/shutdown-20261023/independent/receipt.json",
+      "holiday-lab/reports/games-bottom-20261023/green-r2/result.json": "../../../holiday-lab/reports/games-bottom-20261023/green-r2/result.json",
+      "holiday-lab/reports/games-bottom-20261023/green-r2/receipt.json": "../../../holiday-lab/reports/games-bottom-20261023/green-r2/receipt.json",
       "holiday-home.jsx": "../../../holiday-home.jsx",
       "holiday-home.css": "../../../holiday-home.css",
+      "app.jsx": "../../../app.jsx",
+      "styles.css": "../../../styles.css",
+      "comic-components.jsx": "../../../comic-components.jsx",
+      "pages.jsx": "../../../pages.jsx",
       "data/works.json": "../../../data/works.json",
       "data/en/works.json": "../../../data/en/works.json",
       "data/news.json": "../../../data/news.json",
@@ -2279,12 +2290,8 @@
       "images/news/2026-awards/dear-all-robots.jpg": "../../../images/news/2026-awards/dear-all-robots.jpg",
       "images/news/2026-awards/kacha.jpg": "../../../images/news/2026-awards/kacha.jpg",
       "images/news/2026-awards/today-restaurant.jpg": "../../../images/news/2026-awards/today-restaurant.jpg",
-      "holiday-lab/reports/nav-language-desktop-20261023/proof.json": "../../../holiday-lab/reports/nav-language-desktop-20261023/proof.json",
-      "holiday-lab/reports/nav-language-desktop-20261023/green-r2/result.json": "../../../holiday-lab/reports/nav-language-desktop-20261023/green-r2/result.json",
-      "styles.css": "../../../styles.css",
-      "comic-components.jsx": "../../../comic-components.jsx",
-      "app.jsx": "../../../app.jsx",
-      "pages.jsx": "../../../pages.jsx",
+      "holiday-lab/reports/games-bottom-20261023/navigation-proof.json": "../../../holiday-lab/reports/games-bottom-20261023/navigation-proof.json",
+      "holiday-lab/reports/games-bottom-20261023/navigation/result.json": "../../../holiday-lab/reports/games-bottom-20261023/navigation/result.json",
       "scripts/test-nav-layout.cjs": "../../../scripts/test-nav-layout.cjs",
       "holiday-lab/reports/nav-language-desktop-20261023/webgl-recheck.json": "../../../holiday-lab/reports/nav-language-desktop-20261023/webgl-recheck.json",
       "holiday-lab/reports/qingming-release-20261023/independent/REPORT.md": "../../../holiday-lab/reports/qingming-release-20261023/independent/REPORT.md",
