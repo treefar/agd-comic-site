@@ -1,3 +1,14 @@
+## 2026-10-23 最新接續點：中秋目標驗證完成；兩個失敗批次已保全
+
+- source_agent: codex。中秋root-ui-04已783/783真exit0，root完整重核810義務、PNG/來源/字型/原比較皆過，geometry0；518原旗標空、265保其他owner旗標，global/canonical仍NO。完整資料本機commit5064130（8484 QA檔/549249014 bytes逐一index核對）。
+- 勞動原full已331成功＋1失敗、exit1；ECONNRESET原始紀錄不改。continuation-20261023工具準備中，原331成功不重跑、新2453含原失敗明列重採。獨立審查真負例：缺completion仍報complete、terminal HTTP failure被忽略、unknown attempt總數少算；作者正修domain_complete/run_complete與attempt總數，尚未freeze／審完或啟動。
+- 清明v2先導由root21tests及獨立review過後單一啟動root-pilot-01，06:10:12.703Z exit1；zh320六target pass/geometry0，但Console404使run停止且缺source_after，不能算完整通過。另一次明標新導航診斷CDP證/favicon.ico為404/Other，舊run未存location不得回填。原v2、方法、freeze與失敗6份全保本機commit63e156b；v3只規畫新隔離方法/精確Console+Network分類、保原flags/globalfalse，尚未准native，禁止直接重跑v2或改measure08。
+- 中秋canonical-review只唯讀補證；404688是67448去重文字×6context，42見證各自極值，不能冒稱面積最長；766原fast fullnode缺欄不能補造。新typed adapter仍未建。
+- 開學離線proof root5tests/全部DP verifier已過，native equivalence仍NO；來源283/1284核對過但原08完整輸入快照仍缺。國慶calibration39只CHECKPOINT，39recipe/312ownerframes工具尚未完整且未准native。
+- 工具最新CHECKPOINT：勞動首版continuation freeze76d1f950…89962僅prepare成功，不得批准；cleanup-close終態故障測試仍待修與獨立複驗，須另建r2不覆寫。清明v3已建目錄/20繼承檔，分類器、新scope/freeze/verifier尚未完成；兩者無新native run。
+- 下一輪第一件事：讀reports/verification-followup-20261023-16.md與三代理CHECKPOINT，確認上述三原native已terminal不重啟。先審勞動continuation最終freeze/獨立負例修復與精確331＋2453 union；完成root批准後才單一啟動。再審清明v3，原v2方法不能改。
+- 正式權威仍v4 coverage2046/2076缺30，dashboard重產27/27但整包UI0/1、使用者0。未push、發布、碰main、刪檔、C節改動；未新網站Build/ZIP或Unity啟動。8845是同.measure-integrated-08內部量測server，不是新審閱上線版。原673MB fast raw仍本機ignored，所有local commits未宣稱跨機備份。
+
 ## 2026-10-23 14:05 最新：中秋783目標完成；勞動331成功後中止
 
 - source_agent: codex。使用者「繼續」後同run續接已完成中秋783正常UI。原runner43520於06:03:50.780Z真exit0；root於06:05:00.032Z獨立verify-complete exit0，783 case/sample/PNG與768seed＋42extrema共810義務全核，geometry0、原0.05px比較[]、方法/來源/font一致。root-complete-verification-01.json保存原stdout。265份仍有其他owner原旗標，canonical_promoted/global_bound/full_project皆false，未直接升覆蓋。
