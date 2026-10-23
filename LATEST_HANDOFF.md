@@ -1,3 +1,10 @@
+## 2026-10-23 使用者要求暫停：可重開程式
+
+- source_agent: codex。使用者要重開程式，已停止新工作與三子代理。中秋root-ui-04於05:05:57.241Z受控停在247/783，剩536；runner43892/driver51568均absent，原browser已finally關閉。store.verify實跑exit0，case/sample/PNG/hash-chain/checkpoint各247、零未提交attempt；原32凍結方法SHA不變。
+- 暫停屏障mid-autumn-ui-validation-20261023/OPERATOR_PAUSE_REQUEST.cjs保留，令每筆開始前guard在上一筆完成後阻斷下一筆（exit1是明確operator pause，非UI失敗）。PAUSE-CHECKPOINT.json與reports/PAUSE-20261023.md已寫精確續接：只在使用者恢復後移屏障保留、重核freeze04/live sources/247份，對同root-ui-04加--resume補剩536，不重跑已完成項、不另建替代run。
+- 三代理CHECKPOINT已落地：qingming-error-domain-20261023、labor-finite-native/full-domain-reviewed-20261023、source-provenance-20261023；都是未完成、未准native，不把骨架/真RED說成完成。三者無自有背景程序。
+- 覆蓋仍2046/2076缺30；勞動12實際校準與本輪既有成果保留，未新Build/ZIP/推送/發布/碰main/刪檔，C節不變。暫停後不自行測試或派工，等使用者繼續。
+
 ## 2026-10-23 最新：覆蓋2046項、中秋正常UI驗證已啟動
 
 - source_agent: codex。本輪實際進展：和平preview6補齊，v4索引2046/2076、缺30、geometry0；root獨立check-plan/compare exit0，2040舊selected及全部來源/方法綁定保留，126舊＋6新wrapper SHA完整核對。權威為holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json（SHA48921202d1a5427010632a3da320dc2b31775d4b8803ea9d61536a5d93c36eeb）；原index ExitCode未取得null如實保留，assembly真exit0，不重跑index。
