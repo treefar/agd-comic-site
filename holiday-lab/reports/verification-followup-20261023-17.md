@@ -22,3 +22,9 @@
 入口：http://127.0.0.1:8856/ 、http://127.0.0.1:8856/progress/ 、http://127.0.0.1:8856/holiday-lab/?game=qingming&lang=zh 。
 
 原始證據：清明目錄REPORT.md、verification.json、84PNG及424response收據；網站smoke目錄REPORT.md/result.json；dashboard/smoke-result.json。主分支與C節核對收據見本輪REPORT後續保全段。
+
+## 本機保全
+
+- 工作樹commit fff06c3335354ea806a856f22ba98214fc1f7085；原clone交接commit b88f5df623b2c7bcc60b7bc0fdbed14970083e55。
+- 188份新增原始證據共62605703 bytes逐一核Git index原位元組相同；收據git-preservation.json。首次盤點因Node預設stdout buffer不足（ENOBUFS）中斷，改64MB後完整核對通過，未重跑瀏覽器或改原證據。
+- 兩repo git fsck --connectivity-only 均exit0，原dangling objects保留未清除；origin/main仍1b8322e69d84549db220d849afb1aac0fb9d7c2a。C節SHA仍95ae06fb0e647d1d212fd467120bd209132c8c904cf193085f47fe806f293680。未push。
