@@ -14,7 +14,7 @@
 | 儀表板由證據計算、暫停及使用者確認分開 | yes | build 34/34、18/18回歸、桌機／手機2/2＋離線smoke通過；工作中0、明確暫緩3由資料計算 |
 | 整個網站／全部遊戲發布驗收已完成 | no | 完整UI gate仍NO，真hidden仍unknown，母語與使用者畫面確認未完成；8866歷史收據標清楚 |
 | 指南全部現行規章及四題新草稿完成 | no | 五題現行母法補件100yes只核文件證據；四題只有checkpoint9/9，完整內容仍待續接 |
-| 未push／未發布／main及C節未變／未刪檔 | 由最終保存守門判定 | root/local-preservation.json逐項核對；只本機保存，勞動節維持暫緩 |
+| 未push／未發布／main及C節未變／未刪檔 | yes | root/local-preservation.json逐項核對；只本機保存，勞動節維持暫緩 |
 
 ## 實際指令輸出
 
@@ -24,7 +24,7 @@
 node --test holiday-lab/reports/shutdown-20261023/xiaosa.test.cjs
 tests 3 / pass 3 / fail 0 / exit0（此前RED3條失敗收據保留）
 
-node scripts/build.mjs（本輪受控量測建置，完整參數見xiaosa-build.json）
+node holiday-lab/build-review.mjs .measure-xiaosa-review-20261023-01 --measurement
 MEASUREMENT_ONLY 360 files / app-BWFF7U3Q.js / exit0
 
 node holiday-lab/reports/shutdown-20261023/independent/run-v5.cjs
@@ -52,3 +52,5 @@ DASHBOARD_SMOKE 2/2 + OFFLINE PASS / exit0
 第一次Git整合因長路徑及locale dirty失敗，Git回復時改寫四份原dirty；已從dangling commit f7e62206a266093fe076a24ef66ef0f1e78e9cb7找回4/4原SHA。完整恢復原檔另保存在official-names-followup-20261023/root/dirty-recovery/，原四檔仍留dirty，不加入本輪提交。後續Git加core.longpaths=true，守門檢查原檔、main refs、正式R0與C節。
 
 剩餘工作保留：4 PROGRAM整句及相依欄位、指南現行規章／流程缺件、TF-BASE新WebGL回傳、全站UI與人工畫面確認。依使用者要求暫停，不再派工。
+
+最終本機保存：主成果3498ce25f86871cab8bdce57105ab6bec38726be；原專案交接b97afdbb23223aa9af96a25beb28cac51bb59065；保存收據a7b06a5c0d9fc60743f90df8dd9fc0d97770c6a4。387個檔案入本輪範圍，363份證據共73,501,516 bytes逐一核對index與原檔SHA；四份原dirty／正式R0／C節／main refs均守門通過，兩repo fsck exit0。
