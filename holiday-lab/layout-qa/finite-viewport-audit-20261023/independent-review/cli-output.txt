@@ -1,0 +1,71 @@
+{
+  "source_sha256": {
+    "coverage-index.cjs": "109dd35cf24a16dbc356e4683048db1efb6744c15e703be2f5ce47cf6283854b",
+    "assembly-plan.cjs": "10e8d1623742eca1437947aea25a51a6124c0ab89820764ed6cfc70755972a5d",
+    "finite-visibility-scope.cjs": "c47ab8d7aa8b25aab75991c79a1bb02fdf5adca346b938e2bbf1c5298ac2f389"
+  },
+  "results": [
+    {
+      "probe": "missing_explicit_viewport",
+      "exit": 1,
+      "stdout": "",
+      "stderr": "node:internal/assert/utils:77\r\n    throw err;\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: Finite proofs require an explicit chosen-frame viewport audit\r\n    at Object.buildFiniteVisibilityResolver (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\finite-visibility-scope.cjs:3:9)\r\n    at Object.<anonymous> (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\coverage-index.cjs:8:71)\r\n    at Module._compile (node:internal/modules/cjs/loader:1830:14)\r\n    at Object..js (node:internal/modules/cjs/loader:1961:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1553:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1355:12)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)\r\n    at node:internal/main/run_main_module:33:47 {\r\n  generatedMessage: false,\r\n  code: 'ERR_ASSERTION',\r\n  actual: '',\r\n  expected: true,\r\n  operator: '==',\r\n  diff: 'simple'\r\n}\r\n\r\nNode.js v24.15.0\r\n",
+      "fixture": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\finite-viewport-audit-20261023\\independent-review\\fixtures\\cli-krvJpP"
+    },
+    {
+      "probe": "visible_scope",
+      "exit": 0,
+      "covered": 3,
+      "supplement_only": 3,
+      "stdout": "COVERAGE required=2076 covered=3 missing=2073 geometryErrors=0; PARTIAL_RED; C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\finite-viewport-audit-20261023\\independent-review\\fixtures\\cli-25aX2H\\index-419e303f-00b5-44e7-b1e8-62fad441dc69.json\n",
+      "stderr": "",
+      "fixture": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\finite-viewport-audit-20261023\\independent-review\\fixtures\\cli-25aX2H"
+    },
+    {
+      "probe": "stale_verification",
+      "exit": 1,
+      "stdout": "",
+      "stderr": "node:assert:152\r\n  throw new AssertionError(obj);\r\n  ^\r\n\r\nAssertionError [ERR_ASSERTION]: Viewport audit verification SHA stale\r\n+ actual - expected\r\n\r\n+ 'b00549f3d1cc4625886d5b63176e5eb68afe5e15b0095cb32eda375da0251505'\r\n- 'c368445800242dca6487430b12406b59993a7e40c1fe0fd1dd4297870320cea8'\r\n\r\n    at C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\finite-visibility-scope.cjs:5:490\r\n    at Object.<anonymous> (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\coverage-index.cjs:9:2208)\r\n    at Module._compile (node:internal/modules/cjs/loader:1830:14)\r\n    at Object..js (node:internal/modules/cjs/loader:1961:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1553:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1355:12)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)\r\n    at node:internal/main/run_main_module:33:47 {\r\n  generatedMessage: false,\r\n  code: 'ERR_ASSERTION',\r\n  actual: 'b00549f3d1cc4625886d5b63176e5eb68afe5e15b0095cb32eda375da0251505',\r\n  expected: 'c368445800242dca6487430b12406b59993a7e40c1fe0fd1dd4297870320cea8',\r\n  operator: 'strictEqual',\r\n  diff: 'simple'\r\n}\r\n\r\nNode.js v24.15.0\r\n",
+      "fixture": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\finite-viewport-audit-20261023\\independent-review\\fixtures\\cli-fZrOr9"
+    },
+    {
+      "probe": "wrong_dimensions",
+      "exit": 1,
+      "stdout": "",
+      "stderr": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\coverage-index.cjs:9\r\nfor(const staticProof of (args.static||'').split(',').filter(Boolean)){const input=path.resolve(qa,staticProof),dir=path.dirname(input),proof=JSON.parse(fs.readFileSync(input)),verificationFile=path.join(dir,'verification.json'),v=JSON.parse(fs.readFileSync(verificationFile)),{inspectReport}=require('C:/AIHome/claude/skills/game-ui-art/scripts/ui-layout-policy.cjs'),cache=new Map();if(proof.full_project_approved!==false||proof.finite_static_module_errors_proven!==true||v.base!==base||v.all_finite_candidates_proven!==true||!require('./static-proof-contexts.cjs').hasExactFiniteContexts(proof,v,contract.required_cases)||v.games.some(g=>g.unresolved_rows.length))throw Error('Finite static proof incomplete or scope changed');for(const g of v.games){if(hash(fs.readFileSync(g.raw_report))!==g.raw_report_sha256||hash(fs.readFileSync(g.audit_path))!==g.audit_sha256)throw Error('Finite proof raw/audit hash changed');}for(const candidate of proof.candidates){if(!cache.has(candidate.original_report))cache.set(candidate.original_report,readLayoutReport(candidate.original_report));const raw=cache.get(candidate.original_report),m=raw.metadata;if(hash(fs.readFileSync(candidate.original_report))!==candidate.original_report_sha256||m.base!==base||m.runtime_receipts_unchanged!==true||m.sampler_sha256!==freeze.function_sha256||candidate.finite_coverage_pass!==true)throw Error('Finite candidate immutable/source receipt mismatch');const matches=raw.cases.filter(c=>c.id===candidate.original_case_id&&c.width===candidate.width&&c.height===candidate.height);if(matches.length!==1||JSON.stringify(matches[0])!==JSON.stringify(candidate.full_original_case))throw Error('Finite candidate is not an exact original case');if(hash(fs.readFileSync(path.join(dir,candidate.retained_screenshot.file)))!==candidate.retained_screenshot.sha256)throw Error('Finite representative screenshot mismatch');const c={...matches[0],id:candidate.canonical_id},geometry=inspectReport({schema_version:1,source_fingerprints:{},cases:[c]});if(geometry.length)throw Error('Finite representative geometry red');const finiteScope=require('./static-proof-contexts.cjs').finiteCanonicalScope(candidate,v),visibility=finiteScope.eligible?finiteView(candidate,verificationFile):null,scope={...finiteScope,eligible:finiteScope.eligible&&visibility?.eligible===true,visibility};if(scope.eligible)all.push({...c,geometry_errors:geometry,raw_id:candidate.original_case_id,raw_file:candidate.original_report,finite_proof_file:input});else supplemental_only.push({id:c.id,width:c.width,height:c.height,original_case_id:candidate.original_case_id,original_report:candidate.original_report,original_report_sha256:candidate.original_report_sha256,finite_proof_file:input,scope,full_original_case_retained_in:input});}runs.push({kind:'finite-static-errors',source:base,source_stable:true,proof_file:input,proof_sha256:hash(fs.readFileSync(input)),verification_file:verificationFile,verification_sha256:hash(fs.readFileSync(verificationFile)),frames:proof.candidates.length,canonical_eligible:proof.candidates.filter(c=>require('./static-proof-contexts.cjs').finiteCanonicalScope(c,v).eligible&&finiteView(c,verificationFile).eligible).length,supplemental_only:proof.candidates.filter(c=>!require('./static-proof-contexts.cjs').finiteCanonicalScope(c,v).eligible||!finiteView(c,verificationFile).eligible).length,full_project_approved:false,scope:'All retained original fixed-feedback candidates validated; only explicitly eligible cases count toward complete canonical coverage. Supplement-only dynamic-secondary gaps remain missing; not a full UI gate.'});}\r\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ^\r\n\r\nError: Finite static proof incomplete or scope changed\r\n    at Object.<anonymous> (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\coverage-index.cjs:9:674)\r\n    at Module._compile (node:internal/modules/cjs/loader:1830:14)\r\n    at Object..js (node:internal/modules/cjs/loader:1961:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1553:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1355:12)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)\r\n    at node:internal/main/run_main_module:33:47\r\n\r\nNode.js v24.15.0\r\n",
+      "fixture": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\finite-viewport-audit-20261023\\independent-review\\fixtures\\cli-ah30L6"
+    },
+    {
+      "probe": "missing_context",
+      "exit": 1,
+      "stdout": "",
+      "stderr": "node:internal/assert/utils:77\r\n    throw err;\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: Missing exact viewport context\r\n    at C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\finite-visibility-scope.cjs:5:315\r\n    at Object.<anonymous> (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\coverage-index.cjs:9:2208)\r\n    at Module._compile (node:internal/modules/cjs/loader:1830:14)\r\n    at Object..js (node:internal/modules/cjs/loader:1961:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1553:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1355:12)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)\r\n    at node:internal/main/run_main_module:33:47 {\r\n  generatedMessage: false,\r\n  code: 'ERR_ASSERTION',\r\n  actual: undefined,\r\n  expected: true,\r\n  operator: '==',\r\n  diff: 'simple'\r\n}\r\n\r\nNode.js v24.15.0\r\n",
+      "fixture": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\finite-viewport-audit-20261023\\independent-review\\fixtures\\cli-MPo3i1"
+    },
+    {
+      "probe": "duplicate_context",
+      "exit": 1,
+      "stdout": "",
+      "stderr": "node:internal/assert/utils:77\r\n    throw err;\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: Duplicate viewport context\r\n    at Object.buildFiniteVisibilityResolver (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\finite-visibility-scope.cjs:4:183)\r\n    at Object.<anonymous> (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\coverage-index.cjs:8:71)\r\n    at Module._compile (node:internal/modules/cjs/loader:1830:14)\r\n    at Object..js (node:internal/modules/cjs/loader:1961:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1553:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1355:12)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)\r\n    at node:internal/main/run_main_module:33:47 {\r\n  generatedMessage: false,\r\n  code: 'ERR_ASSERTION',\r\n  actual: false,\r\n  expected: true,\r\n  operator: '==',\r\n  diff: 'simple'\r\n}\r\n\r\nNode.js v24.15.0\r\n",
+      "fixture": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\finite-viewport-audit-20261023\\independent-review\\fixtures\\cli-zz3gXT"
+    },
+    {
+      "probe": "assembly_same_audit",
+      "exit": 0,
+      "index_covered": 3,
+      "assembly_selected": 3,
+      "stdout": "ASSEMBLY_PLAN selected=3/6 missing=3 current_source_matches=0/0 official_unchanged=f47417b502fdaebb46a346ed147b2b10e5034f193dcc9a59ea4bd6c3a28a96ec\n",
+      "stderr": "",
+      "fixture": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\finite-viewport-audit-20261023\\independent-review\\fixtures\\cli-25aX2H\\assembly-project"
+    },
+    {
+      "probe": "assembly_different_broader_audit",
+      "exit": 0,
+      "index_covered": 3,
+      "assembly_selected": 6,
+      "stdout": "ASSEMBLY_PLAN selected=6/6 missing=0 current_source_matches=0/0 official_unchanged=f47417b502fdaebb46a346ed147b2b10e5034f193dcc9a59ea4bd6c3a28a96ec\n",
+      "stderr": "",
+      "fixture": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\finite-viewport-audit-20261023\\independent-review\\fixtures\\cli-25aX2H\\assembly-project"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+✔ combines ten old completed sessions with two fresh, retains original NO and excludes failed old cases (76.0294ms)
+✔ refuses absent/duplicate complete session and incomplete replay (183.4017ms)
+✔ refuses mismatched source, missing independent receipt, false verification and changed evidence hash (208.4687ms)
+✔ refuses changed screenshot bytes and case shard bytes (133.1495ms)
+✖ rejects postreceipt before fresh run, comparison/actual receipt disagreement, and contradictory original NO (66.7657ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 767.6079
+
+✖ failing tests:
+
+test at holiday-lab\tests\semester-session-evidence.test.cjs:23:1
+✖ rejects postreceipt before fresh run, comparison/actual receipt disagreement, and contradictory original NO (66.7657ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\tests\semester-session-evidence.test.cjs:23:435)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /receipt|time|after|recovery|recovered|false|true|equal/i,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+exit_code=1

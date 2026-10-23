@@ -1,0 +1,31 @@
+{
+  "adapter_sha256": "250d0c0fd5e5030c3394e45ea404d683703befa6893a9bb5a53d178e2526ba45",
+  "test_source_sha256": "a7389bb0ece11ed502d5bf9e3388cd93025f13b218135bac9e12f84203c776e5",
+  "fixture_extraction": "Unmodified helper prefix before first node:test registration; no core changes.",
+  "results": [
+    {
+      "probe": "after_precedes_fresh_run",
+      "expected": "reject inconsistent receipt/provenance",
+      "accepted": false,
+      "returned": null,
+      "error": "After receipt time order",
+      "fixture": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\semester-session-composite\\independent-review\\fixtures\\semester-session-evidence-mRwZBh"
+    },
+    {
+      "probe": "comparison_disagrees_actual_after_bytes",
+      "expected": "reject inconsistent receipt/provenance",
+      "accepted": false,
+      "returned": null,
+      "error": "Comparison/actual after receipt binding\n+ actual - expected\n\n  {\n+   bytes: 11,\n-   bytes: 10,\n    file: 'runner.mjs',\n    finished: '2026-10-23T03:10:01Z',\n    sha256: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',\n    started: '2026-10-23T03:10:00Z',\n    status: 200\n",
+      "fixture": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\semester-session-composite\\independent-review\\fixtures\\semester-session-evidence-IWffNh"
+    },
+    {
+      "probe": "contradictory_recovery_no",
+      "expected": "reject inconsistent receipt/provenance",
+      "accepted": false,
+      "returned": null,
+      "error": "Recovery NO consistency\n\ntrue !== false\n",
+      "fixture": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\semester-session-composite\\independent-review\\fixtures\\semester-session-evidence-DbLXcH"
+    }
+  ]
+}

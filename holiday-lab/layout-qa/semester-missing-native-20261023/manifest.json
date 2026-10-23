@@ -1,0 +1,48 @@
+{
+  "started": "2026-10-23T03:01:25.189Z",
+  "executable": "C:\\Program Files\\nodejs\\node.exe",
+  "cwd": "C:\\agywork\\agd-holiday-prototypes",
+  "argv": [
+    "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-collect.cjs",
+    "--games=semester",
+    "--languages=ja",
+    "--widths=1440",
+    "--semester-orders=graduation-first,credit-first",
+    "--phase-only=1",
+    "--canonical=1",
+    "--all-errors=1",
+    "--button-states=1",
+    "--scrolls=1",
+    "--sharded=1"
+  ],
+  "environment_override": {
+    "LAYOUT_QA_URL": "http://127.0.0.1:8845"
+  },
+  "source_before": {
+    "phase-collect.cjs": "4c6d7b55479864db55476f948eeb620b27016be719f927dd28aaabfcf9991a33",
+    "layout-report-store.cjs": "371187796f6418c49b3c8fc12eab6960f4cd173756fa39414fe8acef327c810a",
+    "browser-sampler.cjs": "0346d164923e507a4f7df7888a93482fa00ae7871016e96f5f2343c05703e207",
+    "asset-safe-regions.json": "0604fa8281a50acaccc6d151dfa676f1323e3a3b453a4e03bc939ad17e73de2b",
+    "phase-driver.cjs": "74e3a0d73f8d303954cdb3dd46ace40858363135bf2b5ded8ba3b1d98889e7e4",
+    "error-driver.cjs": "fac0ddcdcd479a4d88bab47a12c0abc83698cc86c4d24ee01b1d09608628ae5c",
+    "button-states.cjs": "441fdf4a27634ff56157f85adbf205e4794b4a13819a1c1ba625faa85d1aafe1",
+    "scroll-observer.cjs": "18b0f104b593fc817d92d69ba2f7474fd54e904ecab48bb90c14d17a299a63a3",
+    "viewport-shot.cjs": "c1201ca4d521d843260b4e51a78774b2ee4cc5cfa26715675a511d4de5b74cff"
+  },
+  "requested_sessions": [
+    {
+      "game": "semester",
+      "lang": "ja",
+      "width": 1440,
+      "intent": "graduation-first"
+    },
+    {
+      "game": "semester",
+      "lang": "ja",
+      "width": 1440,
+      "intent": "credit-first"
+    }
+  ],
+  "restart_policy": "Never restart automatically; inspect existing PID/log/status.",
+  "original_recovery_no_unchanged": true
+}

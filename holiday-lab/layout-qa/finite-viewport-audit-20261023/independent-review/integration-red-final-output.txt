@@ -1,0 +1,112 @@
+✔ CLI requires explicit finite viewport audit and keeps hidden320 only as supplement (198.3499ms)
+✖ index binds exact audit metadata and eligible keys; same audit assembly retains full-node refs (130.2911ms)
+✖ assembly cannot substitute broader auditB to re-enable index auditA hidden320 (232.8121ms)
+✖ shared verification stale group hash rejects regardless of resolver order (15.8327ms)
+✖ assembly refuses legacy index missing bound visibility metadata (226.1402ms)
+✖ assembly refuses changed eligible index keyset and duplicate keys (199.6507ms)
+✔ assembly does not silently import old fixed static1/static2 absent from index (192.3314ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 2
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1287.3672
+
+✖ failing tests:
+
+test at holiday-lab\tests\finite-visibility-integration.test.cjs:15:1
+✖ index binds exact audit metadata and eligible keys; same audit assembly retains full-node refs (130.2911ms)
+  AssertionError [ERR_ASSERTION]: Index missing bound audit metadata
+  + actual - expected
+  
+  + 'undefined'
+  - 'string'
+  
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\tests\finite-visibility-integration.test.cjs:15:243)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'string',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\tests\finite-visibility-integration.test.cjs:16:1
+✖ assembly cannot substitute broader auditB to re-enable index auditA hidden320 (232.8121ms)
+  AssertionError [ERR_ASSERTION]: Different audit must be rejected, not upgrade covered3 to selected6
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\tests\finite-visibility-integration.test.cjs:16:305)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\tests\finite-visibility-integration.test.cjs:17:1
+✖ shared verification stale group hash rejects regardless of resolver order (15.8327ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\tests\finite-visibility-integration.test.cjs:17:619)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /SHA|stale/i,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at holiday-lab\tests\finite-visibility-integration.test.cjs:18:1
+✖ assembly refuses legacy index missing bound visibility metadata (226.1402ms)
+  AssertionError [ERR_ASSERTION]: Missing bound scope must fail closed
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\tests\finite-visibility-integration.test.cjs:18:369)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\tests\finite-visibility-integration.test.cjs:19:1
+✖ assembly refuses changed eligible index keyset and duplicate keys (199.6507ms)
+  AssertionError [ERR_ASSERTION]: upgrade
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\tests\finite-visibility-integration.test.cjs:19:668)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
