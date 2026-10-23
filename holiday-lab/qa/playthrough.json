@@ -1,10 +1,10 @@
 {
-  "runId": "2026-10-22T23-47-54-912Z",
-  "url": "http://127.0.0.1:8845",
+  "runId": "2026-10-23T01-04-51-382Z",
+  "url": "http://127.0.0.1:8847",
   "method": "headless Chromium, real DOM buttons/ranges, no direct game imports or state mutation",
   "cases": [
     {
-      "game": "teachers",
+      "game": "new-year",
       "lang": "zh",
       "width": 1440,
       "reducedMotion": "reduce",
@@ -15,8 +15,12 @@
         "uniqueIds": "yes",
         "images": "yes",
         "initialWrongBlocked": "yes",
+        "pause": "yes",
         "noHorizontalOverflow": "yes",
         "completedFromDOM": "yes",
+        "threeBriefsFreshPreviews": "yes",
+        "thirdIntent": "yes",
+        "mutedPlayable": "yes",
         "replay3Shots": "yes",
         "retryFresh": "yes",
         "browserErrors": "yes"
@@ -27,106 +31,71 @@
       "stylesheetSha256": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
       "duplicateIds": [],
       "missingImages": [],
-      "layoutScreenshot": "screenshots/2026-10-22T23-47-54-912Z-teachers-zh-1440-reduce-layout.png",
-      "stageScreenshot": "screenshots/2026-10-22T23-47-54-912Z-teachers-zh-1440-reduce-stage.png",
+      "layoutScreenshot": "screenshots/2026-10-23T01-04-51-382Z-new-year-zh-1440-reduce-layout.png",
+      "stageScreenshot": "screenshots/2026-10-23T01-04-51-382Z-new-year-zh-1440-reduce-stage.png",
       "horizontalOverflow": false,
-      "score": "97 / 100",
+      "score": "100 / 100",
       "artifact": {
-        "panels": [
+        "takes": [
           {
-            "action": "listen",
-            "line": "ask",
-            "pause": 900
+            "brief": "quick-leap",
+            "focus": "quick",
+            "timing": [
+              560,
+              240,
+              400
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 1200,
+              "shares": [
+                0.4666666666666667,
+                0.2,
+                0.3333333333333333
+              ]
+            }
           },
           {
-            "action": "thanks",
-            "line": "thank-patient",
-            "pause": 1400
+            "brief": "floating",
+            "focus": "flight",
+            "timing": [
+              320,
+              680,
+              300
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 1300,
+              "shares": [
+                0.24615384615384617,
+                0.5230769230769231,
+                0.23076923076923078
+              ]
+            }
           },
           {
-            "action": "reply",
-            "line": "reply",
-            "pause": 1100
+            "brief": "your-ending",
+            "focus": "landing",
+            "timing": [
+              220,
+              240,
+              620
+            ],
+            "score": 100,
+            "metrics": {
+              "total": 1080,
+              "shares": [
+                0.2037037037037037,
+                0.2222222222222222,
+                0.5740740740740741
+              ]
+            }
           }
         ],
-        "attempts": 4
+        "attempts": 3
       },
-      "resultScreenshot": "screenshots/2026-10-22T23-47-54-912Z-teachers-zh-1440-reduce-result.png",
-      "replayScreenshot": "screenshots/2026-10-22T23-47-54-912Z-teachers-zh-1440-reduce-replay.png",
-      "replayShots": [
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "game": "national-day",
-      "lang": "zh",
-      "width": 1440,
-      "reducedMotion": "reduce",
-      "keyboard": false,
-      "status": "pass",
-      "checks": {
-        "locale": "yes",
-        "uniqueIds": "yes",
-        "images": "yes",
-        "initialWrongBlocked": "yes",
-        "noHorizontalOverflow": "yes",
-        "completedFromDOM": "yes",
-        "replay3Shots": "yes",
-        "retryFresh": "yes",
-        "browserErrors": "yes"
-      },
-      "consoleErrors": [],
-      "pageErrors": [],
-      "failedRequests": [],
-      "stylesheetSha256": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
-      "duplicateIds": [],
-      "missingImages": [],
-      "layoutScreenshot": "screenshots/2026-10-22T23-47-54-912Z-national-day-zh-1440-reduce-layout.png",
-      "stageScreenshot": "screenshots/2026-10-22T23-47-54-912Z-national-day-zh-1440-reduce-stage.png",
-      "horizontalOverflow": false,
-      "score": "96 / 100",
-      "artifact": {
-        "shots": [
-          {
-            "camera": -12,
-            "fore": 22,
-            "mid": -1,
-            "far": -4,
-            "order": "normal",
-            "screen_fore": 82.8,
-            "screen_mid": 55,
-            "screen_far": 48.4,
-            "screen_subject": 57.2
-          },
-          {
-            "camera": 0,
-            "fore": 22,
-            "mid": 0,
-            "far": 0,
-            "order": "normal",
-            "screen_fore": 72,
-            "screen_mid": 50,
-            "screen_far": 50,
-            "screen_subject": 50
-          },
-          {
-            "camera": 12,
-            "fore": 22,
-            "mid": 1,
-            "far": 4,
-            "order": "normal",
-            "screen_fore": 61.2,
-            "screen_mid": 45,
-            "screen_far": 51.6,
-            "screen_subject": 42.8
-          }
-        ],
-        "misses": 1
-      },
-      "resultScreenshot": "screenshots/2026-10-22T23-47-54-912Z-national-day-zh-1440-reduce-result.png",
-      "replayScreenshot": "screenshots/2026-10-22T23-47-54-912Z-national-day-zh-1440-reduce-replay.png",
+      "resultScreenshot": "screenshots/2026-10-23T01-04-51-382Z-new-year-zh-1440-reduce-result.png",
+      "replayScreenshot": "screenshots/2026-10-23T01-04-51-382Z-new-year-zh-1440-reduce-replay.png",
       "replayShots": [
         0,
         1,
@@ -2918,12 +2887,181 @@
         "games/exhibition.mjs": "1c6370fd2e12424defa18963414adf5546dc32f3c2e17450078a3b9ed27bef6b"
       },
       "browserVersion": "151.0.7922.34"
+    },
+    {
+      "runId": "2026-10-22T23-47-54-912Z",
+      "url": "http://127.0.0.1:8845",
+      "method": "headless Chromium, real DOM buttons/ranges, no direct game imports or state mutation",
+      "cases": [
+        {
+          "game": "teachers",
+          "lang": "zh",
+          "width": 1440,
+          "reducedMotion": "reduce",
+          "keyboard": false,
+          "status": "pass",
+          "checks": {
+            "locale": "yes",
+            "uniqueIds": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes",
+            "completedFromDOM": "yes",
+            "replay3Shots": "yes",
+            "retryFresh": "yes",
+            "browserErrors": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "stylesheetSha256": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+          "duplicateIds": [],
+          "missingImages": [],
+          "layoutScreenshot": "screenshots/2026-10-22T23-47-54-912Z-teachers-zh-1440-reduce-layout.png",
+          "stageScreenshot": "screenshots/2026-10-22T23-47-54-912Z-teachers-zh-1440-reduce-stage.png",
+          "horizontalOverflow": false,
+          "score": "97 / 100",
+          "artifact": {
+            "panels": [
+              {
+                "action": "listen",
+                "line": "ask",
+                "pause": 900
+              },
+              {
+                "action": "thanks",
+                "line": "thank-patient",
+                "pause": 1400
+              },
+              {
+                "action": "reply",
+                "line": "reply",
+                "pause": 1100
+              }
+            ],
+            "attempts": 4
+          },
+          "resultScreenshot": "screenshots/2026-10-22T23-47-54-912Z-teachers-zh-1440-reduce-result.png",
+          "replayScreenshot": "screenshots/2026-10-22T23-47-54-912Z-teachers-zh-1440-reduce-replay.png",
+          "replayShots": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "game": "national-day",
+          "lang": "zh",
+          "width": 1440,
+          "reducedMotion": "reduce",
+          "keyboard": false,
+          "status": "pass",
+          "checks": {
+            "locale": "yes",
+            "uniqueIds": "yes",
+            "images": "yes",
+            "initialWrongBlocked": "yes",
+            "noHorizontalOverflow": "yes",
+            "completedFromDOM": "yes",
+            "replay3Shots": "yes",
+            "retryFresh": "yes",
+            "browserErrors": "yes"
+          },
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedRequests": [],
+          "stylesheetSha256": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+          "duplicateIds": [],
+          "missingImages": [],
+          "layoutScreenshot": "screenshots/2026-10-22T23-47-54-912Z-national-day-zh-1440-reduce-layout.png",
+          "stageScreenshot": "screenshots/2026-10-22T23-47-54-912Z-national-day-zh-1440-reduce-stage.png",
+          "horizontalOverflow": false,
+          "score": "96 / 100",
+          "artifact": {
+            "shots": [
+              {
+                "camera": -12,
+                "fore": 22,
+                "mid": -1,
+                "far": -4,
+                "order": "normal",
+                "screen_fore": 82.8,
+                "screen_mid": 55,
+                "screen_far": 48.4,
+                "screen_subject": 57.2
+              },
+              {
+                "camera": 0,
+                "fore": 22,
+                "mid": 0,
+                "far": 0,
+                "order": "normal",
+                "screen_fore": 72,
+                "screen_mid": 50,
+                "screen_far": 50,
+                "screen_subject": 50
+              },
+              {
+                "camera": 12,
+                "fore": 22,
+                "mid": 1,
+                "far": 4,
+                "order": "normal",
+                "screen_fore": 61.2,
+                "screen_mid": 45,
+                "screen_far": 51.6,
+                "screen_subject": 42.8
+              }
+            ],
+            "misses": 1
+          },
+          "resultScreenshot": "screenshots/2026-10-22T23-47-54-912Z-national-day-zh-1440-reduce-result.png",
+          "replayScreenshot": "screenshots/2026-10-22T23-47-54-912Z-national-day-zh-1440-reduce-replay.png",
+          "replayShots": [
+            0,
+            1,
+            2
+          ]
+        }
+      ],
+      "errors": [],
+      "status": "pass",
+      "servedSourceSha256": {
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "catalog.mjs": "3ff982b58d12e560e94d90ef3032ec389e48207d50bbec91268f914a56882dad",
+        "games/new-year.mjs": "a6203561b7d3712508f213baceda92e4de4b4979ddb9bedbbbbe750d1ed9e950",
+        "games/lunar-new-year.mjs": "79981ce5881980141fa9be5e996901ca4875eb0c41a2a21547724f28a2b78bf7",
+        "games/lantern.mjs": "a550a9c7b2abaaf2ba4f34ea81963cb61431ed7ce1e5de77a12cabb1fc661c2c",
+        "games/children.mjs": "b314af117311a0869d4517c115975f0091aee21000caa25d8524e7b08ba07c18",
+        "games/dragon-boat.mjs": "12c515a8434ea32cd1fdd6013fa9b362ea76488b2ef24a44b1b4ea02d8da02c7",
+        "games/mid-autumn.mjs": "a8c3bdf7368b51e69a41665e68b4ab8b50829be5f6089ebfd2cf757936f19dd1",
+        "games/teachers.mjs": "7438262d1d96d921d5a13a243494c24f16e29002c5149c0b0146d625506c00fb",
+        "games/national-day.mjs": "9c697f08c24f9eae89ac55b71fc37bcfe8546c65b7ca3264a88155b5a63891fa",
+        "games/semester.mjs": "b184437bf226354f8602ed5567c4ac941bff6539176f9575cf737a808d7fbcc9",
+        "games/exhibition.mjs": "1c6370fd2e12424defa18963414adf5546dc32f3c2e17450078a3b9ed27bef6b"
+      },
+      "browserVersion": "151.0.7922.34",
+      "invalidatedFullMatrix": {
+        "runId": "2026-10-22T13-20-56-816Z",
+        "changedSourceFiles": [
+          "runner.mjs",
+          "catalog.mjs",
+          "games/new-year.mjs",
+          "games/lunar-new-year.mjs",
+          "games/children.mjs",
+          "games/mid-autumn.mjs",
+          "games/teachers.mjs",
+          "games/national-day.mjs",
+          "games/semester.mjs"
+        ],
+        "note": "Only the explicitly selected cases are verified; old full-matrix evidence is not reused."
+      }
     }
   ],
   "servedSourceSha256": {
     "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
     "catalog.mjs": "3ff982b58d12e560e94d90ef3032ec389e48207d50bbec91268f914a56882dad",
-    "games/new-year.mjs": "a6203561b7d3712508f213baceda92e4de4b4979ddb9bedbbbbe750d1ed9e950",
+    "games/new-year.mjs": "42565e8c5c9e60240f686254a430c62e027c4d93a91a32e20c419799b15be7e7",
     "games/lunar-new-year.mjs": "79981ce5881980141fa9be5e996901ca4875eb0c41a2a21547724f28a2b78bf7",
     "games/lantern.mjs": "a550a9c7b2abaaf2ba4f34ea81963cb61431ed7ce1e5de77a12cabb1fc661c2c",
     "games/children.mjs": "b314af117311a0869d4517c115975f0091aee21000caa25d8524e7b08ba07c18",
