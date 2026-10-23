@@ -1,3 +1,18 @@
+## 2026-10-23 接續：三語導覽修正版8872，WebGL回查仍待回傳
+
+- source_agent: codex；TF-GO。使用者已要求「繼續」，本輪完成首頁／儀表板啟動、WebGL回查與英日桌面導覽修正；前輪關機暫停段屬歷史。本機分支codex/nav-language-desktop，未push／發布／main／刪檔／C節操作，勞動節仍暫緩。
+- 最新 .measure-nav-language-20261023-02（360檔、app-C4CTM4HI.js），http://127.0.0.1:8872/ ，英文 /?lang=en 、日文 /?lang=ja ，進度 /progress/ 。8870為小颯前版；8860是更舊版；8871是本輪首版（章節定位真RED），都保留，不當最新。
+- 桌面1181px以上改兩層共用導覽，上排AGD／系名／報名，下排八章節＋兩語言；移除英日761–1900強制隱藏。原字型、字級與小颯首圖／署名保留。手機平板仍是可展開選單。
+- 另修app／hash路由寫死60px及作品定位80px：共用siteHeaderOffset依實際固定列高度加12px，章節標題可見。原症狀en1440 NAV_LAYOUT0/1；首版章節遮擋真RED保留；最新三語×390/1180/1181/1440/1900/2284，18/18實際UI通過，含完整label、手機展開／自動關閉、桌面章節定位及18PNG。
+- 本輪Drive指定交接夾仍只有5份工單／腳本，近兩日Flora／倉鼠名稱搜尋只回兩工單；未收到可整合WebGL包。最新實查時間及完整回覆在holiday-lab/reports/nav-language-desktop-20261023/webgl-recheck.json，不拿19:49舊結果冒充本輪。未啟Unity、未重派、未下載舊大型包。
+- 報告holiday-lab/reports/nav-language-desktop-20261023/REPORT.md，原始red／green／green-r2與proof.json；可回歸命令node scripts/test-nav-layout.cjs <本機base含結尾/> <新證據目錄>。本輪只宣告導覽／定位通過，不借前版全站或遊戲收據。
+- 下一輪第一件事：先看8872三語導覽，按使用者具體回饋續修；只有TF-BASE有新回傳再驗包／整合。其餘4PROGRAM相依欄位、指南缺件、完整UI與母語／真人審閱仍待續，不重啟勞動或舊巨量工作。
+
+```text
+cd C:/agywork/agd-holiday-prototypes
+node scripts/serve-local-review.cjs --site=.measure-nav-language-20261023-02 --dashboard=holiday-lab/dashboard/out --port=8872
+```
+
 ## 2026-10-23 關機前保全：小颯首頁已驗、TF-BASE未見WebGL，依使用者要求暫停
 
 - source_agent: codex；TF-GO。工作樹 C:/agywork/agd-holiday-prototypes，分支 codex/xiaosa-credit-review。使用者要求完成本段後暫停以便關機；不再新增工作或重送工單。8870是最新小颯本機審閱版，關機後服務會停止。
