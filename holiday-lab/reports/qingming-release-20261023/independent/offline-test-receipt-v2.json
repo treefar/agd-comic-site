@@ -1,0 +1,71 @@
+{
+  "at": "2026-10-23T10:13:35.476Z",
+  "scope": "independent-source-plan-tests-only",
+  "preparation": "holiday-lab/reports/qingming-release-20261023/domain/preparations/2026-10-23T10-11-30-237Z",
+  "before": [
+    {
+      "file": "holiday-lab/reports/qingming-release-20261023/domain/domain.mjs",
+      "sha256": "abcc161f80c0b946c58af56f8e67681fce4b3046c41e3f92d951cf87888ac482"
+    },
+    {
+      "file": "holiday-lab/reports/qingming-release-20261023/domain/domain.test.mjs",
+      "sha256": "e3b7a68fdc7d2128f79eeeb36d732c6f34b15eb86a9a002f7fb8626c1e8037f6"
+    },
+    {
+      "file": "holiday-lab/reports/qingming-release-20261023/domain/prepare.mjs",
+      "sha256": "b881c8139c43d9f63ed6123402f78d9ae7a2920d6114d31e55209204c0423b03"
+    },
+    {
+      "file": "holiday-lab/reports/qingming-release-20261023/independent/review-domain.test.mjs",
+      "sha256": "eb14d7ba7b69734a1d2fd5ae00ce1045b93fd37907164c99a4a344f0fe949c31"
+    },
+    {
+      "file": "holiday-lab/reports/qingming-release-20261023/independent/verify-preparation.mjs",
+      "sha256": "a0c0a59129e68aa873185c00dd52c98a8548088cddd9db2af632965a50a0c321"
+    }
+  ],
+  "after": [
+    {
+      "file": "holiday-lab/reports/qingming-release-20261023/domain/domain.mjs",
+      "sha256": "abcc161f80c0b946c58af56f8e67681fce4b3046c41e3f92d951cf87888ac482"
+    },
+    {
+      "file": "holiday-lab/reports/qingming-release-20261023/domain/domain.test.mjs",
+      "sha256": "e3b7a68fdc7d2128f79eeeb36d732c6f34b15eb86a9a002f7fb8626c1e8037f6"
+    },
+    {
+      "file": "holiday-lab/reports/qingming-release-20261023/domain/prepare.mjs",
+      "sha256": "b881c8139c43d9f63ed6123402f78d9ae7a2920d6114d31e55209204c0423b03"
+    },
+    {
+      "file": "holiday-lab/reports/qingming-release-20261023/independent/review-domain.test.mjs",
+      "sha256": "eb14d7ba7b69734a1d2fd5ae00ce1045b93fd37907164c99a4a344f0fe949c31"
+    },
+    {
+      "file": "holiday-lab/reports/qingming-release-20261023/independent/verify-preparation.mjs",
+      "sha256": "a0c0a59129e68aa873185c00dd52c98a8548088cddd9db2af632965a50a0c321"
+    }
+  ],
+  "source_method_stable": true,
+  "results": [
+    {
+      "label": "author-v2",
+      "command": "node --test holiday-lab/reports/qingming-release-20261023/domain/domain.test.mjs",
+      "exit": 0
+    },
+    {
+      "label": "independent-v2",
+      "command": "node --test holiday-lab/reports/qingming-release-20261023/independent/review-domain.test.mjs",
+      "exit": 0
+    },
+    {
+      "label": "verify-preparation-v2",
+      "command": "node holiday-lab/reports/qingming-release-20261023/independent/verify-preparation.mjs holiday-lab/reports/qingming-release-20261023/domain/preparations/2026-10-23T10-11-30-237Z",
+      "exit": 0
+    }
+  ],
+  "native_launched": false,
+  "all_owner_upper_bound_proven": false,
+  "canonical_eligible": false,
+  "full_project_approved": false
+}

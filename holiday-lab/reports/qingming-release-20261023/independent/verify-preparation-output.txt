@@ -1,0 +1,27 @@
+COMMAND: node holiday-lab/reports/qingming-release-20261023/independent/verify-preparation.mjs holiday-lab/reports/qingming-release-20261023/domain/preparations/2026-10-23T10-09-57-042Z
+AssertionError [ERR_ASSERTION]: plan differs from current pinned source domain
++ actual - expected
+... Skipped lines
+
+  {
+    axes: [
+      {
+        id: 'kite-angle',
+        label: {
+...
+        'Every direct range value and every +/- transition produces the declared canonical input and output string.',
+-       'After every text/value/mode change, force layout, await document.fonts.ready, assert loaded, then obtain Range/ink/CDP/PNG. Re-check font status and stable layout before and after capture; lazy font loading cannot be swallowed.',
+        'Each observed owner has full CDP platform font attribution; original font file and runtime bindings remain unchanged.',
+        'For all 213 axis values, output/row/group/controls/paper dimensions and other-owner positions relative to the same fixed container are exactly equal to the baseline, except the intended ink. Do not introduce an arbitrary geometry tolerance.',
+        'All output ink and fixed siblings remain within their actual safe paper and original viewport after normal scrolling; no clipping or changed row height.',
+        'For each of 22 phase/hint/pause/audio modes, capture full original DOM/ink/PNG including toolbar, help/status, progress and hint; record changed y offsets and internal/window scroll.',
+        'Measure every candidate actual ink, preserve all ties and width/height/area trade-offs, then reach each selected simultaneous extrema witness through real controls; count characters is never a selector.',
+
+    at validatePlan (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/reports/qingming-release-20261023/domain/domain.mjs:69:48)
+    at verify (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/reports/qingming-release-20261023/independent/verify-preparation.mjs:12:3)
+    at file:///C:/agywork/agd-holiday-prototypes/holiday-lab/reports/qingming-release-20261023/independent/verify-preparation.mjs:33:100
+    at ModuleJob.run (node:internal/modules/esm/module_job:437:25)
+    at async node:internal/modules/esm/loader:639:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+EXIT=1

@@ -116,6 +116,62 @@
       {
         "path": "holiday-lab/layout-qa/qingming-favicon-independent-20261023/run.cjs",
         "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "holiday-lab/reports/comprehensive-followup-20261023/root/recovery-runs/2026-10-23T10-10-27-722Z/result.json",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "holiday-lab/reports/comprehensive-followup-20261023/root/verify-recovery.cjs",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "holiday-lab/reports/comprehensive-followup-20261023/root/webgl-source-recheck.json",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "holiday-lab/reports/guide-graduation-research-20261023/verification.json",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "holiday-lab/reports/guide-graduation-research-20261023/sources.json",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "holiday-lab/reports/guide-graduation-research-20261023/STUDENT-DRAFT.md",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "holiday-lab/reports/guide-graduation-research-20261023/FINDINGS.md",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "holiday-lab/reports/guide-graduation-research-20261023/fetch-official.mjs",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "holiday-lab/reports/guide-graduation-research-20261023/verify.mjs",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "data/students/guide.json",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "holiday-lab/reports/comprehensive-audit-20261023/scope.json",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "holiday-lab/reports/comprehensive-audit-20261023/REPORT.md",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "holiday-lab/reports/comprehensive-followup-20261023/root/translation-readonly-green-command.json",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "holiday-lab/reports/qingming-release-20261023/independent/REPORT.md",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
       }
     ],
     "notes": [
@@ -520,11 +576,13 @@
           "title": "在校指南與英日用語",
           "workflow": "available",
           "headline": "指南摘要、身分篩選與完整說明已有本機成果。",
-          "proof_summary": "本批49個英日新譯值：84個可見案例驗全文；14例只存在資料，沒有算畫面通過。",
-          "limitation": "校務專名、正式資格與當期流程仍需逐筆來源；不是全站母語審校。",
+          "proof_summary": "本批49個英日新譯值：84個可見案例驗全文；14例只存在資料，沒有算畫面通過。 另有8865獨立翻譯／換行審閱版：8組頁面、24次新譯全文、10364次指南葉文字觀察通過。 證照／英文另補2題、12筆官方來源分層草稿，尚未套產品。",
+          "limitation": "校務專名、正式資格與當期流程仍需逐筆來源；不是全站母語審校。 8865為codex/plain-guide-layout另分支，未合主工作樹；8863首頁與舊整包收據不轉作新版全站批准。 當日live正文僅2份，其餘索引或未完整附件明列，未取得現行完整規章／表單。",
           "source_files": [
             "holiday-lab/translation-review/guide-terms-rendered11/summary.json",
-            "holiday-lab/reports/guide-index-evidence/result.json"
+            "holiday-lab/reports/guide-index-evidence/result.json",
+            "holiday-lab/reports/comprehensive-followup-20261023/root/translation-readonly-green-command.json",
+            "holiday-lab/reports/guide-graduation-research-20261023/verification.json"
           ],
           "links": [
             {
@@ -535,6 +593,21 @@
             {
               "label": "英日排版報告",
               "href": "../../../holiday-lab/translation-review/guide-terms-rendered11/REPORT.md",
+              "kind": "local-file"
+            },
+            {
+              "label": "新版翻譯與手機排版驗收",
+              "href": "../../../holiday-lab/reports/comprehensive-followup-20261023/REPORT.md",
+              "kind": "local-file"
+            },
+            {
+              "label": "學生版流程補研草稿",
+              "href": "../../../holiday-lab/reports/guide-graduation-research-20261023/STUDENT-DRAFT.md",
+              "kind": "local-file"
+            },
+            {
+              "label": "補研範圍與缺件",
+              "href": "../../../holiday-lab/reports/guide-graduation-research-20261023/REPORT.md",
               "kind": "local-file"
             }
           ]
@@ -707,11 +780,12 @@
           "title": "學生作品策展示範",
           "workflow": "waiting",
           "headline": "先用一款小型策展互動，看學生作品如何與試玩結合。",
-          "proof_summary": "9組三語／三寬真操作；完整海報、原署名、展位檢查、鍵盤完成與重設均有收據。",
+          "proof_summary": "9組三語／三寬真操作；完整海報、原署名、展位檢查、鍵盤完成與重設均有收據。 追加9組手機三語網路故障／重試／載入中換語言，15張原圖通過。",
           "limitation": "獨立示範不代表既有14款美術已全替換；學生作品製作流程與新增公開改編授權沒有逐件查證。待你審閱後才決定是否擴大。",
           "source_files": [
             "holiday-lab/reports/hero-release-20261023/student-independent/runs/2026-10-23T09-48-25-302Z/result.json",
-            "data/news.json"
+            "data/news.json",
+            "holiday-lab/reports/comprehensive-followup-20261023/root/recovery-runs/2026-10-23T10-10-27-722Z/result.json"
           ],
           "links": [
             {
@@ -727,6 +801,11 @@
             {
               "label": "獨立驗收",
               "href": "../../../holiday-lab/reports/hero-release-20261023/student-independent/REPORT.md",
+              "kind": "local-file"
+            },
+            {
+              "label": "載入與重試驗收",
+              "href": "../../../holiday-lab/reports/comprehensive-followup-20261023/REPORT.md",
               "kind": "local-file"
             }
           ]
@@ -761,9 +840,10 @@
           "workflow": "available",
           "headline": "三語雙寬核心流程已驗證，圖示修復持續正常。",
           "proof_summary": "清明六組核心流程已隨本輪03版重新驗收；舊404修復收據保持原範圍，不移轉舊版UI通過。",
-          "limitation": "舊失敗與新診斷分開；沒有收據不手填pass，也不升格完整UI。",
+          "limitation": "舊失敗與新診斷分開；沒有收據不手填pass，也不升格完整UI。 來源域準備已獨立審查，原生聯合布局／全部文字墨跡上界仍未證，不等於error-longest通過。",
           "source_files": [
-            "holiday-lab/reports/ui-polish-20261023/independent/runs/2026-10-23T08-07-41-848Z/result.json"
+            "holiday-lab/reports/ui-polish-20261023/independent/runs/2026-10-23T08-07-41-848Z/result.json",
+            "holiday-lab/reports/qingming-release-20261023/independent/REPORT.md"
           ],
           "links": [
             {
@@ -774,6 +854,11 @@
             {
               "label": "本輪獨立驗收",
               "href": "../../../holiday-lab/reports/ui-polish-20261023/independent/REPORT.md",
+              "kind": "local-file"
+            },
+            {
+              "label": "來源域準備與原生缺口",
+              "href": "../../../holiday-lab/reports/qingming-release-20261023/independent/REPORT.md",
               "kind": "local-file"
             }
           ]
@@ -830,16 +915,22 @@
           "title": "TF-BASE學生作品／WebGL",
           "workflow": "waiting",
           "headline": "等來源與實際Build回傳，目前不能說已可試玩。",
-          "proof_summary": "現有交接狀態：已排檢查、未執行。",
-          "limitation": "這份排程收據不是TF-BASE最新現況或Build成功；新回報待查。",
+          "proof_summary": "交接夾直接項目回查：5份工單／腳本（2026-10-23 10:06:12 UTC）；未見專案或Build回傳。",
+          "limitation": "只查既有交接夾，不代表其他位置沒有來源；未重送工單、未啟Unity。",
           "source_files": [
             "holiday-lab/student-webgl/queued-inspection.json",
-            "holiday-lab/student-webgl/REPORT.md"
+            "holiday-lab/student-webgl/REPORT.md",
+            "holiday-lab/reports/comprehensive-followup-20261023/root/webgl-source-recheck.json"
           ],
           "links": [
             {
               "label": "TF-BASE工單與缺件",
               "href": "../../../holiday-lab/student-webgl/REPORT.md",
+              "kind": "local-file"
+            },
+            {
+              "label": "本次回查紀錄",
+              "href": "../../../holiday-lab/reports/comprehensive-followup-20261023/REPORT.md",
               "kind": "local-file"
             }
           ]
@@ -1949,6 +2040,20 @@
       "holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/source-before.json": "../../../holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/source-before.json",
       "holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/source-after.json": "../../../holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/source-after.json",
       "holiday-lab/layout-qa/qingming-favicon-independent-20261023/run.cjs": "../../../holiday-lab/layout-qa/qingming-favicon-independent-20261023/run.cjs",
+      "holiday-lab/reports/comprehensive-followup-20261023/root/recovery-runs/2026-10-23T10-10-27-722Z/result.json": "../../../holiday-lab/reports/comprehensive-followup-20261023/root/recovery-runs/2026-10-23T10-10-27-722Z/result.json",
+      "holiday-lab/reports/comprehensive-followup-20261023/root/verify-recovery.cjs": "../../../holiday-lab/reports/comprehensive-followup-20261023/root/verify-recovery.cjs",
+      "holiday-lab/reports/comprehensive-followup-20261023/root/webgl-source-recheck.json": "../../../holiday-lab/reports/comprehensive-followup-20261023/root/webgl-source-recheck.json",
+      "holiday-lab/reports/guide-graduation-research-20261023/verification.json": "../../../holiday-lab/reports/guide-graduation-research-20261023/verification.json",
+      "holiday-lab/reports/guide-graduation-research-20261023/sources.json": "../../../holiday-lab/reports/guide-graduation-research-20261023/sources.json",
+      "holiday-lab/reports/guide-graduation-research-20261023/STUDENT-DRAFT.md": "../../../holiday-lab/reports/guide-graduation-research-20261023/STUDENT-DRAFT.md",
+      "holiday-lab/reports/guide-graduation-research-20261023/FINDINGS.md": "../../../holiday-lab/reports/guide-graduation-research-20261023/FINDINGS.md",
+      "holiday-lab/reports/guide-graduation-research-20261023/fetch-official.mjs": "../../../holiday-lab/reports/guide-graduation-research-20261023/fetch-official.mjs",
+      "holiday-lab/reports/guide-graduation-research-20261023/verify.mjs": "../../../holiday-lab/reports/guide-graduation-research-20261023/verify.mjs",
+      "data/students/guide.json": "../../../data/students/guide.json",
+      "holiday-lab/reports/comprehensive-audit-20261023/scope.json": "../../../holiday-lab/reports/comprehensive-audit-20261023/scope.json",
+      "holiday-lab/reports/comprehensive-audit-20261023/REPORT.md": "../../../holiday-lab/reports/comprehensive-audit-20261023/REPORT.md",
+      "holiday-lab/reports/comprehensive-followup-20261023/root/translation-readonly-green-command.json": "../../../holiday-lab/reports/comprehensive-followup-20261023/root/translation-readonly-green-command.json",
+      "holiday-lab/reports/qingming-release-20261023/independent/REPORT.md": "../../../holiday-lab/reports/qingming-release-20261023/independent/REPORT.md",
       "holiday-lab/extra-qa/runs/2026-10-22T23-47-55-037Z/results.json": "../../../holiday-lab/extra-qa/runs/2026-10-22T23-47-55-037Z/results.json"
     }
   }

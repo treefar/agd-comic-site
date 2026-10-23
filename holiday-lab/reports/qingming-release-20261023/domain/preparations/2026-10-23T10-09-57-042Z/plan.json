@@ -1,0 +1,4768 @@
+{
+  "schema": 1,
+  "scope": "qingming-current-error-text-domain-v1",
+  "target_base": "http://127.0.0.1:8863",
+  "native_started": false,
+  "sources": [
+    {
+      "file": "holiday-lab/games/qingming.mjs",
+      "sha256": "3936b5606016b60ca38de77e63d2f2170681592e6dc7e7c9147e29210870cc5f"
+    },
+    {
+      "file": "holiday-lab/runner.mjs",
+      "sha256": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1"
+    },
+    {
+      "file": "holiday-lab/catalog.mjs",
+      "sha256": "3ff982b58d12e560e94d90ef3032ec389e48207d50bbec91268f914a56882dad"
+    },
+    {
+      "file": "holiday-lab/lab.css",
+      "sha256": "e53bb02a341978cc311f7c33fa9e26667ae3c5f165fe71b85fbaa89db1311d0d"
+    },
+    {
+      "file": "ui-layout-contract.json",
+      "sha256": "00633d6b0f19913062c919f93a938bcfe9f0614455c160dd4fe702e836c49ae4"
+    }
+  ],
+  "contexts": [
+    {
+      "lang": "zh",
+      "width": 320,
+      "height": 900
+    },
+    {
+      "lang": "en",
+      "width": 320,
+      "height": 900
+    },
+    {
+      "lang": "ja",
+      "width": 320,
+      "height": 900
+    },
+    {
+      "lang": "zh",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "lang": "en",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "lang": "ja",
+      "width": 1440,
+      "height": 1000
+    }
+  ],
+  "axes": [
+    {
+      "id": "kite-angle",
+      "owner": "output[for=\"kite-angle\"]",
+      "min": -30,
+      "max": 30,
+      "step": 1,
+      "label": {
+        "zh": "牽線角度",
+        "en": "Line angle",
+        "ja": "糸の角度"
+      },
+      "values": [
+        {
+          "number": -30,
+          "string": "-30",
+          "index": 0
+        },
+        {
+          "number": -29,
+          "string": "-29",
+          "index": 1
+        },
+        {
+          "number": -28,
+          "string": "-28",
+          "index": 2
+        },
+        {
+          "number": -27,
+          "string": "-27",
+          "index": 3
+        },
+        {
+          "number": -26,
+          "string": "-26",
+          "index": 4
+        },
+        {
+          "number": -25,
+          "string": "-25",
+          "index": 5
+        },
+        {
+          "number": -24,
+          "string": "-24",
+          "index": 6
+        },
+        {
+          "number": -23,
+          "string": "-23",
+          "index": 7
+        },
+        {
+          "number": -22,
+          "string": "-22",
+          "index": 8
+        },
+        {
+          "number": -21,
+          "string": "-21",
+          "index": 9
+        },
+        {
+          "number": -20,
+          "string": "-20",
+          "index": 10
+        },
+        {
+          "number": -19,
+          "string": "-19",
+          "index": 11
+        },
+        {
+          "number": -18,
+          "string": "-18",
+          "index": 12
+        },
+        {
+          "number": -17,
+          "string": "-17",
+          "index": 13
+        },
+        {
+          "number": -16,
+          "string": "-16",
+          "index": 14
+        },
+        {
+          "number": -15,
+          "string": "-15",
+          "index": 15
+        },
+        {
+          "number": -14,
+          "string": "-14",
+          "index": 16
+        },
+        {
+          "number": -13,
+          "string": "-13",
+          "index": 17
+        },
+        {
+          "number": -12,
+          "string": "-12",
+          "index": 18
+        },
+        {
+          "number": -11,
+          "string": "-11",
+          "index": 19
+        },
+        {
+          "number": -10,
+          "string": "-10",
+          "index": 20
+        },
+        {
+          "number": -9,
+          "string": "-9",
+          "index": 21
+        },
+        {
+          "number": -8,
+          "string": "-8",
+          "index": 22
+        },
+        {
+          "number": -7,
+          "string": "-7",
+          "index": 23
+        },
+        {
+          "number": -6,
+          "string": "-6",
+          "index": 24
+        },
+        {
+          "number": -5,
+          "string": "-5",
+          "index": 25
+        },
+        {
+          "number": -4,
+          "string": "-4",
+          "index": 26
+        },
+        {
+          "number": -3,
+          "string": "-3",
+          "index": 27
+        },
+        {
+          "number": -2,
+          "string": "-2",
+          "index": 28
+        },
+        {
+          "number": -1,
+          "string": "-1",
+          "index": 29
+        },
+        {
+          "number": 0,
+          "string": "0",
+          "index": 30
+        },
+        {
+          "number": 1,
+          "string": "1",
+          "index": 31
+        },
+        {
+          "number": 2,
+          "string": "2",
+          "index": 32
+        },
+        {
+          "number": 3,
+          "string": "3",
+          "index": 33
+        },
+        {
+          "number": 4,
+          "string": "4",
+          "index": 34
+        },
+        {
+          "number": 5,
+          "string": "5",
+          "index": 35
+        },
+        {
+          "number": 6,
+          "string": "6",
+          "index": 36
+        },
+        {
+          "number": 7,
+          "string": "7",
+          "index": 37
+        },
+        {
+          "number": 8,
+          "string": "8",
+          "index": 38
+        },
+        {
+          "number": 9,
+          "string": "9",
+          "index": 39
+        },
+        {
+          "number": 10,
+          "string": "10",
+          "index": 40
+        },
+        {
+          "number": 11,
+          "string": "11",
+          "index": 41
+        },
+        {
+          "number": 12,
+          "string": "12",
+          "index": 42
+        },
+        {
+          "number": 13,
+          "string": "13",
+          "index": 43
+        },
+        {
+          "number": 14,
+          "string": "14",
+          "index": 44
+        },
+        {
+          "number": 15,
+          "string": "15",
+          "index": 45
+        },
+        {
+          "number": 16,
+          "string": "16",
+          "index": 46
+        },
+        {
+          "number": 17,
+          "string": "17",
+          "index": 47
+        },
+        {
+          "number": 18,
+          "string": "18",
+          "index": 48
+        },
+        {
+          "number": 19,
+          "string": "19",
+          "index": 49
+        },
+        {
+          "number": 20,
+          "string": "20",
+          "index": 50
+        },
+        {
+          "number": 21,
+          "string": "21",
+          "index": 51
+        },
+        {
+          "number": 22,
+          "string": "22",
+          "index": 52
+        },
+        {
+          "number": 23,
+          "string": "23",
+          "index": 53
+        },
+        {
+          "number": 24,
+          "string": "24",
+          "index": 54
+        },
+        {
+          "number": 25,
+          "string": "25",
+          "index": 55
+        },
+        {
+          "number": 26,
+          "string": "26",
+          "index": 56
+        },
+        {
+          "number": 27,
+          "string": "27",
+          "index": 57
+        },
+        {
+          "number": 28,
+          "string": "28",
+          "index": 58
+        },
+        {
+          "number": 29,
+          "string": "29",
+          "index": 59
+        },
+        {
+          "number": 30,
+          "string": "30",
+          "index": 60
+        }
+      ],
+      "serialization_status": "candidate canonical strings; native range and stepper proof still required"
+    },
+    {
+      "id": "kite-length",
+      "owner": "output[for=\"kite-length\"]",
+      "min": 50,
+      "max": 150,
+      "step": 1,
+      "label": {
+        "zh": "牽線長度",
+        "en": "Line length",
+        "ja": "糸の長さ"
+      },
+      "values": [
+        {
+          "number": 50,
+          "string": "50",
+          "index": 0
+        },
+        {
+          "number": 51,
+          "string": "51",
+          "index": 1
+        },
+        {
+          "number": 52,
+          "string": "52",
+          "index": 2
+        },
+        {
+          "number": 53,
+          "string": "53",
+          "index": 3
+        },
+        {
+          "number": 54,
+          "string": "54",
+          "index": 4
+        },
+        {
+          "number": 55,
+          "string": "55",
+          "index": 5
+        },
+        {
+          "number": 56,
+          "string": "56",
+          "index": 6
+        },
+        {
+          "number": 57,
+          "string": "57",
+          "index": 7
+        },
+        {
+          "number": 58,
+          "string": "58",
+          "index": 8
+        },
+        {
+          "number": 59,
+          "string": "59",
+          "index": 9
+        },
+        {
+          "number": 60,
+          "string": "60",
+          "index": 10
+        },
+        {
+          "number": 61,
+          "string": "61",
+          "index": 11
+        },
+        {
+          "number": 62,
+          "string": "62",
+          "index": 12
+        },
+        {
+          "number": 63,
+          "string": "63",
+          "index": 13
+        },
+        {
+          "number": 64,
+          "string": "64",
+          "index": 14
+        },
+        {
+          "number": 65,
+          "string": "65",
+          "index": 15
+        },
+        {
+          "number": 66,
+          "string": "66",
+          "index": 16
+        },
+        {
+          "number": 67,
+          "string": "67",
+          "index": 17
+        },
+        {
+          "number": 68,
+          "string": "68",
+          "index": 18
+        },
+        {
+          "number": 69,
+          "string": "69",
+          "index": 19
+        },
+        {
+          "number": 70,
+          "string": "70",
+          "index": 20
+        },
+        {
+          "number": 71,
+          "string": "71",
+          "index": 21
+        },
+        {
+          "number": 72,
+          "string": "72",
+          "index": 22
+        },
+        {
+          "number": 73,
+          "string": "73",
+          "index": 23
+        },
+        {
+          "number": 74,
+          "string": "74",
+          "index": 24
+        },
+        {
+          "number": 75,
+          "string": "75",
+          "index": 25
+        },
+        {
+          "number": 76,
+          "string": "76",
+          "index": 26
+        },
+        {
+          "number": 77,
+          "string": "77",
+          "index": 27
+        },
+        {
+          "number": 78,
+          "string": "78",
+          "index": 28
+        },
+        {
+          "number": 79,
+          "string": "79",
+          "index": 29
+        },
+        {
+          "number": 80,
+          "string": "80",
+          "index": 30
+        },
+        {
+          "number": 81,
+          "string": "81",
+          "index": 31
+        },
+        {
+          "number": 82,
+          "string": "82",
+          "index": 32
+        },
+        {
+          "number": 83,
+          "string": "83",
+          "index": 33
+        },
+        {
+          "number": 84,
+          "string": "84",
+          "index": 34
+        },
+        {
+          "number": 85,
+          "string": "85",
+          "index": 35
+        },
+        {
+          "number": 86,
+          "string": "86",
+          "index": 36
+        },
+        {
+          "number": 87,
+          "string": "87",
+          "index": 37
+        },
+        {
+          "number": 88,
+          "string": "88",
+          "index": 38
+        },
+        {
+          "number": 89,
+          "string": "89",
+          "index": 39
+        },
+        {
+          "number": 90,
+          "string": "90",
+          "index": 40
+        },
+        {
+          "number": 91,
+          "string": "91",
+          "index": 41
+        },
+        {
+          "number": 92,
+          "string": "92",
+          "index": 42
+        },
+        {
+          "number": 93,
+          "string": "93",
+          "index": 43
+        },
+        {
+          "number": 94,
+          "string": "94",
+          "index": 44
+        },
+        {
+          "number": 95,
+          "string": "95",
+          "index": 45
+        },
+        {
+          "number": 96,
+          "string": "96",
+          "index": 46
+        },
+        {
+          "number": 97,
+          "string": "97",
+          "index": 47
+        },
+        {
+          "number": 98,
+          "string": "98",
+          "index": 48
+        },
+        {
+          "number": 99,
+          "string": "99",
+          "index": 49
+        },
+        {
+          "number": 100,
+          "string": "100",
+          "index": 50
+        },
+        {
+          "number": 101,
+          "string": "101",
+          "index": 51
+        },
+        {
+          "number": 102,
+          "string": "102",
+          "index": 52
+        },
+        {
+          "number": 103,
+          "string": "103",
+          "index": 53
+        },
+        {
+          "number": 104,
+          "string": "104",
+          "index": 54
+        },
+        {
+          "number": 105,
+          "string": "105",
+          "index": 55
+        },
+        {
+          "number": 106,
+          "string": "106",
+          "index": 56
+        },
+        {
+          "number": 107,
+          "string": "107",
+          "index": 57
+        },
+        {
+          "number": 108,
+          "string": "108",
+          "index": 58
+        },
+        {
+          "number": 109,
+          "string": "109",
+          "index": 59
+        },
+        {
+          "number": 110,
+          "string": "110",
+          "index": 60
+        },
+        {
+          "number": 111,
+          "string": "111",
+          "index": 61
+        },
+        {
+          "number": 112,
+          "string": "112",
+          "index": 62
+        },
+        {
+          "number": 113,
+          "string": "113",
+          "index": 63
+        },
+        {
+          "number": 114,
+          "string": "114",
+          "index": 64
+        },
+        {
+          "number": 115,
+          "string": "115",
+          "index": 65
+        },
+        {
+          "number": 116,
+          "string": "116",
+          "index": 66
+        },
+        {
+          "number": 117,
+          "string": "117",
+          "index": 67
+        },
+        {
+          "number": 118,
+          "string": "118",
+          "index": 68
+        },
+        {
+          "number": 119,
+          "string": "119",
+          "index": 69
+        },
+        {
+          "number": 120,
+          "string": "120",
+          "index": 70
+        },
+        {
+          "number": 121,
+          "string": "121",
+          "index": 71
+        },
+        {
+          "number": 122,
+          "string": "122",
+          "index": 72
+        },
+        {
+          "number": 123,
+          "string": "123",
+          "index": 73
+        },
+        {
+          "number": 124,
+          "string": "124",
+          "index": 74
+        },
+        {
+          "number": 125,
+          "string": "125",
+          "index": 75
+        },
+        {
+          "number": 126,
+          "string": "126",
+          "index": 76
+        },
+        {
+          "number": 127,
+          "string": "127",
+          "index": 77
+        },
+        {
+          "number": 128,
+          "string": "128",
+          "index": 78
+        },
+        {
+          "number": 129,
+          "string": "129",
+          "index": 79
+        },
+        {
+          "number": 130,
+          "string": "130",
+          "index": 80
+        },
+        {
+          "number": 131,
+          "string": "131",
+          "index": 81
+        },
+        {
+          "number": 132,
+          "string": "132",
+          "index": 82
+        },
+        {
+          "number": 133,
+          "string": "133",
+          "index": 83
+        },
+        {
+          "number": 134,
+          "string": "134",
+          "index": 84
+        },
+        {
+          "number": 135,
+          "string": "135",
+          "index": 85
+        },
+        {
+          "number": 136,
+          "string": "136",
+          "index": 86
+        },
+        {
+          "number": 137,
+          "string": "137",
+          "index": 87
+        },
+        {
+          "number": 138,
+          "string": "138",
+          "index": 88
+        },
+        {
+          "number": 139,
+          "string": "139",
+          "index": 89
+        },
+        {
+          "number": 140,
+          "string": "140",
+          "index": 90
+        },
+        {
+          "number": 141,
+          "string": "141",
+          "index": 91
+        },
+        {
+          "number": 142,
+          "string": "142",
+          "index": 92
+        },
+        {
+          "number": 143,
+          "string": "143",
+          "index": 93
+        },
+        {
+          "number": 144,
+          "string": "144",
+          "index": 94
+        },
+        {
+          "number": 145,
+          "string": "145",
+          "index": 95
+        },
+        {
+          "number": 146,
+          "string": "146",
+          "index": 96
+        },
+        {
+          "number": 147,
+          "string": "147",
+          "index": 97
+        },
+        {
+          "number": 148,
+          "string": "148",
+          "index": 98
+        },
+        {
+          "number": 149,
+          "string": "149",
+          "index": 99
+        },
+        {
+          "number": 150,
+          "string": "150",
+          "index": 100
+        }
+      ],
+      "serialization_status": "candidate canonical strings; native range and stepper proof still required"
+    },
+    {
+      "id": "kite-tension",
+      "owner": "output[for=\"kite-tension\"]",
+      "min": 0,
+      "max": 1,
+      "step": 0.02,
+      "label": {
+        "zh": "牽線張力",
+        "en": "Line tension",
+        "ja": "糸の張り"
+      },
+      "values": [
+        {
+          "number": 0,
+          "string": "0",
+          "index": 0
+        },
+        {
+          "number": 0.02,
+          "string": "0.02",
+          "index": 1
+        },
+        {
+          "number": 0.04,
+          "string": "0.04",
+          "index": 2
+        },
+        {
+          "number": 0.06,
+          "string": "0.06",
+          "index": 3
+        },
+        {
+          "number": 0.08,
+          "string": "0.08",
+          "index": 4
+        },
+        {
+          "number": 0.1,
+          "string": "0.1",
+          "index": 5
+        },
+        {
+          "number": 0.12,
+          "string": "0.12",
+          "index": 6
+        },
+        {
+          "number": 0.14,
+          "string": "0.14",
+          "index": 7
+        },
+        {
+          "number": 0.16,
+          "string": "0.16",
+          "index": 8
+        },
+        {
+          "number": 0.18,
+          "string": "0.18",
+          "index": 9
+        },
+        {
+          "number": 0.2,
+          "string": "0.2",
+          "index": 10
+        },
+        {
+          "number": 0.22,
+          "string": "0.22",
+          "index": 11
+        },
+        {
+          "number": 0.24,
+          "string": "0.24",
+          "index": 12
+        },
+        {
+          "number": 0.26,
+          "string": "0.26",
+          "index": 13
+        },
+        {
+          "number": 0.28,
+          "string": "0.28",
+          "index": 14
+        },
+        {
+          "number": 0.3,
+          "string": "0.3",
+          "index": 15
+        },
+        {
+          "number": 0.32,
+          "string": "0.32",
+          "index": 16
+        },
+        {
+          "number": 0.34,
+          "string": "0.34",
+          "index": 17
+        },
+        {
+          "number": 0.36,
+          "string": "0.36",
+          "index": 18
+        },
+        {
+          "number": 0.38,
+          "string": "0.38",
+          "index": 19
+        },
+        {
+          "number": 0.4,
+          "string": "0.4",
+          "index": 20
+        },
+        {
+          "number": 0.42,
+          "string": "0.42",
+          "index": 21
+        },
+        {
+          "number": 0.44,
+          "string": "0.44",
+          "index": 22
+        },
+        {
+          "number": 0.46,
+          "string": "0.46",
+          "index": 23
+        },
+        {
+          "number": 0.48,
+          "string": "0.48",
+          "index": 24
+        },
+        {
+          "number": 0.5,
+          "string": "0.5",
+          "index": 25
+        },
+        {
+          "number": 0.52,
+          "string": "0.52",
+          "index": 26
+        },
+        {
+          "number": 0.54,
+          "string": "0.54",
+          "index": 27
+        },
+        {
+          "number": 0.56,
+          "string": "0.56",
+          "index": 28
+        },
+        {
+          "number": 0.58,
+          "string": "0.58",
+          "index": 29
+        },
+        {
+          "number": 0.6,
+          "string": "0.6",
+          "index": 30
+        },
+        {
+          "number": 0.62,
+          "string": "0.62",
+          "index": 31
+        },
+        {
+          "number": 0.64,
+          "string": "0.64",
+          "index": 32
+        },
+        {
+          "number": 0.66,
+          "string": "0.66",
+          "index": 33
+        },
+        {
+          "number": 0.68,
+          "string": "0.68",
+          "index": 34
+        },
+        {
+          "number": 0.7,
+          "string": "0.7",
+          "index": 35
+        },
+        {
+          "number": 0.72,
+          "string": "0.72",
+          "index": 36
+        },
+        {
+          "number": 0.74,
+          "string": "0.74",
+          "index": 37
+        },
+        {
+          "number": 0.76,
+          "string": "0.76",
+          "index": 38
+        },
+        {
+          "number": 0.78,
+          "string": "0.78",
+          "index": 39
+        },
+        {
+          "number": 0.8,
+          "string": "0.8",
+          "index": 40
+        },
+        {
+          "number": 0.82,
+          "string": "0.82",
+          "index": 41
+        },
+        {
+          "number": 0.84,
+          "string": "0.84",
+          "index": 42
+        },
+        {
+          "number": 0.86,
+          "string": "0.86",
+          "index": 43
+        },
+        {
+          "number": 0.88,
+          "string": "0.88",
+          "index": 44
+        },
+        {
+          "number": 0.9,
+          "string": "0.9",
+          "index": 45
+        },
+        {
+          "number": 0.92,
+          "string": "0.92",
+          "index": 46
+        },
+        {
+          "number": 0.94,
+          "string": "0.94",
+          "index": 47
+        },
+        {
+          "number": 0.96,
+          "string": "0.96",
+          "index": 48
+        },
+        {
+          "number": 0.98,
+          "string": "0.98",
+          "index": 49
+        },
+        {
+          "number": 1,
+          "string": "1",
+          "index": 50
+        }
+      ],
+      "serialization_status": "candidate canonical strings; native range and stepper proof still required"
+    }
+  ],
+  "axis_anchor": {
+    "kite-angle": "0",
+    "kite-length": "100",
+    "kite-tension": "0"
+  },
+  "unique_axis_configurations": [
+    {
+      "kite-angle": "-30",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-29",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-28",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-27",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-26",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-25",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-24",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-23",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-22",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-21",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-20",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-19",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-18",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-17",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-16",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-15",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-14",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-13",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-12",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-11",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-10",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-9",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-8",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-7",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-6",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-5",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-4",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-3",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-2",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "-1",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "1",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "2",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "3",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "4",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "5",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "6",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "7",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "8",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "9",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "10",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "11",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "12",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "13",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "14",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "15",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "16",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "17",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "18",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "19",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "20",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "21",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "22",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "23",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "24",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "25",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "26",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "27",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "28",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "29",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "30",
+      "kite-length": "100",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "50",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "51",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "52",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "53",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "54",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "55",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "56",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "57",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "58",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "59",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "60",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "61",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "62",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "63",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "64",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "65",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "66",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "67",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "68",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "69",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "70",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "71",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "72",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "73",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "74",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "75",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "76",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "77",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "78",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "79",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "80",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "81",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "82",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "83",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "84",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "85",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "86",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "87",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "88",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "89",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "90",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "91",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "92",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "93",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "94",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "95",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "96",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "97",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "98",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "99",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "101",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "102",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "103",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "104",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "105",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "106",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "107",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "108",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "109",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "110",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "111",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "112",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "113",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "114",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "115",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "116",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "117",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "118",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "119",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "120",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "121",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "122",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "123",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "124",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "125",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "126",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "127",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "128",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "129",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "130",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "131",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "132",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "133",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "134",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "135",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "136",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "137",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "138",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "139",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "140",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "141",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "142",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "143",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "144",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "145",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "146",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "147",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "148",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "149",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "150",
+      "kite-tension": "0"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.02"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.04"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.06"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.08"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.1"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.12"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.14"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.16"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.18"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.2"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.22"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.24"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.26"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.28"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.3"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.32"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.34"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.36"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.38"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.4"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.42"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.44"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.46"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.48"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.5"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.52"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.54"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.56"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.58"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.6"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.62"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.64"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.66"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.68"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.7"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.72"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.74"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.76"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.78"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.8"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.82"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.84"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.86"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.88"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.9"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.92"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.94"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.96"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "0.98"
+    },
+    {
+      "kite-angle": "0",
+      "kite-length": "100",
+      "kite-tension": "1"
+    }
+  ],
+  "modes": [
+    {
+      "phase": 0,
+      "hint": "blurb",
+      "paused": false
+    },
+    {
+      "phase": 0,
+      "hint": "retry",
+      "paused": false
+    },
+    {
+      "phase": 0,
+      "hint": "paused",
+      "paused": true
+    },
+    {
+      "phase": 1,
+      "hint": "blurb",
+      "paused": false
+    },
+    {
+      "phase": 1,
+      "hint": "retry",
+      "paused": false
+    },
+    {
+      "phase": 1,
+      "hint": "next",
+      "paused": false
+    },
+    {
+      "phase": 1,
+      "hint": "paused",
+      "paused": true
+    },
+    {
+      "phase": 2,
+      "hint": "blurb",
+      "paused": false
+    },
+    {
+      "phase": 2,
+      "hint": "retry",
+      "paused": false
+    },
+    {
+      "phase": 2,
+      "hint": "next",
+      "paused": false
+    },
+    {
+      "phase": 2,
+      "hint": "paused",
+      "paused": true
+    }
+  ],
+  "witnesses": [
+    {
+      "mode": {
+        "phase": 0,
+        "hint": "blurb",
+        "paused": false
+      },
+      "audio": false,
+      "recipe": [
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "150"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "1"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "error",
+          "value": 0,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        }
+      ],
+      "source_observation": {
+        "phase": 0,
+        "status": {
+          "zh": "這次沒進雲窗，已回到本段起點。",
+          "en": "The kite missed the window and returned to this wind’s start.",
+          "ja": "窓に入れず、この風の出発点に戻りました。"
+        },
+        "hint": {
+          "zh": "調整牽線與張力，讓紙鳶借春風穿過取景窗。",
+          "en": "Adjust line and tension to guide a kite through spring winds.",
+          "ja": "糸と張りを調整して、春風の中で凧を枠に通そう。"
+        },
+        "outputs": {
+          "kite-angle": "0",
+          "kite-length": "100",
+          "kite-tension": "0"
+        },
+        "normal_flight_frames": 16
+      },
+      "browser_witness": false
+    },
+    {
+      "mode": {
+        "phase": 0,
+        "hint": "blurb",
+        "paused": false
+      },
+      "audio": true,
+      "recipe": [
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "150"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "1"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "error",
+          "value": 0,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "audio-toggle"
+        }
+      ],
+      "source_observation": {
+        "phase": 0,
+        "status": {
+          "zh": "這次沒進雲窗，已回到本段起點。",
+          "en": "The kite missed the window and returned to this wind’s start.",
+          "ja": "窓に入れず、この風の出発点に戻りました。"
+        },
+        "hint": {
+          "zh": "調整牽線與張力，讓紙鳶借春風穿過取景窗。",
+          "en": "Adjust line and tension to guide a kite through spring winds.",
+          "ja": "糸と張りを調整して、春風の中で凧を枠に通そう。"
+        },
+        "outputs": {
+          "kite-angle": "0",
+          "kite-length": "100",
+          "kite-tension": "0"
+        },
+        "normal_flight_frames": 16
+      },
+      "browser_witness": false
+    },
+    {
+      "mode": {
+        "phase": 0,
+        "hint": "retry",
+        "paused": false
+      },
+      "audio": false,
+      "recipe": [
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "150"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "1"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "error",
+          "value": 0,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "kite-retry"
+        }
+      ],
+      "source_observation": {
+        "phase": 0,
+        "status": {
+          "zh": "這次沒進雲窗，已回到本段起點。",
+          "en": "The kite missed the window and returned to this wind’s start.",
+          "ja": "窓に入れず、この風の出発点に戻りました。"
+        },
+        "hint": {
+          "zh": "已保留前面的紀錄。調整牽線，再放飛這一段。",
+          "en": "Earlier frames are kept. Adjust the line and retry this wind.",
+          "ja": "前の記録は残っています。糸を調整し、この風をやり直しましょう。"
+        },
+        "outputs": {
+          "kite-angle": "0",
+          "kite-length": "100",
+          "kite-tension": "0"
+        },
+        "normal_flight_frames": 16
+      },
+      "browser_witness": false
+    },
+    {
+      "mode": {
+        "phase": 0,
+        "hint": "retry",
+        "paused": false
+      },
+      "audio": true,
+      "recipe": [
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "150"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "1"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "error",
+          "value": 0,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "kite-retry"
+        },
+        {
+          "action": "click",
+          "id": "audio-toggle"
+        }
+      ],
+      "source_observation": {
+        "phase": 0,
+        "status": {
+          "zh": "這次沒進雲窗，已回到本段起點。",
+          "en": "The kite missed the window and returned to this wind’s start.",
+          "ja": "窓に入れず、この風の出発点に戻りました。"
+        },
+        "hint": {
+          "zh": "已保留前面的紀錄。調整牽線，再放飛這一段。",
+          "en": "Earlier frames are kept. Adjust the line and retry this wind.",
+          "ja": "前の記録は残っています。糸を調整し、この風をやり直しましょう。"
+        },
+        "outputs": {
+          "kite-angle": "0",
+          "kite-length": "100",
+          "kite-tension": "0"
+        },
+        "normal_flight_frames": 16
+      },
+      "browser_witness": false
+    },
+    {
+      "mode": {
+        "phase": 0,
+        "hint": "paused",
+        "paused": true
+      },
+      "audio": false,
+      "recipe": [
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "150"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "1"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "error",
+          "value": 0,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "pause-game"
+        }
+      ],
+      "source_observation": {
+        "phase": 0,
+        "status": {
+          "zh": "這次沒進雲窗，已回到本段起點。",
+          "en": "The kite missed the window and returned to this wind’s start.",
+          "ja": "窓に入れず、この風の出発点に戻りました。"
+        },
+        "hint": {
+          "zh": "已暫停",
+          "en": "Paused",
+          "ja": "一時停止中"
+        },
+        "outputs": {
+          "kite-angle": "0",
+          "kite-length": "100",
+          "kite-tension": "0"
+        },
+        "normal_flight_frames": 16
+      },
+      "browser_witness": false
+    },
+    {
+      "mode": {
+        "phase": 0,
+        "hint": "paused",
+        "paused": true
+      },
+      "audio": true,
+      "recipe": [
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "150"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "1"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "error",
+          "value": 0,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "pause-game"
+        },
+        {
+          "action": "click",
+          "id": "audio-toggle"
+        }
+      ],
+      "source_observation": {
+        "phase": 0,
+        "status": {
+          "zh": "這次沒進雲窗，已回到本段起點。",
+          "en": "The kite missed the window and returned to this wind’s start.",
+          "ja": "窓に入れず、この風の出発点に戻りました。"
+        },
+        "hint": {
+          "zh": "已暫停",
+          "en": "Paused",
+          "ja": "一時停止中"
+        },
+        "outputs": {
+          "kite-angle": "0",
+          "kite-length": "100",
+          "kite-tension": "0"
+        },
+        "normal_flight_frames": 16
+      },
+      "browser_witness": false
+    },
+    {
+      "mode": {
+        "phase": 1,
+        "hint": "blurb",
+        "paused": false
+      },
+      "audio": false,
+      "recipe": [
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "phase",
+          "value": 1,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "150"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "1"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "error",
+          "value": 1,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "pause-game"
+        },
+        {
+          "action": "click",
+          "id": "pause-game"
+        }
+      ],
+      "source_observation": {
+        "phase": 1,
+        "status": {
+          "zh": "這次沒進雲窗，已回到本段起點。",
+          "en": "The kite missed the window and returned to this wind’s start.",
+          "ja": "窓に入れず、この風の出発点に戻りました。"
+        },
+        "hint": {
+          "zh": "調整牽線與張力，讓紙鳶借春風穿過取景窗。",
+          "en": "Adjust line and tension to guide a kite through spring winds.",
+          "ja": "糸と張りを調整して、春風の中で凧を枠に通そう。"
+        },
+        "outputs": {
+          "kite-angle": "0",
+          "kite-length": "100",
+          "kite-tension": "0"
+        },
+        "normal_flight_frames": 65
+      },
+      "browser_witness": false
+    },
+    {
+      "mode": {
+        "phase": 1,
+        "hint": "blurb",
+        "paused": false
+      },
+      "audio": true,
+      "recipe": [
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "phase",
+          "value": 1,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "150"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "1"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "error",
+          "value": 1,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "pause-game"
+        },
+        {
+          "action": "click",
+          "id": "pause-game"
+        },
+        {
+          "action": "click",
+          "id": "audio-toggle"
+        }
+      ],
+      "source_observation": {
+        "phase": 1,
+        "status": {
+          "zh": "這次沒進雲窗，已回到本段起點。",
+          "en": "The kite missed the window and returned to this wind’s start.",
+          "ja": "窓に入れず、この風の出発点に戻りました。"
+        },
+        "hint": {
+          "zh": "調整牽線與張力，讓紙鳶借春風穿過取景窗。",
+          "en": "Adjust line and tension to guide a kite through spring winds.",
+          "ja": "糸と張りを調整して、春風の中で凧を枠に通そう。"
+        },
+        "outputs": {
+          "kite-angle": "0",
+          "kite-length": "100",
+          "kite-tension": "0"
+        },
+        "normal_flight_frames": 65
+      },
+      "browser_witness": false
+    },
+    {
+      "mode": {
+        "phase": 1,
+        "hint": "retry",
+        "paused": false
+      },
+      "audio": false,
+      "recipe": [
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "phase",
+          "value": 1,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "150"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "1"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "error",
+          "value": 1,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "kite-retry"
+        }
+      ],
+      "source_observation": {
+        "phase": 1,
+        "status": {
+          "zh": "這次沒進雲窗，已回到本段起點。",
+          "en": "The kite missed the window and returned to this wind’s start.",
+          "ja": "窓に入れず、この風の出発点に戻りました。"
+        },
+        "hint": {
+          "zh": "已保留前面的紀錄。調整牽線，再放飛這一段。",
+          "en": "Earlier frames are kept. Adjust the line and retry this wind.",
+          "ja": "前の記録は残っています。糸を調整し、この風をやり直しましょう。"
+        },
+        "outputs": {
+          "kite-angle": "0",
+          "kite-length": "100",
+          "kite-tension": "0"
+        },
+        "normal_flight_frames": 65
+      },
+      "browser_witness": false
+    },
+    {
+      "mode": {
+        "phase": 1,
+        "hint": "retry",
+        "paused": false
+      },
+      "audio": true,
+      "recipe": [
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "phase",
+          "value": 1,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "150"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "1"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "error",
+          "value": 1,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "kite-retry"
+        },
+        {
+          "action": "click",
+          "id": "audio-toggle"
+        }
+      ],
+      "source_observation": {
+        "phase": 1,
+        "status": {
+          "zh": "這次沒進雲窗，已回到本段起點。",
+          "en": "The kite missed the window and returned to this wind’s start.",
+          "ja": "窓に入れず、この風の出発点に戻りました。"
+        },
+        "hint": {
+          "zh": "已保留前面的紀錄。調整牽線，再放飛這一段。",
+          "en": "Earlier frames are kept. Adjust the line and retry this wind.",
+          "ja": "前の記録は残っています。糸を調整し、この風をやり直しましょう。"
+        },
+        "outputs": {
+          "kite-angle": "0",
+          "kite-length": "100",
+          "kite-tension": "0"
+        },
+        "normal_flight_frames": 65
+      },
+      "browser_witness": false
+    },
+    {
+      "mode": {
+        "phase": 1,
+        "hint": "next",
+        "paused": false
+      },
+      "audio": false,
+      "recipe": [
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "phase",
+          "value": 1,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "150"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "1"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "error",
+          "value": 1,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        }
+      ],
+      "source_observation": {
+        "phase": 1,
+        "status": {
+          "zh": "這次沒進雲窗，已回到本段起點。",
+          "en": "The kite missed the window and returned to this wind’s start.",
+          "ja": "窓に入れず、この風の出発点に戻りました。"
+        },
+        "hint": {
+          "zh": "看新的雲窗高度，鬆線或收緊後繼續。",
+          "en": "Watch the new window height. Loosen or tighten the line, then continue.",
+          "ja": "新しい窓の高さを見て、糸を緩めるか張って続けましょう。"
+        },
+        "outputs": {
+          "kite-angle": "0",
+          "kite-length": "100",
+          "kite-tension": "0"
+        },
+        "normal_flight_frames": 65
+      },
+      "browser_witness": false
+    },
+    {
+      "mode": {
+        "phase": 1,
+        "hint": "next",
+        "paused": false
+      },
+      "audio": true,
+      "recipe": [
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "phase",
+          "value": 1,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "150"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "1"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "error",
+          "value": 1,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "audio-toggle"
+        }
+      ],
+      "source_observation": {
+        "phase": 1,
+        "status": {
+          "zh": "這次沒進雲窗，已回到本段起點。",
+          "en": "The kite missed the window and returned to this wind’s start.",
+          "ja": "窓に入れず、この風の出発点に戻りました。"
+        },
+        "hint": {
+          "zh": "看新的雲窗高度，鬆線或收緊後繼續。",
+          "en": "Watch the new window height. Loosen or tighten the line, then continue.",
+          "ja": "新しい窓の高さを見て、糸を緩めるか張って続けましょう。"
+        },
+        "outputs": {
+          "kite-angle": "0",
+          "kite-length": "100",
+          "kite-tension": "0"
+        },
+        "normal_flight_frames": 65
+      },
+      "browser_witness": false
+    },
+    {
+      "mode": {
+        "phase": 1,
+        "hint": "paused",
+        "paused": true
+      },
+      "audio": false,
+      "recipe": [
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "phase",
+          "value": 1,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "150"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "1"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "error",
+          "value": 1,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "pause-game"
+        }
+      ],
+      "source_observation": {
+        "phase": 1,
+        "status": {
+          "zh": "這次沒進雲窗，已回到本段起點。",
+          "en": "The kite missed the window and returned to this wind’s start.",
+          "ja": "窓に入れず、この風の出発点に戻りました。"
+        },
+        "hint": {
+          "zh": "已暫停",
+          "en": "Paused",
+          "ja": "一時停止中"
+        },
+        "outputs": {
+          "kite-angle": "0",
+          "kite-length": "100",
+          "kite-tension": "0"
+        },
+        "normal_flight_frames": 65
+      },
+      "browser_witness": false
+    },
+    {
+      "mode": {
+        "phase": 1,
+        "hint": "paused",
+        "paused": true
+      },
+      "audio": true,
+      "recipe": [
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "phase",
+          "value": 1,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "150"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "1"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "error",
+          "value": 1,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "pause-game"
+        },
+        {
+          "action": "click",
+          "id": "audio-toggle"
+        }
+      ],
+      "source_observation": {
+        "phase": 1,
+        "status": {
+          "zh": "這次沒進雲窗，已回到本段起點。",
+          "en": "The kite missed the window and returned to this wind’s start.",
+          "ja": "窓に入れず、この風の出発点に戻りました。"
+        },
+        "hint": {
+          "zh": "已暫停",
+          "en": "Paused",
+          "ja": "一時停止中"
+        },
+        "outputs": {
+          "kite-angle": "0",
+          "kite-length": "100",
+          "kite-tension": "0"
+        },
+        "normal_flight_frames": 65
+      },
+      "browser_witness": false
+    },
+    {
+      "mode": {
+        "phase": 2,
+        "hint": "blurb",
+        "paused": false
+      },
+      "audio": false,
+      "recipe": [
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "phase",
+          "value": 1,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0.44"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "phase",
+          "value": 2,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "150"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "1"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "error",
+          "value": 2,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "pause-game"
+        },
+        {
+          "action": "click",
+          "id": "pause-game"
+        }
+      ],
+      "source_observation": {
+        "phase": 2,
+        "status": {
+          "zh": "這次沒進雲窗，已回到本段起點。",
+          "en": "The kite missed the window and returned to this wind’s start.",
+          "ja": "窓に入れず、この風の出発点に戻りました。"
+        },
+        "hint": {
+          "zh": "調整牽線與張力，讓紙鳶借春風穿過取景窗。",
+          "en": "Adjust line and tension to guide a kite through spring winds.",
+          "ja": "糸と張りを調整して、春風の中で凧を枠に通そう。"
+        },
+        "outputs": {
+          "kite-angle": "0",
+          "kite-length": "100",
+          "kite-tension": "0"
+        },
+        "normal_flight_frames": 140
+      },
+      "browser_witness": false
+    },
+    {
+      "mode": {
+        "phase": 2,
+        "hint": "blurb",
+        "paused": false
+      },
+      "audio": true,
+      "recipe": [
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "phase",
+          "value": 1,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0.44"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "phase",
+          "value": 2,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "150"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "1"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "error",
+          "value": 2,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "pause-game"
+        },
+        {
+          "action": "click",
+          "id": "pause-game"
+        },
+        {
+          "action": "click",
+          "id": "audio-toggle"
+        }
+      ],
+      "source_observation": {
+        "phase": 2,
+        "status": {
+          "zh": "這次沒進雲窗，已回到本段起點。",
+          "en": "The kite missed the window and returned to this wind’s start.",
+          "ja": "窓に入れず、この風の出発点に戻りました。"
+        },
+        "hint": {
+          "zh": "調整牽線與張力，讓紙鳶借春風穿過取景窗。",
+          "en": "Adjust line and tension to guide a kite through spring winds.",
+          "ja": "糸と張りを調整して、春風の中で凧を枠に通そう。"
+        },
+        "outputs": {
+          "kite-angle": "0",
+          "kite-length": "100",
+          "kite-tension": "0"
+        },
+        "normal_flight_frames": 140
+      },
+      "browser_witness": false
+    },
+    {
+      "mode": {
+        "phase": 2,
+        "hint": "retry",
+        "paused": false
+      },
+      "audio": false,
+      "recipe": [
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "phase",
+          "value": 1,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0.44"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "phase",
+          "value": 2,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "150"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "1"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "error",
+          "value": 2,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "kite-retry"
+        }
+      ],
+      "source_observation": {
+        "phase": 2,
+        "status": {
+          "zh": "這次沒進雲窗，已回到本段起點。",
+          "en": "The kite missed the window and returned to this wind’s start.",
+          "ja": "窓に入れず、この風の出発点に戻りました。"
+        },
+        "hint": {
+          "zh": "已保留前面的紀錄。調整牽線，再放飛這一段。",
+          "en": "Earlier frames are kept. Adjust the line and retry this wind.",
+          "ja": "前の記録は残っています。糸を調整し、この風をやり直しましょう。"
+        },
+        "outputs": {
+          "kite-angle": "0",
+          "kite-length": "100",
+          "kite-tension": "0"
+        },
+        "normal_flight_frames": 140
+      },
+      "browser_witness": false
+    },
+    {
+      "mode": {
+        "phase": 2,
+        "hint": "retry",
+        "paused": false
+      },
+      "audio": true,
+      "recipe": [
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "phase",
+          "value": 1,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0.44"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "phase",
+          "value": 2,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "150"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "1"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "error",
+          "value": 2,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "kite-retry"
+        },
+        {
+          "action": "click",
+          "id": "audio-toggle"
+        }
+      ],
+      "source_observation": {
+        "phase": 2,
+        "status": {
+          "zh": "這次沒進雲窗，已回到本段起點。",
+          "en": "The kite missed the window and returned to this wind’s start.",
+          "ja": "窓に入れず、この風の出発点に戻りました。"
+        },
+        "hint": {
+          "zh": "已保留前面的紀錄。調整牽線，再放飛這一段。",
+          "en": "Earlier frames are kept. Adjust the line and retry this wind.",
+          "ja": "前の記録は残っています。糸を調整し、この風をやり直しましょう。"
+        },
+        "outputs": {
+          "kite-angle": "0",
+          "kite-length": "100",
+          "kite-tension": "0"
+        },
+        "normal_flight_frames": 140
+      },
+      "browser_witness": false
+    },
+    {
+      "mode": {
+        "phase": 2,
+        "hint": "next",
+        "paused": false
+      },
+      "audio": false,
+      "recipe": [
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "phase",
+          "value": 1,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0.44"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "phase",
+          "value": 2,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "150"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "1"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "error",
+          "value": 2,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        }
+      ],
+      "source_observation": {
+        "phase": 2,
+        "status": {
+          "zh": "這次沒進雲窗，已回到本段起點。",
+          "en": "The kite missed the window and returned to this wind’s start.",
+          "ja": "窓に入れず、この風の出発点に戻りました。"
+        },
+        "hint": {
+          "zh": "看新的雲窗高度，鬆線或收緊後繼續。",
+          "en": "Watch the new window height. Loosen or tighten the line, then continue.",
+          "ja": "新しい窓の高さを見て、糸を緩めるか張って続けましょう。"
+        },
+        "outputs": {
+          "kite-angle": "0",
+          "kite-length": "100",
+          "kite-tension": "0"
+        },
+        "normal_flight_frames": 140
+      },
+      "browser_witness": false
+    },
+    {
+      "mode": {
+        "phase": 2,
+        "hint": "next",
+        "paused": false
+      },
+      "audio": true,
+      "recipe": [
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "phase",
+          "value": 1,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0.44"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "phase",
+          "value": 2,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "150"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "1"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "error",
+          "value": 2,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "audio-toggle"
+        }
+      ],
+      "source_observation": {
+        "phase": 2,
+        "status": {
+          "zh": "這次沒進雲窗，已回到本段起點。",
+          "en": "The kite missed the window and returned to this wind’s start.",
+          "ja": "窓に入れず、この風の出発点に戻りました。"
+        },
+        "hint": {
+          "zh": "看新的雲窗高度，鬆線或收緊後繼續。",
+          "en": "Watch the new window height. Loosen or tighten the line, then continue.",
+          "ja": "新しい窓の高さを見て、糸を緩めるか張って続けましょう。"
+        },
+        "outputs": {
+          "kite-angle": "0",
+          "kite-length": "100",
+          "kite-tension": "0"
+        },
+        "normal_flight_frames": 140
+      },
+      "browser_witness": false
+    },
+    {
+      "mode": {
+        "phase": 2,
+        "hint": "paused",
+        "paused": true
+      },
+      "audio": false,
+      "recipe": [
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "phase",
+          "value": 1,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0.44"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "phase",
+          "value": 2,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "150"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "1"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "error",
+          "value": 2,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "pause-game"
+        }
+      ],
+      "source_observation": {
+        "phase": 2,
+        "status": {
+          "zh": "這次沒進雲窗，已回到本段起點。",
+          "en": "The kite missed the window and returned to this wind’s start.",
+          "ja": "窓に入れず、この風の出発点に戻りました。"
+        },
+        "hint": {
+          "zh": "已暫停",
+          "en": "Paused",
+          "ja": "一時停止中"
+        },
+        "outputs": {
+          "kite-angle": "0",
+          "kite-length": "100",
+          "kite-tension": "0"
+        },
+        "normal_flight_frames": 140
+      },
+      "browser_witness": false
+    },
+    {
+      "mode": {
+        "phase": 2,
+        "hint": "paused",
+        "paused": true
+      },
+      "audio": true,
+      "recipe": [
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "phase",
+          "value": 1,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0.44"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "phase",
+          "value": 2,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "150"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "1"
+        },
+        {
+          "action": "click",
+          "id": "kite-play"
+        },
+        {
+          "action": "wait",
+          "until": "error",
+          "value": 2,
+          "max_frames": 1000
+        },
+        {
+          "action": "range",
+          "axis": "kite-angle",
+          "value": "0"
+        },
+        {
+          "action": "range",
+          "axis": "kite-length",
+          "value": "100"
+        },
+        {
+          "action": "range",
+          "axis": "kite-tension",
+          "value": "0"
+        },
+        {
+          "action": "click",
+          "id": "pause-game"
+        },
+        {
+          "action": "click",
+          "id": "audio-toggle"
+        }
+      ],
+      "source_observation": {
+        "phase": 2,
+        "status": {
+          "zh": "這次沒進雲窗，已回到本段起點。",
+          "en": "The kite missed the window and returned to this wind’s start.",
+          "ja": "窓に入れず、この風の出発点に戻りました。"
+        },
+        "hint": {
+          "zh": "已暫停",
+          "en": "Paused",
+          "ja": "一時停止中"
+        },
+        "outputs": {
+          "kite-angle": "0",
+          "kite-length": "100",
+          "kite-tension": "0"
+        },
+        "normal_flight_frames": 140
+      },
+      "browser_witness": false
+    }
+  ],
+  "error_status": {
+    "callee": "ctx.ui.setText",
+    "line": 26,
+    "source": "ctx.ui.setText(status,W('這次沒進雲窗，已回到本段起點。','The kite missed the window and returned to this wind’s start.','窓に入れず、この風の出発点に戻りました。'))",
+    "words": {
+      "zh": "這次沒進雲窗，已回到本段起點。",
+      "en": "The kite missed the window and returned to this wind’s start.",
+      "ja": "窓に入れず、この風の出発点に戻りました。"
+    },
+    "numeric_dependencies": []
+  },
+  "other_statuses": [
+    {
+      "callee": "ctx.ui.text",
+      "line": 21,
+      "source": "ctx.ui.text('kite-status',W('先觀察雲窗，再放飛。','Look at the cloud window, then launch.','雲の窓を見てから、飛ばしましょう。'))",
+      "words": {
+        "zh": "先觀察雲窗，再放飛。",
+        "en": "Look at the cloud window, then launch.",
+        "ja": "雲の窓を見てから、飛ばしましょう。"
+      },
+      "numeric_dependencies": []
+    },
+    {
+      "callee": "ctx.ui.setText",
+      "line": 23,
+      "source": "ctx.ui.setText(status,W('看紙鳶和雲窗的位置，飛行中也可調整。','Watch the kite and cloud window. You can adjust while flying.','凧と雲の窓を見ましょう。飛行中も調整できます。'))",
+      "words": {
+        "zh": "看紙鳶和雲窗的位置，飛行中也可調整。",
+        "en": "Watch the kite and cloud window. You can adjust while flying.",
+        "ja": "凧と雲の窓を見ましょう。飛行中も調整できます。"
+      },
+      "numeric_dependencies": []
+    },
+    {
+      "callee": "ctx.ui.setText",
+      "line": 26,
+      "source": "ctx.ui.setText(status,W('收下了一格，下一段風換方向了。','One frame is saved. The next wind has changed.','1コマ記録しました。次の風は変わっています。'))",
+      "words": {
+        "zh": "收下了一格，下一段風換方向了。",
+        "en": "One frame is saved. The next wind has changed.",
+        "ja": "1コマ記録しました。次の風は変わっています。"
+      },
+      "numeric_dependencies": []
+    }
+  ],
+  "hints": [
+    {
+      "callee": "ctx.hint",
+      "line": 24,
+      "source": "ctx.hint(W('已保留前面的紀錄。調整牽線，再放飛這一段。','Earlier frames are kept. Adjust the line and retry this wind.','前の記録は残っています。糸を調整し、この風をやり直しましょう。'))",
+      "words": {
+        "zh": "已保留前面的紀錄。調整牽線，再放飛這一段。",
+        "en": "Earlier frames are kept. Adjust the line and retry this wind.",
+        "ja": "前の記録は残っています。糸を調整し、この風をやり直しましょう。"
+      },
+      "numeric_dependencies": []
+    },
+    {
+      "callee": "ctx.hint",
+      "line": 26,
+      "source": "ctx.hint(W('看新的雲窗高度，鬆線或收緊後繼續。','Watch the new window height. Loosen or tighten the line, then continue.','新しい窓の高さを見て、糸を緩めるか張って続けましょう。'))",
+      "words": {
+        "zh": "看新的雲窗高度，鬆線或收緊後繼續。",
+        "en": "Watch the new window height. Loosen or tighten the line, then continue.",
+        "ja": "新しい窓の高さを見て、糸を緩めるか張って続けましょう。"
+      },
+      "numeric_dependencies": []
+    }
+  ],
+  "paused_hint": {
+    "zh": "已暫停",
+    "en": "Paused",
+    "ja": "一時停止中"
+  },
+  "exact_candidate_joint_values": 314211,
+  "error_text_states_per_context": 6912642,
+  "conditional_capture_jobs_per_context": 232,
+  "bounded_calibration": {
+    "contexts": 6,
+    "direct_owner_values_per_context": 213,
+    "stepper_transitions_per_context": 420,
+    "small_full_owner_baseline_states_per_context": 22,
+    "full_dom_per_observation": true,
+    "png_policy": "Retain immutable original full viewport PNG for every full-owner joint mode, every actual-ink extremum/tie witness and every failure. Every ink/DOM observation must map to its own captured original pixels; no synthetic target-only screenshots.",
+    "stop_on": "Any numeric serialization, target font, exact row/owner geometry, full-owner inventory, source or diagnostic mismatch; preserve raw failure and do not expand run automatically."
+  },
+  "source_causality": {
+    "error_one_static_write": true,
+    "error_numeric_dependencies": [],
+    "slider_callbacks": "draft[k]=v only; runner input handler additionally writes its own output",
+    "miss_stops_running": true,
+    "phase0_has_no_next_hint": true,
+    "retry_preserves_status": true,
+    "pause_resume_restores_blurb": true,
+    "audio_only_toolbar_and_sound": true,
+    "physical_values_not_printed": [
+      "x",
+      "y",
+      "vy",
+      "time",
+      "ticks",
+      "dwell",
+      "accumulator",
+      "captures",
+      "path",
+      "resets"
+    ],
+    "recipe_flight": "dt=.1 actual mount callbacks until normal phase capture or missed-window status; no assigned phase/state",
+    "stepper_string_caveat": "Number addition/subtraction passes through browser range sanitization. Candidate String(i/50) is not a proof of that browser result."
+  },
+  "conditional_factorization": {
+    "status": "unproved",
+    "candidate_count_explanation": "211 unique one-axis tuples plus 21 other baseline phase/hint/pause/audio profiles = 232/context, only after exact native separability evidence. This is not yet a complete legal-layout domain.",
+    "required_native_invariants": [
+      "Every direct range value and every +/- transition produces the declared canonical input and output string.",
+      "Each observed owner has full CDP platform font attribution; original font file and runtime bindings remain unchanged.",
+      "For all 213 axis values, output/row/group/controls/paper dimensions and other-owner positions relative to the same fixed container are exactly equal to the baseline, except the intended ink. Do not introduce an arbitrary geometry tolerance.",
+      "All output ink and fixed siblings remain within their actual safe paper and original viewport after normal scrolling; no clipping or changed row height.",
+      "For each of 22 phase/hint/pause/audio modes, capture full original DOM/ink/PNG including toolbar, help/status, progress and hint; record changed y offsets and internal/window scroll.",
+      "Measure every candidate actual ink, preserve all ties and width/height/area trade-offs, then reach each selected simultaneous extrema witness through real controls; count characters is never a selector.",
+      "If any invariant fails, 232/context cannot claim full coverage. Re-analyze the affected cross-axis/mode dependency rather than silently switching scope or brute-forcing all 6912642 states."
+    ]
+  },
+  "open_obligations": [
+    {
+      "id": "native-number-serialization",
+      "status": "not_run",
+      "owners": [
+        "output[for=\"kite-angle\"]",
+        "output[for=\"kite-length\"]",
+        "output[for=\"kite-tension\"]"
+      ]
+    },
+    {
+      "id": "native-row-font-paper-invariance",
+      "status": "not_run",
+      "owners": [
+        ".slider-row",
+        ".control-group",
+        "#game-controls",
+        ".controls-paper"
+      ]
+    },
+    {
+      "id": "all-visible-owners-joint-layout",
+      "status": "not_run",
+      "owners": [
+        ".toolbar a",
+        "#audio-toggle",
+        "#lab header p",
+        "#lab header h1",
+        "#pause-game",
+        "#leave-game",
+        "#game-progress",
+        "#game-hint",
+        "#kite-help",
+        "#kite-status",
+        "label[for=\"kite-angle\"]",
+        "label[for=\"kite-length\"]",
+        "label[for=\"kite-tension\"]",
+        "output[for=\"kite-angle\"]",
+        "output[for=\"kite-length\"]",
+        "output[for=\"kite-tension\"]",
+        "#kite-angle-minus",
+        "#kite-angle-plus",
+        "#kite-length-minus",
+        "#kite-length-plus",
+        "#kite-tension-minus",
+        "#kite-tension-plus",
+        "#kite-play",
+        "#kite-retry"
+      ]
+    },
+    {
+      "id": "button-hover-pressed-focus-inert-paint-order",
+      "status": "not_run"
+    },
+    {
+      "id": "all-window-and-controls-scroller-extents",
+      "status": "not_run"
+    },
+    {
+      "id": "physical-trajectory-and-result-artifact",
+      "status": "excluded_from_error-text_only_scope",
+      "reason": "Unbounded path/time/retries are absent from in-game error text; this does not approve result-artifact or replay."
+    }
+  ],
+  "candidate_owner_census": {
+    "count": 28,
+    "derivation": {
+      "toolbar_links": 4,
+      "audio_toggle": 1,
+      "header_texts": 3,
+      "pause_leave": 2,
+      "progress_hint": 2,
+      "kite_help_status": 2,
+      "slider_labels": 3,
+      "slider_outputs": 3,
+      "steppers": 6,
+      "play_retry": 2
+    },
+    "status": "source expectation only; compare the entire real DOM/sample census and stop for any unknown/missing owner"
+  },
+  "native_serialization_proven": false,
+  "layout_factorization_proven": false,
+  "error_longest_closed": false,
+  "canonical_eligible": false,
+  "full_project_approved": false,
+  "labor_played": false,
+  "c_section_modified": false
+}

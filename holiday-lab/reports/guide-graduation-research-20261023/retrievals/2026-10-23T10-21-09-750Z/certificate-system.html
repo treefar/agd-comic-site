@@ -1,0 +1,303 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta http-equiv="Expires" content="-1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+	<title>index</title>
+
+	<link rel="stylesheet" href="../css/style.css" />
+	<link rel="stylesheet" href="../css/breadcrumbs.css" />		<!--navi menu --> 
+
+	<script src="../js/jquery-1.8.3.js"></script>
+	<script src="../js/jslibrary.js"></script>  				<!-- commlib-->
+	<script src="../js/jquery.tablespan.js"></script>			<!--table span-->
+	<script src="../js/breadcrumbs.js"></script>		 		<!--navi menu-->
+
+	<style>
+		.IslamicGreen {
+			display: block;
+			margin-top: 5px;
+			margin-bottom: 3px;
+		}
+	</style>
+
+	<script>
+		$(function(){
+			initFunction();
+
+			$('#breadcrumbs').breadcrumbs();
+
+			$(document).on('click', 'a[href=#qryPrj]', function(event){
+				$('#prjNo').val($(this).text());
+				$('#prjNoHidden').val("X3kajGc08Sg=");
+				$('#form2').attr('target','_blank');
+				$('#form2').attr('action','/cis/pmis/trnFile/mtnProject.asp').submit();
+			});
+		});
+	</script>
+</head>
+
+<body id="top">
+	<div id="wrapper">
+		<div id="doc">
+			<div id="header">
+				<div class="banner">
+					<span class="first">學生證照管理系統</span>
+					<span class="second">Shu-Te University</span>
+				</div>
+				<div class="pghead">
+					<div class="sysicon">
+						<img alt="Logo" src="../images/Tlogo.png" width="42" height="42" />
+					</div>
+					<div class="pgname">
+						<h2>學生證照系統首頁</h2>
+					</div>
+					<div id="apmenu">
+						
+						<!-- ap menu------------------->
+						<!-- menu 置右版-->
+						<ul id="breadcrumbs" class="breadcrumbs tophead white"> 
+							<div class="breadcrumbsrightfloat menuborder">								
+								
+								<li class="menu">
+									<a class="home" href="./index.asp">系統首頁</a>
+								</li>
+								
+								<li class="menu">
+									<a href="./index.asp">系所單位</a>
+									<ul>
+										<li class="menu">
+											<a class="" href="./qryCrtRecordByUser.asp">證照記錄查詢作業</a>
+										</li>
+									</ul>
+								</li>
+
+								<li class="menu">
+									<a href="./index.asp">職發中心</a>
+									<ul>
+										<li class="menu">
+											<a class="" href="./confCrtRecord.asp">證照記錄審核作業</a>
+										</li>
+										<li class="menu">
+											<a class="" href="./mtnCrtName.asp">證照名稱維護作業</a>
+										</li>
+
+										<li class="menu">
+											<a class="" href="../JOB_PRINT_REPORT.asp">列印作業</a>
+										</li>
+										<li class="menu">
+											<a class="" href="./mtnCrtInvoiceNo.asp">請款單號維護作業</a>
+										</li>
+										<li class="menu">
+											<a class="" href="./mtnInvoiceList.asp">印領清冊維護作業</a>
+										</li>										
+										<li class="menu">
+											<a class="" href="./mtnSendPaper.asp">印領清冊送件作業</a>
+										</li>
+										<li class="menu">
+											<a class="" href="./qryInvoiceList.asp">印領清冊查詢作業</a>
+										</li>
+									</ul>
+								</li>								
+																
+								<li class="menu">
+									<a href="./index.asp">統計資訊</a>
+									<ul>								
+										<li class="menu">
+											<a href="./qryStaticYearSection.asp">系年度統計</a>
+										</li>
+										<li class="menu" id="mtnNews">
+											<a href="./qryStaticCollegeYear.asp">各院各年度統計</a>
+										</li>
+										<li class="menu" id="mtnNews">
+											<a href="./qryStaticYearCollege.asp">院年度統計</a>
+										</li>
+										<li class="menu" id="mtnNews">
+											<a href="./qryStaticSectionYear.asp">各系各年度統計</a>
+										</li>										
+										<li class="menu" id="mtnNews">
+											<a href="./qryStaticNum.asp">數量統計</a>
+										</li>
+										<li class="menu" id="mtnNews">
+											<a href="./qryNoCrtList.asp">未考照清單</a>
+										</li>
+										<li class="menu" id="mtnNews">
+											<a href="./qryXCrtDetail.asp">單張證照明細</a>
+										</li>
+									</ul>
+								</li>
+										
+							</div>
+						</ul>
+						<hr class="hr1">
+						<div class="clear"></div>
+						<!------------------------------>
+
+						<script>
+							$(function(){
+								//control currentmenu class
+								var uri = location.href;
+								var filename = uri.substring(uri.lastIndexOf("/")+1, uri.length) ;
+
+								$("#prgmenu ul.breadcrumbs li.menu a").each(function(i, val){
+									var href = $(this).attr("href");
+									var pntclass = $(this).parent().attr('class');
+
+									if (pntclass == undefined) {
+										if (href == filename) {
+											$(this).parent().parent().parent().addClass("currentmenu");
+										}
+									}
+									else {
+										if (href == filename) {
+											$(this).parent().addClass("currentmenu");
+										}
+										else {
+											$(this).parent().removeClass("currentmenu");
+										}
+									}
+								});
+							});
+						</script>
+					</div>
+					<div class="breakline"></div>
+					<div class="leftbreakline"></div>
+				</div>
+				<div class="clear"></div>
+			</div><!--end #header-->
+
+			<div id="container">
+				<div id="content">
+					<!--
+					<div id="pgtitle">
+						<div class="height20"></div>
+					</div>
+					-->
+
+					<div id="idata" class="w100p">
+
+						<div class="height20"></div>
+						<hr>
+						<div class="height20"></div>
+						<table id="classTb" class="tablesorter tblLine thcolorRoyalblue w95p">
+							<tr>
+								<th class="w15p tdleft">項目</th>
+								<th class="w35p tdleft">程式</th>
+								<th class="tdleft">說明</th>
+							</tr>
+						
+							<tr>
+								<td class="tdleft">學生</td>
+								<td>
+									<ol>
+										<ul>
+											<li>證照紀錄維護作業</li>
+											<li>證照名稱查詢作業</li>
+										</ul>
+									</ol>
+								</td>
+								<td>
+									<ol>
+										<ul>
+											<li>證照紀錄維護作業:學生填寫證照紀錄。</li>
+											<li>證照名稱查詢作業:查詢證照名稱資訊，提供個人輸入證照記錄。</li>
+										</ul>
+									</ol>
+								</td>
+							</tr>
+							
+							<tr>
+								<td class="tdleft">系所單位</td>
+								<td>
+									<ol>
+										<ul>
+											<li>證照紀錄查詢作業</li>
+										</ul>
+									</ol>
+								</td>
+								<td>
+									<ol>
+										<ul>
+											<li>證照紀錄查詢作業:查詢該系學生證照紀錄。</li>
+										</ul>
+									</ol>
+								</td>
+							</tr>
+							
+							<tr>
+								<td class="tdleft">職發中心</td>
+								<td>
+									<ol>
+										<ul>
+											<li>證照記錄審核作業</li>
+											<li>證照名稱維護作業</li>
+											<li>列印作業</li>
+											<li>產生請款單號維護作業</li>
+											<li>印領清冊維護作業</li>
+											<li>印領清冊送件作業</li>
+											<li>印領清冊詢作業</li>
+										</ul>
+									</ol>
+								</td>
+								<td>
+									<ol>
+										<ul>
+											<li>證照記錄審核作業:提供管理者審核學生所填寫的獎助金紀錄作業。</li>
+											<li>證照名稱維護作業:提供管理者維護維護證照名稱紀錄作業。</li>
+											<li>列印作業:學生證照名冊、證照清冊、表4-8等報表。</li>
+											<li>請款單號維護作業: 產生請款單號作業。</li>
+											<li>印領清冊維護作業: 提供管理者維護與製作印領清冊。 </li>
+											<li>印領清冊送件作業: 紙本送件作業。 </li>
+											<li>印領清冊詢作業: 清冊查詢作業。</li>
+										</ul>
+									</ol>
+								</td>
+							</tr>							
+							
+							<tr>
+								<td class="tdleft">系統流程</td>
+								<td colspan="2">
+									<ol>
+										<ul>
+											<li>學生上線填寫證照紀錄，表單送出後此筆記錄由職發中心審核。</li>
+											<li>職發中心定期審核。</li>											
+										</ul>
+									</ol>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="3" class="tdleft">
+									如果你還有任何疑問，歡迎與我們聯繫，我們的聯絡方式：(07) 6158000 # 1713 研發處職涯發展暨校友服務中心。
+								</td>
+							</tr>
+						</table>
+					</div> <!-- #idata-->
+
+					<div class="scrollTop"><a href="#top">top</a></div>
+				</div><!-- #content-->
+			</div><!-- #container-->
+		</div><!-- #doc-->
+
+		<div id="footer">
+			<div class="weblink">
+						<p class="ftlinks">
+			<a href="http://www.stu.edu.tw/" class="first" target="new">學校首頁</a>
+			<a href="http://my.stu.edu.tw/" class="first" target="new">mySTU</a>
+		</p>
+		<p class="contact">
+			&copy; 2012 Shu-Te University | 07-6158000#2401
+		</p>
+		<p class="ftlinks">
+			For processing problems, please call 6158000-2401 or e-mail info@stu.edu.tw.
+		</p>
+
+			</div>
+		</div>
+	</div><!-- #wrapper-->
+</body>
+</html>
