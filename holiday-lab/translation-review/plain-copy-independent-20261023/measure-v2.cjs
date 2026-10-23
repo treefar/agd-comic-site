@@ -1,0 +1,15 @@
+// Complete rendered leaf-text inventory in supplied roots. Original DOM Range only.
+function measure(selector){
+ const groups=new Map(),leafInventory=[];const roots=[...document.querySelectorAll(selector)];
+ const hidden=e=>e.closest('[aria-hidden="true"],script,style,noscript')||getComputedStyle(e).visibility==='hidden';
+ const ownerFor=e=>e.closest('p,button,h1,h2,h3,h4,h5,h6,summary,label,small,output')||e.closest('a')||e;
+ const css=e=>{if(e.id)return'#'+CSS.escape(e.id);const parts=[];for(let n=e;n&&n!==document.body;n=n.parentElement){if(n.id){parts.unshift('#'+CSS.escape(n.id));break;}parts.unshift(n.tagName.toLowerCase()+':nth-of-type('+([...n.parentElement.children].filter(x=>x.tagName===n.tagName).indexOf(n)+1)+')');}return parts.join(' >');};
+ for(const root of roots){const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let node;while(node=walker.nextNode()){
+  const e=node.parentElement;if(!node.data.trim()||hidden(e))continue;const whole=document.createRange();whole.selectNodeContents(node);if(![...whole.getClientRects()].some(r=>r.width>0&&r.height>0))continue;const owner=ownerFor(e);if(!groups.has(owner))groups.set(owner,[]);groups.get(owner).push(node);leafInventory.push({text:node.data,owner:css(owner),parent:css(e)});
+ }}
+ const rows=[];for(const[e,nodes]of groups){const style=getComputedStyle(e),box=e.getBoundingClientRect(),lines=[];for(const node of nodes)for(const part of new Intl.Segmenter(document.documentElement.lang,{granularity:'grapheme'}).segment(node.data)){const range=document.createRange();range.setStart(node,part.index);range.setEnd(node,part.index+part.segment.length);const r=range.getBoundingClientRect();if(!r.width||!r.height)continue;let line=lines.find(l=>Math.abs(l.y-r.y)<2);if(!line){line={y:r.y,text:'',left:r.left,right:r.right};lines.push(line);}line.text+=part.segment;line.left=Math.min(line.left,r.left);line.right=Math.max(line.right,r.right);}lines.sort((a,b)=>a.y-b.y);for(const l of lines)l.text=l.text.trim();const visibleLines=lines.filter(l=>l.text.trim()),last=visibleLines.at(-1)?.text.replace(/\s+/g,'')||'',text=nodes.map(n=>n.data).join('').trim();if(!visibleLines.length||!text)continue;const lastWords=[...new Intl.Segmenter('en',{granularity:'word'}).segment(visibleLines.at(-1).text)].filter(x=>x.isWordLike&&/\p{Script=Latin}/u.test(x.segment)).map(x=>x.segment);
+  rows.push({selector:css(e),tag:e.tagName,text,font:style.font,fontFamily:style.fontFamily,fontSize:style.fontSize,box:{x:box.x,y:box.y,width:box.width,height:box.height},lines:visibleLines,fontStatus:document.fonts.status,orphan:visibleLines.length>1&&/^\p{L}\p{P}*$/u.test(last),englishSingleWholeWordLastLine:visibleLines.length>=3&&lastWords.length===1&&lastWords[0].length>1,englishLastWords:lastWords,overflow:e.scrollWidth>e.clientWidth+1||visibleLines.some(l=>l.left<box.left-1||l.right>box.right+1)});
+ }
+ return{width:innerWidth,pageScrollWidth:document.documentElement.scrollWidth,fontStatus:document.fonts.status,pageOverflow:document.documentElement.scrollWidth>innerWidth+1,leafInventory,leaf_count:leafInventory.length,owner_count:rows.length,rows};
+}
+module.exports={measure};

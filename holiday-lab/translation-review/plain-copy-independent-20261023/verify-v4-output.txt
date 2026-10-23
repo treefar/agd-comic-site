@@ -1,0 +1,21 @@
+COMMAND: node holiday-lab/translation-review/plain-copy-independent-20261023/verify-v4.cjs C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\plain-copy-independent-20261023\runs\2026-10-23T10-38-35-880Z
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
+  [
++   'ja/1440',
+    'ja/320',
+-   'ja/1440'
+  ]
+
+    at verify (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\plain-copy-independent-20261023\verify-v4.cjs:7:338)
+    at Object.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\plain-copy-independent-20261023\verify-v4.cjs:12:82)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+EXIT=1

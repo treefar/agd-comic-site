@@ -1,0 +1,5 @@
+/* Keep whole shortcut labels together; longer reading copy keeps its original size. */
+.student-guide .sg-shortcuts button { overflow-wrap:normal; word-break:normal; text-wrap:balance; }
+.student-guide :is(p, .sg-source-note) { text-wrap:pretty; }
+.student-guide :is(h1,h2,h3,h4,button,summary,label,strong,small,.sg-summary,.sg-identity-note,.sg-bottom-note >p,.sg-contact p) { text-wrap:balance; }
+@media(max-width:760px){ .student-guide .sg-shortcuts { grid-template-columns:1fr; } }

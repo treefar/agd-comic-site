@@ -1,0 +1,362 @@
+✖ JA-ABSENCE-01/ja uses the reviewed meaning-preserving translation (6.8631ms)
+✖ JA-ABSENCE-02/ja uses the reviewed meaning-preserving translation (4.553ms)
+✖ JA-ABSENCE-03/ja uses the reviewed meaning-preserving translation (4.0311ms)
+✖ JA-EFFECTIVE-DATE-01/ja uses the reviewed meaning-preserving translation (1.4546ms)
+✖ JA-MAKEUP-01/ja uses the reviewed meaning-preserving translation (3.8775ms)
+✖ EN-CERT-RECOGNITION-01/en uses the reviewed meaning-preserving translation (2.5803ms)
+✖ EN-ENGLISH-RECOGNITION-01/en uses the reviewed meaning-preserving translation (1.6846ms)
+✖ JA-APPLICATION-DOCUMENT-01/ja uses the reviewed meaning-preserving translation (4.0378ms)
+✖ JA-CLEAR-BUTTON-01/ja uses the reviewed meaning-preserving translation (4.0203ms)
+✖ EN-CONTACT-PLAIN-01/en uses the reviewed meaning-preserving translation (1.9754ms)
+✖ EN-CONTACT-PLAIN-02/en uses the reviewed meaning-preserving translation (2.2358ms)
+✖ EN-CONTACT-PLAIN-03/en uses the reviewed meaning-preserving translation (1.511ms)
+✔ all unapproved source keys stay unchanged and no keys are added or removed (11.9701ms)
+✖ en generated public dictionary has exactly the approved changed values, preserving all other keys (20.997ms)
+✖ ja generated public dictionary has exactly the approved changed values, preserving all other keys (19.2118ms)
+✔ the remaining sixteen candidates are unchanged in source data and public dictionary (113.3522ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 2
+ℹ fail 14
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 293.291
+
+✖ failing tests:
+
+test at holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:6:27
+✖ JA-ABSENCE-01/ja uses the reviewed meaning-preserving translation (6.8631ms)
+  AssertionError [ERR_ASSERTION]: JA-ABSENCE-01
+  + actual - expected
+  
+  + '承認状況を確認する。試験期間や長期休暇の場合は担当窓口へ再確認する'
+  - '承認状況を確認する。試験期間や長期欠席の場合は担当窓口へ再確認する'
+                      ^
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:7:144)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '承認状況を確認する。試験期間や長期休暇の場合は担当窓口へ再確認する',
+    expected: '承認状況を確認する。試験期間や長期欠席の場合は担当窓口へ再確認する',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:6:27
+✖ JA-ABSENCE-02/ja uses the reviewed meaning-preserving translation (4.553ms)
+  AssertionError [ERR_ASSERTION]: JA-ABSENCE-02
+  + actual - expected
+  
+  + '試験、長期休暇、事後申請の休暇については、まず担任教員に手続きをご確認ください。試験の取り扱いは別途註冊課務組（学籍・履修担当）にお問い合わせください。'
+  - '試験、長期欠席、事後の欠席申請については、まず担任教員に手続きをご確認ください。試験の取り扱いは別途註冊課務組（学籍・履修担当）にお問い合わせください。'
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:7:144)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '試験、長期休暇、事後申請の休暇については、まず担任教員に手続きをご確認ください。試験の取り扱いは別途註冊課務組（学籍・履修担当）にお問い合わせください。',
+    expected: '試験、長期欠席、事後の欠席申請については、まず担任教員に手続きをご確認ください。試験の取り扱いは別途註冊課務組（学籍・履修担当）にお問い合わせください。',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:6:27
+✖ JA-ABSENCE-03/ja uses the reviewed meaning-preserving translation (4.0311ms)
+  AssertionError [ERR_ASSERTION]: JA-ABSENCE-03
+  + actual - expected
+  
+  + '申請後はシステムに戻って承認されたか確認してください。返信がない場合は担任に自主的に進捗を確認しましょう。試験に影響する場合や長期休暇となる場合は、担任および註冊課務組（学籍・履修担当）に今後の対応を確認し、申請しただけで承認されたと思い込まないようにしてください。'
+  - '申請後はシステムに戻って承認されたか確認してください。返信がない場合は担任に自主的に進捗を確認しましょう。試験に影響する場合や長期欠席となる場合は、担任および註冊課務組（学籍・履修担当）に今後の対応を確認し、申請しただけで承認されたと思い込まないようにしてください。'
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:7:144)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '申請後はシステムに戻って承認されたか確認してください。返信がない場合は担任に自主的に進捗を確認しましょう。試験に影響する場合や長期休暇となる場合は、担任および註冊課務組（学籍・履修担当）に今後の対応を確認し、申請しただけで承認されたと思い込まないようにしてください。',
+    expected: '申請後はシステムに戻って承認されたか確認してください。返信がない場合は担任に自主的に進捗を確認しましょう。試験に影響する場合や長期欠席となる場合は、担任および註冊課務組（学籍・履修担当）に今後の対応を確認し、申請しただけで承認されたと思い込まないようにしてください。',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:6:27
+✖ JA-EFFECTIVE-DATE-01/ja uses the reviewed meaning-preserving translation (1.4546ms)
+  AssertionError [ERR_ASSERTION]: JA-EFFECTIVE-DATE-01
+  + actual - expected
+  
+  + '鮮明な資格証明書または成績証明書を用意し、まず氏名、資格名、有効期間（発行日）を照合してください。その後、学科事務室に登録場所、追加書類の要否、卒業要件チェックでの反映時期を確認しましょう。'
+  - '鮮明な資格証明書または成績証明書を用意し、まず氏名、資格名、有効開始日を照合してください。その後、学科事務室に登録場所、追加書類の要否、卒業要件チェックでの反映時期を確認しましょう。'
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:7:144)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '鮮明な資格証明書または成績証明書を用意し、まず氏名、資格名、有効期間（発行日）を照合してください。その後、学科事務室に登録場所、追加書類の要否、卒業要件チェックでの反映時期を確認しましょう。',
+    expected: '鮮明な資格証明書または成績証明書を用意し、まず氏名、資格名、有効開始日を照合してください。その後、学科事務室に登録場所、追加書類の要否、卒業要件チェックでの反映時期を確認しましょう。',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:6:27
+✖ JA-MAKEUP-01/ja uses the reviewed meaning-preserving translation (3.8775ms)
+  AssertionError [ERR_ASSERTION]: JA-MAKEUP-01
+  + actual - expected
+  
+  + 'チェック結果を持参し、学科事務室で再履修または単位認定について確認する'
+  - 'チェック結果を持参し、学科事務室で不足科目の追加履修または認定について確認する'
+                      ^
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:7:144)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'チェック結果を持参し、学科事務室で再履修または単位認定について確認する',
+    expected: 'チェック結果を持参し、学科事務室で不足科目の追加履修または認定について確認する',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:6:27
+✖ EN-CERT-RECOGNITION-01/en uses the reviewed meaning-preserving translation (2.5803ms)
+  AssertionError [ERR_ASSERTION]: EN-CERT-RECOGNITION-01
+  + actual - expected
+  
+  + 'Whether a certification fulfills graduation requirements must first be checked against the department list; credit recognition and reward subsidies are two separate matters, and application procedures must still be checked after passing.'
+  - 'Whether a certification fulfills graduation requirements must first be checked against the department list; recognition toward graduation requirements and financial awards or subsidies are two separate matters, and application procedures must still be checked after passing.'
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:7:144)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'Whether a certification fulfills graduation requirements must first be checked against the department list; credit recognition and reward subsidies are two separate matters, and application procedures must still be checked after passing.',
+    expected: 'Whether a certification fulfills graduation requirements must first be checked against the department list; recognition toward graduation requirements and financial awards or subsidies are two separate matters, and application procedures must still be checked after passing.',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:6:27
+✖ EN-ENGLISH-RECOGNITION-01/en uses the reviewed meaning-preserving translation (1.6846ms)
+  AssertionError [ERR_ASSERTION]: EN-ENGLISH-RECOGNITION-01
+  + actual - expected
+  
+  + 'Organize your course grades and the certificates required by the language coordinator separately, asking clearly where to submit them and how credits are recognized. Check your graduation audit afterward; if it still shows unpassed, bring your submission records to verify with the coordinator.'
+  - 'Organize your course grades and the certificates required by the language coordinator separately, asking clearly where to submit them and how the submitted grades and certificates are recognized. Check your graduation audit afterward; if it still shows unpassed, bring your submission records to verify with the coordinator.'
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:7:144)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'Organize your course grades and the certificates required by the language coordinator separately, asking clearly where to submit them and how credits are recognized. Check your graduation audit afterward; if it still shows unpassed, bring your submission records to verify with the coordinator.',
+    expected: 'Organize your course grades and the certificates required by the language coordinator separately, asking clearly where to submit them and how the submitted grades and certificates are recognized. Check your graduation audit afterward; if it still shows unpassed, bring your submission records to verify with the coordinator.',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:6:27
+✖ JA-APPLICATION-DOCUMENT-01/ja uses the reviewed meaning-preserving translation (4.0378ms)
+  AssertionError [ERR_ASSERTION]: JA-APPLICATION-DOCUMENT-01
+  + actual - expected
+  
+  + '4年制課程昼間部 甄選入学（選抜入試） — 合同募集を通じ、統測成績＋大学学科独自の指定選考を実施する入試制度。115学年度一般枠：専門群科の卒業者・条件を満たす卒業見込者、普通科卒業後1年以上の者、募集要項の同等学力等の条件を満たす者が対象です。総合高校の卒業見込者は、高校最終学年の前期末までに専門課程（專門學程）25単位の修得が必要です。普通科の卒業見込者は原則対象外ですが、その時点までに専門群科または専門課程の科目を跨選（他課程の科目履修）して25単位または450時間に達する場合は、募集要項に基づく個別確認が必要です。115学年度の統測成績に加え、受験区分、志望学科等の条件とその他の出願資格制限も満たす必要があります。青年貯蓄口座枠は別途確認してください。 樹徳科技大学アニメとゲームデザイン学科では4つの募集コード（一般枠3群＋青年貯蓄口座枠）を開設しており、115学年度は、大学・学科（専攻・学位課程）の選択を合計6件まで申請できます。各大学が自校の出願先数を別途制限する場合もあるため、当該年度の募集要項で確認してください。選考プロセス：1. 統測成績による第1段階スクリーニング 2. 通過者による第2段階審査書類のアップロード 3. 第2段階の来校選考 — 書類選考＋面接＋実技試験（デザイン群） 4. 総合点発表＋合格・補欠合格者リスト公表 5. 進学志望順位登録 → 統一割当 → 入学手続き 提出書類：学習履歴ファイル、ポートフォリオ（デザイン群）、自己推薦書、学習計画書'
+  - '4年制課程昼間部 甄選入学（選抜入試） — 合同募集を通じ、統測成績＋大学学科独自の指定選考を実施する入試制度。115学年度一般枠：専門群科の卒業者・条件を満たす卒業見込者、普通科卒業後1年以上の者、募集要項の同等学力等の条件を満たす者が対象です。総合高校の卒業見込者は、高校最終学年の前期末までに専門課程（專門學程）25単位の修得が必要です。普通科の卒業見込者は原則対象外ですが、その時点までに専門群科または専門課程の科目を跨選（他課程の科目履修）して25単位または450時間に達する場合は、募集要項に基づく個別確認が必要です。115学年度の統測成績に加え、受験区分、志望学科等の条件とその他の出願資格制限も満たす必要があります。青年貯蓄口座枠は別途確認してください。 樹徳科技大学アニメとゲームデザイン学科では4つの募集コード（一般枠3群＋青年貯蓄口座枠）を開設しており、115学年度は、大学・学科（専攻・学位課程）の選択を合計6件まで申請できます。各大学が自校の出願先数を別途制限する場合もあるため、当該年度の募集要項で確認してください。選考プロセス：1. 統測成績による第1段階スクリーニング 2. 通過者による第2段階審査書類のアップロード 3. 第2段階の来校選考 — 書類選考＋面接＋実技試験（デザイン群） 4. 総合点発表＋合格・補欠合格者リスト公表 5. 進学志望順位登録 → 統一割当 → 入学手続き 提出書類：学習履歴ファイル、ポートフォリオ（デザイン群）、自伝（自己紹介・経歴をまとめた書類）、学習計画書'
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:7:144)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '4年制課程昼間部 甄選入学（選抜入試） — 合同募集を通じ、統測成績＋大学学科独自の指定選考を実施する入試制度。115学年度一般枠：専門群科の卒業者・条件を満たす卒業見込者、普通科卒業後1年以上の者、募集要項の同等学力等の条件を満たす者が対象です。総合高校の卒業見込者は、高校最終学年の前期末までに専門課程（專門學程）25単位の修得が必要です。普通科の卒業見込者は原則対象外ですが、その時点までに専門群科または専門課程の科目を跨選（他課程の科目履修）して25単位または450時間に達する場合は、募集要項に基づく個別確認が必要です。115学年度の統測成績に加え、受験区分、志望学科等の条件とその他の出願資格制限も満たす必要があります。青年貯蓄口座枠は別途確認してください。 樹徳科技大学アニメとゲームデザイン学科では4つの募集コード（一般枠3群＋青年貯蓄口座枠）を開設しており、115学年度は、大学・学科（専攻・学位課程）の選択を合計6件まで申請できます。各大学が自校の出願先数を別途制限する場合もあるため、当該年度の募集要項で確認してください。選考プロセス：1. 統測成績による第1段階スクリーニング 2. 通過者による第2段階審査書類のアップロード 3. 第2段階の来校選考 — 書類選考＋面接＋実技試験（デザイン群） 4. 総合点発表＋合格・補欠合格者リスト公表 5. 進学志望順位登録 → 統一割当 → 入学手続き 提出書類：学習履歴ファイル、ポートフォリオ（デザイン群）、自己推薦書、学習計画書',
+    expected: '4年制課程昼間部 甄選入学（選抜入試） — 合同募集を通じ、統測成績＋大学学科独自の指定選考を実施する入試制度。115学年度一般枠：専門群科の卒業者・条件を満たす卒業見込者、普通科卒業後1年以上の者、募集要項の同等学力等の条件を満たす者が対象です。総合高校の卒業見込者は、高校最終学年の前期末までに専門課程（專門學程）25単位の修得が必要です。普通科の卒業見込者は原則対象外ですが、その時点までに専門群科または専門課程の科目を跨選（他課程の科目履修）して25単位または450時間に達する場合は、募集要項に基づく個別確認が必要です。115学年度の統測成績に加え、受験区分、志望学科等の条件とその他の出願資格制限も満たす必要があります。青年貯蓄口座枠は別途確認してください。 樹徳科技大学アニメとゲームデザイン学科では4つの募集コード（一般枠3群＋青年貯蓄口座枠）を開設しており、115学年度は、大学・学科（専攻・学位課程）の選択を合計6件まで申請できます。各大学が自校の出願先数を別途制限する場合もあるため、当該年度の募集要項で確認してください。選考プロセス：1. 統測成績による第1段階スクリーニング 2. 通過者による第2段階審査書類のアップロード 3. 第2段階の来校選考 — 書類選考＋面接＋実技試験（デザイン群） 4. 総合点発表＋合格・補欠合格者リスト公表 5. 進学志望順位登録 → 統一割当 → 入学手続き 提出書類：学習履歴ファイル、ポートフォリオ（デザイン群）、自伝（自己紹介・経歴をまとめた書類）、学習計画書',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:6:27
+✖ JA-CLEAR-BUTTON-01/ja uses the reviewed meaning-preserving translation (4.0203ms)
+  AssertionError [ERR_ASSERTION]: JA-CLEAR-BUTTON-01
+  + actual - expected
+  
+  + '別のキーワードで検索するか、「絞り込みをクリア」を押して全項目を表示してください。'
+  - '別のキーワードで検索するか、「条件をリセット」を押して全項目を表示してください。'
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:7:144)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '別のキーワードで検索するか、「絞り込みをクリア」を押して全項目を表示してください。',
+    expected: '別のキーワードで検索するか、「条件をリセット」を押して全項目を表示してください。',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:6:27
+✖ EN-CONTACT-PLAIN-01/en uses the reviewed meaning-preserving translation (1.9754ms)
+  AssertionError [ERR_ASSERTION]: EN-CONTACT-PLAIN-01
+  + actual - expected
+  
+  + 'For grievances or gender equity cases, please confirm the intake window and official deadlines before submitting using the designated forms.'
+  - 'For grievances or gender equity cases, please confirm the responsible office and official deadlines before submitting using the designated forms.'
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:7:144)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'For grievances or gender equity cases, please confirm the intake window and official deadlines before submitting using the designated forms.',
+    expected: 'For grievances or gender equity cases, please confirm the responsible office and official deadlines before submitting using the designated forms.',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:6:27
+✖ EN-CONTACT-PLAIN-02/en uses the reviewed meaning-preserving translation (2.2358ms)
+  AssertionError [ERR_ASSERTION]: EN-CONTACT-PLAIN-02
+  + actual - expected
+  
+  + 'Class Mentor / Capstone project advisor (planning discussions; centralized contact window to be confirmed)'
+  - 'Class Mentor / Capstone project advisor (planning discussions; central point of contact to be confirmed)'
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:7:144)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'Class Mentor / Capstone project advisor (planning discussions; centralized contact window to be confirmed)',
+    expected: 'Class Mentor / Capstone project advisor (planning discussions; central point of contact to be confirmed)',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:6:27
+✖ EN-CONTACT-PLAIN-03/en uses the reviewed meaning-preserving translation (1.511ms)
+  AssertionError [ERR_ASSERTION]: EN-CONTACT-PLAIN-03
+  + actual - expected
+  
+  + 'Provide your "admission year, program type, and the matter to be processed" to the department office to help identify the appropriate contact window.'
+  - 'Provide your "admission year, program type, and the matter to be processed" to the department office to help identify the appropriate office to contact.'
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:7:144)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'Provide your "admission year, program type, and the matter to be processed" to the department office to help identify the appropriate contact window.',
+    expected: 'Provide your "admission year, program type, and the matter to be processed" to the department office to help identify the appropriate office to contact.',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:13:31
+✖ en generated public dictionary has exactly the approved changed values, preserving all other keys (20.997ms)
+  AssertionError [ERR_ASSERTION]: public dictionary mismatched keys
+  + actual - expected
+  
+  + [
+  +   '證照能否算畢業門檻，要先對系上清單；認列與獎助金是兩件事，考過後仍要查申請流程。',
+  +   '申訴或性平案件，請先確認受理窗口與正式期限，再使用對應表單送件。',
+  +   '導師／專題指導老師（規劃討論；統一窗口待確認）',
+  +   '把「入學年度、班別、要辦的事」一起告訴系辦，協助你確認承辦窗口。',
+  +   '把修課成績和語文承辦要求的證明分開整理，問清楚交件位置與認列方式。辦完再查畢業檢核；若仍顯示未通過，拿送件紀錄找承辦核對。'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:16:168)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ '證照能否算畢業門檻，要先對系上清單；認列與獎助金是兩件事，考過後仍要查申請流程。', '申訴或性平案件，請先確認受理窗口與正式期限，再使用對應表單送件。', '導師／專題指導老師（規劃討論；統一窗口待確認）', '把「入學年度、班別、要辦的事」一起告訴系辦，協助你確認承辦窗口。', '把修課成績和語文承辦要求的證明分開整理，問清楚交件位置與認列方式。辦完再查畢業檢核；若仍顯示未通過，拿送件紀錄找承辦核對。' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:13:31
+✖ ja generated public dictionary has exactly the approved changed values, preserving all other keys (19.2118ms)
+  AssertionError [ERR_ASSERTION]: public dictionary mismatched keys
+  + actual - expected
+  
+  + [
+  +   '四技日間部甄選入學 — 透過聯合招生，採統測 + 校系自辦指定項目甄試的入學管道。 115學年度一般組：高職等專業群科畢業生不限應屆；普通科畢業滿1年，或符合簡章同等學力等資格者也可申請。綜高應屆須截至高三上修畢專門學程25學分。普通科應屆原則不適用；若截至高三上跨選專業群科或專門學程達25學分或450小時，依簡章另核。須取得115統測成績，且符合群類、校系及其他資格限制；青年儲蓄帳戶組另核。 樹德動遊系一次開出 4 個招生代碼（一般組 3 群 + 青年儲蓄帳戶組），115學年度甄選入學最多可申請6個校系科（組）、學程，各校得另限制可報名該校的系科數；請依當年簡章核對。 錄取流程： 1. 統測成績進入第一階段篩選 2. 通過篩選者上傳第二階段備審資料 3. 第二階段甄試到校 — 書審 + 面試 + 實作（設計群） 4. 公告總成績 + 正備取名單 5. 登記就讀志願序 → 統一分發 → 報到 須備：學習歷程檔案、作品集（設計群）、自傳、讀書計畫',
+  +   '帶檢核結果找系辦確認補修或認列',
+  +   '追蹤簽核；有考試或長假再向承辦確認',
+  +   '考試、長假或補請假，先向導師確認流程；考試處理另洽註冊課務組。',
+  +   '換個關鍵字，或按「清除篩選」看全部項目。',
+  +   '準備清楚的證照或成績證明，先核對姓名、證照名稱與生效日期。再向系辦確認登錄位置、是否另交文件，以及畢業檢核何時可查到結果。',
+  +   '送件後回到系統查看是否核准；沒有回覆時，主動找導師追蹤。若會影響考試或需請長假，再向導師與註冊課務組確認後續，別把送出當核准。'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\plain-copy-20261023\copy.test.cjs:16:168)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ '四技日間部甄選入學 — 透過聯合招生，採統測 + 校系自辦指定項目甄試的入學管道。 115學年度一般組：高職等專業群科畢業生不限應屆；普通科畢業滿1年，或符合簡章同等學力等資格者也可申請。綜高應屆須截至高三上修畢專門學程25學分。普通科應屆原則不適用；若截至高三上跨選專業群科或專門學程達25學分或450小時，依簡章另核。須取得115統測成績，且符合群類、校系及其他資格限制；青年儲蓄帳戶組另核。 樹德動遊系一次開出 4 個招生代碼（一般組 3 群 + 青年儲蓄帳戶組），115學年度甄選入學最多可申請6個校系科（組）、學程，各校得另限制可報名該校的系科數；請依當年簡章核對。 錄取流程： 1. 統測成績進入第一階段篩選 2. 通過篩選者上傳第二階段備審資料 3. 第二階段甄試到校 — 書審 + 面試 + 實作（設計群） 4. 公告總成績 + 正備取名單 5. 登記就讀志願序 → 統一分發 → 報到 須備：學習歷程檔案、作品集（設計群）、自傳、讀書計畫', '帶檢核結果找系辦確認補修或認列', '追蹤簽核；有考試或長假再向承辦確認', '考試、長假或補請假，先向導師確認流程；考試處理另洽註冊課務組。', '換個關鍵字，或按「清除篩選」看全部項目。', '準備清楚的證照或成績證明，先核對姓名、證照名稱與生效日期。再向系辦確認登錄位置、是否另交文件，以及畢業檢核何時可查到結果。', '送件後回到系統查看是否核准；沒有回覆時，主動找導師追蹤。若會影響考試或需請長假，再向導師與註冊課務組確認後續，別把送出當核准。' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

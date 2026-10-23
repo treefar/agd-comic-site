@@ -1,0 +1,4 @@
+const fs=require('fs'),path=require('path'),assert=require('assert/strict');const packet=JSON.parse(fs.readFileSync(path.join(__dirname,'input.json'))),approved=packet.rows.filter(r=>r.direct_semantic_subset);
+assert.equal(approved.length,12);const files=new Map();let count=0;
+for(const row of approved)for(const d of row.definitions){if(!files.has(d.file))files.set(d.file,JSON.parse(fs.readFileSync(d.file)));const obj=files.get(d.file),keys=d.pointer.split('/').slice(1).map(k=>k.replace(/~1/g,'/').replace(/~0/g,'~'));let target=obj;for(const key of keys.slice(0,-1))target=target[key];assert.equal(target[keys.at(-1)],d.expected_raw,'exact preimage '+row.id);target[keys.at(-1)]=row.candidate;count++;}
+for(const [file,obj] of files)fs.writeFileSync(file,JSON.stringify(obj,null,2)+'\n');console.log('APPLIED exact12 in4 source files; other16 untouched');

@@ -1,0 +1,18 @@
+const fs=require('fs'),path=require('path'),vm=require('vm'),assert=require('assert/strict'),test=require('node:test');
+const dir=__dirname,packet=JSON.parse(fs.readFileSync(path.join(dir,'input.json'))),approved=packet.rows.filter(r=>r.direct_semantic_subset);
+const read=f=>JSON.parse(fs.readFileSync(f)),ptr=(o,p)=>p.split('/').slice(1).reduce((a,k)=>a[k.replace(/~1/g,'/').replace(/~0/g,'~')],o);
+function locale(file){const c={};vm.runInNewContext(fs.readFileSync(file,'utf8')+';globalThis.M=typeof SITE_EN_MESSAGES!=="undefined"?SITE_EN_MESSAGES:SITE_JA_MESSAGES;',c);return JSON.parse(JSON.stringify(c.M));}
+const norm=s=>s.replace(/\s+/g,' ').trim();
+test('all twelve approved values replace the exact reviewed source pointers, with no other source key changes',()=>{
+ const files=[...new Set(approved.flatMap(r=>r.definitions.map(d=>d.file)))];let count=0;
+ for(const file of files){const before=read(path.join(dir,'preimage',file)),actual=read(file),expected=structuredClone(before);for(const row of approved)for(const d of row.definitions.filter(d=>d.file===file)){assert.equal(ptr(before,d.pointer),d.expected_raw,'preimage '+row.id);const ks=d.pointer.split('/').slice(1).map(k=>k.replace(/~1/g,'/').replace(/~0/g,'~'));let o=expected;for(const k of ks.slice(0,-1))o=o[k];o[ks.at(-1)]=row.candidate;count++;}assert.deepEqual(actual,expected,file);}
+ assert.equal(count,12);
+});
+for(const lang of ['en','ja'])test(lang+' generated public dictionary has exactly the approved changed values, preserving all other keys',()=>{
+ const file='locale-'+lang+'.js',actual=locale(file),before=locale(path.join(dir,'preimage',file)),expected=structuredClone(before),rows=approved.filter(r=>r.lang===lang);
+ for(const row of rows){assert.equal(before[norm(row.key)],row.current,'public preimage '+row.id);expected[norm(row.key)]=row.candidate;}
+ assert.deepEqual(actual,expected);assert.equal(rows.length,lang==='ja'?7:5);
+});
+test('the remaining sixteen candidates are unchanged in source data and public dictionary',()=>{
+ let count=0;for(const row of packet.rows.filter(r=>!r.direct_semantic_subset)){const dict=locale('locale-'+row.lang+'.js');assert.equal(dict[norm(row.key)],row.current,row.id);for(const d of row.definitions)assert.equal(ptr(read(d.file),d.pointer),d.expected_raw,row.id);count++;}assert.equal(count,16);
+});

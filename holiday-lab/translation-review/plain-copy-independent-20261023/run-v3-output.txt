@@ -1,0 +1,26 @@
+PASS guide-zh-320
+PASS guide-zh-1440
+PASS guide-en-320
+FAIL guide-en-1440
+locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator('.topnav nav a:not([data-language-choice])[href*="#/students/guide"]')
+    - locator resolved to <a href="#/students/guide">Student Guide</a>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 100ms
+    57 × waiting for element to be visible, enabled and stable
+       - element is not visible
+     - retrying click action
+       - waiting 500ms
+
+    at guide (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\plain-copy-independent-20261023\run-v3.cjs:28:414)
+    at async C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\plain-copy-independent-20261023\run-v3.cjs:40:332
+PLAIN_COPY_INDEPENDENT fail EVIDENCE C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\plain-copy-independent-20261023\runs\2026-10-23T10-36-13-606Z
+NATIVE_EXIT=1
