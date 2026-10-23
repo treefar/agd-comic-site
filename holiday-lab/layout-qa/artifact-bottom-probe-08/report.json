@@ -7377,5 +7377,5 @@
   "original_raw_text_same": true,
   "original_raw_computed_same": true,
   "restored_computed_equal": true,
-  "restore_note": "The frozen sampler baseline probe may normalize an absent style attribute into an empty attribute. exact_restore is retained false; computed styles, text, native scroll and original ink overhang return exactly to original values."
+  "restore_note": "The frozen sampler scroll guard temporarily sets style.overflowAnchor=none and restores the prior empty property (browser-sampler.cjs lines8 and63), leaving an empty style attribute where the original attribute was absent. exact_restore remains false; computed styles, text, native scroll and original ink overhang return exactly to original values."
 }
