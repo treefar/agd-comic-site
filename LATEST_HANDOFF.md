@@ -1,3 +1,13 @@
+## 2026-10-23 已依使用者「繼續」恢復本機驗證
+
+- source_agent: codex。此為最新狀態；下方暫停記錄保留為歷史。中秋原247份逐筆重新核對後，將暫停屏障移入operator-pause-records保留，未刪檔；同root-ui-04以--resume接續，沒有重跑原247。8845恢復同.measure-integrated-08，freeze04/source/font重新核對通過。
+- 2026-10-23T05:49:49.915Z觀測：中秋554/783，runner43520 creation2026-10-23T05:31:17.6311460Z／driver8248；勞動180/2784目標，runner27896 creation2026-10-23T05:39:47.3243860Z／driver63148。均未terminal，只追同job，不因等待重啟。精確程序／原stdout：reports/resume-observation-20261023-16.json。
+- 勞動另審新full-domain-reviewed工具，9tests及preflight過後才批准獨立scope；保留原wide false/flags，只以精確owner證據判定target域，不代表整頁PASS。full-freeze972bda82020a5f60241a0105e858d64545d565c3e18368492d05bdaeac37cd3c。
+- 來源帳本283inputs／1284refs，root複驗3tests＋readonly verifier exit0；runtime283與contract283交集277，舊同路徑served278含根目錄CSS，分開記。原08完整generator快照缺／當時preflight缺／新短JA其餘情境尚未全驗，仍NO。新原generator隔離55input→37output，client只與build11 byte-exact。
+- 清明1115舊證據已離線恢復，136錯句100可見／36窄版未可見保留；新文字投影／pilot工具補字型負例與獨立verifier中，尚未批准或啟動browser。開學只做source/font-bound數字DP與fragment保守界，native equivalence仍NO。國慶另獨立唯讀owner因果審查，未啟新量測。
+- 正式覆蓋仍2046/2076缺30；本輪未改canonical／正式R0／dashboard數字，沒有新網站Build或ZIP、push、發布、碰main或刪檔；C節SHA不變。TF-BASE沒有新來源回報，未啟Unity。
+- 下一輪第一件事：核上述同PID+creation與各launch terminal；活著只追同job。中秋完後獨立store.verify783及810義務，勞動完後full.cjs --verify；遇真失敗先保留與診斷，不自動重跑。清明／開學工具須root審碼批准才可開browser。詳reports/verification-followup-20261023-16.md。
+
 ## 2026-10-23 使用者要求暫停：可重開程式
 
 - source_agent: codex。使用者要重開程式，已停止新工作與三子代理。中秋root-ui-04於05:05:57.241Z受控停在247/783，剩536；runner43892/driver51568均absent，原browser已finally關閉。store.verify實跑exit0，case/sample/PNG/hash-chain/checkpoint各247、零未提交attempt；原32凍結方法SHA不變。
