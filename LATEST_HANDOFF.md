@@ -1,3 +1,12 @@
+## 2026-10-23 最新：指南日英49值已整合（11僅內部量測）
+
+- source_agent: codex。上一輪為進展，本輪由兩個獨立codex分支完成JA20／EN29值，整合daeb9d7／c3bcb89；其他生成譯值與固定94ed07e全同，原校務條件、pending機構／資格／免修句保留。報告：C:/agywork/agd-holiday-prototypes/holiday-lab/reports/integration-20261023-11.md。
+- 主控build11 exit0，356檔、app-TQ4G6C6Y.js，8852/.measure-integrated-11僅內部量測，未替換8800舊審閱版與ZIP。13相關Node測試過；283遊戲runtime與10逐byte全同，09→10精確僅newyear第一幕JA短字幕。當前模組功能儀表板15/15、23/23權威格式與2/2smoke，使用者確認0。
+- 新譯值實際指南雙寬320/1440共98目標：84可見且全文owner-contained／無水平溢出、3528字元樣式cmap missing0/unknown0；14為7個不在目前served guide資料的舊字典值，另列data-only，不洗成畫面通過。證據：translation-review/guide-terms-rendered11/。英語office’s實際DOM無插入空白，未把字形觀感誤認文字bug。
+- 春節當前JA原生回放18 stable／0 geometry，兩個原跨鏡失敗保留，只補shot3/7兩張；沒有凍結動畫或延長140ms。真DOM newyear/zh/1440 1/1、相關純測試4/4；詳layout-qa/newyear-ja-caption-current/REPORT.md，不當完整UI完成。
+- 完整UI gate本輪實跑exit1，正式R0仍13case且缺final source fingerprints，SHA cbaa1849002fe4682650fb653385a62d91ebf9aca3c94090cdaf0df7bbf34336未改。固定08長批實查52792／46996 live；最新c5e3258索引1620/2076、缺456，仍PARTIAL_RED。front15/15已完成；第三批固定錯句18 eligible、national6 supplement-only仍missing，scope負例5/5過。不得為清NO而改sampler／safe或丟原失敗。
+- TF-BASE夾本輪仍只有5工單/腳本，兩遊戲源／WebGL未回，未啟Unity、未改遠端權限。未push、未發布、未碰main、未刪檔、C節不動。下一輪第一件事：核原08兩程序真狀態，回收新增完整列並處理精確method缺口；讀中秋finite-native先導真hint/clone一致性與每千例耗時，未批准前不啟全集。正式UI gate通過才產新試玩包。
+
 ## 2026-10-23 最新：日英專責差異複核（未套用候選）
 
 - source_agent: codex。依使用者追加要求，日文／英文兩位子代理已交回獨立複核，主控讀報告並重跑 verify.cjs／audit.cjs，皆 exit 0。總報告：C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/specialist-followup-20261023.md；各語言報告在 specialist-ja-20261023/REPORT.md、specialist-en-20261023/REPORT.md。
