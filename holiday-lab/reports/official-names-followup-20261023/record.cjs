@@ -1,0 +1,4 @@
+const fs=require('node:fs'),path=require('node:path'),cp=require('node:child_process');
+const [tag,cwd,...args]=process.argv.slice(2);if(!/^[a-z0-9-]+$/.test(tag||'')||!cwd||!args.length)throw Error('Use <unique-tag> <cwd> <node args...>');
+const out=path.join(__dirname,'root');fs.mkdirSync(out,{recursive:true});const file=path.join(out,tag+'.json');if(fs.existsSync(file))throw Error('Receipt exists; choose a new tag');
+const r=cp.spawnSync(process.execPath,args,{cwd,env:process.env,encoding:'utf8',maxBuffer:32*1024*1024});const v={at:new Date().toISOString(),cwd,command:[process.execPath,...args],exit_code:r.status,stdout:r.stdout,stderr:r.stderr,error:r.error?.message};fs.writeFileSync(file,JSON.stringify(v,null,2),{flag:'wx'});console.log(JSON.stringify({file,exit_code:r.status}));console.log(r.stdout.slice(-1900));if(r.stderr)console.error(r.stderr.slice(-1000));process.exitCode=r.status??1;

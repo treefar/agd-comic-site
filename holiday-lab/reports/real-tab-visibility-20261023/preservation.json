@@ -1,0 +1,112 @@
+{
+  "at": "2026-10-23T11:36:22.251Z",
+  "commit": "d5030966df1ba29e0c61ee4033df3f2c9668b003",
+  "runtime_files_unchanged": 360,
+  "public_release": false,
+  "main_refs_unchanged": true,
+  "commands": [
+    {
+      "args": [
+        "branch",
+        "--show-current"
+      ],
+      "exit_code": 0,
+      "stdout": "codex/real-tab-pause\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "diff",
+        "--cached",
+        "--name-only"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "for-each-ref",
+        "--format=%(refname) %(objectname)",
+        "refs/heads/main",
+        "refs/remotes/origin/main"
+      ],
+      "exit_code": 0,
+      "stdout": "refs/remotes/origin/main 1b8322e69d84549db220d849afb1aac0fb9d7c2a\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "add",
+        "--",
+        ".gitattributes",
+        "holiday-lab/reports/real-tab-visibility-20261023"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "warning: in the working copy of '.gitattributes', LF will be replaced by CRLF the next time Git touches it\n"
+    },
+    {
+      "args": [
+        "diff",
+        "--cached",
+        "--name-only",
+        "-z"
+      ],
+      "exit_code": 0,
+      "stdout": ".gitattributes\u0000holiday-lab/reports/real-tab-visibility-20261023/REPORT.md\u0000holiday-lab/reports/real-tab-visibility-20261023/fixture.html\u0000holiday-lab/reports/real-tab-visibility-20261023/observed-summary.json\u0000holiday-lab/reports/real-tab-visibility-20261023/preserve.cjs\u0000holiday-lab/reports/real-tab-visibility-20261023/serve.cjs\u0000holiday-lab/reports/real-tab-visibility-20261023/verify.cjs\u0000holiday-lab/reports/real-tab-visibility-20261023/verify.test.cjs\u0000",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "diff",
+        "--cached",
+        "--diff-filter=D",
+        "--name-only"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "commit",
+        "-m",
+        "Record bounded Chrome visibility observation without claiming hidden pass"
+      ],
+      "exit_code": 0,
+      "stdout": "[codex/real-tab-pause d5030966] Record bounded Chrome visibility observation without claiming hidden pass\n 8 files changed, 94 insertions(+)\n create mode 100644 holiday-lab/reports/real-tab-visibility-20261023/REPORT.md\n create mode 100644 holiday-lab/reports/real-tab-visibility-20261023/fixture.html\n create mode 100644 holiday-lab/reports/real-tab-visibility-20261023/observed-summary.json\n create mode 100644 holiday-lab/reports/real-tab-visibility-20261023/preserve.cjs\n create mode 100644 holiday-lab/reports/real-tab-visibility-20261023/serve.cjs\n create mode 100644 holiday-lab/reports/real-tab-visibility-20261023/verify.cjs\n create mode 100644 holiday-lab/reports/real-tab-visibility-20261023/verify.test.cjs\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "fsck",
+        "--connectivity-only",
+        "--no-dangling"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "for-each-ref",
+        "--format=%(refname) %(objectname)",
+        "refs/heads/main",
+        "refs/remotes/origin/main"
+      ],
+      "exit_code": 0,
+      "stdout": "refs/remotes/origin/main 1b8322e69d84549db220d849afb1aac0fb9d7c2a\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "d5030966df1ba29e0c61ee4033df3f2c9668b003\n",
+      "stderr": ""
+    }
+  ]
+}

@@ -72,5 +72,13 @@ module.exports = function(root, policy, read) {
     assert.equal(r.topics.length,5);assert.ok(r.topics.every(t=>t.steps>=4&&t.faq===3));
     out.additional_research={topics:r.topics.length,steps:r.topics.reduce((n,t)=>n+t.steps,0),faq:r.topics.reduce((n,t)=>n+t.faq,0),current_complete_regulations_verified:false};
   }
+  if(policy.official_names_command){
+    const command=read(policy.official_names_command),v=JSON.parse(command.stdout);assert.equal(command.exit_code,0);assert.equal(v.pass,true);assert.equal(v.translation_values,24);assert.equal(v.target_observations,48);assert.equal(v.public_release,false);
+    const raw=read(policy.official_names_receipt,false);assert.equal(crypto.createHash('sha256').update(raw).digest('hex'),v.receipt_sha256);
+    const plan=read('holiday-lab/translation-review/official-guide-names-20261023/plan.json');assert.equal(plan.length,12);for(const p of plan)for(const d of p.definitions){const obj=read(d.file);const actual=d.pointer.split('/').slice(1).reduce((a,k)=>a[k.replace(/~1/g,'/').replace(/~0/g,'~')],obj);assert.equal(actual,p.expected);}
+    const merge=read(policy.official_names_merge);assert.equal(merge.independent_receipt_sha256,v.receipt_sha256);assert.equal(merge.public_release,false);out.translation=v;out.official_names=true;
+  }
+  if(policy.shutdown_tfbase){const r=read(policy.shutdown_tfbase);assert.equal(r.folder_read,'success');assert.equal(r.downloaded_build,false);assert.equal(r.unity_started,false);assert.equal(r.remote_job_resent,false);out.shutdown_tfbase={items:r.direct_children.length,observed_at:r.observed_final_taiwan};}
+  if(policy.xiaosa_receipt){const raw=read(policy.xiaosa_receipt,false),r=JSON.parse(raw),m=read(policy.xiaosa_manifest);assert.equal(crypto.createHash('sha256').update(raw).digest('hex'),m.result_sha256);assert.equal(r.status,'pass');assert.equal(r.contexts.length,6);assert.equal(m.pngs.length,30);assert.deepEqual(r.sources_before,r.sources_after);for(const [file,hash]of Object.entries(r.sources_after))assert.equal(crypto.createHash('sha256').update(read(file,'buffer')).digest('hex'),hash);for(const c of r.contexts){assert.equal(c.pass,true);assert.equal(c.states.length,4);assert.equal(c.source.teamVisible,true);assert.equal(c.errors.length,0);assert.equal(c.badResponses.length,0);}assert.equal(r.full_project_approved,false);out.xiaosa={contexts:r.contexts.length,states:r.contexts.reduce((n,c)=>n+c.states.length,0),pngs:m.pngs.length,full_project_approved:false};}
   return out;
 };

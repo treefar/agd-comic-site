@@ -1,0 +1,236 @@
+{
+  "as_of": "2026-10-23",
+  "workdir": "C:/agywork/agd-holiday-prototypes",
+  "commands": [
+    {
+      "command": "Get-Location; node -e (read guide selected cards and sources); read existing guide research REPORTs",
+      "exit_code": 0,
+      "scope": "唯讀既有指南與既有研究；context.json保留輸入SHA"
+    },
+    {
+      "command": "PowerShell here-string | node --input-type=module",
+      "operation": "fetch targets.json first batch; raw bytes + SHA + HTTP receipt",
+      "exit_code": 0,
+      "actual_stdout": [
+        {
+          "id": "leave-2026",
+          "status": 200,
+          "bytes": 40458
+        },
+        {
+          "id": "enrollment-115-1",
+          "status": 200,
+          "bytes": 35782
+        },
+        {
+          "id": "credit-transfer-115-1",
+          "status": 200,
+          "bytes": 35782
+        },
+        {
+          "id": "leave-school-115-1",
+          "status": 200,
+          "bytes": 35782
+        },
+        {
+          "id": "leave-old",
+          "status": 200,
+          "bytes": 102035
+        },
+        {
+          "id": "academic-faq",
+          "status": 202,
+          "bytes": 0
+        },
+        {
+          "id": "academic-status-current",
+          "status": 202,
+          "bytes": 0
+        },
+        {
+          "id": "credit-transfer-procedure",
+          "status": 202,
+          "bytes": 0
+        },
+        {
+          "id": "credit-transfer-form",
+          "status": 200,
+          "bytes": 357033
+        },
+        {
+          "id": "transfer-admissions-115-1",
+          "status": 200,
+          "bytes": 2206468
+        }
+      ],
+      "receipt": "fetch-receipts.json"
+    },
+    {
+      "command": "PowerShell here-string | node --input-type=module",
+      "operation": "fetch transfer mirror and ACA public REST pages/posts",
+      "exit_code": 0,
+      "actual_stdout": [
+        {
+          "id": "transfer-115-2",
+          "status": 200,
+          "bytes": 35782
+        },
+        {
+          "id": "aca-pages-public",
+          "status": 202,
+          "bytes": 0
+        },
+        {
+          "id": "aca-posts-public",
+          "status": 202,
+          "bytes": 0
+        }
+      ],
+      "receipt": "fetch-secondary-receipts.json"
+    },
+    {
+      "command": "PowerShell here-string | node --input-type=module",
+      "operation": "fetch 4 current canonical URLs and old113 handbook",
+      "exit_code": 0,
+      "actual_stdout": [
+        {
+          "id": "enrollment-canonical-attempt",
+          "status": 202,
+          "bytes": 0
+        },
+        {
+          "id": "credit-canonical-attempt",
+          "status": 202,
+          "bytes": 0
+        },
+        {
+          "id": "status-canonical-attempt",
+          "status": 202,
+          "bytes": 0
+        },
+        {
+          "id": "transfer-canonical-attempt",
+          "status": 202,
+          "bytes": 0
+        },
+        {
+          "id": "course-handbook-113-attempt",
+          "status": 403,
+          "bytes": 243
+        }
+      ],
+      "receipt": "fetch-current-attempts.json"
+    },
+    {
+      "command": "Python stdin: sys.stdout.reconfigure(encoding='utf-8'); pdfplumber extract_text; pypdfium2 selected render",
+      "python": "C:/Users/treef/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "exit_code": 0,
+      "actual_stdout": [
+        "leave-old total pages 2",
+        "credit-transfer-form total pages 1",
+        "transfer-admissions-115-1 total pages 31",
+        "rendered 6 selected pages"
+      ],
+      "visual_scope": "view_image已讀2頁請假、1頁表單、3頁附錄"
+    },
+    {
+      "tool": "google_drive_fetch",
+      "arguments": {
+        "link_id": "link_6ac46735bddc8191a891812f3842fde5",
+        "url": "https://drive.google.com/file/d/1JufGkVm9zLeLpIzEdL77RspY_LN6bhRn/view",
+        "download_raw_file": true,
+        "include_base64": false
+      },
+      "isError": false,
+      "actual_result": {
+        "title": "轉系審查要點.doc",
+        "mime_type": "application/msword",
+        "file_size_bytes": 29184
+      },
+      "materialization_stdout": "dept-transfer-rule.doc bytes=29184 status=200",
+      "materialization_exit_code": 0
+    },
+    {
+      "tool": "google_drive_fetch",
+      "arguments": {
+        "link_id": "link_6ac46735bddc8191a891812f3842fde5",
+        "url": "https://drive.google.com/file/d/1JufGkVm9zLeLpIzEdL77RspY_LN6bhRn/view",
+        "download_raw_file": false,
+        "include_base64": false
+      },
+      "isError": false,
+      "actual_result": {
+        "content_characters": 0,
+        "mime_type": "application/msword"
+      },
+      "limitation": "部分UTF16字串不是Word全文解析。"
+    },
+    {
+      "tool": "web.run open",
+      "actual_results": [
+        {
+          "url": "https://www.aca.stu.edu.tw/學生休學、復學及退學/",
+          "status": 403
+        },
+        {
+          "url": "https://www.stu.edu.tw/latestnews-single/?id=233961",
+          "status": 403
+        }
+      ],
+      "limitation": "索引本文與當日live分開，不忽略讀取失敗。"
+    },
+    {
+      "command": "node holiday-lab/reports/guide-enrollment-research-20261023/verify.mjs",
+      "actual_output_file": "verification-output.txt",
+      "result_file": "verification.json"
+    }
+  ],
+  "selected_actual_searches": [
+    {
+      "query": "\"選課\" \"棄選\" \"115\"",
+      "domains": [
+        "aca.stu.edu.tw",
+        "stu.edu.tw"
+      ]
+    },
+    {
+      "query": "\"抵免學分\" \"辦法\"",
+      "domains": [
+        "aca.stu.edu.tw"
+      ]
+    },
+    {
+      "query": "\"學生請假規則\"",
+      "domains": [
+        "stu.edu.tw"
+      ]
+    },
+    {
+      "query": "\"公告115學年度第2學期轉系\"",
+      "domains": [
+        "stu.edu.tw"
+      ]
+    },
+    {
+      "query": "\"樹德科技大學學則\" \"114\"",
+      "domains": [
+        "stu.edu.tw"
+      ]
+    },
+    {
+      "query": "\"樹德科技大學學生選課準則\"",
+      "domains": [
+        "stu.edu.tw"
+      ]
+    },
+    {
+      "query": "\"請假\" \"心理假\"",
+      "domains": [
+        "life.sao.stu.edu.tw",
+        "stu.edu.tw"
+      ]
+    }
+  ],
+  "not_all_searches_or_documents_claimed_complete": true,
+  "security": "未保存connector簽名下載URL、token、個人填答或學生名冊；未登入個人校務。"
+}

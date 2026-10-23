@@ -1,0 +1,83 @@
+[
+  {
+    "args": [
+      "diff",
+      "--cached",
+      "--name-only"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "branch",
+      "--show-current"
+    ],
+    "exit_code": 0,
+    "stdout": "codex/official-names-review\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "merge",
+      "--no-commit",
+      "--no-ff",
+      "0da385c6a9f71f7eeccc79065deb4432f13861ec"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "warning: in the working copy of 'holiday-lab/layout-qa/phase-latest.json', LF will be replaced by CRLF the next time Git touches it\nAutomatic merge went well; stopped before committing as requested\n"
+  },
+  {
+    "args": [
+      "diff",
+      "--cached",
+      "--name-only",
+      "-z"
+    ],
+    "exit_code": 0,
+    "stdout": "data/en/flow-ui.json\u0000data/en/step-details-ui.json\u0000data/en/student-guide-ui.json\u0000data/ja/messages.json\u0000holiday-lab/translation-review/official-guide-names-20261023/.gitattributes\u0000holiday-lab/translation-review/official-guide-names-20261023/COMMIT.md\u0000holiday-lab/translation-review/official-guide-names-20261023/REPORT.md\u0000holiday-lab/translation-review/official-guide-names-20261023/apply-output.txt\u0000holiday-lab/translation-review/official-guide-names-20261023/apply-v2-output.txt\u0000holiday-lab/translation-review/official-guide-names-20261023/apply-v2.json\u0000holiday-lab/translation-review/official-guide-names-20261023/apply.cjs\u0000holiday-lab/translation-review/official-guide-names-20261023/apply.json\u0000holiday-lab/translation-review/official-guide-names-20261023/baseline.json\u0000holiday-lab/translation-review/official-guide-names-20261023/build-delta.json\u0000holiday-lab/translation-review/official-guide-names-20261023/build03-output.txt\u0000holiday-lab/translation-review/official-guide-names-20261023/build03.json\u0000holiday-lab/translation-review/official-guide-names-20261023/command.cjs\u0000holiday-lab/translation-review/official-guide-names-20261023/freeze-output.txt\u0000holiday-lab/translation-review/official-guide-names-20261023/freeze-v3-command-output.txt\u0000holiday-lab/translation-review/official-guide-names-20261023/freeze-v3-command.json\u0000holiday-lab/translation-review/official-guide-names-20261023/freeze-v3.json\u0000holiday-lab/translation-review/official-guide-names-20261023/freeze.cjs\u0000holiday-lab/translation-review/official-guide-names-20261023/freeze.json\u0000holiday-lab/translation-review/official-guide-names-20261023/generate.cjs\u0000holiday-lab/translation-review/official-guide-names-20261023/generation-audit/i18n-catalog.json\u0000holiday-lab/translation-review/official-guide-names-20261023/generation-audit/i18n-data-missing.json\u0000holiday-lab/translation-review/official-guide-names-20261023/generation-audit/i18n-missing.json\u0000holiday-lab/translation-review/official-guide-names-20261023/generation-output.txt\u0000holiday-lab/translation-review/official-guide-names-20261023/generation.json\u0000holiday-lab/translation-review/official-guide-names-20261023/git-product-check.cjs\u0000holiday-lab/translation-review/official-guide-names-20261023/git-product-check.json\u0000holiday-lab/translation-review/official-guide-names-20261023/input-REPORT.md\u0000holiday-lab/translation-review/official-guide-names-20261023/input-comparison.json\u0000holiday-lab/translation-review/official-guide-names-20261023/latest-build-change.json\u0000holiday-lab/translation-review/official-guide-names-20261023/legacy-snapshot-output.txt\u0000holiday-lab/translation-review/official-guide-names-20261023/legacy-snapshot.json\u0000holiday-lab/translation-review/official-guide-names-20261023/names-green-output.txt\u0000holiday-lab/translation-review/official-guide-names-20261023/names-green.json\u0000holiday-lab/translation-review/official-guide-names-20261023/names-postbuild-output.txt\u0000holiday-lab/translation-review/official-guide-names-20261023/names-postbuild.json\u0000holiday-lab/translation-review/official-guide-names-20261023/names-red-output.txt\u0000holiday-lab/translation-review/official-guide-names-20261023/names-red-v2-output.txt\u0000holiday-lab/translation-review/official-guide-names-20261023/names-red-v2.json\u0000holiday-lab/translation-review/official-guide-names-20261023/names-red.json\u0000holiday-lab/translation-review/official-guide-names-20261023/names.test-v1.cjs.txt\u0000holiday-lab/translation-review/official-guide-names-20261023/names.test.cjs\u0000holiday-lab/translation-review/official-guide-names-20261023/plan.json\u0000holiday-lab/translation-review/official-guide-names-20261023/preimage/data/admission.json\u0000holiday-lab/translation-review/official-guide-names-20261023/preimage/data/en/admission.json\u0000holiday-lab/translation-review/official-guide-names-20261023/preimage/data/en/flow-ui.json\u0000holiday-lab/translation-review/official-guide-names-20261023/preimage/data/en/step-details-ui.json\u0000holiday-lab/translation-review/official-guide-names-20261023/preimage/data/en/student-guide-ui.json\u0000holiday-lab/translation-review/official-guide-names-20261023/preimage/data/faculty.json\u0000holiday-lab/translation-review/official-guide-names-20261023/preimage/data/ja/flow-ui.json\u0000holiday-lab/translation-review/official-guide-names-20261023/preimage/data/ja/messages.json\u0000holiday-lab/translation-review/official-guide-names-20261023/preimage/data/ja/step-details.json\u0000holiday-lab/translation-review/official-guide-names-20261023/preimage/data/ja/ui.json\u0000holiday-lab/translation-review/official-guide-names-20261023/preimage/data/students/guide.json\u0000holiday-lab/translation-review/official-guide-names-20261023/preimage/holiday-lab/build-review.mjs\u0000holiday-lab/translation-review/official-guide-names-20261023/preimage/holiday-lab/latest-build.json\u0000holiday-lab/translation-review/official-guide-names-20261023/preimage/holiday-lab/translation-review/dedicated-language-audit-20261023/findings.json\u0000holiday-lab/translation-review/official-guide-names-20261023/preimage/locale-en.js\u0000holiday-lab/translation-review/official-guide-names-20261023/preimage/locale-ja.js\u0000holiday-lab/translation-review/official-guide-names-20261023/preimage/scripts/build-ja-translations.cjs\u0000holiday-lab/translation-review/official-guide-names-20261023/preimage/scripts/build-translations.cjs\u0000holiday-lab/translation-review/official-guide-names-20261023/preimage/student-guide.css\u0000holiday-lab/translation-review/official-guide-names-20261023/preimage/student-guide.jsx\u0000holiday-lab/translation-review/official-guide-names-20261023/prepare.cjs\u0000holiday-lab/translation-review/official-guide-names-20261023/report.cjs\u0000holiday-lab/translation-review/official-guide-names-20261023/source-delta.json\u0000locale-en.js\u0000locale-ja.js\u0000",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "diff",
+      "--cached",
+      "--diff-filter=D",
+      "--name-only"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "commit",
+      "-m",
+      "Integrate independently verified official guide names locally"
+    ],
+    "exit_code": 0,
+    "stdout": "[codex/official-names-review d234fc4f] Integrate independently verified official guide names locally\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "fsck",
+      "--connectivity-only",
+      "--no-dangling"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "stdout": "d234fc4f3b3297be1f4411e714a8c2eedeb59674\n",
+    "stderr": ""
+  }
+]

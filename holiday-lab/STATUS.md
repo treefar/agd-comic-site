@@ -1,3 +1,23 @@
+## 2026-10-23 關機前保全：小颯首頁已驗、TF-BASE未見WebGL，依使用者要求暫停
+
+- source_agent: codex；TF-GO。工作樹 C:/agywork/agd-holiday-prototypes，分支 codex/xiaosa-credit-review。使用者要求完成本段後暫停以便關機；不再新增工作或重送工單。8870是最新小颯本機審閱版，關機後服務會停止。
+- 使用者確認首頁手繪為畢業生「小颯」所畫。本輪依舊首頁唯一手繪海報 src 與實圖比對，沿用 images/posters/clipstudio-grand-prize.jpg 完整原圖，放首頁輪播首張、補三語畢業生署名及作品頁 team；未改原圖、未生新圖、未推定未知指導教師。原三件作品、完整署名與手動切換保留。
+- 新 .measure-xiaosa-review-20261023-01／app-BWFF7U3Q.js／360檔，http://127.0.0.1:8870/ ，儀表板 /progress/ 。獨立短驗收6/6組、24/24作品狀態、6/6來源點擊、30PNG；9來源＋9HTTP前後穩定，無溢位／例外／圖片404。只限本次首頁及來源頁，不是全站或新遊戲發布驗收；使用者尚未確認新畫面。
+- TF-BASE最新實查2026-10-23台灣19:49:30：指定交接夾5份工單／腳本，未見本次Flora／胖倉鼠WebGL；另有舊Flora來源候選，身分與完整性未驗，未下載大型包、未啟Unity、未重派。只代表所查資料夾，不推論別處沒有上傳。
+- 12正式名稱已經獨立驗收後合入本機 merge d234fc4f3b3297be1f4411e714a8c2eedeb59674；兩批累計24譯值、48次可見觀察、60PNG，root唯讀複核exit0。此為8867同儕凍結build證據，不冒稱8870全站母語審查。4 PROGRAM整句與相依欄位待下一輪一致修正，115本系一般單招30名已截止，其他學制不可混用。
+- 指南選課／抵免／請假／休復學／轉系另補現行母法草稿：首版24步15FAQ，supplement-current-rules共100項文件證據檢查yes、0no，仍有現行流程及跨版本衝突待核，不等於正式規章全部確認。畢業／獎助／協助／就業四題只有9/9 checkpoint檢查，完整四題草稿未完成；原始資料保存，未直接套產品。
+- 8866前版release12yes／1unknown仍限定前版；真背景hidden仍unknown，完整UI gate仍NO。儀表板將本輪暫停、資料、工具與使用者確認分開；不把前版收據套成8870全站通過。
+- 合併第一次因長路徑及locale dirty失敗，Git回復時覆寫4份原dirty；已從Git dangling commit f7e62206a266093fe076a24ef66ef0f1e78e9cb7 找回，逐SHA恢復4/4，原檔留dirty、不混入本輪提交，原始恢復備份另納入本輪報告保存。後續Git一律加 -c core.longpaths=true；修正後合併成功、fsck exit0。
+- 不push、不發布、不碰main、不刪檔、不執行C節；勞動節暫緩。所有子代理本輪已停止新增任務；本機伺服器保留至使用者關機，不自行關閉電腦。
+- 重開後第一件事：先讀此段和 holiday-lab/reports/shutdown-20261023/REPORT.md，再用下列命令恢復8870，等使用者看首頁回饋；不得重跑舊巨量QA或已完成研究。WebGL等新回傳再核來源，剩餘PROGRAM與指南缺件依證據續接。
+
+```text
+cd C:/agywork/agd-holiday-prototypes
+node scripts/serve-local-review.cjs --site=.measure-xiaosa-review-20261023-01 --dashboard=holiday-lab/dashboard/out --port=8870
+```
+
+報告：holiday-lab/reports/shutdown-20261023/independent/REPORT.md；holiday-lab/reports/tfbase-shutdown-check-20261023/REPORT.md；holiday-lab/reports/official-names-followup-20261023/REPORT.md。最終保存指令與檢查見shutdown-20261023/root/。
+
 ## 2026-10-23 最新：學生首頁、英日文案與指南已合成本機8866；五題補研交草稿
 
 - source_agent: codex。主工作樹 C:/agywork/agd-holiday-prototypes，分支 codex/student-review-integrated；本機merge 73f91f6a8a12573bc86548358705689b1dceea7e 已合入 codex/plain-guide-layout。唯一衝突為.gitattributes，保留雙側規則；四份原實質dirty逐SHA保留，未提交舊勞動／清明暫存。

@@ -1,0 +1,5 @@
+const fs=require('node:fs'),vm=require('node:vm'),test=require('node:test'),assert=require('node:assert/strict');
+const src=fs.readFileSync('holiday-home.jsx','utf8'),scope={};vm.runInNewContext(src.slice(0,src.indexOf('// Student work and'))+';this.works=STUDENT_HERO_WORKS;',scope);
+test('lead work is the existing graduate illustration with exact creator credit',()=>{const w=scope.works[0];assert.equal(w.image,'images/posters/clipstudio-grand-prize.jpg');assert.equal(w.designers,'小颯');assert.equal(w.creatorRole,'graduate');assert.equal(w.sourceHref,'#/works/clipstudio-grand-prize');assert.equal(w.mentor,null);});
+test('three prior student projects remain reachable after adding the illustration',()=>{assert.equal(scope.works.length,4);assert.deepEqual(Array.from(scope.works.slice(1),w=>w.title),['Dear, All Robots','喀嚓','今食堂']);});
+test('both work data records attribute the same original artist',()=>{for(const file of ['data/works.json','data/en/works.json'])assert.equal(JSON.parse(fs.readFileSync(file)).find(w=>w.id==='clipstudio-grand-prize').team,'小颯');});

@@ -1,6 +1,14 @@
 /** @jsx siteCreateElement */
-// Exact poster and credit records from data/news.json id7140; no new adaptation or zero-AI claim.
+// Original posters; the graduate illustrator credit was supplied by the department head on 2026-10-23.
 const STUDENT_HERO_WORKS = Object.freeze([
+  {
+    title: 'Clip Studio Paint · Grand Prize',
+    image: 'images/posters/clipstudio-grand-prize.jpg',
+    designers: '小颯',
+    creatorRole: 'graduate',
+    mentor: null,
+    sourceHref: '#/works/clipstudio-grand-prize'
+  },
   {
     "title": "Dear, All Robots",
     "image": "images/news/2026-awards/dear-all-robots.jpg",
@@ -79,10 +87,10 @@ const HolidayHome = () => {
    <figure className="student-work-figure">
     <a className="student-poster-link" href={student.sourceHref} aria-label={words('查看作品消息','Read the work’s news','作品の記事を見る')}><img id="student-work-poster" className="student-work-poster" src={student.image} alt={student.title} width="1200" height="1697" /></a>
     <figcaption>
-     <p className="student-work-kicker">{words('學生作品','Student work','学生作品')}</p>
+     <p className="student-work-kicker">{student.creatorRole==='graduate'?words('畢業生手繪','Graduate illustration','卒業生のイラスト'):words('學生作品','Student work','学生作品')}</p>
      <h2 id="student-work-title" data-language-choice="true">{student.title}</h2>
-     <p className="student-work-credit"><span>{words('創作者','Creators','制作者')}</span><span id="student-work-authors" data-language-choice="true">{student.designers}</span></p>
-     <p className="student-work-credit"><span>{words('指導教師','Advisor','指導教員')}</span><span id="student-work-mentor" data-language-choice="true">{student.mentor}</span></p>
+     <p className="student-work-credit"><span>{student.creatorRole==='graduate'?words('畢業生・繪者','Graduate artist','卒業生・作者'):words('創作者','Creators','制作者')}</span><span id="student-work-authors" data-language-choice="true">{student.designers}</span></p>
+     {student.mentor&&<p className="student-work-credit"><span>{words('指導教師','Advisor','指導教員')}</span><span id="student-work-mentor" data-language-choice="true">{student.mentor}</span></p>}
      <a id="student-work-source" href={student.sourceHref}>{words('看作品消息','Read about the work','作品の記事へ')} <span aria-hidden="true">→</span></a>
     </figcaption>
    </figure>

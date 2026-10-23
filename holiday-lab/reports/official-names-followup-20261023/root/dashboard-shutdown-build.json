@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-23T12:06:01.575Z",
+  "cwd": "C:/agywork/agd-holiday-prototypes",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "holiday-lab/build-dashboard.mjs"
+  ],
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\r\n+ actual - expected\r\n\r\n+ '773d7fa9c15eddb4967da9cb6033a99c6348de992df2fa11b51c1959e9f34268'\r\n- 'cc03f861de0b1f2711f7da14314e0132c2de77027dd0b63e93bc76e5122e53f4'\r\n\r\n    at module.exports (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\dashboard\\followup-proof.cjs:82:415)\r\n    at load (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\dashboard\\progress-adapter.cjs:36:48)\r\n    at file:///C:/agywork/agd-holiday-prototypes/holiday-lab/build-dashboard.mjs:22:16\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:437:25)\r\n    at async node:internal/modules/esm/loader:639:26\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\r\n  generatedMessage: true,\r\n  code: 'ERR_ASSERTION',\r\n  actual: '773d7fa9c15eddb4967da9cb6033a99c6348de992df2fa11b51c1959e9f34268',\r\n  expected: 'cc03f861de0b1f2711f7da14314e0132c2de77027dd0b63e93bc76e5122e53f4',\r\n  operator: 'strictEqual',\r\n  diff: 'simple'\r\n}\r\n\r\nNode.js v24.15.0\r\n"
+}

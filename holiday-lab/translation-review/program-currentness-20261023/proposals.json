@@ -1,0 +1,632 @@
+{
+  "at": "2026-10-23T11:35:58.349Z",
+  "as_of": "2026-10-23",
+  "scope": "4 PROGRAM foreign-language values plus 2 shared canonical proposals; research only",
+  "input_sha256": "8c22ee807980aa634d2213065c131a231a37fe1a644e3fa12e6349d1250ddfaa",
+  "canonical_sha256_before": "a4b9a35be9b5b96d0783d1e79dda9d684f86565e7e26084415004c2db750123e",
+  "canonical_sha256_after": "a4b9a35be9b5b96d0783d1e79dda9d684f86565e7e26084415004c2db750123e",
+  "source_comparison_sha256_before": "e0f928f99717ffcfe82d135fbbfc838d59b67a1e8dea5befe4ec68e8ae2394d9",
+  "source_comparison_sha256_after": "e0f928f99717ffcfe82d135fbbfc838d59b67a1e8dea5befe4ec68e8ae2394d9",
+  "rows": [
+    {
+      "id": "PROGRAM-01",
+      "lang": "en",
+      "key": "包含二技 / 四技 / 二專進修部與產學攜手。目前頁面未列出動遊系名額 — 請洽樹德進修部專區。",
+      "priority": "P2",
+      "kind": "program-wording",
+      "direct_semantic_subset": false,
+      "current": "Includes two-year college / four-year college / two-year junior college continuing education and industry-academia collaboration programs. Currently no AGD quotas listed on this page — please consult the Shu-Te Continuing Education Division portal.",
+      "candidate": "Includes two-year bachelor’s programs / four-year bachelor’s programs / two-year junior-college programs continuing education and industry-academia collaboration programs. Currently no AGD quotas listed on this page — please consult the Shu-Te Continuing Education Division portal.",
+      "decision": "retain-proposal",
+      "reason": "二技學士與二專層次不可只用two-year college混在一起；保留原稱及本系名額待公告限制。JASSO本次全文可確認台灣専科学校及副學士，非日本資格法律等同。EN建議列舉語法可再順寫，不影響學制修正方向。",
+      "definitions": [
+        {
+          "file": "data/en/admission.json",
+          "pointer": "/6/summary",
+          "sha256": "aa1b5c3f4706eec932b08a82563407105421990b4c044e2158e085264d18366a",
+          "raw_matches": true,
+          "expected_raw": "Includes two-year college / four-year college / two-year junior college continuing education and industry-academia collaboration programs. Currently no AGD quotas listed on this page — please consult the Shu-Te Continuing Education Division portal."
+        }
+      ],
+      "canonical_locations": [
+        {
+          "file": "data/admission.json",
+          "pointer": "/6/summary",
+          "line": null,
+          "kind": "canonical-data",
+          "canonical_matches": "yes",
+          "canonical_raw": "包含二技 / 四技 / 二專進修部與產學攜手。目前頁面未列出動遊系名額 — 請洽樹德進修部專區。",
+          "comparison": "whitespace-normalized canonical display key; original raw retained"
+        }
+      ],
+      "source_urls": [
+        "https://www.sw.stu.edu.tw/home?lang=en-US",
+        "https://ryugaku.jasso.go.jp/oversea_info/region/asia/taiwan/info_tw_university.html"
+      ],
+      "current_checks": [
+        {
+          "file": "data/en/admission.json",
+          "pointer": "/6/summary",
+          "matches": true
+        }
+      ],
+      "canonical_checks": [
+        {
+          "file": "data/admission.json",
+          "pointer": "/6/summary",
+          "matches": true
+        }
+      ],
+      "review": {
+        "classification": "原文待確認需維持",
+        "implementation_scope": "不直接套用整句；先核中文115進四技名額與跨管道條件，另寫新候選。維持是本輪不改產品，不代表原文已正確。",
+        "candidate_as_name_change_supported": false,
+        "official_english_name": {
+          "four_year": "four-year undergraduate programs",
+          "two_year_continuing": "two-year continuing education programs",
+          "two_year_associate": "two-year associate degree programs"
+        },
+        "official_japanese_name": {
+          "four_year": "四年制大学部",
+          "two_year_continuing": "二年制進学部",
+          "two_year_associate": "二年制専科進学部"
+        },
+        "japanese_status": "校方簡介有日文用語；候選括號文字是說明譯法",
+        "primary_sources": [
+          "S7",
+          "S8",
+          "S9",
+          "S10",
+          "S11",
+          "S14"
+        ],
+        "reason": "學位層次修正方向有支持，但整句仍稱本系未列名額，與115官方表動遊系進四技30名產生差異。英文候選列舉也須順寫，不能照貼。",
+        "conservative_description": "Continuing education: two-year and four-year bachelor’s programs, and two-year associate-degree programs. Availability and admission requirements vary by program.",
+        "description_status": "供新候選審閱，非校方逐字正式名稱，不已套產品"
+      },
+      "proposed_canonical": {
+        "file": "data/admission.json",
+        "pointer": "/6/summary",
+        "before": "包含二技 / 四技 / 二專進修部與產學攜手。目前頁面未列出動遊系名額 — 請洽樹德進修部專區。",
+        "after": "115學年度動遊系四技進修部一般單獨招生30名，現已結束招生。二技、二專及產學攜手為不同管道，該年度招生名單未列本系。"
+      },
+      "new_candidate": "For academic year 115, AGD listed 30 general-admission places in four-year continuing education; admissions have ended. Two-year and industry–academia pathways have separate admission lists, which did not include AGD that year.",
+      "source_ids": [
+        "quota-native",
+        "closed-native",
+        "B6",
+        "D1",
+        "C5",
+        "E7",
+        "E8",
+        "E9"
+      ],
+      "proposal_only": true,
+      "official_japanese_name": false
+    },
+    {
+      "id": "PROGRAM-01",
+      "lang": "ja",
+      "key": "包含二技 / 四技 / 二專進修部與產學攜手。目前頁面未列出動遊系名額 — 請洽樹德進修部專區。",
+      "priority": "P2",
+      "kind": "program-wording",
+      "direct_semantic_subset": false,
+      "current": "2年制大学／4年制課程／2年制短期大学の進修部および産学連携プログラムを含みます。現在ページ上にアニメとゲームデザイン学科の定員は記載されていません — 樹徳科技大学進修部特設ページへお問い合わせください。",
+      "candidate": "二技（2年制の学士課程）／四技（4年制の学士課程）／二專（2年制の専科学校課程）の進修部および産学連携プログラムを含みます。現在ページ上にアニメとゲームデザイン学科の定員は記載されていません — 樹徳科技大学進修部特設ページへお問い合わせください。",
+      "decision": "retain-proposal",
+      "reason": "二技學士與二專層次不可只用two-year college混在一起；保留原稱及本系名額待公告限制。JASSO本次全文可確認台灣専科学校及副學士，非日本資格法律等同。EN建議列舉語法可再順寫，不影響學制修正方向。",
+      "definitions": [
+        {
+          "file": "data/ja/messages.json",
+          "pointer": "/包含二技 ~1 四技 ~1 二專進修部與產學攜手。目前頁面未列出動遊系名額 — 請洽樹德進修部專區。",
+          "sha256": "ad407a3ed0015af9bce77531198ed21ac0360408ba03c22a21ee5bb99e4a7484",
+          "raw_matches": true,
+          "expected_raw": "2年制大学／4年制課程／2年制短期大学の進修部および産学連携プログラムを含みます。現在ページ上にアニメとゲームデザイン学科の定員は記載されていません — 樹徳科技大学進修部特設ページへお問い合わせください。"
+        }
+      ],
+      "canonical_locations": [
+        {
+          "file": "data/admission.json",
+          "pointer": "/6/summary",
+          "line": null,
+          "kind": "canonical-data",
+          "canonical_matches": "yes",
+          "canonical_raw": "包含二技 / 四技 / 二專進修部與產學攜手。目前頁面未列出動遊系名額 — 請洽樹德進修部專區。",
+          "comparison": "whitespace-normalized canonical display key; original raw retained"
+        }
+      ],
+      "source_urls": [
+        "https://www.sw.stu.edu.tw/home?lang=en-US",
+        "https://ryugaku.jasso.go.jp/oversea_info/region/asia/taiwan/info_tw_university.html"
+      ],
+      "current_checks": [
+        {
+          "file": "data/ja/messages.json",
+          "pointer": "/包含二技 ~1 四技 ~1 二專進修部與產學攜手。目前頁面未列出動遊系名額 — 請洽樹德進修部專區。",
+          "matches": true
+        }
+      ],
+      "canonical_checks": [
+        {
+          "file": "data/admission.json",
+          "pointer": "/6/summary",
+          "matches": true
+        }
+      ],
+      "review": {
+        "classification": "原文待確認需維持",
+        "implementation_scope": "不直接套用整句；先核中文115進四技名額與跨管道條件，另寫新候選。維持是本輪不改產品，不代表原文已正確。",
+        "candidate_as_name_change_supported": false,
+        "official_english_name": {
+          "four_year": "four-year undergraduate programs",
+          "two_year_continuing": "two-year continuing education programs",
+          "two_year_associate": "two-year associate degree programs"
+        },
+        "official_japanese_name": {
+          "four_year": "四年制大学部",
+          "two_year_continuing": "二年制進学部",
+          "two_year_associate": "二年制専科進学部"
+        },
+        "japanese_status": "校方簡介有日文用語；候選括號文字是說明譯法",
+        "primary_sources": [
+          "S7",
+          "S8",
+          "S9",
+          "S10",
+          "S11",
+          "S14"
+        ],
+        "reason": "學位層次修正方向有支持，但整句仍稱本系未列名額，與115官方表動遊系進四技30名產生差異。英文候選列舉也須順寫，不能照貼。",
+        "conservative_description": "進修部：二技（2年制の学士課程）、四技（4年制の学士課程）、二專（2年制の専科課程）。募集の有無と出願条件は各募集要項を確認してください。",
+        "description_status": "供新候選審閱，非校方逐字正式名稱，不已套產品"
+      },
+      "proposed_canonical": {
+        "file": "data/admission.json",
+        "pointer": "/6/summary",
+        "before": "包含二技 / 四技 / 二專進修部與產學攜手。目前頁面未列出動遊系名額 — 請洽樹德進修部專區。",
+        "after": "115學年度動遊系四技進修部一般單獨招生30名，現已結束招生。二技、二專及產學攜手為不同管道，該年度招生名單未列本系。"
+      },
+      "new_candidate": "115学年度の本学科の四技進修部は、一般の独自入試で募集定員30名でした。募集は終了しています。二技・二專・産学連携は別の入試区分で、同年度の募集一覧に本学科は記載されていません。",
+      "source_ids": [
+        "quota-native",
+        "closed-native",
+        "B6",
+        "D1",
+        "C5",
+        "E7",
+        "E8",
+        "E9"
+      ],
+      "proposal_only": true,
+      "official_japanese_name": false
+    },
+    {
+      "id": "PROGRAM-02",
+      "lang": "en",
+      "key": "進修部相關招生 — 涵蓋二技 / 四技 / 二專進修部與產學攜手計畫，採書審 + 面試（免統測 / 學測）的彈性入學管道。 適用對象：在職人士、想兼顧工作與學業者、二度就讀者 上課時間：典型週一至五晚上 18:30-21:30 + 部分假日課程。 ※ 各管道是否開放動遊系名額，請以樹德招生網對應專區公告為準。",
+      "priority": "P2",
+      "kind": "program-wording",
+      "direct_semantic_subset": false,
+      "current": "Continuing Education Division Admissions (進修部相關招生) — Encompassing two-year college / four-year college / two-year junior college continuing education and industry-academia collaboration programs, a flexible admission pathway using documentary review + interview (exempt from TCTE / GSAT).\n\nTarget Audience: Working professionals, those seeking to balance work and studies, second-degree seekers\n\nClass Hours: Typically Monday to Friday evenings 18:30-21:30 + selected weekend courses.\n\n* Please refer to announcements on the Shu-Te Admissions website to confirm whether AGD quotas are open for each pathway.",
+      "candidate": "Continuing Education Division Admissions (進修部相關招生) — Encompassing two-year bachelor’s programs / four-year bachelor’s programs / two-year junior-college programs continuing education and industry-academia collaboration programs, a flexible admission pathway using documentary review + interview (exempt from TCTE / GSAT).\n\nTarget Audience: Working professionals, those seeking to balance work and studies, second-degree seekers\n\nClass Hours: Typically Monday to Friday evenings 18:30-21:30 + selected weekend courses.\n\n* Please refer to announcements on the Shu-Te Admissions website to confirm whether AGD quotas are open for each pathway.",
+      "decision": "retain-proposal",
+      "reason": "二技學士與二專層次不可只用two-year college混在一起；保留原稱及本系名額待公告限制。JASSO本次全文可確認台灣専科学校及副學士，非日本資格法律等同。EN建議列舉語法可再順寫，不影響學制修正方向。",
+      "definitions": [
+        {
+          "file": "data/en/admission.json",
+          "pointer": "/6/content",
+          "sha256": "aa1b5c3f4706eec932b08a82563407105421990b4c044e2158e085264d18366a",
+          "raw_matches": true,
+          "expected_raw": "Continuing Education Division Admissions (進修部相關招生) — Encompassing two-year college / four-year college / two-year junior college continuing education and industry-academia collaboration programs, a flexible admission pathway using documentary review + interview (exempt from TCTE / GSAT).\n\nTarget Audience: Working professionals, those seeking to balance work and studies, second-degree seekers\n\nClass Hours: Typically Monday to Friday evenings 18:30-21:30 + selected weekend courses.\n\n* Please refer to announcements on the Shu-Te Admissions website to confirm whether AGD quotas are open for each pathway."
+        }
+      ],
+      "canonical_locations": [
+        {
+          "file": "data/admission.json",
+          "pointer": "/6/content",
+          "line": null,
+          "kind": "canonical-data",
+          "canonical_matches": "yes",
+          "canonical_raw": "進修部相關招生 — 涵蓋二技 / 四技 / 二專進修部與產學攜手計畫，採書審 + 面試（免統測 / 學測）的彈性入學管道。\n\n適用對象：在職人士、想兼顧工作與學業者、二度就讀者\n\n上課時間：典型週一至五晚上 18:30-21:30 + 部分假日課程。\n\n※ 各管道是否開放動遊系名額，請以樹德招生網對應專區公告為準。",
+          "comparison": "whitespace-normalized canonical display key; original raw retained"
+        }
+      ],
+      "source_urls": [
+        "https://www.sw.stu.edu.tw/home?lang=en-US",
+        "https://ryugaku.jasso.go.jp/oversea_info/region/asia/taiwan/info_tw_university.html"
+      ],
+      "current_checks": [
+        {
+          "file": "data/en/admission.json",
+          "pointer": "/6/content",
+          "matches": true
+        }
+      ],
+      "canonical_checks": [
+        {
+          "file": "data/admission.json",
+          "pointer": "/6/content",
+          "matches": true
+        }
+      ],
+      "review": {
+        "classification": "原文待確認需維持",
+        "implementation_scope": "不直接套用整句；先核中文115進四技名額與跨管道條件，另寫新候選。維持是本輪不改產品，不代表原文已正確。",
+        "candidate_as_name_change_supported": false,
+        "official_english_name": {
+          "four_year": "four-year undergraduate programs",
+          "two_year_continuing": "two-year continuing education programs",
+          "two_year_associate": "two-year associate degree programs"
+        },
+        "official_japanese_name": {
+          "four_year": "四年制大学部",
+          "two_year_continuing": "二年制進学部",
+          "two_year_associate": "二年制専科進学部"
+        },
+        "japanese_status": "校方簡介有日文用語；候選括號文字是說明譯法",
+        "primary_sources": [
+          "S7",
+          "S8",
+          "S9",
+          "S10",
+          "S11",
+          "S14"
+        ],
+        "reason": "學位層次有支持，但整段統一書審＋面試、免統測／學測、夜間時段未按各115管道簡章逐一證成；學制名稱修正不能連帶批准整段。",
+        "conservative_description": "Continuing education: two-year and four-year bachelor’s programs, and two-year associate-degree programs. Availability and admission requirements vary by program.",
+        "description_status": "供新候選審閱，非校方逐字正式名稱，不已套產品"
+      },
+      "proposed_canonical": {
+        "file": "data/admission.json",
+        "pointer": "/6/content",
+        "before": "進修部相關招生 — 涵蓋二技 / 四技 / 二專進修部與產學攜手計畫，採書審 + 面試（免統測 / 學測）的彈性入學管道。\n\n適用對象：在職人士、想兼顧工作與學業者、二度就讀者\n\n上課時間：典型週一至五晚上 18:30-21:30 + 部分假日課程。\n\n※ 各管道是否開放動遊系名額，請以樹德招生網對應專區公告為準。",
+        "after": "本系115學年度四技進修部一般單獨招生30名，採書面資料審查；截至2026年10月23日已結束招生。該年度二技、二專及產學攜手招生名單未列本系。\n\n學制：二技、四技為學士課程；二專為二年制專科課程，修滿規定可取得副學士學位。報考前請核對各管道簡章的學歷、身分與應備資料。\n\n四技進修部原則上安排週一至週五晚間，輔以週六、週日；特殊課程可另行排課，實際時段以課表為準。二技、二專的時段依各系科規定。\n\n下一次招生請查看新學年度公告；舊名額不代表目前仍可報名。"
+      },
+      "new_candidate": "AGD’s four-year continuing education program listed 30 general-admission places for academic year 115. Selection used application-document review; admissions were closed as of 23 October 2026. AGD was not listed in that year’s two-year bachelor’s completion, two-year associate-degree or industry–academia collaboration admission lists.\n\nContinuing education has separate pathways: two-year bachelor’s completion programs (二技), four-year bachelor’s programs (四技), and two-year associate-degree programs (二專). Check each prospectus for education, applicant-status and document requirements.\n\nFour-year continuing education generally schedules weekday evening classes, with Saturday and Sunday classes as needed. Special courses may use other times; follow the actual timetable. Two-year programs have department-specific schedules.\n\nFor the next intake, check the new academic year’s announcements. Historical quotas do not mean applications are currently open.",
+      "source_ids": [
+        "quota-native",
+        "closed-native",
+        "index-native",
+        "B6",
+        "D1",
+        "C5",
+        "E7",
+        "E8",
+        "E9"
+      ],
+      "proposal_only": true,
+      "official_japanese_name": false
+    },
+    {
+      "id": "PROGRAM-02",
+      "lang": "ja",
+      "key": "進修部相關招生 — 涵蓋二技 / 四技 / 二專進修部與產學攜手計畫，採書審 + 面試（免統測 / 學測）的彈性入學管道。 適用對象：在職人士、想兼顧工作與學業者、二度就讀者 上課時間：典型週一至五晚上 18:30-21:30 + 部分假日課程。 ※ 各管道是否開放動遊系名額，請以樹德招生網對應專區公告為準。",
+      "priority": "P2",
+      "kind": "program-wording",
+      "direct_semantic_subset": false,
+      "current": "進修部関連募集 — 2年制大学／4年制課程／2年制短期大学の進修部および産学連携プログラムを網羅し、書類審査 + 面接（統測／学測不要）で実施される柔軟な入試制度です。 適用対象：社会人、仕事と学業を両立したい方、学び直し希望者 授業時間：通常は月曜日〜金曜日夜間 18:30-21:30 + 一部休日の授業。 ※ 各入試枠におけるアニメとゲームデザイン学科の定員の有無は、樹徳科技大学受験生向けサイトの各募集特設ページのご案内をご確認ください。",
+      "candidate": "進修部関連募集 — 二技（2年制の学士課程）／四技（4年制の学士課程）／二專（2年制の専科学校課程）の進修部および産学連携プログラムを網羅し、書類審査 + 面接（統測／学測不要）で実施される柔軟な入試制度です。 適用対象：社会人、仕事と学業を両立したい方、学び直し希望者 授業時間：通常は月曜日〜金曜日夜間 18:30-21:30 + 一部休日の授業。 ※ 各入試枠におけるアニメとゲームデザイン学科の定員の有無は、樹徳科技大学受験生向けサイトの各募集特設ページのご案内をご確認ください。",
+      "decision": "retain-proposal",
+      "reason": "二技學士與二專層次不可只用two-year college混在一起；保留原稱及本系名額待公告限制。JASSO本次全文可確認台灣専科学校及副學士，非日本資格法律等同。EN建議列舉語法可再順寫，不影響學制修正方向。",
+      "definitions": [
+        {
+          "file": "data/ja/messages.json",
+          "pointer": "/進修部相關招生 — 涵蓋二技 ~1 四技 ~1 二專進修部與產學攜手計畫，採書審 + 面試（免統測 ~1 學測）的彈性入學管道。 適用對象：在職人士、想兼顧工作與學業者、二度就讀者 上課時間：典型週一至五晚上 18:30-21:30 + 部分假日課程。 ※ 各管道是否開放動遊系名額，請以樹德招生網對應專區公告為準。",
+          "sha256": "ad407a3ed0015af9bce77531198ed21ac0360408ba03c22a21ee5bb99e4a7484",
+          "raw_matches": true,
+          "expected_raw": "進修部関連募集 — 2年制大学／4年制課程／2年制短期大学の進修部および産学連携プログラムを網羅し、書類審査 + 面接（統測／学測不要）で実施される柔軟な入試制度です。 適用対象：社会人、仕事と学業を両立したい方、学び直し希望者 授業時間：通常は月曜日〜金曜日夜間 18:30-21:30 + 一部休日の授業。 ※ 各入試枠におけるアニメとゲームデザイン学科の定員の有無は、樹徳科技大学受験生向けサイトの各募集特設ページのご案内をご確認ください。"
+        }
+      ],
+      "canonical_locations": [
+        {
+          "file": "data/admission.json",
+          "pointer": "/6/content",
+          "line": null,
+          "kind": "canonical-data",
+          "canonical_matches": "yes",
+          "canonical_raw": "進修部相關招生 — 涵蓋二技 / 四技 / 二專進修部與產學攜手計畫，採書審 + 面試（免統測 / 學測）的彈性入學管道。\n\n適用對象：在職人士、想兼顧工作與學業者、二度就讀者\n\n上課時間：典型週一至五晚上 18:30-21:30 + 部分假日課程。\n\n※ 各管道是否開放動遊系名額，請以樹德招生網對應專區公告為準。",
+          "comparison": "whitespace-normalized canonical display key; original raw retained"
+        }
+      ],
+      "source_urls": [
+        "https://www.sw.stu.edu.tw/home?lang=en-US",
+        "https://ryugaku.jasso.go.jp/oversea_info/region/asia/taiwan/info_tw_university.html"
+      ],
+      "current_checks": [
+        {
+          "file": "data/ja/messages.json",
+          "pointer": "/進修部相關招生 — 涵蓋二技 ~1 四技 ~1 二專進修部與產學攜手計畫，採書審 + 面試（免統測 ~1 學測）的彈性入學管道。 適用對象：在職人士、想兼顧工作與學業者、二度就讀者 上課時間：典型週一至五晚上 18:30-21:30 + 部分假日課程。 ※ 各管道是否開放動遊系名額，請以樹德招生網對應專區公告為準。",
+          "matches": true
+        }
+      ],
+      "canonical_checks": [
+        {
+          "file": "data/admission.json",
+          "pointer": "/6/content",
+          "matches": true
+        }
+      ],
+      "review": {
+        "classification": "原文待確認需維持",
+        "implementation_scope": "不直接套用整句；先核中文115進四技名額與跨管道條件，另寫新候選。維持是本輪不改產品，不代表原文已正確。",
+        "candidate_as_name_change_supported": false,
+        "official_english_name": {
+          "four_year": "four-year undergraduate programs",
+          "two_year_continuing": "two-year continuing education programs",
+          "two_year_associate": "two-year associate degree programs"
+        },
+        "official_japanese_name": {
+          "four_year": "四年制大学部",
+          "two_year_continuing": "二年制進学部",
+          "two_year_associate": "二年制専科進学部"
+        },
+        "japanese_status": "校方簡介有日文用語；候選括號文字是說明譯法",
+        "primary_sources": [
+          "S7",
+          "S8",
+          "S9",
+          "S10",
+          "S11",
+          "S14"
+        ],
+        "reason": "學位層次有支持，但整段統一書審＋面試、免統測／學測、夜間時段未按各115管道簡章逐一證成；學制名稱修正不能連帶批准整段。",
+        "conservative_description": "進修部：二技（2年制の学士課程）、四技（4年制の学士課程）、二專（2年制の専科課程）。募集の有無と出願条件は各募集要項を確認してください。",
+        "description_status": "供新候選審閱，非校方逐字正式名稱，不已套產品"
+      },
+      "proposed_canonical": {
+        "file": "data/admission.json",
+        "pointer": "/6/content",
+        "before": "進修部相關招生 — 涵蓋二技 / 四技 / 二專進修部與產學攜手計畫，採書審 + 面試（免統測 / 學測）的彈性入學管道。\n\n適用對象：在職人士、想兼顧工作與學業者、二度就讀者\n\n上課時間：典型週一至五晚上 18:30-21:30 + 部分假日課程。\n\n※ 各管道是否開放動遊系名額，請以樹德招生網對應專區公告為準。",
+        "after": "本系115學年度四技進修部一般單獨招生30名，採書面資料審查；截至2026年10月23日已結束招生。該年度二技、二專及產學攜手招生名單未列本系。\n\n學制：二技、四技為學士課程；二專為二年制專科課程，修滿規定可取得副學士學位。報考前請核對各管道簡章的學歷、身分與應備資料。\n\n四技進修部原則上安排週一至週五晚間，輔以週六、週日；特殊課程可另行排課，實際時段以課表為準。二技、二專的時段依各系科規定。\n\n下一次招生請查看新學年度公告；舊名額不代表目前仍可報名。"
+      },
+      "new_candidate": "本学科の115学年度四技進修部は、一般の独自入試で募集定員30名、選考は書類審査でした。2026年10月23日現在、募集は終了しています。同年度の二技・二專・産学連携の募集一覧に本学科は記載されていません。\n\n二技は2年制の学士課程、四技は4年制の学士課程です。二專は2年制の専科課程で、所定の修了要件を満たすと副学士の学位が授与されます。学歴・出願者の身分・提出書類の条件は、各入試区分の募集要項で確認してください。\n\n四技進修部の授業は、原則として平日の夜間を中心に土日も組み合わせます。授業の性質によって別の時間帯に開講される場合もあり、実際の時間割を確認してください。二技・二專の授業時間は学科ごとに異なります。\n\n次回の出願は新しい学年度の公告を確認してください。過去の定員は、現在も出願できることを意味しません。",
+      "source_ids": [
+        "quota-native",
+        "closed-native",
+        "index-native",
+        "B6",
+        "D1",
+        "C5",
+        "E7",
+        "E8",
+        "E9"
+      ],
+      "proposal_only": true,
+      "official_japanese_name": false
+    }
+  ],
+  "canonical_proposals": {
+    "summary": {
+      "zh": "115學年度動遊系四技進修部一般單獨招生30名，現已結束招生。二技、二專及產學攜手為不同管道，該年度招生名單未列本系。",
+      "en": "For academic year 115, AGD listed 30 general-admission places in four-year continuing education; admissions have ended. Two-year and industry–academia pathways have separate admission lists, which did not include AGD that year.",
+      "ja": "115学年度の本学科の四技進修部は、一般の独自入試で募集定員30名でした。募集は終了しています。二技・二專・産学連携は別の入試区分で、同年度の募集一覧に本学科は記載されていません。"
+    },
+    "content": {
+      "zh": "本系115學年度四技進修部一般單獨招生30名，採書面資料審查；截至2026年10月23日已結束招生。該年度二技、二專及產學攜手招生名單未列本系。\n\n學制：二技、四技為學士課程；二專為二年制專科課程，修滿規定可取得副學士學位。報考前請核對各管道簡章的學歷、身分與應備資料。\n\n四技進修部原則上安排週一至週五晚間，輔以週六、週日；特殊課程可另行排課，實際時段以課表為準。二技、二專的時段依各系科規定。\n\n下一次招生請查看新學年度公告；舊名額不代表目前仍可報名。",
+      "en": "AGD’s four-year continuing education program listed 30 general-admission places for academic year 115. Selection used application-document review; admissions were closed as of 23 October 2026. AGD was not listed in that year’s two-year bachelor’s completion, two-year associate-degree or industry–academia collaboration admission lists.\n\nContinuing education has separate pathways: two-year bachelor’s completion programs (二技), four-year bachelor’s programs (四技), and two-year associate-degree programs (二專). Check each prospectus for education, applicant-status and document requirements.\n\nFour-year continuing education generally schedules weekday evening classes, with Saturday and Sunday classes as needed. Special courses may use other times; follow the actual timetable. Two-year programs have department-specific schedules.\n\nFor the next intake, check the new academic year’s announcements. Historical quotas do not mean applications are currently open.",
+      "ja": "本学科の115学年度四技進修部は、一般の独自入試で募集定員30名、選考は書類審査でした。2026年10月23日現在、募集は終了しています。同年度の二技・二專・産学連携の募集一覧に本学科は記載されていません。\n\n二技は2年制の学士課程、四技は4年制の学士課程です。二專は2年制の専科課程で、所定の修了要件を満たすと副学士の学位が授与されます。学歴・出願者の身分・提出書類の条件は、各入試区分の募集要項で確認してください。\n\n四技進修部の授業は、原則として平日の夜間を中心に土日も組み合わせます。授業の性質によって別の時間帯に開講される場合もあり、実際の時間割を確認してください。二技・二專の授業時間は学科ごとに異なります。\n\n次回の出願は新しい学年度の公告を確認してください。過去の定員は、現在も出願できることを意味しません。"
+    }
+  },
+  "decisions": [
+    {
+      "claim": "未列動遊系名額",
+      "decision": "不成立：115年B6及原生一般單招均列30；候選改為歷史名額＋已結束",
+      "sources": [
+        "quota-native",
+        "B6",
+        "closed-native"
+      ]
+    },
+    {
+      "claim": "書審＋面試",
+      "decision": "三一般單招考項列資料審查；產攜E7/E8另證書面100%，轉廠面試不能當入學考試面試。新候選只對動遊系B6說書審，不稱所有路線統一面試。",
+      "sources": [
+        "B6",
+        "D1",
+        "C5",
+        "E7",
+        "E8"
+      ]
+    },
+    {
+      "claim": "免統測／學測",
+      "decision": "B6/D1/C5未見此宣傳字樣，考項/應備文件未列兩測成績；E7/E8/E9明文不論有無統測可報名，但不能推及學測或動遊系專班。新文案省略跨管道免試承諾。",
+      "sources": [
+        "B6",
+        "D1",
+        "C5",
+        "E7",
+        "E8",
+        "E9"
+      ]
+    },
+    {
+      "claim": "週一至五18:30–21:30＋假日",
+      "decision": "B6只原則平日晚間輔週末且可另排；D1/C5依系科有整日及週末課。固定鐘點無本輪來源支持，刪去。",
+      "sources": [
+        "B6",
+        "D1",
+        "C5"
+      ]
+    },
+    {
+      "claim": "二技等於二專",
+      "decision": "不成立。D1授學士，C5授副學士；新英日為描述翻譯，不聲稱官方日文名稱。",
+      "sources": [
+        "D1",
+        "C5",
+        "B6"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "quota-native",
+      "url": "https://reg.aca.stu.edu.tw/【115學年度】招生系所與名額",
+      "layer": "原生Chrome DOM＋兩張表格PNG",
+      "files": [
+        "native-quota.json",
+        "native-quota-row.png",
+        "native-four-year.json",
+        "native-four-year.png"
+      ],
+      "read_scope": "展開核定員額及四技進修部單獨招生；讀全部欄位及動遊系列。AGD進四技30、進二技/二專空白；一般單招30、運動0、產攜0。"
+    },
+    {
+      "id": "closed-native",
+      "url": "https://reg.aca.stu.edu.tw/",
+      "layer": "原生Chrome DOM＋PNG",
+      "files": [
+        "native-home.json",
+        "native-home-ax.txt",
+        "native-closed-statuses.json",
+        "native-home.png"
+      ],
+      "read_scope": "首頁二技／四技／二專進修部各卡片均讀到115學年度招生已結束。"
+    },
+    {
+      "id": "index-native",
+      "url": "https://info.stu.edu.tw/aca/newirs/qryIRSpdf/qryIRSCourse.asp",
+      "layer": "原生Chrome索引＋web open",
+      "files": [
+        "native-prospectus-index.json"
+      ],
+      "read_scope": "讀115欄B6/C5/D1/E7/E8實際PDF連結；E9由同官方索引web click。"
+    },
+    {
+      "id": "B6",
+      "url": "https://info.stu.edu.tw/attachfile/upload/IRS/file/115B6.pdf",
+      "layer": "HTTP200原PDF＋pypdf抽字＋原生頁渲染目視",
+      "files": [
+        "115B6.pdf",
+        "115B6-text.json",
+        "115B6-p9.png"
+      ],
+      "read_scope": "封面、印刷p3報名時程、p4–7資格、p8名額/考項/時間/學位、p11–12應備資料及成績、p19複查考項；非26頁逐頁精讀。",
+      "caveat": "p8考項原生圖亦寫「面資料審查」，保留疑似缺書字瑕疵；同頁書面審查資料、注意事項與後頁應備資料一致，不讀成面試。"
+    },
+    {
+      "id": "D1",
+      "url": "https://info.stu.edu.tw/attachfile/upload/IRS/file/115D1.pdf",
+      "layer": "HTTP200原PDF＋pypdf抽字＋原生頁渲染目視",
+      "files": [
+        "115D1.pdf",
+        "115D1-text.json",
+        "115D1-p5.png"
+      ],
+      "read_scope": "封面、印刷p3、p4全表及資格/學位/時間、p8成績；其餘頁只做詞彙搜尋，不稱25頁全文精讀。"
+    },
+    {
+      "id": "C5",
+      "url": "https://info.stu.edu.tw/attachfile/upload/IRS/file/115C5.pdf",
+      "layer": "HTTP200原PDF＋pypdf抽字＋原生頁渲染目視",
+      "files": [
+        "115C5.pdf",
+        "115C5-text.json",
+        "115C5-p5.png"
+      ],
+      "read_scope": "封面、印刷p3時程、p4全表/上課/書審/副學士、p5報考資格、p12–13應備資料/成績；非27頁全讀。"
+    },
+    {
+      "id": "E7",
+      "url": "https://info.stu.edu.tw/attachfile/upload/IRS/file/115E7.pdf",
+      "layer": "HTTP200原PDF＋pypdf抽字＋原生頁渲染目視",
+      "files": [
+        "115E7.pdf",
+        "115E7-text.json",
+        "115E7-p10.png"
+      ],
+      "read_scope": "封面、印刷p3時程、p4資格、p5–7全部招生班別、p9書面100%、p10報到媒合、p14轉廠面試文字；非25頁全讀。"
+    },
+    {
+      "id": "E8",
+      "url": "https://info.stu.edu.tw/attachfile/upload/IRS/file/115E8.pdf",
+      "layer": "HTTP200原PDF＋pypdf抽字＋原生頁渲染目視",
+      "files": [
+        "115E8.pdf",
+        "115E8-text.json",
+        "115E8-p8.png"
+      ],
+      "read_scope": "封面、印刷p3、p4資格、p5唯一招生科別、p7書面100%、p8報到媒合、p12轉廠面試文字；非23頁全讀。"
+    },
+    {
+      "id": "E9",
+      "url": "https://info.stu.edu.tw/attachfile/upload/IRS/file/115E9.pdf",
+      "layer": "HTTP200原PDF＋web open及pypdf文字",
+      "files": [
+        "115E9.pdf",
+        "115E9-text.json"
+      ],
+      "read_scope": "封面、目錄、印刷p1–3與後續p4招生系別及p6考項；其餘不稱全讀。",
+      "caveat": "休觀系本專班另列41，原生一般表該系產攜只列15，無充分核准文號/範圍說明可將兩數合併或互相覆蓋。本系30與產攜0並無此差異，不推導全校產攜合計。"
+    }
+  ],
+  "dependent_fields": [
+    {
+      "file": "data/admission.json",
+      "pointer": "/6/schedule_short",
+      "current": "獨立招生｜採書審 + 面試",
+      "reason": "書審＋面試，與新內容衝突",
+      "apply_automatically": false
+    },
+    {
+      "file": "data/admission.json",
+      "pointer": "/6/key_notes/0",
+      "current": "📌 目前頁面未列出動遊系名額 — 請定期關注樹德招生網",
+      "reason": "仍稱未列本系名額",
+      "apply_automatically": false
+    },
+    {
+      "file": "data/admission.json",
+      "pointer": "/6/key_notes/2",
+      "current": "🌙 進修部上課多為週一至五 18:30-21:30",
+      "reason": "仍寫固定18:30–21:30",
+      "apply_automatically": false
+    },
+    {
+      "file": "data/admission.json",
+      "pointer": "/6/stu_focus/0",
+      "current": "🌙 上課時間：週一至五 18:30-21:30 + 部分假日課程",
+      "reason": "仍寫固定18:30–21:30",
+      "apply_automatically": false
+    },
+    {
+      "file": "data/admission.json",
+      "pointer": "/6/key_notes/3",
+      "current": "🎓 進修部畢業證書與日四技完全相同",
+      "reason": "畢業證書完全相同未在本輪證成",
+      "apply_automatically": false
+    },
+    {
+      "file": "data/admission.json",
+      "pointer": "/6/stu_focus/1",
+      "current": "🏢 與日四技共用實驗室、教師、業界資源",
+      "reason": "資源共用未在本輪證成",
+      "apply_automatically": false
+    },
+    {
+      "file": "data/admission.json",
+      "pointer": "/6/stu_focus/3",
+      "current": "💰 學雜費較日四技略低，可申請助學貸款 + 工讀補助",
+      "reason": "較低學費及補助未按最新會計室資料證成",
+      "apply_automatically": false
+    },
+    {
+      "file": "data/admission.json",
+      "pointer": "/6/fees/tuition",
+      "current": "進修部學雜費較日四技略低，依當學期公告，可申請助學貸款",
+      "reason": "費用比較未證成",
+      "apply_automatically": false
+    },
+    {
+      "file": "data/admission.json",
+      "pointer": "/6/timeline/0/label",
+      "current": "簡章公告 / 報名 / 面試 / 放榜",
+      "reason": "仍含面試作通用流程",
+      "apply_automatically": false
+    }
+  ],
+  "product_written": false,
+  "native_speaker_approved": false,
+  "public_release": false
+}

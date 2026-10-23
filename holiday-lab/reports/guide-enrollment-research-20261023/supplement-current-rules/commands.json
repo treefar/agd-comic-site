@@ -1,0 +1,68 @@
+{
+  "as_of": "2026-10-23",
+  "note": "原檔下載命令中的短期簽名下載位址不落地；下列參數及stdout為真實操作，無重啟背景fetch。",
+  "commands": [
+    {
+      "tool": "google_drive_fetch",
+      "count": 4,
+      "arguments": {
+        "link_id": "link_6ac46735bddc8191a891812f3842fde5",
+        "download_raw_file": true,
+        "include_base64": false
+      },
+      "file_ids": [
+        "1LuhDk1I93iLm_vlTzCKzgeAREfICcq8T",
+        "1ubuhKzOilg1fqPoV1k35j_OB9NKzokce",
+        "1fXoQ6C6YSvSh78OzkoxuUL68GeAWIDVU",
+        "197DjNNLtXshhm_FEJmyoFuLcy9kCOnku"
+      ],
+      "result": "4 application/pdf returned file_uri; native content fetched before raw"
+    },
+    {
+      "command": "Node ESM fetch(returned authenticated download_url) -> Buffer -> fs.writeFileSync(owned/raw/*.pdf)",
+      "signed_url_omitted": true,
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "stdout": [
+        "credit bytes=196504 status=200",
+        "course bytes=174534 status=200",
+        "intermission bytes=146065 status=200",
+        "transfer bytes=163125 status=200"
+      ]
+    },
+    {
+      "command": "Bundled Python stdin: pdfplumber extract all pages; pypdfium2 render(scale=1.4) each of 4 PDF pages",
+      "exit_code": 0,
+      "stdout": [
+        "credit pages=3 bytes=196504 sha256=e4596ecbaaafd37a1a13f8045c1dade2b2bc95bb0994c811e9a608efd8065e94",
+        "course pages=3 bytes=174534 sha256=6ee89286a1b65ff4c28b5ea58ff482d55a97d4a40cd552ba9620d0ec7245712d",
+        "intermission pages=2 bytes=146065 sha256=6bff0a223ccf7873e1f1c162fc6d1de60615e1e99b2650ef5634f397b11cd8b0",
+        "transfer pages=2 bytes=163125 sha256=26caa8d0bc9903f3d7ef1c022f0f6deef39831ab0ab1eb8010e13b1601d7dd9f"
+      ]
+    },
+    {
+      "command": "Bundled Python stdin: shared school-regulations PDF render pages 1/3/4/6/7 and write selected-text JSON",
+      "exit_code": 0,
+      "stdout": "shared_pdf_sha256=f3fcd3910013156848f962489c2b84d81bd1b4dd0c813a164335e222ec2306c8"
+    },
+    {
+      "tool": "view_image",
+      "scope": "4 full PDFs all 10 PNG pages; shared schoolrules selected5 PNG pages",
+      "result": "15 images returned and visually read; source inconsistency retained"
+    },
+    {
+      "command": "node holiday-lab/reports/guide-enrollment-research-20261023/supplement-current-rules/assemble.mjs",
+      "exit_code": 0,
+      "stdout": "assembled sources=5 visual_pages=15 topics=5 prior_files_unchanged=true"
+    },
+    {
+      "command": "node holiday-lab/reports/guide-enrollment-research-20261023/supplement-current-rules/verify.mjs",
+      "exit_code": 0,
+      "stdout_file": "verification-output.txt"
+    }
+  ]
+}

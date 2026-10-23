@@ -33,8 +33,8 @@ data.filters.find(f=>f.id==='ui-missing').conditions.progress={id:'ui'};
 data.filters.find(f=>f.id==='pending').conditions.progress={user:'pending'};
 const existingAuthorities=new Set(data.meta.authorities.map(a=>a.path));for(const s of progress.sources)if(!existingAuthorities.has(s.file)){data.meta.authorities.push({path:s.file,role:'總覽對應項目的狀態／既有證據來源；不升格全站通過'});existingAuthorities.add(s.file);}
 if(progress.heroRelease){
- data.sections.push({id:'release_checks',title:'本輪發布工具補驗（全域發布仍待確認）',row_key:'id',columns:[{key:'title',title:'檢查',type:'text'},{key:'result',title:'工具結果',type:'tag'}],detail_fields:[{key:'scope',title:'範圍',type:'text'},{key:'source',title:'原始來源',type:'text'}],search_fields:['id','title','result','scope'],rows:progress.heroRelease.checks});
- data.summary_cards.push({id:'release-tools',label:'本輪發布工具補驗',layer:'tool',scope:'13項本機技術檢查；不代表全2076或發布許可',denominator:'本輪release checklist共13項',rule:{ratio:[{count:'release_checks',where:{result:'pass'}},{count:'release_checks'}]}});
+ data.sections.push({id:'release_checks',title:'8866前版發布工具補驗（不代表8870新版全站通過）',row_key:'id',columns:[{key:'title',title:'檢查',type:'text'},{key:'result',title:'工具結果',type:'tag'}],detail_fields:[{key:'scope',title:'範圍',type:'text'},{key:'source',title:'原始來源',type:'text'}],search_fields:['id','title','result','scope'],rows:progress.heroRelease.checks});
+ data.summary_cards.push({id:'release-tools',label:'8866前版發布工具補驗',layer:'tool',scope:'13項本機技術檢查；不代表全2076或發布許可',denominator:'8866凍結release checklist共13項',rule:{ratio:[{count:'release_checks',where:{result:'pass'}},{count:'release_checks'}]}});
  data.unknowns.unshift('學生作品首頁與單款策展示範待使用者審閱；方向已確認，畫面尚未確認。','真背景分頁隱藏狀態仍未驗證；沒有注入hidden旗標。');
 }
 data.unknowns=[...new Set([...progress.unknowns,...data.unknowns])];
