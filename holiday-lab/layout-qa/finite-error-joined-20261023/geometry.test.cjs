@@ -1,0 +1,7 @@
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const {ownerFacts,fonts}=require('./join-check.cjs');
+const run=JSON.parse(fs.readFileSync(path.join(__dirname,'../finite-errors-native-20261023/runs/run-01/report.json'))),c=run.cases[0],n=c.nodes.find(n=>n.owner===c.target.owner),panel=run.source_before['assets/ui/panel.png'];
+test('actual original target retains whole Range, safe, clip and viewport evidence',()=>assert.ok(Object.values(ownerFacts(n,c.target.source_text,c,panel)).every(Boolean)));
+test('different full text or widened safe-source claim does not pass',()=>{assert.equal(ownerFacts(n,'different source text',c,panel).whole,false);assert.equal(ownerFacts(n,c.target.source_text,c,'wrong-panel-sha').fixedPaper,false);});
+test('invisible viewport, clipped ink and insufficient safe fail independently',()=>{const cc=structuredClone(c);cc.screenshot.viewport_proof.clip.y=1e9;assert.equal(ownerFacts(n,c.target.source_text,cc,panel).inside_actual_viewport,false);const nn=structuredClone(n);nn.ink.width-=1;assert.equal(ownerFacts(nn,c.target.source_text,c,panel).unclipped,false);nn.safe.width=0;assert.equal(ownerFacts(nn,c.target.source_text,c,panel).safe,false);});
+test('missing CDP face and missing original Range baseline receipt fail closed',()=>{assert.throws(()=>fonts([]));assert.throws(()=>fonts([{postScriptName:'Unknown',glyphCount:0}]));const nn=structuredClone(n);delete nn.measurements[0].baseline_probe;assert.throws(()=>ownerFacts(nn,c.target.source_text,c,panel));});
