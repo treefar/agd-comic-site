@@ -124,8 +124,9 @@ const App = () => {
       const el = document.getElementById(id);
       if (!el) return false;
       const rect = el.getBoundingClientRect();
-      if (Math.abs(rect.top) <= 30) return true; // 已到位
-      const targetY = rect.top + window.pageYOffset - 60; // 留 60px 給 sticky topnav
+      const offset = siteHeaderOffset();
+      if (Math.abs(rect.top - offset) <= 2) return true;
+      const targetY = rect.top + window.pageYOffset - offset;
       window.scrollTo({ top: targetY, behavior: "instant" });
       return true;
     };

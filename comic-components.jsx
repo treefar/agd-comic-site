@@ -458,7 +458,7 @@ const TopNav = () => {
           fontFamily: "'Bangers',sans-serif", fontWeight: 900
         }}>🌐 {{zh:'中文',en:'EN',ja:'日本語'}[language]}</a>)}
       </nav>
-      {/* 漢堡按鈕：只在 ≤760px 顯示（CSS 控制） */}
+      {/* 手機／平板使用展開選單；桌面完整導覽另排一列（CSS 控制） */}
       <button
         className="hamburger"
         aria-label={open ? "關閉選單" : "開啟選單"}

@@ -1,6 +1,9 @@
 /** @jsx siteCreateElement */
 /* 本地頁面：路由 + 詳情頁渲染（漫畫風延用） */
 
+// Allow section titles to clear the actual responsive, sticky header.
+const siteHeaderOffset = () => Math.ceil(document.querySelector('.topnav')?.getBoundingClientRect().height || 60) + 12;
+
 // Hash router — listen to window.location.hash, parse "#/type/slug"
 // When hash is plain anchor (#about, #join...) we make sure to scroll to it AFTER React renders the homepage
 const useHashRoute = () => {
@@ -25,8 +28,9 @@ const useHashRoute = () => {
       const el = document.getElementById(id);
       if (!el) return;
       const rect = el.getBoundingClientRect();
-      if (Math.abs(rect.top) <= 30) return;
-      const targetY = rect.top + window.pageYOffset - 60;
+      const offset = siteHeaderOffset();
+      if (Math.abs(rect.top - offset) <= 2) return;
+      const targetY = rect.top + window.pageYOffset - offset;
       window.scrollTo({ top: targetY, behavior: "instant" });
     };
     // 50ms 立刻試、1700ms 補保險（涵蓋 bootLoading 結束）
@@ -92,7 +96,7 @@ const NewsDetail = ({ slug }) => {
     const tryScroll = () => {
       const el = document.getElementById(targetId);
       if (!el) return false;
-      const targetY = el.getBoundingClientRect().top + window.pageYOffset - 80;
+      const targetY = el.getBoundingClientRect().top + window.pageYOffset - siteHeaderOffset();
       window.scrollTo({ top: targetY, behavior: "instant" });
       return true;
     };

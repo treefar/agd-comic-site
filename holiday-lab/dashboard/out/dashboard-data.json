@@ -290,6 +290,38 @@
         "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
       },
       {
+        "path": "holiday-lab/reports/nav-language-desktop-20261023/proof.json",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "holiday-lab/reports/nav-language-desktop-20261023/green-r2/result.json",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "styles.css",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "comic-components.jsx",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "app.jsx",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "pages.jsx",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "scripts/test-nav-layout.cjs",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "holiday-lab/reports/nav-language-desktop-20261023/webgl-recheck.json",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
         "path": "holiday-lab/reports/qingming-release-20261023/independent/REPORT.md",
         "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
       }
@@ -533,7 +565,7 @@
           "workflow": "waiting"
         }
       },
-      "value": 5
+      "value": 7
     },
     {
       "id": "progress-paused",
@@ -546,7 +578,7 @@
           "workflow": "paused"
         }
       },
-      "value": 3
+      "value": 1
     },
     {
       "id": "release-tools",
@@ -646,13 +678,14 @@
           "id": "website",
           "title": "系網中／英／日版本",
           "workflow": "available",
-          "headline": "本機網站可以看，三語全文仍持續校對。",
-          "proof_summary": "既有指南9組與快捷列21組場景有收據；不是全站完成認證。",
-          "limitation": "最新內部量測版與既有本機審閱版分開；尚未發布新版。",
+          "headline": "三語桌面完整導覽已恢復，最新版在8872。",
+          "proof_summary": "本輪18組三語／六寬真瀏覽器驗收；桌面完整導覽、手機平板展開及章節標題定位通過。",
+          "limitation": "只驗本次主導覽與定位，不是全站或全部遊戲發布驗收。",
           "source_files": [
             "holiday-lab/reports/guide-index-evidence/result.json",
             "holiday-lab/reports/floating-cta-result.json",
-            "holiday-lab/STATUS.md"
+            "holiday-lab/STATUS.md",
+            "holiday-lab/reports/nav-language-desktop-20261023/proof.json"
           ],
           "links": [
             {
@@ -669,6 +702,11 @@
               "label": "日本語",
               "href": "/?lang=ja",
               "kind": "server"
+            },
+            {
+              "label": "導覽修正逐條驗收",
+              "href": "../../../holiday-lab/reports/nav-language-desktop-20261023/REPORT.md",
+              "kind": "local-file"
             }
           ]
         },
@@ -769,10 +807,10 @@
           "user": "pending",
           "id": "fonts",
           "title": "字型、換行與手機排版",
-          "workflow": "paused",
+          "workflow": "waiting",
           "headline": "本輪遊戲保留原字型，已查換行與本機字表覆蓋。",
           "proof_summary": "84組遊戲情境、36組樣式，本機候選字型堆疊字表缺字0；全站母語審校仍另列。",
-          "limitation": "字表堆疊覆蓋與CDP抽樣互補，未證明每個字元的實際fallback；實體裝置與全站長文仍待確認。 使用者要求關機前暫停，已保存目前段落。",
+          "limitation": "字表堆疊覆蓋與CDP抽樣互補，未證明每個字元的實際fallback；實體裝置與全站長文仍待確認。 本輪只修主導覽，未重啟舊大量驗收。",
           "source_files": [
             "holiday-lab/translation-review/guide-terms-rendered11/summary.json",
             "holiday-lab/STATUS.md",
@@ -834,10 +872,10 @@
           "user": "pending",
           "id": "ui",
           "title": "遊戲完整UI驗收",
-          "workflow": "paused",
+          "workflow": "waiting",
           "headline": "本輪遊戲另有實測；整包發布尚未驗完。",
           "proof_summary": "固定08來源的歷史證據覆蓋：case 2046／2076，尚缺30；這不是本輪新build完整通過率，也不是整體完成率。",
-          "limitation": "歷史缺30項是最長動態字串證據缺口，並非30個畫面bug。勞動節暫緩；不發布新遊戲包。 使用者要求關機前暫停，已保存目前段落。",
+          "limitation": "歷史缺30項是最長動態字串證據缺口，並非30個畫面bug。勞動節暫緩；不發布新遊戲包。 本輪只修主導覽，未重啟舊大量驗收。",
           "source_files": [
             "holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json",
             "holiday-lab/STATUS.md"
@@ -894,8 +932,8 @@
           "title": "學生作品首頁審閱",
           "workflow": "waiting",
           "headline": "小颯手繪首圖與原三件作品已合入8870；三語手機／桌面獨立短驗收通過，等你看。",
-          "proof_summary": "8866前版凍結收據：9組三語手機／桌機首頁與2條嵌入玩法通過；不載節日插畫或生成UI背景。 8870小颯首圖另驗6組、24個作品狀態、30PNG，署名、完整原圖及來源連結通過。",
-          "limitation": "使用者已選：首頁不用AI插畫，採學生作品＋小型互動入口；遊戲素材分批調整，先看一款示範。這是方向確認，尚非畫面確認。 小型favicon沿用既有生成播放圖示，沒有宣稱所有素材零AI。 此項不是8870小颯新版全站驗收。",
+          "proof_summary": "前版限定範圍收據：9組三語手機／桌機首頁與2條嵌入玩法通過；不載節日插畫或生成UI背景。 8870小颯首圖另驗6組、24個作品狀態、30PNG，署名、完整原圖及來源連結通過。",
+          "limitation": "使用者已選：首頁不用AI插畫，採學生作品＋小型互動入口；遊戲素材分批調整，先看一款示範。這是方向確認，尚非畫面確認。 小型favicon沿用既有生成播放圖示，沒有宣稱所有素材零AI。 此項不等於8872全站驗收。",
           "source_files": [
             "holiday-lab/reports/integrated-review-20261023/home/runs/2026-10-23T10-55-01-190Z/result.json",
             "data/news.json",
@@ -976,8 +1014,8 @@
           "title": "本輪發布補驗",
           "workflow": "waiting",
           "headline": "12項通過、1項待真實可見狀態；尚未發布。",
-          "proof_summary": "8866前版凍結收據：360檔HTTP與來源SHA一致；鍵盤、音效停止、卸載、減動、斷外網與故障恢復已補測。",
-          "limitation": "真背景分頁hidden仍未取得；全2076合約、勞動節暫緩138案例、24個非勞動最長動態文字、實體裝置與美術確認仍保留。 此項不是8870小颯新版全站驗收。",
+          "proof_summary": "前版限定範圍收據：360檔HTTP與來源SHA一致；鍵盤、音效停止、卸載、減動、斷外網與故障恢復已補測。",
+          "limitation": "真背景分頁hidden仍未取得；全2076合約、勞動節暫緩138案例、24個非勞動最長動態文字、實體裝置與美術確認仍保留。 此項不等於8872全站驗收。",
           "source_files": [
             "holiday-lab/reports/integrated-review-20261023/release/runs/2026-10-23T10-55-01-135Z/result.json"
           ],
@@ -1073,13 +1111,14 @@
           "title": "TF-BASE學生作品／WebGL",
           "workflow": "waiting",
           "headline": "等來源與實際Build回傳，目前不能說已可試玩。",
-          "proof_summary": "最新回查 2026-10-23 19:49:30 UTC+8：指定交接夾5份工單／腳本，未見本次WebGL。",
+          "proof_summary": "最新回查 2026-10-23 13:30:21 UTC（UTC）：指定交接夾5份工單／腳本，未見兩款WebGL。",
           "limitation": "只查既有交接夾；另有舊Flora來源候選，未驗身分與完整性；沒有下載大型檔、啟Unity或重送工單。",
           "source_files": [
             "holiday-lab/student-webgl/queued-inspection.json",
             "holiday-lab/student-webgl/REPORT.md",
             "holiday-lab/reports/comprehensive-followup-20261023/root/webgl-source-recheck.json",
-            "holiday-lab/reports/tfbase-shutdown-check-20261023/result.json"
+            "holiday-lab/reports/tfbase-shutdown-check-20261023/result.json",
+            "holiday-lab/reports/nav-language-desktop-20261023/webgl-recheck.json"
           ],
           "links": [
             {
@@ -1096,6 +1135,11 @@
               "label": "關機前最新回查",
               "href": "../../../holiday-lab/reports/tfbase-shutdown-check-20261023/REPORT.md",
               "kind": "local-file"
+            },
+            {
+              "label": "本輪WebGL回查",
+              "href": "../../../holiday-lab/reports/nav-language-desktop-20261023/REPORT.md",
+              "kind": "local-file"
             }
           ]
         },
@@ -1106,7 +1150,7 @@
           "id": "review",
           "title": "等你確認的畫面與內容",
           "workflow": "waiting",
-          "headline": "已暫停，可關機；最新小颯本機審閱版8870，重開後依交接續接。",
+          "headline": "8872三語導覽修正版可看；照片、美術與其他內容仍待使用者確認。",
           "proof_summary": "實體手機、真人試玩與母語逐句審閱未全完成。",
           "limitation": "資料已建、工具驗證與使用者確認分開；沒有把代理通過當成你的認可。",
           "source_files": [
@@ -2176,7 +2220,7 @@
     }
   ],
   "unknowns": [
-    "依使用者要求暫停；本機服務關機即停止，可按交接檔重啟。",
+    "TF-BASE最新來源與WebGL Build結果待回／待查。",
     "完整UI驗收與三語逐句、實體手機、使用者美術確認尚未完成。",
     "學生作品首頁與單款策展示範待使用者審閱；方向已確認，畫面尚未確認。",
     "真背景分頁隱藏狀態仍未驗證；沒有注入hidden旗標。",
@@ -2253,6 +2297,14 @@
       "images/news/2026-awards/dear-all-robots.jpg": "../../../images/news/2026-awards/dear-all-robots.jpg",
       "images/news/2026-awards/kacha.jpg": "../../../images/news/2026-awards/kacha.jpg",
       "images/news/2026-awards/today-restaurant.jpg": "../../../images/news/2026-awards/today-restaurant.jpg",
+      "holiday-lab/reports/nav-language-desktop-20261023/proof.json": "../../../holiday-lab/reports/nav-language-desktop-20261023/proof.json",
+      "holiday-lab/reports/nav-language-desktop-20261023/green-r2/result.json": "../../../holiday-lab/reports/nav-language-desktop-20261023/green-r2/result.json",
+      "styles.css": "../../../styles.css",
+      "comic-components.jsx": "../../../comic-components.jsx",
+      "app.jsx": "../../../app.jsx",
+      "pages.jsx": "../../../pages.jsx",
+      "scripts/test-nav-layout.cjs": "../../../scripts/test-nav-layout.cjs",
+      "holiday-lab/reports/nav-language-desktop-20261023/webgl-recheck.json": "../../../holiday-lab/reports/nav-language-desktop-20261023/webgl-recheck.json",
       "holiday-lab/reports/qingming-release-20261023/independent/REPORT.md": "../../../holiday-lab/reports/qingming-release-20261023/independent/REPORT.md",
       "holiday-lab/extra-qa/runs/2026-10-22T23-47-55-037Z/results.json": "../../../holiday-lab/extra-qa/runs/2026-10-22T23-47-55-037Z/results.json"
     }
