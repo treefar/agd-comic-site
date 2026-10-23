@@ -74,6 +74,22 @@
         "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
       },
       {
+        "path": "holiday-lab/reports/hero-release-20261023/student-independent/runs/2026-10-23T09-48-25-302Z/result.json",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "holiday-lab/reports/hero-release-20261023/release-student/runs/2026-10-23T09-41-13-935Z/result.json",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "holiday-lab/reports/hero-release-20261023/student-independent/verify-v2.cjs",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
+        "path": "holiday-lab/reports/hero-release-20261023/release-student/verify.cjs",
+        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+      },
+      {
         "path": "holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/result.json",
         "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
       },
@@ -341,7 +357,7 @@
           "workflow": "waiting"
         }
       },
-      "value": 2
+      "value": 5
     },
     {
       "id": "progress-paused",
@@ -355,6 +371,27 @@
         }
       },
       "value": 1
+    },
+    {
+      "id": "release-tools",
+      "label": "本輪發布工具補驗",
+      "layer": "tool",
+      "scope": "13項本機技術檢查；不代表全2076或發布許可",
+      "denominator": "本輪release checklist共13項",
+      "rule": {
+        "ratio": [
+          {
+            "count": "release_checks",
+            "where": {
+              "result": "pass"
+            }
+          },
+          {
+            "count": "release_checks"
+          }
+        ]
+      },
+      "value": "12／13"
     }
   ],
   "sections": [
@@ -641,6 +678,96 @@
           "built": "built",
           "tool": "bounded",
           "user": "pending",
+          "id": "hero-integrated",
+          "title": "學生作品首頁審閱",
+          "workflow": "waiting",
+          "headline": "學生完整海報與署名為主視覺；節日入口收進同一格。",
+          "proof_summary": "9組三語手機／桌機首頁與2條嵌入玩法通過；不載節日插畫或生成UI背景。",
+          "limitation": "使用者已選：首頁不用AI插畫，採學生作品＋小型互動入口；遊戲素材分批調整，先看一款示範。這是方向確認，尚非畫面確認。 小型favicon沿用既有生成播放圖示，沒有宣稱所有素材零AI。",
+          "source_files": [
+            "holiday-lab/reports/hero-release-20261023/student-independent/runs/2026-10-23T09-48-25-302Z/result.json",
+            "data/news.json"
+          ],
+          "links": [
+            {
+              "label": "看本機整合稿",
+              "href": "/",
+              "kind": "server"
+            },
+            {
+              "label": "獨立驗收報告",
+              "href": "../../../holiday-lab/reports/hero-release-20261023/student-independent/REPORT.md",
+              "kind": "local-file"
+            },
+            {
+              "label": "學生作品實作說明",
+              "href": "../../../holiday-lab/reports/hero-release-20261023/implementation/STUDENT-REPORT.md",
+              "kind": "local-file"
+            },
+            {
+              "label": "圖像來源與替換盤點",
+              "href": "../../../holiday-lab/reports/hero-release-20261023/root/visual-origin-inventory.json",
+              "kind": "local-file"
+            }
+          ]
+        },
+        {
+          "built": "built",
+          "tool": "bounded",
+          "user": "pending",
+          "id": "student-curation",
+          "title": "學生作品策展示範",
+          "workflow": "waiting",
+          "headline": "先用一款小型策展互動，看學生作品如何與試玩結合。",
+          "proof_summary": "9組三語／三寬真操作；完整海報、原署名、展位檢查、鍵盤完成與重設均有收據。",
+          "limitation": "獨立示範不代表既有14款美術已全替換；學生作品製作流程與新增公開改編授權沒有逐件查證。待你審閱後才決定是否擴大。",
+          "source_files": [
+            "holiday-lab/reports/hero-release-20261023/student-independent/runs/2026-10-23T09-48-25-302Z/result.json",
+            "data/news.json"
+          ],
+          "links": [
+            {
+              "label": "試做小型策展",
+              "href": "/holiday-lab/student-curation.html?lang=zh",
+              "kind": "server"
+            },
+            {
+              "label": "示範實作報告",
+              "href": "../../../holiday-lab/reports/hero-release-20261023/student-demo/REPORT.md",
+              "kind": "local-file"
+            },
+            {
+              "label": "獨立驗收",
+              "href": "../../../holiday-lab/reports/hero-release-20261023/student-independent/REPORT.md",
+              "kind": "local-file"
+            }
+          ]
+        },
+        {
+          "built": "built",
+          "tool": "bounded",
+          "user": "pending",
+          "id": "release-preflight",
+          "title": "本輪發布補驗",
+          "workflow": "waiting",
+          "headline": "12項通過、1項待真實可見狀態；尚未發布。",
+          "proof_summary": "360檔HTTP與來源SHA一致；鍵盤、音效停止、卸載、減動、斷外網與故障恢復已補測。",
+          "limitation": "真背景分頁hidden仍未取得；全2076合約、勞動節暫緩138案例、24個非勞動最長動態文字、實體裝置與美術確認仍保留。",
+          "source_files": [
+            "holiday-lab/reports/hero-release-20261023/release-student/runs/2026-10-23T09-41-13-935Z/result.json"
+          ],
+          "links": [
+            {
+              "label": "發布逐條驗收",
+              "href": "../../../holiday-lab/reports/hero-release-20261023/release-student/REPORT.md",
+              "kind": "local-file"
+            }
+          ]
+        },
+        {
+          "built": "built",
+          "tool": "bounded",
+          "user": "pending",
           "id": "qingming",
           "title": "清明試玩與本輪驗證",
           "workflow": "available",
@@ -757,7 +884,7 @@
           ]
         }
       ],
-      "row_count": 12
+      "row_count": 15
     },
     {
       "id": "ui_scope",
@@ -1604,6 +1731,135 @@
         }
       ],
       "row_count": 57
+    },
+    {
+      "id": "release_checks",
+      "title": "本輪發布工具補驗（全域發布仍待確認）",
+      "row_key": "id",
+      "columns": [
+        {
+          "key": "title",
+          "title": "檢查",
+          "type": "text"
+        },
+        {
+          "key": "result",
+          "title": "工具結果",
+          "type": "tag"
+        }
+      ],
+      "detail_fields": [
+        {
+          "key": "scope",
+          "title": "範圍",
+          "type": "text"
+        },
+        {
+          "key": "source",
+          "title": "原始來源",
+          "type": "text"
+        }
+      ],
+      "search_fields": [
+        "id",
+        "title",
+        "result",
+        "scope"
+      ],
+      "rows": [
+        {
+          "id": "runtime-allowlist",
+          "title": "Runtime檔案白名單",
+          "result": "pass",
+          "scope": "本機技術補驗；不代表完整發布或美術已確認",
+          "source": "holiday-lab/reports/hero-release-20261023/release-student/runs/2026-10-23T09-41-13-935Z/result.json"
+        },
+        {
+          "id": "all-runtime-http-body-sha",
+          "title": "全部檔案HTTP與SHA核對",
+          "result": "pass",
+          "scope": "本機技術補驗；不代表完整發布或美術已確認",
+          "source": "holiday-lab/reports/hero-release-20261023/release-student/runs/2026-10-23T09-41-13-935Z/result.json"
+        },
+        {
+          "id": "server-private-path-and-real-missing-status",
+          "title": "私密路徑與真404／403／400",
+          "result": "pass",
+          "scope": "本機技術補驗；不代表完整發布或美術已確認",
+          "source": "holiday-lab/reports/hero-release-20261023/release-student/runs/2026-10-23T09-41-13-935Z/result.json"
+        },
+        {
+          "id": "server-listens-on-loopback-only",
+          "title": "僅限本機連線",
+          "result": "pass",
+          "scope": "本機技術補驗；不代表完整發布或美術已確認",
+          "source": "holiday-lab/reports/hero-release-20261023/release-student/runs/2026-10-23T09-41-13-935Z/result.json"
+        },
+        {
+          "id": "keyboard-pause-audio-cleanup-zh",
+          "title": "中文鍵盤／暫停／音效／卸載",
+          "result": "pass",
+          "scope": "本機技術補驗；不代表完整發布或美術已確認",
+          "source": "holiday-lab/reports/hero-release-20261023/release-student/runs/2026-10-23T09-41-13-935Z/result.json"
+        },
+        {
+          "id": "keyboard-pause-audio-cleanup-en",
+          "title": "英文鍵盤／暫停／音效／卸載",
+          "result": "pass",
+          "scope": "本機技術補驗；不代表完整發布或美術已確認",
+          "source": "holiday-lab/reports/hero-release-20261023/release-student/runs/2026-10-23T09-41-13-935Z/result.json"
+        },
+        {
+          "id": "keyboard-pause-audio-cleanup-ja",
+          "title": "日文鍵盤／暫停／音效／卸載",
+          "result": "pass",
+          "scope": "本機技術補驗；不代表完整發布或美術已確認",
+          "source": "holiday-lab/reports/hero-release-20261023/release-student/runs/2026-10-23T09-41-13-935Z/result.json"
+        },
+        {
+          "id": "reduced-narration-scroll-zh",
+          "title": "中文減少動態與敘事捲動",
+          "result": "pass",
+          "scope": "本機技術補驗；不代表完整發布或美術已確認",
+          "source": "holiday-lab/reports/hero-release-20261023/release-student/runs/2026-10-23T09-41-13-935Z/result.json"
+        },
+        {
+          "id": "reduced-narration-scroll-en",
+          "title": "英文減少動態與敘事捲動",
+          "result": "pass",
+          "scope": "本機技術補驗；不代表完整發布或美術已確認",
+          "source": "holiday-lab/reports/hero-release-20261023/release-student/runs/2026-10-23T09-41-13-935Z/result.json"
+        },
+        {
+          "id": "reduced-narration-scroll-ja",
+          "title": "日文減少動態與敘事捲動",
+          "result": "pass",
+          "scope": "本機技術補驗；不代表完整發布或美術已確認",
+          "source": "holiday-lab/reports/hero-release-20261023/release-student/runs/2026-10-23T09-41-13-935Z/result.json"
+        },
+        {
+          "id": "local-game-with-third-party-network-blocked",
+          "title": "阻擋第三方網路仍可操作",
+          "result": "pass",
+          "scope": "本機技術補驗；不代表完整發布或美術已確認",
+          "source": "holiday-lab/reports/hero-release-20261023/release-student/runs/2026-10-23T09-41-13-935Z/result.json"
+        },
+        {
+          "id": "module-load-failure-has-readable-recovery",
+          "title": "模組故障提示與返回",
+          "result": "pass",
+          "scope": "本機技術補驗；不代表完整發布或美術已確認",
+          "source": "holiday-lab/reports/hero-release-20261023/release-student/runs/2026-10-23T09-41-13-935Z/result.json"
+        },
+        {
+          "id": "real-background-visibility-evidence",
+          "title": "真實背景分頁暫停",
+          "result": "unknown",
+          "scope": "本機技術補驗；不代表完整發布或美術已確認",
+          "source": "holiday-lab/reports/hero-release-20261023/release-student/runs/2026-10-23T09-41-13-935Z/result.json"
+        }
+      ],
+      "row_count": 13
     }
   ],
   "filters": [
@@ -1679,6 +1935,8 @@
   "unknowns": [
     "TF-BASE最新來源與WebGL Build結果待回／待查。",
     "完整UI驗收與三語逐句、實體手機、使用者美術確認尚未完成。",
+    "學生作品首頁與單款策展示範待使用者審閱；方向已確認，畫面尚未確認。",
+    "真背景分頁隱藏狀態仍未驗證；沒有注入hidden旗標。",
     "完整UI驗收仍為NO；權威索引列出的缺項與原method flags不可省略。",
     "真背景分頁暫停未驗證，沒有偽造hidden。",
     "實體手機、三語母語校對與使用者美術確認尚未完成。",
@@ -1698,6 +1956,10 @@
       "holiday-lab/reports/ui-polish-20261023/independent/runs/2026-10-23T08-07-41-848Z/result.json": "../../../holiday-lab/reports/ui-polish-20261023/independent/runs/2026-10-23T08-07-41-848Z/result.json",
       "holiday-lab/catalog.mjs": "../../../holiday-lab/catalog.mjs",
       "holiday-lab/reports/ui-polish-20261023/audit/font-coverage.json": "../../../holiday-lab/reports/ui-polish-20261023/audit/font-coverage.json",
+      "holiday-lab/reports/hero-release-20261023/student-independent/runs/2026-10-23T09-48-25-302Z/result.json": "../../../holiday-lab/reports/hero-release-20261023/student-independent/runs/2026-10-23T09-48-25-302Z/result.json",
+      "holiday-lab/reports/hero-release-20261023/release-student/runs/2026-10-23T09-41-13-935Z/result.json": "../../../holiday-lab/reports/hero-release-20261023/release-student/runs/2026-10-23T09-41-13-935Z/result.json",
+      "holiday-lab/reports/hero-release-20261023/student-independent/verify-v2.cjs": "../../../holiday-lab/reports/hero-release-20261023/student-independent/verify-v2.cjs",
+      "holiday-lab/reports/hero-release-20261023/release-student/verify.cjs": "../../../holiday-lab/reports/hero-release-20261023/release-student/verify.cjs",
       "holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/result.json": "../../../holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/result.json",
       "holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/method.json": "../../../holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/method.json",
       "holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/build-before.json": "../../../holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/build-before.json",

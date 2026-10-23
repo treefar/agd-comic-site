@@ -1,5 +1,5 @@
 {
-  "base": "http://127.0.0.1:8860",
+  "base": "http://127.0.0.1:8863",
   "cases": [
     {
       "width": 1440,
@@ -19,16 +19,17 @@
         }
       ],
       "navigation": {
-        "url": "http://127.0.0.1:8860/holiday-lab/?game=new-year&lang=zh",
+        "url": "http://127.0.0.1:8863/holiday-lab/?game=new-year&lang=zh",
         "intro_skip_visible": true
       },
       "technical_expand_collapse": true,
       "initial": {
-        "progress": 12,
+        "progress": 15,
         "ui_scope": 16,
         "ui_gate": 3,
         "games": 15,
-        "shell": 57
+        "shell": 57,
+        "release_checks": 13
       },
       "searches": {
         "跨年": {
@@ -36,65 +37,74 @@
           "ui_scope": 0,
           "ui_gate": 0,
           "games": 0,
-          "shell": 0
+          "shell": 0,
+          "release_checks": 0
         },
         "new-year": {
           "progress": 0,
           "ui_scope": 2,
           "ui_gate": 0,
           "games": 2,
-          "shell": 13
+          "shell": 13,
+          "release_checks": 0
         },
         "zzz-不存在的字": {
           "progress": 0,
           "ui_scope": 0,
           "ui_gate": 0,
           "games": 0,
-          "shell": 0
+          "shell": 0,
+          "release_checks": 0
         }
       },
       "filters": {
         "pending": {
-          "progress": 12,
+          "progress": 15,
           "ui_scope": 0,
           "ui_gate": 0,
           "games": 15,
-          "shell": 0
+          "shell": 0,
+          "release_checks": 0
         },
         "ui-missing": {
           "progress": 1,
           "ui_scope": 5,
           "ui_gate": 1,
           "games": 0,
-          "shell": 0
+          "shell": 0,
+          "release_checks": 0
         },
         "local-results": {
           "progress": 7,
           "ui_scope": 0,
           "ui_gate": 0,
           "games": 15,
-          "shell": 0
+          "shell": 0,
+          "release_checks": 0
         },
         "working": {
           "progress": 2,
           "ui_scope": 0,
           "ui_gate": 0,
           "games": 0,
-          "shell": 0
+          "shell": 0,
+          "release_checks": 0
         },
         "waiting": {
-          "progress": 2,
+          "progress": 5,
           "ui_scope": 0,
           "ui_gate": 0,
           "games": 0,
-          "shell": 0
+          "shell": 0,
+          "release_checks": 0
         },
         "paused": {
           "progress": 1,
           "ui_scope": 0,
           "ui_gate": 0,
           "games": 0,
-          "shell": 0
+          "shell": 0,
+          "release_checks": 0
         }
       },
       "expand": {
@@ -112,10 +122,11 @@
         "played": "15",
         "shell": "56",
         "unverified": "1",
+        "release-tools": "12／13",
         "confirmed": "0",
-        "progress-waiting": "2"
+        "progress-waiting": "5"
       },
-      "unknownsShown": 6,
+      "unknownsShown": 8,
       "pageOverflow": false,
       "problems": []
     },
@@ -137,16 +148,17 @@
         }
       ],
       "navigation": {
-        "url": "http://127.0.0.1:8860/holiday-lab/?game=new-year&lang=zh",
+        "url": "http://127.0.0.1:8863/holiday-lab/?game=new-year&lang=zh",
         "intro_skip_visible": true
       },
       "technical_expand_collapse": true,
       "initial": {
-        "progress": 12,
+        "progress": 15,
         "ui_scope": 16,
         "ui_gate": 3,
         "games": 15,
-        "shell": 57
+        "shell": 57,
+        "release_checks": 13
       },
       "searches": {
         "跨年": {
@@ -154,65 +166,74 @@
           "ui_scope": 0,
           "ui_gate": 0,
           "games": 0,
-          "shell": 0
+          "shell": 0,
+          "release_checks": 0
         },
         "new-year": {
           "progress": 0,
           "ui_scope": 2,
           "ui_gate": 0,
           "games": 2,
-          "shell": 13
+          "shell": 13,
+          "release_checks": 0
         },
         "zzz-不存在的字": {
           "progress": 0,
           "ui_scope": 0,
           "ui_gate": 0,
           "games": 0,
-          "shell": 0
+          "shell": 0,
+          "release_checks": 0
         }
       },
       "filters": {
         "pending": {
-          "progress": 12,
+          "progress": 15,
           "ui_scope": 0,
           "ui_gate": 0,
           "games": 15,
-          "shell": 0
+          "shell": 0,
+          "release_checks": 0
         },
         "ui-missing": {
           "progress": 1,
           "ui_scope": 5,
           "ui_gate": 1,
           "games": 0,
-          "shell": 0
+          "shell": 0,
+          "release_checks": 0
         },
         "local-results": {
           "progress": 7,
           "ui_scope": 0,
           "ui_gate": 0,
           "games": 15,
-          "shell": 0
+          "shell": 0,
+          "release_checks": 0
         },
         "working": {
           "progress": 2,
           "ui_scope": 0,
           "ui_gate": 0,
           "games": 0,
-          "shell": 0
+          "shell": 0,
+          "release_checks": 0
         },
         "waiting": {
-          "progress": 2,
+          "progress": 5,
           "ui_scope": 0,
           "ui_gate": 0,
           "games": 0,
-          "shell": 0
+          "shell": 0,
+          "release_checks": 0
         },
         "paused": {
           "progress": 1,
           "ui_scope": 0,
           "ui_gate": 0,
           "games": 0,
-          "shell": 0
+          "shell": 0,
+          "release_checks": 0
         }
       },
       "expand": {
@@ -230,10 +251,11 @@
         "played": "15",
         "shell": "56",
         "unverified": "1",
+        "release-tools": "12／13",
         "confirmed": "0",
-        "progress-waiting": "2"
+        "progress-waiting": "5"
       },
-      "unknownsShown": 6,
+      "unknownsShown": 8,
       "pageOverflow": false,
       "problems": []
     }

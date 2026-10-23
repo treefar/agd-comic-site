@@ -1,0 +1,20 @@
+$ node --test holiday-lab/tests/student-curation.test.mjs
+exit=0
+✔ credit grouping preserves every complete original name and separator (0.8067ms)
+✔ three posters and complete credits come directly from the existing news gallery (0.9475ms)
+✔ starting arrangement cannot pass entrance, spacing and complete-information checks (0.2292ms)
+✔ three distinct exhibition positions and all information cards complete the task (0.1793ms)
+✔ all six valid orders work, while a missing card or occupied entrance never passes (0.2298ms)
+✔ editing is immutable, reset is fresh, and invalid choices cannot fabricate a valid show (0.1554ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 72.6706
+
+$ node --check holiday-lab/student-curation.mjs
+exit=0
+

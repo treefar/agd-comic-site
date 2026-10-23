@@ -1,0 +1,124 @@
+{
+  "scope": "Minimum actual failures from frozen student01; no invented geometry or renamed people",
+  "raw_result": "holiday-lab/reports/hero-release-20261023/student-independent/runs/2026-10-23T09-35-46-407Z/result.json",
+  "raw_sha256": "88d8b4fa5502ea03b54b359a74e1d037fe5922d2c9010dc8c4dcde46260b21dc",
+  "terminal_status": "fail",
+  "finished": "2026-10-23T09:37:28.611Z",
+  "failures": [
+    {
+      "key": "demo-zh-320",
+      "lang": "zh",
+      "width": 320,
+      "stage": "initial",
+      "failure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     id: '',\n+     lines: [\n+       '創作團隊：吳立凡·張自祥·陶延娣·鄭羽',\n+       '軒'\n+     ],\n+     text: '創作團隊：吳立凡 · 張自祥 · 陶延娣 · 鄭羽軒'\n+   },\n+   {\n+     id: '',\n+     lines: [\n+       '創作團隊：許瑗玶·高樂怡·陳書凱·黎躒',\n+       '嬈'\n+     ],\n+     text: '創作團隊：許瑗玶 · 高樂怡 · 陳書凱 · 黎躒嬈'\n+   }\n+ ]\n- []\n\n    at demo (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\hero-release-20261023\\student-independent\\run.cjs:26:307)\n    at async C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\hero-release-20261023\\student-independent\\run.cjs:35:264",
+      "screenshots": [
+        {
+          "file": "demo-zh-320-failure.png",
+          "sha256": "8bee97e777714ca2f36d46a7181ae5e191e5f2e22a643ddb3ede6f335a291659"
+        }
+      ],
+      "selectors": [
+        "#work-credits-1 p:first-child",
+        "#work-credits-2 p:first-child"
+      ]
+    },
+    {
+      "key": "demo-zh-390",
+      "lang": "zh",
+      "width": 390,
+      "stage": "initial",
+      "failure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     id: '',\n+     lines: [\n+       '創作團隊：王愛吉·黃承義·梁潔美·林巧玲·馬聖',\n+       '淞'\n+     ],\n+     text: '創作團隊：王愛吉 · 黃承義 · 梁潔美 · 林巧玲 · 馬聖淞'\n+   }\n+ ]\n- []\n\n    at demo (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\hero-release-20261023\\student-independent\\run.cjs:26:307)\n    at async C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\hero-release-20261023\\student-independent\\run.cjs:35:264",
+      "screenshots": [
+        {
+          "file": "demo-zh-390-failure.png",
+          "sha256": "a03c0c306393ecaef6e9dfc60f45e145c2cb9c28797142560c220dd62d067ce2"
+        }
+      ],
+      "selectors": [
+        "#work-credits-0 p:first-child"
+      ]
+    },
+    {
+      "key": "demo-en-320",
+      "lang": "en",
+      "width": 320,
+      "stage": "after-language-switch-and-reset",
+      "failure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     id: '',\n+     lines: [\n+       'この展示に作品名と制作者情報を添え',\n+       'る'\n+     ],\n+     text: 'この展示に作品名と制作者情報を添える'\n+   },\n+   {\n+     id: '',\n+     lines: [\n+       'この展示に作品名と制作者情報を添え',\n+       'る'\n+     ],\n+     text: 'この展示に作品名と制作者情報を添える'\n+   },\n+   {\n+     id: '',\n+     lines: [\n+       'この展示に作品名と制作者情報を添え',\n+       'る'\n+     ],\n+     text: 'この展示に作品名と制作者情報を添える'\n+   },\n+   {\n+     id: 'curation-check',\n+     lines: [\n+       '展示をチェッ',\n+       'ク'\n+     ],\n+     text: '展示をチェック'\n+   }\n+ ]\n- []\n\n    at demo (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\hero-release-20261023\\student-independent\\run.cjs:32:190)\n    at async C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\hero-release-20261023\\student-independent\\run.cjs:35:264",
+      "screenshots": [
+        {
+          "file": "demo-en-320-initial.png",
+          "sha256": "7b6cec1fd69bb4a0f8e140a9eb34ca980ee8738560056ce0ada0b29d125b5cf6"
+        },
+        {
+          "file": "demo-en-320-success.png",
+          "sha256": "b7dc8e801fec2e8ffe45551865bad03ceed41467e44227caf90d169df2eb33eb"
+        },
+        {
+          "file": "demo-en-320-failure.png",
+          "sha256": "8006c01fb99d6e046844bdcc993c03c05452042cf88083261997cda04021ab28"
+        }
+      ],
+      "selectors": [
+        ".checkbox-label span",
+        "#curation-check"
+      ]
+    },
+    {
+      "key": "demo-en-390",
+      "lang": "en",
+      "width": 390,
+      "stage": "initial",
+      "failure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     id: '',\n+     lines: [\n+       'Creators：王愛吉·黃承義·梁潔美·林巧玲·馬聖',\n+       '淞'\n+     ],\n+     text: 'Creators：王愛吉 · 黃承義 · 梁潔美 · 林巧玲 · 馬聖淞'\n+   }\n+ ]\n- []\n\n    at demo (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\hero-release-20261023\\student-independent\\run.cjs:26:307)\n    at async C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\hero-release-20261023\\student-independent\\run.cjs:35:264",
+      "screenshots": [
+        {
+          "file": "demo-en-390-failure.png",
+          "sha256": "be4d70fb2e838243789bd1e03e25f220b57f5157ffa9768ac0198720220eb3f0"
+        }
+      ],
+      "selectors": [
+        "#work-credits-0 p:first-child"
+      ]
+    },
+    {
+      "key": "demo-ja-320",
+      "lang": "ja",
+      "width": 320,
+      "stage": "initial",
+      "failure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     id: '',\n+     lines: [\n+       'この展示に作品名と制作者情報を添え',\n+       'る'\n+     ],\n+     text: 'この展示に作品名と制作者情報を添える'\n+   },\n+   {\n+     id: '',\n+     lines: [\n+       'この展示に作品名と制作者情報を添え',\n+       'る'\n+     ],\n+     text: 'この展示に作品名と制作者情報を添える'\n+   },\n+   {\n+     id: '',\n+     lines: [\n+       'この展示に作品名と制作者情報を添え',\n+       'る'\n+     ],\n+     text: 'この展示に作品名と制作者情報を添える'\n+   },\n+   {\n+     id: 'curation-check',\n+     lines: [\n+       '展示をチェッ',\n+       'ク'\n+     ],\n+     text: '展示をチェック'\n+   }\n+ ]\n- []\n\n    at demo (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\hero-release-20261023\\student-independent\\run.cjs:26:307)\n    at async C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\hero-release-20261023\\student-independent\\run.cjs:35:264",
+      "screenshots": [
+        {
+          "file": "demo-ja-320-failure.png",
+          "sha256": "7f8ec7a54f5f041104d990cf49f9abbec41291b942e400a16e3fba947cdea877"
+        }
+      ],
+      "selectors": [
+        ".checkbox-label span",
+        "#curation-check"
+      ]
+    },
+    {
+      "key": "demo-ja-390",
+      "lang": "ja",
+      "width": 390,
+      "stage": "after-language-switch-and-reset",
+      "failure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     id: '',\n+     lines: [\n+       '創作團隊：王愛吉·黃承義·梁潔美·林巧玲·馬聖',\n+       '淞'\n+     ],\n+     text: '創作團隊：王愛吉 · 黃承義 · 梁潔美 · 林巧玲 · 馬聖淞'\n+   }\n+ ]\n- []\n\n    at demo (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\hero-release-20261023\\student-independent\\run.cjs:32:190)\n    at async C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\hero-release-20261023\\student-independent\\run.cjs:35:264",
+      "screenshots": [
+        {
+          "file": "demo-ja-390-initial.png",
+          "sha256": "176133fdac10f0d2096949ceb82b14f97dc7aeda53cc221b1aad27fd13211baf"
+        },
+        {
+          "file": "demo-ja-390-success.png",
+          "sha256": "7724d72ce3a09d584d799f70ef2cf1595270df9963a0e3b2817e2b5377c5fffb"
+        },
+        {
+          "file": "demo-ja-390-failure.png",
+          "sha256": "a62fb41bd41be19b3fa308e06f06a8d60dfbbeb32d5b6a160c7a370820d75f86"
+        }
+      ],
+      "selectors": [
+        "#work-credits-0 p:first-child"
+      ]
+    }
+  ]
+}

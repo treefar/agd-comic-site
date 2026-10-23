@@ -1,0 +1,11 @@
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const req=require('node:module').createRequire(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/package.json')),{chromium}=req('playwright');
+const base=process.env.HERO_QA_URL||'http://127.0.0.1:8860',dir=path.join(__dirname,'baseline-8860');fs.mkdirSync(dir,{recursive:true});
+(async()=>{const b=await chromium.launch({headless:true}),rows=[];try{for(const lang of ['zh','en','ja'])for(const width of [320,390,1440]){
+ const c=await b.newContext({viewport:{width,height:1000},reducedMotion:'reduce'}),p=await c.newPage(),requests=[],errors=[];p.on('request',r=>requests.push(r.url()));p.on('pageerror',e=>errors.push(e.message));
+ await p.goto(base+'/?lang='+lang,{waitUntil:'networkidle'});await p.locator('#festival-start').waitFor();
+ const row=await p.evaluate(()=>({lang:document.documentElement.lang,totalFestival:document.querySelectorAll('#festival-preview').length,insideOriginalHero:document.querySelectorAll('#hero .tier-splash #festival-preview').length,directStandalone:!!document.querySelector('#hero .comic-page > #festival-preview'),iframes:document.querySelectorAll('iframe').length,scrollWidth:document.documentElement.scrollWidth,innerWidth,heroTitle:document.querySelector('#hero .h-display')?.textContent}));
+ Object.assign(row,{requestedLanguage:lang,width,errors,requests,beforeClickGameRequests:requests.filter(u=>/\/holiday-lab\/(?:games|audio)\//.test(u)),expectIntegrated:row.insideOriginalHero===1&&!row.directStandalone});
+ if(width===320||width===1440&&lang==='zh'){row.png=lang+'-'+width+'.png';await p.screenshot({path:path.join(dir,row.png),fullPage:false});row.pngSha256=crypto.createHash('sha256').update(fs.readFileSync(path.join(dir,row.png))).digest('hex');}
+ rows.push(row);await c.close();console.log(lang,width,'integrated',row.expectIntegrated);
+}}finally{await b.close();}fs.writeFileSync(path.join(dir,'result.json'),JSON.stringify({base,scope:'old-build baseline; structural RED required by the requested integration',rows,pass:rows.every(r=>r.expectIntegrated)},null,2)+'\n');process.exitCode=rows.every(r=>r.expectIntegrated)?0:1;})().catch(e=>{console.error(e);process.exitCode=1;});

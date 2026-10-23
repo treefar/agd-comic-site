@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "method": "Actual Chrome tab controls through CUA; read-only DOM visibility observation, no visibility mocking",
+  "url": "http://127.0.0.1:8861/holiday-lab/?game=new-year&lang=en",
+  "before": {
+    "hidden": false,
+    "state": "visible",
+    "time": 1792746445210
+  },
+  "after_opening_home_tab": {
+    "hidden": false,
+    "state": "visible",
+    "time": 1792746472039,
+    "actor": "left: 33.2029%; top: 61.5399%; width: 20%; height: 28%; transform: translate(-50%, -50%) rotate(0deg) scale(1.0385, 0.938405); opacity: 1; z-index: 1;"
+  },
+  "result": "unknown",
+  "reason": "Opening another automated Chrome tab did not produce hidden=true. No suspension pass is claimed.",
+  "full_project_approved": false
+}

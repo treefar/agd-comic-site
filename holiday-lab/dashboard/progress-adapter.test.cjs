@@ -15,3 +15,7 @@ test('current Qingming receipt is adopted only in its bounded scope',()=>{
   const bad=structuredClone(good);mutate(bad);assert.throws(()=>validate(bad,d.qingming.counts,policy.qingming_receipt,policy.qingming_verification));
  }
 });
+
+test('Hero technical pass does not approve the AI visual direction or publication',()=>{const d=adapter(root);assert.equal(d.heroRelease.hero.contexts,9);assert.equal(d.rows.find(r=>r.id==='hero-integrated').workflow,'waiting');assert.equal(d.heroRelease.release.yes,12);assert.equal(d.heroRelease.release.unknown,1);assert.equal(d.heroRelease.release.public_release,false);assert.equal(d.rows.find(r=>r.id==='release-preflight').user,'pending');assert.equal(d.heroRelease.checks.filter(c=>c.result==='unknown').length,1);});
+
+test('one source-backed curation demo remains separate from all-game art approval',()=>{const d=adapter(root),demo=d.rows.find(r=>r.id==='student-curation');assert.equal(d.policy.visual_direction,'student-work-homepage-and-one-curation-demo');assert.equal(d.heroRelease.hero.demo_contexts,9);assert.equal(demo.workflow,'waiting');assert.equal(demo.user,'pending');assert.equal(demo.tool,'bounded');assert.equal(demo.links[0].href,'/holiday-lab/student-curation.html?lang=zh');assert.match(demo.limitation,/不代表既有14款/);assert.match(d.rows.find(r=>r.id==='hero-integrated').limitation,/favicon/);assert.equal(d.rows.find(r=>r.id==='ui').tool,'gate_no');});

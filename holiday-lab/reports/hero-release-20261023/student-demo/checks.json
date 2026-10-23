@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "created": "2026-10-23T09:35:39.211Z",
+  "scope": "Student curation demo: source and pure rules only",
+  "public_release": false,
+  "original_exhibition_replaced": false,
+  "browser_verified": false,
+  "checks": [
+    {
+      "id": "source-credits-and-curation-rules",
+      "result": "yes"
+    },
+    {
+      "id": "module-syntax",
+      "result": "yes"
+    },
+    {
+      "id": "direct-source-full-poster-no-new-generated-assets",
+      "result": "yes",
+      "evidence": "Runtime has direct relative news fetch, contain poster CSS, no remote URL/canvas/svg/iframe/audio/assets references."
+    },
+    {
+      "id": "final-build-and-browser-acceptance",
+      "result": "unknown",
+      "reason": "Root owns unified build. Independent agent owns native browser acceptance against that build."
+    }
+  ],
+  "commands": [
+    {
+      "command": "node --test holiday-lab/tests/student-curation.test.mjs",
+      "exit": 0,
+      "stdout": "✔ three posters and complete credits come directly from the existing news gallery (1.9061ms)\n✔ starting arrangement cannot pass entrance, spacing and complete-information checks (0.313ms)\n✔ three distinct exhibition positions and all information cards complete the task (0.2502ms)\n✔ all six valid orders work, while a missing card or occupied entrance never passes (0.4418ms)\n✔ editing is immutable, reset is fresh, and invalid choices cannot fabricate a valid show (0.2682ms)\nℹ tests 5\nℹ suites 0\nℹ pass 5\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 94.3593\n",
+      "stderr": ""
+    },
+    {
+      "command": "node --check holiday-lab/student-curation.mjs",
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "files": {
+    "holiday-lab/student-curation.html": "2c67a1b66dc99aa19afcf6ec3479e91f4fb652a6afc151d11d5eb17a4b3f85dc",
+    "holiday-lab/student-curation.css": "db66368797c071191726f7968e7f37a4ed2719e94c8bcaa533ae5fe51487e6a2",
+    "holiday-lab/student-curation.mjs": "8cae6b933cbdada4593dc5e58b98162f6449aa389c5d938a7f2bfa5f8d69255f"
+  },
+  "works": [
+    {
+      "title": "Dear, All Robots",
+      "rank": "No. 04",
+      "image": "images/news/2026-awards/dear-all-robots.jpg",
+      "sha256": "036b60c49ec45043670e823c0cec198be091c1208cf746f57d0366a35ec6c9a1",
+      "mentor": "陳美蓉",
+      "designers": "王愛吉 · 黃承義 · 梁潔美 · 林巧玲 · 馬聖淞"
+    },
+    {
+      "title": "喀嚓",
+      "rank": "No. 05",
+      "image": "images/news/2026-awards/kacha.jpg",
+      "sha256": "0342a3c25add112df5fbf6a69923a3d066afc70511882a7a5dc9eb80a59da934",
+      "mentor": "鄧樹遠",
+      "designers": "吳立凡 · 張自祥 · 陶延娣 · 鄭羽軒"
+    },
+    {
+      "title": "今食堂",
+      "rank": "No. 06",
+      "image": "images/news/2026-awards/today-restaurant.jpg",
+      "sha256": "64650ea1263860051f763bc20cc5c3f64d9512dff86aeb1d7e70499c37a34ff3",
+      "mentor": "鄧樹遠",
+      "designers": "許瑗玶 · 高樂怡 · 陳書凱 · 黎躒嬈"
+    }
+  ]
+}

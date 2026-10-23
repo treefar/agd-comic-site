@@ -1,0 +1,28 @@
+{
+  "frozen_at": "2026-10-23T09:48:06.513Z",
+  "base": "http://127.0.0.1:8863",
+  "files": [
+    {
+      "file": "run-v2.cjs",
+      "sha256": "6ce58345899cc3f19f4e4c6bf8ab4db00febe9116e3126ee0219cb549629212b"
+    },
+    {
+      "file": "measure-v2.cjs",
+      "sha256": "cef61d23d4a36302b38c2048990c0da6a4a35526a5e96c727d4d0af2119dc879"
+    },
+    {
+      "file": "verify-v2.cjs",
+      "sha256": "4f44bedf25ac956e245209442a761748f23233411e2b776be40e92caeeb0f39c"
+    },
+    {
+      "file": "verify-v2.test.cjs",
+      "sha256": "d40cf29366453731a13a8dac6d43c083c047f1b8b0bddc012be41dc8394d1869"
+    },
+    {
+      "file": "source-expectations.json",
+      "sha256": "43094d4942cee81643aef306e2689452acec1ac2ed436b38db3d3896b3548793"
+    }
+  ],
+  "change": "Force newly committed text layout, await fonts.ready before every sample/screenshot, require loaded in collector and verifier. Keep original method and both previous runs immutable. Also validate mutation harness against unchanged raw before negative tests.",
+  "command": "$env:STUDENT_QA_URL=\"http://127.0.0.1:8863\"; node holiday-lab/reports/hero-release-20261023/student-independent/run-v2.cjs"
+}

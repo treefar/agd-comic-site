@@ -1,0 +1,7 @@
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),assert=require('node:assert/strict');
+const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+function files(root,prefix=''){return fs.readdirSync(path.join(root,prefix),{withFileTypes:true}).flatMap(e=>{assert.ok(!e.isSymbolicLink(),'Runtime symlink is not allowed');const p=prefix+e.name;return e.isDirectory()?files(root,p+'/'):[p];}).sort();}
+function allowed(p){if(!p||p.startsWith('/')||p.includes('\\')||p.split('/').some(s=>s==='.'||s==='..'))return false;return !/(^|\/)(\.git|node_modules|work-orders|tests|reports|redesign|delivery|delivery-v2|art-source|audio-source|verification|Unity|Library|Temp)(\/|$)/i.test(p)&&!/(^|\/)\.env(?:\.|$)/i.test(p)&&(/^(data|images|fonts)\//.test(p)||/^holiday-lab\/(assets|games|audio)\//.test(p)||/^holiday-lab\/(catalog\.mjs|replay-model\.mjs|index\.html|lab\.css|runner\.mjs)$/.test(p)||/^(\.nojekyll|index\.html|app-[A-Z0-9]+\.js|styles\.css|faculty-portrait\.css|student-guide\.css|holiday-home\.css|favicon\.ico)$/.test(p));}
+function manifest(root){const list=files(root);assert.ok(list.length>0);assert.deepEqual(list.filter(p=>!allowed(p)),[],'Private or unreviewed files in runtime');return list.map(p=>{const b=fs.readFileSync(path.join(root,p));return {path:p,bytes:b.length,sha256:hash(b)};});}
+function validateHttp(row,body){assert.equal(row.status,200,row.path);assert.equal(body.length,row.bytes,row.path);assert.equal(hash(body),row.sha256,row.path);}
+module.exports={hash,files,allowed,manifest,validateHttp};

@@ -326,7 +326,7 @@ const LabCard = ({ l, i }) => (
     }}>
       <span style={{ background: "var(--ink)", color: "var(--paper)", padding: "3px 8px" }}>{l.t}</span>
       <a href={`#/labs/${l.slug}`} onClick={(e) => e.stopPropagation()} style={{
-        color: "inherit", textDecoration: "none", fontFamily: "'Bangers',sans-serif",
+        textDecoration: "none", fontFamily: "'Bangers',sans-serif",
         background: "var(--accent-yellow)", color: "var(--ink)",
         padding: "3px 10px", border: "2px solid var(--ink)",
         boxShadow: "2px 2px 0 var(--ink)"

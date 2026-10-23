@@ -1,0 +1,11 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "--test-name-pattern=one source-backed",
+    "holiday-lab/dashboard/progress-adapter.test.cjs"
+  ],
+  "exit_code": 1,
+  "stdout": "✖ one source-backed curation demo remains separate from all-game art approval (763.233ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 848.6969\n\n✖ failing tests:\n\ntest at holiday-lab\\dashboard\\progress-adapter.test.cjs:21:1\n✖ one source-backed curation demo remains separate from all-game art approval (763.233ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n  \n  undefined !== 9\n  \n      at TestContext.<anonymous> (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\dashboard\\progress-adapter.test.cjs:21:251)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1201:25)\n      at Test.start (node:internal/test_runner/test:1096:17)\n      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: undefined,\n    expected: 9,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n",
+  "stderr": ""
+}

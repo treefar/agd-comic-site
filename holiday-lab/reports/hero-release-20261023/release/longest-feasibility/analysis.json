@@ -1,0 +1,315 @@
+{
+  "schema_version": 1,
+  "source_agent": "codex",
+  "scope": "Feasibility only; current pure source domain enumerated, no rendering or longest-ink claim",
+  "sources": {
+    "holiday-lab/games/mid-autumn.mjs": "a8c3bdf7368b51e69a41665e68b4ab8b50829be5f6089ebfd2cf757936f19dd1",
+    "holiday-lab/games/national-day.mjs": "9c697f08c24f9eae89ac55b71fc37bcfe8546c65b7ca3264a88155b5a63891fa",
+    "holiday-lab/games/semester.mjs": "25cb4073919654b1c76d6bf713fce21421eed71483a2fe203730733057f4c31e",
+    "holiday-lab/games/qingming.mjs": "3936b5606016b60ca38de77e63d2f2170681592e6dc7e7c9147e29210870cc5f",
+    "holiday-lab/runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+    "holiday-lab/lab.css": "e53bb02a341978cc311f7c33fa9e26667ae3c5f165fe71b85fbaa89db1311d0d"
+  },
+  "canonical_promoted": false,
+  "full_project_approved": false,
+  "mid_autumn": {
+    "finite": true,
+    "input_configurations": 299943,
+    "alignment_error_configurations": 298193,
+    "unique_formatted_error_tuples": 67448,
+    "examples": [
+      {
+        "round": 0,
+        "time": 300,
+        "x": 0,
+        "size": 10,
+        "error": {
+          "time": 600,
+          "x": "30.5",
+          "size": "10.0"
+        }
+      },
+      {
+        "round": 0,
+        "time": 550,
+        "x": 58,
+        "size": 16,
+        "error": {
+          "time": 350,
+          "x": "31.3",
+          "size": "4.0"
+        }
+      },
+      {
+        "round": 0,
+        "time": 800,
+        "x": 68,
+        "size": 19,
+        "error": {
+          "time": 100,
+          "x": "45.0",
+          "size": "1.0"
+        }
+      },
+      {
+        "round": 0,
+        "time": 1550,
+        "x": 56.5,
+        "size": 15,
+        "error": {
+          "time": 650,
+          "x": "44.8",
+          "size": "5.0"
+        }
+      },
+      {
+        "round": 1,
+        "time": 400,
+        "x": 37,
+        "size": 12,
+        "error": {
+          "time": 800,
+          "x": "17.0",
+          "size": "14.0"
+        }
+      },
+      {
+        "round": 1,
+        "time": 750,
+        "x": 12.5,
+        "size": 21,
+        "error": {
+          "time": 450,
+          "x": "34.5",
+          "size": "5.0"
+        }
+      },
+      {
+        "round": 1,
+        "time": 1150,
+        "x": 14,
+        "size": 20,
+        "error": {
+          "time": 50,
+          "x": "25.0",
+          "size": "6.0"
+        }
+      },
+      {
+        "round": 2,
+        "time": 650,
+        "x": 13.5,
+        "size": 16,
+        "error": {
+          "time": 100,
+          "x": "41.3",
+          "size": "2.0"
+        }
+      },
+      {
+        "round": 2,
+        "time": 1300,
+        "x": 10,
+        "size": 14,
+        "error": {
+          "time": 550,
+          "x": "54.5",
+          "size": "4.0"
+        }
+      },
+      {
+        "round": 2,
+        "time": 1600,
+        "x": 13.5,
+        "size": 32,
+        "error": {
+          "time": 850,
+          "x": "55.5",
+          "size": "14.0"
+        }
+      }
+    ],
+    "blocker": "Existing seven-extrema/783 UI calibration is not a proof of every line-wrap transfer bound; current CSS differs from old frozen evidence. No area or all-owner bound may be invented."
+  },
+  "national_day": {
+    "finite": true,
+    "raw_inputs": 55837326,
+    "distinct_printed_readout_configurations": 915366,
+    "fore_witness_projection_errors": 0,
+    "witnesses": [
+      {
+        "level": 0,
+        "camera": -20,
+        "mid": -30,
+        "far": -30,
+        "fore": 0,
+        "feedback": "blocked",
+        "readout": {
+          "mid": "30.0",
+          "far": "24.0",
+          "blocked": true
+        }
+      },
+      {
+        "level": 0,
+        "camera": -20,
+        "mid": -30,
+        "far": -30,
+        "fore": 30,
+        "feedback": "camera",
+        "readout": {
+          "mid": "30.0",
+          "far": "24.0",
+          "blocked": false
+        }
+      },
+      {
+        "level": 0,
+        "camera": -20,
+        "mid": -30,
+        "far": -29,
+        "fore": 0,
+        "feedback": "blocked",
+        "readout": {
+          "mid": "30.0",
+          "far": "25.0",
+          "blocked": true
+        }
+      },
+      {
+        "level": 0,
+        "camera": -20,
+        "mid": -30,
+        "far": -29,
+        "fore": 30,
+        "feedback": "camera",
+        "readout": {
+          "mid": "30.0",
+          "far": "25.0",
+          "blocked": false
+        }
+      },
+      {
+        "level": 0,
+        "camera": -20,
+        "mid": -30,
+        "far": -28,
+        "fore": 0,
+        "feedback": "blocked",
+        "readout": {
+          "mid": "30.0",
+          "far": "26.0",
+          "blocked": true
+        }
+      },
+      {
+        "level": 0,
+        "camera": -20,
+        "mid": -30,
+        "far": -28,
+        "fore": 30,
+        "feedback": "camera",
+        "readout": {
+          "mid": "30.0",
+          "far": "26.0",
+          "blocked": false
+        }
+      },
+      {
+        "level": 0,
+        "camera": -20,
+        "mid": -30,
+        "far": -27,
+        "fore": 0,
+        "feedback": "blocked",
+        "readout": {
+          "mid": "30.0",
+          "far": "27.0",
+          "blocked": true
+        }
+      },
+      {
+        "level": 0,
+        "camera": -20,
+        "mid": -30,
+        "far": -27,
+        "fore": 30,
+        "feedback": "camera",
+        "readout": {
+          "mid": "30.0",
+          "far": "27.0",
+          "blocked": false
+        }
+      },
+      {
+        "level": 0,
+        "camera": -20,
+        "mid": -30,
+        "far": -26,
+        "fore": 0,
+        "feedback": "blocked",
+        "readout": {
+          "mid": "30.0",
+          "far": "28.0",
+          "blocked": true
+        }
+      },
+      {
+        "level": 0,
+        "camera": -20,
+        "mid": -30,
+        "far": -26,
+        "fore": 30,
+        "feedback": "camera",
+        "readout": {
+          "mid": "30.0",
+          "far": "28.0",
+          "blocked": false
+        }
+      }
+    ],
+    "blocker": "Readout jointly varies camera, coast/ridge formatted decimals and sightline suffix; checking longest fixed feedback alone omits this owner. Need actual-ink maximum over the source-projected readout domain, not maximum character count."
+  },
+  "semester": {
+    "explicit_user_step_cap": false,
+    "field": "semester-position: state.route.length - 1",
+    "cause": "Every successful move clones and appends route; UI imposes no step limit. Repeated up/down gives a longer printed counter without finishing. Numeric helper proof exists but is not native line-layout equivalence.",
+    "existing_numeric_proof_keys": [
+      "type",
+      "created_at",
+      "counts",
+      "guards",
+      "evidence_refs",
+      "font_files",
+      "source_template_span",
+      "mathematical_model_proven",
+      "all_4695_minimum_and_two_step_detour_witnesses_checked",
+      "ten_digit_language_ceiling_is_prior_known_fact",
+      "complete_representatives_scope",
+      "conditional_invariance",
+      "existing_native_calibration",
+      "unresolved_NO",
+      "browser_or_native_run_started",
+      "native_equivalence",
+      "global_approved"
+    ],
+    "necessary_product_option": "Define a finite display contract (e.g. bounded display with full actual count retained in creation data), or prove the existing long-counter actual typography bound under unchanged fonts/CSS. Do not silently cap or truncate gameplay/history."
+  },
+  "qingming": {
+    "finite_visible_error_text": true,
+    "independent_slider_values": 213,
+    "simultaneous_slider_combinations": 314211,
+    "not_text_domain": "flight time/ticks/resets/path grow but are not interpolated into in-game failure/status strings",
+    "closest_feasible_item": true,
+    "existing_scope": {
+      "pilot_cases": 36,
+      "direct_calibrations": 1278,
+      "stepper_calibrations": 2520,
+      "full_normal_ui_configurations": 1392,
+      "full_supported": false,
+      "native_approved": false
+    },
+    "blocker": "The existing v3 tool explicitly supports pilot only, not full-domain canonical completion. Each input axis is finite, but fixed row geometry, canonical HTML range serialization, exact fonts/ink/paper/viewport/full-owner status evidence must be freshly proved for current CSS."
+  },
+  "current_dependency": "User is reconsidering AI-generated art and student-work hero integration. Material/layout is not finalized; a formal UI source freeze now would be invalidated by the new art/layout choice. Existing new01 12yes/0no/1unknown release evidence remains historical to that exact build, not upgraded."
+}

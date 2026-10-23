@@ -1,0 +1,39 @@
+COMMAND: STUDENT_QA_RUN=C:\agywork\agd-holiday-prototypes\holiday-lab\reports\hero-release-20261023\student-independent\runs\2026-10-23T09-48-25-302Z node --test holiday-lab/reports/hero-release-20261023/student-independent/verify-v2.test.cjs
+✔ the original failed mobile review remains rejected (8.3545ms)
+✔ the new real receipt, complete credits and original posters pass (66.9146ms)
+✖ unchanged raw through the mutation harness still passes (18.1482ms)
+✔ font sampling while loading is rejected (21.2146ms)
+✔ the prior superficial pass remains rejected (5.3087ms)
+✔ summary pass cannot hide a failed mobile demo (15.5082ms)
+✔ a missing creator name is rejected (16.3488ms)
+✔ generated seasonal art requested before play is rejected (18.8598ms)
+✔ source drift cannot be combined into a pass (19.0655ms)
+✔ poster cropping cannot masquerade as full-poster display (15.2744ms)
+✔ fake PNG hashes are rejected (16.6015ms)
+✔ bounded local review cannot approve the full release gate (19.6296ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 11
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 343.0939
+
+✖ failing tests:
+
+test at holiday-lab\reports\hero-release-20261023\student-independent\verify-v2.test.cjs:6:1
+✖ unchanged raw through the mutation harness still passes (18.1482ms)
+  ReferenceError: URL is not defined
+      at poster (C:\agywork\agd-holiday-prototypes\holiday-lab\reports\hero-release-20261023\student-independent\verify-v2.test.cjs:7:140)
+      at Object.verify (C:\agywork\agd-holiday-prototypes\holiday-lab\reports\hero-release-20261023\student-independent\verify-v2.test.cjs:8:455)
+      at C:\agywork\agd-holiday-prototypes\holiday-lab\reports\hero-release-20261023\student-independent\verify-v2.test.cjs:3:450
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\reports\hero-release-20261023\student-independent\verify-v2.test.cjs:6:109)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+
+EXIT=1

@@ -10,7 +10,7 @@ else console.log('MEASUREMENT ONLY: test build for layout capture; not cleared f
 execFileSync(process.execPath,['C:/AIHome/claude/skills/game-ui-art/scripts/ui-policy.cjs','--project',process.cwd()],{stdio:'inherit'});
 execFileSync(process.execPath,['scripts/build.mjs','--local-review',`--out=${out}`],{stdio:'inherit'});
 const lab=path.join(out,'holiday-lab');fs.mkdirSync(lab,{recursive:true});
-for(const name of ['index.html','lab.css','runner.mjs','replay-model.mjs','catalog.mjs','games','assets','audio']){
+for(const name of ['index.html','lab.css','runner.mjs','replay-model.mjs','catalog.mjs','games','assets','audio','student-curation.html','student-curation.mjs','student-curation.css']){
  if(!fs.existsSync(`holiday-lab/${name}`))throw Error(`Missing runtime ${name}`);
  fs.cpSync(`holiday-lab/${name}`,path.join(lab,name),{recursive:true});
 }
