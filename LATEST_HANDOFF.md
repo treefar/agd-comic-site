@@ -1,3 +1,12 @@
+## 2026-10-23 最新：覆蓋2040項、126份完整證據已整合
+
+- source_agent: codex。上一goal輪為實際進展，本輪再次推進：清明90、和平/光復有限錯句12、窄版提示24，合計126份完整case納入新索引。最新2040/2076、缺36、geometry0；與1914基準逐key/來源綁定比較，全保留無降級。權威索引 holiday-lab/layout-qa/supplement-integration-20261023/v3/coverage-current.json；plan-current/plan.json同2040，126新wrapper全nodes/blockers/SHA指標獨立重算相符，正式R0不寫。
+- 主控24/24 tests與索引/assembly/check-plan真exit0。補了證據後讀的raw manifest/case/sample/image SHA、source map與完整case比對；獨立VM真紅接受90→修後正常90、改source/改payload各精確拒絕，最新profile helper再複驗同樣通過。不同collector的sampler欄位依實讀schema處理，不用名稱猜語意。原首次234小索引為誤用舊矩陣名、v2缺欄位拒絕均留檔不採用；v3實際正確phase23-47-50-142/front23-48-00-964。
+- 剩36：中秋/國慶/開學/清明/勞動 game/error-longest各6，和平真聆聽preview6已有獨立原生證據但尚未接索引。中秋同一engine18628/driver68760仍按原prepared-01跑；本次真程序觀測{"Id":18628,"StartTime":"/Date(1792726288842)/","CPU":516.53125}，最近checkpoint CHECKPOINT ja-320 53248/67448 total=323552/404688 GLOBAL=NO（2026-10-23T04:16:03.683Z）。不得改runtime/manifest或逾時重啟，全集後尚須串流、極值、seeded真UI驗證，GLOBAL仍NO。
+- 三代理續分工：labor-finite-native/engine-v2修雙字型/320x900與1440x1000/分片/PID續跑，未批全集；national-fast-domain精確joint10,980,702，僅設計和gzip實驗、native0，手機高度及快法等價未證；semester-error-domain只做可達投影/校準，不把無上限步數當有限sample。清明adapter舊afterfalse/unknown1及所有原flags完整保留，清明剩6錯句域另排。
+- 主報告 holiday-lab/reports/verification-followup-20261023-14.md；詳細yes/no與實際stdout見integration目錄。新網站Build/新ZIP/發布/push/main/刪檔均無，8800與舊ZIP保留，C節SHA不變；TF-BASE實查仍5工單，無來源/WebGL，不啟Unity。大型raw只本機，沒有跨機備份宣稱。
+- 下一輪第一件事：查同18628/68760真狀態與log，完成才串流驗全集並取真正極值/128seed每context；回收labor-v2/semester/國慶設計後先查碼再啟指定測量。接和平既有6preview、清明6有限/動態域，再重產索引。所有UI method flags、來源283的非served/build provenance、日文短末行與使用者實玩/美術確認尚未閉合，禁止以2040/2076或geometry0宣稱全案完成。
+
 ## 2026-10-23 最新：嚴格可見覆蓋1914項、中秋全集已啟動
 
 - source_agent: codex。本輪實際進展：開學補採684 frames完成，舊10個完成session與新2個session嚴格組合90個canonical案例。新增選中畫面viewport稽核，撤回24個窄版過度計入項；故1848舊快照減24加90，最新1914/2076、缺162、geometry0。索引 semester-session-composite/coverage-bound-current.json；plan-current/plan.json與plan-consistency.json逐key相符。這是PARTIAL_RED，不是正式gate通過。
