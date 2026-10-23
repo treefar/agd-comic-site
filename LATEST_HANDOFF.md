@@ -1,3 +1,15 @@
+## 2026-10-23 接續：學生首頁故障恢復補驗、翻譯獨立分支與指南補研
+
+- source_agent: codex。主工作樹 C:/agywork/agd-holiday-prototypes，分支 codex/qingming-final-checks，本機保存 6c971a027a9e8f12696cfcdc6fcc43f208df0569；首頁仍以 .measure-student-hero-20261023-02／http://127.0.0.1:8863/ 為已驗證審閱版，單款示範 /holiday-lab/student-curation.html?lang=zh，儀表板 /progress/。
+- 最新三題決策持續有效：首頁不用 AI 插畫、採學生完整作品＋小型互動入口，遊戲素材只先一款示範，等具體回饋再擴大。方向確認不是畫面或作品製程／改編權確認。
+- 策展示範追加3語×HTTP503／空gallery／真等待載入時換語言，共9/9；15PNG、字型loaded、溢位與孤尾0、360runtime前後一致。root唯讀核對＋1正9負例10/10，沒有把故障注入當正常網路。詳細逐條yes/no與指令在 holiday-lab/reports/comprehensive-followup-20261023/REPORT.md。
+- 清明只完成新來源域準備的獨立審查：作者7/7、獨立13/13、readonly exit0；28owner／213分軸候選／22來源模型序列。原生序列化、聯合布局、全部owner可見性／墨跡上界仍未證；error-longest、canonical、全站批准均false，未啟動巨量原生批次。
+- 英日12處一般語意修正已在codex/plain-guide-copy本機保存（382f9c78／ffb00e52）；獨立01抓到指南中文手機3+1／孤尾真RED後，另開codex/plain-guide-layout僅修student-guide.css（5b2f838d），不縮字不改文案。最新 .measure-plain-copy-20261023-02／http://127.0.0.1:8865/?lang=zh#/students/guide ，獨立8/8頁面、24次譯文、36PNG、46指南layout／10364leaf，孤尾／越界0、18source／360build前後相同；root verify-v5重核exit0。原01／8864失敗及導覽工具失敗皆保留。此分支未合主工作樹，不把8863舊全站收據當8865新版全通過；其餘16正式名稱候選與母語確認仍待辦。
+- TF-BASE既有交接夾10:06:12 UTC直接項目仍5份工單／腳本，未見兩源或WebGL；只代表該夾，不推論別處。沒有重送工單或啟Unity。
+- 指南既有45來源／47步說明／30FAQ不等於8單位相關資料全已實讀；本輪另完成證照／英文兩題可審草稿，各大流程＋4步說明＋3FAQ。12來源分為live PDF視覺1／live HTML1／官方索引正文7／未視覺PDF文字2／iframe外框1，HTTP 200×2／202空×5／403×2保留。現行完整規章／認列清單／表單仍未取得，未套產品；見guide-graduation-research-20261023/REPORT.md。
+- 本輪全部維持本機：不push、不發布、不碰main、不刪檔、不動C節、勞動節暫緩。完整UI gate與真背景hidden、實體裝置、母語逐句校對、使用者畫面確認仍保留。
+- 下一輪第一件事：先看8863學生首頁／單款策展示範並回收畫面意見；讀本輪報告與8865獨立翻譯／排版驗收結果，再按具體缺件續補指南當期官方資料，不自行擴大美術或續跑舊巨量QA。
+
 ## 2026-10-23 最新：學生作品首頁與策展示範完成；本機8863待審
 
 - source_agent: codex。工作樹C:/agywork/agd-holiday-prototypes，分支codex/hero-festival-review，本機commit d16d2ebc76652f59cff08ed6b223da4bf6ebec83（git fsck通過）。本輪依使用者三題確認：首頁不用AI插畫、學生作品＋小互動入口、遊戲先一款示範再決定擴大；方向確認不等同畫面已確認。
