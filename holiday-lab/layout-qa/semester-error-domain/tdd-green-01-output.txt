@@ -1,0 +1,26 @@
+✔ fixed source receipts and twelve complete sessions are bound (342.6949ms)
+✔ both third-act orders and all six task/contact rejection pairs have reachable witnesses (0.3317ms)
+✔ corrupt source, deleted callback and incomplete context fail closed (198.8894ms)
+✔ joint numeric guard retains parity and shortest reachable move count (2.2214ms)
+✖ ten representative source projections agree with immutable original mount callbacks (35.4401ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 737.3384
+
+✖ failing tests:
+
+test at holiday-lab\layout-qa\semester-error-domain\domain.test.cjs:7:1
+✖ ten representative source projections agree with immutable original mount callbacks (35.4401ms)
+  TypeError: Cannot set properties of undefined (setting 'guideCard')
+      at render (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/layout-qa/semester-error-domain/source/games/semester.mjs:59:198)
+      at Module.mount (file:///C:/agywork/agd-holiday-prototypes/holiday-lab/layout-qa/semester-error-domain/source/games/semester.mjs:68:240)
+      at replay (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\semester-error-domain\mount-oracle.cjs:6:27)
+      at compareWitnesses (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\semester-error-domain\mount-oracle.cjs:8:387)
+      at async TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\semester-error-domain\domain.test.cjs:7:199)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)

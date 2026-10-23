@@ -1,0 +1,4 @@
+// Reuse the fixed same-realm regression against the later profile-aware parent helper.
+// Preserve the earlier green JSON and source; only this distinct receipt is written.
+const fs=require('node:fs'),path=require('node:path'),Module=require('node:module'),assert=require('node:assert/strict');
+const prior=path.join(__dirname,'root-integration-race-green.cjs'),target=path.join(__dirname,'root-integration-race-green-profile.json');assert.ok(!fs.existsSync(target),'Do not overwrite profile receipt');const source=fs.readFileSync(prior,'utf8');assert.equal(source.split('root-integration-race-green.json').length,2);const m=new Module(__filename,module);m.filename=__filename;m.paths=module.paths;m._compile(source.replace('root-integration-race-green.json','root-integration-race-green-profile.json'),__filename);

@@ -1,0 +1,172 @@
+TAP version 13
+# Subtest: full inputs include times; projected assignments and load strings are exact
+ok 1 - full inputs include times; projected assignments and load strings are exact
+  ---
+  duration_ms: 11.6493
+  type: 'test'
+  ...
+# Subtest: no assignment may be omitted, duplicated or invalid
+ok 2 - no assignment may be omitted, duplicated or invalid
+  ---
+  duration_ms: 9.1526
+  type: 'test'
+  ...
+# Subtest: loads preserve joint totals and weighted assignments, not independent 0..60 slots
+ok 3 - loads preserve joint totals and weighted assignments, not independent 0..60 slots
+  ---
+  duration_ms: 9.2076
+  type: 'test'
+  ...
+# Subtest: every assignment has a legal zero-time dependency witness
+ok 4 - every assignment has a legal zero-time dependency witness
+  ---
+  duration_ms: 13.9734
+  type: 'test'
+  ...
+# Subtest: browser-legal input rejects illegal assignment/start/step combinations
+ok 5 - browser-legal input rejects illegal assignment/start/step combinations
+  ---
+  duration_ms: 1.1001
+  type: 'test'
+  ...
+# Subtest: source changes fail closed, including label and range guard changes
+ok 6 - source changes fail closed, including label and range guard changes
+  ---
+  duration_ms: 11.9225
+  type: 'test'
+  ...
+# Subtest: ten representative fixtures cover every reachable rejection and extremes
+ok 7 - ten representative fixtures cover every reachable rejection and extremes
+  ---
+  duration_ms: 2.7321
+  type: 'test'
+  ...
+# Subtest: all numeric output and refusal progress values have legal witnesses
+ok 8 - all numeric output and refusal progress values have legal witnesses
+  ---
+  duration_ms: 21.9646
+  type: 'test'
+  ...
+# Subtest: Range soft-wrap spaces are distinguished from missing characters; DOM remains exact
+ok 9 - Range soft-wrap spaces are distinguished from missing characters; DOM remains exact
+  ---
+  duration_ms: 0.6383
+  type: 'test'
+  ...
+# Subtest: 42 original sampler AST statements retain exact source bytes and all geometry formulas
+ok 10 - 42 original sampler AST statements retain exact source bytes and all geometry formulas
+  ---
+  duration_ms: 3.495
+  type: 'test'
+  ...
+# Subtest: draft cannot run without a future explicit native-equivalence receipt, before any DOM is read
+ok 11 - draft cannot run without a future explicit native-equivalence receipt, before any DOM is read
+  ---
+  duration_ms: 5.4548
+  type: 'test'
+  ...
+# Subtest: gzip stream roundtrip preserves every Unicode/native field, raw rolling and both hashes
+ok 12 - gzip stream roundtrip preserves every Unicode/native field, raw rolling and both hashes
+  ---
+  duration_ms: 39.6285
+  type: 'test'
+  ...
+# Subtest: missing/duplicate keys and compressed tamper fail closed
+ok 13 - missing/duplicate keys and compressed tamper fail closed
+  ---
+  duration_ms: 34.2363
+  type: 'test'
+  ...
+# Subtest: disk reserve and compressed hard cap stop without a complete receipt or automatic restart
+ok 14 - disk reserve and compressed hard cap stop without a complete receipt or automatic restart
+  ---
+  duration_ms: 11.1207
+  type: 'test'
+  ...
+# Subtest: raw hash/rolling tamper and non-JSON fields cannot be silently normalized away
+ok 15 - raw hash/rolling tamper and non-JSON fields cannot be silently normalized away
+  ---
+  duration_ms: 30.783
+  type: 'test'
+  ...
+# Subtest: full readout count and exact joint count use original capture semantics
+ok 16 - full readout count and exact joint count use original capture semantics
+  ---
+  duration_ms: 165.4894
+  type: 'test'
+  ...
+# Subtest: rank/unrank preserve first, boundary and last coupled tuples
+ok 17 - rank/unrank preserve first, boundary and last coupled tuples
+  ---
+  duration_ms: 12.0217
+  type: 'test'
+  ...
+# Subtest: all phase prefixes and both suffix witnesses are source-legal actual rejections
+ok 18 - all phase prefixes and both suffix witnesses are source-legal actual rejections
+  ---
+  duration_ms: 0.5497
+  type: 'test'
+  ...
+# Subtest: changed native step/frame/template cannot silently reuse old model
+ok 19 - changed native step/frame/template cannot silently reuse old model
+  ---
+  duration_ms: 9.5901
+  type: 'test'
+  ...
+# Subtest: bounded NDJSON preserves Unicode and complete owner payload without aggregate stringify
+ok 20 - bounded NDJSON preserves Unicode and complete owner payload without aggregate stringify
+  ---
+  duration_ms: 23.0792
+  type: 'test'
+  ...
+# Subtest: missing, duplicate, byte tamper and residual partial never receive credit
+ok 21 - missing, duplicate, byte tamper and residual partial never receive credit
+  ---
+  duration_ms: 35.2375
+  type: 'test'
+  ...
+# Subtest: authorization and exclusive PID identity are mandatory; no stale-lock stealing
+ok 22 - authorization and exclusive PID identity are mandatory; no stale-lock stealing
+  ---
+  duration_ms: 8.3889
+  type: 'test'
+  ...
+# Subtest: fixed source receipts and twelve complete sessions are bound
+ok 23 - fixed source receipts and twelve complete sessions are bound
+  ---
+  duration_ms: 600.8563
+  type: 'test'
+  ...
+# Subtest: both third-act orders and all six task/contact rejection pairs have reachable witnesses
+ok 24 - both third-act orders and all six task/contact rejection pairs have reachable witnesses
+  ---
+  duration_ms: 0.8168
+  type: 'test'
+  ...
+# Subtest: corrupt source, deleted callback and incomplete context fail closed
+ok 25 - corrupt source, deleted callback and incomplete context fail closed
+  ---
+  duration_ms: 323.925
+  type: 'test'
+  ...
+# Subtest: joint numeric guard retains parity and shortest reachable move count
+ok 26 - joint numeric guard retains parity and shortest reachable move count
+  ---
+  duration_ms: 3.9221
+  type: 'test'
+  ...
+# Subtest: ten representative source projections agree with immutable original mount callbacks
+ok 27 - ten representative source projections agree with immutable original mount callbacks
+  ---
+  duration_ms: 34.1398
+  type: 'test'
+  ...
+1..27
+# tests 27
+# suites 0
+# pass 27
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1249.4883

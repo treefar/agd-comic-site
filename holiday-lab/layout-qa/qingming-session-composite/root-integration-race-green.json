@@ -1,0 +1,34 @@
+{
+  "reviewed_root_helper_sha256": "405aaca2d773db2e0c945c032da921b990751a1f6d2eb2df48a4fde296fe1f43",
+  "actual_readonly_child_success_receipt_sha256": "dcb5fd1bf432ceb7aac02d5d50154d470d179b852f4421823b725bf2464b940c",
+  "test_kind": "Same-realm isolated VM dependency-race regression; actual child success separately recorded, mocked child in this test",
+  "same_realm_JSON_parse": true,
+  "positive_control": {
+    "mode": "unchanged",
+    "accepted": 90,
+    "reads": 2,
+    "mutations": 0,
+    "rejected": false
+  },
+  "source_map_negative": {
+    "mode": "source-map",
+    "reads": 1,
+    "mutations": 1,
+    "rejected": true,
+    "error_name": "AssertionError",
+    "error_message": "Parent source map changed",
+    "assertion_operator": "deepStrictEqual"
+  },
+  "full_case_negative": {
+    "mode": "full-case",
+    "reads": 1,
+    "mutations": 1,
+    "rejected": true,
+    "error_name": "AssertionError",
+    "error_message": "Parent full case changed after child verification",
+    "assertion_operator": "deepStrictEqual"
+  },
+  "production_files_modified": false,
+  "old_red_evidence_overwritten": false,
+  "full_project_approved": false
+}

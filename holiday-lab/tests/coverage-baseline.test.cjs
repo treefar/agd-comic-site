@@ -1,0 +1,6 @@
+const test=require('node:test'),assert=require('node:assert/strict'),{compareCoverage}=require('../layout-qa/supplement-integration-20261023/compare.cjs');
+const required=[0,1,2].map(i=>({id:'game/zh/'+i,width:320,height:900})),base={base:'fixed',expected_sampler_sha256:'sampler',required:3,covered:2,missing_count:1,missing:[required[2]],geometry_errors:0,runs:[{kind:'phase',raw_file:'original.json',raw_sha256:'original-sha',source_stable:true}]};
+const next=()=>({...base,covered:3,missing_count:0,missing:[],runs:structuredClone(base.runs)});
+test('new exact coverage preserves every previous canonical key and source run',()=>assert.equal(compareCoverage(base,next(),required).added_count,1));
+test('wrong matrix selection cannot report success after dropping prior coverage',()=>assert.throws(()=>compareCoverage(base,{...base,covered:1,missing_count:2,missing:[required[0],required[2]]},required),/Dropped prior/));
+test('sampler, source snapshot, duplicate missing keys and geometry changes reject',()=>{for(const change of [n=>n.base='other',n=>n.expected_sampler_sha256='other',n=>n.runs[0].raw_sha256='new',n=>n.runs=[],n=>{n.covered=1;n.missing_count=2;n.missing=[required[2],required[2]];},n=>n.geometry_errors=1]){const n=next();change(n);assert.throws(()=>compareCoverage(base,n,required));}});

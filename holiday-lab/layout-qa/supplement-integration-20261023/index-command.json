@@ -1,0 +1,17 @@
+{
+  "env": {
+    "LAYOUT_QA_URL": "http://127.0.0.1:8845"
+  },
+  "command": "C:\\Program Files\\nodejs\\node.exe",
+  "args": [
+    "holiday-lab/layout-qa/coverage-index.cjs",
+    "--min140=newyear-min140/runs/2026-10-23T00-05-50-129Z/report.json",
+    "--static=static-error-max/canonical-candidates.json,static-error-max-2/canonical-candidates.json,static-error-max-3/canonical-candidates.json,static-error-max-4/canonical-candidates.json",
+    "--finite-viewport=finite-viewport-audit-20261023/audit.json",
+    "--semester-sessions=semester-session-composite/inputs.json",
+    "--finite-joined=finite-error-joined-20261023/canonical-candidates.json",
+    "--qingming-sessions=qingming-session-composite/evidence.json",
+    "--out=supplement-integration-20261023/coverage-current.json"
+  ],
+  "full_project_approved": false
+}

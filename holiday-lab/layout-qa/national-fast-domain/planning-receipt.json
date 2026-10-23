@@ -1,0 +1,163 @@
+{
+  "date": "2026-10-23T04:09:33.284Z",
+  "served_source_matches_original08": true,
+  "files": {
+    "games/national-day.mjs": {
+      "sha256": "9c697f08c24f9eae89ac55b71fc37bcfe8546c65b7ca3264a88155b5a63891fa",
+      "bytes": 8736
+    },
+    "runner.mjs": {
+      "sha256": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+      "bytes": 17486
+    },
+    "lab.css": {
+      "sha256": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+      "bytes": 7217
+    },
+    "assets/ui/panel.png": {
+      "sha256": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+      "bytes": 99587
+    }
+  },
+  "existing_pilot_reports": [
+    {
+      "file": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\national-readout-finite-native\\pilot-01\\report.json",
+      "sha256": "6f24aed3adf141ff7d54298c8e2b0e477986ef3f8ef53480a4d649caef4c5c77"
+    },
+    {
+      "file": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\national-readout-finite-native\\pilot-02\\report.json",
+      "sha256": "065b2ea1f94a265edb1f7eeb4e512b06f11cceab8d2df6e23f3046e94f180036"
+    }
+  ],
+  "existing_true_cases": 10,
+  "existing_true_clone_matches": 10,
+  "existing_pilot_first_fatal_preserved": "page.evaluate: Error: Missing cloned scroll ancestor\n    at eval (eval at evaluate (:311:30), <anonymous>:1:289)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at clone (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\national-readout-finite-native\\pilot.cjs:15:473)\n    at async C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\national-readout-finite-native\\pilot.cjs:24:259",
+  "second_pilot_keys": [
+    "date",
+    "base",
+    "trueCases",
+    "probeContexts",
+    "global_bound_proven",
+    "full_universe_started",
+    "probe_not_player_screen",
+    "sampler_function_sha256",
+    "source_pre",
+    "reused_receipts",
+    "true_matched",
+    "pilot_count",
+    "estimated_six_context_seconds",
+    "gap",
+    "source_post",
+    "source_stable"
+  ],
+  "existing_contexts": [
+    {
+      "lang": "zh",
+      "width": 320,
+      "actual_height": 1855.859375,
+      "viewport_height_from_probe_design": 1000,
+      "deltas": 0,
+      "computed_differences": 0,
+      "same_font": true
+    },
+    {
+      "lang": "en",
+      "width": 1440,
+      "actual_height": 1201.984375,
+      "viewport_height_from_probe_design": 1000,
+      "deltas": 0,
+      "computed_differences": 0,
+      "same_font": true
+    },
+    {
+      "lang": "ja",
+      "width": 320,
+      "actual_height": 1881.453125,
+      "viewport_height_from_probe_design": 1000,
+      "deltas": 0,
+      "computed_differences": 0,
+      "same_font": true
+    },
+    {
+      "lang": "zh",
+      "width": 1440,
+      "actual_height": 1201.984375,
+      "viewport_height_from_probe_design": 1000,
+      "deltas": 0,
+      "computed_differences": 0,
+      "same_font": true
+    },
+    {
+      "lang": "en",
+      "width": 320,
+      "actual_height": 1960.625,
+      "viewport_height_from_probe_design": 1000,
+      "deltas": 0,
+      "computed_differences": 0,
+      "same_font": true
+    },
+    {
+      "lang": "ja",
+      "width": 1440,
+      "actual_height": 1201.984375,
+      "viewport_height_from_probe_design": 1000,
+      "deltas": 0,
+      "computed_differences": 0,
+      "same_font": true
+    },
+    {
+      "lang": "zh",
+      "width": 320,
+      "actual_height": 1855.859375,
+      "viewport_height_from_probe_design": 1000,
+      "deltas": 0,
+      "computed_differences": 0,
+      "same_font": true
+    },
+    {
+      "lang": "en",
+      "width": 1440,
+      "actual_height": 1201.984375,
+      "viewport_height_from_probe_design": 1000,
+      "deltas": 0,
+      "computed_differences": 0,
+      "same_font": true
+    },
+    {
+      "lang": "ja",
+      "width": 320,
+      "actual_height": 1881.453125,
+      "viewport_height_from_probe_design": 1000,
+      "deltas": 0,
+      "computed_differences": 0,
+      "same_font": true
+    },
+    {
+      "lang": "en",
+      "width": 320,
+      "actual_height": 1960.625,
+      "viewport_height_from_probe_design": 1000,
+      "deltas": 0,
+      "computed_differences": 0,
+      "same_font": true
+    }
+  ],
+  "target_mobile_900_equivalence_proven": false,
+  "fast_to_frozen_equivalence_proven": false,
+  "all_joint_domain_projection_proven": false,
+  "existing_readout_node_bytes": {
+    "min": 2250,
+    "max": 2609
+  },
+  "raw_planning_scenario": {
+    "per_joint_bytes": 9314,
+    "total_joint_records": 10980702,
+    "gib": 95.25032567605376,
+    "is_certified_upper_bound": false,
+    "warning": "Two existing readout-sized owners plus4096 bytes per row is planning only; real hint/metadata size and compression must be measured before approval."
+  },
+  "new_true_dom_cases": 0,
+  "new_probe_cases": 0,
+  "new_native_measurements": 0,
+  "full_project_approved": false
+}

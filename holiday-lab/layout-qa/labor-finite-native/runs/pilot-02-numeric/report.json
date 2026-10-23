@@ -1,0 +1,6727 @@
+{
+  "runName": "pilot-02-numeric",
+  "mode": "bounded-pilot",
+  "pid": 12652,
+  "date": "2026-10-23T03:58:38.782Z",
+  "base": "http://127.0.0.1:8845",
+  "collector_sha256": "cf084738edf05ebce38bc437bcc8894a21a139dd227d07e82a1b58746644e0b1",
+  "domain_sha256": "3a7341be1d384040eadce6612bd2b6d63686d4574cd25352224ba055c8b73af1",
+  "sampler_sha256": "c247641156d929b0de7d6aa70e509510e293a29d7d6ff45aaac99ad931e0dc1a",
+  "safe_map_sha256": "0604fa8281a50acaccc6d151dfa676f1323e3a3b453a4e03bc939ad17e73de2b",
+  "jobs_planned": 10,
+  "targets_planned": 20,
+  "jobs": [
+    {
+      "id": "all-A",
+      "lang": "zh",
+      "width": 320,
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 0,
+          "start": 0
+        }
+      ],
+      "reason": "dependency",
+      "owners": [
+        "game-progress",
+        "output:labor-start-0"
+      ]
+    },
+    {
+      "id": "all-B",
+      "lang": "en",
+      "width": 320,
+      "schedule": [
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        }
+      ],
+      "reason": "dependency",
+      "owners": [
+        "game-progress",
+        "output:labor-start-1"
+      ]
+    },
+    {
+      "id": "all-C",
+      "lang": "ja",
+      "width": 320,
+      "schedule": [
+        {
+          "artist": 2,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        }
+      ],
+      "reason": "dependency",
+      "owners": [
+        "game-progress",
+        "output:labor-start-2"
+      ]
+    },
+    {
+      "id": "balanced",
+      "lang": "zh",
+      "width": 1440,
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        }
+      ],
+      "reason": "dependency",
+      "owners": [
+        "game-progress",
+        "output:labor-start-3"
+      ]
+    },
+    {
+      "id": "deadline",
+      "lang": "zh",
+      "width": 320,
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 10
+        },
+        {
+          "artist": 2,
+          "start": 22
+        },
+        {
+          "artist": 0,
+          "start": 10
+        },
+        {
+          "artist": 1,
+          "start": 41
+        },
+        {
+          "artist": 2,
+          "start": 34
+        }
+      ],
+      "reason": "deadline",
+      "owners": [
+        "game-progress",
+        "output:labor-start-4"
+      ]
+    },
+    {
+      "id": "rest",
+      "lang": "en",
+      "width": 320,
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 20
+        },
+        {
+          "artist": 1,
+          "start": 30
+        },
+        {
+          "artist": 2,
+          "start": 42
+        },
+        {
+          "artist": 0,
+          "start": 10
+        },
+        {
+          "artist": 1,
+          "start": 22
+        },
+        {
+          "artist": 2,
+          "start": 34
+        }
+      ],
+      "reason": "break",
+      "owners": [
+        "game-progress",
+        "output:labor-start-5"
+      ]
+    },
+    {
+      "id": "overlap",
+      "lang": "ja",
+      "width": 320,
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 10
+        },
+        {
+          "artist": 2,
+          "start": 22
+        },
+        {
+          "artist": 0,
+          "start": 5
+        },
+        {
+          "artist": 1,
+          "start": 22
+        },
+        {
+          "artist": 2,
+          "start": 34
+        }
+      ],
+      "reason": "overlap",
+      "owners": [
+        "game-progress",
+        "output:labor-start-0"
+      ]
+    },
+    {
+      "id": "heavy",
+      "lang": "zh",
+      "width": 1440,
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 10
+        },
+        {
+          "artist": 0,
+          "start": 26
+        },
+        {
+          "artist": 0,
+          "start": 10
+        },
+        {
+          "artist": 1,
+          "start": 22
+        },
+        {
+          "artist": 0,
+          "start": 34
+        }
+      ],
+      "reason": "load",
+      "owners": [
+        "game-progress",
+        "output:labor-start-1"
+      ]
+    },
+    {
+      "id": "max-slider",
+      "lang": "en",
+      "width": 1440,
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 10
+        },
+        {
+          "artist": 2,
+          "start": 22
+        },
+        {
+          "artist": 0,
+          "start": 10
+        },
+        {
+          "artist": 1,
+          "start": 42
+        },
+        {
+          "artist": 2,
+          "start": 34
+        }
+      ],
+      "reason": "deadline",
+      "owners": [
+        "game-progress",
+        "output:labor-start-4"
+      ]
+    },
+    {
+      "id": "mixed",
+      "lang": "ja",
+      "width": 1440,
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        },
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        }
+      ],
+      "reason": "dependency",
+      "owners": [
+        "game-progress",
+        "output:labor-start-3"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "zh/320/all-A/game-progress",
+      "job_id": "all-A",
+      "lang": "zh",
+      "width": 320,
+      "owner": "game-progress",
+      "actual_owner": "game-progress",
+      "reconstructed": "1 / 6",
+      "raw_range_join_exact": true,
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 0,
+          "start": 0
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "reason": "dependency",
+        "loads": [
+          60,
+          0,
+          0
+        ],
+        "validJobs": 1
+      },
+      "inputs": {
+        "schedule": [
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 0,
+            "start": 0
+          }
+        ],
+        "ranges": [
+          {
+            "id": "labor-start-0",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-1",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-2",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-3",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-4",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-5",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          }
+        ]
+      },
+      "text_identity_before": {
+        "game-hint": "下一步太早開始，先等前一份工作完成。",
+        "labor-status": "下一步太早開始，先等前一份工作完成。",
+        "labor-loads": "工作量 A 60／B 0／C 0",
+        "game-progress": "1 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "0",
+        "output:labor-start-2": "0",
+        "output:labor-start-3": "0",
+        "output:labor-start-4": "0",
+        "output:labor-start-5": "0"
+      },
+      "text_identity_after": {
+        "game-hint": "下一步太早開始，先等前一份工作完成。",
+        "labor-status": "下一步太早開始，先等前一份工作完成。",
+        "labor-loads": "工作量 A 60／B 0／C 0",
+        "game-progress": "1 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "0",
+        "output:labor-start-2": "0",
+        "output:labor-start-3": "0",
+        "output:labor-start-4": "0",
+        "output:labor-start-5": "0"
+      },
+      "receipt_before": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "receipt_after": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "image_file": "zh-320-all-A-game-progress.png",
+      "image_sha256": "786b4d43492eda8d57dfeaa22b11fbf1067998f6097bbbe0b85490b9db98e6e5",
+      "sample_file": "zh-320-all-A-game-progress.sample.json",
+      "sample_sha256": "eb374f5dfb5a28500a46d48073d3f203eb2cbd9633283353f326cfc554759206",
+      "viewport_proof": {
+        "clip": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 900,
+          "scale": 1
+        },
+        "before": {
+          "window": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 900
+          },
+          "internal": []
+        },
+        "after": {
+          "window": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 900
+          },
+          "internal": []
+        },
+        "scroll_unchanged": true
+      },
+      "fonts": [
+        {
+          "familyName": "Microsoft JhengHei UI",
+          "postScriptName": "MicrosoftJhengHeiUIBold",
+          "isCustomFont": false,
+          "glyphCount": 5
+        }
+      ],
+      "target": {
+        "id": "text-10",
+        "text": "1 / 6",
+        "ink": {
+          "x": 17,
+          "y": 426.83533653846155,
+          "width": 33.59375,
+          "height": 14.21033653846154
+        },
+        "safe": {
+          "x": 8,
+          "y": 8,
+          "width": 304,
+          "height": 2961.328125
+        },
+        "owner": "game-progress",
+        "computed": {
+          "family": "system-ui, \"Noto Sans TC\", sans-serif",
+          "font": "800 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+          "size": "16px",
+          "weight": "800",
+          "stroke": "0px",
+          "letterSpacing": "normal",
+          "lineHeight": "26.4px",
+          "transform": "none"
+        },
+        "baseline_wrapper_verified": null,
+        "safe_sources": [
+          {
+            "owner": "lab",
+            "mode": "verified tiled_surface; actual #lab document border bounds with fixed 8px inset, independent of text",
+            "rect": {
+              "x": 8,
+              "y": 8,
+              "width": 304,
+              "height": 2961.328125
+            },
+            "asset": "holiday-lab/assets/ui/paper.png",
+            "sha256": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+            "fixed_inset": 8
+          }
+        ],
+        "unclipped_ink": {
+          "x": 17,
+          "y": 426.83533653846155,
+          "width": 33.59375,
+          "height": 14.21033653846154
+        },
+        "measurements": [
+          {
+            "text": "1 / 6",
+            "baseline": 439.015625,
+            "baseline_probe": {
+              "insertion": 5,
+              "range_unchanged": true,
+              "on_original_line": true,
+              "before": {
+                "x": 16,
+                "y": 423.015625,
+                "width": 34.125,
+                "height": 20
+              },
+              "after": {
+                "x": 16,
+                "y": 423.015625,
+                "width": 34.125,
+                "height": 20
+              }
+            },
+            "advance": {
+              "x": 16,
+              "y": 423.015625,
+              "width": 34.125,
+              "height": 20
+            },
+            "ink": {
+              "x": 17,
+              "y": 426.83533653846155,
+              "width": 33.59375,
+              "height": 14.21033653846154
+            },
+            "actualBoundingBox": {
+              "left": -1,
+              "right": 34.59375,
+              "ascent": 12,
+              "descent": 2
+            }
+          }
+        ]
+      },
+      "checks": {
+        "full_text": true,
+        "unclipped": true,
+        "fixed_safe": true,
+        "safe": true,
+        "viewport": true,
+        "cdp_font": true
+      },
+      "pass": true,
+      "whole_case_geometry": [],
+      "native_wall_time": "2026-10-23T03:58:40.456Z",
+      "native_ms": 1380
+    },
+    {
+      "id": "zh/320/all-A/output:labor-start-0",
+      "job_id": "all-A",
+      "lang": "zh",
+      "width": 320,
+      "owner": "output:labor-start-0",
+      "actual_owner": "layout-owner-11",
+      "reconstructed": "0",
+      "raw_range_join_exact": true,
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 0,
+          "start": 0
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "reason": "dependency",
+        "loads": [
+          60,
+          0,
+          0
+        ],
+        "validJobs": 1
+      },
+      "inputs": {
+        "schedule": [
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 0,
+            "start": 0
+          }
+        ],
+        "ranges": [
+          {
+            "id": "labor-start-0",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-1",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-2",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-3",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-4",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-5",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          }
+        ]
+      },
+      "text_identity_before": {
+        "game-hint": "下一步太早開始，先等前一份工作完成。",
+        "labor-status": "下一步太早開始，先等前一份工作完成。",
+        "labor-loads": "工作量 A 60／B 0／C 0",
+        "game-progress": "1 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "0",
+        "output:labor-start-2": "0",
+        "output:labor-start-3": "0",
+        "output:labor-start-4": "0",
+        "output:labor-start-5": "0"
+      },
+      "text_identity_after": {
+        "game-hint": "下一步太早開始，先等前一份工作完成。",
+        "labor-status": "下一步太早開始，先等前一份工作完成。",
+        "labor-loads": "工作量 A 60／B 0／C 0",
+        "game-progress": "1 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "0",
+        "output:labor-start-2": "0",
+        "output:labor-start-3": "0",
+        "output:labor-start-4": "0",
+        "output:labor-start-5": "0"
+      },
+      "receipt_before": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "receipt_after": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "image_file": "zh-320-all-A-output-labor-start-0.png",
+      "image_sha256": "2f08506be75b26f561d8eada30d081dd256a4a14250561da464f868764731744",
+      "sample_file": "zh-320-all-A-output-labor-start-0.sample.json",
+      "sample_sha256": "5eb035da21f887f0d5dd554b387031c0e10fe951f5036b3e62fc7c99e8221b31",
+      "viewport_proof": {
+        "clip": {
+          "x": 0,
+          "y": 886,
+          "width": 320,
+          "height": 900,
+          "scale": 1
+        },
+        "before": {
+          "window": {
+            "x": 0,
+            "y": 886,
+            "width": 320,
+            "height": 900
+          },
+          "internal": []
+        },
+        "after": {
+          "window": {
+            "x": 0,
+            "y": 886,
+            "width": 320,
+            "height": 900
+          },
+          "internal": []
+        },
+        "scroll_unchanged": true
+      },
+      "fonts": [
+        {
+          "familyName": "Microsoft JhengHei UI",
+          "postScriptName": "MicrosoftJhengHeiUIRegular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        }
+      ],
+      "target": {
+        "id": "text-21",
+        "text": "0",
+        "ink": {
+          "x": 187.359375,
+          "y": 1330.484375,
+          "width": 9,
+          "height": 12
+        },
+        "safe": {
+          "x": 26.875,
+          "y": 800.4674076803554,
+          "width": 265.875,
+          "height": 2129.237152213058
+        },
+        "owner": "layout-owner-11",
+        "computed": {
+          "family": "system-ui, \"Noto Sans TC\", sans-serif",
+          "font": "",
+          "size": "16px",
+          "weight": "400",
+          "stroke": "0px",
+          "letterSpacing": "normal",
+          "lineHeight": "normal",
+          "transform": "none"
+        },
+        "baseline_wrapper_verified": null,
+        "safe_sources": [
+          {
+            "rect": {
+              "x": 26.875,
+              "y": 800.4674076803554,
+              "width": 265.875,
+              "height": 2129.237152213058
+            },
+            "owner": "layout-owner-8",
+            "asset": "holiday-lab/assets/ui/panel.png",
+            "sha256": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+            "source_slice": [
+              48,
+              48,
+              48,
+              48
+            ],
+            "css_borders": [
+              17.997778229553905,
+              18,
+              17.997778229553905,
+              18
+            ],
+            "source_paper_rect": {
+              "x": 29,
+              "y": 29,
+              "width": 222,
+              "height": 155
+            },
+            "mode": "certified per-asset four-edge border-image mapping through actual CSS borders"
+          }
+        ],
+        "unclipped_ink": {
+          "x": 187.359375,
+          "y": 1330.484375,
+          "width": 9,
+          "height": 12
+        },
+        "measurements": [
+          {
+            "text": "0",
+            "baseline": 1342.484375,
+            "baseline_probe": {
+              "insertion": 1,
+              "range_unchanged": true,
+              "on_original_line": true,
+              "before": {
+                "x": 187.359375,
+                "y": 1326.484375,
+                "width": 9.28125,
+                "height": 20
+              },
+              "after": {
+                "x": 187.359375,
+                "y": 1326.484375,
+                "width": 9.28125,
+                "height": 20
+              }
+            },
+            "advance": {
+              "x": 187.359375,
+              "y": 1326.484375,
+              "width": 9.28125,
+              "height": 20
+            },
+            "ink": {
+              "x": 187.359375,
+              "y": 1330.484375,
+              "width": 9,
+              "height": 12
+            },
+            "actualBoundingBox": {
+              "left": 0,
+              "right": 9,
+              "ascent": 12,
+              "descent": 0
+            }
+          }
+        ]
+      },
+      "checks": {
+        "full_text": true,
+        "unclipped": true,
+        "fixed_safe": true,
+        "safe": true,
+        "viewport": true,
+        "cdp_font": true
+      },
+      "pass": true,
+      "whole_case_geometry": [],
+      "native_wall_time": "2026-10-23T03:58:40.779Z",
+      "native_ms": 1702.699999988079
+    },
+    {
+      "id": "en/320/all-B/game-progress",
+      "job_id": "all-B",
+      "lang": "en",
+      "width": 320,
+      "owner": "game-progress",
+      "actual_owner": "game-progress",
+      "reconstructed": "1 / 6",
+      "raw_range_join_exact": true,
+      "schedule": [
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "reason": "dependency",
+        "loads": [
+          0,
+          60,
+          0
+        ],
+        "validJobs": 1
+      },
+      "inputs": {
+        "schedule": [
+          {
+            "artist": 1,
+            "start": 0
+          },
+          {
+            "artist": 1,
+            "start": 0
+          },
+          {
+            "artist": 1,
+            "start": 0
+          },
+          {
+            "artist": 1,
+            "start": 0
+          },
+          {
+            "artist": 1,
+            "start": 0
+          },
+          {
+            "artist": 1,
+            "start": 0
+          }
+        ],
+        "ranges": [
+          {
+            "id": "labor-start-0",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-1",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-2",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-3",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-4",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-5",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          }
+        ]
+      },
+      "text_identity_before": {
+        "game-hint": "A task starts before its predecessor is ready.",
+        "labor-status": "A task starts before its predecessor is ready.",
+        "labor-loads": "Workload A 0 / B 60 / C 0",
+        "game-progress": "1 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "0",
+        "output:labor-start-2": "0",
+        "output:labor-start-3": "0",
+        "output:labor-start-4": "0",
+        "output:labor-start-5": "0"
+      },
+      "text_identity_after": {
+        "game-hint": "A task starts before its predecessor is ready.",
+        "labor-status": "A task starts before its predecessor is ready.",
+        "labor-loads": "Workload A 0 / B 60 / C 0",
+        "game-progress": "1 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "0",
+        "output:labor-start-2": "0",
+        "output:labor-start-3": "0",
+        "output:labor-start-4": "0",
+        "output:labor-start-5": "0"
+      },
+      "receipt_before": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "receipt_after": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "image_file": "en-320-all-B-game-progress.png",
+      "image_sha256": "43fa560357d1a50d05b34208ce96c619f3db5781da178752b407c05ae4809691",
+      "sample_file": "en-320-all-B-game-progress.sample.json",
+      "sample_sha256": "2a9afdb27ed70a2680c847e679022f177fd8d0360549717d5f36a3de99934579",
+      "viewport_proof": {
+        "clip": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 900,
+          "scale": 1
+        },
+        "before": {
+          "window": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 900
+          },
+          "internal": []
+        },
+        "after": {
+          "window": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 900
+          },
+          "internal": []
+        },
+        "scroll_unchanged": true
+      },
+      "fonts": [
+        {
+          "familyName": "Microsoft JhengHei UI",
+          "postScriptName": "MicrosoftJhengHeiUIBold",
+          "isCustomFont": false,
+          "glyphCount": 5
+        }
+      ],
+      "target": {
+        "id": "text-10",
+        "text": "1 / 6",
+        "ink": {
+          "x": 17,
+          "y": 426.83533653846155,
+          "width": 33.59375,
+          "height": 14.21033653846154
+        },
+        "safe": {
+          "x": 8,
+          "y": 8,
+          "width": 304,
+          "height": 3040.5
+        },
+        "owner": "game-progress",
+        "computed": {
+          "family": "system-ui, \"Noto Sans TC\", sans-serif",
+          "font": "800 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+          "size": "16px",
+          "weight": "800",
+          "stroke": "0px",
+          "letterSpacing": "normal",
+          "lineHeight": "26.4px",
+          "transform": "none"
+        },
+        "baseline_wrapper_verified": null,
+        "safe_sources": [
+          {
+            "owner": "lab",
+            "mode": "verified tiled_surface; actual #lab document border bounds with fixed 8px inset, independent of text",
+            "rect": {
+              "x": 8,
+              "y": 8,
+              "width": 304,
+              "height": 3040.5
+            },
+            "asset": "holiday-lab/assets/ui/paper.png",
+            "sha256": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+            "fixed_inset": 8
+          }
+        ],
+        "unclipped_ink": {
+          "x": 17,
+          "y": 426.83533653846155,
+          "width": 33.59375,
+          "height": 14.21033653846154
+        },
+        "measurements": [
+          {
+            "text": "1 / 6",
+            "baseline": 439.015625,
+            "baseline_probe": {
+              "insertion": 5,
+              "range_unchanged": true,
+              "on_original_line": true,
+              "before": {
+                "x": 16,
+                "y": 423.015625,
+                "width": 34.125,
+                "height": 20
+              },
+              "after": {
+                "x": 16,
+                "y": 423.015625,
+                "width": 34.125,
+                "height": 20
+              }
+            },
+            "advance": {
+              "x": 16,
+              "y": 423.015625,
+              "width": 34.125,
+              "height": 20
+            },
+            "ink": {
+              "x": 17,
+              "y": 426.83533653846155,
+              "width": 33.59375,
+              "height": 14.21033653846154
+            },
+            "actualBoundingBox": {
+              "left": -1,
+              "right": 34.59375,
+              "ascent": 12,
+              "descent": 2
+            }
+          }
+        ]
+      },
+      "checks": {
+        "full_text": true,
+        "unclipped": true,
+        "fixed_safe": true,
+        "safe": true,
+        "viewport": true,
+        "cdp_font": true
+      },
+      "pass": true,
+      "whole_case_geometry": [],
+      "native_wall_time": "2026-10-23T03:58:42.317Z",
+      "native_ms": 1466.2000000476837
+    },
+    {
+      "id": "en/320/all-B/output:labor-start-1",
+      "job_id": "all-B",
+      "lang": "en",
+      "width": 320,
+      "owner": "output:labor-start-1",
+      "actual_owner": "layout-owner-14",
+      "reconstructed": "0",
+      "raw_range_join_exact": true,
+      "schedule": [
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "reason": "dependency",
+        "loads": [
+          0,
+          60,
+          0
+        ],
+        "validJobs": 1
+      },
+      "inputs": {
+        "schedule": [
+          {
+            "artist": 1,
+            "start": 0
+          },
+          {
+            "artist": 1,
+            "start": 0
+          },
+          {
+            "artist": 1,
+            "start": 0
+          },
+          {
+            "artist": 1,
+            "start": 0
+          },
+          {
+            "artist": 1,
+            "start": 0
+          },
+          {
+            "artist": 1,
+            "start": 0
+          }
+        ],
+        "ranges": [
+          {
+            "id": "labor-start-0",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-1",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-2",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-3",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-4",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-5",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          }
+        ]
+      },
+      "text_identity_before": {
+        "game-hint": "A task starts before its predecessor is ready.",
+        "labor-status": "A task starts before its predecessor is ready.",
+        "labor-loads": "Workload A 0 / B 60 / C 0",
+        "game-progress": "1 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "0",
+        "output:labor-start-2": "0",
+        "output:labor-start-3": "0",
+        "output:labor-start-4": "0",
+        "output:labor-start-5": "0"
+      },
+      "text_identity_after": {
+        "game-hint": "A task starts before its predecessor is ready.",
+        "labor-status": "A task starts before its predecessor is ready.",
+        "labor-loads": "Workload A 0 / B 60 / C 0",
+        "game-progress": "1 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "0",
+        "output:labor-start-2": "0",
+        "output:labor-start-3": "0",
+        "output:labor-start-4": "0",
+        "output:labor-start-5": "0"
+      },
+      "receipt_before": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "receipt_after": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "image_file": "en-320-all-B-output-labor-start-1.png",
+      "image_sha256": "45063fc94e201c407c3c5cbaa81d8d995efb8f7f9c204a77b843962ab4af63f4",
+      "sample_file": "en-320-all-B-output-labor-start-1.sample.json",
+      "sample_sha256": "4e6b46f07d327de81e2d7c1e2f57a31e73f4464aef90dd1e48527d4a4e4085d2",
+      "viewport_proof": {
+        "clip": {
+          "x": 0,
+          "y": 1247,
+          "width": 320,
+          "height": 900,
+          "scale": 1
+        },
+        "before": {
+          "window": {
+            "x": 0,
+            "y": 1247,
+            "width": 320,
+            "height": 900
+          },
+          "internal": []
+        },
+        "after": {
+          "window": {
+            "x": 0,
+            "y": 1247,
+            "width": 320,
+            "height": 900
+          },
+          "internal": []
+        },
+        "scroll_unchanged": true
+      },
+      "fonts": [
+        {
+          "familyName": "Microsoft JhengHei UI",
+          "postScriptName": "MicrosoftJhengHeiUIRegular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        }
+      ],
+      "target": {
+        "id": "text-29",
+        "text": "0",
+        "ink": {
+          "x": 190.890625,
+          "y": 1690.828125,
+          "width": 9,
+          "height": 12
+        },
+        "safe": {
+          "x": 26.875,
+          "y": 800.4682930160242,
+          "width": 265.875,
+          "height": 2208.407195484088
+        },
+        "owner": "layout-owner-14",
+        "computed": {
+          "family": "system-ui, \"Noto Sans TC\", sans-serif",
+          "font": "",
+          "size": "16px",
+          "weight": "400",
+          "stroke": "0px",
+          "letterSpacing": "normal",
+          "lineHeight": "normal",
+          "transform": "none"
+        },
+        "baseline_wrapper_verified": null,
+        "safe_sources": [
+          {
+            "rect": {
+              "x": 26.875,
+              "y": 800.4682930160242,
+              "width": 265.875,
+              "height": 2208.407195484088
+            },
+            "owner": "layout-owner-8",
+            "asset": "holiday-lab/assets/ui/panel.png",
+            "sha256": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+            "source_slice": [
+              48,
+              48,
+              48,
+              48
+            ],
+            "css_borders": [
+              17.999243612729718,
+              18,
+              17.999243612729718,
+              18
+            ],
+            "source_paper_rect": {
+              "x": 29,
+              "y": 29,
+              "width": 222,
+              "height": 155
+            },
+            "mode": "certified per-asset four-edge border-image mapping through actual CSS borders"
+          }
+        ],
+        "unclipped_ink": {
+          "x": 190.890625,
+          "y": 1690.828125,
+          "width": 9,
+          "height": 12
+        },
+        "measurements": [
+          {
+            "text": "0",
+            "baseline": 1702.828125,
+            "baseline_probe": {
+              "insertion": 1,
+              "range_unchanged": true,
+              "on_original_line": true,
+              "before": {
+                "x": 190.890625,
+                "y": 1686.828125,
+                "width": 9.28125,
+                "height": 20
+              },
+              "after": {
+                "x": 190.890625,
+                "y": 1686.828125,
+                "width": 9.28125,
+                "height": 20
+              }
+            },
+            "advance": {
+              "x": 190.890625,
+              "y": 1686.828125,
+              "width": 9.28125,
+              "height": 20
+            },
+            "ink": {
+              "x": 190.890625,
+              "y": 1690.828125,
+              "width": 9,
+              "height": 12
+            },
+            "actualBoundingBox": {
+              "left": 0,
+              "right": 9,
+              "ascent": 12,
+              "descent": 0
+            }
+          }
+        ]
+      },
+      "checks": {
+        "full_text": true,
+        "unclipped": true,
+        "fixed_safe": true,
+        "safe": true,
+        "viewport": true,
+        "cdp_font": true
+      },
+      "pass": true,
+      "whole_case_geometry": [],
+      "native_wall_time": "2026-10-23T03:58:42.748Z",
+      "native_ms": 1895.9000000357628
+    },
+    {
+      "id": "ja/320/all-C/game-progress",
+      "job_id": "all-C",
+      "lang": "ja",
+      "width": 320,
+      "owner": "game-progress",
+      "actual_owner": "game-progress",
+      "reconstructed": "1 / 6",
+      "raw_range_join_exact": true,
+      "schedule": [
+        {
+          "artist": 2,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "reason": "dependency",
+        "loads": [
+          0,
+          0,
+          60
+        ],
+        "validJobs": 1
+      },
+      "inputs": {
+        "schedule": [
+          {
+            "artist": 2,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          }
+        ],
+        "ranges": [
+          {
+            "id": "labor-start-0",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-1",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-2",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-3",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-4",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-5",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          }
+        ]
+      },
+      "text_identity_before": {
+        "game-hint": "前の作業が終わる前に、次が始まっています。",
+        "labor-status": "前の作業が終わる前に、次が始まっています。",
+        "labor-loads": "作業量 A0／B0／C60",
+        "game-progress": "1 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "0",
+        "output:labor-start-2": "0",
+        "output:labor-start-3": "0",
+        "output:labor-start-4": "0",
+        "output:labor-start-5": "0"
+      },
+      "text_identity_after": {
+        "game-hint": "前の作業が終わる前に、次が始まっています。",
+        "labor-status": "前の作業が終わる前に、次が始まっています。",
+        "labor-loads": "作業量 A0／B0／C60",
+        "game-progress": "1 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "0",
+        "output:labor-start-2": "0",
+        "output:labor-start-3": "0",
+        "output:labor-start-4": "0",
+        "output:labor-start-5": "0"
+      },
+      "receipt_before": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "receipt_after": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "image_file": "ja-320-all-C-game-progress.png",
+      "image_sha256": "0900b82d699ce518937dd0567d2414f2263c12819562bbc3ea381700dd13c93f",
+      "sample_file": "ja-320-all-C-game-progress.sample.json",
+      "sample_sha256": "97daf8460096711a84f772f2ca7047f7d0cfb8ffdc2a6f3e8dffbdc8c53fd006",
+      "viewport_proof": {
+        "clip": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 900,
+          "scale": 1
+        },
+        "before": {
+          "window": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 900
+          },
+          "internal": []
+        },
+        "after": {
+          "window": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 900
+          },
+          "internal": []
+        },
+        "scroll_unchanged": true
+      },
+      "fonts": [
+        {
+          "familyName": "Microsoft JhengHei UI",
+          "postScriptName": "MicrosoftJhengHeiUIBold",
+          "isCustomFont": false,
+          "glyphCount": 5
+        }
+      ],
+      "target": {
+        "id": "text-10",
+        "text": "1 / 6",
+        "ink": {
+          "x": 17,
+          "y": 426.83533653846155,
+          "width": 33.59375,
+          "height": 14.21033653846154
+        },
+        "safe": {
+          "x": 8,
+          "y": 8,
+          "width": 304,
+          "height": 2961.328125
+        },
+        "owner": "game-progress",
+        "computed": {
+          "family": "system-ui, \"Noto Sans TC\", sans-serif",
+          "font": "800 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+          "size": "16px",
+          "weight": "800",
+          "stroke": "0px",
+          "letterSpacing": "normal",
+          "lineHeight": "26.4px",
+          "transform": "none"
+        },
+        "baseline_wrapper_verified": null,
+        "safe_sources": [
+          {
+            "owner": "lab",
+            "mode": "verified tiled_surface; actual #lab document border bounds with fixed 8px inset, independent of text",
+            "rect": {
+              "x": 8,
+              "y": 8,
+              "width": 304,
+              "height": 2961.328125
+            },
+            "asset": "holiday-lab/assets/ui/paper.png",
+            "sha256": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+            "fixed_inset": 8
+          }
+        ],
+        "unclipped_ink": {
+          "x": 17,
+          "y": 426.83533653846155,
+          "width": 33.59375,
+          "height": 14.21033653846154
+        },
+        "measurements": [
+          {
+            "text": "1 / 6",
+            "baseline": 439.015625,
+            "baseline_probe": {
+              "insertion": 5,
+              "range_unchanged": true,
+              "on_original_line": true,
+              "before": {
+                "x": 16,
+                "y": 423.015625,
+                "width": 34.125,
+                "height": 20
+              },
+              "after": {
+                "x": 16,
+                "y": 423.015625,
+                "width": 34.125,
+                "height": 20
+              }
+            },
+            "advance": {
+              "x": 16,
+              "y": 423.015625,
+              "width": 34.125,
+              "height": 20
+            },
+            "ink": {
+              "x": 17,
+              "y": 426.83533653846155,
+              "width": 33.59375,
+              "height": 14.21033653846154
+            },
+            "actualBoundingBox": {
+              "left": -1,
+              "right": 34.59375,
+              "ascent": 12,
+              "descent": 2
+            }
+          }
+        ]
+      },
+      "checks": {
+        "full_text": true,
+        "unclipped": true,
+        "fixed_safe": true,
+        "safe": true,
+        "viewport": true,
+        "cdp_font": true
+      },
+      "pass": true,
+      "whole_case_geometry": [],
+      "native_wall_time": "2026-10-23T03:58:44.279Z",
+      "native_ms": 1448.7999999523163
+    },
+    {
+      "id": "ja/320/all-C/output:labor-start-2",
+      "job_id": "all-C",
+      "lang": "ja",
+      "width": 320,
+      "owner": "output:labor-start-2",
+      "actual_owner": "layout-owner-17",
+      "reconstructed": "0",
+      "raw_range_join_exact": true,
+      "schedule": [
+        {
+          "artist": 2,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "reason": "dependency",
+        "loads": [
+          0,
+          0,
+          60
+        ],
+        "validJobs": 1
+      },
+      "inputs": {
+        "schedule": [
+          {
+            "artist": 2,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          }
+        ],
+        "ranges": [
+          {
+            "id": "labor-start-0",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-1",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-2",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-3",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-4",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-5",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          }
+        ]
+      },
+      "text_identity_before": {
+        "game-hint": "前の作業が終わる前に、次が始まっています。",
+        "labor-status": "前の作業が終わる前に、次が始まっています。",
+        "labor-loads": "作業量 A0／B0／C60",
+        "game-progress": "1 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "0",
+        "output:labor-start-2": "0",
+        "output:labor-start-3": "0",
+        "output:labor-start-4": "0",
+        "output:labor-start-5": "0"
+      },
+      "text_identity_after": {
+        "game-hint": "前の作業が終わる前に、次が始まっています。",
+        "labor-status": "前の作業が終わる前に、次が始まっています。",
+        "labor-loads": "作業量 A0／B0／C60",
+        "game-progress": "1 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "0",
+        "output:labor-start-2": "0",
+        "output:labor-start-3": "0",
+        "output:labor-start-4": "0",
+        "output:labor-start-5": "0"
+      },
+      "receipt_before": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "receipt_after": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "image_file": "ja-320-all-C-output-labor-start-2.png",
+      "image_sha256": "3e4b2841cd0834a8ad460d1e1468bb374b2286534111b8318c8145a449a7914b",
+      "sample_file": "ja-320-all-C-output-labor-start-2.sample.json",
+      "sample_sha256": "1f37a61cf8766576e61cc55efaa32d7b68eb468d7889f8744c6d7f38074580a3",
+      "viewport_proof": {
+        "clip": {
+          "x": 0,
+          "y": 1449,
+          "width": 320,
+          "height": 900,
+          "scale": 1
+        },
+        "before": {
+          "window": {
+            "x": 0,
+            "y": 1449,
+            "width": 320,
+            "height": 900
+          },
+          "internal": []
+        },
+        "after": {
+          "window": {
+            "x": 0,
+            "y": 1449,
+            "width": 320,
+            "height": 900
+          },
+          "internal": []
+        },
+        "scroll_unchanged": true
+      },
+      "fonts": [
+        {
+          "familyName": "Microsoft JhengHei UI",
+          "postScriptName": "MicrosoftJhengHeiUIRegular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        }
+      ],
+      "target": {
+        "id": "text-37",
+        "text": "0",
+        "ink": {
+          "x": 190.890625,
+          "y": 1892.828125,
+          "width": 9,
+          "height": 12
+        },
+        "safe": {
+          "x": 26.875,
+          "y": 800.4674076803554,
+          "width": 265.875,
+          "height": 2129.237152213058
+        },
+        "owner": "layout-owner-17",
+        "computed": {
+          "family": "system-ui, \"Noto Sans TC\", sans-serif",
+          "font": "",
+          "size": "16px",
+          "weight": "400",
+          "stroke": "0px",
+          "letterSpacing": "normal",
+          "lineHeight": "normal",
+          "transform": "none"
+        },
+        "baseline_wrapper_verified": null,
+        "safe_sources": [
+          {
+            "rect": {
+              "x": 26.875,
+              "y": 800.4674076803554,
+              "width": 265.875,
+              "height": 2129.237152213058
+            },
+            "owner": "layout-owner-8",
+            "asset": "holiday-lab/assets/ui/panel.png",
+            "sha256": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+            "source_slice": [
+              48,
+              48,
+              48,
+              48
+            ],
+            "css_borders": [
+              17.997778229553905,
+              18,
+              17.997778229553905,
+              18
+            ],
+            "source_paper_rect": {
+              "x": 29,
+              "y": 29,
+              "width": 222,
+              "height": 155
+            },
+            "mode": "certified per-asset four-edge border-image mapping through actual CSS borders"
+          }
+        ],
+        "unclipped_ink": {
+          "x": 190.890625,
+          "y": 1892.828125,
+          "width": 9,
+          "height": 12
+        },
+        "measurements": [
+          {
+            "text": "0",
+            "baseline": 1904.828125,
+            "baseline_probe": {
+              "insertion": 1,
+              "range_unchanged": true,
+              "on_original_line": true,
+              "before": {
+                "x": 190.890625,
+                "y": 1888.828125,
+                "width": 9.28125,
+                "height": 20
+              },
+              "after": {
+                "x": 190.890625,
+                "y": 1888.828125,
+                "width": 9.28125,
+                "height": 20
+              }
+            },
+            "advance": {
+              "x": 190.890625,
+              "y": 1888.828125,
+              "width": 9.28125,
+              "height": 20
+            },
+            "ink": {
+              "x": 190.890625,
+              "y": 1892.828125,
+              "width": 9,
+              "height": 12
+            },
+            "actualBoundingBox": {
+              "left": 0,
+              "right": 9,
+              "ascent": 12,
+              "descent": 0
+            }
+          }
+        ]
+      },
+      "checks": {
+        "full_text": true,
+        "unclipped": true,
+        "fixed_safe": true,
+        "safe": true,
+        "viewport": true,
+        "cdp_font": true
+      },
+      "pass": true,
+      "whole_case_geometry": [],
+      "native_wall_time": "2026-10-23T03:58:44.660Z",
+      "native_ms": 1829.7999999523163
+    },
+    {
+      "id": "zh/1440/balanced/game-progress",
+      "job_id": "balanced",
+      "lang": "zh",
+      "width": 1440,
+      "owner": "game-progress",
+      "actual_owner": "game-progress",
+      "reconstructed": "1 / 6",
+      "raw_range_join_exact": true,
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "reason": "dependency",
+        "loads": [
+          20,
+          20,
+          20
+        ],
+        "validJobs": 1
+      },
+      "inputs": {
+        "schedule": [
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 1,
+            "start": 0
+          },
+          {
+            "artist": 1,
+            "start": 0
+          },
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          }
+        ],
+        "ranges": [
+          {
+            "id": "labor-start-0",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-1",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-2",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-3",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-4",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-5",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          }
+        ]
+      },
+      "text_identity_before": {
+        "game-hint": "下一步太早開始，先等前一份工作完成。",
+        "labor-status": "下一步太早開始，先等前一份工作完成。",
+        "labor-loads": "工作量 A 20／B 20／C 20",
+        "game-progress": "1 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "0",
+        "output:labor-start-2": "0",
+        "output:labor-start-3": "0",
+        "output:labor-start-4": "0",
+        "output:labor-start-5": "0"
+      },
+      "text_identity_after": {
+        "game-hint": "下一步太早開始，先等前一份工作完成。",
+        "labor-status": "下一步太早開始，先等前一份工作完成。",
+        "labor-loads": "工作量 A 20／B 20／C 20",
+        "game-progress": "1 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "0",
+        "output:labor-start-2": "0",
+        "output:labor-start-3": "0",
+        "output:labor-start-4": "0",
+        "output:labor-start-5": "0"
+      },
+      "receipt_before": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "receipt_after": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "image_file": "zh-1440-balanced-game-progress.png",
+      "image_sha256": "ceec396cd94c6c42891688208e2a9369348d580ea571c0716ef81cd0eb8c9d3b",
+      "sample_file": "zh-1440-balanced-game-progress.sample.json",
+      "sample_sha256": "f8493042129a7c740a347a00040a049d166a64472dc7a56098abec4e40791e40",
+      "viewport_proof": {
+        "clip": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900,
+          "scale": 1
+        },
+        "before": {
+          "window": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 900
+          },
+          "internal": [
+            {
+              "id": "game-controls",
+              "top": 1066,
+              "left": 0
+            }
+          ]
+        },
+        "after": {
+          "window": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 900
+          },
+          "internal": [
+            {
+              "id": "game-controls",
+              "top": 1066,
+              "left": 0
+            }
+          ]
+        },
+        "scroll_unchanged": true
+      },
+      "fonts": [
+        {
+          "familyName": "Microsoft JhengHei UI",
+          "postScriptName": "MicrosoftJhengHeiUIBold",
+          "isCustomFont": false,
+          "glyphCount": 5
+        }
+      ],
+      "target": {
+        "id": "text-10",
+        "text": "1 / 6",
+        "ink": {
+          "x": 193,
+          "y": 366.81971153846155,
+          "width": 33.59375,
+          "height": 14.21033653846154
+        },
+        "safe": {
+          "x": 128,
+          "y": 8,
+          "width": 1184,
+          "height": 1185.984375
+        },
+        "owner": "game-progress",
+        "computed": {
+          "family": "system-ui, \"Noto Sans TC\", sans-serif",
+          "font": "800 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+          "size": "16px",
+          "weight": "800",
+          "stroke": "0px",
+          "letterSpacing": "normal",
+          "lineHeight": "26.4px",
+          "transform": "none"
+        },
+        "baseline_wrapper_verified": null,
+        "safe_sources": [
+          {
+            "owner": "lab",
+            "mode": "verified tiled_surface; actual #lab document border bounds with fixed 8px inset, independent of text",
+            "rect": {
+              "x": 128,
+              "y": 8,
+              "width": 1184,
+              "height": 1185.984375
+            },
+            "asset": "holiday-lab/assets/ui/paper.png",
+            "sha256": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+            "fixed_inset": 8
+          }
+        ],
+        "unclipped_ink": {
+          "x": 193,
+          "y": 366.81971153846155,
+          "width": 33.59375,
+          "height": 14.21033653846154
+        },
+        "measurements": [
+          {
+            "text": "1 / 6",
+            "baseline": 379,
+            "baseline_probe": {
+              "insertion": 5,
+              "range_unchanged": true,
+              "on_original_line": true,
+              "before": {
+                "x": 192,
+                "y": 363,
+                "width": 34.125,
+                "height": 20
+              },
+              "after": {
+                "x": 192,
+                "y": 363,
+                "width": 34.125,
+                "height": 20
+              }
+            },
+            "advance": {
+              "x": 192,
+              "y": 363,
+              "width": 34.125,
+              "height": 20
+            },
+            "ink": {
+              "x": 193,
+              "y": 366.81971153846155,
+              "width": 33.59375,
+              "height": 14.21033653846154
+            },
+            "actualBoundingBox": {
+              "left": -1,
+              "right": 34.59375,
+              "ascent": 12,
+              "descent": 2
+            }
+          }
+        ]
+      },
+      "checks": {
+        "full_text": true,
+        "unclipped": true,
+        "fixed_safe": true,
+        "safe": true,
+        "viewport": true,
+        "cdp_font": true
+      },
+      "pass": true,
+      "whole_case_geometry": [],
+      "native_wall_time": "2026-10-23T03:58:46.352Z",
+      "native_ms": 1603.7999999523163
+    },
+    {
+      "id": "zh/1440/balanced/output:labor-start-3",
+      "job_id": "balanced",
+      "lang": "zh",
+      "width": 1440,
+      "owner": "output:labor-start-3",
+      "actual_owner": "layout-owner-20",
+      "reconstructed": "0",
+      "raw_range_join_exact": true,
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "reason": "dependency",
+        "loads": [
+          20,
+          20,
+          20
+        ],
+        "validJobs": 1
+      },
+      "inputs": {
+        "schedule": [
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 1,
+            "start": 0
+          },
+          {
+            "artist": 1,
+            "start": 0
+          },
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          }
+        ],
+        "ranges": [
+          {
+            "id": "labor-start-0",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-1",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-2",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-3",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-4",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-5",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          }
+        ]
+      },
+      "text_identity_before": {
+        "game-hint": "下一步太早開始，先等前一份工作完成。",
+        "labor-status": "下一步太早開始，先等前一份工作完成。",
+        "labor-loads": "工作量 A 20／B 20／C 20",
+        "game-progress": "1 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "0",
+        "output:labor-start-2": "0",
+        "output:labor-start-3": "0",
+        "output:labor-start-4": "0",
+        "output:labor-start-5": "0"
+      },
+      "text_identity_after": {
+        "game-hint": "下一步太早開始，先等前一份工作完成。",
+        "labor-status": "下一步太早開始，先等前一份工作完成。",
+        "labor-loads": "工作量 A 20／B 20／C 20",
+        "game-progress": "1 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "0",
+        "output:labor-start-2": "0",
+        "output:labor-start-3": "0",
+        "output:labor-start-4": "0",
+        "output:labor-start-5": "0"
+      },
+      "receipt_before": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "receipt_after": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "image_file": "zh-1440-balanced-output-labor-start-3.png",
+      "image_sha256": "b19f8083fff3d9233506dc9282ef78bc91018f756d0d3dc0c9629819005586f6",
+      "sample_file": "zh-1440-balanced-output-labor-start-3.sample.json",
+      "sample_sha256": "05865ecbbf3c46a9c9928631f732d820f187773ec756fb566fc7c8acaa3bf359",
+      "viewport_proof": {
+        "clip": {
+          "x": 0,
+          "y": 302,
+          "width": 1440,
+          "height": 900,
+          "scale": 1
+        },
+        "before": {
+          "window": {
+            "x": 0,
+            "y": 302,
+            "width": 1440,
+            "height": 900
+          },
+          "internal": [
+            {
+              "id": "game-controls",
+              "top": 752,
+              "left": 0
+            }
+          ]
+        },
+        "after": {
+          "window": {
+            "x": 0,
+            "y": 302,
+            "width": 1440,
+            "height": 900
+          },
+          "internal": [
+            {
+              "id": "game-controls",
+              "top": 752,
+              "left": 0
+            }
+          ]
+        },
+        "scroll_unchanged": true
+      },
+      "fonts": [
+        {
+          "familyName": "Microsoft JhengHei UI",
+          "postScriptName": "MicrosoftJhengHeiUIRegular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        }
+      ],
+      "target": {
+        "id": "text-22",
+        "text": "0",
+        "ink": {
+          "x": 1129.34375,
+          "y": 823.015625,
+          "width": 9,
+          "height": 12
+        },
+        "safe": {
+          "x": 882.1325120192307,
+          "y": 514.859375,
+          "width": 354.610255719496,
+          "height": 627.5
+        },
+        "owner": "layout-owner-20",
+        "computed": {
+          "family": "system-ui, \"Noto Sans TC\", sans-serif",
+          "font": "",
+          "size": "16px",
+          "weight": "400",
+          "stroke": "0px",
+          "letterSpacing": "normal",
+          "lineHeight": "normal",
+          "transform": "none"
+        },
+        "baseline_wrapper_verified": null,
+        "safe_sources": [
+          {
+            "rect": {
+              "x": 882.1325120192307,
+              "y": 514.859375,
+              "width": 354.610255719496,
+              "height": 627.5
+            },
+            "owner": "layout-owner-8",
+            "asset": "holiday-lab/assets/ui/panel.png",
+            "sha256": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+            "source_slice": [
+              48,
+              48,
+              48,
+              48
+            ],
+            "css_borders": [
+              18,
+              17.986571618037136,
+              18,
+              17.986571618037136
+            ],
+            "source_paper_rect": {
+              "x": 29,
+              "y": 29,
+              "width": 222,
+              "height": 155
+            },
+            "mode": "certified per-asset four-edge border-image mapping through actual CSS borders"
+          }
+        ],
+        "unclipped_ink": {
+          "x": 1129.34375,
+          "y": 823.015625,
+          "width": 9,
+          "height": 12
+        },
+        "measurements": [
+          {
+            "text": "0",
+            "baseline": 835.015625,
+            "baseline_probe": {
+              "insertion": 1,
+              "range_unchanged": true,
+              "on_original_line": true,
+              "before": {
+                "x": 1129.34375,
+                "y": 819.015625,
+                "width": 9.28125,
+                "height": 20
+              },
+              "after": {
+                "x": 1129.34375,
+                "y": 819.015625,
+                "width": 9.28125,
+                "height": 20
+              }
+            },
+            "advance": {
+              "x": 1129.34375,
+              "y": 819.015625,
+              "width": 9.28125,
+              "height": 20
+            },
+            "ink": {
+              "x": 1129.34375,
+              "y": 823.015625,
+              "width": 9,
+              "height": 12
+            },
+            "actualBoundingBox": {
+              "left": 0,
+              "right": 9,
+              "ascent": 12,
+              "descent": 0
+            }
+          }
+        ]
+      },
+      "checks": {
+        "full_text": true,
+        "unclipped": true,
+        "fixed_safe": true,
+        "safe": true,
+        "viewport": true,
+        "cdp_font": true
+      },
+      "pass": true,
+      "whole_case_geometry": [],
+      "native_wall_time": "2026-10-23T03:58:46.854Z",
+      "native_ms": 2106.099999964237
+    },
+    {
+      "id": "zh/320/deadline/game-progress",
+      "job_id": "deadline",
+      "lang": "zh",
+      "width": 320,
+      "owner": "game-progress",
+      "actual_owner": "game-progress",
+      "reconstructed": "0 / 6",
+      "raw_range_join_exact": true,
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 10
+        },
+        {
+          "artist": 2,
+          "start": 22
+        },
+        {
+          "artist": 0,
+          "start": 10
+        },
+        {
+          "artist": 1,
+          "start": 41
+        },
+        {
+          "artist": 2,
+          "start": 34
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "reason": "deadline",
+        "loads": [
+          20,
+          24,
+          16
+        ],
+        "validJobs": 0
+      },
+      "inputs": {
+        "schedule": [
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 1,
+            "start": 10
+          },
+          {
+            "artist": 2,
+            "start": 22
+          },
+          {
+            "artist": 0,
+            "start": 10
+          },
+          {
+            "artist": 1,
+            "start": 41
+          },
+          {
+            "artist": 2,
+            "start": 34
+          }
+        ],
+        "ranges": [
+          {
+            "id": "labor-start-0",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-1",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "10"
+          },
+          {
+            "id": "labor-start-2",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "22"
+          },
+          {
+            "id": "labor-start-3",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "10"
+          },
+          {
+            "id": "labor-start-4",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "41"
+          },
+          {
+            "id": "labor-start-5",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "34"
+          }
+        ]
+      },
+      "text_identity_before": {
+        "game-hint": "有工作還沒在收件前完成，試著提早交接。",
+        "labor-status": "有工作還沒在收件前完成，試著提早交接。",
+        "labor-loads": "工作量 A 20／B 24／C 16",
+        "game-progress": "0 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "10",
+        "output:labor-start-2": "22",
+        "output:labor-start-3": "10",
+        "output:labor-start-4": "41",
+        "output:labor-start-5": "34"
+      },
+      "text_identity_after": {
+        "game-hint": "有工作還沒在收件前完成，試著提早交接。",
+        "labor-status": "有工作還沒在收件前完成，試著提早交接。",
+        "labor-loads": "工作量 A 20／B 24／C 16",
+        "game-progress": "0 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "10",
+        "output:labor-start-2": "22",
+        "output:labor-start-3": "10",
+        "output:labor-start-4": "41",
+        "output:labor-start-5": "34"
+      },
+      "receipt_before": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "receipt_after": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "image_file": "zh-320-deadline-game-progress.png",
+      "image_sha256": "596d8e36dc6e2629751c45e6635eb9897b4b566ad630a261116547432dc44546",
+      "sample_file": "zh-320-deadline-game-progress.sample.json",
+      "sample_sha256": "0c3aa41e12e864822c61a4b8ff7deeed632dc127a8f4139bb9ddd86dd2fd3d41",
+      "viewport_proof": {
+        "clip": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 900,
+          "scale": 1
+        },
+        "before": {
+          "window": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 900
+          },
+          "internal": []
+        },
+        "after": {
+          "window": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 900
+          },
+          "internal": []
+        },
+        "scroll_unchanged": true
+      },
+      "fonts": [
+        {
+          "familyName": "Microsoft JhengHei UI",
+          "postScriptName": "MicrosoftJhengHeiUIBold",
+          "isCustomFont": false,
+          "glyphCount": 5
+        }
+      ],
+      "target": {
+        "id": "text-10",
+        "text": "0 / 6",
+        "ink": {
+          "x": 16,
+          "y": 426.83533653846155,
+          "width": 34.59375,
+          "height": 14.21033653846154
+        },
+        "safe": {
+          "x": 8,
+          "y": 8,
+          "width": 304,
+          "height": 2961.328125
+        },
+        "owner": "game-progress",
+        "computed": {
+          "family": "system-ui, \"Noto Sans TC\", sans-serif",
+          "font": "800 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+          "size": "16px",
+          "weight": "800",
+          "stroke": "0px",
+          "letterSpacing": "normal",
+          "lineHeight": "26.4px",
+          "transform": "none"
+        },
+        "baseline_wrapper_verified": null,
+        "safe_sources": [
+          {
+            "owner": "lab",
+            "mode": "verified tiled_surface; actual #lab document border bounds with fixed 8px inset, independent of text",
+            "rect": {
+              "x": 8,
+              "y": 8,
+              "width": 304,
+              "height": 2961.328125
+            },
+            "asset": "holiday-lab/assets/ui/paper.png",
+            "sha256": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+            "fixed_inset": 8
+          }
+        ],
+        "unclipped_ink": {
+          "x": 16,
+          "y": 426.83533653846155,
+          "width": 34.59375,
+          "height": 14.21033653846154
+        },
+        "measurements": [
+          {
+            "text": "0 / 6",
+            "baseline": 439.015625,
+            "baseline_probe": {
+              "insertion": 5,
+              "range_unchanged": true,
+              "on_original_line": true,
+              "before": {
+                "x": 16,
+                "y": 423.015625,
+                "width": 34.125,
+                "height": 20
+              },
+              "after": {
+                "x": 16,
+                "y": 423.015625,
+                "width": 34.125,
+                "height": 20
+              }
+            },
+            "advance": {
+              "x": 16,
+              "y": 423.015625,
+              "width": 34.125,
+              "height": 20
+            },
+            "ink": {
+              "x": 16,
+              "y": 426.83533653846155,
+              "width": 34.59375,
+              "height": 14.21033653846154
+            },
+            "actualBoundingBox": {
+              "left": 0,
+              "right": 34.59375,
+              "ascent": 12,
+              "descent": 2
+            }
+          }
+        ]
+      },
+      "checks": {
+        "full_text": true,
+        "unclipped": true,
+        "fixed_safe": true,
+        "safe": true,
+        "viewport": true,
+        "cdp_font": true
+      },
+      "pass": true,
+      "whole_case_geometry": [],
+      "native_wall_time": "2026-10-23T03:58:48.418Z",
+      "native_ms": 1483
+    },
+    {
+      "id": "zh/320/deadline/output:labor-start-4",
+      "job_id": "deadline",
+      "lang": "zh",
+      "width": 320,
+      "owner": "output:labor-start-4",
+      "actual_owner": "layout-owner-23",
+      "reconstructed": "41",
+      "raw_range_join_exact": true,
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 10
+        },
+        {
+          "artist": 2,
+          "start": 22
+        },
+        {
+          "artist": 0,
+          "start": 10
+        },
+        {
+          "artist": 1,
+          "start": 41
+        },
+        {
+          "artist": 2,
+          "start": 34
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "reason": "deadline",
+        "loads": [
+          20,
+          24,
+          16
+        ],
+        "validJobs": 0
+      },
+      "inputs": {
+        "schedule": [
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 1,
+            "start": 10
+          },
+          {
+            "artist": 2,
+            "start": 22
+          },
+          {
+            "artist": 0,
+            "start": 10
+          },
+          {
+            "artist": 1,
+            "start": 41
+          },
+          {
+            "artist": 2,
+            "start": 34
+          }
+        ],
+        "ranges": [
+          {
+            "id": "labor-start-0",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-1",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "10"
+          },
+          {
+            "id": "labor-start-2",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "22"
+          },
+          {
+            "id": "labor-start-3",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "10"
+          },
+          {
+            "id": "labor-start-4",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "41"
+          },
+          {
+            "id": "labor-start-5",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "34"
+          }
+        ]
+      },
+      "text_identity_before": {
+        "game-hint": "有工作還沒在收件前完成，試著提早交接。",
+        "labor-status": "有工作還沒在收件前完成，試著提早交接。",
+        "labor-loads": "工作量 A 20／B 24／C 16",
+        "game-progress": "0 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "10",
+        "output:labor-start-2": "22",
+        "output:labor-start-3": "10",
+        "output:labor-start-4": "41",
+        "output:labor-start-5": "34"
+      },
+      "text_identity_after": {
+        "game-hint": "有工作還沒在收件前完成，試著提早交接。",
+        "labor-status": "有工作還沒在收件前完成，試著提早交接。",
+        "labor-loads": "工作量 A 20／B 24／C 16",
+        "game-progress": "0 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "10",
+        "output:labor-start-2": "22",
+        "output:labor-start-3": "10",
+        "output:labor-start-4": "41",
+        "output:labor-start-5": "34"
+      },
+      "receipt_before": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "receipt_after": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "image_file": "zh-320-deadline-output-labor-start-4.png",
+      "image_sha256": "8cb8f1e24b2c409353aa35d4967691300c53d1f3fd2918bdfb8d3d932421053b",
+      "sample_file": "zh-320-deadline-output-labor-start-4.sample.json",
+      "sample_sha256": "6dfd36bd19b6a66d524191c8dafacb5d51978fa7a74bd99605c6c9c900e0ed0c",
+      "viewport_proof": {
+        "clip": {
+          "x": 0,
+          "y": 2011,
+          "width": 320,
+          "height": 900,
+          "scale": 1
+        },
+        "before": {
+          "window": {
+            "x": 0,
+            "y": 2011,
+            "width": 320,
+            "height": 900
+          },
+          "internal": []
+        },
+        "after": {
+          "window": {
+            "x": 0,
+            "y": 2011,
+            "width": 320,
+            "height": 900
+          },
+          "internal": []
+        },
+        "scroll_unchanged": true
+      },
+      "fonts": [
+        {
+          "familyName": "Microsoft JhengHei UI",
+          "postScriptName": "MicrosoftJhengHeiUIRegular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ],
+      "target": {
+        "id": "text-53",
+        "text": "41",
+        "ink": {
+          "x": 181.71875,
+          "y": 2455.171875,
+          "width": 17.2734375,
+          "height": 12
+        },
+        "safe": {
+          "x": 26.875,
+          "y": 800.4674076803554,
+          "width": 265.875,
+          "height": 2129.237152213058
+        },
+        "owner": "layout-owner-23",
+        "computed": {
+          "family": "system-ui, \"Noto Sans TC\", sans-serif",
+          "font": "",
+          "size": "16px",
+          "weight": "400",
+          "stroke": "0px",
+          "letterSpacing": "normal",
+          "lineHeight": "normal",
+          "transform": "none"
+        },
+        "baseline_wrapper_verified": null,
+        "safe_sources": [
+          {
+            "rect": {
+              "x": 26.875,
+              "y": 800.4674076803554,
+              "width": 265.875,
+              "height": 2129.237152213058
+            },
+            "owner": "layout-owner-8",
+            "asset": "holiday-lab/assets/ui/panel.png",
+            "sha256": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+            "source_slice": [
+              48,
+              48,
+              48,
+              48
+            ],
+            "css_borders": [
+              17.997778229553905,
+              18,
+              17.997778229553905,
+              18
+            ],
+            "source_paper_rect": {
+              "x": 29,
+              "y": 29,
+              "width": 222,
+              "height": 155
+            },
+            "mode": "certified per-asset four-edge border-image mapping through actual CSS borders"
+          }
+        ],
+        "unclipped_ink": {
+          "x": 181.71875,
+          "y": 2455.171875,
+          "width": 17.2734375,
+          "height": 12
+        },
+        "measurements": [
+          {
+            "text": "41",
+            "baseline": 2467.171875,
+            "baseline_probe": {
+              "insertion": 2,
+              "range_unchanged": true,
+              "on_original_line": true,
+              "before": {
+                "x": 182.71875,
+                "y": 2451.171875,
+                "width": 18.546875,
+                "height": 20
+              },
+              "after": {
+                "x": 182.71875,
+                "y": 2451.171875,
+                "width": 18.546875,
+                "height": 20
+              }
+            },
+            "advance": {
+              "x": 182.71875,
+              "y": 2451.171875,
+              "width": 18.546875,
+              "height": 20
+            },
+            "ink": {
+              "x": 181.71875,
+              "y": 2455.171875,
+              "width": 17.2734375,
+              "height": 12
+            },
+            "actualBoundingBox": {
+              "left": 1,
+              "right": 16.2734375,
+              "ascent": 12,
+              "descent": 0
+            }
+          }
+        ]
+      },
+      "checks": {
+        "full_text": true,
+        "unclipped": true,
+        "fixed_safe": true,
+        "safe": true,
+        "viewport": true,
+        "cdp_font": true
+      },
+      "pass": true,
+      "whole_case_geometry": [],
+      "native_wall_time": "2026-10-23T03:58:48.853Z",
+      "native_ms": 1918
+    },
+    {
+      "id": "en/320/rest/game-progress",
+      "job_id": "rest",
+      "lang": "en",
+      "width": 320,
+      "owner": "game-progress",
+      "actual_owner": "game-progress",
+      "reconstructed": "0 / 6",
+      "raw_range_join_exact": true,
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 20
+        },
+        {
+          "artist": 1,
+          "start": 30
+        },
+        {
+          "artist": 2,
+          "start": 42
+        },
+        {
+          "artist": 0,
+          "start": 10
+        },
+        {
+          "artist": 1,
+          "start": 22
+        },
+        {
+          "artist": 2,
+          "start": 34
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "reason": "break",
+        "loads": [
+          20,
+          24,
+          16
+        ],
+        "validJobs": 0
+      },
+      "inputs": {
+        "schedule": [
+          {
+            "artist": 0,
+            "start": 20
+          },
+          {
+            "artist": 1,
+            "start": 30
+          },
+          {
+            "artist": 2,
+            "start": 42
+          },
+          {
+            "artist": 0,
+            "start": 10
+          },
+          {
+            "artist": 1,
+            "start": 22
+          },
+          {
+            "artist": 2,
+            "start": 34
+          }
+        ],
+        "ranges": [
+          {
+            "id": "labor-start-0",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "20"
+          },
+          {
+            "id": "labor-start-1",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "30"
+          },
+          {
+            "id": "labor-start-2",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "42"
+          },
+          {
+            "id": "labor-start-3",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "10"
+          },
+          {
+            "id": "labor-start-4",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "22"
+          },
+          {
+            "id": "labor-start-5",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "34"
+          }
+        ]
+      },
+      "text_identity_before": {
+        "game-hint": "A task overlaps a rest period. Keep that time free.",
+        "labor-status": "A task overlaps a rest period. Keep that time free.",
+        "labor-loads": "Workload A 20 / B 24 / C 16",
+        "game-progress": "0 / 6",
+        "output:labor-start-0": "20",
+        "output:labor-start-1": "30",
+        "output:labor-start-2": "42",
+        "output:labor-start-3": "10",
+        "output:labor-start-4": "22",
+        "output:labor-start-5": "34"
+      },
+      "text_identity_after": {
+        "game-hint": "A task overlaps a rest period. Keep that time free.",
+        "labor-status": "A task overlaps a rest period. Keep that time free.",
+        "labor-loads": "Workload A 20 / B 24 / C 16",
+        "game-progress": "0 / 6",
+        "output:labor-start-0": "20",
+        "output:labor-start-1": "30",
+        "output:labor-start-2": "42",
+        "output:labor-start-3": "10",
+        "output:labor-start-4": "22",
+        "output:labor-start-5": "34"
+      },
+      "receipt_before": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "receipt_after": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "image_file": "en-320-rest-game-progress.png",
+      "image_sha256": "d41cb24434086c54d529e27f986d7364e90804764e1fb6554471a72a00b4b586",
+      "sample_file": "en-320-rest-game-progress.sample.json",
+      "sample_sha256": "8c174d69126b9a8fa63832c2c3c822a253ce9944c522f1d62156ea080a200d5b",
+      "viewport_proof": {
+        "clip": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 900,
+          "scale": 1
+        },
+        "before": {
+          "window": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 900
+          },
+          "internal": []
+        },
+        "after": {
+          "window": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 900
+          },
+          "internal": []
+        },
+        "scroll_unchanged": true
+      },
+      "fonts": [
+        {
+          "familyName": "Microsoft JhengHei UI",
+          "postScriptName": "MicrosoftJhengHeiUIBold",
+          "isCustomFont": false,
+          "glyphCount": 5
+        }
+      ],
+      "target": {
+        "id": "text-10",
+        "text": "0 / 6",
+        "ink": {
+          "x": 16,
+          "y": 426.83533653846155,
+          "width": 34.59375,
+          "height": 14.21033653846154
+        },
+        "safe": {
+          "x": 8,
+          "y": 8,
+          "width": 304,
+          "height": 3040.5
+        },
+        "owner": "game-progress",
+        "computed": {
+          "family": "system-ui, \"Noto Sans TC\", sans-serif",
+          "font": "800 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+          "size": "16px",
+          "weight": "800",
+          "stroke": "0px",
+          "letterSpacing": "normal",
+          "lineHeight": "26.4px",
+          "transform": "none"
+        },
+        "baseline_wrapper_verified": null,
+        "safe_sources": [
+          {
+            "owner": "lab",
+            "mode": "verified tiled_surface; actual #lab document border bounds with fixed 8px inset, independent of text",
+            "rect": {
+              "x": 8,
+              "y": 8,
+              "width": 304,
+              "height": 3040.5
+            },
+            "asset": "holiday-lab/assets/ui/paper.png",
+            "sha256": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+            "fixed_inset": 8
+          }
+        ],
+        "unclipped_ink": {
+          "x": 16,
+          "y": 426.83533653846155,
+          "width": 34.59375,
+          "height": 14.21033653846154
+        },
+        "measurements": [
+          {
+            "text": "0 / 6",
+            "baseline": 439.015625,
+            "baseline_probe": {
+              "insertion": 5,
+              "range_unchanged": true,
+              "on_original_line": true,
+              "before": {
+                "x": 16,
+                "y": 423.015625,
+                "width": 34.125,
+                "height": 20
+              },
+              "after": {
+                "x": 16,
+                "y": 423.015625,
+                "width": 34.125,
+                "height": 20
+              }
+            },
+            "advance": {
+              "x": 16,
+              "y": 423.015625,
+              "width": 34.125,
+              "height": 20
+            },
+            "ink": {
+              "x": 16,
+              "y": 426.83533653846155,
+              "width": 34.59375,
+              "height": 14.21033653846154
+            },
+            "actualBoundingBox": {
+              "left": 0,
+              "right": 34.59375,
+              "ascent": 12,
+              "descent": 2
+            }
+          }
+        ]
+      },
+      "checks": {
+        "full_text": true,
+        "unclipped": true,
+        "fixed_safe": true,
+        "safe": true,
+        "viewport": true,
+        "cdp_font": true
+      },
+      "pass": true,
+      "whole_case_geometry": [],
+      "native_wall_time": "2026-10-23T03:58:50.414Z",
+      "native_ms": 1475.8999999761581
+    },
+    {
+      "id": "en/320/rest/output:labor-start-5",
+      "job_id": "rest",
+      "lang": "en",
+      "width": 320,
+      "owner": "output:labor-start-5",
+      "actual_owner": "layout-owner-26",
+      "reconstructed": "34",
+      "raw_range_join_exact": true,
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 20
+        },
+        {
+          "artist": 1,
+          "start": 30
+        },
+        {
+          "artist": 2,
+          "start": 42
+        },
+        {
+          "artist": 0,
+          "start": 10
+        },
+        {
+          "artist": 1,
+          "start": 22
+        },
+        {
+          "artist": 2,
+          "start": 34
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "reason": "break",
+        "loads": [
+          20,
+          24,
+          16
+        ],
+        "validJobs": 0
+      },
+      "inputs": {
+        "schedule": [
+          {
+            "artist": 0,
+            "start": 20
+          },
+          {
+            "artist": 1,
+            "start": 30
+          },
+          {
+            "artist": 2,
+            "start": 42
+          },
+          {
+            "artist": 0,
+            "start": 10
+          },
+          {
+            "artist": 1,
+            "start": 22
+          },
+          {
+            "artist": 2,
+            "start": 34
+          }
+        ],
+        "ranges": [
+          {
+            "id": "labor-start-0",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "20"
+          },
+          {
+            "id": "labor-start-1",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "30"
+          },
+          {
+            "id": "labor-start-2",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "42"
+          },
+          {
+            "id": "labor-start-3",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "10"
+          },
+          {
+            "id": "labor-start-4",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "22"
+          },
+          {
+            "id": "labor-start-5",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "34"
+          }
+        ]
+      },
+      "text_identity_before": {
+        "game-hint": "A task overlaps a rest period. Keep that time free.",
+        "labor-status": "A task overlaps a rest period. Keep that time free.",
+        "labor-loads": "Workload A 20 / B 24 / C 16",
+        "game-progress": "0 / 6",
+        "output:labor-start-0": "20",
+        "output:labor-start-1": "30",
+        "output:labor-start-2": "42",
+        "output:labor-start-3": "10",
+        "output:labor-start-4": "22",
+        "output:labor-start-5": "34"
+      },
+      "text_identity_after": {
+        "game-hint": "A task overlaps a rest period. Keep that time free.",
+        "labor-status": "A task overlaps a rest period. Keep that time free.",
+        "labor-loads": "Workload A 20 / B 24 / C 16",
+        "game-progress": "0 / 6",
+        "output:labor-start-0": "20",
+        "output:labor-start-1": "30",
+        "output:labor-start-2": "42",
+        "output:labor-start-3": "10",
+        "output:labor-start-4": "22",
+        "output:labor-start-5": "34"
+      },
+      "receipt_before": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "receipt_after": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "image_file": "en-320-rest-output-labor-start-5.png",
+      "image_sha256": "98e5427319bbaf124e91e9436ec9beecc4752f19359d00b761716a805f370f85",
+      "sample_file": "en-320-rest-output-labor-start-5.sample.json",
+      "sample_sha256": "4abb30b3593e8f464ed58fd12eee2ea45959721ddf6e3d38a20bf40261633c38",
+      "viewport_proof": {
+        "clip": {
+          "x": 0,
+          "y": 2157,
+          "width": 320,
+          "height": 900,
+          "scale": 1
+        },
+        "before": {
+          "window": {
+            "x": 0,
+            "y": 2157,
+            "width": 320,
+            "height": 900
+          },
+          "internal": []
+        },
+        "after": {
+          "window": {
+            "x": 0,
+            "y": 2157,
+            "width": 320,
+            "height": 900
+          },
+          "internal": []
+        },
+        "scroll_unchanged": true
+      },
+      "fonts": [
+        {
+          "familyName": "Microsoft JhengHei UI",
+          "postScriptName": "MicrosoftJhengHeiUIRegular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ],
+      "target": {
+        "id": "text-61",
+        "text": "34",
+        "ink": {
+          "x": 186.25,
+          "y": 2815.515625,
+          "width": 19.2734375,
+          "height": 12
+        },
+        "safe": {
+          "x": 26.875,
+          "y": 800.4682930160242,
+          "width": 265.875,
+          "height": 2208.407195484088
+        },
+        "owner": "layout-owner-26",
+        "computed": {
+          "family": "system-ui, \"Noto Sans TC\", sans-serif",
+          "font": "",
+          "size": "16px",
+          "weight": "400",
+          "stroke": "0px",
+          "letterSpacing": "normal",
+          "lineHeight": "normal",
+          "transform": "none"
+        },
+        "baseline_wrapper_verified": null,
+        "safe_sources": [
+          {
+            "rect": {
+              "x": 26.875,
+              "y": 800.4682930160242,
+              "width": 265.875,
+              "height": 2208.407195484088
+            },
+            "owner": "layout-owner-8",
+            "asset": "holiday-lab/assets/ui/panel.png",
+            "sha256": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+            "source_slice": [
+              48,
+              48,
+              48,
+              48
+            ],
+            "css_borders": [
+              17.999243612729718,
+              18,
+              17.999243612729718,
+              18
+            ],
+            "source_paper_rect": {
+              "x": 29,
+              "y": 29,
+              "width": 222,
+              "height": 155
+            },
+            "mode": "certified per-asset four-edge border-image mapping through actual CSS borders"
+          }
+        ],
+        "unclipped_ink": {
+          "x": 186.25,
+          "y": 2815.515625,
+          "width": 19.2734375,
+          "height": 12
+        },
+        "measurements": [
+          {
+            "text": "34",
+            "baseline": 2827.515625,
+            "baseline_probe": {
+              "insertion": 2,
+              "range_unchanged": true,
+              "on_original_line": true,
+              "before": {
+                "x": 186.25,
+                "y": 2811.515625,
+                "width": 18.546875,
+                "height": 20
+              },
+              "after": {
+                "x": 186.25,
+                "y": 2811.515625,
+                "width": 18.546875,
+                "height": 20
+              }
+            },
+            "advance": {
+              "x": 186.25,
+              "y": 2811.515625,
+              "width": 18.546875,
+              "height": 20
+            },
+            "ink": {
+              "x": 186.25,
+              "y": 2815.515625,
+              "width": 19.2734375,
+              "height": 12
+            },
+            "actualBoundingBox": {
+              "left": 0,
+              "right": 19.2734375,
+              "ascent": 12,
+              "descent": 0
+            }
+          }
+        ]
+      },
+      "checks": {
+        "full_text": true,
+        "unclipped": true,
+        "fixed_safe": true,
+        "safe": true,
+        "viewport": true,
+        "cdp_font": true
+      },
+      "pass": true,
+      "whole_case_geometry": [],
+      "native_wall_time": "2026-10-23T03:58:50.815Z",
+      "native_ms": 1875.8999999761581
+    },
+    {
+      "id": "ja/320/overlap/game-progress",
+      "job_id": "overlap",
+      "lang": "ja",
+      "width": 320,
+      "owner": "game-progress",
+      "actual_owner": "game-progress",
+      "reconstructed": "0 / 6",
+      "raw_range_join_exact": true,
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 10
+        },
+        {
+          "artist": 2,
+          "start": 22
+        },
+        {
+          "artist": 0,
+          "start": 5
+        },
+        {
+          "artist": 1,
+          "start": 22
+        },
+        {
+          "artist": 2,
+          "start": 34
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "reason": "overlap",
+        "loads": [
+          20,
+          24,
+          16
+        ],
+        "validJobs": 0
+      },
+      "inputs": {
+        "schedule": [
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 1,
+            "start": 10
+          },
+          {
+            "artist": 2,
+            "start": 22
+          },
+          {
+            "artist": 0,
+            "start": 5
+          },
+          {
+            "artist": 1,
+            "start": 22
+          },
+          {
+            "artist": 2,
+            "start": 34
+          }
+        ],
+        "ranges": [
+          {
+            "id": "labor-start-0",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-1",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "10"
+          },
+          {
+            "id": "labor-start-2",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "22"
+          },
+          {
+            "id": "labor-start-3",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "5"
+          },
+          {
+            "id": "labor-start-4",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "22"
+          },
+          {
+            "id": "labor-start-5",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "34"
+          }
+        ]
+      },
+      "text_identity_before": {
+        "game-hint": "1人に2つの作業が同時に重なっています。分けるか担当を変更。",
+        "labor-status": "1人に2つの作業が同時に重なっています。分けるか担当を変更。",
+        "labor-loads": "作業量 A20／B24／C16",
+        "game-progress": "0 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "10",
+        "output:labor-start-2": "22",
+        "output:labor-start-3": "5",
+        "output:labor-start-4": "22",
+        "output:labor-start-5": "34"
+      },
+      "text_identity_after": {
+        "game-hint": "1人に2つの作業が同時に重なっています。分けるか担当を変更。",
+        "labor-status": "1人に2つの作業が同時に重なっています。分けるか担当を変更。",
+        "labor-loads": "作業量 A20／B24／C16",
+        "game-progress": "0 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "10",
+        "output:labor-start-2": "22",
+        "output:labor-start-3": "5",
+        "output:labor-start-4": "22",
+        "output:labor-start-5": "34"
+      },
+      "receipt_before": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "receipt_after": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "image_file": "ja-320-overlap-game-progress.png",
+      "image_sha256": "1c865c41bf07a617ce515d11961489fa0c9d40f9e97cd910fd8a9d9efffe9bc4",
+      "sample_file": "ja-320-overlap-game-progress.sample.json",
+      "sample_sha256": "21478cb6c7d1dc9337b5e23f1ab985194be3e013e89f09681f597251e6b6320f",
+      "viewport_proof": {
+        "clip": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 900,
+          "scale": 1
+        },
+        "before": {
+          "window": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 900
+          },
+          "internal": []
+        },
+        "after": {
+          "window": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 900
+          },
+          "internal": []
+        },
+        "scroll_unchanged": true
+      },
+      "fonts": [
+        {
+          "familyName": "Microsoft JhengHei UI",
+          "postScriptName": "MicrosoftJhengHeiUIBold",
+          "isCustomFont": false,
+          "glyphCount": 5
+        }
+      ],
+      "target": {
+        "id": "text-10",
+        "text": "0 / 6",
+        "ink": {
+          "x": 16,
+          "y": 426.83533653846155,
+          "width": 34.59375,
+          "height": 14.21033653846154
+        },
+        "safe": {
+          "x": 8,
+          "y": 8,
+          "width": 304,
+          "height": 3013.3125
+        },
+        "owner": "game-progress",
+        "computed": {
+          "family": "system-ui, \"Noto Sans TC\", sans-serif",
+          "font": "800 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+          "size": "16px",
+          "weight": "800",
+          "stroke": "0px",
+          "letterSpacing": "normal",
+          "lineHeight": "26.4px",
+          "transform": "none"
+        },
+        "baseline_wrapper_verified": null,
+        "safe_sources": [
+          {
+            "owner": "lab",
+            "mode": "verified tiled_surface; actual #lab document border bounds with fixed 8px inset, independent of text",
+            "rect": {
+              "x": 8,
+              "y": 8,
+              "width": 304,
+              "height": 3013.3125
+            },
+            "asset": "holiday-lab/assets/ui/paper.png",
+            "sha256": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+            "fixed_inset": 8
+          }
+        ],
+        "unclipped_ink": {
+          "x": 16,
+          "y": 426.83533653846155,
+          "width": 34.59375,
+          "height": 14.21033653846154
+        },
+        "measurements": [
+          {
+            "text": "0 / 6",
+            "baseline": 439.015625,
+            "baseline_probe": {
+              "insertion": 5,
+              "range_unchanged": true,
+              "on_original_line": true,
+              "before": {
+                "x": 16,
+                "y": 423.015625,
+                "width": 34.125,
+                "height": 20
+              },
+              "after": {
+                "x": 16,
+                "y": 423.015625,
+                "width": 34.125,
+                "height": 20
+              }
+            },
+            "advance": {
+              "x": 16,
+              "y": 423.015625,
+              "width": 34.125,
+              "height": 20
+            },
+            "ink": {
+              "x": 16,
+              "y": 426.83533653846155,
+              "width": 34.59375,
+              "height": 14.21033653846154
+            },
+            "actualBoundingBox": {
+              "left": 0,
+              "right": 34.59375,
+              "ascent": 12,
+              "descent": 2
+            }
+          }
+        ]
+      },
+      "checks": {
+        "full_text": true,
+        "unclipped": true,
+        "fixed_safe": true,
+        "safe": true,
+        "viewport": true,
+        "cdp_font": true
+      },
+      "pass": true,
+      "whole_case_geometry": [],
+      "native_wall_time": "2026-10-23T03:58:52.474Z",
+      "native_ms": 1577.199999988079
+    },
+    {
+      "id": "ja/320/overlap/output:labor-start-0",
+      "job_id": "overlap",
+      "lang": "ja",
+      "width": 320,
+      "owner": "output:labor-start-0",
+      "actual_owner": "layout-owner-11",
+      "reconstructed": "0",
+      "raw_range_join_exact": true,
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 10
+        },
+        {
+          "artist": 2,
+          "start": 22
+        },
+        {
+          "artist": 0,
+          "start": 5
+        },
+        {
+          "artist": 1,
+          "start": 22
+        },
+        {
+          "artist": 2,
+          "start": 34
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "reason": "overlap",
+        "loads": [
+          20,
+          24,
+          16
+        ],
+        "validJobs": 0
+      },
+      "inputs": {
+        "schedule": [
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 1,
+            "start": 10
+          },
+          {
+            "artist": 2,
+            "start": 22
+          },
+          {
+            "artist": 0,
+            "start": 5
+          },
+          {
+            "artist": 1,
+            "start": 22
+          },
+          {
+            "artist": 2,
+            "start": 34
+          }
+        ],
+        "ranges": [
+          {
+            "id": "labor-start-0",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-1",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "10"
+          },
+          {
+            "id": "labor-start-2",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "22"
+          },
+          {
+            "id": "labor-start-3",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "5"
+          },
+          {
+            "id": "labor-start-4",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "22"
+          },
+          {
+            "id": "labor-start-5",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "34"
+          }
+        ]
+      },
+      "text_identity_before": {
+        "game-hint": "1人に2つの作業が同時に重なっています。分けるか担当を変更。",
+        "labor-status": "1人に2つの作業が同時に重なっています。分けるか担当を変更。",
+        "labor-loads": "作業量 A20／B24／C16",
+        "game-progress": "0 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "10",
+        "output:labor-start-2": "22",
+        "output:labor-start-3": "5",
+        "output:labor-start-4": "22",
+        "output:labor-start-5": "34"
+      },
+      "text_identity_after": {
+        "game-hint": "1人に2つの作業が同時に重なっています。分けるか担当を変更。",
+        "labor-status": "1人に2つの作業が同時に重なっています。分けるか担当を変更。",
+        "labor-loads": "作業量 A20／B24／C16",
+        "game-progress": "0 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "10",
+        "output:labor-start-2": "22",
+        "output:labor-start-3": "5",
+        "output:labor-start-4": "22",
+        "output:labor-start-5": "34"
+      },
+      "receipt_before": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "receipt_after": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "image_file": "ja-320-overlap-output-labor-start-0.png",
+      "image_sha256": "8c000abe6a031a522611e00533a7b6176a40df1e95ba0049988c79175e9950f5",
+      "sample_file": "ja-320-overlap-output-labor-start-0.sample.json",
+      "sample_sha256": "21478cb6c7d1dc9337b5e23f1ab985194be3e013e89f09681f597251e6b6320f",
+      "viewport_proof": {
+        "clip": {
+          "x": 0,
+          "y": 938,
+          "width": 320,
+          "height": 900,
+          "scale": 1
+        },
+        "before": {
+          "window": {
+            "x": 0,
+            "y": 938,
+            "width": 320,
+            "height": 900
+          },
+          "internal": []
+        },
+        "after": {
+          "window": {
+            "x": 0,
+            "y": 938,
+            "width": 320,
+            "height": 900
+          },
+          "internal": []
+        },
+        "scroll_unchanged": true
+      },
+      "fonts": [
+        {
+          "familyName": "Microsoft JhengHei UI",
+          "postScriptName": "MicrosoftJhengHeiUIRegular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        }
+      ],
+      "target": {
+        "id": "text-21",
+        "text": "0",
+        "ink": {
+          "x": 190.890625,
+          "y": 1382.46875,
+          "width": 9,
+          "height": 12
+        },
+        "safe": {
+          "x": 26.875,
+          "y": 826.0631241391185,
+          "width": 265.875,
+          "height": 2155.623708677686
+        },
+        "owner": "layout-owner-11",
+        "computed": {
+          "family": "system-ui, \"Noto Sans TC\", sans-serif",
+          "font": "",
+          "size": "16px",
+          "weight": "400",
+          "stroke": "0px",
+          "letterSpacing": "normal",
+          "lineHeight": "normal",
+          "transform": "none"
+        },
+        "baseline_wrapper_verified": null,
+        "safe_sources": [
+          {
+            "rect": {
+              "x": 26.875,
+              "y": 826.0631241391185,
+              "width": 265.875,
+              "height": 2155.623708677686
+            },
+            "owner": "layout-owner-8",
+            "asset": "holiday-lab/assets/ui/panel.png",
+            "sha256": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+            "source_slice": [
+              48,
+              48,
+              48,
+              48
+            ],
+            "css_borders": [
+              18.001033057851238,
+              18,
+              18.001033057851238,
+              18
+            ],
+            "source_paper_rect": {
+              "x": 29,
+              "y": 29,
+              "width": 222,
+              "height": 155
+            },
+            "mode": "certified per-asset four-edge border-image mapping through actual CSS borders"
+          }
+        ],
+        "unclipped_ink": {
+          "x": 190.890625,
+          "y": 1382.46875,
+          "width": 9,
+          "height": 12
+        },
+        "measurements": [
+          {
+            "text": "0",
+            "baseline": 1394.46875,
+            "baseline_probe": {
+              "insertion": 1,
+              "range_unchanged": true,
+              "on_original_line": true,
+              "before": {
+                "x": 190.890625,
+                "y": 1378.46875,
+                "width": 9.28125,
+                "height": 20
+              },
+              "after": {
+                "x": 190.890625,
+                "y": 1378.46875,
+                "width": 9.28125,
+                "height": 20
+              }
+            },
+            "advance": {
+              "x": 190.890625,
+              "y": 1378.46875,
+              "width": 9.28125,
+              "height": 20
+            },
+            "ink": {
+              "x": 190.890625,
+              "y": 1382.46875,
+              "width": 9,
+              "height": 12
+            },
+            "actualBoundingBox": {
+              "left": 0,
+              "right": 9,
+              "ascent": 12,
+              "descent": 0
+            }
+          }
+        ]
+      },
+      "checks": {
+        "full_text": true,
+        "unclipped": true,
+        "fixed_safe": true,
+        "safe": true,
+        "viewport": true,
+        "cdp_font": true
+      },
+      "pass": true,
+      "whole_case_geometry": [],
+      "native_wall_time": "2026-10-23T03:58:52.898Z",
+      "native_ms": 2000
+    },
+    {
+      "id": "zh/1440/heavy/game-progress",
+      "job_id": "heavy",
+      "lang": "zh",
+      "width": 1440,
+      "owner": "game-progress",
+      "actual_owner": "game-progress",
+      "reconstructed": "0 / 6",
+      "raw_range_join_exact": true,
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 10
+        },
+        {
+          "artist": 0,
+          "start": 26
+        },
+        {
+          "artist": 0,
+          "start": 10
+        },
+        {
+          "artist": 1,
+          "start": 22
+        },
+        {
+          "artist": 0,
+          "start": 34
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "reason": "load",
+        "loads": [
+          36,
+          24,
+          0
+        ],
+        "validJobs": 0
+      },
+      "inputs": {
+        "schedule": [
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 1,
+            "start": 10
+          },
+          {
+            "artist": 0,
+            "start": 26
+          },
+          {
+            "artist": 0,
+            "start": 10
+          },
+          {
+            "artist": 1,
+            "start": 22
+          },
+          {
+            "artist": 0,
+            "start": 34
+          }
+        ],
+        "ranges": [
+          {
+            "id": "labor-start-0",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-1",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "10"
+          },
+          {
+            "id": "labor-start-2",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "26"
+          },
+          {
+            "id": "labor-start-3",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "10"
+          },
+          {
+            "id": "labor-start-4",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "22"
+          },
+          {
+            "id": "labor-start-5",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "34"
+          }
+        ]
+      },
+      "text_identity_before": {
+        "game-hint": "一個人的工作太多了，請把任務分出去。",
+        "labor-status": "一個人的工作太多了，請把任務分出去。",
+        "labor-loads": "工作量 A 36／B 24／C 0",
+        "game-progress": "0 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "10",
+        "output:labor-start-2": "26",
+        "output:labor-start-3": "10",
+        "output:labor-start-4": "22",
+        "output:labor-start-5": "34"
+      },
+      "text_identity_after": {
+        "game-hint": "一個人的工作太多了，請把任務分出去。",
+        "labor-status": "一個人的工作太多了，請把任務分出去。",
+        "labor-loads": "工作量 A 36／B 24／C 0",
+        "game-progress": "0 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "10",
+        "output:labor-start-2": "26",
+        "output:labor-start-3": "10",
+        "output:labor-start-4": "22",
+        "output:labor-start-5": "34"
+      },
+      "receipt_before": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "receipt_after": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "image_file": "zh-1440-heavy-game-progress.png",
+      "image_sha256": "2eb0b24295ec57b26ba66d5ea279d7c57cc47b56a7d79a51a746de3adeb8954a",
+      "sample_file": "zh-1440-heavy-game-progress.sample.json",
+      "sample_sha256": "ee0f093068083068eddaee0a7ad53534bfd4a91495ec29656e7e19540031e465",
+      "viewport_proof": {
+        "clip": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900,
+          "scale": 1
+        },
+        "before": {
+          "window": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 900
+          },
+          "internal": [
+            {
+              "id": "game-controls",
+              "top": 1066,
+              "left": 0
+            }
+          ]
+        },
+        "after": {
+          "window": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 900
+          },
+          "internal": [
+            {
+              "id": "game-controls",
+              "top": 1066,
+              "left": 0
+            }
+          ]
+        },
+        "scroll_unchanged": true
+      },
+      "fonts": [
+        {
+          "familyName": "Microsoft JhengHei UI",
+          "postScriptName": "MicrosoftJhengHeiUIBold",
+          "isCustomFont": false,
+          "glyphCount": 5
+        }
+      ],
+      "target": {
+        "id": "text-10",
+        "text": "0 / 6",
+        "ink": {
+          "x": 192,
+          "y": 366.81971153846155,
+          "width": 34.59375,
+          "height": 14.21033653846154
+        },
+        "safe": {
+          "x": 128,
+          "y": 8,
+          "width": 1184,
+          "height": 1185.984375
+        },
+        "owner": "game-progress",
+        "computed": {
+          "family": "system-ui, \"Noto Sans TC\", sans-serif",
+          "font": "800 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+          "size": "16px",
+          "weight": "800",
+          "stroke": "0px",
+          "letterSpacing": "normal",
+          "lineHeight": "26.4px",
+          "transform": "none"
+        },
+        "baseline_wrapper_verified": null,
+        "safe_sources": [
+          {
+            "owner": "lab",
+            "mode": "verified tiled_surface; actual #lab document border bounds with fixed 8px inset, independent of text",
+            "rect": {
+              "x": 128,
+              "y": 8,
+              "width": 1184,
+              "height": 1185.984375
+            },
+            "asset": "holiday-lab/assets/ui/paper.png",
+            "sha256": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+            "fixed_inset": 8
+          }
+        ],
+        "unclipped_ink": {
+          "x": 192,
+          "y": 366.81971153846155,
+          "width": 34.59375,
+          "height": 14.21033653846154
+        },
+        "measurements": [
+          {
+            "text": "0 / 6",
+            "baseline": 379,
+            "baseline_probe": {
+              "insertion": 5,
+              "range_unchanged": true,
+              "on_original_line": true,
+              "before": {
+                "x": 192,
+                "y": 363,
+                "width": 34.125,
+                "height": 20
+              },
+              "after": {
+                "x": 192,
+                "y": 363,
+                "width": 34.125,
+                "height": 20
+              }
+            },
+            "advance": {
+              "x": 192,
+              "y": 363,
+              "width": 34.125,
+              "height": 20
+            },
+            "ink": {
+              "x": 192,
+              "y": 366.81971153846155,
+              "width": 34.59375,
+              "height": 14.21033653846154
+            },
+            "actualBoundingBox": {
+              "left": 0,
+              "right": 34.59375,
+              "ascent": 12,
+              "descent": 2
+            }
+          }
+        ]
+      },
+      "checks": {
+        "full_text": true,
+        "unclipped": true,
+        "fixed_safe": true,
+        "safe": true,
+        "viewport": true,
+        "cdp_font": true
+      },
+      "pass": true,
+      "whole_case_geometry": [],
+      "native_wall_time": "2026-10-23T03:58:54.606Z",
+      "native_ms": 1617.2000000476837
+    },
+    {
+      "id": "zh/1440/heavy/output:labor-start-1",
+      "job_id": "heavy",
+      "lang": "zh",
+      "width": 1440,
+      "owner": "output:labor-start-1",
+      "actual_owner": "layout-owner-14",
+      "reconstructed": "10",
+      "raw_range_join_exact": true,
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 10
+        },
+        {
+          "artist": 0,
+          "start": 26
+        },
+        {
+          "artist": 0,
+          "start": 10
+        },
+        {
+          "artist": 1,
+          "start": 22
+        },
+        {
+          "artist": 0,
+          "start": 34
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "reason": "load",
+        "loads": [
+          36,
+          24,
+          0
+        ],
+        "validJobs": 0
+      },
+      "inputs": {
+        "schedule": [
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 1,
+            "start": 10
+          },
+          {
+            "artist": 0,
+            "start": 26
+          },
+          {
+            "artist": 0,
+            "start": 10
+          },
+          {
+            "artist": 1,
+            "start": 22
+          },
+          {
+            "artist": 0,
+            "start": 34
+          }
+        ],
+        "ranges": [
+          {
+            "id": "labor-start-0",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-1",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "10"
+          },
+          {
+            "id": "labor-start-2",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "26"
+          },
+          {
+            "id": "labor-start-3",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "10"
+          },
+          {
+            "id": "labor-start-4",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "22"
+          },
+          {
+            "id": "labor-start-5",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "34"
+          }
+        ]
+      },
+      "text_identity_before": {
+        "game-hint": "一個人的工作太多了，請把任務分出去。",
+        "labor-status": "一個人的工作太多了，請把任務分出去。",
+        "labor-loads": "工作量 A 36／B 24／C 0",
+        "game-progress": "0 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "10",
+        "output:labor-start-2": "26",
+        "output:labor-start-3": "10",
+        "output:labor-start-4": "22",
+        "output:labor-start-5": "34"
+      },
+      "text_identity_after": {
+        "game-hint": "一個人的工作太多了，請把任務分出去。",
+        "labor-status": "一個人的工作太多了，請把任務分出去。",
+        "labor-loads": "工作量 A 36／B 24／C 0",
+        "game-progress": "0 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "10",
+        "output:labor-start-2": "26",
+        "output:labor-start-3": "10",
+        "output:labor-start-4": "22",
+        "output:labor-start-5": "34"
+      },
+      "receipt_before": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "receipt_after": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "image_file": "zh-1440-heavy-output-labor-start-1.png",
+      "image_sha256": "60277434382b49b41997b3c06561ab410e6ad2f6255151b0b89340d59844704c",
+      "sample_file": "zh-1440-heavy-output-labor-start-1.sample.json",
+      "sample_sha256": "1932992d209e07e137af44e06b198a7af97f36329e8b32cc6bf8abf8c6485bd0",
+      "viewport_proof": {
+        "clip": {
+          "x": 0,
+          "y": 302,
+          "width": 1440,
+          "height": 900,
+          "scale": 1
+        },
+        "before": {
+          "window": {
+            "x": 0,
+            "y": 302,
+            "width": 1440,
+            "height": 900
+          },
+          "internal": [
+            {
+              "id": "game-controls",
+              "top": 319,
+              "left": 0
+            }
+          ]
+        },
+        "after": {
+          "window": {
+            "x": 0,
+            "y": 302,
+            "width": 1440,
+            "height": 900
+          },
+          "internal": [
+            {
+              "id": "game-controls",
+              "top": 319,
+              "left": 0
+            }
+          ]
+        },
+        "scroll_unchanged": true
+      },
+      "fonts": [
+        {
+          "familyName": "Microsoft JhengHei UI",
+          "postScriptName": "MicrosoftJhengHeiUIRegular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ],
+      "target": {
+        "id": "text-22",
+        "text": "10",
+        "ink": {
+          "x": 1125.703125,
+          "y": 823.265625,
+          "width": 17.2734375,
+          "height": 12
+        },
+        "safe": {
+          "x": 882.1325120192307,
+          "y": 514.859375,
+          "width": 354.610255719496,
+          "height": 627.5
+        },
+        "owner": "layout-owner-14",
+        "computed": {
+          "family": "system-ui, \"Noto Sans TC\", sans-serif",
+          "font": "",
+          "size": "16px",
+          "weight": "400",
+          "stroke": "0px",
+          "letterSpacing": "normal",
+          "lineHeight": "normal",
+          "transform": "none"
+        },
+        "baseline_wrapper_verified": null,
+        "safe_sources": [
+          {
+            "rect": {
+              "x": 882.1325120192307,
+              "y": 514.859375,
+              "width": 354.610255719496,
+              "height": 627.5
+            },
+            "owner": "layout-owner-8",
+            "asset": "holiday-lab/assets/ui/panel.png",
+            "sha256": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+            "source_slice": [
+              48,
+              48,
+              48,
+              48
+            ],
+            "css_borders": [
+              18,
+              17.986571618037136,
+              18,
+              17.986571618037136
+            ],
+            "source_paper_rect": {
+              "x": 29,
+              "y": 29,
+              "width": 222,
+              "height": 155
+            },
+            "mode": "certified per-asset four-edge border-image mapping through actual CSS borders"
+          }
+        ],
+        "unclipped_ink": {
+          "x": 1125.703125,
+          "y": 823.265625,
+          "width": 17.2734375,
+          "height": 12
+        },
+        "measurements": [
+          {
+            "text": "10",
+            "baseline": 835.265625,
+            "baseline_probe": {
+              "insertion": 2,
+              "range_unchanged": true,
+              "on_original_line": true,
+              "before": {
+                "x": 1124.703125,
+                "y": 819.265625,
+                "width": 18.546875,
+                "height": 20
+              },
+              "after": {
+                "x": 1124.703125,
+                "y": 819.265625,
+                "width": 18.546875,
+                "height": 20
+              }
+            },
+            "advance": {
+              "x": 1124.703125,
+              "y": 819.265625,
+              "width": 18.546875,
+              "height": 20
+            },
+            "ink": {
+              "x": 1125.703125,
+              "y": 823.265625,
+              "width": 17.2734375,
+              "height": 12
+            },
+            "actualBoundingBox": {
+              "left": -1,
+              "right": 18.2734375,
+              "ascent": 12,
+              "descent": 0
+            }
+          }
+        ]
+      },
+      "checks": {
+        "full_text": true,
+        "unclipped": true,
+        "fixed_safe": true,
+        "safe": true,
+        "viewport": true,
+        "cdp_font": true
+      },
+      "pass": true,
+      "whole_case_geometry": [],
+      "native_wall_time": "2026-10-23T03:58:55.120Z",
+      "native_ms": 2131.100000023842
+    },
+    {
+      "id": "en/1440/max-slider/game-progress",
+      "job_id": "max-slider",
+      "lang": "en",
+      "width": 1440,
+      "owner": "game-progress",
+      "actual_owner": "game-progress",
+      "reconstructed": "0 / 6",
+      "raw_range_join_exact": true,
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 10
+        },
+        {
+          "artist": 2,
+          "start": 22
+        },
+        {
+          "artist": 0,
+          "start": 10
+        },
+        {
+          "artist": 1,
+          "start": 42
+        },
+        {
+          "artist": 2,
+          "start": 34
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "reason": "deadline",
+        "loads": [
+          20,
+          24,
+          16
+        ],
+        "validJobs": 0
+      },
+      "inputs": {
+        "schedule": [
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 1,
+            "start": 10
+          },
+          {
+            "artist": 2,
+            "start": 22
+          },
+          {
+            "artist": 0,
+            "start": 10
+          },
+          {
+            "artist": 1,
+            "start": 42
+          },
+          {
+            "artist": 2,
+            "start": 34
+          }
+        ],
+        "ranges": [
+          {
+            "id": "labor-start-0",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-1",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "10"
+          },
+          {
+            "id": "labor-start-2",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "22"
+          },
+          {
+            "id": "labor-start-3",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "10"
+          },
+          {
+            "id": "labor-start-4",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "42"
+          },
+          {
+            "id": "labor-start-5",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "34"
+          }
+        ]
+      },
+      "text_identity_before": {
+        "game-hint": "A task misses the deadline. Try an earlier handoff.",
+        "labor-status": "A task misses the deadline. Try an earlier handoff.",
+        "labor-loads": "Workload A 20 / B 24 / C 16",
+        "game-progress": "0 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "10",
+        "output:labor-start-2": "22",
+        "output:labor-start-3": "10",
+        "output:labor-start-4": "42",
+        "output:labor-start-5": "34"
+      },
+      "text_identity_after": {
+        "game-hint": "A task misses the deadline. Try an earlier handoff.",
+        "labor-status": "A task misses the deadline. Try an earlier handoff.",
+        "labor-loads": "Workload A 20 / B 24 / C 16",
+        "game-progress": "0 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "10",
+        "output:labor-start-2": "22",
+        "output:labor-start-3": "10",
+        "output:labor-start-4": "42",
+        "output:labor-start-5": "34"
+      },
+      "receipt_before": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "receipt_after": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "image_file": "en-1440-max-slider-game-progress.png",
+      "image_sha256": "63382cde9aa37adba8e22d3df7c6cc04c0e5b8b2de0d201472e916a812f2e952",
+      "sample_file": "en-1440-max-slider-game-progress.sample.json",
+      "sample_sha256": "69f974780052d373d2ebca2be85e417f903538c793462acf635ac33c8eaa0947",
+      "viewport_proof": {
+        "clip": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900,
+          "scale": 1
+        },
+        "before": {
+          "window": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 900
+          },
+          "internal": [
+            {
+              "id": "game-controls",
+              "top": 1524,
+              "left": 0
+            }
+          ]
+        },
+        "after": {
+          "window": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 900
+          },
+          "internal": [
+            {
+              "id": "game-controls",
+              "top": 1524,
+              "left": 0
+            }
+          ]
+        },
+        "scroll_unchanged": true
+      },
+      "fonts": [
+        {
+          "familyName": "Microsoft JhengHei UI",
+          "postScriptName": "MicrosoftJhengHeiUIBold",
+          "isCustomFont": false,
+          "glyphCount": 5
+        }
+      ],
+      "target": {
+        "id": "text-10",
+        "text": "0 / 6",
+        "ink": {
+          "x": 192,
+          "y": 366.81971153846155,
+          "width": 34.59375,
+          "height": 14.21033653846154
+        },
+        "safe": {
+          "x": 128,
+          "y": 8,
+          "width": 1184,
+          "height": 1185.984375
+        },
+        "owner": "game-progress",
+        "computed": {
+          "family": "system-ui, \"Noto Sans TC\", sans-serif",
+          "font": "800 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+          "size": "16px",
+          "weight": "800",
+          "stroke": "0px",
+          "letterSpacing": "normal",
+          "lineHeight": "26.4px",
+          "transform": "none"
+        },
+        "baseline_wrapper_verified": null,
+        "safe_sources": [
+          {
+            "owner": "lab",
+            "mode": "verified tiled_surface; actual #lab document border bounds with fixed 8px inset, independent of text",
+            "rect": {
+              "x": 128,
+              "y": 8,
+              "width": 1184,
+              "height": 1185.984375
+            },
+            "asset": "holiday-lab/assets/ui/paper.png",
+            "sha256": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+            "fixed_inset": 8
+          }
+        ],
+        "unclipped_ink": {
+          "x": 192,
+          "y": 366.81971153846155,
+          "width": 34.59375,
+          "height": 14.21033653846154
+        },
+        "measurements": [
+          {
+            "text": "0 / 6",
+            "baseline": 379,
+            "baseline_probe": {
+              "insertion": 5,
+              "range_unchanged": true,
+              "on_original_line": true,
+              "before": {
+                "x": 192,
+                "y": 363,
+                "width": 34.125,
+                "height": 20
+              },
+              "after": {
+                "x": 192,
+                "y": 363,
+                "width": 34.125,
+                "height": 20
+              }
+            },
+            "advance": {
+              "x": 192,
+              "y": 363,
+              "width": 34.125,
+              "height": 20
+            },
+            "ink": {
+              "x": 192,
+              "y": 366.81971153846155,
+              "width": 34.59375,
+              "height": 14.21033653846154
+            },
+            "actualBoundingBox": {
+              "left": 0,
+              "right": 34.59375,
+              "ascent": 12,
+              "descent": 2
+            }
+          }
+        ]
+      },
+      "checks": {
+        "full_text": true,
+        "unclipped": true,
+        "fixed_safe": true,
+        "safe": true,
+        "viewport": true,
+        "cdp_font": true
+      },
+      "pass": true,
+      "whole_case_geometry": [],
+      "native_wall_time": "2026-10-23T03:58:56.766Z",
+      "native_ms": 1559.9000000357628
+    },
+    {
+      "id": "en/1440/max-slider/output:labor-start-4",
+      "job_id": "max-slider",
+      "lang": "en",
+      "width": 1440,
+      "owner": "output:labor-start-4",
+      "actual_owner": "layout-owner-23",
+      "reconstructed": "42",
+      "raw_range_join_exact": true,
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 10
+        },
+        {
+          "artist": 2,
+          "start": 22
+        },
+        {
+          "artist": 0,
+          "start": 10
+        },
+        {
+          "artist": 1,
+          "start": 42
+        },
+        {
+          "artist": 2,
+          "start": 34
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "reason": "deadline",
+        "loads": [
+          20,
+          24,
+          16
+        ],
+        "validJobs": 0
+      },
+      "inputs": {
+        "schedule": [
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 1,
+            "start": 10
+          },
+          {
+            "artist": 2,
+            "start": 22
+          },
+          {
+            "artist": 0,
+            "start": 10
+          },
+          {
+            "artist": 1,
+            "start": 42
+          },
+          {
+            "artist": 2,
+            "start": 34
+          }
+        ],
+        "ranges": [
+          {
+            "id": "labor-start-0",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-1",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "10"
+          },
+          {
+            "id": "labor-start-2",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "22"
+          },
+          {
+            "id": "labor-start-3",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "10"
+          },
+          {
+            "id": "labor-start-4",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "42"
+          },
+          {
+            "id": "labor-start-5",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "34"
+          }
+        ]
+      },
+      "text_identity_before": {
+        "game-hint": "A task misses the deadline. Try an earlier handoff.",
+        "labor-status": "A task misses the deadline. Try an earlier handoff.",
+        "labor-loads": "Workload A 20 / B 24 / C 16",
+        "game-progress": "0 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "10",
+        "output:labor-start-2": "22",
+        "output:labor-start-3": "10",
+        "output:labor-start-4": "42",
+        "output:labor-start-5": "34"
+      },
+      "text_identity_after": {
+        "game-hint": "A task misses the deadline. Try an earlier handoff.",
+        "labor-status": "A task misses the deadline. Try an earlier handoff.",
+        "labor-loads": "Workload A 20 / B 24 / C 16",
+        "game-progress": "0 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "10",
+        "output:labor-start-2": "22",
+        "output:labor-start-3": "10",
+        "output:labor-start-4": "42",
+        "output:labor-start-5": "34"
+      },
+      "receipt_before": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "receipt_after": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "image_file": "en-1440-max-slider-output-labor-start-4.png",
+      "image_sha256": "218857b93e3dd4d774a1278e57135608ebf6435f8b71c228459f739ea0f1f804",
+      "sample_file": "en-1440-max-slider-output-labor-start-4.sample.json",
+      "sample_sha256": "c620c49ca9301d8e93f35057f38fd6aa606a4aaa06aaeb719c69639adb2f6978",
+      "viewport_proof": {
+        "clip": {
+          "x": 0,
+          "y": 302,
+          "width": 1440,
+          "height": 900,
+          "scale": 1
+        },
+        "before": {
+          "window": {
+            "x": 0,
+            "y": 302,
+            "width": 1440,
+            "height": 900
+          },
+          "internal": [
+            {
+              "id": "game-controls",
+              "top": 1359,
+              "left": 0
+            }
+          ]
+        },
+        "after": {
+          "window": {
+            "x": 0,
+            "y": 302,
+            "width": 1440,
+            "height": 900
+          },
+          "internal": [
+            {
+              "id": "game-controls",
+              "top": 1359,
+              "left": 0
+            }
+          ]
+        },
+        "scroll_unchanged": true
+      },
+      "fonts": [
+        {
+          "familyName": "Microsoft JhengHei UI",
+          "postScriptName": "MicrosoftJhengHeiUIRegular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ],
+      "target": {
+        "id": "text-21",
+        "text": "42",
+        "ink": {
+          "x": 1127.734375,
+          "y": 823.140625,
+          "width": 19.2734375,
+          "height": 12
+        },
+        "safe": {
+          "x": 882.1325120192307,
+          "y": 514.859375,
+          "width": 354.610255719496,
+          "height": 627.5
+        },
+        "owner": "layout-owner-23",
+        "computed": {
+          "family": "system-ui, \"Noto Sans TC\", sans-serif",
+          "font": "",
+          "size": "16px",
+          "weight": "400",
+          "stroke": "0px",
+          "letterSpacing": "normal",
+          "lineHeight": "normal",
+          "transform": "none"
+        },
+        "baseline_wrapper_verified": null,
+        "safe_sources": [
+          {
+            "rect": {
+              "x": 882.1325120192307,
+              "y": 514.859375,
+              "width": 354.610255719496,
+              "height": 627.5
+            },
+            "owner": "layout-owner-8",
+            "asset": "holiday-lab/assets/ui/panel.png",
+            "sha256": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+            "source_slice": [
+              48,
+              48,
+              48,
+              48
+            ],
+            "css_borders": [
+              18,
+              17.986571618037136,
+              18,
+              17.986571618037136
+            ],
+            "source_paper_rect": {
+              "x": 29,
+              "y": 29,
+              "width": 222,
+              "height": 155
+            },
+            "mode": "certified per-asset four-edge border-image mapping through actual CSS borders"
+          }
+        ],
+        "unclipped_ink": {
+          "x": 1127.734375,
+          "y": 823.140625,
+          "width": 19.2734375,
+          "height": 12
+        },
+        "measurements": [
+          {
+            "text": "42",
+            "baseline": 835.140625,
+            "baseline_probe": {
+              "insertion": 2,
+              "range_unchanged": true,
+              "on_original_line": true,
+              "before": {
+                "x": 1128.734375,
+                "y": 819.140625,
+                "width": 18.546875,
+                "height": 20
+              },
+              "after": {
+                "x": 1128.734375,
+                "y": 819.140625,
+                "width": 18.546875,
+                "height": 20
+              }
+            },
+            "advance": {
+              "x": 1128.734375,
+              "y": 819.140625,
+              "width": 18.546875,
+              "height": 20
+            },
+            "ink": {
+              "x": 1127.734375,
+              "y": 823.140625,
+              "width": 19.2734375,
+              "height": 12
+            },
+            "actualBoundingBox": {
+              "left": 1,
+              "right": 18.2734375,
+              "ascent": 12,
+              "descent": 0
+            }
+          }
+        ]
+      },
+      "checks": {
+        "full_text": true,
+        "unclipped": true,
+        "fixed_safe": true,
+        "safe": true,
+        "viewport": true,
+        "cdp_font": true
+      },
+      "pass": true,
+      "whole_case_geometry": [],
+      "native_wall_time": "2026-10-23T03:58:57.297Z",
+      "native_ms": 2090.800000011921
+    },
+    {
+      "id": "ja/1440/mixed/game-progress",
+      "job_id": "mixed",
+      "lang": "ja",
+      "width": 1440,
+      "owner": "game-progress",
+      "actual_owner": "game-progress",
+      "reconstructed": "1 / 6",
+      "raw_range_join_exact": true,
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        },
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "reason": "dependency",
+        "loads": [
+          20,
+          24,
+          16
+        ],
+        "validJobs": 1
+      },
+      "inputs": {
+        "schedule": [
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 1,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          },
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 1,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          }
+        ],
+        "ranges": [
+          {
+            "id": "labor-start-0",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-1",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-2",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-3",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-4",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-5",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          }
+        ]
+      },
+      "text_identity_before": {
+        "game-hint": "前の作業が終わる前に、次が始まっています。",
+        "labor-status": "前の作業が終わる前に、次が始まっています。",
+        "labor-loads": "作業量 A20／B24／C16",
+        "game-progress": "1 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "0",
+        "output:labor-start-2": "0",
+        "output:labor-start-3": "0",
+        "output:labor-start-4": "0",
+        "output:labor-start-5": "0"
+      },
+      "text_identity_after": {
+        "game-hint": "前の作業が終わる前に、次が始まっています。",
+        "labor-status": "前の作業が終わる前に、次が始まっています。",
+        "labor-loads": "作業量 A20／B24／C16",
+        "game-progress": "1 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "0",
+        "output:labor-start-2": "0",
+        "output:labor-start-3": "0",
+        "output:labor-start-4": "0",
+        "output:labor-start-5": "0"
+      },
+      "receipt_before": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "receipt_after": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "image_file": "ja-1440-mixed-game-progress.png",
+      "image_sha256": "2c36ad534f2a81c80ca03c05752e32df59aca5b1e5fff41999a425d5cf8c033e",
+      "sample_file": "ja-1440-mixed-game-progress.sample.json",
+      "sample_sha256": "7d0cbea86195e9e75d3c3824da1e82cc3f4d2a773291aee1353d996ea9b2c715",
+      "viewport_proof": {
+        "clip": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900,
+          "scale": 1
+        },
+        "before": {
+          "window": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 900
+          },
+          "internal": [
+            {
+              "id": "game-controls",
+              "top": 1092,
+              "left": 0
+            }
+          ]
+        },
+        "after": {
+          "window": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 900
+          },
+          "internal": [
+            {
+              "id": "game-controls",
+              "top": 1092,
+              "left": 0
+            }
+          ]
+        },
+        "scroll_unchanged": true
+      },
+      "fonts": [
+        {
+          "familyName": "Microsoft JhengHei UI",
+          "postScriptName": "MicrosoftJhengHeiUIBold",
+          "isCustomFont": false,
+          "glyphCount": 5
+        }
+      ],
+      "target": {
+        "id": "text-10",
+        "text": "1 / 6",
+        "ink": {
+          "x": 193,
+          "y": 366.81971153846155,
+          "width": 33.59375,
+          "height": 14.21033653846154
+        },
+        "safe": {
+          "x": 128,
+          "y": 8,
+          "width": 1184,
+          "height": 1185.984375
+        },
+        "owner": "game-progress",
+        "computed": {
+          "family": "system-ui, \"Noto Sans TC\", sans-serif",
+          "font": "800 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+          "size": "16px",
+          "weight": "800",
+          "stroke": "0px",
+          "letterSpacing": "normal",
+          "lineHeight": "26.4px",
+          "transform": "none"
+        },
+        "baseline_wrapper_verified": null,
+        "safe_sources": [
+          {
+            "owner": "lab",
+            "mode": "verified tiled_surface; actual #lab document border bounds with fixed 8px inset, independent of text",
+            "rect": {
+              "x": 128,
+              "y": 8,
+              "width": 1184,
+              "height": 1185.984375
+            },
+            "asset": "holiday-lab/assets/ui/paper.png",
+            "sha256": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+            "fixed_inset": 8
+          }
+        ],
+        "unclipped_ink": {
+          "x": 193,
+          "y": 366.81971153846155,
+          "width": 33.59375,
+          "height": 14.21033653846154
+        },
+        "measurements": [
+          {
+            "text": "1 / 6",
+            "baseline": 379,
+            "baseline_probe": {
+              "insertion": 5,
+              "range_unchanged": true,
+              "on_original_line": true,
+              "before": {
+                "x": 192,
+                "y": 363,
+                "width": 34.125,
+                "height": 20
+              },
+              "after": {
+                "x": 192,
+                "y": 363,
+                "width": 34.125,
+                "height": 20
+              }
+            },
+            "advance": {
+              "x": 192,
+              "y": 363,
+              "width": 34.125,
+              "height": 20
+            },
+            "ink": {
+              "x": 193,
+              "y": 366.81971153846155,
+              "width": 33.59375,
+              "height": 14.21033653846154
+            },
+            "actualBoundingBox": {
+              "left": -1,
+              "right": 34.59375,
+              "ascent": 12,
+              "descent": 2
+            }
+          }
+        ]
+      },
+      "checks": {
+        "full_text": true,
+        "unclipped": true,
+        "fixed_safe": true,
+        "safe": true,
+        "viewport": true,
+        "cdp_font": true
+      },
+      "pass": true,
+      "whole_case_geometry": [],
+      "native_wall_time": "2026-10-23T03:58:59.101Z",
+      "native_ms": 1704.3999999761581
+    },
+    {
+      "id": "ja/1440/mixed/output:labor-start-3",
+      "job_id": "mixed",
+      "lang": "ja",
+      "width": 1440,
+      "owner": "output:labor-start-3",
+      "actual_owner": "layout-owner-20",
+      "reconstructed": "0",
+      "raw_range_join_exact": true,
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        },
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "reason": "dependency",
+        "loads": [
+          20,
+          24,
+          16
+        ],
+        "validJobs": 1
+      },
+      "inputs": {
+        "schedule": [
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 1,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          },
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 1,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          }
+        ],
+        "ranges": [
+          {
+            "id": "labor-start-0",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-1",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-2",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-3",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-4",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-5",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          }
+        ]
+      },
+      "text_identity_before": {
+        "game-hint": "前の作業が終わる前に、次が始まっています。",
+        "labor-status": "前の作業が終わる前に、次が始まっています。",
+        "labor-loads": "作業量 A20／B24／C16",
+        "game-progress": "1 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "0",
+        "output:labor-start-2": "0",
+        "output:labor-start-3": "0",
+        "output:labor-start-4": "0",
+        "output:labor-start-5": "0"
+      },
+      "text_identity_after": {
+        "game-hint": "前の作業が終わる前に、次が始まっています。",
+        "labor-status": "前の作業が終わる前に、次が始まっています。",
+        "labor-loads": "作業量 A20／B24／C16",
+        "game-progress": "1 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "0",
+        "output:labor-start-2": "0",
+        "output:labor-start-3": "0",
+        "output:labor-start-4": "0",
+        "output:labor-start-5": "0"
+      },
+      "receipt_before": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "receipt_after": {
+        "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+        "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+        "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+        "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+        "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+        "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+      },
+      "image_file": "ja-1440-mixed-output-labor-start-3.png",
+      "image_sha256": "b4699eb62cc71b4cd0ec411aee69f18dfaea7035e9d297a87071cfdec955005e",
+      "sample_file": "ja-1440-mixed-output-labor-start-3.sample.json",
+      "sample_sha256": "fb83ced1790262cbb42e53fc052c9e79f680989349fccb6a649ae37e21966aee",
+      "viewport_proof": {
+        "clip": {
+          "x": 0,
+          "y": 302,
+          "width": 1440,
+          "height": 900,
+          "scale": 1
+        },
+        "before": {
+          "window": {
+            "x": 0,
+            "y": 302,
+            "width": 1440,
+            "height": 900
+          },
+          "internal": [
+            {
+              "id": "game-controls",
+              "top": 778,
+              "left": 0
+            }
+          ]
+        },
+        "after": {
+          "window": {
+            "x": 0,
+            "y": 302,
+            "width": 1440,
+            "height": 900
+          },
+          "internal": [
+            {
+              "id": "game-controls",
+              "top": 778,
+              "left": 0
+            }
+          ]
+        },
+        "scroll_unchanged": true
+      },
+      "fonts": [
+        {
+          "familyName": "Microsoft JhengHei UI",
+          "postScriptName": "MicrosoftJhengHeiUIRegular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        }
+      ],
+      "target": {
+        "id": "text-22",
+        "text": "0",
+        "ink": {
+          "x": 1133.375,
+          "y": 823.40625,
+          "width": 9,
+          "height": 12
+        },
+        "safe": {
+          "x": 882.1325120192307,
+          "y": 514.859375,
+          "width": 354.610255719496,
+          "height": 627.5
+        },
+        "owner": "layout-owner-20",
+        "computed": {
+          "family": "system-ui, \"Noto Sans TC\", sans-serif",
+          "font": "",
+          "size": "16px",
+          "weight": "400",
+          "stroke": "0px",
+          "letterSpacing": "normal",
+          "lineHeight": "normal",
+          "transform": "none"
+        },
+        "baseline_wrapper_verified": null,
+        "safe_sources": [
+          {
+            "rect": {
+              "x": 882.1325120192307,
+              "y": 514.859375,
+              "width": 354.610255719496,
+              "height": 627.5
+            },
+            "owner": "layout-owner-8",
+            "asset": "holiday-lab/assets/ui/panel.png",
+            "sha256": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+            "source_slice": [
+              48,
+              48,
+              48,
+              48
+            ],
+            "css_borders": [
+              18,
+              17.986571618037136,
+              18,
+              17.986571618037136
+            ],
+            "source_paper_rect": {
+              "x": 29,
+              "y": 29,
+              "width": 222,
+              "height": 155
+            },
+            "mode": "certified per-asset four-edge border-image mapping through actual CSS borders"
+          }
+        ],
+        "unclipped_ink": {
+          "x": 1133.375,
+          "y": 823.40625,
+          "width": 9,
+          "height": 12
+        },
+        "measurements": [
+          {
+            "text": "0",
+            "baseline": 835.40625,
+            "baseline_probe": {
+              "insertion": 1,
+              "range_unchanged": true,
+              "on_original_line": true,
+              "before": {
+                "x": 1133.375,
+                "y": 819.40625,
+                "width": 9.28125,
+                "height": 20
+              },
+              "after": {
+                "x": 1133.375,
+                "y": 819.40625,
+                "width": 9.28125,
+                "height": 20
+              }
+            },
+            "advance": {
+              "x": 1133.375,
+              "y": 819.40625,
+              "width": 9.28125,
+              "height": 20
+            },
+            "ink": {
+              "x": 1133.375,
+              "y": 823.40625,
+              "width": 9,
+              "height": 12
+            },
+            "actualBoundingBox": {
+              "left": 0,
+              "right": 9,
+              "ascent": 12,
+              "descent": 0
+            }
+          }
+        ]
+      },
+      "checks": {
+        "full_text": true,
+        "unclipped": true,
+        "fixed_safe": true,
+        "safe": true,
+        "viewport": true,
+        "cdp_font": true
+      },
+      "pass": true,
+      "whole_case_geometry": [],
+      "native_wall_time": "2026-10-23T03:58:59.669Z",
+      "native_ms": 2272.300000011921
+    }
+  ],
+  "sessions": [
+    {
+      "context": "zh/320",
+      "page_errors": [],
+      "console_errors": [],
+      "http_errors": []
+    },
+    {
+      "context": "en/320",
+      "page_errors": [],
+      "console_errors": [],
+      "http_errors": []
+    },
+    {
+      "context": "ja/320",
+      "page_errors": [],
+      "console_errors": [],
+      "http_errors": []
+    },
+    {
+      "context": "zh/1440",
+      "page_errors": [],
+      "console_errors": [],
+      "http_errors": []
+    },
+    {
+      "context": "zh/320",
+      "page_errors": [],
+      "console_errors": [],
+      "http_errors": []
+    },
+    {
+      "context": "en/320",
+      "page_errors": [],
+      "console_errors": [],
+      "http_errors": []
+    },
+    {
+      "context": "ja/320",
+      "page_errors": [],
+      "console_errors": [],
+      "http_errors": []
+    },
+    {
+      "context": "zh/1440",
+      "page_errors": [],
+      "console_errors": [],
+      "http_errors": []
+    },
+    {
+      "context": "en/1440",
+      "page_errors": [],
+      "console_errors": [],
+      "http_errors": []
+    },
+    {
+      "context": "ja/1440",
+      "page_errors": [],
+      "console_errors": [],
+      "http_errors": []
+    }
+  ],
+  "complete": true,
+  "global_bound": false,
+  "product_writes": 0,
+  "source_before": {
+    "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+    "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+    "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+    "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+    "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+    "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+  },
+  "browser": "151.0.7922.34",
+  "source_after": {
+    "games/labor.mjs": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58",
+    "runner.mjs": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+    "lab.css": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+    "assets/ui/paper.png": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92",
+    "assets/ui/panel.png": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5",
+    "msjh.ttc": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac"
+  },
+  "completed": "2026-10-23T03:58:59.726Z",
+  "pass": true
+}

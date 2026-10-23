@@ -1,0 +1,154 @@
+TAP version 13
+# Subtest: new exact coverage preserves every previous canonical key and source run
+ok 1 - new exact coverage preserves every previous canonical key and source run
+  ---
+  duration_ms: 1.9801
+  type: 'test'
+  ...
+# Subtest: wrong matrix selection cannot report success after dropping prior coverage
+ok 2 - wrong matrix selection cannot report success after dropping prior coverage
+  ---
+  duration_ms: 1.9597
+  type: 'test'
+  ...
+# Subtest: sampler, source snapshot, duplicate missing keys and geometry changes reject
+ok 3 - sampler, source snapshot, duplicate missing keys and geometry changes reject
+  ---
+  duration_ms: 0.9967
+  type: 'test'
+  ...
+# Subtest: CLI requires explicit finite viewport audit and keeps hidden320 only as supplement
+ok 4 - CLI requires explicit finite viewport audit and keeps hidden320 only as supplement
+  ---
+  duration_ms: 190.2746
+  type: 'test'
+  ...
+# Subtest: index binds exact audit metadata and eligible keys; same audit assembly retains full-node refs
+ok 5 - index binds exact audit metadata and eligible keys; same audit assembly retains full-node refs
+  ---
+  duration_ms: 288.0404
+  type: 'test'
+  ...
+# Subtest: assembly cannot substitute broader auditB to re-enable index auditA hidden320
+ok 6 - assembly cannot substitute broader auditB to re-enable index auditA hidden320
+  ---
+  duration_ms: 187.3387
+  type: 'test'
+  ...
+# Subtest: shared verification stale group hash rejects regardless of resolver order
+ok 7 - shared verification stale group hash rejects regardless of resolver order
+  ---
+  duration_ms: 14.4508
+  type: 'test'
+  ...
+# Subtest: assembly refuses legacy index missing bound visibility metadata
+ok 8 - assembly refuses legacy index missing bound visibility metadata
+  ---
+  duration_ms: 191.1373
+  type: 'test'
+  ...
+# Subtest: assembly refuses changed eligible index keyset and duplicate keys
+ok 9 - assembly refuses changed eligible index keyset and duplicate keys
+  ---
+  duration_ms: 565.4268
+  type: 'test'
+  ...
+# Subtest: assembly does not silently import old fixed static1/static2 absent from index
+ok 10 - assembly does not silently import old fixed static1/static2 absent from index
+  ---
+  duration_ms: 185.3842
+  type: 'test'
+  ...
+# Subtest: combines ten old completed sessions with two fresh, retains original NO and excludes failed old cases
+ok 11 - combines ten old completed sessions with two fresh, retains original NO and excludes failed old cases
+  ---
+  duration_ms: 100.3698
+  type: 'test'
+  ...
+# Subtest: refuses absent/duplicate complete session and incomplete replay
+ok 12 - refuses absent/duplicate complete session and incomplete replay
+  ---
+  duration_ms: 191.7348
+  type: 'test'
+  ...
+# Subtest: refuses mismatched source, missing independent receipt, false verification and changed evidence hash
+ok 13 - refuses mismatched source, missing independent receipt, false verification and changed evidence hash
+  ---
+  duration_ms: 213.2883
+  type: 'test'
+  ...
+# Subtest: refuses changed screenshot bytes and case shard bytes
+ok 14 - refuses changed screenshot bytes and case shard bytes
+  ---
+  duration_ms: 145.173
+  type: 'test'
+  ...
+# Subtest: rejects postreceipt before fresh run, comparison/actual receipt disagreement, and contradictory original NO
+ok 15 - rejects postreceipt before fresh run, comparison/actual receipt disagreement, and contradictory original NO
+  ---
+  duration_ms: 168.7708
+  type: 'test'
+  ...
+# Subtest: post-child parent check binds raw, full case, sample and image bytes
+ok 16 - post-child parent check binds raw, full case, sample and image bytes
+  ---
+  duration_ms: 48.5933
+  type: 'test'
+  ...
+# Subtest: same key and stored geometry[] cannot hide changed source or full-node payload
+ok 17 - same key and stored geometry[] cannot hide changed source or full-node payload
+  ---
+  duration_ms: 19.0794
+  type: 'test'
+  ...
+# Subtest: native mobile sampler_sha256 is the verified function receipt, not missing metadata
+ok 18 - native mobile sampler_sha256 is the verified function receipt, not missing metadata
+  ---
+  duration_ms: 1.0479
+  type: 'test'
+  ...
+# Subtest: native errors and legacy matrices retain their actual receipt schemas
+ok 19 - native errors and legacy matrices retain their actual receipt schemas
+  ---
+  duration_ms: 0.2263
+  type: 'test'
+  ...
+# Subtest: absent receipt, another source, sampler or map cannot pass by field substitution
+ok 20 - absent receipt, another source, sampler or map cannot pass by field substitution
+  ---
+  duration_ms: 1.556
+  type: 'test'
+  ...
+# Subtest: bound supplemental scope retains exact complete wrappers
+ok 21 - bound supplemental scope retains exact complete wrappers
+  ---
+  duration_ms: 15.0052
+  type: 'test'
+  ...
+# Subtest: changed proof or verifier bytes cannot inherit indexed eligibility
+ok 22 - changed proof or verifier bytes cannot inherit indexed eligibility
+  ---
+  duration_ms: 8.5609
+  type: 'test'
+  ...
+# Subtest: removed, duplicated, widened or replacement context is not silently accepted
+ok 23 - removed, duplicated, widened or replacement context is not silently accepted
+  ---
+  duration_ms: 12.944
+  type: 'test'
+  ...
+# Subtest: supplement cannot drop full nodes, alter dimensions or promote global scope
+ok 24 - supplement cannot drop full nodes, alter dimensions or promote global scope
+  ---
+  duration_ms: 16.9798
+  type: 'test'
+  ...
+1..24
+# tests 24
+# suites 0
+# pass 24
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1728.2608

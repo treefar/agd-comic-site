@@ -1,0 +1,86 @@
+constitution/zh/320 branches=6, owners=11
+constitution/en/320 branches=6, owners=11
+constitution/ja/320 branches=6, owners=11
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+... Skipped lines
+
+  {
+    checks: {
+      fixedPaper: true,
+      inputs: true,
+      safe: true,
+...
+    image_sha256: '2e801ee3fec77c9889a4e563f3c7545ce80af577737a036cf6c7103be3db7405',
++   joined_by: {
++     lang: 'zh',
++     same_full_inputs: true,
++     same_module_sha256: '79981ce5881980141fa9be5e996901ca4875eb0c41a2a21547724f28a2b78bf7',
++     same_owner: 'lny-observation',
++     same_phase: 0,
++     same_source_feedback: '眼睛還沒睜大，驚喜看不出來。試著把眼睛張開。',
++     width: 320
++   },
++   new_rejection_identity: {
++     'game-hint': '眼睛還沒睜大，驚喜看不出來。試著把眼睛張開。',
++     'lny-observation': '眼睛還沒睜大，驚喜看不出來。試著把眼睛張開。'
++   },
++   new_rejection_inputs: [
++     {
++       id: 'lny-brow',
++       max: '30',
++       min: '-30',
++       pressed: null,
++       value: '-10'
++     },
++     {
++       id: 'lny-eyes',
++       max: '1.5',
++       min: '0.5',
++       pressed: null,
++       value: '1'
++     },
++     {
++       id: 'lny-mouth',
++       max: '1',
++       min: '0',
++       pressed: null,
++       value: '0.5'
++     },
++     {
++       id: 'lny-pose',
++       max: '40',
++       min: '0',
++       pressed: null,
++       value: '0'
++     },
++     {
++       id: 'lny-intent-0',
++       max: null,
++       min: null,
++       pressed: 'false',
++       value: ''
++     },
++     {
++       id: 'lny-intent-1',
++       max: null,
++       min: null,
++       pressed: 'true',
++       value: ''
++     }
++   ],
+    not_same_new_capture: true,
+    original_case_id: 'lunar-new-year/zh/game/errors/phase-0/surprise-eyes',
+    owner: 'lny-observation',
+    raw_case_index: 65,
+    source_report: 'C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-22T23-47-50-576Z\\report.json',
+
+    at audit (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\finite-hints-joined-20261023\adapter.cjs:50:44)
+    at Object.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\finite-hints-joined-20261023\adapter.cjs:63:31)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47

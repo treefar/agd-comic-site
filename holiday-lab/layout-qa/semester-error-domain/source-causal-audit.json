@@ -1,0 +1,4310 @@
+{
+  "source": {
+    "base": "http://127.0.0.1:8845",
+    "game_sha256": "b184437bf226354f8602ed5567c4ac941bff6539176f9575cf737a808d7fbcc9",
+    "receipt_file": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\semester-error-domain\\source-receipts.json",
+    "receipt_sha256": "0cc7c5dc7b02380fcd3fc7d6b3021c47e3cb9520052b4c54182d8e5c437ab704",
+    "composite_file": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\semester-session-composite\\evidence.json",
+    "composite_sha256": "77c43b2f87b9ee3aea0c4a2a4b0bcd0a0d8e9f475b32a571efaa94a717ff0b13"
+  },
+  "projection_states": 4695,
+  "hint_kinds": 19,
+  "all_callback_function_inventory": [
+    {
+      "line": 42,
+      "start": 7307,
+      "end": 13484,
+      "type": "FunctionDeclaration",
+      "name": "mount",
+      "sha256": "03a2505362a4284038bcf3a1347a588a52d524443eec72b5ad8790376f9ec9c2",
+      "source": "function mount(ctx){\r\n let state=newTrip(),dead=false;const owned=[];\r\n owned.push(ctx.sprite('target',{id:'semester-fiction-map',x:50,y:50,width:92,height:90,opacity:.8}));\r\n stops.forEach((m,i)=>owned.push(ctx.sprite(m.key,{id:`semester-stop-${i}`,x:18+m.x*16,y:24+m.y*22,width:20,height:25,z:2})));\r\n const player=ctx.sprite('actor1',{id:'semester-player',x:18,y:76,width:15,height:27,z:4});owned.push(player);\r\n ctx.ui.text('semester-help',W('虛構漫畫示意圖，非真實校園導航。到站只是諮詢，不是選課、抵免或畢業核准。','Fictional comic map, not real campus navigation. A visit is advice, not registration, credit transfer or graduation approval.','架空の漫画マップです。実際の校内案内ではありません。到着は相談で、履修・単位・卒業の承認ではありません。'));\r\n const brief=ctx.ui.text('semester-brief',briefs[0]);\r\n const groups=[['course-plan'],['course-record'],['graduation','credit']].map((ids,i)=>ctx.ui.choice({id:`semester-task-${i}`,label:W('我要辦什麼？','What do I need?','何をしたい？'),options:ids.map(id=>({value:id,label:taskBy(id).label})),value:'',onChange:id=>{if(dead)return;const r=selectTask(state,id);if(!r.accepted){groups[state.round]?.setValue(state.selectedTask||'');ctx.hint(W('這件諮詢已完成，請選本幕還沒處理的事。','That consultation is complete. Choose a remaining question in this act.','その相談は完了しました。この幕の残りを選ぼう。'));return;}state=r.state;windows.setValue('');render();ctx.hint(taskBy(id).next);}}));\r\n const windows=ctx.ui.choice({id:'semester-window',label:W('想先找哪個窗口？','Which contact will you try?','どの窓口に聞く？'),options:stops.map(s=>({value:s.id,label:s.name})),value:'',onChange:id=>{if(dead)return;const r=selectWindow(state,id);if(!r.accepted){windows.setValue('');ctx.hint(W('先選你要辦的事，再判斷窗口。','Choose your question before choosing a contact.','先に用事を選び、それから窓口を考えよう。'));return;}state=r.state;render();ctx.hint(W('窗口選好了。移動到這站，再按「到站詢問」。','Contact chosen. Move to that stop, then Ask here.','窓口を選びました。移動して「ここで相談」を押そう。'));}});\r\n ctx.ui.text('semester-stops',W('圖上位置：系辦在左上，註冊課務組在右上，授課教室在下方中央。圖像只代表窗口。','Map key: department office at upper left, Registration and Curriculum Section at upper right, classroom at lower centre. Icons stand for contacts only.','図の左上は学科事務室、右上は註冊課務組（学籍・履修担当）、下中央は教室。絵は窓口の記号です。'));\r\n const plan=ctx.ui.text('semester-plan',W('','','')),location=ctx.ui.text('semester-position',W('','','')),guideNote=ctx.ui.text('semester-guide-note',W('','',''));\r\n const link=ctx.controls.ownerDocument.createElement('a');link.id='semester-guide';link.className='site-link';link.href=guideHref(ctx.lang);link.target='_blank';link.rel='noopener noreferrer';ctx.controls.append(link);\r\n function render(){\r\n  player.update({x:18+state.position.x*16,y:32+state.position.y*22});ctx.setProgress(state.round,3);groups.forEach((g,i)=>{g.element.hidden=i!==state.round;});if(state.round<3)ctx.ui.setText(brief,briefs[state.round]);\r\n  const t=taskBy(state.selectedTask),s=stopBy(state.selectedWindow),last=taskBy(state.visits.at(-1)?.taskId),shown=t||last;\r\n  ctx.ui.setText(plan,W(`要問：${t?.label.zh||'先選事情'}｜窗口：${s?.name.zh||'尚未選擇'}${state.round===2?`｜已問 ${state.visits.filter(v=>v.round===2).length}/2 件`:''}`,`Question: ${t?.label.en||'choose one'} | Contact: ${s?.name.en||'not chosen'}${state.round===2?` | ${state.visits.filter(v=>v.round===2).length}/2 asked`:''}`,`用事：${t?.label.ja||'先に選択'}｜窓口：${s?.name.ja||'未選択'}${state.round===2?`｜${state.visits.filter(v=>v.round===2).length}/2件完了`:''}`));\r\n  ctx.ui.setText(location,W(`目前：第${state.position.x+1}列、第${state.position.y+1}行，走了${state.route.length-1}步。方向按鈕或方向鍵皆可移動。`,`Position: column ${state.position.x+1}, row ${state.position.y+1}; ${state.route.length-1} steps. Use direction buttons or arrow keys.`,`現在：${state.position.x+1}列${state.position.y+1}行、${state.route.length-1}歩。方向ボタンか矢印キーで移動。`));\r\n  const label=shown?.cardName||W('在校指南','Student guide','在校ガイド');link.textContent=ctx.words(W(`開啟在校指南｜${label.zh}`,`Open Student Guide | ${label.en}`,`在校ガイドを開く｜${label.ja}`));link.dataset.guideCard=shown?.cardId||'';\r\n  ctx.ui.setText(guideNote,W(`打開後，在頁內搜尋「${label.zh}」；按指南確認當期規定與承辦。`,`After opening, search the guide for “${label.en}”. Check current rules and contacts there.`,`開いたら「${label.ja}」をページ内で検索。当期の規定と窓口を確認。`));\r\n }\r\n const go=d=>{if(dead)return;const r=move(state,d);state=r.state;if(!r.accepted){ctx.hint(W('到了圖邊，換個方向。','Map edge reached. Try another direction.','地図の端です。別の方向へ。'));return;}ctx.sound('click');render();};\r\n const directions=ctx.ui.group('semester-direction-controls');for(const[d,label]of [['up',W('往上','Up','上へ')],['left',W('往左','Left','左へ')],['down',W('往下','Down','下へ')],['right',W('往右','Right','右へ')]])directions.append(ctx.ui.button({id:`semester-${d}`,label,onClick:()=>go(d)}));\r\n ctx.ui.button({id:'semester-visit',label:W('到站詢問','Ask here','ここで相談'),onClick:()=>{\r\n  if(dead||state.round>=3)return;const r=interact(state);state=r.state;if(!r.accepted){ctx.sound('error');const task=taskBy(state.selectedTask);ctx.hint(r.reason==='choose-task'?W('先選你要辦的事，走到座標本身不能完成任務。','Choose a question first. Reaching coordinates alone does not complete an errand.','先に用事を選ぼう。座標に着くだけでは完了しません。'):r.reason==='choose-window'?W('還沒選要找的窗口。先判斷誰能處理這件事。','Choose the contact you want to ask.','まだ窓口を選んでいません。誰に聞くか考えよう。'):r.reason==='travel'?W('還沒到你選的窗口。先看圖例，再移動。','You have not reached your chosen contact. Check the map key and move.','選んだ窓口にはまだ着いていません。図の説明を見て移動しよう。'):W(`${stopBy(state.selectedWindow).name.zh}不是這項任務的程序窗口。${task.next.zh}`,`${stopBy(state.selectedWindow).name.en} is not the process contact for this question. ${task.next.en}`,`${stopBy(state.selectedWindow).name.ja}は今回の手続き窓口ではありません。${task.next.ja}`));return;}\r\n  ctx.sound('success');groups.forEach(g=>g.setValue(''));windows.setValue('');if(state.round===3){ctx.setProgress(3,3);ctx.complete(makeResult(state));return;}render();ctx.hint(W('找對諮詢窗口了，不代表申請核准。繼續選下一件事，或打開真指南。','You found a contact, not an approval. Choose another question or open the real guide.','相談先が見つかりました。承認ではありません。次の用事か実際のガイドへ。'));\r\n }});\r\n const off=ctx.onKey(e=>{if(['input','select','textarea','button','a'].includes(e.target?.tagName?.toLowerCase()))return;const d={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right'}[e.key];if(d){e.preventDefault();go(d);}});render();return {destroy(){dead=true;off();owned.forEach(s=>s.remove());}};\r\n}"
+    },
+    {
+      "line": 45,
+      "start": 7497,
+      "end": 7606,
+      "type": "ArrowFunctionExpression",
+      "name": "anonymous",
+      "sha256": "dfbac122c4a8690370b0a7d27f66f60e9e52b1caa312d4db5c613bd485e370fa",
+      "source": "(m,i)=>owned.push(ctx.sprite(m.key,{id:`semester-stop-${i}`,x:18+m.x*16,y:24+m.y*22,width:20,height:25,z:2}))"
+    },
+    {
+      "line": 49,
+      "start": 8112,
+      "end": 8615,
+      "type": "ArrowFunctionExpression",
+      "name": "groups",
+      "sha256": "644d0edccfe0a6aeb3070d680555ad8f4fbb989162c53551a1029284ec24f8d1",
+      "source": "(ids,i)=>ctx.ui.choice({id:`semester-task-${i}`,label:W('我要辦什麼？','What do I need?','何をしたい？'),options:ids.map(id=>({value:id,label:taskBy(id).label})),value:'',onChange:id=>{if(dead)return;const r=selectTask(state,id);if(!r.accepted){groups[state.round]?.setValue(state.selectedTask||'');ctx.hint(W('這件諮詢已完成，請選本幕還沒處理的事。','That consultation is complete. Choose a remaining question in this act.','その相談は完了しました。この幕の残りを選ぼう。'));return;}state=r.state;windows.setValue('');render();ctx.hint(taskBy(id).next);}})"
+    },
+    {
+      "line": 49,
+      "start": 8280,
+      "end": 8613,
+      "type": "ArrowFunctionExpression",
+      "name": "groups",
+      "sha256": "f8ebf05c6af1410ad41913dea4ed5f4b0dbf908e2993dea706da860c95e2f143",
+      "source": "id=>{if(dead)return;const r=selectTask(state,id);if(!r.accepted){groups[state.round]?.setValue(state.selectedTask||'');ctx.hint(W('這件諮詢已完成，請選本幕還沒處理的事。','That consultation is complete. Choose a remaining question in this act.','その相談は完了しました。この幕の残りを選ぼう。'));return;}state=r.state;windows.setValue('');render();ctx.hint(taskBy(id).next);}"
+    },
+    {
+      "line": 50,
+      "start": 8799,
+      "end": 9139,
+      "type": "ArrowFunctionExpression",
+      "name": "windows",
+      "sha256": "be0937732c6f84ac355d48018ba771b8a9d693d67b8097133abfee61fc6ce2be",
+      "source": "id=>{if(dead)return;const r=selectWindow(state,id);if(!r.accepted){windows.setValue('');ctx.hint(W('先選你要辦的事，再判斷窗口。','Choose your question before choosing a contact.','先に用事を選び、それから窓口を考えよう。'));return;}state=r.state;render();ctx.hint(W('窗口選好了。移動到這站，再按「到站詢問」。','Contact chosen. Move to that stop, then Ask here.','窓口を選びました。移動して「ここで相談」を押そう。'));}"
+    },
+    {
+      "line": 54,
+      "start": 9811,
+      "end": 11400,
+      "type": "FunctionDeclaration",
+      "name": "render",
+      "sha256": "19adf2a7c2cc4fbd9f0fd3f704558c99c3546ce5869a6a2030ed07b9f219a02b",
+      "source": "function render(){\r\n  player.update({x:18+state.position.x*16,y:32+state.position.y*22});ctx.setProgress(state.round,3);groups.forEach((g,i)=>{g.element.hidden=i!==state.round;});if(state.round<3)ctx.ui.setText(brief,briefs[state.round]);\r\n  const t=taskBy(state.selectedTask),s=stopBy(state.selectedWindow),last=taskBy(state.visits.at(-1)?.taskId),shown=t||last;\r\n  ctx.ui.setText(plan,W(`要問：${t?.label.zh||'先選事情'}｜窗口：${s?.name.zh||'尚未選擇'}${state.round===2?`｜已問 ${state.visits.filter(v=>v.round===2).length}/2 件`:''}`,`Question: ${t?.label.en||'choose one'} | Contact: ${s?.name.en||'not chosen'}${state.round===2?` | ${state.visits.filter(v=>v.round===2).length}/2 asked`:''}`,`用事：${t?.label.ja||'先に選択'}｜窓口：${s?.name.ja||'未選択'}${state.round===2?`｜${state.visits.filter(v=>v.round===2).length}/2件完了`:''}`));\r\n  ctx.ui.setText(location,W(`目前：第${state.position.x+1}列、第${state.position.y+1}行，走了${state.route.length-1}步。方向按鈕或方向鍵皆可移動。`,`Position: column ${state.position.x+1}, row ${state.position.y+1}; ${state.route.length-1} steps. Use direction buttons or arrow keys.`,`現在：${state.position.x+1}列${state.position.y+1}行、${state.route.length-1}歩。方向ボタンか矢印キーで移動。`));\r\n  const label=shown?.cardName||W('在校指南','Student guide','在校ガイド');link.textContent=ctx.words(W(`開啟在校指南｜${label.zh}`,`Open Student Guide | ${label.en}`,`在校ガイドを開く｜${label.ja}`));link.dataset.guideCard=shown?.cardId||'';\r\n  ctx.ui.setText(guideNote,W(`打開後，在頁內搜尋「${label.zh}」；按指南確認當期規定與承辦。`,`After opening, search the guide for “${label.en}”. Check current rules and contacts there.`,`開いたら「${label.ja}」をページ内で検索。当期の規定と窓口を確認。`));\r\n }"
+    },
+    {
+      "line": 62,
+      "start": 11412,
+      "end": 11605,
+      "type": "ArrowFunctionExpression",
+      "name": "go",
+      "sha256": "3894a4e0d8b1eef3c4ec212e539bb772ce7b39ca0ce911b812c1aa6ab1279aa4",
+      "source": "d=>{if(dead)return;const r=move(state,d);state=r.state;if(!r.accepted){ctx.hint(W('到了圖邊，換個方向。','Map edge reached. Try another direction.','地図の端です。別の方向へ。'));return;}ctx.sound('click');render();}"
+    },
+    {
+      "line": 64,
+      "start": 11967,
+      "end": 13162,
+      "type": "ArrowFunctionExpression",
+      "name": "onClick",
+      "sha256": "c5c8867e08d8b28df9e92d4e3f429db88b8cc4b34fdeffb5737edfb8d84da337",
+      "source": "()=>{\r\n  if(dead||state.round>=3)return;const r=interact(state);state=r.state;if(!r.accepted){ctx.sound('error');const task=taskBy(state.selectedTask);ctx.hint(r.reason==='choose-task'?W('先選你要辦的事，走到座標本身不能完成任務。','Choose a question first. Reaching coordinates alone does not complete an errand.','先に用事を選ぼう。座標に着くだけでは完了しません。'):r.reason==='choose-window'?W('還沒選要找的窗口。先判斷誰能處理這件事。','Choose the contact you want to ask.','まだ窓口を選んでいません。誰に聞くか考えよう。'):r.reason==='travel'?W('還沒到你選的窗口。先看圖例，再移動。','You have not reached your chosen contact. Check the map key and move.','選んだ窓口にはまだ着いていません。図の説明を見て移動しよう。'):W(`${stopBy(state.selectedWindow).name.zh}不是這項任務的程序窗口。${task.next.zh}`,`${stopBy(state.selectedWindow).name.en} is not the process contact for this question. ${task.next.en}`,`${stopBy(state.selectedWindow).name.ja}は今回の手続き窓口ではありません。${task.next.ja}`));return;}\r\n  ctx.sound('success');groups.forEach(g=>g.setValue(''));windows.setValue('');if(state.round===3){ctx.setProgress(3,3);ctx.complete(makeResult(state));return;}render();ctx.hint(W('找對諮詢窗口了，不代表申請核准。繼續選下一件事，或打開真指南。','You found a contact, not an approval. Choose another question or open the real guide.','相談先が見つかりました。承認ではありません。次の用事か実際のガイドへ。'));\r\n }"
+    }
+  ],
+  "state_assignment_inventory": [
+    {
+      "line": 49,
+      "source": "state=r.state"
+    },
+    {
+      "line": 50,
+      "source": "state=r.state"
+    },
+    {
+      "line": 53,
+      "source": "link.id='semester-guide'"
+    },
+    {
+      "line": 53,
+      "source": "link.className='site-link'"
+    },
+    {
+      "line": 53,
+      "source": "link.href=guideHref(ctx.lang)"
+    },
+    {
+      "line": 53,
+      "source": "link.target='_blank'"
+    },
+    {
+      "line": 53,
+      "source": "link.rel='noopener noreferrer'"
+    },
+    {
+      "line": 55,
+      "source": "g.element.hidden=i!==state.round"
+    },
+    {
+      "line": 59,
+      "source": "link.textContent=ctx.words(W(`開啟在校指南｜${label.zh}`,`Open Student Guide | ${label.en}`,`在校ガイドを開く｜${label.ja}`))"
+    },
+    {
+      "line": 59,
+      "source": "link.dataset.guideCard=shown?.cardId||''"
+    },
+    {
+      "line": 62,
+      "source": "state=r.state"
+    },
+    {
+      "line": 65,
+      "source": "state=r.state"
+    },
+    {
+      "line": 68,
+      "source": "dead=true"
+    }
+  ],
+  "static_ui_and_choice_inventory": [
+    {
+      "line": 47,
+      "source": "ctx.ui.text('semester-help',W('虛構漫畫示意圖，非真實校園導航。到站只是諮詢，不是選課、抵免或畢業核准。','Fictional comic map, not real campus navigation. A visit is advice, not registration, credit transfer or graduation approval.','架空の漫画マップです。実際の校内案内ではありません。到着は相談で、履修・単位・卒業の承認ではありません。'))"
+    },
+    {
+      "line": 48,
+      "source": "ctx.ui.text('semester-brief',briefs[0])"
+    },
+    {
+      "line": 49,
+      "source": "ctx.ui.choice({id:`semester-task-${i}`,label:W('我要辦什麼？','What do I need?','何をしたい？'),options:ids.map(id=>({value:id,label:taskBy(id).label})),value:'',onChange:id=>{if(dead)return;const r=selectTask(state,id);if(!r.accepted){groups[state.round]?.setValue(state.selectedTask||'');ctx.hint(W('這件諮詢已完成，請選本幕還沒處理的事。','That consultation is complete. Choose a remaining question in this act.','その相談は完了しました。この幕の残りを選ぼう。'));return;}state=r.state;windows.setValue('');render();ctx.hint(taskBy(id).next);}})"
+    },
+    {
+      "line": 50,
+      "source": "ctx.ui.choice({id:'semester-window',label:W('想先找哪個窗口？','Which contact will you try?','どの窓口に聞く？'),options:stops.map(s=>({value:s.id,label:s.name})),value:'',onChange:id=>{if(dead)return;const r=selectWindow(state,id);if(!r.accepted){windows.setValue('');ctx.hint(W('先選你要辦的事，再判斷窗口。','Choose your question before choosing a contact.','先に用事を選び、それから窓口を考えよう。'));return;}state=r.state;render();ctx.hint(W('窗口選好了。移動到這站，再按「到站詢問」。','Contact chosen. Move to that stop, then Ask here.','窓口を選びました。移動して「ここで相談」を押そう。'));}})"
+    },
+    {
+      "line": 51,
+      "source": "ctx.ui.text('semester-stops',W('圖上位置：系辦在左上，註冊課務組在右上，授課教室在下方中央。圖像只代表窗口。','Map key: department office at upper left, Registration and Curriculum Section at upper right, classroom at lower centre. Icons stand for contacts only.','図の左上は学科事務室、右上は註冊課務組（学籍・履修担当）、下中央は教室。絵は窓口の記号です。'))"
+    },
+    {
+      "line": 52,
+      "source": "ctx.ui.text('semester-plan',W('','',''))"
+    },
+    {
+      "line": 52,
+      "source": "ctx.ui.text('semester-position',W('','',''))"
+    },
+    {
+      "line": 52,
+      "source": "ctx.ui.text('semester-guide-note',W('','',''))"
+    },
+    {
+      "line": 63,
+      "source": "ctx.ui.group('semester-direction-controls')"
+    },
+    {
+      "line": 63,
+      "source": "ctx.ui.button({id:`semester-${d}`,label,onClick:()=>go(d)})"
+    },
+    {
+      "line": 64,
+      "source": "ctx.ui.button({id:'semester-visit',label:W('到站詢問','Ask here','ここで相談'),onClick:()=>{\r\n  if(dead||state.round>=3)return;const r=interact(state);state=r.state;if(!r.accepted){ctx.sound('error');const task=taskBy(state.selectedTask);ctx.hint(r.reason==='choose-task'?W('先選你要辦的事，走到座標本身不能完成任務。','Choose a question first. Reaching coordinates alone does not complete an errand.','先に用事を選ぼう。座標に着くだけでは完了しません。'):r.reason==='choose-window'?W('還沒選要找的窗口。先判斷誰能處理這件事。','Choose the contact you want to ask.','まだ窓口を選んでいません。誰に聞くか考えよう。'):r.reason==='travel'?W('還沒到你選的窗口。先看圖例，再移動。','You have not reached your chosen contact. Check the map key and move.','選んだ窓口にはまだ着いていません。図の説明を見て移動しよう。'):W(`${stopBy(state.selectedWindow).name.zh}不是這項任務的程序窗口。${task.next.zh}`,`${stopBy(state.selectedWindow).name.en} is not the process contact for this question. ${task.next.en}`,`${stopBy(state.selectedWindow).name.ja}は今回の手続き窓口ではありません。${task.next.ja}`));return;}\r\n  ctx.sound('success');groups.forEach(g=>g.setValue(''));windows.setValue('');if(state.round===3){ctx.setProgress(3,3);ctx.complete(makeResult(state));return;}render();ctx.hint(W('找對諮詢窗口了，不代表申請核准。繼續選下一件事，或打開真指南。','You found a contact, not an approval. Choose another question or open the real guide.','相談先が見つかりました。承認ではありません。次の用事か実際のガイドへ。'));\r\n }})"
+    }
+  ],
+  "immutable_mount_oracle": [
+    {
+      "index": 0,
+      "hint_kind": "initial",
+      "witness": [],
+      "all_three_language_values_equal": true,
+      "technical_not_browser": true
+    },
+    {
+      "index": 1,
+      "hint_kind": "task-next/course-plan",
+      "witness": [
+        {
+          "type": "task",
+          "id": "course-plan"
+        }
+      ],
+      "all_three_language_values_equal": true,
+      "technical_not_browser": true
+    },
+    {
+      "index": 2,
+      "hint_kind": "window-before-task",
+      "witness": [
+        {
+          "type": "window",
+          "id": "department"
+        }
+      ],
+      "all_three_language_values_equal": true,
+      "technical_not_browser": true
+    },
+    {
+      "index": 4,
+      "hint_kind": "edge",
+      "witness": [
+        {
+          "type": "move",
+          "id": "left"
+        }
+      ],
+      "all_three_language_values_equal": true,
+      "technical_not_browser": true
+    },
+    {
+      "index": 6,
+      "hint_kind": "choose-task",
+      "witness": [
+        {
+          "type": "visit"
+        }
+      ],
+      "all_three_language_values_equal": true,
+      "technical_not_browser": true
+    },
+    {
+      "index": 7,
+      "hint_kind": "window-chosen",
+      "witness": [
+        {
+          "type": "task",
+          "id": "course-plan"
+        },
+        {
+          "type": "window",
+          "id": "department"
+        }
+      ],
+      "all_three_language_values_equal": true,
+      "technical_not_browser": true
+    },
+    {
+      "index": 13,
+      "hint_kind": "choose-window",
+      "witness": [
+        {
+          "type": "task",
+          "id": "course-plan"
+        },
+        {
+          "type": "visit"
+        }
+      ],
+      "all_three_language_values_equal": true,
+      "technical_not_browser": true
+    },
+    {
+      "index": 27,
+      "hint_kind": "travel",
+      "witness": [
+        {
+          "type": "task",
+          "id": "course-plan"
+        },
+        {
+          "type": "window",
+          "id": "department"
+        },
+        {
+          "type": "visit"
+        }
+      ],
+      "all_three_language_values_equal": true,
+      "technical_not_browser": true
+    },
+    {
+      "index": 113,
+      "hint_kind": "consultation-success",
+      "witness": [
+        {
+          "type": "task",
+          "id": "course-plan"
+        },
+        {
+          "type": "window",
+          "id": "department"
+        },
+        {
+          "type": "move",
+          "id": "up"
+        },
+        {
+          "type": "move",
+          "id": "up"
+        },
+        {
+          "type": "visit"
+        }
+      ],
+      "all_three_language_values_equal": true,
+      "technical_not_browser": true
+    },
+    {
+      "index": 146,
+      "hint_kind": "wrong-window/course-plan/classroom",
+      "witness": [
+        {
+          "type": "task",
+          "id": "course-plan"
+        },
+        {
+          "type": "window",
+          "id": "classroom"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "visit"
+        }
+      ],
+      "all_three_language_values_equal": true,
+      "technical_not_browser": true
+    },
+    {
+      "index": 176,
+      "hint_kind": "task-next/course-record",
+      "witness": [
+        {
+          "type": "task",
+          "id": "course-plan"
+        },
+        {
+          "type": "window",
+          "id": "department"
+        },
+        {
+          "type": "move",
+          "id": "up"
+        },
+        {
+          "type": "move",
+          "id": "up"
+        },
+        {
+          "type": "visit"
+        },
+        {
+          "type": "task",
+          "id": "course-record"
+        }
+      ],
+      "all_three_language_values_equal": true,
+      "technical_not_browser": true
+    },
+    {
+      "index": 310,
+      "hint_kind": "wrong-window/course-record/department",
+      "witness": [
+        {
+          "type": "task",
+          "id": "course-plan"
+        },
+        {
+          "type": "window",
+          "id": "department"
+        },
+        {
+          "type": "move",
+          "id": "up"
+        },
+        {
+          "type": "move",
+          "id": "up"
+        },
+        {
+          "type": "visit"
+        },
+        {
+          "type": "task",
+          "id": "course-record"
+        },
+        {
+          "type": "window",
+          "id": "department"
+        },
+        {
+          "type": "visit"
+        }
+      ],
+      "all_three_language_values_equal": true,
+      "technical_not_browser": true
+    },
+    {
+      "index": 619,
+      "hint_kind": "wrong-window/course-record/classroom",
+      "witness": [
+        {
+          "type": "task",
+          "id": "course-plan"
+        },
+        {
+          "type": "window",
+          "id": "department"
+        },
+        {
+          "type": "move",
+          "id": "up"
+        },
+        {
+          "type": "move",
+          "id": "up"
+        },
+        {
+          "type": "visit"
+        },
+        {
+          "type": "task",
+          "id": "course-record"
+        },
+        {
+          "type": "window",
+          "id": "classroom"
+        },
+        {
+          "type": "move",
+          "id": "down"
+        },
+        {
+          "type": "move",
+          "id": "down"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "visit"
+        }
+      ],
+      "all_three_language_values_equal": true,
+      "technical_not_browser": true
+    },
+    {
+      "index": 693,
+      "hint_kind": "task-next/graduation",
+      "witness": [
+        {
+          "type": "task",
+          "id": "course-plan"
+        },
+        {
+          "type": "window",
+          "id": "department"
+        },
+        {
+          "type": "move",
+          "id": "up"
+        },
+        {
+          "type": "move",
+          "id": "up"
+        },
+        {
+          "type": "visit"
+        },
+        {
+          "type": "task",
+          "id": "course-record"
+        },
+        {
+          "type": "window",
+          "id": "academic"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "visit"
+        },
+        {
+          "type": "task",
+          "id": "graduation"
+        }
+      ],
+      "all_three_language_values_equal": true,
+      "technical_not_browser": true
+    },
+    {
+      "index": 694,
+      "hint_kind": "task-next/credit",
+      "witness": [
+        {
+          "type": "task",
+          "id": "course-plan"
+        },
+        {
+          "type": "window",
+          "id": "department"
+        },
+        {
+          "type": "move",
+          "id": "up"
+        },
+        {
+          "type": "move",
+          "id": "up"
+        },
+        {
+          "type": "visit"
+        },
+        {
+          "type": "task",
+          "id": "course-record"
+        },
+        {
+          "type": "window",
+          "id": "academic"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "visit"
+        },
+        {
+          "type": "task",
+          "id": "credit"
+        }
+      ],
+      "all_three_language_values_equal": true,
+      "technical_not_browser": true
+    },
+    {
+      "index": 1112,
+      "hint_kind": "task-completed",
+      "witness": [
+        {
+          "type": "task",
+          "id": "course-plan"
+        },
+        {
+          "type": "window",
+          "id": "department"
+        },
+        {
+          "type": "move",
+          "id": "up"
+        },
+        {
+          "type": "move",
+          "id": "up"
+        },
+        {
+          "type": "visit"
+        },
+        {
+          "type": "task",
+          "id": "course-record"
+        },
+        {
+          "type": "window",
+          "id": "academic"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "visit"
+        },
+        {
+          "type": "task",
+          "id": "graduation"
+        },
+        {
+          "type": "window",
+          "id": "academic"
+        },
+        {
+          "type": "visit"
+        },
+        {
+          "type": "task",
+          "id": "graduation"
+        }
+      ],
+      "all_three_language_values_equal": true,
+      "technical_not_browser": true
+    },
+    {
+      "index": 2206,
+      "hint_kind": "wrong-window/graduation/classroom",
+      "witness": [
+        {
+          "type": "task",
+          "id": "course-plan"
+        },
+        {
+          "type": "window",
+          "id": "department"
+        },
+        {
+          "type": "move",
+          "id": "up"
+        },
+        {
+          "type": "move",
+          "id": "up"
+        },
+        {
+          "type": "visit"
+        },
+        {
+          "type": "task",
+          "id": "course-record"
+        },
+        {
+          "type": "window",
+          "id": "academic"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "visit"
+        },
+        {
+          "type": "task",
+          "id": "graduation"
+        },
+        {
+          "type": "window",
+          "id": "classroom"
+        },
+        {
+          "type": "move",
+          "id": "left"
+        },
+        {
+          "type": "move",
+          "id": "left"
+        },
+        {
+          "type": "move",
+          "id": "down"
+        },
+        {
+          "type": "move",
+          "id": "down"
+        },
+        {
+          "type": "visit"
+        }
+      ],
+      "all_three_language_values_equal": true,
+      "technical_not_browser": true
+    },
+    {
+      "index": 2220,
+      "hint_kind": "wrong-window/credit/department",
+      "witness": [
+        {
+          "type": "task",
+          "id": "course-plan"
+        },
+        {
+          "type": "window",
+          "id": "department"
+        },
+        {
+          "type": "move",
+          "id": "up"
+        },
+        {
+          "type": "move",
+          "id": "up"
+        },
+        {
+          "type": "visit"
+        },
+        {
+          "type": "task",
+          "id": "course-record"
+        },
+        {
+          "type": "window",
+          "id": "academic"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "visit"
+        },
+        {
+          "type": "task",
+          "id": "credit"
+        },
+        {
+          "type": "window",
+          "id": "department"
+        },
+        {
+          "type": "move",
+          "id": "left"
+        },
+        {
+          "type": "move",
+          "id": "left"
+        },
+        {
+          "type": "move",
+          "id": "left"
+        },
+        {
+          "type": "move",
+          "id": "left"
+        },
+        {
+          "type": "visit"
+        }
+      ],
+      "all_three_language_values_equal": true,
+      "technical_not_browser": true
+    },
+    {
+      "index": 2314,
+      "hint_kind": "wrong-window/credit/classroom",
+      "witness": [
+        {
+          "type": "task",
+          "id": "course-plan"
+        },
+        {
+          "type": "window",
+          "id": "department"
+        },
+        {
+          "type": "move",
+          "id": "up"
+        },
+        {
+          "type": "move",
+          "id": "up"
+        },
+        {
+          "type": "visit"
+        },
+        {
+          "type": "task",
+          "id": "course-record"
+        },
+        {
+          "type": "window",
+          "id": "academic"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "move",
+          "id": "right"
+        },
+        {
+          "type": "visit"
+        },
+        {
+          "type": "task",
+          "id": "credit"
+        },
+        {
+          "type": "window",
+          "id": "classroom"
+        },
+        {
+          "type": "move",
+          "id": "left"
+        },
+        {
+          "type": "move",
+          "id": "left"
+        },
+        {
+          "type": "move",
+          "id": "down"
+        },
+        {
+          "type": "move",
+          "id": "down"
+        },
+        {
+          "type": "visit"
+        }
+      ],
+      "all_three_language_values_equal": true,
+      "technical_not_browser": true
+    }
+  ],
+  "complete_contexts": [
+    {
+      "game": "semester",
+      "lang": "zh",
+      "width": 320,
+      "intent": "graduation-first",
+      "status": "route-complete-layout-not-certified",
+      "report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\semester-recovery-20261023\\recovered-run\\report.json",
+      "report_sha256": "3e488a47e734299c60ff57dfc04b1703c79c93468643ed3e602f93fa36abc3d7",
+      "original_session_status_preserved": true,
+      "error_source_receipts": [
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "先選你要辦的事，走到座標本身不能完成任務。"
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "先選你要辦的事，再判斷窗口。"
+        },
+        {
+          "label": "choose-window",
+          "task": "course-plan",
+          "source_hint_kind": "choose-window",
+          "feedback": "還沒選要找的窗口。先判斷誰能處理這件事。"
+        },
+        {
+          "label": "travel",
+          "task": "course-plan",
+          "source_hint_kind": "travel",
+          "feedback": "還沒到你選的窗口。先看圖例，再移動。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "course-plan",
+          "source_hint_kind": "wrong-window/course-plan/classroom",
+          "feedback": "授課教室不是這項任務的程序窗口。可先向系辦或註冊課務組詢問，帶自己的入學年課表與缺項。"
+        },
+        {
+          "label": "edge",
+          "task": "course-plan",
+          "source_hint_kind": "edge",
+          "feedback": "到了圖邊，換個方向。"
+        },
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "先選你要辦的事，走到座標本身不能完成任務。"
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "先選你要辦的事，再判斷窗口。"
+        },
+        {
+          "label": "choose-window",
+          "task": "course-record",
+          "source_hint_kind": "choose-window",
+          "feedback": "還沒選要找的窗口。先判斷誰能處理這件事。"
+        },
+        {
+          "label": "travel",
+          "task": "course-record",
+          "source_hint_kind": "travel",
+          "feedback": "還沒到你選的窗口。先看圖例，再移動。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "course-record",
+          "source_hint_kind": "wrong-window/course-record/classroom",
+          "feedback": "授課教室不是這項任務的程序窗口。到課不等於選到。紀錄維護的程序窗口是註冊課務組，先備好課程代碼與問題畫面。"
+        },
+        {
+          "label": "wrong-window-0",
+          "task": "course-record",
+          "source_hint_kind": "wrong-window/course-record/department",
+          "feedback": "系辦不是這項任務的程序窗口。到課不等於選到。紀錄維護的程序窗口是註冊課務組，先備好課程代碼與問題畫面。"
+        },
+        {
+          "label": "edge",
+          "task": "course-record",
+          "source_hint_kind": "edge",
+          "feedback": "到了圖邊，換個方向。"
+        },
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "先選你要辦的事，走到座標本身不能完成任務。"
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "先選你要辦的事，再判斷窗口。"
+        },
+        {
+          "label": "choose-window",
+          "task": "graduation",
+          "source_hint_kind": "choose-window",
+          "feedback": "還沒選要找的窗口。先判斷誰能處理這件事。"
+        },
+        {
+          "label": "travel",
+          "task": "graduation",
+          "source_hint_kind": "travel",
+          "feedback": "還沒到你選的窗口。先看圖例，再移動。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "graduation",
+          "source_hint_kind": "wrong-window/graduation/classroom",
+          "feedback": "授課教室不是這項任務的程序窗口。可先帶入學年課表與缺項向系辦或註冊課務組詢問，不把諮詢當作畢業核准。"
+        },
+        {
+          "label": "edge",
+          "task": "graduation",
+          "source_hint_kind": "edge",
+          "feedback": "到了圖邊，換個方向。"
+        },
+        {
+          "label": "choose-window",
+          "task": "credit",
+          "source_hint_kind": "choose-window",
+          "feedback": "還沒選要找的窗口。先判斷誰能處理這件事。"
+        },
+        {
+          "label": "travel",
+          "task": "credit",
+          "source_hint_kind": "travel",
+          "feedback": "還沒到你選的窗口。先看圖例，再移動。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "credit",
+          "source_hint_kind": "wrong-window/credit/classroom",
+          "feedback": "授課教室不是這項任務的程序窗口。抵免程序疑問可洽註冊課務組。是否受理與審核順序要看當期規定，諮詢不等於申請成功。"
+        },
+        {
+          "label": "wrong-window-0",
+          "task": "credit",
+          "source_hint_kind": "wrong-window/credit/department",
+          "feedback": "系辦不是這項任務的程序窗口。抵免程序疑問可洽註冊課務組。是否受理與審核順序要看當期規定，諮詢不等於申請成功。"
+        },
+        {
+          "label": "edge",
+          "task": "credit",
+          "source_hint_kind": "edge",
+          "feedback": "到了圖邊，換個方向。"
+        }
+      ],
+      "original_method_flags_preserved": true,
+      "only_read_metadata_not_resampled": true
+    },
+    {
+      "game": "semester",
+      "lang": "zh",
+      "width": 320,
+      "intent": "credit-first",
+      "status": "route-complete-layout-not-certified",
+      "report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\semester-recovery-20261023\\recovered-run\\report.json",
+      "report_sha256": "3e488a47e734299c60ff57dfc04b1703c79c93468643ed3e602f93fa36abc3d7",
+      "original_session_status_preserved": true,
+      "error_source_receipts": [
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "先選你要辦的事，走到座標本身不能完成任務。"
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "先選你要辦的事，再判斷窗口。"
+        },
+        {
+          "label": "choose-window",
+          "task": "course-plan",
+          "source_hint_kind": "choose-window",
+          "feedback": "還沒選要找的窗口。先判斷誰能處理這件事。"
+        },
+        {
+          "label": "travel",
+          "task": "course-plan",
+          "source_hint_kind": "travel",
+          "feedback": "還沒到你選的窗口。先看圖例，再移動。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "course-plan",
+          "source_hint_kind": "wrong-window/course-plan/classroom",
+          "feedback": "授課教室不是這項任務的程序窗口。可先向系辦或註冊課務組詢問，帶自己的入學年課表與缺項。"
+        },
+        {
+          "label": "edge",
+          "task": "course-plan",
+          "source_hint_kind": "edge",
+          "feedback": "到了圖邊，換個方向。"
+        },
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "先選你要辦的事，走到座標本身不能完成任務。"
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "先選你要辦的事，再判斷窗口。"
+        },
+        {
+          "label": "choose-window",
+          "task": "course-record",
+          "source_hint_kind": "choose-window",
+          "feedback": "還沒選要找的窗口。先判斷誰能處理這件事。"
+        },
+        {
+          "label": "travel",
+          "task": "course-record",
+          "source_hint_kind": "travel",
+          "feedback": "還沒到你選的窗口。先看圖例，再移動。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "course-record",
+          "source_hint_kind": "wrong-window/course-record/classroom",
+          "feedback": "授課教室不是這項任務的程序窗口。到課不等於選到。紀錄維護的程序窗口是註冊課務組，先備好課程代碼與問題畫面。"
+        },
+        {
+          "label": "wrong-window-0",
+          "task": "course-record",
+          "source_hint_kind": "wrong-window/course-record/department",
+          "feedback": "系辦不是這項任務的程序窗口。到課不等於選到。紀錄維護的程序窗口是註冊課務組，先備好課程代碼與問題畫面。"
+        },
+        {
+          "label": "edge",
+          "task": "course-record",
+          "source_hint_kind": "edge",
+          "feedback": "到了圖邊，換個方向。"
+        },
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "先選你要辦的事，走到座標本身不能完成任務。"
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "先選你要辦的事，再判斷窗口。"
+        },
+        {
+          "label": "choose-window",
+          "task": "credit",
+          "source_hint_kind": "choose-window",
+          "feedback": "還沒選要找的窗口。先判斷誰能處理這件事。"
+        },
+        {
+          "label": "travel",
+          "task": "credit",
+          "source_hint_kind": "travel",
+          "feedback": "還沒到你選的窗口。先看圖例，再移動。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "credit",
+          "source_hint_kind": "wrong-window/credit/classroom",
+          "feedback": "授課教室不是這項任務的程序窗口。抵免程序疑問可洽註冊課務組。是否受理與審核順序要看當期規定，諮詢不等於申請成功。"
+        },
+        {
+          "label": "wrong-window-0",
+          "task": "credit",
+          "source_hint_kind": "wrong-window/credit/department",
+          "feedback": "系辦不是這項任務的程序窗口。抵免程序疑問可洽註冊課務組。是否受理與審核順序要看當期規定，諮詢不等於申請成功。"
+        },
+        {
+          "label": "edge",
+          "task": "credit",
+          "source_hint_kind": "edge",
+          "feedback": "到了圖邊，換個方向。"
+        },
+        {
+          "label": "choose-window",
+          "task": "graduation",
+          "source_hint_kind": "choose-window",
+          "feedback": "還沒選要找的窗口。先判斷誰能處理這件事。"
+        },
+        {
+          "label": "travel",
+          "task": "graduation",
+          "source_hint_kind": "travel",
+          "feedback": "還沒到你選的窗口。先看圖例，再移動。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "graduation",
+          "source_hint_kind": "wrong-window/graduation/classroom",
+          "feedback": "授課教室不是這項任務的程序窗口。可先帶入學年課表與缺項向系辦或註冊課務組詢問，不把諮詢當作畢業核准。"
+        },
+        {
+          "label": "edge",
+          "task": "graduation",
+          "source_hint_kind": "edge",
+          "feedback": "到了圖邊，換個方向。"
+        }
+      ],
+      "original_method_flags_preserved": true,
+      "only_read_metadata_not_resampled": true
+    },
+    {
+      "game": "semester",
+      "lang": "zh",
+      "width": 1440,
+      "intent": "graduation-first",
+      "status": "route-complete-layout-not-certified",
+      "report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\semester-recovery-20261023\\recovered-run\\report.json",
+      "report_sha256": "3e488a47e734299c60ff57dfc04b1703c79c93468643ed3e602f93fa36abc3d7",
+      "original_session_status_preserved": true,
+      "error_source_receipts": [
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "先選你要辦的事，走到座標本身不能完成任務。"
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "先選你要辦的事，再判斷窗口。"
+        },
+        {
+          "label": "choose-window",
+          "task": "course-plan",
+          "source_hint_kind": "choose-window",
+          "feedback": "還沒選要找的窗口。先判斷誰能處理這件事。"
+        },
+        {
+          "label": "travel",
+          "task": "course-plan",
+          "source_hint_kind": "travel",
+          "feedback": "還沒到你選的窗口。先看圖例，再移動。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "course-plan",
+          "source_hint_kind": "wrong-window/course-plan/classroom",
+          "feedback": "授課教室不是這項任務的程序窗口。可先向系辦或註冊課務組詢問，帶自己的入學年課表與缺項。"
+        },
+        {
+          "label": "edge",
+          "task": "course-plan",
+          "source_hint_kind": "edge",
+          "feedback": "到了圖邊，換個方向。"
+        },
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "先選你要辦的事，走到座標本身不能完成任務。"
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "先選你要辦的事，再判斷窗口。"
+        },
+        {
+          "label": "choose-window",
+          "task": "course-record",
+          "source_hint_kind": "choose-window",
+          "feedback": "還沒選要找的窗口。先判斷誰能處理這件事。"
+        },
+        {
+          "label": "travel",
+          "task": "course-record",
+          "source_hint_kind": "travel",
+          "feedback": "還沒到你選的窗口。先看圖例，再移動。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "course-record",
+          "source_hint_kind": "wrong-window/course-record/classroom",
+          "feedback": "授課教室不是這項任務的程序窗口。到課不等於選到。紀錄維護的程序窗口是註冊課務組，先備好課程代碼與問題畫面。"
+        },
+        {
+          "label": "wrong-window-0",
+          "task": "course-record",
+          "source_hint_kind": "wrong-window/course-record/department",
+          "feedback": "系辦不是這項任務的程序窗口。到課不等於選到。紀錄維護的程序窗口是註冊課務組，先備好課程代碼與問題畫面。"
+        },
+        {
+          "label": "edge",
+          "task": "course-record",
+          "source_hint_kind": "edge",
+          "feedback": "到了圖邊，換個方向。"
+        },
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "先選你要辦的事，走到座標本身不能完成任務。"
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "先選你要辦的事，再判斷窗口。"
+        },
+        {
+          "label": "choose-window",
+          "task": "graduation",
+          "source_hint_kind": "choose-window",
+          "feedback": "還沒選要找的窗口。先判斷誰能處理這件事。"
+        },
+        {
+          "label": "travel",
+          "task": "graduation",
+          "source_hint_kind": "travel",
+          "feedback": "還沒到你選的窗口。先看圖例，再移動。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "graduation",
+          "source_hint_kind": "wrong-window/graduation/classroom",
+          "feedback": "授課教室不是這項任務的程序窗口。可先帶入學年課表與缺項向系辦或註冊課務組詢問，不把諮詢當作畢業核准。"
+        },
+        {
+          "label": "edge",
+          "task": "graduation",
+          "source_hint_kind": "edge",
+          "feedback": "到了圖邊，換個方向。"
+        },
+        {
+          "label": "choose-window",
+          "task": "credit",
+          "source_hint_kind": "choose-window",
+          "feedback": "還沒選要找的窗口。先判斷誰能處理這件事。"
+        },
+        {
+          "label": "travel",
+          "task": "credit",
+          "source_hint_kind": "travel",
+          "feedback": "還沒到你選的窗口。先看圖例，再移動。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "credit",
+          "source_hint_kind": "wrong-window/credit/classroom",
+          "feedback": "授課教室不是這項任務的程序窗口。抵免程序疑問可洽註冊課務組。是否受理與審核順序要看當期規定，諮詢不等於申請成功。"
+        },
+        {
+          "label": "wrong-window-0",
+          "task": "credit",
+          "source_hint_kind": "wrong-window/credit/department",
+          "feedback": "系辦不是這項任務的程序窗口。抵免程序疑問可洽註冊課務組。是否受理與審核順序要看當期規定，諮詢不等於申請成功。"
+        },
+        {
+          "label": "edge",
+          "task": "credit",
+          "source_hint_kind": "edge",
+          "feedback": "到了圖邊，換個方向。"
+        }
+      ],
+      "original_method_flags_preserved": true,
+      "only_read_metadata_not_resampled": true
+    },
+    {
+      "game": "semester",
+      "lang": "zh",
+      "width": 1440,
+      "intent": "credit-first",
+      "status": "route-complete-layout-not-certified",
+      "report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\semester-recovery-20261023\\recovered-run\\report.json",
+      "report_sha256": "3e488a47e734299c60ff57dfc04b1703c79c93468643ed3e602f93fa36abc3d7",
+      "original_session_status_preserved": true,
+      "error_source_receipts": [
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "先選你要辦的事，走到座標本身不能完成任務。"
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "先選你要辦的事，再判斷窗口。"
+        },
+        {
+          "label": "choose-window",
+          "task": "course-plan",
+          "source_hint_kind": "choose-window",
+          "feedback": "還沒選要找的窗口。先判斷誰能處理這件事。"
+        },
+        {
+          "label": "travel",
+          "task": "course-plan",
+          "source_hint_kind": "travel",
+          "feedback": "還沒到你選的窗口。先看圖例，再移動。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "course-plan",
+          "source_hint_kind": "wrong-window/course-plan/classroom",
+          "feedback": "授課教室不是這項任務的程序窗口。可先向系辦或註冊課務組詢問，帶自己的入學年課表與缺項。"
+        },
+        {
+          "label": "edge",
+          "task": "course-plan",
+          "source_hint_kind": "edge",
+          "feedback": "到了圖邊，換個方向。"
+        },
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "先選你要辦的事，走到座標本身不能完成任務。"
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "先選你要辦的事，再判斷窗口。"
+        },
+        {
+          "label": "choose-window",
+          "task": "course-record",
+          "source_hint_kind": "choose-window",
+          "feedback": "還沒選要找的窗口。先判斷誰能處理這件事。"
+        },
+        {
+          "label": "travel",
+          "task": "course-record",
+          "source_hint_kind": "travel",
+          "feedback": "還沒到你選的窗口。先看圖例，再移動。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "course-record",
+          "source_hint_kind": "wrong-window/course-record/classroom",
+          "feedback": "授課教室不是這項任務的程序窗口。到課不等於選到。紀錄維護的程序窗口是註冊課務組，先備好課程代碼與問題畫面。"
+        },
+        {
+          "label": "wrong-window-0",
+          "task": "course-record",
+          "source_hint_kind": "wrong-window/course-record/department",
+          "feedback": "系辦不是這項任務的程序窗口。到課不等於選到。紀錄維護的程序窗口是註冊課務組，先備好課程代碼與問題畫面。"
+        },
+        {
+          "label": "edge",
+          "task": "course-record",
+          "source_hint_kind": "edge",
+          "feedback": "到了圖邊，換個方向。"
+        },
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "先選你要辦的事，走到座標本身不能完成任務。"
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "先選你要辦的事，再判斷窗口。"
+        },
+        {
+          "label": "choose-window",
+          "task": "credit",
+          "source_hint_kind": "choose-window",
+          "feedback": "還沒選要找的窗口。先判斷誰能處理這件事。"
+        },
+        {
+          "label": "travel",
+          "task": "credit",
+          "source_hint_kind": "travel",
+          "feedback": "還沒到你選的窗口。先看圖例，再移動。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "credit",
+          "source_hint_kind": "wrong-window/credit/classroom",
+          "feedback": "授課教室不是這項任務的程序窗口。抵免程序疑問可洽註冊課務組。是否受理與審核順序要看當期規定，諮詢不等於申請成功。"
+        },
+        {
+          "label": "wrong-window-0",
+          "task": "credit",
+          "source_hint_kind": "wrong-window/credit/department",
+          "feedback": "系辦不是這項任務的程序窗口。抵免程序疑問可洽註冊課務組。是否受理與審核順序要看當期規定，諮詢不等於申請成功。"
+        },
+        {
+          "label": "edge",
+          "task": "credit",
+          "source_hint_kind": "edge",
+          "feedback": "到了圖邊，換個方向。"
+        },
+        {
+          "label": "choose-window",
+          "task": "graduation",
+          "source_hint_kind": "choose-window",
+          "feedback": "還沒選要找的窗口。先判斷誰能處理這件事。"
+        },
+        {
+          "label": "travel",
+          "task": "graduation",
+          "source_hint_kind": "travel",
+          "feedback": "還沒到你選的窗口。先看圖例，再移動。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "graduation",
+          "source_hint_kind": "wrong-window/graduation/classroom",
+          "feedback": "授課教室不是這項任務的程序窗口。可先帶入學年課表與缺項向系辦或註冊課務組詢問，不把諮詢當作畢業核准。"
+        },
+        {
+          "label": "edge",
+          "task": "graduation",
+          "source_hint_kind": "edge",
+          "feedback": "到了圖邊，換個方向。"
+        }
+      ],
+      "original_method_flags_preserved": true,
+      "only_read_metadata_not_resampled": true
+    },
+    {
+      "game": "semester",
+      "lang": "en",
+      "width": 320,
+      "intent": "graduation-first",
+      "status": "route-complete-layout-not-certified",
+      "report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\semester-recovery-20261023\\recovered-run\\report.json",
+      "report_sha256": "3e488a47e734299c60ff57dfc04b1703c79c93468643ed3e602f93fa36abc3d7",
+      "original_session_status_preserved": true,
+      "error_source_receipts": [
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "Choose a question first. Reaching coordinates alone does not complete an errand."
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "Choose your question before choosing a contact."
+        },
+        {
+          "label": "choose-window",
+          "task": "course-plan",
+          "source_hint_kind": "choose-window",
+          "feedback": "Choose the contact you want to ask."
+        },
+        {
+          "label": "travel",
+          "task": "course-plan",
+          "source_hint_kind": "travel",
+          "feedback": "You have not reached your chosen contact. Check the map key and move."
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "course-plan",
+          "source_hint_kind": "wrong-window/course-plan/classroom",
+          "feedback": "Classroom is not the process contact for this question. Ask the department office or Registration and Curriculum Section, with your entry-year plan and missing courses."
+        },
+        {
+          "label": "edge",
+          "task": "course-plan",
+          "source_hint_kind": "edge",
+          "feedback": "Map edge reached. Try another direction."
+        },
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "Choose a question first. Reaching coordinates alone does not complete an errand."
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "Choose your question before choosing a contact."
+        },
+        {
+          "label": "choose-window",
+          "task": "course-record",
+          "source_hint_kind": "choose-window",
+          "feedback": "Choose the contact you want to ask."
+        },
+        {
+          "label": "travel",
+          "task": "course-record",
+          "source_hint_kind": "travel",
+          "feedback": "You have not reached your chosen contact. Check the map key and move."
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "course-record",
+          "source_hint_kind": "wrong-window/course-record/classroom",
+          "feedback": "Classroom is not the process contact for this question. Attendance does not register a course. Registration and Curriculum Section maintains records; bring the course code and a screenshot."
+        },
+        {
+          "label": "wrong-window-0",
+          "task": "course-record",
+          "source_hint_kind": "wrong-window/course-record/department",
+          "feedback": "Department office is not the process contact for this question. Attendance does not register a course. Registration and Curriculum Section maintains records; bring the course code and a screenshot."
+        },
+        {
+          "label": "edge",
+          "task": "course-record",
+          "source_hint_kind": "edge",
+          "feedback": "Map edge reached. Try another direction."
+        },
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "Choose a question first. Reaching coordinates alone does not complete an errand."
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "Choose your question before choosing a contact."
+        },
+        {
+          "label": "choose-window",
+          "task": "graduation",
+          "source_hint_kind": "choose-window",
+          "feedback": "Choose the contact you want to ask."
+        },
+        {
+          "label": "travel",
+          "task": "graduation",
+          "source_hint_kind": "travel",
+          "feedback": "You have not reached your chosen contact. Check the map key and move."
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "graduation",
+          "source_hint_kind": "wrong-window/graduation/classroom",
+          "feedback": "Classroom is not the process contact for this question. Bring your entry-year plan and gaps to the department office or Registration and Curriculum Section. Advice is not graduation approval."
+        },
+        {
+          "label": "edge",
+          "task": "graduation",
+          "source_hint_kind": "edge",
+          "feedback": "Map edge reached. Try another direction."
+        },
+        {
+          "label": "choose-window",
+          "task": "credit",
+          "source_hint_kind": "choose-window",
+          "feedback": "Choose the contact you want to ask."
+        },
+        {
+          "label": "travel",
+          "task": "credit",
+          "source_hint_kind": "travel",
+          "feedback": "You have not reached your chosen contact. Check the map key and move."
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "credit",
+          "source_hint_kind": "wrong-window/credit/classroom",
+          "feedback": "Classroom is not the process contact for this question. Ask Registration and Curriculum Section about credit-transfer steps. Check current eligibility, dates and review order; advice is not approval."
+        },
+        {
+          "label": "wrong-window-0",
+          "task": "credit",
+          "source_hint_kind": "wrong-window/credit/department",
+          "feedback": "Department office is not the process contact for this question. Ask Registration and Curriculum Section about credit-transfer steps. Check current eligibility, dates and review order; advice is not approval."
+        },
+        {
+          "label": "edge",
+          "task": "credit",
+          "source_hint_kind": "edge",
+          "feedback": "Map edge reached. Try another direction."
+        }
+      ],
+      "original_method_flags_preserved": true,
+      "only_read_metadata_not_resampled": true
+    },
+    {
+      "game": "semester",
+      "lang": "en",
+      "width": 320,
+      "intent": "credit-first",
+      "status": "route-complete-layout-not-certified",
+      "report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\semester-recovery-20261023\\recovered-run\\report.json",
+      "report_sha256": "3e488a47e734299c60ff57dfc04b1703c79c93468643ed3e602f93fa36abc3d7",
+      "original_session_status_preserved": true,
+      "error_source_receipts": [
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "Choose a question first. Reaching coordinates alone does not complete an errand."
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "Choose your question before choosing a contact."
+        },
+        {
+          "label": "choose-window",
+          "task": "course-plan",
+          "source_hint_kind": "choose-window",
+          "feedback": "Choose the contact you want to ask."
+        },
+        {
+          "label": "travel",
+          "task": "course-plan",
+          "source_hint_kind": "travel",
+          "feedback": "You have not reached your chosen contact. Check the map key and move."
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "course-plan",
+          "source_hint_kind": "wrong-window/course-plan/classroom",
+          "feedback": "Classroom is not the process contact for this question. Ask the department office or Registration and Curriculum Section, with your entry-year plan and missing courses."
+        },
+        {
+          "label": "edge",
+          "task": "course-plan",
+          "source_hint_kind": "edge",
+          "feedback": "Map edge reached. Try another direction."
+        },
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "Choose a question first. Reaching coordinates alone does not complete an errand."
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "Choose your question before choosing a contact."
+        },
+        {
+          "label": "choose-window",
+          "task": "course-record",
+          "source_hint_kind": "choose-window",
+          "feedback": "Choose the contact you want to ask."
+        },
+        {
+          "label": "travel",
+          "task": "course-record",
+          "source_hint_kind": "travel",
+          "feedback": "You have not reached your chosen contact. Check the map key and move."
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "course-record",
+          "source_hint_kind": "wrong-window/course-record/classroom",
+          "feedback": "Classroom is not the process contact for this question. Attendance does not register a course. Registration and Curriculum Section maintains records; bring the course code and a screenshot."
+        },
+        {
+          "label": "wrong-window-0",
+          "task": "course-record",
+          "source_hint_kind": "wrong-window/course-record/department",
+          "feedback": "Department office is not the process contact for this question. Attendance does not register a course. Registration and Curriculum Section maintains records; bring the course code and a screenshot."
+        },
+        {
+          "label": "edge",
+          "task": "course-record",
+          "source_hint_kind": "edge",
+          "feedback": "Map edge reached. Try another direction."
+        },
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "Choose a question first. Reaching coordinates alone does not complete an errand."
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "Choose your question before choosing a contact."
+        },
+        {
+          "label": "choose-window",
+          "task": "credit",
+          "source_hint_kind": "choose-window",
+          "feedback": "Choose the contact you want to ask."
+        },
+        {
+          "label": "travel",
+          "task": "credit",
+          "source_hint_kind": "travel",
+          "feedback": "You have not reached your chosen contact. Check the map key and move."
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "credit",
+          "source_hint_kind": "wrong-window/credit/classroom",
+          "feedback": "Classroom is not the process contact for this question. Ask Registration and Curriculum Section about credit-transfer steps. Check current eligibility, dates and review order; advice is not approval."
+        },
+        {
+          "label": "wrong-window-0",
+          "task": "credit",
+          "source_hint_kind": "wrong-window/credit/department",
+          "feedback": "Department office is not the process contact for this question. Ask Registration and Curriculum Section about credit-transfer steps. Check current eligibility, dates and review order; advice is not approval."
+        },
+        {
+          "label": "edge",
+          "task": "credit",
+          "source_hint_kind": "edge",
+          "feedback": "Map edge reached. Try another direction."
+        },
+        {
+          "label": "choose-window",
+          "task": "graduation",
+          "source_hint_kind": "choose-window",
+          "feedback": "Choose the contact you want to ask."
+        },
+        {
+          "label": "travel",
+          "task": "graduation",
+          "source_hint_kind": "travel",
+          "feedback": "You have not reached your chosen contact. Check the map key and move."
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "graduation",
+          "source_hint_kind": "wrong-window/graduation/classroom",
+          "feedback": "Classroom is not the process contact for this question. Bring your entry-year plan and gaps to the department office or Registration and Curriculum Section. Advice is not graduation approval."
+        },
+        {
+          "label": "edge",
+          "task": "graduation",
+          "source_hint_kind": "edge",
+          "feedback": "Map edge reached. Try another direction."
+        }
+      ],
+      "original_method_flags_preserved": true,
+      "only_read_metadata_not_resampled": true
+    },
+    {
+      "game": "semester",
+      "lang": "en",
+      "width": 1440,
+      "intent": "graduation-first",
+      "status": "route-complete-layout-not-certified",
+      "report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\semester-recovery-20261023\\recovered-run\\report.json",
+      "report_sha256": "3e488a47e734299c60ff57dfc04b1703c79c93468643ed3e602f93fa36abc3d7",
+      "original_session_status_preserved": true,
+      "error_source_receipts": [
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "Choose a question first. Reaching coordinates alone does not complete an errand."
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "Choose your question before choosing a contact."
+        },
+        {
+          "label": "choose-window",
+          "task": "course-plan",
+          "source_hint_kind": "choose-window",
+          "feedback": "Choose the contact you want to ask."
+        },
+        {
+          "label": "travel",
+          "task": "course-plan",
+          "source_hint_kind": "travel",
+          "feedback": "You have not reached your chosen contact. Check the map key and move."
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "course-plan",
+          "source_hint_kind": "wrong-window/course-plan/classroom",
+          "feedback": "Classroom is not the process contact for this question. Ask the department office or Registration and Curriculum Section, with your entry-year plan and missing courses."
+        },
+        {
+          "label": "edge",
+          "task": "course-plan",
+          "source_hint_kind": "edge",
+          "feedback": "Map edge reached. Try another direction."
+        },
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "Choose a question first. Reaching coordinates alone does not complete an errand."
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "Choose your question before choosing a contact."
+        },
+        {
+          "label": "choose-window",
+          "task": "course-record",
+          "source_hint_kind": "choose-window",
+          "feedback": "Choose the contact you want to ask."
+        },
+        {
+          "label": "travel",
+          "task": "course-record",
+          "source_hint_kind": "travel",
+          "feedback": "You have not reached your chosen contact. Check the map key and move."
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "course-record",
+          "source_hint_kind": "wrong-window/course-record/classroom",
+          "feedback": "Classroom is not the process contact for this question. Attendance does not register a course. Registration and Curriculum Section maintains records; bring the course code and a screenshot."
+        },
+        {
+          "label": "wrong-window-0",
+          "task": "course-record",
+          "source_hint_kind": "wrong-window/course-record/department",
+          "feedback": "Department office is not the process contact for this question. Attendance does not register a course. Registration and Curriculum Section maintains records; bring the course code and a screenshot."
+        },
+        {
+          "label": "edge",
+          "task": "course-record",
+          "source_hint_kind": "edge",
+          "feedback": "Map edge reached. Try another direction."
+        },
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "Choose a question first. Reaching coordinates alone does not complete an errand."
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "Choose your question before choosing a contact."
+        },
+        {
+          "label": "choose-window",
+          "task": "graduation",
+          "source_hint_kind": "choose-window",
+          "feedback": "Choose the contact you want to ask."
+        },
+        {
+          "label": "travel",
+          "task": "graduation",
+          "source_hint_kind": "travel",
+          "feedback": "You have not reached your chosen contact. Check the map key and move."
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "graduation",
+          "source_hint_kind": "wrong-window/graduation/classroom",
+          "feedback": "Classroom is not the process contact for this question. Bring your entry-year plan and gaps to the department office or Registration and Curriculum Section. Advice is not graduation approval."
+        },
+        {
+          "label": "edge",
+          "task": "graduation",
+          "source_hint_kind": "edge",
+          "feedback": "Map edge reached. Try another direction."
+        },
+        {
+          "label": "choose-window",
+          "task": "credit",
+          "source_hint_kind": "choose-window",
+          "feedback": "Choose the contact you want to ask."
+        },
+        {
+          "label": "travel",
+          "task": "credit",
+          "source_hint_kind": "travel",
+          "feedback": "You have not reached your chosen contact. Check the map key and move."
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "credit",
+          "source_hint_kind": "wrong-window/credit/classroom",
+          "feedback": "Classroom is not the process contact for this question. Ask Registration and Curriculum Section about credit-transfer steps. Check current eligibility, dates and review order; advice is not approval."
+        },
+        {
+          "label": "wrong-window-0",
+          "task": "credit",
+          "source_hint_kind": "wrong-window/credit/department",
+          "feedback": "Department office is not the process contact for this question. Ask Registration and Curriculum Section about credit-transfer steps. Check current eligibility, dates and review order; advice is not approval."
+        },
+        {
+          "label": "edge",
+          "task": "credit",
+          "source_hint_kind": "edge",
+          "feedback": "Map edge reached. Try another direction."
+        }
+      ],
+      "original_method_flags_preserved": true,
+      "only_read_metadata_not_resampled": true
+    },
+    {
+      "game": "semester",
+      "lang": "en",
+      "width": 1440,
+      "intent": "credit-first",
+      "status": "route-complete-layout-not-certified",
+      "report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\semester-recovery-20261023\\recovered-run\\report.json",
+      "report_sha256": "3e488a47e734299c60ff57dfc04b1703c79c93468643ed3e602f93fa36abc3d7",
+      "original_session_status_preserved": true,
+      "error_source_receipts": [
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "Choose a question first. Reaching coordinates alone does not complete an errand."
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "Choose your question before choosing a contact."
+        },
+        {
+          "label": "choose-window",
+          "task": "course-plan",
+          "source_hint_kind": "choose-window",
+          "feedback": "Choose the contact you want to ask."
+        },
+        {
+          "label": "travel",
+          "task": "course-plan",
+          "source_hint_kind": "travel",
+          "feedback": "You have not reached your chosen contact. Check the map key and move."
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "course-plan",
+          "source_hint_kind": "wrong-window/course-plan/classroom",
+          "feedback": "Classroom is not the process contact for this question. Ask the department office or Registration and Curriculum Section, with your entry-year plan and missing courses."
+        },
+        {
+          "label": "edge",
+          "task": "course-plan",
+          "source_hint_kind": "edge",
+          "feedback": "Map edge reached. Try another direction."
+        },
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "Choose a question first. Reaching coordinates alone does not complete an errand."
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "Choose your question before choosing a contact."
+        },
+        {
+          "label": "choose-window",
+          "task": "course-record",
+          "source_hint_kind": "choose-window",
+          "feedback": "Choose the contact you want to ask."
+        },
+        {
+          "label": "travel",
+          "task": "course-record",
+          "source_hint_kind": "travel",
+          "feedback": "You have not reached your chosen contact. Check the map key and move."
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "course-record",
+          "source_hint_kind": "wrong-window/course-record/classroom",
+          "feedback": "Classroom is not the process contact for this question. Attendance does not register a course. Registration and Curriculum Section maintains records; bring the course code and a screenshot."
+        },
+        {
+          "label": "wrong-window-0",
+          "task": "course-record",
+          "source_hint_kind": "wrong-window/course-record/department",
+          "feedback": "Department office is not the process contact for this question. Attendance does not register a course. Registration and Curriculum Section maintains records; bring the course code and a screenshot."
+        },
+        {
+          "label": "edge",
+          "task": "course-record",
+          "source_hint_kind": "edge",
+          "feedback": "Map edge reached. Try another direction."
+        },
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "Choose a question first. Reaching coordinates alone does not complete an errand."
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "Choose your question before choosing a contact."
+        },
+        {
+          "label": "choose-window",
+          "task": "credit",
+          "source_hint_kind": "choose-window",
+          "feedback": "Choose the contact you want to ask."
+        },
+        {
+          "label": "travel",
+          "task": "credit",
+          "source_hint_kind": "travel",
+          "feedback": "You have not reached your chosen contact. Check the map key and move."
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "credit",
+          "source_hint_kind": "wrong-window/credit/classroom",
+          "feedback": "Classroom is not the process contact for this question. Ask Registration and Curriculum Section about credit-transfer steps. Check current eligibility, dates and review order; advice is not approval."
+        },
+        {
+          "label": "wrong-window-0",
+          "task": "credit",
+          "source_hint_kind": "wrong-window/credit/department",
+          "feedback": "Department office is not the process contact for this question. Ask Registration and Curriculum Section about credit-transfer steps. Check current eligibility, dates and review order; advice is not approval."
+        },
+        {
+          "label": "edge",
+          "task": "credit",
+          "source_hint_kind": "edge",
+          "feedback": "Map edge reached. Try another direction."
+        },
+        {
+          "label": "choose-window",
+          "task": "graduation",
+          "source_hint_kind": "choose-window",
+          "feedback": "Choose the contact you want to ask."
+        },
+        {
+          "label": "travel",
+          "task": "graduation",
+          "source_hint_kind": "travel",
+          "feedback": "You have not reached your chosen contact. Check the map key and move."
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "graduation",
+          "source_hint_kind": "wrong-window/graduation/classroom",
+          "feedback": "Classroom is not the process contact for this question. Bring your entry-year plan and gaps to the department office or Registration and Curriculum Section. Advice is not graduation approval."
+        },
+        {
+          "label": "edge",
+          "task": "graduation",
+          "source_hint_kind": "edge",
+          "feedback": "Map edge reached. Try another direction."
+        }
+      ],
+      "original_method_flags_preserved": true,
+      "only_read_metadata_not_resampled": true
+    },
+    {
+      "game": "semester",
+      "lang": "ja",
+      "width": 320,
+      "intent": "graduation-first",
+      "status": "route-complete-layout-not-certified",
+      "report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\semester-recovery-20261023\\recovered-run\\report.json",
+      "report_sha256": "3e488a47e734299c60ff57dfc04b1703c79c93468643ed3e602f93fa36abc3d7",
+      "original_session_status_preserved": true,
+      "error_source_receipts": [
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "先に用事を選ぼう。座標に着くだけでは完了しません。"
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "先に用事を選び、それから窓口を考えよう。"
+        },
+        {
+          "label": "choose-window",
+          "task": "course-plan",
+          "source_hint_kind": "choose-window",
+          "feedback": "まだ窓口を選んでいません。誰に聞くか考えよう。"
+        },
+        {
+          "label": "travel",
+          "task": "course-plan",
+          "source_hint_kind": "travel",
+          "feedback": "選んだ窓口にはまだ着いていません。図の説明を見て移動しよう。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "course-plan",
+          "source_hint_kind": "wrong-window/course-plan/classroom",
+          "feedback": "授業の教室は今回の手続き窓口ではありません。入学年度の履修表と不足科目を持ち、学科事務室か註冊課務組（学籍・履修担当）へ。"
+        },
+        {
+          "label": "edge",
+          "task": "course-plan",
+          "source_hint_kind": "edge",
+          "feedback": "地図の端です。別の方向へ。"
+        },
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "先に用事を選ぼう。座標に着くだけでは完了しません。"
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "先に用事を選び、それから窓口を考えよう。"
+        },
+        {
+          "label": "choose-window",
+          "task": "course-record",
+          "source_hint_kind": "choose-window",
+          "feedback": "まだ窓口を選んでいません。誰に聞くか考えよう。"
+        },
+        {
+          "label": "travel",
+          "task": "course-record",
+          "source_hint_kind": "travel",
+          "feedback": "選んだ窓口にはまだ着いていません。図の説明を見て移動しよう。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "course-record",
+          "source_hint_kind": "wrong-window/course-record/classroom",
+          "feedback": "授業の教室は今回の手続き窓口ではありません。出席だけでは登録されません。記録の手続きは註冊課務組（学籍・履修担当）へ。科目コードと画面を準備。"
+        },
+        {
+          "label": "wrong-window-0",
+          "task": "course-record",
+          "source_hint_kind": "wrong-window/course-record/department",
+          "feedback": "学科事務室は今回の手続き窓口ではありません。出席だけでは登録されません。記録の手続きは註冊課務組（学籍・履修担当）へ。科目コードと画面を準備。"
+        },
+        {
+          "label": "edge",
+          "task": "course-record",
+          "source_hint_kind": "edge",
+          "feedback": "地図の端です。別の方向へ。"
+        },
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "先に用事を選ぼう。座標に着くだけでは完了しません。"
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "先に用事を選び、それから窓口を考えよう。"
+        },
+        {
+          "label": "choose-window",
+          "task": "graduation",
+          "source_hint_kind": "choose-window",
+          "feedback": "まだ窓口を選んでいません。誰に聞くか考えよう。"
+        },
+        {
+          "label": "travel",
+          "task": "graduation",
+          "source_hint_kind": "travel",
+          "feedback": "選んだ窓口にはまだ着いていません。図の説明を見て移動しよう。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "graduation",
+          "source_hint_kind": "wrong-window/graduation/classroom",
+          "feedback": "授業の教室は今回の手続き窓口ではありません。入学年度の履修表と不足項目を持ち、学科事務室か註冊課務組（学籍・履修担当）へ。相談は卒業認定ではありません。"
+        },
+        {
+          "label": "edge",
+          "task": "graduation",
+          "source_hint_kind": "edge",
+          "feedback": "地図の端です。別の方向へ。"
+        },
+        {
+          "label": "choose-window",
+          "task": "credit",
+          "source_hint_kind": "choose-window",
+          "feedback": "まだ窓口を選んでいません。誰に聞くか考えよう。"
+        },
+        {
+          "label": "travel",
+          "task": "credit",
+          "source_hint_kind": "travel",
+          "feedback": "選んだ窓口にはまだ着いていません。図の説明を見て移動しよう。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "credit",
+          "source_hint_kind": "wrong-window/credit/classroom",
+          "feedback": "授業の教室は今回の手続き窓口ではありません。単位認定の手順は註冊課務組（学籍・履修担当）へ。当期の資格・期限・審査順を確認。相談は承認ではありません。"
+        },
+        {
+          "label": "wrong-window-0",
+          "task": "credit",
+          "source_hint_kind": "wrong-window/credit/department",
+          "feedback": "学科事務室は今回の手続き窓口ではありません。単位認定の手順は註冊課務組（学籍・履修担当）へ。当期の資格・期限・審査順を確認。相談は承認ではありません。"
+        },
+        {
+          "label": "edge",
+          "task": "credit",
+          "source_hint_kind": "edge",
+          "feedback": "地図の端です。別の方向へ。"
+        }
+      ],
+      "original_method_flags_preserved": true,
+      "only_read_metadata_not_resampled": true
+    },
+    {
+      "game": "semester",
+      "lang": "ja",
+      "width": 320,
+      "intent": "credit-first",
+      "status": "route-complete-layout-not-certified",
+      "report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\semester-recovery-20261023\\recovered-run\\report.json",
+      "report_sha256": "3e488a47e734299c60ff57dfc04b1703c79c93468643ed3e602f93fa36abc3d7",
+      "original_session_status_preserved": true,
+      "error_source_receipts": [
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "先に用事を選ぼう。座標に着くだけでは完了しません。"
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "先に用事を選び、それから窓口を考えよう。"
+        },
+        {
+          "label": "choose-window",
+          "task": "course-plan",
+          "source_hint_kind": "choose-window",
+          "feedback": "まだ窓口を選んでいません。誰に聞くか考えよう。"
+        },
+        {
+          "label": "travel",
+          "task": "course-plan",
+          "source_hint_kind": "travel",
+          "feedback": "選んだ窓口にはまだ着いていません。図の説明を見て移動しよう。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "course-plan",
+          "source_hint_kind": "wrong-window/course-plan/classroom",
+          "feedback": "授業の教室は今回の手続き窓口ではありません。入学年度の履修表と不足科目を持ち、学科事務室か註冊課務組（学籍・履修担当）へ。"
+        },
+        {
+          "label": "edge",
+          "task": "course-plan",
+          "source_hint_kind": "edge",
+          "feedback": "地図の端です。別の方向へ。"
+        },
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "先に用事を選ぼう。座標に着くだけでは完了しません。"
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "先に用事を選び、それから窓口を考えよう。"
+        },
+        {
+          "label": "choose-window",
+          "task": "course-record",
+          "source_hint_kind": "choose-window",
+          "feedback": "まだ窓口を選んでいません。誰に聞くか考えよう。"
+        },
+        {
+          "label": "travel",
+          "task": "course-record",
+          "source_hint_kind": "travel",
+          "feedback": "選んだ窓口にはまだ着いていません。図の説明を見て移動しよう。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "course-record",
+          "source_hint_kind": "wrong-window/course-record/classroom",
+          "feedback": "授業の教室は今回の手続き窓口ではありません。出席だけでは登録されません。記録の手続きは註冊課務組（学籍・履修担当）へ。科目コードと画面を準備。"
+        },
+        {
+          "label": "wrong-window-0",
+          "task": "course-record",
+          "source_hint_kind": "wrong-window/course-record/department",
+          "feedback": "学科事務室は今回の手続き窓口ではありません。出席だけでは登録されません。記録の手続きは註冊課務組（学籍・履修担当）へ。科目コードと画面を準備。"
+        },
+        {
+          "label": "edge",
+          "task": "course-record",
+          "source_hint_kind": "edge",
+          "feedback": "地図の端です。別の方向へ。"
+        },
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "先に用事を選ぼう。座標に着くだけでは完了しません。"
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "先に用事を選び、それから窓口を考えよう。"
+        },
+        {
+          "label": "choose-window",
+          "task": "credit",
+          "source_hint_kind": "choose-window",
+          "feedback": "まだ窓口を選んでいません。誰に聞くか考えよう。"
+        },
+        {
+          "label": "travel",
+          "task": "credit",
+          "source_hint_kind": "travel",
+          "feedback": "選んだ窓口にはまだ着いていません。図の説明を見て移動しよう。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "credit",
+          "source_hint_kind": "wrong-window/credit/classroom",
+          "feedback": "授業の教室は今回の手続き窓口ではありません。単位認定の手順は註冊課務組（学籍・履修担当）へ。当期の資格・期限・審査順を確認。相談は承認ではありません。"
+        },
+        {
+          "label": "wrong-window-0",
+          "task": "credit",
+          "source_hint_kind": "wrong-window/credit/department",
+          "feedback": "学科事務室は今回の手続き窓口ではありません。単位認定の手順は註冊課務組（学籍・履修担当）へ。当期の資格・期限・審査順を確認。相談は承認ではありません。"
+        },
+        {
+          "label": "edge",
+          "task": "credit",
+          "source_hint_kind": "edge",
+          "feedback": "地図の端です。別の方向へ。"
+        },
+        {
+          "label": "choose-window",
+          "task": "graduation",
+          "source_hint_kind": "choose-window",
+          "feedback": "まだ窓口を選んでいません。誰に聞くか考えよう。"
+        },
+        {
+          "label": "travel",
+          "task": "graduation",
+          "source_hint_kind": "travel",
+          "feedback": "選んだ窓口にはまだ着いていません。図の説明を見て移動しよう。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "graduation",
+          "source_hint_kind": "wrong-window/graduation/classroom",
+          "feedback": "授業の教室は今回の手続き窓口ではありません。入学年度の履修表と不足項目を持ち、学科事務室か註冊課務組（学籍・履修担当）へ。相談は卒業認定ではありません。"
+        },
+        {
+          "label": "edge",
+          "task": "graduation",
+          "source_hint_kind": "edge",
+          "feedback": "地図の端です。別の方向へ。"
+        }
+      ],
+      "original_method_flags_preserved": true,
+      "only_read_metadata_not_resampled": true
+    },
+    {
+      "game": "semester",
+      "lang": "ja",
+      "width": 1440,
+      "intent": "graduation-first",
+      "status": "route-complete-layout-not-certified",
+      "report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-23T03-01-25-509Z\\report.json",
+      "report_sha256": "518b4680931114eb268811ea3baefbfebcaa719683bbe85d4f0516fd6b6a5094",
+      "original_session_status_preserved": true,
+      "error_source_receipts": [
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "先に用事を選ぼう。座標に着くだけでは完了しません。"
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "先に用事を選び、それから窓口を考えよう。"
+        },
+        {
+          "label": "choose-window",
+          "task": "course-plan",
+          "source_hint_kind": "choose-window",
+          "feedback": "まだ窓口を選んでいません。誰に聞くか考えよう。"
+        },
+        {
+          "label": "travel",
+          "task": "course-plan",
+          "source_hint_kind": "travel",
+          "feedback": "選んだ窓口にはまだ着いていません。図の説明を見て移動しよう。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "course-plan",
+          "source_hint_kind": "wrong-window/course-plan/classroom",
+          "feedback": "授業の教室は今回の手続き窓口ではありません。入学年度の履修表と不足科目を持ち、学科事務室か註冊課務組（学籍・履修担当）へ。"
+        },
+        {
+          "label": "edge",
+          "task": "course-plan",
+          "source_hint_kind": "edge",
+          "feedback": "地図の端です。別の方向へ。"
+        },
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "先に用事を選ぼう。座標に着くだけでは完了しません。"
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "先に用事を選び、それから窓口を考えよう。"
+        },
+        {
+          "label": "choose-window",
+          "task": "course-record",
+          "source_hint_kind": "choose-window",
+          "feedback": "まだ窓口を選んでいません。誰に聞くか考えよう。"
+        },
+        {
+          "label": "travel",
+          "task": "course-record",
+          "source_hint_kind": "travel",
+          "feedback": "選んだ窓口にはまだ着いていません。図の説明を見て移動しよう。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "course-record",
+          "source_hint_kind": "wrong-window/course-record/classroom",
+          "feedback": "授業の教室は今回の手続き窓口ではありません。出席だけでは登録されません。記録の手続きは註冊課務組（学籍・履修担当）へ。科目コードと画面を準備。"
+        },
+        {
+          "label": "wrong-window-0",
+          "task": "course-record",
+          "source_hint_kind": "wrong-window/course-record/department",
+          "feedback": "学科事務室は今回の手続き窓口ではありません。出席だけでは登録されません。記録の手続きは註冊課務組（学籍・履修担当）へ。科目コードと画面を準備。"
+        },
+        {
+          "label": "edge",
+          "task": "course-record",
+          "source_hint_kind": "edge",
+          "feedback": "地図の端です。別の方向へ。"
+        },
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "先に用事を選ぼう。座標に着くだけでは完了しません。"
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "先に用事を選び、それから窓口を考えよう。"
+        },
+        {
+          "label": "choose-window",
+          "task": "graduation",
+          "source_hint_kind": "choose-window",
+          "feedback": "まだ窓口を選んでいません。誰に聞くか考えよう。"
+        },
+        {
+          "label": "travel",
+          "task": "graduation",
+          "source_hint_kind": "travel",
+          "feedback": "選んだ窓口にはまだ着いていません。図の説明を見て移動しよう。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "graduation",
+          "source_hint_kind": "wrong-window/graduation/classroom",
+          "feedback": "授業の教室は今回の手続き窓口ではありません。入学年度の履修表と不足項目を持ち、学科事務室か註冊課務組（学籍・履修担当）へ。相談は卒業認定ではありません。"
+        },
+        {
+          "label": "edge",
+          "task": "graduation",
+          "source_hint_kind": "edge",
+          "feedback": "地図の端です。別の方向へ。"
+        },
+        {
+          "label": "choose-window",
+          "task": "credit",
+          "source_hint_kind": "choose-window",
+          "feedback": "まだ窓口を選んでいません。誰に聞くか考えよう。"
+        },
+        {
+          "label": "travel",
+          "task": "credit",
+          "source_hint_kind": "travel",
+          "feedback": "選んだ窓口にはまだ着いていません。図の説明を見て移動しよう。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "credit",
+          "source_hint_kind": "wrong-window/credit/classroom",
+          "feedback": "授業の教室は今回の手続き窓口ではありません。単位認定の手順は註冊課務組（学籍・履修担当）へ。当期の資格・期限・審査順を確認。相談は承認ではありません。"
+        },
+        {
+          "label": "wrong-window-0",
+          "task": "credit",
+          "source_hint_kind": "wrong-window/credit/department",
+          "feedback": "学科事務室は今回の手続き窓口ではありません。単位認定の手順は註冊課務組（学籍・履修担当）へ。当期の資格・期限・審査順を確認。相談は承認ではありません。"
+        },
+        {
+          "label": "edge",
+          "task": "credit",
+          "source_hint_kind": "edge",
+          "feedback": "地図の端です。別の方向へ。"
+        }
+      ],
+      "original_method_flags_preserved": true,
+      "only_read_metadata_not_resampled": true
+    },
+    {
+      "game": "semester",
+      "lang": "ja",
+      "width": 1440,
+      "intent": "credit-first",
+      "status": "route-complete-layout-not-certified",
+      "report": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-23T03-01-25-509Z\\report.json",
+      "report_sha256": "518b4680931114eb268811ea3baefbfebcaa719683bbe85d4f0516fd6b6a5094",
+      "original_session_status_preserved": true,
+      "error_source_receipts": [
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "先に用事を選ぼう。座標に着くだけでは完了しません。"
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "先に用事を選び、それから窓口を考えよう。"
+        },
+        {
+          "label": "choose-window",
+          "task": "course-plan",
+          "source_hint_kind": "choose-window",
+          "feedback": "まだ窓口を選んでいません。誰に聞くか考えよう。"
+        },
+        {
+          "label": "travel",
+          "task": "course-plan",
+          "source_hint_kind": "travel",
+          "feedback": "選んだ窓口にはまだ着いていません。図の説明を見て移動しよう。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "course-plan",
+          "source_hint_kind": "wrong-window/course-plan/classroom",
+          "feedback": "授業の教室は今回の手続き窓口ではありません。入学年度の履修表と不足科目を持ち、学科事務室か註冊課務組（学籍・履修担当）へ。"
+        },
+        {
+          "label": "edge",
+          "task": "course-plan",
+          "source_hint_kind": "edge",
+          "feedback": "地図の端です。別の方向へ。"
+        },
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "先に用事を選ぼう。座標に着くだけでは完了しません。"
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "先に用事を選び、それから窓口を考えよう。"
+        },
+        {
+          "label": "choose-window",
+          "task": "course-record",
+          "source_hint_kind": "choose-window",
+          "feedback": "まだ窓口を選んでいません。誰に聞くか考えよう。"
+        },
+        {
+          "label": "travel",
+          "task": "course-record",
+          "source_hint_kind": "travel",
+          "feedback": "選んだ窓口にはまだ着いていません。図の説明を見て移動しよう。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "course-record",
+          "source_hint_kind": "wrong-window/course-record/classroom",
+          "feedback": "授業の教室は今回の手続き窓口ではありません。出席だけでは登録されません。記録の手続きは註冊課務組（学籍・履修担当）へ。科目コードと画面を準備。"
+        },
+        {
+          "label": "wrong-window-0",
+          "task": "course-record",
+          "source_hint_kind": "wrong-window/course-record/department",
+          "feedback": "学科事務室は今回の手続き窓口ではありません。出席だけでは登録されません。記録の手続きは註冊課務組（学籍・履修担当）へ。科目コードと画面を準備。"
+        },
+        {
+          "label": "edge",
+          "task": "course-record",
+          "source_hint_kind": "edge",
+          "feedback": "地図の端です。別の方向へ。"
+        },
+        {
+          "label": "choose-task",
+          "source_hint_kind": "choose-task",
+          "feedback": "先に用事を選ぼう。座標に着くだけでは完了しません。"
+        },
+        {
+          "label": "window-before-task",
+          "source_hint_kind": "window-before-task",
+          "feedback": "先に用事を選び、それから窓口を考えよう。"
+        },
+        {
+          "label": "choose-window",
+          "task": "credit",
+          "source_hint_kind": "choose-window",
+          "feedback": "まだ窓口を選んでいません。誰に聞くか考えよう。"
+        },
+        {
+          "label": "travel",
+          "task": "credit",
+          "source_hint_kind": "travel",
+          "feedback": "選んだ窓口にはまだ着いていません。図の説明を見て移動しよう。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "credit",
+          "source_hint_kind": "wrong-window/credit/classroom",
+          "feedback": "授業の教室は今回の手続き窓口ではありません。単位認定の手順は註冊課務組（学籍・履修担当）へ。当期の資格・期限・審査順を確認。相談は承認ではありません。"
+        },
+        {
+          "label": "wrong-window-0",
+          "task": "credit",
+          "source_hint_kind": "wrong-window/credit/department",
+          "feedback": "学科事務室は今回の手続き窓口ではありません。単位認定の手順は註冊課務組（学籍・履修担当）へ。当期の資格・期限・審査順を確認。相談は承認ではありません。"
+        },
+        {
+          "label": "edge",
+          "task": "credit",
+          "source_hint_kind": "edge",
+          "feedback": "地図の端です。別の方向へ。"
+        },
+        {
+          "label": "choose-window",
+          "task": "graduation",
+          "source_hint_kind": "choose-window",
+          "feedback": "まだ窓口を選んでいません。誰に聞くか考えよう。"
+        },
+        {
+          "label": "travel",
+          "task": "graduation",
+          "source_hint_kind": "travel",
+          "feedback": "選んだ窓口にはまだ着いていません。図の説明を見て移動しよう。"
+        },
+        {
+          "label": "wrong-window-2",
+          "task": "graduation",
+          "source_hint_kind": "wrong-window/graduation/classroom",
+          "feedback": "授業の教室は今回の手続き窓口ではありません。入学年度の履修表と不足項目を持ち、学科事務室か註冊課務組（学籍・履修担当）へ。相談は卒業認定ではありません。"
+        },
+        {
+          "label": "edge",
+          "task": "graduation",
+          "source_hint_kind": "edge",
+          "feedback": "地図の端です。別の方向へ。"
+        }
+      ],
+      "original_method_flags_preserved": true,
+      "only_read_metadata_not_resampled": true
+    }
+  ],
+  "native_calibration": {
+    "file": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\semester-error-domain\\native-calibration\\report.json",
+    "sha256": "982779ce118164a11d56f564da5f811bb46681fa6204b5f152ee4de3591b0cff",
+    "sessions": 6,
+    "all_projection_text_equal": true,
+    "source_pre_post_equal": true,
+    "platform_font_before_after_receipts": [
+      {
+        "lang": "zh",
+        "width": 320,
+        "before": [
+          {
+            "selector": "#game-hint",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 23
+              }
+            ],
+            "computed": {
+              "text": "在虛構漫畫地圖完成任務，再連到真正的在校指南。",
+              "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "25.6px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-position",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 29
+              }
+            ],
+            "computed": {
+              "text": "目前：第1列、第3行，走了0步。方向按鈕或方向鍵皆可移動。",
+              "font": "16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-plan",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 15
+              }
+            ],
+            "computed": {
+              "text": "要問：先選事情｜窗口：尚未選擇",
+              "font": "16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": ".control-label",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 6
+              }
+            ],
+            "computed": {
+              "text": "我要辦什麼？",
+              "font": "750 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "750",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-visit",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 4
+              }
+            ],
+            "computed": {
+              "text": "到站詢問",
+              "font": "800 14px / 19.6px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "800",
+              "fontSize": "14px",
+              "lineHeight": "19.6px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#game-progress",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 5
+              }
+            ],
+            "computed": {
+              "text": "0 / 3",
+              "font": "800 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "800",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          }
+        ],
+        "after": [
+          {
+            "selector": "#game-hint",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 54
+              }
+            ],
+            "computed": {
+              "text": "系辦不是這項任務的程序窗口。抵免程序疑問可洽註冊課務組。是否受理與審核順序要看當期規定，諮詢不等於申請成功。",
+              "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "25.6px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-position",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 30
+              }
+            ],
+            "computed": {
+              "text": "目前：第1列、第1行，走了10步。方向按鈕或方向鍵皆可移動。",
+              "font": "16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-plan",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 24
+              }
+            ],
+            "computed": {
+              "text": "要問：抵免程序詢問｜窗口：系辦｜已問 0/2 件",
+              "font": "16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": ".control-label",
+            "platform": [],
+            "computed": {
+              "text": "我要辦什麼？",
+              "font": "750 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "750",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-visit",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 4
+              }
+            ],
+            "computed": {
+              "text": "到站詢問",
+              "font": "800 14px / 19.6px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "800",
+              "fontSize": "14px",
+              "lineHeight": "19.6px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#game-progress",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 5
+              }
+            ],
+            "computed": {
+              "text": "2 / 3",
+              "font": "800 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "800",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          }
+        ]
+      },
+      {
+        "lang": "zh",
+        "width": 1440,
+        "before": [
+          {
+            "selector": "#game-hint",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 23
+              }
+            ],
+            "computed": {
+              "text": "在虛構漫畫地圖完成任務，再連到真正的在校指南。",
+              "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "25.6px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-position",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 29
+              }
+            ],
+            "computed": {
+              "text": "目前：第1列、第3行，走了0步。方向按鈕或方向鍵皆可移動。",
+              "font": "16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-plan",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 15
+              }
+            ],
+            "computed": {
+              "text": "要問：先選事情｜窗口：尚未選擇",
+              "font": "16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": ".control-label",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 6
+              }
+            ],
+            "computed": {
+              "text": "我要辦什麼？",
+              "font": "750 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "750",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-visit",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 4
+              }
+            ],
+            "computed": {
+              "text": "到站詢問",
+              "font": "800 16px / 22.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "800",
+              "fontSize": "16px",
+              "lineHeight": "22.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#game-progress",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 5
+              }
+            ],
+            "computed": {
+              "text": "0 / 3",
+              "font": "800 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "800",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          }
+        ],
+        "after": [
+          {
+            "selector": "#game-hint",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 50
+              }
+            ],
+            "computed": {
+              "text": "授課教室不是這項任務的程序窗口。可先帶入學年課表與缺項向系辦或註冊課務組詢問，不把諮詢當作畢業核准。",
+              "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "25.6px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-position",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 30
+              }
+            ],
+            "computed": {
+              "text": "目前：第3列、第3行，走了10步。方向按鈕或方向鍵皆可移動。",
+              "font": "16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-plan",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 26
+              }
+            ],
+            "computed": {
+              "text": "要問：畢業缺項諮詢｜窗口：授課教室｜已問 0/2 件",
+              "font": "16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": ".control-label",
+            "platform": [],
+            "computed": {
+              "text": "我要辦什麼？",
+              "font": "750 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "750",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-visit",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 4
+              }
+            ],
+            "computed": {
+              "text": "到站詢問",
+              "font": "800 16px / 22.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "800",
+              "fontSize": "16px",
+              "lineHeight": "22.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#game-progress",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 5
+              }
+            ],
+            "computed": {
+              "text": "2 / 3",
+              "font": "800 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "800",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          }
+        ]
+      },
+      {
+        "lang": "en",
+        "width": 320,
+        "before": [
+          {
+            "selector": "#game-hint",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 67
+              }
+            ],
+            "computed": {
+              "text": "Solve missions on a fictional comic map, then open the student guide.",
+              "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "25.6px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-position",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 70
+              }
+            ],
+            "computed": {
+              "text": "Position: column 1, row 3; 0 steps. Use direction buttons or arrow keys.",
+              "font": "16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-plan",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 41
+              }
+            ],
+            "computed": {
+              "text": "Question: choose one | Contact: not chosen",
+              "font": "16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": ".control-label",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 15
+              }
+            ],
+            "computed": {
+              "text": "What do I need?",
+              "font": "750 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "750",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-visit",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 8
+              }
+            ],
+            "computed": {
+              "text": "Ask here",
+              "font": "800 14px / 19.6px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "800",
+              "fontSize": "14px",
+              "lineHeight": "19.6px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#game-progress",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 5
+              }
+            ],
+            "computed": {
+              "text": "0 / 3",
+              "font": "800 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "800",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          }
+        ],
+        "after": [
+          {
+            "selector": "#game-hint",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 200
+              }
+            ],
+            "computed": {
+              "text": "Department office is not the process contact for this question. Ask Registration and Curriculum Section about credit-transfer steps. Check current eligibility, dates and review order; advice is not approval.",
+              "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "25.6px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-position",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 71
+              }
+            ],
+            "computed": {
+              "text": "Position: column 1, row 1; 10 steps. Use direction buttons or arrow keys.",
+              "font": "16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-plan",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 80
+              }
+            ],
+            "computed": {
+              "text": "Question: Ask about credit-transfer steps | Contact: Department office | 0/2 asked",
+              "font": "16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": ".control-label",
+            "platform": [],
+            "computed": {
+              "text": "What do I need?",
+              "font": "750 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "750",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-visit",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 8
+              }
+            ],
+            "computed": {
+              "text": "Ask here",
+              "font": "800 14px / 19.6px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "800",
+              "fontSize": "14px",
+              "lineHeight": "19.6px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#game-progress",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 5
+              }
+            ],
+            "computed": {
+              "text": "2 / 3",
+              "font": "800 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "800",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          }
+        ]
+      },
+      {
+        "lang": "en",
+        "width": 1440,
+        "before": [
+          {
+            "selector": "#game-hint",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 69
+              }
+            ],
+            "computed": {
+              "text": "Solve missions on a fictional comic map, then open the student guide.",
+              "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "25.6px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-position",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 71
+              }
+            ],
+            "computed": {
+              "text": "Position: column 1, row 3; 0 steps. Use direction buttons or arrow keys.",
+              "font": "16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-plan",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 41
+              }
+            ],
+            "computed": {
+              "text": "Question: choose one | Contact: not chosen",
+              "font": "16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": ".control-label",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 15
+              }
+            ],
+            "computed": {
+              "text": "What do I need?",
+              "font": "750 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "750",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-visit",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 8
+              }
+            ],
+            "computed": {
+              "text": "Ask here",
+              "font": "800 16px / 22.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "800",
+              "fontSize": "16px",
+              "lineHeight": "22.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#game-progress",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 5
+              }
+            ],
+            "computed": {
+              "text": "0 / 3",
+              "font": "800 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "800",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          }
+        ],
+        "after": [
+          {
+            "selector": "#game-hint",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 190
+              }
+            ],
+            "computed": {
+              "text": "Classroom is not the process contact for this question. Bring your entry-year plan and gaps to the department office or Registration and Curriculum Section. Advice is not graduation approval.",
+              "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "25.6px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-position",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 72
+              }
+            ],
+            "computed": {
+              "text": "Position: column 3, row 3; 10 steps. Use direction buttons or arrow keys.",
+              "font": "16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-plan",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 67
+              }
+            ],
+            "computed": {
+              "text": "Question: Ask about graduation gaps | Contact: Classroom | 0/2 asked",
+              "font": "16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": ".control-label",
+            "platform": [],
+            "computed": {
+              "text": "What do I need?",
+              "font": "750 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "750",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-visit",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 8
+              }
+            ],
+            "computed": {
+              "text": "Ask here",
+              "font": "800 16px / 22.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "800",
+              "fontSize": "16px",
+              "lineHeight": "22.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#game-progress",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 5
+              }
+            ],
+            "computed": {
+              "text": "2 / 3",
+              "font": "800 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "800",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          }
+        ]
+      },
+      {
+        "lang": "ja",
+        "width": 320,
+        "before": [
+          {
+            "selector": "#game-hint",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 23
+              }
+            ],
+            "computed": {
+              "text": "架空の漫画マップで用事を済ませ、在校ガイドへ。",
+              "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "25.6px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-position",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 25
+              }
+            ],
+            "computed": {
+              "text": "現在：1列3行、0歩。方向ボタンか矢印キーで移動。",
+              "font": "16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-plan",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 14
+              }
+            ],
+            "computed": {
+              "text": "用事：先に選択｜窓口：未選択",
+              "font": "16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": ".control-label",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 6
+              }
+            ],
+            "computed": {
+              "text": "何をしたい？",
+              "font": "750 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "750",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-visit",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 5
+              }
+            ],
+            "computed": {
+              "text": "ここで相談",
+              "font": "800 14px / 19.6px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "800",
+              "fontSize": "14px",
+              "lineHeight": "19.6px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#game-progress",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 5
+              }
+            ],
+            "computed": {
+              "text": "0 / 3",
+              "font": "800 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "800",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          }
+        ],
+        "after": [
+          {
+            "selector": "#game-hint",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 75
+              }
+            ],
+            "computed": {
+              "text": "学科事務室は今回の手続き窓口ではありません。単位認定の手順は註冊課務組（学籍・履修担当）へ。当期の資格・期限・審査順を確認。相談は承認ではありません。",
+              "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "25.6px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-position",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 26
+              }
+            ],
+            "computed": {
+              "text": "現在：1列1行、10歩。方向ボタンか矢印キーで移動。",
+              "font": "16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-plan",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 29
+              }
+            ],
+            "computed": {
+              "text": "用事：単位認定の手順を相談｜窓口：学科事務室｜0/2件完了",
+              "font": "16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": ".control-label",
+            "platform": [],
+            "computed": {
+              "text": "何をしたい？",
+              "font": "750 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "750",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-visit",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 5
+              }
+            ],
+            "computed": {
+              "text": "ここで相談",
+              "font": "800 14px / 19.6px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "800",
+              "fontSize": "14px",
+              "lineHeight": "19.6px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#game-progress",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 5
+              }
+            ],
+            "computed": {
+              "text": "2 / 3",
+              "font": "800 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "800",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          }
+        ]
+      },
+      {
+        "lang": "ja",
+        "width": 1440,
+        "before": [
+          {
+            "selector": "#game-hint",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 23
+              }
+            ],
+            "computed": {
+              "text": "架空の漫画マップで用事を済ませ、在校ガイドへ。",
+              "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "25.6px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-position",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 25
+              }
+            ],
+            "computed": {
+              "text": "現在：1列3行、0歩。方向ボタンか矢印キーで移動。",
+              "font": "16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-plan",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 14
+              }
+            ],
+            "computed": {
+              "text": "用事：先に選択｜窓口：未選択",
+              "font": "16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": ".control-label",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 6
+              }
+            ],
+            "computed": {
+              "text": "何をしたい？",
+              "font": "750 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "750",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-visit",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 5
+              }
+            ],
+            "computed": {
+              "text": "ここで相談",
+              "font": "800 16px / 22.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "800",
+              "fontSize": "16px",
+              "lineHeight": "22.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#game-progress",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 5
+              }
+            ],
+            "computed": {
+              "text": "0 / 3",
+              "font": "800 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "800",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          }
+        ],
+        "after": [
+          {
+            "selector": "#game-hint",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 76
+              }
+            ],
+            "computed": {
+              "text": "授業の教室は今回の手続き窓口ではありません。入学年度の履修表と不足項目を持ち、学科事務室か註冊課務組（学籍・履修担当）へ。相談は卒業認定ではありません。",
+              "font": "16px / 25.6px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "25.6px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-position",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 26
+              }
+            ],
+            "computed": {
+              "text": "現在：3列3行、10歩。方向ボタンか矢印キーで移動。",
+              "font": "16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-plan",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIRegular",
+                "isCustomFont": false,
+                "glyphCount": 29
+              }
+            ],
+            "computed": {
+              "text": "用事：卒業要件の不足を相談｜窓口：授業の教室｜0/2件完了",
+              "font": "16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "400",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": ".control-label",
+            "platform": [],
+            "computed": {
+              "text": "何をしたい？",
+              "font": "750 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "750",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#semester-visit",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 5
+              }
+            ],
+            "computed": {
+              "text": "ここで相談",
+              "font": "800 16px / 22.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "800",
+              "fontSize": "16px",
+              "lineHeight": "22.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          },
+          {
+            "selector": "#game-progress",
+            "platform": [
+              {
+                "familyName": "Microsoft JhengHei UI",
+                "postScriptName": "MicrosoftJhengHeiUIBold",
+                "isCustomFont": false,
+                "glyphCount": 5
+              }
+            ],
+            "computed": {
+              "text": "2 / 3",
+              "font": "800 16px / 26.4px system-ui, \"Noto Sans TC\", sans-serif",
+              "fontFamily": "system-ui, \"Noto Sans TC\", sans-serif",
+              "fontWeight": "800",
+              "fontSize": "16px",
+              "lineHeight": "26.4px",
+              "fontVariantNumeric": "normal",
+              "documentFontsStatus": "loaded"
+            }
+          }
+        ]
+      }
+    ],
+    "system_font_files_post_point": [
+      {
+        "file": "C:\\WINDOWS\\Fonts\\msjh.ttc",
+        "bytes": 21404172,
+        "sha256": "1fd5fc7046e0eea753988ee06d1a5a731df68475614e2174fbba9b4800f392ac",
+        "observed": "2026-10-23T04:12:35.794Z",
+        "scope": "post-calibration point receipt, not a fabricated pre-run font-file receipt"
+      },
+      {
+        "file": "C:\\WINDOWS\\Fonts\\msjhbd.ttc",
+        "bytes": 14441188,
+        "sha256": "7d55cd4801102131d991630cea74534dcf73a9fabf4a33e54fe05dfb4f5aa790",
+        "observed": "2026-10-23T04:12:35.815Z",
+        "scope": "post-calibration point receipt, not a fabricated pre-run font-file receipt"
+      }
+    ],
+    "system_font_file_before_bytes_available": false,
+    "method_flags": [
+      {
+        "lang": "zh",
+        "width": 320,
+        "flags": []
+      },
+      {
+        "lang": "zh",
+        "width": 1440,
+        "flags": [
+          "TEXT_CLIPPED_OR_UNREAD_SCROLL_CONTENT semester-window-2 授課教室",
+          "SCROLL_CONTENT_PENDING 8 text nodes require additional actual scroll captures"
+        ]
+      },
+      {
+        "lang": "en",
+        "width": 320,
+        "flags": []
+      },
+      {
+        "lang": "en",
+        "width": 1440,
+        "flags": [
+          "TEXT_CLIPPED_OR_UNREAD_SCROLL_CONTENT semester-stops Map key: department office at upper left, Registration and Curriculum Section at upper right, classroom at lower centre. Icons stand for contacts only.",
+          "SCROLL_CONTENT_PENDING 9 text nodes require additional actual scroll captures"
+        ]
+      },
+      {
+        "lang": "ja",
+        "width": 320,
+        "flags": []
+      },
+      {
+        "lang": "ja",
+        "width": 1440,
+        "flags": [
+          "TEXT_CLIPPED_OR_UNREAD_SCROLL_CONTENT semester-window-2 授業の教室",
+          "SCROLL_CONTENT_PENDING 8 text nodes require additional actual scroll captures"
+        ]
+      }
+    ]
+  },
+  "numeric_all_values_native_proven": false,
+  "full_project_approved": false
+}
