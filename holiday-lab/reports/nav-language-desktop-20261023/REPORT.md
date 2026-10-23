@@ -49,3 +49,7 @@ exit0
 ## 最終儀表板結果
 
 node holiday-lab/build-dashboard.mjs → 34/34 PASS、exit0；node --test holiday-lab/dashboard/progress-adapter.test.cjs holiday-lab/dashboard/ui-authority.test.cjs → 19 tests、19 pass、0 fail、exit0；DASHBOARD_QA_URL=http://127.0.0.1:8872 node holiday-lab/dashboard/smoke.cjs → DASHBOARD_SMOKE 2/2 + OFFLINE PASS、exit0。完整命令收據在official-names-followup-20261023/root/nav-desktop-dashboard-*.json。Chrome已實際開啟8872英文首頁與儀表板，日文切換及回英文後等相應語言標籤可見，完整導覽皆存在。
+
+## 本機保存完成
+
+主成果9788d22f1edd22ed43f2e544814a7333b0fa66fb；原專案交接d70ff2d81e18a71b34aadd4d0644a97de54daf2b；保存收據81b737040712e702762e5ef0d2881037c2d7adda。75檔在白名單內，46份新證據18,348,423 bytes逐檔index SHA相同；原四份dirty、正式R0、main refs與C節守門均通過，兩repo fsck exit0。未推送／發布／刪檔，未啟Unity或勞動節。完整守門與實際Git輸出見root/local-preservation.json及root/save-commands.json。
