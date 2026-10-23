@@ -1,0 +1,90 @@
+✖ legacy aggregate low-limit reproduction; sharded writer never aggregate-stringifies (3.0494ms)
+✖ v1 backward compatibility and v2 lazy true Array with bounded LRU (9.2435ms)
+✖ summaries preserve repeated IDs, width and intent without hydrating missing shards (4.555ms)
+✖ SHA mismatch, identity mismatch, duplicate indices and escaping paths fail closed (4.3078ms)
+✔ incremental append preserves old checkpoint and full case snapshots (31.8179ms)
+✔ append snapshot remains immutable when caller changes its original object (15.4829ms)
+✔ stream serializer matches JSON semantics with Unicode, control chars and omission (5.2725ms)
+✔ partial write failure does not replace previous committed manifest (8.5623ms)
+✖ header SHA verified before exposing metadata; unsupported versions rejected (2.6186ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 4
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 195.4679
+
+✖ failing tests:
+
+test at holiday-lab\tests\layout-report-store.test.cjs:9:1
+✖ legacy aggregate low-limit reproduction; sharded writer never aggregate-stringifies (3.0494ms)
+  RangeError: Invalid string length (simulated 4000)
+      at JSON.limited (C:\agywork\agd-en-guide-terms\holiday-lab\tests\layout-report-store.test.cjs:11:92)
+      at module.exports.writeLayoutReport (C:\Users\treef\AppData\Local\Temp\layout-store-legacy-mutant-JHNwR1\legacy-mutant.cjs:100:76)
+      at TestContext.<anonymous> (C:\agywork\agd-en-guide-terms\holiday-lab\tests\layout-report-store.test.cjs:15:13)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17)
+
+test at holiday-lab\tests\layout-report-store.test.cjs:18:1
+✖ v1 backward compatibility and v2 lazy true Array with bounded LRU (9.2435ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (C:\agywork\agd-en-guide-terms\holiday-lab\tests\layout-report-store.test.cjs:23:55)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\tests\layout-report-store.test.cjs:28:1
+✖ summaries preserve repeated IDs, width and intent without hydrating missing shards (4.555ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "paths[1]" argument must be of type string. Received undefined
+      at Object.resolve (node:path:199:9)
+      at TestContext.<anonymous> (C:\agywork\agd-en-guide-terms\holiday-lab\tests\layout-report-store.test.cjs:30:64)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at holiday-lab\tests\layout-report-store.test.cjs:34:1
+✖ SHA mismatch, identity mismatch, duplicate indices and escaping paths fail closed (4.3078ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "paths[1]" argument must be of type string. Received undefined
+      at Object.resolve (node:path:199:9)
+      at TestContext.<anonymous> (C:\agywork\agd-en-guide-terms\holiday-lab\tests\layout-report-store.test.cjs:37:44)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at holiday-lab\tests\layout-report-store.test.cjs:66:1
+✖ header SHA verified before exposing metadata; unsupported versions rejected (2.6186ms)
+  TypeError: Cannot read properties of undefined (reading 'file')
+      at TestContext.<anonymous> (C:\agywork\agd-en-guide-terms\holiday-lab\tests\layout-report-store.test.cjs:67:184)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
