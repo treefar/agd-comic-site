@@ -1,0 +1,53 @@
+{
+  "baseline": "80286ca",
+  "mode": "verify",
+  "operations": 2,
+  "canonical_audio_and_film_sources_preserved": true,
+  "all_non_target_values_equal": true,
+  "generated_checked": true,
+  "files": [
+    {
+      "path": "data/en/labs.json",
+      "before_sha256": "44c67558b509e4ba97c98b32d32f4c97cf8dbc7a1457512a57cfe01f9813530c",
+      "after_sha256": "44c67558b509e4ba97c98b32d32f4c97cf8dbc7a1457512a57cfe01f9813530c"
+    },
+    {
+      "path": "data/ja/messages.json",
+      "before_sha256": "89f8c3e1c49379eac03e579cb445bafffb919e40a3d354cace7c35102719d3df",
+      "after_sha256": "89f8c3e1c49379eac03e579cb445bafffb919e40a3d354cace7c35102719d3df"
+    }
+  ]
+}
+{
+  "mode": "verify-applied",
+  "baseline": "d48f5d9a479db1449d932b815a6cff4d0a827f76",
+  "source_values": 13,
+  "canonical_name_only": true,
+  "japanese_key_migration": true,
+  "generated_translation_values": 13,
+  "on_disk_locales_checked": true,
+  "product_files_written": 0
+}
+{
+  "mode": "verify-applied",
+  "baseline": "a11cc9c7cbd34bbda962734c7298fe7fc54988c2",
+  "source_values": 82,
+  "excluded_pending": 1,
+  "canonical_name_only": true,
+  "japanese_key_migration": true,
+  "generated_translation_values": 82,
+  "on_disk_locales_checked": true,
+  "product_files_written": 0
+}
+{
+  "pass": true,
+  "about_labs_values": 44,
+  "explicitly_corrected_previous_values": 2,
+  "neutral_degrees": 6,
+  "exact_dictionary_changes_from08": {
+    "en": 7,
+    "ja": 1
+  },
+  "non_target_generated_values_equal": true,
+  "files_written": 0
+}

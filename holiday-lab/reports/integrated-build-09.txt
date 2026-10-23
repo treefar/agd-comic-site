@@ -1,0 +1,36 @@
+MEASUREMENT ONLY: test build for layout capture; not cleared for packaging or delivery.
+{
+  "pass": true,
+  "project": "C:\\agywork\\agd-holiday-prototypes",
+  "assets": 257,
+  "screens": 9,
+  "errors": []
+}
+Translations: 2315 Static candidates: 26 Unpaired paths: 21
+Japanese exact translations: 2344
+▲ [WARNING] Duplicate key "color" in object literal [duplicate-object-key]
+
+    ssr-entry.jsx:7000:44:
+      7000 │         background: "var(--accent-yellow)", color: "var(--ink)",
+           ╵                                             ~~~~~
+
+  The original key "color" is here:
+
+    ssr-entry.jsx:6999:8:
+      6999 │         color: "inherit", textDecoration: "none", fontFamily: "'...
+           ╵         ~~~~~
+
+▲ [WARNING] Duplicate key "color" in object literal [duplicate-object-key]
+
+    client-entry.jsx:6999:44:
+      6999 │         background: "var(--accent-yellow)", color: "var(--ink)",
+           ╵                                             ~~~~~
+
+  The original key "color" is here:
+
+    client-entry.jsx:6998:8:
+      6998 │         color: "inherit", textDecoration: "none", fontFamily: "'...
+           ╵         ~~~~~
+
+[build] 完成：.measure-integrated-09/index.html 135.7 KB、app-M56TOGNW.js 1168.8 KB
+MEASUREMENT_ONLY: .measure-integrated-09; 356 files; no publication performed.
