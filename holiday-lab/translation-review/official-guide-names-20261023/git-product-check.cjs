@@ -1,0 +1,9 @@
+const fs=require('fs'),path=require('path'),cp=require('child_process'),crypto=require('crypto'),assert=require('assert/strict');
+const b=__dirname,prefix='holiday-lab/translation-review/official-guide-names-20261023/',base=JSON.parse(fs.readFileSync(path.join(b,'baseline.json'))),head=cp.execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
+let count=0;for(const f of base.files){const bytes=cp.execFileSync('git',['cat-file','blob',head+':'+prefix+'preimage/'+f.file],{maxBuffer:20*1024*1024});assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),f.sha256,f.file+' committed exact bytes');count++;}
+const r=cp.spawnSync('git',['fsck','--connectivity-only'],{encoding:'utf8'}),rec={command:'git fsck --connectivity-only',head,exit_code:r.status,stdout:r.stdout,stderr:r.stderr,committed_preimage_sha_verified:count,checked_at:new Date().toISOString()};
+fs.writeFileSync(path.join(b,'git-product-check.json'),JSON.stringify(rec,null,2)+'\n');
+const dangling=(r.stdout.match(/^dangling /gm)||[]).length;
+fs.writeFileSync(path.join(b,'COMMIT.md'),'# 提交與保全\n\n產品與證據提交：'+head+'（fix(i18n): use supported official guide names）。\n\n白名單69檔＝6產品＋本報告目錄63檔；原6dirty與latest-build.json未提交，沒有push。\n\n實際 git fsck --connectivity-only：exit '+r.status+'，列出 '+dangling+' 筆dangling物件，未刪除或執行GC；完整stdout/stderr見git-product-check.json。20份提交後preimage直接以git cat-file取blob再比SHA，20/20與起始bytes相同。\n\n新版measurement為 .measure-official-guide-names-20261023-01 / app-WGMMQQRX.js / 360files；manifest為freeze-v3.json，不是freeze.json。本次來源/字典測試21/21，UI獨立驗收尚待另代理，未把舊8865畫面當新證據。\n\n產品6檔 git diff --cached --check 實跑exit0。全報告目錄的廣域whitespace檢查會對保留CRLF的preimage和真實stderr空白提出警告；沒有為讓該檢查變綠而改寫原始證據。\n\n後續文件提交只補本檔與git-product-check.json、git-product-check.cjs；不改產品或freeze。\n');
+console.log('GIT_PRODUCT_CHECK head='+head+' fsck_exit='+r.status+' dangling='+dangling+' committed_preimageSHA='+count+'/20');process.exitCode=r.status;
+
