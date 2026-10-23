@@ -1,0 +1,18 @@
+// Postprocess immutable real-browser receipts; no browser replay, time or product changes.
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),crypto=require('node:crypto');
+const {sampleLayout}=require('../browser-sampler.cjs'),{inspectReport}=require('C:/AIHome/claude/skills/game-ui-art/scripts/ui-layout-policy.cjs');
+const dir=path.resolve(process.argv[2]),file=path.join(dir,'report.json'),raw=fs.readFileSync(file),r=JSON.parse(raw),hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+assert.ok(r.after&&r.source_stable===true,'Capture must finish and supply post-run source receipts');assert.deepEqual(r.after,r.before);assert.equal(r.cases.length,6);assert.equal(r.sampler_function_sha256,hash(sampleLayout.toString()));
+const rows=[];
+for(const c of r.cases){
+ assert.ok(c.status==='native-replay-verified'||c.status==='fail'&&c.failure?.includes("Cannot read properties of undefined (reading 'length')"),'No unaccounted runtime failure');
+ assert.equal(c.samples.length,9);assert.deepEqual(c.artifact.takes.map(t=>t.timing),r.timings);assert.deepEqual([...c.seen].sort((a,b)=>a-b),[0,1,2,3,4,5,6,7,8]);assert.deepEqual(c.pageErrors,[]);assert.deepEqual(c.consoleErrors,[]);
+ for(const e of c.observation){assert.ok(e.visible);assert.ok(e.caption.includes(String(r.timings.flat()[e.shot])));assert.ok(e.sprites.every(s=>s.complete&&s.naturalWidth>0));}
+ const transitions=c.observation.filter((e,i,a)=>i===0||e.shot!==a[i-1].shot);for(let i=1;i<transitions.length;i++)assert.equal(transitions[i].shot,(transitions[i-1].shot+1)%9);
+ const short=[1,7].map(shot=>{const points=c.observation.filter(e=>e.shot===shot),changes=new Set(points.map(e=>e.sprites[0].style));assert.ok(points.length>=2&&changes.size>1);return{shot,input_ms:140,observed_frames:points.length,distinct_sprite_poses:changes.size,observed_intervals:c.observedIntervals.filter(e=>e.shot===shot)};});
+ const samples=c.samples.map(s=>{assert.equal(hash(fs.readFileSync(path.join(dir,s.file))),s.screenshot_sha256);const geometry=inspectReport({schema_version:1,source_fingerprints:{},cases:[{id:`new-year/${c.lang}/replay/shot-${s.target}`,width:c.width,height:c.width===320?900:1000,nodes:s.sample.nodes,blockers:s.sample.blockers}]});return{target:s.target,stable:s.stable,screenshot:s.file,screenshot_sha256:s.screenshot_sha256,elapsed_sampling_ms:s.sample.ended-s.sample.started,geometry_errors:geometry,method_violations:s.sample.violations};});
+ rows.push({lang:c.lang,width:c.width,native_replay:true,all_nine_shots_observed:true,short_phases:short,samples,stable_ink_samples:samples.filter(s=>s.stable).length,geometry_errors:samples.filter(s=>s.stable).reduce((a,s)=>a+s.geometry_errors.length,0)});
+}
+assert.equal(new Set(rows.map(c=>c.lang+'/'+c.width)).size,6);
+const result={date:new Date().toISOString(),raw_report_sha256:hash(raw),raw_source:'report.json',original_collector_source_sha256:hash(fs.readFileSync(path.join(__dirname,'check-01-source.cjs'))),sampler_function_sha256:r.sampler_function_sha256,source_stable:true,native_pass:rows.length,stable_ink_samples:rows.reduce((n,c)=>n+c.stable_ink_samples,0),expected_ink_samples:54,geometry_errors:rows.reduce((n,c)=>n+c.geometry_errors,0),rows,scope:'Postprocess existing raw DOM and frozen-sampler samples. Original false summary failures are retained. Geometry results apply only to same-shot samples, not full project layout approval.'};
+fs.writeFileSync(path.join(dir,'verified.json'),JSON.stringify(result,null,2));console.log(`NATIVE ${rows.length}/6; STABLE_INK ${result.stable_ink_samples}/54; GEOMETRY ${result.geometry_errors}; SOURCE_STABLE true`);
