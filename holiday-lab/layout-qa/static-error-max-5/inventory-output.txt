@@ -1,0 +1,531 @@
+peace-memory 680 {"runner.mjs":"e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1","catalog.mjs":"3ff982b58d12e560e94d90ef3032ec389e48207d50bbec91268f914a56882dad","lab.css":"5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d","replay-model.mjs":"202d09d268c31d7d159035cc8958bb15caa84f5406c36736ba646bf09e0757e3","games/peace-memory.mjs":"cdc8fb49a17522f8e5f46989f3397170f75d4d207f25a40bed4c8b31ccda1d4e","assets/constitution/prop1.png":"c7b2c1d365de5062ab1359b168ea69d40da14a4ed29297a73008ba185f47b2cf","assets/constitution/prop2.png":"89a575bb7272a03ca7ff7b4eadcc737153051862bb4c950f8b98aa1508c26087","assets/ui/paper.png":"629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92","assets/ui/panel.png":"66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5","assets/ui/normal.png":"aaf3efef72c19bb1ff1c5cebead7d2aecf9652a7b12449391ab7d5ac9d46682b","assets/ui/hover.png":"55d83ece8e70df342b9c00d933c4b577e24a23f01e2ee2e638a1eefac7929ce2","assets/ui/pressed.png":"06d3fac65bd82586980803a4f4345b8ecab65f396e12e143b27175fa8ef86fe6","assets/ui/disabled.png":"9b69f5edd472bb39bd5a0a3d34910af0c9390848f5ac2ec85d17e98efacdaf27"} [
+  'game',            'lang',
+  'width',           'intent',
+  'status',          'console_errors',
+  'page_errors',     'http_errors',
+  'button_states',   'error_branches',
+  'newyear_fixture', 'artifact',
+  'artifact_scroll', 'replay_seen'
+]
+game-hint {
+  "移動閱讀框，完整聽見三個虛構人物的觀點。": {
+    "count": 80,
+    "example": "peace-memory/zh/game/initial",
+    "original_state": "game/initial",
+    "langs": [
+      "zh"
+    ]
+  },
+  "完整包住訊息窗，才不會漏掉一段話。": {
+    "count": 42,
+    "example": "peace-memory/zh/game/error-initial",
+    "original_state": "game/error-initial",
+    "langs": [
+      "zh"
+    ]
+  },
+  "已暫停": {
+    "count": 30,
+    "example": "peace-memory/zh/game/paused",
+    "original_state": "game/paused",
+    "langs": [
+      "zh"
+    ]
+  },
+  "還有不同的聲音，換一位再聽。": {
+    "count": 8,
+    "example": "peace-memory/zh/game/phase-1",
+    "original_state": "game/phase-1",
+    "langs": [
+      "zh"
+    ]
+  },
+  "這段話已經留下了，換另一位聽聽。": {
+    "count": 8,
+    "example": "peace-memory/zh/game/errors/phase-1/duplicate-voice",
+    "original_state": "game/errors/phase-1/duplicate-voice",
+    "langs": [
+      "zh"
+    ]
+  },
+  "Frame and listen to three fictional perspectives without interruption.": {
+    "count": 80,
+    "example": "peace-memory/en/game/initial",
+    "original_state": "game/initial",
+    "langs": [
+      "en"
+    ]
+  },
+  "Frame the whole message so nothing is left out.": {
+    "count": 44,
+    "example": "peace-memory/en/game/error-initial",
+    "original_state": "game/error-initial",
+    "langs": [
+      "en"
+    ]
+  },
+  "Paused": {
+    "count": 30,
+    "example": "peace-memory/en/game/paused",
+    "original_state": "game/paused",
+    "langs": [
+      "en"
+    ]
+  },
+  "There are other voices. Choose another person.": {
+    "count": 8,
+    "example": "peace-memory/en/game/phase-1",
+    "original_state": "game/phase-1",
+    "langs": [
+      "en"
+    ]
+  },
+  "This voice is already recorded. Listen to someone else.": {
+    "count": 10,
+    "example": "peace-memory/en/game/errors/phase-1/duplicate-voice",
+    "original_state": "game/errors/phase-1/duplicate-voice",
+    "langs": [
+      "en"
+    ]
+  },
+  "読み取り枠を動かし、架空の3人の話を最後まで聴こう。": {
+    "count": 80,
+    "example": "peace-memory/ja/game/initial",
+    "original_state": "game/initial",
+    "langs": [
+      "ja"
+    ]
+  },
+  "話が欠けないよう、メッセージ全体を囲みましょう。": {
+    "count": 42,
+    "example": "peace-memory/ja/game/error-initial",
+    "original_state": "game/error-initial",
+    "langs": [
+      "ja"
+    ]
+  },
+  "一時停止中": {
+    "count": 30,
+    "example": "peace-memory/ja/game/paused",
+    "original_state": "game/paused",
+    "langs": [
+      "ja"
+    ]
+  },
+  "別の声もあります。次の人を選びましょう。": {
+    "count": 8,
+    "example": "peace-memory/ja/game/phase-1",
+    "original_state": "game/phase-1",
+    "langs": [
+      "ja"
+    ]
+  },
+  "この話は記録済みです。別の人を聴きましょう。": {
+    "count": 8,
+    "example": "peace-memory/ja/game/errors/phase-1/duplicate-voice",
+    "original_state": "game/errors/phase-1/duplicate-voice",
+    "langs": [
+      "ja"
+    ]
+  }
+}
+peace-status {
+  "尚未開始聆聽。": {
+    "count": 80,
+    "example": "peace-memory/zh/game/initial",
+    "original_state": "game/initial",
+    "langs": [
+      "zh"
+    ]
+  },
+  "訊息窗還沒完全入框，可以加寬或移動後再聽。": {
+    "count": 80,
+    "example": "peace-memory/zh/game/error-initial",
+    "original_state": "game/error-initial",
+    "langs": [
+      "zh"
+    ]
+  },
+  "這段話已完整保留。": {
+    "count": 8,
+    "example": "peace-memory/zh/game/phase-1",
+    "original_state": "game/phase-1",
+    "langs": [
+      "zh"
+    ]
+  },
+  "Not listening yet.": {
+    "count": 69,
+    "example": "peace-memory/en/game/initial",
+    "original_state": "game/initial",
+    "langs": [
+      "en"
+    ]
+  },
+  "The message is clipped. Widen or move the frame, then listen again.": {
+    "count": 40,
+    "example": "peace-memory/en/game/error-initial",
+    "original_state": "game/error-initial",
+    "langs": [
+      "en"
+    ]
+  },
+  "The whole message is now recorded.": {
+    "count": 4,
+    "example": "peace-memory/en/game/phase-1",
+    "original_state": "game/phase-1",
+    "langs": [
+      "en"
+    ]
+  },
+  "まだ聴いていません。": {
+    "count": 80,
+    "example": "peace-memory/ja/game/initial",
+    "original_state": "game/initial",
+    "langs": [
+      "ja"
+    ]
+  },
+  "メッセージが切れています。枠を広げるか動かして、もう一度。": {
+    "count": 80,
+    "example": "peace-memory/ja/game/error-initial",
+    "original_state": "game/error-initial",
+    "langs": [
+      "ja"
+    ]
+  },
+  "最後まで記録できました。": {
+    "count": 8,
+    "example": "peace-memory/ja/game/phase-1",
+    "original_state": "game/phase-1",
+    "langs": [
+      "ja"
+    ]
+  }
+}
+STATES [
+  "help",
+  "help/button-audio-toggle/normal",
+  "help/button-audio-toggle/hover",
+  "help/button-audio-toggle/pressed",
+  "help/button-help-back/normal",
+  "help/button-help-back/hover",
+  "help/button-help-back/pressed",
+  "settings",
+  "settings/button-settings-back/normal",
+  "settings/button-settings-back/hover",
+  "settings/button-settings-back/pressed",
+  "game/initial",
+  "game/initial/button-pause-game/normal",
+  "game/initial/button-pause-game/hover",
+  "game/initial/button-pause-game/pressed",
+  "game/initial/button-leave-game/normal",
+  "game/initial/button-leave-game/hover",
+  "game/initial/button-leave-game/pressed",
+  "game/initial/button-peace-person-0/normal",
+  "game/initial/button-peace-person-0/hover",
+  "game/initial/button-peace-person-0/pressed",
+  "game/initial/button-peace-person-1/normal",
+  "game/initial/button-peace-person-1/hover",
+  "game/initial/button-peace-person-1/pressed",
+  "game/initial/button-peace-person-2/normal",
+  "game/initial/button-peace-person-2/hover",
+  "game/initial/button-peace-person-2/pressed",
+  "game/initial/button-peace-x-minus/normal",
+  "game/initial/button-peace-x-minus/hover",
+  "game/initial/button-peace-x-minus/pressed",
+  "game/initial/button-peace-x-plus/normal",
+  "game/initial/button-peace-x-plus/hover",
+  "game/initial/button-peace-x-plus/pressed",
+  "game/initial/button-peace-y-minus/normal",
+  "game/initial/button-peace-y-minus/hover",
+  "game/initial/button-peace-y-minus/pressed",
+  "game/initial/button-peace-y-plus/normal",
+  "game/initial/button-peace-y-plus/hover",
+  "game/initial/button-peace-y-plus/pressed",
+  "game/initial/button-peace-width-minus/normal",
+  "game/initial/button-peace-width-minus/hover",
+  "game/initial/button-peace-width-minus/pressed",
+  "game/initial/button-peace-width-plus/normal",
+  "game/initial/button-peace-width-plus/hover",
+  "game/initial/button-peace-width-plus/pressed",
+  "game/initial/button-peace-listen/normal",
+  "game/initial/button-peace-listen/hover",
+  "game/initial/button-peace-listen/pressed",
+  "game/error-initial",
+  "game/dynamic-min",
+  "game/dynamic-max",
+  "game/paused",
+  "game/paused/button-pause-game/normal",
+  "game/paused/button-pause-game/hover",
+  "game/paused/button-pause-game/pressed",
+  "game/paused/button-peace-person-0/disabled",
+  "game/paused/button-peace-person-1/disabled",
+  "game/paused/button-peace-person-2/disabled",
+  "game/paused/button-peace-x-minus/disabled",
+  "game/paused/button-peace-x-plus/disabled",
+  "game/paused/button-peace-y-minus/disabled",
+  "game/paused/button-peace-y-plus/disabled",
+  "game/paused/button-peace-width-minus/disabled",
+  "game/paused/button-peace-width-plus/disabled",
+  "game/paused/button-peace-listen/disabled",
+  "game/errors/phase-0/clipped",
+  "game/errors/phase-0/clipped/button-peace-person-0/normal",
+  "game/errors/phase-0/clipped/button-peace-person-0/hover",
+  "game/errors/phase-0/clipped/button-peace-person-0/pressed",
+  "game/errors/phase-0/clipped/button-peace-person-2/normal",
+  "game/errors/phase-0/clipped/button-peace-person-2/hover",
+  "game/errors/phase-0/clipped/button-peace-person-2/pressed",
+  "game/phase-1",
+  "game/errors/phase-1/clipped",
+  "game/errors/phase-1/duplicate-voice",
+  "game/phase-2",
+  "game/errors/phase-2/clipped",
+  "game/errors/phase-2/clipped/button-peace-person-1/normal",
+  "game/errors/phase-2/clipped/button-peace-person-1/hover",
+  "game/errors/phase-2/clipped/button-peace-person-1/pressed",
+  "game/errors/phase-2/duplicate-voice",
+  "result/summary",
+  "result/summary/button-play-result/normal",
+  "result/summary/button-play-result/hover",
+  "result/summary/button-play-result/pressed",
+  "result/summary/button-retry-game/normal",
+  "result/summary/button-retry-game/hover",
+  "result/summary/button-retry-game/pressed",
+  "result/summary/button-result-exit/normal",
+  "result/summary/button-result-exit/hover",
+  "result/summary/button-result-exit/pressed",
+  "result/artifact-open",
+  "result/artifact-scroll-0",
+  "result/artifact-scroll-1",
+  "result/artifact-scroll-2",
+  "result/artifact-scroll-3",
+  "",
+  "retry"
+]
+retrocession 622 {"runner.mjs":"e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1","catalog.mjs":"3ff982b58d12e560e94d90ef3032ec389e48207d50bbec91268f914a56882dad","lab.css":"5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d","replay-model.mjs":"202d09d268c31d7d159035cc8958bb15caa84f5406c36736ba646bf09e0757e3","games/retrocession.mjs":"64765225ca980c62feb3f673393efaf8d7d479739b908bf3928389cabca21989","assets/constitution/prop1.png":"c7b2c1d365de5062ab1359b168ea69d40da14a4ed29297a73008ba185f47b2cf","assets/constitution/prop2.png":"89a575bb7272a03ca7ff7b4eadcc737153051862bb4c950f8b98aa1508c26087","assets/ui/paper.png":"629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92","assets/ui/panel.png":"66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5","assets/ui/normal.png":"aaf3efef72c19bb1ff1c5cebead7d2aecf9652a7b12449391ab7d5ac9d46682b","assets/ui/hover.png":"55d83ece8e70df342b9c00d933c4b577e24a23f01e2ee2e638a1eefac7929ce2","assets/ui/pressed.png":"06d3fac65bd82586980803a4f4345b8ecab65f396e12e143b27175fa8ef86fe6","assets/ui/disabled.png":"9b69f5edd472bb39bd5a0a3d34910af0c9390848f5ac2ec85d17e98efacdaf27"} [
+  'game',            'lang',
+  'width',           'intent',
+  'status',          'console_errors',
+  'page_errors',     'http_errors',
+  'button_states',   'error_branches',
+  'newyear_fixture', 'artifact',
+  'artifact_scroll', 'replay_seen'
+]
+game-hint {
+  "平移、旋轉與縮放，對齊虛構街景的三個記號。": {
+    "count": 74,
+    "example": "retrocession/zh/game/initial",
+    "original_state": "game/initial",
+    "langs": [
+      "zh"
+    ]
+  },
+  "還有地標沒對上。平移能改位置，旋轉改角度，縮放改間距。": {
+    "count": 36,
+    "example": "retrocession/zh/game/error-initial",
+    "original_state": "game/error-initial",
+    "langs": [
+      "zh"
+    ]
+  },
+  "已暫停": {
+    "count": 28,
+    "example": "retrocession/zh/game/paused",
+    "original_state": "game/paused",
+    "langs": [
+      "zh"
+    ]
+  },
+  "Translate, rotate and scale three anchors in fictional street drawings.": {
+    "count": 74,
+    "example": "retrocession/en/game/initial",
+    "original_state": "game/initial",
+    "langs": [
+      "en"
+    ]
+  },
+  "Some anchors do not match yet. Translation changes position, rotation changes angle, and scale changes distance.": {
+    "count": 36,
+    "example": "retrocession/en/game/error-initial",
+    "original_state": "game/error-initial",
+    "langs": [
+      "en"
+    ]
+  },
+  "Paused": {
+    "count": 28,
+    "example": "retrocession/en/game/paused",
+    "original_state": "game/paused",
+    "langs": [
+      "en"
+    ]
+  },
+  "架空の街の3つの印を、移動・回転・拡大で重ねよう。": {
+    "count": 74,
+    "example": "retrocession/ja/game/initial",
+    "original_state": "game/initial",
+    "langs": [
+      "ja"
+    ]
+  },
+  "まだずれている目印があります。移動は位置、回転は角度、拡大縮小は間隔を変えます。": {
+    "count": 36,
+    "example": "retrocession/ja/game/error-initial",
+    "original_state": "game/error-initial",
+    "langs": [
+      "ja"
+    ]
+  },
+  "一時停止中": {
+    "count": 28,
+    "example": "retrocession/ja/game/paused",
+    "original_state": "game/paused",
+    "langs": [
+      "ja"
+    ]
+  }
+}
+archive-feedback {
+  "先看哪兩個地標的相對位置不一樣。": {
+    "count": 134,
+    "example": "retrocession/zh/game/initial",
+    "original_state": "game/initial",
+    "langs": [
+      "zh"
+    ]
+  },
+  "三個地標都進圈了，可以收下對照。": {
+    "count": 4,
+    "example": "retrocession/zh/game/preview",
+    "original_state": "game/preview",
+    "langs": [
+      "zh"
+    ]
+  },
+  "Compare the relative position of two landmarks first.": {
+    "count": 134,
+    "example": "retrocession/en/game/initial",
+    "original_state": "game/initial",
+    "langs": [
+      "en"
+    ]
+  },
+  "All three landmarks are in their rings. Save this comparison.": {
+    "count": 4,
+    "example": "retrocession/en/game/preview",
+    "original_state": "game/preview",
+    "langs": [
+      "en"
+    ]
+  },
+  "まず2つの目印の位置関係を見ましょう。": {
+    "count": 134,
+    "example": "retrocession/ja/game/initial",
+    "original_state": "game/initial",
+    "langs": [
+      "ja"
+    ]
+  },
+  "3つとも輪に入りました。保存できます。": {
+    "count": 4,
+    "example": "retrocession/ja/game/preview",
+    "original_state": "game/preview",
+    "langs": [
+      "ja"
+    ]
+  }
+}
+STATES [
+  "help",
+  "help/button-audio-toggle/normal",
+  "help/button-audio-toggle/hover",
+  "help/button-audio-toggle/pressed",
+  "help/button-help-back/normal",
+  "help/button-help-back/hover",
+  "help/button-help-back/pressed",
+  "settings",
+  "settings/button-settings-back/normal",
+  "settings/button-settings-back/hover",
+  "settings/button-settings-back/pressed",
+  "game/initial",
+  "game/initial/button-pause-game/normal",
+  "game/initial/button-pause-game/hover",
+  "game/initial/button-pause-game/pressed",
+  "game/initial/button-leave-game/normal",
+  "game/initial/button-leave-game/hover",
+  "game/initial/button-leave-game/pressed",
+  "game/initial/button-archive-x-minus/normal",
+  "game/initial/button-archive-x-minus/hover",
+  "game/initial/button-archive-x-minus/pressed",
+  "game/initial/button-archive-x-plus/normal",
+  "game/initial/button-archive-x-plus/hover",
+  "game/initial/button-archive-x-plus/pressed",
+  "game/initial/button-archive-y-minus/normal",
+  "game/initial/button-archive-y-minus/hover",
+  "game/initial/button-archive-y-minus/pressed",
+  "game/initial/button-archive-y-plus/normal",
+  "game/initial/button-archive-y-plus/hover",
+  "game/initial/button-archive-y-plus/pressed",
+  "game/initial/button-archive-rotation-minus/normal",
+  "game/initial/button-archive-rotation-minus/hover",
+  "game/initial/button-archive-rotation-minus/pressed",
+  "game/initial/button-archive-rotation-plus/normal",
+  "game/initial/button-archive-rotation-plus/hover",
+  "game/initial/button-archive-rotation-plus/pressed",
+  "game/initial/button-archive-scale-minus/normal",
+  "game/initial/button-archive-scale-minus/hover",
+  "game/initial/button-archive-scale-minus/pressed",
+  "game/initial/button-archive-scale-plus/normal",
+  "game/initial/button-archive-scale-plus/hover",
+  "game/initial/button-archive-scale-plus/pressed",
+  "game/initial/button-archive-save/normal",
+  "game/initial/button-archive-save/hover",
+  "game/initial/button-archive-save/pressed",
+  "game/error-initial",
+  "game/dynamic-min",
+  "game/dynamic-max",
+  "game/paused",
+  "game/paused/button-pause-game/normal",
+  "game/paused/button-pause-game/hover",
+  "game/paused/button-pause-game/pressed",
+  "game/paused/button-archive-x-minus/disabled",
+  "game/paused/button-archive-x-plus/disabled",
+  "game/paused/button-archive-y-minus/disabled",
+  "game/paused/button-archive-y-plus/disabled",
+  "game/paused/button-archive-rotation-minus/disabled",
+  "game/paused/button-archive-rotation-plus/disabled",
+  "game/paused/button-archive-scale-minus/disabled",
+  "game/paused/button-archive-scale-plus/disabled",
+  "game/paused/button-archive-save/disabled",
+  "game/errors/phase-0/anchors",
+  "game/preview",
+  "game/phase-1",
+  "game/errors/phase-1/anchors",
+  "game/phase-2",
+  "game/errors/phase-2/anchors",
+  "result/summary",
+  "result/summary/button-play-result/normal",
+  "result/summary/button-play-result/hover",
+  "result/summary/button-play-result/pressed",
+  "result/summary/button-retry-game/normal",
+  "result/summary/button-retry-game/hover",
+  "result/summary/button-retry-game/pressed",
+  "result/summary/button-result-exit/normal",
+  "result/summary/button-result-exit/hover",
+  "result/summary/button-result-exit/pressed",
+  "result/artifact-open",
+  "result/artifact-scroll-0",
+  "result/artifact-scroll-1",
+  "result/artifact-scroll-2",
+  "result/artifact-scroll-3",
+  "result/artifact-scroll-4",
+  "result/artifact-scroll-5",
+  "result/artifact-scroll-6",
+  "result/artifact-scroll-7",
+  "result/artifact-scroll-8",
+  "result/artifact-scroll-9",
+  "result/artifact-scroll-10",
+  "",
+  "retry"
+]

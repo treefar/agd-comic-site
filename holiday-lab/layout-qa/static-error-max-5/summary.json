@@ -1,0 +1,431 @@
+{
+  "pass": true,
+  "audit_complete": true,
+  "finite_error_longest_proven": false,
+  "eligible_contexts": 0,
+  "total_contexts": 12,
+  "retained_complete_original_cases": 12,
+  "source_before_after_stable": true,
+  "source_snapshot_files": 4,
+  "verified_native_samples": 892,
+  "games": [
+    {
+      "game": "peace-memory",
+      "frames": 680,
+      "verified_native_samples": 478,
+      "owner_rows": 603,
+      "missing_literal_contexts": [
+        {
+          "lang": "zh",
+          "width": 320,
+          "key": "status-listening",
+          "owner": "peace-status"
+        },
+        {
+          "lang": "zh",
+          "width": 1440,
+          "key": "status-listening",
+          "owner": "peace-status"
+        },
+        {
+          "lang": "en",
+          "width": 320,
+          "key": "status-listening",
+          "owner": "peace-status"
+        },
+        {
+          "lang": "en",
+          "width": 1440,
+          "key": "status-listening",
+          "owner": "peace-status"
+        },
+        {
+          "lang": "ja",
+          "width": 320,
+          "key": "status-listening",
+          "owner": "peace-status"
+        },
+        {
+          "lang": "ja",
+          "width": 1440,
+          "key": "status-listening",
+          "owner": "peace-status"
+        }
+      ],
+      "unproven_contexts": [
+        {
+          "lang": "zh",
+          "width": 320,
+          "key": "clipped-hint",
+          "owner": "game-hint",
+          "reason": "Measured owner exists but full Range/clip/safe/viewport/scroll proof does not close"
+        },
+        {
+          "lang": "zh",
+          "width": 320,
+          "key": "duplicate-hint",
+          "owner": "game-hint",
+          "reason": "Measured owner exists but full Range/clip/safe/viewport/scroll proof does not close"
+        },
+        {
+          "lang": "zh",
+          "width": 320,
+          "key": "status-listening",
+          "owner": "peace-status",
+          "reason": "No matching native owner text anywhere in original report"
+        },
+        {
+          "lang": "zh",
+          "width": 1440,
+          "key": "status-listening",
+          "owner": "peace-status",
+          "reason": "No matching native owner text anywhere in original report"
+        },
+        {
+          "lang": "en",
+          "width": 320,
+          "key": "clipped-hint",
+          "owner": "game-hint",
+          "reason": "Measured owner exists but full Range/clip/safe/viewport/scroll proof does not close"
+        },
+        {
+          "lang": "en",
+          "width": 320,
+          "key": "duplicate-hint",
+          "owner": "game-hint",
+          "reason": "Measured owner exists but full Range/clip/safe/viewport/scroll proof does not close"
+        },
+        {
+          "lang": "en",
+          "width": 320,
+          "key": "status-listening",
+          "owner": "peace-status",
+          "reason": "No matching native owner text anywhere in original report"
+        },
+        {
+          "lang": "en",
+          "width": 1440,
+          "key": "status-listening",
+          "owner": "peace-status",
+          "reason": "No matching native owner text anywhere in original report"
+        },
+        {
+          "lang": "ja",
+          "width": 320,
+          "key": "clipped-hint",
+          "owner": "game-hint",
+          "reason": "Measured owner exists but full Range/clip/safe/viewport/scroll proof does not close"
+        },
+        {
+          "lang": "ja",
+          "width": 320,
+          "key": "duplicate-hint",
+          "owner": "game-hint",
+          "reason": "Measured owner exists but full Range/clip/safe/viewport/scroll proof does not close"
+        },
+        {
+          "lang": "ja",
+          "width": 320,
+          "key": "status-listening",
+          "owner": "peace-status",
+          "reason": "No matching native owner text anywhere in original report"
+        },
+        {
+          "lang": "ja",
+          "width": 1440,
+          "key": "status-listening",
+          "owner": "peace-status",
+          "reason": "No matching native owner text anywhere in original report"
+        }
+      ],
+      "duplicate_combinations": [
+        {
+          "lang": "zh",
+          "width": 320,
+          "refusal": "duplicate-hint",
+          "secondary": "status-clipped",
+          "complete_same_capture": false,
+          "matches": []
+        },
+        {
+          "lang": "zh",
+          "width": 320,
+          "refusal": "duplicate-hint",
+          "secondary": "status-recorded",
+          "complete_same_capture": false,
+          "matches": []
+        },
+        {
+          "lang": "zh",
+          "width": 320,
+          "refusal": "duplicate-hint",
+          "secondary": "status-listening",
+          "complete_same_capture": false,
+          "matches": []
+        },
+        {
+          "lang": "zh",
+          "width": 1440,
+          "refusal": "duplicate-hint",
+          "secondary": "status-clipped",
+          "complete_same_capture": true,
+          "matches": [
+            {
+              "id": "peace-memory/zh/game/errors/phase-1/duplicate-voice/controls-scroll-0",
+              "index": 191
+            },
+            {
+              "id": "peace-memory/zh/game/errors/phase-2/duplicate-voice/controls-scroll-0",
+              "index": 203
+            }
+          ]
+        },
+        {
+          "lang": "zh",
+          "width": 1440,
+          "refusal": "duplicate-hint",
+          "secondary": "status-recorded",
+          "complete_same_capture": false,
+          "matches": []
+        },
+        {
+          "lang": "zh",
+          "width": 1440,
+          "refusal": "duplicate-hint",
+          "secondary": "status-listening",
+          "complete_same_capture": false,
+          "matches": []
+        },
+        {
+          "lang": "en",
+          "width": 320,
+          "refusal": "duplicate-hint",
+          "secondary": "status-clipped",
+          "complete_same_capture": false,
+          "matches": []
+        },
+        {
+          "lang": "en",
+          "width": 320,
+          "refusal": "duplicate-hint",
+          "secondary": "status-recorded",
+          "complete_same_capture": false,
+          "matches": []
+        },
+        {
+          "lang": "en",
+          "width": 320,
+          "refusal": "duplicate-hint",
+          "secondary": "status-listening",
+          "complete_same_capture": false,
+          "matches": []
+        },
+        {
+          "lang": "en",
+          "width": 1440,
+          "refusal": "duplicate-hint",
+          "secondary": "status-clipped",
+          "complete_same_capture": true,
+          "matches": [
+            {
+              "id": "peace-memory/en/game/errors/phase-1/duplicate-voice/controls-scroll-0",
+              "index": 418
+            },
+            {
+              "id": "peace-memory/en/game/errors/phase-2/duplicate-voice/controls-scroll-0",
+              "index": 432
+            }
+          ]
+        },
+        {
+          "lang": "en",
+          "width": 1440,
+          "refusal": "duplicate-hint",
+          "secondary": "status-recorded",
+          "complete_same_capture": false,
+          "matches": []
+        },
+        {
+          "lang": "en",
+          "width": 1440,
+          "refusal": "duplicate-hint",
+          "secondary": "status-listening",
+          "complete_same_capture": false,
+          "matches": []
+        },
+        {
+          "lang": "ja",
+          "width": 320,
+          "refusal": "duplicate-hint",
+          "secondary": "status-clipped",
+          "complete_same_capture": false,
+          "matches": []
+        },
+        {
+          "lang": "ja",
+          "width": 320,
+          "refusal": "duplicate-hint",
+          "secondary": "status-recorded",
+          "complete_same_capture": false,
+          "matches": []
+        },
+        {
+          "lang": "ja",
+          "width": 320,
+          "refusal": "duplicate-hint",
+          "secondary": "status-listening",
+          "complete_same_capture": false,
+          "matches": []
+        },
+        {
+          "lang": "ja",
+          "width": 1440,
+          "refusal": "duplicate-hint",
+          "secondary": "status-clipped",
+          "complete_same_capture": true,
+          "matches": [
+            {
+              "id": "peace-memory/ja/game/errors/phase-1/duplicate-voice/controls-scroll-0",
+              "index": 646
+            },
+            {
+              "id": "peace-memory/ja/game/errors/phase-2/duplicate-voice/controls-scroll-0",
+              "index": 658
+            }
+          ]
+        },
+        {
+          "lang": "ja",
+          "width": 1440,
+          "refusal": "duplicate-hint",
+          "secondary": "status-recorded",
+          "complete_same_capture": false,
+          "matches": []
+        },
+        {
+          "lang": "ja",
+          "width": 1440,
+          "refusal": "duplicate-hint",
+          "secondary": "status-listening",
+          "complete_same_capture": false,
+          "matches": []
+        }
+      ],
+      "eligible": false
+    },
+    {
+      "game": "retrocession",
+      "frames": 622,
+      "verified_native_samples": 414,
+      "owner_rows": 522,
+      "missing_literal_contexts": [
+        {
+          "lang": "zh",
+          "width": 320,
+          "key": "feedback-close",
+          "owner": "archive-feedback"
+        },
+        {
+          "lang": "zh",
+          "width": 1440,
+          "key": "feedback-close",
+          "owner": "archive-feedback"
+        },
+        {
+          "lang": "en",
+          "width": 320,
+          "key": "feedback-close",
+          "owner": "archive-feedback"
+        },
+        {
+          "lang": "en",
+          "width": 1440,
+          "key": "feedback-close",
+          "owner": "archive-feedback"
+        },
+        {
+          "lang": "ja",
+          "width": 320,
+          "key": "feedback-close",
+          "owner": "archive-feedback"
+        },
+        {
+          "lang": "ja",
+          "width": 1440,
+          "key": "feedback-close",
+          "owner": "archive-feedback"
+        }
+      ],
+      "unproven_contexts": [
+        {
+          "lang": "zh",
+          "width": 320,
+          "key": "anchors-hint",
+          "owner": "game-hint",
+          "reason": "Measured owner exists but full Range/clip/safe/viewport/scroll proof does not close"
+        },
+        {
+          "lang": "zh",
+          "width": 320,
+          "key": "feedback-close",
+          "owner": "archive-feedback",
+          "reason": "No matching native owner text anywhere in original report"
+        },
+        {
+          "lang": "zh",
+          "width": 1440,
+          "key": "feedback-close",
+          "owner": "archive-feedback",
+          "reason": "No matching native owner text anywhere in original report"
+        },
+        {
+          "lang": "en",
+          "width": 320,
+          "key": "anchors-hint",
+          "owner": "game-hint",
+          "reason": "Measured owner exists but full Range/clip/safe/viewport/scroll proof does not close"
+        },
+        {
+          "lang": "en",
+          "width": 320,
+          "key": "feedback-close",
+          "owner": "archive-feedback",
+          "reason": "No matching native owner text anywhere in original report"
+        },
+        {
+          "lang": "en",
+          "width": 1440,
+          "key": "feedback-close",
+          "owner": "archive-feedback",
+          "reason": "No matching native owner text anywhere in original report"
+        },
+        {
+          "lang": "ja",
+          "width": 320,
+          "key": "anchors-hint",
+          "owner": "game-hint",
+          "reason": "Measured owner exists but full Range/clip/safe/viewport/scroll proof does not close"
+        },
+        {
+          "lang": "ja",
+          "width": 320,
+          "key": "feedback-close",
+          "owner": "archive-feedback",
+          "reason": "No matching native owner text anywhere in original report"
+        },
+        {
+          "lang": "ja",
+          "width": 1440,
+          "key": "feedback-close",
+          "owner": "archive-feedback",
+          "reason": "No matching native owner text anywhere in original report"
+        }
+      ],
+      "duplicate_combinations": [],
+      "eligible": false
+    }
+  ],
+  "product_writes": 0,
+  "new_browser_or_game_runs": 0,
+  "full_project_approved": false
+}

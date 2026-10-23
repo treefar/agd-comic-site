@@ -65,3 +65,9 @@ node holiday-lab/translation-review/check-current-ranks-20261023.cjs
 新增限於本批六個證據目錄及四個SHA綁定方法檔的 `-text` attributes，避免Windows的core.autocrlf=true使未來checkout改掉原始位元組。實際以 `git hash-object --no-filters --stdin-paths` 比對index：577 staged files，其中569個QA檔逐筆raw-byte blob相符，hash_mismatches=0。未碰執行中的中秋raw/manifests或清明補採，也沒有重啟程序。
 
 `git diff --cached --check`回報舊紅燈工具輸出中的三行尾端空白，以及finite-errors報告末尾空行。前者為原始失敗證據，刻意保留不清洗；不宣稱全部diff whitespace通過。主控修改的coverage-index、assembly-plan、STATUS定向diff-check通過。這些空白不是產品或執行碼錯誤。
+
+## 本輪收尾更新
+
+清明2352/57024已於03:48:29.960Z正常exit0，193frames；代理完成193份SHA/geometry與三shot/retry，root已讀報告，6context合併驗證仍在建置，不計新覆蓋。日英複核主控verify實跑exit0：17來源穩定、13人、28候選（27保留/1獎助金保義微調）、productWrites0。和平/光復candidate verifier主控exit0，但root另發現完整domain最大面積須有明確assert；12筆實值比對皆相等，正在補負例守門，暫未接索引。勞動的完整輸入含start值，不能稱729；僅負載文字有729指派投影待源碼因果與實UI校準。
+
+已本機提交c7a0e68（可見證據與方法）、3791fc1（106穩定全集方法/凍結啟動檔）；569及106份分別逐筆raw-byte blob核對一致，freeze SHA不變。兩repo fsck connectivity exit0，列有dangling objects，保留未清理。原repo交接提交fdf0a1d；本段後續更新另作本機提交，不push。

@@ -1,0 +1,8 @@
+// 驗證已落地的複核收據；來源漂移直接失敗，不重新寫snapshot。
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),assert=require('node:assert/strict');
+const out=__dirname,root=path.resolve(out,'../../..'),read=f=>fs.readFileSync(path.join(root,f)),j=f=>JSON.parse(fs.readFileSync(path.join(out,f))),sha=f=>crypto.createHash('sha256').update(read(f)).digest('hex'),r=j('findings.json'),sources=j('sources.json');
+assert.equal(r.pass,true);for(const[f,h]of Object.entries(r.source_receipts.before))assert.equal(sha(f),h,f+' drift');assert.deepEqual(r.source_receipts.before,r.source_receipts.after);
+assert.equal(r.rank_rows.length,13);assert.equal(new Set(r.rank_rows.map(x=>x.slug)).size,13);assert.equal(r.value_rows.length,28);assert.equal(r.value_rows.filter(x=>x.prior_exact_proposal_accepted==='no').length,1);assert.equal(r.value_rows.filter(x=>x.decision==='refine-proposal')[0].id,'EN-CERT-RECOGNITION-01');
+for(const x of r.value_rows){assert.ok(x.key&&x.current_value&&x.independent_proposal&&x.reason);assert.ok(x.canonical_locations.every(l=>l.canonical_matches==='yes'));assert.equal(x.linked_procedures_newly_recertified,'no');}
+assert.equal(sources.sources.length,10);assert.ok(sources.sources.every(s=>s.access&&s.url.startsWith('https://')));assert.equal(r.checks.product_writes,'no');assert.equal(r.checks.whole_site_native_language_certified,'no');
+console.log(JSON.stringify({pass:true,currentSourceFiles:Object.keys(r.source_receipts.before).length,currentRanks:13,candidateValues:28,priorExactProposalsRetained:27,proposalRefinement:1,sourceStable:true,productWrites:0,wholeSiteCertification:false},null,2));

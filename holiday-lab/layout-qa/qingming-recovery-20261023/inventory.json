@@ -1,0 +1,111 @@
+{
+  "source_run": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-23T00-55-59-140Z",
+  "progress_file": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-runs\\2026-10-23T00-55-59-140Z\\progress.json",
+  "progress_sha256": "909f2fa67f433aeff8d2cc42b06cf388c02249c9a71e343c2bb47b587df1da60",
+  "metadata_date": "2026-10-23T00:55:59.140Z",
+  "frames": 1042,
+  "indices_continuous_unique": true,
+  "first_id": "qingming/zh/help",
+  "last_id": "qingming/ja/result/artifact-scroll-17",
+  "last_original_state": "result/artifact-scroll-17",
+  "last_index": 1041,
+  "original_report_bytes": 525981313,
+  "original_after_keys": [],
+  "original_violation_count": 718,
+  "sessions": [
+    {
+      "game": "qingming",
+      "lang": "zh",
+      "width": 320,
+      "intent": "default",
+      "status": "route-complete-layout-not-certified",
+      "failure": null,
+      "replay_seen": [
+        "0",
+        "1",
+        "2"
+      ],
+      "case_count": 186
+    },
+    {
+      "game": "qingming",
+      "lang": "zh",
+      "width": 1440,
+      "intent": "default",
+      "status": "route-complete-layout-not-certified",
+      "failure": null,
+      "replay_seen": [
+        "0",
+        "1",
+        "2"
+      ],
+      "case_count": 184
+    },
+    {
+      "game": "qingming",
+      "lang": "en",
+      "width": 320,
+      "intent": "default",
+      "status": "route-complete-layout-not-certified",
+      "failure": null,
+      "replay_seen": [
+        "0",
+        "1",
+        "2"
+      ],
+      "case_count": 180
+    },
+    {
+      "game": "qingming",
+      "lang": "en",
+      "width": 1440,
+      "intent": "default",
+      "status": "route-complete-layout-not-certified",
+      "failure": null,
+      "replay_seen": [
+        "0",
+        "1",
+        "2"
+      ],
+      "case_count": 206
+    },
+    {
+      "game": "qingming",
+      "lang": "ja",
+      "width": 320,
+      "intent": "default",
+      "status": "route-complete-layout-not-certified",
+      "failure": null,
+      "replay_seen": [
+        "0",
+        "1",
+        "2"
+      ],
+      "case_count": 166
+    },
+    {
+      "game": "qingming",
+      "lang": "ja",
+      "width": 1440,
+      "intent": "default",
+      "status": "route-failed",
+      "failure": "RangeError: Invalid string length\n    at JSON.stringify (<anonymous>)\n    at persist (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-collect.cjs:15:347)\n    at capture (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-collect.cjs:40:344)\n    at async observeScroll (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\scroll-observer.cjs:8:203)\n    at async C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\phase-collect.cjs:52:763",
+      "replay_seen": [],
+      "case_count": 120
+    }
+  ],
+  "matrix": {
+    "file": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\matrix-runs\\2026-10-22T23-47-50-142Z\\status.json",
+    "row": {
+      "game": "qingming",
+      "status": "collector-failed",
+      "started": "2026-10-23T00:55:58.738Z",
+      "pid": 46996,
+      "exit_code": 1,
+      "ended": "2026-10-23T03:29:01.437Z"
+    },
+    "finished": "2026-10-23T03:29:01.445Z"
+  },
+  "log_tail_file": "terminal-log-tail.txt",
+  "full_project_approved": false
+}

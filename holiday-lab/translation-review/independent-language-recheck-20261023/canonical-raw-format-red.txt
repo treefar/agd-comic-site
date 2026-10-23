@@ -1,0 +1,24 @@
+node:internal/assert/utils:77
+    throw err;
+    ^
+
+AssertionError [ERR_ASSERTION]: PROGRAM-02 canonical data/admission.json
+    at C:\agywork\agd-holiday-prototypes\holiday-lab\translation-review\independent-language-recheck-20261023\recheck.cjs:37:134
+    at Array.map (<anonymous>)
+    at Object.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\translation-review\independent-language-recheck-20261023\recheck.cjs:37:41)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.15.0

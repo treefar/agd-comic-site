@@ -1,0 +1,15 @@
+C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\static-error-max-5\check.cjs:32
+result.source_post=receipts(await sources());assert.deepEqual(result.source_post,sourcePre);result.source_stable=true;result.canonical_error_longest_eligible_contexts=result.canonical_candidates.filter(c=>c.canonical_error_longest_eligible).length;result.all_finite_candidates_proven=result.games.every(g=>g.canonical_error_longest_eligible);fs.writeFileSync(path.join(out,'source-snapshot.json'),JSON.stringify(Object.fromEntries(Object.entries(pre).filter(([f])=>/\.(mjs|css)$/u.test(f)).map(([f,b])=>[f,{sha256:hash(b),base64:b.toString('base64')}]))),null,2));fs.writeFileSync(path.join(out,'method-origin.json'),JSON.stringify({protocol:'holiday-lab/layout-qa/static-error-max-4/check.cjs',protocol_sha256:hash(read(path.join(qa,'static-error-max-4/check.cjs'))),adaptations:['peace hint and status separate catalog; persistent duplicate combinations','retrocession three feedback literals plus rejection hint','actual viewport containment additionally required, not only document paper containment','all known missing branches preserve NO; full original cases and immutable sample/image hashes retained'],sampler_changes:0,map_changes:0,product_changes:0},null,2));fs.writeFileSync(path.join(out,'verification.json'),JSON.stringify(result,null,2));fs.writeFileSync(path.join(out,'canonical-candidates.json'),JSON.stringify({full_project_approved:false,finite_static_module_errors_proven:result.all_finite_candidates_proven,candidates:result.canonical_candidates},null,2));console.log(`FINITE_CANDIDATES ${result.all_finite_candidates_proven?'YES':'NO'}; eligible=${result.canonical_error_longest_eligible_contexts}/12; sourceStable=${result.source_stable}`);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ^
+
+SyntaxError: Unexpected token ')'
+    at wrapSafe (node:internal/modules/cjs/loader:1763:18)
+    at Module._compile (node:internal/modules/cjs/loader:1804:20)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.15.0
