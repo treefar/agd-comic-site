@@ -1,0 +1,3 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),{createRequire}=require('node:module'),original=path.resolve(__dirname,'../engine-v4'),req=createRequire(path.join(original,'engine.cjs'));
+module.exports=()=>{const code=fs.readFileSync(path.join(original,'regressions.cjs'),'utf8'),sandbox={module:{exports:{}},exports:{},__dirname:original,process,Buffer,require:n=>n==='node:test'?()=>{}:req(n)};vm.runInNewContext(code+';module.exports={fixture,target,binding};',sandbox);const m=sandbox.module.exports,f=m.fixture(),clone=x=>JSON.parse(JSON.stringify(x));return{target:clone(m.target),binding:clone(m.binding),case:clone(f.case),sample:clone(f.sample),png:f.png};};

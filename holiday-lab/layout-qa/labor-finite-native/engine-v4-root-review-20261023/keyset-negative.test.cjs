@@ -1,0 +1,3 @@
+'use strict';
+const test=require('node:test'),assert=require('node:assert/strict'),e=require('../engine-v4/engine.cjs'),fixture=require('./fixture.cjs');
+test('P2 complete check set omission must be rejected by original v4 validator (expected RED)',()=>{const f=fixture();f.sample.violations=[];f.case.method_violations=[];f.case.checks={geometry_clear:true,method_flags:true,exact_dom:true,full_range:true,unclipped:true,fixed_safe:true,safe:false,viewport:true,font:true};f.case.pass=false;e.validateCase(f.target,f.case,f.sample,f.binding);delete f.case.checks.safe;f.case.pass=true;assert.throws(()=>e.validateCase(f.target,f.case,f.sample,f.binding),/check|safe|missing/);});

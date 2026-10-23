@@ -6,6 +6,7 @@
 - root-ui-04 driver51568/runner43892，creation04:51:46.2473260Z，session46854；2026-10-23T04:53:15.523Z root實查present、26筆journal、無terminal，首筆checks全true/compare[]/flags[]/geometry[]/PNG完整解碼一致。freeze04 SHA55ef47dc52f9a1ff8ca36157cc3649aff64566b1b9495a26ee9da2bea7b52ab6、approval8262fb3dc71f189165873a5bc2430d21048a65e324afc29abb41576a8008ba8c；尚未完783，不得重啟或算canonical6完成。
 - 勞動v3三漏洞由另一代理23tests獨立複驗，另P2 pass矛盾實證；新v4加pass公式/geometry收緊，代理30tests已凍結，另一代理獨立審查與受限6context pilot準備中，未准full。正式v4不是全域PASS。 另位代理隔離30tests全過，卻再實證9個checks鍵可刪除safe後繞過；不准full，另備精確9鍵與fresh/no-resume的12筆有界native校準工具，尚未啟動。日英增量已核13職階/6學位中性化整合，9資格仍待一手證明，Division/Section差異留P2，不改凍結遊戲。
 - 報告holiday-lab/reports/verification-followup-20261023-15.md；剩中秋/國慶/開學/清明/勞動error-longest各6、所有method flags/provenance/使用者確認仍NO。TF-BASE本輪仍5工單無來源/WebGL，未啟Unity。未新網站Build/ZIP/推送/發布/碰main/刪檔；8800與舊ZIP保留，C節不動。大raw本機ignored，非跨機備份。
+- 05:00:36Z最新：root核43892同creation present，中秋158/783，checkpoint157/event hash一致、未terminal。勞動受限工具後續已由root審碼/4tests/live核對批准並實跑唯一root-calibration-01（session99550/PID22340），真exit0；6context共12完整case/PNG/source/font/checks重算，手機6pass/桌機6因未全scroll保false，target_valid12/geometry0，不給2784或canonical額外credit。root-bounded-verification.json/報告15有逐項原值；v4 full仍不准。
 - 下一輪第一件事：核同43892 creation及session46854/launches/root-ui-04，活著追同job，terminal讀原failure不要自動重啟；完後逐case/sample/PNG驗783與810義務。回收勞動v4獨立審查/有界pilot工具，先審再核准新native，不啟full。
 
 ## 2026-10-23 最新：覆蓋2040項、126份完整證據已整合

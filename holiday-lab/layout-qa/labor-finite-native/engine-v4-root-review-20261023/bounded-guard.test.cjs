@@ -1,0 +1,4 @@
+'use strict';
+const test=require('node:test'),assert=require('node:assert/strict'),{CHECK_KEYS,assertShape}=require('./bounded-guard.cjs');
+test('bounded exact 9 keys rejects every single missing check, additional check and nonboolean',()=>{const c={checks:Object.fromEntries(CHECK_KEYS.map(k=>[k,true])),pass:true};assertShape(c);for(const key of CHECK_KEYS){const changed=structuredClone(c);delete changed.checks[key];assert.throws(()=>assertShape(changed),/nine/);}assert.throws(()=>assertShape({...c,checks:{...c.checks,extra:true}}),/nine/);assert.throws(()=>assertShape({...c,checks:{...c.checks,safe:'yes'}}),/boolean/);});
+test('bounded keeps actual false evidence false; omission cannot turn false into pass',()=>{const c={checks:Object.fromEntries(CHECK_KEYS.map(k=>[k,k!=='safe'])),pass:false};assertShape(c);assert.throws(()=>assertShape({...c,pass:true}),/pass/);delete c.checks.safe;c.pass=true;assert.throws(()=>assertShape(c),/nine/);});

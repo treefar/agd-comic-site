@@ -42,3 +42,18 @@
 04:57:00Z已暫存522檔，其中501 QA檔／38,599,922 bytes逐一以Git blob格式重算，與index完全同位元組；不含仍增長的root-ui-04輸出。root-archive-check.json為實際收據。一般git diff --check會將保留的原CRLF及Node assertion空白輸出列警示；以cr-at-eol辨識行尾後仍有原stdout空白行警示，保留不改寫。限定程式／文件的cached diff --check實際exit0。原始stdout不是產品程式排版，不為lint修飾證據。
 
 勞動v4另位代理已隔離重跑30／30，但新增9個check鍵集合刪除負例真紅：刪safe鍵再將pass改true仍可被舊validator接受。原v4不改、不准full。獨立bounded wrapper會精確鎖原9鍵／bool／pass公式並綁native SHA，只準備六context各兩筆原plan校準，尚未啟native；不把這個受限用途當2784全集驗收。
+
+## 05:00 最新實際進展：勞動新12筆正常UI完成
+
+前述受限工具準備是執行前時點。root已讀bounded/guard原碼、親跑4／4 tests與preflight exit0，建立精確新scope approval，執行唯一root-calibration-01。實際命令：
+
+```text
+node holiday-lab/layout-qa/labor-finite-native/engine-v4-root-review-20261023/bounded.cjs --execute C:/agywork/agd-holiday-prototypes/holiday-lab/layout-qa/labor-finite-native/engine-v4-root-review-20261023/root-bounded-approval.json root-calibration-01
+session 99550 / PID22340 creation2026-10-23T04:59:04.5599060Z
+exit 0
+captured 12 / pass 6 / false 6
+```
+
+root另逐12完整case/sample/PNG／hash-chain、精確原9checks與幾何policy重算及source/font preflight實跑exit0，root-bounded-verification.json保存全部原值。六個320x900均pass=true；六個1440x1000均因SCROLL_CONTENT_PENDING保false，EN load另layout-owner-12文字待捲讀、JA load另layout-owner-13開始時点待捲讀；所有12 target_valid=true、geometry_errors合計0。原flags／false不改，不給2784全集或canonical6額外credit，正式覆蓋仍2046。此批實際補到新1440x1000與JA畫面，不沿用舊wide900。
+
+05:00:36Z中秋runner43892同creation confirmed present，158／783 journal，最後immutable checkpoint157與event hash一致，無terminal；root-observation-05.json。尚未完全部，不重啟。
