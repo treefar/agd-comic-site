@@ -35,4 +35,8 @@
 
 新增第三批 `6c27587`：dragon-boat／teachers／national-day／exhibition 共16固定錯句、96有限候選群、252真拒絕收據；前三者中的dragon-boat、teachers及exhibition共18個eligible context，national6個僅補充，動態island-readout未被固定hint證明。12張mobile原圖的hint原不在viewport，代理針對同來源、phase0、控制recipe與精確文字正常捲動補拍12 PNG，原WEBP/fullcase/SHA均保留。主控已讀完整REPORT，來源第一次ECONNRESET與精確重讀記錄亦保留，沒有重啟長矩陣。正式R0不改。
 
+最後已提交索引 `c5e3258`：1620/2076，缺456、幾何0、national6個supplement-only仍在missing。主控讀實際JSON確認，並重跑`node --test holiday-lab/tests/layout-static-proof-contexts.test.cjs`：5 passed/0 failed，包含錯height／重複／未宣告game與動態secondary不得自動放行的負例。前述1434只保留歷史快照，不是最新值。front已15/15完成、3174幀／0幾何；phase仍11/15，semester52792、qingming46996實查live。此快照不把剛完成的front額外幀數手動加進覆蓋。
+
+主控依契約report路徑實算正式R0 SHA為`cbaa1849002fe4682650fb653385a62d91ebf9aca3c94090cdaf0df7bbf34336`、13 cases，確實未改。另派中秋有限域native先導，只准最多1000候選做真hint/clone一致性及效能驗證，不啟百萬全集；不能以outline＋1px未證定理清掉GLOBAL_BOUND=NO。
+
 下一輪第一件事：讀指南DOM最終報告與新static第三批，核原08程序是否仍活著及其新增完成列；把已獨立確認的原始證據整合進型別明確的驗證表，補齊真缺口後才產正式總report、跑交付gate與新版試玩包。TF-BASE來源到齊後再走6000.5.10f1隱藏batch守門，不能因本機有Editor就當遠端遊戲已完成。
