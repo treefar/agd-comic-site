@@ -1,0 +1,24 @@
+{
+  "games/lantern.mjs": {
+    "sha256": "a550a9c7b2abaaf2ba4f34ea81963cb61431ed7ce1e5de77a12cabb1fc661c2c",
+    "snippets": [
+      "const centered = p => ({...p,x:p.x+p.width/2,y:p.y+p.height/2});\r",
+      "const screen=sprite('prop2',{id:'lan-screen',x:42,y:18,width:52,height:57,z:1});\r"
+    ]
+  },
+  "lab.css": {
+    "sha256": "5b6d2ca17621f9a6e2aebcc5fb0f1ca86056787aedafd14e72e1bdfdd427644d",
+    "snippets": [
+      ".game-layout{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(260px,1fr);gap:20px;align-items:start}",
+      ".stage{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;isolation:isolate;background-size:cover;background-position:center;touch-action:pan-y}",
+      ".game-layout{grid-template-columns:1fr}",
+      ".stage{max-height:65vh}"
+    ]
+  },
+  "runner.mjs": {
+    "sha256": "e6b0c83b114ccf8b3b0eaf4a26a9d715a1268d80065766c75841d216d95fc9e1",
+    "snippets": [
+      "function makeSprite(g,stage,key,initial){if(!/^(actor[123]|prop[123]|target|token[123])$/.test(key))throw Error(`Unknown sprite ${key}`);const node=el('img',{class:'sprite',src:`assets/${g.id}/${key}.png`,alt:'','aria-hidden':'true',draggable:'false'},stage);let props={};const update=p=>{Object.assign(props,p);const {x=50,y=50,width=20,height=20,rotation=0,opacity=1,scaleX=1,scaleY=1,z=1,filter=''}=props;Object.assign(node.style,{left:`${x}%`,top:`${y}%`,width:`${width}%`,height:`${height}%`,transform:`translate(-50%,-50%) rotate(${rotation}deg) scale(${scaleX},${scaleY})`,opacity:String(opacity),zIndex:String(z),filter});if(props.id)node.id=props.id;};update(initial);return{element:node,update,remove:()=>node.remove()};}"
+    ]
+  }
+}
