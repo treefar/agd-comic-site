@@ -1,0 +1,24 @@
+✖ calibration rows must point to observed native input/output and matching event (0.8199ms)
+✔ case time must lie between every source before finish and every after start (8.1887ms)
+✔ checkpoint chain and immutable file binding reject tampering (2.3327ms)
+✔ all13 source before-after receipts are required and checked against original bytes (13.96ms)
+✔ target expectation comes from source job, never arbitrary case text (1.8748ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 194.236
+
+✖ failing tests:
+
+test at holiday-lab\layout-qa\qingming-error-domain-20261023\verify-native-run.test.cjs:3:1
+✖ calibration rows must point to observed native input/output and matching event (0.8199ms)
+  TypeError: V.calibrationEvent is not a function
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\qingming-error-domain-20261023\verify-native-run.test.cjs:3:449)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17)

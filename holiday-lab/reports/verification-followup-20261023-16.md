@@ -65,3 +65,17 @@ root在確認terminal後執行 `node holiday-lab/layout-qa/labor-finite-native/f
 331個完整成功目標與第332個失敗attempt均保留。失敗seq331對應 `labor/zh/320x900/output-3-2/output:labor-start-3`，原records/000331只有capture_error，沒有回傳case/sample/PNG；不捏造影像或當成功。原工具fresh-only且無resume，沒有重新啟動2784整批。
 
 代理先把國慶39recipe／312逐owner-frame工具存CHECKPOINT，轉準備獨立續接方案：原331成功不重跑；新scope明列重採失敗義務及其後餘項共2453，逐筆核對原前綴與續接union。尚未批准或啟動續接；原失敗與freeze不可改寫。
+
+## 清明v2先導實跑與原失敗
+
+root讀修後三工具，親跑21tests全綠、唯讀獨立review核28methods／19bindings／672runtime refs exit0，才建立新root批准；freeze SHA4883d940c38a4ac63d59364209102ecb49e220ca63b3754ccb677a8fdcd6a005。
+
+實際指令 `node holiday-lab/layout-qa/qingming-pilot-root-20261023/driver.cjs`，session43047、driver23840／runner42484 creation2026-10-23T06:09:53.6926310Z。唯一root-pilot-01於06:10:12.703Z真exit1；第一組zh320的六個目標case/sample/PNG/checkpoint已保存，六target pass=true、geometry0，但session結束時Console有一條404，未完成session/global source_after，所以整批仍FAIL、不能執行完整run verifier假稱通過。
+
+原Console callback只有字串，沒有location；原http_errors[]也不代表沒有404。root另做一次明標新導航診斷（未開始遊戲），保存 `qingming-pilot-root-20261023/console-diagnostic-01.json`：Console location為 `http://127.0.0.1:8845/favicon.ico`，CDP Network response同URL/status404/resourceType Other。這是新診斷的精確證據，不能回填成舊失敗當時已存的location。
+
+後續僅準備隔離v3方法：保存完整Console/Network與原錯誤，只有精確favicon URL＋404＋Other可判為非目標診斷；任一遊戲資源或未知錯誤仍阻擋，global仍false。不route mock、不清Console、不改凍結measure08／伺服器、不改v2方法／run／freeze。v3尚未批准或啟動。
+
+## 本輪階段保全
+
+已結束的中秋全部783與勞動332attempt原始資料，共8484個QA檔、549249014 bytes逐一驗index blob一致；本機commit `5064130`，git fsck --connectivity-only exit0。另dashboard依原權威v4重產27／27，仍2046／2076、缺30、UI0／1、使用者0；沒有網站產品Build或新版試玩ZIP。介面未變，不重跑相同smoke。

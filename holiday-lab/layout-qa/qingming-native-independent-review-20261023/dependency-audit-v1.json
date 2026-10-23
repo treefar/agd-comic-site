@@ -1,0 +1,71 @@
+{
+  "at": "2026-10-23T05:58:16.459Z",
+  "native_tools_sha256": "802d33330af2d06eda4c04f3ff0904fadcdf353f223bf967948b79ca6361cc35",
+  "runtime_identifiers_code_sha256": "fb91c4d8928b44c9015d212ec5ab96d5cb185396ec81430df7a1d21a2627b7e2",
+  "runtime_identifiers_json_sha256": "06fc69d052c16ca8e023bc35418734f733c81dff3ad61d753842ffd02b3d1a72",
+  "bound_path_count": 34,
+  "rows": [
+    {
+      "package": "playwright-core",
+      "file": "C:\\Users\\treef\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\node_modules\\playwright-core\\lib\\bootstrap.js",
+      "exists": true,
+      "sha256": "4637f4dbfef9cfc01baeb5f5d2cb63fa0901522c96915ea2227290558d27123e",
+      "covered_by_current_bindings": false,
+      "actual_entry": {
+        "file": "C:\\Users\\treef\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\node_modules\\playwright-core\\index.js",
+        "sha256": "a58fb2cec4293e7dcf73c58a179898a4f3986666451a19da4e731fa3af63265b",
+        "require_source": "/**\n * Copyright (c) Microsoft Corporation.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n * You may obtain a copy of the License at\n *\n * http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */\nrequire('./lib/bootstrap');\nmodule.exports = require('./lib/coreBundle').inprocess.playwright;\n"
+      }
+    },
+    {
+      "package": "playwright-core",
+      "file": "C:\\Users\\treef\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\node_modules\\playwright-core\\lib\\coreBundle.js",
+      "exists": true,
+      "sha256": "9393fa79e1c67c74edc26b610d65a4f7ed73d345a762465cc88340a33a2454ac",
+      "covered_by_current_bindings": false,
+      "actual_entry": {
+        "file": "C:\\Users\\treef\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\node_modules\\playwright-core\\index.js",
+        "sha256": "a58fb2cec4293e7dcf73c58a179898a4f3986666451a19da4e731fa3af63265b",
+        "require_source": "/**\n * Copyright (c) Microsoft Corporation.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n * You may obtain a copy of the License at\n *\n * http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */\nrequire('./lib/bootstrap');\nmodule.exports = require('./lib/coreBundle').inprocess.playwright;\n"
+      }
+    },
+    {
+      "package": "sharp",
+      "file": "C:\\Users\\treef\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\node_modules\\sharp\\dist\\constructor.cjs",
+      "exists": true,
+      "sha256": "6b8978e0f1614d83a219cbbd455e3eed7922bc4212a5b3b99c5d37c3af3b3226",
+      "covered_by_current_bindings": false,
+      "actual_entry": {
+        "file": "C:\\Users\\treef\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\node_modules\\sharp\\dist\\index.cjs",
+        "sha256": "d69f275bc49fcd2a6188b26b35c986d4db32a1b008653fef88adb4598688232a",
+        "require_source": "/*!\n  Copyright 2013 Lovell Fuller and others.\n  SPDX-License-Identifier: Apache-2.0\n*/\n\nconst Sharp = require('./constructor.cjs');\nconst input = require('./input.cjs');\nconst resize = require('./resize.cjs');\nconst composite = require('./composite.cjs');\nconst operation = require('./operation.cjs');\nconst colour = require('./colour.cjs');\nconst channel = require('./channel.cjs');\nconst output = require('./output.cjs');\nconst utility = require('./utility.cjs');\n\ninput(Sharp);\nresize(Sharp);\ncomposite(Sharp);\noperation(Sharp);\ncolour(Sharp);\nchannel(Sharp);\noutput(Sharp);\nutility(Sharp);\n\nmodule.exports = Sharp;\n"
+      }
+    },
+    {
+      "package": "sharp",
+      "file": "C:\\Users\\treef\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\node_modules\\sharp\\dist\\input.cjs",
+      "exists": true,
+      "sha256": "e5eb5c891c0893098dbe8bc0358a2f2c7e800581018923a7956732fe1a5ddf8f",
+      "covered_by_current_bindings": false,
+      "actual_entry": {
+        "file": "C:\\Users\\treef\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\node_modules\\sharp\\dist\\index.cjs",
+        "sha256": "d69f275bc49fcd2a6188b26b35c986d4db32a1b008653fef88adb4598688232a",
+        "require_source": "/*!\n  Copyright 2013 Lovell Fuller and others.\n  SPDX-License-Identifier: Apache-2.0\n*/\n\nconst Sharp = require('./constructor.cjs');\nconst input = require('./input.cjs');\nconst resize = require('./resize.cjs');\nconst composite = require('./composite.cjs');\nconst operation = require('./operation.cjs');\nconst colour = require('./colour.cjs');\nconst channel = require('./channel.cjs');\nconst output = require('./output.cjs');\nconst utility = require('./utility.cjs');\n\ninput(Sharp);\nresize(Sharp);\ncomposite(Sharp);\noperation(Sharp);\ncolour(Sharp);\nchannel(Sharp);\noutput(Sharp);\nutility(Sharp);\n\nmodule.exports = Sharp;\n"
+      }
+    },
+    {
+      "package": "sharp",
+      "file": "C:\\Users\\treef\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\node_modules\\sharp\\dist\\output.cjs",
+      "exists": true,
+      "sha256": "4c2878241a264095b661fb321accf86fa9be033bfe541d5a70ac2f8d80150893",
+      "covered_by_current_bindings": false,
+      "actual_entry": {
+        "file": "C:\\Users\\treef\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\node_modules\\sharp\\dist\\index.cjs",
+        "sha256": "d69f275bc49fcd2a6188b26b35c986d4db32a1b008653fef88adb4598688232a",
+        "require_source": "/*!\n  Copyright 2013 Lovell Fuller and others.\n  SPDX-License-Identifier: Apache-2.0\n*/\n\nconst Sharp = require('./constructor.cjs');\nconst input = require('./input.cjs');\nconst resize = require('./resize.cjs');\nconst composite = require('./composite.cjs');\nconst operation = require('./operation.cjs');\nconst colour = require('./colour.cjs');\nconst channel = require('./channel.cjs');\nconst output = require('./output.cjs');\nconst utility = require('./utility.cjs');\n\ninput(Sharp);\nresize(Sharp);\ncomposite(Sharp);\noperation(Sharp);\ncolour(Sharp);\nchannel(Sharp);\noutput(Sharp);\nutility(Sharp);\n\nmodule.exports = Sharp;\n"
+      }
+    }
+  ],
+  "browser_or_HTTP_or_native_executed": false,
+  "global_approved": false
+}

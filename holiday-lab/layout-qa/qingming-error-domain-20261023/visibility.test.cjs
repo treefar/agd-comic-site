@@ -1,0 +1,4 @@
+'use strict';
+const test=require('node:test'),assert=require('node:assert/strict'),V=require('./visibility.cjs');
+const fixture=()=>({n:{text:'測試',unclipped_ink:{x:10,y:10,width:20,height:15},measurements:[{text:'測試',baseline:20,advance:{x:10}}]},shot:{viewport_proof:{clip:{x:0,y:0,width:320,height:900},before:{window:{x:0,y:0,width:320,height:900},internal:[]},after:{window:{x:0,y:0,width:320,height:900},internal:[]},scroll_unchanged:true}}});
+test('viewport and full text failures are retained as false',()=>{const f=fixture();assert.equal(V.check(f.n,f.shot).pass,true);for(const mutate of [x=>delete x.shot.viewport_proof,x=>x.shot.viewport_proof.after.window.y=1,x=>x.n.unclipped_ink.y=1000,x=>x.n.measurements[0].text='測']){const bad=structuredClone(f);mutate(bad);assert.equal(V.check(bad.n,bad.shot).pass,false);}});

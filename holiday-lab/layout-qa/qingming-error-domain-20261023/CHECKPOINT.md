@@ -1,5 +1,14 @@
 # 暫停 checkpoint
 
+## 2026-10-23 接續：離線工具已凍結，未准native
+
+- 已新增domain/recover/visibility與source文字投影；原1115 refs完整重驗、136error見證，100可見/36不可見保NO。來源有限error11／一般33模式；213數字owner候選與1392配置計畫，不宣稱原生字串/row分解或六個canonical已通過。
+- 21tests全綠，真RED及decoder bypass失敗留存；readonly原證據verify與v2準備verify均exit0。詳細yes/no、實際指令stdout在REPORT.md。
+- 權威審碼freeze為native-review-freeze-v2.json，SHA4883d940c38a4ac63d59364209102ecb49e220ca63b3754ccb677a8fdcd6a005；runtime-identifiers-v4.json。舊v1 freeze／runtime v1-v3／原失敗保留，不覆寫。
+- native-run僅pilot6context/36PNG＋每context213direct/420stepper；新原生未啟、未建立approved=true或native-runs。原生完整verifier尚無run可整合執行，不能冒稱通過。
+- 下一步由主控與source_provenance_resume獨立審查最後freeze/三工具後明確核准pilot，參照NATIVE-NEXT-PLAN.md。不得自動啟動或重跑原證據；不改產品/索引/contract/sampler/map、不stage/commit/push/main/delete。
+- 沒有自有存活背景程序；本輪只留離線檔案。以下是接續前暫停原記錄，作歷史保留。
+
 2026-10-23，依使用者要求暫停以重開程式。未完成任務，不宣稱清明六個 game/error-longest 已閉合。沒有 native/browser、長程序、stage、commit、push、main、刪檔或產品修改。
 
 ## 已落地

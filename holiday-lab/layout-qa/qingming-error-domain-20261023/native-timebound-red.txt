@@ -1,0 +1,23 @@
+✖ case time must lie between every source before finish and every after start (0.7877ms)
+✔ checkpoint chain and immutable file binding reject tampering (2.8647ms)
+✔ all13 source before-after receipts are required and checked against original bytes (17.5129ms)
+✔ target expectation comes from source job, never arbitrary case text (1.8784ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 208.5808
+
+✖ failing tests:
+
+test at holiday-lab\layout-qa\qingming-error-domain-20261023\verify-native-run.test.cjs:3:1
+✖ case time must lie between every source before finish and every after start (0.7877ms)
+  TypeError: V.timeBound is not a function
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\qingming-error-domain-20261023\verify-native-run.test.cjs:3:194)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17)

@@ -1,0 +1,23 @@
+✖ numeric separability rejects missing serialized values and row geometry drift (0.9019ms)
+✔ truncated PNG and wrong dimensions fail actual decoder (81.6151ms)
+✔ approval, exact source, immutable checkpoint and primitive coverage fail closed (61.0875ms)
+✔ all original failure flags and exact native target requirements are mandatory (0.8618ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 254.3191
+
+✖ failing tests:
+
+test at holiday-lab\layout-qa\qingming-error-domain-20261023\native-tools.test.cjs:3:1
+✖ numeric separability rejects missing serialized values and row geometry drift (0.9019ms)
+  TypeError: N.calibration is not a function
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\qingming-error-domain-20261023\native-tools.test.cjs:3:381)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17)
