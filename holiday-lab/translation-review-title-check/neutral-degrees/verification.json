@@ -1,0 +1,251 @@
+{
+  "date": "2026-10-23T00:01:13.970Z",
+  "baseline": "3cd12600626ff0051940158bc322459cea3e9c68",
+  "worktree": "C:\\agywork\\agd-faculty-degree-copy",
+  "branch": "codex/faculty-neutral-degrees",
+  "checks": [
+    {
+      "id": "exact_six_neutral_degree_changes",
+      "yes": true,
+      "detail": [
+        {
+          "slug": "changchunya",
+          "before": "Master of Arts, Graduate School of Visual Communication Design, National Yunlin University of Science and Technology (2006-2008)",
+          "after": "Master's degree, Graduate School of Visual Communication Design, National Yunlin University of Science and Technology (2006-2008)"
+        },
+        {
+          "slug": "chiushinchan",
+          "before": "Master of Fine Arts, Department of Multimedia and Animation Arts, National Taiwan University of Arts (2005-2009)",
+          "after": "Master's degree, Department of Multimedia and Animation Arts, National Taiwan University of Arts (2005-2009)"
+        },
+        {
+          "slug": "chenmeijung",
+          "before": "Master of Arts, Graduate Institute of Applied Arts (Visual Communication Design Group), National Chiao Tung University (Obtained in 2000)",
+          "after": "Master's degree, Graduate Institute of Applied Arts (Visual Communication Design Group), National Chiao Tung University (Obtained in 2000)"
+        },
+        {
+          "slug": "wuyenshen",
+          "before": "Master of Arts, Master's Program of Department of Visual Communication Design, Shu-Te University (Obtained in 2011)",
+          "after": "Master's degree, Master's Program of Department of Visual Communication Design, Shu-Te University (Obtained in 2011)"
+        },
+        {
+          "slug": "chiangtienhua",
+          "before": "Master of Science, Department of Information Management, Shu-Te University (Obtained in 2002)",
+          "after": "Master's degree, Department of Information Management, Shu-Te University (Obtained in 2002)"
+        },
+        {
+          "slug": "yinli",
+          "before": "Master of Design, Graduate Institute of Design, National Taiwan University of Science and Technology (Obtained in 2000)",
+          "after": "Master's degree, Graduate Institute of Design, National Taiwan University of Science and Technology (Obtained in 2000)"
+        }
+      ]
+    },
+    {
+      "id": "all_13_faculty_non_target_fields_deep_equal",
+      "yes": true,
+      "detail": "Entire raw English faculty dataset equals fixed baseline plus exactly six education values."
+    },
+    {
+      "id": "canonical_Chinese_deep_equal_and_text_unchanged",
+      "yes": true,
+      "detail": "All canonical fields deeply equal; full text equals baseline after CRLF/LF normalization."
+    },
+    {
+      "id": "no_active_override_six_before_values_match",
+      "yes": true,
+      "detail": [
+        {
+          "slug": "changchunya",
+          "overlays": [],
+          "old_active_matches": true
+        },
+        {
+          "slug": "chiushinchan",
+          "overlays": [],
+          "old_active_matches": true
+        },
+        {
+          "slug": "chenmeijung",
+          "overlays": [],
+          "old_active_matches": true
+        },
+        {
+          "slug": "wuyenshen",
+          "overlays": [],
+          "old_active_matches": true
+        },
+        {
+          "slug": "chiangtienhua",
+          "overlays": [],
+          "old_active_matches": true
+        },
+        {
+          "slug": "yinli",
+          "overlays": [],
+          "old_active_matches": true
+        }
+      ]
+    },
+    {
+      "id": "certificates_all_13_unchanged",
+      "yes": true,
+      "detail": "Nine populated certificate records and absent certificate fields preserved."
+    },
+    {
+      "id": "true_generator_exact_six_active_keys",
+      "yes": true,
+      "detail": {
+        "changed_keys": 6,
+        "rows": [
+          {
+            "slug": "changchunya",
+            "actual_generated": "Master's degree, Graduate School of Visual Communication Design, National Yunlin University of Science and Technology (2006-2008)"
+          },
+          {
+            "slug": "chiushinchan",
+            "actual_generated": "Master's degree, Department of Multimedia and Animation Arts, National Taiwan University of Arts (2005-2009)"
+          },
+          {
+            "slug": "chenmeijung",
+            "actual_generated": "Master's degree, Graduate Institute of Applied Arts (Visual Communication Design Group), National Chiao Tung University (Obtained in 2000)"
+          },
+          {
+            "slug": "wuyenshen",
+            "actual_generated": "Master's degree, Master's Program of Department of Visual Communication Design, Shu-Te University (Obtained in 2011)"
+          },
+          {
+            "slug": "chiangtienhua",
+            "actual_generated": "Master's degree, Department of Information Management, Shu-Te University (Obtained in 2002)"
+          },
+          {
+            "slug": "yinli",
+            "actual_generated": "Master's degree, Graduate Institute of Design, National Taiwan University of Science and Technology (Obtained in 2000)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "all_non_target_generated_keys_unchanged",
+      "yes": true,
+      "detail": "Exact dictionary preservation beyond six approved keys; no locale written."
+    },
+    {
+      "id": "generator_input_SHA_unchanged",
+      "yes": true,
+      "detail": {
+        "inputs": 30
+      }
+    },
+    {
+      "id": "tracked_product_scope_only_faculty_English",
+      "yes": true,
+      "detail": [
+        "data/en/faculty.json"
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "slug": "changchunya",
+      "name": "張純雅",
+      "file": "data/en/faculty.json",
+      "pointer": "/5/education",
+      "canonical_pointer": "/5/education",
+      "zh": "國立雲林科技大學 視覺傳達設計研究所 碩士（2006-2008）",
+      "key": "國立雲林科技大學 視覺傳達設計研究所 碩士（2006-2008）",
+      "old": "Master of Arts, Graduate School of Visual Communication Design, National Yunlin University of Science and Technology (2006-2008)",
+      "new": "Master's degree, Graduate School of Visual Communication Design, National Yunlin University of Science and Technology (2006-2008)",
+      "actual": "Master's degree, Graduate School of Visual Communication Design, National Yunlin University of Science and Technology (2006-2008)",
+      "active_before": "Master of Arts, Graduate School of Visual Communication Design, National Yunlin University of Science and Technology (2006-2008)",
+      "overlays": [],
+      "reason": "移除原中文未指定的學位細類；只保留一般碩士級別，原學校、領域與年份完整保留。"
+    },
+    {
+      "slug": "chiushinchan",
+      "name": "邱士展",
+      "file": "data/en/faculty.json",
+      "pointer": "/6/education",
+      "canonical_pointer": "/6/education",
+      "zh": "國立台灣藝術大學 多媒體動畫藝術學系 碩士（2005-2009）",
+      "key": "國立台灣藝術大學 多媒體動畫藝術學系 碩士（2005-2009）",
+      "old": "Master of Fine Arts, Department of Multimedia and Animation Arts, National Taiwan University of Arts (2005-2009)",
+      "new": "Master's degree, Department of Multimedia and Animation Arts, National Taiwan University of Arts (2005-2009)",
+      "actual": "Master's degree, Department of Multimedia and Animation Arts, National Taiwan University of Arts (2005-2009)",
+      "active_before": "Master of Fine Arts, Department of Multimedia and Animation Arts, National Taiwan University of Arts (2005-2009)",
+      "overlays": [],
+      "reason": "移除原中文未指定的學位細類；只保留一般碩士級別，原學校、領域與年份完整保留。"
+    },
+    {
+      "slug": "chenmeijung",
+      "name": "陳美蓉",
+      "file": "data/en/faculty.json",
+      "pointer": "/7/education",
+      "canonical_pointer": "/7/education",
+      "zh": "國立交通大學 應用藝術研究所(視傳組) 碩士（2000 取得）",
+      "key": "國立交通大學 應用藝術研究所(視傳組) 碩士（2000 取得）",
+      "old": "Master of Arts, Graduate Institute of Applied Arts (Visual Communication Design Group), National Chiao Tung University (Obtained in 2000)",
+      "new": "Master's degree, Graduate Institute of Applied Arts (Visual Communication Design Group), National Chiao Tung University (Obtained in 2000)",
+      "actual": "Master's degree, Graduate Institute of Applied Arts (Visual Communication Design Group), National Chiao Tung University (Obtained in 2000)",
+      "active_before": "Master of Arts, Graduate Institute of Applied Arts (Visual Communication Design Group), National Chiao Tung University (Obtained in 2000)",
+      "overlays": [],
+      "reason": "移除原中文未指定的學位細類；只保留一般碩士級別，原學校、領域與年份完整保留。"
+    },
+    {
+      "slug": "wuyenshen",
+      "name": "吳焉昇",
+      "file": "data/en/faculty.json",
+      "pointer": "/8/education",
+      "canonical_pointer": "/8/education",
+      "zh": "樹德科技大學 視覺傳達設計系碩士班 碩士（2011 取得）",
+      "key": "樹德科技大學 視覺傳達設計系碩士班 碩士（2011 取得）",
+      "old": "Master of Arts, Master's Program of Department of Visual Communication Design, Shu-Te University (Obtained in 2011)",
+      "new": "Master's degree, Master's Program of Department of Visual Communication Design, Shu-Te University (Obtained in 2011)",
+      "actual": "Master's degree, Master's Program of Department of Visual Communication Design, Shu-Te University (Obtained in 2011)",
+      "active_before": "Master of Arts, Master's Program of Department of Visual Communication Design, Shu-Te University (Obtained in 2011)",
+      "overlays": [],
+      "reason": "移除原中文未指定的學位細類；只保留一般碩士級別，原學校、領域與年份完整保留。"
+    },
+    {
+      "slug": "chiangtienhua",
+      "name": "蔣天華",
+      "file": "data/en/faculty.json",
+      "pointer": "/11/education",
+      "canonical_pointer": "/11/education",
+      "zh": "樹德科技大學 資訊管理系 碩士（2002 取得）",
+      "key": "樹德科技大學 資訊管理系 碩士（2002 取得）",
+      "old": "Master of Science, Department of Information Management, Shu-Te University (Obtained in 2002)",
+      "new": "Master's degree, Department of Information Management, Shu-Te University (Obtained in 2002)",
+      "actual": "Master's degree, Department of Information Management, Shu-Te University (Obtained in 2002)",
+      "active_before": "Master of Science, Department of Information Management, Shu-Te University (Obtained in 2002)",
+      "overlays": [],
+      "reason": "移除原中文未指定的學位細類；只保留一般碩士級別，原學校、領域與年份完整保留。"
+    },
+    {
+      "slug": "yinli",
+      "name": "尹立",
+      "file": "data/en/faculty.json",
+      "pointer": "/12/education",
+      "canonical_pointer": "/12/education",
+      "zh": "國立台灣科技大學 設計研究所 碩士（2000 取得）",
+      "key": "國立台灣科技大學 設計研究所 碩士（2000 取得）",
+      "old": "Master of Design, Graduate Institute of Design, National Taiwan University of Science and Technology (Obtained in 2000)",
+      "new": "Master's degree, Graduate Institute of Design, National Taiwan University of Science and Technology (Obtained in 2000)",
+      "actual": "Master's degree, Graduate Institute of Design, National Taiwan University of Science and Technology (Obtained in 2000)",
+      "active_before": "Master of Design, Graduate Institute of Design, National Taiwan University of Science and Technology (Obtained in 2000)",
+      "overlays": [],
+      "reason": "移除原中文未指定的學位細類；只保留一般碩士級別，原學校、領域與年份完整保留。"
+    }
+  ],
+  "counts": {
+    "targets": 6,
+    "faculty_records": 13,
+    "changed_generated_values": 6,
+    "yes": 9,
+    "no": 0
+  },
+  "limits": [
+    "No build, no generated locale product writes, no game tests.",
+    "Neutral wording removes unsupported specificity; actual degrees and official school/department names still not newly certified.",
+    "Root integration/build and visible rendered review follow cherry-pick; no root files modified."
+  ]
+}
