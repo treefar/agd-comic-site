@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-23T11:17:55.888Z",
+  "cwd": "C:\\agywork\\agd-holiday-prototypes",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "-e",
+    "const fs=require('node:fs'),crypto=require('node:crypto');\nconst root='holiday-lab/reports/guide-internship-research-20261023';\nconst sha=f=>crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');\nconst x=JSON.parse(fs.readFileSync(root+'/sources.json','utf8'));\nconst v=JSON.parse(fs.readFileSync(root+'/verification.json','utf8'));\nconst ctx=JSON.parse(fs.readFileSync(root+'/local-context.json','utf8'));\nconst report=fs.readFileSync(root+'/REPORT.md','utf8');\nconst errors=[];let raw=0,png=0,steps=0,faq=0;\nfor(const f of v.file_manifest)if(!fs.existsSync(f.file)||sha(f.file)!==f.sha256)errors.push('manifest '+f.file);\nfor(const s of x.sources){\n const r=s.raw||s.receipt;\n if(r?.file&&r.sha256){raw++;if(sha(r.file)!==r.sha256)errors.push('raw '+s.sid);}\n const p=(s.raw||s.receipt)?.file;\n if(p?.endsWith('.pdf'))for(const page of s.visual_pages||[]){png++;if(!fs.existsSync(p.slice(0,-4)+'-page-'+page+'.png'))errors.push('PNG '+s.sid+' '+page);}\n}\nfor(const i of ctx.inputs)if(sha(i.file)!==i.sha256)errors.push('input '+i.file);\nfor(const title of ['校外實習','海外實習','海外見學']){\n const a=report.slice(report.indexOf('### '+title+'\\n')+1);\n const j=a.indexOf('\\n### ');const p=j<0?a:a.slice(0,j);\n const z=[...p.matchAll(/#### [1-4]\\. [^\\n]+\\n\\n([^\\n]+)/g)];\n const q=[...p.matchAll(/^- \\*\\*Q[1-3]：/gm)];steps+=z.length;faq+=q.length;\n if(z.length!==4||q.length!==3||z.some(m=>{const c=(m[1].match(/[。！？]/g)||[]).length;return c<2||c>3}))errors.push('student structure '+title);\n}\nconst defs=[...report.matchAll(/^\\[(S\\d+)\\]: (.+)$/gm)];\nif(defs.length!==23||defs.some(m=>x.sources.find(s=>s.sid===m[1])?.url!==m[2]))errors.push('reference definitions');\nconsole.log(JSON.stringify({all:errors.length===0,manifest_files:v.file_manifest.length,sources:x.sources.length,raw_receipts:raw,pdf_visual_pages:png,steps,faq,errors},null,2));\nif(errors.length)process.exitCode=1;"
+  ],
+  "env": {},
+  "exit_code": 0,
+  "stdout": "{\n  \"all\": true,\n  \"manifest_files\": 61,\n  \"sources\": 24,\n  \"raw_receipts\": 22,\n  \"pdf_visual_pages\": 18,\n  \"steps\": 12,\n  \"faq\": 9,\n  \"errors\": []\n}\n",
+  "stderr": ""
+}

@@ -1,0 +1,123 @@
+{
+  "checked_at": "2026-10-23T11:10:36.646Z",
+  "scope": "Document/source/structure checks only; not policy applicability approval, independent review, product build or publication",
+  "command": "node holiday-lab/reports/guide-capstone-study-research-20261023/verify.mjs",
+  "checks": [
+    {
+      "name": "unique_source_urls",
+      "result": "yes",
+      "actual": 21
+    },
+    {
+      "name": "source_sha_bytes",
+      "result": "yes",
+      "actual": "21/21"
+    },
+    {
+      "name": "pdf_signatures",
+      "result": "yes",
+      "actual": 7
+    },
+    {
+      "name": "docx_signatures",
+      "result": "yes",
+      "actual": 3
+    },
+    {
+      "name": "empty_pages_not_counted_as_read",
+      "result": "yes",
+      "actual": {
+        "empty": 9,
+        "nonempty": 12
+      }
+    },
+    {
+      "name": "topics_five_steps_three_faq",
+      "result": "yes",
+      "actual": [
+        {
+          "id": "capstone",
+          "steps": 5,
+          "faq": 3
+        },
+        {
+          "id": "graduate-study",
+          "steps": 5,
+          "faq": 3
+        }
+      ]
+    },
+    {
+      "name": "each_step_two_to_three_sentences",
+      "result": "yes",
+      "actual": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "all_draft_blocks_grounded_sources",
+      "result": "yes",
+      "actual": 16
+    },
+    {
+      "name": "draft_rendered_without_dropped_text",
+      "result": "yes",
+      "actual": true
+    },
+    {
+      "name": "pdf_visual_evidence_sha",
+      "result": "yes",
+      "actual": 30
+    },
+    {
+      "name": "seven_annexes_individually_read",
+      "result": "yes",
+      "actual": [
+        "一:29",
+        "二:30",
+        "三:31",
+        "四:32",
+        "五:33",
+        "六:34",
+        "七:35"
+      ]
+    },
+    {
+      "name": "concrete_gap_items",
+      "result": "yes",
+      "actual": 11
+    },
+    {
+      "name": "cohort_dates_conflicts_explicit",
+      "result": "yes",
+      "actual": true
+    },
+    {
+      "name": "anonymous_access_not_claimed",
+      "result": "yes",
+      "actual": false
+    },
+    {
+      "name": "mother_receipt_sha",
+      "result": "yes",
+      "actual": "610d29d17f144d47724d73fb02d29a69f079d62eb0a2a455800c38e1876372eb"
+    },
+    {
+      "name": "no_bearer_urls_stored",
+      "result": "no",
+      "actual": true
+    }
+  ],
+  "passed": 15,
+  "total": 16,
+  "all_passed": false
+}

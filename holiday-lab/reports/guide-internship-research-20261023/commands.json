@@ -1,0 +1,125 @@
+{
+  "recorded_at": "2026-10-23T11:10:25.102Z",
+  "python": "C:/Users/treef/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+  "commands": [
+    {
+      "id": "fetch-initial-failed",
+      "invocation": "PowerShell here-string | node --input-type=module",
+      "exact_excerpt": "const fs=require('node:fs'),path=require('node:path'); ... await Promise.all(...) (same invocation)",
+      "exit_code": 1,
+      "stdout": "ReferenceError: Cannot determine intended module format because both require() and top-level await are present. code=ERR_AMBIGUOUS_MODULE_SYNTAX; Node.js v24.15.0",
+      "limitation": "此列是實際失敗命令片段，不宣稱完整下載腳本已保存。"
+    },
+    {
+      "id": "fetch-official-originals",
+      "invocation": "PowerShell here-string using import fs/path/crypto; fetch(target.url, {signal:AbortSignal.timeout(25000)}); write original bytes and receipt | node --input-type=module",
+      "target_file": "targets.json",
+      "exit_code": 0,
+      "stdout": "curriculum-112 200 853996; curriculum-113 200 802810; curriculum-114 200 1441476; curriculum-115 200 1329642; career-contact/dept-environment/dept-forms/hc-2026/oica-outbound/oica-regulations/host-2021 each 202 0; committee-historical 403 243",
+      "receipt": "retrievals/2026-10-23T10-56-48.757Z/receipt.json"
+    },
+    {
+      "id": "fetch-school-news",
+      "invocation": "PowerShell here-string fetch actual URLs | node --input-type=module",
+      "exit_code": 0,
+      "stdout": "school-news-index 200 95308; job-212452 200 39791; job-212449 200 37888",
+      "receipt": "retrievals/2026-10-23T10-58-30.159Z/receipt.json"
+    },
+    {
+      "id": "fetch-school-attachments",
+      "invocation": "PowerShell here-string reads actual a[href] for .pdf/.docx from saved school HTML, fetch and writes raw receipt | node --input-type=module",
+      "exit_code": 0,
+      "stdout": "job-212452-attachment-1 200 301410; job-212452-attachment-2 200 34787; job-212449-attachment-1 200 450176",
+      "receipt": "retrievals/2026-10-23T10-59-25.838Z/receipt.json"
+    },
+    {
+      "id": "pdf-extract-failed",
+      "invocation": "Python stdin: pdfplumber extract_text; print full text with default Windows cp950 stdout",
+      "exit_code": 1,
+      "stdout": "job-212449-attachment-1.pdf pages=8; UnicodeEncodeError: 'cp950' codec can't encode character '\\uf967' in position 2316"
+    },
+    {
+      "id": "pdf-extract-utf8",
+      "invocation": "Python stdin: sys.stdout.reconfigure(encoding='utf-8'); pdfplumber.open; all pages extract_text; pypdfium2 render selected pages",
+      "exit_code": 0,
+      "stdout": "job-212449-attachment-1.pdf pages=8; job-212452-attachment-1.pdf pages=6; job-212452-attachment-2.docx document.xml read; complete extracted text retained beside raw files",
+      "texts": [
+        "retrievals/2026-10-23T10-59-25.838Z/job-212449-attachment-1.txt",
+        "retrievals/2026-10-23T10-59-25.838Z/job-212452-attachment-1.txt",
+        "retrievals/2026-10-23T10-59-25.838Z/job-212452-attachment-2.txt"
+      ]
+    },
+    {
+      "id": "drive-list",
+      "tool": "google_drive_list_folder",
+      "arguments": {
+        "link_id": "link_6ac46735bddc8191a891812f3842fde5",
+        "url": "https://drive.google.com/drive/folders/1Er1EJeEVxSL1NzmED6NE0h_uqPdRCNj5",
+        "top_k": 50
+      },
+      "isError": false,
+      "stdout": "4 files: 產業實習認定表.doc; 動遊系實習手冊.docx; 動遊系實習手冊.pdf; 實習單位評分表.doc"
+    },
+    {
+      "id": "drive-fetch",
+      "tool": "google_drive_fetch",
+      "arguments_template": {
+        "link_id": "link_6ac46735bddc8191a891812f3842fde5",
+        "url": "exact per-source Drive URL",
+        "download_raw_file": true,
+        "include_base64": false
+      },
+      "isError": false,
+      "stdout": "manual.pdf 847148; japan.pdf 93157; recognition.doc 31744; evaluation.doc 43008; authenticated returned file references materialized with HTTP200. Signed download URLs intentionally not persisted.",
+      "note": "兩份DOC第一次default fetch回原始binary且content空；原始bytes已保存。DOCX default provider text9067字元全文已讀；沒有用Google Docs API處理Word。"
+    },
+    {
+      "id": "drive-materialization-failed",
+      "invocation": "exec_command node -e raw base64 decoding one DOC",
+      "exit_code": null,
+      "tool_error": "Failed to create unified exec process: 檔名或副檔名太長。 (os error 206)",
+      "correction": "改使用connector已回傳file_uri下載，成功200；不再把binary印進報告。"
+    },
+    {
+      "id": "drive-pdf-extract",
+      "invocation": "Python stdin with stdout UTF-8: pdfplumber all pages; pypdfium2 selected render",
+      "exit_code": 0,
+      "stdout": "manual.pdf pages14; japan.pdf pages2; manual selected PNG pages3,4,9,10,11; japan pages1,2"
+    },
+    {
+      "id": "word-doc-partial",
+      "invocation": "Python stdin: raw .doc decode utf-16le(errors=replace), inspect text run beginning 樹德",
+      "exit_code": 0,
+      "stdout": "recognition.doc partial utf16 extraction; evaluation.doc partial utf16 extraction",
+      "limitation": "不是Word結構解析；不能稱全文或版面通過。"
+    },
+    {
+      "id": "web-primary-403",
+      "tool": "web.run open",
+      "isError": false,
+      "observed_results": [
+        {
+          "url": "https://www.stu.edu.tw/latestnews-single/?id=223564",
+          "status": 403
+        },
+        {
+          "url": "https://www.dgd.stu.edu.tw/常用表單/",
+          "status": 403
+        },
+        {
+          "url": "https://www.oica.stu.edu.tw/校內法規/",
+          "status": 403
+        }
+      ],
+      "limitation": "web結果403與Node202都保留，不拿搜尋索引本文當當日live。"
+    },
+    {
+      "id": "recheck_recipe_capture_failure",
+      "exit_code": 1,
+      "stdout": "ReferenceError: sha is not defined; then stored nested-template recheck script produced SyntaxError: Invalid or unexpected token",
+      "correction": "改用獨立RECHECK.json保存原始script文字，由apply_patch寫入，避免命令內巢狀樣板跳脫。"
+    }
+  ],
+  "reading_method": "tool outputs + original bytes + visual PDFs; no currentness inferred from HTTP200",
+  "recheck_command": "(Get-Content -LiteralPath 'holiday-lab/reports/guide-internship-research-20261023/RECHECK.json' -Raw | ConvertFrom-Json).script | node"
+}

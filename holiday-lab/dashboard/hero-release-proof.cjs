@@ -7,8 +7,8 @@ module.exports=function(root,policy,read){
  const heroRaw=read(policy.hero_receipt),releaseRaw=read(policy.release_receipt);
  const heroMethod=policy.hero_verifier||'holiday-lab/reports/hero-release-20261023/independent/verify.cjs';
  const releaseMethod=policy.release_verifier||'holiday-lab/reports/hero-release-20261023/release/verify.cjs';
- assert.ok(['holiday-lab/reports/hero-release-20261023/independent/verify.cjs','holiday-lab/reports/hero-release-20261023/student-independent/verify.cjs','holiday-lab/reports/hero-release-20261023/student-independent/verify-v2.cjs'].includes(heroMethod));
- assert.ok(['holiday-lab/reports/hero-release-20261023/release/verify.cjs','holiday-lab/reports/hero-release-20261023/release-student/verify.cjs'].includes(releaseMethod));
+ assert.ok(['holiday-lab/reports/hero-release-20261023/independent/verify.cjs','holiday-lab/reports/hero-release-20261023/student-independent/verify.cjs','holiday-lab/reports/hero-release-20261023/student-independent/verify-v2.cjs','holiday-lab/reports/integrated-review-20261023/home/verify-v2.cjs'].includes(heroMethod));
+ assert.ok(['holiday-lab/reports/hero-release-20261023/release/verify.cjs','holiday-lab/reports/hero-release-20261023/release-student/verify.cjs','holiday-lab/reports/integrated-review-20261023/release/verify.cjs'].includes(releaseMethod));
  read(heroMethod,false);read(releaseMethod,false);
  const hero=require(path.join(root,heroMethod)).verify(path.dirname(hpath));
  const release=require(path.join(root,releaseMethod)).verify(path.dirname(rpath));

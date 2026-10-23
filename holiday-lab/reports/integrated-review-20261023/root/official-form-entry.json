@@ -1,0 +1,55 @@
+{
+  "recorded_at": "2026-10-23T11:02:07.502Z",
+  "source_agent": "codex",
+  "method": "Read-only Chrome official page DOM/iframe; then school Google Drive list_folder",
+  "chain": [
+    {
+      "url": "https://www.dgd.stu.edu.tw/常用表單/",
+      "observed": "official 常用表單 title; embedded sites.google.com reports refused connection",
+      "iframe_src": "https://sites.google.com/stu.edu.tw/agdfiles"
+    },
+    {
+      "url": "https://sites.google.com/stu.edu.tw/agdfiles",
+      "observed": "AGD Files rendered; official embedded Drive Folder 表單",
+      "folder": "https://drive.google.com/drive/folders/11x7JyAYyALro3xrd_UYDBnezQXwepCtK"
+    },
+    {
+      "url": "https://drive.google.com/drive/folders/1XPq9ucg3Za7lYRiz6b13CQgQtAIt88nS",
+      "observed": "Student affairs direct children listed via existing school connector"
+    }
+  ],
+  "relevant_items": [
+    {
+      "id": "1Er1EJeEVxSL1NzmED6NE0h_uqPdRCNj5",
+      "title": "實習",
+      "mime_type": "application/vnd.google-apps.folder",
+      "url": "https://drive.google.com/drive/folders/1Er1EJeEVxSL1NzmED6NE0h_uqPdRCNj5",
+      "modified_time": "2019-02-13T08:40:16.499Z",
+      "source_visibility_status": "access_not_verified"
+    },
+    {
+      "id": "1uf3wk07YaDIaPh_17k6EcAeLIjaxnKJU",
+      "title": "畢業專題",
+      "mime_type": "application/vnd.google-apps.folder",
+      "url": "https://drive.google.com/drive/folders/1uf3wk07YaDIaPh_17k6EcAeLIjaxnKJU",
+      "modified_time": "2018-09-29T13:08:52.318Z",
+      "source_visibility_status": "access_not_verified"
+    },
+    {
+      "id": "1JufGkVm9zLeLpIzEdL77RspY_LN6bhRn",
+      "title": "轉系審查要點.doc",
+      "mime_type": "application/msword",
+      "url": "https://docs.google.com/document/d/1JufGkVm9zLeLpIzEdL77RspY_LN6bhRn/edit?usp=drivesdk&ouid=113883658363261221309&rtpof=true&sd=true",
+      "modified_time": "2018-09-29T13:05:14.484Z",
+      "source_visibility_status": "access_not_verified"
+    }
+  ],
+  "not_opened": [
+    "教師專用",
+    "行政",
+    "individual filled applications or certificates"
+  ],
+  "anonymous_public_access_verified": false,
+  "current_regulations_verified": false,
+  "scope": "Entry discovery and metadata only; agents separately read relevant regulations/blank forms. Existing authenticated access, no new permissions."
+}

@@ -1,0 +1,15 @@
+{
+  "command": "(Get-Content -LiteralPath 'holiday-lab/reports/guide-internship-research-20261023/RECHECK.json' -Raw | ConvertFrom-Json).script | node",
+  "exit_code": 0,
+  "actual_stdout": {
+    "all": true,
+    "manifest_files": 61,
+    "sources": 24,
+    "raw_receipts": 22,
+    "pdf_visual_pages": 18,
+    "steps": 12,
+    "faq": 9,
+    "errors": []
+  },
+  "note": "檔案與文字結構重算通過，不是115現行資格、當期受理或匿名公開認證。此輸出檔及verification.json不自我納入manifest。"
+}

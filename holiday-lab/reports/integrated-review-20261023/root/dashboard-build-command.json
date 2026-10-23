@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-23T11:19:58.840Z",
+  "cwd": "C:\\agywork\\agd-holiday-prototypes",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "holiday-lab/build-dashboard.mjs"
+  ],
+  "env": {},
+  "exit_code": 0,
+  "stdout": "BUILD OK | C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\dashboard\\out\n  section progress：15 列\n  section ui_scope：16 列\n  section ui_gate：3 列\n  section games：15 列\n  section shell：57 列\n  section release_checks：13 列\n  card [tool] 固定08歷史證據覆蓋（固定08來源歷史證據；非本輪新build完整通過率；非UI通過率） = 2046／2076\n  card [tool] UI尚缺case（合約case層級） = 30\n  card [tool] 完整UI通過（整包層級） = 0／1\n  card [data] 已建試作 = 15\n  card [tool] 模組功能通關 = 15\n  card [tool] 外框yes項目 = 56\n  card [tool] 外框未驗 = 1\n  card [user] 使用者已確認 = 0\n  card [data] 正在處理的項目（工作總覽項目層級） = 2\n  card [user] 待確認／待回覆（工作總覽項目層級；不代表已確認） = 5\n  card [data] 明確暫緩（本輪使用者方向） = 1\n  card [tool] 本輪發布工具補驗（13項本機技術檢查；不代表全2076或發布許可） = 12／13\n  unknowns：8 條；非 nullable 空值：0 格\nPASS | 01 dashboard-data.json 存在 | holiday-lab\\dashboard\\out\\dashboard-data.json\nPASS | 02 index.html 存在 | holiday-lab\\dashboard\\out\\index.html\nPASS | 03 dashboard-data.json 無 BOM\nPASS | 04 dashboard-data.json 是合法 JSON\nPASS | 05 格式驗證（output 階段）\nPASS | 06 內嵌資料與 dashboard-data.json 相同\nPASS | 07 index.html 無外部資源\nPASS | 08 樣板佔位符已全部替換\nPASS | 09 index.html 支援深色模式（prefers-color-scheme）\nPASS | 10 摘要卡 12 張的值都等於依規則重算\nPASS | 11 比值卡都寫明分母\nPASS | 12 每個 section 的 row_count 等於 rows 長度 | progress=15 ui_scope=16 ui_gate=3 games=15 shell=57 release_checks=13\nPASS | 13 所有狀態值都在 status_levels 內\nPASS | 14 摘要卡含「使用者確認」層（不可省略，即使是 0） | tool,data,user\nPASS | 15 非 nullable 空值有對應 unknowns | 空值 0 格、unknowns 8 條\nPASS | 16 篩選條件引用的欄位都存在\nPASS | 17 out-dir 只有 dashboard-data.json 與 index.html | dashboard-data.json,index.html\nPASS | A01 每款由catalog逐筆核對\nPASS | A02 每款程式與五張CG確實存在\nPASS | A03 通關來源與目前模組SHA一致\nPASS | A04 外框每條結果由最新原始run核對\nPASS | A05 未驗證保留，不升格使用者確認\nPASS | A06 候選素材檔案雜湊逐張核對\nPASS | A07 UI覆蓋分母與缺項由合約和權威v4索引逐筆重算\nPASS | A08 baseline與plan確實綁定同一權威索引及合約\nPASS | A09 完整UI仍NO且不把功能通關升格\nPASS | A10 使用者確認仍由對話授權，這批保持零\nPASS | A11 進度總覽逐項由來源adapter重算，不信頁面自述\nPASS | A12 勞動依本輪使用者指示明確暫緩，未升格驗收\nPASS | A13 資料、工具、使用者三層分開且使用者仍待確認\nPASS | A14 清明新收據缺失或未知schema不得寫pass\nPASS | A15 WebGL工單／排程不當成Build或可玩成功\nPASS | A16 所有本機成果連結逐一驗實檔且不連外\nPASS | A17 摘要未把QA來源覆蓋稱為整體完成率\n---- 34/34 PASS\n",
+  "stderr": ""
+}

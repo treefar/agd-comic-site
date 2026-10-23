@@ -1,0 +1,224 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="utf-8"> 
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-cache"> 
+	<meta http-equiv="Expires" content="-1">
+	<link href="default.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet"  href="../css/style.css" />
+	<script language="JavaScript">
+	<!--
+	 function winState(){
+		  if(typeof(RetCode) == "undefined"){
+			 return true;
+		  }else{
+			 if (RetCode.closed)
+				return true;
+		  }
+		  return false;
+	   }    
+	 
+	 function GoHome(){
+			var url = "index.asp";
+			location.href = url;
+		 
+	  }
+	function GoAPP(){
+			var url = "A1rightinfo.asp";
+			location.href = url;
+		 
+	  }
+	function qryAPP(){
+		var strErrMsg;
+		strErrMsg='';
+			//var url = "B6rightinfo.asp";
+			//location.href = url;
+			
+		if (frm.idno.value==''|| frm.examcode.value=='' )
+		{
+			strErrMsg+='請輸入使用者查詢資料!';
+		}
+		if ( strErrMsg!='')
+		{
+			alert(strErrMsg);
+			window.event.returnValue =false;
+		}
+		else
+		{
+			frm.action="QryexamDoc/qrydocaction_A1.asp";
+			frm.submit();
+		}
+		return;
+
+	}
+          function openForm() {
+  document.getElementById("myForm").style.display = "block";
+  document.getElementById("op").style.display = "none";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+  document.getElementById("op").style.display = "block";
+  
+}
+	//-->
+	</script>
+	 <style type="text/css">
+        body
+		{
+			background-color: #F5F5F5; !important;
+
+		}
+                 /* Button used to open the contact form - fixed at the bottom of the page */
+        .open-button {
+  background-color: #2E555C;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  border-radius: 8px;
+  position: relative ;
+  bottom: 23px;
+  left: 40px;
+  //right: 28px;
+  width: 150px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: relative ;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 80%;
+  padding: 5px;
+  margin: 1px 0 22px 30px;  ///* 上边 | 右边 | 下边 | 左边 */
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+	</style>
+</head>
+
+<body>
+<div id="outer">
+<!--
+	<div id="header">
+		<img src="images/Tlogo.jpg"><h1><a href="http://www.stu.edu.tw/">樹德科技大學招生考試報名資訊系統</a></h1>
+	</div>
+		
+-->		
+		<!--<div id="primaryContentContainer">-->
+			<div id="primaryContent">
+        
+				
+				<h3> &nbsp;</h3>
+				<table width="100%">
+					<tr class="rowH">
+						<th width="100%" colspan=2 align=center>116學年度【碩士班甄試】招生考試網路報名系統說明</th>
+					</tr>
+					<tr>
+						<td width="65%"><h2><font size=+2 color=red>報名日期</font></h2><br>
+						   <h2><font size=+2>2026/9/29 10:00 起至 2026/11/2 16:00止 </font></h2>
+						  
+						   <BR><BR><BR>
+						   <h3><font size=+1>注意事項：</font></h3>
+								<ul><font size=+1>一、登入系統前，請仔細閱讀本項招生簡章內容相關規定。</font></ul><br>
+								<ul><font size=+1>二、建議瀏覽器版本為IE 6以上版本。</font></ul><br>
+								<ul><font size=+1>三、請先確認是否有安裝Adobe Acrobat Reader® 軟體，以便於列印報名表件，如無該軟體請先下載、安裝。</font></ul><br>
+								<ul><font size=+1>四、試務問題請洽：教務處招生選才組 TEL：(07)6158000 轉 2015；2004；2005；2006。</font></ul><br>
+								<input type=button name=b2 class="button1 white large" value="回考試報名系統首頁"  onclick="javascript:GoHome()">
+						</td>
+						<td valign=top align=left>
+							<h3>一、 填寫報名資料</h3><br>
+							<!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+							<input type=button name=b1 class="button1 magenta large" value="開始報名"  onclick="javascript:GoAPP()">
+				
+							<br>
+							<!--<h2><font size=+2>二、  完成網路填表者查詢收件狀態或列印報名表件</font></h2><br>-->
+							<h3>二、</h3><br>
+							<!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+                            <button id="op" class="button1 green large" onclick="openForm()">審查進度及補件</button>
+                              <br><b><font size=+1>已完成報名填表者，點選【審查進度及補件】鍵執行:<br>
+                              <ol>  
+                                  <li>查詢報名後資格審查進度</li>
+                                  <li>補件上傳證明資料</li></b></font>
+                              </ol> 
+                                    <br>
+                            <!-- The form -->
+                            <div class="form-popup" id="myForm">
+                              <form NAME="frm" ID="frm" METHOD=post class="form-container">
+                                <h2>查詢審查、列印繳費單、檢視上傳檔案、審查補件</h2>
+                                <label for="examcode"><b>准考證號碼</b></label>
+                                <input type="text" placeholder="輸入准考證號碼" name="examcode" id="examcode" required>
+
+                                <label for="idno"><b>身分證號碼</b></label>
+                                <input type="text" placeholder="輸入身分證號碼" name="idno" id="idno" required>
+
+                                <button type="button" class="btn"  onclick="qryAPP()">查詢</button>
+                                <button type="button" class="btn cancel" onclick="closeForm()">關閉</button>
+                              </form>
+                            </div>
+							<br>
+                            <h3>三、</h3><!--<a href='Qrystatus/B1qryexamcode.asp'>准考證號碼查詢</a>--><br>
+							<!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+                            <input type=button name=b11 class="button1 blue large" value="准考證號碼查詢"  onclick="javascript:location.href = 'Qrystatus/A1qryexamcode.asp'">
+                            <br><b><font size=+1>(已完成基本資料輸入後才可查詢)</b></font>
+						</td>
+					</tr>   
+				</table>
+			</div>
+		<!--</div> -->
+	
+		<div class="clear"></div>
+	</div>
+	<div id="footer">
+	
+	</div>
+</div>   <!--  END OF DIV OUTER -->
+</body>
+</html>
