@@ -1,0 +1,1 @@
+const fs=require('fs'),path=require('path'),assert=require('assert/strict'),file=path.join(__dirname,'witnesses.cjs');let s=fs.readFileSync(file,'utf8');assert.ok(s.includes('(async()=>'));s=s.replace('(async()=>','if(require.main===module)(async()=>');fs.writeFileSync(file,s);

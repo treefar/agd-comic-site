@@ -1,0 +1,7 @@
+// A completed batch is creditable only after every line, index and rolling hash verifies.
+const fs=require('fs'),crypto=require('crypto'),assert=require('assert/strict'),path=require('path');
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex'),hash=p=>sha(fs.readFileSync(p)),step=(previous,row)=>sha(previous+'\n'+JSON.stringify([row.index,row.key,row.text]));
+function verify(file,expected){const b=fs.readFileSync(file),lines=b.toString().trimEnd().split('\n'),rows=lines.map(l=>JSON.parse(l));assert.equal(hash(file),expected.rows_sha256);assert.equal(rows.length,expected.count);let rolling=expected.rolling_before;for(let i=0;i<rows.length;i++){const r=rows[i];assert.equal(r.index,expected.first+i);assert.equal(r.key,expected.tuple_keys[i]);rolling=step(rolling,r);assert.equal(r.rolling_sha256,rolling);}assert.equal(rolling,expected.rolling_after);assert.equal(expected.last,expected.first+rows.length-1);return rows;}
+function readCompleted(dir){if(!fs.existsSync(dir))return[];return fs.readdirSync(dir).filter(n=>/^batch-\d+\.complete\.json$/.test(n)).map(n=>({file:path.join(dir,n),data:JSON.parse(fs.readFileSync(path.join(dir,n)))})).sort((a,b)=>a.data.first-b.data.first);}
+function checkpoint(dir,data){assert.equal(data.status,'complete');verify(path.join(dir,data.rows_file),data);const file=path.join(dir,'batch-'+data.first+'.complete.json');fs.writeFileSync(file,JSON.stringify(data,null,2),{flag:'wx'});assert.deepEqual(JSON.parse(fs.readFileSync(file)),data);return file;}
+module.exports={sha,hash,step,verify,readCompleted,checkpoint};
