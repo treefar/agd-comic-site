@@ -1,0 +1,327 @@
+{
+  "payload": {
+    "seq": 201,
+    "target": {
+      "id": "labor/zh/320x900/output-0-1/output:labor-start-0",
+      "job_id": "output-0-1",
+      "job_identity": {
+        "id": "output-0-1",
+        "lang": "zh",
+        "width": 320,
+        "schedule": [
+          {
+            "artist": 0,
+            "start": 1
+          },
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 0,
+            "start": 0
+          }
+        ],
+        "reason": "dependency",
+        "owners": [
+          "output:labor-start-0"
+        ],
+        "height": 900
+      },
+      "job_sha256": "ac661a7546765c2d2678c981213300b17ede4ee6153932eb307d25f06c2cc15e",
+      "lang": "zh",
+      "width": 320,
+      "height": 900,
+      "owner": "output:labor-start-0",
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 1
+        },
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 0,
+          "start": 0
+        }
+      ],
+      "inputs": {
+        "schedule": [
+          {
+            "artist": 0,
+            "start": 1
+          },
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 0,
+            "start": 0
+          },
+          {
+            "artist": 0,
+            "start": 0
+          }
+        ],
+        "ranges": [
+          {
+            "id": "labor-start-0",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "1"
+          },
+          {
+            "id": "labor-start-1",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-2",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-3",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-4",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-5",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          }
+        ],
+        "choices": [
+          {
+            "id": "labor-worker-0-0",
+            "pressed": "true"
+          },
+          {
+            "id": "labor-worker-0-1",
+            "pressed": "false"
+          },
+          {
+            "id": "labor-worker-0-2",
+            "pressed": "false"
+          },
+          {
+            "id": "labor-worker-1-0",
+            "pressed": "true"
+          },
+          {
+            "id": "labor-worker-1-1",
+            "pressed": "false"
+          },
+          {
+            "id": "labor-worker-1-2",
+            "pressed": "false"
+          },
+          {
+            "id": "labor-worker-2-0",
+            "pressed": "true"
+          },
+          {
+            "id": "labor-worker-2-1",
+            "pressed": "false"
+          },
+          {
+            "id": "labor-worker-2-2",
+            "pressed": "false"
+          },
+          {
+            "id": "labor-worker-3-0",
+            "pressed": "true"
+          },
+          {
+            "id": "labor-worker-3-1",
+            "pressed": "false"
+          },
+          {
+            "id": "labor-worker-3-2",
+            "pressed": "false"
+          },
+          {
+            "id": "labor-worker-4-0",
+            "pressed": "true"
+          },
+          {
+            "id": "labor-worker-4-1",
+            "pressed": "false"
+          },
+          {
+            "id": "labor-worker-4-2",
+            "pressed": "false"
+          },
+          {
+            "id": "labor-worker-5-0",
+            "pressed": "true"
+          },
+          {
+            "id": "labor-worker-5-1",
+            "pressed": "false"
+          },
+          {
+            "id": "labor-worker-5-2",
+            "pressed": "false"
+          }
+        ]
+      },
+      "expected": {
+        "ok": false,
+        "reason": "dependency",
+        "loads": [
+          60,
+          0,
+          0
+        ],
+        "validJobs": 1
+      },
+      "dom_expected": {
+        "game-hint": "下一步太早開始，先等前一份工作完成。",
+        "labor-status": "下一步太早開始，先等前一份工作完成。",
+        "labor-loads": "工作量 A 60／B 0／C 0",
+        "game-progress": "1 / 6",
+        "output:labor-start-0": "1",
+        "output:labor-start-1": "0",
+        "output:labor-start-2": "0",
+        "output:labor-start-3": "0",
+        "output:labor-start-4": "0",
+        "output:labor-start-5": "0"
+      }
+    },
+    "target_sha256": "6b72940e5cc38c687df4d06bb932c6c176596e8cc05c9901e1b2eb27c92e8360",
+    "prev_hash": "25c419080835951006d573b53f6a878cb456feb4c2492127f9bcd7cadbf30f83",
+    "lease_sha256": "9bb62a829b0e98fd5bdad9bda84474bea5aa8d92728f75a280748697ba59cd79",
+    "inventory": [
+      {
+        "file": "records/000201/case.report.json",
+        "sha256": "12899ba6421eba97fdfba31db5b7820fede8b5ce0ccf36a46c3cc5d3d9ea2b77",
+        "bytes": 1125
+      },
+      {
+        "file": "records/000201/case.report.json.parts/0e16da88-9c47-4a2d-a7a9-3c051edc3781-case-0.json",
+        "sha256": "a6d04ddc00ffb94f30dd2d49fdafc57ab60ebc1d0c300235b3dee842c0b56107",
+        "bytes": 171752
+      },
+      {
+        "file": "records/000201/case.report.json.parts/0e16da88-9c47-4a2d-a7a9-3c051edc3781-header-6e901b27-bc74-4a62-bb31-defd1dce8ab1.json",
+        "sha256": "90333367336c68d5f766d98abf71ee24db1ed4c90b13fae72c7ce225029dbb17",
+        "bytes": 60
+      },
+      {
+        "file": "records/000201/outcome.json",
+        "sha256": "61d0fbd0d1d9f50e5d603924997bba629cf146873bd49729a8bb1d64ad8c4a0a",
+        "bytes": 557
+      },
+      {
+        "file": "records/000201/sample.report.json",
+        "sha256": "61e2bf9dabeda947f321a652c174b059c94f11a4d05bdf660ecb05f9128572af",
+        "bytes": 691
+      },
+      {
+        "file": "records/000201/sample.report.json.parts/20d5c213-fe96-421a-a41f-992a988e3a33-case-0.json",
+        "sha256": "d0cd84ea293f6d6491bad2ba45413a7a452cb1cc98e260c5ba72cf8abc6a4089",
+        "bytes": 173296
+      },
+      {
+        "file": "records/000201/sample.report.json.parts/20d5c213-fe96-421a-a41f-992a988e3a33-header-4be2ce52-e9f8-4edd-af70-c7e670808051.json",
+        "sha256": "90333367336c68d5f766d98abf71ee24db1ed4c90b13fae72c7ce225029dbb17",
+        "bytes": 60
+      },
+      {
+        "file": "records/000201/viewport.png",
+        "sha256": "090ad3843240173165d44a0e58c090de3208e05209e5c177e3aa53126351ad4e",
+        "bytes": 149840
+      },
+      {
+        "file": "attempts/000201.start.json",
+        "sha256": "c286f7ccdf389ace324ad2f3902456b9626175a0b0f8eb7158532160278394f0",
+        "bytes": 5100
+      },
+      {
+        "file": "attempts/000201.end.json",
+        "sha256": "9f1ddc7a4e63184a7fd04eaa707d5cb18864d6e8ff801ec29ebf3a153b0bbe09",
+        "bytes": 891
+      }
+    ],
+    "outcome": {
+      "accepted": true,
+      "domain": {
+        "schema": 1,
+        "valid": true,
+        "target_checks": {
+          "exact_dom": true,
+          "fixed_safe": true,
+          "font": true,
+          "full_range": true,
+          "geometry_clear": true,
+          "safe": true,
+          "unclipped": true,
+          "viewport": true
+        },
+        "flag_classification": {
+          "valid": true,
+          "proofs": [],
+          "reasons": []
+        },
+        "original_pass": true,
+        "original_global_method_clear": true,
+        "original_flags": [],
+        "global_ui_pass": true,
+        "full_project_approved": false
+      }
+    }
+  },
+  "hash": "a842bf2d207ee01b39e483c788f8fd1fbd1e3e341d15dec1bceeb5f905f7a7a0"
+}

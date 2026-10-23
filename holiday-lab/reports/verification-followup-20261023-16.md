@@ -1,6 +1,6 @@
 # 全面試作續驗16：恢復原作業與來源追溯
 
-2026-10-23；source_agent: codex。使用者已說「繼續」，前次暫停解除；整體工作仍未完成。本輪只做本機驗證。
+2026-10-23；source_agent: codex。使用者已說「繼續」，前次暫停解除；整體工作仍未完成。本輪只做本機驗證。最新結果：中秋783正常UI及810義務已獨立重核；勞動原批次在331成功後中斷，續接工具準備中。正式覆蓋仍2046／2076。
 
 ## 實際結果
 
@@ -8,7 +8,7 @@
 |---|---|---|
 | 中秋續接前重核原247份 | yes | RESUME-PREFLIGHT-01.json：247份case/sample/PNG與原hash-chain、freeze04、來源／字型均一致，exit0；舊PID確認已停後才續接。SHA e0a80f31d48882bb18fd7e900ca081468d7583851916fafc0e2f15c4dc100f3f。 |
 | 沿用原run、沒有重跑原247 | yes | node holiday-lab/layout-qa/mid-autumn-ui-resume-20261023/driver.cjs；原runner參數仍為 --full --freeze=…freeze-04.json --approval=…root-approval-04.json --run=root-ui-04 --resume。新runner43520／driver8248，launch寫existing_complete247。原暫停屏障移入operator-pause-records保存，未刪除。 |
-| 中秋783正常UI已全完成 | no | 05:49:49.915Z原stdout最後一列：completed554,total783。尚無terminal，不能把正在執行說成全部通過。原404688文字probe已完成，兩者範圍不同。 |
+| 中秋783正常UI目標驗證已全完成 | yes，限目標範圍 | 原runner06:03:50.780Z真exit0；root於06:05:00.032Z完成獨立verify-complete.cjs、exit0：jobs783、seed768、extrema42、obligations810、geometry0；所有PNG／case／sample／chain／source-font-method逐一核對。265份仍有其他owner原旗標，全域仍NO。 |
 | 勞動新完整目標域工具可啟動 | yes | root讀full.cjs/guard/store/tests，node --test …/full.test.cjs：9pass0fail；preflight通過。root-approval.json SHA50a2b5b2b77d616a5df1c9c6d27cbb9c38e3e5f809bbc8aade1b7af95c9083ae。 |
 | 勞動2784目標已全部驗完 | no | node holiday-lab/layout-qa/labor-finite-native/full-supervisor-20261023/driver.cjs；runner27896／driver63148；05:49:49.915Z captured180/2784，尚無terminal。精確2784targets、2754context-jobs，未縮小範圍。 |
 | 勞動保留整頁原flags／false | yes | 新域驗證要求原9項check鍵、boolean、pass公式與原payload重算；已知非target flags須逐owner／clip證明才分開判定，未知與target flag仍失敗。不得把target域有效改稱整頁通過。 |
@@ -32,6 +32,14 @@
 
 原247中秋證據已在先前本機commit保全；正在增長的續接輸出與勞動全集尚非完成封存。原673MB中秋raw仍ignored本機資料，未宣稱跨機備份。
 
+## 06:05 中秋完成後主控獨立重核
+
+`node holiday-lab/layout-qa/mid-autumn-ui-resume-20261023/verify-complete.cjs` 真exit0；輸出原封保存在 `root-complete-verification-01.json`。重建source-bound domain與原seed/extrema plan，完整store.verify全部783 case/sample/PNG、810義務無缺重、原0.05px比較全為[]、geometry0、方法／HTTP body／雙字型收據一致。
+
+context件數：zh320=132、zh1440=130、en320=130、en1440=130、ja320=131、ja1440=130。完整鏈末SHA `e386f4ff21fdb40cdcebb3d198aeecc6baa661a3d5c8295a3775a4287070f299`。
+
+518份原整頁method旗標為空，其餘265份仍保留非被測提示的原paint／捲讀旗標，包括EN／JA的ma-intro各130次；原flag次數可重疊，不能相加當case數。這只完成目標提示的正常UI／原技術probe等價校準，`canonical_promoted=false`、`global_bound_proven=false`、`full_project_approved=false`。下一步要建立並獨立驗證typed極值證明與canonical adapter，沒有直接修改覆蓋分子。
+
 ## 主控畫面檢視與本機保全
 
 主控實際開圖 `mid-autumn-ui-validation-20261023/runs/root-ui-04/records/000581/viewport.png`（JA320，source-index23613）：被測錯誤提示全文在紙面內；頁面上方說明仍有短末行「ごう。」，下方操作說明亦有短末行。這是已看見的排版缺口，不把目標文字測試通過說成整頁排版／日文／美術通過。驗證期間不改凍結產品；後續在新版本修正並重驗受影響範圍。
@@ -43,3 +51,17 @@
 - 開學：root實跑 `node --test holiday-lab/layout-qa/semester-numeric-proof-20261023/numeric-model.test.cjs holiday-lab/layout-qa/semester-numeric-proof-20261023/verifier.test.cjs` → tests5 pass5 fail0、exit0。含真font的10位上界／兩parity／跨位數與substring負例。
 - root實跑 `node holiday-lab/layout-qa/semester-numeric-proof-20261023/verify.cjs` → exit0；pass=true, refs41,groups38,metric_classes33365,fragment_bounds8342,all_fragment_DP_recomputed=true,native_equivalence=false,global_approved=false。已讀model/prove/verify實碼。這是字型outline模型與來源證明，未替代瀏覽器逐行墨跡驗證。
 - 國慶：root實跑 `node --test holiday-lab/layout-qa/national-independent-review-20261023/projection.test.cjs` → tests6 pass6 fail0、exit0。十筆舊真頁有三筆命中readout自身paint unresolved，原PNG也只是元素crop；手機viewport為320×1000，不能充當320×900完整畫面。代理已交精確來源域與上限39筆正常UI校準方案；僅批准準備工具／故障測試，尚未批准啟動browser。
+
+## 05:59 勞動節原批次實際中止
+
+上表180／2784是先前觀測。原supervisor在2026-10-23T05:59:23.731Z記錄runner27896 exit1、launch_count1、automatic_restart=false；stderr原值 `TypeError: fetch failed`，cause `read ECONNRESET`。原native的source_before／source_after都可能發出fetch，目前例外未附是哪一段的上下文，不推測已完成哪些未回傳操作。
+
+root在確認terminal後執行 `node holiday-lab/layout-qa/labor-finite-native/full-domain-reviewed-20261023/full.cjs --verify`，session12360真exit0，輸出如下：
+
+```json
+{"count":332,"complete":false,"stopped":true,"last_hash":"e6584a44e16c3eee86fc9b4e01c95f38f3367d08a98cc784f14011eeadf2b22b","original_pass_count":331,"original_false_count":0,"domain_valid_count":331,"global_ui_pass":false,"full_project_approved":false,"scope":"labor-complete-target-domain-reviewed-2784-20261023","browser_started":false,"native_started":false}
+```
+
+331個完整成功目標與第332個失敗attempt均保留。失敗seq331對應 `labor/zh/320x900/output-3-2/output:labor-start-3`，原records/000331只有capture_error，沒有回傳case/sample/PNG；不捏造影像或當成功。原工具fresh-only且無resume，沒有重新啟動2784整批。
+
+代理先把國慶39recipe／312逐owner-frame工具存CHECKPOINT，轉準備獨立續接方案：原331成功不重跑；新scope明列重採失敗義務及其後餘項共2453，逐筆核對原前綴與續接union。尚未批准或啟動續接；原失敗與freeze不可改寫。

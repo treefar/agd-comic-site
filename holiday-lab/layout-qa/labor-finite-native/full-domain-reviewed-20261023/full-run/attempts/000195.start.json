@@ -1,0 +1,250 @@
+{
+  "seq": 195,
+  "target": {
+    "id": "labor/zh/320x900/reason-break/labor-status",
+    "job_id": "reason-break",
+    "job_identity": {
+      "id": "reason-break",
+      "lang": "zh",
+      "width": 320,
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 20
+        },
+        {
+          "artist": 1,
+          "start": 30
+        },
+        {
+          "artist": 2,
+          "start": 42
+        },
+        {
+          "artist": 0,
+          "start": 10
+        },
+        {
+          "artist": 1,
+          "start": 22
+        },
+        {
+          "artist": 2,
+          "start": 34
+        }
+      ],
+      "reason": "break",
+      "owners": [
+        "game-hint",
+        "labor-status"
+      ],
+      "height": 900
+    },
+    "job_sha256": "4c9356c20b9432fdfcd051227e56e391bf9a6991cf9acefaa39f16a5e495c0c5",
+    "lang": "zh",
+    "width": 320,
+    "height": 900,
+    "owner": "labor-status",
+    "schedule": [
+      {
+        "artist": 0,
+        "start": 20
+      },
+      {
+        "artist": 1,
+        "start": 30
+      },
+      {
+        "artist": 2,
+        "start": 42
+      },
+      {
+        "artist": 0,
+        "start": 10
+      },
+      {
+        "artist": 1,
+        "start": 22
+      },
+      {
+        "artist": 2,
+        "start": 34
+      }
+    ],
+    "inputs": {
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 20
+        },
+        {
+          "artist": 1,
+          "start": 30
+        },
+        {
+          "artist": 2,
+          "start": 42
+        },
+        {
+          "artist": 0,
+          "start": 10
+        },
+        {
+          "artist": 1,
+          "start": 22
+        },
+        {
+          "artist": 2,
+          "start": 34
+        }
+      ],
+      "ranges": [
+        {
+          "id": "labor-start-0",
+          "min": "0",
+          "max": "42",
+          "step": "1",
+          "value": "20"
+        },
+        {
+          "id": "labor-start-1",
+          "min": "0",
+          "max": "42",
+          "step": "1",
+          "value": "30"
+        },
+        {
+          "id": "labor-start-2",
+          "min": "0",
+          "max": "42",
+          "step": "1",
+          "value": "42"
+        },
+        {
+          "id": "labor-start-3",
+          "min": "0",
+          "max": "42",
+          "step": "1",
+          "value": "10"
+        },
+        {
+          "id": "labor-start-4",
+          "min": "0",
+          "max": "42",
+          "step": "1",
+          "value": "22"
+        },
+        {
+          "id": "labor-start-5",
+          "min": "0",
+          "max": "42",
+          "step": "1",
+          "value": "34"
+        }
+      ],
+      "choices": [
+        {
+          "id": "labor-worker-0-0",
+          "pressed": "true"
+        },
+        {
+          "id": "labor-worker-0-1",
+          "pressed": "false"
+        },
+        {
+          "id": "labor-worker-0-2",
+          "pressed": "false"
+        },
+        {
+          "id": "labor-worker-1-0",
+          "pressed": "false"
+        },
+        {
+          "id": "labor-worker-1-1",
+          "pressed": "true"
+        },
+        {
+          "id": "labor-worker-1-2",
+          "pressed": "false"
+        },
+        {
+          "id": "labor-worker-2-0",
+          "pressed": "false"
+        },
+        {
+          "id": "labor-worker-2-1",
+          "pressed": "false"
+        },
+        {
+          "id": "labor-worker-2-2",
+          "pressed": "true"
+        },
+        {
+          "id": "labor-worker-3-0",
+          "pressed": "true"
+        },
+        {
+          "id": "labor-worker-3-1",
+          "pressed": "false"
+        },
+        {
+          "id": "labor-worker-3-2",
+          "pressed": "false"
+        },
+        {
+          "id": "labor-worker-4-0",
+          "pressed": "false"
+        },
+        {
+          "id": "labor-worker-4-1",
+          "pressed": "true"
+        },
+        {
+          "id": "labor-worker-4-2",
+          "pressed": "false"
+        },
+        {
+          "id": "labor-worker-5-0",
+          "pressed": "false"
+        },
+        {
+          "id": "labor-worker-5-1",
+          "pressed": "false"
+        },
+        {
+          "id": "labor-worker-5-2",
+          "pressed": "true"
+        }
+      ]
+    },
+    "expected": {
+      "ok": false,
+      "reason": "break",
+      "loads": [
+        20,
+        24,
+        16
+      ],
+      "validJobs": 0
+    },
+    "dom_expected": {
+      "game-hint": "有工作排進休息時段，請替同學留出休息。",
+      "labor-status": "有工作排進休息時段，請替同學留出休息。",
+      "labor-loads": "工作量 A 20／B 24／C 16",
+      "game-progress": "0 / 6",
+      "output:labor-start-0": "20",
+      "output:labor-start-1": "30",
+      "output:labor-start-2": "42",
+      "output:labor-start-3": "10",
+      "output:labor-start-4": "22",
+      "output:labor-start-5": "34"
+    }
+  },
+  "owner_ref": {
+    "file": "owner.json",
+    "sha256": "7c641bb8f91c2be2e24b343b7d4696e8e3d193ef5da00cb2059491404e2909c3",
+    "bytes": 465
+  },
+  "prev_hash": "12a3fb8abe9869c3c404415c25c99e8ce23f9de0023a641f81e77e3bdf495292",
+  "started_at": "2026-10-23T05:50:37.779Z"
+}

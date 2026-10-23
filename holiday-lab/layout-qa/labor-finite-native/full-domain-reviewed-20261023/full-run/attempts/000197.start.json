@@ -1,0 +1,250 @@
+{
+  "seq": 197,
+  "target": {
+    "id": "labor/zh/320x900/reason-overlap/labor-status",
+    "job_id": "reason-overlap",
+    "job_identity": {
+      "id": "reason-overlap",
+      "lang": "zh",
+      "width": 320,
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 10
+        },
+        {
+          "artist": 2,
+          "start": 22
+        },
+        {
+          "artist": 0,
+          "start": 5
+        },
+        {
+          "artist": 1,
+          "start": 22
+        },
+        {
+          "artist": 2,
+          "start": 34
+        }
+      ],
+      "reason": "overlap",
+      "owners": [
+        "game-hint",
+        "labor-status"
+      ],
+      "height": 900
+    },
+    "job_sha256": "5bdee26ab830ebcc25e4f4aef7c5b5f0da2d9a78dcf0da4a52b6cffee0d7dea0",
+    "lang": "zh",
+    "width": 320,
+    "height": 900,
+    "owner": "labor-status",
+    "schedule": [
+      {
+        "artist": 0,
+        "start": 0
+      },
+      {
+        "artist": 1,
+        "start": 10
+      },
+      {
+        "artist": 2,
+        "start": 22
+      },
+      {
+        "artist": 0,
+        "start": 5
+      },
+      {
+        "artist": 1,
+        "start": 22
+      },
+      {
+        "artist": 2,
+        "start": 34
+      }
+    ],
+    "inputs": {
+      "schedule": [
+        {
+          "artist": 0,
+          "start": 0
+        },
+        {
+          "artist": 1,
+          "start": 10
+        },
+        {
+          "artist": 2,
+          "start": 22
+        },
+        {
+          "artist": 0,
+          "start": 5
+        },
+        {
+          "artist": 1,
+          "start": 22
+        },
+        {
+          "artist": 2,
+          "start": 34
+        }
+      ],
+      "ranges": [
+        {
+          "id": "labor-start-0",
+          "min": "0",
+          "max": "42",
+          "step": "1",
+          "value": "0"
+        },
+        {
+          "id": "labor-start-1",
+          "min": "0",
+          "max": "42",
+          "step": "1",
+          "value": "10"
+        },
+        {
+          "id": "labor-start-2",
+          "min": "0",
+          "max": "42",
+          "step": "1",
+          "value": "22"
+        },
+        {
+          "id": "labor-start-3",
+          "min": "0",
+          "max": "42",
+          "step": "1",
+          "value": "5"
+        },
+        {
+          "id": "labor-start-4",
+          "min": "0",
+          "max": "42",
+          "step": "1",
+          "value": "22"
+        },
+        {
+          "id": "labor-start-5",
+          "min": "0",
+          "max": "42",
+          "step": "1",
+          "value": "34"
+        }
+      ],
+      "choices": [
+        {
+          "id": "labor-worker-0-0",
+          "pressed": "true"
+        },
+        {
+          "id": "labor-worker-0-1",
+          "pressed": "false"
+        },
+        {
+          "id": "labor-worker-0-2",
+          "pressed": "false"
+        },
+        {
+          "id": "labor-worker-1-0",
+          "pressed": "false"
+        },
+        {
+          "id": "labor-worker-1-1",
+          "pressed": "true"
+        },
+        {
+          "id": "labor-worker-1-2",
+          "pressed": "false"
+        },
+        {
+          "id": "labor-worker-2-0",
+          "pressed": "false"
+        },
+        {
+          "id": "labor-worker-2-1",
+          "pressed": "false"
+        },
+        {
+          "id": "labor-worker-2-2",
+          "pressed": "true"
+        },
+        {
+          "id": "labor-worker-3-0",
+          "pressed": "true"
+        },
+        {
+          "id": "labor-worker-3-1",
+          "pressed": "false"
+        },
+        {
+          "id": "labor-worker-3-2",
+          "pressed": "false"
+        },
+        {
+          "id": "labor-worker-4-0",
+          "pressed": "false"
+        },
+        {
+          "id": "labor-worker-4-1",
+          "pressed": "true"
+        },
+        {
+          "id": "labor-worker-4-2",
+          "pressed": "false"
+        },
+        {
+          "id": "labor-worker-5-0",
+          "pressed": "false"
+        },
+        {
+          "id": "labor-worker-5-1",
+          "pressed": "false"
+        },
+        {
+          "id": "labor-worker-5-2",
+          "pressed": "true"
+        }
+      ]
+    },
+    "expected": {
+      "ok": false,
+      "reason": "overlap",
+      "loads": [
+        20,
+        24,
+        16
+      ],
+      "validJobs": 0
+    },
+    "dom_expected": {
+      "game-hint": "同一位同學同時拿到兩件工作，分開或改交別人。",
+      "labor-status": "同一位同學同時拿到兩件工作，分開或改交別人。",
+      "labor-loads": "工作量 A 20／B 24／C 16",
+      "game-progress": "0 / 6",
+      "output:labor-start-0": "0",
+      "output:labor-start-1": "10",
+      "output:labor-start-2": "22",
+      "output:labor-start-3": "5",
+      "output:labor-start-4": "22",
+      "output:labor-start-5": "34"
+    }
+  },
+  "owner_ref": {
+    "file": "owner.json",
+    "sha256": "7c641bb8f91c2be2e24b343b7d4696e8e3d193ef5da00cb2059491404e2909c3",
+    "bytes": 465
+  },
+  "prev_hash": "356bb3922d56d69fb92d7a40cb9b79f64d00d86a4844a05ff7e5ac64ece05df4",
+  "started_at": "2026-10-23T05:50:44.553Z"
+}
