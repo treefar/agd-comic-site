@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "args": [
+        "holiday-lab/build-dashboard.mjs"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "--test",
+        "holiday-lab/dashboard/ui-authority.test.cjs"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "holiday-lab/dashboard/smoke.cjs"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "all_pass": true,
+  "full_project_approved": false
+}

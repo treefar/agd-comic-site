@@ -16,13 +16,31 @@
       {
         "path": "holiday-lab/qa/shell.json",
         "role": "共用外框逐條yes/no"
+      },
+      {
+        "path": "holiday-lab/layout-qa/supplement-integration-20261023/v3/coverage-current.json",
+        "role": "本輪UI合約case覆蓋與缺項唯一權威"
+      },
+      {
+        "path": "holiday-lab/layout-qa/supplement-integration-20261023/v3/baseline-comparison.json",
+        "role": "舊覆蓋與來源綁定保留核對"
+      },
+      {
+        "path": "holiday-lab/layout-qa/supplement-integration-20261023/v3/plan-consistency.json",
+        "role": "完整節點指標、選取集合與官方報告未變核對"
+      },
+      {
+        "path": "ui-layout-contract.json",
+        "role": "UI覆蓋分母與case維度"
       }
     ],
     "notes": [
+      "完整UI驗收仍未通過。來源case有覆蓋不代表method flags已閉合；使用者確認仍待對話。",
       "本機試作，未公開發布，沒有push或變動main。",
       "工具通過只核對各款模組SHA及真DOM通關；不是最新整包、文字安全區或使用者確認。",
       "真背景切頁未能建立hidden前提，保留未驗證；真手機與母語審閱未執行。"
-    ]
+    ],
+    "subtitle": "功能通關、UI來源覆蓋與使用者確認分開呈現"
   },
   "status_levels": [
     {
@@ -60,9 +78,68 @@
       "label": "使用者確認",
       "tone": "ok",
       "layer": "user"
+    },
+    {
+      "key": "gate_no",
+      "label": "完整UI未通過",
+      "tone": "danger",
+      "layer": "tool"
     }
   ],
   "summary_cards": [
+    {
+      "id": "ui-covered",
+      "label": "UI來源case覆蓋",
+      "layer": "tool",
+      "scope": "合約case層級；非UI通過率",
+      "denominator": "ui-layout-contract.json全部required_cases",
+      "rule": {
+        "ratio": [
+          {
+            "sum": "ui_scope",
+            "field": "covered"
+          },
+          {
+            "sum": "ui_scope",
+            "field": "required"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ui-missing",
+      "label": "UI尚缺case",
+      "layer": "tool",
+      "scope": "合約case層級",
+      "rule": {
+        "sum": "ui_scope",
+        "field": "missing"
+      }
+    },
+    {
+      "id": "ui-gate",
+      "label": "完整UI通過",
+      "layer": "tool",
+      "scope": "整包層級",
+      "denominator": "完整UI gate",
+      "rule": {
+        "ratio": [
+          {
+            "count": "ui_gate",
+            "where": {
+              "id": "global",
+              "result": "pass"
+            }
+          },
+          {
+            "count": "ui_gate",
+            "where": {
+              "id": "global"
+            }
+          }
+        ]
+      }
+    },
     {
       "id": "built",
       "label": "已建試作",
@@ -120,6 +197,340 @@
     }
   ],
   "sections": [
+    {
+      "id": "ui_scope",
+      "title": "UI來源case覆蓋（不是全UI通過）",
+      "description": "按合約逐case彙總。缺項仍保留；未清除原method flags或更動官方layout-report。",
+      "row_key": "id",
+      "columns": [
+        {
+          "key": "title",
+          "title": "範圍",
+          "type": "text"
+        },
+        {
+          "key": "covered",
+          "title": "已有來源case",
+          "type": "number"
+        },
+        {
+          "key": "required",
+          "title": "合約case",
+          "type": "number"
+        },
+        {
+          "key": "missing",
+          "title": "缺項",
+          "type": "number"
+        },
+        {
+          "key": "certification",
+          "title": "完整UI驗收",
+          "type": "tag"
+        }
+      ],
+      "detail_fields": [
+        {
+          "key": "missing_cases",
+          "title": "未覆蓋case（語言與尺寸）",
+          "type": "list",
+          "item_type": "code"
+        },
+        {
+          "key": "source",
+          "title": "權威索引",
+          "type": "text"
+        },
+        {
+          "key": "scope",
+          "title": "判讀",
+          "type": "text"
+        }
+      ],
+      "search_fields": [
+        "title",
+        "id",
+        "missing_cases",
+        "scope"
+      ],
+      "rows": [
+        {
+          "id": "archive",
+          "title": "archive",
+          "required": 6,
+          "covered": 6,
+          "missing": 0,
+          "certification": "unknown",
+          "missing_cases": [],
+          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v3/coverage-current.json",
+          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
+        },
+        {
+          "id": "new-year",
+          "title": "明年的第一格",
+          "required": 138,
+          "covered": 138,
+          "missing": 0,
+          "certification": "unknown",
+          "missing_cases": [],
+          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v3/coverage-current.json",
+          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
+        },
+        {
+          "id": "lunar-new-year",
+          "title": "年獸表演課",
+          "required": 138,
+          "covered": 138,
+          "missing": 0,
+          "certification": "unknown",
+          "missing_cases": [],
+          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v3/coverage-current.json",
+          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
+        },
+        {
+          "id": "lantern",
+          "title": "燈影借位",
+          "required": 138,
+          "covered": 138,
+          "missing": 0,
+          "certification": "unknown",
+          "missing_cases": [],
+          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v3/coverage-current.json",
+          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
+        },
+        {
+          "id": "children",
+          "title": "玩具聲音偵探",
+          "required": 138,
+          "covered": 138,
+          "missing": 0,
+          "certification": "unknown",
+          "missing_cases": [],
+          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v3/coverage-current.json",
+          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
+        },
+        {
+          "id": "dragon-boat",
+          "title": "粽葉折疊局",
+          "required": 138,
+          "covered": 138,
+          "missing": 0,
+          "certification": "unknown",
+          "missing_cases": [],
+          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v3/coverage-current.json",
+          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
+        },
+        {
+          "id": "mid-autumn",
+          "title": "月光剪接台",
+          "required": 138,
+          "covered": 132,
+          "missing": 6,
+          "certification": "unknown",
+          "missing_cases": [
+            "mid-autumn/zh/game/error-longest · 320×900",
+            "mid-autumn/en/game/error-longest · 320×900",
+            "mid-autumn/ja/game/error-longest · 320×900",
+            "mid-autumn/zh/game/error-longest · 1440×1000",
+            "mid-autumn/en/game/error-longest · 1440×1000",
+            "mid-autumn/ja/game/error-longest · 1440×1000"
+          ],
+          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v3/coverage-current.json",
+          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
+        },
+        {
+          "id": "teachers",
+          "title": "老師，這格謝謝你",
+          "required": 138,
+          "covered": 138,
+          "missing": 0,
+          "certification": "unknown",
+          "missing_cases": [],
+          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v3/coverage-current.json",
+          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
+        },
+        {
+          "id": "national-day",
+          "title": "島嶼場景工作室",
+          "required": 138,
+          "covered": 132,
+          "missing": 6,
+          "certification": "unknown",
+          "missing_cases": [
+            "national-day/zh/game/error-longest · 320×900",
+            "national-day/en/game/error-longest · 320×900",
+            "national-day/ja/game/error-longest · 320×900",
+            "national-day/zh/game/error-longest · 1440×1000",
+            "national-day/en/game/error-longest · 1440×1000",
+            "national-day/ja/game/error-longest · 1440×1000"
+          ],
+          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v3/coverage-current.json",
+          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
+        },
+        {
+          "id": "semester",
+          "title": "新生第一張地圖",
+          "required": 138,
+          "covered": 132,
+          "missing": 6,
+          "certification": "unknown",
+          "missing_cases": [
+            "semester/zh/game/error-longest · 320×900",
+            "semester/en/game/error-longest · 320×900",
+            "semester/ja/game/error-longest · 320×900",
+            "semester/zh/game/error-longest · 1440×1000",
+            "semester/en/game/error-longest · 1440×1000",
+            "semester/ja/game/error-longest · 1440×1000"
+          ],
+          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v3/coverage-current.json",
+          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
+        },
+        {
+          "id": "exhibition",
+          "title": "畢展策展接力",
+          "required": 138,
+          "covered": 138,
+          "missing": 0,
+          "certification": "unknown",
+          "missing_cases": [],
+          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v3/coverage-current.json",
+          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
+        },
+        {
+          "id": "peace-memory",
+          "title": "把話聽完整",
+          "required": 138,
+          "covered": 132,
+          "missing": 6,
+          "certification": "unknown",
+          "missing_cases": [
+            "peace-memory/zh/game/preview · 320×900",
+            "peace-memory/en/game/preview · 320×900",
+            "peace-memory/ja/game/preview · 320×900",
+            "peace-memory/zh/game/preview · 1440×1000",
+            "peace-memory/en/game/preview · 1440×1000",
+            "peace-memory/ja/game/preview · 1440×1000"
+          ],
+          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v3/coverage-current.json",
+          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
+        },
+        {
+          "id": "qingming",
+          "title": "紙鳶借風",
+          "required": 138,
+          "covered": 132,
+          "missing": 6,
+          "certification": "unknown",
+          "missing_cases": [
+            "qingming/zh/game/error-longest · 320×900",
+            "qingming/en/game/error-longest · 320×900",
+            "qingming/ja/game/error-longest · 320×900",
+            "qingming/zh/game/error-longest · 1440×1000",
+            "qingming/en/game/error-longest · 1440×1000",
+            "qingming/ja/game/error-longest · 1440×1000"
+          ],
+          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v3/coverage-current.json",
+          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
+        },
+        {
+          "id": "labor",
+          "title": "動畫接力班",
+          "required": 138,
+          "covered": 132,
+          "missing": 6,
+          "certification": "unknown",
+          "missing_cases": [
+            "labor/zh/game/error-longest · 320×900",
+            "labor/en/game/error-longest · 320×900",
+            "labor/ja/game/error-longest · 320×900",
+            "labor/zh/game/error-longest · 1440×1000",
+            "labor/en/game/error-longest · 1440×1000",
+            "labor/ja/game/error-longest · 1440×1000"
+          ],
+          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v3/coverage-current.json",
+          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
+        },
+        {
+          "id": "retrocession",
+          "title": "時光對照室",
+          "required": 138,
+          "covered": 138,
+          "missing": 0,
+          "certification": "unknown",
+          "missing_cases": [],
+          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v3/coverage-current.json",
+          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
+        },
+        {
+          "id": "constitution",
+          "title": "同一頁，都看懂",
+          "required": 138,
+          "covered": 138,
+          "missing": 0,
+          "certification": "unknown",
+          "missing_cases": [],
+          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v3/coverage-current.json",
+          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
+        }
+      ]
+    },
+    {
+      "id": "ui_gate",
+      "title": "整合證據與完整UI判定",
+      "row_key": "id",
+      "columns": [
+        {
+          "key": "title",
+          "title": "檢查",
+          "type": "text"
+        },
+        {
+          "key": "result",
+          "title": "結果",
+          "type": "tag"
+        }
+      ],
+      "detail_fields": [
+        {
+          "key": "source",
+          "title": "來源",
+          "type": "text"
+        },
+        {
+          "key": "scope",
+          "title": "範圍",
+          "type": "text"
+        }
+      ],
+      "search_fields": [
+        "title",
+        "scope",
+        "id"
+      ],
+      "rows": [
+        {
+          "id": "baseline",
+          "title": "原有覆蓋與來源綁定保留",
+          "result": "pass",
+          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v3/baseline-comparison.json",
+          "scope": "僅驗證baseline保留，非全UI通過。"
+        },
+        {
+          "id": "plan",
+          "title": "選取集合與完整節點指標核對",
+          "result": "pass",
+          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v3/plan-consistency.json",
+          "scope": "僅驗證組裝計畫與來源，官方R0保持不變。"
+        },
+        {
+          "id": "global",
+          "title": "完整UI驗收",
+          "result": "gate_no",
+          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v3/coverage-current.json",
+          "scope": "仍有缺項及未閉合的method義務；不可發布新遊戲包。"
+        }
+      ]
+    },
     {
       "id": "games",
       "title": "15款創作試玩",
@@ -645,9 +1056,24 @@
           "user": "pending"
         }
       }
+    },
+    {
+      "id": "ui-missing",
+      "label": "UI缺項",
+      "conditions": {
+        "ui_scope": {
+          "missing": {
+            "gt": 0
+          }
+        },
+        "ui_gate": {
+          "id": "global"
+        }
+      }
     }
   ],
   "unknowns": [
+    "完整UI驗收仍為NO；權威索引列出的缺項與原method flags不可省略。",
     "真背景分頁暫停未驗證，沒有偽造hidden。",
     "實體手機、三語母語校對與使用者美術確認尚未完成。",
     "開學與畢展正式日期未設定。"

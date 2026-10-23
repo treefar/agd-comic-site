@@ -55,3 +55,9 @@ node --test --test-reporter=tap [root-related-tests.json的六份實際測試路
 ## 交付保全補記
 
 主控另實跑國慶/開學/勞動來源模型與存檔六份測試檔：27 tests／27 pass／0 fail，exit0；完整TAP及路徑存root-domain-tests-output.txt、root-domain-tests.json。沒有由此啟動新native或全集。已完成設計與校準可本機版控保全，labor engine-v2仍由代理收尾，本次白名單明確排除。新QA證據與SHA方法套用-text並逐筆git raw-byte blob核對；詳archive-integrity.json。
+
+## 離線狀態頁及獨立審查收尾
+
+原dashboard已重產，主控實讀generator diff後實跑build-dashboard、ui-authority四正式tests、既有本機server/browser smoke，三個命令皆exit0：authority27/27、tests4/4、smoke2/2。顯示2040/2076、缺36、整包UI0/1、使用者0；stdout與命令存root-dashboard-output.txt/root-dashboard-verification.json。儀表板路徑holiday-lab/dashboard/out/index.html已更新交接。
+
+Labor engine-v2獨立工程負例真1pass/3fail：resume claim競態可雙owner、method flags未綁sample、截斷PNG僅header仍被接受；維持v2凍結，不批full，另v3修復。新mid-autumn-full-witnesses先備工具，未啟原生批次。中秋同18628仍live，本輪最後實查checkpoint382808/404688，GLOBAL NO，不重啟。

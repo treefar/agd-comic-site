@@ -1,0 +1,64 @@
+COMMAND ["holiday-lab/build-dashboard.mjs"]
+BUILD OK | C:\agywork\agd-holiday-prototypes\holiday-lab\dashboard\out
+  section ui_scope：16 列
+  section ui_gate：3 列
+  section games：15 列
+  section shell：57 列
+  card [tool] UI來源case覆蓋（合約case層級；非UI通過率） = 2040／2076
+  card [tool] UI尚缺case（合約case層級） = 36
+  card [tool] 完整UI通過（整包層級） = 0／1
+  card [data] 已建試作 = 15
+  card [tool] 模組功能通關 = 15
+  card [tool] 外框yes項目 = 56
+  card [tool] 外框未驗 = 1
+  card [user] 使用者已確認 = 0
+  unknowns：4 條；非 nullable 空值：0 格
+PASS | 01 dashboard-data.json 存在 | holiday-lab\dashboard\out\dashboard-data.json
+PASS | 02 index.html 存在 | holiday-lab\dashboard\out\index.html
+PASS | 03 dashboard-data.json 無 BOM
+PASS | 04 dashboard-data.json 是合法 JSON
+PASS | 05 格式驗證（output 階段）
+PASS | 06 內嵌資料與 dashboard-data.json 相同
+PASS | 07 index.html 無外部資源
+PASS | 08 樣板佔位符已全部替換
+PASS | 09 index.html 支援深色模式（prefers-color-scheme）
+PASS | 10 摘要卡 8 張的值都等於依規則重算
+PASS | 11 比值卡都寫明分母
+PASS | 12 每個 section 的 row_count 等於 rows 長度 | ui_scope=16 ui_gate=3 games=15 shell=57
+PASS | 13 所有狀態值都在 status_levels 內
+PASS | 14 摘要卡含「使用者確認」層（不可省略，即使是 0） | tool,data,user
+PASS | 15 非 nullable 空值有對應 unknowns | 空值 0 格、unknowns 4 條
+PASS | 16 篩選條件引用的欄位都存在
+PASS | 17 out-dir 只有 dashboard-data.json 與 index.html | dashboard-data.json,index.html
+PASS | A01 每款由catalog逐筆核對
+PASS | A02 每款程式與五張CG確實存在
+PASS | A03 通關來源與目前模組SHA一致
+PASS | A04 外框每條結果由最新原始run核對
+PASS | A05 未驗證保留，不升格使用者確認
+PASS | A06 候選素材檔案雜湊逐張核對
+PASS | A07 UI覆蓋分母與缺項由合約和權威v3索引逐筆重算
+PASS | A08 baseline與plan確實綁定同一權威索引及合約
+PASS | A09 完整UI仍NO且不把功能通關升格
+PASS | A10 使用者確認仍由對話授權，這批保持零
+---- 27/27 PASS
+
+EXIT 0
+COMMAND ["--test","holiday-lab/dashboard/ui-authority.test.cjs"]
+✔ current dashboard independently matches all source authorities (381.0209ms)
+✔ forged covered case count is rejected (316.7637ms)
+✔ functional pass must never upgrade the complete UI gate (287.3794ms)
+✔ invented user approval is rejected (266.2144ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1351.4557
+
+EXIT 0
+COMMAND ["holiday-lab/dashboard/smoke.cjs"]
+DASHBOARD_SMOKE 2/2 PASS
+
+EXIT 0
