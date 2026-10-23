@@ -1,3 +1,11 @@
+## 2026-10-23 最新：日英專責差異複核（未套用候選）
+
+- source_agent: codex。依使用者追加要求，日文／英文兩位子代理已交回獨立複核，主控讀報告並重跑 verify.cjs／audit.cjs，皆 exit 0。總報告：C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/specialist-followup-20261023.md；各語言報告在 specialist-ja-20261023/REPORT.md、specialist-en-20261023/REPORT.md。
+- 助理教授→Assistant Professor→助教有官方 JST、九州大學職名表支持；助教與 Teaching Assistant（TA）分開，副教授對應准教授。當前13人職稱譯值13/13符合既有核對；未重新認證個人聘任事實或校方正式人事日譯。
+- 新提案：日文20處、英文24處註冊課務組名稱不一致；另英文3句休學、4個抵免用語可精修，1個免修／抵免混合句待查。樹德教務處兩個官方索引支持 Registration and Curriculum Division，全文403；先前Section是產品用法，不能當官方唯一譯名。兩筆合聘機構Industries擴寫缺依據，對應待確認，不推定聘任本身錯誤。
+- 未改產品、未重建、未發布、未push、未碰main、未刪檔、C節不動。139既有譯值整合verify仍通過；字典2315/2344鍵只是盤點，指南514 exact對應不是全部最新校務核定。468原始CHECK欄仍待逐項來源，不因建置去標記就視為核實。
+- 下一步：逐項整合無歧義候選並驗新版長標排版；正式學位／資格／機構及當期流程來源不足保留待證。遊戲UI gate仍未閉合、TF-BASE兩遊戲來源未回，8800舊本機審閱版與ZIP保留；10/8847只是內部量測，未作新版交付。不得用本翻譯報告宣稱整體完成。
+
 ## 2026-10-23 最新：整句翻譯與固定按鈕框（整合驗證中）
 
 - source_agent: codex。本機分支codex/holiday-prototypes，未push、未發布、未碰main、未刪檔。8800/.review-local-09與舊local09 ZIP保留；最新09/.measure-integrated-09在8846僅內部量測，不當新版交付；08/8845固定供既有完整遊戲矩陣。產品提交80286ca、ac7ba78、b775698；08整合續報holiday-lab/reports/integration-20261023-08.md，09精修見translation-review/post-specialist/REPORT.md。
