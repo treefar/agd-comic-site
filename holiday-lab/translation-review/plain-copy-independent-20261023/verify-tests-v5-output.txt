@@ -1,0 +1,27 @@
+COMMAND: node --test holiday-lab/translation-review/plain-copy-independent-20261023/verify-v5.test.cjs
+✔ real complete receipt passes (789.0913ms)
+✔ unchanged raw through the same mutation harness passes (795.2732ms)
+✔ missing a viewport context is rejected (726.2172ms)
+✔ missing one exact translation observation is rejected (723.3285ms)
+✔ source/build manifest drift cannot hide behind summary pass (863.2861ms)
+✔ a missing rendered leaf owner is rejected (990.5081ms)
+✔ a real orphan line cannot hide behind orphan=false (857.1399ms)
+✔ loading fonts are rejected (862.7505ms)
+✔ page horizontal overflow is rejected (805.2515ms)
+✔ text beyond owner bounds is rejected even if summary says no overflow (841.5095ms)
+✔ unoperated FAQ is rejected (751.2443ms)
+✔ console errors are rejected (799.276ms)
+✔ a forged PNG hash is rejected (789.3232ms)
+✔ a dictionary target changed away from the approved wording is rejected (833.0445ms)
+✔ a fabricated native-speaker approval is rejected (153.9141ms)
+✔ local review cannot claim public release or full project approval (297.6276ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11988.7458
+
+EXIT=0

@@ -1,0 +1,17 @@
+[
+  {
+    "label": "verify-v4",
+    "command": "node holiday-lab/translation-review/plain-copy-independent-20261023/verify-v4.cjs C:\\agywork\\agd-plain-guide-copy\\holiday-lab\\translation-review\\plain-copy-independent-20261023\\runs\\2026-10-23T10-38-35-880Z",
+    "exit": 1
+  },
+  {
+    "label": "verify-tests-v4",
+    "command": "node --test holiday-lab/translation-review/plain-copy-independent-20261023/verify-v4.test.cjs",
+    "exit": 1
+  },
+  {
+    "label": "delta-tests",
+    "command": "node --test holiday-lab/translation-review/plain-copy-independent-20261023/delta.test.cjs",
+    "exit": 0
+  }
+]

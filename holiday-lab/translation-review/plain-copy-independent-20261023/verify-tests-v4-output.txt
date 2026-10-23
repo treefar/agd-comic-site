@@ -1,0 +1,82 @@
+COMMAND: node --test holiday-lab/translation-review/plain-copy-independent-20261023/verify-v4.test.cjs
+✖ real complete receipt passes (760.4853ms)
+✖ unchanged raw through the same mutation harness passes (727.8431ms)
+✔ missing a viewport context is rejected (725.5378ms)
+✔ missing one exact translation observation is rejected (723.7103ms)
+✔ source/build manifest drift cannot hide behind summary pass (786.9354ms)
+✔ a missing rendered leaf owner is rejected (842.6479ms)
+✔ a real orphan line cannot hide behind orphan=false (818.114ms)
+✔ loading fonts are rejected (840.5941ms)
+✔ page horizontal overflow is rejected (879.5308ms)
+✔ text beyond owner bounds is rejected even if summary says no overflow (773.4441ms)
+✔ unoperated FAQ is rejected (814.803ms)
+✔ console errors are rejected (835.6878ms)
+✔ a forged PNG hash is rejected (875.9098ms)
+✔ a dictionary target changed away from the approved wording is rejected (905.2271ms)
+✔ a fabricated native-speaker approval is rejected (156.2136ms)
+✔ local review cannot claim public release or full project approval (313.2706ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 14
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11887.1805
+
+✖ failing tests:
+
+test at holiday-lab\translation-review\plain-copy-independent-20261023\verify-v4.test.cjs:4:1
+✖ real complete receipt passes (760.4853ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'ja/1440',
+      'ja/320',
+  -   'ja/1440'
+    ]
+  
+      at verify (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\plain-copy-independent-20261023\verify-v4.cjs:7:338)
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\plain-copy-independent-20261023\verify-v4.test.cjs:4:54)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'ja/1440', 'ja/320' ],
+    expected: [ 'ja/320', 'ja/1440' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at holiday-lab\translation-review\plain-copy-independent-20261023\verify-v4.test.cjs:5:1
+✖ unchanged raw through the same mutation harness passes (727.8431ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'ja/1440',
+      'ja/320',
+  -   'ja/1440'
+    ]
+  
+      at Object.verify (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\plain-copy-independent-20261023\verify-v4.test.cjs:7:338)
+      at C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\plain-copy-independent-20261023\verify-v4.test.cjs:3:448
+      at TestContext.<anonymous> (C:\agywork\agd-plain-guide-copy\holiday-lab\translation-review\plain-copy-independent-20261023\verify-v4.test.cjs:5:94)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'ja/1440', 'ja/320' ],
+    expected: [ 'ja/320', 'ja/1440' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+EXIT=1
