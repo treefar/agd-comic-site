@@ -108,3 +108,7 @@ dashboard-final-smoke exit 0; DASHBOARD_SMOKE 2/2 + OFFLINE PASS
 本輪新增補驗、兩題研究、WebGL回查與另分支翻譯狀態已呈現；完整 UI 仍 0／1、使用者確認 0，勞動節暫緩。最後只把交接的下一步連結由失敗 8864 修正為通過 8865，再重產34／34；沒有重跑未變的 UI 冒充新證據。實際 stdout／stderr／退出碼在 `root/dashboard-*-command.json`；最後 smoke 原始 JSON 亦另存，不只引用會更新的 dashboard/smoke-result.json。
 
 原 clone 的 LATEST_HANDOFF.md、主工作樹 holiday-lab/STATUS.md、Vault 既有專案紀錄均已更新；Vault 沒有啟動整庫推送。C 節與本機 origin/main／正式 R0 的唯讀檢查見 root/verify-boundaries.cjs，未變。各來源與證據的本機 Git 保存不代表已做跨機備份。
+
+主要證據已本機保存 `6c971a027a9e8f12696cfcdc6fcc43f208df0569`，104 個帶雜湊的來源／證據檔逐筆與 Git index bytes 相同（另 4 個一般文字未列為 byte 證據）。原 clone 交接提交 `7b224a79b182fdc2eb5358b24ea648f32a669101`；兩處 fsck exit0，完整輸出另存 root/local-preservation.json、root/original-commit-verification.json。
+
+交接保存時曾錯把 CRLF 工作檔的 C 節 SHA（95ae06…）拿去和 LF Git index 比較，斷言失敗後 PowerShell 仍繼續提交；這是命令串接與比較基準錯誤。隨後直接重讀父提交與新提交，C 節逐 byte 完全相同，兩者 SHA 均 e3ade88b1055a4f6b6fa8cadad02ed7e402fe1f3e20e037a8ab8c456bccb5840；工作檔 SHA 仍95ae06…，正規化後也完全相同。沒有改 C 節來配合斷言，之後相依 Git 操作改由單一 Node 程序逐步檢查退出碼。
