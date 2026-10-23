@@ -1,3 +1,12 @@
+## 2026-10-23 接續：遊戲試玩移至頁底，本機8873
+
+- source_agent: codex。分支codex/games-page-bottom；使用者要求遊戲先放最底下，已將小型策展與節日試作從首頁首屏移至招生後、聯絡頁尾前。三語共用排版；小颯與原三件完整作品保留在首屏。
+- 最新.measure-games-bottom-20261023-01（360檔、app-KOFDUUZD.js），http://127.0.0.1:8873/ ，試玩區 /#student-play ，儀表板 /progress/ 。8872為前輪導覽版，8860為更舊版本。
+- 原症狀在8872重現heroGameControls=3、exit1；新版三語×390/1440，6/6真UI、24作品狀態、36PNG；DOM順序、14選項、iframe按需開啟、Esc關閉／焦點返回與六次小颯來源署名均通過。另新build導覽18/18；來源前後SHA相同。本輪主控工具複驗，不宣稱新的獨立代理驗收。
+- 報告holiday-lab/reports/games-bottom-20261023/REPORT.md；green-r2/為有效首頁／頁底收據，navigation/為本輪導覽收據。第一版green/為測試循環到第四件卻等待第一件來源的工具錯誤，原檔保留，沒有改產品來配合測試。
+- 重啟：node scripts/serve-local-review.cjs --site=.measure-games-bottom-20261023-01 --dashboard=holiday-lab/dashboard/out --port=8873 。不push、不發布、不碰main、不刪檔、不執行C節；勞動節仍暫緩、未啟Unity或巨量QA。WebGL仍依前輪回查列待回，本輪未重查雲端。
+- 下一輪先看8873首頁順序並依具體意見續修；不要按8860舊畫面判斷新版。其餘PROGRAM、指南缺件及WebGL新回傳另續，不自行擴大發布。
+
 ## 2026-10-23 接續：三語導覽修正版8872，WebGL回查仍待回傳
 
 - source_agent: codex；TF-GO。使用者已要求「繼續」，本輪完成首頁／儀表板啟動、WebGL回查與英日桌面導覽修正；前輪關機暫停段屬歷史。本機分支codex/nav-language-desktop，未push／發布／main／刪檔／C節操作，勞動節仍暫緩。
