@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+const dir='holiday-lab/translation-review/neutral-degrees-rendered';fs.mkdirSync(dir,{recursive:true});
+let collector=fs.readFileSync('holiday-lab/translation-review/content-next-rendered/audit.cjs','utf8');
+const old="['index.html','styles.css','data/news.json','data/en/news.json','data/works.json','data/en/works.json','data/ja/messages.json']";
+if(!collector.includes(old))throw Error('Audited collector changed');
+collector=collector.replace(old,"['index.html','styles.css','data/faculty.json','data/en/faculty.json']").replace('Only the newly applied 13 content translations and one corrected Chinese partner paragraph at 390 and 1440; actual DOM text first, character probes are not visible-content evidence.','Only the six neutral English education values at 390 and 1440. Original frozen reports remain unchanged.');
+fs.writeFileSync(dir+'/audit.cjs',collector);fs.copyFileSync('holiday-lab/translation-review/content-next-rendered/coverage.py',dir+'/coverage.py');
+fs.writeFileSync(dir+'/targets.cjs',`const fs=require('node:fs'),crypto=require('node:crypto');
+exports.targets=()=>{const path='holiday-lab/translation-review-title-check/neutral-degrees/exact-six.json',bytes=fs.readFileSync(path),plan=JSON.parse(bytes);return{sourcePlans:{degrees:{path,sha256:crypto.createHash('sha256').update(bytes).digest('hex')}},targets:plan.operations.map(op=>({id:'NEUTRAL-'+op.slug,group:'degrees',lang:'en',route:'#/faculty/'+op.slug,text:op.new}))};};
+`);
+console.log('READY six actual English education sentences, two widths, same audited DOM/font method');

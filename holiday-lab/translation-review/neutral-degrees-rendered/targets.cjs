@@ -1,0 +1,2 @@
+const fs=require('node:fs'),crypto=require('node:crypto');
+exports.targets=()=>{const path='holiday-lab/translation-review-title-check/neutral-degrees/exact-six.json',bytes=fs.readFileSync(path),plan=JSON.parse(bytes);return{sourcePlans:{degrees:{path,sha256:crypto.createHash('sha256').update(bytes).digest('hex')}},targets:plan.operations.map(op=>({id:'NEUTRAL-'+op.slug,group:'degrees',lang:'en',route:'#/faculty/'+op.slug,text:op.new}))};};
