@@ -69,3 +69,9 @@ node holiday-lab/translation-review/newyear-caption/verify.cjs
 | push／main／刪檔／Unity／改root服務 | no，皆未做 |
 
 Build副產物locale-en.js／locale-ja.js／latest-build.json留在本worktree未stage，不併入產品提交。未跑全套遊戲測試與lint：本次只有一個可由AST證明的日文微文案，專案沒有lint script；真DOM紅綠、原生完成與排版邊界為本次驗證範圍。
+
+## 2026-10-23追加：停格圖不能證明原時長
+
+前文「真140ms重播畫面」精確指：從真實完成作品的shot1取得、**取消pending RAF後的停格排印圖**。圖中140是保存作品的輸入數值；截圖本身經過時序干預，不能證明該鏡在未干預時實際播放140ms，也不能當成未凍時鐘的原生動態截圖。`native-shots.json`與原圖保持原樣，補充解讀見`native-shots-clarification.md`。
+
+54鏡的證據來自另外兩條未暫停觀察路徑：`green-03/report.json`的launch18鏡是在該context執行freeze之前先完成；`native-intents/report.json`的flight／landing36鏡從未呼叫freeze。它們證明真UI能完成、保存artifact、依序出現九鏡及其字幕，不以首次看見的epoch差代替精密時長測量。主控將另用未凍時鐘collector在整合版補140ms同鏡動態採樣；本資料夾的停格圖不取代該工作。
