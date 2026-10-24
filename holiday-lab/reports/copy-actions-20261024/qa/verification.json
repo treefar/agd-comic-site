@@ -1,0 +1,117 @@
+{
+  "at": "2026-10-24T03:03:45.131Z",
+  "pass": true,
+  "yes": 11,
+  "no": 0,
+  "scope": "Pure independent receipt verification of one bounded UI run; no new website access.",
+  "checks": [
+    {
+      "item": "四組44條全綠與實際exit0",
+      "result": "yes",
+      "actual": {
+        "contexts": 4,
+        "yes": 44,
+        "no": 0,
+        "exit_code": 0
+      }
+    },
+    {
+      "item": "8881原47source只有預期四檔變動",
+      "result": "yes",
+      "actual": {
+        "changed": [
+          "data/en/flow-ui.json",
+          "data/ja/flow-ui.json",
+          "locale-en.js",
+          "locale-ja.js"
+        ],
+        "unchanged": 43,
+        "canonical_guide_unchanged": true,
+        "languages": [
+          {
+            "lang": "en",
+            "flow_changes": 2,
+            "locale_changes": 2,
+            "reconstruction": "exact reverse of two values"
+          },
+          {
+            "lang": "ja",
+            "flow_changes": 2,
+            "locale_changes": 2,
+            "reconstruction": "exact reverse of two values"
+          }
+        ]
+      }
+    },
+    {
+      "item": "source前後與目前SHA相同",
+      "result": "yes",
+      "actual": {
+        "files": 47
+      }
+    },
+    {
+      "item": "build前後與目前SHA相同",
+      "result": "yes",
+      "actual": {
+        "files": 360
+      }
+    },
+    {
+      "item": "新服務內容與凍結檔一致",
+      "result": "yes",
+      "actual": {
+        "responses": 18,
+        "status": 200
+      }
+    },
+    {
+      "item": "舊8881證據檔未改",
+      "result": "yes",
+      "actual": {
+        "sha256": "a55e444ac62899b87380b20443b5d830f253b3e4519ec12c30f252adcea18173"
+      }
+    },
+    {
+      "item": "8張直接WebP原件SHA與格式",
+      "result": "yes",
+      "actual": {
+        "screenshots": 8
+      }
+    },
+    {
+      "item": "四句反向還原舊bundle與圖像字型保留",
+      "result": "yes",
+      "actual": {
+        "old_sha256": "1775ddeabec3c17c579bcfc12cf5a897791897e4bdd3d85adbf84c0f78c53224",
+        "reversed_sha256": "1775ddeabec3c17c579bcfc12cf5a897791897e4bdd3d85adbf84c0f78c53224",
+        "art_font_files": 293
+      }
+    },
+    {
+      "item": "新動作文字各寬實際可見而非只檢字典",
+      "result": "yes",
+      "actual": {
+        "rendered_target_observations": 8
+      }
+    },
+    {
+      "item": "無溢位替代字元console404或遊戲",
+      "result": "yes",
+      "actual": {
+        "contexts": 4,
+        "scope": "Only the two opened target areas on the guide; not full-site acceptance."
+      }
+    },
+    {
+      "item": "browser已關閉且QA命令已結束",
+      "result": "yes",
+      "actual": {
+        "browser_closed": true,
+        "command_finished": "2026-10-24T03:02:13.976Z"
+      }
+    }
+  ],
+  "raw_result_sha256": "2438593e7a573cef528d092446c669bdf2b952156a6fb4953ae7256b3b3fa42c",
+  "raw_command_sha256": "118d986e7c869e2e11c04a12817d326c57f5eb6e4d2c194045faa65c86f9f81d"
+}

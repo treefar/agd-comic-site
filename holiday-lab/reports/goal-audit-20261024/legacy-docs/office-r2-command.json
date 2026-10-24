@@ -1,0 +1,14 @@
+{
+  "command": [
+    "powershell",
+    "-NoProfile",
+    "-NonInteractive",
+    "-File",
+    "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\goal-audit-20261024\\legacy-docs\\extract-office-r2.ps1"
+  ],
+  "at": "2026-10-24T02:57:39.225Z",
+  "stdout": "STAGE creating-dedicated-instance\r\nSTAGE opening-read-only-recognition\r\nSTAGE dedicated-instance-quit-no-save\r\n",
+  "stderr": "Exception setting \"Open\": Cannot convert the \"C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\goal-audit-20261024\r\n\\legacy-docs\\attempt-r2\\input-recognition.doc\" value of type \"psobject\" to type \"Object\".\r\nAt C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\goal-audit-20261024\\legacy-docs\\extract-office-r2.ps1:56 char:\r\n5\r\n+     $document = $word.Documents.Open([ref]$fileName,[ref]$confirm,[re ...\r\n+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : NotSpecified: (:) [], ParentContainsErrorRecordException\r\n    + FullyQualifiedErrorId : RuntimeException\r\n \r\n",
+  "exit_code": 1,
+  "error": null
+}

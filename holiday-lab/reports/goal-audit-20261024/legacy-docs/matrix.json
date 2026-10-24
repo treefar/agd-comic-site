@@ -1,0 +1,16 @@
+{
+  "as_of": "2026-10-24",
+  "scope": "兩份已下載舊DOC的離線解析方法；不是產品/網站QA",
+  "full_text_status": "no",
+  "blocker_type": "unresolved_local_COM_argument_marshalling_method",
+  "not_established": ["文件損壞", "文件加密", "Word授權/首啟阻擋", "校方外部檔案缺件"],
+  "rows": [
+    {"document": "department-recognition.doc", "ole_word_container": "yes", "original_sha_preserved": "yes", "full_body": "no", "all_table_fields": "no", "applicable_115": "unknown", "finding": "Open在方法封送階段失敗，未取得Content.Text/WordOpenXML；不從CFB目錄或strings猜欄位。"},
+    {"document": "department-evaluation.doc", "ole_word_container": "yes", "original_sha_preserved": "yes", "full_body": "no", "all_table_fields": "no", "applicable_115": "unknown", "finding": "共用方法先在recognition失敗，evaluation未進Open；不能說評分表不可讀。評分構面/權重/核章全文仍未核。"}
+  ],
+  "product_written": false,
+  "new_installations": false,
+  "redownloaded_originals": false,
+  "word_processes_remaining_at_final_check": 0,
+  "source_receipts": ["inputs-before.json", "inputs-after.json", "container-inspection.json", "office-command.json", "office-r2-command.json", "office-r3-command.json", "cleanup-command.json", "final-process-command.json", "verify-command.json"]
+}

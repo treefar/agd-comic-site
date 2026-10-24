@@ -1,0 +1,134 @@
+{
+  "at": "2026-10-24T03:02:37.217Z",
+  "scope": "Preservation and method-attempt verification, not successful Word-body parsing",
+  "yes": 7,
+  "no": 0,
+  "full_text_status": "no - COM interop method unresolved",
+  "checks": [
+    {
+      "item": "兩原始DOC與研究開始及官方取得SHA一致",
+      "result": "yes",
+      "actual": [
+        {
+          "name": "recognition",
+          "bytes": 31744,
+          "sha256": "4d62ff2e208f59094897b033d55387b5ac9c077422ccb687d1679c23b8a5db22"
+        },
+        {
+          "name": "evaluation",
+          "bytes": 43008,
+          "sha256": "741c7f463943dafc1ba7680d876f544201427fd35e679479ab9a9a3bbb17255d"
+        }
+      ]
+    },
+    {
+      "item": "CFB目錄確認WordDocument與1Table，未冒稱正文",
+      "result": "yes",
+      "actual": [
+        {
+          "name": "recognition",
+          "sector_size": 512,
+          "streams": [
+            "Root Entry",
+            "Data",
+            "1Table",
+            "WordDocument",
+            "\u0005SummaryInformation",
+            "\u0005DocumentSummaryInformation",
+            "\u0001CompObj"
+          ],
+          "body_read": false
+        },
+        {
+          "name": "evaluation",
+          "sector_size": 512,
+          "streams": [
+            "Root Entry",
+            "Data",
+            "1Table",
+            "WordDocument",
+            "\u0005SummaryInformation",
+            "\u0005DocumentSummaryInformation",
+            "\u0001CompObj"
+          ],
+          "body_read": false
+        }
+      ]
+    },
+    {
+      "item": "三次紅收據與具體方法錯誤保留",
+      "result": "yes",
+      "actual": {
+        "r1": "Cannot convert null to type \"System.IntPtr\".",
+        "r2": "Exception setting \"Open\": Cannot convert the \"C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\goal-audit-20261024\\legacy-docs\\attempt-r2\\input-recognition.doc\" value of type \"psobject\" to type \"Object\".",
+        "r3": "System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.Runtime.InteropServices.COMException: Type mismatch. (Exception from HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))\r\n   --- End of inner exception stack trace ---\r\n   at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)\r\n   at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)\r\n   at LegacyDocExtractor.Run(String outDir, String inputDir)"
+      }
+    },
+    {
+      "item": "R2/R3專用instance巨集與外鏈設定已核，沒有可見窗口",
+      "result": "yes",
+      "actual": [
+        {
+          "word_version": "16.0",
+          "display_alerts": 0,
+          "main_window_handle": 0,
+          "automation_security": 3,
+          "owned_process_id": 23116,
+          "update_links_at_open": false,
+          "application_visible": false,
+          "dedicated_new_instance": true,
+          "start_time": "2026-10-24T02:57:34.1360636Z",
+          "prior_word_ids": []
+        },
+        {
+          "owned_process_id": 44704,
+          "start_time": "2026-10-24T03:01:06.9193077Z",
+          "prior_word_ids": [],
+          "dedicated_new_instance": true,
+          "application_visible": false,
+          "main_window_handle": 0,
+          "word_version": "16.0",
+          "automation_security": 3,
+          "display_alerts": 0,
+          "update_links_at_open": false,
+          "method": "CLR Type.InvokeMember; plain object[]"
+        }
+      ]
+    },
+    {
+      "item": "沒有Content/Text或WordOpenXML完整結果被補造",
+      "result": "yes",
+      "actual": {
+        "full_text_read": false,
+        "table_fields_checked": false,
+        "applicable_115": false,
+        "note": "Method interop remains unresolved; this does not establish document corruption or external-source absence."
+      }
+    },
+    {
+      "item": "工作副本仍逐位元等於原件",
+      "result": "yes",
+      "actual": [
+        {
+          "attempt": "attempt-r2",
+          "name": "recognition",
+          "sha256": "4d62ff2e208f59094897b033d55387b5ac9c077422ccb687d1679c23b8a5db22"
+        },
+        {
+          "attempt": "attempt-r3",
+          "name": "recognition",
+          "sha256": "4d62ff2e208f59094897b033d55387b5ac9c077422ccb687d1679c23b8a5db22"
+        }
+      ]
+    },
+    {
+      "item": "三個專用Word PID與本輪PowerShell子程序都已終止",
+      "result": "yes",
+      "actual": {
+        "remaining_word_ids": [],
+        "matching_processes": [],
+        "at": "2026-10-24T03:02:37.1493837Z"
+      }
+    }
+  ]
+}

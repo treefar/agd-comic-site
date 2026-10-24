@@ -1,0 +1,14 @@
+{
+  "command": [
+    "powershell",
+    "-NoProfile",
+    "-NonInteractive",
+    "-File",
+    "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\goal-audit-20261024\\legacy-docs\\extract-office-r3.ps1"
+  ],
+  "at": "2026-10-24T03:01:08.657Z",
+  "stdout": "STAGE creating-dedicated-instance\r\nSTAGE opening-read-only-recognition\r\nSTAGE dedicated-instance-quit-no-save\r\n",
+  "stderr": "System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.Runtime.InteropServices.COMException: Type mismatch. (Exception from HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))\r\n   --- End of inner exception stack trace ---\r\n   at System.RuntimeType.InvokeDispMethod(String name, BindingFlags invokeAttr, Object target, Object[] args, Boolean[] byrefModifiers, Int32 culture, String[] namedParameters)\r\n   at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParams)\r\n   at LegacyDocExtractor.Run(String outDir, String inputDir)\r\n",
+  "exit_code": 1,
+  "error": null
+}

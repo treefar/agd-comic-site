@@ -1,0 +1,12 @@
+{
+  "command": [
+    "powershell",
+    "-NoProfile",
+    "-NonInteractive",
+    "-Command",
+    "$p=@(Get-Process -Id 41452,23116,44704,44524,44876 -ErrorAction SilentlyContinue | Select-Object Id,ProcessName,StartTime); ConvertTo-Json -InputObject @{at=[DateTime]::UtcNow.ToString('o');matching_processes=$p;remaining_word_ids=@(Get-Process -Name WINWORD -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Id)} -Depth 5"
+  ],
+  "stdout": "{\r\n    \"remaining_word_ids\":  [\r\n\r\n                           ],\r\n    \"matching_processes\":  [\r\n\r\n                           ],\r\n    \"at\":  \"2026-10-24T03:02:37.1493837Z\"\r\n}\r\n",
+  "stderr": "",
+  "exit_code": 0
+}

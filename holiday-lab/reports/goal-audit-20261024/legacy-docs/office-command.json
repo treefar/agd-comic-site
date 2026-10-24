@@ -1,0 +1,14 @@
+{
+  "command": [
+    "powershell",
+    "-NoProfile",
+    "-NonInteractive",
+    "-File",
+    "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\goal-audit-20261024\\legacy-docs\\extract-office.ps1"
+  ],
+  "at": "2026-10-24T02:54:49.308Z",
+  "stdout": "STAGE creating-dedicated-instance\r\n",
+  "stderr": "Argument: '1' should be a System.Management.Automation.PSReference. Use [ref].\r\nAt C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\goal-audit-20261024\\legacy-docs\\extract-office.ps1:75 char:5\r\n+     $word.Quit(0)\r\n+     ~~~~~~~~~~~~~\r\n    + CategoryInfo          : NotSpecified: (:) [], ParentContainsErrorRecordException\r\n    + FullyQualifiedErrorId : NonRefArgumentToRefParameterMsg\r\n \r\n",
+  "exit_code": 1,
+  "error": null
+}
