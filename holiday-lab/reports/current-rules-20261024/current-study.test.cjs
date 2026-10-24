@@ -1,0 +1,3 @@
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs');
+test('capstone guide explains the unresolved second/third review deadline conflict',()=>{const g=JSON.parse(fs.readFileSync('data/students/guide.json')),c=g.cards.find(c=>c.id==='capstone');assert.match(c.warning,/108年/);assert.match(c.faq[1].a,/二審前.*三審前.*尚未取得統一說明/);});
+test('graduate-study guide does not infer no interview from document review being 100 percent',()=>{const g=JSON.parse(fs.readFileSync('data/students/guide.json')),c=g.cards.find(c=>c.id==='graduate-study');assert.match(c.warning,/116.*100%.*口試.*尚未核得正式更正.*不直接當成免口試/);});

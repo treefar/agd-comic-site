@@ -1,0 +1,64 @@
+{
+  "as_of": "2026-10-24",
+  "status": "proposal_only_not_applied",
+  "product_sha256": "8e8f14068585d1c63e6de7c6967bbce15984108af4e4edeff65ea7b34b809c35",
+  "operations": [
+    {
+      "op": "replace",
+      "file": "data/students/guide.json",
+      "pointer": "/cards/6/warning",
+      "before": "組隊、評分、補審與畢展時程，請向系辦索取當屆正式辦法再安排。",
+      "after": "目前公開專題辦法為108年修訂版，換組表單也有期限差異。組隊、評分、補審與交件，先向系辦確認當屆文件。",
+      "source_matrix_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "sources": [
+        "https://drive.google.com/file/d/1lHHnqQbemUHO1nLFkomA4DpCMzlbrCPd/view",
+        "https://drive.google.com/file/d/1MqBk9XK23qfkTdgmBIFpfs1Mxjrxw2al/view",
+        "https://drive.google.com/file/d/1Ie-hbKZsLXPOnBQSVj4kK2w5q0WGGWWz/view"
+      ],
+      "reason": "具體揭露已實讀文件的版本與待確認事項，維持向正式窗口確認，不代為裁決衝突。"
+    },
+    {
+      "op": "replace",
+      "file": "data/students/guide.json",
+      "pointer": "/cards/6/faq/1/a",
+      "before": "請向系辦索取當屆正式辦法，確認組隊、異動與補審；不要套用他系或往年規則。",
+      "after": "公開變更單寫「二審前」，分組單與辦法寫「三審前」，尚未取得統一說明。換組前請系辦確認本屆期限與表單；評分、補審也要看當屆文件。",
+      "source_matrix_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "sources": [
+        "https://drive.google.com/file/d/1lHHnqQbemUHO1nLFkomA4DpCMzlbrCPd/view",
+        "https://drive.google.com/file/d/1MqBk9XK23qfkTdgmBIFpfs1Mxjrxw2al/view",
+        "https://drive.google.com/file/d/1Ie-hbKZsLXPOnBQSVj4kK2w5q0WGGWWz/view"
+      ],
+      "reason": "具體揭露已實讀文件的版本與待確認事項，維持向正式窗口確認，不代為裁決衝突。"
+    },
+    {
+      "op": "replace",
+      "file": "data/students/guide.json",
+      "pointer": "/cards/12/warning",
+      "before": "",
+      "after": "116設創碩甄簡章同頁列書審100%，卻仍有口試文字，尚未核得正式更正。報考前請招生選才組或設創所確認，不直接當成免口試。",
+      "source_matrix_ids": [
+        "S04"
+      ],
+      "sources": [
+        "https://info.stu.edu.tw/attachfile/upload/IRS/file/116A1.pdf",
+        "https://wpc.stu.edu.tw/wp-content/uploads/sites/155/2026/09/116A1%E7%A2%A9%E5%A3%AB%E7%8F%AD%E6%8B%9B%E7%94%9F%E7%B0%A1%E7%AB%A0.pdf",
+        "https://www.ad.stu.edu.tw/2026/09/30/%e3%80%90116%e5%ad%b8%e5%b9%b4%e5%ba%a6%e7%a2%a9%e5%a3%ab%e7%8f%ad%e7%94%84%e8%a9%a6%e3%80%91%e6%a8%b9%e5%be%b7%e7%a7%91%e6%8a%80%e5%a4%a7%e5%ad%b8-%e8%a8%ad%e8%a8%88%e5%89%b5%e6%96%b0%e8%88%87/"
+      ],
+      "reason": "具體揭露已實讀文件的版本與待確認事項，維持向正式窗口確認，不代為裁決衝突。"
+    }
+  ],
+  "dependencies": [
+    "若套用，需同步data/en與data/ja中這三個中文key的完整譯文及引用；先搜尋全部key引用，勿保留過期來源文字。",
+    "FAQ既有dept-forms來源連到目前公開文件入口；升學既有graduate-handbook-116綁定實讀116A1。可將本報告source-catalog連結放入審閱證據，不自行稱當屆規章確認。",
+    "本提案未補造116A4日期、當屆專題評分表、免口試結論；無產品變更、無Build／UI驗收。"
+  ]
+}

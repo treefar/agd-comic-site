@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "holiday-lab/reports/current-rules-20261024/current-study.test.cjs"
+  ],
+  "cwd": "C:\\agywork\\agd-holiday-prototypes",
+  "observed_utc": "2026-10-24T01:41:52.272Z",
+  "stdout": "✖ capstone guide explains the unresolved second/third review deadline conflict (3.2932ms)\n✖ graduate-study guide does not infer no interview from document review being 100 percent (2.7246ms)\nℹ tests 2\nℹ suites 0\nℹ pass 0\nℹ fail 2\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 91.5112\n\n✖ failing tests:\n\ntest at holiday-lab\\reports\\current-rules-20261024\\current-study.test.cjs:2:1\n✖ capstone guide explains the unresolved second/third review deadline conflict (3.2932ms)\n  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /108年/. Input:\n  \n  '組隊、評分、補審與畢展時程，請向系辦索取當屆正式辦法再安排。'\n  \n      at TestContext.<anonymous> (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\current-rules-20261024\\current-study.test.cjs:2:198)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1201:25)\n      at Test.start (node:internal/test_runner/test:1096:17)\n      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: '組隊、評分、補審與畢展時程，請向系辦索取當屆正式辦法再安排。',\n    expected: /108年/,\n    operator: 'match',\n    diff: 'simple'\n  }\n\ntest at holiday-lab\\reports\\current-rules-20261024\\current-study.test.cjs:3:1\n✖ graduate-study guide does not infer no interview from document review being 100 percent (2.7246ms)\n  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /116.*100%.*口試.*尚未核得正式更正.*不直接當成免口試/. Input:\n  \n  ''\n  \n      at TestContext.<anonymous> (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\current-rules-20261024\\current-study.test.cjs:3:215)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1201:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)\n      at Test.postRun (node:internal/test_runner/test:1330:19)\n      at Test.run (node:internal/test_runner/test:1258:12)\n      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: '',\n    expected: /116.*100%.*口試.*尚未核得正式更正.*不直接當成免口試/,\n    operator: 'match',\n    diff: 'simple'\n  }\n",
+  "stderr": "",
+  "exit_code": 1
+}

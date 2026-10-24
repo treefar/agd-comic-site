@@ -1,0 +1,357 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-TW">
+<head>
+    <title>樹德科技大學招生簡章規劃表</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" type="text/css" href="reset-fonts-grids.css" />
+	<link rel="stylesheet" type="text/css" href="../css/styleupload.css" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style type="text/css">
+    a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}
+    </style>
+	<script>
+		//form 所有元素載入完成後,執行取得已上傳檔案數 keyno 為檔案上傳路徑
+		$(window).load(function() {
+			$.ajax({
+				url: 'Ajax/ajaxGetUploadFileCount.asp',  
+				type: "post",
+				data:{
+						"ajaxType": "A2jv33IOetz4s0ad7UAWDw==",					
+						"keyno" : $('#keyno').val()
+					 },
+				dataType: "json",
+				success:function(json) {
+							var fileCount = json[0]["resultDetail"];
+							$('#fileCount').val(fileCount);
+						},
+				error: function(jqXHR, exception) {
+							alert("Remote Application error (" + jqXHR.status +") ...");
+							//showAjaxError(jqXHR.status,exception);
+						}
+			});				
+		});	
+		
+		$(function(){
+			initFunction();	 //初使化系統功能 jslibrary.js				
+			
+			//$('#tgldiv').click(function(){
+			//	$("#idata").slideToggle(0);	
+			//});	
+
+			//$('#idata [title]').tooltip({trigger: 'hover', gravity: 'w'});	
+			
+			$('a[rel="external"]').click( function() {
+				window.open( $(this).attr('href') ,"","left=160px,top=50px,height=750px,width=760px,scrollbars=yes,status=yes,title=no");
+				//$('#form1').focusFirstField(); 	//close window 後 focus 指定欄位
+				return false;
+			});		
+	</script>
+</head>
+<body>
+
+
+<div id="margin">
+    <div id="doc">
+        <div id="hd">
+            <h1>
+                <img src="images/stu_logo.png" alt="樹德科技大學" width="70" height="70" />
+                <span class="heading"><img src="images/title.jpg" alt="系統訊息通知" width="187" height="49" /></span>
+            </h1>
+            <div class="clear"></div>
+            <div id="bordermask">
+                <div id="border1" class="border"></div>
+                <div id="border2" class="border"></div>
+                <div id="border3" class="border"></div>
+            </div>
+           <!-- <div id="navigation">
+            	<ul>
+                
+                	<li><a href="qryirsCourse.asp?lt=A1">碩士班甄試入學考試</a></li>
+                
+                	<li><a href="qryirsCourse.asp?lt=A2">碩士班入學招生考試</a></li>
+                
+                	<li><a href="qryirsCourse.asp?lt=A3">碩士在職專班入學招生考試</a></li>
+                
+                	<li class="current"><a href="qryirsCourse.asp?lt=A4">博士班入學招生考試</a></li>
+                
+                	<li><a href="qryirsCourse.asp?lt=B1">寒假轉學生入學招生考試</a></li>
+                
+                	<li><a href="qryirsCourse.asp?lt=B2">暑假轉學生入學招生考試</a></li>
+                
+                	<li><a href="qryirsCourse.asp?lt=B3">二技進修部入學招生考試</a></li>
+                
+                	<li><a href="qryirsCourse.asp?lt=B4">重點運動項目績優生入學招生考試</a></li>
+                
+                	<li><a href="qryirsCourse.asp?lt=B5">表演藝術系甄試入學招生考試</a></li>
+                
+                	<li><a href="qryirsCourse.asp?lt=B7">單獨招收身心障礙學生</a></li>
+                
+                	<li><a href="qryirsCourse.asp?lt=C1">附設專科進修學校入學招生考試</a></li>
+                
+                  <li>二技日間部</li>
+                    <li>四技進修部</li>
+                    <li>二技在職專班</li>
+                    <li>二技進修部</li>
+                    <li>碩士班</li>
+                    <li>碩士在職專班</li>
+                    <li>博士班</li>
+                    <li>進修專校</li>
+                    <li>產學四技學士專班</li>
+                    <li>二專日間部</li>
+                </ul>
+            </div>
+              -->
+            <!--end #navigation-->
+          
+        </div><!--end #hd-->
+        
+        <div id="bd">
+         
+            
+        <table cellspacing="0" cellpadding="0" id="course-plan"  width="100%">
+    	<thead>
+            <tr>
+                <th class="dept">招生種類╱學年度</TD>
+                
+				<th>
+				116
+				</th>
+                
+				<th>
+				115
+				</th>
+                
+				<th>
+				114
+				</th>
+                
+				<th>
+				113
+				</th>
+                
+				<th>
+				112
+				</th>
+                
+				<th>
+				111
+				</th>
+                
+				<th>
+				110
+				</th>
+                
+
+            </tr>
+        </thead>
+
+        <tbody>
+        
+            <tr class="odd">
+            	<td>(A1) 碩士班甄試</td>  
+            <td><a href="/attachfile/upload/IRS/file/116A1.pdf" target="_blank">碩士班甄試</a></td><td><a href="/attachfile/upload/IRS/file/115A1.pdf" target="_blank">碩士班甄試</a></td><td><a href="/attachfile/upload/IRS/file/114A1.pdf" target="_blank">碩士班甄試</a></td><td><a href="/attachfile/upload/IRS/file/113A1.pdf" target="_blank">碩士班甄試</a></td><td><a href="/attachfile/upload/IRS/file/112A1.pdf" target="_blank">碩士班甄試</a></td><td><a href="/attachfile/upload/IRS/file/111A1.pdf" target="_blank">碩士班甄試</a></td><td><a href="/attachfile/upload/IRS/file/110A1.pdf" target="_blank">碩士班甄試</a></td>
+            </tr>
+		
+            <tr class="even">
+            	<td>(A2) 碩士班暨碩士在職專班入學招生考試</td>  
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td><a href="/attachfile/upload/IRS/file/113A2.pdf" target="_blank">碩士班暨碩士在職專班入學招生考試</a></td><td><a href="/attachfile/upload/IRS/file/112A2.pdf" target="_blank">碩士班暨碩士在職專班入學招生考試</a></td><td><a href="/attachfile/upload/IRS/file/111A2.pdf" target="_blank">碩士班暨碩士在職專班入學招生考試</a></td><td><a href="/attachfile/upload/IRS/file/110A2.pdf" target="_blank">碩士班暨碩士在職專班入學招生考試</a></td>
+            </tr>
+		
+            <tr class="odd">
+            	<td>(A3) 博士班入學招生考試</td>  
+            <td>&nbsp;</td><td><a href="/attachfile/upload/IRS/file/115A3.pdf" target="_blank">博士班入學招生考試</a></td><td><a href="/attachfile/upload/IRS/file/114A3.pdf" target="_blank">博士班入學招生考試</a></td><td><a href="/attachfile/upload/IRS/file/113A3.pdf" target="_blank">博士班入學招生考試</a></td><td><a href="/attachfile/upload/IRS/file/112A3.pdf" target="_blank">博士班入學招生考試</a></td><td><a href="/attachfile/upload/IRS/file/111A3.pdf" target="_blank">博士班入學招生考試</a></td><td><a href="/attachfile/upload/IRS/file/110A3.pdf" target="_blank">博士班入學招生考試</a></td>
+            </tr>
+		
+            <tr class="even">
+            	<td>(A4) 碩士班入學招生考試</td>  
+            <td>&nbsp;</td><td><a href="/attachfile/upload/IRS/file/115A4.pdf" target="_blank">碩士班入學招生考試</a></td><td><a href="/attachfile/upload/IRS/file/114A4.pdf" target="_blank">碩士班入學招生考試</a></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            </tr>
+		
+            <tr class="odd">
+            	<td>(A5) 碩士在職專班入學招生考試</td>  
+            <td>&nbsp;</td><td><a href="/attachfile/upload/IRS/file/115A5.pdf" target="_blank">碩士在職專班入學招生考試</a></td><td><a href="/attachfile/upload/IRS/file/114A5.pdf" target="_blank">碩士在職專班入學招生考試</a></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            </tr>
+		
+            <tr class="even">
+            	<td>(B0) 第一學期【陸生】轉學生招生考試</td>  
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            </tr>
+		
+            <tr class="odd">
+            	<td>(B1) 第二學期轉學生招生考試</td>  
+            <td>&nbsp;</td><td>&nbsp;</td><td><a href="/attachfile/upload/IRS/file/114B1.pdf" target="_blank">第二學期轉學生招生考試</a></td><td><a href="/attachfile/upload/IRS/file/113B1.pdf" target="_blank">第二學期轉學生招生考試</a></td><td><a href="/attachfile/upload/IRS/file/112B1.pdf" target="_blank">第二學期轉學生招生考試</a></td><td><a href="/attachfile/upload/IRS/file/111B1.pdf" target="_blank">第二學期轉學生招生考試</a></td><td><a href="/attachfile/upload/IRS/file/110B1.pdf" target="_blank">第二學期轉學生招生考試</a></td>
+            </tr>
+		
+            <tr class="even">
+            	<td>(B2) 重點運動項目績優生入學招生考試-休閒遊憩與運動管理系</td>  
+            <td>&nbsp;</td><td><a href="/attachfile/upload/IRS/file/115B2.pdf" target="_blank">重點運動項目績優生入學招生考試-休閒遊憩與運動管理系</a></td><td><a href="/attachfile/upload/IRS/file/114B2.pdf" target="_blank">重點運動項目績優生入學招生考試-休閒遊憩與運動管理系</a></td><td><a href="/attachfile/upload/IRS/file/113B2.pdf" target="_blank">重點運動項目績優生入學招生考試-休閒遊憩與運動管理系</a></td><td><a href="/attachfile/upload/IRS/file/112B2.pdf" target="_blank">重點運動項目績優生入學招生考試-休閒遊憩與運動管理系</a></td><td><a href="/attachfile/upload/IRS/file/111B2.pdf" target="_blank">重點運動項目績優生入學招生考試-休閒遊憩與運動管理系</a></td><td><a href="/attachfile/upload/IRS/file/110B2.pdf" target="_blank">重點運動項目績優生入學招生考試-休閒遊憩與運動管理系</a></td>
+            </tr>
+		
+            <tr class="odd">
+            	<td>(B3) 表演藝術系單獨招生</td>  
+            <td>&nbsp;</td><td><a href="/attachfile/upload/IRS/file/115B3.pdf" target="_blank">表演藝術系單獨招生</a></td><td><a href="/attachfile/upload/IRS/file/114B3.pdf" target="_blank">表演藝術系單獨招生</a></td><td><a href="/attachfile/upload/IRS/file/113B3.pdf" target="_blank">表演藝術系單獨招生</a></td><td><a href="/attachfile/upload/IRS/file/112B3.pdf" target="_blank">表演藝術系單獨招生</a></td><td><a href="/attachfile/upload/IRS/file/111B3.pdf" target="_blank">表演藝術系單獨招生</a></td><td><a href="/attachfile/upload/IRS/file/110B3.pdf" target="_blank">表演藝術系單獨招生</a></td>
+            </tr>
+		
+            <tr class="even">
+            	<td>(B4) 第一學期轉學生招生考試</td>  
+            <td>&nbsp;</td><td><a href="/attachfile/upload/IRS/file/115B4.pdf" target="_blank">第一學期轉學生招生考試</a></td><td><a href="/attachfile/upload/IRS/file/114B4.pdf" target="_blank">第一學期轉學生招生考試</a></td><td><a href="/attachfile/upload/IRS/file/113B4.pdf" target="_blank">第一學期轉學生招生考試</a></td><td><a href="/attachfile/upload/IRS/file/112B4.pdf" target="_blank">第一學期轉學生招生考試</a></td><td><a href="/attachfile/upload/IRS/file/111B4.pdf" target="_blank">第一學期轉學生招生考試</a></td><td><a href="/attachfile/upload/IRS/file/110B4.pdf" target="_blank">第一學期轉學生招生考試</a></td>
+            </tr>
+		
+            <tr class="odd">
+            	<td>(B5) 產學攜手專班甄試入學</td>  
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            </tr>
+		
+            <tr class="even">
+            	<td>(B6) 四年制進修部單獨招生(含應屆高中畢業生)</td>  
+            <td>&nbsp;</td><td><a href="/attachfile/upload/IRS/file/115B6.pdf" target="_blank">四年制進修部單獨招生(含應屆高中畢業生)</a></td><td><a href="/attachfile/upload/IRS/file/114B6.pdf" target="_blank">四年制進修部單獨招生(含應屆高中畢業生)</a></td><td><a href="/attachfile/upload/IRS/file/113B6.pdf" target="_blank">四年制進修部單獨招生(含應屆高中畢業生)</a></td><td><a href="/attachfile/upload/IRS/file/112B6.pdf" target="_blank">四年制進修部單獨招生(含應屆高中畢業生)</a></td><td><a href="/attachfile/upload/IRS/file/111B6.pdf" target="_blank">四年制進修部單獨招生(含應屆高中畢業生)</a></td><td><a href="/attachfile/upload/IRS/file/110B6.pdf" target="_blank">四年制進修部單獨招生(含應屆高中畢業生)</a></td>
+            </tr>
+		
+            <tr class="odd">
+            	<td>(B7) 單獨招收身心障礙學生</td>  
+            <td>&nbsp;</td><td><a href="/attachfile/upload/IRS/file/115B7.pdf" target="_blank">單獨招收身心障礙學生</a></td><td><a href="/attachfile/upload/IRS/file/114B7.pdf" target="_blank">單獨招收身心障礙學生</a></td><td><a href="/attachfile/upload/IRS/file/113B7.pdf" target="_blank">單獨招收身心障礙學生</a></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            </tr>
+		
+            <tr class="even">
+            	<td>(B8) 風雲再起－鼓勵成人就讀大學入學招生考試</td>  
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            </tr>
+		
+            <tr class="odd">
+            	<td>(B9) 第二學期【陸生】轉學生招生考試</td>  
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            </tr>
+		
+            <tr class="even">
+            	<td>(C1) 附設專科進修學校入學招生考試</td>  
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            </tr>
+		
+            <tr class="odd">
+            	<td>(C2) 四年制進修部招收應屆高中畢業生</td>  
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            </tr>
+		
+            <tr class="even">
+            	<td>(C3) 附設專科進修學校甄選入學招生考試</td>  
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            </tr>
+		
+            <tr class="odd">
+            	<td>(C4) 附設專科進修學校申請入學招生考試</td>  
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            </tr>
+		
+            <tr class="even">
+            	<td>(C5) 二專進修部單獨招生</td>  
+            <td>&nbsp;</td><td><a href="/attachfile/upload/IRS/file/115C5.pdf" target="_blank">二專進修部單獨招生</a></td><td><a href="/attachfile/upload/IRS/file/114C5.pdf" target="_blank">二專進修部單獨招生</a></td><td><a href="/attachfile/upload/IRS/file/113C5.pdf" target="_blank">二專進修部單獨招生</a></td><td><a href="/attachfile/upload/IRS/file/112C5.pdf" target="_blank">二專進修部單獨招生</a></td><td><a href="/attachfile/upload/IRS/file/111C5.pdf" target="_blank">二專進修部單獨招生</a></td><td><a href="/attachfile/upload/IRS/file/110C5.pdf" target="_blank">二專進修部單獨招生</a></td>
+            </tr>
+		
+            <tr class="odd">
+            	<td>(C6) 四技進修部產學攜手專班招生</td>  
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td><a href="/attachfile/upload/IRS/file/112C6.pdf" target="_blank">四技進修部產學攜手專班招生</a></td><td>&nbsp;</td><td>&nbsp;</td>
+            </tr>
+		
+            <tr class="even">
+            	<td>(D1) 二年制進修部單獨招生</td>  
+            <td>&nbsp;</td><td><a href="/attachfile/upload/IRS/file/115D1.pdf" target="_blank">二年制進修部單獨招生</a></td><td><a href="/attachfile/upload/IRS/file/114D1.pdf" target="_blank">二年制進修部單獨招生</a></td><td><a href="/attachfile/upload/IRS/file/113D1.pdf" target="_blank">二年制進修部單獨招生</a></td><td><a href="/attachfile/upload/IRS/file/112D1.pdf" target="_blank">二年制進修部單獨招生</a></td><td><a href="/attachfile/upload/IRS/file/111D1.pdf" target="_blank">二年制進修部單獨招生</a></td><td><a href="/attachfile/upload/IRS/file/110D1.pdf" target="_blank">二年制進修部單獨招生</a></td>
+            </tr>
+		
+            <tr class="odd">
+            	<td>(E1) 四年制日間部申請入學</td>  
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            </tr>
+		
+            <tr class="even">
+            	<td>(E2) 重點運動項目績優生入學招生考試-電子競技與電腦娛樂科學系</td>  
+            <td>&nbsp;</td><td>&nbsp;</td><td><a href="/attachfile/upload/IRS/file/114E2.pdf" target="_blank">重點運動項目績優生入學招生考試-電子競技與電腦娛樂科學系</a></td><td><a href="/attachfile/upload/IRS/file/113E2.pdf" target="_blank">重點運動項目績優生入學招生考試-電子競技與電腦娛樂科學系</a></td><td><a href="/attachfile/upload/IRS/file/112E2.pdf" target="_blank">重點運動項目績優生入學招生考試-電子競技與電腦娛樂科學系</a></td><td><a href="/attachfile/upload/IRS/file/111E2.pdf" target="_blank">重點運動項目績優生入學招生考試-電子競技與電腦娛樂科學系</a></td><td><a href="/attachfile/upload/IRS/file/110E2.pdf" target="_blank">重點運動項目績優生入學招生考試-電子競技與電腦娛樂科學系</a></td>
+            </tr>
+		
+            <tr class="odd">
+            	<td>(E3) 四年制日間部單獨招生</td>  
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td><a href="/attachfile/upload/IRS/file/113E3.pdf" target="_blank">四年制日間部單獨招生</a></td><td><a href="/attachfile/upload/IRS/file/112E3.pdf" target="_blank">四年制日間部單獨招生</a></td><td>&nbsp;</td><td><a href="/attachfile/upload/IRS/file/110E3.pdf" target="_blank">四年制日間部單獨招生</a></td>
+            </tr>
+		
+            <tr class="even">
+            	<td>(E4) 技藝技能優良學生甄審入學</td>  
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            </tr>
+		
+            <tr class="odd">
+            	<td>(E6) 30+大學試辦計畫入學招生</td>  
+            <td>&nbsp;</td><td><a href="/attachfile/upload/IRS/file/115E6.pdf" target="_blank">30+大學試辦計畫入學招生</a></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            </tr>
+		
+            <tr class="even">
+            	<td>(E7) 產學攜手合作計畫專班（四年制進修部）</td>  
+            <td>&nbsp;</td><td><a href="/attachfile/upload/IRS/file/115E7.pdf" target="_blank">產學攜手合作計畫專班（四年制進修部）</a></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            </tr>
+		
+            <tr class="odd">
+            	<td>(E8) 產學攜手合作計畫專班（二專進修部）</td>  
+            <td>&nbsp;</td><td><a href="/attachfile/upload/IRS/file/115E8.pdf" target="_blank">產學攜手合作計畫專班（二專進修部）</a></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            </tr>
+		
+            <tr class="even">
+            	<td>(E9) 產學攜手合作計畫-休閒餐飲服務產業專班(私立公東高工、花蓮上騰工商)</td>  
+            <td>&nbsp;</td><td><a href="/attachfile/upload/IRS/file/115E9.pdf" target="_blank">產學攜手合作計畫-休閒餐飲服務產業專班(私立公東高工、花蓮上騰工商)</a></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            </tr>
+		
+        </tbody>
+    </table>
+	
+    <form id="form1" action="qryIRSCourse.asp" class="" method="post" enctype="multipart/form-data" />
+		<input type="hidden" id="actionType" name="actionType" value="sbWOOsGTYEb3vafxBVZfAw==" />
+		<input type="hidden" id="keyno" name="keyno" />		
+	</form>
+   
+        
+              
+            <a href="?lt=A4&amp;ey=116&amp;Dir=p" class="previous round">&#8249;</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="?lt=A4&amp;ey=116&amp;Dir=n" class="next round">&#8250;</a>
+
+        
+    
+        </div><!--end #bd-->
+       
+    
+    </div><!--end #doc-->
+
+    <div id="footer">
+
+		<p class="contact">&copy; Shu-Te University 樹德科技大學 82445 高雄市燕巢區橫山路59號 (07) 6158000 | 
+        <span class="desginer">Designed by afu</span> | 
+
+        </p>
+
+</div><!--end #margin-->
+
+
+</body>
+</html>
