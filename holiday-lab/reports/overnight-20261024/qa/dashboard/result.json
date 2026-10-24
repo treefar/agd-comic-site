@@ -1,0 +1,416 @@
+{
+  "base": "http://127.0.0.1:8875/progress/",
+  "source_before": [
+    {
+      "file": "holiday-lab/dashboard/out/index.html",
+      "sha256": "d9d724451d8941de8f6e7e6451e2a6cae07ca41390662c741344a2ce9224565a"
+    },
+    {
+      "file": "holiday-lab/dashboard/out/dashboard-data.json",
+      "sha256": "9575c9ef06e0c7ee5882a02272453346107eeaf05cac06250ca8afbaee430785"
+    },
+    {
+      "file": "holiday-lab/reports/overnight-20261024/verification.json",
+      "sha256": "f8c00e2880da1e208effed68779b97e7201c09af0c2d058074541ea745e30332"
+    }
+  ],
+  "cases": [
+    {
+      "width": 1440,
+      "checks": [
+        {
+          "label": "47 rows; 40yes/7no/user0",
+          "yes_no": "yes",
+          "details": {
+            "cards": [
+              {
+                "id": "records",
+                "value": 47
+              },
+              {
+                "id": "fixed",
+                "value": 4
+              },
+              {
+                "id": "verified",
+                "value": 40
+              },
+              {
+                "id": "pending",
+                "value": 7
+              },
+              {
+                "id": "confirmed",
+                "value": 0
+              }
+            ],
+            "rows": 47,
+            "visible": 47,
+            "docWidth": 1440,
+            "width": 1440,
+            "tableWidth": 1166,
+            "tableClient": 1166,
+            "bodyBackground": "rgb(255, 255, 255)"
+          }
+        },
+        {
+          "label": "document has no horizontal scroll",
+          "yes_no": "yes",
+          "details": {
+            "cards": [
+              {
+                "id": "records",
+                "value": 47
+              },
+              {
+                "id": "fixed",
+                "value": 4
+              },
+              {
+                "id": "verified",
+                "value": 40
+              },
+              {
+                "id": "pending",
+                "value": 7
+              },
+              {
+                "id": "confirmed",
+                "value": 0
+              }
+            ],
+            "rows": 47,
+            "visible": 47,
+            "docWidth": 1440,
+            "width": 1440,
+            "tableWidth": 1166,
+            "tableClient": 1166,
+            "bodyBackground": "rgb(255, 255, 255)"
+          }
+        },
+        {
+          "label": "WebGL search returns matching rows",
+          "yes_no": "yes",
+          "details": [
+            "Flora／胖倉鼠WebGL成品\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱"
+          ]
+        },
+        {
+          "label": "row expands reason and source",
+          "yes_no": "yes",
+          "details": {
+            "expanded": "true",
+            "detail": "結果與限制\n只回查指定TF-BASE交接夾，仍5份工單／腳本、未見成品；不推論其他位置，未啟Unity、未彈執行檔、未重派或下載舊大型包。\n實際證據\nholiday-lab/reports/overnight-20261024/webgl/folder-recheck.json",
+            "hidden": false
+          }
+        },
+        {
+          "label": "missing filter shows seven no rows",
+          "yes_no": "yes",
+          "details": [
+            "中日全站逐字缺字稽核\t保留\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "全部正式職稱／處室外文名\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "歷史英文資料對映與語意覆核\t保留\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "當期完整規章、表單及年度衝突\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "全部素材製程與權利已確認\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "Flora／胖倉鼠WebGL成品\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "實體手機與母語審閱\t保留\tno\t已留資料\t未完成／待確認\t待使用者審閱"
+          ]
+        },
+        {
+          "label": "reset all restores 47 rows",
+          "yes_no": "yes"
+        },
+        {
+          "label": "dark mode changes palette without overflow",
+          "yes_no": "yes",
+          "details": {
+            "background": "rgb(24, 24, 27)",
+            "docWidth": 1440,
+            "width": 1440
+          }
+        },
+        {
+          "label": "no page exceptions",
+          "yes_no": "yes",
+          "details": []
+        },
+        {
+          "label": "no external requests",
+          "yes_no": "yes",
+          "details": []
+        }
+      ],
+      "errors": [],
+      "requests": [
+        "http://127.0.0.1:8875/progress/"
+      ],
+      "shots": [
+        {
+          "file": "desktop-light.png",
+          "sha256": "8d922ba12e5ee01cbb334429f3176ccde803005b7b4d147d3562b543be5822ea"
+        },
+        {
+          "file": "desktop-dark.png",
+          "sha256": "c3aba6a30038c8d2452e71ebed3e34a18a3774950faeb2942a75848b6fe59e9d"
+        }
+      ],
+      "initial": {
+        "cards": [
+          {
+            "id": "records",
+            "value": 47
+          },
+          {
+            "id": "fixed",
+            "value": 4
+          },
+          {
+            "id": "verified",
+            "value": 40
+          },
+          {
+            "id": "pending",
+            "value": 7
+          },
+          {
+            "id": "confirmed",
+            "value": 0
+          }
+        ],
+        "rows": 47,
+        "visible": 47,
+        "docWidth": 1440,
+        "width": 1440,
+        "tableWidth": 1166,
+        "tableClient": 1166,
+        "bodyBackground": "rgb(255, 255, 255)"
+      },
+      "search": [
+        "Flora／胖倉鼠WebGL成品\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱"
+      ],
+      "expanded": {
+        "expanded": "true",
+        "detail": "結果與限制\n只回查指定TF-BASE交接夾，仍5份工單／腳本、未見成品；不推論其他位置，未啟Unity、未彈執行檔、未重派或下載舊大型包。\n實際證據\nholiday-lab/reports/overnight-20261024/webgl/folder-recheck.json",
+        "hidden": false
+      },
+      "missing": [
+        "中日全站逐字缺字稽核\t保留\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+        "全部正式職稱／處室外文名\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+        "歷史英文資料對映與語意覆核\t保留\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+        "當期完整規章、表單及年度衝突\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+        "全部素材製程與權利已確認\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+        "Flora／胖倉鼠WebGL成品\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+        "實體手機與母語審閱\t保留\tno\t已留資料\t未完成／待確認\t待使用者審閱"
+      ],
+      "dark": {
+        "background": "rgb(24, 24, 27)",
+        "docWidth": 1440,
+        "width": 1440
+      },
+      "externalRequests": [],
+      "pass": true
+    },
+    {
+      "width": 390,
+      "checks": [
+        {
+          "label": "47 rows; 40yes/7no/user0",
+          "yes_no": "yes",
+          "details": {
+            "cards": [
+              {
+                "id": "records",
+                "value": 47
+              },
+              {
+                "id": "fixed",
+                "value": 4
+              },
+              {
+                "id": "verified",
+                "value": 40
+              },
+              {
+                "id": "pending",
+                "value": 7
+              },
+              {
+                "id": "confirmed",
+                "value": 0
+              }
+            ],
+            "rows": 47,
+            "visible": 47,
+            "docWidth": 390,
+            "width": 390,
+            "tableWidth": 795,
+            "tableClient": 356,
+            "bodyBackground": "rgb(255, 255, 255)"
+          }
+        },
+        {
+          "label": "document has no horizontal scroll",
+          "yes_no": "yes",
+          "details": {
+            "cards": [
+              {
+                "id": "records",
+                "value": 47
+              },
+              {
+                "id": "fixed",
+                "value": 4
+              },
+              {
+                "id": "verified",
+                "value": 40
+              },
+              {
+                "id": "pending",
+                "value": 7
+              },
+              {
+                "id": "confirmed",
+                "value": 0
+              }
+            ],
+            "rows": 47,
+            "visible": 47,
+            "docWidth": 390,
+            "width": 390,
+            "tableWidth": 795,
+            "tableClient": 356,
+            "bodyBackground": "rgb(255, 255, 255)"
+          }
+        },
+        {
+          "label": "WebGL search returns matching rows",
+          "yes_no": "yes",
+          "details": [
+            "Flora／胖倉鼠WebGL成品\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱"
+          ]
+        },
+        {
+          "label": "row expands reason and source",
+          "yes_no": "yes",
+          "details": {
+            "expanded": "true",
+            "detail": "結果與限制\n只回查指定TF-BASE交接夾，仍5份工單／腳本、未見成品；不推論其他位置，未啟Unity、未彈執行檔、未重派或下載舊大型包。\n實際證據\nholiday-lab/reports/overnight-20261024/webgl/folder-recheck.json",
+            "hidden": false
+          }
+        },
+        {
+          "label": "missing filter shows seven no rows",
+          "yes_no": "yes",
+          "details": [
+            "中日全站逐字缺字稽核\t保留\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "全部正式職稱／處室外文名\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "歷史英文資料對映與語意覆核\t保留\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "當期完整規章、表單及年度衝突\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "全部素材製程與權利已確認\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "Flora／胖倉鼠WebGL成品\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "實體手機與母語審閱\t保留\tno\t已留資料\t未完成／待確認\t待使用者審閱"
+          ]
+        },
+        {
+          "label": "reset all restores 47 rows",
+          "yes_no": "yes"
+        },
+        {
+          "label": "no page exceptions",
+          "yes_no": "yes",
+          "details": []
+        },
+        {
+          "label": "no external requests",
+          "yes_no": "yes",
+          "details": []
+        }
+      ],
+      "errors": [],
+      "requests": [
+        "http://127.0.0.1:8875/progress/"
+      ],
+      "shots": [
+        {
+          "file": "mobile-missing.png",
+          "sha256": "c83cf05d501e1ce9664544fddff41d7eec7a6d38aff65e6d473f42ac8f606c37"
+        }
+      ],
+      "initial": {
+        "cards": [
+          {
+            "id": "records",
+            "value": 47
+          },
+          {
+            "id": "fixed",
+            "value": 4
+          },
+          {
+            "id": "verified",
+            "value": 40
+          },
+          {
+            "id": "pending",
+            "value": 7
+          },
+          {
+            "id": "confirmed",
+            "value": 0
+          }
+        ],
+        "rows": 47,
+        "visible": 47,
+        "docWidth": 390,
+        "width": 390,
+        "tableWidth": 795,
+        "tableClient": 356,
+        "bodyBackground": "rgb(255, 255, 255)"
+      },
+      "search": [
+        "Flora／胖倉鼠WebGL成品\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱"
+      ],
+      "expanded": {
+        "expanded": "true",
+        "detail": "結果與限制\n只回查指定TF-BASE交接夾，仍5份工單／腳本、未見成品；不推論其他位置，未啟Unity、未彈執行檔、未重派或下載舊大型包。\n實際證據\nholiday-lab/reports/overnight-20261024/webgl/folder-recheck.json",
+        "hidden": false
+      },
+      "missing": [
+        "中日全站逐字缺字稽核\t保留\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+        "全部正式職稱／處室外文名\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+        "歷史英文資料對映與語意覆核\t保留\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+        "當期完整規章、表單及年度衝突\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+        "全部素材製程與權利已確認\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+        "Flora／胖倉鼠WebGL成品\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+        "實體手機與母語審閱\t保留\tno\t已留資料\t未完成／待確認\t待使用者審閱"
+      ],
+      "externalRequests": [],
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "no_game_opened": true,
+  "http": {
+    "status": 200,
+    "sha256": "d9d724451d8941de8f6e7e6451e2a6cae07ca41390662c741344a2ce9224565a",
+    "expected": "d9d724451d8941de8f6e7e6451e2a6cae07ca41390662c741344a2ce9224565a"
+  },
+  "source_after": [
+    {
+      "file": "holiday-lab/dashboard/out/index.html",
+      "sha256": "d9d724451d8941de8f6e7e6451e2a6cae07ca41390662c741344a2ce9224565a"
+    },
+    {
+      "file": "holiday-lab/dashboard/out/dashboard-data.json",
+      "sha256": "9575c9ef06e0c7ee5882a02272453346107eeaf05cac06250ca8afbaee430785"
+    },
+    {
+      "file": "holiday-lab/reports/overnight-20261024/verification.json",
+      "sha256": "f8c00e2880da1e208effed68779b97e7201c09af0c2d058074541ea745e30332"
+    }
+  ],
+  "source_stable": true,
+  "pass": true
+}

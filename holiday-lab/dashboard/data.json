@@ -2,367 +2,43 @@
   "schema_version": 1,
   "meta": {
     "project": "系網漫畫版_AGDComicSite",
-    "title": "系網進度，一頁看懂",
-    "generated": "2026-10-23",
+    "title": "系網修正進度｜2026-10-24",
+    "subtitle": "網站核對與凍結項目分開；點列看原因與實際證據",
+    "generated": "2026-10-24",
     "authorities": [
       {
-        "path": "holiday-lab/catalog.mjs",
-        "role": "十五款範圍與三語名稱"
-      },
-      {
-        "path": "holiday-lab/qa/playthrough.json",
-        "role": "實際通關與受測模組SHA"
-      },
-      {
-        "path": "holiday-lab/qa/shell.json",
-        "role": "共用外框逐條yes/no"
-      },
-      {
-        "path": "holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json",
-        "role": "本輪UI合約case覆蓋與缺項唯一權威"
-      },
-      {
-        "path": "holiday-lab/layout-qa/supplement-integration-20261023/v4/baseline-comparison.json",
-        "role": "舊覆蓋與來源綁定保留核對"
-      },
-      {
-        "path": "holiday-lab/layout-qa/supplement-integration-20261023/v4/plan-consistency.json",
-        "role": "完整節點指標、選取集合與官方報告未變核對"
-      },
-      {
-        "path": "ui-layout-contract.json",
-        "role": "UI覆蓋分母與case維度"
-      },
-      {
-        "path": "holiday-lab/dashboard/progress-policy.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/guide-index-evidence/result.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/translation-review/guide-terms-rendered11/summary.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/faculty-portrait/browser.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/floating-cta-result.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/student-webgl/queued-inspection.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/student-webgl/REPORT.md",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/STATUS.md",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/ui-polish-20261023/independent/runs/2026-10-23T08-07-41-848Z/result.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/ui-polish-20261023/audit/font-coverage.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/integrated-review-20261023/home/runs/2026-10-23T10-55-01-190Z/result.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/integrated-review-20261023/release/runs/2026-10-23T10-55-01-135Z/result.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/integrated-review-20261023/home/verify-v2.cjs",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/integrated-review-20261023/release/verify.cjs",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/result.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/method.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/build-before.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/build-after.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/source-before.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/source-after.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/layout-qa/qingming-favicon-independent-20261023/run.cjs",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/integrated-review-20261023/root/recovery-runs/2026-10-23T11-07-11-903Z/result.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/integrated-review-20261023/root/verify-recovery.cjs",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/comprehensive-followup-20261023/root/webgl-source-recheck.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/guide-graduation-research-20261023/verification.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/guide-graduation-research-20261023/sources.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/guide-graduation-research-20261023/STUDENT-DRAFT.md",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/guide-graduation-research-20261023/FINDINGS.md",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/guide-graduation-research-20261023/fetch-official.mjs",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/guide-graduation-research-20261023/verify.mjs",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "data/students/guide.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/comprehensive-audit-20261023/scope.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/comprehensive-audit-20261023/REPORT.md",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/translation-review/proper-names-research-20261023/comparison.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/comprehensive-audit-20261023/translation-candidates.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/integrated-review-20261023/root/additional-guide-research.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/guide-capstone-study-research-20261023/REPORT.md",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/guide-capstone-study-research-20261023/draft.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/guide-capstone-study-research-20261023/verification.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/guide-capstone-study-research-20261023/source-catalog.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/guide-internship-research-20261023/REPORT.md",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/guide-internship-research-20261023/sources.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/guide-internship-research-20261023/verification.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/guide-internship-research-20261023/RECHECK.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/official-names-followup-20261023/root/names-independent-readonly-peer-cwd.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/translation-review/official-guide-names-independent-20261023/runs/2026-10-23T11-39-56-308Z/result.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/translation-review/official-guide-names-20261023/plan.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "data/en/step-details-ui.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "data/en/flow-ui.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "data/en/student-guide-ui.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "data/ja/messages.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/official-names-followup-20261023/root/integration-result.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/tfbase-shutdown-check-20261023/result.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/games-bottom-20261023/green-r2/result.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/games-bottom-20261023/green-r2/receipt.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-home.jsx",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-home.css",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "app.jsx",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "styles.css",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "comic-components.jsx",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "pages.jsx",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "data/works.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "data/en/works.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "data/news.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "images/posters/clipstudio-grand-prize.jpg",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "images/news/2026-awards/dear-all-robots.jpg",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "images/news/2026-awards/kacha.jpg",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "images/news/2026-awards/today-restaurant.jpg",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/games-bottom-20261023/navigation-proof.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/games-bottom-20261023/navigation/result.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "scripts/test-nav-layout.cjs",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/nav-language-desktop-20261023/webgl-recheck.json",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
-      },
-      {
-        "path": "holiday-lab/reports/qingming-release-20261023/independent/REPORT.md",
-        "role": "總覽對應項目的狀態／既有證據來源；不升格全站通過"
+        "path": "holiday-lab/reports/overnight-20261024/verification.json",
+        "role": "本輪逐項結果、原始證據SHA與本機版號"
       }
     ],
     "notes": [
-      "勞動節依本輪使用者指示暫緩，不啟動續接。清明新收據未回時只列待查。",
-      "QA來源case覆蓋不是整體完成率；15款本機試作可以看，完整UI尚未全驗。",
-      "完整UI驗收仍未通過。來源case有覆蓋不代表method flags已閉合；使用者確認仍待對話。",
-      "本機試作，未公開發布，沒有push或變動main。",
-      "工具通過只核對各款模組SHA及真DOM通關；不是最新整包、文字安全區或使用者確認。",
-      "真背景切頁未能建立hidden前提，保留未驗證；真手機與母語審閱未執行。"
-    ],
-    "subtitle": "本機成果、正在處理、待確認與暫緩事項；資料、工具與使用者確認分開看。"
+      "本機審閱版 .measure-overnight-20261024-02，連接埠 8875；尚未發布。",
+      "節日遊戲全部凍結，未測玩、未改遊戲檔、未啟動Unity。",
+      "工具核對不等於母語、實體手機或使用者確認。",
+      "舊遊戲通關與固定08歷史覆蓋不納入本輪網站通過數。"
+    ]
   },
   "status_levels": [
     {
-      "key": "built",
-      "label": "資料已建",
-      "tone": "ok",
+      "key": "recorded",
+      "label": "已留資料",
+      "tone": "info",
       "layer": "data"
     },
     {
-      "key": "missing",
-      "label": "缺件",
-      "tone": "danger",
-      "layer": "data"
-    },
-    {
-      "key": "pass",
-      "label": "工具通過",
+      "key": "bounded",
+      "label": "本輪限定範圍通過",
       "tone": "ok",
-      "layer": "tool"
-    },
-    {
-      "key": "unknown",
-      "label": "未驗證",
-      "tone": "warn",
       "layer": "tool"
     },
     {
       "key": "pending",
+      "label": "未完成／待確認",
+      "tone": "warn",
+      "layer": "tool"
+    },
+    {
+      "key": "user_pending",
       "label": "待使用者審閱",
       "tone": "warn",
       "layer": "user"
@@ -372,153 +48,48 @@
       "label": "使用者確認",
       "tone": "ok",
       "layer": "user"
-    },
-    {
-      "key": "gate_no",
-      "label": "完整UI未通過",
-      "tone": "danger",
-      "layer": "tool"
-    },
-    {
-      "key": "bounded",
-      "label": "指定範圍已驗",
-      "tone": "info",
-      "layer": "tool"
-    },
-    {
-      "key": "preserved",
-      "label": "成果已保全",
-      "tone": "info",
-      "layer": "data"
-    },
-    {
-      "key": "prepared",
-      "label": "工單已備",
-      "tone": "info",
-      "layer": "data"
-    },
-    {
-      "key": "draft",
-      "label": "工具草稿",
-      "tone": "warn",
-      "layer": "data"
-    },
-    {
-      "key": "available",
-      "label": "可以先看",
-      "tone": "info"
-    },
-    {
-      "key": "working",
-      "label": "正在處理",
-      "tone": "warn"
-    },
-    {
-      "key": "waiting",
-      "label": "待確認／待回覆",
-      "tone": "blocked"
-    },
-    {
-      "key": "paused",
-      "label": "已暫緩",
-      "tone": "blocked"
     }
   ],
   "summary_cards": [
     {
-      "id": "ui-covered",
-      "label": "固定08歷史證據覆蓋",
-      "layer": "tool",
-      "scope": "固定08來源歷史證據；非本輪新build完整通過率；非UI通過率",
-      "denominator": "ui-layout-contract.json全部required_cases",
-      "rule": {
-        "ratio": [
-          {
-            "sum": "ui_scope",
-            "field": "covered"
-          },
-          {
-            "sum": "ui_scope",
-            "field": "required"
-          }
-        ]
-      }
-    },
-    {
-      "id": "ui-missing",
-      "label": "UI尚缺case",
-      "layer": "tool",
-      "scope": "合約case層級",
-      "rule": {
-        "sum": "ui_scope",
-        "field": "missing"
-      }
-    },
-    {
-      "id": "ui-gate",
-      "label": "完整UI通過",
-      "layer": "tool",
-      "scope": "整包層級",
-      "denominator": "完整UI gate",
-      "rule": {
-        "ratio": [
-          {
-            "count": "ui_gate",
-            "where": {
-              "id": "global",
-              "result": "pass"
-            }
-          },
-          {
-            "count": "ui_gate",
-            "where": {
-              "id": "global"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "id": "built",
-      "label": "已建試作",
+      "id": "records",
+      "label": "逐項已記錄",
       "layer": "data",
       "rule": {
-        "count": "games",
+        "count": "checks"
+      }
+    },
+    {
+      "id": "fixed",
+      "label": "已修正項目",
+      "layer": "data",
+      "rule": {
+        "count": "checks",
         "where": {
-          "built": "built"
+          "disposition": "已修正"
         }
       }
     },
     {
-      "id": "played",
-      "label": "模組功能通關",
+      "id": "verified",
+      "label": "本輪yes項目",
       "layer": "tool",
+      "scope": "核對清單項目；非全站批准",
       "rule": {
-        "count": "games",
+        "count": "checks",
         "where": {
-          "tool": "pass"
+          "result": "yes"
         }
       }
     },
     {
-      "id": "shell",
-      "label": "外框yes項目",
+      "id": "pending",
+      "label": "保留缺口（no）",
       "layer": "tool",
       "rule": {
-        "count": "shell",
+        "count": "checks",
         "where": {
-          "result": "pass"
-        }
-      }
-    },
-    {
-      "id": "unverified",
-      "label": "外框未驗",
-      "layer": "tool",
-      "rule": {
-        "count": "shell",
-        "where": {
-          "result": "unknown"
+          "result": "no"
         }
       }
     },
@@ -527,74 +98,17 @@
       "label": "使用者已確認",
       "layer": "user",
       "rule": {
-        "count": "games",
+        "count": "checks",
         "where": {
           "user": "confirmed"
         }
-      }
-    },
-    {
-      "id": "progress-working",
-      "label": "正在處理的項目",
-      "layer": "data",
-      "scope": "工作總覽項目層級",
-      "rule": {
-        "count": "progress",
-        "where": {
-          "workflow": "working"
-        }
-      }
-    },
-    {
-      "id": "progress-waiting",
-      "label": "待確認／待回覆",
-      "layer": "user",
-      "scope": "工作總覽項目層級；不代表已確認",
-      "rule": {
-        "count": "progress",
-        "where": {
-          "workflow": "waiting"
-        }
-      }
-    },
-    {
-      "id": "progress-paused",
-      "label": "明確暫緩",
-      "layer": "data",
-      "scope": "本輪使用者方向",
-      "rule": {
-        "count": "progress",
-        "where": {
-          "workflow": "paused"
-        }
-      }
-    },
-    {
-      "id": "release-tools",
-      "label": "8866前版發布工具補驗",
-      "layer": "tool",
-      "scope": "13項本機技術檢查；不代表全2076或發布許可",
-      "denominator": "8866凍結release checklist共13項",
-      "rule": {
-        "ratio": [
-          {
-            "count": "release_checks",
-            "where": {
-              "result": "pass"
-            }
-          },
-          {
-            "count": "release_checks"
-          }
-        ]
       }
     }
   ],
   "sections": [
     {
-      "id": "progress",
-      "title": "工作總覽與本機成果",
-      "description": "這裡列的是各項可感知成果與目前義務；不把不同範圍加總成完成率。點列可查來源與限制。",
+      "id": "checks",
+      "title": "全部需求核對",
       "row_key": "id",
       "columns": [
         {
@@ -603,1699 +117,599 @@
           "type": "text"
         },
         {
-          "key": "workflow",
-          "title": "目前方向",
-          "type": "tag"
-        },
-        {
-          "key": "built",
-          "title": "資料層",
-          "type": "tag"
-        },
-        {
-          "key": "tool",
-          "title": "工具驗證",
-          "type": "tag"
-        },
-        {
-          "key": "user",
-          "title": "使用者確認",
-          "type": "tag"
-        }
-      ],
-      "detail_fields": [
-        {
-          "key": "headline",
-          "title": "目前可以怎麼看",
-          "type": "text"
-        },
-        {
-          "key": "proof_summary",
-          "title": "已有證據",
-          "type": "text"
-        },
-        {
-          "key": "limitation",
-          "title": "還差什麼",
-          "type": "text"
-        },
-        {
-          "key": "source_files",
-          "title": "原始來源",
-          "type": "list",
-          "item_type": "code"
-        }
-      ],
-      "search_fields": [
-        "title",
-        "headline",
-        "proof_summary",
-        "limitation",
-        "workflow",
-        "built",
-        "tool",
-        "user",
-        "source_files",
-        "id"
-      ],
-      "rows": [
-        {
-          "built": "built",
-          "tool": "bounded",
-          "user": "pending",
-          "id": "website",
-          "title": "系網中／英／日版本",
-          "workflow": "available",
-          "headline": "三語桌面完整導覽保留，遊戲已移到頁底；最新版8873。",
-          "proof_summary": "本輪18組三語／六寬真瀏覽器驗收；桌面完整導覽、手機平板展開及章節標題定位通過。 頁首無遊戲入口，試玩在招生之後／頁尾之前；三語手機／桌面6組開關／Esc／焦點／原作品複驗通過。",
-          "limitation": "只驗本次主導覽與定位，不是全站或全部遊戲發布驗收。",
-          "source_files": [
-            "holiday-lab/reports/guide-index-evidence/result.json",
-            "holiday-lab/reports/floating-cta-result.json",
-            "holiday-lab/STATUS.md",
-            "holiday-lab/reports/games-bottom-20261023/navigation-proof.json",
-            "holiday-lab/reports/games-bottom-20261023/green-r2/result.json",
-            "holiday-lab/reports/games-bottom-20261023/green-r2/receipt.json"
-          ],
-          "links": [
-            {
-              "label": "查看首頁",
-              "href": "/",
-              "kind": "server"
-            },
-            {
-              "label": "English",
-              "href": "/?lang=en",
-              "kind": "server"
-            },
-            {
-              "label": "日本語",
-              "href": "/?lang=ja",
-              "kind": "server"
-            },
-            {
-              "label": "導覽修正逐條驗收",
-              "href": "../../../holiday-lab/reports/nav-language-desktop-20261023/REPORT.md",
-              "kind": "local-file"
-            },
-            {
-              "label": "遊戲移至頁底驗收",
-              "href": "../../../holiday-lab/reports/games-bottom-20261023/REPORT.md",
-              "kind": "local-file"
-            }
-          ]
-        },
-        {
-          "built": "built",
-          "tool": "bounded",
-          "user": "pending",
-          "id": "games-overview",
-          "title": "節日遊戲試玩",
-          "workflow": "available",
-          "headline": "15款本機試作可看；完整UI尚未全驗。",
-          "proof_summary": "15款有匹配目前模組SHA的功能通關收據。",
-          "limitation": "功能通關不等於所有語言、尺寸、畫面和美術都通過。",
-          "source_files": [
-            "holiday-lab/catalog.mjs",
-            "holiday-lab/qa/playthrough.json",
-            "holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json"
-          ],
-          "links": [
-            {
-              "label": "開啟遊戲試玩",
-              "href": "/holiday-lab/",
-              "kind": "server"
-            },
-            {
-              "label": "功能與驗證說明",
-              "href": "../../../holiday-lab/reports/integration-guide.md",
-              "kind": "local-file"
-            }
-          ]
-        },
-        {
-          "built": "built",
-          "tool": "bounded",
-          "user": "pending",
-          "id": "guide",
-          "title": "在校指南與英日用語",
-          "workflow": "available",
-          "headline": "指南摘要、身分篩選與完整說明已有本機成果。",
-          "proof_summary": "本批49個英日新譯值：84個可見案例驗全文；14例只存在資料，沒有算畫面通過。 證照／英文另補2題、12筆官方來源分層草稿，尚未套產品。 名稱另查16筆：12筆名稱有primary支持、4筆整句待核；12名稱已合本機，4PROGRAM仍待修正。 實習／海外實習／海外見學／專題／升學另補5題、22步說明、15FAQ草稿。 8867獨立24譯值／48次實際呈現、60PNG通過後，12名稱已合本機。",
-          "limitation": "校務專名、正式資格與當期流程仍需逐筆來源；不是全站母語審校。 當日live正文僅2份，其餘索引或未完整附件明列，未取得現行完整規章／表單。 官網107實習手冊與108專題規章已讀，115適用及衝突待核；未套產品。 8867來源與凍結build範圍明列；小颯首頁新版另驗，不冒稱全站或母語校對通過。",
-          "source_files": [
-            "holiday-lab/translation-review/guide-terms-rendered11/summary.json",
-            "holiday-lab/reports/guide-index-evidence/result.json",
-            "holiday-lab/reports/guide-graduation-research-20261023/verification.json",
-            "holiday-lab/translation-review/proper-names-research-20261023/comparison.json",
-            "holiday-lab/reports/integrated-review-20261023/root/additional-guide-research.json",
-            "holiday-lab/reports/official-names-followup-20261023/root/names-independent-readonly-peer-cwd.json",
-            "holiday-lab/translation-review/official-guide-names-independent-20261023/runs/2026-10-23T11-39-56-308Z/result.json",
-            "holiday-lab/reports/official-names-followup-20261023/root/integration-result.json"
-          ],
-          "links": [
-            {
-              "label": "查看在校指南",
-              "href": "/#/students/guide",
-              "kind": "server"
-            },
-            {
-              "label": "英日排版報告",
-              "href": "../../../holiday-lab/translation-review/guide-terms-rendered11/REPORT.md",
-              "kind": "local-file"
-            },
-            {
-              "label": "學生版流程補研草稿",
-              "href": "../../../holiday-lab/reports/guide-graduation-research-20261023/STUDENT-DRAFT.md",
-              "kind": "local-file"
-            },
-            {
-              "label": "補研範圍與缺件",
-              "href": "../../../holiday-lab/reports/guide-graduation-research-20261023/REPORT.md",
-              "kind": "local-file"
-            },
-            {
-              "label": "16名稱逐筆來源",
-              "href": "../../../holiday-lab/translation-review/proper-names-research-20261023/REPORT.md",
-              "kind": "local-file"
-            },
-            {
-              "label": "實習與海外流程補研",
-              "href": "../../../holiday-lab/reports/guide-internship-research-20261023/REPORT.md",
-              "kind": "local-file"
-            },
-            {
-              "label": "專題與升學流程補研",
-              "href": "../../../holiday-lab/reports/guide-capstone-study-research-20261023/REPORT.md",
-              "kind": "local-file"
-            },
-            {
-              "label": "24譯值獨立驗收",
-              "href": "../../../holiday-lab/translation-review/official-guide-names-independent-20261023/REPORT.md",
-              "kind": "local-file"
-            }
-          ]
-        },
-        {
-          "built": "built",
-          "tool": "bounded",
-          "user": "pending",
-          "id": "fonts",
-          "title": "字型、換行與手機排版",
-          "workflow": "waiting",
-          "headline": "本輪遊戲保留原字型，已查換行與本機字表覆蓋。",
-          "proof_summary": "84組遊戲情境、36組樣式，本機候選字型堆疊字表缺字0；全站母語審校仍另列。",
-          "limitation": "字表堆疊覆蓋與CDP抽樣互補，未證明每個字元的實際fallback；實體裝置與全站長文仍待確認。 本輪只修主導覽，未重啟舊大量驗收。",
-          "source_files": [
-            "holiday-lab/translation-review/guide-terms-rendered11/summary.json",
-            "holiday-lab/STATUS.md",
-            "holiday-lab/reports/ui-polish-20261023/audit/font-coverage.json"
-          ],
-          "links": [
-            {
-              "label": "本輪遊戲字型報告",
-              "href": "../../../holiday-lab/reports/ui-polish-20261023/audit/font-README.md",
-              "kind": "local-file"
-            },
-            {
-              "label": "字型與排版證據",
-              "href": "../../../holiday-lab/translation-review/guide-terms-rendered11/REPORT.md",
-              "kind": "local-file"
-            },
-            {
-              "label": "窄版英文代表圖",
-              "href": "../../../holiday-lab/translation-review/guide-terms-rendered11/office-link-en320.png",
-              "kind": "local-file"
-            }
-          ]
-        },
-        {
-          "built": "built",
-          "tool": "bounded",
-          "user": "pending",
-          "id": "faculty",
-          "title": "教師照片與師資卡片",
-          "workflow": "available",
-          "headline": "照片頭高、眼線與遮擋已整理；效果等你看。",
-          "proof_summary": "6組三語／雙寬場景、78次原照回應比對；保留原圖。",
-          "limitation": "工具幾何與代理檢視已做，使用者尚未確認照片效果。",
-          "source_files": [
-            "holiday-lab/reports/faculty-portrait/browser.json",
-            "holiday-lab/reports/floating-cta-result.json"
-          ],
-          "links": [
-            {
-              "label": "桌機師資拼版",
-              "href": "../../../holiday-lab/reports/faculty-portrait/all-13-desktop-contact-sheet.png",
-              "kind": "local-file"
-            },
-            {
-              "label": "手機拼版",
-              "href": "../../../holiday-lab/reports/faculty-portrait/all-13-mobile-ja-contact-sheet.png",
-              "kind": "local-file"
-            },
-            {
-              "label": "照片報告",
-              "href": "../../../holiday-lab/reports/faculty-portrait/REPORT.md",
-              "kind": "local-file"
-            }
-          ]
-        },
-        {
-          "built": "built",
-          "tool": "gate_no",
-          "user": "pending",
-          "id": "ui",
-          "title": "遊戲完整UI驗收",
-          "workflow": "waiting",
-          "headline": "本輪遊戲另有實測；整包發布尚未驗完。",
-          "proof_summary": "固定08來源的歷史證據覆蓋：case 2046／2076，尚缺30；這不是本輪新build完整通過率，也不是整體完成率。",
-          "limitation": "歷史缺30項是最長動態字串證據缺口，並非30個畫面bug。勞動節暫緩；不發布新遊戲包。 本輪只修主導覽，未重啟舊大量驗收。",
-          "source_files": [
-            "holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json",
-            "holiday-lab/STATUS.md"
-          ],
-          "links": [
-            {
-              "label": "QA缺口索引",
-              "href": "../../../holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json",
-              "kind": "local-file"
-            },
-            {
-              "label": "最新階段紀錄",
-              "href": "../../../holiday-lab/STATUS.md",
-              "kind": "local-file"
-            }
-          ]
-        },
-        {
-          "built": "built",
-          "tool": "bounded",
-          "user": "pending",
-          "id": "ui-polish",
-          "title": "本輪遊戲UI與換行",
-          "workflow": "available",
-          "headline": "14款非勞動節遊戲，三語雙寬84/84通過。",
-          "proof_summary": "1416個真實畫面狀態、420張截圖；溢位與孤字末行0。原字型與字級保留，英文抵免搜尋已修正。",
-          "limitation": "限本輪所選核心流程；完整發布合約、實體手機與使用者美術確認仍獨立保留。",
-          "source_files": [
-            "holiday-lab/reports/ui-polish-20261023/independent/runs/2026-10-23T08-07-41-848Z/result.json"
-          ],
-          "links": [
-            {
-              "label": "試玩修整版",
-              "href": "/holiday-lab/",
-              "kind": "server"
-            },
-            {
-              "label": "本輪驗收報告",
-              "href": "../../../holiday-lab/reports/ui-polish-20261023/REPORT.md",
-              "kind": "local-file"
-            },
-            {
-              "label": "小改版細節思考",
-              "href": "../../../holiday-lab/reports/ui-polish-20261023/audit/design-notes.md",
-              "kind": "local-file"
-            }
-          ]
-        },
-        {
-          "built": "built",
-          "tool": "bounded",
-          "user": "pending",
-          "id": "hero-integrated",
-          "title": "學生作品首頁審閱",
-          "workflow": "waiting",
-          "headline": "小颯作品保留在首屏，遊戲試玩已移到頁尾前。",
-          "proof_summary": "前版限定範圍收據：9組三語手機／桌機首頁與2條嵌入玩法通過；不載節日插畫或生成UI背景。 本輪頁首作品／頁底試玩複驗6組、24個作品狀態、36PNG，署名、完整原圖及來源連結通過。",
-          "limitation": "使用者已選：首頁不用AI插畫，採學生作品＋小型互動入口；遊戲素材分批調整，先看一款示範。這是方向確認，尚非畫面確認。 小型favicon沿用既有生成播放圖示，沒有宣稱所有素材零AI。 此項不等於8872全站驗收。",
-          "source_files": [
-            "holiday-lab/reports/integrated-review-20261023/home/runs/2026-10-23T10-55-01-190Z/result.json",
-            "data/news.json",
-            "holiday-lab/reports/games-bottom-20261023/green-r2/result.json",
-            "holiday-lab/reports/games-bottom-20261023/green-r2/receipt.json"
-          ],
-          "links": [
-            {
-              "label": "看本機整合稿",
-              "href": "/",
-              "kind": "server"
-            },
-            {
-              "label": "獨立驗收報告",
-              "href": "../../../holiday-lab/reports/integrated-review-20261023/REPORT.md",
-              "kind": "local-file"
-            },
-            {
-              "label": "學生作品實作說明",
-              "href": "../../../holiday-lab/reports/hero-release-20261023/implementation/STUDENT-REPORT.md",
-              "kind": "local-file"
-            },
-            {
-              "label": "圖像來源與替換盤點",
-              "href": "../../../holiday-lab/reports/hero-release-20261023/root/visual-origin-inventory.json",
-              "kind": "local-file"
-            },
-            {
-              "label": "小颯新版短驗收",
-              "href": "../../../holiday-lab/reports/shutdown-20261023/independent/REPORT.md",
-              "kind": "local-file"
-            }
-          ]
-        },
-        {
-          "built": "built",
-          "tool": "bounded",
-          "user": "pending",
-          "id": "student-curation",
-          "title": "學生作品策展示範",
-          "workflow": "waiting",
-          "headline": "先用一款小型策展互動，看學生作品如何與試玩結合。",
-          "proof_summary": "9組三語／三寬真操作；完整海報、原署名、展位檢查、鍵盤完成與重設均有收據。 追加9組手機三語網路故障／重試／載入中換語言，15張原圖通過。",
-          "limitation": "獨立示範不代表既有14款美術已全替換；學生作品製作流程與新增公開改編授權沒有逐件查證。待你審閱後才決定是否擴大。",
-          "source_files": [
-            "holiday-lab/reports/integrated-review-20261023/home/runs/2026-10-23T10-55-01-190Z/result.json",
-            "data/news.json",
-            "holiday-lab/reports/integrated-review-20261023/root/recovery-runs/2026-10-23T11-07-11-903Z/result.json"
-          ],
-          "links": [
-            {
-              "label": "試做小型策展",
-              "href": "/holiday-lab/student-curation.html?lang=zh",
-              "kind": "server"
-            },
-            {
-              "label": "示範實作報告",
-              "href": "../../../holiday-lab/reports/hero-release-20261023/student-demo/REPORT.md",
-              "kind": "local-file"
-            },
-            {
-              "label": "獨立驗收",
-              "href": "../../../holiday-lab/reports/integrated-review-20261023/REPORT.md",
-              "kind": "local-file"
-            },
-            {
-              "label": "載入與重試驗收",
-              "href": "../../../holiday-lab/reports/integrated-review-20261023/REPORT.md",
-              "kind": "local-file"
-            }
-          ]
-        },
-        {
-          "built": "built",
-          "tool": "bounded",
-          "user": "pending",
-          "id": "release-preflight",
-          "title": "本輪發布補驗",
-          "workflow": "waiting",
-          "headline": "12項通過、1項待真實可見狀態；尚未發布。",
-          "proof_summary": "前版限定範圍收據：360檔HTTP與來源SHA一致；鍵盤、音效停止、卸載、減動、斷外網與故障恢復已補測。",
-          "limitation": "真背景分頁hidden仍未取得；全2076合約、勞動節暫緩138案例、24個非勞動最長動態文字、實體裝置與美術確認仍保留。 此項不等於8872全站驗收。",
-          "source_files": [
-            "holiday-lab/reports/integrated-review-20261023/release/runs/2026-10-23T10-55-01-135Z/result.json"
-          ],
-          "links": [
-            {
-              "label": "發布逐條驗收",
-              "href": "../../../holiday-lab/reports/integrated-review-20261023/REPORT.md",
-              "kind": "local-file"
-            }
-          ]
-        },
-        {
-          "built": "built",
-          "tool": "bounded",
-          "user": "pending",
-          "id": "qingming",
-          "title": "清明試玩與本輪驗證",
-          "workflow": "available",
-          "headline": "三語雙寬核心流程已驗證，圖示修復持續正常。",
-          "proof_summary": "清明六組核心流程已隨本輪03版重新驗收；舊404修復收據保持原範圍，不移轉舊版UI通過。",
-          "limitation": "舊失敗與新診斷分開；沒有收據不手填pass，也不升格完整UI。 來源域準備已獨立審查，原生聯合布局／全部文字墨跡上界仍未證，不等於error-longest通過。",
-          "source_files": [
-            "holiday-lab/reports/ui-polish-20261023/independent/runs/2026-10-23T08-07-41-848Z/result.json",
-            "holiday-lab/reports/qingming-release-20261023/independent/REPORT.md"
-          ],
-          "links": [
-            {
-              "label": "試玩清明",
-              "href": "/holiday-lab/?game=qingming&lang=zh",
-              "kind": "server"
-            },
-            {
-              "label": "本輪獨立驗收",
-              "href": "../../../holiday-lab/reports/ui-polish-20261023/independent/REPORT.md",
-              "kind": "local-file"
-            },
-            {
-              "label": "來源域準備與原生缺口",
-              "href": "../../../holiday-lab/reports/qingming-release-20261023/independent/REPORT.md",
-              "kind": "local-file"
-            }
-          ]
-        },
-        {
-          "built": "preserved",
-          "tool": "unknown",
-          "user": "pending",
-          "id": "labor",
-          "title": "勞動節",
-          "workflow": "paused",
-          "headline": "勞動節先不用；只保留既有成果，本輪不啟動續接。",
-          "proof_summary": "既有成功與失敗資料保留；本輪不啟動新量測或續接。",
-          "limitation": "暫緩由本輪使用者指示決定，不把準備工具寫成遊戲驗收完成。",
-          "source_files": [
-            "holiday-lab/dashboard/progress-policy.json",
-            "holiday-lab/STATUS.md"
-          ],
-          "links": [
-            {
-              "label": "已保全的紀錄",
-              "href": "../../../holiday-lab/STATUS.md",
-              "kind": "local-file"
-            }
-          ]
-        },
-        {
-          "built": "built",
-          "tool": "bounded",
-          "user": "pending",
-          "id": "national",
-          "title": "國慶遊戲",
-          "workflow": "available",
-          "headline": "本輪核心UI已納入三語雙寬驗收。",
-          "proof_summary": "國慶核心UI已納入本輪三語雙寬驗收；歷史最長動態字串完整證明另列，不續跑舊巨量批次。",
-          "limitation": "核心流程實測與最長動態字串的完整證明分開；不把定點驗收當成全部組合已驗完。",
-          "source_files": [
-            "holiday-lab/dashboard/progress-policy.json",
-            "holiday-lab/STATUS.md"
-          ],
-          "links": [
-            {
-              "label": "國慶補證說明",
-              "href": "../../../holiday-lab/layout-qa/national-independent-review-20261023/REPORT.md",
-              "kind": "local-file"
-            }
-          ]
-        },
-        {
-          "built": "prepared",
-          "tool": "unknown",
-          "user": "pending",
-          "id": "webgl",
-          "title": "TF-BASE學生作品／WebGL",
-          "workflow": "waiting",
-          "headline": "等來源與實際Build回傳，目前不能說已可試玩。",
-          "proof_summary": "最新回查 2026-10-23 13:30:21 UTC（UTC）：指定交接夾5份工單／腳本，未見兩款WebGL。",
-          "limitation": "只查既有交接夾；另有舊Flora來源候選，未驗身分與完整性；沒有下載大型檔、啟Unity或重送工單。",
-          "source_files": [
-            "holiday-lab/student-webgl/queued-inspection.json",
-            "holiday-lab/student-webgl/REPORT.md",
-            "holiday-lab/reports/comprehensive-followup-20261023/root/webgl-source-recheck.json",
-            "holiday-lab/reports/tfbase-shutdown-check-20261023/result.json",
-            "holiday-lab/reports/nav-language-desktop-20261023/webgl-recheck.json"
-          ],
-          "links": [
-            {
-              "label": "TF-BASE工單與缺件",
-              "href": "../../../holiday-lab/student-webgl/REPORT.md",
-              "kind": "local-file"
-            },
-            {
-              "label": "本次回查紀錄",
-              "href": "../../../holiday-lab/reports/comprehensive-followup-20261023/REPORT.md",
-              "kind": "local-file"
-            },
-            {
-              "label": "關機前最新回查",
-              "href": "../../../holiday-lab/reports/tfbase-shutdown-check-20261023/REPORT.md",
-              "kind": "local-file"
-            },
-            {
-              "label": "本輪WebGL回查",
-              "href": "../../../holiday-lab/reports/nav-language-desktop-20261023/REPORT.md",
-              "kind": "local-file"
-            }
-          ]
-        },
-        {
-          "built": "built",
-          "tool": "unknown",
-          "user": "pending",
-          "id": "review",
-          "title": "等你確認的畫面與內容",
-          "workflow": "waiting",
-          "headline": "8873頁底試玩版可看，尚未發布。",
-          "proof_summary": "實體手機、真人試玩與母語逐句審閱未全完成。",
-          "limitation": "資料已建、工具驗證與使用者確認分開；沒有把代理通過當成你的認可。",
-          "source_files": [
-            "holiday-lab/dashboard/progress-policy.json",
-            "holiday-lab/STATUS.md"
-          ],
-          "links": [
-            {
-              "label": "可看的改版比較",
-              "href": "../../../holiday-lab/redesign/style-options/index.html",
-              "kind": "local-file"
-            },
-            {
-              "label": "目前限制",
-              "href": "../../../holiday-lab/STATUS.md",
-              "kind": "local-file"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "ui_scope",
-      "title": "固定08來源的歷史證據覆蓋",
-      "description": "固定08歷史來源，不能移轉為本輪新build的完整通過率。按合約逐case彙總。缺項仍保留；未清除原method flags或更動官方layout-report。",
-      "row_key": "id",
-      "columns": [
-        {
-          "key": "title",
-          "title": "範圍",
-          "type": "text"
-        },
-        {
-          "key": "covered",
-          "title": "已有來源case",
-          "type": "number"
-        },
-        {
-          "key": "required",
-          "title": "合約case",
-          "type": "number"
-        },
-        {
-          "key": "missing",
-          "title": "缺項",
-          "type": "number"
-        },
-        {
-          "key": "certification",
-          "title": "完整UI驗收",
-          "type": "tag"
-        }
-      ],
-      "detail_fields": [
-        {
-          "key": "missing_cases",
-          "title": "未覆蓋case（語言與尺寸）",
-          "type": "list",
-          "item_type": "code"
-        },
-        {
-          "key": "source",
-          "title": "權威索引",
-          "type": "text"
-        },
-        {
-          "key": "scope",
-          "title": "判讀",
-          "type": "text"
-        }
-      ],
-      "search_fields": [
-        "title",
-        "id",
-        "missing_cases",
-        "scope"
-      ],
-      "rows": [
-        {
-          "id": "archive",
-          "title": "archive",
-          "required": 6,
-          "covered": 6,
-          "missing": 0,
-          "certification": "unknown",
-          "missing_cases": [],
-          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json",
-          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
-        },
-        {
-          "id": "new-year",
-          "title": "明年的第一格",
-          "required": 138,
-          "covered": 138,
-          "missing": 0,
-          "certification": "unknown",
-          "missing_cases": [],
-          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json",
-          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
-        },
-        {
-          "id": "lunar-new-year",
-          "title": "年獸表演課",
-          "required": 138,
-          "covered": 138,
-          "missing": 0,
-          "certification": "unknown",
-          "missing_cases": [],
-          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json",
-          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
-        },
-        {
-          "id": "lantern",
-          "title": "燈影借位",
-          "required": 138,
-          "covered": 138,
-          "missing": 0,
-          "certification": "unknown",
-          "missing_cases": [],
-          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json",
-          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
-        },
-        {
-          "id": "children",
-          "title": "玩具聲音偵探",
-          "required": 138,
-          "covered": 138,
-          "missing": 0,
-          "certification": "unknown",
-          "missing_cases": [],
-          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json",
-          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
-        },
-        {
-          "id": "dragon-boat",
-          "title": "粽葉折疊局",
-          "required": 138,
-          "covered": 138,
-          "missing": 0,
-          "certification": "unknown",
-          "missing_cases": [],
-          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json",
-          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
-        },
-        {
-          "id": "mid-autumn",
-          "title": "月光剪接台",
-          "required": 138,
-          "covered": 132,
-          "missing": 6,
-          "certification": "unknown",
-          "missing_cases": [
-            "mid-autumn/zh/game/error-longest · 320×900",
-            "mid-autumn/en/game/error-longest · 320×900",
-            "mid-autumn/ja/game/error-longest · 320×900",
-            "mid-autumn/zh/game/error-longest · 1440×1000",
-            "mid-autumn/en/game/error-longest · 1440×1000",
-            "mid-autumn/ja/game/error-longest · 1440×1000"
-          ],
-          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json",
-          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
-        },
-        {
-          "id": "teachers",
-          "title": "老師，這格謝謝你",
-          "required": 138,
-          "covered": 138,
-          "missing": 0,
-          "certification": "unknown",
-          "missing_cases": [],
-          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json",
-          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
-        },
-        {
-          "id": "national-day",
-          "title": "島嶼場景工作室",
-          "required": 138,
-          "covered": 132,
-          "missing": 6,
-          "certification": "unknown",
-          "missing_cases": [
-            "national-day/zh/game/error-longest · 320×900",
-            "national-day/en/game/error-longest · 320×900",
-            "national-day/ja/game/error-longest · 320×900",
-            "national-day/zh/game/error-longest · 1440×1000",
-            "national-day/en/game/error-longest · 1440×1000",
-            "national-day/ja/game/error-longest · 1440×1000"
-          ],
-          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json",
-          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
-        },
-        {
-          "id": "semester",
-          "title": "新生第一張地圖",
-          "required": 138,
-          "covered": 132,
-          "missing": 6,
-          "certification": "unknown",
-          "missing_cases": [
-            "semester/zh/game/error-longest · 320×900",
-            "semester/en/game/error-longest · 320×900",
-            "semester/ja/game/error-longest · 320×900",
-            "semester/zh/game/error-longest · 1440×1000",
-            "semester/en/game/error-longest · 1440×1000",
-            "semester/ja/game/error-longest · 1440×1000"
-          ],
-          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json",
-          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
-        },
-        {
-          "id": "exhibition",
-          "title": "畢展策展接力",
-          "required": 138,
-          "covered": 138,
-          "missing": 0,
-          "certification": "unknown",
-          "missing_cases": [],
-          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json",
-          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
-        },
-        {
-          "id": "peace-memory",
-          "title": "把話聽完整",
-          "required": 138,
-          "covered": 138,
-          "missing": 0,
-          "certification": "unknown",
-          "missing_cases": [],
-          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json",
-          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
-        },
-        {
-          "id": "qingming",
-          "title": "紙鳶借風",
-          "required": 138,
-          "covered": 132,
-          "missing": 6,
-          "certification": "unknown",
-          "missing_cases": [
-            "qingming/zh/game/error-longest · 320×900",
-            "qingming/en/game/error-longest · 320×900",
-            "qingming/ja/game/error-longest · 320×900",
-            "qingming/zh/game/error-longest · 1440×1000",
-            "qingming/en/game/error-longest · 1440×1000",
-            "qingming/ja/game/error-longest · 1440×1000"
-          ],
-          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json",
-          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
-        },
-        {
-          "id": "labor",
-          "title": "動畫接力班",
-          "required": 138,
-          "covered": 132,
-          "missing": 6,
-          "certification": "unknown",
-          "missing_cases": [
-            "labor/zh/game/error-longest · 320×900",
-            "labor/en/game/error-longest · 320×900",
-            "labor/ja/game/error-longest · 320×900",
-            "labor/zh/game/error-longest · 1440×1000",
-            "labor/en/game/error-longest · 1440×1000",
-            "labor/ja/game/error-longest · 1440×1000"
-          ],
-          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json",
-          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
-        },
-        {
-          "id": "retrocession",
-          "title": "時光對照室",
-          "required": 138,
-          "covered": 138,
-          "missing": 0,
-          "certification": "unknown",
-          "missing_cases": [],
-          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json",
-          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
-        },
-        {
-          "id": "constitution",
-          "title": "同一頁，都看懂",
-          "required": 138,
-          "covered": 138,
-          "missing": 0,
-          "certification": "unknown",
-          "missing_cases": [],
-          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json",
-          "scope": "合約case覆蓋；非文字安全區全通過或使用者確認"
-        }
-      ]
-    },
-    {
-      "id": "ui_gate",
-      "title": "整合證據與完整UI判定",
-      "row_key": "id",
-      "columns": [
-        {
-          "key": "title",
-          "title": "檢查",
+          "key": "disposition",
+          "title": "處理",
           "type": "text"
         },
         {
           "key": "result",
-          "title": "結果",
+          "title": "驗收",
+          "type": "text"
+        },
+        {
+          "key": "data",
+          "title": "資料",
           "type": "tag"
-        }
-      ],
-      "detail_fields": [
-        {
-          "key": "source",
-          "title": "來源",
-          "type": "text"
-        },
-        {
-          "key": "scope",
-          "title": "範圍",
-          "type": "text"
-        }
-      ],
-      "search_fields": [
-        "title",
-        "scope",
-        "id"
-      ],
-      "rows": [
-        {
-          "id": "baseline",
-          "title": "原有覆蓋與來源綁定保留",
-          "result": "pass",
-          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v4/baseline-comparison.json",
-          "scope": "僅驗證baseline保留，非全UI通過。"
-        },
-        {
-          "id": "plan",
-          "title": "選取集合與完整節點指標核對",
-          "result": "pass",
-          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v4/plan-consistency.json",
-          "scope": "僅驗證組裝計畫與來源，官方R0保持不變。"
-        },
-        {
-          "id": "global",
-          "title": "完整UI驗收",
-          "result": "gate_no",
-          "source": "holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json",
-          "scope": "仍有缺項及未閉合的method義務；不可發布新遊戲包。"
-        }
-      ]
-    },
-    {
-      "id": "games",
-      "title": "15款創作試玩",
-      "row_key": "id",
-      "columns": [
-        {
-          "key": "title",
-          "title": "遊戲",
-          "type": "text"
-        },
-        {
-          "key": "built",
-          "title": "資料已建",
-          "type": "tag"
-        },
-        {
-          "key": "cg",
-          "title": "開場CG",
-          "type": "number"
         },
         {
           "key": "tool",
-          "title": "通關",
+          "title": "工具",
           "type": "tag"
         },
         {
           "key": "user",
-          "title": "使用者確認",
+          "title": "使用者",
           "type": "tag"
         }
       ],
       "detail_fields": [
         {
-          "key": "branch",
-          "title": "獨立分支",
-          "type": "code"
-        },
-        {
-          "key": "report",
-          "title": "逐款報告",
-          "type": "text"
-        }
-      ],
-      "search_fields": [
-        "title",
-        "id",
-        "branch"
-      ],
-      "rows": [
-        {
-          "id": "new-year",
-          "title": "明年的第一格",
-          "built": "built",
-          "cg": 5,
-          "tool": "pass",
-          "user": "pending",
-          "branch": "codex/hg-new-year",
-          "report": "holiday-lab/reports/ui-polish-20261023/independent/runs/2026-10-23T08-07-41-848Z/result.json"
-        },
-        {
-          "id": "lunar-new-year",
-          "title": "年獸表演課",
-          "built": "built",
-          "cg": 5,
-          "tool": "pass",
-          "user": "pending",
-          "branch": "codex/hg-lunar-new-year",
-          "report": "holiday-lab/reports/ui-polish-20261023/independent/runs/2026-10-23T08-07-41-848Z/result.json"
-        },
-        {
-          "id": "lantern",
-          "title": "燈影借位",
-          "built": "built",
-          "cg": 5,
-          "tool": "pass",
-          "user": "pending",
-          "branch": "codex/hg-lantern",
-          "report": "holiday-lab/reports/ui-polish-20261023/independent/runs/2026-10-23T08-07-41-848Z/result.json"
-        },
-        {
-          "id": "children",
-          "title": "玩具聲音偵探",
-          "built": "built",
-          "cg": 5,
-          "tool": "pass",
-          "user": "pending",
-          "branch": "codex/hg-children",
-          "report": "holiday-lab/reports/ui-polish-20261023/independent/runs/2026-10-23T08-07-41-848Z/result.json"
-        },
-        {
-          "id": "dragon-boat",
-          "title": "粽葉折疊局",
-          "built": "built",
-          "cg": 5,
-          "tool": "pass",
-          "user": "pending",
-          "branch": "codex/hg-dragon-boat",
-          "report": "holiday-lab/reports/ui-polish-20261023/independent/runs/2026-10-23T08-07-41-848Z/result.json"
-        },
-        {
-          "id": "mid-autumn",
-          "title": "月光剪接台",
-          "built": "built",
-          "cg": 5,
-          "tool": "pass",
-          "user": "pending",
-          "branch": "codex/hg-mid-autumn",
-          "report": "holiday-lab/reports/ui-polish-20261023/independent/runs/2026-10-23T08-07-41-848Z/result.json"
-        },
-        {
-          "id": "teachers",
-          "title": "老師，這格謝謝你",
-          "built": "built",
-          "cg": 5,
-          "tool": "pass",
-          "user": "pending",
-          "branch": "codex/hg-teachers",
-          "report": "holiday-lab/reports/ui-polish-20261023/independent/runs/2026-10-23T08-07-41-848Z/result.json"
-        },
-        {
-          "id": "national-day",
-          "title": "島嶼場景工作室",
-          "built": "built",
-          "cg": 5,
-          "tool": "pass",
-          "user": "pending",
-          "branch": "codex/hg-national-day",
-          "report": "holiday-lab/reports/ui-polish-20261023/independent/runs/2026-10-23T08-07-41-848Z/result.json"
-        },
-        {
-          "id": "semester",
-          "title": "新生第一張地圖",
-          "built": "built",
-          "cg": 5,
-          "tool": "pass",
-          "user": "pending",
-          "branch": "codex/hg-semester",
-          "report": "holiday-lab/reports/ui-polish-20261023/independent/runs/2026-10-23T08-07-41-848Z/result.json"
-        },
-        {
-          "id": "exhibition",
-          "title": "畢展策展接力",
-          "built": "built",
-          "cg": 5,
-          "tool": "pass",
-          "user": "pending",
-          "branch": "codex/hg-exhibition",
-          "report": "holiday-lab/reports/ui-polish-20261023/independent/runs/2026-10-23T08-07-41-848Z/result.json"
-        },
-        {
-          "id": "peace-memory",
-          "title": "把話聽完整",
-          "built": "built",
-          "cg": 5,
-          "tool": "pass",
-          "user": "pending",
-          "branch": "codex/hg-peace-memory",
-          "report": "holiday-lab/reports/ui-polish-20261023/independent/runs/2026-10-23T08-07-41-848Z/result.json"
-        },
-        {
-          "id": "qingming",
-          "title": "紙鳶借風",
-          "built": "built",
-          "cg": 5,
-          "tool": "pass",
-          "user": "pending",
-          "branch": "codex/hg-qingming",
-          "report": "holiday-lab/reports/ui-polish-20261023/independent/runs/2026-10-23T08-07-41-848Z/result.json"
-        },
-        {
-          "id": "labor",
-          "title": "動畫接力班",
-          "built": "built",
-          "cg": 5,
-          "tool": "pass",
-          "user": "pending",
-          "branch": "codex/hg-labor",
-          "report": "holiday-lab/extra-qa/runs/2026-10-22T23-47-55-037Z/results.json"
-        },
-        {
-          "id": "retrocession",
-          "title": "時光對照室",
-          "built": "built",
-          "cg": 5,
-          "tool": "pass",
-          "user": "pending",
-          "branch": "codex/hg-retrocession",
-          "report": "holiday-lab/reports/ui-polish-20261023/independent/runs/2026-10-23T08-07-41-848Z/result.json"
-        },
-        {
-          "id": "constitution",
-          "title": "同一頁，都看懂",
-          "built": "built",
-          "cg": 5,
-          "tool": "pass",
-          "user": "pending",
-          "branch": "codex/hg-constitution",
-          "report": "holiday-lab/reports/ui-polish-20261023/independent/runs/2026-10-23T08-07-41-848Z/result.json"
-        }
-      ]
-    },
-    {
-      "id": "shell",
-      "title": "最新外框驗收（歷史原始exit 1，不能稱本輪全通過）",
-      "columns": [
-        {
-          "key": "name",
-          "title": "檢查",
+          "key": "reason",
+          "title": "結果與限制",
           "type": "text"
         },
-        {
-          "key": "result",
-          "title": "結果",
-          "type": "tag"
-        }
-      ],
-      "detail_fields": [
         {
           "key": "evidence",
-          "title": "證據／限制",
+          "title": "實際證據",
           "type": "text"
         }
       ],
       "search_fields": [
-        "name",
+        "id",
+        "title",
+        "disposition",
+        "result",
+        "reason",
         "evidence"
       ],
       "rows": [
         {
-          "name": "homepage-zh",
-          "result": "pass",
-          "evidence": "{\"sections\":[\"hero\",\"news\",\"about\",\"works\",\"faculty\",\"labs\",\"join\",\"contact\"],\"guide\":{\"cards\":15,\"details\":47},\"homepageEntryPixels\":{\"rectangles\":3,\"contrast\":[{\"id\":\"festival-select\",\"ratio\":15.23,\"minimum\":4.5},{\"id\":\"festival-start\",\"ratio\":15.21,\"minimum\":4.5},{\"id\":\"festival-button\",\"ratio\":15.21,\"minimum\":4.5}],\"issues\":[]},\"lazy\":0,\"open_close_cycles\":4,\"focus_restored\":true,\"listeners\":{\"initialListeners\":{\"window:test\":0,\"document:selectionchange\":1,\"window:hashchange\":2,\"document:click\":2,\"window:message\":1,\"window:__playwright_global_listeners_check__\":1,\"window:mousemove\":1,\"window:pointerdown\":1,\"window:pointerup\":1,\"window:touchstart\":1,\"window:touchend\":1,\"window:touchcancel\":1,\"window:mousedown\":1,\"window:mouseup\":1,\"window:click\":1,\"window:auxclick\":1,\"window:dblclick\":1,\"window:contextmenu\":1},\"finalListeners\":{\"window:test\":0,\"document:selectionchange\":1,\"window:hashchange\":2,\"document:click\":2,\"window:message\":1,\"window:__playwright_global_listeners_check__\":1,\"window:mousemove\":1,\"window:pointerdown\":1,\"window:pointerup\":1,\"window:touchstart\":1,\"window:touchend\":1,\"window:touchcancel\":1,\"window:mousedown\":1,\"window:mouseup\":1,\"window:click\":1,\"window:auxclick\":1,\"window:dblclick\":1,\"window:contextmenu\":1,\"document:keydown\":0}},\"consoleErrors\":[]}"
-        },
-        {
-          "name": "homepage-en",
-          "result": "pass",
-          "evidence": "{\"sections\":[\"hero\",\"news\",\"about\",\"works\",\"faculty\",\"labs\",\"join\",\"contact\"],\"guide\":{\"cards\":15,\"details\":47},\"homepageEntryPixels\":{\"rectangles\":3,\"contrast\":[{\"id\":\"festival-select\",\"ratio\":15.23,\"minimum\":4.5},{\"id\":\"festival-start\",\"ratio\":15.21,\"minimum\":4.5},{\"id\":\"festival-button\",\"ratio\":15.21,\"minimum\":4.5}],\"issues\":[]},\"lazy\":0,\"open_close_cycles\":4,\"focus_restored\":true,\"listeners\":{\"initialListeners\":{\"window:test\":0,\"document:selectionchange\":1,\"window:hashchange\":2,\"document:click\":2,\"window:message\":1,\"window:__playwright_global_listeners_check__\":1,\"window:mousemove\":1,\"window:pointerdown\":1,\"window:pointerup\":1,\"window:touchstart\":1,\"window:touchend\":1,\"window:touchcancel\":1,\"window:mousedown\":1,\"window:mouseup\":1,\"window:click\":1,\"window:auxclick\":1,\"window:dblclick\":1,\"window:contextmenu\":1},\"finalListeners\":{\"window:test\":0,\"document:selectionchange\":1,\"window:hashchange\":2,\"document:click\":2,\"window:message\":1,\"window:__playwright_global_listeners_check__\":1,\"window:mousemove\":1,\"window:pointerdown\":1,\"window:pointerup\":1,\"window:touchstart\":1,\"window:touchend\":1,\"window:touchcancel\":1,\"window:mousedown\":1,\"window:mouseup\":1,\"window:click\":1,\"window:auxclick\":1,\"window:dblclick\":1,\"window:contextmenu\":1,\"document:keydown\":0}},\"consoleErrors\":[]}"
-        },
-        {
-          "name": "homepage-ja",
-          "result": "pass",
-          "evidence": "{\"sections\":[\"hero\",\"news\",\"about\",\"works\",\"faculty\",\"labs\",\"join\",\"contact\"],\"guide\":{\"cards\":15,\"details\":47},\"homepageEntryPixels\":{\"rectangles\":3,\"contrast\":[{\"id\":\"festival-select\",\"ratio\":15.23,\"minimum\":4.5},{\"id\":\"festival-start\",\"ratio\":15.21,\"minimum\":4.5},{\"id\":\"festival-button\",\"ratio\":15.21,\"minimum\":4.5}],\"issues\":[]},\"lazy\":0,\"open_close_cycles\":4,\"focus_restored\":true,\"listeners\":{\"initialListeners\":{\"window:test\":0,\"document:selectionchange\":1,\"window:hashchange\":2,\"document:click\":2,\"window:message\":1,\"window:__playwright_global_listeners_check__\":1,\"window:mousemove\":1,\"window:pointerdown\":1,\"window:pointerup\":1,\"window:touchstart\":1,\"window:touchend\":1,\"window:touchcancel\":1,\"window:mousedown\":1,\"window:mouseup\":1,\"window:click\":1,\"window:auxclick\":1,\"window:dblclick\":1,\"window:contextmenu\":1},\"finalListeners\":{\"window:test\":0,\"document:selectionchange\":1,\"window:hashchange\":2,\"document:click\":2,\"window:message\":1,\"window:__playwright_global_listeners_check__\":1,\"window:mousemove\":1,\"window:pointerdown\":1,\"window:pointerup\":1,\"window:touchstart\":1,\"window:touchend\":1,\"window:touchcancel\":1,\"window:mousedown\":1,\"window:mouseup\":1,\"window:click\":1,\"window:auxclick\":1,\"window:dblclick\":1,\"window:contextmenu\":1,\"document:keydown\":0}},\"consoleErrors\":[]}"
-        },
-        {
-          "name": "iframe-escape-and-focus",
-          "result": "pass",
-          "evidence": "{\"iframeEscape\":true,\"focusRestored\":true}"
-        },
-        {
-          "name": "guide-preservation-zh",
-          "result": "pass",
-          "evidence": "{\"cards\":15,\"details\":47,\"faq\":30,\"sources\":15,\"faqExpanded\":true,\"consoleErrors\":[]}"
-        },
-        {
-          "name": "guide-preservation-en",
-          "result": "pass",
-          "evidence": "{\"cards\":15,\"details\":47,\"faq\":30,\"sources\":15,\"faqExpanded\":true,\"consoleErrors\":[]}"
-        },
-        {
-          "name": "guide-preservation-ja",
-          "result": "pass",
-          "evidence": "{\"cards\":15,\"details\":47,\"faq\":30,\"sources\":15,\"faqExpanded\":true,\"consoleErrors\":[]}"
-        },
-        {
-          "name": "button-contrast-zh-320",
-          "result": "pass",
-          "evidence": "{\"issues\":[]}"
-        },
-        {
-          "name": "text-on-border-zh-320",
-          "result": "pass",
-          "evidence": "{\"threshold\":0.004,\"issues\":[]}"
-        },
-        {
-          "name": "responsive-zh-320",
-          "result": "pass",
-          "evidence": "{\"archiveButtons\":10,\"checkedGameControls\":10,\"samples\":[{\"screen\":\"archive\",\"viewport\":320,\"issues\":[]},{\"screen\":\"new-year\",\"viewport\":320,\"issues\":[]},{\"screen\":\"lunar-new-year\",\"viewport\":320,\"issues\":[]},{\"screen\":\"lantern\",\"viewport\":320,\"issues\":[]},{\"screen\":\"children\",\"viewport\":320,\"issues\":[]},{\"screen\":\"dragon-boat\",\"viewport\":320,\"issues\":[]},{\"screen\":\"mid-autumn\",\"viewport\":320,\"issues\":[]},{\"screen\":\"teachers\",\"viewport\":320,\"issues\":[]},{\"screen\":\"national-day\",\"viewport\":320,\"issues\":[]},{\"screen\":\"semester\",\"viewport\":320,\"issues\":[]},{\"screen\":\"exhibition\",\"viewport\":320,\"issues\":[]}],\"pixelIssueCount\":0,\"contrastIssueCount\":0,\"textureIssueCount\":0,\"consoleErrors\":[]}"
-        },
-        {
-          "name": "button-contrast-zh-390",
-          "result": "pass",
-          "evidence": "{\"issues\":[]}"
-        },
-        {
-          "name": "text-on-border-zh-390",
-          "result": "pass",
-          "evidence": "{\"threshold\":0.004,\"issues\":[]}"
-        },
-        {
-          "name": "responsive-zh-390",
-          "result": "pass",
-          "evidence": "{\"archiveButtons\":10,\"checkedGameControls\":10,\"samples\":[{\"screen\":\"archive\",\"viewport\":390,\"issues\":[]},{\"screen\":\"new-year\",\"viewport\":390,\"issues\":[]},{\"screen\":\"lunar-new-year\",\"viewport\":390,\"issues\":[]},{\"screen\":\"lantern\",\"viewport\":390,\"issues\":[]},{\"screen\":\"children\",\"viewport\":390,\"issues\":[]},{\"screen\":\"dragon-boat\",\"viewport\":390,\"issues\":[]},{\"screen\":\"mid-autumn\",\"viewport\":390,\"issues\":[]},{\"screen\":\"teachers\",\"viewport\":390,\"issues\":[]},{\"screen\":\"national-day\",\"viewport\":390,\"issues\":[]},{\"screen\":\"semester\",\"viewport\":390,\"issues\":[]},{\"screen\":\"exhibition\",\"viewport\":390,\"issues\":[]}],\"pixelIssueCount\":0,\"contrastIssueCount\":0,\"textureIssueCount\":0,\"consoleErrors\":[]}"
-        },
-        {
-          "name": "button-contrast-zh-768",
-          "result": "pass",
-          "evidence": "{\"issues\":[]}"
-        },
-        {
-          "name": "text-on-border-zh-768",
-          "result": "pass",
-          "evidence": "{\"threshold\":0.004,\"issues\":[]}"
-        },
-        {
-          "name": "responsive-zh-768",
-          "result": "pass",
-          "evidence": "{\"archiveButtons\":10,\"checkedGameControls\":10,\"samples\":[{\"screen\":\"archive\",\"viewport\":768,\"issues\":[]},{\"screen\":\"new-year\",\"viewport\":768,\"issues\":[]},{\"screen\":\"lunar-new-year\",\"viewport\":768,\"issues\":[]},{\"screen\":\"lantern\",\"viewport\":768,\"issues\":[]},{\"screen\":\"children\",\"viewport\":768,\"issues\":[]},{\"screen\":\"dragon-boat\",\"viewport\":768,\"issues\":[]},{\"screen\":\"mid-autumn\",\"viewport\":768,\"issues\":[]},{\"screen\":\"teachers\",\"viewport\":768,\"issues\":[]},{\"screen\":\"national-day\",\"viewport\":768,\"issues\":[]},{\"screen\":\"semester\",\"viewport\":768,\"issues\":[]},{\"screen\":\"exhibition\",\"viewport\":768,\"issues\":[]}],\"pixelIssueCount\":0,\"contrastIssueCount\":0,\"textureIssueCount\":0,\"consoleErrors\":[]}"
-        },
-        {
-          "name": "button-contrast-zh-1440",
-          "result": "pass",
-          "evidence": "{\"issues\":[]}"
-        },
-        {
-          "name": "text-on-border-zh-1440",
-          "result": "pass",
-          "evidence": "{\"threshold\":0.004,\"issues\":[]}"
-        },
-        {
-          "name": "responsive-zh-1440",
-          "result": "pass",
-          "evidence": "{\"archiveButtons\":10,\"checkedGameControls\":10,\"samples\":[{\"screen\":\"archive\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"new-year\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"lunar-new-year\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"lantern\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"children\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"dragon-boat\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"mid-autumn\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"teachers\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"national-day\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"semester\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"exhibition\",\"viewport\":1440,\"issues\":[]}],\"pixelIssueCount\":0,\"contrastIssueCount\":0,\"textureIssueCount\":0,\"consoleErrors\":[]}"
-        },
-        {
-          "name": "button-contrast-en-320",
-          "result": "pass",
-          "evidence": "{\"issues\":[]}"
-        },
-        {
-          "name": "text-on-border-en-320",
-          "result": "pass",
-          "evidence": "{\"threshold\":0.004,\"issues\":[]}"
-        },
-        {
-          "name": "responsive-en-320",
-          "result": "pass",
-          "evidence": "{\"archiveButtons\":10,\"checkedGameControls\":10,\"samples\":[{\"screen\":\"archive\",\"viewport\":320,\"issues\":[]},{\"screen\":\"new-year\",\"viewport\":320,\"issues\":[]},{\"screen\":\"lunar-new-year\",\"viewport\":320,\"issues\":[]},{\"screen\":\"lantern\",\"viewport\":320,\"issues\":[]},{\"screen\":\"children\",\"viewport\":320,\"issues\":[]},{\"screen\":\"dragon-boat\",\"viewport\":320,\"issues\":[]},{\"screen\":\"mid-autumn\",\"viewport\":320,\"issues\":[]},{\"screen\":\"teachers\",\"viewport\":320,\"issues\":[]},{\"screen\":\"national-day\",\"viewport\":320,\"issues\":[]},{\"screen\":\"semester\",\"viewport\":320,\"issues\":[]},{\"screen\":\"exhibition\",\"viewport\":320,\"issues\":[]}],\"pixelIssueCount\":0,\"contrastIssueCount\":0,\"textureIssueCount\":0,\"consoleErrors\":[]}"
-        },
-        {
-          "name": "button-contrast-en-390",
-          "result": "pass",
-          "evidence": "{\"issues\":[]}"
-        },
-        {
-          "name": "text-on-border-en-390",
-          "result": "pass",
-          "evidence": "{\"threshold\":0.004,\"issues\":[]}"
-        },
-        {
-          "name": "responsive-en-390",
-          "result": "pass",
-          "evidence": "{\"archiveButtons\":10,\"checkedGameControls\":10,\"samples\":[{\"screen\":\"archive\",\"viewport\":390,\"issues\":[]},{\"screen\":\"new-year\",\"viewport\":390,\"issues\":[]},{\"screen\":\"lunar-new-year\",\"viewport\":390,\"issues\":[]},{\"screen\":\"lantern\",\"viewport\":390,\"issues\":[]},{\"screen\":\"children\",\"viewport\":390,\"issues\":[]},{\"screen\":\"dragon-boat\",\"viewport\":390,\"issues\":[]},{\"screen\":\"mid-autumn\",\"viewport\":390,\"issues\":[]},{\"screen\":\"teachers\",\"viewport\":390,\"issues\":[]},{\"screen\":\"national-day\",\"viewport\":390,\"issues\":[]},{\"screen\":\"semester\",\"viewport\":390,\"issues\":[]},{\"screen\":\"exhibition\",\"viewport\":390,\"issues\":[]}],\"pixelIssueCount\":0,\"contrastIssueCount\":0,\"textureIssueCount\":0,\"consoleErrors\":[]}"
-        },
-        {
-          "name": "button-contrast-en-768",
-          "result": "pass",
-          "evidence": "{\"issues\":[]}"
-        },
-        {
-          "name": "text-on-border-en-768",
-          "result": "pass",
-          "evidence": "{\"threshold\":0.004,\"issues\":[]}"
-        },
-        {
-          "name": "responsive-en-768",
-          "result": "pass",
-          "evidence": "{\"archiveButtons\":10,\"checkedGameControls\":10,\"samples\":[{\"screen\":\"archive\",\"viewport\":768,\"issues\":[]},{\"screen\":\"new-year\",\"viewport\":768,\"issues\":[]},{\"screen\":\"lunar-new-year\",\"viewport\":768,\"issues\":[]},{\"screen\":\"lantern\",\"viewport\":768,\"issues\":[]},{\"screen\":\"children\",\"viewport\":768,\"issues\":[]},{\"screen\":\"dragon-boat\",\"viewport\":768,\"issues\":[]},{\"screen\":\"mid-autumn\",\"viewport\":768,\"issues\":[]},{\"screen\":\"teachers\",\"viewport\":768,\"issues\":[]},{\"screen\":\"national-day\",\"viewport\":768,\"issues\":[]},{\"screen\":\"semester\",\"viewport\":768,\"issues\":[]},{\"screen\":\"exhibition\",\"viewport\":768,\"issues\":[]}],\"pixelIssueCount\":0,\"contrastIssueCount\":0,\"textureIssueCount\":0,\"consoleErrors\":[]}"
-        },
-        {
-          "name": "button-contrast-en-1440",
-          "result": "pass",
-          "evidence": "{\"issues\":[]}"
-        },
-        {
-          "name": "text-on-border-en-1440",
-          "result": "pass",
-          "evidence": "{\"threshold\":0.004,\"issues\":[]}"
-        },
-        {
-          "name": "responsive-en-1440",
-          "result": "pass",
-          "evidence": "{\"archiveButtons\":10,\"checkedGameControls\":10,\"samples\":[{\"screen\":\"archive\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"new-year\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"lunar-new-year\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"lantern\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"children\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"dragon-boat\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"mid-autumn\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"teachers\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"national-day\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"semester\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"exhibition\",\"viewport\":1440,\"issues\":[]}],\"pixelIssueCount\":0,\"contrastIssueCount\":0,\"textureIssueCount\":0,\"consoleErrors\":[]}"
-        },
-        {
-          "name": "button-contrast-ja-320",
-          "result": "pass",
-          "evidence": "{\"issues\":[]}"
-        },
-        {
-          "name": "text-on-border-ja-320",
-          "result": "pass",
-          "evidence": "{\"threshold\":0.004,\"issues\":[]}"
-        },
-        {
-          "name": "responsive-ja-320",
-          "result": "pass",
-          "evidence": "{\"archiveButtons\":10,\"checkedGameControls\":10,\"samples\":[{\"screen\":\"archive\",\"viewport\":320,\"issues\":[]},{\"screen\":\"new-year\",\"viewport\":320,\"issues\":[]},{\"screen\":\"lunar-new-year\",\"viewport\":320,\"issues\":[]},{\"screen\":\"lantern\",\"viewport\":320,\"issues\":[]},{\"screen\":\"children\",\"viewport\":320,\"issues\":[]},{\"screen\":\"dragon-boat\",\"viewport\":320,\"issues\":[]},{\"screen\":\"mid-autumn\",\"viewport\":320,\"issues\":[]},{\"screen\":\"teachers\",\"viewport\":320,\"issues\":[]},{\"screen\":\"national-day\",\"viewport\":320,\"issues\":[]},{\"screen\":\"semester\",\"viewport\":320,\"issues\":[]},{\"screen\":\"exhibition\",\"viewport\":320,\"issues\":[]}],\"pixelIssueCount\":0,\"contrastIssueCount\":0,\"textureIssueCount\":0,\"consoleErrors\":[]}"
-        },
-        {
-          "name": "button-contrast-ja-390",
-          "result": "pass",
-          "evidence": "{\"issues\":[]}"
-        },
-        {
-          "name": "text-on-border-ja-390",
-          "result": "pass",
-          "evidence": "{\"threshold\":0.004,\"issues\":[]}"
-        },
-        {
-          "name": "responsive-ja-390",
-          "result": "pass",
-          "evidence": "{\"archiveButtons\":10,\"checkedGameControls\":10,\"samples\":[{\"screen\":\"archive\",\"viewport\":390,\"issues\":[]},{\"screen\":\"new-year\",\"viewport\":390,\"issues\":[]},{\"screen\":\"lunar-new-year\",\"viewport\":390,\"issues\":[]},{\"screen\":\"lantern\",\"viewport\":390,\"issues\":[]},{\"screen\":\"children\",\"viewport\":390,\"issues\":[]},{\"screen\":\"dragon-boat\",\"viewport\":390,\"issues\":[]},{\"screen\":\"mid-autumn\",\"viewport\":390,\"issues\":[]},{\"screen\":\"teachers\",\"viewport\":390,\"issues\":[]},{\"screen\":\"national-day\",\"viewport\":390,\"issues\":[]},{\"screen\":\"semester\",\"viewport\":390,\"issues\":[]},{\"screen\":\"exhibition\",\"viewport\":390,\"issues\":[]}],\"pixelIssueCount\":0,\"contrastIssueCount\":0,\"textureIssueCount\":0,\"consoleErrors\":[]}"
-        },
-        {
-          "name": "button-contrast-ja-768",
-          "result": "pass",
-          "evidence": "{\"issues\":[]}"
-        },
-        {
-          "name": "text-on-border-ja-768",
-          "result": "pass",
-          "evidence": "{\"threshold\":0.004,\"issues\":[]}"
-        },
-        {
-          "name": "responsive-ja-768",
-          "result": "pass",
-          "evidence": "{\"archiveButtons\":10,\"checkedGameControls\":10,\"samples\":[{\"screen\":\"archive\",\"viewport\":768,\"issues\":[]},{\"screen\":\"new-year\",\"viewport\":768,\"issues\":[]},{\"screen\":\"lunar-new-year\",\"viewport\":768,\"issues\":[]},{\"screen\":\"lantern\",\"viewport\":768,\"issues\":[]},{\"screen\":\"children\",\"viewport\":768,\"issues\":[]},{\"screen\":\"dragon-boat\",\"viewport\":768,\"issues\":[]},{\"screen\":\"mid-autumn\",\"viewport\":768,\"issues\":[]},{\"screen\":\"teachers\",\"viewport\":768,\"issues\":[]},{\"screen\":\"national-day\",\"viewport\":768,\"issues\":[]},{\"screen\":\"semester\",\"viewport\":768,\"issues\":[]},{\"screen\":\"exhibition\",\"viewport\":768,\"issues\":[]}],\"pixelIssueCount\":0,\"contrastIssueCount\":0,\"textureIssueCount\":0,\"consoleErrors\":[]}"
-        },
-        {
-          "name": "button-contrast-ja-1440",
-          "result": "pass",
-          "evidence": "{\"issues\":[]}"
-        },
-        {
-          "name": "text-on-border-ja-1440",
-          "result": "pass",
-          "evidence": "{\"threshold\":0.004,\"issues\":[]}"
-        },
-        {
-          "name": "responsive-ja-1440",
-          "result": "pass",
-          "evidence": "{\"archiveButtons\":10,\"checkedGameControls\":10,\"samples\":[{\"screen\":\"archive\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"new-year\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"lunar-new-year\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"lantern\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"children\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"dragon-boat\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"mid-autumn\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"teachers\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"national-day\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"semester\",\"viewport\":1440,\"issues\":[]},{\"screen\":\"exhibition\",\"viewport\":1440,\"issues\":[]}],\"pixelIssueCount\":0,\"contrastIssueCount\":0,\"textureIssueCount\":0,\"consoleErrors\":[]}"
-        },
-        {
-          "name": "five-CG-marquee-and-intro-input",
-          "result": "pass",
-          "evidence": "{\"frames\":[\"assets/new-year/cg-1.webp\",\"assets/new-year/cg-2.webp\",\"assets/new-year/cg-3.webp\",\"assets/new-year/cg-4.webp\",\"assets/new-year/cg-5.webp\"],\"narration\":\"新的一年，先畫下起跑的姿勢。準備三張關鍵格。停太久，動作就卡住；太快，又看不清。試著調整節奏，讓每一格接上下一格。把今年的第一個跳躍，送往明天。\",\"marqueeAnimation\":\"marquee\",\"skipClick\":true,\"skipKeyboard\":true}"
-        },
-        {
-          "name": "intro-first-RAF-timestamp-regression",
-          "result": "pass",
-          "evidence": "{\"callbackFixture\":\"first browser RAF callback uses a timestamp 25ms before RAF registration; application source untouched\",\"initialCG\":\"1 / 5\",\"invalidRequests\":0}"
-        },
-        {
-          "name": "intro-narration-text-background",
-          "result": "pass",
-          "evidence": "{\"rectangles\":3,\"contrast\":[{\"id\":\"audio-toggle\",\"ratio\":15.21,\"minimum\":4.5},{\"id\":\"marquee\",\"ratio\":15.23,\"minimum\":4.5},{\"id\":\"intro-skip\",\"ratio\":15.21,\"minimum\":4.5}],\"issues\":[]}"
-        },
-        {
-          "name": "menu-help-settings-zh",
-          "result": "pass",
-          "evidence": "{\"helpLength\":219,\"menuActions\":5,\"settings\":true,\"exit\":true}"
-        },
-        {
-          "name": "menu-help-settings-en",
-          "result": "pass",
-          "evidence": "{\"helpLength\":518,\"menuActions\":5,\"settings\":true,\"exit\":true}"
-        },
-        {
-          "name": "menu-help-settings-ja",
-          "result": "pass",
-          "evidence": "{\"helpLength\":259,\"menuActions\":5,\"settings\":true,\"exit\":true}"
-        },
-        {
-          "name": "pause-inert-resume-and-listener-cleanup",
-          "result": "pass",
-          "evidence": "{\"frozenStyle\":true,\"pointerBlocked\":true,\"resume\":true,\"cycles\":4,\"listeners\":{\"baseline\":{\"window:popstate\":1,\"window:pagehide\":1,\"window:keydown\":1,\"document:keydown\":1,\"document:visibilitychange\":1,\"window:__playwright_global_listeners_check__\":1,\"window:mousemove\":1,\"window:pointerdown\":1,\"window:pointerup\":1,\"window:touchstart\":1,\"window:touchend\":1,\"window:touchcancel\":1,\"window:mousedown\":1,\"window:mouseup\":1,\"window:click\":1,\"window:auxclick\":1,\"window:dblclick\":1,\"window:contextmenu\":1},\"final\":{\"window:popstate\":1,\"window:pagehide\":1,\"window:keydown\":1,\"document:keydown\":1,\"document:visibilitychange\":1,\"window:__playwright_global_listeners_check__\":1,\"window:mousemove\":1,\"window:pointerdown\":1,\"window:pointerup\":1,\"window:touchstart\":1,\"window:touchend\":1,\"window:touchcancel\":1,\"window:mousedown\":1,\"window:mouseup\":1,\"window:click\":1,\"window:auxclick\":1,\"window:dblclick\":1,\"window:contextmenu\":1}}}"
-        },
-        {
-          "name": "audio-default-gate-decode-and-volume",
-          "result": "pass",
-          "evidence": "{\"mutedRequests\":0,\"native\":[{\"src\":\"127.0.0.1:8800/holiday-lab/audio/click.ogg\",\"volume\":0.35,\"readyState\":4,\"error\":null}],\"decoded\":[{\"kind\":\"click\",\"duration\":0.09710416666666667,\"channels\":1,\"sampleRate\":48000,\"peak\":0.8554027080535889},{\"kind\":\"success\",\"duration\":0.2869375,\"channels\":1,\"sampleRate\":48000,\"peak\":0.8978842496871948},{\"kind\":\"error\",\"duration\":0.16164583333333332,\"channels\":2,\"sampleRate\":48000,\"peak\":1.0033423900604248},{\"kind\":\"paper\",\"duration\":0.7970833333333334,\"channels\":1,\"sampleRate\":48000,\"peak\":0.789531946182251},{\"kind\":\"wood\",\"duration\":0.2626875,\"channels\":2,\"sampleRate\":48000,\"peak\":0.8565630912780762},{\"kind\":\"metal\",\"duration\":0.37295833333333334,\"channels\":2,\"sampleRate\":48000,\"peak\":0.8722923994064331}],\"actualListening\":\"not performed; headless media decode is not listening evidence\"}"
-        },
-        {
-          "name": "real-browser-background-suspension",
-          "result": "unknown",
-          "evidence": "Headless Chromium kept both tabs visible; no genuine visibilitychange evidence (no JS visibility override used)"
-        },
-        {
-          "name": "reduced-motion-zh",
-          "result": "pass",
-          "evidence": "{\"image\":\"none\",\"marquee\":\"none\",\"whiteSpace\":\"normal\",\"text\":\"新的一年，先畫下起跑的姿勢。準備三張關鍵格。停太久，動作就卡住；太快，又看不清。試著調整節奏，讓每一格接上下一格。把今年的第一個跳躍，送往明天。\",\"overflow\":\"auto\",\"textPixelRectangles\":6}"
-        },
-        {
-          "name": "reduced-motion-en",
-          "result": "pass",
-          "evidence": "{\"image\":\"none\",\"marquee\":\"none\",\"whiteSpace\":\"normal\",\"text\":\"A new year begins with a pose. Prepare three keyframes. Hold too long and the motion stalls; rush and it disappears. Adjust the rhythm so each frame leads into the next. Send your first leap into tomorrow.\",\"overflow\":\"auto\",\"textPixelRectangles\":6}"
-        },
-        {
-          "name": "reduced-motion-ja",
-          "result": "pass",
-          "evidence": "{\"image\":\"none\",\"marquee\":\"none\",\"whiteSpace\":\"normal\",\"text\":\"新しい年は一つのポーズから。3枚の原画を用意しよう。長すぎると止まり、短すぎると見えなくなる。コマ同士がつながるリズムを探そう。最初のジャンプを明日へ。\",\"overflow\":\"auto\",\"textPixelRectangles\":5}"
-        },
-        {
-          "name": "auditor-negative-control",
-          "result": "pass",
-          "evidence": "{\"injected\":\"30px button, zero padding, nowrap; browser-only temporary defect\",\"detected\":[{\"kind\":\"button-text-safe-area\",\"id\":\"start-game\",\"text\":[16,645.328125,56,18],\"button\":[16,631.125,30,48]},{\"kind\":\"button-content-overflow\",\"id\":\"start-game\"}]}"
-        },
-        {
-          "name": "auditor-pixel-negative-control",
-          "result": "pass",
-          "evidence": "{\"cleanIssues\":0,\"injected\":\"original generated header image behind narration; browser-only temporary defect\",\"detected\":[{\"id\":\"marquee\",\"text\":\"新的一年，先畫下起跑的姿勢。準備三張關鍵格。停太久，動作就卡住；太快，\",\"x\":32,\"y\":673.421875,\"w\":320,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"clip\":{\"left\":16,\"top\":658.421875,\"right\":374,\"bottom\":791.421875},\"ratio\":0.5396,\"medianContrast\":13.95,\"kind\":\"text-over-artwork\"},{\"id\":\"marquee\",\"text\":\"新的一年，先畫下起跑的姿勢。準備三張關鍵格。停太久，動作就卡住；太快，\",\"x\":32,\"y\":700.609375,\"w\":320,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"clip\":{\"left\":16,\"top\":658.421875,\"right\":374,\"bottom\":791.421875},\"ratio\":0.0725,\"medianContrast\":15.23,\"kind\":\"text-over-artwork\"},{\"id\":\"marquee\",\"text\":\"新的一年，先畫下起跑的姿勢。準備三張關鍵格。停太久，動作就卡住；太快，\",\"x\":32,\"y\":727.796875,\"w\":320,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"clip\":{\"left\":16,\"top\":658.421875,\"right\":374,\"bottom\":791.421875},\"ratio\":0.0595,\"medianContrast\":15.23,\"kind\":\"text-over-artwork\"},{\"id\":\"marquee\",\"text\":\"新的一年，先畫下起跑的姿勢。準備三張關鍵格。停太久，動作就卡住；太快，\",\"x\":32,\"y\":754.984375,\"w\":192,\"h\":20,\"foreground\":[25,29,34],\"contrastMinimum\":4.5,\"clip\":{\"left\":16,\"top\":658.421875,\"right\":374,\"bottom\":791.421875},\"ratio\":0.2668,\"medianContrast\":15.21,\"kind\":\"text-over-artwork\"}]}"
-        }
-      ]
-    },
-    {
-      "id": "release_checks",
-      "title": "8866前版發布工具補驗（不代表8870新版全站通過）",
-      "row_key": "id",
-      "columns": [
-        {
-          "key": "title",
-          "title": "檢查",
-          "type": "text"
-        },
-        {
-          "key": "result",
-          "title": "工具結果",
-          "type": "tag"
-        }
-      ],
-      "detail_fields": [
-        {
-          "key": "scope",
-          "title": "範圍",
-          "type": "text"
-        },
-        {
-          "key": "source",
-          "title": "原始來源",
-          "type": "text"
-        }
-      ],
-      "search_fields": [
-        "id",
-        "title",
-        "result",
-        "scope"
-      ],
-      "rows": [
-        {
-          "id": "runtime-allowlist",
-          "title": "Runtime檔案白名單",
-          "result": "pass",
-          "scope": "本機技術補驗；不代表完整發布或美術已確認",
-          "source": "holiday-lab/reports/integrated-review-20261023/release/runs/2026-10-23T10-55-01-135Z/result.json"
-        },
-        {
-          "id": "all-runtime-http-body-sha",
-          "title": "全部檔案HTTP與SHA核對",
-          "result": "pass",
-          "scope": "本機技術補驗；不代表完整發布或美術已確認",
-          "source": "holiday-lab/reports/integrated-review-20261023/release/runs/2026-10-23T10-55-01-135Z/result.json"
-        },
-        {
-          "id": "server-private-path-and-real-missing-status",
-          "title": "私密路徑與真404／403／400",
-          "result": "pass",
-          "scope": "本機技術補驗；不代表完整發布或美術已確認",
-          "source": "holiday-lab/reports/integrated-review-20261023/release/runs/2026-10-23T10-55-01-135Z/result.json"
-        },
-        {
-          "id": "server-listens-on-loopback-only",
-          "title": "僅限本機連線",
-          "result": "pass",
-          "scope": "本機技術補驗；不代表完整發布或美術已確認",
-          "source": "holiday-lab/reports/integrated-review-20261023/release/runs/2026-10-23T10-55-01-135Z/result.json"
-        },
-        {
-          "id": "keyboard-pause-audio-cleanup-zh",
-          "title": "中文鍵盤／暫停／音效／卸載",
-          "result": "pass",
-          "scope": "本機技術補驗；不代表完整發布或美術已確認",
-          "source": "holiday-lab/reports/integrated-review-20261023/release/runs/2026-10-23T10-55-01-135Z/result.json"
-        },
-        {
-          "id": "keyboard-pause-audio-cleanup-en",
-          "title": "英文鍵盤／暫停／音效／卸載",
-          "result": "pass",
-          "scope": "本機技術補驗；不代表完整發布或美術已確認",
-          "source": "holiday-lab/reports/integrated-review-20261023/release/runs/2026-10-23T10-55-01-135Z/result.json"
-        },
-        {
-          "id": "keyboard-pause-audio-cleanup-ja",
-          "title": "日文鍵盤／暫停／音效／卸載",
-          "result": "pass",
-          "scope": "本機技術補驗；不代表完整發布或美術已確認",
-          "source": "holiday-lab/reports/integrated-review-20261023/release/runs/2026-10-23T10-55-01-135Z/result.json"
-        },
-        {
-          "id": "reduced-narration-scroll-zh",
-          "title": "中文減少動態與敘事捲動",
-          "result": "pass",
-          "scope": "本機技術補驗；不代表完整發布或美術已確認",
-          "source": "holiday-lab/reports/integrated-review-20261023/release/runs/2026-10-23T10-55-01-135Z/result.json"
-        },
-        {
-          "id": "reduced-narration-scroll-en",
-          "title": "英文減少動態與敘事捲動",
-          "result": "pass",
-          "scope": "本機技術補驗；不代表完整發布或美術已確認",
-          "source": "holiday-lab/reports/integrated-review-20261023/release/runs/2026-10-23T10-55-01-135Z/result.json"
-        },
-        {
-          "id": "reduced-narration-scroll-ja",
-          "title": "日文減少動態與敘事捲動",
-          "result": "pass",
-          "scope": "本機技術補驗；不代表完整發布或美術已確認",
-          "source": "holiday-lab/reports/integrated-review-20261023/release/runs/2026-10-23T10-55-01-135Z/result.json"
-        },
-        {
-          "id": "local-game-with-third-party-network-blocked",
-          "title": "阻擋第三方網路仍可操作",
-          "result": "pass",
-          "scope": "本機技術補驗；不代表完整發布或美術已確認",
-          "source": "holiday-lab/reports/integrated-review-20261023/release/runs/2026-10-23T10-55-01-135Z/result.json"
-        },
-        {
-          "id": "module-load-failure-has-readable-recovery",
-          "title": "模組故障提示與返回",
-          "result": "pass",
-          "scope": "本機技術補驗；不代表完整發布或美術已確認",
-          "source": "holiday-lab/reports/integrated-review-20261023/release/runs/2026-10-23T10-55-01-135Z/result.json"
-        },
-        {
-          "id": "real-background-visibility-evidence",
-          "title": "真實背景分頁暫停",
-          "result": "unknown",
-          "scope": "本機技術補驗；不代表完整發布或美術已確認",
-          "source": "holiday-lab/reports/integrated-review-20261023/release/runs/2026-10-23T10-55-01-135Z/result.json"
+          "id": "instructions",
+          "title": "交接、工單、分支及保全錨點",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "三份指定文件完整載入並記錄SHA；主工作樹與原clone可讀。未以8860舊畫面判定新版。",
+          "evidence": "holiday-lab/reports/overnight-20261024/root/before.json",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "shared-layout",
+          "title": "中英日共用介面與資料",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "共用元件與中文正本保留；三語390／1440六組目前版通過，未另外建立精簡外文首頁。",
+          "evidence": "holiday-lab/reports/overnight-20261024/qa/result.json",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "desktop-nav",
+          "title": "桌面完整導覽",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "1440三語八章節及兩語言入口可見，保留既有兩層導覽。",
+          "evidence": "holiday-lab/reports/overnight-20261024/qa/result.json",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "mobile-nav",
+          "title": "手機選單與自動收合",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "390三語真點選選單與章節，選單可開啟並於跳轉後收合。",
+          "evidence": "holiday-lab/reports/overnight-20261024/qa/result.json",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "language",
+          "title": "語言切換",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "三語皆實際操作切換連結，保留同版導覽；未只檢查字串存在。",
+          "evidence": "holiday-lab/reports/overnight-20261024/qa/result.json",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "footer",
+          "title": "頁尾與操作按鈕",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "六組頁尾mail／tel、About連結與代表按鈕操作通過；不是每個外部站點連結的存活保證。",
+          "evidence": "holiday-lab/reports/overnight-20261024/qa/result.json",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "anchors",
+          "title": "固定標題列與章節定位",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "三語About定位均在固定列下方；既有動態offset與原styles未改。",
+          "evidence": "holiday-lab/reports/overnight-20261024/qa/result.json",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "short-lines",
+          "title": "導覽短末行與代表標題",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "指定寬度無橫向溢位；旋轉h2 Range候選已目視排除，另留畫面收據。未全面改寫所有內文換行。",
+          "evidence": "holiday-lab/reports/overnight-20261024/qa/result.json、holiday-lab/reports/overnight-20261024/qa/role-headings/result.json、holiday-lab/reports/overnight-20261024/qa/role-headings-command.json",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "font-loaded",
+          "title": "現有字體與指定頁載入",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "首頁與指南六組fonts.loaded；本輪未換字體或縮字，已保留姓名與正式資格。",
+          "evidence": "holiday-lab/reports/overnight-20261024/qa/result.json",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "font-global",
+          "title": "中日全站逐字缺字稽核",
+          "disposition": "保留",
+          "result": "no",
+          "reason": "本輪沒有重跑全站cmap／全部替補字型逐字稽核；fonts.loaded及代表畫面不能當成全字零缺字證明。",
+          "evidence": "holiday-lab/reports/overnight-20261024/qa/result.json",
+          "data": "recorded",
+          "tool": "pending",
+          "user": "user_pending"
+        },
+        {
+          "id": "teng-role",
+          "title": "鄧樹遠中英文職稱",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "目前data/faculty與英文角色均不含電競代理主任；保留系主任／副教授，不改歷史報告。",
+          "evidence": "holiday-lab/reports/overnight-20261024/program/REPORT.md",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "portraits",
+          "title": "教師頭部大小與水平眼線",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "六組各13位標記投影與原照HTTP SHA相符，共78原照觀察；以顯示定位達成，原照片未修圖。標記本身是人工近似。",
+          "evidence": "holiday-lab/reports/overnight-20261024/qa/result.json、holiday-lab/reports/overnight-20261024/root/current-verification.json",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "rank-ja",
+          "title": "日文助理教授職稱",
+          "disposition": "已修正",
+          "result": "yes",
+          "reason": "四個日文角色值改保留台灣原職＋Assistant Professor說明，維持合聘／從聘／留職狀態；另日文兩寬13角色補驗，不硬套日本助教。",
+          "evidence": "holiday-lab/reports/overnight-20261024/program/REPORT.md、holiday-lab/reports/overnight-20261024/root/program-green-r2.json、holiday-lab/reports/overnight-20261024/qa/role-headings/result.json",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "formal-units",
+          "title": "全部正式職稱／處室外文名",
+          "disposition": "缺件",
+          "result": "no",
+          "reason": "已保留前輪12正式名稱修正；全校處室官方日文名稱未齊，蔣天華中英官網職稱亦衝突，不自行替校方選一職級。",
+          "evidence": "holiday-lab/reports/overnight-20261024/program/REPORT.md",
+          "data": "recorded",
+          "tool": "pending",
+          "user": "user_pending"
+        },
+        {
+          "id": "program",
+          "title": "四PROGRAM整句與相依欄位",
+          "disposition": "已修正",
+          "result": "yes",
+          "reason": "16個同頁欄位三語共48操作；115一般單招30名已截止，移除統一面試／固定時段／費用與證書保證；13可見值六組共78觀察。",
+          "evidence": "holiday-lab/reports/overnight-20261024/root/program-apply.json、holiday-lab/reports/overnight-20261024/qa/result.json",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "translation-data",
+          "title": "翻譯資料覆蓋與資訊保留",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "1721個靜態資料字串中兩語各1720有字典，唯一未映射為應保留筆名小颯；動態明示三語另計。不能據此宣稱母語逐句正確。",
+          "evidence": "holiday-lab/reports/overnight-20261024/root/translation-inventory-final.json",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "translation-alignment",
+          "title": "歷史英文資料對映與語意覆核",
+          "disposition": "保留",
+          "result": "no",
+          "reason": "build仍列21條stats歷史資料未成對及21個共字串衝突候選；共用頁仍由中文正本及已建字典呈現，未擅刪線上新資料。來源候選、正式專名與母語語意仍需另核。",
+          "evidence": "holiday-lab/reports/overnight-20261024/root/build-r2.json、holiday-lab/reports/overnight-20261024/root/i18n-catalog-frozen.json",
+          "data": "recorded",
+          "tool": "pending",
+          "user": "user_pending"
+        },
+        {
+          "id": "guide-index",
+          "title": "在校指南標題、直白分類與三欄",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "維持四字標題、八分類、15卡；1440三欄與390單欄適配、索引無宣傳贅語。",
+          "evidence": "holiday-lab/reports/overnight-20261024/qa/result.json",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "guide-audience",
+          "title": "新生／在校／轉學／畢業身分索引",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "六類身分索引及搜尋／分類組合回歸通過，實際篩選與重設可用。",
+          "evidence": "holiday-lab/reports/overnight-20261024/root/guide-regression-green.json、holiday-lab/reports/overnight-20261024/qa/result.json",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "guide-details",
+          "title": "大流程、每步小說明與FAQ",
+          "disposition": "已修正",
+          "result": "yes",
+          "reason": "保留47步與小說明，FAQ由30增至34，52來源；新增24組英日翻譯及精簡後求助說明兩語key。原FAQ、卡片及來源日期保留。",
+          "evidence": "holiday-lab/reports/overnight-20261024/root/guide-apply.json、holiday-lab/reports/overnight-20261024/root/support-shortening.json、holiday-lab/reports/overnight-20261024/root/guide-regression-green.json",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "topic-graduation",
+          "title": "畢業檢核：逐題來源核對",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "已核對並保存版本：112–115一般日四技課表；1150610離校要點；2026/02/28檢核公告；保留缺口：個別班別及入學年仍須匹配；檢核公告資料算至114-1，不代表115-1即時成績；教務檢核PDF附件未視覺讀完",
+          "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "topic-internship",
+          "title": "校外實習：逐題來源核對",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "已核對並保存版本：112–115一般班課表；官網列版107系手冊；保留缺口：115本系要點適用、當期申請考核Word全文及校級實習辦法仍缺；107版不升格當期",
+          "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "topic-certification",
+          "title": "證照認列：逐題來源核對",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "已核對並保存版本：115一般班／技優班課表；114-2獎助公告；公開證照系統；保留缺口：現行完整認列清單、115-1獎助公告與各證照版本未得；107金額與114-2上限歧異不硬選",
+          "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "topic-leave",
+          "title": "我要請假：逐題來源核對",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "已核對並保存版本：2026/06簽核公告；1150202學則相關條文；2019歷史請假PDF；保留缺口：最新完整請假規則及全假別／時限附件未得；2019兩日與2026五日不可混成同一套",
+          "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "topic-course-selection",
+          "title": "選課加退選：逐題來源核對",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "已核對並保存版本：1140219選課準則；115-1加退選已截止公告；保留缺口：115-1棄選與特殊處理當期日程／表單仍缺；不公布由週次反推的日期",
+          "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "topic-credit-transfer",
+          "title": "學分抵免：逐題來源核對",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "已核對並保存版本：1140910抵免辦法全文；115-1程序；2018舊空白表；保留缺口：舊表在學一次與新辦法每事因一次不一致；當期印表版本仍待核；9/21截止不作現在受理",
+          "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "topic-capstone",
+          "title": "專題製作：逐題來源核對",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "已核對並保存版本：112–115一般班課表；官網第十二屆108修訂辦法及三份DOCX；保留缺口：換組表二審前、舊辦法／分組表三審前衝突；當屆規定、人數、評分、補審與授權清單未核",
+          "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "topic-english",
+          "title": "英文門檻：逐題來源核對",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "已核對並保存版本：115課表；2023門檻頁；通識修課與115-1英檢排程；保留缺口：現行全文、最新表單、證明效期歧異、115-1替代課清單與即時名額未核；10/24場報名截止不宣稱尚開",
+          "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "topic-status-military",
+          "title": "休學復學與兵役：逐題來源核對",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "已核對並保存版本：1120426休學辦法；1150202學則；115-1注意事項；保留缺口：112細則提早復學例外與115學則未列例外衝突；退費條文錯引；當期表單／兵役個案未核",
+          "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "topic-financial-aid",
+          "title": "獎助與急難協助：逐題來源核對",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "已核對並保存版本：115-1不利處境／低收已截止索引；生輔急難須知；勵學金入口；保留缺口：各方案當期全文／表單未全齊；勵學金只有標題摘要；115-2日期000年無效；所得資產門檻不得外推各急難",
+          "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "topic-support-rights",
+          "title": "遇到困難找誰：逐題來源核對",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "已核對並保存版本：2026/10/23官網正文：身心健康中心預約、115獨立特殊教育資源中心；保留缺口：現行申訴／性平全文和空白表未得；不保證保密無例外、不用活動分機代個案程序；10/24 live403",
+          "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "topic-career",
+          "title": "就業資源：逐題來源核對",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "已核對並保存版本：職發中心官網職掌索引；系辦入口；保留缺口：UCAN與現行聯絡及當期職缺未逐項live核實；1712/1713索引線索不升格當日全面聯絡核准",
+          "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "topic-graduate-study",
+          "title": "繼續升學：逐題來源核對",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "已核對並保存版本：116碩甄全文及115碩士考試歷史簡章；保留缺口：116設創所書審100%與口試文字衝突未解；116考試新簡章未得；附表四115／116字樣不代更正",
+          "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "topic-overseas-internship",
+          "title": "海外實習：逐題來源核對",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "已核對並保存版本：2026第九屆HC成果；教育部學海要點既存證據；109跨校歷史來函；保留缺口：本系115當期名額語言費用補助契約及返校期限未得；不以109別計畫或觀光簽證湊數",
+          "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "topic-overseas-study-visit",
+          "title": "海外見學：逐題來源核對",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "已核對並保存版本：113發展計畫歷史活動；系網介紹與國際處入口；保留缺口：115本系招募團期、費用補助退費、認列學分及請假成果表未核；交換目錄不是見學規則全文",
+          "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "guide-currentness",
+          "title": "當期完整規章、表單及年度衝突",
+          "disposition": "缺件",
+          "result": "no",
+          "reason": "15題皆列現行性缺口；10/24四站web受阻，直接重取為202空內容。舊107／108規章、未讀附件、116設創所書審／口試衝突不當作現行已核。",
+          "evidence": "holiday-lab/reports/overnight-20261024/guide/live-recheck.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
+          "data": "recorded",
+          "tool": "pending",
+          "user": "user_pending"
+        },
+        {
+          "id": "art-original",
+          "title": "小颯及既有學生作品／原始署名",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "首頁首張保留小颯完整手繪與畢業生署名；作品原圖與既有照片等315素材SHA未變，未生圖或改作品內容。",
+          "evidence": "holiday-lab/reports/overnight-20261024/root/asset-audit.json、holiday-lab/reports/overnight-20261024/root/retained-assets.json",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "ai-references",
+          "title": "取消主網站已知生成素材引用",
+          "disposition": "已修正",
+          "result": "yes",
+          "reason": "主站favicon改為無圖示，頁底節日入口改暫緩；六組實際82項引用未命中已知生成清單，原PNG與凍結遊戲包留存。",
+          "evidence": "holiday-lab/reports/overnight-20261024/root/icon-green.json、holiday-lab/reports/overnight-20261024/root/asset-audit.json、holiday-lab/reports/overnight-20261024/qa/result.json",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "art-provenance",
+          "title": "全部素材製程與權利已確認",
+          "disposition": "缺件",
+          "result": "no",
+          "reason": "小颯作者由使用者確認；其他既有校方作品／照片的逐件製程與權利未全數另核，不能宣稱整包零AI或所有改編權已核。",
+          "evidence": "holiday-lab/reports/overnight-20261024/root/asset-audit.json",
+          "data": "recorded",
+          "tool": "pending",
+          "user": "user_pending"
+        },
+        {
+          "id": "page-bottom",
+          "title": "試玩放招生後、頁尾前",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "共用首頁維持頁底策展入口與暫緩提示，首屏無遊戲控制；未回到首頁最上方。",
+          "evidence": "holiday-lab/reports/overnight-20261024/root/frozen-entry-green.json、holiday-lab/reports/overnight-20261024/qa/result.json",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "festival-freeze",
+          "title": "全部節日遊戲凍結",
+          "disposition": "保留",
+          "result": "yes",
+          "reason": "包含勞動節，未開發／修改玩法／測玩／巨量QA；僅調整主網站入口，既有遊戲、素材與音訊檔保留。",
+          "evidence": "holiday-lab/reports/overnight-20261024/root/retained-assets.json、holiday-lab/reports/overnight-20261024/qa/result.json",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "webgl",
+          "title": "Flora／胖倉鼠WebGL成品",
+          "disposition": "缺件",
+          "result": "no",
+          "reason": "只回查指定TF-BASE交接夾，仍5份工單／腳本、未見成品；不推論其他位置，未啟Unity、未彈執行檔、未重派或下載舊大型包。",
+          "evidence": "holiday-lab/reports/overnight-20261024/webgl/folder-recheck.json",
+          "data": "recorded",
+          "tool": "pending",
+          "user": "user_pending"
+        },
+        {
+          "id": "style",
+          "title": "維持漫畫／手繪風格",
+          "disposition": "保留",
+          "result": "yes",
+          "reason": "只做必要網站文案、素材引用與入口修正；styles、章節版型與照片定位原樣，未全面換版、未換字體、未新增AI圖示。",
+          "evidence": "holiday-lab/reports/overnight-20261024/root/current-verification.json",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "build",
+          "title": "本輪本機建置",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "最新.measure-overnight-20261024-02，app-UVYLK6U2.js，360檔；measurement本機驗證版，不是發布核准。",
+          "evidence": "holiday-lab/reports/overnight-20261024/root/build-r2.json",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "independent",
+          "title": "獨立三語與手機驗收",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "6組136項、36PNG，14來源與360建置檔前後相符；root再唯讀核SHA。partial／失敗批次保留，不採認為最終。",
+          "evidence": "holiday-lab/reports/overnight-20261024/qa/command.json、holiday-lab/reports/overnight-20261024/root/current-proof.json",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "real-phone",
+          "title": "實體手機與母語審閱",
+          "disposition": "保留",
+          "result": "no",
+          "reason": "本輪是390模擬視窗與工具核對；實體手機、三語母語逐句與使用者新畫面確認未取得。",
+          "evidence": "holiday-lab/reports/overnight-20261024/qa/result.json、holiday-lab/reports/overnight-20261024/program/REPORT.md",
+          "data": "recorded",
+          "tool": "pending",
+          "user": "user_pending"
+        },
+        {
+          "id": "guards",
+          "title": "不push／不main／不刪檔／不C節",
+          "disposition": "已檢查",
+          "result": "yes",
+          "reason": "原四dirty與R0五檔SHA、main refs及C節相同；每項codex短分支，本輪只本機提交，未執行C節。",
+          "evidence": "holiday-lab/reports/overnight-20261024/root/before.json、holiday-lab/reports/overnight-20261024/root/current-proof.json",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
         }
       ]
     }
   ],
   "filters": [
     {
-      "id": "pending",
-      "label": "待使用者確認",
+      "id": "fixed",
+      "label": "已修正",
       "conditions": {
-        "games": {
-          "user": "pending"
-        },
-        "progress": {
-          "user": "pending"
+        "checks": {
+          "disposition": "已修正"
         }
       }
     },
     {
-      "id": "ui-missing",
-      "label": "UI缺項",
+      "id": "missing",
+      "label": "缺件／保留",
       "conditions": {
-        "ui_scope": {
-          "missing": {
-            "gt": 0
-          }
-        },
-        "ui_gate": {
-          "id": "global"
-        },
-        "progress": {
-          "id": "ui"
-        }
-      }
-    },
-    {
-      "id": "local-results",
-      "label": "本機成果",
-      "conditions": {
-        "progress": {
-          "workflow": "available"
-        },
-        "games": {
-          "built": "built"
-        }
-      }
-    },
-    {
-      "id": "working",
-      "label": "正在處理",
-      "conditions": {
-        "progress": {
-          "workflow": "working"
-        }
-      }
-    },
-    {
-      "id": "waiting",
-      "label": "待確認／待回覆",
-      "conditions": {
-        "progress": {
-          "workflow": "waiting"
-        }
-      }
-    },
-    {
-      "id": "paused",
-      "label": "已暫緩",
-      "conditions": {
-        "progress": {
-          "workflow": "paused"
+        "checks": {
+          "result": "no"
         }
       }
     }
   ],
   "unknowns": [
-    "TF-BASE最新來源與WebGL Build結果待回／待查。",
-    "完整UI驗收與三語逐句、實體手機、使用者美術確認尚未完成。",
-    "學生作品首頁與單款策展示範待使用者審閱；方向已確認，畫面尚未確認。",
-    "真背景分頁隱藏狀態仍未驗證；沒有注入hidden旗標。",
-    "完整UI驗收仍為NO；權威索引列出的缺項與原method flags不可省略。",
-    "真背景分頁暫停未驗證，沒有偽造hidden。",
-    "實體手機、三語母語校對與使用者美術確認尚未完成。",
-    "開學與畢展正式日期未設定。"
-  ],
-  "presentation": {
-    "local_links": {
-      "holiday-lab/dashboard/progress-policy.json": "../../../holiday-lab/dashboard/progress-policy.json",
-      "holiday-lab/reports/guide-index-evidence/result.json": "../../../holiday-lab/reports/guide-index-evidence/result.json",
-      "holiday-lab/translation-review/guide-terms-rendered11/summary.json": "../../../holiday-lab/translation-review/guide-terms-rendered11/summary.json",
-      "holiday-lab/reports/faculty-portrait/browser.json": "../../../holiday-lab/reports/faculty-portrait/browser.json",
-      "holiday-lab/reports/floating-cta-result.json": "../../../holiday-lab/reports/floating-cta-result.json",
-      "holiday-lab/student-webgl/queued-inspection.json": "../../../holiday-lab/student-webgl/queued-inspection.json",
-      "holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json": "../../../holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json",
-      "holiday-lab/student-webgl/REPORT.md": "../../../holiday-lab/student-webgl/REPORT.md",
-      "holiday-lab/STATUS.md": "../../../holiday-lab/STATUS.md",
-      "holiday-lab/reports/ui-polish-20261023/independent/runs/2026-10-23T08-07-41-848Z/result.json": "../../../holiday-lab/reports/ui-polish-20261023/independent/runs/2026-10-23T08-07-41-848Z/result.json",
-      "holiday-lab/catalog.mjs": "../../../holiday-lab/catalog.mjs",
-      "holiday-lab/reports/ui-polish-20261023/audit/font-coverage.json": "../../../holiday-lab/reports/ui-polish-20261023/audit/font-coverage.json",
-      "holiday-lab/reports/integrated-review-20261023/home/runs/2026-10-23T10-55-01-190Z/result.json": "../../../holiday-lab/reports/integrated-review-20261023/home/runs/2026-10-23T10-55-01-190Z/result.json",
-      "holiday-lab/reports/integrated-review-20261023/release/runs/2026-10-23T10-55-01-135Z/result.json": "../../../holiday-lab/reports/integrated-review-20261023/release/runs/2026-10-23T10-55-01-135Z/result.json",
-      "holiday-lab/reports/integrated-review-20261023/home/verify-v2.cjs": "../../../holiday-lab/reports/integrated-review-20261023/home/verify-v2.cjs",
-      "holiday-lab/reports/integrated-review-20261023/release/verify.cjs": "../../../holiday-lab/reports/integrated-review-20261023/release/verify.cjs",
-      "holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/result.json": "../../../holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/result.json",
-      "holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/method.json": "../../../holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/method.json",
-      "holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/build-before.json": "../../../holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/build-before.json",
-      "holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/build-after.json": "../../../holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/build-after.json",
-      "holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/source-before.json": "../../../holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/source-before.json",
-      "holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/source-after.json": "../../../holiday-lab/layout-qa/qingming-favicon-independent-20261023/run-2026-10-23T07-27-45-811Z/source-after.json",
-      "holiday-lab/layout-qa/qingming-favicon-independent-20261023/run.cjs": "../../../holiday-lab/layout-qa/qingming-favicon-independent-20261023/run.cjs",
-      "holiday-lab/reports/integrated-review-20261023/root/recovery-runs/2026-10-23T11-07-11-903Z/result.json": "../../../holiday-lab/reports/integrated-review-20261023/root/recovery-runs/2026-10-23T11-07-11-903Z/result.json",
-      "holiday-lab/reports/integrated-review-20261023/root/verify-recovery.cjs": "../../../holiday-lab/reports/integrated-review-20261023/root/verify-recovery.cjs",
-      "holiday-lab/reports/comprehensive-followup-20261023/root/webgl-source-recheck.json": "../../../holiday-lab/reports/comprehensive-followup-20261023/root/webgl-source-recheck.json",
-      "holiday-lab/reports/guide-graduation-research-20261023/verification.json": "../../../holiday-lab/reports/guide-graduation-research-20261023/verification.json",
-      "holiday-lab/reports/guide-graduation-research-20261023/sources.json": "../../../holiday-lab/reports/guide-graduation-research-20261023/sources.json",
-      "holiday-lab/reports/guide-graduation-research-20261023/STUDENT-DRAFT.md": "../../../holiday-lab/reports/guide-graduation-research-20261023/STUDENT-DRAFT.md",
-      "holiday-lab/reports/guide-graduation-research-20261023/FINDINGS.md": "../../../holiday-lab/reports/guide-graduation-research-20261023/FINDINGS.md",
-      "holiday-lab/reports/guide-graduation-research-20261023/fetch-official.mjs": "../../../holiday-lab/reports/guide-graduation-research-20261023/fetch-official.mjs",
-      "holiday-lab/reports/guide-graduation-research-20261023/verify.mjs": "../../../holiday-lab/reports/guide-graduation-research-20261023/verify.mjs",
-      "data/students/guide.json": "../../../data/students/guide.json",
-      "holiday-lab/reports/comprehensive-audit-20261023/scope.json": "../../../holiday-lab/reports/comprehensive-audit-20261023/scope.json",
-      "holiday-lab/reports/comprehensive-audit-20261023/REPORT.md": "../../../holiday-lab/reports/comprehensive-audit-20261023/REPORT.md",
-      "holiday-lab/translation-review/proper-names-research-20261023/comparison.json": "../../../holiday-lab/translation-review/proper-names-research-20261023/comparison.json",
-      "holiday-lab/reports/comprehensive-audit-20261023/translation-candidates.json": "../../../holiday-lab/reports/comprehensive-audit-20261023/translation-candidates.json",
-      "holiday-lab/reports/integrated-review-20261023/root/additional-guide-research.json": "../../../holiday-lab/reports/integrated-review-20261023/root/additional-guide-research.json",
-      "holiday-lab/reports/guide-capstone-study-research-20261023/REPORT.md": "../../../holiday-lab/reports/guide-capstone-study-research-20261023/REPORT.md",
-      "holiday-lab/reports/guide-capstone-study-research-20261023/draft.json": "../../../holiday-lab/reports/guide-capstone-study-research-20261023/draft.json",
-      "holiday-lab/reports/guide-capstone-study-research-20261023/verification.json": "../../../holiday-lab/reports/guide-capstone-study-research-20261023/verification.json",
-      "holiday-lab/reports/guide-capstone-study-research-20261023/source-catalog.json": "../../../holiday-lab/reports/guide-capstone-study-research-20261023/source-catalog.json",
-      "holiday-lab/reports/guide-internship-research-20261023/REPORT.md": "../../../holiday-lab/reports/guide-internship-research-20261023/REPORT.md",
-      "holiday-lab/reports/guide-internship-research-20261023/sources.json": "../../../holiday-lab/reports/guide-internship-research-20261023/sources.json",
-      "holiday-lab/reports/guide-internship-research-20261023/verification.json": "../../../holiday-lab/reports/guide-internship-research-20261023/verification.json",
-      "holiday-lab/reports/guide-internship-research-20261023/RECHECK.json": "../../../holiday-lab/reports/guide-internship-research-20261023/RECHECK.json",
-      "holiday-lab/reports/official-names-followup-20261023/root/names-independent-readonly-peer-cwd.json": "../../../holiday-lab/reports/official-names-followup-20261023/root/names-independent-readonly-peer-cwd.json",
-      "holiday-lab/translation-review/official-guide-names-independent-20261023/runs/2026-10-23T11-39-56-308Z/result.json": "../../../holiday-lab/translation-review/official-guide-names-independent-20261023/runs/2026-10-23T11-39-56-308Z/result.json",
-      "holiday-lab/translation-review/official-guide-names-20261023/plan.json": "../../../holiday-lab/translation-review/official-guide-names-20261023/plan.json",
-      "data/en/step-details-ui.json": "../../../data/en/step-details-ui.json",
-      "data/en/flow-ui.json": "../../../data/en/flow-ui.json",
-      "data/en/student-guide-ui.json": "../../../data/en/student-guide-ui.json",
-      "data/ja/messages.json": "../../../data/ja/messages.json",
-      "holiday-lab/reports/official-names-followup-20261023/root/integration-result.json": "../../../holiday-lab/reports/official-names-followup-20261023/root/integration-result.json",
-      "holiday-lab/reports/tfbase-shutdown-check-20261023/result.json": "../../../holiday-lab/reports/tfbase-shutdown-check-20261023/result.json",
-      "holiday-lab/reports/games-bottom-20261023/green-r2/result.json": "../../../holiday-lab/reports/games-bottom-20261023/green-r2/result.json",
-      "holiday-lab/reports/games-bottom-20261023/green-r2/receipt.json": "../../../holiday-lab/reports/games-bottom-20261023/green-r2/receipt.json",
-      "holiday-home.jsx": "../../../holiday-home.jsx",
-      "holiday-home.css": "../../../holiday-home.css",
-      "app.jsx": "../../../app.jsx",
-      "styles.css": "../../../styles.css",
-      "comic-components.jsx": "../../../comic-components.jsx",
-      "pages.jsx": "../../../pages.jsx",
-      "data/works.json": "../../../data/works.json",
-      "data/en/works.json": "../../../data/en/works.json",
-      "data/news.json": "../../../data/news.json",
-      "images/posters/clipstudio-grand-prize.jpg": "../../../images/posters/clipstudio-grand-prize.jpg",
-      "images/news/2026-awards/dear-all-robots.jpg": "../../../images/news/2026-awards/dear-all-robots.jpg",
-      "images/news/2026-awards/kacha.jpg": "../../../images/news/2026-awards/kacha.jpg",
-      "images/news/2026-awards/today-restaurant.jpg": "../../../images/news/2026-awards/today-restaurant.jpg",
-      "holiday-lab/reports/games-bottom-20261023/navigation-proof.json": "../../../holiday-lab/reports/games-bottom-20261023/navigation-proof.json",
-      "holiday-lab/reports/games-bottom-20261023/navigation/result.json": "../../../holiday-lab/reports/games-bottom-20261023/navigation/result.json",
-      "scripts/test-nav-layout.cjs": "../../../scripts/test-nav-layout.cjs",
-      "holiday-lab/reports/nav-language-desktop-20261023/webgl-recheck.json": "../../../holiday-lab/reports/nav-language-desktop-20261023/webgl-recheck.json",
-      "holiday-lab/reports/qingming-release-20261023/independent/REPORT.md": "../../../holiday-lab/reports/qingming-release-20261023/independent/REPORT.md",
-      "holiday-lab/extra-qa/runs/2026-10-22T23-47-55-037Z/results.json": "../../../holiday-lab/extra-qa/runs/2026-10-22T23-47-55-037Z/results.json"
-    }
-  }
+    "中日全站逐字缺字稽核：本輪沒有重跑全站cmap／全部替補字型逐字稽核；fonts.loaded及代表畫面不能當成全字零缺字證明。",
+    "全部正式職稱／處室外文名：已保留前輪12正式名稱修正；全校處室官方日文名稱未齊，蔣天華中英官網職稱亦衝突，不自行替校方選一職級。",
+    "歷史英文資料對映與語意覆核：build仍列21條stats歷史資料未成對及21個共字串衝突候選；共用頁仍由中文正本及已建字典呈現，未擅刪線上新資料。來源候選、正式專名與母語語意仍需另核。",
+    "當期完整規章、表單及年度衝突：15題皆列現行性缺口；10/24四站web受阻，直接重取為202空內容。舊107／108規章、未讀附件、116設創所書審／口試衝突不當作現行已核。",
+    "全部素材製程與權利已確認：小颯作者由使用者確認；其他既有校方作品／照片的逐件製程與權利未全數另核，不能宣稱整包零AI或所有改編權已核。",
+    "Flora／胖倉鼠WebGL成品：只回查指定TF-BASE交接夾，仍5份工單／腳本、未見成品；不推論其他位置，未啟Unity、未彈執行檔、未重派或下載舊大型包。",
+    "實體手機與母語審閱：本輪是390模擬視窗與工具核對；實體手機、三語母語逐句與使用者新畫面確認未取得。"
+  ]
 }
