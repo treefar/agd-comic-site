@@ -19,7 +19,7 @@ const NODE_ENV = JSON.stringify(DEV ? "development" : "production");
 const TMP = path.join(ROOT, ".build-tmp");
 
 // 載入順序必須和 index.html 的 text/babel script 一致（彼此靠全域名稱串接）
-const SOURCES = ["locale-en.js", "locale-ja.js", "en-pages.jsx", "tweaks-panel.jsx", "comic-components.jsx", "holiday-home.jsx", "chapters-1.jsx", "faculty-portrait.js", "chapters-2.jsx", "pages.jsx", "student-guide-model.js", "student-guide.jsx", "app.jsx"];
+const SOURCES = ["locale-en.js", "locale-ja.js", "en-pages.jsx", "tweaks-panel.jsx", "comic-components.jsx", "holiday-home.jsx", "student-work-draw-model.js", "student-work-draw.jsx", "chapters-1.jsx", "faculty-portrait.js", "chapters-2.jsx", "pages.jsx", "student-guide-model.js", "student-guide.jsx", "app.jsx"];
 // 首頁一定要出現在預渲染 HTML 的章節錨點
 const REQUIRED_IDS = ["hero", "news", "about", "works", "faculty", "labs", "join", "contact"];
 // 不複製進 dist 的來源/建置檔
@@ -111,7 +111,7 @@ fs.writeFileSync(path.join(DIST, "index.html"), html, "utf8");
 // 4) 複製靜態資源：根目錄下 EXCLUDE 以外的全部（目前是 styles.css、data/、images/、.nojekyll；日後新增的資源資料夾自動帶上）
 for (const name of fs.readdirSync(ROOT)) {
   if (EXCLUDE.has(name)) continue;
-  if (!["data", "images", "styles.css", "student-guide.css", "faculty-portrait.css", "holiday-home.css", ".nojekyll"].includes(name)) continue;
+  if (!["data", "images", "styles.css", "student-guide.css", "faculty-portrait.css", "holiday-home.css", "student-work-draw.css", ".nojekyll"].includes(name)) continue;
   fs.cpSync(path.join(ROOT, name), path.join(DIST, name), { recursive: true });
 }
 // Preserve temporary build output for this review's reproducibility.

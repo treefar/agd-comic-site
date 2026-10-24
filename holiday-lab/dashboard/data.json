@@ -7,12 +7,12 @@
     "generated": "2026-10-24",
     "authorities": [
       {
-        "path": "holiday-lab/reports/nav-centered-cta-20261024/verification.json",
+        "path": "holiday-lab/reports/student-work-draw-20261024/verification.json",
         "role": "本輪逐項結果、原始證據SHA與本機版號"
       }
     ],
     "notes": [
-      "本機審閱版 .measure-nav-centered-cta-20261024-01，連接埠 8888；尚未發布。",
+      "本機審閱版 .measure-student-work-draw-20261024-04，連接埠 8892；尚未發布。",
       "節日遊戲全部凍結，未測玩、未改遊戲檔、未啟動Unity。",
       "工具核對不等於母語、實體手機或使用者確認。",
       "舊遊戲通關與固定08歷史覆蓋不納入本輪網站通過數。"
@@ -641,8 +641,8 @@
           "title": "本輪本機建置",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "8888新77檔建置，只有styles.css變更；HTML及app-WMPKTSKM.js與8887逐SHA相同，HTTP200。三策展原件保持，不附節日runtime。",
-          "evidence": "holiday-lab/reports/nav-centered-cta-20261024/build-command.json、holiday-lab/reports/nav-centered-cta-20261024/green-command.json、holiday-lab/reports/nav-centered-cta-20261024/http.json",
+          "reason": "8892本機建置79檔，app-635DGZZW.js；中英日原網站與頁底策展保持，新增八件作品抽選，不附節日runtime。HTTP12項200及逐檔SHA通過。",
+          "evidence": "holiday-lab/reports/student-work-draw-20261024/build-r4-command.json、holiday-lab/reports/student-work-draw-20261024/final-check-command.json、holiday-lab/reports/student-work-draw-20261024/http.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -652,8 +652,8 @@
           "title": "獨立三語與手機驗收",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "本次CSS窄驗由主控Chrome操作，9組排版108項，另英文實際捲到頁尾確認固定位置4項。原始同步scroll讀值與逾時不轉為成功；沒有新代理全站驗收，舊證據只限原版本。",
-          "evidence": "holiday-lab/reports/nav-centered-cta-20261024/browser-summary.json、holiday-lab/reports/nav-centered-cta-20261024/browser-timeout.json、holiday-lab/reports/nav-centered-cta-20261024/english-follow.json",
+          "reason": "本次新功能由主控Chrome做三語1440／390與中文1180／1181共八組80條排版／資料條件、十次實際抽選及八目的頁；10個Node回歸。沒有新獨立代理全站驗收，舊代理證據只限原版本；系統減動態、真背景分頁及實體手機未測。",
+          "evidence": "holiday-lab/reports/student-work-draw-20261024/result.json、holiday-lab/reports/student-work-draw-20261024/green-model-r2-command.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -729,8 +729,19 @@
           "title": "集中線中央作品抽選可行性評估",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "依實際原首頁空間及既有作品資料完成評估，建議淡色海報、使用者點選減速停格、獨立作品連結及減動態版本。W3C官方動態／閃爍說明已讀。僅提案，不是功能或WCAG通過，不恢復節日或新增AI素材。",
+          "reason": "前版可行性評估保留；使用者本輪已另授權本機試作。實作與窄範圍驗證另見「原漫畫首頁學生作品抽選」列，評估本身仍不等於完整WCAG或使用者審閱通過。",
           "evidence": "holiday-lab/reports/nav-centered-cta-20261024/作品抽選評估.md",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "student-work-draw",
+          "title": "原漫畫首頁學生作品抽選",
+          "disposition": "已修正",
+          "result": "yes",
+          "reason": "8892本機八件原作／原署名，2.7秒減速停格、作品連結、暫停、立即停格、Enter／Escape與手動靜態。三語雙寬加中文臨界寬共八組80條通過；十次實際抽選、八目的頁、12項HTTP／SHA、10個模型回歸通過。原圖不改、無生成素材、節日凍結。主控功能窄驗，使用者尚未確認，不宣稱全站或完整WCAG通過。",
+          "evidence": "holiday-lab/reports/student-work-draw-20261024/REPORT.md、holiday-lab/reports/student-work-draw-20261024/result.json、holiday-lab/reports/student-work-draw-20261024/green-model-r2-command.json、holiday-lab/reports/student-work-draw-20261024/ten-live-draws.json、holiday-lab/reports/student-work-draw-20261024/routes.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"

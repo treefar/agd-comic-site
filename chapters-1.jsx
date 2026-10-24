@@ -8,7 +8,7 @@ const HeroChapter = () => (
     <div className="container">
       <div className="comic-page">
         {/* TIER 1 — splash 全寬主格 — tier 設 position:relative 給 bubble 用 */}
-        <div className="comic-tier tier-1-1 tier-splash hero-original-tier" style={{ position: "relative" }}>
+        <div className="comic-tier tier-1-1 tier-splash hero-original-tier hero-draw-enabled" style={{ position: "relative" }}>
           {/* 對話泡泡 — 移到 panel 外側 + 突出 panel 上邊框，破第四面牆（panel 有 overflow:hidden 會切掉） */}
           <div style={{ position: "absolute", top: -28, left: 36, zIndex: 7, transform: "rotate(-3deg)" }}>
             <Bubble variant="bubble--cloud" className="bubble--anim-bounce">「動起來！動到極限！」</Bubble>
@@ -48,11 +48,12 @@ const HeroChapter = () => (
                 </span>
               </div>
             </div>
+            <StudentWorkDraw />
             <SFX color="yellow" rotate={-10} size={120} anim="burst"
               style={{ position: "absolute", top: 30, right: 60, zIndex: 5 }}>
               碰！
             </SFX>
-            <div style={{
+            <div className="hero-original-chapter-stamp" style={{
               position: "absolute", top: 24, right: 24,
               fontFamily: "'Bangers',sans-serif", fontSize: 14,
               background: "var(--ink)", color: "var(--paper)",
@@ -62,7 +63,7 @@ const HeroChapter = () => (
             }}>CH. 01 — OPEN</div>
 
             {/* 「碰」下方的 PRESS START 按鈕 + 角色對白 */}
-            <div style={{
+            <div className="hero-original-actions" style={{
               position: "absolute", top: 170, right: 36,
               display: "flex", flexDirection: "column", alignItems: "flex-end",
               gap: 12, zIndex: 4, maxWidth: 240
@@ -97,7 +98,7 @@ const HeroChapter = () => (
               </div>
             </div>
             {/* 底部 highlight 泡泡 — 點擊即跳到對應的精彩內容 */}
-            <div style={{ position: "absolute", bottom: 24, left: 32, right: 280, display: "flex", gap: 10, flexWrap: "wrap", zIndex: 5 }}>
+            <div className="hero-original-highlights" style={{ position: "absolute", bottom: 24, left: 32, right: 280, display: "flex", gap: 10, flexWrap: "wrap", zIndex: 5 }}>
               <a href="#about" style={{ textDecoration: "none" }}>
                 <Bubble className="bubble--anim-glow" style={{
                   background: "#fff", color: "var(--ink)",

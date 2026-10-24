@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "tests/student-work-draw.test.cjs"
+  ],
+  "cwd": "C:\\agywork\\agd-holiday-prototypes",
+  "observed_utc": "2026-10-24T08:41:36.510Z",
+  "stdout": "node:fs:441\n    return binding.readFileUtf8(path, stringToFlags(options.flag));\n                   ^\n\nError: ENOENT: no such file or directory, open 'C:\\agywork\\agd-holiday-prototypes\\student-work-draw-model.js'\n    at Object.readFileSync (node:fs:441:20)\n    at Object.<anonymous> (C:\\agywork\\agd-holiday-prototypes\\tests\\student-work-draw.test.cjs:3:35)\n    at Module._compile (node:internal/modules/cjs/loader:1830:14)\n    at Object..js (node:internal/modules/cjs/loader:1961:10)\n    at Module.load (node:internal/modules/cjs/loader:1553:32)\n    at Module._load (node:internal/modules/cjs/loader:1355:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)\n    at node:internal/main/run_main_module:33:47 {\n  errno: -4058,\n  code: 'ENOENT',\n  syscall: 'open',\n  path: 'C:\\\\agywork\\\\agd-holiday-prototypes\\\\student-work-draw-model.js'\n}\n\nNode.js v24.15.0\n✖ tests\\student-work-draw.test.cjs (90.8429ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 106.3324\n\n✖ failing tests:\n\ntest at tests\\student-work-draw.test.cjs:1:1\n✖ tests\\student-work-draw.test.cjs (90.8429ms)\n  'test failed'\n",
+  "stderr": "",
+  "exit_code": 1
+}
