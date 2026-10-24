@@ -1,0 +1,777 @@
+{
+  "as_of": "2026-10-24",
+  "status": "proposal_only",
+  "operations": [
+    {
+      "op": "replace",
+      "file": "data/students/guide.json",
+      "pointer": "/cards/1/step_details/0/detail",
+      "card_id_guard": "internship",
+      "before": "先向系辦說明自己的入學年、班別與預計實習期間，索取適用的辦法及申請表。也一起問時數怎麼算、結束後要交什麼，避免只知道最低時數。",
+      "after": "先向系辦確認入學年、班別與適用文件，再到校務資訊系統的「學務資訊→校外實習（實習紀錄輸入）」申請。公司不在名單時，先請系辦協助評估與新增。",
+      "source_ids": [
+        "internship-student-guide-113",
+        "internship-school-details-113"
+      ],
+      "reason": "補入目前官方全文已核的辦理步驟，或清楚揭露本屆缺件；不套過時金額與時限。",
+      "translations": {
+        "en": "Confirm your entry year, programme and applicable documents with the department office. Then apply through the student portal: Student Affairs → Off-campus Internship (Internship Record Entry). If the company is not listed, ask the office about evaluation and registration first.",
+        "ja": "入学年度・課程と適用書類を学科事務室に確認し、校務システムの「学務情報→学外実習（実習記録入力）」から申請します。企業一覧にない場合は、先に事務室へ評価と登録を相談してください。"
+      }
+    },
+    {
+      "op": "replace",
+      "file": "data/students/guide.json",
+      "pointer": "/cards/1/step_details/2/detail",
+      "card_id_guard": "internship",
+      "before": "請實習承辦確認合約由誰簽、保險何時生效，以及出了問題要找誰。拿到需補文件的清單後再安排開始日期，不把公司口頭答應當成學校程序完成。",
+      "after": "合約經指導老師同意後再列印，並請承辦確認雙方用印、個別實習計畫與投保證明。系上和機構確認報到日期後再開始，不自行把公司口頭錄取當作程序完成。",
+      "source_ids": [
+        "internship-school-details-113",
+        "internship-student-guide-113"
+      ],
+      "reason": "補入目前官方全文已核的辦理步驟，或清楚揭露本屆缺件；不套過時金額與時限。",
+      "translations": {
+        "en": "Print the agreement after your supervisor approves it. Ask the coordinator to check both parties’ seals, your individual internship plan and insurance certificate. Start on the date confirmed by the department and host; a verbal job offer does not complete the school procedure.",
+        "ja": "指導教員の承認後に契約書を印刷し、双方の押印、個別実習計画と保険加入証明を担当者に確認してもらいます。学科と受入先が確認した開始日に従ってください。企業からの口頭の採用連絡だけでは手続きは完了しません。"
+      }
+    },
+    {
+      "op": "replace",
+      "file": "data/students/guide.json",
+      "pointer": "/cards/1/warning",
+      "card_id_guard": "internship",
+      "before": "自找公司、打工時數認列或中止實習，請先向系辦確認適用規定。",
+      "after": "系網仍列107年修訂手冊，本屆適用尚待確認。自找公司、打工認列或中止實習，先問系辦；校級113年辦法不能取代本系細則。",
+      "source_ids": [
+        "dept-forms",
+        "internship-school-rules-113",
+        "internship-school-details-113"
+      ],
+      "reason": "補入目前官方全文已核的辦理步驟，或清楚揭露本屆缺件；不套過時金額與時限。",
+      "translations": {
+        "en": "The department still lists a handbook revised in ROC 107 (2018); its applicability to your cohort is unconfirmed. Ask the department before arranging your own host, seeking work-hour credit or stopping an internship. The university’s ROC 113 (2024) rules do not replace departmental requirements.",
+        "ja": "学科サイトには民国107年（2018年）改訂の手引きが掲載されており、現学年への適用は未確認です。受入先の自己開拓、アルバイトの認定、実習中止は先に学科へ相談してください。民国113年（2024年）の全学規則は学科の細則に代わるものではありません。"
+      }
+    },
+    {
+      "op": "replace",
+      "file": "data/students/guide.json",
+      "pointer": "/cards/1/flow_note",
+      "card_id_guard": "internship",
+      "before": "這是開始實習前的準備；實習中怎麼聯絡老師、結束後交什麼，也請先問清楚。",
+      "after": "開始前先辦合約與保險；結束後仍要依系上期限交成果報告、自評，並完成老師與機構評量。",
+      "source_ids": [
+        "internship-school-details-113",
+        "internship-student-guide-113"
+      ],
+      "reason": "補入目前官方全文已核的辦理步驟，或清楚揭露本屆缺件；不套過時金額與時限。",
+      "translations": {
+        "en": "Complete the agreement and insurance before starting. Afterward, submit your report and self-assessment by the department’s deadline and complete the supervisor and host evaluations.",
+        "ja": "開始前に契約と保険の手続きを済ませます。終了後も学科の期限までに成果報告と自己評価を提出し、指導教員と受入先による評価を受けてください。"
+      }
+    },
+    {
+      "op": "replace",
+      "file": "data/students/guide.json",
+      "pointer": "/cards/13/step_details/2/detail",
+      "card_id_guard": "overseas-internship",
+      "before": "錄取後先核對契約中的實習機構、期間與補助，再請承辦協助確認醫療、意外保險及合法實習簽證。也問清楚行前說明、當地聯絡與返校成果要怎麼辦理。",
+      "after": "錄取後核對契約中的機構、期間、補助與自付費，再確認醫療、意外保險及合法實習簽證。出發前問清楚行前說明與緊急聯絡；實習期間維持學籍，結束後依計畫完成返校報到及成果交件。",
+      "source_ids": [
+        "internship-school-rules-113",
+        "overseas-selection-school-112",
+        "moe-studyabroad-rules"
+      ],
+      "reason": "補入目前官方全文已核的辦理步驟，或清楚揭露本屆缺件；不套過時金額與時限。",
+      "translations": {
+        "en": "After acceptance, check the host, dates, grant and personal costs in your agreement, along with medical and accident insurance and a visa that permits the internship. Confirm pre-departure guidance and emergency contacts. Remain enrolled during the internship and complete the required return report and submissions afterward.",
+        "ja": "採用後は契約の受入先・期間・補助・自己負担額、医療・傷害保険と実習を認める査証を確認します。出発前に説明会と緊急連絡先を確認し、実習中は学籍を維持してください。終了後は計画に従って帰校報告と成果提出を行います。"
+      }
+    },
+    {
+      "op": "replace",
+      "file": "data/students/guide.json",
+      "pointer": "/cards/13/warning",
+      "card_id_guard": "overseas-internship",
+      "before": "先向系辦確認目前有無甄選、名額與補助；錄取、費用及出發日期以當期正式文件為準。",
+      "after": "本次尚未取得本系115當期甄選與個人補助契約。校內學海要點或歷屆成果不能代替招募；名額、語言、費用及返校期限以當期正式文件為準。",
+      "source_ids": [
+        "overseas-selection-school-112",
+        "hc-internship-2026"
+      ],
+      "reason": "補入目前官方全文已核的辦理步驟，或清楚揭露本屆缺件；不套過時金額與時限。",
+      "translations": {
+        "en": "This review has not obtained the department’s current ROC 115 (2026) recruitment notice or individual grant agreement. University programme rules and past achievements do not establish an open call. Check the current documents for places, language requirements, costs and return deadlines.",
+        "ja": "今回の確認では、本学科の民国115年（2026年）の募集要項と個人の補助契約は未取得です。学内の計画規則や過去の成果は募集案内の代わりにはなりません。定員・語学条件・費用・帰校期限は当期の正式書類で確認してください。"
+      }
+    },
+    {
+      "op": "replace",
+      "file": "data/students/guide.json",
+      "pointer": "/cards/1/faq",
+      "card_id_guard": "internship",
+      "before": [
+        {
+          "q": "校外實習要做多久？",
+          "a": "112至115入學一般日四技課表列校外實習2學分、160小時。時數計算、可認列內容與成果文件，仍依本系當期規定。",
+          "source_ids": [
+            "curriculum-112",
+            "curriculum-113",
+            "curriculum-114",
+            "curriculum-115"
+          ]
+        },
+        {
+          "q": "可以直接拿打工時數抵實習嗎？",
+          "a": "不一定。請先把公司、職務與工作內容交系辦或實習指導老師確認，取得認列回覆後再安排。",
+          "source_ids": [
+            "career-contact",
+            "dept-contact"
+          ]
+        }
+      ],
+      "after": [
+        {
+          "q": "校外實習要做多久？",
+          "a": "112至115入學一般日四技課表列校外實習2學分、160小時。時數計算、可認列內容與成果文件，仍依本系當期規定。",
+          "source_ids": [
+            "curriculum-112",
+            "curriculum-113",
+            "curriculum-114",
+            "curriculum-115"
+          ]
+        },
+        {
+          "q": "可以直接拿打工時數抵實習嗎？",
+          "a": "不一定。請先把公司、職務與工作內容交系辦或實習指導老師確認，取得認列回覆後再安排。",
+          "source_ids": [
+            "career-contact",
+            "dept-contact"
+          ]
+        },
+        {
+          "q": "實習結束後，只交時數證明就好嗎？",
+          "a": "不只時數。校級細則要求成果報告與實習生自評，由指導老師及機構共同評量；交件期限依系上規定。現列說明的線上自評須在合約雙方用印完成後才會出現。",
+          "source_ids": [
+            "internship-school-details-113",
+            "internship-student-guide-113"
+          ]
+        },
+        {
+          "q": "實習不適應，能直接不去或換公司嗎？",
+          "a": "先聯絡實習輔導老師與系辦，說明原因。現列表單的流程是學生申請、老師與系主任審核；轉換、中止及已完成時數如何處理，須由系上確認，不自行離開後才補辦。",
+          "source_ids": [
+            "internship-school-rules-113",
+            "internship-transfer-form-113"
+          ]
+        }
+      ],
+      "source_ids": [
+        "internship-school-details-113",
+        "internship-student-guide-113",
+        "internship-school-rules-113",
+        "internship-transfer-form-113"
+      ],
+      "reason": "保留既有FAQ並增加原件可支持的實作疑問。",
+      "translations": [
+        {
+          "zh": {
+            "q": "實習結束後，只交時數證明就好嗎？",
+            "a": "不只時數。校級細則要求成果報告與實習生自評，由指導老師及機構共同評量；交件期限依系上規定。現列說明的線上自評須在合約雙方用印完成後才會出現。",
+            "source_ids": [
+              "internship-school-details-113",
+              "internship-student-guide-113"
+            ]
+          },
+          "en": {
+            "q": "Is proof of completed hours enough after the internship?",
+            "a": "No. The university rules require a report and student self-assessment, with evaluation by the supervisor and host. Follow the department’s submission deadline. The listed system guide says the online self-assessment appears after both parties’ seals are recorded."
+          },
+          "ja": {
+            "q": "実習が終わったら、時間数の証明だけ出せばよいですか？",
+            "a": "時間数だけではありません。全学細則では成果報告と自己評価、指導教員と受入先による評価が必要です。提出期限は学科の規定に従います。掲載中の操作説明では、双方の押印完了が登録されるとオンライン自己評価が表示されます。"
+          }
+        },
+        {
+          "zh": {
+            "q": "實習不適應，能直接不去或換公司嗎？",
+            "a": "先聯絡實習輔導老師與系辦，說明原因。現列表單的流程是學生申請、老師與系主任審核；轉換、中止及已完成時數如何處理，須由系上確認，不自行離開後才補辦。",
+            "source_ids": [
+              "internship-school-rules-113",
+              "internship-transfer-form-113"
+            ]
+          },
+          "en": {
+            "q": "Can I stop attending or change companies if the placement is unsuitable?",
+            "a": "Contact your internship supervisor and department first. The listed form goes from the student to the supervisor and department chair for approval. Ask the department how a transfer, termination and completed hours will be handled; do not leave first and apply afterward."
+          },
+          "ja": {
+            "q": "実習が合わないとき、無断で休んだり企業を変えたりできますか？",
+            "a": "先に実習指導教員と学科事務室へ事情を伝えてください。掲載中の申請書は学生から指導教員、学科長へと審査されます。変更・中止と実施済み時間の扱いは学科に確認し、無断で離れてから手続きしないでください。"
+          }
+        }
+      ]
+    },
+    {
+      "op": "replace",
+      "file": "data/students/guide.json",
+      "pointer": "/cards/1/source_ids",
+      "card_id_guard": "internship",
+      "before": [
+        "curriculum-112",
+        "curriculum-113",
+        "curriculum-114",
+        "curriculum-115",
+        "career-contact",
+        "internship-school",
+        "dept-contact",
+        "dept-forms",
+        "internship-contract-history"
+      ],
+      "after": [
+        "curriculum-112",
+        "curriculum-113",
+        "curriculum-114",
+        "curriculum-115",
+        "career-contact",
+        "internship-school",
+        "dept-contact",
+        "dept-forms",
+        "internship-contract-history",
+        "internship-school-rules-113",
+        "internship-school-details-113",
+        "internship-student-guide-113",
+        "internship-transfer-form-113"
+      ],
+      "source_ids": [
+        "curriculum-112",
+        "curriculum-113",
+        "curriculum-114",
+        "curriculum-115",
+        "career-contact",
+        "internship-school",
+        "dept-contact",
+        "dept-forms",
+        "internship-contract-history",
+        "internship-school-rules-113",
+        "internship-school-details-113",
+        "internship-student-guide-113",
+        "internship-transfer-form-113"
+      ],
+      "reason": "補入新實讀原件；不動career-contact原條目。"
+    },
+    {
+      "op": "replace",
+      "file": "data/students/guide.json",
+      "pointer": "/cards/1/step_details/0/source_ids",
+      "card_id_guard": "internship",
+      "before": [
+        "dept-contact",
+        "curriculum-115",
+        "dept-forms"
+      ],
+      "after": [
+        "dept-contact",
+        "curriculum-115",
+        "dept-forms",
+        "internship-student-guide-113",
+        "internship-school-details-113"
+      ],
+      "source_ids": [
+        "internship-student-guide-113",
+        "internship-school-details-113"
+      ],
+      "reason": "小說明同步新增來源引用。"
+    },
+    {
+      "op": "replace",
+      "file": "data/students/guide.json",
+      "pointer": "/cards/1/step_details/2/source_ids",
+      "card_id_guard": "internship",
+      "before": [
+        "career-contact",
+        "internship-school"
+      ],
+      "after": [
+        "career-contact",
+        "internship-school",
+        "internship-school-details-113",
+        "internship-student-guide-113"
+      ],
+      "source_ids": [
+        "internship-school-details-113",
+        "internship-student-guide-113"
+      ],
+      "reason": "小說明同步新增來源引用。"
+    },
+    {
+      "op": "replace",
+      "file": "data/students/guide.json",
+      "pointer": "/cards/13/faq",
+      "card_id_guard": "overseas-internship",
+      "before": [
+        {
+          "q": "境外生也一定可以領學海補助嗎？",
+          "a": "教育部現行要點要求中華民國國籍、臺灣戶籍與同階段在學一學期以上等條件。能否參加實習與能否領此補助要分開問，不能由過往新聞推定。",
+          "source_ids": [
+            "moe-studyabroad-rules",
+            "hc-internship-2026"
+          ]
+        },
+        {
+          "q": "出國實習的保險和簽證，可以自己隨便買辦嗎？",
+          "a": "教育部要點要求校方協助實習期間醫療、意外保險及合法實習簽證。請依計畫與當地規定確認，不能預設觀光簽證可實習；補助以核定契約為準。",
+          "source_ids": [
+            "moe-studyabroad-rules"
+          ]
+        }
+      ],
+      "after": [
+        {
+          "q": "境外生也一定可以領學海補助嗎？",
+          "a": "教育部現行要點要求中華民國國籍、臺灣戶籍與同階段在學一學期以上等條件。能否參加實習與能否領此補助要分開問，不能由過往新聞推定。",
+          "source_ids": [
+            "moe-studyabroad-rules",
+            "hc-internship-2026"
+          ]
+        },
+        {
+          "q": "出國實習的保險和簽證，可以自己隨便買辦嗎？",
+          "a": "教育部要點要求校方協助實習期間醫療、意外保險及合法實習簽證。請依計畫與當地規定確認，不能預設觀光簽證可實習；補助以核定契約為準。",
+          "source_ids": [
+            "moe-studyabroad-rules"
+          ]
+        },
+        {
+          "q": "有學海補助，就代表全部免費嗎？",
+          "a": "不能這樣推定。校內要點說明實際補助由計畫安排，不保證涵蓋全部費用。錄取後請核對個人核定額、自付項目與契約條件，不用新聞或別人的金額估自己的支出。",
+          "source_ids": [
+            "overseas-selection-school-112"
+          ]
+        }
+      ],
+      "source_ids": [
+        "overseas-selection-school-112"
+      ],
+      "reason": "保留既有FAQ並增加原件可支持的實作疑問。",
+      "translations": [
+        {
+          "zh": {
+            "q": "有學海補助，就代表全部免費嗎？",
+            "a": "不能這樣推定。校內要點說明實際補助由計畫安排，不保證涵蓋全部費用。錄取後請核對個人核定額、自付項目與契約條件，不用新聞或別人的金額估自己的支出。",
+            "source_ids": [
+              "overseas-selection-school-112"
+            ]
+          },
+          "en": {
+            "q": "Does a grant under 學海築夢 (overseas professional internships) cover all costs?",
+            "a": "Not necessarily. The university rules leave the actual award to the project; they do not guarantee that every expense is covered. Check your individual award, personal costs and agreement after acceptance. Do not estimate your budget from news reports or another student’s grant."
+          },
+          "ja": {
+            "q": "「學海築夢」（海外専門実習への補助）の補助があれば、費用はすべて無料ですか？",
+            "a": "そうとは限りません。学内要点では実際の補助は計画ごとに定められ、全費用の負担を保証していません。採用後に個人の決定額、自己負担項目と契約条件を確認し、ニュースや他の学生の金額で予算を決めないでください。"
+          }
+        }
+      ]
+    },
+    {
+      "op": "replace",
+      "file": "data/students/guide.json",
+      "pointer": "/cards/13/source_ids",
+      "card_id_guard": "overseas-internship",
+      "before": [
+        "hc-internship-2026",
+        "moe-studyabroad-rules",
+        "moe-studyabroad-round2-115",
+        "career-contact",
+        "oica-outbound",
+        "dept-contact"
+      ],
+      "after": [
+        "hc-internship-2026",
+        "moe-studyabroad-rules",
+        "moe-studyabroad-round2-115",
+        "career-contact",
+        "oica-outbound",
+        "dept-contact",
+        "internship-school-rules-113",
+        "overseas-selection-school-112"
+      ],
+      "source_ids": [
+        "hc-internship-2026",
+        "moe-studyabroad-rules",
+        "moe-studyabroad-round2-115",
+        "career-contact",
+        "oica-outbound",
+        "dept-contact",
+        "internship-school-rules-113",
+        "overseas-selection-school-112"
+      ],
+      "reason": "補入新實讀原件；不動career-contact原條目。"
+    },
+    {
+      "op": "replace",
+      "file": "data/students/guide.json",
+      "pointer": "/cards/13/step_details/2/source_ids",
+      "card_id_guard": "overseas-internship",
+      "before": [
+        "moe-studyabroad-rules"
+      ],
+      "after": [
+        "moe-studyabroad-rules",
+        "internship-school-rules-113",
+        "overseas-selection-school-112"
+      ],
+      "source_ids": [
+        "internship-school-rules-113",
+        "overseas-selection-school-112",
+        "moe-studyabroad-rules"
+      ],
+      "reason": "小說明同步新增來源引用。"
+    }
+  ],
+  "new_sources": [
+    {
+      "id": "internship-school-rules-113",
+      "title": "學生校外實習辦法",
+      "url": "https://dcpi.sao.stu.edu.tw/wp-content/uploads/sites/135/2024/10/%E6%A8%B9%E5%BE%B7%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%B8%E5%AD%B8%E7%94%9F%E6%A0%A1%E5%A4%96%E5%AF%A6%E7%BF%92%E8%BE%A6%E6%B3%95-1131009%E6%A0%A1%E5%8B%99%E6%9C%83%E8%AD%B0%E9%80%9A%E9%81%8E.pdf",
+      "published_or_document_date": "113年10月9日修正通過",
+      "checked_at": "2026-10-24",
+      "readability": "已核對目前職發中心列出的校級辦法全文。實習地點、時間、成績及替代方案仍由各系規定；不等於本系當屆細則。",
+      "note": "現列版本與本屆適用性分開核對；原文及版本證據見本輪研究報告。"
+    },
+    {
+      "id": "internship-school-details-113",
+      "title": "學生校外實習施行細則",
+      "url": "https://dcpi.sao.stu.edu.tw/wp-content/uploads/sites/135/2024/10/%E6%A8%B9%E5%BE%B7%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%B8%E5%AD%B8%E7%94%9F%E6%A0%A1%E5%A4%96%E5%AF%A6%E7%BF%92%E6%96%BD%E8%A1%8C%E7%B4%B0%E5%89%87_1130918%E8%A1%8C%E6%94%BF%E6%9C%83%E8%AD%B0%E9%80%9A%E9%81%8E-1.pdf",
+      "published_or_document_date": "113年9月18日修正通過",
+      "checked_at": "2026-10-24",
+      "readability": "已核對目前列出的校級細則全文，包含合約、個別計畫、保險、報告與評量。系上期限及本屆成績比例仍須另查。",
+      "note": "現列版本與本屆適用性分開核對；原文及版本證據見本輪研究報告。"
+    },
+    {
+      "id": "internship-student-guide-113",
+      "title": "學生校外實習說明：申請、合約與交件",
+      "url": "https://dcpi.sao.stu.edu.tw/wp-content/uploads/sites/135/2024/12/%E5%AD%B8%E7%94%9F%E6%A0%A1%E5%A4%96%E5%AF%A6%E7%BF%92%E8%AA%AA%E6%98%8E_1131205%E5%AD%B8%E7%94%9F%E7%89%88-1.pdf",
+      "published_or_document_date": "2024年12月5日學生版",
+      "checked_at": "2026-10-24",
+      "readability": "已核對現列申請路徑及交件說明；其中113年工資數字及保險年度不可當成現在標準。系統實際畫面及當屆清單仍向承辦確認。",
+      "note": "現列版本與本屆適用性分開核對；原文及版本證據見本輪研究報告。"
+    },
+    {
+      "id": "internship-transfer-form-113",
+      "title": "校外實習轉換／停止實習機構申請表",
+      "url": "https://wpc.stu.edu.tw/wp-content/uploads/sites/52/2024/04/AD05-4-304_%E5%AD%B8%E7%94%9F%E6%A0%A1%E5%A4%96%E5%AF%A6%E7%BF%92%E8%BD%89%E6%8F%9B%E5%81%9C%E6%AD%A2%E5%AF%A6%E7%BF%92%E6%A9%9F%E6%A7%8B%E7%94%B3%E8%AB%8B%E8%A1%A8_V3.0.odt",
+      "published_or_document_date": "現列V3.0空白表；表內未見修訂日期",
+      "checked_at": "2026-10-24",
+      "readability": "已核對空白表全文與學生、輔導老師、系主任的申請順序。是否適用本屆及已完成時數如何處理，仍由系上確認。",
+      "note": "現列版本與本屆適用性分開核對；原文及版本證據見本輪研究報告。"
+    },
+    {
+      "id": "overseas-selection-school-112",
+      "title": "本校學海築夢專案計畫甄選要點",
+      "url": "https://dcpi.sao.stu.edu.tw/wp-content/uploads/sites/135/2024/01/%E6%A8%B9%E5%BE%B7%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%B8%E8%BE%A6%E7%90%86%E6%95%99%E8%82%B2%E9%83%A8%E3%80%8C%E5%AD%B8%E6%B5%B7%E7%AF%89%E5%A4%A2%E3%80%8D%E5%B0%88%E6%A1%88%E8%A8%88%E7%95%AB%E7%94%84%E9%81%B8%E8%A6%81%E9%BB%9E-1120913%E8%A1%8C%E6%94%BF%E6%9C%83%E8%AD%B0%E9%80%9A%E9%81%8E.pdf",
+      "published_or_document_date": "112年9月13日修正通過",
+      "checked_at": "2026-10-24",
+      "readability": "已核對目前列出的校內要點全文；這是學校計畫規則，不是本系115當期學生甄選公告或個人核定契約。補助額與新梯次條件另查。",
+      "note": "現列版本與本屆適用性分開核對；原文及版本證據見本輪研究報告。"
+    }
+  ],
+  "retained": [
+    {
+      "pointer": "/cards/14",
+      "id": "overseas-study-visit",
+      "reason": "本次沒有取得本系115當期見學招募／費用退費／學分文件。原卡已正確提醒需查當期，不為湊改動而改寫。",
+      "before": {
+        "id": "overseas-study-visit",
+        "category": "internships",
+        "title": "海外見學",
+        "summary": "想參訪海外學校、展會或產業現場，先問當期見學安排；報名條件、費用、補助與學分都要分開確認。",
+        "steps": [
+          "向系辦詢問目前有無見學或移地教學",
+          "確認行程、費用、補助與認列方式",
+          "依當期文件確認報名及出國準備"
+        ],
+        "contact": {
+          "primary": "動遊系辦（當期團、課程與認列）",
+          "phone": "07-6158000#6102",
+          "url": "https://www.dgd.stu.edu.tw/english-系所介紹與課程地圖｜動遊系四年學什麼？/",
+          "secondary": "國際及兩岸事務處（校級出國交流入口）",
+          "secondary_phone": "07-6158000#1610"
+        },
+        "source_ids": [
+          "overseas-visit-plan-113",
+          "oica-outbound",
+          "dept-contact"
+        ],
+        "warning": "是否開團、費用、補助與認列，請向系辦確認當期文件；參訪不代表一定可抵實習或學分。",
+        "faq": [
+          {
+            "q": "海外見學可以直接算實習時數或畢業學分嗎？",
+            "a": "不能直接保證。參訪、交流與職場實習的活動內容不同，是否認列要看當期課程及本系規定；請先向系辦確認再報名。",
+            "source_ids": [
+              "overseas-visit-plan-113",
+              "dept-contact"
+            ]
+          },
+          {
+            "q": "看到以前的日本展演營或交流照片，現在也能報名嗎？",
+            "a": "過往成果不等於現在開放報名。先問系辦目前有無團、適用年級、名額、費用與補助，再依當期公告準備；校級交流可從國際處入口查詢。",
+            "source_ids": [
+              "overseas-visit-plan-113",
+              "oica-outbound"
+            ]
+          }
+        ],
+        "step_details": [
+          {
+            "title": "向系辦詢問目前有無見學或移地教學",
+            "detail": "向系辦說明想參訪的領域與可出國時間，問目前有沒有見學或短期移地教學。先拿到當期安排再規劃，不把往年展演營或交流照片當作正在招募。",
+            "source_ids": [
+              "overseas-visit-plan-113",
+              "dept-contact"
+            ]
+          },
+          {
+            "title": "確認行程、費用、補助與認列方式",
+            "detail": "報名前把行程、自付費用、可能補助與取消條件問清楚；若想認列課程或實習，也先取得系辦確認。參訪交流與職場實習不同，不能只因出國就直接計入。",
+            "source_ids": [
+              "oica-outbound",
+              "dept-contact"
+            ]
+          },
+          {
+            "title": "依當期文件確認報名及出國準備",
+            "detail": "有當期公告後，再依主辦單位要求核對報名文件、護照、保險與入境準備。也確認帶隊或緊急聯絡方式及返校是否要交成果，不直接沿用海外實習的文件清單。",
+            "source_ids": [
+              "oica-outbound",
+              "dept-contact"
+            ]
+          }
+        ],
+        "flow_type": "sequence",
+        "flow": [
+          {
+            "label": "詢問當期見學或課程",
+            "step_index": 0,
+            "source_ids": [
+              "dept-contact",
+              "oica-outbound"
+            ]
+          },
+          {
+            "label": "核對行程費用與認列",
+            "step_index": 1,
+            "source_ids": [
+              "dept-contact",
+              "oica-outbound"
+            ]
+          },
+          {
+            "label": "依文件報名準備出國",
+            "step_index": 2,
+            "source_ids": [
+              "dept-contact",
+              "oica-outbound"
+            ]
+          }
+        ],
+        "flow_note": "見學、交換與海外實習的申請和補助不同，依正在招募的團或課程辦理。"
+      },
+      "after": {
+        "id": "overseas-study-visit",
+        "category": "internships",
+        "title": "海外見學",
+        "summary": "想參訪海外學校、展會或產業現場，先問當期見學安排；報名條件、費用、補助與學分都要分開確認。",
+        "steps": [
+          "向系辦詢問目前有無見學或移地教學",
+          "確認行程、費用、補助與認列方式",
+          "依當期文件確認報名及出國準備"
+        ],
+        "contact": {
+          "primary": "動遊系辦（當期團、課程與認列）",
+          "phone": "07-6158000#6102",
+          "url": "https://www.dgd.stu.edu.tw/english-系所介紹與課程地圖｜動遊系四年學什麼？/",
+          "secondary": "國際及兩岸事務處（校級出國交流入口）",
+          "secondary_phone": "07-6158000#1610"
+        },
+        "source_ids": [
+          "overseas-visit-plan-113",
+          "oica-outbound",
+          "dept-contact"
+        ],
+        "warning": "是否開團、費用、補助與認列，請向系辦確認當期文件；參訪不代表一定可抵實習或學分。",
+        "faq": [
+          {
+            "q": "海外見學可以直接算實習時數或畢業學分嗎？",
+            "a": "不能直接保證。參訪、交流與職場實習的活動內容不同，是否認列要看當期課程及本系規定；請先向系辦確認再報名。",
+            "source_ids": [
+              "overseas-visit-plan-113",
+              "dept-contact"
+            ]
+          },
+          {
+            "q": "看到以前的日本展演營或交流照片，現在也能報名嗎？",
+            "a": "過往成果不等於現在開放報名。先問系辦目前有無團、適用年級、名額、費用與補助，再依當期公告準備；校級交流可從國際處入口查詢。",
+            "source_ids": [
+              "overseas-visit-plan-113",
+              "oica-outbound"
+            ]
+          }
+        ],
+        "step_details": [
+          {
+            "title": "向系辦詢問目前有無見學或移地教學",
+            "detail": "向系辦說明想參訪的領域與可出國時間，問目前有沒有見學或短期移地教學。先拿到當期安排再規劃，不把往年展演營或交流照片當作正在招募。",
+            "source_ids": [
+              "overseas-visit-plan-113",
+              "dept-contact"
+            ]
+          },
+          {
+            "title": "確認行程、費用、補助與認列方式",
+            "detail": "報名前把行程、自付費用、可能補助與取消條件問清楚；若想認列課程或實習，也先取得系辦確認。參訪交流與職場實習不同，不能只因出國就直接計入。",
+            "source_ids": [
+              "oica-outbound",
+              "dept-contact"
+            ]
+          },
+          {
+            "title": "依當期文件確認報名及出國準備",
+            "detail": "有當期公告後，再依主辦單位要求核對報名文件、護照、保險與入境準備。也確認帶隊或緊急聯絡方式及返校是否要交成果，不直接沿用海外實習的文件清單。",
+            "source_ids": [
+              "oica-outbound",
+              "dept-contact"
+            ]
+          }
+        ],
+        "flow_type": "sequence",
+        "flow": [
+          {
+            "label": "詢問當期見學或課程",
+            "step_index": 0,
+            "source_ids": [
+              "dept-contact",
+              "oica-outbound"
+            ]
+          },
+          {
+            "label": "核對行程費用與認列",
+            "step_index": 1,
+            "source_ids": [
+              "dept-contact",
+              "oica-outbound"
+            ]
+          },
+          {
+            "label": "依文件報名準備出國",
+            "step_index": 2,
+            "source_ids": [
+              "dept-contact",
+              "oica-outbound"
+            ]
+          }
+        ],
+        "flow_note": "見學、交換與海外實習的申請和補助不同，依正在招募的團或課程辦理。"
+      }
+    }
+  ],
+  "translation_notes": [
+    "translations為英日審閱建議，不宣稱官方譯名或母語簽核。",
+    "保留民國115／115學年度，不套日本年度前期。校務選單英日為說明譯文；實際操作保留中文原路徑可對照。",
+    "source新增後，須同步英日來源title/readability與全部新key引用；career-contact由其他代理負責，本組不替換。"
+  ],
+  "source_operations": [
+    {
+      "op": "add",
+      "file": "data/students/guide.json",
+      "pointer": "/sources/-",
+      "guard": {
+        "id_absent": "internship-school-rules-113"
+      },
+      "before": null,
+      "after": {
+        "id": "internship-school-rules-113",
+        "title": "學生校外實習辦法",
+        "url": "https://dcpi.sao.stu.edu.tw/wp-content/uploads/sites/135/2024/10/%E6%A8%B9%E5%BE%B7%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%B8%E5%AD%B8%E7%94%9F%E6%A0%A1%E5%A4%96%E5%AF%A6%E7%BF%92%E8%BE%A6%E6%B3%95-1131009%E6%A0%A1%E5%8B%99%E6%9C%83%E8%AD%B0%E9%80%9A%E9%81%8E.pdf",
+        "published_or_document_date": "113年10月9日修正通過",
+        "checked_at": "2026-10-24",
+        "readability": "已核對目前職發中心列出的校級辦法全文。實習地點、時間、成績及替代方案仍由各系規定；不等於本系當屆細則。",
+        "note": "現列版本與本屆適用性分開核對；原文及版本證據見本輪研究報告。"
+      }
+    },
+    {
+      "op": "add",
+      "file": "data/students/guide.json",
+      "pointer": "/sources/-",
+      "guard": {
+        "id_absent": "internship-school-details-113"
+      },
+      "before": null,
+      "after": {
+        "id": "internship-school-details-113",
+        "title": "學生校外實習施行細則",
+        "url": "https://dcpi.sao.stu.edu.tw/wp-content/uploads/sites/135/2024/10/%E6%A8%B9%E5%BE%B7%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%B8%E5%AD%B8%E7%94%9F%E6%A0%A1%E5%A4%96%E5%AF%A6%E7%BF%92%E6%96%BD%E8%A1%8C%E7%B4%B0%E5%89%87_1130918%E8%A1%8C%E6%94%BF%E6%9C%83%E8%AD%B0%E9%80%9A%E9%81%8E-1.pdf",
+        "published_or_document_date": "113年9月18日修正通過",
+        "checked_at": "2026-10-24",
+        "readability": "已核對目前列出的校級細則全文，包含合約、個別計畫、保險、報告與評量。系上期限及本屆成績比例仍須另查。",
+        "note": "現列版本與本屆適用性分開核對；原文及版本證據見本輪研究報告。"
+      }
+    },
+    {
+      "op": "add",
+      "file": "data/students/guide.json",
+      "pointer": "/sources/-",
+      "guard": {
+        "id_absent": "internship-student-guide-113"
+      },
+      "before": null,
+      "after": {
+        "id": "internship-student-guide-113",
+        "title": "學生校外實習說明：申請、合約與交件",
+        "url": "https://dcpi.sao.stu.edu.tw/wp-content/uploads/sites/135/2024/12/%E5%AD%B8%E7%94%9F%E6%A0%A1%E5%A4%96%E5%AF%A6%E7%BF%92%E8%AA%AA%E6%98%8E_1131205%E5%AD%B8%E7%94%9F%E7%89%88-1.pdf",
+        "published_or_document_date": "2024年12月5日學生版",
+        "checked_at": "2026-10-24",
+        "readability": "已核對現列申請路徑及交件說明；其中113年工資數字及保險年度不可當成現在標準。系統實際畫面及當屆清單仍向承辦確認。",
+        "note": "現列版本與本屆適用性分開核對；原文及版本證據見本輪研究報告。"
+      }
+    },
+    {
+      "op": "add",
+      "file": "data/students/guide.json",
+      "pointer": "/sources/-",
+      "guard": {
+        "id_absent": "internship-transfer-form-113"
+      },
+      "before": null,
+      "after": {
+        "id": "internship-transfer-form-113",
+        "title": "校外實習轉換／停止實習機構申請表",
+        "url": "https://wpc.stu.edu.tw/wp-content/uploads/sites/52/2024/04/AD05-4-304_%E5%AD%B8%E7%94%9F%E6%A0%A1%E5%A4%96%E5%AF%A6%E7%BF%92%E8%BD%89%E6%8F%9B%E5%81%9C%E6%AD%A2%E5%AF%A6%E7%BF%92%E6%A9%9F%E6%A7%8B%E7%94%B3%E8%AB%8B%E8%A1%A8_V3.0.odt",
+        "published_or_document_date": "現列V3.0空白表；表內未見修訂日期",
+        "checked_at": "2026-10-24",
+        "readability": "已核對空白表全文與學生、輔導老師、系主任的申請順序。是否適用本屆及已完成時數如何處理，仍由系上確認。",
+        "note": "現列版本與本屆適用性分開核對；原文及版本證據見本輪研究報告。"
+      }
+    },
+    {
+      "op": "add",
+      "file": "data/students/guide.json",
+      "pointer": "/sources/-",
+      "guard": {
+        "id_absent": "overseas-selection-school-112"
+      },
+      "before": null,
+      "after": {
+        "id": "overseas-selection-school-112",
+        "title": "本校學海築夢專案計畫甄選要點",
+        "url": "https://dcpi.sao.stu.edu.tw/wp-content/uploads/sites/135/2024/01/%E6%A8%B9%E5%BE%B7%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%B8%E8%BE%A6%E7%90%86%E6%95%99%E8%82%B2%E9%83%A8%E3%80%8C%E5%AD%B8%E6%B5%B7%E7%AF%89%E5%A4%A2%E3%80%8D%E5%B0%88%E6%A1%88%E8%A8%88%E7%95%AB%E7%94%84%E9%81%B8%E8%A6%81%E9%BB%9E-1120913%E8%A1%8C%E6%94%BF%E6%9C%83%E8%AD%B0%E9%80%9A%E9%81%8E.pdf",
+        "published_or_document_date": "112年9月13日修正通過",
+        "checked_at": "2026-10-24",
+        "readability": "已核對目前列出的校內要點全文；這是學校計畫規則，不是本系115當期學生甄選公告或個人核定契約。補助額與新梯次條件另查。",
+        "note": "現列版本與本屆適用性分開核對；原文及版本證據見本輪研究報告。"
+      }
+    }
+  ]
+}
