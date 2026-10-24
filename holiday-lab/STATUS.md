@@ -1,3 +1,14 @@
+## 2026-10-24 最新：8887恢復原漫畫首頁，英日／指南保留，策展放頁底
+
+- source_agent: codex；TF-GO。使用者認為8883簡約首頁不如原來，要求保留原首頁＋新版英文／日文＋在校指南，遊戲放最下面；另明確選擇先放學生作品策展示範、節日繼續暫緩。這是範圍確認，不是新畫面或發布批准。最新 http://127.0.0.1:8887/ ，英日 ?lang=en／ja ，指南 /?lang=zh#/students/guide ，頁底 /#student-play ，儀表板 /progress/ 。
+- codex/original-hero24只改app.jsx、chapters-1.jsx、holiday-home.css。唯讀取既存origin/main原第一格，恢復集中線、大字、跳動泡泡、SFX與PRESS START；只加h1及CSS範圍class，反向逐字重建原tier一致，沒有checkout／merge／修改main。小颯完整原畫回原首頁第二格，contain與獨立署名行，不改原圖。最新英日字典、15卡47小說明56FAQ89來源、師資／招生及其餘章節保持。
+- 最新.measure-original-home-20261024-04／77檔／app-WMPKTSKM.js。頁底只接既有策展html/css/mjs三檔，原SHA相同，不附節日runtime。三語入口實際開啟，日文完成一輪三展位／三署名／成功結果；節日、Flora／胖倉鼠仍不開放，未查新包、未改遊戲或啟Unity／生圖。8883及本輪01／02／03候選保留，勿當最新。
+- red exit1→復原→Build exit0，最後04主控Chrome首頁三語×1440/390六組72yes、導覽／指南六組48yes、策展入口三語21yes；不是新代理獨立全站驗收。首版1279英文說明／泡泡重疊有red、最後同寬green。手機署名改流式配置後六組圖框不遮；r2／r3失敗與工具選擇器／shell引號失敗保留，不放寬測試或改產品配合。359其他來源、320保全檔及三策展原檔SHA保持。
+- 儀表板50列44yes/6no/使用者0，來源1434檔SHA；權威18/18，兩寬搜尋／展開／缺件篩選14yes。六項官方資料／正式名／素材／字型真機等限制保留，不把範圍確認當畫面通過。不push、不發布、不碰main、不刪檔、不執行C節，不推私人Vault。
+- 報告 holiday-lab/reports/original-home-20261024/REPORT.md；原始command JSON含stdout/stderr/exit、browser-r4.json、navigation-guide.json、curation-entry／completion、直接截圖。下一輪第一件事先看8887，收恢復原首頁的具體畫面意見；不再把8883當新稿，不恢復節日或擅自發布。
+
+重啟：node scripts/serve-local-review.cjs --site=.measure-original-home-20261024-04 --dashboard=holiday-lab/dashboard/out --port=8887
+
 ## 2026-10-24 最新：8883不放遊戲，本機服務已恢復
 
 - source_agent: codex；TF-GO。使用者回報連不到，查8882無listener後恢復原服務；後續裁定待辦一起核對、遊戲先不放。本次最新 http://127.0.0.1:8883/ ，指南 /?lang=zh#/students/guide ，儀表板 /progress/ 。8882舊版保留，別用舊版判斷新成果。
