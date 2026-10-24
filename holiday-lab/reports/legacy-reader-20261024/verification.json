@@ -1,0 +1,165 @@
+{
+  "at": "2026-10-24T03:17:33.558Z",
+  "scope": "Two original DOC text-story extraction, not layout or115 applicability approval",
+  "yes": 9,
+  "no": 0,
+  "checks": [
+    {
+      "item": "版本/授權/lock integrity及npm快取tarball實際SHA512相符",
+      "result": "yes",
+      "actual": {
+        "version": "1.0.4",
+        "license": "MIT",
+        "integrity": "sha512-PyAGZQ2gjnVA5kcZAOAxoYciCMaAvu0dbVlw/zxHphhy+3be8cDeYKHJPO8iedIM3Sx0arA/ugKTJyXhZNgo6g==",
+        "tarball_bytes": 18813,
+        "tarball_verified_from_existing_npm_cache": true
+      }
+    },
+    {
+      "item": "兩原件前後SHA及OLE/FIB magic一致",
+      "result": "yes",
+      "actual": [
+        {
+          "name": "recognition",
+          "bytes": 31744,
+          "sha256": "4d62ff2e208f59094897b033d55387b5ac9c077422ccb687d1679c23b8a5db22",
+          "nFib": 193
+        },
+        {
+          "name": "evaluation",
+          "bytes": 43008,
+          "sha256": "741c7f463943dafc1ba7680d876f544201427fd35e679479ab9a9a3bbb17255d",
+          "nFib": 193
+        }
+      ]
+    },
+    {
+      "item": "每piece CP/位元組邊界及完整story範圍一致",
+      "result": "yes",
+      "actual": [
+        {
+          "name": "recognition",
+          "pieces": 1,
+          "declared_cp": [
+            0,
+            154
+          ],
+          "story_cp": 153,
+          "tail": 1,
+          "covered": true
+        },
+        {
+          "name": "evaluation",
+          "pieces": 3,
+          "declared_cp": [
+            0,
+            256,
+            512,
+            540
+          ],
+          "story_cp": 539,
+          "tail": 1,
+          "covered": true
+        }
+      ]
+    },
+    {
+      "item": "各piece以原WordDocument byte range獨立UTF16解碼與raw-all完全相同",
+      "result": "yes",
+      "actual": true
+    },
+    {
+      "item": "非控制正文全字保持且末尾只有單一CR",
+      "result": "yes",
+      "actual": {
+        "recognition": 144,
+        "evaluation": 502,
+        "visible_body_characters_unchanged": true
+      }
+    },
+    {
+      "item": "8種story均保存且所有已讀字串無U+FFFD",
+      "result": "yes",
+      "actual": [
+        {
+          "name": "recognition",
+          "stories": {
+            "body": 144,
+            "footnotes": 0,
+            "endnotes": 0,
+            "headers": 1,
+            "footers": 0,
+            "annotations": 0,
+            "textboxes": 0,
+            "headerTextboxes": 0
+          }
+        },
+        {
+          "name": "evaluation",
+          "stories": {
+            "body": 502,
+            "footnotes": 0,
+            "endnotes": 0,
+            "headers": 1,
+            "footers": 7,
+            "annotations": 0,
+            "textboxes": 0,
+            "headerTextboxes": 0
+          }
+        }
+      ]
+    },
+    {
+      "item": "原始及清理後控制字/頁碼欄位保留證據",
+      "result": "yes",
+      "actual": {
+        "cell_markers": {
+          "recognition": 29,
+          "evaluation": 48
+        },
+        "page_field_raw_preserved": true
+      }
+    },
+    {
+      "item": "初輪helper失敗證據保留，正式API正文兩輪SHA不變",
+      "result": "yes",
+      "actual": {
+        "r1_helper_red_preserved": true,
+        "parser_body_same_both_runs": true
+      }
+    },
+    {
+      "item": "認定欄位與兩組評分標籤/百分比實際存在",
+      "result": "yes",
+      "actual": {
+        "recognition_labels": [
+          "學生姓名",
+          "班別",
+          "學號",
+          "實習機構名稱",
+          "需加蓋公司印章",
+          "實習機構地址",
+          "實習機構電話",
+          "實習日期",
+          "抵免事由",
+          "抵免時數",
+          "指導老師",
+          "系主任"
+        ],
+        "weights": [
+          18,
+          16,
+          16,
+          50,
+          18,
+          16,
+          16,
+          50
+        ],
+        "source_title_typo_preserved": true,
+        "layout": "unknown",
+        "applicable_115": "unknown"
+      }
+    }
+  ]
+}

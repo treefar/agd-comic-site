@@ -1,0 +1,40 @@
+{
+  "as_of": "2026-10-24",
+  "scope": "Known two original OLE DOC text stories only",
+  "items": [
+    {
+      "item": "認定表全部FIB文字範圍及所有story",
+      "result": "yes",
+      "body_cp": 144,
+      "hdd_cp": 9,
+      "tail": "CR1"
+    },
+    {
+      "item": "評分表全部FIB文字範圍及所有story",
+      "result": "yes",
+      "body_cp": 502,
+      "hdd_cp": 37,
+      "tail": "CR1"
+    },
+    {
+      "item": "12個認定標籤／評分兩組6項權重／簽章文字已實讀",
+      "result": "yes",
+      "evidence": "fields.json及parsed-r2/*-body.txt"
+    },
+    {
+      "item": "原件不變與發佈包integrity",
+      "result": "yes",
+      "evidence": "verification.json"
+    },
+    {
+      "item": "表格合併儲存格、欄寬、列高、版面",
+      "result": "unknown",
+      "reason": "Parser flattens text; not a layout renderer"
+    },
+    {
+      "item": "115／本屆可直接使用",
+      "result": "unknown",
+      "reason": "Older document content does not establish current applicability"
+    }
+  ]
+}

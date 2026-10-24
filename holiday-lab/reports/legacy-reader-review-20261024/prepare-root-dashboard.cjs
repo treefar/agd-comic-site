@@ -1,0 +1,1 @@
+const fs=require('node:fs');let s=fs.readFileSync(__dirname+'/check-dashboard.cjs','utf8');s=s.replaceAll('dashboard-observed','root-dashboard-observed').replaceAll('dashboard-ui.json','root-dashboard-ui.json');fs.writeFileSync(__dirname+'/root-check-dashboard.cjs',s,{flag:'wx'});console.log('Fresh output paths for the root dashboard check; original failed receipt retained.');

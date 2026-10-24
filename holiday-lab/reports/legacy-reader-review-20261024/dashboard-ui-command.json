@@ -1,0 +1,11 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "holiday-lab/reports/legacy-reader-review-20261024/check-dashboard.cjs"
+  ],
+  "cwd": "C:\\agywork\\agd-holiday-prototypes",
+  "observed_utc": "2026-10-24T03:29:19.261Z",
+  "stdout": "",
+  "stderr": "node:fs:561\r\n  return binding.open(\r\n                 ^\r\n\r\nError: ENOENT: no such file or directory, open 'C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\legacy-reader-review-20261024\\verification.json'\r\n    at Object.openSync (node:fs:561:18)\r\n    at Object.readFileSync (node:fs:445:35)\r\n    at Object.<anonymous> (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\legacy-reader-review-20261024\\check-dashboard.cjs:4:27)\r\n    at Module._compile (node:internal/modules/cjs/loader:1830:14)\r\n    at Object..js (node:internal/modules/cjs/loader:1961:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1553:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1355:12)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)\r\n    at node:internal/main/run_main_module:33:47 {\r\n  errno: -4058,\r\n  code: 'ENOENT',\r\n  syscall: 'open',\r\n  path: 'C:\\\\agywork\\\\agd-holiday-prototypes\\\\holiday-lab\\\\reports\\\\legacy-reader-review-20261024\\\\verification.json'\r\n}\r\n\r\nNode.js v24.15.0\r\n",
+  "exit_code": 1
+}

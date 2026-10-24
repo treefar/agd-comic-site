@@ -1,0 +1,79 @@
+{
+  "observed_utc": "2026-10-24T03:34:30.393Z",
+  "original_objective": "把你安排的全面試作，派子代理分別完成",
+  "scope_preserved": true,
+  "latest_constraints": [
+    "全部節日凍結",
+    "不push/發布/main/刪檔/C節",
+    "完整WebGL新回傳才驗包整合",
+    "保留8882審閱與原作品"
+  ],
+  "previous_goal_turn": "progress: four copy values fixed, independent review and local delivery completed",
+  "this_goal_turn": "progress: two legacy DOC declared text stories extracted and independently read; dashboard and handoff synchronized",
+  "required_local_closeout_complete": true,
+  "required_local_closeout_evidence": [
+    "holiday-lab/reports/legacy-reader-review-20261024/blocking-review.md",
+    "holiday-lab/reports/legacy-reader-review-20261024/root-handoff-command.json",
+    "holiday-lab/reports/legacy-reader-review-20261024/root-dashboard-verify-command.json",
+    "holiday-lab/reports/legacy-reader-review-20261024/root-dashboard-ui-command.json"
+  ],
+  "full_goal_achieved": false,
+  "reason_not_complete": "Two named WebGL trials cannot be integrated without their complete returned packages; current-cohort authority and unresolved official names remain unproven. No mock substitutes or frozen seasonal work are authorized.",
+  "same_blocking_condition_goal_turns": 3,
+  "turn_count_basis": "Three consecutive goal turns in this conversation, individually associated above with their actual saved authoritative state; not inferred merely from three files.",
+  "blocking_history": [
+    {
+      "conversation_goal_turn": "8881本機審閱交付回合",
+      "file": "holiday-lab/reports/guide-final-docs-20261024/verification.json",
+      "file_sha256": "2bcd95a5755d792519463247794f1e63b8096d925c76a3d4fff2bcdbcf94ad08",
+      "same_condition": "Flora/胖倉鼠完整WebGL未回傳至指定可用交接夾",
+      "evidence": [
+        "holiday-lab/reports/guide-final-docs-20261024/webgl-recheck.json"
+      ],
+      "reason": "2026-10-24T02:10:24 UTC指定TF-BASE夾新回查：5份工單/腳本、0子夾，未見WebGL包；只代表指定夾。未下載舊大型來源、未啟Unity或重派。"
+    },
+    {
+      "conversation_goal_turn": "8882英日四值修正回合",
+      "file": "holiday-lab/reports/copy-actions-20261024/verification.json",
+      "file_sha256": "546aa170d2cb11147b2bbf85d38837ce8a4dd5c98bc049d419b507a573729ab4",
+      "same_condition": "Flora/胖倉鼠完整WebGL未回傳至指定可用交接夾",
+      "evidence": [
+        "holiday-lab/reports/guide-final-docs-20261024/webgl-recheck.json"
+      ],
+      "reason": "2026-10-24T02:10:24 UTC指定TF-BASE夾新回查：5份工單/腳本、0子夾，未見WebGL包；只代表指定夾。未下載舊大型來源、未啟Unity或重派。"
+    },
+    {
+      "conversation_goal_turn": "本輪舊DOC全文補讀回合",
+      "file": "holiday-lab/reports/legacy-reader-review-20261024/verification.json",
+      "file_sha256": "fd07f77d710e7ca9f0a0e8b5602eec55a3b15fe62a987b45265a5c4e2b495a8a",
+      "same_condition": "Flora/胖倉鼠完整WebGL未回傳至指定可用交接夾",
+      "evidence": [
+        "holiday-lab/reports/legacy-reader-review-20261024/webgl-recheck.json"
+      ],
+      "reason": "最新2026-10-24 03:13:07 UTC指定TF-BASE夾回查仍只回5份工單/腳本、未見子夾或WebGL成品。僅對指定夾本次回傳作判定；沒有下載舊大包、重派或啟Unity。完整成品未回傳，不能執行包件驗收及頁底整合。"
+    }
+  ],
+  "latest_folder_observation": {
+    "current_time": "2026-10-24 03:13:07 UTC"
+  },
+  "remaining_inputs": [
+    "TF-BASE完整Flora/胖倉鼠WebGL包與清單",
+    "當屆正式規章/表單及校方角色/正式名釐清",
+    "使用者具體畫面意見（有則依症狀修，未代填確認）"
+  ],
+  "not_new_mandatory_gates": [
+    "全OS逐字fallback絕對保證",
+    "真人母語逐句簽核",
+    "新硬體/全改編權保證"
+  ],
+  "no_known_required_local_action_left_after_bounded_audit": true,
+  "does_not_prove_no_undiscovered_bugs": true,
+  "source_bindings_verified": 1196,
+  "website_http": {
+    "url": "http://127.0.0.1:8882/index.html",
+    "status": 200,
+    "sha256": "56c3dd40e3574924559d1c7f72b302e85df6d247ec2bed4889e56e75b0a9809a"
+  },
+  "requested_goal_status": "blocked",
+  "public_release": false
+}

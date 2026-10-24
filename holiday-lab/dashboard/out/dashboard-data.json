@@ -7,7 +7,7 @@
     "generated": "2026-10-24",
     "authorities": [
       {
-        "path": "holiday-lab/reports/copy-actions-20261024/verification.json",
+        "path": "holiday-lab/reports/legacy-reader-review-20261024/verification.json",
         "role": "本輪逐項結果、原始證據SHA與本機版號"
       }
     ],
@@ -558,8 +558,8 @@
           "title": "當期完整規章、表單及年度衝突",
           "disposition": "缺件",
           "result": "no",
-          "reason": "維持no：當屆實習/海外/見學、證照表與版本衝突仍保留。兩份已取得舊DOC在本段3輪隱藏唯讀方法均未取到全文，屬本機COM封送方法待修，不當文件損壞或校方外部缺件。原件保全、Word已全關；不冒稱已讀或115適用。",
-          "evidence": "holiday-lab/reports/goal-audit-20261024/legacy-docs/REPORT.md、holiday-lab/reports/goal-audit-20261024/legacy-docs/matrix.json、holiday-lab/reports/goal-audit-20261024/requirements-review.md、holiday-lab/reports/guide-final-docs-20261024/internship/REPORT.md",
+          "reason": "維持no：兩份舊實習DOC全文已補讀，正文144/502個UTF16單位及完整已宣告文字story由獨立CFB/FIB/CLX核對；原件未改。表格版面/115當屆效力仍unknown，本系當期實習/海外/見學、證照表與其他版本衝突仍未齊，不能把舊表50%比例直接套用本屆。",
+          "evidence": "holiday-lab/reports/legacy-reader-20261024/REPORT.md、holiday-lab/reports/legacy-reader-review-20261024/parser-review.md、holiday-lab/reports/legacy-reader-review-20261024/content-review.md、holiday-lab/reports/legacy-reader-review-20261024/portability-final-r2.md、holiday-lab/reports/legacy-reader-review-20261024/current-proof-command.json",
           "data": "recorded",
           "tool": "pending",
           "user": "user_pending"
@@ -624,8 +624,8 @@
           "title": "Flora／胖倉鼠WebGL成品",
           "disposition": "缺件",
           "result": "no",
-          "reason": "2026-10-24T02:10:24 UTC指定TF-BASE夾新回查：5份工單/腳本、0子夾，未見WebGL包；只代表指定夾。未下載舊大型來源、未啟Unity或重派。",
-          "evidence": "holiday-lab/reports/guide-final-docs-20261024/webgl-recheck.json",
+          "reason": "最新2026-10-24 03:13:07 UTC指定TF-BASE夾回查仍只回5份工單/腳本、未見子夾或WebGL成品。僅對指定夾本次回傳作判定；沒有下載舊大包、重派或啟Unity。完整成品未回傳，不能執行包件驗收及頁底整合。",
+          "evidence": "holiday-lab/reports/legacy-reader-review-20261024/webgl-recheck.json",
           "data": "recorded",
           "tool": "pending",
           "user": "user_pending"
@@ -646,8 +646,8 @@
           "title": "本輪本機建置",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "最新候選8882／.measure-copy-actions-20261024-01／360檔／app-R7TGU7Q2.js；8881審閱版及服務保留。新舊bundle僅4個精確文案值，反向替換可還原舊SHA。沒有發布。",
-          "evidence": "holiday-lab/reports/copy-actions-20261024/build-command.json、holiday-lab/reports/copy-actions-20261024/current-verification.json",
+          "reason": "本機仍8882／.measure-copy-actions-20261024-01／360檔／app-R7TGU7Q2.js。本段只補文件讀取與進度紀錄，47網站來源/360建置SHA相同，沒有新Build或重啟服務。8881首頁/指南仍保留。",
+          "evidence": "holiday-lab/reports/legacy-reader-review-20261024/current-verification.json、holiday-lab/reports/copy-actions-20261024/build-command.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -657,8 +657,8 @@
           "title": "獨立三語與手機驗收",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "獨立窄驗EN/JA×390/1440四組44yes/0no、8張WebP。47source/360build前後SHA保持；18項回歸及root精確字典/畫面SHA重核exit0。其餘功能沿用明列前版證據，不擴張為全站重新批准。",
-          "evidence": "holiday-lab/reports/copy-actions-20261024/REPORT.md、holiday-lab/reports/copy-actions-20261024/copy-proof-command.json、holiday-lab/reports/copy-actions-20261024/qa/REPORT.md、holiday-lab/reports/copy-actions-20261024/current-proof-command.json",
+          "reason": "網站沿用8882英日四組44yes/18項文案回歸的限定證據。本段沒有產品變更，未重跑Build/UI；另為2DOC做獨立全文54yes、內容精讀14yes及可攜補核12條，最終方法更正7yes/0no，數字分層不相加成網站通過數。",
+          "evidence": "holiday-lab/reports/copy-actions-20261024/qa/REPORT.md、holiday-lab/reports/legacy-reader-review-20261024/parser-review.md、holiday-lab/reports/legacy-reader-review-20261024/content-review.md、holiday-lab/reports/legacy-reader-review-20261024/portability-final-r2.md",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -745,9 +745,9 @@
   "unknowns": [
     "中日全站逐字缺字稽核：維持no作完整品質證據限制，不是已確認缺字。4個修正值未引入新候選字元，仍沿用既有字體，未下載字型；全站逐字fallback及跨OS未全核。跨OS不是本次新增必測門檻。",
     "全部正式職稱／處室外文名：維持no：全站尚有正式外文名與官網職稱衝突；本段另逐筆回讀官方同列雙語證據，確認註冊課務組為Registration and Curriculum Division，保留既有英名，不以此一筆推定全校名稱皆已核。",
-    "當期完整規章、表單及年度衝突：維持no：當屆實習/海外/見學、證照表與版本衝突仍保留。兩份已取得舊DOC在本段3輪隱藏唯讀方法均未取到全文，屬本機COM封送方法待修，不當文件損壞或校方外部缺件。原件保全、Word已全關；不冒稱已讀或115適用。",
+    "當期完整規章、表單及年度衝突：維持no：兩份舊實習DOC全文已補讀，正文144/502個UTF16單位及完整已宣告文字story由獨立CFB/FIB/CLX核對；原件未改。表格版面/115當屆效力仍unknown，本系當期實習/海外/見學、證照表與其他版本衝突仍未齊，不能把舊表50%比例直接套用本屆。",
     "全部素材製程與權利已確認：前輪8879及其明列版本的限定證據保留；本段沒有重驗全部範圍。8876前版限定證據保留；本輪未新增此項全範圍驗收。小颯作者由使用者確認；其他既有校方作品／照片的逐件製程與權利未全數另核，不能宣稱整包零AI或所有改編權已核。",
-    "Flora／胖倉鼠WebGL成品：2026-10-24T02:10:24 UTC指定TF-BASE夾新回查：5份工單/腳本、0子夾，未見WebGL包；只代表指定夾。未下載舊大型來源、未啟Unity或重派。",
+    "Flora／胖倉鼠WebGL成品：最新2026-10-24 03:13:07 UTC指定TF-BASE夾回查仍只回5份工單/腳本、未見子夾或WebGL成品。僅對指定夾本次回傳作判定；沒有下載舊大包、重派或啟Unity。完整成品未回傳，不能執行包件驗收及頁底整合。",
     "實體手機與母語審閱：維持no作尚無真機/母語/使用者新確認的誠實限制；現有手機模擬與獨立翻譯檢查各有證據。真人母語簽核、所有OS硬體認證不是自行新增的本機交付門檻。"
   ],
   "build": {

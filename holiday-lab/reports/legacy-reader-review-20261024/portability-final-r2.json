@@ -1,0 +1,81 @@
+{
+  "at": "2026-10-24T03:26:28.901Z",
+  "scope": "Final comparison-baseline correction only; no repeated parser, UI, network, Word or Build execution.",
+  "checks": [
+    {
+      "id": "two_failed_method_receipts_retained",
+      "yes": true,
+      "detail": {
+        "first": "portability-command.json",
+        "second": "portability-delta-command.json"
+      }
+    },
+    {
+      "id": "true_baseline_exact_SHA_single_path_delta",
+      "yes": true,
+      "detail": {
+        "old_sha256": "41a4522dfeca79b31e010a6ac2ace17b63326039cd0285f366ee315ff1538de0",
+        "current_sha256": "fb49505235981255309e8a599df7716ade706b579b8e087188713d46f59ee322",
+        "reconstructed_sha256": "41a4522dfeca79b31e010a6ac2ace17b63326039cd0285f366ee315ff1538de0",
+        "changed_line": 10,
+        "from": "path.resolve(__dirname,'../../../holiday-lab/reports/guide-final-docs-20261024/internship/raw/department-'+name+'.doc')",
+        "to": "'C:/agywork/agd-holiday-prototypes/holiday-lab/reports/guide-final-docs-20261024/internship/raw/department-'+name+'.doc'",
+        "conclusion": "At the 54-check snapshot the vendor/fresh-tag header was already present. Only fixture path changed since that exact SHA."
+      }
+    },
+    {
+      "id": "other11_portability_conditions_still_proven",
+      "yes": true,
+      "detail": {
+        "fresh_regression": "portability-regression-command.json",
+        "module_load_traces": "portable-loads-*.json"
+      }
+    },
+    {
+      "id": "original_DOC_whole_file_SHA_unchanged",
+      "yes": true,
+      "detail": [
+        {
+          "file": "C:/agywork/agd-holiday-prototypes/holiday-lab/reports/guide-final-docs-20261024/internship/raw/department-recognition.doc",
+          "sha256": "4d62ff2e208f59094897b033d55387b5ac9c077422ccb687d1679c23b8a5db22"
+        },
+        {
+          "file": "C:/agywork/agd-holiday-prototypes/holiday-lab/reports/guide-final-docs-20261024/internship/raw/department-evaluation.doc",
+          "sha256": "741c7f463943dafc1ba7680d876f544201427fd35e679479ab9a9a3bbb17255d"
+        }
+      ]
+    },
+    {
+      "id": "47source_360build_match_old_frozen_snapshot",
+      "yes": true,
+      "detail": {
+        "source": 47,
+        "build": 360
+      }
+    },
+    {
+      "id": "worker_vendor_parsed_r2_and_prior_report_stable",
+      "yes": true,
+      "detail": {
+        "files": 68
+      }
+    },
+    {
+      "id": "54check_report_exactly_preserved",
+      "yes": true
+    }
+  ],
+  "yes": 7,
+  "no": 0,
+  "pass": true,
+  "initial_parser_checks": {
+    "yes": 54,
+    "no": 0,
+    "unchanged": true
+  },
+  "final_unique_portability_checks": {
+    "yes": 12,
+    "no": 0
+  },
+  "no_background_process": true
+}

@@ -1,0 +1,50 @@
+// Fresh small portability supplement. All copies and new extraction stay in this review directory.
+const fs=require('fs'),path=require('path'),crypto=require('crypto'),cp=require('child_process'),assert=require('assert/strict');
+const out=__dirname,root='C:/agywork/agd-holiday-prototypes',worker=path.join(root,'holiday-lab/reports/legacy-reader-20261024'),pkg=path.join(worker,'runtime/node_modules/word-extractor'),vendor=path.join(worker,'method/vendor-word-extractor-1.0.4');
+const read=f=>fs.readFileSync(f),json=f=>JSON.parse(read(f)),sha=b=>crypto.createHash('sha256').update(b).digest('hex'),write=(f,x)=>fs.writeFileSync(path.join(out,f),JSON.stringify(x,null,2)+'\n');
+const walk=p=>fs.readdirSync(p,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(p,e.name)):[path.join(p,e.name)]);
+const prior=json(path.join(out,'parser-review.json')),oldRead=json(path.join(out,'local-source-read.json')),baseline=json(prior.baseline.file),checks=[];
+const check=(id,yes,detail)=>checks.push({id,yes:!!yes,detail});
+const product=()=>({source:baseline.source_after.map(x=>({file:x.file,sha256:sha(read(path.join(root,x.file)))})),build:baseline.build_after.map(x=>({file:x.file,sha256:sha(read(path.join(root,baseline.build,x.file)))}))});
+const stableFiles=[...walk(vendor),path.join(worker,'extract-r2.cjs'),path.join(worker,'regression.cjs'),...walk(path.join(worker,'parsed-r2')),...prior.documents.map(x=>x.cfb.file),path.join(out,'parser-review.md'),path.join(out,'parser-review.json'),path.join(out,'check-command.json')];
+const evidence=()=>stableFiles.map(file=>({file,sha256:sha(read(file))}));
+function copyFile(file,to){fs.mkdirSync(path.dirname(to),{recursive:true});fs.copyFileSync(file,to,fs.constants.COPYFILE_EXCL);}
+function main(){
+ const before=product(),eBefore=evidence();write('portability-before.json',{product:before,evidence:eBefore});
+ check('baseline47and360_unchanged_before',JSON.stringify(before.source)===JSON.stringify(baseline.source_after)&&JSON.stringify(before.build)===JSON.stringify(baseline.build_after),{sources:before.source.length,build:before.build.length});
+ const vendorComparison=walk(vendor).map(file=>{const rel=path.relative(vendor,file),b=read(file),original=path.join(pkg,rel);return {file:rel,vendor_sha256:sha(b),installed_sha256:fs.existsSync(original)?sha(read(original)):null};});
+ check('all16_vendor_files_equal_actual_installed',vendorComparison.length===16&&vendorComparison.every(x=>x.vendor_sha256===x.installed_sha256),vendorComparison);
+ check('vendor_MIT_license_preserved',read(path.join(vendor,'LICENSE')).toString().includes('MIT License'),{sha256:sha(read(path.join(vendor,'LICENSE')))});
+ const old=oldRead.worker_scripts.find(x=>x.file.endsWith('extract-r2.cjs')).source.replace(/\r\n/g,'\n'),current=read(path.join(worker,'extract-r2.cjs')).toString().replace(/\r\n/g,'\n'),ol=old.split('\n'),nl=current.split('\n');
+ const changes=[];for(let i=0;i<Math.max(ol.length,nl.length);i++)if(ol[i]!==nl[i])changes.push({line:i+1,before:ol[i],after:nl[i]});
+ let normalized=current.replace(nl[1],ol[1]);
+ const relative="path.resolve(__dirname,'../../../holiday-lab/reports/guide-final-docs-20261024/internship/raw/department-'+name+'.doc')",absolute="'C:/agywork/agd-holiday-prototypes/holiday-lab/reports/guide-final-docs-20261024/internship/raw/department-'+name+'.doc'";
+ normalized=normalized.replace(relative,absolute);
+ check('extractor_delta_only_paths_dependency_and_fresh_output_tag',normalized===old&&JSON.stringify(changes.map(x=>x.line))==='[2,10]'&&current.includes("'method/vendor-word-extractor-1.0.4'")&&!current.includes('runtime/node_modules'),{changes,normalized_sha256:sha(Buffer.from(normalized)),prior_normalized_sha256:sha(Buffer.from(old))});
+ const sb=path.join(out,'portable-sandbox'),copiedWorker=path.join(sb,'holiday-lab/reports/legacy-reader-20261024');assert.ok(!fs.existsSync(sb),'Fresh sandbox only');fs.mkdirSync(copiedWorker,{recursive:true});
+ for(const file of ['extract-r2.cjs','regression.cjs'])copyFile(path.join(worker,file),path.join(copiedWorker,file));
+ for(const f of walk(vendor))copyFile(f,path.join(copiedWorker,'method/vendor-word-extractor-1.0.4',path.relative(vendor,f)));
+ const fixtures=prior.documents.map(d=>{const dest=path.join(sb,path.relative(root,d.cfb.file));copyFile(d.cfb.file,dest);return {original:d.cfb.file,copied:dest,original_sha256:sha(read(d.cfb.file)),copied_sha256:sha(read(dest)),expected:d.cfb.sha256};});
+ check('both_real_fixtures_exact_copy',fixtures.every(x=>x.original_sha256===x.expected&&x.copied_sha256===x.expected),fixtures);
+ const traceFile=path.join(out,'trace-module-loads.cjs');assert.ok(!fs.existsSync(traceFile));
+ fs.writeFileSync(traceFile,"const Module=require('module'),fs=require('fs'),path=require('path'),loads=[];const original=Module._load;Module._load=function(request,parent,isMain){let resolved;try{resolved=Module._resolveFilename(request,parent,isMain);}catch(e){resolved='UNRESOLVED:'+request;}loads.push({request,resolved,parent:parent&&parent.filename});return original.apply(this,arguments);};process.on('exit',()=>fs.writeFileSync(path.join(__dirname,'portable-loads-'+process.pid+'.json'),JSON.stringify({pid:process.pid,argv:process.argv,loads},null,2)+'\\n'));\n");
+ const args=[path.join(copiedWorker,'regression.cjs'),'independent-r1'];
+ const env={...process.env,NODE_PATH:'',NODE_OPTIONS:'--require='+traceFile};
+ const r=cp.spawnSync(process.execPath,args,{cwd:sb,encoding:'utf8',env,timeout:60000,maxBuffer:8*1024*1024,windowsHide:true});
+ write('portability-regression-command.json',{at:new Date().toISOString(),command:[process.execPath,...args],cwd:sb,env_override:{NODE_PATH:env.NODE_PATH,NODE_OPTIONS:env.NODE_OPTIONS},stdout:r.stdout||'',stderr:r.stderr||'',exit_code:r.status,signal:r.signal,error:r.error?String(r.error):null});
+ check('fresh_regression_exit0',r.status===0&&!r.stderr,{exit_code:r.status,stderr:r.stderr,signal:r.signal,error:r.error?String(r.error):null});
+ const rr=json(path.join(copiedWorker,'independent-r1/regression-result.json')),er=json(path.join(copiedWorker,'independent-r1/extraction.json'));
+ check('fresh_real_DOC_regression_pass',rr.pass===true&&rr.checks.length===2&&rr.checks.every(x=>x.result==='yes'),rr);
+ check('fresh_all_story_hashes_equal_frozen_r2',er.documents.every(d=>{const p=prior.documents.find(x=>x.name===d.name);return d.all_story_ranges_covered&&d.piece_cp_matches&&d.input_sha256===p.cfb.sha256&&Object.entries(d.story_stats).every(([k,v])=>v.sha256===sha(Buffer.from(p.api[k])));}),er.documents.map(d=>({name:d.name,input_sha256:d.input_sha256,CP:d.declared_cp,body:d.story_stats.body.sha256})));
+ const loads=walk(out).filter(f=>path.basename(f).startsWith('portable-loads-')&&f.endsWith('.json')).map(json),resolved=loads.flatMap(x=>x.loads.map(l=>l.resolved));
+ check('actual_load_trace_no_node_modules',loads.length===2&&resolved.every(x=>!/[\\/]node_modules[\\/]/.test(x))&&resolved.some(x=>x.replace(/\\/g,'/').endsWith('vendor-word-extractor-1.0.4/lib/word-ole-extractor.js')),{trace_files:loads.map(x=>({pid:x.pid,argv:x.argv,loads:x.loads.length})),unique_resolved:[...new Set(resolved)]});
+ check('isolated_sandbox_has_no_node_modules',walk(sb).every(f=>!/[\\/]node_modules[\\/]/.test(f)),{});
+ const after=product(),eAfter=evidence();write('portability-after.json',{product:after,evidence:eAfter});
+ check('47source360build_stable_after',JSON.stringify(before)===JSON.stringify(after),{sources:after.source.length,build:after.build.length});
+ check('worker_originals_vendor_prior_review_stable',JSON.stringify(eBefore)===JSON.stringify(eAfter),{files:eAfter.length});
+ const result={at:new Date().toISOString(),checks,yes:checks.filter(x=>x.yes).length,no:checks.filter(x=>!x.yes).length,pass:checks.every(x=>x.yes),prior_review_sha256:sha(read(path.join(out,'parser-review.md'))),scope:'Supplement only; preserves earlier 54-check evidence. Binary .doc entry tested, not package generic DOCX API.',regression_processes_completed:r.status===0};
+ write('portability-review.json',result);
+ const md='# 可攜解析補核\n\n'+result.at+'\n\n'+result.yes+' yes／'+result.no+' no，實際隔離回歸 exit '+r.status+'，stderr '+JSON.stringify(r.stderr||'')+'。既有54項報告不覆寫，其SHA仍 '+result.prior_review_sha256+'。\n\n| 檢查 | yes／no |\n|---|---|\n'+checks.map(c=>'| '+c.id+' | '+(c.yes?'yes':'no')+' |').join('\n')+'\n\nvendor共16檔，逐檔與已核安裝原碼／MIT LICENSE相同。worker extract-r2僅第2行（輸出tag及載入vendor）、第10行（原件相對路徑）改動；反向還原後與先前實讀原碼完全一致，CP與清理邏輯不變。\n\n在本驗收目錄建立無node_modules的鏡像，逐byte複製兩真DOC與當前腳本／vendor，以原樣regression.cjs執行fresh independent-r1。另由預載唯讀Module._load追蹤驗證兩個子程序真正載入vendor，沒有任何node_modules或外部依賴；此結論限binary DOC直接Ole入口，不宣稱package主入口或DOCX不需其宣告套件。兩子程序與本驗收同步執行均已結束，沒有背景程序。\n\n原件全檔SHA、parsed-r2所有檔、當前worker腳本／vendor與先前parser-review.md/json收據，本補核前後未變；47source與360build依原快照核SHA也未變。未開網站、未啟Word、未網路、未修改原件或worker。\n\n實際命令、env、完整stdout/stderr/exit見portability-regression-command.json；逐條detail、兩原件SHA、全部模組載入路徑見portability-review.json及portable-loads-*.json；前後收據見portability-before.json/portability-after.json。\n\n本補核完成，停止。\n';
+ fs.writeFileSync(path.join(out,'portability-review.md'),md);console.log(JSON.stringify({yes:result.yes,no:result.no,pass:result.pass,report_sha256:sha(Buffer.from(md)),review_sha256:result.prior_review_sha256}));process.exitCode=result.pass?0:1;
+}
+main();

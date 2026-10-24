@@ -1,0 +1,156 @@
+{
+  "source": "parsed-r2 raw FIB body spans; labels only, not reconstructed table geometry",
+  "recognition": {
+    "labels": [
+      {
+        "label": "學生姓名",
+        "start_cp": 28,
+        "end_cp": 32
+      },
+      {
+        "label": "班別",
+        "start_cp": 34,
+        "end_cp": 36
+      },
+      {
+        "label": "學號",
+        "start_cp": 41,
+        "end_cp": 43
+      },
+      {
+        "label": "實習機構名稱",
+        "start_cp": 46,
+        "end_cp": 52
+      },
+      {
+        "label": "需加蓋公司印章",
+        "start_cp": 54,
+        "end_cp": 61
+      },
+      {
+        "label": "實習機構地址",
+        "start_cp": 64,
+        "end_cp": 70
+      },
+      {
+        "label": "實習機構電話",
+        "start_cp": 75,
+        "end_cp": 81
+      },
+      {
+        "label": "實習日期",
+        "start_cp": 84,
+        "end_cp": 88
+      },
+      {
+        "label": "抵免事由",
+        "start_cp": 103,
+        "end_cp": 107
+      },
+      {
+        "label": "抵免時數",
+        "start_cp": 110,
+        "end_cp": 114
+      },
+      {
+        "label": "指導老師",
+        "start_cp": 126,
+        "end_cp": 130
+      },
+      {
+        "label": "系主任",
+        "start_cp": 139,
+        "end_cp": 142
+      }
+    ],
+    "minimum_hours_or_current_deadline_in_this_form": "not_stated",
+    "layout": "unknown",
+    "applicable_115": "unknown"
+  },
+  "evaluation": {
+    "literal_department_title": "樹德科技大學動畫與戲系",
+    "title_preserved": true,
+    "identity_fields": [
+      {
+        "label": "實習生姓名",
+        "start_cp": 22,
+        "end_cp": 27
+      },
+      {
+        "label": "學號",
+        "start_cp": 43,
+        "end_cp": 45
+      },
+      {
+        "label": "實習期間",
+        "start_cp": 64,
+        "end_cp": 68
+      },
+      {
+        "label": "實習機構",
+        "start_cp": 121,
+        "end_cp": 125
+      },
+      {
+        "label": "部門",
+        "start_cp": 138,
+        "end_cp": 140
+      },
+      {
+        "label": "單位主管（指導人）",
+        "start_cp": 155,
+        "end_cp": 164
+      },
+      {
+        "label": "職稱",
+        "start_cp": 179,
+        "end_cp": 181
+      }
+    ],
+    "assessment_groups": [
+      {
+        "assessor": "主管（指導人）",
+        "items": [
+          {
+            "label": "行政配合與實習態度",
+            "weight_percent": 18
+          },
+          {
+            "label": "實務學習能力",
+            "weight_percent": 16
+          },
+          {
+            "label": "專業認定能力",
+            "weight_percent": 16
+          }
+        ],
+        "subtotal_percent": 50
+      },
+      {
+        "assessor": "實習指導老師",
+        "items": [
+          {
+            "label": "行政配合與實習態度",
+            "weight_percent": 18
+          },
+          {
+            "label": "實務專業技能",
+            "weight_percent": 16
+          },
+          {
+            "label": "實習報告",
+            "weight_percent": 16
+          }
+        ],
+        "subtotal_percent": 50
+      }
+    ],
+    "signatures": [
+      "實習單位主管(或指導人員)簽章",
+      "實習指導老師簽章"
+    ],
+    "final_total_label": "主管（指導人）評分_______ + 實習指導老師評分__________共計      分",
+    "layout": "unknown",
+    "applicable_115": "unknown"
+  }
+}

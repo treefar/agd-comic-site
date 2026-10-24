@@ -1,0 +1,289 @@
+{
+  "base": "http://127.0.0.1:8882/progress/",
+  "expected": {
+    "rows": 50,
+    "yes": 44,
+    "no": 6
+  },
+  "before": [
+    {
+      "file": "holiday-lab/dashboard/out/index.html",
+      "sha256": "85b00047fb9efc28a2892d2898e7880692a1b25e20c704c4a6e66862041348b1"
+    },
+    {
+      "file": "holiday-lab/dashboard/out/dashboard-data.json",
+      "sha256": "c6a841b716a6e87d9ac8e1ec64a326b355abd5d9cd7642a41304124925532063"
+    },
+    {
+      "file": "holiday-lab/dashboard/progress-policy.json",
+      "sha256": "e7b7749d0734283d581f12198f12012011a3d2e9e51af8ab646f237d94012502"
+    },
+    {
+      "file": "holiday-lab/reports/legacy-reader-review-20261024/verification.json",
+      "sha256": "fd07f77d710e7ca9f0a0e8b5602eec55a3b15fe62a987b45265a5c4e2b495a8a"
+    }
+  ],
+  "cases": [
+    {
+      "width": 1440,
+      "checks": [
+        {
+          "name": "counts agree with fresh source rules",
+          "yes_no": "yes",
+          "details": {
+            "rows": 50,
+            "cards": [
+              {
+                "id": "records",
+                "value": 50
+              },
+              {
+                "id": "fixed",
+                "value": 23
+              },
+              {
+                "id": "verified",
+                "value": 44
+              },
+              {
+                "id": "pending",
+                "value": 6
+              },
+              {
+                "id": "confirmed",
+                "value": 0
+              }
+            ],
+            "width": 1440,
+            "docWidth": 1440
+          }
+        },
+        {
+          "name": "no horizontal page overflow",
+          "yes_no": "yes",
+          "details": {
+            "rows": 50,
+            "cards": [
+              {
+                "id": "records",
+                "value": 50
+              },
+              {
+                "id": "fixed",
+                "value": 23
+              },
+              {
+                "id": "verified",
+                "value": 44
+              },
+              {
+                "id": "pending",
+                "value": 6
+              },
+              {
+                "id": "confirmed",
+                "value": 0
+              }
+            ],
+            "width": 1440,
+            "docWidth": 1440
+          }
+        },
+        {
+          "name": "search locates the verified contact-routing item",
+          "yes_no": "yes",
+          "details": [
+            "當期完整規章、表單及年度衝突\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱"
+          ]
+        },
+        {
+          "name": "row expands current reason and evidence",
+          "yes_no": "yes",
+          "details": {
+            "expanded": "true",
+            "hidden": false,
+            "text": "結果與限制\n維持no：兩份舊實習DOC全文已補讀，正文144/502個UTF16單位及完整已宣告文字story由獨立CFB/FIB/CLX核對；原件未改。表格版面/115當屆效力仍unknown，本系當期實習/海外/見學、證照表與其他版本衝突仍未齊，不能把舊表50%比例直接套用本屆。\n實際證據\nholiday-lab/reports/legacy-reader-20261024/REPORT.md、holiday-lab/reports/legacy-reader-review-20261024/parser-review.md、holiday-lab/reports/legacy-reader-review-20261024/content-review.md、holiday-lab/reports/legacy-reader-review-20261024/portability-final-r2.md、holiday-lab/reports/legacy-reader-review-20261024/current-proof-command.json"
+          }
+        },
+        {
+          "name": "missing filter agrees with actual no rows",
+          "yes_no": "yes",
+          "details": [
+            "中日全站逐字缺字稽核\t保留\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "全部正式職稱／處室外文名\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "當期完整規章、表單及年度衝突\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "全部素材製程與權利已確認\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "Flora／胖倉鼠WebGL成品\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "實體手機與母語審閱\t保留\tno\t已留資料\t未完成／待確認\t待使用者審閱"
+          ]
+        },
+        {
+          "name": "all filter restores source row count",
+          "yes_no": "yes"
+        },
+        {
+          "name": "no exceptions or external requests",
+          "yes_no": "yes",
+          "details": {
+            "errors": [],
+            "requests": [
+              "http://127.0.0.1:8882/progress/"
+            ]
+          }
+        }
+      ],
+      "errors": [],
+      "requests": [
+        "http://127.0.0.1:8882/progress/"
+      ],
+      "shots": [
+        {
+          "file": "1440-light.webp",
+          "sha256": "0dd7d313393b3d30dd1f688f00eef8484cfe9c381c51a8bc2d8cb0dc86df31aa"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "width": 390,
+      "checks": [
+        {
+          "name": "counts agree with fresh source rules",
+          "yes_no": "yes",
+          "details": {
+            "rows": 50,
+            "cards": [
+              {
+                "id": "records",
+                "value": 50
+              },
+              {
+                "id": "fixed",
+                "value": 23
+              },
+              {
+                "id": "verified",
+                "value": 44
+              },
+              {
+                "id": "pending",
+                "value": 6
+              },
+              {
+                "id": "confirmed",
+                "value": 0
+              }
+            ],
+            "width": 390,
+            "docWidth": 390
+          }
+        },
+        {
+          "name": "no horizontal page overflow",
+          "yes_no": "yes",
+          "details": {
+            "rows": 50,
+            "cards": [
+              {
+                "id": "records",
+                "value": 50
+              },
+              {
+                "id": "fixed",
+                "value": 23
+              },
+              {
+                "id": "verified",
+                "value": 44
+              },
+              {
+                "id": "pending",
+                "value": 6
+              },
+              {
+                "id": "confirmed",
+                "value": 0
+              }
+            ],
+            "width": 390,
+            "docWidth": 390
+          }
+        },
+        {
+          "name": "search locates the verified contact-routing item",
+          "yes_no": "yes",
+          "details": [
+            "當期完整規章、表單及年度衝突\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱"
+          ]
+        },
+        {
+          "name": "row expands current reason and evidence",
+          "yes_no": "yes",
+          "details": {
+            "expanded": "true",
+            "hidden": false,
+            "text": "結果與限制\n維持no：兩份舊實習DOC全文已補讀，正文144/502個UTF16單位及完整已宣告文字story由獨立CFB/FIB/CLX核對；原件未改。表格版面/115當屆效力仍unknown，本系當期實習/海外/見學、證照表與其他版本衝突仍未齊，不能把舊表50%比例直接套用本屆。\n實際證據\nholiday-lab/reports/legacy-reader-20261024/REPORT.md、holiday-lab/reports/legacy-reader-review-20261024/parser-review.md、holiday-lab/reports/legacy-reader-review-20261024/content-review.md、holiday-lab/reports/legacy-reader-review-20261024/portability-final-r2.md、holiday-lab/reports/legacy-reader-review-20261024/current-proof-command.json"
+          }
+        },
+        {
+          "name": "missing filter agrees with actual no rows",
+          "yes_no": "yes",
+          "details": [
+            "中日全站逐字缺字稽核\t保留\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "全部正式職稱／處室外文名\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "當期完整規章、表單及年度衝突\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "全部素材製程與權利已確認\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "Flora／胖倉鼠WebGL成品\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "實體手機與母語審閱\t保留\tno\t已留資料\t未完成／待確認\t待使用者審閱"
+          ]
+        },
+        {
+          "name": "all filter restores source row count",
+          "yes_no": "yes"
+        },
+        {
+          "name": "no exceptions or external requests",
+          "yes_no": "yes",
+          "details": {
+            "errors": [],
+            "requests": [
+              "http://127.0.0.1:8882/progress/"
+            ]
+          }
+        }
+      ],
+      "errors": [],
+      "requests": [
+        "http://127.0.0.1:8882/progress/"
+      ],
+      "shots": [
+        {
+          "file": "390-dark.webp",
+          "sha256": "aa8c7d635cfc9fa2676b8c93ec09ed1fd68bbd11c4113f621b09b81de09d1da4"
+        }
+      ],
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "after": [
+    {
+      "file": "holiday-lab/dashboard/out/index.html",
+      "sha256": "85b00047fb9efc28a2892d2898e7880692a1b25e20c704c4a6e66862041348b1"
+    },
+    {
+      "file": "holiday-lab/dashboard/out/dashboard-data.json",
+      "sha256": "c6a841b716a6e87d9ac8e1ec64a326b355abd5d9cd7642a41304124925532063"
+    },
+    {
+      "file": "holiday-lab/dashboard/progress-policy.json",
+      "sha256": "e7b7749d0734283d581f12198f12012011a3d2e9e51af8ab646f237d94012502"
+    },
+    {
+      "file": "holiday-lab/reports/legacy-reader-review-20261024/verification.json",
+      "sha256": "fd07f77d710e7ca9f0a0e8b5602eec55a3b15fe62a987b45265a5c4e2b495a8a"
+    }
+  ],
+  "stable": true,
+  "pass": true
+}

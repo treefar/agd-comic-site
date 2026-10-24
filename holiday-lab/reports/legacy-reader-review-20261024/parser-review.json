@@ -1,0 +1,3620 @@
+{
+  "at": "2026-10-24T03:19:49.858Z",
+  "scope": "Read-only independent CFB/FIB/CLX and all declared text stories; not visual Word layout or current applicability.",
+  "baseline": {
+    "file": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\copy-actions-20261024\\qa\\raw-r1\\result.json",
+    "sha256": "2438593e7a573cef528d092446c669bdf2b952156a6fb4953ae7256b3b3fa42c",
+    "source_count": 47,
+    "build_count": 360,
+    "build": ".measure-copy-actions-20261024-01"
+  },
+  "parser": {
+    "package": "word-extractor",
+    "version": "1.0.4",
+    "lock_entry": {
+      "version": "1.0.4",
+      "resolved": "https://registry.npmjs.org/word-extractor/-/word-extractor-1.0.4.tgz",
+      "integrity": "sha512-PyAGZQ2gjnVA5kcZAOAxoYciCMaAvu0dbVlw/zxHphhy+3be8cDeYKHJPO8iedIM3Sx0arA/ugKTJyXhZNgo6g==",
+      "license": "MIT",
+      "dependencies": {
+        "saxes": "^5.0.1",
+        "yauzl": "^2.10.0"
+      }
+    }
+  },
+  "documents": [
+    {
+      "name": "recognition",
+      "cfb": {
+        "file": "C:/agywork/agd-holiday-prototypes/holiday-lab/reports/guide-final-docs-20261024/internship/raw/department-recognition.doc",
+        "bytes": 31744,
+        "sha256": "4d62ff2e208f59094897b033d55387b5ac9c077422ccb687d1679c23b8a5db22",
+        "signature": "d0cf11e0a1b11ae1",
+        "major": 3,
+        "sector_bytes": 512,
+        "mini_sector_bytes": 64,
+        "FAT_sectors": [
+          56
+        ],
+        "directory_sectors": [
+          57,
+          58
+        ],
+        "entries": [
+          {
+            "name": "Root Entry",
+            "type": 5,
+            "start": 60,
+            "size": 128
+          },
+          {
+            "name": "Data",
+            "type": 2,
+            "start": 17,
+            "size": 4096
+          },
+          {
+            "name": "1Table",
+            "type": 2,
+            "start": 25,
+            "size": 7629
+          },
+          {
+            "name": "WordDocument",
+            "type": 2,
+            "start": 0,
+            "size": 8248
+          },
+          {
+            "name": "\u0005SummaryInformation",
+            "type": 2,
+            "start": 40,
+            "size": 4096
+          },
+          {
+            "name": "\u0005DocumentSummaryInformation",
+            "type": 2,
+            "start": 48,
+            "size": 4096
+          },
+          {
+            "name": "\u0001CompObj",
+            "type": 2,
+            "start": 0,
+            "size": 117
+          }
+        ]
+      },
+      "word_stream_sha256": "ee8d9962cf06ab3bfc7d0f10569e49e5426652ede773c2d42e653fc22823adbb",
+      "table_stream_sha256": "9581b2219e83811a204cfdc0e79f347a8378d769da21d68d575c3b5ca6c48145",
+      "FIB": {
+        "wIdent": 42476,
+        "nFib": 193,
+        "flags": 21232,
+        "fcMin": 2048,
+        "fcMac": 2356,
+        "csw": 14,
+        "rgw": [
+          27234,
+          27234,
+          3953,
+          3953,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1028
+        ],
+        "cslw": 22,
+        "rglw": [
+          8248,
+          91411,
+          91411,
+          144,
+          0,
+          9,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1048575,
+          0,
+          0,
+          1048575,
+          0,
+          0,
+          1048575,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cbRgFcLcb": 183,
+        "pairs": [
+          {
+            "index": 0,
+            "fc": 0,
+            "lcb": 1648
+          },
+          {
+            "index": 1,
+            "fc": 0,
+            "lcb": 1648
+          },
+          {
+            "index": 2,
+            "fc": 5058,
+            "lcb": 0
+          },
+          {
+            "index": 3,
+            "fc": 5058,
+            "lcb": 0
+          },
+          {
+            "index": 4,
+            "fc": 5058,
+            "lcb": 0
+          },
+          {
+            "index": 5,
+            "fc": 5058,
+            "lcb": 0
+          },
+          {
+            "index": 6,
+            "fc": 5058,
+            "lcb": 20
+          },
+          {
+            "index": 7,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 8,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 9,
+            "fc": 5078,
+            "lcb": 0
+          },
+          {
+            "index": 10,
+            "fc": 5078,
+            "lcb": 0
+          },
+          {
+            "index": 11,
+            "fc": 5078,
+            "lcb": 56
+          },
+          {
+            "index": 12,
+            "fc": 5134,
+            "lcb": 12
+          },
+          {
+            "index": 13,
+            "fc": 5146,
+            "lcb": 84
+          },
+          {
+            "index": 14,
+            "fc": 5078,
+            "lcb": 0
+          },
+          {
+            "index": 15,
+            "fc": 6157,
+            "lcb": 316
+          },
+          {
+            "index": 16,
+            "fc": 5230,
+            "lcb": 0
+          },
+          {
+            "index": 17,
+            "fc": 5230,
+            "lcb": 0
+          },
+          {
+            "index": 18,
+            "fc": 5230,
+            "lcb": 0
+          },
+          {
+            "index": 19,
+            "fc": 5230,
+            "lcb": 0
+          },
+          {
+            "index": 20,
+            "fc": 5230,
+            "lcb": 0
+          },
+          {
+            "index": 21,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 22,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 23,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 24,
+            "fc": 6028,
+            "lcb": 2
+          },
+          {
+            "index": 25,
+            "fc": 6030,
+            "lcb": 0
+          },
+          {
+            "index": 26,
+            "fc": 6030,
+            "lcb": 0
+          },
+          {
+            "index": 27,
+            "fc": 6030,
+            "lcb": 0
+          },
+          {
+            "index": 28,
+            "fc": 6030,
+            "lcb": 0
+          },
+          {
+            "index": 29,
+            "fc": 6030,
+            "lcb": 0
+          },
+          {
+            "index": 30,
+            "fc": 6030,
+            "lcb": 36
+          },
+          {
+            "index": 31,
+            "fc": 6473,
+            "lcb": 674
+          },
+          {
+            "index": 32,
+            "fc": 7147,
+            "lcb": 82
+          },
+          {
+            "index": 33,
+            "fc": 6066,
+            "lcb": 21
+          },
+          {
+            "index": 34,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 35,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 36,
+            "fc": 5058,
+            "lcb": 0
+          },
+          {
+            "index": 37,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 38,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 39,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 40,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 41,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 42,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 43,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 44,
+            "fc": 6066,
+            "lcb": 0
+          },
+          {
+            "index": 45,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 46,
+            "fc": 5058,
+            "lcb": 0
+          },
+          {
+            "index": 47,
+            "fc": 5058,
+            "lcb": 0
+          },
+          {
+            "index": 48,
+            "fc": 5230,
+            "lcb": 0
+          },
+          {
+            "index": 49,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 50,
+            "fc": 5230,
+            "lcb": 308
+          },
+          {
+            "index": 51,
+            "fc": 6087,
+            "lcb": 22
+          },
+          {
+            "index": 52,
+            "fc": 5956,
+            "lcb": 0
+          },
+          {
+            "index": 53,
+            "fc": 5956,
+            "lcb": 0
+          },
+          {
+            "index": 54,
+            "fc": 5956,
+            "lcb": 0
+          },
+          {
+            "index": 55,
+            "fc": 5538,
+            "lcb": 160
+          },
+          {
+            "index": 56,
+            "fc": 5058,
+            "lcb": 0
+          },
+          {
+            "index": 57,
+            "fc": 5230,
+            "lcb": 0
+          },
+          {
+            "index": 58,
+            "fc": 5058,
+            "lcb": 0
+          },
+          {
+            "index": 59,
+            "fc": 5230,
+            "lcb": 0
+          },
+          {
+            "index": 60,
+            "fc": 6028,
+            "lcb": 0
+          },
+          {
+            "index": 61,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 62,
+            "fc": 5956,
+            "lcb": 0
+          },
+          {
+            "index": 63,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 64,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 65,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 66,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 67,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 68,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 69,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 70,
+            "fc": 6028,
+            "lcb": 0
+          },
+          {
+            "index": 71,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 72,
+            "fc": 5956,
+            "lcb": 0
+          },
+          {
+            "index": 73,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 74,
+            "fc": 5956,
+            "lcb": 0
+          },
+          {
+            "index": 75,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 76,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 77,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 78,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 79,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 80,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 81,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 82,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 83,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 84,
+            "fc": 5956,
+            "lcb": 0
+          },
+          {
+            "index": 85,
+            "fc": 5230,
+            "lcb": 0
+          },
+          {
+            "index": 86,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 87,
+            "fc": 1242599904,
+            "lcb": 30209926
+          },
+          {
+            "index": 88,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 89,
+            "fc": 5078,
+            "lcb": 0
+          },
+          {
+            "index": 90,
+            "fc": 5698,
+            "lcb": 82
+          },
+          {
+            "index": 91,
+            "fc": 5956,
+            "lcb": 0
+          },
+          {
+            "index": 92,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 93,
+            "fc": 6008,
+            "lcb": 20
+          },
+          {
+            "index": 94,
+            "fc": 6109,
+            "lcb": 48
+          },
+          {
+            "index": 95,
+            "fc": 6157,
+            "lcb": 0
+          },
+          {
+            "index": 96,
+            "fc": 5956,
+            "lcb": 0
+          },
+          {
+            "index": 97,
+            "fc": 7229,
+            "lcb": 0
+          },
+          {
+            "index": 98,
+            "fc": 5780,
+            "lcb": 130
+          },
+          {
+            "index": 99,
+            "fc": 7629,
+            "lcb": 0
+          },
+          {
+            "index": 100,
+            "fc": 5956,
+            "lcb": 0
+          },
+          {
+            "index": 101,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 102,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 103,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 104,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 105,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 106,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 107,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 108,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 109,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 110,
+            "fc": 7229,
+            "lcb": 364
+          },
+          {
+            "index": 111,
+            "fc": 7593,
+            "lcb": 36
+          },
+          {
+            "index": 112,
+            "fc": 5058,
+            "lcb": 0
+          },
+          {
+            "index": 113,
+            "fc": 5956,
+            "lcb": 52
+          },
+          {
+            "index": 114,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 115,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 116,
+            "fc": 5956,
+            "lcb": 0
+          },
+          {
+            "index": 117,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 118,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 119,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 120,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 121,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 122,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 123,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 124,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 125,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 126,
+            "fc": 6066,
+            "lcb": 0
+          },
+          {
+            "index": 127,
+            "fc": 6066,
+            "lcb": 0
+          },
+          {
+            "index": 128,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 129,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 130,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 131,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 132,
+            "fc": 5910,
+            "lcb": 46
+          },
+          {
+            "index": 133,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 134,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 135,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 136,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 137,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 138,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 139,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 140,
+            "fc": 6157,
+            "lcb": 0
+          },
+          {
+            "index": 141,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 142,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 143,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 144,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 145,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 146,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 147,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 148,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 149,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 150,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 151,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 152,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 153,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 154,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 155,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 156,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 157,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 158,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 159,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 160,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 161,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 162,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 163,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 164,
+            "fc": 7629,
+            "lcb": 0
+          },
+          {
+            "index": 165,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 166,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 167,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 168,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 169,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 170,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 171,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 172,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 173,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 174,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 175,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 176,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 177,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 178,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 179,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 180,
+            "fc": 5538,
+            "lcb": 0
+          },
+          {
+            "index": 181,
+            "fc": 1648,
+            "lcb": 3096
+          },
+          {
+            "index": 182,
+            "fc": 4744,
+            "lcb": 314
+          }
+        ],
+        "cswNew": 5,
+        "rgCswNew": [
+          274,
+          0,
+          1033,
+          1028,
+          0
+        ],
+        "parsed_end": 1630
+      },
+      "CLX": {
+        "index": 33,
+        "fc": 6066,
+        "lcb": 21,
+        "prcs": [],
+        "piece_table_bytes": 16,
+        "cps": [
+          0,
+          154
+        ],
+        "consumed_end": 6087
+      },
+      "pieces": [
+        {
+          "index": 0,
+          "start_cp": 0,
+          "end_cp": 154,
+          "file_start": 2048,
+          "file_end": 2356,
+          "bytes_sha256": "1cf2851e8f3a57137c13c71a846cd5b2544e51fd3050ab07478489f6c34b9237",
+          "text_sha256": "4cbb999b6005e351a90f6507c74bd8369c939cee30333b20463031d23b9cf102",
+          "text": "樹德科技大學動畫與遊戲設計系\r\r\r產業實習認定表\r\r\r\r學生姓名\u0007\u0007班別\u0007\u0007\u0007\u0007\u0007學號\u0007\u0007\u0007實習機構名稱\r（需加蓋公司印章）\u0007\u0007實習機構地址\u0007\u0007\u0007\u0007\u0007實習機構電話\u0007\u0007\u0007實習日期\u0007     年月日至年月日\u0007\u0007抵免事由\u0007\u0007\u0007抵免時數\u0007\u0007\u0007\r\r\r\r\r\r\r\r\r指導老師：\t\t\t\t\t\t\t\t系主任：\r\r\r\r\r\r\r\r\r\r\r"
+        }
+      ],
+      "all": "樹德科技大學動畫與遊戲設計系\r\r\r產業實習認定表\r\r\r\r學生姓名\u0007\u0007班別\u0007\u0007\u0007\u0007\u0007學號\u0007\u0007\u0007實習機構名稱\r（需加蓋公司印章）\u0007\u0007實習機構地址\u0007\u0007\u0007\u0007\u0007實習機構電話\u0007\u0007\u0007實習日期\u0007     年月日至年月日\u0007\u0007抵免事由\u0007\u0007\u0007抵免時數\u0007\u0007\u0007\r\r\r\r\r\r\r\r\r指導老師：\t\t\t\t\t\t\t\t系主任：\r\r\r\r\r\r\r\r\r\r\r",
+      "stories": [
+        {
+          "key": "ccpText",
+          "start_cp": 0,
+          "end_cp": 144,
+          "units": 144,
+          "text": "樹德科技大學動畫與遊戲設計系\r\r\r產業實習認定表\r\r\r\r學生姓名\u0007\u0007班別\u0007\u0007\u0007\u0007\u0007學號\u0007\u0007\u0007實習機構名稱\r（需加蓋公司印章）\u0007\u0007實習機構地址\u0007\u0007\u0007\u0007\u0007實習機構電話\u0007\u0007\u0007實習日期\u0007     年月日至年月日\u0007\u0007抵免事由\u0007\u0007\u0007抵免時數\u0007\u0007\u0007\r\r\r\r\r\r\r\r\r指導老師：\t\t\t\t\t\t\t\t系主任：\r",
+          "sha256": "0a5b43579643943b4f0a6e32be6ed8f3ad68fdedf9db260da4e3540f259ff821",
+          "controls": {
+            "U+000d": 18,
+            "U+0007": 29,
+            "U+0009": 8
+          }
+        },
+        {
+          "key": "ccpFtn",
+          "start_cp": 144,
+          "end_cp": 144,
+          "units": 0,
+          "text": "",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "controls": {}
+        },
+        {
+          "key": "ccpHdd",
+          "start_cp": 144,
+          "end_cp": 153,
+          "units": 9,
+          "text": "\r\r\r\r\r\r\r\r\r",
+          "sha256": "0eae114791fab2fd80388ab58cf2900d2d70973ef70534d7a73ccfb080013dda",
+          "controls": {
+            "U+000d": 9
+          }
+        },
+        {
+          "key": "ccpMcr",
+          "start_cp": 153,
+          "end_cp": 153,
+          "units": 0,
+          "text": "",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "controls": {}
+        },
+        {
+          "key": "ccpAtn",
+          "start_cp": 153,
+          "end_cp": 153,
+          "units": 0,
+          "text": "",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "controls": {}
+        },
+        {
+          "key": "ccpEdn",
+          "start_cp": 153,
+          "end_cp": 153,
+          "units": 0,
+          "text": "",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "controls": {}
+        },
+        {
+          "key": "ccpTxbx",
+          "start_cp": 153,
+          "end_cp": 153,
+          "units": 0,
+          "text": "",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "controls": {}
+        },
+        {
+          "key": "ccpHdrTxbx",
+          "start_cp": 153,
+          "end_cp": 153,
+          "units": 0,
+          "text": "",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "controls": {}
+        }
+      ],
+      "tail": "\r",
+      "header_segments": [
+        {
+          "type": "footnoteSeparators",
+          "start_cp": 144,
+          "end_cp": 146,
+          "text": "\r\r"
+        },
+        {
+          "type": "footnoteSeparators",
+          "start_cp": 146,
+          "end_cp": 148,
+          "text": "\r\r"
+        },
+        {
+          "type": "footnoteSeparators",
+          "start_cp": 148,
+          "end_cp": 148,
+          "text": ""
+        },
+        {
+          "type": "endSeparators",
+          "start_cp": 148,
+          "end_cp": 150,
+          "text": "\r\r"
+        },
+        {
+          "type": "endSeparators",
+          "start_cp": 150,
+          "end_cp": 152,
+          "text": "\r\r"
+        },
+        {
+          "type": "endSeparators",
+          "start_cp": 152,
+          "end_cp": 152,
+          "text": ""
+        },
+        {
+          "type": "headers",
+          "start_cp": 152,
+          "end_cp": 152,
+          "text": ""
+        },
+        {
+          "type": "headers",
+          "start_cp": 152,
+          "end_cp": 152,
+          "text": ""
+        },
+        {
+          "type": "footers",
+          "start_cp": 152,
+          "end_cp": 152,
+          "text": ""
+        },
+        {
+          "type": "footers",
+          "start_cp": 152,
+          "end_cp": 152,
+          "text": ""
+        },
+        {
+          "type": "headers",
+          "start_cp": 152,
+          "end_cp": 152,
+          "text": ""
+        },
+        {
+          "type": "footers",
+          "start_cp": 152,
+          "end_cp": 152,
+          "text": ""
+        },
+        {
+          "type": "headers",
+          "start_cp": 152,
+          "end_cp": 153,
+          "text": "\r"
+        }
+      ],
+      "stage_diffs": {
+        "character": [],
+        "paragraph": [
+          {
+            "cp": 38,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 45,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 72,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 83,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 102,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 109,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 116,
+            "from": 7,
+            "to": 10
+          }
+        ],
+        "headers": [
+          {
+            "cp": 144,
+            "from": 13,
+            "to": 0
+          },
+          {
+            "cp": 145,
+            "from": 13,
+            "to": 0
+          },
+          {
+            "cp": 146,
+            "from": 13,
+            "to": 0
+          },
+          {
+            "cp": 147,
+            "from": 13,
+            "to": 0
+          },
+          {
+            "cp": 148,
+            "from": 13,
+            "to": 0
+          },
+          {
+            "cp": 149,
+            "from": 13,
+            "to": 0
+          },
+          {
+            "cp": 150,
+            "from": 13,
+            "to": 0
+          },
+          {
+            "cp": 151,
+            "from": 13,
+            "to": 0
+          },
+          {
+            "cp": 152,
+            "from": 13,
+            "to": 0
+          }
+        ]
+      },
+      "api": {
+        "body": "樹德科技大學動畫與遊戲設計系\n\n\n產業實習認定表\n\n\n\n學生姓名\t\t班別\t\t\n\t\t學號\t\t\n實習機構名稱\n（需加蓋公司印章）\t\t實習機構地址\t\t\n\t\t實習機構電話\t\t\n實習日期\t     年月日至年月日\t\n抵免事由\t\t\n抵免時數\t\t\n\n\n\n\n\n\n\n\n\n指導老師：\t\t\t\t\t\t\t\t系主任：\n",
+        "footnotes": "",
+        "endnotes": "",
+        "headers": "\n",
+        "footers": "",
+        "annotations": "",
+        "textboxes": "",
+        "headerTextboxes": ""
+      },
+      "limits": {
+        "layout_verified": false,
+        "table_geometry_preserved": false,
+        "current_115_applicability": "unknown",
+        "all_embedded_objects_read": false
+      }
+    },
+    {
+      "name": "evaluation",
+      "cfb": {
+        "file": "C:/agywork/agd-holiday-prototypes/holiday-lab/reports/guide-final-docs-20261024/internship/raw/department-evaluation.doc",
+        "bytes": 43008,
+        "sha256": "741c7f463943dafc1ba7680d876f544201427fd35e679479ab9a9a3bbb17255d",
+        "signature": "d0cf11e0a1b11ae1",
+        "major": 3,
+        "sector_bytes": 512,
+        "mini_sector_bytes": 64,
+        "FAT_sectors": [
+          78
+        ],
+        "directory_sectors": [
+          79,
+          80
+        ],
+        "entries": [
+          {
+            "name": "Root Entry",
+            "type": 5,
+            "start": 82,
+            "size": 128
+          },
+          {
+            "name": "Data",
+            "type": 2,
+            "start": 31,
+            "size": 4096
+          },
+          {
+            "name": "1Table",
+            "type": 2,
+            "start": 39,
+            "size": 11749
+          },
+          {
+            "name": "WordDocument",
+            "type": 2,
+            "start": 0,
+            "size": 15416
+          },
+          {
+            "name": "\u0005SummaryInformation",
+            "type": 2,
+            "start": 62,
+            "size": 4096
+          },
+          {
+            "name": "\u0005DocumentSummaryInformation",
+            "type": 2,
+            "start": 70,
+            "size": 4096
+          },
+          {
+            "name": "\u0001CompObj",
+            "type": 2,
+            "start": 0,
+            "size": 110
+          }
+        ]
+      },
+      "word_stream_sha256": "692b89c021e1b75acffeda1ee2be8f9bfefd2febc95e5e5f3e8e1bfa3669c617",
+      "table_stream_sha256": "d70e964f5a8681089e09efd60148232364f290e6f5acedb320c3e9092cf7d6e6",
+      "FIB": {
+        "wIdent": 42476,
+        "nFib": 193,
+        "flags": 21232,
+        "fcMin": 2048,
+        "fcMac": 14904,
+        "csw": 14,
+        "rgw": [
+          27234,
+          27234,
+          63241,
+          63241,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1028
+        ],
+        "cslw": 22,
+        "rglw": [
+          15416,
+          1691262315,
+          1691262315,
+          502,
+          0,
+          37,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1048575,
+          0,
+          0,
+          1048575,
+          0,
+          0,
+          1048575,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cbRgFcLcb": 183,
+        "pairs": [
+          {
+            "index": 0,
+            "fc": 0,
+            "lcb": 2198
+          },
+          {
+            "index": 1,
+            "fc": 0,
+            "lcb": 2198
+          },
+          {
+            "index": 2,
+            "fc": 5871,
+            "lcb": 0
+          },
+          {
+            "index": 3,
+            "fc": 5871,
+            "lcb": 0
+          },
+          {
+            "index": 4,
+            "fc": 5871,
+            "lcb": 0
+          },
+          {
+            "index": 5,
+            "fc": 5871,
+            "lcb": 0
+          },
+          {
+            "index": 6,
+            "fc": 5871,
+            "lcb": 20
+          },
+          {
+            "index": 7,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 8,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 9,
+            "fc": 5891,
+            "lcb": 0
+          },
+          {
+            "index": 10,
+            "fc": 5891,
+            "lcb": 0
+          },
+          {
+            "index": 11,
+            "fc": 5891,
+            "lcb": 56
+          },
+          {
+            "index": 12,
+            "fc": 5947,
+            "lcb": 76
+          },
+          {
+            "index": 13,
+            "fc": 6023,
+            "lcb": 116
+          },
+          {
+            "index": 14,
+            "fc": 5891,
+            "lcb": 0
+          },
+          {
+            "index": 15,
+            "fc": 10427,
+            "lcb": 488
+          },
+          {
+            "index": 16,
+            "fc": 6139,
+            "lcb": 0
+          },
+          {
+            "index": 17,
+            "fc": 6139,
+            "lcb": 34
+          },
+          {
+            "index": 18,
+            "fc": 6173,
+            "lcb": 0
+          },
+          {
+            "index": 19,
+            "fc": 6173,
+            "lcb": 0
+          },
+          {
+            "index": 20,
+            "fc": 6173,
+            "lcb": 0
+          },
+          {
+            "index": 21,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 22,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 23,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 24,
+            "fc": 10310,
+            "lcb": 2
+          },
+          {
+            "index": 25,
+            "fc": 10312,
+            "lcb": 0
+          },
+          {
+            "index": 26,
+            "fc": 10312,
+            "lcb": 0
+          },
+          {
+            "index": 27,
+            "fc": 10312,
+            "lcb": 0
+          },
+          {
+            "index": 28,
+            "fc": 10312,
+            "lcb": 0
+          },
+          {
+            "index": 29,
+            "fc": 10312,
+            "lcb": 0
+          },
+          {
+            "index": 30,
+            "fc": 10312,
+            "lcb": 0
+          },
+          {
+            "index": 31,
+            "fc": 10915,
+            "lcb": 694
+          },
+          {
+            "index": 32,
+            "fc": 11609,
+            "lcb": 112
+          },
+          {
+            "index": 33,
+            "fc": 10312,
+            "lcb": 45
+          },
+          {
+            "index": 34,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 35,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 36,
+            "fc": 5871,
+            "lcb": 0
+          },
+          {
+            "index": 37,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 38,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 39,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 40,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 41,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 42,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 43,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 44,
+            "fc": 10312,
+            "lcb": 0
+          },
+          {
+            "index": 45,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 46,
+            "fc": 5871,
+            "lcb": 0
+          },
+          {
+            "index": 47,
+            "fc": 5871,
+            "lcb": 0
+          },
+          {
+            "index": 48,
+            "fc": 6173,
+            "lcb": 0
+          },
+          {
+            "index": 49,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 50,
+            "fc": 6173,
+            "lcb": 219
+          },
+          {
+            "index": 51,
+            "fc": 10357,
+            "lcb": 22
+          },
+          {
+            "index": 52,
+            "fc": 7356,
+            "lcb": 0
+          },
+          {
+            "index": 53,
+            "fc": 7356,
+            "lcb": 0
+          },
+          {
+            "index": 54,
+            "fc": 7356,
+            "lcb": 0
+          },
+          {
+            "index": 55,
+            "fc": 6392,
+            "lcb": 580
+          },
+          {
+            "index": 56,
+            "fc": 5871,
+            "lcb": 0
+          },
+          {
+            "index": 57,
+            "fc": 6173,
+            "lcb": 0
+          },
+          {
+            "index": 58,
+            "fc": 5871,
+            "lcb": 0
+          },
+          {
+            "index": 59,
+            "fc": 6173,
+            "lcb": 0
+          },
+          {
+            "index": 60,
+            "fc": 10310,
+            "lcb": 0
+          },
+          {
+            "index": 61,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 62,
+            "fc": 7356,
+            "lcb": 0
+          },
+          {
+            "index": 63,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 64,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 65,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 66,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 67,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 68,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 69,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 70,
+            "fc": 10310,
+            "lcb": 0
+          },
+          {
+            "index": 71,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 72,
+            "fc": 7356,
+            "lcb": 0
+          },
+          {
+            "index": 73,
+            "fc": 7356,
+            "lcb": 114
+          },
+          {
+            "index": 74,
+            "fc": 9830,
+            "lcb": 84
+          },
+          {
+            "index": 75,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 76,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 77,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 78,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 79,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 80,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 81,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 82,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 83,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 84,
+            "fc": 10086,
+            "lcb": 0
+          },
+          {
+            "index": 85,
+            "fc": 6173,
+            "lcb": 0
+          },
+          {
+            "index": 86,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 87,
+            "fc": 679847728,
+            "lcb": 30709082
+          },
+          {
+            "index": 88,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 89,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 90,
+            "fc": 6972,
+            "lcb": 106
+          },
+          {
+            "index": 91,
+            "fc": 9914,
+            "lcb": 14
+          },
+          {
+            "index": 92,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 93,
+            "fc": 10290,
+            "lcb": 20
+          },
+          {
+            "index": 94,
+            "fc": 10379,
+            "lcb": 48
+          },
+          {
+            "index": 95,
+            "fc": 10427,
+            "lcb": 0
+          },
+          {
+            "index": 96,
+            "fc": 9928,
+            "lcb": 158
+          },
+          {
+            "index": 97,
+            "fc": 11721,
+            "lcb": 0
+          },
+          {
+            "index": 98,
+            "fc": 7078,
+            "lcb": 208
+          },
+          {
+            "index": 99,
+            "fc": 11721,
+            "lcb": 28
+          },
+          {
+            "index": 100,
+            "fc": 10086,
+            "lcb": 0
+          },
+          {
+            "index": 101,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 102,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 103,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 104,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 105,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 106,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 107,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 108,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 109,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 110,
+            "fc": 11721,
+            "lcb": 0
+          },
+          {
+            "index": 111,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 112,
+            "fc": 5871,
+            "lcb": 0
+          },
+          {
+            "index": 113,
+            "fc": 10086,
+            "lcb": 204
+          },
+          {
+            "index": 114,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 115,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 116,
+            "fc": 7356,
+            "lcb": 0
+          },
+          {
+            "index": 117,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 118,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 119,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 120,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 121,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 122,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 123,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 124,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 125,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 126,
+            "fc": 10312,
+            "lcb": 0
+          },
+          {
+            "index": 127,
+            "fc": 10312,
+            "lcb": 0
+          },
+          {
+            "index": 128,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 129,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 130,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 131,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 132,
+            "fc": 7286,
+            "lcb": 70
+          },
+          {
+            "index": 133,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 134,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 135,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 136,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 137,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 138,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 139,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 140,
+            "fc": 10427,
+            "lcb": 0
+          },
+          {
+            "index": 141,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 142,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 143,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 144,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 145,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 146,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 147,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 148,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 149,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 150,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 151,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 152,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 153,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 154,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 155,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 156,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 157,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 158,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 159,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 160,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 161,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 162,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 163,
+            "fc": 4294967295,
+            "lcb": 0
+          },
+          {
+            "index": 164,
+            "fc": 11721,
+            "lcb": 0
+          },
+          {
+            "index": 165,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 166,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 167,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 168,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 169,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 170,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 171,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 172,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 173,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 174,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 175,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 176,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 177,
+            "fc": 0,
+            "lcb": 0
+          },
+          {
+            "index": 178,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 179,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 180,
+            "fc": 6392,
+            "lcb": 0
+          },
+          {
+            "index": 181,
+            "fc": 2198,
+            "lcb": 3359
+          },
+          {
+            "index": 182,
+            "fc": 5557,
+            "lcb": 314
+          }
+        ],
+        "cswNew": 5,
+        "rgCswNew": [
+          274,
+          0,
+          1033,
+          1028,
+          0
+        ],
+        "parsed_end": 1630
+      },
+      "CLX": {
+        "index": 33,
+        "fc": 10312,
+        "lcb": 45,
+        "prcs": [],
+        "piece_table_bytes": 40,
+        "cps": [
+          0,
+          256,
+          512,
+          540
+        ],
+        "consumed_end": 10357
+      },
+      "pieces": [
+        {
+          "index": 0,
+          "start_cp": 0,
+          "end_cp": 256,
+          "file_start": 2048,
+          "file_end": 2560,
+          "bytes_sha256": "ad8aaca13133dae77b68cb060f5d53ba167299ff99d836756fea468a219a8244",
+          "text_sha256": "95f3f822d92540c24e60161a08401da826170524d263fbcd1ace87359d83549d",
+          "text": "樹德科技大學動畫與戲系\r實習單位評分表\r\r\r實習生姓名：               學號：                \r\r實習期間：  　　　　  年　　　　　月  　　　  日 ～    　   年   　   月   　    日\r實習機構： 　　　　　　　　　　　部門：　　　　　　　　　　　　　\r單位主管（指導人）：      　       職稱：      　     \r\r考 核 項 目\u0007主管（指導人）評分\u0007佔比\u0007\u0007行政配合與實習態度\u0007\u000718%\u0007\u0007實務學習能力\u0007\u000716%\u0007\u0007專業認定能力\u0007\u00071"
+        },
+        {
+          "index": 1,
+          "start_cp": 256,
+          "end_cp": 512,
+          "file_start": 2560,
+          "file_end": 3072,
+          "bytes_sha256": "e7002992fdcc67f1a8c8c72eeede910e95a9363e65c21198230828721398d2c9",
+          "text_sha256": "3bb8c7d743f75a0242b99b0081c6a1f23380b72a241897a1bac99669e82f5ec8",
+          "text": "6%\u0007\u0007\u0007\u0007\u0007\u0007合計\u0007\u000750%\u0007\u0007\r實習單位主管(或指導人員)簽章：                      日期：　　　　　　　　　　　　 \r\r\r考 核 項 目\u0007實習指導老師評分\u0007佔比\u0007\u0007行政配合與實習態度\u0007\u000718%\u0007\u0007實務專業技能\u0007\u000716%\u0007\u0007實習報告\u0007\u000716%\u0007\u0007\u0007\u0007\u0007\u0007合計\u0007\u000750%\u0007\u0007\r實習指導老師簽章：                      日期：　　　　　　　　　\r\r\r\r\r\r主管（指導人）評分_______ + 實習指導老師評分__________共計      分\r\u0003\r\r\u0004\r\r\u0003\r\r\u0004"
+        },
+        {
+          "index": 2,
+          "start_cp": 512,
+          "end_cp": 540,
+          "file_start": 14848,
+          "file_end": 14904,
+          "bytes_sha256": "5f74e4b39b4f51d19a0ade330df60339bdadde4e5d384d4b1d00cfb67987de34",
+          "text_sha256": "8bd066b6c063497bce341f7bf25fa2aa8a494d2abd70acb5c28f0d4527634b56",
+          "text": "\r\r\u0013PAGE  \u0015\r\r\r\u0013PAGE  \u00141\u0015\r\r\r\r\r"
+        }
+      ],
+      "all": "樹德科技大學動畫與戲系\r實習單位評分表\r\r\r實習生姓名：               學號：                \r\r實習期間：  　　　　  年　　　　　月  　　　  日 ～    　   年   　   月   　    日\r實習機構： 　　　　　　　　　　　部門：　　　　　　　　　　　　　\r單位主管（指導人）：      　       職稱：      　     \r\r考 核 項 目\u0007主管（指導人）評分\u0007佔比\u0007\u0007行政配合與實習態度\u0007\u000718%\u0007\u0007實務學習能力\u0007\u000716%\u0007\u0007專業認定能力\u0007\u000716%\u0007\u0007\u0007\u0007\u0007\u0007合計\u0007\u000750%\u0007\u0007\r實習單位主管(或指導人員)簽章：                      日期：　　　　　　　　　　　　 \r\r\r考 核 項 目\u0007實習指導老師評分\u0007佔比\u0007\u0007行政配合與實習態度\u0007\u000718%\u0007\u0007實務專業技能\u0007\u000716%\u0007\u0007實習報告\u0007\u000716%\u0007\u0007\u0007\u0007\u0007\u0007合計\u0007\u000750%\u0007\u0007\r實習指導老師簽章：                      日期：　　　　　　　　　\r\r\r\r\r\r主管（指導人）評分_______ + 實習指導老師評分__________共計      分\r\u0003\r\r\u0004\r\r\u0003\r\r\u0004\r\r\u0013PAGE  \u0015\r\r\r\u0013PAGE  \u00141\u0015\r\r\r\r\r",
+      "stories": [
+        {
+          "key": "ccpText",
+          "start_cp": 0,
+          "end_cp": 502,
+          "units": 502,
+          "text": "樹德科技大學動畫與戲系\r實習單位評分表\r\r\r實習生姓名：               學號：                \r\r實習期間：  　　　　  年　　　　　月  　　　  日 ～    　   年   　   月   　    日\r實習機構： 　　　　　　　　　　　部門：　　　　　　　　　　　　　\r單位主管（指導人）：      　       職稱：      　     \r\r考 核 項 目\u0007主管（指導人）評分\u0007佔比\u0007\u0007行政配合與實習態度\u0007\u000718%\u0007\u0007實務學習能力\u0007\u000716%\u0007\u0007專業認定能力\u0007\u000716%\u0007\u0007\u0007\u0007\u0007\u0007合計\u0007\u000750%\u0007\u0007\r實習單位主管(或指導人員)簽章：                      日期：　　　　　　　　　　　　 \r\r\r考 核 項 目\u0007實習指導老師評分\u0007佔比\u0007\u0007行政配合與實習態度\u0007\u000718%\u0007\u0007實務專業技能\u0007\u000716%\u0007\u0007實習報告\u0007\u000716%\u0007\u0007\u0007\u0007\u0007\u0007合計\u0007\u000750%\u0007\u0007\r實習指導老師簽章：                      日期：　　　　　　　　　\r\r\r\r\r\r主管（指導人）評分_______ + 實習指導老師評分__________共計      分\r",
+          "sha256": "337de4f384095bec0b4c9d409305e0bcca68238b4320aa27f0f26bc2598d9d79",
+          "controls": {
+            "U+000d": 22,
+            "U+0007": 48
+          }
+        },
+        {
+          "key": "ccpFtn",
+          "start_cp": 502,
+          "end_cp": 502,
+          "units": 0,
+          "text": "",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "controls": {}
+        },
+        {
+          "key": "ccpHdd",
+          "start_cp": 502,
+          "end_cp": 539,
+          "units": 37,
+          "text": "\u0003\r\r\u0004\r\r\u0003\r\r\u0004\r\r\u0013PAGE  \u0015\r\r\r\u0013PAGE  \u00141\u0015\r\r\r\r",
+          "sha256": "be68c1c3b56a290bbd99b68d6bf1fc042eeb92aafc112ea0e0bd39fe6ae2de93",
+          "controls": {
+            "U+0003": 2,
+            "U+000d": 15,
+            "U+0004": 2,
+            "U+0013": 2,
+            "U+0015": 2,
+            "U+0014": 1
+          }
+        },
+        {
+          "key": "ccpMcr",
+          "start_cp": 539,
+          "end_cp": 539,
+          "units": 0,
+          "text": "",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "controls": {}
+        },
+        {
+          "key": "ccpAtn",
+          "start_cp": 539,
+          "end_cp": 539,
+          "units": 0,
+          "text": "",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "controls": {}
+        },
+        {
+          "key": "ccpEdn",
+          "start_cp": 539,
+          "end_cp": 539,
+          "units": 0,
+          "text": "",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "controls": {}
+        },
+        {
+          "key": "ccpTxbx",
+          "start_cp": 539,
+          "end_cp": 539,
+          "units": 0,
+          "text": "",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "controls": {}
+        },
+        {
+          "key": "ccpHdrTxbx",
+          "start_cp": 539,
+          "end_cp": 539,
+          "units": 0,
+          "text": "",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "controls": {}
+        }
+      ],
+      "tail": "\r",
+      "header_segments": [
+        {
+          "type": "footnoteSeparators",
+          "start_cp": 502,
+          "end_cp": 505,
+          "text": "\u0003\r\r"
+        },
+        {
+          "type": "footnoteSeparators",
+          "start_cp": 505,
+          "end_cp": 508,
+          "text": "\u0004\r\r"
+        },
+        {
+          "type": "footnoteSeparators",
+          "start_cp": 508,
+          "end_cp": 508,
+          "text": ""
+        },
+        {
+          "type": "endSeparators",
+          "start_cp": 508,
+          "end_cp": 511,
+          "text": "\u0003\r\r"
+        },
+        {
+          "type": "endSeparators",
+          "start_cp": 511,
+          "end_cp": 514,
+          "text": "\u0004\r\r"
+        },
+        {
+          "type": "endSeparators",
+          "start_cp": 514,
+          "end_cp": 514,
+          "text": ""
+        },
+        {
+          "type": "headers",
+          "start_cp": 514,
+          "end_cp": 514,
+          "text": ""
+        },
+        {
+          "type": "headers",
+          "start_cp": 514,
+          "end_cp": 514,
+          "text": ""
+        },
+        {
+          "type": "footers",
+          "start_cp": 514,
+          "end_cp": 525,
+          "text": "\u0013PAGE  \u0015\r\r\r"
+        },
+        {
+          "type": "footers",
+          "start_cp": 525,
+          "end_cp": 538,
+          "text": "\u0013PAGE  \u00141\u0015\r\r\r"
+        },
+        {
+          "type": "headers",
+          "start_cp": 538,
+          "end_cp": 538,
+          "text": ""
+        },
+        {
+          "type": "footers",
+          "start_cp": 538,
+          "end_cp": 538,
+          "text": ""
+        },
+        {
+          "type": "headers",
+          "start_cp": 538,
+          "end_cp": 539,
+          "text": "\r"
+        }
+      ],
+      "stage_diffs": {
+        "character": [],
+        "paragraph": [
+          {
+            "cp": 217,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 233,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 246,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 259,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 263,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 272,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 351,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 367,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 380,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 391,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 395,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 404,
+            "from": 7,
+            "to": 10
+          }
+        ],
+        "headers": [
+          {
+            "cp": 502,
+            "from": 3,
+            "to": 0
+          },
+          {
+            "cp": 503,
+            "from": 13,
+            "to": 0
+          },
+          {
+            "cp": 504,
+            "from": 13,
+            "to": 0
+          },
+          {
+            "cp": 505,
+            "from": 4,
+            "to": 0
+          },
+          {
+            "cp": 506,
+            "from": 13,
+            "to": 0
+          },
+          {
+            "cp": 507,
+            "from": 13,
+            "to": 0
+          },
+          {
+            "cp": 508,
+            "from": 3,
+            "to": 0
+          },
+          {
+            "cp": 509,
+            "from": 13,
+            "to": 0
+          },
+          {
+            "cp": 510,
+            "from": 13,
+            "to": 0
+          },
+          {
+            "cp": 511,
+            "from": 4,
+            "to": 0
+          },
+          {
+            "cp": 512,
+            "from": 13,
+            "to": 0
+          },
+          {
+            "cp": 513,
+            "from": 13,
+            "to": 0
+          },
+          {
+            "cp": 524,
+            "from": 13,
+            "to": 0
+          },
+          {
+            "cp": 537,
+            "from": 13,
+            "to": 0
+          },
+          {
+            "cp": 538,
+            "from": 13,
+            "to": 0
+          }
+        ]
+      },
+      "api": {
+        "body": "樹德科技大學動畫與戲系\n實習單位評分表\n\n\n實習生姓名：               學號：                \n\n實習期間：  　　　　  年　　　　　月  　　　  日 ～    　   年   　   月   　    日\n實習機構： 　　　　　　　　　　　部門：　　　　　　　　　　　　　\n單位主管（指導人）：      　       職稱：      　     \n\n考 核 項 目\t主管（指導人）評分\t佔比\t\n行政配合與實習態度\t\t18%\t\n實務學習能力\t\t16%\t\n專業認定能力\t\t16%\t\n\t\t\t\n合計\t\t50%\t\n\n實習單位主管(或指導人員)簽章：                      日期：　　　　　　　　　　　　 \n\n\n考 核 項 目\t實習指導老師評分\t佔比\t\n行政配合與實習態度\t\t18%\t\n實務專業技能\t\t16%\t\n實習報告\t\t16%\t\n\t\t\t\n合計\t\t50%\t\n\n實習指導老師簽章：                      日期：　　　　　　　　　\n\n\n\n\n\n主管（指導人）評分_______ + 實習指導老師評分__________共計      分\n",
+        "footnotes": "",
+        "endnotes": "",
+        "headers": "\n",
+        "footers": "\n\n\n1\n\n\n",
+        "annotations": "",
+        "textboxes": "",
+        "headerTextboxes": ""
+      },
+      "limits": {
+        "layout_verified": false,
+        "table_geometry_preserved": false,
+        "current_115_applicability": "unknown",
+        "all_embedded_objects_read": false
+      }
+    }
+  ],
+  "checks": [
+    {
+      "id": "baseline_47_sources",
+      "yes": true,
+      "detail": {
+        "count": 47
+      }
+    },
+    {
+      "id": "baseline_360_build",
+      "yes": true,
+      "detail": {
+        "count": 360,
+        "build": ".measure-copy-actions-20261024-01"
+      }
+    },
+    {
+      "id": "pinned_parser_actual_version",
+      "yes": true,
+      "detail": {
+        "actual": "1.0.4",
+        "lock": {
+          "version": "1.0.4",
+          "resolved": "https://registry.npmjs.org/word-extractor/-/word-extractor-1.0.4.tgz",
+          "integrity": "sha512-PyAGZQ2gjnVA5kcZAOAxoYciCMaAvu0dbVlw/zxHphhy+3be8cDeYKHJPO8iedIM3Sx0arA/ugKTJyXhZNgo6g==",
+          "license": "MIT",
+          "dependencies": {
+            "saxes": "^5.0.1",
+            "yauzl": "^2.10.0"
+          }
+        }
+      }
+    },
+    {
+      "id": "final_worker_receipt",
+      "yes": true,
+      "detail": {
+        "command": [
+          "C:\\Program Files\\nodejs\\node.exe",
+          "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\legacy-reader-20261024\\extract-r2.cjs"
+        ],
+        "exit_code": 0,
+        "stderr": ""
+      }
+    },
+    {
+      "id": "r1_failure_preserved",
+      "yes": true,
+      "detail": {
+        "original": [
+          {
+            "name": "recognition",
+            "covered": true
+          },
+          {
+            "name": "evaluation",
+            "covered": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "recognition_input_sha_cfb",
+      "yes": true,
+      "detail": {
+        "sha256": "4d62ff2e208f59094897b033d55387b5ac9c077422ccb687d1679c23b8a5db22",
+        "bytes": 31744,
+        "signature": "d0cf11e0a1b11ae1"
+      }
+    },
+    {
+      "id": "recognition_technical_matches_final",
+      "yes": true,
+      "detail": {}
+    },
+    {
+      "id": "recognition_independent_streams",
+      "yes": true,
+      "detail": {
+        "word_bytes": 8248,
+        "word_sha256": "ee8d9962cf06ab3bfc7d0f10569e49e5426652ede773c2d42e653fc22823adbb",
+        "table_bytes": 7629,
+        "table_sha256": "9581b2219e83811a204cfdc0e79f347a8378d769da21d68d575c3b5ca6c48145"
+      }
+    },
+    {
+      "id": "recognition_complete_fib_clx",
+      "yes": true,
+      "detail": {
+        "FIB_end": 1630,
+        "CLX": {
+          "index": 33,
+          "fc": 6066,
+          "lcb": 21,
+          "prcs": [],
+          "piece_table_bytes": 16,
+          "cps": [
+            0,
+            154
+          ],
+          "consumed_end": 6087
+        }
+      }
+    },
+    {
+      "id": "recognition_independent_pieces",
+      "yes": true,
+      "detail": {
+        "cps": [
+          0,
+          154
+        ]
+      }
+    },
+    {
+      "id": "recognition_ccpText_full_range",
+      "yes": true,
+      "detail": {
+        "range": [
+          0,
+          144
+        ],
+        "units": 144,
+        "sha256": "0a5b43579643943b4f0a6e32be6ed8f3ad68fdedf9db260da4e3540f259ff821"
+      }
+    },
+    {
+      "id": "recognition_ccpFtn_full_range",
+      "yes": true,
+      "detail": {
+        "range": [
+          144,
+          144
+        ],
+        "units": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "recognition_ccpHdd_full_range",
+      "yes": true,
+      "detail": {
+        "range": [
+          144,
+          153
+        ],
+        "units": 9,
+        "sha256": "0eae114791fab2fd80388ab58cf2900d2d70973ef70534d7a73ccfb080013dda"
+      }
+    },
+    {
+      "id": "recognition_macro_story_zero",
+      "yes": true,
+      "detail": {
+        "range": [
+          153,
+          153
+        ]
+      }
+    },
+    {
+      "id": "recognition_ccpAtn_full_range",
+      "yes": true,
+      "detail": {
+        "range": [
+          153,
+          153
+        ],
+        "units": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "recognition_ccpEdn_full_range",
+      "yes": true,
+      "detail": {
+        "range": [
+          153,
+          153
+        ],
+        "units": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "recognition_ccpTxbx_full_range",
+      "yes": true,
+      "detail": {
+        "range": [
+          153,
+          153
+        ],
+        "units": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "recognition_ccpHdrTxbx_full_range",
+      "yes": true,
+      "detail": {
+        "range": [
+          153,
+          153
+        ],
+        "units": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "recognition_one_tail_CR",
+      "yes": true,
+      "detail": {
+        "tail": "\"\\r\"",
+        "start_cp": 153,
+        "end_cp": 154
+      }
+    },
+    {
+      "id": "recognition_raw_parser_matches_independent",
+      "yes": true,
+      "detail": {}
+    },
+    {
+      "id": "recognition_no_printable_char_dropped_by_properties",
+      "yes": true,
+      "detail": {
+        "character": 0,
+        "paragraph": 7,
+        "headers": 9
+      }
+    },
+    {
+      "id": "recognition_only_table_row_delimiters_changed",
+      "yes": true,
+      "detail": {
+        "changes": [
+          {
+            "cp": 38,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 45,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 72,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 83,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 102,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 109,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 116,
+            "from": 7,
+            "to": 10
+          }
+        ]
+      }
+    },
+    {
+      "id": "recognition_header_plc_matches",
+      "yes": true,
+      "detail": {
+        "segments": [
+          {
+            "type": "footnoteSeparators",
+            "start_cp": 144,
+            "end_cp": 146,
+            "text": "\r\r"
+          },
+          {
+            "type": "footnoteSeparators",
+            "start_cp": 146,
+            "end_cp": 148,
+            "text": "\r\r"
+          },
+          {
+            "type": "footnoteSeparators",
+            "start_cp": 148,
+            "end_cp": 148,
+            "text": ""
+          },
+          {
+            "type": "endSeparators",
+            "start_cp": 148,
+            "end_cp": 150,
+            "text": "\r\r"
+          },
+          {
+            "type": "endSeparators",
+            "start_cp": 150,
+            "end_cp": 152,
+            "text": "\r\r"
+          },
+          {
+            "type": "endSeparators",
+            "start_cp": 152,
+            "end_cp": 152,
+            "text": ""
+          },
+          {
+            "type": "headers",
+            "start_cp": 152,
+            "end_cp": 152,
+            "text": ""
+          },
+          {
+            "type": "headers",
+            "start_cp": 152,
+            "end_cp": 152,
+            "text": ""
+          },
+          {
+            "type": "footers",
+            "start_cp": 152,
+            "end_cp": 152,
+            "text": ""
+          },
+          {
+            "type": "footers",
+            "start_cp": 152,
+            "end_cp": 152,
+            "text": ""
+          },
+          {
+            "type": "headers",
+            "start_cp": 152,
+            "end_cp": 152,
+            "text": ""
+          },
+          {
+            "type": "footers",
+            "start_cp": 152,
+            "end_cp": 152,
+            "text": ""
+          },
+          {
+            "type": "headers",
+            "start_cp": 152,
+            "end_cp": 153,
+            "text": "\r"
+          }
+        ]
+      }
+    },
+    {
+      "id": "recognition_body_independent_clean",
+      "yes": true,
+      "detail": {
+        "units": 144,
+        "sha256": "a00a3a226130eedf26ffde5acc879d12368cf2abe5afc69943d71437327d369c"
+      }
+    },
+    {
+      "id": "recognition_headers_independent_clean",
+      "yes": true,
+      "detail": {
+        "text": "\n",
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      }
+    },
+    {
+      "id": "recognition_footers_independent_clean",
+      "yes": true,
+      "detail": {
+        "text": "",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "recognition_all_API_stories_reproduced",
+      "yes": true,
+      "detail": {
+        "stories": {
+          "body": {
+            "units": 144,
+            "sha256": "a00a3a226130eedf26ffde5acc879d12368cf2abe5afc69943d71437327d369c"
+          },
+          "footnotes": {
+            "units": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "endnotes": {
+            "units": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "headers": {
+            "units": 1,
+            "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+          },
+          "footers": {
+            "units": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "annotations": {
+            "units": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "textboxes": {
+            "units": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "headerTextboxes": {
+            "units": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      }
+    },
+    {
+      "id": "recognition_API_zero_replacement_chars",
+      "yes": true,
+      "detail": {}
+    },
+    {
+      "id": "evaluation_input_sha_cfb",
+      "yes": true,
+      "detail": {
+        "sha256": "741c7f463943dafc1ba7680d876f544201427fd35e679479ab9a9a3bbb17255d",
+        "bytes": 43008,
+        "signature": "d0cf11e0a1b11ae1"
+      }
+    },
+    {
+      "id": "evaluation_technical_matches_final",
+      "yes": true,
+      "detail": {}
+    },
+    {
+      "id": "evaluation_independent_streams",
+      "yes": true,
+      "detail": {
+        "word_bytes": 15416,
+        "word_sha256": "692b89c021e1b75acffeda1ee2be8f9bfefd2febc95e5e5f3e8e1bfa3669c617",
+        "table_bytes": 11749,
+        "table_sha256": "d70e964f5a8681089e09efd60148232364f290e6f5acedb320c3e9092cf7d6e6"
+      }
+    },
+    {
+      "id": "evaluation_complete_fib_clx",
+      "yes": true,
+      "detail": {
+        "FIB_end": 1630,
+        "CLX": {
+          "index": 33,
+          "fc": 10312,
+          "lcb": 45,
+          "prcs": [],
+          "piece_table_bytes": 40,
+          "cps": [
+            0,
+            256,
+            512,
+            540
+          ],
+          "consumed_end": 10357
+        }
+      }
+    },
+    {
+      "id": "evaluation_independent_pieces",
+      "yes": true,
+      "detail": {
+        "cps": [
+          0,
+          256,
+          512,
+          540
+        ]
+      }
+    },
+    {
+      "id": "evaluation_ccpText_full_range",
+      "yes": true,
+      "detail": {
+        "range": [
+          0,
+          502
+        ],
+        "units": 502,
+        "sha256": "337de4f384095bec0b4c9d409305e0bcca68238b4320aa27f0f26bc2598d9d79"
+      }
+    },
+    {
+      "id": "evaluation_ccpFtn_full_range",
+      "yes": true,
+      "detail": {
+        "range": [
+          502,
+          502
+        ],
+        "units": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "evaluation_ccpHdd_full_range",
+      "yes": true,
+      "detail": {
+        "range": [
+          502,
+          539
+        ],
+        "units": 37,
+        "sha256": "be68c1c3b56a290bbd99b68d6bf1fc042eeb92aafc112ea0e0bd39fe6ae2de93"
+      }
+    },
+    {
+      "id": "evaluation_macro_story_zero",
+      "yes": true,
+      "detail": {
+        "range": [
+          539,
+          539
+        ]
+      }
+    },
+    {
+      "id": "evaluation_ccpAtn_full_range",
+      "yes": true,
+      "detail": {
+        "range": [
+          539,
+          539
+        ],
+        "units": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "evaluation_ccpEdn_full_range",
+      "yes": true,
+      "detail": {
+        "range": [
+          539,
+          539
+        ],
+        "units": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "evaluation_ccpTxbx_full_range",
+      "yes": true,
+      "detail": {
+        "range": [
+          539,
+          539
+        ],
+        "units": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "evaluation_ccpHdrTxbx_full_range",
+      "yes": true,
+      "detail": {
+        "range": [
+          539,
+          539
+        ],
+        "units": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "evaluation_one_tail_CR",
+      "yes": true,
+      "detail": {
+        "tail": "\"\\r\"",
+        "start_cp": 539,
+        "end_cp": 540
+      }
+    },
+    {
+      "id": "evaluation_raw_parser_matches_independent",
+      "yes": true,
+      "detail": {}
+    },
+    {
+      "id": "evaluation_no_printable_char_dropped_by_properties",
+      "yes": true,
+      "detail": {
+        "character": 0,
+        "paragraph": 12,
+        "headers": 15
+      }
+    },
+    {
+      "id": "evaluation_only_table_row_delimiters_changed",
+      "yes": true,
+      "detail": {
+        "changes": [
+          {
+            "cp": 217,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 233,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 246,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 259,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 263,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 272,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 351,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 367,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 380,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 391,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 395,
+            "from": 7,
+            "to": 10
+          },
+          {
+            "cp": 404,
+            "from": 7,
+            "to": 10
+          }
+        ]
+      }
+    },
+    {
+      "id": "evaluation_header_plc_matches",
+      "yes": true,
+      "detail": {
+        "segments": [
+          {
+            "type": "footnoteSeparators",
+            "start_cp": 502,
+            "end_cp": 505,
+            "text": "\u0003\r\r"
+          },
+          {
+            "type": "footnoteSeparators",
+            "start_cp": 505,
+            "end_cp": 508,
+            "text": "\u0004\r\r"
+          },
+          {
+            "type": "footnoteSeparators",
+            "start_cp": 508,
+            "end_cp": 508,
+            "text": ""
+          },
+          {
+            "type": "endSeparators",
+            "start_cp": 508,
+            "end_cp": 511,
+            "text": "\u0003\r\r"
+          },
+          {
+            "type": "endSeparators",
+            "start_cp": 511,
+            "end_cp": 514,
+            "text": "\u0004\r\r"
+          },
+          {
+            "type": "endSeparators",
+            "start_cp": 514,
+            "end_cp": 514,
+            "text": ""
+          },
+          {
+            "type": "headers",
+            "start_cp": 514,
+            "end_cp": 514,
+            "text": ""
+          },
+          {
+            "type": "headers",
+            "start_cp": 514,
+            "end_cp": 514,
+            "text": ""
+          },
+          {
+            "type": "footers",
+            "start_cp": 514,
+            "end_cp": 525,
+            "text": "\u0013PAGE  \u0015\r\r\r"
+          },
+          {
+            "type": "footers",
+            "start_cp": 525,
+            "end_cp": 538,
+            "text": "\u0013PAGE  \u00141\u0015\r\r\r"
+          },
+          {
+            "type": "headers",
+            "start_cp": 538,
+            "end_cp": 538,
+            "text": ""
+          },
+          {
+            "type": "footers",
+            "start_cp": 538,
+            "end_cp": 538,
+            "text": ""
+          },
+          {
+            "type": "headers",
+            "start_cp": 538,
+            "end_cp": 539,
+            "text": "\r"
+          }
+        ]
+      }
+    },
+    {
+      "id": "evaluation_body_independent_clean",
+      "yes": true,
+      "detail": {
+        "units": 502,
+        "sha256": "3f10639975b05b5b7cc2b07961712c74ee1da00bb67d2d117a8d2aff69c1ab02"
+      }
+    },
+    {
+      "id": "evaluation_headers_independent_clean",
+      "yes": true,
+      "detail": {
+        "text": "\n",
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      }
+    },
+    {
+      "id": "evaluation_footers_independent_clean",
+      "yes": true,
+      "detail": {
+        "text": "\n\n\n1\n\n\n",
+        "sha256": "0b3d0947c27118287ed52660020bc4556f215845477839e903594f048cedce3c"
+      }
+    },
+    {
+      "id": "evaluation_all_API_stories_reproduced",
+      "yes": true,
+      "detail": {
+        "stories": {
+          "body": {
+            "units": 502,
+            "sha256": "3f10639975b05b5b7cc2b07961712c74ee1da00bb67d2d117a8d2aff69c1ab02"
+          },
+          "footnotes": {
+            "units": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "endnotes": {
+            "units": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "headers": {
+            "units": 1,
+            "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+          },
+          "footers": {
+            "units": 7,
+            "sha256": "0b3d0947c27118287ed52660020bc4556f215845477839e903594f048cedce3c"
+          },
+          "annotations": {
+            "units": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "textboxes": {
+            "units": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "headerTextboxes": {
+            "units": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      }
+    },
+    {
+      "id": "evaluation_API_zero_replacement_chars",
+      "yes": true,
+      "detail": {}
+    },
+    {
+      "id": "47_source_before_after_stable",
+      "yes": true,
+      "detail": {
+        "count": 47
+      }
+    },
+    {
+      "id": "360_build_before_after_stable",
+      "yes": true,
+      "detail": {
+        "count": 360
+      }
+    },
+    {
+      "id": "worker_originals_parser_evidence_untouched",
+      "yes": true,
+      "detail": {
+        "files": 68
+      }
+    }
+  ],
+  "yes": 54,
+  "no": 0,
+  "pass": true,
+  "processes_started": "Only this Node process; no child, UI, browser, Word, service, network, or build process."
+}

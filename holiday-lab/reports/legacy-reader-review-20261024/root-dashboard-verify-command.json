@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:/AIHome/claude/skills/project-dashboard/scripts/verify-dashboard.js",
+    "holiday-lab/dashboard/out",
+    "--authority",
+    "holiday-lab/dashboard/overnight-authority.cjs"
+  ],
+  "cwd": "C:\\agywork\\agd-holiday-prototypes",
+  "observed_utc": "2026-10-24T03:32:01.100Z",
+  "stdout": "PASS | 01 dashboard-data.json 存在 | holiday-lab\\dashboard\\out\\dashboard-data.json\nPASS | 02 index.html 存在 | holiday-lab\\dashboard\\out\\index.html\nPASS | 03 dashboard-data.json 無 BOM\nPASS | 04 dashboard-data.json 是合法 JSON\nPASS | 05 格式驗證（output 階段）\nPASS | 06 內嵌資料與 dashboard-data.json 相同\nPASS | 07 index.html 無外部資源\nPASS | 08 樣板佔位符已全部替換\nPASS | 09 index.html 支援深色模式（prefers-color-scheme）\nPASS | 10 摘要卡 5 張的值都等於依規則重算\nPASS | 11 比值卡都寫明分母\nPASS | 12 每個 section 的 row_count 等於 rows 長度 | checks=50\nPASS | 13 所有狀態值都在 status_levels 內\nPASS | 14 摘要卡含「使用者確認」層（不可省略，即使是 0） | data,tool,user\nPASS | 15 非 nullable 空值有對應 unknowns | 空值 0 格、unknowns 6 條\nPASS | 16 篩選條件引用的欄位都存在\nPASS | 17 out-dir 只有 dashboard-data.json 與 index.html | dashboard-data.json,index.html\nPASS | A01 本輪證據SHA、逐項結果及三層狀態與原始資料一致\n---- 18/18 PASS\n",
+  "stderr": "",
+  "exit_code": 0
+}
