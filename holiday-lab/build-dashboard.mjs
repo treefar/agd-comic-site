@@ -4,6 +4,11 @@ import loadProgress from './dashboard/progress-adapter.cjs';
 import presentDashboard from './dashboard/presentation.cjs';
 import fs from 'node:fs';import {createHash} from 'node:crypto';import {execFileSync} from 'node:child_process';import {games} from './catalog.mjs';
 const base='holiday-lab/dashboard';fs.mkdirSync(base,{recursive:true});
+// The 10/24 website review freezes games and uses fresh website receipts only.
+if(JSON.parse(fs.readFileSync(`${base}/progress-policy.json`,'utf8')).dashboard_mode==='website-frozen-games'){
+ await import('./dashboard/build-overnight.cjs');
+ process.exit(0);
+}
 const q=JSON.parse(fs.readFileSync('holiday-lab/qa/playthrough.json')),runs=[...(q.previousRuns||[]),q],full=runs.findLast(r=>r.status==='pass'&&r.cases.length===12);
 const shell=JSON.parse(fs.readFileSync('holiday-lab/qa/shell.json')).runs.at(-1);const hash=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
 const extra=JSON.parse(fs.readFileSync('holiday-lab/extra-qa/summary.json'));
