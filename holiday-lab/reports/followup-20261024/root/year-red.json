@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "holiday-lab/reports/followup-20261024/art/year.test.cjs"
+  ],
+  "cwd": "C:\\agywork\\agd-holiday-prototypes",
+  "observed_utc": "2026-10-24T00:58:55.298Z",
+  "stdout": "✖ award year agrees with the dated organizer announcement in both data sources (4.8727ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 103.6624\n\n✖ failing tests:\n\ntest at holiday-lab\\reports\\followup-20261024\\art\\year.test.cjs:3:1\n✖ award year agrees with the dated organizer announcement in both data sources (4.8727ms)\n  AssertionError [ERR_ASSERTION]: data/works.json\n  \n  '2022' !== '2021'\n  \n      at TestContext.<anonymous> (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\followup-20261024\\art\\year.test.cjs:5:162)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1201:25)\n      at Test.start (node:internal/test_runner/test:1096:17)\n      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {\n    generatedMessage: false,\n    code: 'ERR_ASSERTION',\n    actual: '2022',\n    expected: '2021',\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n",
+  "stderr": "",
+  "exit_code": 1
+}
