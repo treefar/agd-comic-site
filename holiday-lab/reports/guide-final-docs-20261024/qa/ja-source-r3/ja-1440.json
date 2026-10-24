@@ -1,0 +1,167 @@
+{
+  "lang": "ja",
+  "width": 1440,
+  "checks": [
+    {
+      "id": "correct-key-in-both-ja-dictionaries",
+      "yes_no": "yes",
+      "details": {
+        "key": "現列112年修訂辦法；中文表V4.0／英文表內標1.0",
+        "after": "現在掲載の112年改正規程。中国語様式V4.0／英語様式内の表記1.0"
+      }
+    },
+    {
+      "id": "published-date-not-rendered-by-current-ui",
+      "yes_no": "yes",
+      "details": {
+        "field": "published_or_document_date",
+        "key": "現列112年修訂辦法；中文表V4.0／英文表內標1.0",
+        "correct_value": "現在掲載の112年改正規程。中国語様式V4.0／英語様式内の表記1.0",
+        "correct_visible": false,
+        "incorrect_visible": false,
+        "expected_visible": false,
+        "note": "The current renderer shows title/readability/checked_at, not the published/document-date field. This test does not add a UI requirement."
+      }
+    },
+    {
+      "id": "incorrect-visible-string-absent",
+      "yes_no": "yes",
+      "details": {
+        "incorrect": "現在掲載の112年改正规程。中国語様式V4.0／英語様式内の表記1.0"
+      }
+    },
+    {
+      "id": "existing-source-title-caption-url-unaffected",
+      "yes_no": "yes",
+      "details": [
+        {
+          "id": "appeal-public-forms",
+          "url": "https://life.sao.stu.edu.tw/學生申訴/學生申訴/",
+          "title": "学生不服申立て規程と中国語・英語の空白様式",
+          "caption": "現在掲載されている公式の公開様式を確認済み"
+        }
+      ]
+    },
+    {
+      "id": "ja-language",
+      "yes_no": "yes"
+    },
+    {
+      "id": "no-overflow",
+      "yes_no": "yes",
+      "details": {
+        "width": 1440,
+        "documentWidth": 1440,
+        "iframeCount": 0,
+        "replacementCharacter": false
+      }
+    },
+    {
+      "id": "no-replacement-character",
+      "yes_no": "yes"
+    },
+    {
+      "id": "no-game-iframe",
+      "yes_no": "yes"
+    },
+    {
+      "id": "no-console-page-http-errors",
+      "yes_no": "yes",
+      "details": {
+        "page": [],
+        "console": [],
+        "http": []
+      }
+    },
+    {
+      "id": "no-game-request",
+      "yes_no": "yes",
+      "details": []
+    }
+  ],
+  "shots": [
+    {
+      "file": "ja-1440-support-source-0.webp",
+      "sha256": "220934ed690fac24237a3dcf22cc7741d2186a1375f547388075b80254e7d0cd",
+      "source": "appeal-public-forms",
+      "rendered_text": "学生不服申立て規程と中国語・英語の空白様式 ↗\n現在掲載されている公式の公開様式を確認済み · 確認 2026-10-24"
+    }
+  ],
+  "page_errors": [],
+  "console_errors": [],
+  "http_errors": [],
+  "blocked_game_requests": [],
+  "source_rows": [
+    {
+      "title": "大学の在校生ポータル ↗",
+      "href": "https://www.stu.edu.tw/%E5%9C%A8%E6%A0%A1%E5%AD%B8%E7%94%9F/",
+      "caption": "現在確認できているのは公式案内の概要のみです。規則の全文と当期の版は担当窓口で確認してください。 · 確認 2026-10-22"
+    },
+    {
+      "title": "教務処 よくある質問 ↗",
+      "href": "https://www.aca.stu.edu.tw/%E5%B8%B8%E8%A6%8B%E5%95%8F%E9%A1%8C%EF%BD%9Cqa/",
+      "caption": "現在確認できているのは公式案内の概要のみです。規則の全文と当期の版は担当窓口で確認してください。 · 確認 2026-10-22"
+    },
+    {
+      "title": "学科紹介およびカリキュラムマップ｜アニメとゲームデザイン学科の4年間で何を学ぶのか？ ↗",
+      "href": "https://www.dgd.stu.edu.tw/english-%E7%B3%BB%E6%89%80%E4%BB%8B%E7%B4%B9%E8%88%87%E8%AA%B2%E7%A8%8B%E5%9C%B0%E5%9C%96%EF%BD%9C%E5%8B%95%E9%81%8A%E7%B3%BB%E5%9B%9B%E5%B9%B4%E5%AD%B8%E4%BB%80%E9%BA%BC%EF%BC%9F/",
+      "caption": "学科事務室の連絡先を確認しました。このページは正式な修学規則ではありません。 · 確認 2026-10-22"
+    },
+    {
+      "title": "心理相談のオンライン予約（身心健康中心サービスページ） ↗",
+      "href": "https://ccdc.sao.stu.edu.tw/%E9%A0%90%E7%B4%84%E8%AB%AE%E5%95%86/",
+      "caption": "公開の予約案内を確認しました。実際の予約は行っていません。個別の相談はセンターへ連絡してください。 · 確認 2026-10-23"
+    },
+    {
+      "title": "特殊教育資源中心：2026年の独立設置に関する説明 ↗",
+      "href": "https://serc.stu.edu.tw/",
+      "caption": "センターの公開紹介を確認しました。支援の対象条件と申請方法は別途確認が必要です。 · 確認 2026-10-23"
+    },
+    {
+      "title": "特殊教育資源中心の担当者と本学科の支援窓口 ↗",
+      "href": "https://serc.stu.edu.tw/?p=60",
+      "caption": "公式の公開担当者・支援内容を確認しました。個別の対象条件や申請方法はセンターに確認してください。 · 確認 2026-10-24"
+    },
+    {
+      "title": "学生不服申立て審査規程（112年改正） ↗",
+      "href": "https://wpc.stu.edu.tw/wp-content/uploads/sites/28/2023/07/%E5%AD%B8%E7%94%9F%E7%94%B3%E8%A8%B4%E8%A9%95%E8%AD%B0%E8%BE%A6%E6%B3%95-112.pdf",
+      "caption": "公式規則の全文を確認済み · 確認 2026-10-24"
+    },
+    {
+      "title": "学生不服申立て規程と中国語・英語の空白様式 ↗",
+      "href": "https://life.sao.stu.edu.tw/%E5%AD%B8%E7%94%9F%E7%94%B3%E8%A8%B4/%E5%AD%B8%E7%94%9F%E7%94%B3%E8%A8%B4/",
+      "caption": "現在掲載されている公式の公開様式を確認済み · 確認 2026-10-24"
+    },
+    {
+      "title": "一般の学生不服申立ての受付窓口 ↗",
+      "href": "https://life.sao.stu.edu.tw/%E5%AD%B8%E7%94%9F%E7%94%B3%E8%A8%B4/%E7%94%B3%E8%A8%B4%E7%AE%A1%E9%81%93/",
+      "caption": "公式の公開受付案内を確認済み · 確認 2026-10-24"
+    },
+    {
+      "title": "学内の性・ジェンダー事案の防止・対応規程（113年改正） ↗",
+      "href": "https://wpc.stu.edu.tw/wp-content/uploads/sites/24/2025/05/%E6%A8%B9%E5%BE%B7%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%B8%E6%A0%A1%E5%9C%92%E6%80%A7%E5%88%A5%E4%BA%8B%E4%BB%B6%E5%87%8C%E9%98%B2%E6%B2%BB%E8%BE%A6%E6%B3%951131225.pdf",
+      "caption": "公式規則の全文を確認済み · 確認 2026-10-24"
+    },
+    {
+      "title": "学内の性・ジェンダー事案の調査申請・様式 ↗",
+      "href": "https://www.gender.stu.edu.tw/%E8%99%95%E7%90%86%E4%BA%8B%E4%BB%B6%E6%B5%81%E7%A8%8B%E5%9C%96/",
+      "caption": "現在掲載されている公式の公開様式を確認済み · 確認 2026-10-24"
+    }
+  ],
+  "published_date_visibility": {
+    "field": "published_or_document_date",
+    "key": "現列112年修訂辦法；中文表V4.0／英文表內標1.0",
+    "correct_value": "現在掲載の112年改正規程。中国語様式V4.0／英語様式内の表記1.0",
+    "correct_visible": false,
+    "incorrect_visible": false,
+    "expected_visible": false,
+    "note": "The current renderer shows title/readability/checked_at, not the published/document-date field. This test does not add a UI requirement."
+  },
+  "metrics": {
+    "width": 1440,
+    "documentWidth": 1440,
+    "iframeCount": 0,
+    "replacementCharacter": false
+  },
+  "pass": true
+}

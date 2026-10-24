@@ -1,0 +1,12 @@
+{
+  "command": [
+    "powershell",
+    "-NoProfile",
+    "-Command",
+    "@(Get-CimInstance Win32_Process | Where-Object { $_.Name -eq 'node.exe' -and $_.CommandLine -like '*guide-final-docs-20261024*qa*check.cjs*' }).Count"
+  ],
+  "stdout": "0\r\n",
+  "stderr": "",
+  "exit_code": 0,
+  "note": "Browser close is awaited in check.cjs finally before result writing; no unrelated processes were terminated."
+}

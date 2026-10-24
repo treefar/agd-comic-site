@@ -1,0 +1,119 @@
+{
+  "at": "2026-10-24T02:44:23.060Z",
+  "scope": "JA390/1440 existing support source display plus hidden document-date dictionary delta only. Other functions inherit 8880 raw-r1 evidence, not six-context revalidation.",
+  "yes": 7,
+  "no": 0,
+  "checks": [
+    {
+      "item": "2個JAcontext20條通過，未宣稱日期欄可見",
+      "result": "yes",
+      "actual": {
+        "contexts": 2,
+        "yes": 20,
+        "not_rendered": "published_or_document_date"
+      }
+    },
+    {
+      "item": "47source及360build前後與最終檔案SHA一致",
+      "result": "yes",
+      "actual": {
+        "source": 47,
+        "build": 360
+      }
+    },
+    {
+      "item": "只有兩個JA檔同一key一字，45其它來源不變",
+      "result": "yes",
+      "actual": {
+        "changed_files": [
+          {
+            "file": "data/ja/flow-ui.json",
+            "sha256": "babeb1aca52c401d51c9ce45919b8da14003d674b11ee361bd8551e1f9c8f494"
+          },
+          {
+            "file": "locale-ja.js",
+            "sha256": "2f0ffe62be1e01cfafbb1851b46fa0d7fdf7358133606050a522fe94b19044f1"
+          }
+        ],
+        "unchanged_source_files": 45,
+        "flow_changes": [
+          {
+            "key": "現列112年修訂辦法；中文表V4.0／英文表內標1.0",
+            "before": "現在掲載の112年改正规程。中国語様式V4.0／英語様式内の表記1.0",
+            "after": "現在掲載の112年改正規程。中国語様式V4.0／英語様式内の表記1.0"
+          }
+        ],
+        "locale_changes": [
+          {
+            "key": "現列112年修訂辦法；中文表V4.0／英文表內標1.0",
+            "before": "現在掲載の112年改正规程。中国語様式V4.0／英語様式内の表記1.0",
+            "after": "現在掲載の112年改正規程。中国語様式V4.0／英語様式内の表記1.0"
+          }
+        ],
+        "old_locale_reconstruction": {
+          "method": "exact bytes after reverse one-character replacement",
+          "sha256": "ed73ea8fd991241b300c42aabdf19e834a29de89ef583d97d3e9ef0e43011c1b",
+          "matches_raw_r1_sha": true
+        },
+        "line_ending_only_variation": false,
+        "chinese_english_other_sources_same_sha": true
+      }
+    },
+    {
+      "item": "293保留圖像字型及新舊app一字還原證明",
+      "result": "yes",
+      "actual": {
+        "old_files": 360,
+        "new_files": 360,
+        "common_changed": [
+          {
+            "file": "data/ja/flow-ui.json",
+            "before": "0646fbdf9aacea4b261f07adb2f42099552bdc2d488c3cd6908d98c7267d7f9a",
+            "after": "babeb1aca52c401d51c9ce45919b8da14003d674b11ee361bd8551e1f9c8f494"
+          },
+          {
+            "file": "index.html",
+            "before": "f348f22baa9eef4901bbe442bb5ce39cf83c76aab7361eca4f871a9f8a273582",
+            "after": "9c388baa158d8280c5da9453ccd13c8fa6321750daa5bb2669ce2072a20b6328"
+          }
+        ],
+        "removed": [
+          {
+            "file": "app-NOWSESL2.js",
+            "sha256": "e77e9b65d29fb582b18ed50b62a22f85dfce46099613ca19a99e7cfa2197220f"
+          }
+        ],
+        "added": [
+          {
+            "file": "app-NOKAZJIM.js",
+            "sha256": "1775ddeabec3c17c579bcfc12cf5a897791897e4bdd3d85adbf84c0f78c53224"
+          }
+        ],
+        "retained_art_font_files": 293,
+        "retained_art_font_same_sha": true,
+        "bundle_reverse_one_character_matches_old_sha": true
+      }
+    },
+    {
+      "item": "2張直接WebP及SHA完整",
+      "result": "yes",
+      "actual": 2
+    },
+    {
+      "item": "r2原方法紅證據保留及raw-r1原118檔未變",
+      "result": "yes",
+      "actual": {
+        "r2": "false/cases0 retained",
+        "original_frozen_files": 118
+      }
+    },
+    {
+      "item": "補驗程序關閉且無遊戲或頁面錯誤",
+      "result": "yes",
+      "actual": {
+        "check_processes": 0,
+        "browser_closed": true
+      }
+    }
+  ]
+}

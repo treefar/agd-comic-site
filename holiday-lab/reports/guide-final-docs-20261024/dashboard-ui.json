@@ -1,0 +1,289 @@
+{
+  "base": "http://127.0.0.1:8881/progress/",
+  "expected": {
+    "rows": 50,
+    "yes": 44,
+    "no": 6
+  },
+  "before": [
+    {
+      "file": "holiday-lab/dashboard/out/index.html",
+      "sha256": "3bc61f6420cbbbd27de3aaa20a5a5bfb6a336f6639b2df0e968906fdcaaac6b1"
+    },
+    {
+      "file": "holiday-lab/dashboard/out/dashboard-data.json",
+      "sha256": "027f449316faad37775bc2a4f8c3fc87ad5aeaf067591ac9f6862aaa19614005"
+    },
+    {
+      "file": "holiday-lab/dashboard/progress-policy.json",
+      "sha256": "35af6e5d78a78103a01ee118a66521191e212b5aa98746b61b2cc16bc7522720"
+    },
+    {
+      "file": "holiday-lab/reports/guide-final-docs-20261024/verification.json",
+      "sha256": "2bcd95a5755d792519463247794f1e63b8096d925c76a3d4fff2bcdbcf94ad08"
+    }
+  ],
+  "cases": [
+    {
+      "width": 1440,
+      "checks": [
+        {
+          "name": "counts agree with fresh source rules",
+          "yes_no": "yes",
+          "details": {
+            "rows": 50,
+            "cards": [
+              {
+                "id": "records",
+                "value": 50
+              },
+              {
+                "id": "fixed",
+                "value": 22
+              },
+              {
+                "id": "verified",
+                "value": 44
+              },
+              {
+                "id": "pending",
+                "value": 6
+              },
+              {
+                "id": "confirmed",
+                "value": 0
+              }
+            ],
+            "width": 1440,
+            "docWidth": 1440
+          }
+        },
+        {
+          "name": "no horizontal page overflow",
+          "yes_no": "yes",
+          "details": {
+            "rows": 50,
+            "cards": [
+              {
+                "id": "records",
+                "value": 50
+              },
+              {
+                "id": "fixed",
+                "value": 22
+              },
+              {
+                "id": "verified",
+                "value": 44
+              },
+              {
+                "id": "pending",
+                "value": 6
+              },
+              {
+                "id": "confirmed",
+                "value": 0
+              }
+            ],
+            "width": 1440,
+            "docWidth": 1440
+          }
+        },
+        {
+          "name": "search locates the verified contact-routing item",
+          "yes_no": "yes",
+          "details": [
+            "現行請假／求助分機與正式英文\t已修正\tyes\t已留資料\t本輪限定範圍通過\t待使用者審閱"
+          ]
+        },
+        {
+          "name": "row expands current reason and evidence",
+          "yes_no": "yes",
+          "details": {
+            "expanded": "true",
+            "hidden": false,
+            "text": "結果與限制\n按官方成員業務表逐筆核1712證照獎助/就業職缺、1713UCAN/講座、1711實習/學海；只修證照副分機並加FAQ，沒有全部改成同一支。其餘聯絡用前輪限定證據。\n實際證據\nholiday-lab/reports/guide-final-docs-20261024/routing-applied-copy.json、holiday-lab/reports/guide-final-docs-20261024/routing-green.json、holiday-lab/reports/guide-final-docs-20261024/qa/raw-r1/result.json"
+          }
+        },
+        {
+          "name": "missing filter agrees with actual no rows",
+          "yes_no": "yes",
+          "details": [
+            "中日全站逐字缺字稽核\t保留\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "全部正式職稱／處室外文名\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "當期完整規章、表單及年度衝突\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "全部素材製程與權利已確認\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "Flora／胖倉鼠WebGL成品\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "實體手機與母語審閱\t保留\tno\t已留資料\t未完成／待確認\t待使用者審閱"
+          ]
+        },
+        {
+          "name": "all filter restores source row count",
+          "yes_no": "yes"
+        },
+        {
+          "name": "no exceptions or external requests",
+          "yes_no": "yes",
+          "details": {
+            "errors": [],
+            "requests": [
+              "http://127.0.0.1:8881/progress/"
+            ]
+          }
+        }
+      ],
+      "errors": [],
+      "requests": [
+        "http://127.0.0.1:8881/progress/"
+      ],
+      "shots": [
+        {
+          "file": "1440-light.webp",
+          "sha256": "d78e550fde6942a53906c5b8e4f9b2c0c980ce5173c346568369c5dee4ca9b4e"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "width": 390,
+      "checks": [
+        {
+          "name": "counts agree with fresh source rules",
+          "yes_no": "yes",
+          "details": {
+            "rows": 50,
+            "cards": [
+              {
+                "id": "records",
+                "value": 50
+              },
+              {
+                "id": "fixed",
+                "value": 22
+              },
+              {
+                "id": "verified",
+                "value": 44
+              },
+              {
+                "id": "pending",
+                "value": 6
+              },
+              {
+                "id": "confirmed",
+                "value": 0
+              }
+            ],
+            "width": 390,
+            "docWidth": 390
+          }
+        },
+        {
+          "name": "no horizontal page overflow",
+          "yes_no": "yes",
+          "details": {
+            "rows": 50,
+            "cards": [
+              {
+                "id": "records",
+                "value": 50
+              },
+              {
+                "id": "fixed",
+                "value": 22
+              },
+              {
+                "id": "verified",
+                "value": 44
+              },
+              {
+                "id": "pending",
+                "value": 6
+              },
+              {
+                "id": "confirmed",
+                "value": 0
+              }
+            ],
+            "width": 390,
+            "docWidth": 390
+          }
+        },
+        {
+          "name": "search locates the verified contact-routing item",
+          "yes_no": "yes",
+          "details": [
+            "現行請假／求助分機與正式英文\t已修正\tyes\t已留資料\t本輪限定範圍通過\t待使用者審閱"
+          ]
+        },
+        {
+          "name": "row expands current reason and evidence",
+          "yes_no": "yes",
+          "details": {
+            "expanded": "true",
+            "hidden": false,
+            "text": "結果與限制\n按官方成員業務表逐筆核1712證照獎助/就業職缺、1713UCAN/講座、1711實習/學海；只修證照副分機並加FAQ，沒有全部改成同一支。其餘聯絡用前輪限定證據。\n實際證據\nholiday-lab/reports/guide-final-docs-20261024/routing-applied-copy.json、holiday-lab/reports/guide-final-docs-20261024/routing-green.json、holiday-lab/reports/guide-final-docs-20261024/qa/raw-r1/result.json"
+          }
+        },
+        {
+          "name": "missing filter agrees with actual no rows",
+          "yes_no": "yes",
+          "details": [
+            "中日全站逐字缺字稽核\t保留\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "全部正式職稱／處室外文名\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "當期完整規章、表單及年度衝突\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "全部素材製程與權利已確認\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "Flora／胖倉鼠WebGL成品\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "實體手機與母語審閱\t保留\tno\t已留資料\t未完成／待確認\t待使用者審閱"
+          ]
+        },
+        {
+          "name": "all filter restores source row count",
+          "yes_no": "yes"
+        },
+        {
+          "name": "no exceptions or external requests",
+          "yes_no": "yes",
+          "details": {
+            "errors": [],
+            "requests": [
+              "http://127.0.0.1:8881/progress/"
+            ]
+          }
+        }
+      ],
+      "errors": [],
+      "requests": [
+        "http://127.0.0.1:8881/progress/"
+      ],
+      "shots": [
+        {
+          "file": "390-dark.webp",
+          "sha256": "2f81b24f9413eaed69591e5aacbe2fa13b6002fbc257de71aeb5fc4f26ba3693"
+        }
+      ],
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "after": [
+    {
+      "file": "holiday-lab/dashboard/out/index.html",
+      "sha256": "3bc61f6420cbbbd27de3aaa20a5a5bfb6a336f6639b2df0e968906fdcaaac6b1"
+    },
+    {
+      "file": "holiday-lab/dashboard/out/dashboard-data.json",
+      "sha256": "027f449316faad37775bc2a4f8c3fc87ad5aeaf067591ac9f6862aaa19614005"
+    },
+    {
+      "file": "holiday-lab/dashboard/progress-policy.json",
+      "sha256": "35af6e5d78a78103a01ee118a66521191e212b5aa98746b61b2cc16bc7522720"
+    },
+    {
+      "file": "holiday-lab/reports/guide-final-docs-20261024/verification.json",
+      "sha256": "2bcd95a5755d792519463247794f1e63b8096d925c76a3d4fff2bcdbcf94ad08"
+    }
+  ],
+  "stable": true,
+  "pass": true
+}

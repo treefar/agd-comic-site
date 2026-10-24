@@ -1,0 +1,178 @@
+{
+  "at": "2026-10-24T02:37:46.243Z",
+  "scope": "Verification of raw-r1 functional/UI evidence only. Known JA copy typo remains for a separate delta; not a claim of perfect translation or publication approval.",
+  "yes": 10,
+  "no": 0,
+  "checks": [
+    {
+      "item": "6context首輪156條全綠及實際exit0",
+      "result": "yes",
+      "actual": {
+        "contexts": 6,
+        "yes": 156,
+        "no": 0,
+        "exit_code": 0
+      }
+    },
+    {
+      "item": "source/data47份前後及目前SHA相同",
+      "result": "yes",
+      "actual": {
+        "files": 47
+      }
+    },
+    {
+      "item": "360build檔前後及目前SHA相同",
+      "result": "yes",
+      "actual": {
+        "files": 360,
+        "app": "app-NOWSESL2.js"
+      }
+    },
+    {
+      "item": "HTTP實際回應與凍結build一致",
+      "result": "yes",
+      "actual": {
+        "before": [
+          {
+            "url": "http://127.0.0.1:8880/index.html",
+            "status": 200,
+            "sha256": "f348f22baa9eef4901bbe442bb5ce39cf83c76aab7361eca4f871a9f8a273582",
+            "expected": "f348f22baa9eef4901bbe442bb5ce39cf83c76aab7361eca4f871a9f8a273582"
+          },
+          {
+            "url": "http://127.0.0.1:8880/data/students/guide.json",
+            "status": 200,
+            "sha256": "83fd03e1ec3a2aae48f8455473ed3a37eb2b8446a54649f62ea1f6754a0f7a19",
+            "expected": "83fd03e1ec3a2aae48f8455473ed3a37eb2b8446a54649f62ea1f6754a0f7a19"
+          },
+          {
+            "url": "http://127.0.0.1:8880/styles.css?v=20261022students",
+            "status": 200,
+            "sha256": "75551537c822e308277d8ad6bfdc83b76db7a9b33193e5ba654b485941cadabe",
+            "expected": "75551537c822e308277d8ad6bfdc83b76db7a9b33193e5ba654b485941cadabe"
+          },
+          {
+            "url": "http://127.0.0.1:8880/student-guide.css?v=20261022students",
+            "status": 200,
+            "sha256": "224adad44d517ae15a018bce8ac6ff93efa6d1fe37245751f0911fb5572ab05a",
+            "expected": "224adad44d517ae15a018bce8ac6ff93efa6d1fe37245751f0911fb5572ab05a"
+          },
+          {
+            "url": "http://127.0.0.1:8880/faculty-portrait.css?v=20261022portrait",
+            "status": 200,
+            "sha256": "02b986f10c3c277becf451cc634d228cf836f686209a29df215b4c30a469ebd4",
+            "expected": "02b986f10c3c277becf451cc634d228cf836f686209a29df215b4c30a469ebd4"
+          },
+          {
+            "url": "http://127.0.0.1:8880/holiday-home.css",
+            "status": 200,
+            "sha256": "840a114fa1bf7c7e7e9f094cf9dc81d30a2f7b7a502ec76920ccecfd0c9d014d",
+            "expected": "840a114fa1bf7c7e7e9f094cf9dc81d30a2f7b7a502ec76920ccecfd0c9d014d"
+          },
+          {
+            "url": "http://127.0.0.1:8880/app-NOWSESL2.js",
+            "status": 200,
+            "sha256": "e77e9b65d29fb582b18ed50b62a22f85dfce46099613ca19a99e7cfa2197220f",
+            "expected": "e77e9b65d29fb582b18ed50b62a22f85dfce46099613ca19a99e7cfa2197220f"
+          }
+        ],
+        "after": [
+          {
+            "url": "http://127.0.0.1:8880/index.html",
+            "status": 200,
+            "sha256": "f348f22baa9eef4901bbe442bb5ce39cf83c76aab7361eca4f871a9f8a273582",
+            "expected": "f348f22baa9eef4901bbe442bb5ce39cf83c76aab7361eca4f871a9f8a273582"
+          },
+          {
+            "url": "http://127.0.0.1:8880/data/students/guide.json",
+            "status": 200,
+            "sha256": "83fd03e1ec3a2aae48f8455473ed3a37eb2b8446a54649f62ea1f6754a0f7a19",
+            "expected": "83fd03e1ec3a2aae48f8455473ed3a37eb2b8446a54649f62ea1f6754a0f7a19"
+          },
+          {
+            "url": "http://127.0.0.1:8880/styles.css?v=20261022students",
+            "status": 200,
+            "sha256": "75551537c822e308277d8ad6bfdc83b76db7a9b33193e5ba654b485941cadabe",
+            "expected": "75551537c822e308277d8ad6bfdc83b76db7a9b33193e5ba654b485941cadabe"
+          },
+          {
+            "url": "http://127.0.0.1:8880/student-guide.css?v=20261022students",
+            "status": 200,
+            "sha256": "224adad44d517ae15a018bce8ac6ff93efa6d1fe37245751f0911fb5572ab05a",
+            "expected": "224adad44d517ae15a018bce8ac6ff93efa6d1fe37245751f0911fb5572ab05a"
+          },
+          {
+            "url": "http://127.0.0.1:8880/faculty-portrait.css?v=20261022portrait",
+            "status": 200,
+            "sha256": "02b986f10c3c277becf451cc634d228cf836f686209a29df215b4c30a469ebd4",
+            "expected": "02b986f10c3c277becf451cc634d228cf836f686209a29df215b4c30a469ebd4"
+          },
+          {
+            "url": "http://127.0.0.1:8880/holiday-home.css",
+            "status": 200,
+            "sha256": "840a114fa1bf7c7e7e9f094cf9dc81d30a2f7b7a502ec76920ccecfd0c9d014d",
+            "expected": "840a114fa1bf7c7e7e9f094cf9dc81d30a2f7b7a502ec76920ccecfd0c9d014d"
+          },
+          {
+            "url": "http://127.0.0.1:8880/app-NOWSESL2.js",
+            "status": 200,
+            "sha256": "e77e9b65d29fb582b18ed50b62a22f85dfce46099613ca19a99e7cfa2197220f",
+            "expected": "e77e9b65d29fb582b18ed50b62a22f85dfce46099613ca19a99e7cfa2197220f"
+          }
+        ]
+      }
+    },
+    {
+      "item": "15卡47步56FAQ89來源均依新資料",
+      "result": "yes",
+      "actual": {
+        "cards": 15,
+        "steps": 47,
+        "faq": 56,
+        "sources": 89
+      }
+    },
+    {
+      "item": "10target文字及15卡來源/FAQ來源/電話href皆渲染",
+      "result": "yes",
+      "actual": {
+        "target_values": 1194,
+        "source_rows": 768,
+        "faq_source_links": 684,
+        "phone_office_links": 246
+      }
+    },
+    {
+      "item": "90直接WebP原件SHA與格式一致",
+      "result": "yes",
+      "actual": 90
+    },
+    {
+      "item": "無console/page/404/遊戲請求/iframe",
+      "result": "yes",
+      "actual": {
+        "contexts": 6,
+        "no_game_interaction": true
+      }
+    },
+    {
+      "item": "原教師照片僅SHA快取回應",
+      "result": "yes",
+      "actual": {
+        "cache_responses": 52,
+        "no_remote_portrait_recapture": true
+      }
+    },
+    {
+      "item": "本次QA Node子程序已結束",
+      "result": "yes",
+      "actual": {
+        "qa_node_processes": 0,
+        "browser_close_awaited_before_successful_result": true
+      }
+    }
+  ],
+  "raw_result_sha256": "cd728167672454509f7fde22695095f89408bd4fb625e353a3c83e68b547703f",
+  "raw_command_sha256": "f694d2ff3a9e75ba464769e577a80f6c80cee0e6e0a7b0bf406445dcf6dde04b"
+}

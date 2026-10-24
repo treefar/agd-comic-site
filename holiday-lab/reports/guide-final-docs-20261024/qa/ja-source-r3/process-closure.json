@@ -1,0 +1,11 @@
+{
+  "command": [
+    "powershell",
+    "-NoProfile",
+    "-Command",
+    "@(Get-CimInstance Win32_Process | Where-Object { $_.Name -eq 'node.exe' -and $_.CommandLine -like '*qa*check-ja-source-r3.cjs*' }).Count"
+  ],
+  "stdout": "0\r\n",
+  "stderr": "",
+  "exit_code": 0
+}

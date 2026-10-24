@@ -1,0 +1,4 @@
+// Syntax-only preparation receipt. Does not load the QA program or call a website.
+const fs=require('fs'),path=require('path'),cp=require('child_process'),crypto=require('crypto');
+const rows=['check.cjs','run.cjs'].map(name=>{const file=path.join(__dirname,name),r=cp.spawnSync(process.execPath,['--check',file],{encoding:'utf8'});return{command:[process.execPath,'--check',file],stdout:r.stdout||'',stderr:r.stderr||'',exit_code:r.status,sha256:crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex')};});
+const report={at:new Date().toISOString(),phase:'Prepared only. No product/server/browser requests performed.',commands:rows,pass:rows.every(x=>x.exit_code===0)};fs.writeFileSync(path.join(__dirname,'syntax-command.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));process.exitCode=report.pass?0:1;
