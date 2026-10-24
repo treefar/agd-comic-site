@@ -1,0 +1,2442 @@
+{
+  "as_of": "2026-10-24",
+  "checked_at": "2026-10-24T02:53:42.586Z",
+  "scope": "122 unique newly applied keys, actual EN and JA flow-ui values; no product or browser changes",
+  "inputs": [
+    {
+      "file": "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json",
+      "sha256": "1ac4374826b60c9962a6d76cf38e393858a03d1f6784ebdc8610b754a5e4841f",
+      "item_count": 38
+    },
+    {
+      "file": "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json",
+      "sha256": "c90b2a42d69bd64a0ef5f2b57ac47831a499984eacb9e13fb3db49e16d40f5df",
+      "item_count": 28
+    },
+    {
+      "file": "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json",
+      "sha256": "740c8ef5f17bbafbabc96bc54738596f2b2f74defa86b098c41a641b945cfcab",
+      "item_count": 54
+    },
+    {
+      "file": "holiday-lab/reports/guide-final-docs-20261024/routing-applied-copy.json",
+      "sha256": "d4b5481aac7bee156a53d467ca7bb15ce789670afc95b2e800ee7d46b2225cb3",
+      "item_count": 2
+    },
+    {
+      "file": "holiday-lab/reports/guide-final-docs-20261024/japanese-source-correction.json",
+      "sha256": "bd1a2b5712521622085eb8618a0c1dbddcfab31a22dcbec8a5b3211c9c9c7cbe",
+      "item_count": 0
+    },
+    {
+      "file": "data/en/flow-ui.json",
+      "sha256": "e4925946a4a8afe5ed886cf83091b5308207c966c98d1dbd7e4e5e761b277467"
+    },
+    {
+      "file": "data/ja/flow-ui.json",
+      "sha256": "babeb1aca52c401d51c9ce45919b8da14003d674b11ee361bd8551e1f9c8f494"
+    },
+    {
+      "file": "holiday-lab/reports/followup-20261024/contacts/raw/academic-en-dom.txt",
+      "sha256": "dfd01d803393e89bdf339ad0533801345b95bd84ecaf2a68c2452a97049d9011"
+    },
+    {
+      "file": "holiday-lab/reports/followup-20261024/contacts/raw/aca-organization-dom.txt",
+      "sha256": "84e100d5af8d7840a85a1e7f6a70472d9c77b5d397d3de9fc571358b888574eb"
+    }
+  ],
+  "coverage": {
+    "unique_keys": 122,
+    "language_values": 244,
+    "semantic_findings": 2,
+    "pending_name_evidence": 0,
+    "affected_keys": 2,
+    "affected_language_values": 4,
+    "resolved_name_evidence": 1
+  },
+  "checks": [
+    {
+      "name": "122 unique keys covered",
+      "yes": true
+    },
+    {
+      "name": "244 actual EN/JA values present",
+      "yes": true
+    },
+    {
+      "name": "receipt matches or explicit Japanese correction applied",
+      "yes": true
+    },
+    {
+      "name": "Japanese character correction exact",
+      "yes": true
+    },
+    {
+      "name": "four proposals exact before guards",
+      "yes": true
+    },
+    {
+      "name": "Registration and Curriculum Division exact official bilingual label read",
+      "yes": true
+    }
+  ],
+  "findings": [
+    {
+      "id": "TR01",
+      "severity": "P2",
+      "language": "ja",
+      "file": "data/ja/flow-ui.json",
+      "pointer": "/不一定。檢核附件說明，抵免、替代課或分級免修可能尚未對應；帶核准與成績資料找系辦或註冊課務組。不要自己重複選課；已停開必修要依開課單位指定的替代科目處理。",
+      "key": "不一定。檢核附件說明，抵免、替代課或分級免修可能尚未對應；帶核准與成績資料找系辦或註冊課務組。不要自己重複選課；已停開必修要依開課單位指定的替代科目處理。",
+      "before": "必ずしもそうではありません。単位認定・代替科目・クラス分け免除が未対応の場合があります。承認書と成績を持って学科か教務窓口に相談し、自己判断で重複履修しないでください。廃止された必修は開講単位指定の代替科目で対応します。",
+      "after": "必ずしもそうではありません。単位認定・代替科目・習熟度判定に基づく履修免除が未対応の場合があります。承認書と成績を持って学科か教務窓口に相談し、自己判断で重複履修しないでください。廃止された必修は開講単位指定の代替科目で対応します。",
+      "evidence_zh": "抵免、替代課或分級免修可能尚未對應",
+      "reason": "クラス分け免除是免除分級／分班本身；中文分級免修是依分級結果免修課程，不能讓學生理解成免做分級。只替換這一個術語，不新增門檻或資格。",
+      "status": "proposed_not_applied",
+      "companion_changes": [
+        {
+          "language": "en",
+          "file": "data/en/flow-ui.json",
+          "pointer": "/不一定。檢核附件說明，抵免、替代課或分級免修可能尚未對應；帶核准與成績資料找系辦或註冊課務組。不要自己重複選課；已停開必修要依開課單位指定的替代科目處理。",
+          "key": "不一定。檢核附件說明，抵免、替代課或分級免修可能尚未對應；帶核准與成績資料找系辦或註冊課務組。不要自己重複選課；已停開必修要依開課單位指定的替代科目處理。",
+          "before": "Not necessarily. The guide notes that credit transfer, substitute courses or placement exemptions may not yet be matched. Take approval and grade records to your department or registration office. Do not duplicate courses yourself; discontinued required courses need the offering unit’s designated substitute.",
+          "after": "Not necessarily. The guide notes that credit transfer, substitute courses or placement-based course exemptions may not yet be matched. Take approval and grade records to your department or registration office. Do not duplicate courses yourself; discontinued required courses need the offering unit’s designated substitute.",
+          "reason": "伴語同步明確表示依分級結果免修課程，不表示免除分級本身。"
+        }
+      ]
+    },
+    {
+      "id": "TR02",
+      "severity": "P2",
+      "language": "en",
+      "file": "data/en/flow-ui.json",
+      "pointer": "/錄取後核對契約中的機構、期間、補助與自付費，再確認醫療、意外保險及合法實習簽證。出發前問清楚行前說明與緊急聯絡；實習期間維持學籍，結束後依計畫完成返校報到及成果交件。",
+      "key": "錄取後核對契約中的機構、期間、補助與自付費，再確認醫療、意外保險及合法實習簽證。出發前問清楚行前說明與緊急聯絡；實習期間維持學籍，結束後依計畫完成返校報到及成果交件。",
+      "before": "After acceptance, check the host, dates, grant and personal costs in your agreement, along with medical and accident insurance and a visa that permits the internship. Confirm pre-departure guidance and emergency contacts. Remain enrolled during the internship and complete the required return report and submissions afterward.",
+      "after": "After acceptance, check the host, dates, grant and personal costs in your agreement, along with medical and accident insurance and a visa that permits the internship. Confirm pre-departure guidance and emergency contacts. Remain enrolled during the internship and report back to the university and submit the required outcomes afterward, as specified by the project.",
+      "evidence_zh": "結束後依計畫完成返校報到及成果交件",
+      "reason": "return report把返校報到寫成一份報告的名詞，與後面的成果交件容易合併成只交報告。中文分列報到與交件兩項程序；改用report back to the university並保留依計畫限制。未增加必須親赴特定地點的要求。",
+      "status": "proposed_not_applied",
+      "companion_changes": [
+        {
+          "language": "ja",
+          "file": "data/ja/flow-ui.json",
+          "pointer": "/錄取後核對契約中的機構、期間、補助與自付費，再確認醫療、意外保險及合法實習簽證。出發前問清楚行前說明與緊急聯絡；實習期間維持學籍，結束後依計畫完成返校報到及成果交件。",
+          "key": "錄取後核對契約中的機構、期間、補助與自付費，再確認醫療、意外保險及合法實習簽證。出發前問清楚行前說明與緊急聯絡；實習期間維持學籍，結束後依計畫完成返校報到及成果交件。",
+          "before": "採用後は契約の受入先・期間・補助・自己負担額、医療・傷害保険と実習を認める査証を確認します。出発前に説明会と緊急連絡先を確認し、実習中は学籍を維持してください。終了後は計画に従って帰校報告と成果提出を行います。",
+          "after": "採用後は契約の受入先・期間・補助・自己負担額、医療・傷害保険と実習を認める査証を確認します。出発前に説明会と緊急連絡先を確認し、実習中は学籍を維持してください。終了後は計画に従って帰校手続きと成果提出を行います。",
+          "reason": "伴語同步保留返校程序與成果交件兩個動作；不新增親赴窗口或時限。"
+        }
+      ]
+    }
+  ],
+  "pending": [],
+  "rows": [
+    {
+      "index": 0,
+      "key": "115-1學生選課日期及注意事項（115.05.25）",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Course Selection Schedule and Notes for Semester 1, Academic Year 115 (25 May 2026)",
+      "ja": "115学年度第1学期の履修登録日程・注意事項（2026年5月25日）",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 1,
+      "key": "115-1選課、特殊處理與棄選時程；請依階段申請。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Dates for course selection, special processing and withdrawal in semester 115-1. Apply during the relevant period.",
+      "ja": "115学年度第1学期の履修登録・特別処理・取下げ日程です。各期間に従って申請してください。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 2,
+      "key": "學生特殊狀況人工選課申請單（G01 v3.2）",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Manual Course Selection Application for Special Cases (G01 v3.2)",
+      "ja": "特別事情による手動履修登録申請書（G01 v3.2）",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 3,
+      "key": "適用特殊狀況，仍須符合理由並取得相關單位核准。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "For special cases. Eligible grounds and approval from the relevant units are still required.",
+      "ja": "特別事情が対象です。該当する理由と関係部署の承認が必要です。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 4,
+      "key": "115-1抵免學分申請程序（教務現行頁）",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Credit Transfer Application Procedure for Semester 1, Academic Year 115 (Official Page)",
+      "ja": "115学年度第1学期の単位認定申請手順（教務公式ページ）",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 5,
+      "key": "請在當期期限內到系統填寫並印表；有疑問先問承辦。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Complete and print the application in the system before the current deadline. Ask the responsible office if unsure.",
+      "ja": "当期の締切までにシステムで入力・印刷します。不明な点は担当窓口へ。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 6,
+      "key": "教務表單：抵免系統申請及休復學領表方式",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Academic Forms: Online Credit Transfer and In-Person Leave/Return Forms",
+      "ja": "教務申請書：単位認定のシステム申請と休学・復学書類の受取方法",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 7,
+      "key": "休學、退學及復學通知書須至教務處領取；抵免表由系統產出。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Obtain leave, withdrawal and return-notice documents from Academic Affairs. Credit transfer forms are generated in the system.",
+      "ja": "休学・退学書類と復学通知書は教務窓口で受け取ります。単位認定の申請書はシステムで出力します。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 8,
+      "key": "115-1休學退學及復學通知程序（教務現行頁）",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Leave, Withdrawal and Return Notification Procedure for Semester 1, Academic Year 115",
+      "ja": "115学年度第1学期の休学・退学と復学通知の手順",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 9,
+      "key": "說明領表、離校及復學通知；個人核准與例外請找承辦確認。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Explains form collection, clearance and return notices. Ask the office about individual approvals and exceptions.",
+      "ja": "書類の受取・離校手続き・復学通知を説明します。個別の承認や例外は窓口で確認してください。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 10,
+      "key": "115-1休退學退費標準表（含舊規章附件）",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Refund Schedule for Leave or Withdrawal, Semester 1, Academic Year 115 (With Older Rule Appendices)",
+      "ja": "115学年度第1学期の休学・退学時の返金基準表（旧規則の付録付き）",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 11,
+      "key": "請分日間部或進修部查看；個人退費金額仍須向承辦確認。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Use the column for your daytime or continuing-education program. Confirm your individual refund with the responsible office.",
+      "ja": "昼間部・進修部の該当欄を確認します。個別の返金額は担当窓口に確認してください。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 12,
+      "key": "如何看懂畢業學分檢核表（2026.02.17）",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "How to Read the Graduation Credit Audit (17 February 2026)",
+      "ja": "卒業単位チェック表の見方（2026年2月17日）",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 13,
+      "key": "教你看總表與明細；示範科系的學分數不能直接套用動遊系。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Explains how to read the summary and details. Credit figures from the sample department do not directly apply to Animation and Game Design.",
+      "ja": "総表と明細の見方を説明します。例示された他学科の単位数を本学科に流用しないでください。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 14,
+      "key": "學生休學辦法（112.04.26官網仍列）",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Student Leave of Absence Regulations (26 April 2023, Still Listed)",
+      "ja": "休学規則（2023年4月26日・公式一覧に継続掲載）",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 15,
+      "key": "休學與復學規定；涉及提早復學例外或退費時，先請承辦確認。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Rules for leave and return. Ask the office first about early-return exceptions or refunds.",
+      "ja": "休学・復学の規則です。早期復学の例外や返金に関わる場合は先に窓口で確認してください。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 16,
+      "key": "截至2026/10/24，115-1棄選尚未開始；特殊選課9/24已截止。逾期個案須具理由及證明，不是拿表就能補選。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "As of 24 October 2026, course withdrawal for 115-1 has not opened; regular special processing ended on 24 September. A late case requires grounds and proof, not merely a form.",
+      "ja": "2026年10月24日現在、115学年度第1学期の履修取下げは未開始です。通常の特別処理は9月24日で終了。期限後の申請には理由と証明が必要です。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 17,
+      "key": "先對115-1日期表：加退選與9/24特殊處理已截止；棄選為11/30上午10時至12/7上午9時，走系統申請。若需逾期處理，帶理由與證明問承辦，核准後才算異動。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Check the 115-1 schedule first: add/drop and special processing by 24 September have ended. Course withdrawal is scheduled for 30 November at 10:00 to 7 December at 09:00 through the system. Ask the office about any late case with supporting reasons and proof; changes require approval.",
+      "ja": "115学年度第1学期の日程を確認します。追加・取消と9月24日までの特別処理は終了し、履修取下げは11月30日10時〜12月7日9時にシステムで申請します。期限後の個別処理は理由と証明を添えて相談し、承認を得てください。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 18,
+      "key": "115-1什麼時候可以棄選？",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "When is course withdrawal available for 115-1?",
+      "ja": "115学年度第1学期の履修取下げはいつですか？",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 19,
+      "key": "現列日期表為2026/11/30上午10時至12/7上午9時，到校務系統申請棄選；截至10/24尚未開放。完成後查結果；棄選後仍須符合最低學分，同科目修業期間限一次，成績記W。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "The listed period is 30 November 2026 at 10:00 through 7 December at 09:00, using the university system. It has not opened as of 24 October. Check the result afterward. Minimum credits still apply; the same subject may be withdrawn once during study and is marked W.",
+      "ja": "掲載日程は2026年11月30日10時〜12月7日9時で、校務システムから申請します。10月24日現在は未開始です。申請後に結果を確認し、最低単位数を守ってください。同じ科目の取下げは在学中1回で、成績はWと記録されます。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 20,
+      "key": "錯過選課，拿特殊申請單就能補嗎？",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Can the special form automatically fix missed course registration?",
+      "ja": "履修登録の期限を過ぎたら特別申請書で必ず追加できますか？",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 21,
+      "key": "不能保證。115-1一般特殊處理9/24止；確認期後若有非可歸責自己的特殊理由，日期表要求證明、請核書及教師與開課單位同意，再送教務處簽辦，經核准才處理。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "No. Regular special processing for 115-1 ended on 24 September. After confirmation periods, the schedule allows review of special reasons beyond the student’s control with proof, a request letter and approvals from the instructor and offering unit, followed by Academic Affairs approval.",
+      "ja": "必ずできるわけではありません。通常の特別処理は9月24日までです。確認期間後に本人の責任によらない特別事情がある場合は、証明・請核書・担当教員と開講単位の同意を添えて教務窓口に提出し、承認後に処理されます。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 22,
+      "key": "115-1抵免已於9/21截止。現行規定按每一身分事由限申請一次；舊手冊例圖較舊，實際系統印表版本仍待承辦確認。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Credit transfer applications for 115-1 closed on 21 September. Current rules allow one application per qualifying status or reason. The handbook screenshots are older, and the current generated form still needs confirmation.",
+      "ja": "115学年度第1学期の単位認定申請は9月21日で終了しました。現行規則では身分・事由ごとに1回です。旧マニュアルの例図と現在の出力書式は窓口で確認してください。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 23,
+      "key": "先確認申請身分事由與當期截止日，再到校務系統填寫、核對及印表；備妥原校歷年成績單正本。現列表單要求由系統產出，不拿舊空白表或手冊例圖直接代填。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Check your qualifying status or reason and the current deadline, then enter, review and print the application from the university system. Prepare the original full transcript from your previous school. Use the system-generated form, not an old blank form or handbook screenshot.",
+      "ja": "対象となる身分・事由と締切を確認し、校務システムで入力・確認・印刷します。前の学校の成績証明書原本を用意し、旧様式やマニュアルの例図ではなくシステム出力の申請書を使ってください。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 24,
+      "key": "抵免是不是在學期間只能申請一次？",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Is credit transfer limited to one application for my entire enrollment?",
+      "ja": "単位認定は在学中に一度しか申請できませんか？",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 25,
+      "key": "114.09.10辦法與115-1現頁寫每一身分事由在學期間一次；不能只照舊表的「在學一次」理解，也不代表可分批補送。先由註冊課務組核對你的事由、證明與受理期限。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "The 10 September 2025 regulations and current 115-1 page specify once per qualifying status or reason during enrollment. Do not rely on the older form’s broader wording or assume documents may be submitted in batches. Ask the office to verify your reason, proof and deadline.",
+      "ja": "2025年9月10日の規則と現行ページでは、身分・事由ごとに在学中1回としています。旧様式の「在学中1回」だけで判断せず、分割提出も当然とは考えないでください。理由・証明・受付期限を窓口で確認します。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 26,
+      "key": "先約導師或系所承辦，再帶學生證到註冊課務組登記領表。自登記日起含當日7日內完成離校並繳回；逾期要重領，退費基準日也會改。核准後才生效。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Arrange a meeting with your advisor or department first, then bring your student ID to collect the form from the Registration and Curriculum Division. Complete clearance and return it within seven days including the registration day. A late submission requires a new form and changes the refund reference date. Leave takes effect only after approval.",
+      "ja": "先に指導教員・学科窓口と日時を調整し、学生証を持って教務窓口で申請書を受け取ります。受取日を含む7日以内に手続きと返却を完了してください。期限を過ぎると再受取となり、返金基準日も変わります。承認後に有効です。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_official_name_existing_evidence",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 27,
+      "key": "教務處於學期末先以電子郵件通知復學，未回覆再寄掛號。依通知辦復學或續休，地址電話變更要更新；別把沒回覆當自動續休。服役證明及提早復學個案另問承辦。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Academic Affairs first emails return notices at semester end and sends registered mail if there is no reply. Follow the notice to return or extend leave, and update your address and phone number. No reply does not mean automatic extension. Ask separately about military proof or early return.",
+      "ja": "学期末に教務窓口から復学通知がメールで届き、返信がなければ書留で送られます。通知に従って復学・休学継続を申請し、住所・電話の変更も届け出てください。無返信は自動延長ではありません。兵役証明や早期復学は個別に確認します。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 28,
+      "key": "學期過了三分之一，還能提早復學嗎？",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Can I return early after one third of the semester has passed?",
+      "ja": "学期の3分の1を過ぎても早期復学できますか？",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 29,
+      "key": "先請教務處確認。112休學辦法列特定延畢課程例外，但115學則寫逾三分之一學期不得復學，公開文件未見如何配套。不要自己認定符合舊例外就能回來上課。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Ask Academic Affairs first. The 2023 leave rules list exceptions for particular extended-study courses, while the 2026 university rules prohibit return after one third of the semester. The public documents do not explain their interaction; do not assume an old exception guarantees return.",
+      "ja": "教務窓口で先に確認してください。2023年休学規則には特定の延長修業科目の例外がありますが、2026年学則は学期の3分の1経過後の復学を認めていません。公開文書で適用関係は解決しておらず、旧例外だけで判断しないでください。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 30,
+      "key": "退費可以直接照舊條文回溯日期嗎？",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Can I use the older clause to backdate my refund calculation?",
+      "ja": "旧条文を使って返金の基準日をさかのぼれますか？",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 31,
+      "key": "不要自行套用。112辦法退費條文有錯引，115-1母頁與附件的部分退費簡述也有差異。先帶領表日、繳費與核准資料，請註冊課務組及收退費承辦按日間部標準確認。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Do not apply it yourself. The 2023 rule has an incorrect cross-reference, and parts of the 115-1 webpage summary differ from its attachment. Bring your form collection date, payment and approval records and ask the relevant offices to confirm the daytime-program calculation.",
+      "ja": "自己判断で適用しないでください。2023年規則には誤参照があり、115学年度第1学期のページ要約と添付表にも一部差があります。書類受取日・納付・承認資料を持参し、昼間部の基準を担当窓口で確認してください。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 32,
+      "key": "目前公告檢核資料計至114-1，不代表115-1即時成績；先確認更新學期。技優班及不同入學年仍分開核對。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "The current announcement says audit data are calculated through 114-1, not live 115-1 results. Check the update semester first. Special cohorts and entry years require separate checks.",
+      "ja": "現在の告知では判定データは114学年度第1学期までです。115学年度第1学期の最新成績とは限らないため、更新対象を先に確認します。特別クラスや入学年度は別々に照合してください。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 33,
+      "key": "到「教務系統→查詢程式→畢業學分檢核表查詢」，先看總表門檻與各類學分，再展開未通過項目的明細。列出缺課、未對應或不採計的原因；確認資料更新學期，不只看已修總學分。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Open the graduation credit audit under Academic System → Queries. Check the overall requirements and credits by category, then expand the details of unmet items. List missing courses, unmatched courses and credits not counted, and confirm the data update semester rather than relying on total earned credits.",
+      "ja": "「教務系統→查詢程式→畢業學分檢核表查詢」を開き、まず要件と区分別単位を見てから、未達項目の明細を展開します。未履修・未対応・不算入の理由を整理し、総修得単位だけでなくデータの更新学期も確認してください。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 34,
+      "key": "修過的課顯示未對應，是不是一定要重修？",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Does an unmatched completed course always need to be retaken?",
+      "ja": "修得済みの科目が未対応と出たら必ず再履修ですか？",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 35,
+      "key": "不一定。檢核附件說明，抵免、替代課或分級免修可能尚未對應；帶核准與成績資料找系辦或註冊課務組。不要自己重複選課；已停開必修要依開課單位指定的替代科目處理。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Not necessarily. The guide notes that credit transfer, substitute courses or placement exemptions may not yet be matched. Take approval and grade records to your department or registration office. Do not duplicate courses yourself; discontinued required courses need the offering unit’s designated substitute.",
+      "ja": "必ずしもそうではありません。単位認定・代替科目・クラス分け免除が未対応の場合があります。承認書と成績を持って学科か教務窓口に相談し、自己判断で重複履修しないでください。廃止された必修は開講単位指定の代替科目で対応します。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [
+        "TR01"
+      ],
+      "en_status": "proposed_semantic_clarification",
+      "ja_status": "proposed_semantic_clarification"
+    },
+    {
+      "index": 36,
+      "key": "檢核表綠燈就是最後畢業資格嗎？",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "Is a passed system audit the final graduation decision?",
+      "ja": "チェック表で合格表示なら卒業資格は確定ですか？",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 37,
+      "key": "不是最後核定。附件說明系統每學期初審，預定畢業當學期成績揭曉後，教務處再人工複審；校系門檻與離校程序也須完成。公告目前資料至114-1，別當成本學期即時結果。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/academic-applied-copy.json"
+      ],
+      "en": "No. The guide describes a system preliminary audit each semester and a manual review after grades are released in the intended graduation semester. University and departmental requirements and clearance still apply. The current announcement covers data through 114-1, not live results this semester.",
+      "ja": "最終判定ではありません。システムの学期ごとの予備審査に加え、卒業予定学期の成績確定後に教務が人手で再審査します。大学・学科の要件と離校手続きも必要です。現告知のデータは114学年度第1学期までです。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 38,
+      "key": "先向系辦確認入學年、班別與適用文件，再到校務資訊系統的「學務資訊→校外實習（實習紀錄輸入）」申請。公司不在名單時，先請系辦協助評估與新增。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "Confirm your entry year, programme and applicable documents with the department office. Then apply through the student portal: Student Affairs → Off-campus Internship (Internship Record Entry). If the company is not listed, ask the office about evaluation and registration first.",
+      "ja": "入学年度・課程と適用書類を学科事務室に確認し、校務システムの「学務情報→学外実習（実習記録入力）」から申請します。企業一覧にない場合は、先に事務室へ評価と登録を相談してください。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 39,
+      "key": "合約經指導老師同意後再列印，並請承辦確認雙方用印、個別實習計畫與投保證明。系上和機構確認報到日期後再開始，不自行把公司口頭錄取當作程序完成。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "Print the agreement after your supervisor approves it. Ask the coordinator to check both parties’ seals, your individual internship plan and insurance certificate. Start on the date confirmed by the department and host; a verbal job offer does not complete the school procedure.",
+      "ja": "指導教員の承認後に契約書を印刷し、双方の押印、個別実習計画と保険加入証明を担当者に確認してもらいます。学科と受入先が確認した開始日に従ってください。企業からの口頭の採用連絡だけでは手続きは完了しません。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 40,
+      "key": "系網仍列107年修訂手冊，本屆適用尚待確認。自找公司、打工認列或中止實習，先問系辦；校級113年辦法不能取代本系細則。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "The department still lists a handbook revised in ROC 107 (2018); its applicability to your cohort is unconfirmed. Ask the department before arranging your own host, seeking work-hour credit or stopping an internship. The university’s ROC 113 (2024) rules do not replace departmental requirements.",
+      "ja": "学科サイトには民国107年（2018年）改訂の手引きが掲載されており、現学年への適用は未確認です。受入先の自己開拓、アルバイトの認定、実習中止は先に学科へ相談してください。民国113年（2024年）の全学規則は学科の細則に代わるものではありません。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 41,
+      "key": "開始前先辦合約與保險；結束後仍要依系上期限交成果報告、自評，並完成老師與機構評量。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "Complete the agreement and insurance before starting. Afterward, submit your report and self-assessment by the department’s deadline and complete the supervisor and host evaluations.",
+      "ja": "開始前に契約と保険の手続きを済ませます。終了後も学科の期限までに成果報告と自己評価を提出し、指導教員と受入先による評価を受けてください。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 42,
+      "key": "錄取後核對契約中的機構、期間、補助與自付費，再確認醫療、意外保險及合法實習簽證。出發前問清楚行前說明與緊急聯絡；實習期間維持學籍，結束後依計畫完成返校報到及成果交件。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "After acceptance, check the host, dates, grant and personal costs in your agreement, along with medical and accident insurance and a visa that permits the internship. Confirm pre-departure guidance and emergency contacts. Remain enrolled during the internship and complete the required return report and submissions afterward.",
+      "ja": "採用後は契約の受入先・期間・補助・自己負担額、医療・傷害保険と実習を認める査証を確認します。出発前に説明会と緊急連絡先を確認し、実習中は学籍を維持してください。終了後は計画に従って帰校報告と成果提出を行います。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [
+        "TR02"
+      ],
+      "en_status": "proposed_semantic_clarification",
+      "ja_status": "proposed_semantic_clarification"
+    },
+    {
+      "index": 43,
+      "key": "本次尚未取得本系115當期甄選與個人補助契約。校內學海要點或歷屆成果不能代替招募；名額、語言、費用及返校期限以當期正式文件為準。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "This review has not obtained the department’s current ROC 115 (2026) recruitment notice or individual grant agreement. University programme rules and past achievements do not establish an open call. Check the current documents for places, language requirements, costs and return deadlines.",
+      "ja": "今回の確認では、本学科の民国115年（2026年）の募集要項と個人の補助契約は未取得です。学内の計画規則や過去の成果は募集案内の代わりにはなりません。定員・語学条件・費用・帰校期限は当期の正式書類で確認してください。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 44,
+      "key": "實習結束後，只交時數證明就好嗎？",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "Is proof of completed hours enough after the internship?",
+      "ja": "実習が終わったら、時間数の証明だけ出せばよいですか？",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 45,
+      "key": "不只時數。校級細則要求成果報告與實習生自評，由指導老師及機構共同評量；交件期限依系上規定。現列說明的線上自評須在合約雙方用印完成後才會出現。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "No. The university rules require a report and student self-assessment, with evaluation by the supervisor and host. Follow the department’s submission deadline. The listed system guide says the online self-assessment appears after both parties’ seals are recorded.",
+      "ja": "時間数だけではありません。全学細則では成果報告と自己評価、指導教員と受入先による評価が必要です。提出期限は学科の規定に従います。掲載中の操作説明では、双方の押印完了が登録されるとオンライン自己評価が表示されます。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 46,
+      "key": "實習不適應，能直接不去或換公司嗎？",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "Can I stop attending or change companies if the placement is unsuitable?",
+      "ja": "実習が合わないとき、無断で休んだり企業を変えたりできますか？",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 47,
+      "key": "先聯絡實習輔導老師與系辦，說明原因。現列表單的流程是學生申請、老師與系主任審核；轉換、中止及已完成時數如何處理，須由系上確認，不自行離開後才補辦。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "Contact your internship supervisor and department first. The listed form goes from the student to the supervisor and department chair for approval. Ask the department how a transfer, termination and completed hours will be handled; do not leave first and apply afterward.",
+      "ja": "先に実習指導教員と学科事務室へ事情を伝えてください。掲載中の申請書は学生から指導教員、学科長へと審査されます。変更・中止と実施済み時間の扱いは学科に確認し、無断で離れてから手続きしないでください。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 48,
+      "key": "有學海補助，就代表全部免費嗎？",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "Does a grant under 學海築夢 (overseas professional internships) cover all costs?",
+      "ja": "「學海築夢」（海外専門実習への補助）の補助があれば、費用はすべて無料ですか？",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 49,
+      "key": "不能這樣推定。校內要點說明實際補助由計畫安排，不保證涵蓋全部費用。錄取後請核對個人核定額、自付項目與契約條件，不用新聞或別人的金額估自己的支出。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "Not necessarily. The university rules leave the actual award to the project; they do not guarantee that every expense is covered. Check your individual award, personal costs and agreement after acceptance. Do not estimate your budget from news reports or another student’s grant.",
+      "ja": "そうとは限りません。学内要点では実際の補助は計画ごとに定められ、全費用の負担を保証していません。採用後に個人の決定額、自己負担項目と契約条件を確認し、ニュースや他の学生の金額で予算を決めないでください。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 50,
+      "key": "學生校外實習辦法",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "學生校外實習辦法 (university internship rules)",
+      "ja": "學生校外實習辦法（全学の学外実習規則）",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 51,
+      "key": "已核對目前職發中心列出的校級辦法全文。實習地點、時間、成績及替代方案仍由各系規定；不等於本系當屆細則。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "The full rules currently listed by the university have been checked. Departments still determine placement, duration, assessment and alternatives; these rules do not confirm the department’s current cohort requirements.",
+      "ja": "現在大学が掲載している規則の全文を確認しました。実習先・期間・評価・代替方法は各学科が定めるため、本学科の現学年の細則を確認済みという意味ではありません。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 52,
+      "key": "學生校外實習施行細則",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "學生校外實習施行細則 (university internship procedures)",
+      "ja": "學生校外實習施行細則（全学の実習実施手続き）",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 53,
+      "key": "已核對目前列出的校級細則全文，包含合約、個別計畫、保險、報告與評量。系上期限及本屆成績比例仍須另查。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "The listed university procedures have been checked in full, including agreements, individual plans, insurance, reports and evaluation. Departmental deadlines and assessment weights still require confirmation.",
+      "ja": "掲載中の全学細則の全文を確認し、契約・個別計画・保険・報告・評価を照合しました。学科の期限と現学年の成績配分は別途確認が必要です。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 54,
+      "key": "學生校外實習說明：申請、合約與交件",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "學生校外實習說明 (student application and submission guide)",
+      "ja": "學生校外實習說明（学生向け申請・契約・提出案内）",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 55,
+      "key": "已核對現列申請路徑及交件說明；其中113年工資數字及保險年度不可當成現在標準。系統實際畫面及當屆清單仍向承辦確認。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "The listed application route and submission instructions have been checked. ROC 113 wage figures and insurance-year information are not current standards. Confirm the actual portal screens and current cohort checklist with the coordinator.",
+      "ja": "掲載中の申請経路と提出案内を確認しました。民国113年の賃金額や保険年度を現在の基準には使いません。実際のシステム画面と現学年の提出一覧は担当者に確認してください。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 56,
+      "key": "校外實習轉換／停止實習機構申請表",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "校外實習轉換／停止實習機構申請表 (placement change or termination form)",
+      "ja": "校外實習轉換／停止實習機構申請表（実習先の変更・中止申請書）",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 57,
+      "key": "已核對空白表全文與學生、輔導老師、系主任的申請順序。是否適用本屆及已完成時數如何處理，仍由系上確認。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "The blank form and its student → supervisor → department chair approval sequence have been checked. The department must confirm current cohort applicability and how completed hours are treated.",
+      "ja": "空白申請書の全文と学生→指導教員→学科長の申請順序を確認しました。現学年への適用と実施済み時間の扱いは学科に確認してください。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 58,
+      "key": "本校學海築夢專案計畫甄選要點",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "本校學海築夢專案計畫甄選要點 (university rules for overseas internship projects)",
+      "ja": "本校學海築夢專案計畫甄選要點（海外実習計画に関する学内選考規則）",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 59,
+      "key": "已核對目前列出的校內要點全文；這是學校計畫規則，不是本系115當期學生甄選公告或個人核定契約。補助額與新梯次條件另查。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "The listed university rules have been checked in full. They govern project selection, not the department’s current ROC 115 student recruitment or an individual grant agreement. Award amounts and new-round conditions require separate confirmation.",
+      "ja": "掲載中の学内要点の全文を確認しました。これは大学の計画選考規則であり、本学科の民国115年の学生募集要項や個人補助契約ではありません。補助額と新しい募集条件は別途確認が必要です。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 60,
+      "key": "現列版本與本屆適用性分開核對；原文及版本證據見本輪研究報告。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "The version currently listed and its applicability to the present cohort are checked separately. Original documents and version evidence are retained in this review report.",
+      "ja": "現在の掲載版と現学年への適用は分けて確認します。原文と版の根拠は今回の確認報告に保存しています。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 61,
+      "key": "113年10月9日修正通過",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "Revisions approved on ROC 113/10/9 (2024-10-09)",
+      "ja": "民国113年10月9日改訂承認",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 62,
+      "key": "113年9月18日修正通過",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "Revisions approved on ROC 113/9/18 (2024-09-18)",
+      "ja": "民国113年9月18日改訂承認",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 63,
+      "key": "2024年12月5日學生版",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "Student version dated 2024-12-05",
+      "ja": "2024年12月5日学生版",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 64,
+      "key": "現列V3.0空白表；表內未見修訂日期",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "Currently listed blank form, filename V3.0; no revision date found in the form",
+      "ja": "現在掲載中の空白書式。ファイル名はV3.0で、本文に改訂日の記載は確認できません",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 65,
+      "key": "112年9月13日修正通過",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/internship-applied-copy.json"
+      ],
+      "en": "Revisions approved on ROC 112/9/13 (2023-09-13)",
+      "ja": "民国112年9月13日改訂承認",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 66,
+      "key": "按方案備文件；學產低收須從「學產助學金管理」填表列印，再繳紙本。勵學金先核對補助身分與當期學習項目，不能只完成線上填寫就算辦妥。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Prepare documents for the specific scheme. For the low-income grant, complete and print the form in 學產助學金管理 (the grant application system), then submit the paper copy. For learning bursaries, check both eligibility and the current learning activity requirements; an online form alone is not enough.",
+      "ja": "制度ごとに必要書類を確認します。低所得世帯向け学産基金助成金は、申請システム「學產助學金管理」で入力・印刷し、紙でも提出します。勵學金は対象資格と当期の学習項目を確認し、オンライン入力だけで手続完了と思わないでください。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 67,
+      "key": "依各方案期限送件並留意補件通知。校內急難應於事件發生日起六個月內申請，同一事件限一次；家庭變故慰助須經審核，不保證一定核發。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Submit within the deadline for your scheme and watch for requests for missing documents. The university’s emergency assistance must be requested within six months of the event, once per event. Family hardship assistance requires review and is not guaranteed.",
+      "ja": "各制度の期限内に提出し、追加書類の連絡を確認します。学内の緊急援助は事実発生日から6か月以内に申請し、同じ出来事につき1回です。家庭事情による援助は審査が必要で、支給は確約されません。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 68,
+      "key": "有勵學金補助身分，就會自動領到錢嗎？",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Does having bursary eligibility mean I will automatically receive money?",
+      "ja": "勵學金の対象資格があれば、自動的に支給されますか。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 69,
+      "key": "不會。先確認系統補助身分，再依115-1項目申請、完成學習及繳件；資格認定與領款是兩件事。身分效期的公告與表單寫法不同，請向承辦確認。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "No. Confirm your eligibility in the system, then apply for the relevant 115-1 activity, complete the learning requirements and submit documents. Eligibility and payment are separate. Ask the office to confirm the validity period, as the notice and form use different wording.",
+      "ja": "自動ではありません。システム上の対象資格を確認し、115学年度第1学期の項目へ申請して学習・書類提出を完了します。資格認定と受給は別です。有効期間は公告と様式で表記が異なるため、担当窓口に確認してください。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 70,
+      "key": "情緒壓力、特教支持與權益受損各有窗口，可依需要直接求助。一般學生申訴與校園性別事件分開受理，不必先諮商。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Emotional support, special education support and student rights have different contacts. You may contact the relevant office directly. General student appeals and campus gender-related incidents follow separate procedures; counseling is not a prerequisite.",
+      "ja": "心の悩み、特別支援、権利に関する問題は、必要な窓口へ直接相談できます。一般の学生不服申立てと学内の性・ジェンダーに関する事案は別の手続です。先に心理相談を受ける必要はありません。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 71,
+      "key": "把通知、日期與證據整理好。一般申訴原則於收到或接受處分、措施或決議的次日起30日內，以書面向生輔組提出；校園性別事件由性平會收件，另用調查申請／檢舉表。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Organize the notice, dates and evidence. General student appeals should normally be submitted in writing to the Student Assistance Section within 30 days from the day after receiving or being subject to the action, measure or decision. Campus gender-related incidents are received by the gender equity committee using a separate investigation request/report form.",
+      "ja": "通知、日付、証拠を整理します。一般の学生不服申立ては原則として処分・措置・決議を受け取った、または受けた日の翌日から30日以内に、生活輔導組へ書面で提出します。学内の性・ジェンダー事案は性平会が受け付け、別の調査申請・通報様式を使います。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 72,
+      "key": "一般學生申訴與性平案件怎麼分？",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "How do general student appeals differ from campus gender-related cases?",
+      "ja": "一般の学生不服申立てと性・ジェンダー事案はどう違いますか。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 73,
+      "key": "一般申訴針對學校處分、措施或決議，由生輔組受理；疑似校園性別事件向性平會申請調查或檢舉。兩者表單與期限不同，可先請窗口協助辨別。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "General appeals concern university actions, measures or decisions and are received by the Student Assistance Section. Suspected campus gender-related incidents should be submitted to the gender equity committee as an investigation request or report. The forms and deadlines differ; ask the relevant office if unsure.",
+      "ja": "一般の不服申立ては学校の処分・措置・決議が対象で、生活輔導組が受け付けます。学内の性・ジェンダー事案が疑われる場合は性平会へ調査申請または通報を行います。様式と期限が異なるため、迷ったら窓口で確認してください。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 74,
+      "key": "性平案件的資料會如何保護？",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "How is information in campus gender-related cases protected?",
+      "ja": "性・ジェンダー事案の情報はどのように保護されますか。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 75,
+      "key": "學校依法保護當事人隱私，但調查需要、公共安全或法律規定可能有例外。可先問承辦資料用途、會提供給誰及保護措施，再決定如何敘述。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "The university protects the parties’ privacy under applicable rules, with possible exceptions for investigations, public safety or legal requirements. You may ask how information will be used, who may receive it and what safeguards apply before describing the matter.",
+      "ja": "学校は規則に従い当事者のプライバシーを守りますが、調査上の必要、公共の安全、法令の定めによる例外があります。説明する前に、情報の利用目的、提供先、保護措置を担当者に確認できます。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 76,
+      "key": "一般申訴空白表附註與現列辦法的期限寫法不同，請核對現行辦法；性平案件的不受理申復、結果申復及後續學生申訴，也有各自期限。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "The general appeal form and current regulations use different deadline wording; check the current regulations. For gender-related cases, a review of non-acceptance, a review of the outcome and a later student appeal each have separate deadlines.",
+      "ja": "一般不服申立ての空白様式の注記と現列規則では期限の表記が異なるため、現行規則を確認してください。性・ジェンダー事案も、不受理への再審査、結果への再審査、その後の学生不服申立てで期限が異なります。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 77,
+      "key": "校方求職徵才網分就業、實習與工讀，先讀條件、截止日及投件方式，再調整履歷。舊消息不代表仍開缺；政府台灣就業通也提供公開職缺與求職資訊。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "The university’s recruitment site separates jobs, internships and part-time work. Read the requirements, deadline and submission method before tailoring your résumé. An older post does not mean a vacancy remains open. TaiwanJobs also provides public job listings and job-search information.",
+      "ja": "学校の求人サイトは就職・実習・アルバイトに分類されています。条件、締切、応募方法を読んでから履歴書を調整します。古い告知は募集中とは限りません。政府の台灣就業通にも公開求人と就職情報があります。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 78,
+      "key": "想找人幫我看履歷，有公開入口嗎？",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Is there a public resource for getting my résumé reviewed?",
+      "ja": "履歴書を見てもらえる公開窓口はありますか。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 79,
+      "key": "先洽職發中心確認當期校內安排。台灣就業通Youth另提供18–29歲青年線上履歷自傳診斷，需自行登入並依預約規定辦理。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Ask the career center about current university arrangements. TaiwanJobs Youth also offers online résumé and autobiography review for people aged 18–29. You must log in yourself and follow its booking rules.",
+      "ja": "まず職発センターに当期の学内対応を確認してください。台灣就業通Youthは18～29歳向けにオンラインで履歴書・自己紹介文を診断しています。本人がログインし、予約規定に従って申し込みます。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 80,
+      "key": "校內學生急難慰助金實施要點",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "University Emergency Student Assistance Rules",
+      "ja": "学内学生緊急援助規程",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 81,
+      "key": "115-1完善就學勵學金主公告",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "115-1 Learning Bursary Main Notice",
+      "ja": "115学年度第1学期・勵學金（学習奨励金）の主公告",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 82,
+      "key": "115年度勵學金補助身分申請",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "115 Learning Bursary Eligibility Application",
+      "ja": "115年・勵學金の対象資格申請",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 83,
+      "key": "完善就學勵學金身分與項目文件",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Learning Bursary Eligibility and Activity Documents",
+      "ja": "勵學金の対象資格・学習項目の書類",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 84,
+      "key": "學生申訴評議辦法（112年修正）",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Student Appeal Review Rules (112 Revision)",
+      "ja": "学生不服申立て審査規程（112年改正）",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 85,
+      "key": "學生申訴辦法與中英文空白申訴書",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Student Appeal Rules and Blank Chinese/English Forms",
+      "ja": "学生不服申立て規程と中国語・英語の空白様式",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 86,
+      "key": "一般學生申訴受理管道",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "General Student Appeal Submission Channel",
+      "ja": "一般の学生不服申立ての受付窓口",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 87,
+      "key": "校園性別事件防治辦法（113年修正）",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Campus Gender-Related Incident Prevention and Response Rules (113 Revision)",
+      "ja": "学内の性・ジェンダー事案の防止・対応規程（113年改正）",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 88,
+      "key": "校園性別事件調查申請與表單",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Campus Gender-Related Incident Investigation Requests and Forms",
+      "ja": "学内の性・ジェンダー事案の調査申請・様式",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 89,
+      "key": "學習歷程與UCAN公開使用說明",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Public Guide to Learning Portfolios and UCAN",
+      "ja": "学習記録とUCANの公開利用案内",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 90,
+      "key": "STU求職與徵才資訊網",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "STU Job Search and Recruitment Website",
+      "ja": "STU求職・求人情報サイト",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 91,
+      "key": "台灣就業通公開求職資源",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "TaiwanJobs Public Job-Search Resources",
+      "ja": "台灣就業通の公開求職情報",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 92,
+      "key": "Youth職涯線上履歷自傳診斷",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Youth Online Résumé and Autobiography Review",
+      "ja": "Youth職涯のオンライン履歴書・自己紹介文診断",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 93,
+      "key": "官方規則全文已核對",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Full official rules checked",
+      "ja": "公式規則の全文を確認済み",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 94,
+      "key": "官方當期公告全文已核對",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Full current official notice checked",
+      "ja": "当期の公式公告全文を確認済み",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 95,
+      "key": "官方現列公開表單已核對",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Currently listed public official forms checked",
+      "ja": "現在掲載されている公式の公開様式を確認済み",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 96,
+      "key": "官方公開受理說明已核對",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Official public submission guidance checked",
+      "ja": "公式の公開受付案内を確認済み",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 97,
+      "key": "官方公開求職入口已核對",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Official public job-search entry checked",
+      "ja": "公式の公開求職入口を確認済み",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 98,
+      "key": "政府公開求職入口已核對",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Government public job-search entry checked",
+      "ja": "政府の公開求職入口を確認済み",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 99,
+      "key": "政府公開服務說明已核對",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Government public service guidance checked",
+      "ja": "政府の公開サービス案内を確認済み",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 100,
+      "key": "官方當期公告與公開表單已核對",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Current official notice and public forms checked",
+      "ja": "当期の公式公告と公開様式を確認済み",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 101,
+      "key": "官方當期公告與申請流程已核對",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Current official notice and application steps checked",
+      "ja": "当期の公式公告と申請手順を確認済み",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 102,
+      "key": "官方公開申請說明已核對；各方案條件須分開確認",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Official public application guidance checked; each scheme has separate conditions",
+      "ja": "公式の公開申請案内を確認済み。条件は制度ごとに確認してください",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 103,
+      "key": "官方現列職掌與窗口已核對",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Currently listed official duties and contacts checked",
+      "ja": "現在掲載されている公式の担当業務と窓口を確認済み",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 104,
+      "key": "114年11月19日修正",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Revised November 19, ROC Year 114",
+      "ja": "114年11月19日改正",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 105,
+      "key": "2026年9月1日",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "September 1, 2026",
+      "ja": "2026年9月1日",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 106,
+      "key": "2026年9月9日",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "September 9, 2026",
+      "ja": "2026年9月9日",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 107,
+      "key": "現列115年項目文件；特殊身分表為114年版",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Currently listed 115 activity documents; special-status forms are the 114 editions",
+      "ja": "現在掲載の115年学習項目書類。特別資格の様式は114年版",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 108,
+      "key": "112年4月26日校務會議修正；112年5月11日教育部核定",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Revised April 26, ROC Year 112; approved by the Ministry of Education May 11, ROC Year 112",
+      "ja": "112年4月26日校務会議改正、112年5月11日教育部承認",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 109,
+      "key": "現列112年修訂辦法；中文表V4.0／英文表內標1.0",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Currently listed 112 rules; Chinese form V4.0 / English form internally marked 1.0",
+      "ja": "現在掲載の112年改正規程。中国語様式V4.0／英語様式内の表記1.0",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 110,
+      "key": "頁面未標更新日",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Page does not state an update date",
+      "ja": "ページに更新日の記載なし",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 111,
+      "key": "113年12月25日校務會議修正",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Revised by the university affairs meeting December 25, ROC Year 113",
+      "ja": "113年12月25日校務会議改正",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 112,
+      "key": "現列調查書2.2；ODT上傳2025年2月",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Currently listed investigation form 2.2; ODT uploaded February 2025",
+      "ja": "現在掲載の調査申請書2.2。ODTは2025年2月掲載",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 113,
+      "key": "頁面未標更新日；手冊連結為2021年",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "No page update date stated; linked manual is from 2021",
+      "ja": "ページの更新日記載なし。案内書リンクは2021年",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 114,
+      "key": "本次首頁最新職缺列表2026年6月11日",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Latest homepage job listings seen in this check: June 11, 2026",
+      "ja": "今回確認したホームの最新求人一覧：2026年6月11日",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 115,
+      "key": "當日公開頁；最新消息2026年10月22日",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Public page checked today; latest news October 22, 2026",
+      "ja": "当日の公開ページ。最新情報は2026年10月22日",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 116,
+      "key": "當日公開服務說明；未標全文更新日",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Public service guidance checked today; no overall update date stated",
+      "ja": "当日の公開サービス案内。全文の更新日記載なし",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 117,
+      "key": "帶作品與履歷向老師討論，再用UCAN探索職業興趣及能力缺口。本次公開入口顯示錯誤，先洽職發中心確認登入方式；18–29歲另可看台灣就業通Youth履歷自傳診斷。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "Discuss your portfolio and résumé with a teacher, and use UCAN to explore interests and skills gaps. The public entry showed an error in this check; ask the career center about access. People aged 18–29 may also consult the 台灣就業通 Youth résumé review service.",
+      "ja": "作品集と履歴書を教員に見てもらい、UCANで職業への関心や能力の課題を確認します。今回の公開入口にはエラーが表示されたため、利用方法は職発センターに確認してください。18～29歳は台灣就業通Youthの履歴書診断も参照できます。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 118,
+      "key": "本次UCAN公開入口顯示錯誤，未確認登入後能否使用；校內履歷諮詢的當期預約表尚未找到，請洽職發中心。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "The public UCAN entry showed an error during this check; functionality after sign-in was not verified. A current university résumé consultation booking form was not found. Ask the career center for assistance.",
+      "ja": "今回のUCAN公開入口にはエラーが表示され、ログイン後の利用可否は未確認です。学内履歴書相談の当期予約様式も見つかっていないため、職発センターに確認してください。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 119,
+      "key": "官方公開使用說明已核對；本次公開入口顯示錯誤，未測登入後功能。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/support-reviewed-copy.json"
+      ],
+      "en": "The official public instructions were checked. The public entry showed an error in this check; signed-in functions were not tested.",
+      "ja": "公式の公開利用案内を確認しました。今回の公開入口にはエラーが表示され、ログイン後の機能は未検証です。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 120,
+      "key": "職涯探索、找工作和證照，問同一個分機嗎？",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/routing-applied-copy.json"
+      ],
+      "en": "Do career exploration, job vacancies and certificate awards use the same extension?",
+      "ja": "職業適性、求人情報、資格取得の奨励金は同じ内線番号ですか？",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    },
+    {
+      "index": 121,
+      "key": "職發中心依業務分工：職涯探索／UCAN與講座1713；就業職缺與證照獎助1712；校外實習／學海1711。先說明要辦什麼事，再找對應窗口。",
+      "from": [
+        "holiday-lab/reports/guide-final-docs-20261024/routing-applied-copy.json"
+      ],
+      "en": "The career center assigns separate duties: career exploration, UCAN and talks: 1713; job vacancies and certificate awards: 1712; off-campus internships and the 學海 programs: 1711. Explain what you need and contact the relevant desk.",
+      "ja": "職発センターでは担当業務が分かれています。職業適性・UCAN・講座は1713、求人情報・資格取得の奨励金は1712、学外実習・學海事業は1711です。相談内容に合う窓口へ連絡してください。",
+      "present": true,
+      "receipt_matches": {
+        "en": true,
+        "ja": true
+      },
+      "review": "checked_dates_negation_eligibility_obligations_names",
+      "findings": [],
+      "en_status": "checked_no_concrete_issue",
+      "ja_status": "checked_no_concrete_issue"
+    }
+  ],
+  "limits": [
+    "語意審閱不是母語真人簽核；未真人簽核不列功能失敗。",
+    "不重查本輪已完成的官方法規內容；中文canonical及已保存正式來源作為對照。",
+    "沒有新增教師職稱key，不能用此批122項再次宣稱所有教師職稱已複驗。",
+    "Student Assistance Section沿用既存逐筆官方英名研究；沒有從組字推斷別的單位一定用Section。",
+    "來源標題的功能翻譯不宣稱官方外文專名；學海築夢及其他已保留中文專名的值不建立日本制度等值。"
+  ],
+  "execution": {
+    "command": "Read-only Node audit of five applied-copy receipts and actual data/en/flow-ui.json, data/ja/flow-ui.json; write only translation-review.md/json",
+    "stdout": "{\n  \"unique_keys\": 122,\n  \"actual_values\": 244,\n  \"structural_checks_yes\": 6,\n  \"structural_checks_no\": 0,\n  \"affected_keys\": 2,\n  \"proposed_language_values\": 4,\n  \"pending_name_evidence\": 0,\n  \"resolved_official_name\": 1,\n  \"product_modified\": false\n}",
+    "stderr": "",
+    "exit_code": 0
+  },
+  "proposed_changes": [
+    {
+      "op": "replace",
+      "language": "ja",
+      "file": "data/ja/flow-ui.json",
+      "pointer": "/不一定。檢核附件說明，抵免、替代課或分級免修可能尚未對應；帶核准與成績資料找系辦或註冊課務組。不要自己重複選課；已停開必修要依開課單位指定的替代科目處理。",
+      "key": "不一定。檢核附件說明，抵免、替代課或分級免修可能尚未對應；帶核准與成績資料找系辦或註冊課務組。不要自己重複選課；已停開必修要依開課單位指定的替代科目處理。",
+      "before": "必ずしもそうではありません。単位認定・代替科目・クラス分け免除が未対応の場合があります。承認書と成績を持って学科か教務窓口に相談し、自己判断で重複履修しないでください。廃止された必修は開講単位指定の代替科目で対応します。",
+      "after": "必ずしもそうではありません。単位認定・代替科目・習熟度判定に基づく履修免除が未対応の場合があります。承認書と成績を持って学科か教務窓口に相談し、自己判断で重複履修しないでください。廃止された必修は開講単位指定の代替科目で対応します。",
+      "reason": "クラス分け免除是免除分級／分班本身；中文分級免修是依分級結果免修課程，不能讓學生理解成免做分級。只替換這一個術語，不新增門檻或資格。",
+      "status": "proposed_not_applied"
+    },
+    {
+      "op": "replace",
+      "language": "en",
+      "file": "data/en/flow-ui.json",
+      "pointer": "/不一定。檢核附件說明，抵免、替代課或分級免修可能尚未對應；帶核准與成績資料找系辦或註冊課務組。不要自己重複選課；已停開必修要依開課單位指定的替代科目處理。",
+      "key": "不一定。檢核附件說明，抵免、替代課或分級免修可能尚未對應；帶核准與成績資料找系辦或註冊課務組。不要自己重複選課；已停開必修要依開課單位指定的替代科目處理。",
+      "before": "Not necessarily. The guide notes that credit transfer, substitute courses or placement exemptions may not yet be matched. Take approval and grade records to your department or registration office. Do not duplicate courses yourself; discontinued required courses need the offering unit’s designated substitute.",
+      "after": "Not necessarily. The guide notes that credit transfer, substitute courses or placement-based course exemptions may not yet be matched. Take approval and grade records to your department or registration office. Do not duplicate courses yourself; discontinued required courses need the offering unit’s designated substitute.",
+      "reason": "伴語同步明確表示依分級結果免修課程，不表示免除分級本身。",
+      "status": "proposed_not_applied"
+    },
+    {
+      "op": "replace",
+      "language": "en",
+      "file": "data/en/flow-ui.json",
+      "pointer": "/錄取後核對契約中的機構、期間、補助與自付費，再確認醫療、意外保險及合法實習簽證。出發前問清楚行前說明與緊急聯絡；實習期間維持學籍，結束後依計畫完成返校報到及成果交件。",
+      "key": "錄取後核對契約中的機構、期間、補助與自付費，再確認醫療、意外保險及合法實習簽證。出發前問清楚行前說明與緊急聯絡；實習期間維持學籍，結束後依計畫完成返校報到及成果交件。",
+      "before": "After acceptance, check the host, dates, grant and personal costs in your agreement, along with medical and accident insurance and a visa that permits the internship. Confirm pre-departure guidance and emergency contacts. Remain enrolled during the internship and complete the required return report and submissions afterward.",
+      "after": "After acceptance, check the host, dates, grant and personal costs in your agreement, along with medical and accident insurance and a visa that permits the internship. Confirm pre-departure guidance and emergency contacts. Remain enrolled during the internship and report back to the university and submit the required outcomes afterward, as specified by the project.",
+      "reason": "return report把返校報到寫成一份報告的名詞，與後面的成果交件容易合併成只交報告。中文分列報到與交件兩項程序；改用report back to the university並保留依計畫限制。未增加必須親赴特定地點的要求。",
+      "status": "proposed_not_applied"
+    },
+    {
+      "op": "replace",
+      "language": "ja",
+      "file": "data/ja/flow-ui.json",
+      "pointer": "/錄取後核對契約中的機構、期間、補助與自付費，再確認醫療、意外保險及合法實習簽證。出發前問清楚行前說明與緊急聯絡；實習期間維持學籍，結束後依計畫完成返校報到及成果交件。",
+      "key": "錄取後核對契約中的機構、期間、補助與自付費，再確認醫療、意外保險及合法實習簽證。出發前問清楚行前說明與緊急聯絡；實習期間維持學籍，結束後依計畫完成返校報到及成果交件。",
+      "before": "採用後は契約の受入先・期間・補助・自己負担額、医療・傷害保険と実習を認める査証を確認します。出発前に説明会と緊急連絡先を確認し、実習中は学籍を維持してください。終了後は計画に従って帰校報告と成果提出を行います。",
+      "after": "採用後は契約の受入先・期間・補助・自己負担額、医療・傷害保険と実習を認める査証を確認します。出発前に説明会と緊急連絡先を確認し、実習中は学籍を維持してください。終了後は計画に従って帰校手続きと成果提出を行います。",
+      "reason": "伴語同步保留返校程序與成果交件兩個動作；不新增親赴窗口或時限。",
+      "status": "proposed_not_applied"
+    }
+  ],
+  "resolved": [
+    {
+      "id": "PN01",
+      "file": "data/en/flow-ui.json",
+      "pointer": "/先約導師或系所承辦，再帶學生證到註冊課務組登記領表。自登記日起含當日7日內完成離校並繳回；逾期要重領，退費基準日也會改。核准後才生效。",
+      "key": "先約導師或系所承辦，再帶學生證到註冊課務組登記領表。自登記日起含當日7日內完成離校並繳回；逾期要重領，退費基準日也會改。核准後才生效。",
+      "current": "Registration and Curriculum Division",
+      "canonical": "註冊課務組",
+      "reason": "本次五份文案收據與已查十二專名報告未提供此英文Division的逐筆正式名稱依據。語意上可辨識窗口，但不自行改成Section；若要當正式英文名，先回收既有官方英名證據。也可只用保留中文原名加功能描述。",
+      "classification": "official_bilingual_same_label_verified",
+      "proposed_after": null,
+      "status": "resolved_existing_evidence",
+      "decision": "保留既有Registration and Curriculum Division；不是按組字或其他單位類推。",
+      "evidence": [
+        {
+          "file": "holiday-lab/reports/followup-20261024/contacts/raw/academic-en-dom.txt",
+          "url": "https://www.aca.stu.edu.tw/en/index-2/",
+          "sha256": "dfd01d803393e89bdf339ad0533801345b95bd84ecaf2a68c2452a97049d9011",
+          "matches": [
+            {
+              "line": 39,
+              "text": "  - paragraph: The Office of Academic Affairs provides academic services to all faculty and students. It consists of Registration and Curriculum Division, Admissions and Selection Division, which are in charge of student enrollment, and academic affairs pertinent to both students and teachers. Pursuant to School Policy Purposes, Building a High-Quality Educational Services, Creating Effective Teaching and Learning Environments, Promote Holistic Teaching and Learning Development, In pursuit of a campus of “Academic, Intellectual, Happy, Hopeful”."
+            },
+            {
+              "line": 45,
+              "text": "  - button \"Registration and Curriculum Division\":"
+            },
+            {
+              "line": 48,
+              "text": "    - text: Registration and Curriculum Division"
+            }
+          ]
+        },
+        {
+          "file": "holiday-lab/reports/followup-20261024/contacts/raw/aca-organization-dom.txt",
+          "url": "https://www.aca.stu.edu.tw/組織簡介｜introduction-2/",
+          "sha256": "84e100d5af8d7840a85a1e7f6a70472d9c77b5d397d3de9fc571358b888574eb",
+          "matches": [
+            {
+              "line": 43,
+              "text": "        - link \"註冊課務組 | Registration and Curriculum Division\":"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
