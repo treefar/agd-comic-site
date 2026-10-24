@@ -7,12 +7,12 @@
     "generated": "2026-10-24",
     "authorities": [
       {
-        "path": "holiday-lab/reports/full-frame-posters-20261024/verification.json",
+        "path": "holiday-lab/reports/poster-corner-20261024/verification.json",
         "role": "本輪逐項結果、原始證據SHA與本機版號"
       }
     ],
     "notes": [
-      "本機審閱版 .measure-full-frame-posters-20261024-02，連接埠 8894；尚未發布。",
+      "本機審閱版 .measure-poster-corner-20261024-03，連接埠 8897；尚未發布。",
       "節日遊戲全部凍結，未測玩、未改遊戲檔、未啟動Unity。",
       "工具核對不等於母語、實體手機或使用者確認。",
       "舊遊戲通關與固定08歷史覆蓋不納入本輪網站通過數。"
@@ -641,8 +641,8 @@
           "title": "本輪本機建置",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "8894最新本機79檔／app-3RVTPKHI.js，新增滿版頁框顯示；HTTP12項200與SHA，只有三個既有學生策展檔，沒有節日runtime。",
-          "evidence": "holiday-lab/reports/full-frame-posters-20261024/build-r2-command.json、holiday-lab/reports/full-frame-posters-20261024/http.json",
+          "reason": "8897最新79檔，僅student-work-draw.css變更；HTML及app-3RVTPKHI.js與8894逐SHA相同。HTTP11項200與SHA，頁底仍只附既有學生策展三檔，節日凍結。",
+          "evidence": "holiday-lab/reports/poster-corner-20261024/build-r3-command.json、holiday-lab/reports/poster-corner-20261024/http.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -652,8 +652,8 @@
           "title": "獨立三語與手機驗收",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "本次為主控新布局窄驗：三語桌面1440／手機390，六組84條；重複抽選及觀察器紅轉綠、靜態／Enter、連結、離屏與恢復。沒有新獨立代理或全站驗收，前版證據僅屬原版本。",
-          "evidence": "holiday-lab/reports/full-frame-posters-20261024/result.json、holiday-lab/reports/full-frame-posters-20261024/model-r2-command.json",
+          "reason": "本次只有主控CSS窄驗：三語雙寬及中文矮桌面共七組126條，另實際點擊作品連結。沒有新代理／全站／真機／母語驗收；JS未變，不宣稱本次重跑前輪模型測試。",
+          "evidence": "holiday-lab/reports/poster-corner-20261024/result.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -740,8 +740,8 @@
           "title": "原漫畫首頁學生作品抽選",
           "disposition": "已修正",
           "result": "yes",
-          "reason": "8894海報鋪滿「畫出來，動起來」整格，CSS依框裁切顯示，原圖八件及原署名不改；抽選控制集中下方。三語1440／390共六組84條、再次減速停格、靜態／Enter、日文連結、離屏／回頂均實測。10模型回歸、Build與HTTP12項通過。主控窄驗，未作全站／母語／真機批准。",
-          "evidence": "holiday-lab/reports/full-frame-posters-20261024/REPORT.md、holiday-lab/reports/full-frame-posters-20261024/result.json、holiday-lab/reports/full-frame-posters-20261024/repeat-red.json、holiday-lab/reports/full-frame-posters-20261024/repeat-green.json",
+          "reason": "8897清晰滿版海報：預覽88%／停格96%；資訊與抽選移右下角，桌面304px／手機240px，保留完整署名與作品連結。三語1440／390及中文1279×575七組126條通過，含兩按鈕命中及實際抽選。移除透明泡泡列攔截與手機舊彩蛋多餘格列。僅主控CSS窄驗，非使用者確認或全站批准。",
+          "evidence": "holiday-lab/reports/poster-corner-20261024/REPORT.md、holiday-lab/reports/poster-corner-20261024/result.json、holiday-lab/reports/poster-corner-20261024/hit-red.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
