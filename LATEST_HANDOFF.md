@@ -1,3 +1,17 @@
+## 2026-10-24 最新：8892原漫畫首頁學生作品抽選，本機三語審閱
+
+- source_agent: codex；TF-GO。使用者本輪已授權作品抽選本機互動試作、沿用現有學生作品／原圖／署名、中英日可用並開啟；前版8888的「只有評估」已由本次實作接續。最新 http://127.0.0.1:8892/?lang=zh ，英文 /?lang=en ，日文 /?lang=ja ，指南 /?lang=zh#/students/guide ，儀表板 /progress/ 。已在Chrome開啟首頁及更新後儀表板；未發布。
+- 主工作樹 C:/agywork/agd-holiday-prototypes，分支codex/student-work-draw24；原clone另開codex/draw-handoff24，只更新交接。原漫畫集中線中央加完整淡色海報，八件原作：小颯及七件2026成果，逐筆核現有資料與原姓名／老師／連結。預覽1.8秒輪替，點後2.7秒減速停格，再點海報／看完整作品。可暫停、立即停格、Escape及手動靜態；相鄰結果不重複。手機在主標下，桌面中央。沒有新生成素材、沒有修改原圖。
+- 新增student-work-draw-model.js／jsx／css、data/student-work-draw.json、tests/student-work-draw.test.cjs；既有產品僅接chapters-1.jsx、index.html及scripts/build.mjs。原導航／右側快捷、最新英日／指南、教師照片與頁底策展保持。最新79檔／app-635DGZZW.js，量測目錄.measure-student-work-draw-20261024-04。8889為實際計時器Illegal invocation失敗候選，已保留red及修後回歸，不可交付；8890／8891為中途候選，舊檔全部保留。
+- 驗證：Node10pass／0fail，含global receiver回歸；Chrome中英日1440／390，加中文1180／1181，共八組80條布局／資料條件yes；十次實際英文靜態抽選10/10；八作品目的頁及署名逐筆核，英日另真點連結。實際End捲到11776、離屏timer idle；Enter／Escape／立即停格與手動靜態實測。12項HTTP200及SHA，新8892無Console例外。360其他來源、320保全檔（含原四dirty及R0）、策展三原件、八原圖SHA與main refs保持。完整實際command／stdout／stderr／exit及畫面見holiday-lab/reports/student-work-draw-20261024/REPORT.md、result.json、*-command.json。
+- 限制：本輪是主控新功能窄驗，沒有新代理全站驗收。未另實機切OS減動態／真背景分頁，沒有儀器閃爍量測／完整WCAG；手動靜態及離屏實測不可升格全通過。全站六項缺件（完整缺字、全部正式外文、當期規章、素材來源、WebGL、真手機／母語審閱）保持原限制。使用者對新畫面的確認仍待審閱。
+- 儀表板53列47yes／6no／使用者0，1682來源SHA，權威18/18、exit0；新列「原漫畫首頁學生作品抽選」搜尋／展開實測。這是核對清單，非全站功能完成率。本輪不重新調研在校指南或回查TF-BASE，不聲稱新WebGL已收到。
+- 使用者途中提供Facebook影片：公開reel/1845511173174640介紹SUNSOFT《一揆》（いっき／Ikki），影片另標《仙人丟飯糰》；官方核原作1985。校園探索／收集素材／畢展任務為概念推論，僅存holiday-lab/reports/student-work-draw-20261024/校園冒險參考.md，沒有啟動新遊戲。
+- 不push、不發布、不碰main、不刪檔，C節原文SHA保持。所有節日含勞動節繼續凍結，未開發／測玩／續跑QA；未啟Unity或生圖影音。原交接、STATUS及Vault僅本機保存。
+- 下一輪第一件事：先看8892作品抽選的實際版面與操作，依使用者回饋只修本機；沒有對外發布授權。需要再啟動服務前先檢查8892現有程序，不能以舊8887／8888畫面判斷新版。
+
+重啟：node scripts/serve-local-review.cjs --site=.measure-student-work-draw-20261024-04 --dashboard=holiday-lab/dashboard/out --port=8892
+
 ## 2026-10-24 最新：8888導覽集中／右側快捷恢復，作品抽選僅完成評估
 
 - source_agent: codex；TF-GO。使用者要求標題列集中及恢復右側隨頁面快捷；另詢問集中線中央快速換作品、點後慢停及海報連結的可行性。本輪只實作前兩項，作品抽選只有評估提案，沒有擴張成新遊戲或發布授權。最新 http://127.0.0.1:8888/ ，指南 /?lang=zh#/students/guide ，儀表板 /progress/ 。8887及舊候選保留。
