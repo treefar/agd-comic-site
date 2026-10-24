@@ -1,3 +1,16 @@
+## 2026-10-24 最新：8894海報鋪滿漫畫首頁頁框，本機審閱
+
+- source_agent: codex；TF-GO。使用者裁定海報應滿版放在「畫出來，動起來」頁框，不要小幅輪播。本次已改為整格海報背景，前景保留漫畫主標、招生按鈕、泡泡，作品名稱／完整署名與抽選控制放在下方資訊帶。桌面與手機均鋪滿同一頁框；CSS cover會依框比例裁切顯示，八件原圖檔案不改，停格後連結及「看完整作品」保留。
+- 最新 http://127.0.0.1:8894/?lang=zh ，英文 /?lang=en ，日文 /?lang=ja ，指南 /?lang=zh#/students/guide ，儀表板 /progress/ 。目錄.measure-full-frame-posters-20261024-02／app-3RVTPKHI.js／79檔。8892是舊小海報版；8893是中途候選，有第二次直接停格問題，不當最新成果；舊檔均留存。
+- 主工作樹C:/agywork/agd-holiday-prototypes，分支codex/full-frame-posters24；產品僅改student-work-draw.jsx／css。首次滿版把IntersectionObserver綁到會由div換成a的節點，實際重現第二次直接settled；修為穩定swd-surface，repeat-green為drawing，後續確實減速停格並換新結果。預覽、靜態、停止、原圖／原署名／目錄與其他網站保持。
+- 本次主控Chrome中英日1440／390六組、14條共84yes，海報與框四邊差小於1px；標題／操作／資訊帶／泡泡互不遮擋，無頁面橫溢。靜態＋Enter、連結、離屏暫停與回頂恢復實測。Node10pass／0fail，新Build exit0、HTTP12項200與SHA，8894無新Console例外。1680其他SHA來源、320保全檔（原四dirty＋R0等）、三策展原件及八原圖保持。報告holiday-lab/reports/full-frame-posters-20261024/REPORT.md、verified-*.json及*-command.json存實際stdout／stderr／exit。
+- 初次連結驗收已到正確網址但同輪文字快照仍Loading，route.json為false及finalize-command exit1均留存；另次等作者載入後route-r2通過、finalize-r2-command exit0，沒有用未載入內容冒充已核。新布局僅主控窄驗，沒有新代理全站／真機／母語／完整WCAG驗收，原六項缺件維持。
+- 儀表板53列47yes／6no／使用者0，1799SHA綁定，權威18/18、exit0；新資訊已併到原學生作品抽選列，不新增虛構完成率。原專案LATEST_HANDOFF／STATUS／Vault僅本機更新。新畫面仍待使用者審閱，不把提出修改當成通過。
+- 不push、不發布、不碰main、不刪檔，C節不執行且原文SHA保持。節日含勞動節維持凍結，未改遊戲／測玩／續跑QA，沒有Unity與生成素材。TF-BASE本次未另查，不聲稱WebGL已回傳。
+- 下一輪第一件事：看8894整格海報的實際效果，依使用者回饋做本機調整。不要再開8892小海報版作最新成果；需重啟先檢查8894現存程序。
+
+重啟：node scripts/serve-local-review.cjs --site=.measure-full-frame-posters-20261024-02 --dashboard=holiday-lab/dashboard/out --port=8894
+
 ## 2026-10-24 最新：8892原漫畫首頁學生作品抽選，本機三語審閱
 
 - source_agent: codex；TF-GO。使用者本輪已授權作品抽選本機互動試作、沿用現有學生作品／原圖／署名、中英日可用並開啟；前版8888的「只有評估」已由本次實作接續。最新 http://127.0.0.1:8892/?lang=zh ，英文 /?lang=en ，日文 /?lang=ja ，指南 /?lang=zh#/students/guide ，儀表板 /progress/ 。已在Chrome開啟首頁及更新後儀表板；未發布。

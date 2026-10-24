@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "tests/student-work-draw.test.cjs"
+  ],
+  "cwd": "C:\\agywork\\agd-holiday-prototypes",
+  "observed_utc": "2026-10-24T11:55:07.251Z",
+  "stdout": "TEN_DRAWS [{\"id\":\"showcase-01\",\"authors\":\"簡敬儒 · 林維仁 · 葉賜宏 · 李嘉楡 · 何政哲\",\"href\":\"#/news/2026-04-29-awards-showcase/work-01\"},{\"id\":\"showcase-06\",\"authors\":\"許瑗玶 · 高樂怡 · 陳書凱 · 黎躒嬈\",\"href\":\"#/news/2026-04-29-awards-showcase/work-06\"},{\"id\":\"showcase-02\",\"authors\":\"林祐嬋 · 陳姵妏 · 吳柏邵 · 沈宗賢 · 王妤宸\",\"href\":\"#/news/2026-04-29-awards-showcase/work-02\"},{\"id\":\"showcase-07\",\"authors\":\"林弈志 · 廖芳彣\",\"href\":\"#/news/2026-04-29-awards-showcase/work-07\"},{\"id\":\"showcase-01\",\"authors\":\"簡敬儒 · 林維仁 · 葉賜宏 · 李嘉楡 · 何政哲\",\"href\":\"#/news/2026-04-29-awards-showcase/work-01\"},{\"id\":\"showcase-04\",\"authors\":\"王愛吉 · 黃承義 · 梁潔美 · 林巧玲 · 馬聖淞\",\"href\":\"#/news/2026-04-29-awards-showcase/work-04\"},{\"id\":\"showcase-03\",\"authors\":\"張喻晴 · 洪韻涵\",\"href\":\"#/news/2026-04-29-awards-showcase/work-03\"},{\"id\":\"showcase-06\",\"authors\":\"許瑗玶 · 高樂怡 · 陳書凱 · 黎躒嬈\",\"href\":\"#/news/2026-04-29-awards-showcase/work-06\"},{\"id\":\"showcase-01\",\"authors\":\"簡敬儒 · 林維仁 · 葉賜宏 · 李嘉楡 · 何政哲\",\"href\":\"#/news/2026-04-29-awards-showcase/work-01\"},{\"id\":\"showcase-05\",\"authors\":\"吳立凡 · 張自祥 · 陶延娣 · 鄭羽軒\",\"href\":\"#/news/2026-04-29-awards-showcase/work-05\"}]\n✔ each pick is valid and differs from the previous result (1.0877ms)\n✔ preview pauses and resumes without leaking timers (0.3533ms)\n✔ draw settles after 2700ms and a separate draw changes the result (0.2479ms)\n✔ immediate stop locks one result, leaving no timer (0.8624ms)\n✔ reduced motion picks instantly and never rotates (0.2147ms)\n✔ leaving the viewport or hiding the page cancels activity (0.1435ms)\n✔ destroy cancels callbacks and every interval is at least 350ms (0.1213ms)\n✔ browser timers retain the global receiver (1.2446ms)\n✔ all eight exact records match saved source data, images and routes (2.625ms)\n✔ ten representative draws retain exact author and destination (1.5196ms)\nℹ tests 10\nℹ suites 0\nℹ pass 10\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 85.5084\n",
+  "stderr": "",
+  "exit_code": 0
+}

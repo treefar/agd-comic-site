@@ -7,12 +7,12 @@
     "generated": "2026-10-24",
     "authorities": [
       {
-        "path": "holiday-lab/reports/student-work-draw-20261024/verification.json",
+        "path": "holiday-lab/reports/full-frame-posters-20261024/verification.json",
         "role": "本輪逐項結果、原始證據SHA與本機版號"
       }
     ],
     "notes": [
-      "本機審閱版 .measure-student-work-draw-20261024-04，連接埠 8892；尚未發布。",
+      "本機審閱版 .measure-full-frame-posters-20261024-02，連接埠 8894；尚未發布。",
       "節日遊戲全部凍結，未測玩、未改遊戲檔、未啟動Unity。",
       "工具核對不等於母語、實體手機或使用者確認。",
       "舊遊戲通關與固定08歷史覆蓋不納入本輪網站通過數。"
@@ -646,8 +646,8 @@
           "title": "本輪本機建置",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "8892本機建置79檔，app-635DGZZW.js；中英日原網站與頁底策展保持，新增八件作品抽選，不附節日runtime。HTTP12項200及逐檔SHA通過。",
-          "evidence": "holiday-lab/reports/student-work-draw-20261024/build-r4-command.json、holiday-lab/reports/student-work-draw-20261024/final-check-command.json、holiday-lab/reports/student-work-draw-20261024/http.json",
+          "reason": "8894最新本機79檔／app-3RVTPKHI.js，新增滿版頁框顯示；HTTP12項200與SHA，只有三個既有學生策展檔，沒有節日runtime。",
+          "evidence": "holiday-lab/reports/full-frame-posters-20261024/build-r2-command.json、holiday-lab/reports/full-frame-posters-20261024/http.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -657,8 +657,8 @@
           "title": "獨立三語與手機驗收",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "本次新功能由主控Chrome做三語1440／390與中文1180／1181共八組80條排版／資料條件、十次實際抽選及八目的頁；10個Node回歸。沒有新獨立代理全站驗收，舊代理證據只限原版本；系統減動態、真背景分頁及實體手機未測。",
-          "evidence": "holiday-lab/reports/student-work-draw-20261024/result.json、holiday-lab/reports/student-work-draw-20261024/green-model-r2-command.json",
+          "reason": "本次為主控新布局窄驗：三語桌面1440／手機390，六組84條；重複抽選及觀察器紅轉綠、靜態／Enter、連結、離屏與恢復。沒有新獨立代理或全站驗收，前版證據僅屬原版本。",
+          "evidence": "holiday-lab/reports/full-frame-posters-20261024/result.json、holiday-lab/reports/full-frame-posters-20261024/model-r2-command.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -745,8 +745,8 @@
           "title": "原漫畫首頁學生作品抽選",
           "disposition": "已修正",
           "result": "yes",
-          "reason": "8892本機八件原作／原署名，2.7秒減速停格、作品連結、暫停、立即停格、Enter／Escape與手動靜態。三語雙寬加中文臨界寬共八組80條通過；十次實際抽選、八目的頁、12項HTTP／SHA、10個模型回歸通過。原圖不改、無生成素材、節日凍結。主控功能窄驗，使用者尚未確認，不宣稱全站或完整WCAG通過。",
-          "evidence": "holiday-lab/reports/student-work-draw-20261024/REPORT.md、holiday-lab/reports/student-work-draw-20261024/result.json、holiday-lab/reports/student-work-draw-20261024/green-model-r2-command.json、holiday-lab/reports/student-work-draw-20261024/ten-live-draws.json、holiday-lab/reports/student-work-draw-20261024/routes.json",
+          "reason": "8894海報鋪滿「畫出來，動起來」整格，CSS依框裁切顯示，原圖八件及原署名不改；抽選控制集中下方。三語1440／390共六組84條、再次減速停格、靜態／Enter、日文連結、離屏／回頂均實測。10模型回歸、Build與HTTP12項通過。主控窄驗，未作全站／母語／真機批准。",
+          "evidence": "holiday-lab/reports/full-frame-posters-20261024/REPORT.md、holiday-lab/reports/full-frame-posters-20261024/result.json、holiday-lab/reports/full-frame-posters-20261024/repeat-red.json、holiday-lab/reports/full-frame-posters-20261024/repeat-green.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"

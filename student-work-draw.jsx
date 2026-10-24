@@ -1,5 +1,5 @@
 /** @jsx siteCreateElement */
-// Existing complete student posters and exact creator credits; no generated art.
+// Original poster files fill the comic panel; exact creator credits stay visible.
 const StudentWorkDraw = () => {
   const catalog = useDataset('student-work-draw');
   const host = React.useRef(null), controller = React.useRef(null), updateEnvironment = React.useRef(() => {}), manualReduced = React.useRef(false);
@@ -15,9 +15,10 @@ const StudentWorkDraw = () => {
     const engine = StudentWorkDrawModel.create(catalog.length,setState);controller.current = engine;
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');let inView = false;
     const sync = () => engine.environment(inView && !document.hidden,media.matches || manualReduced.current);
-    const rect = host.current.getBoundingClientRect();inView = rect.bottom > 0 && rect.top < window.innerHeight;sync();updateEnvironment.current = sync;
+    const surface = host.current.querySelector('.swd-surface');
+    const rect = surface.getBoundingClientRect();inView = rect.bottom > 0 && rect.top < window.innerHeight;sync();updateEnvironment.current = sync;
     const observer = typeof IntersectionObserver === 'undefined' ? null : new IntersectionObserver(entries => {inView = entries[0].isIntersecting;sync();},{threshold:0.05});
-    observer?.observe(host.current);document.addEventListener('visibilitychange',sync);media.addEventListener?.('change',sync);
+    observer?.observe(surface);document.addEventListener('visibilitychange',sync);media.addEventListener?.('change',sync);
     return () => {engine.destroy();controller.current = null;observer?.disconnect();document.removeEventListener('visibilitychange',sync);media.removeEventListener?.('change',sync);updateEnvironment.current = () => {};};
   },[catalog]);
   if (!catalog || !Array.isArray(catalog) || !catalog.length) return <section className="student-work-draw swd-loading" data-no-fx="true" data-no-splat="true" aria-label={copy.heading}><p data-language-choice="true" role="status">{catalog ? copy.error : copy.loading}</p></section>;
@@ -25,20 +26,26 @@ const StudentWorkDraw = () => {
   const names = work.authors.split(/\s*·\s*/).map((name,i) => <React.Fragment key={name}>{i > 0 && ' · '}<span className="swd-person" data-language-choice="true">{name}</span></React.Fragment>);
   const poster = failedImage === work.id ? <span className="swd-image-error" data-language-choice="true">{copy.imageError}</span> : <img src={work.image} alt={title} data-language-choice="true" width="320" height="420" decoding="async" onError={() => setFailedImage(work.id)} />;
   return <section ref={host} id="student-work-draw" className={'student-work-draw swd-'+state.phase} data-no-fx="true" data-no-splat="true" data-draw-phase={state.phase} data-draw-id={work.id} data-draw-timer={state.timerActive ? 'active' : 'idle'} data-draw-reduced={state.reduced ? 'true' : 'false'} aria-labelledby="student-work-draw-heading" onKeyDown={event => {if(event.key === 'Escape'){event.preventDefault();event.stopPropagation();controller.current?.stop();}}}>
-    <h2 id="student-work-draw-heading" data-language-choice="true">{copy.heading}</h2>
     <figure>
+      <div className="swd-surface">
       {settled ? <a className="swd-poster" href={work.href} data-language-choice="true" aria-label={copy.open+title}>{poster}</a> : <div className="swd-poster" aria-hidden="true">{poster}</div>}
-      <figcaption>
+      </div>
+      <figcaption className="swd-console">
+      <div className="swd-meta">
+        <h2 id="student-work-draw-heading" data-language-choice="true">{copy.heading}</h2>
         <h3 data-language-choice="true">{title}</h3>
         <p className="swd-credits"><span data-language-choice="true">{copy.authors}：</span>{names}</p>
         {work.mentor && <p className="swd-mentor"><span data-language-choice="true">{copy.mentor}：</span><span data-language-choice="true">{work.mentor}</span></p>}
-      </figcaption>
-    </figure>
+      </div>
+      <div className="swd-interaction">
     <p className="swd-status" role="status" aria-live="polite" data-language-choice="true">{settled ? copy.selected+' · '+title : drawing ? copy.drawing : copy.preview}</p>
     <div className="swd-actions">
       <button id="student-work-draw-start" type="button" disabled={drawing} onClick={() => controller.current?.start()} data-language-choice="true">{settled ? copy.again : copy.draw}</button>
       {drawing ? <button id="student-work-draw-stop" type="button" onClick={() => controller.current?.stop()} data-language-choice="true">{copy.stop}</button> : settled ? <a id="student-work-draw-link" href={work.href} data-language-choice="true">{copy.view} →</a> : <button id="student-work-draw-pause" type="button" onClick={() => controller.current?.togglePause()} data-language-choice="true">{state.paused ? copy.resume : copy.pause}</button>}
     </div>
     <label className="swd-motion"><input id="student-work-draw-static" type="checkbox" checked={choice || state.reduced} disabled={state.reduced && !choice} onChange={event => {manualReduced.current = event.target.checked;setChoice(event.target.checked);updateEnvironment.current();}} /><span data-language-choice="true">{copy.static}</span></label>
+      </div>
+      </figcaption>
+    </figure>
   </section>;
 };
