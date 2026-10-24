@@ -1,7 +1,8 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'../..');
-test('website and holiday pages declare an existing local PNG icon, without a missing default favicon request',()=>{
- for(const name of ['index.html','holiday-lab/index.html']){
+test('website omits its generated icon; the unchanged holiday page retains its declared local PNG',()=>{
+ assert.ok(fs.readFileSync(path.join(root,'index.html'),'utf8').includes('<link rel="icon" href="data:," />'));
+ for(const name of ['holiday-lab/index.html']){
   const html=fs.readFileSync(path.join(root,name),'utf8');
   const tag=html.match(/<link\b[^>]*\brel=["']icon["'][^>]*>/i)?.[0];
   assert.ok(tag,`${name} must explicitly declare its icon`);
