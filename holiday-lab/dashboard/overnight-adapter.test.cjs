@@ -1,0 +1,7 @@
+const test=require('node:test'),assert=require('node:assert/strict'),path=require('node:path'),fs=require('node:fs'),crypto=require('node:crypto');
+const root=path.resolve(__dirname,'../..'),load=require('./overnight-adapter.cjs');
+const file='holiday-lab/reports/overnight-20261024/root/icon-green.json',sha256=crypto.createHash('sha256').update(fs.readFileSync(path.join(root,file))).digest('hex');
+const fixture=()=>({public_release:false,festival_games_frozen:true,site:'fixture-only',port:8874,sources:[{file,sha256}],checks:Array.from({length:21},(_,i)=>({id:'row-'+i,title:'獨立項目'+i,disposition:i===0?'缺件':'已檢查',result:i===0?'no':'yes',reason:'限定範圍與限制',evidence:[file]}))});
+test('summary values remain rules and pending user review stays separate',()=>{const d=load(root,{state:fixture()});assert.equal(d.sections[0].rows.length,21);assert.equal(d.unknowns.length,1);assert.ok(d.summary_cards.every(c=>c.value===undefined&&c.rule));assert.ok(d.sections[0].rows.every(r=>r.user==='user_pending'));});
+test('a changed original receipt is rejected',()=>{const state=fixture();state.sources[0].sha256='0'.repeat(64);assert.throws(()=>load(root,{state}));});
+test('duplicates, unrecorded results and attempted release scope are rejected',()=>{for(const mutate of [s=>s.checks[1].id=s.checks[0].id,s=>s.checks[0].result='maybe',s=>s.public_release=true,s=>s.festival_games_frozen=false]){const state=fixture();mutate(state);assert.throws(()=>load(root,{state}));}});
