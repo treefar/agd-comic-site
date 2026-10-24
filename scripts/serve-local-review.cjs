@@ -8,8 +8,8 @@ function createServer({site,dashboard}){
   if(pathname==='/progress'){res.writeHead(302,{Location:'/progress/'}).end();return;}
   let root=site,relative=pathname;
   if(pathname.startsWith('/progress/')){root=dashboard;relative=pathname.slice('/progress'.length);}
-  // This is a real PNG resource, not a suppressed error or an empty favicon response.
-  if(pathname==='/favicon.ico')relative='/images/site-icon.png';
+  // The review website deliberately has no icon: do not reuse the generated game icon.
+  if(pathname==='/favicon.ico'){res.writeHead(204,{'Cache-Control':'no-store'}).end();return;}
   let file=path.resolve(root,'.'+relative);
   if(file!==root&&!file.startsWith(root+path.sep)){res.writeHead(403).end();return;}
   if(fs.existsSync(file)&&fs.statSync(file).isDirectory())file=path.join(file,'index.html');
