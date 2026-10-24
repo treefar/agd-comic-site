@@ -1,0 +1,198 @@
+{
+  "as_of": "2026-10-24",
+  "scope": "教務四題限定研究；不是全站發布驗收",
+  "items": [
+    {
+      "item": "115-1棄選日程／操作入口",
+      "result": "yes",
+      "version": "115/5/25發文，115-1",
+      "finding": "現掛2頁日期表全文/影像已讀：11/30 10:00至12/7 09:00系統棄選；10/24未開始。",
+      "evidence": [
+        "course-dom.json",
+        "raw/course-dates-1151.pdf"
+      ]
+    },
+    {
+      "item": "115-1特殊選課日程／空白表",
+      "result": "yes",
+      "version": "115-1；G01 v3.2",
+      "finding": "特殊選課9/24止，表單1頁已讀；確認期後非可歸責特殊個案需證明/請核書/核准，不承諾逾期人人可辦。",
+      "evidence": [
+        "raw/course-dates-1151.pdf",
+        "raw/special-course-form.pdf",
+        "forms-dom.json"
+      ]
+    },
+    {
+      "item": "抵免申請次數的公開新舊判讀",
+      "result": "yes",
+      "version": "1140910規則＋115-1頁",
+      "finding": "新辦法及當期母頁一致每一身分事由在學一次；舊空白/手冊範例不能蓋過此文字。",
+      "evidence": [
+        "credit-dom.json",
+        "input-manifest.json"
+      ]
+    },
+    {
+      "item": "當期登入後系統實際印表與核定",
+      "result": "no",
+      "version": "2026-10-24",
+      "finding": "現頁要求系統填印，所連操作手冊仍2020/8/4，p5舊例圖寫在學一次；未登入、未取得現行個人印表，不能假稱衝突已從系統消失。",
+      "evidence": [
+        "raw/credit-system-manual.pdf",
+        "forms-dom.json"
+      ]
+    },
+    {
+      "item": "休復學表單取得方式與當期通知",
+      "result": "yes",
+      "version": "115-1現頁及教務表單",
+      "finding": "601/602/603明列教務處領取，沒有公開空白連結；期末先email未回覆再掛號，領表7日含當日。",
+      "evidence": [
+        "status-dom.json",
+        "forms-dom.json"
+      ]
+    },
+    {
+      "item": "112細則提早復學例外與115學則適用",
+      "result": "no",
+      "version": "1120426/1150202仍同檔",
+      "finding": "官方目錄仍兩檔並列，沒有新解釋；115-1退費附件仍附112例外。不得自行判較舊例外有效或無效。",
+      "evidence": [
+        "rules-dom.json",
+        "raw/refund-1151.pdf",
+        "input-manifest.json"
+      ]
+    },
+    {
+      "item": "112退費第4條第1項第7款錯引更正",
+      "result": "no",
+      "version": "1120426仍列；115-1退費附件",
+      "finding": "第4條只有3款，第12條仍指第7款，未取得正式更正，不能擅自改第3款或保證回溯。",
+      "evidence": [
+        "raw/refund-1151.pdf"
+      ]
+    },
+    {
+      "item": "115-1退費表及母頁一致性",
+      "result": "no",
+      "version": "115-1表，檔名115.6.11",
+      "finding": "附件第1頁日間部9/1–9/7學費退2/3、雜費全退；母頁簡述為學費雜費等退2/3，仍有差異。10/20–11/30退1/3期間一致，但不據此保證每項費用。",
+      "evidence": [
+        "status-dom.json",
+        "raw/refund-1151.pdf"
+      ]
+    },
+    {
+      "item": "畢業檢核附件完整視覺驗讀",
+      "result": "yes",
+      "version": "2026/2/17附件／2/28母頁",
+      "finding": "原件匿名200、11頁全文與影像已讀；室設107範例不套動遊數字。補總表、展開明細、替代/未對應及人工複審流程。",
+      "evidence": [
+        "audit-dom.json",
+        "raw/audit-manual.pdf",
+        "visual-ledger.json"
+      ]
+    },
+    {
+      "item": "115-1畢業檢核即時性",
+      "result": "no",
+      "version": "2026-10-24現頁仍載至114-1",
+      "finding": "母頁全文重讀仍明寫資料計至114-1；未登入任何學生帳號，不可宣稱115-1即時成績或個人核准。",
+      "evidence": [
+        "audit-dom.json"
+      ]
+    }
+  ],
+  "raw_pdf_sources": [
+    {
+      "id": "course-dates-1151",
+      "source": {
+        "href": "https://wpc.stu.edu.tw/wp-content/uploads/sites/21/2026/05/STU115-1%E5%AD%B8%E7%94%9F%E9%81%B8%E8%AA%B2%E6%97%A5%E6%9C%9F%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85.pdf",
+        "text": "115-1學生選課日期及注意事項"
+      },
+      "url": "https://wpc.stu.edu.tw/wp-content/uploads/sites/21/2026/05/STU115-1%E5%AD%B8%E7%94%9F%E9%81%B8%E8%AA%B2%E6%97%A5%E6%9C%9F%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85.pdf",
+      "final_url": "https://wpc.stu.edu.tw/wp-content/uploads/sites/21/2026/05/STU115-1%E5%AD%B8%E7%94%9F%E9%81%B8%E8%AA%B2%E6%97%A5%E6%9C%9F%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85.pdf",
+      "status": 200,
+      "bytes": 1124728,
+      "pdf": true,
+      "file": "raw/course-dates-1151.pdf",
+      "sha256": "0e6a5283fdd664c518d7eb4fbf17ec5921811943e9fcaef19129be2053a18493",
+      "authentication": "none",
+      "at": "2026-10-24T02:07:32.171Z"
+    },
+    {
+      "id": "special-course-form",
+      "source": {
+        "context": "G01 學生選課特殊狀況人工處理申請單( pdf | odt )",
+        "href": "https://drive.google.com/open?id=1tAyIUqLGVq2sktc0RWZXtZivl4AOhJ8U&usp=drive_fs",
+        "text": "pdf"
+      },
+      "url": "https://drive.google.com/uc?export=download&id=1tAyIUqLGVq2sktc0RWZXtZivl4AOhJ8U",
+      "final_url": "https://drive.usercontent.google.com/download?id=1tAyIUqLGVq2sktc0RWZXtZivl4AOhJ8U&export=download",
+      "status": 200,
+      "bytes": 805261,
+      "pdf": true,
+      "file": "raw/special-course-form.pdf",
+      "sha256": "8a33c05bfddf2ac613ec347af7332b67588ccad3844533cea3292f243d04bed8",
+      "authentication": "none",
+      "at": "2026-10-24T02:07:34.316Z"
+    },
+    {
+      "id": "credit-system-manual",
+      "source": {
+        "href": "https://drive.google.com/file/d/1ZJWjaCourHFqivByeSPCNxJY30osGR4F/view?usp=sharing",
+        "text": "學分抵免填表系統操作說明(中英文版)"
+      },
+      "url": "https://drive.google.com/uc?export=download&id=1ZJWjaCourHFqivByeSPCNxJY30osGR4F",
+      "final_url": "https://drive.usercontent.google.com/download?id=1ZJWjaCourHFqivByeSPCNxJY30osGR4F&export=download",
+      "status": 200,
+      "bytes": 1052132,
+      "pdf": true,
+      "file": "raw/credit-system-manual.pdf",
+      "sha256": "13e421dfd27805862e0061905d8eb1a96b02a9957d99b872bd2f86378c29619d",
+      "authentication": "none",
+      "at": "2026-10-24T02:07:34.246Z"
+    },
+    {
+      "id": "refund-1151",
+      "source": {
+        "href": "https://wpc.stu.edu.tw/wp-content/uploads/sites/5/2026/06/21151%E4%BC%91%E9%80%80%E5%AD%B8%E9%80%80%E8%B2%BB%E6%A8%99%E6%BA%96-115.6.11.pdf",
+        "text": "會計室網頁"
+      },
+      "url": "https://wpc.stu.edu.tw/wp-content/uploads/sites/5/2026/06/21151%E4%BC%91%E9%80%80%E5%AD%B8%E9%80%80%E8%B2%BB%E6%A8%99%E6%BA%96-115.6.11.pdf",
+      "final_url": "https://wpc.stu.edu.tw/wp-content/uploads/sites/5/2026/06/21151%E4%BC%91%E9%80%80%E5%AD%B8%E9%80%80%E8%B2%BB%E6%A8%99%E6%BA%96-115.6.11.pdf",
+      "status": 200,
+      "bytes": 417457,
+      "pdf": true,
+      "file": "raw/refund-1151.pdf",
+      "sha256": "977366b4e0c2cea24aaae2b715fbb290c089aec64c30c1abe3df600ecca67d06",
+      "authentication": "none",
+      "at": "2026-10-24T02:07:32.121Z"
+    },
+    {
+      "id": "audit-manual",
+      "source": {
+        "href": "https://drive.google.com/file/d/1cKNlaqqnbzoR5mpSBOGT-MU-X4usmxMp/view?usp=drive_link",
+        "text": "點我"
+      },
+      "url": "https://drive.google.com/uc?export=download&id=1cKNlaqqnbzoR5mpSBOGT-MU-X4usmxMp",
+      "final_url": "https://drive.usercontent.google.com/download?id=1cKNlaqqnbzoR5mpSBOGT-MU-X4usmxMp&export=download",
+      "status": 200,
+      "bytes": 2539644,
+      "pdf": true,
+      "file": "raw/audit-manual.pdf",
+      "sha256": "8d874354fa9c8260bb71b289a835f39c7f464d8a95181afa42619a2839db96ee",
+      "authentication": "none",
+      "at": "2026-10-24T02:07:36.002Z"
+    }
+  ],
+  "reused_full_text": "沿用20261023選課/抵免/休學及115學則相關選頁；本輪只重核官方目錄同Drive id，不宣稱原檔當日重抓。",
+  "unread_or_unverified": [
+    "實際登入後115-1抵免印表",
+    "115-1個人畢業檢核即時資料",
+    "休復學表單實際領表版本",
+    "112/115衝突正式釋示或退費錯引更正",
+    "refund-1151.pdf第4至6頁未逐頁視覺複核，附106教育部辦法未查當期現行性"
+  ]
+}

@@ -1,0 +1,490 @@
+{
+  "at": "2026-10-24T02:13:42.003Z",
+  "guide_sha256": "30f77faaa65107c0ad73ec265f92c787e1f89a5ad0a7c722278809f5d0c68bd4",
+  "guide_bytes": 109752,
+  "cards": [
+    {
+      "id": "graduation",
+      "category": "graduation",
+      "title": "畢業檢核",
+      "summary": "先對自己的入學年度與班別。學分、必修、英文、證照、實習與專題，都要分開確認。",
+      "steps": [
+        "找到自己的入學年度課表",
+        "對照系統畢業檢核，列出缺項",
+        "帶檢核結果找系辦確認補修或認列"
+      ],
+      "contact": {
+        "primary": "動遊系辦",
+        "phone": "07-6158000#6102",
+        "secondary": "教務處註冊課務組（動遊系）",
+        "secondary_phone": "07-6158000#2016",
+        "url": "https://www.dgd.stu.edu.tw/english-系所介紹與課程地圖｜動遊系四年學什麼？/"
+      },
+      "source_ids": [
+        "course-index",
+        "curriculum-112",
+        "curriculum-113",
+        "curriculum-114",
+        "curriculum-115",
+        "leave-school-115-1",
+        "dept-contact",
+        "student-portal",
+        "academic-faq",
+        "graduation-audit-20260228",
+        "degree-leaving-rule-1150610"
+      ],
+      "warning": "技優班條件另核，請帶自己的入學年度課表向系辦確認。",
+      "faq": [
+        {
+          "q": "外系選修都能算進畢業學分嗎？",
+          "a": "不能一律計入。已核對的一般班課表：112入學外系專業選修最多採計16學分，113至115入學最多20學分；仍須符合課程類別與認列要求。",
+          "source_ids": [
+            "curriculum-112",
+            "curriculum-113",
+            "curriculum-114",
+            "curriculum-115"
+          ]
+        },
+        {
+          "q": "一般班最低要幾學分？技優班也一樣嗎？",
+          "a": "112至115入學一般日四技課表列最低128學分，各類別與零學分必修仍須完成。技優班不能直接套用一般班條件。",
+          "source_ids": [
+            "curriculum-112",
+            "curriculum-113",
+            "curriculum-114",
+            "curriculum-115"
+          ]
+        },
+        {
+          "q": "檢核都通過，就能直接領畢業證書嗎？",
+          "a": "還要完成畢業離校申請與各單位審核，再依教務處公告領證。115年6月10日修正要點將課程及門檻審查、圖書歸還、欠費與校友資料等程序分開；日間四技不套用研究生論文繳交要求。",
+          "source_ids": [
+            "degree-leaving-rule-1150610"
+          ]
+        }
+      ],
+      "step_details": [
+        {
+          "title": "找到自己的入學年度課表",
+          "detail": "從教務處歷年課程表找到「動遊系」，先核對入學年與一般班、技優班。把自己的那一份存下來，之後選課與畢業檢核都用它比對。",
+          "source_ids": [
+            "course-index",
+            "curriculum-112",
+            "curriculum-113",
+            "curriculum-114",
+            "curriculum-115"
+          ]
+        },
+        {
+          "title": "對照系統畢業檢核，列出缺項",
+          "detail": "從校務資訊的「教務系統 → 查詢程式 → 畢業學分檢核表查詢」查看，將未通過的課程、英文、證照、實習與專題分開列出。先確認系統資料計算到哪一學期，連零學分必修一起核對，不只看總學分。",
+          "source_ids": [
+            "curriculum-112",
+            "curriculum-113",
+            "curriculum-114",
+            "curriculum-115",
+            "student-portal",
+            "graduation-audit-20260228"
+          ]
+        },
+        {
+          "title": "帶檢核結果找系辦確認補修或認列",
+          "detail": "找系辦時一起帶入學年課表、成績與未通過項目的畫面，直接問缺課要補哪門、已有證明如何認列。若涉及抵免或學籍，再請註冊課務組協助確認。",
+          "source_ids": [
+            "dept-contact",
+            "academic-faq"
+          ]
+        }
+      ],
+      "flow_type": "sequence",
+      "flow": [
+        {
+          "label": "核對入學年度",
+          "step_index": 0,
+          "source_ids": [
+            "course-index",
+            "curriculum-115"
+          ]
+        },
+        {
+          "label": "整理未通過項目",
+          "step_index": 1,
+          "source_ids": [
+            "curriculum-115",
+            "student-portal"
+          ]
+        },
+        {
+          "label": "向系辦確認補修",
+          "step_index": 2,
+          "source_ids": [
+            "dept-contact",
+            "academic-faq"
+          ]
+        }
+      ],
+      "flow_note": "不同入學年與班別分開核對；有缺項就找系辦確認補修或認列。"
+    },
+    {
+      "id": "course-selection",
+      "category": "courses",
+      "title": "選課加退選",
+      "summary": "先看校務系統的正式課表。必修、衝堂與學分數都要自己確認，上過課不等於已完成加選。",
+      "steps": [
+        "對照必修、學分數與上課時間",
+        "依當期公告辦理初選或加退選",
+        "重開系統確認結果，有問題找註冊課務組"
+      ],
+      "contact": {
+        "primary": "動遊系辦／註冊課務組",
+        "phone": "07-6158000#2016",
+        "url": "https://www.aca.stu.edu.tw/常見問題｜qa/"
+      },
+      "source_ids": [
+        "enrollment-115-1",
+        "academic-faq",
+        "academic-contact",
+        "curriculum-115",
+        "course-index",
+        "academic-course-rule-1140219"
+      ],
+      "warning": "",
+      "faq": [
+        {
+          "q": "老師同意、也去上課，就算選到了嗎？",
+          "a": "仍要以校務系統的選課紀錄為準，請核對課程是否確實列入自己的課表。",
+          "source_ids": [
+            "academic-faq"
+          ]
+        },
+        {
+          "q": "這學期還能直接加退選嗎？",
+          "a": "已核對的115-1加退選於2026/9/14上午9時截止，現在不能當作仍開放。棄選或特殊情況是否可辦，請查當期公告並洽註冊課務組。",
+          "source_ids": [
+            "enrollment-115-1",
+            "academic-faq"
+          ]
+        },
+        {
+          "q": "不想修了，直接不上課就算退選嗎？",
+          "a": "不算。請依當期開放的程序辦理退選或棄選，完成後再查正式課表；未完成程序仍依規定評量。114年2月19日選課準則另列棄選條件與學分限制，本期受理日期仍要看公告。",
+          "source_ids": [
+            "academic-course-rule-1140219"
+          ]
+        }
+      ],
+      "step_details": [
+        {
+          "title": "對照必修、學分數與上課時間",
+          "detail": "把入學年課表與本學期系統課表並排，先看必修是否漏選，再檢查學分與衝堂。若有抵免、重修或補修，另外列出來，選課前一起問系辦。",
+          "source_ids": [
+            "academic-faq",
+            "curriculum-115"
+          ]
+        },
+        {
+          "title": "依當期公告辦理初選或加退選",
+          "detail": "到教務處確認現在屬於初選、加退選還是棄選，再依該階段公告辦理。過去的加退選日期不能繼續使用；遇到逾期或特殊情況，先問註冊課務組。",
+          "source_ids": [
+            "academic-faq",
+            "enrollment-115-1"
+          ]
+        },
+        {
+          "title": "重開系統確認結果，有問題找註冊課務組",
+          "detail": "操作後重新開啟系統課表，確認課名、班別與時間真的正確。若和預期不同，記下課程代碼及問題畫面找註冊課務組，不以出席或老師同意代替系統結果。",
+          "source_ids": [
+            "academic-faq",
+            "academic-contact"
+          ]
+        }
+      ],
+      "flow_type": "sequence",
+      "flow": [
+        {
+          "label": "先核對必修與時間",
+          "step_index": 0,
+          "source_ids": [
+            "curriculum-115",
+            "course-index"
+          ]
+        },
+        {
+          "label": "依公告初選加退選",
+          "step_index": 1,
+          "source_ids": [
+            "enrollment-115-1",
+            "academic-faq"
+          ]
+        },
+        {
+          "label": "重開系統確認結果",
+          "step_index": 2,
+          "source_ids": [
+            "academic-faq",
+            "academic-contact"
+          ]
+        }
+      ],
+      "flow_note": "選課成功與課程異動都要再查；已截止的時程不代表仍可補選。"
+    },
+    {
+      "id": "credit-transfer",
+      "category": "courses",
+      "title": "學分抵免",
+      "summary": "修過類似課程不等於自動抵免。準備原始成績與申請表，依開課單位、系所及教務處順序審核。",
+      "steps": [
+        "到系統填寫申請並印出紙本",
+        "送請開課單位與就讀系所主管初審",
+        "依初審結果自行辦理加退選",
+        "將申請表及證明交註冊課務組",
+        "回到系統查詢核定結果"
+      ],
+      "contact": {
+        "primary": "開課單位／動遊系辦／註冊課務組",
+        "phone": "07-6158000#2016",
+        "url": "https://www.aca.stu.edu.tw/常見問題｜qa/"
+      },
+      "source_ids": [
+        "credit-transfer-115-1",
+        "academic-faq",
+        "academic-contact",
+        "credit-transfer-procedure",
+        "credit-transfer-form",
+        "academic-credit-rule-1140910"
+      ],
+      "warning": "",
+      "faq": [
+        {
+          "q": "表格送出去，就可以不修那門課嗎？",
+          "a": "先確認核准結果，不能把「已送件」當成通過。課表是否需要自行退選，也請在規定期間向系辦或註冊課務組確認。",
+          "source_ids": [
+            "credit-transfer-115-1",
+            "academic-faq"
+          ]
+        },
+        {
+          "q": "現在能補交115-1抵免嗎？",
+          "a": "公告列2026/8/3至9/21受理，已截止且註明逾期不受理。不要自行假設可補交；有特殊身分或程序疑義，請洽註冊課務組。",
+          "source_ids": [
+            "credit-transfer-115-1"
+          ]
+        },
+        {
+          "q": "抵修和免修一樣嗎？",
+          "a": "不一樣。114年9月10日辦法將「抵修」列為採認科目及學分，「免修」只採認科目、不給學分，還要修其他課補足。請核對最後核定類型，不只看那門課是否不用再修。",
+          "source_ids": [
+            "academic-credit-rule-1140910"
+          ]
+        }
+      ],
+      "step_details": [
+        {
+          "title": "到系統填寫申請並印出紙本",
+          "detail": "先確認申請身分與當期截止日，再到校務系統填寫並印表。備妥原校歷年成績單正本及適用的證明，一次整理齊全。",
+          "source_ids": [
+            "credit-transfer-procedure",
+            "credit-transfer-form"
+          ]
+        },
+        {
+          "title": "送請開課單位與就讀系所主管初審",
+          "detail": "把申請資料交給開課單位與自己就讀的系所主管審查。哪些課程可以抵免，先依這個初審結果確認。",
+          "source_ids": [
+            "credit-transfer-procedure",
+            "credit-transfer-form"
+          ]
+        },
+        {
+          "title": "依初審結果自行辦理加退選",
+          "detail": "初審通過的課程如果仍在課表裡，要自行處理退選；也一起確認需要補選哪些課。不要等最後核定後才開始處理。",
+          "source_ids": [
+            "credit-transfer-procedure",
+            "credit-transfer-form"
+          ]
+        },
+        {
+          "title": "將申請表及證明交註冊課務組",
+          "detail": "依規定把經初審的申請表與證明資料交到教務處註冊課務組。資料請一次備齊，送件仍須在當期受理期間內完成。",
+          "source_ids": [
+            "credit-transfer-procedure",
+            "credit-transfer-form"
+          ]
+        },
+        {
+          "title": "回到系統查詢核定結果",
+          "detail": "送件後回校務系統查詢最後核定情形，再與自己的課表及畢業檢核核對。有落差時，帶結果找註冊課務組確認。",
+          "source_ids": [
+            "credit-transfer-procedure",
+            "credit-transfer-form"
+          ]
+        }
+      ],
+      "flow_type": "sequence",
+      "flow": [
+        {
+          "label": "系統填寫並印表",
+          "step_index": 0,
+          "source_ids": [
+            "credit-transfer-procedure",
+            "credit-transfer-form"
+          ]
+        },
+        {
+          "label": "送交系所初審",
+          "step_index": 1,
+          "source_ids": [
+            "credit-transfer-procedure",
+            "credit-transfer-form"
+          ]
+        },
+        {
+          "label": "依初審調整選課",
+          "step_index": 2,
+          "source_ids": [
+            "credit-transfer-procedure",
+            "credit-transfer-form"
+          ]
+        },
+        {
+          "label": "文件交註冊課務組",
+          "step_index": 3,
+          "source_ids": [
+            "credit-transfer-procedure",
+            "credit-transfer-form"
+          ]
+        },
+        {
+          "label": "查詢最後核定結果",
+          "step_index": 4,
+          "source_ids": [
+            "credit-transfer-procedure",
+            "credit-transfer-form"
+          ]
+        }
+      ],
+      "flow_note": "先核對可申請身分與當期期限；初審後的加退選要自己辦，不等最後核定才處理。"
+    },
+    {
+      "id": "status-military",
+      "category": "leave-status",
+      "title": "休學復學與兵役",
+      "summary": "休學、復學要完成正式程序；兵役資料另找生輔組確認。先聯絡承辦，避免只停課卻沒有辦好學籍。",
+      "steps": [
+        "休學：先聯繫系所，再到教務處領表",
+        "復學或續休：依通知回覆並辦理",
+        "兵役：另向生輔組確認資料"
+      ],
+      "contact": {
+        "primary": "註冊課務組（動遊系）",
+        "phone": "07-6158000#2016",
+        "secondary": "生活輔導組（兵役，請轉接承辦）",
+        "secondary_phone": null,
+        "url": "https://www.stu.edu.tw/latestnews-single/?id=233836"
+      },
+      "source_ids": [
+        "leave-school-115-1",
+        "school-news",
+        "academic-status-current",
+        "academic-faq",
+        "life-contact"
+      ],
+      "warning": "個人緩徵、儘召與兵役文件期限須由承辦判定；學籍辦妥不代表兵役資料已完成。",
+      "faq": [
+        {
+          "q": "領了休學表，晚一點再交可以嗎？",
+          "a": "115-1公告要求登記起含當日7日內完成離校及繳件，逾期需重新領表，退費計算基準也會改變。請先確認導師與系辦可辦理時間。",
+          "source_ids": [
+            "leave-school-115-1"
+          ]
+        },
+        {
+          "q": "休學後如何知道復學時間？",
+          "a": "教務處FAQ說明，休學期滿前會寄送復學通知，應依通知辦理。地址、信箱與電話有變動要更新；兵役問題另向生輔組確認。",
+          "source_ids": [
+            "academic-faq",
+            "leave-school-115-1",
+            "school-news"
+          ]
+        }
+      ],
+      "step_details": [
+        {
+          "title": "休學：先聯繫系所，再到教務處領表",
+          "detail": "先約好導師或系所承辦，再到註冊課務組登記領表。依當期公告完成訪談、離校與交回文件；領表日期會影響退費計算。",
+          "source_ids": [
+            "academic-status-current"
+          ]
+        },
+        {
+          "title": "復學或續休：依通知回覆並辦理",
+          "detail": "收到復學通知後，依通知期限回覆復學或繼續休學，確認下一學期的註冊安排。若因服役辦理休復學，另問註冊課務組需要哪些證明。",
+          "source_ids": [
+            "academic-faq",
+            "academic-status-current"
+          ]
+        },
+        {
+          "title": "兵役：另向生輔組確認資料",
+          "detail": "轉入、復學或延畢等學籍有變動時，另向生輔組確認兵役資料及緩徵或儘後召集是否要辦理。不要把學籍手續視為兵役也已完成。",
+          "source_ids": [
+            "school-news",
+            "life-contact"
+          ]
+        }
+      ],
+      "flow_type": "branch",
+      "flow": [
+        {
+          "label": "想辦休學或退學",
+          "step_index": 0,
+          "source_ids": [
+            "academic-status-current"
+          ]
+        },
+        {
+          "label": "準備復學或續休",
+          "step_index": 1,
+          "source_ids": [
+            "academic-faq"
+          ]
+        },
+        {
+          "label": "另查自己的兵役事項",
+          "step_index": 2,
+          "source_ids": [
+            "school-news",
+            "life-contact"
+          ]
+        }
+      ],
+      "flow_note": "休學與復學依目前狀況擇一辦理；役男另向生輔組確認兵役，不以完成學籍程序代替。"
+    }
+  ],
+  "reused_sources": [
+    {
+      "file": "holiday-lab/reports/guide-enrollment-research-20261023/supplement-current-rules/raw/credit.pdf",
+      "sha256": "e4596ecbaaafd37a1a13f8045c1dade2b2bc95bb0994c811e9a608efd8065e94",
+      "bytes": 196504,
+      "downloaded_again": false
+    },
+    {
+      "file": "holiday-lab/reports/guide-enrollment-research-20261023/supplement-current-rules/raw/course.pdf",
+      "sha256": "6ee89286a1b65ff4c28b5ea58ff482d55a97d4a40cd552ba9620d0ec7245712d",
+      "bytes": 174534,
+      "downloaded_again": false
+    },
+    {
+      "file": "holiday-lab/reports/guide-enrollment-research-20261023/supplement-current-rules/raw/intermission.pdf",
+      "sha256": "6bff0a223ccf7873e1f1c162fc6d1de60615e1e99b2650ef5634f397b11cd8b0",
+      "bytes": 146065,
+      "downloaded_again": false
+    },
+    {
+      "file": "holiday-lab/reports/guide-support-career-research-20261023/raw/school-regulations.pdf",
+      "sha256": "f3fcd3910013156848f962489c2b84d81bd1b4dd0c813a164335e222ec2306c8",
+      "bytes": 256175,
+      "downloaded_again": false
+    }
+  ]
+}
