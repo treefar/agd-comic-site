@@ -1,0 +1,39 @@
+{
+  "observed_utc": "2026-10-24T01:48:05.860Z",
+  "rows": [
+    {
+      "file": "data/en/flow-ui.json",
+      "before_lf_sha256": "d4477c050dee5d88cc0bb97ff084e1bb21d17721cdb16e82840878f277ddc057",
+      "after_crlf_sha256": "25fb536fe5f651812cbfb0edc679caa4f286d61a19426c2490ee352aa717b764",
+      "only_newline_encoding_changed": true
+    },
+    {
+      "file": "data/ja/flow-ui.json",
+      "before_lf_sha256": "262f91b0d6b48de6795f8a72f03e3cadb69f37c456c84f32f4d3223dfc33158d",
+      "after_crlf_sha256": "c60e5395dfb130222eb2696a6e0b8cc29d44768918baa79aa123b6a62c7c9516",
+      "only_newline_encoding_changed": true
+    },
+    {
+      "file": "data/students/guide.json",
+      "before_lf_sha256": "8f45ee4581d731c4824c01d1514f8ddae3a40951b11049d5fb6f54372e66ee38",
+      "after_crlf_sha256": "aa3986dfd73371092b4b4e5884223be7bada850ab823ed69b604413337859ad6",
+      "only_newline_encoding_changed": true
+    },
+    {
+      "file": "locale-en.js",
+      "before_lf_sha256": "60b604f5c4c3dde350820eecacb6a882e8dcaa7c2d042d8f13b58db4015e2fa2",
+      "after_crlf_sha256": "04dc45dbd2dc8fbe783fef32924fe90115963d8d59f30d356a81f53b802b98e2",
+      "only_newline_encoding_changed": true
+    },
+    {
+      "file": "locale-ja.js",
+      "before_lf_sha256": "3a0aae960e8608e0c70a2a329004dc0314e7fea094b255d730cbc8158d02765b",
+      "after_crlf_sha256": "1a5be0236754e524bfff41d412c810086eac88fa42dcd5ecbfafef0dc1e87c60",
+      "only_newline_encoding_changed": true
+    }
+  ],
+  "cause": "Root committed and switched local task branches during the first QA. Git converted tracked LF sources to CRLF. Product text was unchanged, but the raw SHA freeze correctly failed.",
+  "failed_receipt_retained": true,
+  "policy": "Do not switch branches during the next build freeze and QA. Rebuild a fresh directory and verify again.",
+  "product_bug": false
+}

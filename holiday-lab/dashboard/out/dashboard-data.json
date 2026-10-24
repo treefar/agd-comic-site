@@ -7,12 +7,12 @@
     "generated": "2026-10-24",
     "authorities": [
       {
-        "path": "holiday-lab/reports/followup-20261024/verification.json",
+        "path": "holiday-lab/reports/current-rules-20261024/verification.json",
         "role": "本輪逐項結果、原始證據SHA與本機版號"
       }
     ],
     "notes": [
-      "本機審閱版 .measure-followup-20261024-01，連接埠 8876；尚未發布。",
+      "本機審閱版 .measure-current-rules-20261024-03，連接埠 8879；尚未發布。",
       "節日遊戲全部凍結，未測玩、未改遊戲檔、未啟動Unity。",
       "工具核對不等於母語、實體手機或使用者確認。",
       "舊遊戲通關與固定08歷史覆蓋不納入本輪網站通過數。"
@@ -58,7 +58,7 @@
       "rule": {
         "count": "checks"
       },
-      "value": 49
+      "value": 50
     },
     {
       "id": "fixed",
@@ -70,7 +70,7 @@
           "disposition": "已修正"
         }
       },
-      "value": 7
+      "value": 13
     },
     {
       "id": "verified",
@@ -83,7 +83,7 @@
           "result": "yes"
         }
       },
-      "value": 43
+      "value": 44
     },
     {
       "id": "pending",
@@ -173,7 +173,7 @@
           "title": "交接、工單、分支及保全錨點",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "三份指定文件完整載入並記錄SHA；主工作樹與原clone可讀。未以8860舊畫面判定新版。",
+          "reason": "8876前版限定證據保留；本輪未新增此項全範圍驗收。三份指定文件完整載入並記錄SHA；主工作樹與原clone可讀。未以8860舊畫面判定新版。",
           "evidence": "holiday-lab/reports/overnight-20261024/root/before.json",
           "data": "recorded",
           "tool": "bounded",
@@ -184,8 +184,8 @@
           "title": "中英日共用介面與資料",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "共用元件與中文正本保留；三語390／1440六組目前版通過，未另外建立精簡外文首頁。",
-          "evidence": "holiday-lab/reports/followup-20261024/qa/result.json",
+          "reason": "8879三語同版首頁及指南6組通過；共用介面程式未改，本輪僅更新指南資料與精確字典。不是全站所有路由重新驗收。",
+          "evidence": "holiday-lab/reports/current-rules-20261024/qa/raw-r3/result.json、holiday-lab/reports/current-rules-20261024/current-proof-command.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -195,8 +195,8 @@
           "title": "桌面完整導覽",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "1440三語八章節及兩語言入口可見，保留既有兩層導覽。",
-          "evidence": "holiday-lab/reports/followup-20261024/qa/result.json",
+          "reason": "8879三語1440完整導覽可見；未改導覽標籤或程式。前版UI點選證據保留。",
+          "evidence": "holiday-lab/reports/current-rules-20261024/qa/raw-r3/result.json、holiday-lab/reports/current-rules-20261024/preserve-r3-command.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -206,8 +206,8 @@
           "title": "手機選單與自動收合",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "390三語真點選選單與章節，選單可開啟並於跳轉後收合。",
-          "evidence": "holiday-lab/reports/followup-20261024/qa/result.json",
+          "reason": "8879三語390選單有限操作通過；不升格實體手機。",
+          "evidence": "holiday-lab/reports/current-rules-20261024/qa/raw-r3/result.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -217,8 +217,8 @@
           "title": "語言切換",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "三語皆實際操作切換連結，保留同版導覽；未只檢查字串存在。",
-          "evidence": "holiday-lab/reports/followup-20261024/qa/result.json",
+          "reason": "本輪以三個語言網址分別驗收；語言切換程式與導覽字典值未改，8876的UI切換收據保留，未宣稱新切換點選全覆蓋。",
+          "evidence": "holiday-lab/reports/followup-20261024/qa/result.json、holiday-lab/reports/current-rules-20261024/dictionary-final.json、holiday-lab/reports/current-rules-20261024/preserve-r3-command.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -228,7 +228,7 @@
           "title": "頁尾與操作按鈕",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "六組頁尾mail／tel、About連結與代表按鈕操作通過；不是每個外部站點連結的存活保證。",
+          "reason": "8876前版限定證據保留；本輪未新增此項全範圍驗收。六組頁尾mail／tel、About連結與代表按鈕操作通過；不是每個外部站點連結的存活保證。",
           "evidence": "holiday-lab/reports/followup-20261024/qa/result.json",
           "data": "recorded",
           "tool": "bounded",
@@ -239,7 +239,7 @@
           "title": "固定標題列與章節定位",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "三語About定位均在固定列下方；既有動態offset與原styles未改。",
+          "reason": "8876前版限定證據保留；本輪未新增此項全範圍驗收。三語About定位均在固定列下方；既有動態offset與原styles未改。",
           "evidence": "holiday-lab/reports/followup-20261024/qa/result.json",
           "data": "recorded",
           "tool": "bounded",
@@ -250,8 +250,8 @@
           "title": "導覽短末行與代表標題",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "本輪無橫向溢位；Range有16筆旋轉h2候選，不把幾何候選當產品孤尾。相同標題與樣式前輪已有目視排除證據；本輪未宣稱全內文孤尾0。",
-          "evidence": "holiday-lab/reports/followup-20261024/qa/result.json、holiday-lab/reports/overnight-20261024/qa/role-headings/result.json、holiday-lab/reports/overnight-20261024/qa/role-headings-command.json",
+          "reason": "8876的16筆旋轉h2候選已用完整文字Range與3種單/雙行校準補驗，全為單行；樣式與標題原文未改。8879另核6組無橫向溢位，不宣稱全內文孤尾0。",
+          "evidence": "holiday-lab/reports/current-rules-20261024/layout/result-r2.json、holiday-lab/reports/current-rules-20261024/layout-command-r2.json、holiday-lab/reports/current-rules-20261024/qa/raw-r3/result.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -261,8 +261,8 @@
           "title": "現有字體與指定頁載入",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "首頁與指南六組fonts.loaded；本輪未換字體或縮字，已保留姓名與正式資格。",
-          "evidence": "holiday-lab/reports/followup-20261024/qa/result.json",
+          "reason": "8879首頁與指南三語6組字體載入完成，無替代字元；不換字體、不改姓名。",
+          "evidence": "holiday-lab/reports/current-rules-20261024/qa/raw-r3/result.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -272,8 +272,8 @@
           "title": "中日全站逐字缺字稽核",
           "disposition": "保留",
           "result": "no",
-          "reason": "8875限定6狀態79,079字元配對有字形；30資料檔2,204字元有可用glyph。8876新增古／折兩字已有限cmap與CSS range補驗。469未載入描述、逐字實際fallback／跨OS仍未全驗。",
-          "evidence": "holiday-lab/reports/followup-20261024/fonts/REPORT.md、holiday-lab/reports/followup-20261024/root/font-delta.json",
+          "reason": "維持no：舊有限字形核對保留，新資料10字已在既有字體cmap及CSS範圍找到，沒有另下載字體。全站實際逐字fallback、跨OS與真機仍未全核。",
+          "evidence": "holiday-lab/reports/current-rules-20261024/font-delta.json、holiday-lab/reports/current-rules-20261024/font-delta-command.json、holiday-lab/reports/current-rules-20261024/delta-final.json、holiday-lab/reports/followup-20261024/fonts/REPORT.md",
           "data": "recorded",
           "tool": "pending",
           "user": "user_pending"
@@ -283,7 +283,7 @@
           "title": "鄧樹遠中英文職稱",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "目前data/faculty與英文角色均不含電競代理主任；保留系主任／副教授，不改歷史報告。",
+          "reason": "8876前版限定證據保留；本輪未新增此項全範圍驗收。目前data/faculty與英文角色均不含電競代理主任；保留系主任／副教授，不改歷史報告。",
           "evidence": "holiday-lab/reports/overnight-20261024/program/REPORT.md",
           "data": "recorded",
           "tool": "bounded",
@@ -294,7 +294,7 @@
           "title": "教師頭部大小與水平眼線",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "六組各13位標記投影與原照HTTP SHA相符，共78原照觀察；以顯示定位達成，原照片未修圖。標記本身是人工近似。",
+          "reason": "8876前版限定證據保留；本輪未新增此項全範圍驗收。六組各13位標記投影與原照HTTP SHA相符，共78原照觀察；以顯示定位達成，原照片未修圖。標記本身是人工近似。",
           "evidence": "holiday-lab/reports/followup-20261024/qa/result.json、holiday-lab/reports/followup-20261024/root/current-verification.json",
           "data": "recorded",
           "tool": "bounded",
@@ -305,7 +305,7 @@
           "title": "日文助理教授職稱",
           "disposition": "已修正",
           "result": "yes",
-          "reason": "四個日文角色值改保留台灣原職＋Assistant Professor說明，維持合聘／從聘／留職狀態；另日文兩寬13角色補驗，不硬套日本助教。",
+          "reason": "8876前版限定證據保留；本輪未新增此項全範圍驗收。四個日文角色值改保留台灣原職＋Assistant Professor說明，維持合聘／從聘／留職狀態；另日文兩寬13角色補驗，不硬套日本助教。",
           "evidence": "holiday-lab/reports/overnight-20261024/program/REPORT.md、holiday-lab/reports/overnight-20261024/root/program-green-r2.json、holiday-lab/reports/overnight-20261024/qa/role-headings/result.json",
           "data": "recorded",
           "tool": "bounded",
@@ -316,8 +316,8 @@
           "title": "全部正式職稱／處室外文名",
           "disposition": "缺件",
           "result": "no",
-          "reason": "指南8窗口當日Chrome逐筆實讀；招生、通識正式英文及請假／求助分機已更正。新特教中心英文官網仍有舊合併名稱，官方日文未查得；保留中文正式名＋功能說明，未冒認官方日譯。",
-          "evidence": "holiday-lab/reports/followup-20261024/contacts/REPORT.md、holiday-lab/reports/followup-20261024/qa/new-targets/result.json",
+          "reason": "維持no：本輪官網正文支持語文暨國際教學中心正式英文；既有8窗口名稱核對保留。全校官方日文未取得，新特教中心英名同步與部分職稱矛盾仍未釐清。",
+          "evidence": "holiday-lab/reports/current-rules-20261024/threshold/lcc-home-dom.json、holiday-lab/reports/followup-20261024/contacts/REPORT.md",
           "data": "recorded",
           "tool": "pending",
           "user": "user_pending"
@@ -327,7 +327,7 @@
           "title": "四PROGRAM整句與相依欄位",
           "disposition": "已修正",
           "result": "yes",
-          "reason": "16個同頁欄位三語共48操作；115一般單招30名已截止，移除統一面試／固定時段／費用與證書保證；13可見值六組共78觀察。",
+          "reason": "8876前版限定證據保留；本輪未新增此項全範圍驗收。16個同頁欄位三語共48操作；115一般單招30名已截止，移除統一面試／固定時段／費用與證書保證；13可見值六組共78觀察。",
           "evidence": "holiday-lab/reports/overnight-20261024/root/program-apply.json、holiday-lab/reports/followup-20261024/qa/result.json",
           "data": "recorded",
           "tool": "bounded",
@@ -338,8 +338,8 @@
           "title": "翻譯資料覆蓋與資訊保留",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "1721個靜態資料字串中兩語各1720有字典，唯一未映射為應保留筆名小颯；動態明示三語另計。不能據此宣稱母語逐句正確。",
-          "evidence": "holiday-lab/reports/overnight-20261024/root/translation-inventory-final.json",
+          "reason": "原三語資料未縮減，15卡47步保留、FAQ34→42、來源53→63；新字典每語86項皆為明列審閱文案，無非預期變更或舊key刪除。不是母語逐句批准。",
+          "evidence": "holiday-lab/reports/current-rules-20261024/dictionary-final.json、holiday-lab/reports/current-rules-20261024/current-verification.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -349,8 +349,8 @@
           "title": "歷史英文資料對映與差異處理",
           "disposition": "已修正",
           "result": "yes",
-          "reason": "42筆差異逐筆處理，25個資料操作；真建置未成對21→0、衝突21→0。既有17條及待核專名CHECK保留，runtime不改；不以此當母語簽核。",
-          "evidence": "holiday-lab/reports/followup-20261024/i18n/REPORT.md、holiday-lab/reports/followup-20261024/root/delta-verification.json、holiday-lab/reports/followup-20261024/root/i18n-green.json",
+          "reason": "本次真建置未成對0、衝突0；前輪25項EN資料對齊保留，未改配對器。",
+          "evidence": "holiday-lab/reports/current-rules-20261024/build-command-r3.json、holiday-lab/reports/current-rules-20261024/dictionary-final.json、holiday-lab/reports/followup-20261024/i18n/REPORT.md",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -360,8 +360,8 @@
           "title": "在校指南標題、直白分類與三欄",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "維持四字標題、八分類、15卡；1440三欄與390單欄適配、索引無宣傳贅語。",
-          "evidence": "holiday-lab/reports/followup-20261024/qa/result.json",
+          "reason": "8879指南15卡、直白八分類，三語1440三欄/390單欄通過；版型與索引程式未改。",
+          "evidence": "holiday-lab/reports/current-rules-20261024/qa/raw-r3/result.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -371,7 +371,7 @@
           "title": "新生／在校／轉學／畢業身分索引",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "六類身分索引及搜尋／分類組合回歸通過，實際篩選與重設可用。",
+          "reason": "8876前版限定證據保留；本輪未新增此項全範圍驗收。六類身分索引及搜尋／分類組合回歸通過，實際篩選與重設可用。",
           "evidence": "holiday-lab/reports/overnight-20261024/root/guide-regression-green.json、holiday-lab/reports/followup-20261024/qa/result.json",
           "data": "recorded",
           "tool": "bounded",
@@ -382,8 +382,8 @@
           "title": "大流程、每步小說明與FAQ",
           "disposition": "已修正",
           "result": "yes",
-          "reason": "維持15卡47步小說明、34FAQ；目前53來源。這輪修正請假2126及諮商2127／特教2149分流；來源對學生用白話呈現，舊http檢查日期與歷史key保留。",
-          "evidence": "holiday-lab/reports/followup-20261024/root/contacts-green.json、holiday-lab/reports/followup-20261024/qa/new-targets/result.json",
+          "reason": "8879維持47步小說明，42FAQ及63來源；5個修正主題408文案觀察、59個實際引用來源708標題/註記觀察。流程及資料可由凍結提案完整重建。",
+          "evidence": "holiday-lab/reports/current-rules-20261024/qa/raw-r3/result.json、holiday-lab/reports/current-rules-20261024/current-verification.json、holiday-lab/reports/current-rules-20261024/regression-final-command.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -393,7 +393,7 @@
           "title": "畢業檢核：逐題來源核對",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "已核對並保存版本：112–115一般日四技課表；1150610離校要點；2026/02/28檢核公告；保留缺口：個別班別及入學年仍須匹配；檢核公告資料算至114-1，不代表115-1即時成績；教務檢核PDF附件未視覺讀完",
+          "reason": "8876前版限定證據保留；本輪未新增此項全範圍驗收。已核對並保存版本：112–115一般日四技課表；1150610離校要點；2026/02/28檢核公告；保留缺口：個別班別及入學年仍須匹配；檢核公告資料算至114-1，不代表115-1即時成績；教務檢核PDF附件未視覺讀完",
           "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
           "data": "recorded",
           "tool": "bounded",
@@ -404,7 +404,7 @@
           "title": "校外實習：逐題來源核對",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "已核對並保存版本：112–115一般班課表；官網列版107系手冊；保留缺口：115本系要點適用、當期申請考核Word全文及校級實習辦法仍缺；107版不升格當期",
+          "reason": "8876前版限定證據保留；本輪未新增此項全範圍驗收。已核對並保存版本：112–115一般班課表；官網列版107系手冊；保留缺口：115本系要點適用、當期申請考核Word全文及校級實習辦法仍缺；107版不升格當期",
           "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
           "data": "recorded",
           "tool": "bounded",
@@ -413,10 +413,10 @@
         {
           "id": "topic-certification",
           "title": "證照認列：逐題來源核對",
-          "disposition": "已檢查",
+          "disposition": "已修正",
           "result": "yes",
-          "reason": "已核對並保存版本：115一般班／技優班課表；114-2獎助公告；公開證照系統；保留缺口：現行完整認列清單、115-1獎助公告與各證照版本未得；107金額與114-2上限歧異不硬選",
-          "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
+          "reason": "已讀113/10/9證照獎助全文，分開學籍、半年申請、補件及畢業認列；完整本系認列表與115-1公告仍缺，未把舊金額當當期承諾。",
+          "evidence": "holiday-lab/reports/current-rules-20261024/threshold/REPORT.md、holiday-lab/reports/current-rules-20261024/threshold/source-matrix.json、holiday-lab/reports/current-rules-20261024/qa/raw-r3/result.json、holiday-lab/reports/current-rules-20261024/current-proof-command.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -424,10 +424,10 @@
         {
           "id": "topic-leave",
           "title": "我要請假：逐題來源核對",
-          "disposition": "已檢查",
+          "disposition": "已修正",
           "result": "yes",
-          "reason": "已核對並保存版本：2026/06簽核公告；1150202學則相關條文；2019歷史請假PDF；保留缺口：最新完整請假規則及全假別／時限附件未得；2019兩日與2026五日不可混成同一套",
-          "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
+          "reason": "已讀114/11/19現列規則兩頁與公開空白表；分清申請、簽核與心理假額，補3FAQ。2019不再作現行依據；2026公告/111操作節點與新版核決級距仍須生輔確認。",
+          "evidence": "holiday-lab/reports/current-rules-20261024/leave/REPORT.md、holiday-lab/reports/current-rules-20261024/leave/source-matrix.json、holiday-lab/reports/current-rules-20261024/qa/raw-r3/result.json、holiday-lab/reports/current-rules-20261024/current-proof-command.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -437,7 +437,7 @@
           "title": "選課加退選：逐題來源核對",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "已核對並保存版本：1140219選課準則；115-1加退選已截止公告；保留缺口：115-1棄選與特殊處理當期日程／表單仍缺；不公布由週次反推的日期",
+          "reason": "8876前版限定證據保留；本輪未新增此項全範圍驗收。已核對並保存版本：1140219選課準則；115-1加退選已截止公告；保留缺口：115-1棄選與特殊處理當期日程／表單仍缺；不公布由週次反推的日期",
           "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
           "data": "recorded",
           "tool": "bounded",
@@ -448,7 +448,7 @@
           "title": "學分抵免：逐題來源核對",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "已核對並保存版本：1140910抵免辦法全文；115-1程序；2018舊空白表；保留缺口：舊表在學一次與新辦法每事因一次不一致；當期印表版本仍待核；9/21截止不作現在受理",
+          "reason": "8876前版限定證據保留；本輪未新增此項全範圍驗收。已核對並保存版本：1140910抵免辦法全文；115-1程序；2018舊空白表；保留缺口：舊表在學一次與新辦法每事因一次不一致；當期印表版本仍待核；9/21截止不作現在受理",
           "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
           "data": "recorded",
           "tool": "bounded",
@@ -457,10 +457,10 @@
         {
           "id": "topic-capstone",
           "title": "專題製作：逐題來源核對",
-          "disposition": "已檢查",
+          "disposition": "已修正",
           "result": "yes",
-          "reason": "已核對並保存版本：112–115一般班課表；官網第十二屆108修訂辦法及三份DOCX；保留缺口：換組表二審前、舊辦法／分組表三審前衝突；當屆規定、人數、評分、補審與授權清單未核",
-          "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
+          "reason": "當前公開三DOCX原檔與前次相同，辦法仍108版；已向學生明示二審/三審差異。當屆規則、評分/補審仍缺，不代學校選期限。",
+          "evidence": "holiday-lab/reports/current-rules-20261024/study/REPORT.md、holiday-lab/reports/current-rules-20261024/study/matrix.json、holiday-lab/reports/current-rules-20261024/study/attachment-comparison.json、holiday-lab/reports/current-rules-20261024/qa/raw-r3/result.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -468,10 +468,10 @@
         {
           "id": "topic-english",
           "title": "英文門檻：逐題來源核對",
-          "disposition": "已檢查",
+          "disposition": "已修正",
           "result": "yes",
-          "reason": "已核對並保存版本：115課表；2023門檻頁；通識修課與115-1英檢排程；保留缺口：現行全文、最新表單、證明效期歧異、115-1替代課清單與即時名額未核；10/24場報名截止不宣稱尚開",
-          "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
+          "reason": "已讀114/12/24門檻辦法、113入學起修課辦法及3現列空白表；核112–115一般班基本門檻，補有效證明與替代條件。115-1全英課清單、105表適用衝突仍未核。",
+          "evidence": "holiday-lab/reports/current-rules-20261024/threshold/REPORT.md、holiday-lab/reports/current-rules-20261024/threshold/source-matrix.json、holiday-lab/reports/current-rules-20261024/qa/raw-r3/result.json、holiday-lab/reports/current-rules-20261024/current-proof-command.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -481,7 +481,7 @@
           "title": "休學復學與兵役：逐題來源核對",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "已核對並保存版本：1120426休學辦法；1150202學則；115-1注意事項；保留缺口：112細則提早復學例外與115學則未列例外衝突；退費條文錯引；當期表單／兵役個案未核",
+          "reason": "8876前版限定證據保留；本輪未新增此項全範圍驗收。已核對並保存版本：1120426休學辦法；1150202學則；115-1注意事項；保留缺口：112細則提早復學例外與115學則未列例外衝突；退費條文錯引；當期表單／兵役個案未核",
           "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
           "data": "recorded",
           "tool": "bounded",
@@ -492,7 +492,7 @@
           "title": "獎助與急難協助：逐題來源核對",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "已核對並保存版本：115-1不利處境／低收已截止索引；生輔急難須知；勵學金入口；保留缺口：各方案當期全文／表單未全齊；勵學金只有標題摘要；115-2日期000年無效；所得資產門檻不得外推各急難",
+          "reason": "8876前版限定證據保留；本輪未新增此項全範圍驗收。已核對並保存版本：115-1不利處境／低收已截止索引；生輔急難須知；勵學金入口；保留缺口：各方案當期全文／表單未全齊；勵學金只有標題摘要；115-2日期000年無效；所得資產門檻不得外推各急難",
           "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
           "data": "recorded",
           "tool": "bounded",
@@ -503,7 +503,7 @@
           "title": "遇到困難找誰：逐題來源核對",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "已核對並保存版本：2026/10/23官網正文：身心健康中心預約、115獨立特殊教育資源中心；保留缺口：現行申訴／性平全文和空白表未得；不保證保密無例外、不用活動分機代個案程序；10/24 live403",
+          "reason": "8876前版限定證據保留；本輪未新增此項全範圍驗收。已核對並保存版本：2026/10/23官網正文：身心健康中心預約、115獨立特殊教育資源中心；保留缺口：現行申訴／性平全文和空白表未得；不保證保密無例外、不用活動分機代個案程序；10/24 live403",
           "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
           "data": "recorded",
           "tool": "bounded",
@@ -514,7 +514,7 @@
           "title": "就業資源：逐題來源核對",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "已核對並保存版本：職發中心官網職掌索引；系辦入口；保留缺口：UCAN與現行聯絡及當期職缺未逐項live核實；1712/1713索引線索不升格當日全面聯絡核准",
+          "reason": "8876前版限定證據保留；本輪未新增此項全範圍驗收。已核對並保存版本：職發中心官網職掌索引；系辦入口；保留缺口：UCAN與現行聯絡及當期職缺未逐項live核實；1712/1713索引線索不升格當日全面聯絡核准",
           "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
           "data": "recorded",
           "tool": "bounded",
@@ -523,10 +523,10 @@
         {
           "id": "topic-graduate-study",
           "title": "繼續升學：逐題來源核對",
-          "disposition": "已檢查",
+          "disposition": "已修正",
           "result": "yes",
-          "reason": "已核對並保存版本：116碩甄全文及115碩士考試歷史簡章；保留缺口：116設創所書審100%與口試文字衝突未解；116考試新簡章未得；附表四115／116字樣不代更正",
-          "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
+          "reason": "兩處現掛116A1與既有原檔同SHA；同頁書審100%/口試矛盾未更正，指南改明示詢問窗口，不認定免口試。所查索引未見116A4，不推論全校未公布。",
+          "evidence": "holiday-lab/reports/current-rules-20261024/study/REPORT.md、holiday-lab/reports/current-rules-20261024/study/matrix.json、holiday-lab/reports/current-rules-20261024/study/attachment-comparison.json、holiday-lab/reports/current-rules-20261024/qa/raw-r3/result.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -536,7 +536,7 @@
           "title": "海外實習：逐題來源核對",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "已核對並保存版本：2026第九屆HC成果；教育部學海要點既存證據；109跨校歷史來函；保留缺口：本系115當期名額語言費用補助契約及返校期限未得；不以109別計畫或觀光簽證湊數",
+          "reason": "8876前版限定證據保留；本輪未新增此項全範圍驗收。已核對並保存版本：2026第九屆HC成果；教育部學海要點既存證據；109跨校歷史來函；保留缺口：本系115當期名額語言費用補助契約及返校期限未得；不以109別計畫或觀光簽證湊數",
           "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
           "data": "recorded",
           "tool": "bounded",
@@ -547,7 +547,7 @@
           "title": "海外見學：逐題來源核對",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "已核對並保存版本：113發展計畫歷史活動；系網介紹與國際處入口；保留缺口：115本系招募團期、費用補助退費、認列學分及請假成果表未核；交換目錄不是見學規則全文",
+          "reason": "8876前版限定證據保留；本輪未新增此項全範圍驗收。已核對並保存版本：113發展計畫歷史活動；系網介紹與國際處入口；保留缺口：115本系招募團期、費用補助退費、認列學分及請假成果表未核；交換目錄不是見學規則全文",
           "evidence": "holiday-lab/reports/overnight-20261024/guide/matrix.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
           "data": "recorded",
           "tool": "bounded",
@@ -558,8 +558,8 @@
           "title": "當期完整規章、表單及年度衝突",
           "disposition": "缺件",
           "result": "no",
-          "reason": "15題皆列現行性缺口；10/24四站web受阻，直接重取為202空內容。舊107／108規章、未讀附件、116設創所書審／口試衝突不當作現行已核。",
-          "evidence": "holiday-lab/reports/overnight-20261024/guide/live-recheck.json、holiday-lab/reports/overnight-20261024/guide/REPORT.md",
+          "reason": "維持no：已補請假、英文門檻及證照母法/現列表單；其餘當期附件、專題二/三審、116口試、105免綁表與最新母法適用差異仍缺。不能把文件方法通過升格所有政策已釐清。",
+          "evidence": "holiday-lab/reports/current-rules-20261024/leave/source-matrix.json、holiday-lab/reports/current-rules-20261024/threshold/source-matrix.json、holiday-lab/reports/current-rules-20261024/study/matrix.json",
           "data": "recorded",
           "tool": "pending",
           "user": "user_pending"
@@ -569,8 +569,8 @@
           "title": "小颯及既有學生作品／原始署名",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "小颯完整原畫與署名保留，315原圖／凍結遊戲素材SHA相同。82 DOM引用已分61 img／20 CSS／1停用icon並逐項追到精確資料或原照裁切紀錄；仍不代表再製授權全齊。",
-          "evidence": "holiday-lab/reports/followup-20261024/art/asset-reference-map.json、holiday-lab/reports/followup-20261024/root/current-verification.json",
+          "reason": "315原圖/凍結遊戲素材SHA保留，既有作品與署名不改；不表示權利全核。",
+          "evidence": "holiday-lab/reports/current-rules-20261024/preserve-r3-command.json、holiday-lab/reports/current-rules-20261024/qa/raw-r3/result.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -580,7 +580,7 @@
           "title": "取消主網站已知生成素材引用",
           "disposition": "已修正",
           "result": "yes",
-          "reason": "主站favicon改為無圖示，頁底節日入口改暫緩；六組實際82項引用未命中已知生成清單，原PNG與凍結遊戲包留存。",
+          "reason": "8876前版限定證據保留；本輪未新增此項全範圍驗收。主站favicon改為無圖示，頁底節日入口改暫緩；六組實際82項引用未命中已知生成清單，原PNG與凍結遊戲包留存。",
           "evidence": "holiday-lab/reports/overnight-20261024/root/icon-green.json、holiday-lab/reports/overnight-20261024/root/asset-audit.json、holiday-lab/reports/followup-20261024/qa/result.json",
           "data": "recorded",
           "tool": "bounded",
@@ -591,7 +591,7 @@
           "title": "全部素材製程與權利已確認",
           "disposition": "缺件",
           "result": "no",
-          "reason": "小颯作者由使用者確認；其他既有校方作品／照片的逐件製程與權利未全數另核，不能宣稱整包零AI或所有改編權已核。",
+          "reason": "8876前版限定證據保留；本輪未新增此項全範圍驗收。小颯作者由使用者確認；其他既有校方作品／照片的逐件製程與權利未全數另核，不能宣稱整包零AI或所有改編權已核。",
           "evidence": "holiday-lab/reports/overnight-20261024/root/asset-audit.json",
           "data": "recorded",
           "tool": "pending",
@@ -602,8 +602,8 @@
           "title": "試玩放招生後、頁尾前",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "共用首頁維持頁底策展入口與暫緩提示，首屏無遊戲控制；未回到首頁最上方。",
-          "evidence": "holiday-lab/reports/overnight-20261024/root/frozen-entry-green.json、holiday-lab/reports/followup-20261024/qa/result.json",
+          "reason": "8879六組僅核入口仍在招生後、頁尾前；沒點進遊戲或測玩，首屏無節日啟動入口。",
+          "evidence": "holiday-lab/reports/current-rules-20261024/qa/raw-r3/result.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -613,8 +613,8 @@
           "title": "全部節日遊戲凍結",
           "disposition": "保留",
           "result": "yes",
-          "reason": "包含勞動節，未開發／修改玩法／測玩／巨量QA；僅調整主網站入口，既有遊戲、素材與音訊檔保留。",
-          "evidence": "holiday-lab/reports/overnight-20261024/root/retained-assets.json、holiday-lab/reports/followup-20261024/qa/result.json",
+          "reason": "所有節日遊戲維持凍結，未啟遊戲/Unity/生圖或續跑巨量QA。",
+          "evidence": "holiday-lab/reports/current-rules-20261024/preserve-r3-command.json、holiday-lab/reports/current-rules-20261024/qa/raw-r3/result.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -624,7 +624,7 @@
           "title": "Flora／胖倉鼠WebGL成品",
           "disposition": "缺件",
           "result": "no",
-          "reason": "本輪再次只查指定TF-BASE交接夾（2026-10-24T01:12:07.890Z UTC），仍5份工單／腳本，未見WebGL。未啟Unity、未重派或下載舊包。",
+          "reason": "最近指定TF-BASE夾實查在2026-10-24T01:12:07.890Z：5份工單/腳本，未見成品；本段未重查，不以舊結果冒稱現在已驗包。保留待回傳、不啟Unity或重派。",
           "evidence": "holiday-lab/reports/followup-20261024/root/webgl-recheck.json",
           "data": "recorded",
           "tool": "pending",
@@ -635,8 +635,8 @@
           "title": "維持漫畫／手繪風格",
           "disposition": "保留",
           "result": "yes",
-          "reason": "只做必要網站文案、素材引用與入口修正；styles、章節版型與照片定位原樣，未全面換版、未換字體、未新增AI圖示。",
-          "evidence": "holiday-lab/reports/followup-20261024/root/current-verification.json",
+          "reason": "原漫畫/手繪版型、CSS、元件及照片定位保持；只做必要學生文案/來源修正。",
+          "evidence": "holiday-lab/reports/current-rules-20261024/preserve-r3-command.json、holiday-lab/reports/current-rules-20261024/qa/raw-r3/result.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -646,8 +646,8 @@
           "title": "本輪本機建置",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "最新.measure-followup-20261024-01，app-3A2EBGL2.js，360檔；本機measurement審閱版，未發布。",
-          "evidence": "holiday-lab/reports/followup-20261024/root/build.json",
+          "reason": "最新.measure-current-rules-20261024-03／360檔／app-FPPJGCJR.js，本機8879。01/02與8876保留；未發布。",
+          "evidence": "holiday-lab/reports/current-rules-20261024/build-command-r3.json、holiday-lab/reports/current-rules-20261024/current-verification.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -657,8 +657,8 @@
           "title": "獨立三語與手機驗收",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "主6組148yes、補6組64yes，58張原圖；來源與360建置檔前後一致，主控唯讀再核。",
-          "evidence": "holiday-lab/reports/followup-20261024/qa/command.json、holiday-lab/reports/followup-20261024/qa/new-targets-command.json、holiday-lab/reports/followup-20261024/root/current-proof-final.json",
+          "reason": "最新版6組144yes／0no、54WebP；47source與360build前後相同，主控逐SHA及提案重建複驗。01版因切分支轉行尾真RED保留，02版138yes是歷史版。",
+          "evidence": "holiday-lab/reports/current-rules-20261024/qa/raw-r3-command.json、holiday-lab/reports/current-rules-20261024/qa/raw-r3/result.json、holiday-lab/reports/current-rules-20261024/current-proof-command.json、holiday-lab/reports/current-rules-20261024/newline-diagnosis.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -668,7 +668,7 @@
           "title": "實體手機與母語審閱",
           "disposition": "保留",
           "result": "no",
-          "reason": "本輪是390模擬視窗與工具核對；實體手機、三語母語逐句與使用者新畫面確認未取得。",
+          "reason": "8876前版限定證據保留；本輪未新增此項全範圍驗收。本輪是390模擬視窗與工具核對；實體手機、三語母語逐句與使用者新畫面確認未取得。",
           "evidence": "holiday-lab/reports/followup-20261024/qa/result.json、holiday-lab/reports/overnight-20261024/program/REPORT.md",
           "data": "recorded",
           "tool": "pending",
@@ -679,8 +679,8 @@
           "title": "不push／不main／不刪檔／不C節",
           "disposition": "已檢查",
           "result": "yes",
-          "reason": "原四dirty與R0五檔SHA、main refs及C節相同；每項codex短分支，本輪只本機提交，未執行C節。",
-          "evidence": "holiday-lab/reports/overnight-20261024/root/before.json、holiday-lab/reports/followup-20261024/root/current-proof-final.json",
+          "reason": "四dirty+R0五檔、main refs與C節SHA保持；本段本機codex分支提交，不push、不發布、不刪檔。",
+          "evidence": "holiday-lab/reports/current-rules-20261024/preserve-r3-command.json、holiday-lab/reports/current-rules-20261024/qa/raw-r3/result.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
@@ -690,7 +690,7 @@
           "title": "小颯首獎年份",
           "disposition": "已修正",
           "result": "yes",
-          "reason": "主辦CELSYS2021-04-28公告支持第27屆；中英資料2022→2021，三語兩寬WIN2021與小颯署名可見，原畫不改。",
+          "reason": "8876前版限定證據保留；本輪未新增此項全範圍驗收。主辦CELSYS2021-04-28公告支持第27屆；中英資料2022→2021，三語兩寬WIN2021與小颯署名可見，原畫不改。",
           "evidence": "holiday-lab/reports/followup-20261024/art/primary.json、holiday-lab/reports/followup-20261024/root/year-green.json、holiday-lab/reports/followup-20261024/qa/new-targets/result.json",
           "data": "recorded",
           "tool": "bounded",
@@ -701,14 +701,25 @@
           "title": "現行請假／求助分機與正式英文",
           "disposition": "已修正",
           "result": "yes",
-          "reason": "生輔現行表請假2126取代舊索引2114；諮商2127與動遊特教2149分流。招生選才組Admissions and Selection Division、通識Center for General Education另有真UI驗證。",
+          "reason": "8876前版限定證據保留；本輪未新增此項全範圍驗收。生輔現行表請假2126取代舊索引2114；諮商2127與動遊特教2149分流。招生選才組Admissions and Selection Division、通識Center for General Education另有真UI驗證。",
           "evidence": "holiday-lab/reports/followup-20261024/contacts/REPORT.md、holiday-lab/reports/followup-20261024/root/contacts-green.json、holiday-lab/reports/followup-20261024/qa/new-targets/result.json",
+          "data": "recorded",
+          "tool": "bounded",
+          "user": "user_pending"
+        },
+        {
+          "id": "source-notes",
+          "title": "來源註記改成學生用語",
+          "disposition": "已修正",
+          "result": "yes",
+          "reason": "逐ID將48個舊來源註記改成20組白話說明；仍明列只核摘要/舊版/當期缺件，不改日期、URL或辦理規定。59個實際引用來源的三語註記可見驗收通過。",
+          "evidence": "holiday-lab/reports/current-rules-20261024/source-notes-copy.json、holiday-lab/reports/current-rules-20261024/source-notes-green.json、holiday-lab/reports/current-rules-20261024/qa/raw-r3/result.json",
           "data": "recorded",
           "tool": "bounded",
           "user": "user_pending"
         }
       ],
-      "row_count": 49
+      "row_count": 50
     }
   ],
   "filters": [
@@ -732,12 +743,12 @@
     }
   ],
   "unknowns": [
-    "中日全站逐字缺字稽核：8875限定6狀態79,079字元配對有字形；30資料檔2,204字元有可用glyph。8876新增古／折兩字已有限cmap與CSS range補驗。469未載入描述、逐字實際fallback／跨OS仍未全驗。",
-    "全部正式職稱／處室外文名：指南8窗口當日Chrome逐筆實讀；招生、通識正式英文及請假／求助分機已更正。新特教中心英文官網仍有舊合併名稱，官方日文未查得；保留中文正式名＋功能說明，未冒認官方日譯。",
-    "當期完整規章、表單及年度衝突：15題皆列現行性缺口；10/24四站web受阻，直接重取為202空內容。舊107／108規章、未讀附件、116設創所書審／口試衝突不當作現行已核。",
-    "全部素材製程與權利已確認：小颯作者由使用者確認；其他既有校方作品／照片的逐件製程與權利未全數另核，不能宣稱整包零AI或所有改編權已核。",
-    "Flora／胖倉鼠WebGL成品：本輪再次只查指定TF-BASE交接夾（2026-10-24T01:12:07.890Z UTC），仍5份工單／腳本，未見WebGL。未啟Unity、未重派或下載舊包。",
-    "實體手機與母語審閱：本輪是390模擬視窗與工具核對；實體手機、三語母語逐句與使用者新畫面確認未取得。"
+    "中日全站逐字缺字稽核：維持no：舊有限字形核對保留，新資料10字已在既有字體cmap及CSS範圍找到，沒有另下載字體。全站實際逐字fallback、跨OS與真機仍未全核。",
+    "全部正式職稱／處室外文名：維持no：本輪官網正文支持語文暨國際教學中心正式英文；既有8窗口名稱核對保留。全校官方日文未取得，新特教中心英名同步與部分職稱矛盾仍未釐清。",
+    "當期完整規章、表單及年度衝突：維持no：已補請假、英文門檻及證照母法/現列表單；其餘當期附件、專題二/三審、116口試、105免綁表與最新母法適用差異仍缺。不能把文件方法通過升格所有政策已釐清。",
+    "全部素材製程與權利已確認：8876前版限定證據保留；本輪未新增此項全範圍驗收。小颯作者由使用者確認；其他既有校方作品／照片的逐件製程與權利未全數另核，不能宣稱整包零AI或所有改編權已核。",
+    "Flora／胖倉鼠WebGL成品：最近指定TF-BASE夾實查在2026-10-24T01:12:07.890Z：5份工單/腳本，未見成品；本段未重查，不以舊結果冒稱現在已驗包。保留待回傳、不啟Unity或重派。",
+    "實體手機與母語審閱：8876前版限定證據保留；本輪未新增此項全範圍驗收。本輪是390模擬視窗與工具核對；實體手機、三語母語逐句與使用者新畫面確認未取得。"
   ],
   "build": {
     "generator": "project-dashboard/build-dashboard.js",

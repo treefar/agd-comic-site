@@ -1,3 +1,20 @@
+## 2026-10-24 最新：8879指南更新與三語來源白話化
+
+- source_agent: codex；TF-GO。最新本機 http://127.0.0.1:8879/ ，指南 /?lang=zh#/students/guide ，儀表板 /progress/ 。.measure-current-rules-20261024-03／360檔／app-FPPJGCJR.js。8876仍是前輪審閱版；8877為本輪01、8878為02，皆保留，不以舊版判斷新成果。
+- 三組子代理分別完成請假、英文/證照、專題/升學補研，主控套提案；另由未改產品的代理獨立驗收。指南15卡47步不變、FAQ34→42、來源53→63。新英文/日文字典各86項，全部為明列文案，舊key不刪；真建置未成對/衝突均0。JA四處保留台灣115学年度第1学期，不套日本前期。
+- 請假現列114/11/19規則2頁、公假/事假空白表已讀；分清送件、簽核及心理假假額。英文現列114/12/24辦法3頁、113入學起外語修課與3空白表、113/10/9證照獎助全文已讀。只核112–115日四技一般班基本門檻，不外推技優或全校。新規/舊操作路由、105免綁類別、115-1全英課/獎助、本系完整證照表仍保留缺件。
+- 公開專題三DOCX與前次相同，辦法仍108版，二審/三審期限矛盾未解；兩處116A1與原件同SHA，書審100%/口試仍矛盾。指南明示詢問窗口，不代校方裁決；所查公開索引未得116A4，未推論全校未公告。來源註記48處改20組學生用語，保留摘要/舊版限制；查核日期、URL、規定與原始HTTP/研究收據不改。
+- 03獨立6組144yes/0no，408文案及708來源欄位觀察、54WebP；47來源/360build前後SHA相同。主控完整重建guide、逐SHA核截圖/字典，29測試exit0。新增10字有限cmap/CSS range可用，未換字體；8876舊16旋轉h2候選亦補證是單行。不是全站實際fallback、母語或真機認證。
+- 第一輪01因root在QA中切分支，5檔LF→CRLF觸發真正SHA失敗，已逐位元證明行尾原因；raw-r1不升格通過。02有138yes，但註記白話化後已被03取代。原校準/套用容器key/儀表板global名稱的工具失敗保留，修方法，不改產品配合。
+- 儀表板50列／44yes／6no／使用者0，由current-rules-20261024/verification.json的960個檔案綁定重產；未重驗項目清楚標前版範圍。權威18/18，搜尋/展開/篩選及手機深色2組14yes。完整逐條報告、stdout/stderr/exit與限制：holiday-lab/reports/current-rules-20261024/REPORT.md 。
+- 本機整合codex/current-rules-review24；項目分支codex/short-lines24、codex/leave-rules24、codex/study-copy24、codex/threshold-copy24、codex/source-notes24。315原圖/凍結遊戲素材、四dirty+R0、main refs與C節相同。未push、發布、main、刪檔或C節操作；節日全凍結，無生圖、Unity、測玩或大批遊戲QA。Flora/胖倉鼠本段未新回查，最近指定夾01:12UTC紀錄仍只有5工單，不冒稱即時已驗包。Vault只本機紀錄，不執行私人整庫推送。
+- 下一輪第一件事：讀本段與REPORT，先回收使用者對8879畫面的具體意見。再按可得正式文件補缺；未知權利、母語/真機、全部職稱外文名及WebGL不可自行宣告完成。已有新證據才重驗，不重開節日工作。目標仍未宣告全面完成。
+
+```text
+cd C:/agywork/agd-holiday-prototypes
+node scripts/serve-local-review.cjs --site=.measure-current-rules-20261024-03 --dashboard=holiday-lab/dashboard/out --port=8879
+```
+
 ## 2026-10-24 最新：8876可審閱，年份／聯絡與英文資料已補正
 
 - source_agent: codex；TF-GO。使用者要求到一段落先看新的本地網頁，已在Chrome開啟 http://127.0.0.1:8876/ 。指南 /?lang=zh#/students/guide ，儀表板 /progress/ 。最新 .measure-followup-20261024-01，360檔／app-3A2EBGL2.js；8875為前輪保留版。

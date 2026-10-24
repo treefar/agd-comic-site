@@ -1,0 +1,60 @@
+{
+  "base": "http://127.0.0.1:8879/progress/",
+  "expected": {
+    "rows": 50,
+    "yes": 44,
+    "no": 6
+  },
+  "before": [
+    {
+      "file": "holiday-lab/dashboard/out/index.html",
+      "sha256": "525d00fcdf4e1cc92c4058764908951d93d331c166fbf2fd96978db46fa1e18e"
+    },
+    {
+      "file": "holiday-lab/dashboard/out/dashboard-data.json",
+      "sha256": "ae9262c914be85f789bdcc1a52ebd8a54769835d6000dffc03caf9df5f13ec6a"
+    },
+    {
+      "file": "holiday-lab/dashboard/progress-policy.json",
+      "sha256": "32b5c0d034701706acc25e1d5658f0e4ca4864b82fd7ace95f861824d402c5df"
+    },
+    {
+      "file": "holiday-lab/reports/current-rules-20261024/verification.json",
+      "sha256": "2e6adfbc94c2cd6bc76f9bb514a8671ef9acb6fe6f1a0ee4d3847631111ede66"
+    }
+  ],
+  "cases": [
+    {
+      "width": 1440,
+      "checks": [],
+      "errors": [],
+      "requests": [
+        "http://127.0.0.1:8879/progress/"
+      ],
+      "shots": []
+    }
+  ],
+  "errors": [
+    "page.evaluate: TypeError: Cannot read properties of undefined (reading 'data')\n    at eval (eval at evaluate (:311:30), <anonymous>:1:37)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\current-rules-20261024\\check-dashboard.cjs:7:525"
+  ],
+  "after": [
+    {
+      "file": "holiday-lab/dashboard/out/index.html",
+      "sha256": "525d00fcdf4e1cc92c4058764908951d93d331c166fbf2fd96978db46fa1e18e"
+    },
+    {
+      "file": "holiday-lab/dashboard/out/dashboard-data.json",
+      "sha256": "ae9262c914be85f789bdcc1a52ebd8a54769835d6000dffc03caf9df5f13ec6a"
+    },
+    {
+      "file": "holiday-lab/dashboard/progress-policy.json",
+      "sha256": "32b5c0d034701706acc25e1d5658f0e4ca4864b82fd7ace95f861824d402c5df"
+    },
+    {
+      "file": "holiday-lab/reports/current-rules-20261024/verification.json",
+      "sha256": "2e6adfbc94c2cd6bc76f9bb514a8671ef9acb6fe6f1a0ee4d3847631111ede66"
+    }
+  ],
+  "stable": true,
+  "pass": false
+}

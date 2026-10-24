@@ -1,0 +1,289 @@
+{
+  "base": "http://127.0.0.1:8879/progress/",
+  "expected": {
+    "rows": 50,
+    "yes": 44,
+    "no": 6
+  },
+  "before": [
+    {
+      "file": "holiday-lab/dashboard/out/index.html",
+      "sha256": "525d00fcdf4e1cc92c4058764908951d93d331c166fbf2fd96978db46fa1e18e"
+    },
+    {
+      "file": "holiday-lab/dashboard/out/dashboard-data.json",
+      "sha256": "ae9262c914be85f789bdcc1a52ebd8a54769835d6000dffc03caf9df5f13ec6a"
+    },
+    {
+      "file": "holiday-lab/dashboard/progress-policy.json",
+      "sha256": "32b5c0d034701706acc25e1d5658f0e4ca4864b82fd7ace95f861824d402c5df"
+    },
+    {
+      "file": "holiday-lab/reports/current-rules-20261024/verification.json",
+      "sha256": "2e6adfbc94c2cd6bc76f9bb514a8671ef9acb6fe6f1a0ee4d3847631111ede66"
+    }
+  ],
+  "cases": [
+    {
+      "width": 1440,
+      "checks": [
+        {
+          "name": "counts agree with fresh source rules",
+          "yes_no": "yes",
+          "details": {
+            "rows": 50,
+            "cards": [
+              {
+                "id": "records",
+                "value": 50
+              },
+              {
+                "id": "fixed",
+                "value": 13
+              },
+              {
+                "id": "verified",
+                "value": 44
+              },
+              {
+                "id": "pending",
+                "value": 6
+              },
+              {
+                "id": "confirmed",
+                "value": 0
+              }
+            ],
+            "width": 1440,
+            "docWidth": 1440
+          }
+        },
+        {
+          "name": "no horizontal page overflow",
+          "yes_no": "yes",
+          "details": {
+            "rows": 50,
+            "cards": [
+              {
+                "id": "records",
+                "value": 50
+              },
+              {
+                "id": "fixed",
+                "value": 13
+              },
+              {
+                "id": "verified",
+                "value": 44
+              },
+              {
+                "id": "pending",
+                "value": 6
+              },
+              {
+                "id": "confirmed",
+                "value": 0
+              }
+            ],
+            "width": 1440,
+            "docWidth": 1440
+          }
+        },
+        {
+          "name": "search locates the new source-note item",
+          "yes_no": "yes",
+          "details": [
+            "來源註記改成學生用語\t已修正\tyes\t已留資料\t本輪限定範圍通過\t待使用者審閱"
+          ]
+        },
+        {
+          "name": "row expands current reason and evidence",
+          "yes_no": "yes",
+          "details": {
+            "expanded": "true",
+            "hidden": false,
+            "text": "結果與限制\n逐ID將48個舊來源註記改成20組白話說明；仍明列只核摘要/舊版/當期缺件，不改日期、URL或辦理規定。59個實際引用來源的三語註記可見驗收通過。\n實際證據\nholiday-lab/reports/current-rules-20261024/source-notes-copy.json、holiday-lab/reports/current-rules-20261024/source-notes-green.json、holiday-lab/reports/current-rules-20261024/qa/raw-r3/result.json"
+          }
+        },
+        {
+          "name": "missing filter agrees with actual no rows",
+          "yes_no": "yes",
+          "details": [
+            "中日全站逐字缺字稽核\t保留\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "全部正式職稱／處室外文名\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "當期完整規章、表單及年度衝突\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "全部素材製程與權利已確認\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "Flora／胖倉鼠WebGL成品\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "實體手機與母語審閱\t保留\tno\t已留資料\t未完成／待確認\t待使用者審閱"
+          ]
+        },
+        {
+          "name": "all filter restores source row count",
+          "yes_no": "yes"
+        },
+        {
+          "name": "no exceptions or external requests",
+          "yes_no": "yes",
+          "details": {
+            "errors": [],
+            "requests": [
+              "http://127.0.0.1:8879/progress/"
+            ]
+          }
+        }
+      ],
+      "errors": [],
+      "requests": [
+        "http://127.0.0.1:8879/progress/"
+      ],
+      "shots": [
+        {
+          "file": "1440-light.webp",
+          "sha256": "55928763c37d9e79192e1598f1e4f45fc01feca5bb8f4dd6f40e96e725708b6b"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "width": 390,
+      "checks": [
+        {
+          "name": "counts agree with fresh source rules",
+          "yes_no": "yes",
+          "details": {
+            "rows": 50,
+            "cards": [
+              {
+                "id": "records",
+                "value": 50
+              },
+              {
+                "id": "fixed",
+                "value": 13
+              },
+              {
+                "id": "verified",
+                "value": 44
+              },
+              {
+                "id": "pending",
+                "value": 6
+              },
+              {
+                "id": "confirmed",
+                "value": 0
+              }
+            ],
+            "width": 390,
+            "docWidth": 390
+          }
+        },
+        {
+          "name": "no horizontal page overflow",
+          "yes_no": "yes",
+          "details": {
+            "rows": 50,
+            "cards": [
+              {
+                "id": "records",
+                "value": 50
+              },
+              {
+                "id": "fixed",
+                "value": 13
+              },
+              {
+                "id": "verified",
+                "value": 44
+              },
+              {
+                "id": "pending",
+                "value": 6
+              },
+              {
+                "id": "confirmed",
+                "value": 0
+              }
+            ],
+            "width": 390,
+            "docWidth": 390
+          }
+        },
+        {
+          "name": "search locates the new source-note item",
+          "yes_no": "yes",
+          "details": [
+            "來源註記改成學生用語\t已修正\tyes\t已留資料\t本輪限定範圍通過\t待使用者審閱"
+          ]
+        },
+        {
+          "name": "row expands current reason and evidence",
+          "yes_no": "yes",
+          "details": {
+            "expanded": "true",
+            "hidden": false,
+            "text": "結果與限制\n逐ID將48個舊來源註記改成20組白話說明；仍明列只核摘要/舊版/當期缺件，不改日期、URL或辦理規定。59個實際引用來源的三語註記可見驗收通過。\n實際證據\nholiday-lab/reports/current-rules-20261024/source-notes-copy.json、holiday-lab/reports/current-rules-20261024/source-notes-green.json、holiday-lab/reports/current-rules-20261024/qa/raw-r3/result.json"
+          }
+        },
+        {
+          "name": "missing filter agrees with actual no rows",
+          "yes_no": "yes",
+          "details": [
+            "中日全站逐字缺字稽核\t保留\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "全部正式職稱／處室外文名\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "當期完整規章、表單及年度衝突\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "全部素材製程與權利已確認\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "Flora／胖倉鼠WebGL成品\t缺件\tno\t已留資料\t未完成／待確認\t待使用者審閱",
+            "實體手機與母語審閱\t保留\tno\t已留資料\t未完成／待確認\t待使用者審閱"
+          ]
+        },
+        {
+          "name": "all filter restores source row count",
+          "yes_no": "yes"
+        },
+        {
+          "name": "no exceptions or external requests",
+          "yes_no": "yes",
+          "details": {
+            "errors": [],
+            "requests": [
+              "http://127.0.0.1:8879/progress/"
+            ]
+          }
+        }
+      ],
+      "errors": [],
+      "requests": [
+        "http://127.0.0.1:8879/progress/"
+      ],
+      "shots": [
+        {
+          "file": "390-dark.webp",
+          "sha256": "6c17413ce111298554502fa2d01ce69518b40223751162309e8a1aa9b4e92036"
+        }
+      ],
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "after": [
+    {
+      "file": "holiday-lab/dashboard/out/index.html",
+      "sha256": "525d00fcdf4e1cc92c4058764908951d93d331c166fbf2fd96978db46fa1e18e"
+    },
+    {
+      "file": "holiday-lab/dashboard/out/dashboard-data.json",
+      "sha256": "ae9262c914be85f789bdcc1a52ebd8a54769835d6000dffc03caf9df5f13ec6a"
+    },
+    {
+      "file": "holiday-lab/dashboard/progress-policy.json",
+      "sha256": "32b5c0d034701706acc25e1d5658f0e4ca4864b82fd7ace95f861824d402c5df"
+    },
+    {
+      "file": "holiday-lab/reports/current-rules-20261024/verification.json",
+      "sha256": "2e6adfbc94c2cd6bc76f9bb514a8671ef9acb6fe6f1a0ee4d3847631111ede66"
+    }
+  ],
+  "stable": true,
+  "pass": true
+}
