@@ -1,0 +1,2738 @@
+{
+  "observed_utc": "2026-10-24T06:07:28.231Z",
+  "app": "/** @jsx siteCreateElement */\r\n/* App + Tweaks */\r\nconst { useState: u, useEffect: ue } = React;\r\n\r\nconst TWEAKS_DEFAULTS = /*EDITMODE-BEGIN*/{\r\n  \"style\": \"shonen\",\r\n  \"halftone\": true,\r\n  \"speedlines\": true,\r\n  \"sfx\": true,\r\n  \"borderWidth\": 5,\r\n  \"accentRed\": \"#e63946\",\r\n  \"accentBlue\": \"#1d4ed8\",\r\n  \"accentYellow\": \"#ffd60a\",\r\n  \"paperColor\": \"#f4ecd8\"\r\n}/*EDITMODE-END*/;\r\n\r\nfunction applyStyleVars(t) {\r\n  const r = document.documentElement.style;\r\n  r.setProperty(\"--accent-red\", t.accentRed);\r\n  r.setProperty(\"--accent-blue\", t.accentBlue);\r\n  r.setProperty(\"--accent-yellow\", t.accentYellow);\r\n  r.setProperty(\"--paper\", t.paperColor);\r\n  r.setProperty(\"--bw\", t.borderWidth + \"px\");\r\n\r\n  // 隱藏狀聲詞\r\n  document.querySelectorAll(\".sfx\").forEach((el) => {\r\n    el.style.display = t.sfx ? \"\" : \"none\";\r\n  });\r\n  // 隱藏網點 / 集中線\r\n  document.querySelectorAll(\".bg-halftone-light, .bg-halftone-dense, .bg-halftone-red, .bg-halftone-blue\").forEach((el) => {\r\n    el.style.backgroundImage = t.halftone ? \"\" : \"none\";\r\n  });\r\n  document.querySelectorAll(\".bg-speedlines\").forEach((el) => {\r\n    el.style.display = t.speedlines ? \"\" : \"none\";\r\n  });\r\n\r\n  // 風格切換 — 改變 paper / 邊框\r\n  document.body.classList.remove(\"style-shonen\", \"style-novel\", \"style-webtoon\");\r\n  document.body.classList.add(\"style-\" + t.style);\r\n\r\n  if (t.style === \"novel\") {\r\n    r.setProperty(\"--paper\", \"#1a1714\");\r\n    document.body.style.color = \"#f4ecd8\";\r\n  } else if (t.style === \"webtoon\") {\r\n    r.setProperty(\"--paper\", \"#fafafa\");\r\n    document.body.style.color = \"#0f0d0a\";\r\n  } else {\r\n    r.setProperty(\"--paper\", t.paperColor);\r\n    document.body.style.color = \"\";\r\n  }\r\n}\r\n\r\nconst App = () => {\r\n  const [tweaks, setTweaks] = u(TWEAKS_DEFAULTS);\r\n\r\n  ue(() => {\r\n    applyStyleVars(tweaks);\r\n    window.parent.postMessage({ slideIndexChanged: 0 }, \"*\");\r\n  }, [tweaks]);\r\n\r\n  // Tweaks panel protocol\r\n  const [tweaksOpen, setTweaksOpen] = u(false);\r\n  ue(() => {\r\n    const onMsg = (e) => {\r\n      if (!e.data) return;\r\n      if (e.data.type === \"__activate_edit_mode\") setTweaksOpen(true);\r\n      else if (e.data.type === \"__deactivate_edit_mode\") setTweaksOpen(false);\r\n    };\r\n    window.addEventListener(\"message\", onMsg);\r\n    window.parent.postMessage({ type: \"__edit_mode_available\" }, \"*\");\r\n    return () => window.removeEventListener(\"message\", onMsg);\r\n  }, []);\r\n\r\n  const update = (patch) => {\r\n    const next = { ...tweaks, ...patch };\r\n    setTweaks(next);\r\n    window.parent.postMessage({ type: \"__edit_mode_set_keys\", edits: patch }, \"*\");\r\n  };\r\n\r\n  // 路由：hash 形如 #/news/<slug>、#/faculty/<slug> 等 → 顯示詳情頁\r\n  // 否則（包含 #news / #faculty 這類錨點）顯示完整首頁\r\n  const route = useHashRoute();\r\n  const isDetail = !!route.type;\r\n\r\n  // 首頁初次載入 LOADING（讓動畫露面 1.5 秒），detail page 由各自 useDataset 處理\r\n  // 預渲染版（dist/）已帶完整內容，直接顯示不再播 LOADING，避免 hydration 不一致；開發版（Babel）行為不變\r\n  const [bootLoading, setBootLoading] = u(() => !window.__AGD_PRERENDERED__);\r\n  ue(() => {\r\n    if (!bootLoading) return;\r\n    const t = setTimeout(() => setBootLoading(false), 1500);\r\n    return () => clearTimeout(t);\r\n  }, []);\r\n\r\n  // LOADING 結束後 / 從 detail 切回首頁後，補一次錨點滾動\r\n  // （hash=#join 的初次載入時，章節元素還沒掛 DOM，useHashRoute 那邊 rAF 找不到 → 這裡再滾一次）\r\n  ue(() => {\r\n    if (bootLoading || isDetail) return;\r\n    const hash = window.location.hash;\r\n    if (!hash || hash.startsWith(\"#/\")) return;\r\n    const id = hash.slice(1);\r\n    if (!id) return;\r\n    // 多次重試 — bootLoading 結束後 layout 還在變化，先 50ms 試一次 + 600ms 再校正\r\n    const t1 = setTimeout(() => {\r\n      const el = document.getElementById(id);\r\n      if (el) el.scrollIntoView({ behavior: \"smooth\", block: \"start\" });\r\n    }, 50);\r\n    const t2 = setTimeout(() => {\r\n      const el = document.getElementById(id);\r\n      if (!el) return;\r\n      const rect = el.getBoundingClientRect();\r\n      // 若元素還沒貼近視窗頂端 → 再 snap 一次\r\n      if (Math.abs(rect.top) > 100) {\r\n        el.scrollIntoView({ behavior: \"smooth\", block: \"start\" });\r\n      }\r\n    }, 700);\r\n    return () => { clearTimeout(t1); clearTimeout(t2); };\r\n  }, [bootLoading, isDetail]);\r\n\r\n  // 全站攔截：所有 a[href=\"#X\"] 錨點 → 完全自己接管\r\n  // 用 window.scrollTo 替代 scrollIntoView — 後者在某些 chromium iframe / 沙盒環境會被 CSS smooth 卡住，前者更可靠\r\n  // 重試是為了涵蓋初次載入 LOADING 期間元素還沒掛 DOM 的情況\r\n  ue(() => {\r\n    const scrollToId = (id) => {\r\n      const el = document.getElementById(id);\r\n      if (!el) return false;\r\n      const rect = el.getBoundingClientRect();\r\n      const offset = siteHeaderOffset();\r\n      if (Math.abs(rect.top - offset) <= 2) return true;\r\n      const targetY = rect.top + window.pageYOffset - offset;\r\n      window.scrollTo({ top: targetY, behavior: \"instant\" });\r\n      return true;\r\n    };\r\n    const scrollWithRetry = (id) => {\r\n      [0, 800, 1700].forEach(ms => setTimeout(() => scrollToId(id), ms));\r\n    };\r\n    const onClick = (e) => {\r\n      const a = e.target.closest?.(\"a[href^='#']\");\r\n      if (!a) return;\r\n      const href = a.getAttribute(\"href\") || \"\";\r\n      if (!href || href === \"#\" || href.startsWith(\"#/\")) return;\r\n      const id = href.slice(1);\r\n      e.preventDefault();\r\n      // 同步更新 hash（讓 useHashRoute 也知道；若已相同就不會觸發 hashchange）\r\n      if (window.location.hash !== href) {\r\n        window.history.pushState(null, \"\", href);\r\n        // 手動派發 hashchange，讓 useHashRoute 也跟上（用通用 Event 確保跨瀏覽器）\r\n        window.dispatchEvent(new Event(\"hashchange\"));\r\n      }\r\n      scrollWithRetry(id);\r\n    };\r\n    document.addEventListener(\"click\", onClick);\r\n    return () => document.removeEventListener(\"click\", onClick);\r\n  }, []);\r\n\r\n  if (bootLoading && !isDetail) {\r\n    return (\r\n      <>\r\n        <TopNav />\r\n        <Loading />\r\n        <GlobalClickFx />\r\n      </>\r\n    );\r\n  }\r\n\r\n  return (\r\n    <>\r\n      <TopNav />\r\n      <GlobalClickFx />\r\n      {isDetail ? (\r\n        <DetailView type={route.type} slug={route.slug} />\r\n      ) : (\r\n        <>\r\n          <HeroChapter />\r\n          <NewsChapter />\r\n          <AboutChapter />\r\n          <WorksChapter />\r\n          <FacultyChapter />\r\n          <LabsChapter />\r\n          <JoinChapter />\r\n          <section className=\"chapter\" id=\"student-play\" aria-labelledby=\"student-play-title\">\r\n            <div className=\"container\"><HolidayHome placement=\"games\" /></div>\r\n          </section>\r\n        </>\r\n      )}\r\n      <FooterChapter />\r\n      <FloatingCTA />\r\n\r\n      {tweaksOpen && (\r\n        <TweaksPanel onClose={() => {\r\n          setTweaksOpen(false);\r\n          window.parent.postMessage({ type: \"__edit_mode_dismissed\" }, \"*\");\r\n        }}>\r\n          <TweakSection title=\"風格\">\r\n            <TweakRadio\r\n              value={tweaks.style}\r\n              options={[\r\n                { value: \"shonen\", label: \"少年漫\" },\r\n                { value: \"novel\", label: \"Graphic Novel\" },\r\n                { value: \"webtoon\", label: \"Webtoon\" },\r\n              ]}\r\n              onChange={(v) => update({ style: v })}\r\n            />\r\n          </TweakSection>\r\n          <TweakSection title=\"漫畫元素\">\r\n            <TweakToggle label=\"網點 Halftone\" value={tweaks.halftone} onChange={(v) => update({ halftone: v })} />\r\n            <TweakToggle label=\"集中線 Speed lines\" value={tweaks.speedlines} onChange={(v) => update({ speedlines: v })} />\r\n            <TweakToggle label=\"狀聲詞 SFX\" value={tweaks.sfx} onChange={(v) => update({ sfx: v })} />\r\n          </TweakSection>\r\n          <TweakSection title=\"格框\">\r\n            <TweakSlider label=\"邊框粗細\" min={2} max={10} step={1} value={tweaks.borderWidth} onChange={(v) => update({ borderWidth: v })} />\r\n          </TweakSection>\r\n          <TweakSection title=\"主色\">\r\n            <TweakColor label=\"熱血朱紅\" value={tweaks.accentRed} onChange={(v) => update({ accentRed: v })} />\r\n            <TweakColor label=\"遊戲寶藍\" value={tweaks.accentBlue} onChange={(v) => update({ accentBlue: v })} />\r\n            <TweakColor label=\"點題黃\" value={tweaks.accentYellow} onChange={(v) => update({ accentYellow: v })} />\r\n            <TweakColor label=\"紙底色\" value={tweaks.paperColor} onChange={(v) => update({ paperColor: v })} />\r\n          </TweakSection>\r\n        </TweaksPanel>\r\n      )}\r\n    </>\r\n  );\r\n};\r\n\r\n// 掛載：預渲染 HTML 且目前在首頁 → hydrate 接手；在詳情頁 hash（#/xxx）或開發版 → 清空重畫\r\n// 伺服端預渲染（scripts/build.mjs）沒有 document，會跳過這段\r\nif (typeof document !== \"undefined\") {\r\n  const container = document.getElementById(\"root\");\r\n  const onDetail = window.location.hash.startsWith(\"#/\");\r\n  if (window.__AGD_PRERENDERED__ && container.firstChild && !onDetail && siteLanguage === \"zh\" && ReactDOM.hydrateRoot) {\r\n    ReactDOM.hydrateRoot(container, <App />);\r\n  } else {\r\n    container.textContent = \"\";\r\n    ReactDOM.createRoot(container).render(<App />);\r\n  }\r\n}\r\n",
+  "sources": [
+    {
+      "file": "app.jsx",
+      "sha256": "d43e45ba7b88bfa7deb98601fcace43efccfe25f112fd0c356db7b64881e0fd8"
+    },
+    {
+      "file": "chapters-1.jsx",
+      "sha256": "4cea353f5f1117b2d7f6e0078a3b1c251fa57b6774c9733b184a1fb8c6e55475"
+    },
+    {
+      "file": "chapters-2.jsx",
+      "sha256": "4a7d10a9a214ba15d898d4ea6ca461c825c41b5b407b0b9c44372b7aab894470"
+    },
+    {
+      "file": "comic-components.jsx",
+      "sha256": "74a35cbe65d52a4a38259f0fe79d2440ddd174487bd276cfe6b78ce3ecb1c15c"
+    },
+    {
+      "file": "data/admission.json",
+      "sha256": "dfea36504248c930e27b216e69de1f3d2838ca81ee77274f8a4c7052ec8b1b9d"
+    },
+    {
+      "file": "data/curriculum.json",
+      "sha256": "b4c5d3e8ddf36b55c3203f2757195af8f8f541b632b52cbf2086cead71bdc281"
+    },
+    {
+      "file": "data/en/admission.json",
+      "sha256": "56189b0bc09bdbc17be1d9691b1e2b4a6f3d340393ec0a0ecaabd1c7bfadb017"
+    },
+    {
+      "file": "data/en/curriculum.json",
+      "sha256": "badb3292d5c440fcee3c09e7dca7e7fd50ea1d1b3e8c562065c0805e5232caa2"
+    },
+    {
+      "file": "data/en/editorial.json",
+      "sha256": "9bd83c35ad554de9b96eb9637d6c717bb765eecc65dd4eb80f01bd912c8a54d1"
+    },
+    {
+      "file": "data/en/faculty.json",
+      "sha256": "4d7a55d680133c89e906c62cb6e3cfd0431fb7db46d83694f0971d9aea1fa05e"
+    },
+    {
+      "file": "data/en/flow-ui.json",
+      "sha256": "7433f87429f58e788bce1c55a883846a0cf48aaf850f15224371ecaefdce176a"
+    },
+    {
+      "file": "data/en/guide-labels.json",
+      "sha256": "3e8a6c4739953a1d0b58e0a60e8de1a84c0905727643f26edc7d8ffa14c277e8"
+    },
+    {
+      "file": "data/en/labs.json",
+      "sha256": "44c67558b509e4ba97c98b32d32f4c97cf8dbc7a1457512a57cfe01f9813530c"
+    },
+    {
+      "file": "data/en/news.json",
+      "sha256": "2705b2797b2ecfbc5dbe61761f603beb0ac151e196ccdefe8b19bd16992eadb5"
+    },
+    {
+      "file": "data/en/stats.json",
+      "sha256": "2f74985ce65a3e00895aea2138d3a334697f0730c9de6027e835c998a3acd7d0"
+    },
+    {
+      "file": "data/en/step-details-ui.json",
+      "sha256": "0753ae4679b70e1f8d7282a296f87fd36e7543dc2b5386f0ba63d5bc7a566a1b"
+    },
+    {
+      "file": "data/en/student-guide-ui.json",
+      "sha256": "68267ebed6978486d0c9e220b3a5583d9fbd2686e0aae42d698b48162fc7ccd4"
+    },
+    {
+      "file": "data/en/ui.json",
+      "sha256": "8fdc182005193ba97dd009464856b08b2dbade571f356230cd5d73b18a7c2e77"
+    },
+    {
+      "file": "data/en/videos.json",
+      "sha256": "2f1bd1224c5f1e1e17e03bde00063f5f9568f4b4574c733769f39faca6bba4ae"
+    },
+    {
+      "file": "data/en/works.json",
+      "sha256": "fabe0c2cbcaca7b099d65892b47e9b3f6a87d32d4c7cc5ca51f038a41fbdcb86"
+    },
+    {
+      "file": "data/faculty.json",
+      "sha256": "fb90191f0f3f9f3ccdda49b96e25588819c0662f23a11ba0194411581dba8d29"
+    },
+    {
+      "file": "data/ja/editorial.json",
+      "sha256": "0f6d97a32edf39e935376c54f26ea0eb2e82562581e6a06a1842f4e9e5cbf9d4"
+    },
+    {
+      "file": "data/ja/flow-ui.json",
+      "sha256": "ea9dcf4d669d04e41d95dc51ae911f8d8c3f3ecca16896c0e1eb2ec24b157e9f"
+    },
+    {
+      "file": "data/ja/messages.json",
+      "sha256": "8d6452d09af109317a2c52170cf2c3d59e17c39b607e5a754b69ba76fc6f90b1"
+    },
+    {
+      "file": "data/ja/step-details.json",
+      "sha256": "e204bda5ee29d2209ddbf4cd73c0936a66c93f3deb6effc327c10e7ab94371e2"
+    },
+    {
+      "file": "data/ja/ui.json",
+      "sha256": "57046230278f11f66ac9f6d6f7c0ede5dfca137243e5e5f86dc532f106f8074f"
+    },
+    {
+      "file": "data/labs.json",
+      "sha256": "3cf3aadb7f1dc06ebf71ca5fb8ff3045564e241a1690d4a0878856b09d999944"
+    },
+    {
+      "file": "data/news.json",
+      "sha256": "383829735c7d4b4076333f5f9ac7a0f10eb18de8b8279202495b0ae14953ee16"
+    },
+    {
+      "file": "data/staff.json",
+      "sha256": "51711e80f701eef6e151f171279a09f2cd82338360e347d40c53d980ace054e4"
+    },
+    {
+      "file": "data/stats.json",
+      "sha256": "7cc86aecfa645cce07a54427f5776b0bc62b4f7afc0e621f6751e5e00b3bacb0"
+    },
+    {
+      "file": "data/students/guide.json",
+      "sha256": "83fd03e1ec3a2aae48f8455473ed3a37eb2b8446a54649f62ea1f6754a0f7a19"
+    },
+    {
+      "file": "data/testimonials.json",
+      "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f"
+    },
+    {
+      "file": "data/videos.json",
+      "sha256": "5d1b803c641019f3710607af25fdbfb7cc35dec9df3b2868610b0cb05328fe55"
+    },
+    {
+      "file": "data/works.json",
+      "sha256": "c885aafce4e8c4aca359744130a5efedd6861a9eff7ebba77d12362dd441c185"
+    },
+    {
+      "file": "en-pages.jsx",
+      "sha256": "01bd67afd58cbe515aa7c0a818a6efddfc1f4a0e1ee5a5deb6c2d7579b25c7fd"
+    },
+    {
+      "file": "faculty-portrait.css",
+      "sha256": "02b986f10c3c277becf451cc634d228cf836f686209a29df215b4c30a469ebd4"
+    },
+    {
+      "file": "faculty-portrait.js",
+      "sha256": "3c49876da2f68ef6b10bddae00c54d5e53756b1b00827c3200e5573363c389a4"
+    },
+    {
+      "file": "holiday-home.css",
+      "sha256": "840a114fa1bf7c7e7e9f094cf9dc81d30a2f7b7a502ec76920ccecfd0c9d014d"
+    },
+    {
+      "file": "holiday-home.jsx",
+      "sha256": "402a10e0d025f4226a523536b2ded10baed1310253727a21348f388070fbbf03"
+    },
+    {
+      "file": "locale-en.js",
+      "sha256": "7096f06106505eee115b908fe0be3bed9ce9422b591a9d240dc9328f1f4f4a30"
+    },
+    {
+      "file": "locale-ja.js",
+      "sha256": "fd94d5fffa62f78e6251a25b9801d40202c2a61d955a12a40d5d43d0f1440f6e"
+    },
+    {
+      "file": "pages.jsx",
+      "sha256": "f9e306e7c6ee8c33e8c9df8d81a239f9f2ebac0eed77e81bd329199f2166227f"
+    },
+    {
+      "file": "student-guide-model.js",
+      "sha256": "1721bc47fbbbffccdc696250f7aff8f24449a868ad7d3e69f8fd1c6fc6ed270c"
+    },
+    {
+      "file": "student-guide.css",
+      "sha256": "224adad44d517ae15a018bce8ac6ff93efa6d1fe37245751f0911fb5572ab05a"
+    },
+    {
+      "file": "student-guide.jsx",
+      "sha256": "292733cd7f17a892b64c6e037a87b18fa13ef8863330ad423e88bbab9a3fd960"
+    },
+    {
+      "file": "styles.css",
+      "sha256": "75551537c822e308277d8ad6bfdc83b76db7a9b33193e5ba654b485941cadabe"
+    },
+    {
+      "file": "tweaks-panel.jsx",
+      "sha256": "f28594b8f78104b481440c960731b97abcfdb61aeeb663acb4db0a30d9d9fa4b"
+    },
+    {
+      "file": "holiday-lab/assets/children/actor1.png",
+      "sha256": "e7b8f4b363367b5253ed0556b3b6d0234fef350ab3f1245c105fb3ee0c37188d"
+    },
+    {
+      "file": "holiday-lab/assets/children/actor2.png",
+      "sha256": "3dacb948df867cf45cb32fae5115ace114b10839142951b9463ab0e1cf7e905c"
+    },
+    {
+      "file": "holiday-lab/assets/children/actor3.png",
+      "sha256": "6d9db467648d41367894200ed05958806a8b93d1bf20a24128d07a95251b72f4"
+    },
+    {
+      "file": "holiday-lab/assets/children/cg-1.webp",
+      "sha256": "12d504ec28a6e7737ea30c95ff172d7b09764fe0bc45624113ab75da8db5166b"
+    },
+    {
+      "file": "holiday-lab/assets/children/cg-2.webp",
+      "sha256": "5afb1574d60bd23b99f84f089be9e25ff07704a8d61773857c9710ea10e4f6bd"
+    },
+    {
+      "file": "holiday-lab/assets/children/cg-3.webp",
+      "sha256": "ab9f6e359ee50826a2e80cbe5745dcbcb1aed68d2640d4a3e5892fd7969aa85a"
+    },
+    {
+      "file": "holiday-lab/assets/children/cg-4.webp",
+      "sha256": "e684fc35c07a2c58ba21b6fbdd791f952e18d67e16f77e2ceed36f402dc1b752"
+    },
+    {
+      "file": "holiday-lab/assets/children/cg-5.webp",
+      "sha256": "6ae6d344d8822a2f8ac3efdc289d83073d5514e172ba9b02c3d4e1ef5290bba3"
+    },
+    {
+      "file": "holiday-lab/assets/children/prop1.png",
+      "sha256": "c432f14e88a8f99ba655e03ffc91e606f41974e0d99a060fd2b92092554252b8"
+    },
+    {
+      "file": "holiday-lab/assets/children/prop2.png",
+      "sha256": "12f94420117aef18182a1923fb3c47f540fc32c5a420966495e0de28b1b457d1"
+    },
+    {
+      "file": "holiday-lab/assets/children/prop3.png",
+      "sha256": "522f8ecd2f18c018ae1d1d4c4e4122a6287415acf9c01726e17e831a4b33bbc3"
+    },
+    {
+      "file": "holiday-lab/assets/children/scene.webp",
+      "sha256": "fa298dc91623850b9c7329f69bdb1f322a74c1a4016fb6d3a7bc00d7c3f9aeee"
+    },
+    {
+      "file": "holiday-lab/assets/children/target.png",
+      "sha256": "835a43c5d9dd879884581dbf25d9b777087eae634f30079f005ab086f3b04f2e"
+    },
+    {
+      "file": "holiday-lab/assets/children/token1.png",
+      "sha256": "12433b2d9ef8234835209089c42cb82020b799f112f85d6ec12e2b47e17d953c"
+    },
+    {
+      "file": "holiday-lab/assets/children/token2.png",
+      "sha256": "cf95f427207d447c231225a7444d742ae33b8a2d03d86565ad9911bf1e1011ea"
+    },
+    {
+      "file": "holiday-lab/assets/children/token3.png",
+      "sha256": "8590c0ead0da5e0084ac00f4c09f5ab16f59a30068e53d9c90fac059bf41d203"
+    },
+    {
+      "file": "holiday-lab/assets/constitution/actor1.png",
+      "sha256": "a2961037206fdd6332e73434b7119f424fb3e5482a95a755a5e2763635bba5c3"
+    },
+    {
+      "file": "holiday-lab/assets/constitution/actor2.png",
+      "sha256": "2fc17519f090c4f40a014fa63d169b0f55bf19af7df721196928e19486c1bf21"
+    },
+    {
+      "file": "holiday-lab/assets/constitution/actor3.png",
+      "sha256": "de57b880f54a3e2f4c00bd4c68129b474b4c61964a83e2b573d56ec9470cab53"
+    },
+    {
+      "file": "holiday-lab/assets/constitution/cg-1.webp",
+      "sha256": "9f7c7d77caf8e7d2de64c7208756ec8498e3cb39e8da05645e5b43f4d1d3d915"
+    },
+    {
+      "file": "holiday-lab/assets/constitution/cg-2.webp",
+      "sha256": "c9d646ff2533825648d571d63e367bd89f3421d2b1e78c288460268453ef4f70"
+    },
+    {
+      "file": "holiday-lab/assets/constitution/cg-3.webp",
+      "sha256": "24dbd9dc0342d0ac02ef601463c1ef726ea3db04c21e0b82aeddff5a814f50bb"
+    },
+    {
+      "file": "holiday-lab/assets/constitution/cg-4.webp",
+      "sha256": "1ae176094399c82ed2537e86d34b75416c48550a16c1727e3ebfb526a41bb34e"
+    },
+    {
+      "file": "holiday-lab/assets/constitution/cg-5.webp",
+      "sha256": "2fde94289e5c11d63eaa43e5239577edbdd7b7089645919d6ae47880de5c5516"
+    },
+    {
+      "file": "holiday-lab/assets/constitution/prop1.png",
+      "sha256": "c7b2c1d365de5062ab1359b168ea69d40da14a4ed29297a73008ba185f47b2cf"
+    },
+    {
+      "file": "holiday-lab/assets/constitution/prop2.png",
+      "sha256": "89a575bb7272a03ca7ff7b4eadcc737153051862bb4c950f8b98aa1508c26087"
+    },
+    {
+      "file": "holiday-lab/assets/constitution/prop3.png",
+      "sha256": "5411f6d099c1f0d130047ef9a244ad71512b4bd0ec447f29d547944ba0d08230"
+    },
+    {
+      "file": "holiday-lab/assets/constitution/scene.webp",
+      "sha256": "7b1ee7b69c70a452d2642efaa85b4e01a66bf0b7929dc419d968938d783cbd54"
+    },
+    {
+      "file": "holiday-lab/assets/constitution/target.png",
+      "sha256": "542526b731a0b7f05422d6b11cc3fe87b493483da73e3d0127f8f2e5ceffb339"
+    },
+    {
+      "file": "holiday-lab/assets/constitution/token1.png",
+      "sha256": "6e92512e2c8380c6ce0a40dfe1d8b8b11edb467bbeedcc61d8e9b559f506724a"
+    },
+    {
+      "file": "holiday-lab/assets/constitution/token2.png",
+      "sha256": "94867b4fc875e3d0610f0b91ae997c200de810f48d294b8653ab7ca9e2fc8de2"
+    },
+    {
+      "file": "holiday-lab/assets/constitution/token3.png",
+      "sha256": "d7f14fe44b57322c38687d88cd9de8222a347d231b4a85f523863238bfc99e0b"
+    },
+    {
+      "file": "holiday-lab/assets/dragon-boat/actor1.png",
+      "sha256": "5250200acf0a1fc64be0c32cb48c0e6b7d6f32427793c9e48264861bde26d04a"
+    },
+    {
+      "file": "holiday-lab/assets/dragon-boat/actor2.png",
+      "sha256": "25ddb45b05fae2d0854411c609ea0c2c567f8666efb09e08ff58de58741fe14f"
+    },
+    {
+      "file": "holiday-lab/assets/dragon-boat/actor3.png",
+      "sha256": "3906e8c62f63547f71fa4da7652bbf4bb64f957dec1bc8ba82c0fb82f672cde3"
+    },
+    {
+      "file": "holiday-lab/assets/dragon-boat/cg-1.webp",
+      "sha256": "8f8ebf43ca562f83e502f848c4a7bea473df52844d8329c97b7fea6188a49909"
+    },
+    {
+      "file": "holiday-lab/assets/dragon-boat/cg-2.webp",
+      "sha256": "3d73f04206a1b1fe18d7c5c8b8a287cbdfe1509fa0bf2baedda89f745cf4f01f"
+    },
+    {
+      "file": "holiday-lab/assets/dragon-boat/cg-3.webp",
+      "sha256": "1a47840c2af307709a4d3893f0caa891a99ee1a3b445ad5507da14616f995fb3"
+    },
+    {
+      "file": "holiday-lab/assets/dragon-boat/cg-4.webp",
+      "sha256": "9ccbb2b8f48a9b824827b09d1974d805d8306e8eab49eae4539bf111c6169f5b"
+    },
+    {
+      "file": "holiday-lab/assets/dragon-boat/cg-5.webp",
+      "sha256": "781a51fb94c1367ffc310b47f735bc53b05d3c58669582b1b7e110b076dd8418"
+    },
+    {
+      "file": "holiday-lab/assets/dragon-boat/prop1.png",
+      "sha256": "8dde16fcb45b9c251697d83920c72bed2bf7fd79afb9ad30dfe93c57faa4fd0b"
+    },
+    {
+      "file": "holiday-lab/assets/dragon-boat/prop2.png",
+      "sha256": "6a95b3d3c049b5a47159621e7ea8e74939e918217e4c76578223335bdc4567a2"
+    },
+    {
+      "file": "holiday-lab/assets/dragon-boat/prop3.png",
+      "sha256": "4b63aedd8afe35ca937a839ff142eab9c4eae497c068e32351bf7744b681fe61"
+    },
+    {
+      "file": "holiday-lab/assets/dragon-boat/scene.webp",
+      "sha256": "6ed25930b82e4c6eb9bc8df02835ef4b84375786a469d6c9a893383a4a074fb5"
+    },
+    {
+      "file": "holiday-lab/assets/dragon-boat/target.png",
+      "sha256": "4acbe739503b7d8c77d154f19a50e67dfe8c1bcffecb4bbf9c8a484a86bc1c97"
+    },
+    {
+      "file": "holiday-lab/assets/dragon-boat/token1.png",
+      "sha256": "be628603621882739b310b5658fcc3c783e3cfb237909ec998944bcb65b01bef"
+    },
+    {
+      "file": "holiday-lab/assets/dragon-boat/token2.png",
+      "sha256": "cb8a5b2e6399dad7b71dcf96a53e6fca03f4adcbbba93031b9abb487eddce899"
+    },
+    {
+      "file": "holiday-lab/assets/dragon-boat/token3.png",
+      "sha256": "6bf6896693b252873f230df9866eb9ea9e91f49b71ccca27a9d17504c0dbeea5"
+    },
+    {
+      "file": "holiday-lab/assets/exhibition/actor1.png",
+      "sha256": "d04686e5f05e5d086fe02ce7f4eacd19cabaa0b5da9ce2f48943c058095ccc89"
+    },
+    {
+      "file": "holiday-lab/assets/exhibition/actor2.png",
+      "sha256": "7fa0b25eb9f6b0058092c7ef471d6f28a51a4c433bb1d502e88301f4e312d08e"
+    },
+    {
+      "file": "holiday-lab/assets/exhibition/actor3.png",
+      "sha256": "50d80d53cee1bab542f8eacfcd23a136c0514c1c1f04682f4923f4e1eba39101"
+    },
+    {
+      "file": "holiday-lab/assets/exhibition/cg-1.webp",
+      "sha256": "aafb283cef1258d374b97cf301f5e8c2e099e6f4be26785cc0a9ec73da38b7b2"
+    },
+    {
+      "file": "holiday-lab/assets/exhibition/cg-2.webp",
+      "sha256": "cf9f128016579263fca7004aefa98d581b46fccb33d581ab0f4cf12a25a12258"
+    },
+    {
+      "file": "holiday-lab/assets/exhibition/cg-3.webp",
+      "sha256": "20caa5d0907adf659116fcb0fe787d3c6597c35902abd7343616d4eef4d8a307"
+    },
+    {
+      "file": "holiday-lab/assets/exhibition/cg-4.webp",
+      "sha256": "64e044d9d5ff4bb40dc442f857d88cc3347fb4febc75b7d9409f953d353c5357"
+    },
+    {
+      "file": "holiday-lab/assets/exhibition/cg-5.webp",
+      "sha256": "90921a6a301afa56147701de65b07fcbf2ad23e4dd25471fb1db76aa200d53a0"
+    },
+    {
+      "file": "holiday-lab/assets/exhibition/prop1.png",
+      "sha256": "14c0c9e63cc73c2487f2b550f4e09c066d59167170fafde2df3a5de9c0d78b25"
+    },
+    {
+      "file": "holiday-lab/assets/exhibition/prop2.png",
+      "sha256": "4a68b0ce34af8f2d0b6fd9271c152893140c87f2938161dbee696b219c31262f"
+    },
+    {
+      "file": "holiday-lab/assets/exhibition/prop3.png",
+      "sha256": "b5199ccd212d658e63223573f8fbc9bbcb4fc9e1118b2e4e7eb85877e9e59379"
+    },
+    {
+      "file": "holiday-lab/assets/exhibition/scene.webp",
+      "sha256": "f53a97a0475e8e78a50eb773fab192734c16d500d57534b3b93522f6969768c2"
+    },
+    {
+      "file": "holiday-lab/assets/exhibition/target.png",
+      "sha256": "fc4fc7d5af8ccae28f1425708a42bdd1e6da1c8033a849e35f525d3f31740dee"
+    },
+    {
+      "file": "holiday-lab/assets/exhibition/token1.png",
+      "sha256": "28b70922ecb4e377fcf688939488a4f34c081c48ca2abda4006f407004decc57"
+    },
+    {
+      "file": "holiday-lab/assets/exhibition/token2.png",
+      "sha256": "03975e3483983583248aaa92175ff5c04798067fc6e6376319bf26b9299d8e6a"
+    },
+    {
+      "file": "holiday-lab/assets/exhibition/token3.png",
+      "sha256": "722e3e6597fdf18be25dcf5dbb82f26c1febd35473a5433ed3ce10f12320ea73"
+    },
+    {
+      "file": "holiday-lab/assets/labor/actor1.png",
+      "sha256": "cc075de01b82a6278f2513d24012ba3aaaad2e0e852b06b09a903daee7ac741e"
+    },
+    {
+      "file": "holiday-lab/assets/labor/actor2.png",
+      "sha256": "bd979104bf5b739abdbb79b8aa01624b7786d9541b7501ec876cd1286c211bc1"
+    },
+    {
+      "file": "holiday-lab/assets/labor/actor3.png",
+      "sha256": "920ddc5415c0b8202eee23cfbc51c657d6e202ea49699c6a0b0fc880730eca6f"
+    },
+    {
+      "file": "holiday-lab/assets/labor/cg-1.webp",
+      "sha256": "41022371bad6c37596aa8387e379cb464dfce01d4346c00c40ca359c4b0aa2ea"
+    },
+    {
+      "file": "holiday-lab/assets/labor/cg-2.webp",
+      "sha256": "81ff5315af1378cf6b835e03e04b9eaf839b66082b78ac039a274204ea5368c4"
+    },
+    {
+      "file": "holiday-lab/assets/labor/cg-3.webp",
+      "sha256": "23822b0e14dd55e8a7ee4d5c85e7345f85a040d46ec1b5f6f0ca82f2141ea93c"
+    },
+    {
+      "file": "holiday-lab/assets/labor/cg-4.webp",
+      "sha256": "57c5bee70b6739b8cd6e27f94ab5a02181143c35a63bbe6dc429b09906ee029f"
+    },
+    {
+      "file": "holiday-lab/assets/labor/cg-5.webp",
+      "sha256": "02f53f345b66c14ff901f8253a75ddf91066de5a65134cfebe8a627a095dae75"
+    },
+    {
+      "file": "holiday-lab/assets/labor/prop1.png",
+      "sha256": "8f07a30d354980727b62469b3d2086611b999abaab5d2bcae31ac180292064d0"
+    },
+    {
+      "file": "holiday-lab/assets/labor/prop2.png",
+      "sha256": "90cb2fd6bb14faf4fcdbc5b05e446e0bce03d7ac57f27c082e258323e70d11fe"
+    },
+    {
+      "file": "holiday-lab/assets/labor/prop3.png",
+      "sha256": "b8092182d170f4c7c39bd379af66881d340184f5807bb5610cd0567f667ded60"
+    },
+    {
+      "file": "holiday-lab/assets/labor/scene.webp",
+      "sha256": "e43b1fb133df4ade08cf6e5a751ea348e7a93f0594ab2898d99a61754c55047c"
+    },
+    {
+      "file": "holiday-lab/assets/labor/target.png",
+      "sha256": "d70fc6242a284de536b2c16a1a9511e3429dce1b8f0df4752cf19d5e9308b35f"
+    },
+    {
+      "file": "holiday-lab/assets/labor/token1.png",
+      "sha256": "cf27fe681252b16cf525744b287f44e58e925e6ec53987a91d9deb6a99cedc59"
+    },
+    {
+      "file": "holiday-lab/assets/labor/token2.png",
+      "sha256": "f39179c6bd4ce4dad7bf03d05c684dec674d88d5fb111abc6539a3444ddf5e9a"
+    },
+    {
+      "file": "holiday-lab/assets/labor/token3.png",
+      "sha256": "91b8e77d8ea532018d727447e7d68d4bae4c0f231fca2ed6098d5eba79c8d71f"
+    },
+    {
+      "file": "holiday-lab/assets/lantern/actor1.png",
+      "sha256": "fd153db6cd7171be69b8d0b7222b3416c9ea5c4675b9ee744e0d331d3169284c"
+    },
+    {
+      "file": "holiday-lab/assets/lantern/actor2.png",
+      "sha256": "1c4cfb4d76f88d60a42266340e85515bd331aca99f663eae528313d1f5f05451"
+    },
+    {
+      "file": "holiday-lab/assets/lantern/actor3.png",
+      "sha256": "b46fa203f52a5c9bcc1bb8527bf1f2fe1797252d5777c305b324d14b87437ff2"
+    },
+    {
+      "file": "holiday-lab/assets/lantern/cg-1.webp",
+      "sha256": "a73052a4d31155bdad24ee745c2b8e07b5a325218111792566150af85abcc4bc"
+    },
+    {
+      "file": "holiday-lab/assets/lantern/cg-2.webp",
+      "sha256": "de818ac929016b5223e9599ea69d38da3cc8c8140de053e97955bb6bc050966f"
+    },
+    {
+      "file": "holiday-lab/assets/lantern/cg-3.webp",
+      "sha256": "6756b7e540fa4165efb785e4dd36e7d0f34a43e0286984e6e763516500f60716"
+    },
+    {
+      "file": "holiday-lab/assets/lantern/cg-4.webp",
+      "sha256": "d8f294e8b338b94085eea26697a5348aa0c684760d5617c23cdd10158c63581b"
+    },
+    {
+      "file": "holiday-lab/assets/lantern/cg-5.webp",
+      "sha256": "8859245e5800c990115847ae46725d83df2d3d1ae11a38f82c05125447639277"
+    },
+    {
+      "file": "holiday-lab/assets/lantern/prop1.png",
+      "sha256": "9b10a679b8501811508849d6bc870eb423581ff19665da421191521b365e1b2b"
+    },
+    {
+      "file": "holiday-lab/assets/lantern/prop2.png",
+      "sha256": "2cb5e46b9ea47f6823ac3df8e8fcfa140a530149d694cdf5a944a8a9573da4f3"
+    },
+    {
+      "file": "holiday-lab/assets/lantern/prop3.png",
+      "sha256": "d26e94c98f9905e3dc29d09e593a875486b8804c1b6e9abc3b270b0b4d88e809"
+    },
+    {
+      "file": "holiday-lab/assets/lantern/scene.webp",
+      "sha256": "4530a4907fe32de26b193c80391802b02264fee10ffa301bb7f0268bcdd96add"
+    },
+    {
+      "file": "holiday-lab/assets/lantern/target.png",
+      "sha256": "08b7152c2681e60aac86500c2af05c6473e8c01fbe3461819edcb937d85459d5"
+    },
+    {
+      "file": "holiday-lab/assets/lantern/token1.png",
+      "sha256": "8b427742e854c7f3ad541a547b2c42ec38c8a0359583e0c23680f20e6844758d"
+    },
+    {
+      "file": "holiday-lab/assets/lantern/token2.png",
+      "sha256": "859af10a833b26a67dd3485f969e1bf05e3e5b34596b85dbee253c185c22741a"
+    },
+    {
+      "file": "holiday-lab/assets/lantern/token3.png",
+      "sha256": "98b697a7c70dc07362cdf814729e912868c0d067e6d1d56464efd065f39c2e22"
+    },
+    {
+      "file": "holiday-lab/assets/lunar-new-year/actor1.png",
+      "sha256": "14d3de158ce412d34471b3bdcf2cbf4800018b3b8a5752da83a1845da7ac30e7"
+    },
+    {
+      "file": "holiday-lab/assets/lunar-new-year/actor2.png",
+      "sha256": "14d3de158ce412d34471b3bdcf2cbf4800018b3b8a5752da83a1845da7ac30e7"
+    },
+    {
+      "file": "holiday-lab/assets/lunar-new-year/actor3.png",
+      "sha256": "14d3de158ce412d34471b3bdcf2cbf4800018b3b8a5752da83a1845da7ac30e7"
+    },
+    {
+      "file": "holiday-lab/assets/lunar-new-year/cg-1.webp",
+      "sha256": "12a0603c3fbd0f871a9f49588d2dc626b11e16a9543443fb72af04fd145c89c3"
+    },
+    {
+      "file": "holiday-lab/assets/lunar-new-year/cg-2.webp",
+      "sha256": "a9f7d6d0c21ac7e1399e738d924579668a4f457814772718e2d1ca5f13934fff"
+    },
+    {
+      "file": "holiday-lab/assets/lunar-new-year/cg-3.webp",
+      "sha256": "21729a8b7f55944cc748b06ba6fe823ba1511b40e570459792b010904c06ca22"
+    },
+    {
+      "file": "holiday-lab/assets/lunar-new-year/cg-4.webp",
+      "sha256": "2b9117bd4457c5b441b5abe72766618ed281dff8283e0ef2117a66101dd87756"
+    },
+    {
+      "file": "holiday-lab/assets/lunar-new-year/cg-5.webp",
+      "sha256": "cc7cb78160360a277c4cc5c88c53e6d3e8e2bf2e90543e465e1d67848a3414e5"
+    },
+    {
+      "file": "holiday-lab/assets/lunar-new-year/prop1.png",
+      "sha256": "14ed4156018483e81c045034757956a8db5aa9258da65e4caaf2b57c53eb26ba"
+    },
+    {
+      "file": "holiday-lab/assets/lunar-new-year/prop2.png",
+      "sha256": "ca923e803428fb6d8b9774a319055255cb23e20750bdbbe216f73ba2ef1da6a8"
+    },
+    {
+      "file": "holiday-lab/assets/lunar-new-year/prop3.png",
+      "sha256": "70055484b3a83cd6bf66192a736e59b16cdb626a6122ad868d70ddf0df783734"
+    },
+    {
+      "file": "holiday-lab/assets/lunar-new-year/scene.webp",
+      "sha256": "8b05e329a6238123ab20def59d405ff487a26b3d05f0ab79a08e3a9266c84019"
+    },
+    {
+      "file": "holiday-lab/assets/lunar-new-year/target.png",
+      "sha256": "da2c6fb3f8d2ea8c6b40b25e818e5375e4026c8e387327c3c5444ff5813e2a42"
+    },
+    {
+      "file": "holiday-lab/assets/lunar-new-year/token1.png",
+      "sha256": "701109cad68b3cb3a401d6c7d8a809dac4f007ec8de856ebc75bad7a1f72a1e6"
+    },
+    {
+      "file": "holiday-lab/assets/lunar-new-year/token2.png",
+      "sha256": "f7ede47b0e16aee7d940c957b79f018bf6c8a3ae4ac3f21106f583d9714aa6a4"
+    },
+    {
+      "file": "holiday-lab/assets/lunar-new-year/token3.png",
+      "sha256": "a510a4ac303a58f3c91afa9acea2579d7850cf7f88dd947d2060bdf7e5bb2ff6"
+    },
+    {
+      "file": "holiday-lab/assets/mid-autumn/actor1.png",
+      "sha256": "7267c5c683443acf31a5a752557c1f4823faf1e2a4b6ef507bcde4a18509e58e"
+    },
+    {
+      "file": "holiday-lab/assets/mid-autumn/actor2.png",
+      "sha256": "90594bc0d4eac09e3070325945147655f95cc74cb57f202f54cc062cf8f0b554"
+    },
+    {
+      "file": "holiday-lab/assets/mid-autumn/actor3.png",
+      "sha256": "92cd7c4c0cbd36a05b1a8a3ab5478c48217965820d982463e90bc8962425200e"
+    },
+    {
+      "file": "holiday-lab/assets/mid-autumn/cg-1.webp",
+      "sha256": "b5f5c6eef7448bd49eb382d97a6c5848be511782a5296f6bb88d28d8c0c627c2"
+    },
+    {
+      "file": "holiday-lab/assets/mid-autumn/cg-2.webp",
+      "sha256": "be155c1f7984ef0f191358e75faf8977e95b0cfa32892d41aeab40ef76a52835"
+    },
+    {
+      "file": "holiday-lab/assets/mid-autumn/cg-3.webp",
+      "sha256": "cb254e1662a4ab742cdb70be8fed7f18354d80e8d55e86862b2ad951ed6fae0a"
+    },
+    {
+      "file": "holiday-lab/assets/mid-autumn/cg-4.webp",
+      "sha256": "c06b31058bec50a5145a0ef015aaec387494e64b36e271e58310c20be02e7dfe"
+    },
+    {
+      "file": "holiday-lab/assets/mid-autumn/cg-5.webp",
+      "sha256": "8170512d8540763058eec1f67b1966c33aa6d563556905b790eeabe0f05d93e7"
+    },
+    {
+      "file": "holiday-lab/assets/mid-autumn/prop1.png",
+      "sha256": "bdd3e0b9ccfc0114c7f1059c82ea6a4f839134f6ad3a16f3e7d97df01f8854a9"
+    },
+    {
+      "file": "holiday-lab/assets/mid-autumn/prop2.png",
+      "sha256": "639e224fb64c195ed65b86c419c571f6e97c69d19a9fd68dd379d3c874bbf2eb"
+    },
+    {
+      "file": "holiday-lab/assets/mid-autumn/prop3.png",
+      "sha256": "77cec89ba4f725046c8fa7f2949ef9397613af8836b6ae9d4dcc9bc9a4e061c3"
+    },
+    {
+      "file": "holiday-lab/assets/mid-autumn/scene.webp",
+      "sha256": "e40700efef374b1ea0841d3a9ab3b1bc3db92f7702fc414cf3b9d3591cdb9c6c"
+    },
+    {
+      "file": "holiday-lab/assets/mid-autumn/target.png",
+      "sha256": "a4f368ee0288e34ac0a92c9cf26fb434f37f57ae1109320af72644dac5626647"
+    },
+    {
+      "file": "holiday-lab/assets/mid-autumn/token1.png",
+      "sha256": "c40f521a399a176ce9c8ca5e01489d9a413350a6f7c025fb4f06328e08084a82"
+    },
+    {
+      "file": "holiday-lab/assets/mid-autumn/token2.png",
+      "sha256": "a96abfad17cda4e25b78575f22bb05f68a2025b8d8c900e704508d1c8815b12c"
+    },
+    {
+      "file": "holiday-lab/assets/mid-autumn/token3.png",
+      "sha256": "2c0d889a7a48a42668c15c7151b297d6fcccae82bdcacd12684763a0ae353e85"
+    },
+    {
+      "file": "holiday-lab/assets/national-day/actor1.png",
+      "sha256": "4541529b74135b98c0bfc59c65b9b841db5c242489ea77e060d1ba93371681da"
+    },
+    {
+      "file": "holiday-lab/assets/national-day/actor2.png",
+      "sha256": "3d4a98c60509346beaff16193d2bc634bae33e4790713679055fd16fbe0bc8b2"
+    },
+    {
+      "file": "holiday-lab/assets/national-day/actor3.png",
+      "sha256": "a9ee8018e34b19f40252146c2e439b131daa33937c8c5806ff3ff61f896da548"
+    },
+    {
+      "file": "holiday-lab/assets/national-day/cg-1.webp",
+      "sha256": "5e2879bfee70c0720c76df242a67d982d24da61ddbe38a79b60ba56abcffc2e8"
+    },
+    {
+      "file": "holiday-lab/assets/national-day/cg-2.webp",
+      "sha256": "6cd1f9c6d388d909990a904013e329a1b7ca59cf4ed98681f8471cc690407074"
+    },
+    {
+      "file": "holiday-lab/assets/national-day/cg-3.webp",
+      "sha256": "263c28c42e96c27da098ff1edbb399361cb8173304ad3041a142f569677266b0"
+    },
+    {
+      "file": "holiday-lab/assets/national-day/cg-4.webp",
+      "sha256": "0b84a64abb3d0e4f1ee03c71957e15f63a195815588d593ee71cd578d02089c2"
+    },
+    {
+      "file": "holiday-lab/assets/national-day/cg-5.webp",
+      "sha256": "1c1acfb262834cf73281e35fa431df7f7c13a9310626945a85c56d511c8c84ec"
+    },
+    {
+      "file": "holiday-lab/assets/national-day/prop1.png",
+      "sha256": "83b5835fd2bb97b0fe751d4a1bcea14842ce9c1b9fb3c1dd44d18c594990cd66"
+    },
+    {
+      "file": "holiday-lab/assets/national-day/prop2.png",
+      "sha256": "11ff0f69de6f1fd3c9898c135211c10b3cee4d4b1c586e696b1624ae648dde05"
+    },
+    {
+      "file": "holiday-lab/assets/national-day/prop3.png",
+      "sha256": "e5592eeebe4427f197b4a14df287a9fe4d69d9c558a9101e9526eda1fea72360"
+    },
+    {
+      "file": "holiday-lab/assets/national-day/scene.webp",
+      "sha256": "867981d7407075efde3db575e09dce2c9aa0cb4ddf2eefc71354ea539fe329ca"
+    },
+    {
+      "file": "holiday-lab/assets/national-day/target.png",
+      "sha256": "c674b33effdbb05c375528fb8068fb6925ceddc400188771c6f111e3e7cefa44"
+    },
+    {
+      "file": "holiday-lab/assets/national-day/token1.png",
+      "sha256": "11a388805276c46f24cf2e10938844cb17841446ad8c5c4ed6586e13699b93ce"
+    },
+    {
+      "file": "holiday-lab/assets/national-day/token2.png",
+      "sha256": "5bfba13c0299d44c11051c719e319e6bae1adf418006effa0d9670032cc5b532"
+    },
+    {
+      "file": "holiday-lab/assets/national-day/token3.png",
+      "sha256": "f3254c6fd33eb475af2ccce4632eb7514cca316b6b728f841fdc542f52c59910"
+    },
+    {
+      "file": "holiday-lab/assets/new-year/actor1.png",
+      "sha256": "61f04780f003fb8f070f67c36ee99b9c713315385afaef3178bf0b3afac20140"
+    },
+    {
+      "file": "holiday-lab/assets/new-year/actor2.png",
+      "sha256": "5ac216bcd202f0bf5258bab394a1ec63693af11ca47eb95b3dd49e9514bc36a1"
+    },
+    {
+      "file": "holiday-lab/assets/new-year/actor3.png",
+      "sha256": "e7a091002895a7b4309fc3fef8b4d3c20f07e66531c7af3515595b32018e1394"
+    },
+    {
+      "file": "holiday-lab/assets/new-year/cg-1.webp",
+      "sha256": "f465c012535bab162324a1bebd7479fa78b34b7775b419abe9e4a9e8e33b93cf"
+    },
+    {
+      "file": "holiday-lab/assets/new-year/cg-2.webp",
+      "sha256": "052c14637914d3c8139e1f59a0acfcd5cad4afc7fcda77b7a48282edc2852003"
+    },
+    {
+      "file": "holiday-lab/assets/new-year/cg-3.webp",
+      "sha256": "8cb353c725d4c2508eb22963a896ff354b7bb610c0550d15b064fae034bb18a8"
+    },
+    {
+      "file": "holiday-lab/assets/new-year/cg-4.webp",
+      "sha256": "a363f13d1de86e4a9b207aa169990a151ea0ad2d04bf6f50932fa473cf4a9798"
+    },
+    {
+      "file": "holiday-lab/assets/new-year/cg-5.webp",
+      "sha256": "5e6d5dd24135db77b40569a057b04d146e633ed6a6786c58649bc9c02d73d161"
+    },
+    {
+      "file": "holiday-lab/assets/new-year/prop1.png",
+      "sha256": "b3f750c51a2b6a6bb09ef2ae153ce4b5c44f9821c7af4a28dd23faa853b8e593"
+    },
+    {
+      "file": "holiday-lab/assets/new-year/prop2.png",
+      "sha256": "36bcf0e615f53cb2c0905758b91b0d2b2b3031ab600cf20b7fb117bfffb8fd59"
+    },
+    {
+      "file": "holiday-lab/assets/new-year/prop3.png",
+      "sha256": "40a50ad879c4f640d2b17d66662c8fad508be1185c9d19e51a6e2108e79e022d"
+    },
+    {
+      "file": "holiday-lab/assets/new-year/scene.webp",
+      "sha256": "8e9e0a4c3ce530769fe4506d2e8aef94400e8638cbd681d28b616b9884535e84"
+    },
+    {
+      "file": "holiday-lab/assets/new-year/target.png",
+      "sha256": "51b31c850fccfa0ac6f58cb62c623a7bfa85695a5b102d1f4691882f90da207a"
+    },
+    {
+      "file": "holiday-lab/assets/new-year/token1.png",
+      "sha256": "57c1357524d6ecd14e9702ad120f2db5e6ac94c2cbec9cd2e23ad98257e179c5"
+    },
+    {
+      "file": "holiday-lab/assets/new-year/token2.png",
+      "sha256": "84318a7978fe5a16fca13c2533241bb30671326bf98ce3721232deb853e588da"
+    },
+    {
+      "file": "holiday-lab/assets/new-year/token3.png",
+      "sha256": "8f6d0a7a6496d6e7cd5ad459310c9f2edb0600db3447bf2be62f0716b1023bfa"
+    },
+    {
+      "file": "holiday-lab/assets/peace-memory/actor1.png",
+      "sha256": "b8a63c1a22a8f012a7e37ab3f46c620c5ebfdad53652922b119132a9abe1e315"
+    },
+    {
+      "file": "holiday-lab/assets/peace-memory/actor2.png",
+      "sha256": "a6fb48aec6d4b248b45717daea80b56f83a51588473981b19713bf9810d60d4f"
+    },
+    {
+      "file": "holiday-lab/assets/peace-memory/actor3.png",
+      "sha256": "25af0257b6ea7aa002da09cb93ee2c91acb1d14b1c3f03b35ca19b7ee176cefc"
+    },
+    {
+      "file": "holiday-lab/assets/peace-memory/cg-1.webp",
+      "sha256": "116353384ba5a89d73ae8b45a01e8abcab0c2bbb2f7c9e1baf134ad59c2a2945"
+    },
+    {
+      "file": "holiday-lab/assets/peace-memory/cg-2.webp",
+      "sha256": "28a542815974a461bcd613e203a73f013b3144e283150489ea5048dc9ec3dcde"
+    },
+    {
+      "file": "holiday-lab/assets/peace-memory/cg-3.webp",
+      "sha256": "49420281204d8001bc8d1310a7daafa66ede91127104ee7264e4b0810f1b2c8d"
+    },
+    {
+      "file": "holiday-lab/assets/peace-memory/cg-4.webp",
+      "sha256": "787086cd9ed9c702afb491d2834daa155859f98bbafb26406a7a6302dba1ffb9"
+    },
+    {
+      "file": "holiday-lab/assets/peace-memory/cg-5.webp",
+      "sha256": "a18a8a862b243d10b61b1eec83bfb72a3e6ceb244d04c02c16e1c76f592f91d5"
+    },
+    {
+      "file": "holiday-lab/assets/peace-memory/prop1.png",
+      "sha256": "b3a203ebc19d0c3114210933c5dbe07b2228c9cd80f87d0c9328c346fb41a1f4"
+    },
+    {
+      "file": "holiday-lab/assets/peace-memory/prop2.png",
+      "sha256": "3f54e3175331857581d2f281be1c1c911c046cc028b204485669d8f8f2286e6f"
+    },
+    {
+      "file": "holiday-lab/assets/peace-memory/prop3.png",
+      "sha256": "1e15debdb2a35ea7885174e224681ad7d11e4dcc4d4cf9153b923b308d593161"
+    },
+    {
+      "file": "holiday-lab/assets/peace-memory/scene.webp",
+      "sha256": "49e50e73c8413bcd8cea865a29f5f11be145cc4bc1f951ade0202b92d1ec711c"
+    },
+    {
+      "file": "holiday-lab/assets/peace-memory/target.png",
+      "sha256": "a5ada065d1f5edb64984ce2891deffab03ddc6159ce2c90fc673ddd8b6cde199"
+    },
+    {
+      "file": "holiday-lab/assets/peace-memory/token1.png",
+      "sha256": "a359288cadc8d119700529e89f6594ea75ad56fe590e3e20690b20131c23407d"
+    },
+    {
+      "file": "holiday-lab/assets/peace-memory/token2.png",
+      "sha256": "64e71bbc9771ce5674b68bfb85e982a7659395e44a79b62697aa3acd15d0790c"
+    },
+    {
+      "file": "holiday-lab/assets/peace-memory/token3.png",
+      "sha256": "39c3c3c7a9ec8af022f0992a9a8abfd47bd694cec6df93a42a0f94acaaff51d4"
+    },
+    {
+      "file": "holiday-lab/assets/qingming/actor1.png",
+      "sha256": "15fbd0271895c610026bb53c518504366987a34ce6c38d368962a8162be3ac2d"
+    },
+    {
+      "file": "holiday-lab/assets/qingming/actor2.png",
+      "sha256": "8a46d98338d42b2d20a112614c98fc1aa0f344d6de381a5b482da3ec5db6489c"
+    },
+    {
+      "file": "holiday-lab/assets/qingming/actor3.png",
+      "sha256": "547e33d076e67c9573ae1596e9d2668be3c89747edc26be1747490b2ddb4c82e"
+    },
+    {
+      "file": "holiday-lab/assets/qingming/cg-1.webp",
+      "sha256": "445e31bd58f8db1799ec35483a65602a0f57883da10416552d6fe05502b77eb5"
+    },
+    {
+      "file": "holiday-lab/assets/qingming/cg-2.webp",
+      "sha256": "3badc9b94a384d5f25b2cad7254d2ff1e68481c3511a99a869c9d8461a982fe7"
+    },
+    {
+      "file": "holiday-lab/assets/qingming/cg-3.webp",
+      "sha256": "f268177cb89f80a884eb3a7dfb07de0f57bf7ef36b150413197f1b2e537c9815"
+    },
+    {
+      "file": "holiday-lab/assets/qingming/cg-4.webp",
+      "sha256": "fb067ec0095619b351f8a4fcd6592fcca152ebbd27f5b29e7c80fdf85d1ea8ef"
+    },
+    {
+      "file": "holiday-lab/assets/qingming/cg-5.webp",
+      "sha256": "72ddc691387d9e9d2e2b644a1f28ed6b0869cf9e303103155bf4300403f7c155"
+    },
+    {
+      "file": "holiday-lab/assets/qingming/prop1.png",
+      "sha256": "c5a6c37db06963e9945201dc59ba10811d47cdfe6f528d7ce89a8cedcc511844"
+    },
+    {
+      "file": "holiday-lab/assets/qingming/prop2.png",
+      "sha256": "8337e42858c396e4345ea83849fc762a720709c989baab8f00d7caa4e7d643fb"
+    },
+    {
+      "file": "holiday-lab/assets/qingming/prop3.png",
+      "sha256": "0ded604f675a071abd2fac336c7def33706a58b6b5b0004eb3d405b0922f63c3"
+    },
+    {
+      "file": "holiday-lab/assets/qingming/scene.webp",
+      "sha256": "6f1b5c1d787593c9ec27783c6aa3fc52a0cd0fa698c2d2140b5ded8ce71c9f1b"
+    },
+    {
+      "file": "holiday-lab/assets/qingming/target.png",
+      "sha256": "c2b506fbabfd491ca0b2348df0effb0000d1e90db1b47a97d99d30ccb948bf4b"
+    },
+    {
+      "file": "holiday-lab/assets/qingming/token1.png",
+      "sha256": "f93e2b6211f44f4d4c20a8348323a77797b436d0d8c82618671e8f4dbe7fbe1b"
+    },
+    {
+      "file": "holiday-lab/assets/qingming/token2.png",
+      "sha256": "eec310b8508b605c947b184420d3c508f82885694d1d2699214e3e43e3b6bc3b"
+    },
+    {
+      "file": "holiday-lab/assets/qingming/token3.png",
+      "sha256": "b8babc280173254d05f88992d7bac50da658187082f705b66df58d57c3ee1247"
+    },
+    {
+      "file": "holiday-lab/assets/retrocession/actor1.png",
+      "sha256": "5db54b31a76b0a93b3261036a7247a39ab7e4b071c919b39e757c86bbfc2514b"
+    },
+    {
+      "file": "holiday-lab/assets/retrocession/actor2.png",
+      "sha256": "964108365cfbe7bca0b7764ce1388a5f5ce24a7f77d69d6734aea00a20d8af93"
+    },
+    {
+      "file": "holiday-lab/assets/retrocession/actor3.png",
+      "sha256": "7353e33a329dc803735c76e72bc896d1f99cc15f47b6939247d6c4be6229043a"
+    },
+    {
+      "file": "holiday-lab/assets/retrocession/cg-1.webp",
+      "sha256": "55da88533227b9290c4ec0349b5b196e0fde183f2036a0270ee1e2df7ee905a6"
+    },
+    {
+      "file": "holiday-lab/assets/retrocession/cg-2.webp",
+      "sha256": "f1a0d08df4612b8a80e58a58fd17ae9f6a2be094af1f25a1411615853540530a"
+    },
+    {
+      "file": "holiday-lab/assets/retrocession/cg-3.webp",
+      "sha256": "2ea21b81f4daefd51484bcfe79f0930df6a0681b0716e0688cdc697d89af807f"
+    },
+    {
+      "file": "holiday-lab/assets/retrocession/cg-4.webp",
+      "sha256": "b023c952982cd28f720503a4ca0f01bee44e05d9a5db3b54737f973ce6e3be6b"
+    },
+    {
+      "file": "holiday-lab/assets/retrocession/cg-5.webp",
+      "sha256": "894ea910a101ffb35351cfbb407a4de3277e3974dacf0eccc257790e0ef561b7"
+    },
+    {
+      "file": "holiday-lab/assets/retrocession/prop1.png",
+      "sha256": "e08af30966ad6af750159aceba3d7a81e3775b271b8c8409fcee207d0e57d1a4"
+    },
+    {
+      "file": "holiday-lab/assets/retrocession/prop2.png",
+      "sha256": "483869ffcf8d6ebd6d59cdbe9b646b9067e5bb5f1953f70ec98c75f411021ddf"
+    },
+    {
+      "file": "holiday-lab/assets/retrocession/prop3.png",
+      "sha256": "0567469d452567c5927be0c30efc32b55d91ce0535f63796a9752cb14a5860bd"
+    },
+    {
+      "file": "holiday-lab/assets/retrocession/scene.webp",
+      "sha256": "82b57cf52ffc18cc469375222f1fd3ff8c0daf98c2303e93c0d57a12c074a0d9"
+    },
+    {
+      "file": "holiday-lab/assets/retrocession/target.png",
+      "sha256": "6d30b90a54dde7e2406913cebb6c7da817f2bd5690c171f4d4cb8106470daf8c"
+    },
+    {
+      "file": "holiday-lab/assets/retrocession/token1.png",
+      "sha256": "dc5b8896ae7a2520c6259530e15e6325949a88028d6960f0c557f2e1020462a3"
+    },
+    {
+      "file": "holiday-lab/assets/retrocession/token2.png",
+      "sha256": "a15aac7d4c3e54c6cb5b147521579f0ef108ea463569cf0043ee39a1c6b8c7e9"
+    },
+    {
+      "file": "holiday-lab/assets/retrocession/token3.png",
+      "sha256": "d3b65c85eace82abb7abccd44bd7b2f55a184c3206e2aa1dfbec379ec1714e62"
+    },
+    {
+      "file": "holiday-lab/assets/semester/actor1.png",
+      "sha256": "c95017f1aae946610527c4d48051da0767681fbd3324a57c818c464430f88fec"
+    },
+    {
+      "file": "holiday-lab/assets/semester/actor2.png",
+      "sha256": "e45e66656d9c37eaefc5d36d3e6342c52ab4e8d6c49094230b60d9a8d97949fc"
+    },
+    {
+      "file": "holiday-lab/assets/semester/actor3.png",
+      "sha256": "f126a1ed8b858b577b3f655c06d29414e3c39383341e66a1c5fba842cb7b7a7a"
+    },
+    {
+      "file": "holiday-lab/assets/semester/cg-1.webp",
+      "sha256": "b13964f1b3c0a05d07e224fd9a967fe0268674517f81ce4727d21161dc350f96"
+    },
+    {
+      "file": "holiday-lab/assets/semester/cg-2.webp",
+      "sha256": "497b386d5f7c8dbb9f89c57150abe4ff8bf307fb267374fbad738972570c831f"
+    },
+    {
+      "file": "holiday-lab/assets/semester/cg-3.webp",
+      "sha256": "4ac7f07a54f60b57cc8416fd99b87bb9addc820d477179c5bd1fd7679eda0e61"
+    },
+    {
+      "file": "holiday-lab/assets/semester/cg-4.webp",
+      "sha256": "82f5b516b71e213ddd18c3c8143139541a3a8f7108680f958c3201892db17ab5"
+    },
+    {
+      "file": "holiday-lab/assets/semester/cg-5.webp",
+      "sha256": "d570546ec8c5d99001eb1981048099f8ef0f39880e9fa557ebf681fce0109dbc"
+    },
+    {
+      "file": "holiday-lab/assets/semester/prop1.png",
+      "sha256": "88b0a15e83543f718ed659c78659474acc7cee6d5e3cfc95be4a25c0639a43ab"
+    },
+    {
+      "file": "holiday-lab/assets/semester/prop2.png",
+      "sha256": "a38ab4b7fa13e18dce1863d7ad017a5cb2312e071b48d876a7cae3ea4e59efc3"
+    },
+    {
+      "file": "holiday-lab/assets/semester/prop3.png",
+      "sha256": "53f6c1181bff5749234297fc451c9b7175695bb034304cbe61f928d8466bc340"
+    },
+    {
+      "file": "holiday-lab/assets/semester/scene.webp",
+      "sha256": "9e59f3e5067e93c10efa0b58c593ccd235f5b1b371e8d3b69b2f7b0cb377bbbc"
+    },
+    {
+      "file": "holiday-lab/assets/semester/target.png",
+      "sha256": "338421cef1005a23cce5058e3c9d99a0929a794e0e6b4c33cd518e97c99482ed"
+    },
+    {
+      "file": "holiday-lab/assets/semester/token1.png",
+      "sha256": "28e93569ebde1307907a1fd5eae2ea5ca0bbbc6a93f200b625bee937dbe383e5"
+    },
+    {
+      "file": "holiday-lab/assets/semester/token2.png",
+      "sha256": "795ddf17565906c8ee2a1e91e878eed51691732ed721e8e0c7883a4705782f1e"
+    },
+    {
+      "file": "holiday-lab/assets/semester/token3.png",
+      "sha256": "942b61b6320715327f536563d8bcee541c27024b0081eea6742f00ce5024f9ba"
+    },
+    {
+      "file": "holiday-lab/assets/teachers/actor1.png",
+      "sha256": "23a6f8d9f7e3c522b3a95f49fdeee81458308e656a6430b06096406106519b2f"
+    },
+    {
+      "file": "holiday-lab/assets/teachers/actor2.png",
+      "sha256": "a9781a405173d1440b030a74ab39ebfea1023828f9382743c1cf666d83b50d9c"
+    },
+    {
+      "file": "holiday-lab/assets/teachers/actor3.png",
+      "sha256": "9c51f00cbf2243de183aa315986b8ef43d3991c7d755ee018d7fbbac8e5761fe"
+    },
+    {
+      "file": "holiday-lab/assets/teachers/cg-1.webp",
+      "sha256": "c34b2496eb00fb48ab06b5870a5091cd610e669b3de3f725f4946f7c4f4840b6"
+    },
+    {
+      "file": "holiday-lab/assets/teachers/cg-2.webp",
+      "sha256": "ec4e3cf3fec4b85a8b8f671ba5c07724475dda0779c331b04e2c6fcf0241e31b"
+    },
+    {
+      "file": "holiday-lab/assets/teachers/cg-3.webp",
+      "sha256": "17632dd34a1fc07ce0ededa7f94a5eec7f2b14ec4e78ebda0633b8b517b87c8c"
+    },
+    {
+      "file": "holiday-lab/assets/teachers/cg-4.webp",
+      "sha256": "e6ba53b0595600631fe595750fb7973f5555e03cf9e6b32c17319e527ede184b"
+    },
+    {
+      "file": "holiday-lab/assets/teachers/cg-5.webp",
+      "sha256": "99ade067fc2cd8bacb3fd452e5211c90f318309f0441f41f830f7805f29c02a4"
+    },
+    {
+      "file": "holiday-lab/assets/teachers/prop1.png",
+      "sha256": "a2ca9d2772f8b71f00b29adbd65533a9985873ef61ef79c13a680d34bbfdbb0d"
+    },
+    {
+      "file": "holiday-lab/assets/teachers/prop2.png",
+      "sha256": "ac3ecb8a9b6bbfbda0ee7d77bf968ad91f9f9cb7ca73da3ec41f361969f52f7b"
+    },
+    {
+      "file": "holiday-lab/assets/teachers/prop3.png",
+      "sha256": "ef03db5d677e0e63129e7645b97f2077c56796e1e3f43e7a983e9c6937e9466c"
+    },
+    {
+      "file": "holiday-lab/assets/teachers/scene.webp",
+      "sha256": "7304fccfd8bf7d2377509663fb66a8445fd3842ce00d00a1ef2d3900dede4b72"
+    },
+    {
+      "file": "holiday-lab/assets/teachers/target.png",
+      "sha256": "dd785497d51301bb574c4e1f1504b5d30b97fabd66640b07ab2f9ce6c35640d0"
+    },
+    {
+      "file": "holiday-lab/assets/teachers/token1.png",
+      "sha256": "87728f5ef4107361192111fd529186aaf4fab89d183461d081ba64e606ff5346"
+    },
+    {
+      "file": "holiday-lab/assets/teachers/token2.png",
+      "sha256": "26c2b002e5842a2e2f2725e7b6ab5614b5209e9ad14736dcba9e5580965d69ec"
+    },
+    {
+      "file": "holiday-lab/assets/teachers/token3.png",
+      "sha256": "71d2e2e6d7a22044c0705e46e0d77e8587392f9cfac5a1a826c9e52593d808fd"
+    },
+    {
+      "file": "holiday-lab/assets/ui/bubble.png",
+      "sha256": "48b8c69c335549c5ccd7180d4ceea74886acdf834c2832c18738bee95d5c248e"
+    },
+    {
+      "file": "holiday-lab/assets/ui/close.png",
+      "sha256": "4672d57395ec8a46a0aa7f403a534ed2d0a0e099cf3628a437030925ed87ca10"
+    },
+    {
+      "file": "holiday-lab/assets/ui/disabled.png",
+      "sha256": "9b69f5edd472bb39bd5a0a3d34910af0c9390848f5ac2ec85d17e98efacdaf27"
+    },
+    {
+      "file": "holiday-lab/assets/ui/header.png",
+      "sha256": "26d564a3b48a9d7649838e5106247b8381385900d7a8e9e8df568f5884e40d3f"
+    },
+    {
+      "file": "holiday-lab/assets/ui/hover.png",
+      "sha256": "55d83ece8e70df342b9c00d933c4b577e24a23f01e2ee2e638a1eefac7929ce2"
+    },
+    {
+      "file": "holiday-lab/assets/ui/hud.png",
+      "sha256": "bcd7f1f92e58803aaff76d20f7493e70a443deb2e9c03b99157a63be183cea70"
+    },
+    {
+      "file": "holiday-lab/assets/ui/left.png",
+      "sha256": "a135723c136aad953adc25fd3d9d9fd83c87d8ea38dda9d64b9d9dabe134bb95"
+    },
+    {
+      "file": "holiday-lab/assets/ui/mute.png",
+      "sha256": "6ff6d713f5cf3dbe67e7116abaa8f82969c5de444d0b79ee317345d5891ccd3e"
+    },
+    {
+      "file": "holiday-lab/assets/ui/normal.png",
+      "sha256": "aaf3efef72c19bb1ff1c5cebead7d2aecf9652a7b12449391ab7d5ac9d46682b"
+    },
+    {
+      "file": "holiday-lab/assets/ui/panel.png",
+      "sha256": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5"
+    },
+    {
+      "file": "holiday-lab/assets/ui/paper.png",
+      "sha256": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92"
+    },
+    {
+      "file": "holiday-lab/assets/ui/pause.png",
+      "sha256": "3c6bc9f35aa7178c48634b0262f4fcc95863cb85b4493686fae9d2acdaf1b6c5"
+    },
+    {
+      "file": "holiday-lab/assets/ui/play.png",
+      "sha256": "356075a7feaaa023f1998b1214823c4371af8b70436427fdc7b7e282cb55efc1"
+    },
+    {
+      "file": "holiday-lab/assets/ui/pressed.png",
+      "sha256": "06d3fac65bd82586980803a4f4345b8ecab65f396e12e143b27175fa8ef86fe6"
+    },
+    {
+      "file": "holiday-lab/assets/ui/replay.png",
+      "sha256": "da942da372d01546065635b49440ed267427f1eaeb6aa68e453957a7b8c4b65a"
+    },
+    {
+      "file": "holiday-lab/assets/ui/right.png",
+      "sha256": "d56eafb00eeceed754ff06632a4437cd38217d6a8751440e10eb7ff886faaa0f"
+    },
+    {
+      "file": "holiday-lab/assets/ui/sound.png",
+      "sha256": "48529ba0225097f54e1d3cb48b474e329ac1b64b6446c6448d7c51911470879c"
+    },
+    {
+      "file": "holiday-lab/audio/click.ogg",
+      "sha256": "03fdd5391c3477b30986c415b8a738fe16cf4baa4298f2e2e27e2bcc52a37399"
+    },
+    {
+      "file": "holiday-lab/audio/error.ogg",
+      "sha256": "98c06cad1a60177a7a5bebd6f30af19ffc76c253813a25943a93fa68aa64870d"
+    },
+    {
+      "file": "holiday-lab/audio/metal.ogg",
+      "sha256": "97a67c03058f0f5bff827403281f5f45518fc42c0c7bcd6c22624af04833f2c9"
+    },
+    {
+      "file": "holiday-lab/audio/paper.ogg",
+      "sha256": "d96ad8ec5f6962c1ca2b110871d193e579c17146187252b9ffb2d39128b4686a"
+    },
+    {
+      "file": "holiday-lab/audio/success.ogg",
+      "sha256": "8157afd1621fa99f3303137b8da07f6e114d707234e3dac50a15fda977f61d47"
+    },
+    {
+      "file": "holiday-lab/audio/wood.ogg",
+      "sha256": "9ccf72279fdf721718df84fc8f7120243a3037451ff3e6bd4aaba3b608c3bb71"
+    },
+    {
+      "file": "holiday-lab/games/children.mjs",
+      "sha256": "b314af117311a0869d4517c115975f0091aee21000caa25d8524e7b08ba07c18"
+    },
+    {
+      "file": "holiday-lab/games/constitution.mjs",
+      "sha256": "de73d0e7b5ecd2de54d6f9d3a234a9a4e88bd3dd4861bf91b138c322290a64d5"
+    },
+    {
+      "file": "holiday-lab/games/dragon-boat.mjs",
+      "sha256": "12c515a8434ea32cd1fdd6013fa9b362ea76488b2ef24a44b1b4ea02d8da02c7"
+    },
+    {
+      "file": "holiday-lab/games/exhibition.mjs",
+      "sha256": "1c6370fd2e12424defa18963414adf5546dc32f3c2e17450078a3b9ed27bef6b"
+    },
+    {
+      "file": "holiday-lab/games/labor.mjs",
+      "sha256": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58"
+    },
+    {
+      "file": "holiday-lab/games/lantern.mjs",
+      "sha256": "a550a9c7b2abaaf2ba4f34ea81963cb61431ed7ce1e5de77a12cabb1fc661c2c"
+    },
+    {
+      "file": "holiday-lab/games/lunar-new-year.mjs",
+      "sha256": "79981ce5881980141fa9be5e996901ca4875eb0c41a2a21547724f28a2b78bf7"
+    },
+    {
+      "file": "holiday-lab/games/mid-autumn.mjs",
+      "sha256": "a8c3bdf7368b51e69a41665e68b4ab8b50829be5f6089ebfd2cf757936f19dd1"
+    },
+    {
+      "file": "holiday-lab/games/national-day.mjs",
+      "sha256": "9c697f08c24f9eae89ac55b71fc37bcfe8546c65b7ca3264a88155b5a63891fa"
+    },
+    {
+      "file": "holiday-lab/games/new-year.mjs",
+      "sha256": "42565e8c5c9e60240f686254a430c62e027c4d93a91a32e20c419799b15be7e7"
+    },
+    {
+      "file": "holiday-lab/games/peace-memory.mjs",
+      "sha256": "cdc8fb49a17522f8e5f46989f3397170f75d4d207f25a40bed4c8b31ccda1d4e"
+    },
+    {
+      "file": "holiday-lab/games/qingming.mjs",
+      "sha256": "3936b5606016b60ca38de77e63d2f2170681592e6dc7e7c9147e29210870cc5f"
+    },
+    {
+      "file": "holiday-lab/games/retrocession.mjs",
+      "sha256": "64765225ca980c62feb3f673393efaf8d7d479739b908bf3928389cabca21989"
+    },
+    {
+      "file": "holiday-lab/games/semester.mjs",
+      "sha256": "25cb4073919654b1c76d6bf713fce21421eed71483a2fe203730733057f4c31e"
+    },
+    {
+      "file": "holiday-lab/games/teachers.mjs",
+      "sha256": "7438262d1d96d921d5a13a243494c24f16e29002c5149c0b0146d625506c00fb"
+    },
+    {
+      "file": "images/faculty-portrait-background/changchunya.png",
+      "sha256": "2e916811a44e241659404a35783046dcae96682ee40f7bfb5a28c84b13b75460"
+    },
+    {
+      "file": "images/faculty-portrait-background/chenchinghung.png",
+      "sha256": "3021d65832d38a6d17d1020f8fd9aeb22f01c4077172a209dac8e561b7fbd5e9"
+    },
+    {
+      "file": "images/faculty-portrait-background/chenchungkuang.png",
+      "sha256": "db04a2409c2d36cab3f99f8e06f416d21b87d21f056dfb638fbd752fdd5e27d1"
+    },
+    {
+      "file": "images/faculty-portrait-background/chenmeijung.png",
+      "sha256": "cb18029258ed15c36581b636583fb4713e9ba72edee1a06c17eb9f28e27c083b"
+    },
+    {
+      "file": "images/faculty-portrait-background/chentsaiyu.png",
+      "sha256": "3ae8947c41fc1ff44bc7546097082206cf0141a854bce98830d5e92ece301d1e"
+    },
+    {
+      "file": "images/faculty-portrait-background/chiangtienhua.png",
+      "sha256": "fd2f0fe11e5e665dc41f441d1f56e1db5901e3c52b4d61a5fa5401066533f724"
+    },
+    {
+      "file": "images/faculty-portrait-background/chiangyamei.png",
+      "sha256": "285e348e257e487b05216975699edc9032127dc1e253f54e17ea5acb93c61562"
+    },
+    {
+      "file": "images/faculty-portrait-background/chiushinchan.png",
+      "sha256": "301502376068401ca281daba06f79d66ca572d3c6de9020e71e5338cc347f682"
+    },
+    {
+      "file": "images/faculty-portrait-background/tengshuyuan.png",
+      "sha256": "336834acdf9a010d8d97eca4d98e6ddd6edc68bed3ab73dbec8250f2fa4a5518"
+    },
+    {
+      "file": "images/faculty-portrait-background/wangtsungli.png",
+      "sha256": "001ff729f207f3dcf2010166f0458d766dacfb1592058ee4beda975774016ed1"
+    },
+    {
+      "file": "images/faculty-portrait-background/wuyenshen.png",
+      "sha256": "6af935e044c6f91394d79c20d441960b5e1502e5a4878ae075d40cec033ecc62"
+    },
+    {
+      "file": "images/faculty-portrait-background/yangchihchang.png",
+      "sha256": "ca0cf58a5bf52e2ee75f3cca9b68cdcf7662aea4ec2328c7eb34c6e3a78d7ba0"
+    },
+    {
+      "file": "images/faculty-portrait-background/yinli.png",
+      "sha256": "9a730945bb49bd977bafa0cf89dd2fb2c76ac11e7ec9efc2506fbb5da471a9fd"
+    },
+    {
+      "file": "images/news/2026-awards/dear-all-robots.jpg",
+      "sha256": "036b60c49ec45043670e823c0cec198be091c1208cf746f57d0366a35ec6c9a1"
+    },
+    {
+      "file": "images/news/2026-awards/garble-tv.jpg",
+      "sha256": "701f7acdc934238bf28cbdb097d0c31d993c06488b1f9e3d4c5f2b4d9c8d33b2"
+    },
+    {
+      "file": "images/news/2026-awards/healing-light.jpg",
+      "sha256": "e33d612af1fb98a25d156ae38158577cfa651f3e44c8945d39f0845b36e182a4"
+    },
+    {
+      "file": "images/news/2026-awards/jingxiangtuan.jpg",
+      "sha256": "ac1d6af83c9c55b8ed608ee1a99e988ee962fd14309db3ad651e82d8ca01c613"
+    },
+    {
+      "file": "images/news/2026-awards/kacha.jpg",
+      "sha256": "0342a3c25add112df5fbf6a69923a3d066afc70511882a7a5dc9eb80a59da934"
+    },
+    {
+      "file": "images/news/2026-awards/today-restaurant.jpg",
+      "sha256": "64650ea1263860051f763bc20cc5c3f64d9512dff86aeb1d7e70499c37a34ff3"
+    },
+    {
+      "file": "images/news/2026-awards/yuan-wang-wang.jpg",
+      "sha256": "3eeb8828ab79e7119e10bf7a50675a2dc65531d2ea35b2c15c8d1ba8c4f03a29"
+    },
+    {
+      "file": "images/news/2026-japan-internship/01-arrival-airport.jpg",
+      "sha256": "a02d9d1c356e066ec8911bb7a49e81346336f1e121ca0cb41a890ce9a778080f"
+    },
+    {
+      "file": "images/news/2026-japan-internship/02-hc-company-group.jpg",
+      "sha256": "6ff9ef3943c491fb66dee1f9f0f10864e9d2c9a0f2dee4adf1ca369e7d5ce838"
+    },
+    {
+      "file": "images/news/2026-japan-internship/03-landlord.jpg",
+      "sha256": "e1fa3d73c14cbbb54ab2ced31b10a9d422c65eb9175a6fd5de83cf36dd9e2963"
+    },
+    {
+      "file": "images/news/2026-japan-internship/04-seiyo-tourism.jpg",
+      "sha256": "79cfd2a42a57cf7f6da9512489b51a9d2a64e38c1f67180d42ff68cd9ca39e54"
+    },
+    {
+      "file": "images/news/2026-japan-internship/05-briefing-fukuda.jpg",
+      "sha256": "11b8b1727fb7bef01278dc34bc981133c48a53e9a45a6b2134e1e58f5eda5ffb"
+    },
+    {
+      "file": "images/news/2026-japan-internship/06-meeting-kato.jpg",
+      "sha256": "262d5eff79bbd299fb9e170170a4560870993ebbf10eff04e09efb9d576f708f"
+    },
+    {
+      "file": "images/news/2026-japan-internship/07-tobe-pottery.jpg",
+      "sha256": "1d04a1793d57c68cfbe621ff6646a14d73aae51275e37ead4271bf6cf5b93c58"
+    },
+    {
+      "file": "images/news/2026-japan-internship/08-ar-stamp-rally-site.jpg",
+      "sha256": "73d4ef98c6db5c58cf1232bfb2164c8d44c1267291b46cc8ce6cf0512502ea55"
+    },
+    {
+      "file": "images/news/2026-japan-internship/09-ar-stamp-rally-credits.jpg",
+      "sha256": "7d8cbe1d45dc00bd1253e19448f8ef6113e1fc36714ec6a5011f742eb771bf9d"
+    },
+    {
+      "file": "images/news/7160-dear-all-robots.jpg",
+      "sha256": "64794f8254b35fcc6504ce9f2554196be9a0958d0183096dad01fcd3b70b4bb2"
+    },
+    {
+      "file": "images/posters/clipstudio-grand-prize.jpg",
+      "sha256": "cc03f861de0b1f2711f7da14314e0132c2de77027dd0b63e93bc76e5122e53f4"
+    },
+    {
+      "file": "images/quiz/GENERATION.md",
+      "sha256": "abccae89709ef455900df99ac20d59a0592b53edec3830345cd2f6addcd71244"
+    },
+    {
+      "file": "images/quiz/share-anim.jpg",
+      "sha256": "531ff85aab54a45310375bbd4adea9bc13e5163eac65b0fb3b1cf97e824922ff"
+    },
+    {
+      "file": "images/quiz/share-art.jpg",
+      "sha256": "9320d38b1d27b56475f8e39f80df69b841df330f48c5ed90c43fe23f664fe24b"
+    },
+    {
+      "file": "images/quiz/share-cross.jpg",
+      "sha256": "45b000d2f73fdd4794e897bb44c8a460e428dc1d4e18e6aebb25bafa39d5075b"
+    },
+    {
+      "file": "images/quiz/share-game.jpg",
+      "sha256": "2bfe672784e0bbaa4a65ad151417f9f195babd37eed7a58e489481b8e831072e"
+    },
+    {
+      "file": "images/site-icon.png",
+      "sha256": "356075a7feaaa023f1998b1214823c4371af8b70436427fdc7b7e282cb55efc1"
+    }
+  ],
+  "protected": [
+    {
+      "file": "holiday-lab/layout-qa/labor-continuation-independent-review-20261023/CHECKPOINT.md",
+      "sha256": "6722a0cdb1798daf25dbfff950103c633d17bfafebdf8858c4743ef3492d5f9d"
+    },
+    {
+      "file": "holiday-lab/layout-qa/labor-finite-native/continuation-20261023/CHECKPOINT.md",
+      "sha256": "02b74b6bae38cab26f17d6e085dd840c033990fc346d29020e9d394265389e5d"
+    },
+    {
+      "file": "holiday-lab/layout-qa/phase-latest.json",
+      "sha256": "f6762b3b724f9e7890def79ed876b4c34e1037528d7ec9e2d5863fa5fee5f593"
+    },
+    {
+      "file": "holiday-lab/layout-qa/qingming-native-v3-20261023/CHECKPOINT.md",
+      "sha256": "914e505961a0f653cd16d842cc9b7c65bcac664544dd4dc7f895c5abd8e64edb"
+    },
+    {
+      "file": "holiday-lab/layout-qa/layout-report.json",
+      "sha256": "cbaa1849002fe4682650fb653385a62d91ebf9aca3c94090cdaf0df7bbf34336"
+    },
+    {
+      "file": "images\\faculty-portrait-background\\changchunya.png",
+      "sha256": "2e916811a44e241659404a35783046dcae96682ee40f7bfb5a28c84b13b75460"
+    },
+    {
+      "file": "images\\faculty-portrait-background\\chenchinghung.png",
+      "sha256": "3021d65832d38a6d17d1020f8fd9aeb22f01c4077172a209dac8e561b7fbd5e9"
+    },
+    {
+      "file": "images\\faculty-portrait-background\\chenchungkuang.png",
+      "sha256": "db04a2409c2d36cab3f99f8e06f416d21b87d21f056dfb638fbd752fdd5e27d1"
+    },
+    {
+      "file": "images\\faculty-portrait-background\\chenmeijung.png",
+      "sha256": "cb18029258ed15c36581b636583fb4713e9ba72edee1a06c17eb9f28e27c083b"
+    },
+    {
+      "file": "images\\faculty-portrait-background\\chentsaiyu.png",
+      "sha256": "3ae8947c41fc1ff44bc7546097082206cf0141a854bce98830d5e92ece301d1e"
+    },
+    {
+      "file": "images\\faculty-portrait-background\\chiangtienhua.png",
+      "sha256": "fd2f0fe11e5e665dc41f441d1f56e1db5901e3c52b4d61a5fa5401066533f724"
+    },
+    {
+      "file": "images\\faculty-portrait-background\\chiangyamei.png",
+      "sha256": "285e348e257e487b05216975699edc9032127dc1e253f54e17ea5acb93c61562"
+    },
+    {
+      "file": "images\\faculty-portrait-background\\chiushinchan.png",
+      "sha256": "301502376068401ca281daba06f79d66ca572d3c6de9020e71e5338cc347f682"
+    },
+    {
+      "file": "images\\faculty-portrait-background\\tengshuyuan.png",
+      "sha256": "336834acdf9a010d8d97eca4d98e6ddd6edc68bed3ab73dbec8250f2fa4a5518"
+    },
+    {
+      "file": "images\\faculty-portrait-background\\wangtsungli.png",
+      "sha256": "001ff729f207f3dcf2010166f0458d766dacfb1592058ee4beda975774016ed1"
+    },
+    {
+      "file": "images\\faculty-portrait-background\\wuyenshen.png",
+      "sha256": "6af935e044c6f91394d79c20d441960b5e1502e5a4878ae075d40cec033ecc62"
+    },
+    {
+      "file": "images\\faculty-portrait-background\\yangchihchang.png",
+      "sha256": "ca0cf58a5bf52e2ee75f3cca9b68cdcf7662aea4ec2328c7eb34c6e3a78d7ba0"
+    },
+    {
+      "file": "images\\faculty-portrait-background\\yinli.png",
+      "sha256": "9a730945bb49bd977bafa0cf89dd2fb2c76ac11e7ec9efc2506fbb5da471a9fd"
+    },
+    {
+      "file": "images\\news\\2026-awards\\dear-all-robots.jpg",
+      "sha256": "036b60c49ec45043670e823c0cec198be091c1208cf746f57d0366a35ec6c9a1"
+    },
+    {
+      "file": "images\\news\\2026-awards\\garble-tv.jpg",
+      "sha256": "701f7acdc934238bf28cbdb097d0c31d993c06488b1f9e3d4c5f2b4d9c8d33b2"
+    },
+    {
+      "file": "images\\news\\2026-awards\\healing-light.jpg",
+      "sha256": "e33d612af1fb98a25d156ae38158577cfa651f3e44c8945d39f0845b36e182a4"
+    },
+    {
+      "file": "images\\news\\2026-awards\\jingxiangtuan.jpg",
+      "sha256": "ac1d6af83c9c55b8ed608ee1a99e988ee962fd14309db3ad651e82d8ca01c613"
+    },
+    {
+      "file": "images\\news\\2026-awards\\kacha.jpg",
+      "sha256": "0342a3c25add112df5fbf6a69923a3d066afc70511882a7a5dc9eb80a59da934"
+    },
+    {
+      "file": "images\\news\\2026-awards\\today-restaurant.jpg",
+      "sha256": "64650ea1263860051f763bc20cc5c3f64d9512dff86aeb1d7e70499c37a34ff3"
+    },
+    {
+      "file": "images\\news\\2026-awards\\yuan-wang-wang.jpg",
+      "sha256": "3eeb8828ab79e7119e10bf7a50675a2dc65531d2ea35b2c15c8d1ba8c4f03a29"
+    },
+    {
+      "file": "images\\news\\2026-japan-internship\\01-arrival-airport.jpg",
+      "sha256": "a02d9d1c356e066ec8911bb7a49e81346336f1e121ca0cb41a890ce9a778080f"
+    },
+    {
+      "file": "images\\news\\2026-japan-internship\\02-hc-company-group.jpg",
+      "sha256": "6ff9ef3943c491fb66dee1f9f0f10864e9d2c9a0f2dee4adf1ca369e7d5ce838"
+    },
+    {
+      "file": "images\\news\\2026-japan-internship\\03-landlord.jpg",
+      "sha256": "e1fa3d73c14cbbb54ab2ced31b10a9d422c65eb9175a6fd5de83cf36dd9e2963"
+    },
+    {
+      "file": "images\\news\\2026-japan-internship\\04-seiyo-tourism.jpg",
+      "sha256": "79cfd2a42a57cf7f6da9512489b51a9d2a64e38c1f67180d42ff68cd9ca39e54"
+    },
+    {
+      "file": "images\\news\\2026-japan-internship\\05-briefing-fukuda.jpg",
+      "sha256": "11b8b1727fb7bef01278dc34bc981133c48a53e9a45a6b2134e1e58f5eda5ffb"
+    },
+    {
+      "file": "images\\news\\2026-japan-internship\\06-meeting-kato.jpg",
+      "sha256": "262d5eff79bbd299fb9e170170a4560870993ebbf10eff04e09efb9d576f708f"
+    },
+    {
+      "file": "images\\news\\2026-japan-internship\\07-tobe-pottery.jpg",
+      "sha256": "1d04a1793d57c68cfbe621ff6646a14d73aae51275e37ead4271bf6cf5b93c58"
+    },
+    {
+      "file": "images\\news\\2026-japan-internship\\08-ar-stamp-rally-site.jpg",
+      "sha256": "73d4ef98c6db5c58cf1232bfb2164c8d44c1267291b46cc8ce6cf0512502ea55"
+    },
+    {
+      "file": "images\\news\\2026-japan-internship\\09-ar-stamp-rally-credits.jpg",
+      "sha256": "7d8cbe1d45dc00bd1253e19448f8ef6113e1fc36714ec6a5011f742eb771bf9d"
+    },
+    {
+      "file": "images\\news\\7160-dear-all-robots.jpg",
+      "sha256": "64794f8254b35fcc6504ce9f2554196be9a0958d0183096dad01fcd3b70b4bb2"
+    },
+    {
+      "file": "images\\posters\\clipstudio-grand-prize.jpg",
+      "sha256": "cc03f861de0b1f2711f7da14314e0132c2de77027dd0b63e93bc76e5122e53f4"
+    },
+    {
+      "file": "images\\quiz\\GENERATION.md",
+      "sha256": "abccae89709ef455900df99ac20d59a0592b53edec3830345cd2f6addcd71244"
+    },
+    {
+      "file": "images\\quiz\\share-anim.jpg",
+      "sha256": "531ff85aab54a45310375bbd4adea9bc13e5163eac65b0fb3b1cf97e824922ff"
+    },
+    {
+      "file": "images\\quiz\\share-art.jpg",
+      "sha256": "9320d38b1d27b56475f8e39f80df69b841df330f48c5ed90c43fe23f664fe24b"
+    },
+    {
+      "file": "images\\quiz\\share-cross.jpg",
+      "sha256": "45b000d2f73fdd4794e897bb44c8a460e428dc1d4e18e6aebb25bafa39d5075b"
+    },
+    {
+      "file": "images\\quiz\\share-game.jpg",
+      "sha256": "2bfe672784e0bbaa4a65ad151417f9f195babd37eed7a58e489481b8e831072e"
+    },
+    {
+      "file": "images\\site-icon.png",
+      "sha256": "356075a7feaaa023f1998b1214823c4371af8b70436427fdc7b7e282cb55efc1"
+    },
+    {
+      "file": "holiday-lab\\assets\\children\\actor1.png",
+      "sha256": "e7b8f4b363367b5253ed0556b3b6d0234fef350ab3f1245c105fb3ee0c37188d"
+    },
+    {
+      "file": "holiday-lab\\assets\\children\\actor2.png",
+      "sha256": "3dacb948df867cf45cb32fae5115ace114b10839142951b9463ab0e1cf7e905c"
+    },
+    {
+      "file": "holiday-lab\\assets\\children\\actor3.png",
+      "sha256": "6d9db467648d41367894200ed05958806a8b93d1bf20a24128d07a95251b72f4"
+    },
+    {
+      "file": "holiday-lab\\assets\\children\\cg-1.webp",
+      "sha256": "12d504ec28a6e7737ea30c95ff172d7b09764fe0bc45624113ab75da8db5166b"
+    },
+    {
+      "file": "holiday-lab\\assets\\children\\cg-2.webp",
+      "sha256": "5afb1574d60bd23b99f84f089be9e25ff07704a8d61773857c9710ea10e4f6bd"
+    },
+    {
+      "file": "holiday-lab\\assets\\children\\cg-3.webp",
+      "sha256": "ab9f6e359ee50826a2e80cbe5745dcbcb1aed68d2640d4a3e5892fd7969aa85a"
+    },
+    {
+      "file": "holiday-lab\\assets\\children\\cg-4.webp",
+      "sha256": "e684fc35c07a2c58ba21b6fbdd791f952e18d67e16f77e2ceed36f402dc1b752"
+    },
+    {
+      "file": "holiday-lab\\assets\\children\\cg-5.webp",
+      "sha256": "6ae6d344d8822a2f8ac3efdc289d83073d5514e172ba9b02c3d4e1ef5290bba3"
+    },
+    {
+      "file": "holiday-lab\\assets\\children\\prop1.png",
+      "sha256": "c432f14e88a8f99ba655e03ffc91e606f41974e0d99a060fd2b92092554252b8"
+    },
+    {
+      "file": "holiday-lab\\assets\\children\\prop2.png",
+      "sha256": "12f94420117aef18182a1923fb3c47f540fc32c5a420966495e0de28b1b457d1"
+    },
+    {
+      "file": "holiday-lab\\assets\\children\\prop3.png",
+      "sha256": "522f8ecd2f18c018ae1d1d4c4e4122a6287415acf9c01726e17e831a4b33bbc3"
+    },
+    {
+      "file": "holiday-lab\\assets\\children\\scene.webp",
+      "sha256": "fa298dc91623850b9c7329f69bdb1f322a74c1a4016fb6d3a7bc00d7c3f9aeee"
+    },
+    {
+      "file": "holiday-lab\\assets\\children\\target.png",
+      "sha256": "835a43c5d9dd879884581dbf25d9b777087eae634f30079f005ab086f3b04f2e"
+    },
+    {
+      "file": "holiday-lab\\assets\\children\\token1.png",
+      "sha256": "12433b2d9ef8234835209089c42cb82020b799f112f85d6ec12e2b47e17d953c"
+    },
+    {
+      "file": "holiday-lab\\assets\\children\\token2.png",
+      "sha256": "cf95f427207d447c231225a7444d742ae33b8a2d03d86565ad9911bf1e1011ea"
+    },
+    {
+      "file": "holiday-lab\\assets\\children\\token3.png",
+      "sha256": "8590c0ead0da5e0084ac00f4c09f5ab16f59a30068e53d9c90fac059bf41d203"
+    },
+    {
+      "file": "holiday-lab\\assets\\constitution\\actor1.png",
+      "sha256": "a2961037206fdd6332e73434b7119f424fb3e5482a95a755a5e2763635bba5c3"
+    },
+    {
+      "file": "holiday-lab\\assets\\constitution\\actor2.png",
+      "sha256": "2fc17519f090c4f40a014fa63d169b0f55bf19af7df721196928e19486c1bf21"
+    },
+    {
+      "file": "holiday-lab\\assets\\constitution\\actor3.png",
+      "sha256": "de57b880f54a3e2f4c00bd4c68129b474b4c61964a83e2b573d56ec9470cab53"
+    },
+    {
+      "file": "holiday-lab\\assets\\constitution\\cg-1.webp",
+      "sha256": "9f7c7d77caf8e7d2de64c7208756ec8498e3cb39e8da05645e5b43f4d1d3d915"
+    },
+    {
+      "file": "holiday-lab\\assets\\constitution\\cg-2.webp",
+      "sha256": "c9d646ff2533825648d571d63e367bd89f3421d2b1e78c288460268453ef4f70"
+    },
+    {
+      "file": "holiday-lab\\assets\\constitution\\cg-3.webp",
+      "sha256": "24dbd9dc0342d0ac02ef601463c1ef726ea3db04c21e0b82aeddff5a814f50bb"
+    },
+    {
+      "file": "holiday-lab\\assets\\constitution\\cg-4.webp",
+      "sha256": "1ae176094399c82ed2537e86d34b75416c48550a16c1727e3ebfb526a41bb34e"
+    },
+    {
+      "file": "holiday-lab\\assets\\constitution\\cg-5.webp",
+      "sha256": "2fde94289e5c11d63eaa43e5239577edbdd7b7089645919d6ae47880de5c5516"
+    },
+    {
+      "file": "holiday-lab\\assets\\constitution\\prop1.png",
+      "sha256": "c7b2c1d365de5062ab1359b168ea69d40da14a4ed29297a73008ba185f47b2cf"
+    },
+    {
+      "file": "holiday-lab\\assets\\constitution\\prop2.png",
+      "sha256": "89a575bb7272a03ca7ff7b4eadcc737153051862bb4c950f8b98aa1508c26087"
+    },
+    {
+      "file": "holiday-lab\\assets\\constitution\\prop3.png",
+      "sha256": "5411f6d099c1f0d130047ef9a244ad71512b4bd0ec447f29d547944ba0d08230"
+    },
+    {
+      "file": "holiday-lab\\assets\\constitution\\scene.webp",
+      "sha256": "7b1ee7b69c70a452d2642efaa85b4e01a66bf0b7929dc419d968938d783cbd54"
+    },
+    {
+      "file": "holiday-lab\\assets\\constitution\\target.png",
+      "sha256": "542526b731a0b7f05422d6b11cc3fe87b493483da73e3d0127f8f2e5ceffb339"
+    },
+    {
+      "file": "holiday-lab\\assets\\constitution\\token1.png",
+      "sha256": "6e92512e2c8380c6ce0a40dfe1d8b8b11edb467bbeedcc61d8e9b559f506724a"
+    },
+    {
+      "file": "holiday-lab\\assets\\constitution\\token2.png",
+      "sha256": "94867b4fc875e3d0610f0b91ae997c200de810f48d294b8653ab7ca9e2fc8de2"
+    },
+    {
+      "file": "holiday-lab\\assets\\constitution\\token3.png",
+      "sha256": "d7f14fe44b57322c38687d88cd9de8222a347d231b4a85f523863238bfc99e0b"
+    },
+    {
+      "file": "holiday-lab\\assets\\dragon-boat\\actor1.png",
+      "sha256": "5250200acf0a1fc64be0c32cb48c0e6b7d6f32427793c9e48264861bde26d04a"
+    },
+    {
+      "file": "holiday-lab\\assets\\dragon-boat\\actor2.png",
+      "sha256": "25ddb45b05fae2d0854411c609ea0c2c567f8666efb09e08ff58de58741fe14f"
+    },
+    {
+      "file": "holiday-lab\\assets\\dragon-boat\\actor3.png",
+      "sha256": "3906e8c62f63547f71fa4da7652bbf4bb64f957dec1bc8ba82c0fb82f672cde3"
+    },
+    {
+      "file": "holiday-lab\\assets\\dragon-boat\\cg-1.webp",
+      "sha256": "8f8ebf43ca562f83e502f848c4a7bea473df52844d8329c97b7fea6188a49909"
+    },
+    {
+      "file": "holiday-lab\\assets\\dragon-boat\\cg-2.webp",
+      "sha256": "3d73f04206a1b1fe18d7c5c8b8a287cbdfe1509fa0bf2baedda89f745cf4f01f"
+    },
+    {
+      "file": "holiday-lab\\assets\\dragon-boat\\cg-3.webp",
+      "sha256": "1a47840c2af307709a4d3893f0caa891a99ee1a3b445ad5507da14616f995fb3"
+    },
+    {
+      "file": "holiday-lab\\assets\\dragon-boat\\cg-4.webp",
+      "sha256": "9ccbb2b8f48a9b824827b09d1974d805d8306e8eab49eae4539bf111c6169f5b"
+    },
+    {
+      "file": "holiday-lab\\assets\\dragon-boat\\cg-5.webp",
+      "sha256": "781a51fb94c1367ffc310b47f735bc53b05d3c58669582b1b7e110b076dd8418"
+    },
+    {
+      "file": "holiday-lab\\assets\\dragon-boat\\prop1.png",
+      "sha256": "8dde16fcb45b9c251697d83920c72bed2bf7fd79afb9ad30dfe93c57faa4fd0b"
+    },
+    {
+      "file": "holiday-lab\\assets\\dragon-boat\\prop2.png",
+      "sha256": "6a95b3d3c049b5a47159621e7ea8e74939e918217e4c76578223335bdc4567a2"
+    },
+    {
+      "file": "holiday-lab\\assets\\dragon-boat\\prop3.png",
+      "sha256": "4b63aedd8afe35ca937a839ff142eab9c4eae497c068e32351bf7744b681fe61"
+    },
+    {
+      "file": "holiday-lab\\assets\\dragon-boat\\scene.webp",
+      "sha256": "6ed25930b82e4c6eb9bc8df02835ef4b84375786a469d6c9a893383a4a074fb5"
+    },
+    {
+      "file": "holiday-lab\\assets\\dragon-boat\\target.png",
+      "sha256": "4acbe739503b7d8c77d154f19a50e67dfe8c1bcffecb4bbf9c8a484a86bc1c97"
+    },
+    {
+      "file": "holiday-lab\\assets\\dragon-boat\\token1.png",
+      "sha256": "be628603621882739b310b5658fcc3c783e3cfb237909ec998944bcb65b01bef"
+    },
+    {
+      "file": "holiday-lab\\assets\\dragon-boat\\token2.png",
+      "sha256": "cb8a5b2e6399dad7b71dcf96a53e6fca03f4adcbbba93031b9abb487eddce899"
+    },
+    {
+      "file": "holiday-lab\\assets\\dragon-boat\\token3.png",
+      "sha256": "6bf6896693b252873f230df9866eb9ea9e91f49b71ccca27a9d17504c0dbeea5"
+    },
+    {
+      "file": "holiday-lab\\assets\\exhibition\\actor1.png",
+      "sha256": "d04686e5f05e5d086fe02ce7f4eacd19cabaa0b5da9ce2f48943c058095ccc89"
+    },
+    {
+      "file": "holiday-lab\\assets\\exhibition\\actor2.png",
+      "sha256": "7fa0b25eb9f6b0058092c7ef471d6f28a51a4c433bb1d502e88301f4e312d08e"
+    },
+    {
+      "file": "holiday-lab\\assets\\exhibition\\actor3.png",
+      "sha256": "50d80d53cee1bab542f8eacfcd23a136c0514c1c1f04682f4923f4e1eba39101"
+    },
+    {
+      "file": "holiday-lab\\assets\\exhibition\\cg-1.webp",
+      "sha256": "aafb283cef1258d374b97cf301f5e8c2e099e6f4be26785cc0a9ec73da38b7b2"
+    },
+    {
+      "file": "holiday-lab\\assets\\exhibition\\cg-2.webp",
+      "sha256": "cf9f128016579263fca7004aefa98d581b46fccb33d581ab0f4cf12a25a12258"
+    },
+    {
+      "file": "holiday-lab\\assets\\exhibition\\cg-3.webp",
+      "sha256": "20caa5d0907adf659116fcb0fe787d3c6597c35902abd7343616d4eef4d8a307"
+    },
+    {
+      "file": "holiday-lab\\assets\\exhibition\\cg-4.webp",
+      "sha256": "64e044d9d5ff4bb40dc442f857d88cc3347fb4febc75b7d9409f953d353c5357"
+    },
+    {
+      "file": "holiday-lab\\assets\\exhibition\\cg-5.webp",
+      "sha256": "90921a6a301afa56147701de65b07fcbf2ad23e4dd25471fb1db76aa200d53a0"
+    },
+    {
+      "file": "holiday-lab\\assets\\exhibition\\prop1.png",
+      "sha256": "14c0c9e63cc73c2487f2b550f4e09c066d59167170fafde2df3a5de9c0d78b25"
+    },
+    {
+      "file": "holiday-lab\\assets\\exhibition\\prop2.png",
+      "sha256": "4a68b0ce34af8f2d0b6fd9271c152893140c87f2938161dbee696b219c31262f"
+    },
+    {
+      "file": "holiday-lab\\assets\\exhibition\\prop3.png",
+      "sha256": "b5199ccd212d658e63223573f8fbc9bbcb4fc9e1118b2e4e7eb85877e9e59379"
+    },
+    {
+      "file": "holiday-lab\\assets\\exhibition\\scene.webp",
+      "sha256": "f53a97a0475e8e78a50eb773fab192734c16d500d57534b3b93522f6969768c2"
+    },
+    {
+      "file": "holiday-lab\\assets\\exhibition\\target.png",
+      "sha256": "fc4fc7d5af8ccae28f1425708a42bdd1e6da1c8033a849e35f525d3f31740dee"
+    },
+    {
+      "file": "holiday-lab\\assets\\exhibition\\token1.png",
+      "sha256": "28b70922ecb4e377fcf688939488a4f34c081c48ca2abda4006f407004decc57"
+    },
+    {
+      "file": "holiday-lab\\assets\\exhibition\\token2.png",
+      "sha256": "03975e3483983583248aaa92175ff5c04798067fc6e6376319bf26b9299d8e6a"
+    },
+    {
+      "file": "holiday-lab\\assets\\exhibition\\token3.png",
+      "sha256": "722e3e6597fdf18be25dcf5dbb82f26c1febd35473a5433ed3ce10f12320ea73"
+    },
+    {
+      "file": "holiday-lab\\assets\\labor\\actor1.png",
+      "sha256": "cc075de01b82a6278f2513d24012ba3aaaad2e0e852b06b09a903daee7ac741e"
+    },
+    {
+      "file": "holiday-lab\\assets\\labor\\actor2.png",
+      "sha256": "bd979104bf5b739abdbb79b8aa01624b7786d9541b7501ec876cd1286c211bc1"
+    },
+    {
+      "file": "holiday-lab\\assets\\labor\\actor3.png",
+      "sha256": "920ddc5415c0b8202eee23cfbc51c657d6e202ea49699c6a0b0fc880730eca6f"
+    },
+    {
+      "file": "holiday-lab\\assets\\labor\\cg-1.webp",
+      "sha256": "41022371bad6c37596aa8387e379cb464dfce01d4346c00c40ca359c4b0aa2ea"
+    },
+    {
+      "file": "holiday-lab\\assets\\labor\\cg-2.webp",
+      "sha256": "81ff5315af1378cf6b835e03e04b9eaf839b66082b78ac039a274204ea5368c4"
+    },
+    {
+      "file": "holiday-lab\\assets\\labor\\cg-3.webp",
+      "sha256": "23822b0e14dd55e8a7ee4d5c85e7345f85a040d46ec1b5f6f0ca82f2141ea93c"
+    },
+    {
+      "file": "holiday-lab\\assets\\labor\\cg-4.webp",
+      "sha256": "57c5bee70b6739b8cd6e27f94ab5a02181143c35a63bbe6dc429b09906ee029f"
+    },
+    {
+      "file": "holiday-lab\\assets\\labor\\cg-5.webp",
+      "sha256": "02f53f345b66c14ff901f8253a75ddf91066de5a65134cfebe8a627a095dae75"
+    },
+    {
+      "file": "holiday-lab\\assets\\labor\\prop1.png",
+      "sha256": "8f07a30d354980727b62469b3d2086611b999abaab5d2bcae31ac180292064d0"
+    },
+    {
+      "file": "holiday-lab\\assets\\labor\\prop2.png",
+      "sha256": "90cb2fd6bb14faf4fcdbc5b05e446e0bce03d7ac57f27c082e258323e70d11fe"
+    },
+    {
+      "file": "holiday-lab\\assets\\labor\\prop3.png",
+      "sha256": "b8092182d170f4c7c39bd379af66881d340184f5807bb5610cd0567f667ded60"
+    },
+    {
+      "file": "holiday-lab\\assets\\labor\\scene.webp",
+      "sha256": "e43b1fb133df4ade08cf6e5a751ea348e7a93f0594ab2898d99a61754c55047c"
+    },
+    {
+      "file": "holiday-lab\\assets\\labor\\target.png",
+      "sha256": "d70fc6242a284de536b2c16a1a9511e3429dce1b8f0df4752cf19d5e9308b35f"
+    },
+    {
+      "file": "holiday-lab\\assets\\labor\\token1.png",
+      "sha256": "cf27fe681252b16cf525744b287f44e58e925e6ec53987a91d9deb6a99cedc59"
+    },
+    {
+      "file": "holiday-lab\\assets\\labor\\token2.png",
+      "sha256": "f39179c6bd4ce4dad7bf03d05c684dec674d88d5fb111abc6539a3444ddf5e9a"
+    },
+    {
+      "file": "holiday-lab\\assets\\labor\\token3.png",
+      "sha256": "91b8e77d8ea532018d727447e7d68d4bae4c0f231fca2ed6098d5eba79c8d71f"
+    },
+    {
+      "file": "holiday-lab\\assets\\lantern\\actor1.png",
+      "sha256": "fd153db6cd7171be69b8d0b7222b3416c9ea5c4675b9ee744e0d331d3169284c"
+    },
+    {
+      "file": "holiday-lab\\assets\\lantern\\actor2.png",
+      "sha256": "1c4cfb4d76f88d60a42266340e85515bd331aca99f663eae528313d1f5f05451"
+    },
+    {
+      "file": "holiday-lab\\assets\\lantern\\actor3.png",
+      "sha256": "b46fa203f52a5c9bcc1bb8527bf1f2fe1797252d5777c305b324d14b87437ff2"
+    },
+    {
+      "file": "holiday-lab\\assets\\lantern\\cg-1.webp",
+      "sha256": "a73052a4d31155bdad24ee745c2b8e07b5a325218111792566150af85abcc4bc"
+    },
+    {
+      "file": "holiday-lab\\assets\\lantern\\cg-2.webp",
+      "sha256": "de818ac929016b5223e9599ea69d38da3cc8c8140de053e97955bb6bc050966f"
+    },
+    {
+      "file": "holiday-lab\\assets\\lantern\\cg-3.webp",
+      "sha256": "6756b7e540fa4165efb785e4dd36e7d0f34a43e0286984e6e763516500f60716"
+    },
+    {
+      "file": "holiday-lab\\assets\\lantern\\cg-4.webp",
+      "sha256": "d8f294e8b338b94085eea26697a5348aa0c684760d5617c23cdd10158c63581b"
+    },
+    {
+      "file": "holiday-lab\\assets\\lantern\\cg-5.webp",
+      "sha256": "8859245e5800c990115847ae46725d83df2d3d1ae11a38f82c05125447639277"
+    },
+    {
+      "file": "holiday-lab\\assets\\lantern\\prop1.png",
+      "sha256": "9b10a679b8501811508849d6bc870eb423581ff19665da421191521b365e1b2b"
+    },
+    {
+      "file": "holiday-lab\\assets\\lantern\\prop2.png",
+      "sha256": "2cb5e46b9ea47f6823ac3df8e8fcfa140a530149d694cdf5a944a8a9573da4f3"
+    },
+    {
+      "file": "holiday-lab\\assets\\lantern\\prop3.png",
+      "sha256": "d26e94c98f9905e3dc29d09e593a875486b8804c1b6e9abc3b270b0b4d88e809"
+    },
+    {
+      "file": "holiday-lab\\assets\\lantern\\scene.webp",
+      "sha256": "4530a4907fe32de26b193c80391802b02264fee10ffa301bb7f0268bcdd96add"
+    },
+    {
+      "file": "holiday-lab\\assets\\lantern\\target.png",
+      "sha256": "08b7152c2681e60aac86500c2af05c6473e8c01fbe3461819edcb937d85459d5"
+    },
+    {
+      "file": "holiday-lab\\assets\\lantern\\token1.png",
+      "sha256": "8b427742e854c7f3ad541a547b2c42ec38c8a0359583e0c23680f20e6844758d"
+    },
+    {
+      "file": "holiday-lab\\assets\\lantern\\token2.png",
+      "sha256": "859af10a833b26a67dd3485f969e1bf05e3e5b34596b85dbee253c185c22741a"
+    },
+    {
+      "file": "holiday-lab\\assets\\lantern\\token3.png",
+      "sha256": "98b697a7c70dc07362cdf814729e912868c0d067e6d1d56464efd065f39c2e22"
+    },
+    {
+      "file": "holiday-lab\\assets\\lunar-new-year\\actor1.png",
+      "sha256": "14d3de158ce412d34471b3bdcf2cbf4800018b3b8a5752da83a1845da7ac30e7"
+    },
+    {
+      "file": "holiday-lab\\assets\\lunar-new-year\\actor2.png",
+      "sha256": "14d3de158ce412d34471b3bdcf2cbf4800018b3b8a5752da83a1845da7ac30e7"
+    },
+    {
+      "file": "holiday-lab\\assets\\lunar-new-year\\actor3.png",
+      "sha256": "14d3de158ce412d34471b3bdcf2cbf4800018b3b8a5752da83a1845da7ac30e7"
+    },
+    {
+      "file": "holiday-lab\\assets\\lunar-new-year\\cg-1.webp",
+      "sha256": "12a0603c3fbd0f871a9f49588d2dc626b11e16a9543443fb72af04fd145c89c3"
+    },
+    {
+      "file": "holiday-lab\\assets\\lunar-new-year\\cg-2.webp",
+      "sha256": "a9f7d6d0c21ac7e1399e738d924579668a4f457814772718e2d1ca5f13934fff"
+    },
+    {
+      "file": "holiday-lab\\assets\\lunar-new-year\\cg-3.webp",
+      "sha256": "21729a8b7f55944cc748b06ba6fe823ba1511b40e570459792b010904c06ca22"
+    },
+    {
+      "file": "holiday-lab\\assets\\lunar-new-year\\cg-4.webp",
+      "sha256": "2b9117bd4457c5b441b5abe72766618ed281dff8283e0ef2117a66101dd87756"
+    },
+    {
+      "file": "holiday-lab\\assets\\lunar-new-year\\cg-5.webp",
+      "sha256": "cc7cb78160360a277c4cc5c88c53e6d3e8e2bf2e90543e465e1d67848a3414e5"
+    },
+    {
+      "file": "holiday-lab\\assets\\lunar-new-year\\prop1.png",
+      "sha256": "14ed4156018483e81c045034757956a8db5aa9258da65e4caaf2b57c53eb26ba"
+    },
+    {
+      "file": "holiday-lab\\assets\\lunar-new-year\\prop2.png",
+      "sha256": "ca923e803428fb6d8b9774a319055255cb23e20750bdbbe216f73ba2ef1da6a8"
+    },
+    {
+      "file": "holiday-lab\\assets\\lunar-new-year\\prop3.png",
+      "sha256": "70055484b3a83cd6bf66192a736e59b16cdb626a6122ad868d70ddf0df783734"
+    },
+    {
+      "file": "holiday-lab\\assets\\lunar-new-year\\scene.webp",
+      "sha256": "8b05e329a6238123ab20def59d405ff487a26b3d05f0ab79a08e3a9266c84019"
+    },
+    {
+      "file": "holiday-lab\\assets\\lunar-new-year\\target.png",
+      "sha256": "da2c6fb3f8d2ea8c6b40b25e818e5375e4026c8e387327c3c5444ff5813e2a42"
+    },
+    {
+      "file": "holiday-lab\\assets\\lunar-new-year\\token1.png",
+      "sha256": "701109cad68b3cb3a401d6c7d8a809dac4f007ec8de856ebc75bad7a1f72a1e6"
+    },
+    {
+      "file": "holiday-lab\\assets\\lunar-new-year\\token2.png",
+      "sha256": "f7ede47b0e16aee7d940c957b79f018bf6c8a3ae4ac3f21106f583d9714aa6a4"
+    },
+    {
+      "file": "holiday-lab\\assets\\lunar-new-year\\token3.png",
+      "sha256": "a510a4ac303a58f3c91afa9acea2579d7850cf7f88dd947d2060bdf7e5bb2ff6"
+    },
+    {
+      "file": "holiday-lab\\assets\\mid-autumn\\actor1.png",
+      "sha256": "7267c5c683443acf31a5a752557c1f4823faf1e2a4b6ef507bcde4a18509e58e"
+    },
+    {
+      "file": "holiday-lab\\assets\\mid-autumn\\actor2.png",
+      "sha256": "90594bc0d4eac09e3070325945147655f95cc74cb57f202f54cc062cf8f0b554"
+    },
+    {
+      "file": "holiday-lab\\assets\\mid-autumn\\actor3.png",
+      "sha256": "92cd7c4c0cbd36a05b1a8a3ab5478c48217965820d982463e90bc8962425200e"
+    },
+    {
+      "file": "holiday-lab\\assets\\mid-autumn\\cg-1.webp",
+      "sha256": "b5f5c6eef7448bd49eb382d97a6c5848be511782a5296f6bb88d28d8c0c627c2"
+    },
+    {
+      "file": "holiday-lab\\assets\\mid-autumn\\cg-2.webp",
+      "sha256": "be155c1f7984ef0f191358e75faf8977e95b0cfa32892d41aeab40ef76a52835"
+    },
+    {
+      "file": "holiday-lab\\assets\\mid-autumn\\cg-3.webp",
+      "sha256": "cb254e1662a4ab742cdb70be8fed7f18354d80e8d55e86862b2ad951ed6fae0a"
+    },
+    {
+      "file": "holiday-lab\\assets\\mid-autumn\\cg-4.webp",
+      "sha256": "c06b31058bec50a5145a0ef015aaec387494e64b36e271e58310c20be02e7dfe"
+    },
+    {
+      "file": "holiday-lab\\assets\\mid-autumn\\cg-5.webp",
+      "sha256": "8170512d8540763058eec1f67b1966c33aa6d563556905b790eeabe0f05d93e7"
+    },
+    {
+      "file": "holiday-lab\\assets\\mid-autumn\\prop1.png",
+      "sha256": "bdd3e0b9ccfc0114c7f1059c82ea6a4f839134f6ad3a16f3e7d97df01f8854a9"
+    },
+    {
+      "file": "holiday-lab\\assets\\mid-autumn\\prop2.png",
+      "sha256": "639e224fb64c195ed65b86c419c571f6e97c69d19a9fd68dd379d3c874bbf2eb"
+    },
+    {
+      "file": "holiday-lab\\assets\\mid-autumn\\prop3.png",
+      "sha256": "77cec89ba4f725046c8fa7f2949ef9397613af8836b6ae9d4dcc9bc9a4e061c3"
+    },
+    {
+      "file": "holiday-lab\\assets\\mid-autumn\\scene.webp",
+      "sha256": "e40700efef374b1ea0841d3a9ab3b1bc3db92f7702fc414cf3b9d3591cdb9c6c"
+    },
+    {
+      "file": "holiday-lab\\assets\\mid-autumn\\target.png",
+      "sha256": "a4f368ee0288e34ac0a92c9cf26fb434f37f57ae1109320af72644dac5626647"
+    },
+    {
+      "file": "holiday-lab\\assets\\mid-autumn\\token1.png",
+      "sha256": "c40f521a399a176ce9c8ca5e01489d9a413350a6f7c025fb4f06328e08084a82"
+    },
+    {
+      "file": "holiday-lab\\assets\\mid-autumn\\token2.png",
+      "sha256": "a96abfad17cda4e25b78575f22bb05f68a2025b8d8c900e704508d1c8815b12c"
+    },
+    {
+      "file": "holiday-lab\\assets\\mid-autumn\\token3.png",
+      "sha256": "2c0d889a7a48a42668c15c7151b297d6fcccae82bdcacd12684763a0ae353e85"
+    },
+    {
+      "file": "holiday-lab\\assets\\national-day\\actor1.png",
+      "sha256": "4541529b74135b98c0bfc59c65b9b841db5c242489ea77e060d1ba93371681da"
+    },
+    {
+      "file": "holiday-lab\\assets\\national-day\\actor2.png",
+      "sha256": "3d4a98c60509346beaff16193d2bc634bae33e4790713679055fd16fbe0bc8b2"
+    },
+    {
+      "file": "holiday-lab\\assets\\national-day\\actor3.png",
+      "sha256": "a9ee8018e34b19f40252146c2e439b131daa33937c8c5806ff3ff61f896da548"
+    },
+    {
+      "file": "holiday-lab\\assets\\national-day\\cg-1.webp",
+      "sha256": "5e2879bfee70c0720c76df242a67d982d24da61ddbe38a79b60ba56abcffc2e8"
+    },
+    {
+      "file": "holiday-lab\\assets\\national-day\\cg-2.webp",
+      "sha256": "6cd1f9c6d388d909990a904013e329a1b7ca59cf4ed98681f8471cc690407074"
+    },
+    {
+      "file": "holiday-lab\\assets\\national-day\\cg-3.webp",
+      "sha256": "263c28c42e96c27da098ff1edbb399361cb8173304ad3041a142f569677266b0"
+    },
+    {
+      "file": "holiday-lab\\assets\\national-day\\cg-4.webp",
+      "sha256": "0b84a64abb3d0e4f1ee03c71957e15f63a195815588d593ee71cd578d02089c2"
+    },
+    {
+      "file": "holiday-lab\\assets\\national-day\\cg-5.webp",
+      "sha256": "1c1acfb262834cf73281e35fa431df7f7c13a9310626945a85c56d511c8c84ec"
+    },
+    {
+      "file": "holiday-lab\\assets\\national-day\\prop1.png",
+      "sha256": "83b5835fd2bb97b0fe751d4a1bcea14842ce9c1b9fb3c1dd44d18c594990cd66"
+    },
+    {
+      "file": "holiday-lab\\assets\\national-day\\prop2.png",
+      "sha256": "11ff0f69de6f1fd3c9898c135211c10b3cee4d4b1c586e696b1624ae648dde05"
+    },
+    {
+      "file": "holiday-lab\\assets\\national-day\\prop3.png",
+      "sha256": "e5592eeebe4427f197b4a14df287a9fe4d69d9c558a9101e9526eda1fea72360"
+    },
+    {
+      "file": "holiday-lab\\assets\\national-day\\scene.webp",
+      "sha256": "867981d7407075efde3db575e09dce2c9aa0cb4ddf2eefc71354ea539fe329ca"
+    },
+    {
+      "file": "holiday-lab\\assets\\national-day\\target.png",
+      "sha256": "c674b33effdbb05c375528fb8068fb6925ceddc400188771c6f111e3e7cefa44"
+    },
+    {
+      "file": "holiday-lab\\assets\\national-day\\token1.png",
+      "sha256": "11a388805276c46f24cf2e10938844cb17841446ad8c5c4ed6586e13699b93ce"
+    },
+    {
+      "file": "holiday-lab\\assets\\national-day\\token2.png",
+      "sha256": "5bfba13c0299d44c11051c719e319e6bae1adf418006effa0d9670032cc5b532"
+    },
+    {
+      "file": "holiday-lab\\assets\\national-day\\token3.png",
+      "sha256": "f3254c6fd33eb475af2ccce4632eb7514cca316b6b728f841fdc542f52c59910"
+    },
+    {
+      "file": "holiday-lab\\assets\\new-year\\actor1.png",
+      "sha256": "61f04780f003fb8f070f67c36ee99b9c713315385afaef3178bf0b3afac20140"
+    },
+    {
+      "file": "holiday-lab\\assets\\new-year\\actor2.png",
+      "sha256": "5ac216bcd202f0bf5258bab394a1ec63693af11ca47eb95b3dd49e9514bc36a1"
+    },
+    {
+      "file": "holiday-lab\\assets\\new-year\\actor3.png",
+      "sha256": "e7a091002895a7b4309fc3fef8b4d3c20f07e66531c7af3515595b32018e1394"
+    },
+    {
+      "file": "holiday-lab\\assets\\new-year\\cg-1.webp",
+      "sha256": "f465c012535bab162324a1bebd7479fa78b34b7775b419abe9e4a9e8e33b93cf"
+    },
+    {
+      "file": "holiday-lab\\assets\\new-year\\cg-2.webp",
+      "sha256": "052c14637914d3c8139e1f59a0acfcd5cad4afc7fcda77b7a48282edc2852003"
+    },
+    {
+      "file": "holiday-lab\\assets\\new-year\\cg-3.webp",
+      "sha256": "8cb353c725d4c2508eb22963a896ff354b7bb610c0550d15b064fae034bb18a8"
+    },
+    {
+      "file": "holiday-lab\\assets\\new-year\\cg-4.webp",
+      "sha256": "a363f13d1de86e4a9b207aa169990a151ea0ad2d04bf6f50932fa473cf4a9798"
+    },
+    {
+      "file": "holiday-lab\\assets\\new-year\\cg-5.webp",
+      "sha256": "5e6d5dd24135db77b40569a057b04d146e633ed6a6786c58649bc9c02d73d161"
+    },
+    {
+      "file": "holiday-lab\\assets\\new-year\\prop1.png",
+      "sha256": "b3f750c51a2b6a6bb09ef2ae153ce4b5c44f9821c7af4a28dd23faa853b8e593"
+    },
+    {
+      "file": "holiday-lab\\assets\\new-year\\prop2.png",
+      "sha256": "36bcf0e615f53cb2c0905758b91b0d2b2b3031ab600cf20b7fb117bfffb8fd59"
+    },
+    {
+      "file": "holiday-lab\\assets\\new-year\\prop3.png",
+      "sha256": "40a50ad879c4f640d2b17d66662c8fad508be1185c9d19e51a6e2108e79e022d"
+    },
+    {
+      "file": "holiday-lab\\assets\\new-year\\scene.webp",
+      "sha256": "8e9e0a4c3ce530769fe4506d2e8aef94400e8638cbd681d28b616b9884535e84"
+    },
+    {
+      "file": "holiday-lab\\assets\\new-year\\target.png",
+      "sha256": "51b31c850fccfa0ac6f58cb62c623a7bfa85695a5b102d1f4691882f90da207a"
+    },
+    {
+      "file": "holiday-lab\\assets\\new-year\\token1.png",
+      "sha256": "57c1357524d6ecd14e9702ad120f2db5e6ac94c2cbec9cd2e23ad98257e179c5"
+    },
+    {
+      "file": "holiday-lab\\assets\\new-year\\token2.png",
+      "sha256": "84318a7978fe5a16fca13c2533241bb30671326bf98ce3721232deb853e588da"
+    },
+    {
+      "file": "holiday-lab\\assets\\new-year\\token3.png",
+      "sha256": "8f6d0a7a6496d6e7cd5ad459310c9f2edb0600db3447bf2be62f0716b1023bfa"
+    },
+    {
+      "file": "holiday-lab\\assets\\peace-memory\\actor1.png",
+      "sha256": "b8a63c1a22a8f012a7e37ab3f46c620c5ebfdad53652922b119132a9abe1e315"
+    },
+    {
+      "file": "holiday-lab\\assets\\peace-memory\\actor2.png",
+      "sha256": "a6fb48aec6d4b248b45717daea80b56f83a51588473981b19713bf9810d60d4f"
+    },
+    {
+      "file": "holiday-lab\\assets\\peace-memory\\actor3.png",
+      "sha256": "25af0257b6ea7aa002da09cb93ee2c91acb1d14b1c3f03b35ca19b7ee176cefc"
+    },
+    {
+      "file": "holiday-lab\\assets\\peace-memory\\cg-1.webp",
+      "sha256": "116353384ba5a89d73ae8b45a01e8abcab0c2bbb2f7c9e1baf134ad59c2a2945"
+    },
+    {
+      "file": "holiday-lab\\assets\\peace-memory\\cg-2.webp",
+      "sha256": "28a542815974a461bcd613e203a73f013b3144e283150489ea5048dc9ec3dcde"
+    },
+    {
+      "file": "holiday-lab\\assets\\peace-memory\\cg-3.webp",
+      "sha256": "49420281204d8001bc8d1310a7daafa66ede91127104ee7264e4b0810f1b2c8d"
+    },
+    {
+      "file": "holiday-lab\\assets\\peace-memory\\cg-4.webp",
+      "sha256": "787086cd9ed9c702afb491d2834daa155859f98bbafb26406a7a6302dba1ffb9"
+    },
+    {
+      "file": "holiday-lab\\assets\\peace-memory\\cg-5.webp",
+      "sha256": "a18a8a862b243d10b61b1eec83bfb72a3e6ceb244d04c02c16e1c76f592f91d5"
+    },
+    {
+      "file": "holiday-lab\\assets\\peace-memory\\prop1.png",
+      "sha256": "b3a203ebc19d0c3114210933c5dbe07b2228c9cd80f87d0c9328c346fb41a1f4"
+    },
+    {
+      "file": "holiday-lab\\assets\\peace-memory\\prop2.png",
+      "sha256": "3f54e3175331857581d2f281be1c1c911c046cc028b204485669d8f8f2286e6f"
+    },
+    {
+      "file": "holiday-lab\\assets\\peace-memory\\prop3.png",
+      "sha256": "1e15debdb2a35ea7885174e224681ad7d11e4dcc4d4cf9153b923b308d593161"
+    },
+    {
+      "file": "holiday-lab\\assets\\peace-memory\\scene.webp",
+      "sha256": "49e50e73c8413bcd8cea865a29f5f11be145cc4bc1f951ade0202b92d1ec711c"
+    },
+    {
+      "file": "holiday-lab\\assets\\peace-memory\\target.png",
+      "sha256": "a5ada065d1f5edb64984ce2891deffab03ddc6159ce2c90fc673ddd8b6cde199"
+    },
+    {
+      "file": "holiday-lab\\assets\\peace-memory\\token1.png",
+      "sha256": "a359288cadc8d119700529e89f6594ea75ad56fe590e3e20690b20131c23407d"
+    },
+    {
+      "file": "holiday-lab\\assets\\peace-memory\\token2.png",
+      "sha256": "64e71bbc9771ce5674b68bfb85e982a7659395e44a79b62697aa3acd15d0790c"
+    },
+    {
+      "file": "holiday-lab\\assets\\peace-memory\\token3.png",
+      "sha256": "39c3c3c7a9ec8af022f0992a9a8abfd47bd694cec6df93a42a0f94acaaff51d4"
+    },
+    {
+      "file": "holiday-lab\\assets\\qingming\\actor1.png",
+      "sha256": "15fbd0271895c610026bb53c518504366987a34ce6c38d368962a8162be3ac2d"
+    },
+    {
+      "file": "holiday-lab\\assets\\qingming\\actor2.png",
+      "sha256": "8a46d98338d42b2d20a112614c98fc1aa0f344d6de381a5b482da3ec5db6489c"
+    },
+    {
+      "file": "holiday-lab\\assets\\qingming\\actor3.png",
+      "sha256": "547e33d076e67c9573ae1596e9d2668be3c89747edc26be1747490b2ddb4c82e"
+    },
+    {
+      "file": "holiday-lab\\assets\\qingming\\cg-1.webp",
+      "sha256": "445e31bd58f8db1799ec35483a65602a0f57883da10416552d6fe05502b77eb5"
+    },
+    {
+      "file": "holiday-lab\\assets\\qingming\\cg-2.webp",
+      "sha256": "3badc9b94a384d5f25b2cad7254d2ff1e68481c3511a99a869c9d8461a982fe7"
+    },
+    {
+      "file": "holiday-lab\\assets\\qingming\\cg-3.webp",
+      "sha256": "f268177cb89f80a884eb3a7dfb07de0f57bf7ef36b150413197f1b2e537c9815"
+    },
+    {
+      "file": "holiday-lab\\assets\\qingming\\cg-4.webp",
+      "sha256": "fb067ec0095619b351f8a4fcd6592fcca152ebbd27f5b29e7c80fdf85d1ea8ef"
+    },
+    {
+      "file": "holiday-lab\\assets\\qingming\\cg-5.webp",
+      "sha256": "72ddc691387d9e9d2e2b644a1f28ed6b0869cf9e303103155bf4300403f7c155"
+    },
+    {
+      "file": "holiday-lab\\assets\\qingming\\prop1.png",
+      "sha256": "c5a6c37db06963e9945201dc59ba10811d47cdfe6f528d7ce89a8cedcc511844"
+    },
+    {
+      "file": "holiday-lab\\assets\\qingming\\prop2.png",
+      "sha256": "8337e42858c396e4345ea83849fc762a720709c989baab8f00d7caa4e7d643fb"
+    },
+    {
+      "file": "holiday-lab\\assets\\qingming\\prop3.png",
+      "sha256": "0ded604f675a071abd2fac336c7def33706a58b6b5b0004eb3d405b0922f63c3"
+    },
+    {
+      "file": "holiday-lab\\assets\\qingming\\scene.webp",
+      "sha256": "6f1b5c1d787593c9ec27783c6aa3fc52a0cd0fa698c2d2140b5ded8ce71c9f1b"
+    },
+    {
+      "file": "holiday-lab\\assets\\qingming\\target.png",
+      "sha256": "c2b506fbabfd491ca0b2348df0effb0000d1e90db1b47a97d99d30ccb948bf4b"
+    },
+    {
+      "file": "holiday-lab\\assets\\qingming\\token1.png",
+      "sha256": "f93e2b6211f44f4d4c20a8348323a77797b436d0d8c82618671e8f4dbe7fbe1b"
+    },
+    {
+      "file": "holiday-lab\\assets\\qingming\\token2.png",
+      "sha256": "eec310b8508b605c947b184420d3c508f82885694d1d2699214e3e43e3b6bc3b"
+    },
+    {
+      "file": "holiday-lab\\assets\\qingming\\token3.png",
+      "sha256": "b8babc280173254d05f88992d7bac50da658187082f705b66df58d57c3ee1247"
+    },
+    {
+      "file": "holiday-lab\\assets\\retrocession\\actor1.png",
+      "sha256": "5db54b31a76b0a93b3261036a7247a39ab7e4b071c919b39e757c86bbfc2514b"
+    },
+    {
+      "file": "holiday-lab\\assets\\retrocession\\actor2.png",
+      "sha256": "964108365cfbe7bca0b7764ce1388a5f5ce24a7f77d69d6734aea00a20d8af93"
+    },
+    {
+      "file": "holiday-lab\\assets\\retrocession\\actor3.png",
+      "sha256": "7353e33a329dc803735c76e72bc896d1f99cc15f47b6939247d6c4be6229043a"
+    },
+    {
+      "file": "holiday-lab\\assets\\retrocession\\cg-1.webp",
+      "sha256": "55da88533227b9290c4ec0349b5b196e0fde183f2036a0270ee1e2df7ee905a6"
+    },
+    {
+      "file": "holiday-lab\\assets\\retrocession\\cg-2.webp",
+      "sha256": "f1a0d08df4612b8a80e58a58fd17ae9f6a2be094af1f25a1411615853540530a"
+    },
+    {
+      "file": "holiday-lab\\assets\\retrocession\\cg-3.webp",
+      "sha256": "2ea21b81f4daefd51484bcfe79f0930df6a0681b0716e0688cdc697d89af807f"
+    },
+    {
+      "file": "holiday-lab\\assets\\retrocession\\cg-4.webp",
+      "sha256": "b023c952982cd28f720503a4ca0f01bee44e05d9a5db3b54737f973ce6e3be6b"
+    },
+    {
+      "file": "holiday-lab\\assets\\retrocession\\cg-5.webp",
+      "sha256": "894ea910a101ffb35351cfbb407a4de3277e3974dacf0eccc257790e0ef561b7"
+    },
+    {
+      "file": "holiday-lab\\assets\\retrocession\\prop1.png",
+      "sha256": "e08af30966ad6af750159aceba3d7a81e3775b271b8c8409fcee207d0e57d1a4"
+    },
+    {
+      "file": "holiday-lab\\assets\\retrocession\\prop2.png",
+      "sha256": "483869ffcf8d6ebd6d59cdbe9b646b9067e5bb5f1953f70ec98c75f411021ddf"
+    },
+    {
+      "file": "holiday-lab\\assets\\retrocession\\prop3.png",
+      "sha256": "0567469d452567c5927be0c30efc32b55d91ce0535f63796a9752cb14a5860bd"
+    },
+    {
+      "file": "holiday-lab\\assets\\retrocession\\scene.webp",
+      "sha256": "82b57cf52ffc18cc469375222f1fd3ff8c0daf98c2303e93c0d57a12c074a0d9"
+    },
+    {
+      "file": "holiday-lab\\assets\\retrocession\\target.png",
+      "sha256": "6d30b90a54dde7e2406913cebb6c7da817f2bd5690c171f4d4cb8106470daf8c"
+    },
+    {
+      "file": "holiday-lab\\assets\\retrocession\\token1.png",
+      "sha256": "dc5b8896ae7a2520c6259530e15e6325949a88028d6960f0c557f2e1020462a3"
+    },
+    {
+      "file": "holiday-lab\\assets\\retrocession\\token2.png",
+      "sha256": "a15aac7d4c3e54c6cb5b147521579f0ef108ea463569cf0043ee39a1c6b8c7e9"
+    },
+    {
+      "file": "holiday-lab\\assets\\retrocession\\token3.png",
+      "sha256": "d3b65c85eace82abb7abccd44bd7b2f55a184c3206e2aa1dfbec379ec1714e62"
+    },
+    {
+      "file": "holiday-lab\\assets\\semester\\actor1.png",
+      "sha256": "c95017f1aae946610527c4d48051da0767681fbd3324a57c818c464430f88fec"
+    },
+    {
+      "file": "holiday-lab\\assets\\semester\\actor2.png",
+      "sha256": "e45e66656d9c37eaefc5d36d3e6342c52ab4e8d6c49094230b60d9a8d97949fc"
+    },
+    {
+      "file": "holiday-lab\\assets\\semester\\actor3.png",
+      "sha256": "f126a1ed8b858b577b3f655c06d29414e3c39383341e66a1c5fba842cb7b7a7a"
+    },
+    {
+      "file": "holiday-lab\\assets\\semester\\cg-1.webp",
+      "sha256": "b13964f1b3c0a05d07e224fd9a967fe0268674517f81ce4727d21161dc350f96"
+    },
+    {
+      "file": "holiday-lab\\assets\\semester\\cg-2.webp",
+      "sha256": "497b386d5f7c8dbb9f89c57150abe4ff8bf307fb267374fbad738972570c831f"
+    },
+    {
+      "file": "holiday-lab\\assets\\semester\\cg-3.webp",
+      "sha256": "4ac7f07a54f60b57cc8416fd99b87bb9addc820d477179c5bd1fd7679eda0e61"
+    },
+    {
+      "file": "holiday-lab\\assets\\semester\\cg-4.webp",
+      "sha256": "82f5b516b71e213ddd18c3c8143139541a3a8f7108680f958c3201892db17ab5"
+    },
+    {
+      "file": "holiday-lab\\assets\\semester\\cg-5.webp",
+      "sha256": "d570546ec8c5d99001eb1981048099f8ef0f39880e9fa557ebf681fce0109dbc"
+    },
+    {
+      "file": "holiday-lab\\assets\\semester\\prop1.png",
+      "sha256": "88b0a15e83543f718ed659c78659474acc7cee6d5e3cfc95be4a25c0639a43ab"
+    },
+    {
+      "file": "holiday-lab\\assets\\semester\\prop2.png",
+      "sha256": "a38ab4b7fa13e18dce1863d7ad017a5cb2312e071b48d876a7cae3ea4e59efc3"
+    },
+    {
+      "file": "holiday-lab\\assets\\semester\\prop3.png",
+      "sha256": "53f6c1181bff5749234297fc451c9b7175695bb034304cbe61f928d8466bc340"
+    },
+    {
+      "file": "holiday-lab\\assets\\semester\\scene.webp",
+      "sha256": "9e59f3e5067e93c10efa0b58c593ccd235f5b1b371e8d3b69b2f7b0cb377bbbc"
+    },
+    {
+      "file": "holiday-lab\\assets\\semester\\target.png",
+      "sha256": "338421cef1005a23cce5058e3c9d99a0929a794e0e6b4c33cd518e97c99482ed"
+    },
+    {
+      "file": "holiday-lab\\assets\\semester\\token1.png",
+      "sha256": "28e93569ebde1307907a1fd5eae2ea5ca0bbbc6a93f200b625bee937dbe383e5"
+    },
+    {
+      "file": "holiday-lab\\assets\\semester\\token2.png",
+      "sha256": "795ddf17565906c8ee2a1e91e878eed51691732ed721e8e0c7883a4705782f1e"
+    },
+    {
+      "file": "holiday-lab\\assets\\semester\\token3.png",
+      "sha256": "942b61b6320715327f536563d8bcee541c27024b0081eea6742f00ce5024f9ba"
+    },
+    {
+      "file": "holiday-lab\\assets\\teachers\\actor1.png",
+      "sha256": "23a6f8d9f7e3c522b3a95f49fdeee81458308e656a6430b06096406106519b2f"
+    },
+    {
+      "file": "holiday-lab\\assets\\teachers\\actor2.png",
+      "sha256": "a9781a405173d1440b030a74ab39ebfea1023828f9382743c1cf666d83b50d9c"
+    },
+    {
+      "file": "holiday-lab\\assets\\teachers\\actor3.png",
+      "sha256": "9c51f00cbf2243de183aa315986b8ef43d3991c7d755ee018d7fbbac8e5761fe"
+    },
+    {
+      "file": "holiday-lab\\assets\\teachers\\cg-1.webp",
+      "sha256": "c34b2496eb00fb48ab06b5870a5091cd610e669b3de3f725f4946f7c4f4840b6"
+    },
+    {
+      "file": "holiday-lab\\assets\\teachers\\cg-2.webp",
+      "sha256": "ec4e3cf3fec4b85a8b8f671ba5c07724475dda0779c331b04e2c6fcf0241e31b"
+    },
+    {
+      "file": "holiday-lab\\assets\\teachers\\cg-3.webp",
+      "sha256": "17632dd34a1fc07ce0ededa7f94a5eec7f2b14ec4e78ebda0633b8b517b87c8c"
+    },
+    {
+      "file": "holiday-lab\\assets\\teachers\\cg-4.webp",
+      "sha256": "e6ba53b0595600631fe595750fb7973f5555e03cf9e6b32c17319e527ede184b"
+    },
+    {
+      "file": "holiday-lab\\assets\\teachers\\cg-5.webp",
+      "sha256": "99ade067fc2cd8bacb3fd452e5211c90f318309f0441f41f830f7805f29c02a4"
+    },
+    {
+      "file": "holiday-lab\\assets\\teachers\\prop1.png",
+      "sha256": "a2ca9d2772f8b71f00b29adbd65533a9985873ef61ef79c13a680d34bbfdbb0d"
+    },
+    {
+      "file": "holiday-lab\\assets\\teachers\\prop2.png",
+      "sha256": "ac3ecb8a9b6bbfbda0ee7d77bf968ad91f9f9cb7ca73da3ec41f361969f52f7b"
+    },
+    {
+      "file": "holiday-lab\\assets\\teachers\\prop3.png",
+      "sha256": "ef03db5d677e0e63129e7645b97f2077c56796e1e3f43e7a983e9c6937e9466c"
+    },
+    {
+      "file": "holiday-lab\\assets\\teachers\\scene.webp",
+      "sha256": "7304fccfd8bf7d2377509663fb66a8445fd3842ce00d00a1ef2d3900dede4b72"
+    },
+    {
+      "file": "holiday-lab\\assets\\teachers\\target.png",
+      "sha256": "dd785497d51301bb574c4e1f1504b5d30b97fabd66640b07ab2f9ce6c35640d0"
+    },
+    {
+      "file": "holiday-lab\\assets\\teachers\\token1.png",
+      "sha256": "87728f5ef4107361192111fd529186aaf4fab89d183461d081ba64e606ff5346"
+    },
+    {
+      "file": "holiday-lab\\assets\\teachers\\token2.png",
+      "sha256": "26c2b002e5842a2e2f2725e7b6ab5614b5209e9ad14736dcba9e5580965d69ec"
+    },
+    {
+      "file": "holiday-lab\\assets\\teachers\\token3.png",
+      "sha256": "71d2e2e6d7a22044c0705e46e0d77e8587392f9cfac5a1a826c9e52593d808fd"
+    },
+    {
+      "file": "holiday-lab\\assets\\ui\\bubble.png",
+      "sha256": "48b8c69c335549c5ccd7180d4ceea74886acdf834c2832c18738bee95d5c248e"
+    },
+    {
+      "file": "holiday-lab\\assets\\ui\\close.png",
+      "sha256": "4672d57395ec8a46a0aa7f403a534ed2d0a0e099cf3628a437030925ed87ca10"
+    },
+    {
+      "file": "holiday-lab\\assets\\ui\\disabled.png",
+      "sha256": "9b69f5edd472bb39bd5a0a3d34910af0c9390848f5ac2ec85d17e98efacdaf27"
+    },
+    {
+      "file": "holiday-lab\\assets\\ui\\header.png",
+      "sha256": "26d564a3b48a9d7649838e5106247b8381385900d7a8e9e8df568f5884e40d3f"
+    },
+    {
+      "file": "holiday-lab\\assets\\ui\\hover.png",
+      "sha256": "55d83ece8e70df342b9c00d933c4b577e24a23f01e2ee2e638a1eefac7929ce2"
+    },
+    {
+      "file": "holiday-lab\\assets\\ui\\hud.png",
+      "sha256": "bcd7f1f92e58803aaff76d20f7493e70a443deb2e9c03b99157a63be183cea70"
+    },
+    {
+      "file": "holiday-lab\\assets\\ui\\left.png",
+      "sha256": "a135723c136aad953adc25fd3d9d9fd83c87d8ea38dda9d64b9d9dabe134bb95"
+    },
+    {
+      "file": "holiday-lab\\assets\\ui\\mute.png",
+      "sha256": "6ff6d713f5cf3dbe67e7116abaa8f82969c5de444d0b79ee317345d5891ccd3e"
+    },
+    {
+      "file": "holiday-lab\\assets\\ui\\normal.png",
+      "sha256": "aaf3efef72c19bb1ff1c5cebead7d2aecf9652a7b12449391ab7d5ac9d46682b"
+    },
+    {
+      "file": "holiday-lab\\assets\\ui\\panel.png",
+      "sha256": "66178574e9b6b0558f0f1e509e1a0e994e06b3a60296cb683f015f510ed951a5"
+    },
+    {
+      "file": "holiday-lab\\assets\\ui\\paper.png",
+      "sha256": "629c3118fd0ae7eb1260f78e4d55a8c1c42c46ce1613673d33c96e881f533f92"
+    },
+    {
+      "file": "holiday-lab\\assets\\ui\\pause.png",
+      "sha256": "3c6bc9f35aa7178c48634b0262f4fcc95863cb85b4493686fae9d2acdaf1b6c5"
+    },
+    {
+      "file": "holiday-lab\\assets\\ui\\play.png",
+      "sha256": "356075a7feaaa023f1998b1214823c4371af8b70436427fdc7b7e282cb55efc1"
+    },
+    {
+      "file": "holiday-lab\\assets\\ui\\pressed.png",
+      "sha256": "06d3fac65bd82586980803a4f4345b8ecab65f396e12e143b27175fa8ef86fe6"
+    },
+    {
+      "file": "holiday-lab\\assets\\ui\\replay.png",
+      "sha256": "da942da372d01546065635b49440ed267427f1eaeb6aa68e453957a7b8c4b65a"
+    },
+    {
+      "file": "holiday-lab\\assets\\ui\\right.png",
+      "sha256": "d56eafb00eeceed754ff06632a4437cd38217d6a8751440e10eb7ff886faaa0f"
+    },
+    {
+      "file": "holiday-lab\\assets\\ui\\sound.png",
+      "sha256": "48529ba0225097f54e1d3cb48b474e329ac1b64b6446c6448d7c51911470879c"
+    },
+    {
+      "file": "holiday-lab\\games\\children.mjs",
+      "sha256": "b314af117311a0869d4517c115975f0091aee21000caa25d8524e7b08ba07c18"
+    },
+    {
+      "file": "holiday-lab\\games\\constitution.mjs",
+      "sha256": "de73d0e7b5ecd2de54d6f9d3a234a9a4e88bd3dd4861bf91b138c322290a64d5"
+    },
+    {
+      "file": "holiday-lab\\games\\dragon-boat.mjs",
+      "sha256": "12c515a8434ea32cd1fdd6013fa9b362ea76488b2ef24a44b1b4ea02d8da02c7"
+    },
+    {
+      "file": "holiday-lab\\games\\exhibition.mjs",
+      "sha256": "1c6370fd2e12424defa18963414adf5546dc32f3c2e17450078a3b9ed27bef6b"
+    },
+    {
+      "file": "holiday-lab\\games\\labor.mjs",
+      "sha256": "21d00e4ae80d9a0034634508411a9341cf677c4fe74efb00c0ebcb72ccd92a58"
+    },
+    {
+      "file": "holiday-lab\\games\\lantern.mjs",
+      "sha256": "a550a9c7b2abaaf2ba4f34ea81963cb61431ed7ce1e5de77a12cabb1fc661c2c"
+    },
+    {
+      "file": "holiday-lab\\games\\lunar-new-year.mjs",
+      "sha256": "79981ce5881980141fa9be5e996901ca4875eb0c41a2a21547724f28a2b78bf7"
+    },
+    {
+      "file": "holiday-lab\\games\\mid-autumn.mjs",
+      "sha256": "a8c3bdf7368b51e69a41665e68b4ab8b50829be5f6089ebfd2cf757936f19dd1"
+    },
+    {
+      "file": "holiday-lab\\games\\national-day.mjs",
+      "sha256": "9c697f08c24f9eae89ac55b71fc37bcfe8546c65b7ca3264a88155b5a63891fa"
+    },
+    {
+      "file": "holiday-lab\\games\\new-year.mjs",
+      "sha256": "42565e8c5c9e60240f686254a430c62e027c4d93a91a32e20c419799b15be7e7"
+    },
+    {
+      "file": "holiday-lab\\games\\peace-memory.mjs",
+      "sha256": "cdc8fb49a17522f8e5f46989f3397170f75d4d207f25a40bed4c8b31ccda1d4e"
+    },
+    {
+      "file": "holiday-lab\\games\\qingming.mjs",
+      "sha256": "3936b5606016b60ca38de77e63d2f2170681592e6dc7e7c9147e29210870cc5f"
+    },
+    {
+      "file": "holiday-lab\\games\\retrocession.mjs",
+      "sha256": "64765225ca980c62feb3f673393efaf8d7d479739b908bf3928389cabca21989"
+    },
+    {
+      "file": "holiday-lab\\games\\semester.mjs",
+      "sha256": "25cb4073919654b1c76d6bf713fce21421eed71483a2fe203730733057f4c31e"
+    },
+    {
+      "file": "holiday-lab\\games\\teachers.mjs",
+      "sha256": "7438262d1d96d921d5a13a243494c24f16e29002c5149c0b0146d625506c00fb"
+    },
+    {
+      "file": "holiday-lab\\audio\\click.ogg",
+      "sha256": "03fdd5391c3477b30986c415b8a738fe16cf4baa4298f2e2e27e2bcc52a37399"
+    },
+    {
+      "file": "holiday-lab\\audio\\error.ogg",
+      "sha256": "98c06cad1a60177a7a5bebd6f30af19ffc76c253813a25943a93fa68aa64870d"
+    },
+    {
+      "file": "holiday-lab\\audio\\metal.ogg",
+      "sha256": "97a67c03058f0f5bff827403281f5f45518fc42c0c7bcd6c22624af04833f2c9"
+    },
+    {
+      "file": "holiday-lab\\audio\\paper.ogg",
+      "sha256": "d96ad8ec5f6962c1ca2b110871d193e579c17146187252b9ffb2d39128b4686a"
+    },
+    {
+      "file": "holiday-lab\\audio\\success.ogg",
+      "sha256": "8157afd1621fa99f3303137b8da07f6e114d707234e3dac50a15fda977f61d47"
+    },
+    {
+      "file": "holiday-lab\\audio\\wood.ogg",
+      "sha256": "9ccf72279fdf721718df84fc8f7120243a3037451ff3e6bd4aaba3b608c3bb71"
+    }
+  ],
+  "main": "refs/remotes/origin/main 1b8322e69d84549db220d849afb1aac0fb9d7c2a\n",
+  "handoff": "## 2026-10-24 最新：8882維持，兩份舊DOC全文已補讀，等待外部資料\r\n\r\n- source_agent: codex；TF-GO。網站仍 http://127.0.0.1:8882/ ，指南 /?lang=zh#/students/guide ，儀表板 /progress/ 。.measure-copy-actions-20261024-01／360檔／app-R7TGU7Q2.js。本段沒有網站程式/資料變更、Build或三語重跑；47source/360build SHA相同，原服務未重啟，8881首頁/指南保留。\r\n- 原本機DOC解析缺口已閉合：隔離word-extractor@1.0.4純Node讀兩真OLE原件，不啟Word或重下載。正式全文legacy-reader-20261024/parsed-r2/；認定表144、評分表502個UTF16單位。獨立CFB/FAT/FIB/CLX逐字覆蓋所有已宣告story及末端CR；完整文字已讀，Word視覺表格/115當屆效力仍unknown。不得把舊表兩組各50%直接套成115評分規則。\r\n- 三代理分工：guide_content24擷取/可回歸方法；program_copy24完整內容14yes及原8條範圍/外部依賴審核；site_qa24獨立技術54yes及可攜12條。最後方法更正7yes/0no、exit0；最終補核為portability-final-r2.md/json，較早portability-final.md及兩份比對錯誤收據保留但不當終版。worker首版range helper負slice造成raw520/宣告502也保留為方法紅；API正文兩版SHA相同，不誤稱文件被截斷。\r\n- 可攜單命令 node holiday-lab/reports/legacy-reader-20261024/regression.cjs <fresh-dir>，實際regression-02及無node_modules鏡像已跑；16份未改MIT parser原碼/LICENSE與相對clone輸入保存，安裝/npm/lock/integrity/輸出SHA皆可核，不提交node_modules。表格欄位/原字/比重與未載明算法逐項在content-review.md/json，沒有補猜簽核先後/門檻。\r\n- 最新TF-BASE指定夾03:13:07 UTC回查仍回5工單/腳本，未見子夾或WebGL包；新metadata摘錄明標不是完整原始回覆，MCP isError=false、exit_code=null，未偽造shell exit0。只代表指定夾；Flora/胖倉鼠完整包仍待回傳，不抓舊大包、不啟Unity或重派。\r\n- 儀表板50列／44yes／6no／使用者0，依新legacy-reader-review-20261024/verification.json的1196檔SHA計算。guide-currentness明列DOC全文已補讀、當屆依據未齊，不能整項翻yes。權威18/18、桌面/手機深色搜尋展開篩選14yes；原收據同名被守門擋下與第一次UI早於state而失敗皆留存，root-前綴為主控終版收據。\r\n- 完整逐項yes/no、command/stdout/stderr/exit：legacy-reader-review-20261024/FINAL_REPORT.md；全文、技術及外部依賴另見parser-review、content-review、blocking-review。原第8條進度/儀表板/原交接/STATUS/Vault同步已完成，未把只做一項當全目標完成。整體仍待完整WebGL、當屆正式文件/校方名稱角色釐清及使用者畫面意見；跨OS、母語/新硬體等不是自創新門檻。\r\n- 本機codex/legacy-reader24；所有節日含勞動節繼續凍結，未測玩/改遊戲/巨量QA/生圖/Unity。315原圖與素材、小颯完整作品/署名、四dirty+R0、main refs/C節保持；不push、不發布、不刪檔，不推私人Vault。所有子代理/解析程序已收尾，不再自動重搜或重啟Word。\r\n- 下一輪第一件事：先看8882與最新外部依賴；收到TF-BASE完整WebGL才核包與頁底整合，收到當屆官方來源或使用者明確意見才做相依修正。不要再重做兩DOC解析、四個英日值或舊UI收據，不恢復節日或執行C節。整體目標未宣告全部最終完成。\r\n\r\n## 2026-10-24 最新：8882英日動作譯文修正，8881審閱內容保留\r\n\r\n- source_agent: codex；TF-GO。最新本機候選 http://127.0.0.1:8882/ ，指南 /?lang=zh#/students/guide ，進度 /progress/ 。.measure-copy-actions-20261024-01／360檔／app-R7TGU7Q2.js。8881首頁及指南內容繼續保留；兩版progress使用共用最新儀表板，不把舊網址當新版。\r\n- 原8條交付範圍由子代理獨立核對，50列44yes/6no不是44/50功能通過率。跨OS逐字證明、真人母語簽核與所有素材改編權是額外保證，不能自創為本機交付門檻；真正資料/正式名/方法缺口仍列，不縮窄原要求。詳goal-audit-20261024/requirements-review.md。\r\n- 子代理逐筆審122key／244英日值，發現2key共4值原意須明確：分級結果免修課程、返校程序及成果交件分開。已在codex/copy-actions24精確修正；每語345key、343其他映射及順序保持，繁中/完整guide與其他43來源SHA相同。15卡47步56FAQ89來源不變。註冊課務組正式英名Registration and Curriculum Division另回讀當日既存官方同列雙語解除疑問，不改產品該名稱、不外推全校專名已核。\r\n- 新候選獨立窄驗EN/JA×390/1440四組44yes/0no、8直WebP；47source/360build前後保持，四句反向可精確還原8881 app SHA，293圖像/字型檔相同。red8yes/10no exit1、修後green18yes/0no exit0；root再核4值/字典/畫面SHA通過。候選字集無新增字元，不換字型、不下載字體。未重跑三語全站、舊遊戲或與4句無關的QA。\r\n- 兩份已下載舊DOC另派代理離線全文：確認真OLE容器且原件SHA不變，但三次隱藏唯讀Word COM/CLR方法均在Open前未取得正文，分類為本機參數封送方法未完成，不能說文件損壞、授權或校方外部缺件。每次專用PID與退出均留證，最終WINWORD=0，無安裝新工具、無改原件/Unity/可見執行檔。全文仍no、115當屆效力unknown；詳goal-audit-20261024/legacy-docs/REPORT.md，不宣稱完成。\r\n- 儀表板50列／44yes／6no／使用者0，依新verification.json 854檔案SHA綁定計算。權威18/18、搜尋/展開/篩選與手機深色14yes。完整逐項yes/no、command/stdout/stderr/exit見copy-actions-20261024/FINAL_REPORT.md，原report與red不覆寫。\r\n- TF-BASE本段未重複輪詢，最近指定夾02:10:24 UTC仍5工單/腳本、0子夾、未見Flora/胖倉鼠WebGL；未下載舊大包、未啟Unity或重派。原漫畫/手繪與小颯完整作品/署名、315素材、四dirty+R0、main/C保持。節日全凍結，不push、不發布、不刪檔、不碰main、不執行C節。Vault只本機記錄，不推私人整庫。\r\n- 下一輪第一件事：先回收使用者對8881/8882的具體畫面意見；若要續補DOC，先讀三輪exact error及已停止PID，不盲重啟Word、不重做已核成果。新資料/校方更正或完整WebGL到包再處理相依項目；不自行提高品質門檻或恢復節日工作。整體目標仍未宣告全部最終完成。\r\n\r\n## 2026-10-24 最新：8881在校指南審閱點，先看新版\r\n\r\n- source_agent: codex；TF-GO。最新本機 http://127.0.0.1:8881/ ，指南 /?lang=zh#/students/guide ，儀表板 /progress/ 。.measure-guide-final-docs-20261024-02／360檔／app-NOKAZJIM.js。8880為本段三語6組已驗前一版，8879及舊版保留。使用者要求到段落先看新版；先交審閱，接下來收具體畫面意見，不自行展開新節日工作。\r\n- 三組子代理完成教務、實習/海外、獎助/權益/職涯補研，主控逐指標與before套用；另一輪獨立UI由未改產品代理驗收。15卡47步保留，FAQ42→56、來源63→89。10卡本段更新、其他5卡相同；資料與明列提案完整重建相同。EN/JA各122個審閱key，實際差異122/121，舊key不刪、未成對/衝突0。\r\n- 教務補115-1選課日期/特殊選課空白表、一次抵免依符合資格事由、休學領表含當日7日/復學通知、畢業預審11頁手冊。棄選11/30 10:00至12/7 09:00，10/24尚未開始；特殊選課9/24已截止。112/115早復學與退費表格等衝突保留，不代校方裁定。\r\n- 校級113實習規章/細則/系統說明/變更表與112學海規則全文已讀，補線上登錄、指導核可、列印用印、個別計畫/保險、結束評量及變更中止，不保證學海全額免費。本系當屆細則、115海外甄選/合約與海外見學仍缺，見學原卡完整保留。\r\n- 獎助/權益補1141119急難、115-1助學公告、112申訴/113性平與空白表。分清事件六個月/同事件一次、勵學資格與核發、一般申訴次日起30日與性平分流，隱私依法有例外；表格10–30日矛盾仍明列。UCAN只稱本次公開入口錯誤，未測登入後。校內當期履歷預約表仍缺。\r\n- 官方業務表逐筆核：證照獎助/就業職缺1712，UCAN/講座1713，實習/學海1711。只改證照副電話，FAQ分清業務，沒有全部換成同一支。\r\n- 8880獨立6組156yes/0no，47source/360build前後相同；8881僅日文來源日期資料1字规→規，另補JA雙寬20項與精確source/bundle差異。日期欄不在現有來源列顯示，不捏造可見正字。raw-r2曾誤以readability尋日期欄而cases0，原方法紅收據保留，修方法未改產品配合。37回歸＋1單字測試exit0，root重算SHA、提案與新字子集。新增24字有限cmap/CSS範圍可用，字體/原圖未改；不是全站fallback/母語/實體手機認證。\r\n- 儀表板50列／44yes／6no／使用者0，數字由新verification.json計算，權威18/18，桌面/手機深色互動14yes。完整逐條yes/no、實際指令stdout/stderr/exit與畫面在holiday-lab/reports/guide-final-docs-20261024/REPORT.md；不把前版限定收據升格新版全站驗收。\r\n- TF-BASE指定交接夾本段2026-10-24T02:10:24 UTC實查仍5份工單/腳本、0子夾，未見Flora/胖倉鼠WebGL；只代表指定夾。未下載舊大包、未啟Unity、未重派。\r\n- 本機分支codex/academic-copy24、intern-copy24、support-copy24、career-routing24、ja-source24逐項提交；前四項已ff整合guide-final-docs24，當前ja-source24承接全部提交。315原圖/凍結遊戲素材、四dirty+R0、main refs與C節保持。未push、發布、刪檔、main或C節操作；節日全凍結，無生圖/Unity/測玩/大批遊戲QA。Vault只本機紀錄，未推送私人整庫。\r\n- 下一輪第一件事：看8881及本段REPORT，先回收使用者具體畫面意見。完整正式外文名、規章/當屆缺件與版本衝突、逐字fallback/跨OS、素材權利、母語/真機及WebGL仍待核，不宣稱全面完成。不恢復凍結遊戲或自行發布。\r\n\r\n## 2026-10-24 最新：8879指南更新與三語來源白話化\n\n- source_agent: codex；TF-GO。最新本機 http://127.0.0.1:8879/ ，指南 /?lang=zh#/students/guide ，儀表板 /progress/ 。.measure-current-rules-20261024-03／360檔／app-FPPJGCJR.js。8876仍是前輪審閱版；8877為本輪01、8878為02，皆保留，不以舊版判斷新成果。\n- 三組子代理分別完成請假、英文/證照、專題/升學補研，主控套提案；另由未改產品的代理獨立驗收。指南15卡47步不變、FAQ34→42、來源53→63。新英文/日文字典各86項，全部為明列文案，舊key不刪；真建置未成對/衝突均0。JA四處保留台灣115学年度第1学期，不套日本前期。\n- 請假現列114/11/19規則2頁、公假/事假空白表已讀；分清送件、簽核及心理假假額。英文現列114/12/24辦法3頁、113入學起外語修課與3空白表、113/10/9證照獎助全文已讀。只核112–115日四技一般班基本門檻，不外推技優或全校。新規/舊操作路由、105免綁類別、115-1全英課/獎助、本系完整證照表仍保留缺件。\n- 公開專題三DOCX與前次相同，辦法仍108版，二審/三審期限矛盾未解；兩處116A1與原件同SHA，書審100%/口試仍矛盾。指南明示詢問窗口，不代校方裁決；所查公開索引未得116A4，未推論全校未公告。來源註記48處改20組學生用語，保留摘要/舊版限制；查核日期、URL、規定與原始HTTP/研究收據不改。\n- 03獨立6組144yes/0no，408文案及708來源欄位觀察、54WebP；47來源/360build前後SHA相同。主控完整重建guide、逐SHA核截圖/字典，29測試exit0。新增10字有限cmap/CSS range可用，未換字體；8876舊16旋轉h2候選亦補證是單行。不是全站實際fallback、母語或真機認證。\n- 第一輪01因root在QA中切分支，5檔LF→CRLF觸發真正SHA失敗，已逐位元證明行尾原因；raw-r1不升格通過。02有138yes，但註記白話化後已被03取代。原校準/套用容器key/儀表板global名稱的工具失敗保留，修方法，不改產品配合。\n- 儀表板50列／44yes／6no／使用者0，由current-rules-20261024/verification.json的960個檔案綁定重產；未重驗項目清楚標前版範圍。權威18/18，搜尋/展開/篩選及手機深色2組14yes。完整逐條報告、stdout/stderr/exit與限制：holiday-lab/reports/current-rules-20261024/REPORT.md 。\n- 本機整合codex/current-rules-review24；項目分支codex/short-lines24、codex/leave-rules24、codex/study-copy24、codex/threshold-copy24、codex/source-notes24。315原圖/凍結遊戲素材、四dirty+R0、main refs與C節相同。未push、發布、main、刪檔或C節操作；節日全凍結，無生圖、Unity、測玩或大批遊戲QA。Flora/胖倉鼠本段未新回查，最近指定夾01:12UTC紀錄仍只有5工單，不冒稱即時已驗包。Vault只本機紀錄，不執行私人整庫推送。\n- 下一輪第一件事：讀本段與REPORT，先回收使用者對8879畫面的具體意見。再按可得正式文件補缺；未知權利、母語/真機、全部職稱外文名及WebGL不可自行宣告完成。已有新證據才重驗，不重開節日工作。目標仍未宣告全面完成。\n\n```text\ncd C:/agywork/agd-holiday-prototypes\nnode scripts/serve-local-review.cjs --site=.measure-current-rules-20261024-03 --dashboard=holiday-lab/dashboard/out --port=8879\n```\n\n## 2026-10-24 最新：8876可審閱，年份／聯絡與英文資料已補正\n\n- source_agent: codex；TF-GO。使用者要求到一段落先看新的本地網頁，已在Chrome開啟 http://127.0.0.1:8876/ 。指南 /?lang=zh#/students/guide ，儀表板 /progress/ 。最新 .measure-followup-20261024-01，360檔／app-3A2EBGL2.js；8875為前輪保留版。\n- 三組子代理分別完成英文對映、字形可用性、8處室窗口補查。Root已套25項EN資料對齊，實際build未成對21→0、衝突21→0；既有17條與未核專名CHECK保留，不改runtime。有效字典8項差異全部是有依據的聯絡文案。\n- 小颯第27屆首獎依CELSYS2021-04-28主辦公告，中英作品年份2022→2021，三語可見WIN2021，原圖／署名不改。現行請假分機2126取代舊索引2114；諮商2127／動遊特教2149分流。招生選才組及通識官方英文已核並修正，未把新特教舊合併名或自譯日文冒稱官方名。\n- 新版獨立主6組148yes，補6組64yes；58有效原圖、60無損WebP含2 lazy載入診斷圖，來源／360build前後相同。21項回歸exit0、主控SHA再核exit0。16筆旋轉h2 Range候選另列，不宣稱全站孤尾0；工具#admission與h1定位首敗保留，產品沒配合錯測改動。\n- 字型8875有限6狀態79,079字元配對有glyph；主資料候選2,204字元可用。8876新增古／折2字已有限cmap及CSS range補驗，不換字型／人名／資格；不是逐字實際fallback或跨OS驗收。82 DOM引用已分61圖片、20CSS、1停用icon逐項追來源，315原圖／凍結遊戲素材未變，不宣稱所有製程／權利已核。\n- 儀表板目前49列、43yes／6保留缺口、使用者0；新資料來源 followup-20261024/verification.json，保留前輪原始收據。重產 node holiday-lab/build-dashboard.mjs ，權威驗證仍用 dashboard/overnight-authority.cjs；18/18。完整逐項表、實際命令stdout/stderr/exit及限制見 holiday-lab/reports/followup-20261024/REPORT.md 。\n- TF-BASE指定交接夾本輪01:12 UTC左右再次只讀回查，仍5份工單／腳本，未見Flora／胖倉鼠WebGL，詳root/webgl-recheck.json。未啟Unity、不重派、不下載舊大包。所有節日遊戲含勞動節維持凍結，未開發／測玩／大量QA／生圖；入口仍頁底。\n- 每項codex短分支，本機整合 codex/followup-review24；不push、不發布、不碰main、不刪檔、C節不動；四dirty＋R0及原圖SHA保留。Vault只本機記錄，不做私人整庫推送。目標尚未宣告完成。\n- 下一輪第一件事：先回收使用者對8876的具體畫面意見，再補當期官方全文／版本衝突與正式外文名；有WebGL新成品再驗包。全站字型、真人／母語與素材權利缺口保留，禁止自行恢復節日或擴大發布。\n\n```text\ncd C:/agywork/agd-holiday-prototypes\nnode scripts/serve-local-review.cjs --site=.measure-followup-20261024-01 --dashboard=holiday-lab/dashboard/out --port=8876\n```\n\n## 2026-10-24 最新：全項網站核對與本機8875，節日凍結\n\n- source_agent: codex；TF-GO。使用者凌晨後一次接續已執行；本輪是網站檢查及必要修正，不是發布批准。最新有效 .measure-overnight-20261024-02，360檔、app-UVYLK6U2.js。首頁 http://127.0.0.1:8875/ ，指南 /?lang=zh#/students/guide ，儀表板 /progress/；8874首版與8873／8860舊版保留，不當最新。\n- 所有先前網站需求整理47項：40 yes、7 no／缺件。完整逐項理由、指令、stdout／stderr／exit、來源與畫面在 C:/agywork/agd-holiday-prototypes/holiday-lab/reports/overnight-20261024/REPORT.md 及 verification.json；資料／工具／使用者三層分開，使用者新畫面確認0。\n- 已修四PROGRAM整句及16個相依欄位三語48操作，115四技進修部一般單招30名已截止；移除統一面試、固定時段與未核保證。四日文職稱保留台灣助理教授／Assistant Professor，不直接等同日本助教。116完整附件、蔣天華中英官方職稱衝突及全處室官方日文名仍待核。\n- 指南15卡全題來源核對，維持三欄／直白分類／身分索引／47步小說明，FAQ30→34、來源45→52；新增24組英日譯文。補畢業檢核與離校、請假補考、棄選、抵修免修及兩中心求助分流。105字說明由原回歸抓出後精簡91字，沒有放寬測試；原FAQ、流程及來源日期保留。當期完整附件與年度衝突逐題列缺件，10/24四站受阻／202空內容，不冒稱當日全文讀完。\n- 獨立網站6/6、136 yes／0 no、36PNG，14來源＋360建置檔前後SHA一致；78照片原照HTTP SHA及78招生可見值。另日文兩寬角色、旋轉標題目視補驗，原圖不動。root唯讀重核通過。指南／身分／招生路徑及本輪引用回歸18/18；儀表板權威18/18，搜尋／篩選／展開另驗。不是全站逐字cmap、母語或實體手機認證。\n- 主網站停止引用已知生成favicon；節日入口改暫緩提示，學生策展保留招生後、頁尾前。小颯完整原畫與署名保留，315原圖／凍結遊戲素材SHA未改；實際82 DOM引用含CSS漸層，不能當整包零AI或權利已全核。所有節日遊戲含勞動節凍結，未測玩／改遊戲／生圖／啟Unity／續跑巨量QA。\n- TF-BASE指定交接夾本輪仍5份工單／腳本、未見Flora／胖倉鼠WebGL成品；只代表所查夾，未啟Unity、不重派、不下載大型舊來源。WebGL與7項保留缺口可在儀表板查，不宣稱全部完成。\n- 每項本機codex短分支，整合分支codex/overnight-integrated24；未push、未發布、未碰main、未刪檔、C節完全未執行。四份原dirty＋R0、main refs與C節SHA保留；原失敗／partial／舊證據留存。Vault只本機更新，不執行私人整庫同步。\n- 儀表板正本 holiday-lab/dashboard/out/index.html，重產 node holiday-lab/build-dashboard.mjs；新模式以本輪718個檔案SHA綁定核對網站證據，舊遊戲證據不轉新通過。驗證 node C:/AIHome/claude/skills/project-dashboard/scripts/verify-dashboard.js holiday-lab/dashboard/out --authority holiday-lab/dashboard/overnight-authority.cjs 。\n- 下一輪第一件事：先看8875與本輪REPORT，按使用者具體回饋續修；先處理有證據的歷史EN對映／字串候選，再補當期官方附件、正式名稱與字型。TF-BASE有新完整包才驗包整合。保持遊戲凍結與C節邊界，不擴大發布。\n\n```text\ncd C:/agywork/agd-holiday-prototypes\nnode scripts/serve-local-review.cjs --site=.measure-overnight-20261024-02 --dashboard=holiday-lab/dashboard/out --port=8875\n```\n\n## 2026-10-23 最新裁定：10/24凌晨01:00後接續，節日遊戲全面凍結\n\n- source_agent: codex。使用者要求等台灣時間2026-10-24 01:00後再繼續，把先前網站需求全部核對一次。已建立本對話一次性heartbeat並回讀確認ACTIVE；準備工單work-orders/20261024/AFTER-0100.md已在原專案與主工作樹各留一份，內容相同。現在僅保存排程與裁定，沒有先開始功能修改。\n- 最新美術原則覆蓋舊生圖／節日指示：節日遊戲全部先不做、不測玩、不續跑大量QA（含勞動節）；保留原本漫畫與手繪風格，盡量利用小颯及現有學生作品，保留完整原圖和署名，不重畫、不修原圖、不改內容，不使用任何AI生成素材、不呼叫生圖／影音生成。已知生成素材只取消網站引用或換用已確認的既有作品／照片，原檔不刪；未知來源列待核。\n- 凌晨核對範圍：中英日同版與資訊完整、導覽／頁尾／按鈕、換行缺字、職稱與處室名稱逐筆查證、教師照片版面頭高／水平線、4PROGRAM及相依欄位、在校指南所有既有題目／流程小說明／FAQ及當期官方來源。Flora／胖倉鼠僅查新回傳，完整成品才本機驗包／頁底整合，不啟Unity、不重派。\n- 目前有效頁面仍8873／.measure-games-bottom-20261023-01，遊戲入口維持招生後、頁尾前；8860是舊版。未push、未發布、main／C節／四份原dirty均保留。原完整UI與使用者畫面確認缺口不升格。\n- 排程準備分支codex/overnight-handoff。到時先讀此段、工單、主工作樹STATUS與相關研究，確認磁碟與服務再續；逐項列已核／已修／保留／缺件，驗收yes/no附實際指令與exit code，更新儀表板及交接，不自行碰C節或擴大發布。\n\n## 2026-10-23 接續：遊戲試玩移至頁底，本機8873\n\n- source_agent: codex。分支codex/games-page-bottom；使用者要求遊戲先放最底下，已將小型策展與節日試作從首頁首屏移至招生後、聯絡頁尾前。三語共用排版；小颯與原三件完整作品保留在首屏。\n- 最新.measure-games-bottom-20261023-01（360檔、app-KOFDUUZD.js），http://127.0.0.1:8873/ ，試玩區 /#student-play ，儀表板 /progress/ 。8872為前輪導覽版，8860為更舊版本。\n- 原症狀在8872重現heroGameControls=3、exit1；新版三語×390/1440，6/6真UI、24作品狀態、36PNG；DOM順序、14選項、iframe按需開啟、Esc關閉／焦點返回與六次小颯來源署名均通過。另新build導覽18/18；來源前後SHA相同。本輪主控工具複驗，不宣稱新的獨立代理驗收。\n- 報告holiday-lab/reports/games-bottom-20261023/REPORT.md；green-r2/為有效首頁／頁底收據，navigation/為本輪導覽收據。第一版green/為測試循環到第四件卻等待第一件來源的工具錯誤，原檔保留，沒有改產品來配合測試。\n- 重啟：node scripts/serve-local-review.cjs --site=.measure-games-bottom-20261023-01 --dashboard=holiday-lab/dashboard/out --port=8873 。不push、不發布、不碰main、不刪檔、不執行C節；勞動節仍暫緩、未啟Unity或巨量QA。WebGL仍依前輪回查列待回，本輪未重查雲端。\n- 下一輪先看8873首頁順序並依具體意見續修；不要按8860舊畫面判斷新版。其餘PROGRAM、指南缺件及WebGL新回傳另續，不自行擴大發布。\n\n## 2026-10-23 接續：三語導覽修正版8872，WebGL回查仍待回傳\n\n- source_agent: codex；TF-GO。使用者已要求「繼續」，本輪完成首頁／儀表板啟動、WebGL回查與英日桌面導覽修正；前輪關機暫停段屬歷史。本機分支codex/nav-language-desktop，未push／發布／main／刪檔／C節操作，勞動節仍暫緩。\n- 最新 .measure-nav-language-20261023-02（360檔、app-C4CTM4HI.js），http://127.0.0.1:8872/ ，英文 /?lang=en 、日文 /?lang=ja ，進度 /progress/ 。8870為小颯前版；8860是更舊版；8871是本輪首版（章節定位真RED），都保留，不當最新。\n- 桌面1181px以上改兩層共用導覽，上排AGD／系名／報名，下排八章節＋兩語言；移除英日761–1900強制隱藏。原字型、字級與小颯首圖／署名保留。手機平板仍是可展開選單。\n- 另修app／hash路由寫死60px及作品定位80px：共用siteHeaderOffset依實際固定列高度加12px，章節標題可見。原症狀en1440 NAV_LAYOUT0/1；首版章節遮擋真RED保留；最新三語×390/1180/1181/1440/1900/2284，18/18實際UI通過，含完整label、手機展開／自動關閉、桌面章節定位及18PNG。\n- 本輪Drive指定交接夾仍只有5份工單／腳本，近兩日Flora／倉鼠名稱搜尋只回兩工單；未收到可整合WebGL包。最新實查時間及完整回覆在holiday-lab/reports/nav-language-desktop-20261023/webgl-recheck.json，不拿19:49舊結果冒充本輪。未啟Unity、未重派、未下載舊大型包。\n- 報告holiday-lab/reports/nav-language-desktop-20261023/REPORT.md，原始red／green／green-r2與proof.json；可回歸命令node scripts/test-nav-layout.cjs <本機base含結尾/> <新證據目錄>。本輪只宣告導覽／定位通過，不借前版全站或遊戲收據。\n- 下一輪第一件事：先看8872三語導覽，按使用者具體回饋續修；只有TF-BASE有新回傳再驗包／整合。其餘4PROGRAM相依欄位、指南缺件、完整UI與母語／真人審閱仍待續，不重啟勞動或舊巨量工作。\n\n```text\ncd C:/agywork/agd-holiday-prototypes\nnode scripts/serve-local-review.cjs --site=.measure-nav-language-20261023-02 --dashboard=holiday-lab/dashboard/out --port=8872\n```\n\n## 2026-10-23 關機前保全：小颯首頁已驗、TF-BASE未見WebGL，依使用者要求暫停\n\n- source_agent: codex；TF-GO。工作樹 C:/agywork/agd-holiday-prototypes，分支 codex/xiaosa-credit-review。使用者要求完成本段後暫停以便關機；不再新增工作或重送工單。8870是最新小颯本機審閱版，關機後服務會停止。\n- 使用者確認首頁手繪為畢業生「小颯」所畫。本輪依舊首頁唯一手繪海報 src 與實圖比對，沿用 images/posters/clipstudio-grand-prize.jpg 完整原圖，放首頁輪播首張、補三語畢業生署名及作品頁 team；未改原圖、未生新圖、未推定未知指導教師。原三件作品、完整署名與手動切換保留。\n- 新 .measure-xiaosa-review-20261023-01／app-BWFF7U3Q.js／360檔，http://127.0.0.1:8870/ ，儀表板 /progress/ 。獨立短驗收6/6組、24/24作品狀態、6/6來源點擊、30PNG；9來源＋9HTTP前後穩定，無溢位／例外／圖片404。只限本次首頁及來源頁，不是全站或新遊戲發布驗收；使用者尚未確認新畫面。\n- TF-BASE最新實查2026-10-23台灣19:49:30：指定交接夾5份工單／腳本，未見本次Flora／胖倉鼠WebGL；另有舊Flora來源候選，身分與完整性未驗，未下載大型包、未啟Unity、未重派。只代表所查資料夾，不推論別處沒有上傳。\n- 12正式名稱已經獨立驗收後合入本機 merge d234fc4f3b3297be1f4411e714a8c2eedeb59674；兩批累計24譯值、48次可見觀察、60PNG，root唯讀複核exit0。此為8867同儕凍結build證據，不冒稱8870全站母語審查。4 PROGRAM整句與相依欄位待下一輪一致修正，115本系一般單招30名已截止，其他學制不可混用。\n- 指南選課／抵免／請假／休復學／轉系另補現行母法草稿：首版24步15FAQ，supplement-current-rules共100項文件證據檢查yes、0no，仍有現行流程及跨版本衝突待核，不等於正式規章全部確認。畢業／獎助／協助／就業四題只有9/9 checkpoint檢查，完整四題草稿未完成；原始資料保存，未直接套產品。\n- 8866前版release12yes／1unknown仍限定前版；真背景hidden仍unknown，完整UI gate仍NO。儀表板將本輪暫停、資料、工具與使用者確認分開；不把前版收據套成8870全站通過。\n- 合併第一次因長路徑及locale dirty失敗，Git回復時覆寫4份原dirty；已從Git dangling commit f7e62206a266093fe076a24ef66ef0f1e78e9cb7 找回，逐SHA恢復4/4，原檔留dirty、不混入本輪提交，原始恢復備份另納入本輪報告保存。後續Git一律加 -c core.longpaths=true；修正後合併成功、fsck exit0。\n- 不push、不發布、不碰main、不刪檔、不執行C節；勞動節暫緩。所有子代理本輪已停止新增任務；本機伺服器保留至使用者關機，不自行關閉電腦。\n- 重開後第一件事：先讀此段和 holiday-lab/reports/shutdown-20261023/REPORT.md，再用下列命令恢復8870，等使用者看首頁回饋；不得重跑舊巨量QA或已完成研究。WebGL等新回傳再核來源，剩餘PROGRAM與指南缺件依證據續接。\n\n```text\ncd C:/agywork/agd-holiday-prototypes\nnode scripts/serve-local-review.cjs --site=.measure-xiaosa-review-20261023-01 --dashboard=holiday-lab/dashboard/out --port=8870\n```\n\n報告：holiday-lab/reports/shutdown-20261023/independent/REPORT.md；holiday-lab/reports/tfbase-shutdown-check-20261023/REPORT.md；holiday-lab/reports/official-names-followup-20261023/REPORT.md。最終保存指令與檢查見shutdown-20261023/root/。\n\n## 2026-10-23 最新：學生首頁、英日文案與指南已合成本機8866；五題補研交草稿\r\n\r\n- source_agent: codex。主工作樹 C:/agywork/agd-holiday-prototypes，分支 codex/student-review-integrated；本機merge 73f91f6a8a12573bc86548358705689b1dceea7e 已合入 codex/plain-guide-layout。唯一衝突為.gitattributes，保留雙側規則；四份原實質dirty逐SHA保留，未提交舊勞動／清明暫存。\r\n- 最新同版審閱：http://127.0.0.1:8866/ ，指南 /?lang=zh#/students/guide ，單款策展示範 /holiday-lab/student-curation.html?lang=zh ，儀表板 /progress/ 。建置 .measure-student-integrated-20261023-01 共360檔；重啟命令 node scripts/serve-local-review.cjs --site=.measure-student-integrated-20261023-01 --dashboard=holiday-lab/dashboard/out --port=8866 。8863與8865舊收據保留，不當最新版。\r\n- 使用者方向：首頁不用AI插畫，採三件完整學生作品／署名＋小型互動入口；節日入口合進「畫出來，動起來」主格，遊戲美術先一款策展示範，待畫面回饋再擴大。既有小favicon仍生成圖示；未逐件核學生作品製程／改編權，方向確認不等於畫面已確認。\r\n- 新8866首頁9＋示範9＋代表嵌入2共20組通過，47PNG／54字型loaded；故障恢復另9組／15PNG；release 12yes／0no／1unknown，360HTTP/body SHA一致。真背景hidden未知，完整UI gate仍NO，不能升格全域發布通過。\r\n- 新8866指南／招生獨立8組、12譯值24次觀察、36PNG、46指南layout／10364leaf，孤尾／越界0，18source／360build前後相同；root唯讀重核exit0。只改既有字型下換行，不縮字。16條一般文案回歸全過；其餘16名稱候選逐筆補研為12名稱有支持／4整句待核，未套產品、未作母語確認。\r\n- 五主題補研另交審閱草稿：實習／海外實習／海外見學12步9FAQ（24來源、52項證據與結構檢查）；專題／升學10步6FAQ（21 URL、16項檢查）。官網AGD Files表單入口已由Chrome實讀後用既有學校Drive連接取相關文件，未讀教師／行政／個資；舊手冊107、專題108版本不能直接算115現行。專題換組截止、116招生附件及書審／口試衝突保留；現行海外甄選／見學仍待缺件，未套產品。\r\n- 主報告 holiday-lab/reports/integrated-review-20261023/REPORT.md ，新獨立證據 guide-independent/REPORT.md ；補研 holiday-lab/reports/guide-internship-research-20261023/REPORT.md 、guide-capstone-study-research-20261023/REPORT.md ，名稱 holiday-lab/translation-review/proper-names-research-20261023/REPORT.md 。儀表板由上述原始收據計算，資料／工具／使用者三層分開。\r\n- TF-BASE只回查原交接夾5份工單／腳本，兩源與WebGL未回，沒有重送或啟Unity。勞動節繼續暫緩；無push、發布、main修改、刪檔或C節操作。正式R0／舊巨量批次不續跑。\r\n- 下一輪第一件事：看8866首頁、指南與單款示範回收具體意見；按補研缺件核現行規章及四條學制整句，再決定套用。不要直接放大美術或將舊規章／結構驗收當現行政策核定。最終儀表板回歸、smoke與本機保存結果見本輪主報告尾端。\r\n\r\n## 2026-10-23 接續：學生首頁故障恢復補驗、翻譯獨立分支與指南補研\n\n- source_agent: codex。主工作樹 C:/agywork/agd-holiday-prototypes，分支 codex/qingming-final-checks，本機保存 6c971a027a9e8f12696cfcdc6fcc43f208df0569；首頁仍以 .measure-student-hero-20261023-02／http://127.0.0.1:8863/ 為已驗證審閱版，單款示範 /holiday-lab/student-curation.html?lang=zh，儀表板 /progress/。\n- 最新三題決策持續有效：首頁不用 AI 插畫、採學生完整作品＋小型互動入口，遊戲素材只先一款示範，等具體回饋再擴大。方向確認不是畫面或作品製程／改編權確認。\n- 策展示範追加3語×HTTP503／空gallery／真等待載入時換語言，共9/9；15PNG、字型loaded、溢位與孤尾0、360runtime前後一致。root唯讀核對＋1正9負例10/10，沒有把故障注入當正常網路。詳細逐條yes/no與指令在 holiday-lab/reports/comprehensive-followup-20261023/REPORT.md。\n- 清明只完成新來源域準備的獨立審查：作者7/7、獨立13/13、readonly exit0；28owner／213分軸候選／22來源模型序列。原生序列化、聯合布局、全部owner可見性／墨跡上界仍未證；error-longest、canonical、全站批准均false，未啟動巨量原生批次。\n- 英日12處一般語意修正已在codex/plain-guide-copy本機保存（382f9c78／ffb00e52）；獨立01抓到指南中文手機3+1／孤尾真RED後，另開codex/plain-guide-layout僅修student-guide.css（5b2f838d），不縮字不改文案。最新 .measure-plain-copy-20261023-02／http://127.0.0.1:8865/?lang=zh#/students/guide ，獨立8/8頁面、24次譯文、36PNG、46指南layout／10364leaf，孤尾／越界0、18source／360build前後相同；root verify-v5重核exit0。原01／8864失敗及導覽工具失敗皆保留。此分支未合主工作樹，不把8863舊全站收據當8865新版全通過；其餘16正式名稱候選與母語確認仍待辦。\n- TF-BASE既有交接夾10:06:12 UTC直接項目仍5份工單／腳本，未見兩源或WebGL；只代表該夾，不推論別處。沒有重送工單或啟Unity。\n- 指南既有45來源／47步說明／30FAQ不等於8單位相關資料全已實讀；本輪另完成證照／英文兩題可審草稿，各大流程＋4步說明＋3FAQ。12來源分為live PDF視覺1／live HTML1／官方索引正文7／未視覺PDF文字2／iframe外框1，HTTP 200×2／202空×5／403×2保留。現行完整規章／認列清單／表單仍未取得，未套產品；見guide-graduation-research-20261023/REPORT.md。\n- 本輪全部維持本機：不push、不發布、不碰main、不刪檔、不動C節、勞動節暫緩。完整UI gate與真背景hidden、實體裝置、母語逐句校對、使用者畫面確認仍保留。\n- 下一輪第一件事：先看8863學生首頁／單款策展示範並回收畫面意見；讀本輪報告與8865獨立翻譯／排版驗收結果，再按具體缺件續補指南當期官方資料，不自行擴大美術或續跑舊巨量QA。\n\n## 2026-10-23 最新：學生作品首頁與策展示範完成；本機8863待審\n\n- source_agent: codex。工作樹C:/agywork/agd-holiday-prototypes，分支codex/hero-festival-review，本機commit d16d2ebc76652f59cff08ed6b223da4bf6ebec83（git fsck通過）。本輪依使用者三題確認：首頁不用AI插畫、學生作品＋小互動入口、遊戲先一款示範再決定擴大；方向確認不等同畫面已確認。\n- 首頁主格改三件完整學生海報與完整署名／作品消息連結；節日試作折進「畫出來，動起來」同格，不再獨立大區塊。點擊前不載節日插畫或生成UI背景；小型favicon仍沿用既有生成播放圖示，不宣稱零AI位元。沒有逐件查證學生作品製程或新增公開改編授權。\n- 獨立策展示範 student-curation.html：同三作品、安排三展位、資訊卡與入口淨空、三語／鍵盤／重設。原14遊戲未改美術；283個原lab runtime與前輪UI-polish03逐byte一致，勞動節維持暫緩。\n- 最新.measure-student-hero-20261023-02（360檔），http://127.0.0.1:8863/ ，示範 /holiday-lab/student-curation.html?lang=zh ，儀表板 /progress/ 。8862為手機孤尾01，8861為舊生成CG候選，不當最新版。重啟：node scripts/serve-local-review.cjs --site=.measure-student-hero-20261023-02 --dashboard=holiday-lab/dashboard/out --port=8863 。\n- 最後獨立v2於09:48:25Z新run：9首頁＋9示範＋2嵌入、47PNG、54份字型loaded量測，issues／orphans0，17來源前後相同；root嚴格重核及跨release同build SHA通過。raw SHA f0f201431cdc084410379424dca589f8f48ee4f653da98938493f5d3059731ea。發布工具12yes／0no／1unknown，360檔HTTP/body SHA一致；真背景hidden仍unknown。\n- 原01六手機孤尾真RED、02首次collector表面pass但root因11份fontStatus loading拒絕、測試harness失敗全部保留；另凍結新v2逐狀態等字型，再以verify-v3.test完成12/12。不能拿表面pass當通過。姓名完整換行，不改字級、人名或原意。\n- 主報告 holiday-lab/reports/hero-release-20261023/REPORT.md；摘要verification-followup-20261023-19.md；root/student-verification.json可重核。儀表板分學生首頁、單款示範與發布補驗，資料／工具／使用者三層分開；最後重產、回歸、smoke及本機保全結果見主報告追加。\n- 完整UI gate仍NO，固定08歷史2046/2076不是本輪完成率；24個非勞動最長動態字串、完整墨跡／來源義務、實體裝置與母語校對另列。未產新ZIP、push、發布、碰main、刪檔或啟Unity；C節SHA95ae06fb0e647d1d212fd467120bd209132c8c904cf193085f47fe806f293680不變。\n- 下一輪第一件事：先看8863首頁與單款策展示範，回收使用者具體畫面／操作意見後再決定擴大，不自行發布、改編學生角色或續跑勞動／舊巨量工作。\n\n## 2026-10-23 最新：14款遊戲UI修整與字型核對完成；新版本機8860\n\n- source_agent: codex。分支codex/game-ui-polish。原字型、字級與漫畫素材保留；只加均衡／長段落換行CSS，修日文320孤字末行。另修開學遊戲英文抵免搜尋詞與指南標題不符的真bug：Credit Transfer。勞動節暫緩，原檔與上輪凍結build byte SHA相同，未啟動其遊戲或續接。\n- 最後 .measure-ui-polish-20261023-03（357檔）在8860凍結，子代理全新14款×zh/en/ja×320/1440共84/84真UI通過；1416states、420PNG、31608文字rows、18來源前後相同。root獨立readonly verify與5正反例通過，相關semester tests10/10。原01批真RED保留，不以舊綠燈代新版。\n- 獨立字型技術驗收：中文687／英文85／日文602 codepoints、36樣式，16faces/9實檔name+cmap核對，本機候選stack缺字0、未知0；逐字fallback未全證。追加en/ja負號真按鈕CDP證Noto Sans TC glyph1，無須換字型。不是全站／全裝置／母語校對完成。\n- 儀表板已加「本輪遊戲UI與換行」84/84，將歷史最長動態字串證據缺口與真畫面bug分開；build-dashboard34/34、dashboard回歸9/9、桌手機+離線smoke通過。固定08歷史2046/2076缺30與全域發布UI gate仍0/1，未篡改舊權威，未產發布ZIP。\n- 目前入口：http://127.0.0.1:8860/ ，遊戲 /holiday-lab/ ，進度 /progress/ 。重啟：node scripts/serve-local-review.cjs --site=.measure-ui-polish-20261023-03 --dashboard=holiday-lab/dashboard/out --port=8860 。舊8856/8858/8859不是最新03版，不按舊入口判斷成果。\n- 主報告 holiday-lab/reports/ui-polish-20261023/REPORT.md；摘要 reports/verification-followup-20261023-18.md；獨立原始結果 independent/runs/2026-10-23T08-07-41-848Z/result.json，SHA414857a2aa086e055c7360107911ae48adbe61977e8060bb7d3810a8ec86668f。root/verification.json與audit/font-README.md可重核。\n- 小改版筆記 audit/design-notes.md：日文外來語按詞組分行、手機依任務→調整→試播分群；只是待審方向，不改凍結版美術。下一步先看本機修整版，再依使用者回饋決定小改版；勞動節仍不做。全動態組合、實體手機與使用者美術確認另列，不自行擴成巨量證明工作。\n- 本輪未push、發布、碰main、刪檔、Unity；C節保持SHA95ae06fb0e647d1d212fd467120bd209132c8c904cf193085f47fe806f293680。\n\n## 2026-10-23 最新：清明404已修復並獨立驗收；本機成果與進度儀表板可看\n\n- source_agent: codex。本輪分支 codex/qingming-local-review；不推送、不發布、不碰main、不刪檔，C節保持原SHA。使用者指定勞動節暫緩，覆蓋下方舊「下一輪先做勞動2453」指示；本輪沒有啟動勞動續接或Unity。\n- 實際修正首頁與holiday-lab明確宣告既有PNG favicon；本機server /favicon.ico 回真PNG200，未知資源仍404。新增favicon與server回歸／故障注入測試3/3通過。\n- 新內部審閱建置 .measure-local-qingming-20261023-01（357檔）。獨立清明 zh/en/ja ×320/1440 六組真UI完整流程6/6、錯誤0、84張PNG、424個response body核SHA；全357檔與9來源前後不變。另2個完整Chrome headless context證明自動圖示200。root唯讀verify exit0；僅404與核心流程，不冒稱全UI/canonical通過。原v2失敗與v3未批准狀態保留。\n- 獨立網站smoke：zh/en/ja ×1440/390 六組通過；指南15卡、47步驟含說明、30FAQ，搜尋／身分／語言切換均通過；13教師照片實載與容器一致，不等於頭部對齊人工確認。\n- 儀表板已有四欄：可以先看、正在處理、待確認、明確暫緩。資料／工具／使用者確認分開；build-dashboard 34/34、回歸9/9、DASHBOARD_SMOKE 2/2 + OFFLINE PASS。2046/2076僅固定08歷史覆蓋，並非新build完整通過率；完整UI gate仍0/1，未交ZIP。\n- 本機首頁 http://127.0.0.1:8856/ ，指南 /#/students/guide ，清明 /holiday-lab/?game=qingming&lang=zh ，進度 /progress/ 。server僅綁127.0.0.1；若關閉，以工作樹下 node scripts/serve-local-review.cjs --site=.measure-local-qingming-20261023-01 --dashboard=holiday-lab/dashboard/out --port=8856 重啟。\n- 主報告 holiday-lab/reports/verification-followup-20261023-17.md；獨立原始驗收 holiday-lab/layout-qa/qingming-favicon-independent-20261023/REPORT.md、holiday-lab/reports/current-preview-smoke-20261023/REPORT.md。下一步先由使用者看本機成果；依回饋修既有版面與內容，勞動節保持暫緩，C節不動。\n\n## 2026-10-23 最新接續點：中秋目標驗證完成；兩個失敗批次已保全\n\n- source_agent: codex。中秋root-ui-04已783/783真exit0，root完整重核810義務、PNG/來源/字型/原比較皆過，geometry0；518原旗標空、265保其他owner旗標，global/canonical仍NO。完整資料本機commit5064130（8484 QA檔/549249014 bytes逐一index核對）。\n- 勞動原full已331成功＋1失敗、exit1；ECONNRESET原始紀錄不改。continuation-20261023工具準備中，原331成功不重跑、新2453含原失敗明列重採。獨立審查真負例：缺completion仍報complete、terminal HTTP failure被忽略、unknown attempt總數少算；作者正修domain_complete/run_complete與attempt總數，尚未freeze／審完或啟動。\n- 清明v2先導由root21tests及獨立review過後單一啟動root-pilot-01，06:10:12.703Z exit1；zh320六target pass/geometry0，但Console404使run停止且缺source_after，不能算完整通過。另一次明標新導航診斷CDP證/favicon.ico為404/Other，舊run未存location不得回填。原v2、方法、freeze與失敗6份全保本機commit63e156b；v3只規畫新隔離方法/精確Console+Network分類、保原flags/globalfalse，尚未准native，禁止直接重跑v2或改measure08。\n- 中秋canonical-review只唯讀補證；404688是67448去重文字×6context，42見證各自極值，不能冒稱面積最長；766原fast fullnode缺欄不能補造。新typed adapter仍未建。\n- 開學離線proof root5tests/全部DP verifier已過，native equivalence仍NO；來源283/1284核對過但原08完整輸入快照仍缺。國慶calibration39只CHECKPOINT，39recipe/312ownerframes工具尚未完整且未准native。\n- 工具最新CHECKPOINT：勞動首版continuation freeze76d1f950…89962僅prepare成功，不得批准；cleanup-close終態故障測試仍待修與獨立複驗，須另建r2不覆寫。清明v3已建目錄/20繼承檔，分類器、新scope/freeze/verifier尚未完成；兩者無新native run。\n- 下一輪第一件事：讀reports/verification-followup-20261023-16.md與三代理CHECKPOINT，確認上述三原native已terminal不重啟。先審勞動continuation最終freeze/獨立負例修復與精確331＋2453 union；完成root批准後才單一啟動。再審清明v3，原v2方法不能改。\n- 正式權威仍v4 coverage2046/2076缺30，dashboard重產27/27但整包UI0/1、使用者0。未push、發布、碰main、刪檔、C節改動；未新網站Build/ZIP或Unity啟動。8845是同.measure-integrated-08內部量測server，不是新審閱上線版。原673MB fast raw仍本機ignored，所有local commits未宣稱跨機備份。\n\n## 2026-10-23 14:05 最新：中秋783目標完成；勞動331成功後中止\n\n- source_agent: codex。使用者「繼續」後同run續接已完成中秋783正常UI。原runner43520於06:03:50.780Z真exit0；root於06:05:00.032Z獨立verify-complete exit0，783 case/sample/PNG與768seed＋42extrema共810義務全核，geometry0、原0.05px比較[]、方法/來源/font一致。root-complete-verification-01.json保存原stdout。265份仍有其他owner原旗標，canonical_promoted/global_bound/full_project皆false，未直接升覆蓋。\n- 勞動runner27896於05:59:23.731Z真exit1，TypeError fetch failed／ECONNRESET。原332attempt已root readonly full.cjs --verify exit0，331完整成功、最後seq331為capture_error，沒有回傳PNG/sample，原失敗完整保留。不能確定before或after fetch，不補造上下文。未重啟2784；獨立continuation工具準備原331成功前綴＋2453剩餘，首筆明列重採原失敗義務，尚未批准或啟動。\n- 來源283inputs/1284refs root複驗通過，原08完整generator快照仍缺；開學source/font數字DP及全部fragment重算root5tests/readonly exit0，33365classes/8342bounds，native equivalence仍NO。國慶39recipe/312owner-frame工具已CHECKPOINT未完整，改優先勞動續接；清明新pilot工具v2凍結後獨立審查中，尚未開browser。\n- 正式覆蓋仍2046/2076缺30；dashboard本輪重產27/27，完整UI0/1、使用者0，無新版介面變更所以未重跑相同smoke。JA320實圖仍見其他段落短末行，已入報告待修。\n- 報告holiday-lab/reports/verification-followup-20261023-16.md。原兩native程序均已terminal，禁止按舊live記錄重啟。下一步先審勞動continuation精確union與清明v2獨立報告，再評估新native；中秋typed bound/canonical adapter仍待建立。\n- 未push、未發布、未碰main、未刪檔；C節保持原SHA。未新網站Build/ZIP／Unity啟動。原673MB fast raw仍本機ignored；本輪完整已結束native資料將本機Git保全，不宣稱跨機備份。\n\n## 2026-10-23 已依使用者「繼續」恢復本機驗證\n\n- source_agent: codex。此為最新狀態；下方暫停記錄保留為歷史。中秋原247份逐筆重新核對後，將暫停屏障移入operator-pause-records保留，未刪檔；同root-ui-04以--resume接續，沒有重跑原247。8845恢復同.measure-integrated-08，freeze04/source/font重新核對通過。\n- 2026-10-23T05:49:49.915Z觀測：中秋554/783，runner43520 creation2026-10-23T05:31:17.6311460Z／driver8248；勞動180/2784目標，runner27896 creation2026-10-23T05:39:47.3243860Z／driver63148。均未terminal，只追同job，不因等待重啟。精確程序／原stdout：reports/resume-observation-20261023-16.json。\n- 勞動另審新full-domain-reviewed工具，9tests及preflight過後才批准獨立scope；保留原wide false/flags，只以精確owner證據判定target域，不代表整頁PASS。full-freeze972bda82020a5f60241a0105e858d64545d565c3e18368492d05bdaeac37cd3c。\n- 來源帳本283inputs／1284refs，root複驗3tests＋readonly verifier exit0；runtime283與contract283交集277，舊同路徑served278含根目錄CSS，分開記。原08完整generator快照缺／當時preflight缺／新短JA其餘情境尚未全驗，仍NO。新原generator隔離55input→37output，client只與build11 byte-exact。\n- 清明1115舊證據已離線恢復，136錯句100可見／36窄版未可見保留；新文字投影／pilot工具補字型負例與獨立verifier中，尚未批准或啟動browser。開學只做source/font-bound數字DP與fragment保守界，native equivalence仍NO。國慶另獨立唯讀owner因果審查，未啟新量測。\n- 正式覆蓋仍2046/2076缺30；本輪未改canonical／正式R0／dashboard數字，沒有新網站Build或ZIP、push、發布、碰main或刪檔；C節SHA不變。TF-BASE沒有新來源回報，未啟Unity。\n- 下一輪第一件事：核上述同PID+creation與各launch terminal；活著只追同job。中秋完後獨立store.verify783及810義務，勞動完後full.cjs --verify；遇真失敗先保留與診斷，不自動重跑。清明／開學工具須root審碼批准才可開browser。詳reports/verification-followup-20261023-16.md。\n\n## 2026-10-23 使用者要求暫停：可重開程式\n\n- source_agent: codex。使用者要重開程式，已停止新工作與三子代理。中秋root-ui-04於05:05:57.241Z受控停在247/783，剩536；runner43892/driver51568均absent，原browser已finally關閉。store.verify實跑exit0，case/sample/PNG/hash-chain/checkpoint各247、零未提交attempt；原32凍結方法SHA不變。\n- 暫停屏障mid-autumn-ui-validation-20261023/OPERATOR_PAUSE_REQUEST.cjs保留，令每筆開始前guard在上一筆完成後阻斷下一筆（exit1是明確operator pause，非UI失敗）。PAUSE-CHECKPOINT.json與reports/PAUSE-20261023.md已寫精確續接：只在使用者恢復後移屏障保留、重核freeze04/live sources/247份，對同root-ui-04加--resume補剩536，不重跑已完成項、不另建替代run。\n- 三代理CHECKPOINT已落地：qingming-error-domain-20261023、labor-finite-native/full-domain-reviewed-20261023、source-provenance-20261023；都是未完成、未准native，不把骨架/真RED說成完成。三者無自有背景程序。\n- 覆蓋仍2046/2076缺30；勞動12實際校準與本輪既有成果保留，未新Build/ZIP/推送/發布/碰main/刪檔，C節不變。暫停後不自行測試或派工，等使用者繼續。\n\n## 2026-10-23 最新：覆蓋2046項、中秋正常UI驗證已啟動\n\n- source_agent: codex。本輪實際進展：和平preview6補齊，v4索引2046/2076、缺30、geometry0；root獨立check-plan/compare exit0，2040舊selected及全部來源/方法綁定保留，126舊＋6新wrapper SHA完整核對。權威為holiday-lab/layout-qa/supplement-integration-20261023/v4/coverage-current.json（SHA48921202d1a5427010632a3da320dc2b31775d4b8803ea9d61536a5d93c36eeb）；原index ExitCode未取得null如實保留，assembly真exit0，不重跑index。\n- Root相關13tests、和平6payload往返、180nodes/218blockers/原flags均保留。離線dashboard/out/index.html已改v4並重產；27/27、4tests、1440light/390dark smoke2/2全過，UI整包0/1及使用者0；首次authority還讀v3真紅26/27已保留並修正。\n- 中秋原404688完整stream驗證已過且不重啟；真UI plan768 seed＋42 extrema合併783工作。freeze03唯一root-ui-03於04:49:38 exit1：工具hint-only nodes卻帶全blockers造成42斷引用假紅，原完整幾何0/比對[]及失敗全部保留。freeze04改全nodes+全blockers，root20tests/原真sample/三真geometry負例及30HTTP/2font live核對已過，明確新核准後單一root-ui-04啟動。\n- root-ui-04 driver51568/runner43892，creation04:51:46.2473260Z，session46854；2026-10-23T04:53:15.523Z root實查present、26筆journal、無terminal，首筆checks全true/compare[]/flags[]/geometry[]/PNG完整解碼一致。freeze04 SHA55ef47dc52f9a1ff8ca36157cc3649aff64566b1b9495a26ee9da2bea7b52ab6、approval8262fb3dc71f189165873a5bc2430d21048a65e324afc29abb41576a8008ba8c；尚未完783，不得重啟或算canonical6完成。\n- 勞動v3三漏洞由另一代理23tests獨立複驗，另P2 pass矛盾實證；新v4加pass公式/geometry收緊，代理30tests已凍結，另一代理獨立審查與受限6context pilot準備中，未准full。正式v4不是全域PASS。 另位代理隔離30tests全過，卻再實證9個checks鍵可刪除safe後繞過；不准full，另備精確9鍵與fresh/no-resume的12筆有界native校準工具，尚未啟動。日英增量已核13職階/6學位中性化整合，9資格仍待一手證明，Division/Section差異留P2，不改凍結遊戲。\n- 報告holiday-lab/reports/verification-followup-20261023-15.md；剩中秋/國慶/開學/清明/勞動error-longest各6、所有method flags/provenance/使用者確認仍NO。TF-BASE本輪仍5工單無來源/WebGL，未啟Unity。未新網站Build/ZIP/推送/發布/碰main/刪檔；8800與舊ZIP保留，C節不動。大raw本機ignored，非跨機備份。\n- 05:00:36Z最新：root核43892同creation present，中秋158/783，checkpoint157/event hash一致、未terminal。勞動受限工具後續已由root審碼/4tests/live核對批准並實跑唯一root-calibration-01（session99550/PID22340），真exit0；6context共12完整case/PNG/source/font/checks重算，手機6pass/桌機6因未全scroll保false，target_valid12/geometry0，不給2784或canonical額外credit。root-bounded-verification.json/報告15有逐項原值；v4 full仍不准。\n- 下一輪第一件事：核同43892 creation及session46854/launches/root-ui-04，活著追同job，terminal讀原failure不要自動重啟；完後逐case/sample/PNG驗783與810義務。回收勞動v4獨立審查/有界pilot工具，先審再核准新native，不啟full。\n\n## 2026-10-23 最新：覆蓋2040項、126份完整證據已整合\n\n- source_agent: codex。上一goal輪為實際進展，本輪再次推進：清明90、和平/光復有限錯句12、窄版提示24，合計126份完整case納入新索引。最新2040/2076、缺36、geometry0；與1914基準逐key/來源綁定比較，全保留無降級。權威索引 holiday-lab/layout-qa/supplement-integration-20261023/v3/coverage-current.json；plan-current/plan.json同2040，126新wrapper全nodes/blockers/SHA指標獨立重算相符，正式R0不寫。\n- 主控24/24 tests與索引/assembly/check-plan真exit0。補了證據後讀的raw manifest/case/sample/image SHA、source map與完整case比對；獨立VM真紅接受90→修後正常90、改source/改payload各精確拒絕，最新profile helper再複驗同樣通過。不同collector的sampler欄位依實讀schema處理，不用名稱猜語意。原首次234小索引為誤用舊矩陣名、v2缺欄位拒絕均留檔不採用；v3實際正確phase23-47-50-142/front23-48-00-964。\n- 剩36：中秋/國慶/開學/清明/勞動 error-longest各6、和平preview6。中秋原18628/68760已04:23:46.635Z terminal exit0，404688/404688；root完整stream verify04:25:44 exit0、6ctx各67448/132批、missing0，驗證SHA79cfb47fba92eedaa312dc5c65c7af7efe18df947d58993d68ac4e827c809da5。中秋6 canonical仍NO，必須768 seed＋42 extrema正常UI檢查後才可閉合。component報告mid-autumn-domain-verified-20261023/REPORT.md；不重啟原job。\n- 三代理續分工：labor-v2凍結未跑，獨立真負例指出resume雙owner、flags可被洗與截斷PNG三缺口，另開v3修復，不改v2證據或批full；mid-autumn-full-witnesses工具準備中，等全集後seed128/context與極值真UI。national-fast-domain僅設計，手機900/快法等價未證；semester投影/6native校準不代表無上限步數已證。清明剩6錯句域另排。\n- 主報告 holiday-lab/reports/verification-followup-20261023-14.md；詳細yes/no與實際stdout見integration目錄。新網站Build/新ZIP/發布/push/main/刪檔均無，8800與舊ZIP保留，C節SHA不變；TF-BASE實查仍5工單，無來源/WebGL，不啟Unity。大型raw只本機，沒有跨機備份宣稱。\n- 離線儀表板已重產 holiday-lab/dashboard/out/index.html（本機原目錄，不新造另一套），主控重跑build/authority27/27、4正式負例tests、桌機/手機smoke2/2皆exit0；顯示2040/2076、缺36、整包UI0/1與使用者確認0。另國慶/開學/勞動來源/存檔27正式tests主控27/27。stdout在supplement-integration-20261023/root-dashboard-*與root-domain-*；沒有新網站Build或發布。\n- 下一輪第一件事：中秋原18628/68760已terminal不可重啟，完整offline驗證已過；讀mid-autumn-ui-validation-20261023工具/plan與故障tests後root審碼，才啟單一正常UI seed/extrema驗證。和平另run修唯一EN1440可見性，不抹原失敗；Labor-v3修三真負例，原v2凍結且不可啟full。之後統一接6preview並更新索引/plan/dashboard。剩全部method flags/source provenance/短末行/使用者確認仍NO。\n\n## 2026-10-23 最新：嚴格可見覆蓋1914項、中秋全集已啟動\n\n- source_agent: codex。本輪實際進展：開學補採684 frames完成，舊10個完成session與新2個session嚴格組合90個canonical案例。新增選中畫面viewport稽核，撤回24個窄版過度計入項；故1848舊快照減24加90，最新1914/2076、缺162、geometry0。索引 semester-session-composite/coverage-bound-current.json；plan-current/plan.json與plan-consistency.json逐key相符。這是PARTIAL_RED，不是正式gate通過。\n- 主控實跑相關28 tests全過；中秋全集工具7工程測試及繼承3072筆串流核對已過。中秋單一engine 18628／driver 68760已在2026-10-23T03:31:28.847Z啟動，當次觀測2026-10-23T03:47:28.476Z：CHECKPOINT zh-1440 51712/67448 total=121208/404688 GLOBAL=NO。prepared-01 freeze SHA 64b5b6840c243d33cee047b1c3e206ea43a30904b134636d920387505b6d3448。觀測後數字會變，先查同PID及log，不因等待逾時重啟；全域完整性、真正極值與seeded full UI仍未驗完。\n- 清明原46996已terminal exit1（舊JSON聚合爆限）；1042案例恢復並重驗，原after缺與unknown1保留NO。唯一缺JA1440補採2352/57024於03:48:29.960Z正常exit0，193frames，三shot/retry與sample/image/geometry由代理逐筆核對；root讀完報告，嚴格6context composite由font_coverage_audit續做，未計新覆蓋。開學22768已結束，不重跑。\n- 窄版8款×3語：150真拒絕、165新PNG、96 secondary義務（新15＋舊81跨run逐筆核對）離線verify主控exit0；source/font穩定、Range/safe/clip/viewport及全case geometry0。finite-hints-native-20261023/REPORT.md。尚須strict typed adapter才計入覆蓋，不改舊eligible。新peace/retro60張與constitution真6011.5ms收尾亦已補證；60張trace派生輸入另存，不能假稱原case有inputs，完整join仍未完。\n- 日英獨立複核已完成：13人核心職級可保留、28候選中27原案保留，EN-CERT-RECOGNITION-01需將獎助金補完整financial awards or subsidies；root verifier exit0，17來源SHA穩定/productWrites0。正式機構與任用附註仍pending，未套產品。代理轉查勞動：全部輸入不只729，僅負載字串可投影729指派，因果與合法拒絕見證仍在建證，不冒稱完整輸入域。\n- 主報告 holiday-lab/reports/verification-followup-20261023-13.md。沒有新網站Build、ZIP或8800替換；8852仍11內部量測。官方R0不變，遊戲不發布，未push／未碰main／未刪檔，C節SHA不變。TF-BASE來源/WebGL仍待回，未啟Unity。大raw僅本機，未宣稱跨機備份。\n- 下一輪第一件事：只追同18628/68760中秋live程序與log，清明2352/57024已terminal不可重啟。回收清明6context composite、24窄hint typed adapter及和平/光復12context最大面積守門測試後由root接索引/assembly；原coverage仍1914/2076。中秋全集串流/真UI極值/seed、國慶完整域、勞動負載因果投影與其他未閉合項仍必須完成。正式gate前不產新ZIP。\n\n## 2026-10-23 最新：分片存檔修復、2964案例復原與獨立複驗\n\n- source_agent: codex。前一輪完成翻譯專責派工；本輪為實際進展：模組9/9、獨立8/8及六種負例、真DOM21frames與三段回放，v1/v2 coverage一致14/2076，組裝計畫56wrapper SHA全同。主報告：C:/agywork/agd-holiday-prototypes/holiday-lab/reports/verification-followup-20261023-12.md。本輪沒有網站Build12，8852仍11內部量測，8800與舊ZIP保留。\n- semester原535MB報告聚合字串爆限，已終止；在新ignored recovered-run恢復2964 fullcase、sample／image SHA與11session metadata原值。原10complete，JA1440 graduation partial／credit未開始；末旗標全文缺1、無原after，明列NO。單一新定向補採collector22768／driver69380／session27559，原清明46996仍live；不重啟原其他程序。勞動1571frames／光復622frames已結束geometry0，完整method仍未結案。\n- 最新固定08覆蓋1848/2076、缺228、geometry0（report-store-integration/coverage-current.json），不含恢復partial或另存peace6預覽。元旦11有限key／414精確match／6context已證；peace6真聆聽預覽已驗。artifact72/72、2799/2799行補證；preview12/30閉合，剩18family／37branch原false保留，僅另補constitution JA1440原生收尾。\n- 日英新審查26key／28譯值候選，13職階與49既有值、41來源SHA核對，未套產品；專名／校務全文與個人資格不冒稱認證。中秋第二先導720原法對照、10真例、13完整極值相符，全集仍未啟；國慶60探測／10真例，原法全量約174h未啟，GLOBAL均NO。\n- 儀表板23/23真重驗，15模組功能／外框56yes1未驗／使用者確認0；全UI gate仍NO，官方R0 SHA不變。TF-BASE本輪仍僅5工單／腳本，未回來源，未啟Unity。未push、未發布、未碰main、未刪檔，C節不動。大raw只留本機，沒有跨機備份成功宣稱。\n- 下一輪第一件事：追同一22768／69380／session27559及46996真狀態，完成才讀分片與來源收據；依精確typed ledger補原生缺口、回收peace／retro有限錯句審查，再更新索引。舊closure/export未全支援v2需逐來源改，不以manifest索引當fullcase。正式gate通過前不產新ZIP／不發布。\n\n## 2026-10-23 最新：指南日英49值已整合（11僅內部量測）\n\n- source_agent: codex。上一輪為進展，本輪由兩個獨立codex分支完成JA20／EN29值，整合daeb9d7／c3bcb89；其他生成譯值與固定94ed07e全同，原校務條件、pending機構／資格／免修句保留。報告：C:/agywork/agd-holiday-prototypes/holiday-lab/reports/integration-20261023-11.md。\n- 主控build11 exit0，356檔、app-TQ4G6C6Y.js，8852/.measure-integrated-11僅內部量測，未替換8800舊審閱版與ZIP。13相關Node測試過；283遊戲runtime與10逐byte全同，09→10精確僅newyear第一幕JA短字幕。當前模組功能儀表板15/15、23/23權威格式與2/2smoke，使用者確認0。\n- 新譯值實際指南雙寬320/1440共98目標：84可見且全文owner-contained／無水平溢出、3528字元樣式cmap missing0/unknown0；14為7個不在目前served guide資料的舊字典值，另列data-only，不洗成畫面通過。證據：translation-review/guide-terms-rendered11/。英語office’s實際DOM無插入空白，未把字形觀感誤認文字bug。\n- 春節當前JA原生回放18 stable／0 geometry，兩個原跨鏡失敗保留，只補shot3/7兩張；沒有凍結動畫或延長140ms。真DOM newyear/zh/1440 1/1、相關純測試4/4；詳layout-qa/newyear-ja-caption-current/REPORT.md，不當完整UI完成。\n- 完整UI gate本輪實跑exit1，正式R0仍13case且缺final source fingerprints，SHA cbaa1849002fe4682650fb653385a62d91ebf9aca3c94090cdaf0df7bbf34336未改。固定08長批實查52792／46996 live；最新c5e3258索引1620/2076、缺456，仍PARTIAL_RED。front15/15已完成；第三批固定錯句18 eligible、national6 supplement-only仍missing，scope負例5/5過。不得為清NO而改sampler／safe或丟原失敗。\n- TF-BASE夾本輪仍只有5工單/腳本，兩遊戲源／WebGL未回，未啟Unity、未改遠端權限。未push、未發布、未碰main、未刪檔、C節不動。下一輪第一件事：核原08兩程序真狀態，回收新增完整列並處理精確method缺口；讀中秋finite-native先導真hint/clone一致性與每千例耗時，未批准前不啟全集。正式UI gate通過才產新試玩包。\n\n## 2026-10-23 最新：日英專責差異複核（未套用候選）\n\n- source_agent: codex。依使用者追加要求，日文／英文兩位子代理已交回獨立複核，主控讀報告並重跑 verify.cjs／audit.cjs，皆 exit 0。總報告：C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/specialist-followup-20261023.md；各語言報告在 specialist-ja-20261023/REPORT.md、specialist-en-20261023/REPORT.md。\n- 助理教授→Assistant Professor→助教有官方 JST、九州大學職名表支持；助教與 Teaching Assistant（TA）分開，副教授對應准教授。當前13人職稱譯值13/13符合既有核對；未重新認證個人聘任事實或校方正式人事日譯。\n- 新提案：日文20處、英文24處註冊課務組名稱不一致；另英文3句休學、4個抵免用語可精修，1個免修／抵免混合句待查。樹德教務處兩個官方索引支持 Registration and Curriculum Division，全文403；先前Section是產品用法，不能當官方唯一譯名。兩筆合聘機構Industries擴寫缺依據，對應待確認，不推定聘任本身錯誤。\n- 未改產品、未重建、未發布、未push、未碰main、未刪檔、C節不動。139既有譯值整合verify仍通過；字典2315/2344鍵只是盤點，指南514 exact對應不是全部最新校務核定。468原始CHECK欄仍待逐項來源，不因建置去標記就視為核實。\n- 下一步：逐項整合無歧義候選並驗新版長標排版；正式學位／資格／機構及當期流程來源不足保留待證。遊戲UI gate仍未閉合、TF-BASE兩遊戲來源未回，8800舊本機審閱版與ZIP保留；10/8847只是內部量測，未作新版交付。不得用本翻譯報告宣稱整體完成。\n\n## 2026-10-23 最新：整句翻譯與固定按鈕框（整合驗證中）\n\n- source_agent: codex。本機分支codex/holiday-prototypes，未push、未發布、未碰main、未刪檔。8800/.review-local-09與舊local09 ZIP保留；最新09/.measure-integrated-09在8846僅內部量測，不當新版交付；08/8845固定供既有完整遊戲矩陣。產品提交80286ca、ac7ba78、b775698；08整合續報holiday-lab/reports/integration-20261023-08.md，09精修見translation-review/post-specialist/REPORT.md。\n- 三款創作深化已合併；semester真整合8/8、24次真指南、每組4次諮詢/4回放。獨立代理實際探索三款各兩作品，保留08年獸錯眉向P2；root09已分正向傾斜/近水平提示，6/6提示複驗、8/8功能回歸，原紅與54張viewport留存。不冒稱真人學生測試。\n- 共用按鈕原整圖縮放會使長句貼框；改原生成素材四向九宮格、固定12px框，slider保44px不被flex壓窄。06由固定sampler一次46/46組、138態及當前可讀DOM geometry0，20次窄版真range進退、3語窗口移動皆過。所有03/04局部padding、05窄stepper失敗保留；這不是全scroll/fullphase gate，FINAL-06.md列明限制。\n- 日英審校完成FAQ30組/120值、師資13位349來源欄/698值，及另組13位職階忠實對照13/13。首頁消息/作品/About/Labs的盤點348唯一鍵，前8、19、103、218精確分工完成語義審查；並非全站2310字串母語認證，正式專名/六筆碩士類型/部分原事實衝突仍待確認。\n- 本輪13消息作品譯值+一處canonical公司名已套；主控讀合作方官方about確認株式会社オートクチュール/hautecouture Inc.及松山/樹德合作，JA長key與EN生成鍵連動。舊編譯守門真紅→重建後verify-applied通過；03真DOM28/28、4188字元配對missing0/unknown0。首輪17/28是等待#root過早的工具假缺席，改等真正目標文字後全過，舊輸出保留。\n- About/Labs44與News/Works82已套，合計本輪13+44+82=139譯值；另兩處canonical僅修合作方正式公司名，中文其他內容由基準測試保護。開拓全段1筆因作品資格矛盾排除，沒有擅改原條件。08 build exit0，三批生成校對13/44/82皆yes。About整句07獨立12/12、764字元樣式cmap missing0/unknown0；Works完整標題保中文20話與黃色重點，3測試通過。08新增44/82可見DOM及字體由第二位翻譯代理續驗。\n- 使用者追加專職英日翻譯組，已由兩位代理分工。職稱組f052eb4：JST/MEXT逐筆查證，助理教授→Assistant Professor→助教是通用對照，與TA及舊助教授分開；13位職稱/26個英日頁/144文字值真DOM通過，0JS錯誤。後續獨立codex/faculty-neutral-degrees六個education只移除原文未提供的MA/MFA等細類，改一般Master's degree，保學校/領域/年份；3928b20整合為ac7ba78。09實際12/12句、420字元樣式cmap missing0/unknown0；九筆證照與正式學位名稱仍未重新取一手認證。\n- 第二位翻譯代理已分類08的44+82值及Works整標，共256個目標：244實際可見、13994字元樣式cmap missing0/unknown0；12 data-only與10個刻意二行省略的摘要另列，不洗成全文畫面通過。兩UNKNOWN原是Cambria Math的▸缺字體檔收據，實讀Windows registry/TTC解決，未換字體。查出日文影音漏音聲、英文配樂之外漏影視，root兩筆精確修正b775698，09四目標/106字元cmap通過。整份字典與08相比只有EN7+JA1共8值改動；其他值全同，13相關測試與09 Build通過。283個holiday-lab runtime於08/09逐byte全同，舊遊戲量測不改base或回填SHA。\n- 原英文T字左側真1px截切，root controls加左右2px；08獨立原case85frames、26按鈕三態、339/339全文捲動與geometry0，來源278逐byte相同/5編譯或QA輸入另列。root08全Node187/187、四款label變更功能4/4（教師/國慶/和平/勞動，含通關/三回放/重試）、dashboard23/23及smoke2/2，15模組SHA收據可追查，不等於整包layout核准。舊175/176、179/180及局部padding真紅保留。\n- 08完整phase/all-errors/按鈕三態及front90+archive6仍在跑；06活批次保留未重啟，sampler/assetmap仍freeze。已完成constitution/lunar/lantern/children phase及newyear/lunar/lantern front；正式coverage本次510/2076，均geometry0但不等於全gate。最短合法140ms已另組真DOM6/6、54同鏡墨跡/真圖全過，實際rAF呈現148.9–151.2ms如實留底；日文320字幕末字孤行P2保留。static-error-max已提交6bd8850：兩款23個有限錯誤全文、336拒絕收據、654文字owner全部覆蓋；123捲動位置用原真捲動補證，12個canonical候選交索引，未用字數冒充最大墨跡。官方ui-layout-policy仍未閉合，禁止新版出包。\n- TF-BASE交接夾本輪仍只有5份工單/腳本、兩遊戲源及WebGL待回；未啟Unity或更改遠端權限。下一輪第一件事：核對08兩矩陣live PID/輸出，整合兩款static-error-max真採樣證據並列最小剩餘清單；完成正式gate才產新包。C節SHA維持95ae06fb0e647d1d212fd467120bd209132c8c904cf193085f47fe806f293680。Vault專案紀錄已備援；索引發現兩個同名列60/379，未猜選覆寫或刪重複，詳vault-index08-pending.json。\n\n## 2026-10-22 日英審校第二批本機套用（尚未取代09試玩版）\n\n- 78操作／9產品檔已套用；首批職級維持助理教授→助教、副教授→准教授，合聘／從聘另說明。報告：C:/agywork/agd-holiday-prototypes/holiday-lab/translation-review/followup/ROOT-APPLIED.md。\n- root實跑16 tests通過；翻譯測試曾因依賴已套用工作樹失敗，固定904ac79基準後轉綠，紅燈原始輸出保留。測量Build .measure-layout-02 exit0、356檔，兩筆既有duplicate color警告、21個stats未配對路徑仍列明。\n- 同步三語修115甄選六校系、技優資格不限得獎應屆、繁星放棄仍禁當年甄選。導引可查合資格證照，非任意證照保證可報名；原selection對象仍需按簡章續查。\n- 首頁3單位＋12FAQ共54日英字串已審；其餘18FAQ及其他長文未完成。新版字型／窄版／完整回放未驗完，不能引用09舊圖當新字串證據。\n- 文字安全區新增2076必要案例契約與真DOM墨跡採樣器；跑馬燈真紅轉綠、72/72字元兩模式可達，負例真圖遮字可抓到；完整矩陣未跑完，交付gate仍紅。依game-ui-art第8節要求打包前強制執行 ui-layout-policy，measurement只供採樣，不得打包交付。\n- 8800/.review-local-09與local09 ZIP保持既有版本；本輪未push、未發布、未碰main、未刪檔。下一輪先在測量版驗招生導引三語，再驗新文案字型與手機；新年新版仍在獨立分支待回收。TF-BASE兩遊戲原始碼未回，不重送背景工作、不跳Unity視窗。\n\n# 系網漫畫版 交接檔（LATEST_HANDOFF）\r\n\r\n最後更新：2026-10-22，TF-GO／Codex（僅英文版獲授權公開發布；遊戲留本機）。\r\n\n## 2026-10-22 最新：節日番外篇全面本機試作（驗收收尾中）\n\n- 本輪可直接審閱：Chrome已保留 http://127.0.0.1:8800/?lang=zh#hero；伺服器session8730、來源.review-local-09（356檔）。中英日首頁、15款遊戲、新版指南、師資對齊與12筆P1譯文均在本機，不push、不發布、不碰main、不刪檔。8797/8785未動。原remote/main仍1b8322e；此clone沒有本地main分支。\n- 最新試玩包 holiday-lab/delivery-v2/.outputs/local09-01/holiday-preview-v2.zip，40,584,255 bytes；SHA256 7d7a9e65f6e8c80c21fec75fc934d866ff71f0a6ffa1f1ccd3c33433ead495e8。解壓後Start-Preview.cmd，Node18+，不用Unity；遊戲素材隨包，部分官網照片/字型/處室連結需網路。366解壓逐檔SHA＋356 HTTP200/bodySHA、啟停/缺Node/占埠/重用與9組指南全pass；REPORT.md及原始輸出均留存。05與舊10款ZIP保留不當最新。\n- 15款：原8節日＋開學/畢展，追加和平紀念、清明、勞動、臺灣光復、行憲。additional_holidays獨立分支完成5款，extra-qa桌機/390/日文代表11/11；原10款本輪12組首測11/12，唯一英文390仍期待10入口（實際15）是測試舊預期，修後單獨1/1pass，原始歷程保留。dashboard按成功case＋當輪模組SHA核對15/15，而非假造同一輪全狀態驗證。23/23 dashboard authority pass；外框56yes/1未驗仍是04歷史結果。\n- Children材質音效/月光位移回放已在原分支修正；renderer支援audio/frames/textLayers，針對性瀏覽器紅0/3→綠3/3，手機字幕至少16px。257候選圖/75CG/6短音效來源完整；美術尚未使用者確認。\n- 師資：13張原圖逐人標冠頂/下巴/眼中點，CSS等比縮放與裁切，66%頭高/50%眼線；13條原照1024×2純背景技術裁切伸展補邊，無改臉/重繪/重複人像。6組三語桌機/手機、78原照SHA/完整性、13位窗寬/投影頭高一致通過；不是生物辨識精度。完整報告/紅燈修法/座標/原始及派生SHA、桌手機拼版在reports/faculty-portrait。\n- 真Chrome又發現1264px快捷4鈕遮第四位臉，root把<=1900px改頁內流，全部連結保留；21組三語×7寬零照片重疊。09與05逐檔比較僅styles.css變、355檔相同，app/語系/照片/字體鏈完全相同，無需重跑全部遊戲。reports/local09-delta.json及floating-cta-result.json。\n- 指南3/2/1欄摘要＋展開完整15項47說明/30FAQ；全部/新生/在校生/轉學生/準畢業生/畢業生6身分，標籤僅查找需求非申請資格。9組三語/尺寸/身分/完整說明pass。導覽各項不拆字、英日空間不足提早選單，27組390–2484 pass。\n- 字型：font_coverage_audit首批105狀態/1462種漢字假名/77608配對cmap有據，missing0/unknown0；沒有為改而改。使用者原則：先保留字型，真缺字一般說明優先等義換句，密集缺字才考慮相似字型，專名/人名/法規不改。後續個別詳頁/通關後文案/全手機跨平台尚未驗。新12筆譯文3頁/272字元配對含英文標點亦pass；03→05字典/字體鏈一致，05→09僅CTA CSS，證據可沿用。redesign/glyph-copy及post-translation報告。\n- 日英translation_review獨立分支首批24決策：2保留/21建議/1待官方；根據日本JST與本系官方職級保留助理教授→助教、副教授→准教授，不誤為助手或舊助教授。已套12筆P1（合聘/從聘、留職停薪、英文請假/休學、日文註冊課務組及技優班），12資料＋12生成map＋3保留條件逐筆pass；8/8是審校前快照驗證，之後7/1快照漂移不能拿來當現產品判定，verify-applied.mjs才是套後檢查。全文2310長篇未逐句母語審校，9筆P2建議及甄選正式用詞仍待處理。\n- 小改版3案研究與可操作比較稿已完成：redesign/style-options/index.html，36版面＋4互動pass，推薦A清爽漫畫；尚未經使用者選案，不擅套整站。僅已授權的索引/不拆字/遮擋/照片修改已整合。\n- 最終Node113/113、UI素材政策257/9 pass，Build exit0；保留既有duplicate color警告2筆。reports/final-node-tests.txt、integration-guide.md及各子報告有逐條yes/no。舊delivery唯一影片保留（38.56s開場展示，預設靜音），沒有新造BGM或多交影片。\n- WebGL仍未完成：TF-BASE原始專案/執行結果未到，Drive交接資料夾實查仍只有5份工單/腳本，不能把排隊當Build成功。使用者選TF-BASE開Codex，固定6000.5.10f1、單次hidden batch/PID/log、Chrome WebGL驗證，避免反覆Unity選擇視窗；不自行改權限或重送舊fleet queue。\n- 待驗/待審：真背景分頁（模擬hidden不能代替）、實體手機、真人盲測樂趣/時長、母語逐句、使用者候選美術/照片/改版選案、學校開學畢展日期。下一輪第一件事：先交主任看09首頁/試玩包與老師/日文畫面，回收具體意見；回查TF-BASE工單回報，有真正Unity來源才做WebGL。對未改runtime不重跑生圖/15遊戲；可接translation_review的P2精確建議與剩餘字型詳頁批次，維持本機審閱。\n\n## 2026-10-22 規畫：節日番外篇（未實作）\n\n- 使用者已於對話確認6–8個台灣節日，加系上畢展/開學；30–90秒，結合動畫/遊戲/漫畫創作；節日期間換首頁主視覺，點擊才開始，平時可回顧。本輪只要求調研及規畫，沒有改首頁或實作遊戲，亦非公開授權。\n- 文件分支codex/holiday-plan、工作樹C:/agywork/agd-holiday-plan。8個2027候選：元旦/春節/元宵/兒童/端午/中秋/教師/國慶，另2個校園事件日期留null。建議先選1款本機試點「燈影借位」，不是一次製作8款或已確認首款。\n- 已派3路子代理，查官方台灣假期、8件Google官方互動案例、實讀首頁及舊iframe模式。日期/政府假期/學校停課/網站露出分欄；Google只參考策展、主動開始及回顧，不複製角色/素材/辨識性規則。30–90秒是本案目標，不是Google標準；尚未實玩全部歷史Doodles。\n- 原創候選與比較矩陣見work-orders/20261022/holiday-games/PLAN.md，原始研究research-*.md，離線總覽dashboard/index.html。文件/日期7項yes、dashboard22/22權威及1440/390搜尋/篩選/展開/數字/無橫溢皆過。狀態明列遊戲實測0、使用者已確認具體候選0；三題方向已確認，兩者不可混算。驗收報告VERIFY-plan.md。\n- P0實作前置：目前Build複製未排除根目錄並保留舊dist，單靠隱藏遊戲入口或preview參數不能保證未發布。未來需全新發行目錄、明確資源白名單及未授權遊戲/工單負向驗證；本輪沒有改Build，也不能整條舊遊戲分支合回去。\n- 下一步主任選首款/題材後才開本機原型；補校曆/畢展日期、原創玩法比對及美術草稿，再驗新手/三語/真手機。8797三語首頁仍ee0e251，正式站仍1b8322e，遊戲/C節未動、不push、不刪檔。這個文件分支基底含舊本機程式，絕不可整條拿去發布。\n\n## 2026-10-22 最新：三語漫畫網站與大流程指南審閱版\n\n- 漫畫整合、完整主網站日文及中英日共用介面完成，功能提交d53f834及0d9bbd244e47daea171d0dc341cb50ca2661249e，分支codex/ja-comic-integration，工作樹C:/agywork/agd-student-guide-preview。與原repo共用Git；不必彼此fetch。只有本機審閱，未push／未發布，正式站仍1b8322e。\n- 指南15項、47個可點流程節點及下方說明、30FAQ、45來源記錄。13項順序流程、休復學/兵役與學生求助2項分流；抵免已依教務處改5階段，先依初審加退選，不能等最後核定。原中文主站JSON及styles.css未改。學生求助卡移除教職員職場調查與活動聯絡的程序引用，來源留歷史。\n- 依使用者追加，研究子代理查8組承辦單位的辦法/表單/FAQ/入口/消息，37筆研究來源：本輪全文5、官方索引19、前輪PDF5、前輪研究8。不聲稱全部資料全文已讀。系網畢展/證照消息僅確認索引，HC實習有官方單篇，均標示過去成果/學期而非當期報名。\n- 26回歸、build/check、2,310原文鍵英日覆蓋與數字複核均過。主站321組三語路由在d53f834已過；指南流程追加後另重跑60組頁面與12組操作，47節點跳轉/分類/搜尋/FAQ/手機選單/特效均過。18組三語文字邊框0違規、負向控制有效；英文標籤旋轉和箭頭行高失敗留底。單檔3語47段/30FAQ/搜尋/切換皆過。既有duplicate color警告、真手機與日文母語審校未完成，沒有宣稱通過。\n- 審閱入口work-orders/20261022/ja-comic-review/guide/index.html；整站本機http://127.0.0.1:8797/?lang=ja#hero，指南#/students/guide。舊outputs/student-guide-official/index.html也已更新。報告VERIFY-ja-comic-review.md、來源研究research-flows/、缺件coverage.json同層；dashboard/index.html已重產，25/25權威與桌機/手機互動通過，使用者確認0。PNG不納入本次備份。\n- 下一步由主任審圖解、內容及日文；按coverage補當屆專題、實習/證照細則、現行英檢、請假/權益受理及當期海外甄選/見學文件。未獲新公開授權前不push、不上線、不發布遊戲。C節原文及main refs保持。8797伺服器沿用既有程序，不重複啟動；AGY原翻譯已完成，不重跑。\n\n## 2026-10-22 最新：分類索引與海外見學\r\n\n- 使用者刪除開頭宣傳式文句，改為可點八分類索引，點選後篩選並跳至辦理資訊；提交b3b5719。另新增海外見學獨立卡、快捷與2FAQ，分類名實習見學（id internships不變），提交7a345a328694521527bf17e78bbd6de8f850bc19。分支codex/student-guide-ui，未push、未發布，main/遊戲/C節均未動。\n- 最新為15卡、30FAQ、8快捷、35官方來源；本期見學團/費用/補助/認列查不到，不以歷史展演營或交流照片保證目前可報名。來源限制保留。\n- 12項回歸、build/check、五尺寸操作、六組字壓框皆過；單檔實測15/30、見學可開、口號不存在。狀態dashboard按最新JSON重產，22/22權威驗證，使用者確認仍0。當期文件與真手機仍待確認。\n- 最新入口仍work-orders/20261022/student-guide-official-review/index.html；報告改讀REVISION-index-and-study-visit.md，初版14/28報告留作歷史。下輪先讓主任看更新稿，未獲專區公開授權前不發布。\n\n## 2026-10-22 最新：在校指南改為官網版型，仍待審閱\n\n- 依使用者最新指示，已將在校指南接入官網TopNav/BackBar/Footer與漫畫CSS；新分支codex/student-guide-ui，提交65af4643d0c729bb5d09056247aeafab68e9d4a2；工作樹C:/agywork/agd-student-guide-preview。基底main 1b8322e。未push、未發布、未刪來源檔，C節未動。\n- 入口#/students/guide；八類、七快捷、14項短說明，各最多三步並附窗口及官方入口，後面集中28題FAQ。分類/搜尋同步篩FAQ。每項summary最長48字，每步最長18字，FAQ答案最長70字。\n- 34官方來源重新取回，12有內容、22阻擋/空內容；讀取限制列research.md。現行專題、英檢及下一屆海外甄選待承辦確認；不把索引當全文、不把過期115-1期限當仍受理。研究技術細節收進折疊來源，學生頁只寫白話確認方式。\n- 新3項測試0/3轉3/3，加原中英共11/11；npm run build/check成功，app-5VY3MYMQ.js。1440/1280/768/390/320五尺寸分類、搜尋、七快捷與FAQ鍵盤操作皆過，0錯誤、無頁面橫溢。文字審查1440/390/320、FAQ收合/全展開6組0壓線，刻意不良背景負向控制可抓到；本次commit已透過.githooks/pre-commit執行。既有duplicate color警告、真手機未測保留。\n- 單檔審閱成果：本輪Codex對話outputs/student-guide-official/index.html；原repo備份work-orders/20261022/student-guide-official-review/index.html。已內建樣式、程式與資料；字型及學校外連仍需網路。報告VERIFY-site-draft.md、研究research.md、工具證據JSON同層。\n- 本機預覽http://127.0.0.1:8797/#/students/guide，Node伺服器目前執行中；8785遊戲未動。單檔已實測14卡、28FAQ、搜尋海外1項、無頁面錯誤。離線狀態dashboard/index.html於2026-10-22重產，22/22格式及權威驗證、桌機/手機搜尋篩選通過；使用者確認仍0。\n- 下一步先讓主任看新版與確認內容，取得缺少的當期正式文件後才準備上線；此授權不包含發布在校指南或遊戲。原學生紙上期刊版已被本官網版型審閱稿取代，下方紀錄供歷史追溯。\n\n## 2026-10-22 最新：英文共用介面已上線；在校指南另交審閱\n\n- 使用者已於對話授權驗證後將英文共用介面上 main，保留正式站更新，遊戲不得發布。發布工作樹 C:/agywork/agd-en-publish、分支 codex/en-shared-interface，基底56b61b9，提交1b8322e69d84549db220d849afb1aac0fb9d7c2a；一般fast-forward push origin HEAD:main成功。GitHub Pages run39743799524 build/deploy success。\n- 新英文入口 https://treefar.link/agd-comic-site/?lang=en ，舊 #/en/intro 等入口自動轉換。中文與英文共用首頁、詳情、導覽、頁尾、影片、測驗及招生導引元件；新聞與論文不再截短。鄧樹遠中英職稱皆不含電競代理主任。\n- 中文canonical JSON逐檔SHA與56b61b9一致、styles.css未變；英文同步近期名額46、6學年129件、實習22人、16年／130+件及新公告。8項回歸測試通過；全站96路由桌機中英加10路由手機中英共212組通過，最後字典修正再驗28組、測驗/導引20組、正式站16組，0頁面JS／站內HTTP錯誤。\n- 正式站app-7MF5K2G6.js與本機建置bytes一致，SHA256 f966a21d967755d4656860cc99cbe55135ff473c0ee6d0bb06fc3498512f7c78。data/play.json與play/creative-line/index.html仍HTTP404。未發布遊戲、未刪來源檔、未改C節；既有duplicate color警告保留，真手機未測。專名沿用既有翻譯，不能宣稱全面重新官方查證。\n- 英文發布報告、命令輸出與結果：work-orders/20261022/shared-interface-release/VERIFY-shared-interface.md。離線狀態儀表板：同層dashboard/index.html，2026-10-22重產；22/22權威/格式檢查與桌機/390px搜尋篩選展開均通過，工具通過與使用者確認分開。\n- 在校指南為離線審閱稿，未進公開工作樹。14卡、34官方來源、七快捷、八白話分類：選課抵免2／請假休學2／畢業門檻2／專題製作1／實習機會2／證照就業2／繼續升學1／獎助協助2。另有專題製作、繼續升學、海外實習直達快捷。48項工具檢查通過。\n- 專區入口 work-orders/20261022/student-guide-review/index.html；主任先審5個待確認問題。當期專題細則/表單、下一屆海外實習甄選/名額/費用/語言條件與部分處室分工未取得；部分校方網站僅可讀搜尋索引，逐筆標來源限制，過期日期標截止。不得把過去HC新聞當目前可報名，不得將草稿當現行完整規章。\n- 原本機遊戲分支仍codex/remove-acting-chair-local，保留完整試玩版；不可把整條舊feature直接合進main。以下run4與舊英文七頁紀錄僅供歷史追溯，以本節為現況。\n\n## 2026-10-22 職稱更新與英文一致性方向（歷史）\n\n- 使用者要求中英文移除鄧樹遠「電競代理主任」。正式站已發布56b61b92f595ba503924dbd7b81d5b94a511dd6c，Pages run 39738977558成功；中文為「系主任 · 副教授」，英文為「Department Chair · Associate Professor」。首頁靜態師資卡、中文師資JSON、英文師資JSON三處均已改。\n- 正式站HTTP200的中英JSON已重新讀取比對；首頁與app-KQGOEBYM.js不含舊職稱。npm run build、npm run check成功，發布測試5/5。\n- 本機整合版分支codex/remove-acting-chair-local，程式提交4debed0；clone已從主專案本機fetch同步；試玩包解壓副本的bundle.js、index.html、中英師資JSON也已更新。歷史ZIP未重打包，遊戲未公開。\n- 使用者詢問英文版盡量保留中文介面與資訊是否可行：可行；目前英文用獨立En元件與七頁分類，新聞只顯示10筆、論文只顯示前5筆，與中文詳情頁有差異；共用頂部導覽、頁尾、浮動按鈕仍是中文。後續宜共用元件與資料結構並完整翻譯導覽、詳情及按鈕；本輪尚未執行這項版型重構。\n\n## 2026-10-22 英文版已獨立上線（遊戲保留本機）\n\n- 使用者於2026-10-22對話明確授權：本次只將英文版合併並推上main上線；遊戲不發布，保留線上既有更新。此授權僅適用本次英文版，其餘C節待決項不變。\n- 以遠端main的49adae7acf4d2daddaebd61d741380f4a663029b為底，建立codex/en-publish-only；工作樹C:/agywork/agd-en-publish。\n- 已公開提交8f16c20b1676a8c25a00d88659f39f086d19417c；git push origin HEAD:main成功（一般fast-forward）。GitHub Pages run 39727684727成功，網址https://github.com/treefar/agd-comic-site/actions/runs/39727684727。\n- 英文入口：https://treefar.link/agd-comic-site/#/en/intro 。七分頁：intro、highlights、faculty、curriculum、labs、works、visit；保留main既有英文首頁內容，新增導覽及其餘頁面。中文資料與app、共用元件、首頁章節、styles.css均與原main一致。\n- 英文圖片依每筆slug/id使用main既有照片，沒有移入遊戲資產。線上data/play.json與play/creative-line/index.html均HTTP404；線上app-WFAVOGDV.js與本機建置位元組相同。\n- npm run build、npm run check:report成功；node --test tests/en-release.test.cjs 5/5；本機桌機1440與手機390共14組頁面驗證通過。既有duplicate color警告未改；真手機未測。\n- 原feature/en-site-and-play-zone仍保留完整遊戲整合版；不可把整條feature直接合進main，會帶回舊版站台與尚未核准發布的遊戲。未來遊戲上線也應從當時最新main另開分支選移。\n- 本次範圍只推上述英文發布提交。遊戲、舊美術刪除、真手機手感、格鬥規格、未知授權與清理均未處理。\n- 驗收報告與截圖：本次Codex對話outputs/en-release/VERIFY-en-release.md、smoke.json、live-delivery.json。\n\n## 下一輪第一件事\n1. 先核對發布工作樹codex/en-shared-interface與origin/main為1b8322e，讀work-orders/20261022/shared-interface-release/VERIFY-shared-interface.md；不要重做已上線的英文重構。\n2. 讓主任審閱student-guide-official-review/index.html官網版型與28題FAQ；補現行專題文件、英檢條件、海外甄選及處室分工後再準備上線，未確認前不發布。\n3. 本機遊戲等使用者試玩回饋。C節其餘待決項維持，禁止整條feature合併或順帶發布遊戲。\n4. 開工前先查git status／HEAD，主專案與clone以本機fetch及ff-only同步；正式站main只接受另外獲授權的發布內容。\n\n## run4整合時狀態（歷史）\r\n- 主專案：C:/Projects/系網漫畫版_AGDComicSite；執行clone：C:/agywork/agd-site-codex。分支均feature/en-site-and-play-zone。\r\n- 本輪六條：codex/hide-pending 2576ae7、codex/tune-collapsed efe4204、codex/tuning-roundtrip 2fd7f99、codex/spring-backgrounds be6da33、codex/faculty-punctuation 5bb779b、codex/en-check-batch2 8ca0a85。全數獨立重跑後合併，合併點d0e7eb1，0衝突。\r\n- 獨立驗收工作樹：C:/agywork/agd-run4-verifier，保留未清理。六分支相關測試分別17/16/16/16/16/16，全通過。\r\n- 整合版 node --test tests/en-play.test.mjs：17/17；node tools/validate-en.mjs：8檔PASS；英文CHECK 518→510。\r\n- node build.mjs exit0，既有duplicate color警告仍在；輸出bundle與提交版一致。沒有額外重寫介面或改遊戲。\r\n- 中英試玩卡5張皆無待補，可真正開啟／關閉iframe；已知team·year保留。390×844調校面板預設收合，遊戲可見100%，28鍵可用；扣墨42→72、公開／調校localStorage隔離、JSON28鍵維持。\r\n- JSON實際貼回磁碟tuning.js後，桌機／手機三關通過，再用原始bytes還原，SHA256一致。六組語系／裝置／調校組合各三關won、0失誤、0錯誤。\r\n- 平台與藍牆四張圖重新拍攝並逐張代理目視可辨識虛線；未改顏色或程式，未宣稱使用者對話確認。\r\n- 英文來源本輪重新開啟金點主辦部會、金犢官方PDF、KT藝術節、HC真正官網；ZIP-LAB可讀性待確認，原值未改。\r\n- ui-policy工具仍exit1，只有既有4張實景例外，沒有新問題。\r\n- agy補助審查：ReadFile被擋；改附文字重送後240秒TIMEOUT，未提供可用判定，不納入驗收。\r\n- **真手機從未測過**。其餘四款只做啟動及第一段操作冒煙，不宣稱完整通關；《創作不斷線》完整三關已測。\r\n\r\n## 本輪試玩交付\r\n- ZIP：AGDComicSite-Playtest-20261021.zip，59,982,468 bytes。完整解壓後雙擊START.cmd；Windows內建PowerShell即可，無需npm安裝。既有React CDN與網路字型需網路。\r\n- ZIP SHA256：0a9d073e68e5e291b7dde2c99581028b688aa05deba4e562f8ed5d1f724c9603。\r\n- ZIP已真正解壓到 work/run4/unpacked-playtest，用包內PowerShell伺服器實跑五款第一段操作，全部通過、JS/站內HTTP錯誤0。554個runtime檔案逐一雜湊一致；PS1 UTF-8 BOM、CMD純ASCII，PowerShell5.1/7解析皆過。\r\n- 可重跑QA：tools/qa/run4/README.md；啟動器範本：tools/playtest/。\r\n- 離線狀態儀表板：work-orders/20261022/run4/dashboard/index.html（2026-10-21重產；資料／工具／使用者狀態分開，使用者確認仍為0）。\r\n\r\n## A. 環境整理（本輪使用clone，主專案junction未拆）\r\n1. **`node_modules` 目前是目錄連結**（junction，指向 `C:\\agywork\\agd-site-codex\\node_modules`），不是正式安裝。處理方式：\r\n   - 先確認是連結：PowerShell `(Get-Item node_modules).LinkType` 應為 `Junction`。\r\n   - 只拆連結、不碰目標內容：`cmd /c rmdir node_modules`（**不可加 `/s`，不可用 `Remove-Item -Recurse`／`rm -rf`**，那會刪到 clone 裡的真套件）。\r\n   - 再 `npm install`（`package.json` 已有 devDependencies `playwright ^1.64.1`、`sharp ^0.35.5`）；Chromium 沒裝就 `npx playwright install chromium`。\r\n   - 驗收：`node --test tests/en-play.test.mjs` 16/16。\r\n2. 文字檔換行：clone 設 `core.autocrlf=true`，工作目錄是 CRLF、git 內是 LF。比對雜湊時要說明用的是哪一邊。\r\n\r\n## B. 本輪六項已完成（以下保留原工單規格）\r\n每項做完寫 `work-orders/20261022/reports/<名稱>-report.md`：做了什麼、`git diff --stat`、驗收逐條 yes／no 附實際指令輸出。\r\n\r\n| 優先 | 項目 | 範圍（白名單） | 驗收（yes／no） |\r\n|---|---|---|---|\r\n| P0 | **英文頁不要顯示中文「待補」**：四款試玩卡現在顯示「待補 · 待補」，`#/en/play` 也是中文。值為「待補」時該行不顯示（中英皆然），不改資料 | `en-pages.jsx` 的 `PlayCard`、`bundle.js`（`node build.mjs` 產物）、`index.html`／`pages.jsx` 版本字串 `20261021d`→`20261022a`、`tests/en-play.test.mjs`（只新增） | `#/play/zone` 與 `#/en/play` 五張卡都沒有「待補」字樣；creative-line 仍顯示 `team · year`；測試全過 |\r\n| P0 | **調校面板在手機直向會蓋住整個遊戲**：改成預設收合（只露標題列與三顆按鈕），點「展開」才出現滑桿 | `play/creative-line/tuning.js` | 390×844 手機模擬 `?tune=1` 截圖，遊戲畫面可見面積 ≥ 70%；展開後 28 支滑桿可用；`node C:/agywork/agd-site-qa-scripts/wo02check.cjs <repo根>` 結果與現在相同 |\r\n| P1 | **驗「複製 JSON 貼回 `tuning.js`」**（之前 unverified）：把面板複製的 JSON 貼回檔案等號後，頁面能正常載入、三關可過 | 只驗不改；若壞掉才改 `tuning.js` | 貼回後 `autoplay.cjs` 三關 won；報告附貼回前後 diff（驗完還原） |\r\n| P1 | **彈簧線在深色平台與藍色牆上的可見度**（之前只驗了米白地板） | 只截圖不改程式；截圖放 `docs/qa/creative-line/20261022/` | 兩種背景各 1 張桌機 1 張手機，人眼看得到虛線；看不到就寫報告，不要自己改顏色 |\r\n| P1 | **`faculty.json` 既有驗證失敗**：`node tools/validate-en.mjs` 報 `faculty.json FAIL 1：$[9].certs 純英文原值被改`（原文頓號被換成英文逗號；合併前就存在） | `data/en/faculty.json` 只改 `$[9].certs` 的標點 | `node tools/validate-en.mjs` 八檔全 PASS |\r\n| P2 | **英文 `[CHECK]` 第二批**：四檔還剩 518 個（stats 265、news 37、works 16、faculty 200）。先查 WO-04 列為「查過但未採用」的：金點新秀、時報金犢獎、KT 科藝獎、西基、ZIP-LAB、Hautecouture 法人名 | 同 WO-04（`work-orders/20261021/WO-04-en-check-review.md` 第 0 節），對照表寫 `docs/qa/en-check/20261022-batch2.md` | 同 WO-04 第 3 節；每筆有可開啟的官方來源 URL；維基不算來源 |\r\n\r\n## C. 要使用者決定的事（Codex 不要自己做）\r\n1. **推上 origin**：本機多 20 個提交；repo 公開，推之前使用者要自己看過內容。\r\n2. **`_v1-rejected` 29 檔要不要刪**：清單在 `work-orders/20261021/DELETE-LIST-creative-line-v1.tsv`／`.md`。刪之前還要一併處理 `play/creative-line/tools/prep-art.mjs` 對 `art/ui`、`art/fx`、`art/web`、`tools/mask-seeds.json` 的舊引用。一次刪 20 檔以上要使用者在對話確認。\r\n3. **手機手感**：使用者拿真手機開 `play/creative-line/index.html?tune=1` 調，調完按「複製 JSON」貼回 `tuning.js`。\r\n4. **《小朋友齊打交》致敬版規格定案**：`docs/design/fighter-homage/SPEC.md` 第 10 節的選項。LF2 原版再利用條款仍是 unverified（`lf2.net/en/terms.html` 404）。\r\n5. **試玩卡「待補」的實際內容**：六樓出口、晴日茶桌、地窖大廚、死線防衛隊的製作者、年份、授權要使用者提供（`cozy-big-two` 有 `fusion-pixel-tea.ttf` 但沒有授權檔）。\r\n6. **清理**（使用者同意才動）：\r\n   - 臨時分支 `merge/codex-run2` 與工作樹 `C:\\agywork\\agd-site-merge`（內容已全部進 feature）。\r\n   - 已合併的 `codex/wo-0N-*` 分支、`codex/attempt1-partial`。\r\n   - `C:\\agywork\\agd-site-attempt1-docs-untracked`：第一次失敗留下的未追蹤 `docs/`（23 檔，含瀏覽器暫存），從主專案搬出來的備份。\r\n   - `C:\\agywork\\agd-site-codex` clone 裡的未追蹤暫存：`docs/qa/creative-line/20261021/browser-tmp/`（約 529 檔 Node 編譯快取）與 `work-orders/20261021/codex-*` 提示檔與 log。\r\n\r\n## 使用者裁定（不要再問）\r\n- 減少 AI 美術，盡量用系上實景後製；場景沿用《六樓出口》的實景轉漫畫圖。\r\n- 《創作不斷線》按鈕與面板比照《六樓出口》用純文字。\r\n- 試玩區選入：創作不斷線、六樓出口、晴日茶桌、地窖大廚、死線防衛隊。\r\n- Dots 暫不使用（工作單 agd-comic-site#1 留著）；不用 Claude API、不用雲端 session；副戰力只用 Codex 與 agy。\r\n- `ui-policy.cjs` 對 4 張實景圖報錯是已知例外（記在 `play/creative-line/ui-art-manifest.json`），不改工具。\r\n- 截圖包用 WebP，不放 PNG 進公開 repo。\r\n\r\n## 硬規則（照全域 AGENTS.md）\r\n- 不 push、不碰 `main`、不刪檔（要刪先列清單給使用者確認）。\r\n- 不生圖、不用程式畫美術；畫面上的圖只能用既有素材。調校面板是除錯工具，用純 HTML 表單元素。\r\n- 驗證要實際跑指令並貼輸出；做不到就交部分並寫明卡在哪。\r\n\r\n## 驗收工具（repo 外，可直接用）\r\n`C:\\agywork\\agd-site-qa-scripts\\`（Playwright 從 `C:/agywork/agd-site-codex/node_modules/playwright` 載入，自帶靜態伺服器，不需 http-server）：\r\n- `node autoplay.cjs <repo根> [\"?lang=en\"|\"?tune=1\"] [desktop|mobile] brief`：三關沿 `path` 自動試玩，印出每關狀態、失誤、錯誤數。\r\n- `node wo02check.cjs <repo根>`：調校面板、滑桿改 `costTouch` 前後扣墨、`localStorage` 持久化與公開版隔離、複製 JSON、還原預設。\r\n- `node wo03check.cjs <repo根>`：開 `#/play/zone`、`#/en/play` 數試玩卡的 `team · year` 行。\r\n- `node mergeshot.cjs <repo根> <輸出.png>`：拍一張第 3 關彈簧線並印出兩條線的屬性。\r\n- `node crop.cjs <來源png> <輸出png> x y w h`：放大 3 倍裁切，看細節用。\r\n- 參考基準：原版三關以 `autoplay.cjs` 跑都是 `won`、失誤 0。\r\n\r\n## 重要路徑（repo 外，唯讀參考）\r\n- 調研與構想：`C:\\agywork\\agd-game-research\\{codex,agy,claude}\\out\\`，彙整 `C:\\agywork\\agd-game-research\\彙整報告_系網試玩區.md`\r\n- 關卡設計規格：`C:\\agywork\\agd-game-research\\claude\\out\\creative-line-levels.md`\r\n- 譯文覆核清單與原驗證器：`C:\\agywork\\agd-en-translate\\`\r\n- Codex 專用 clone：`C:\\agywork\\agd-site-codex`（origin 是主專案資料夾；在那裡 push 會直接推進主專案的分支，不可）\r\n- 18T 遊戲清單：`G:\\我的雲端硬碟\\_跨機傳輸\\18T遊戲清單_給系網調研_20261021.tsv`（147 列，48 列有網頁版）\r\n\r\n## 復盤 2026-10-21\r\n\r\n範圍：Claude Fable 5.1 接手後的規劃段（寫工單 → Codex 第一次失敗 → 修環境 → 開 Opus 對話控制 Codex）。Opus 之後的執行與驗收見上方各節與 `work-orders/20261021/VERIFY-run2.md`。\r\n\r\n### 1. 做了什麼、改了哪些檔\r\n| 檔案 | 用途 |\r\n|---|---|\r\n| `work-orders/20261021/README.md` | 六張工單索引、給 Codex 的 8 條共同規則、現況摘要；後修正測試指令 |\r\n| `WO-01-creative-line-screenshots.md` | 56 張全狀態截圖包＋對照頁（原誤寫 15 狀態 60 張，已改 14／56） |\r\n| `WO-02-creative-line-tuning.md` | 手感參數集中到 `tuning.js`，`?tune=1` 手機調校面板 |\r\n| `WO-03-play-credits.md` | 試玩卡 team／year／license／credit 四欄，只抄來源檔不編造 |\r\n| `WO-04-en-check-review.md` | `[CHECK]` 第一批：只改有官方來源的獎項與機構英文名 |\r\n| `WO-05-v1-rejected-list.md` | 29 檔舊 AI 圖的刪除清單（含 SHA-256 與復原指令），只列不刪 |\r\n| `WO-06-fighter-homage-spec.md` | 三方格鬥致敬構想合併成單一規格＋實景拍攝清單，不寫程式 |\r\n| `LATEST_HANDOFF.md` | 新建交接檔（現況、使用者裁定、待決、下一輪第一件事） |\r\n| `.gitignore` | `docs/` 改成 `docs/*` 並排除 `docs/qa/`、`docs/design/`，工單交付物才進得了版控 |\r\n| （未列入 mod 清單）`codex/attempt1-partial` 分支 | Codex 第一次的 13 個部分成果，留存不驗收 |\r\n| （未列入）`C:\\agywork\\agd-site-codex` | Codex 專用 ASCII 路徑 clone，預裝 Playwright 1.64.1＋Chromium，`package.json`／lock 已提交 |\r\n| （未列入）`work-orders/20261021/codex-prompt-run2.txt` | 第二次給 Codex 的提示檔 |\r\n\r\n### 2. 踩雷與根因\r\n| 症狀 | 根因 | 修法 |\r\n|---|---|---|\r\n| `node --test tests/` → `Cannot find module '...\\tests'` | Node 24 的 `--test` 不接受資料夾路徑；我沒先實跑就把指令寫進六張工單與交接檔 | 全部改成 `node --test tests/en-play.test.mjs`（commit `b0f0385`） |\r\n| WO-01 寫 15 狀態 60 張 | 清單實際只有 14 種，數字是手算的 | 改 14／56；Codex 沒硬湊第 15 種是對的 |\r\n| Codex 第一次六張全交白卷：`fatal: Unable to create '.git/index.lock': Permission denied`；Chrome／Edge headless `CreateFile: 存取被拒 (0x5)`＋`mojo ... crash server failed to launch`；`npm ERR ENOTCACHED` | `codex exec -s workspace-write` 沙箱把 `.git` 設唯讀、擋子程序開檔、斷網 | 改在獨立 clone 用 `-s danger-full-access`；Playwright 與 Chromium 先裝好，Codex 不必連網下載 |\r\n| 我啟動 `danger-full-access` 被 auto 模式分類器擋下（`Create Unsafe Agents`），連背景等待的 Bash 也一起被擋 | auto 模式不允許代理再啟動不受沙箱限制的代理 | 開一個 `default` 權限模式、模型 Opus 的獨立對話去啟動，由使用者按允許；未繞過 |\r\n| `docs/` 整個在 `.gitignore`，WO-01／04／06 的交付物會進不了 commit | 舊設定只考慮內部備忘 | `.gitignore` 放寬（commit `ea6af82`） |\r\n| `git stash push -u <pathspec>` 後 13 檔仍留在 index（顯示 `A`） | stash 帶路徑規格時對未追蹤檔的行為不如預期 | 改開側分支 `codex/attempt1-partial` commit |\r\n| `.gitignore` 用 `.Replace(\"docs/`n\",...)` 沒換到 | 檔案是 CRLF | 改用 Edit 工具 |\r\n| 探測 `.git` 寫入權限的指令被 dcg `rm-protected-file` 擋 | 我在同一行裡寫了 `Remove-Item '.git\\...tmp'` | 改用 Bash 只讀 `index.lock` 是否存在 |\r\n\r\n### 3. 額度花費\r\n- mod 量到：累計工作時間約 14 分鐘；本 session 約 US$28.42；目前最高用量窗口：週 37%。\r\n- 最耗的一步：一次輸出六張長工單＋README＋交接檔（約 1.2 萬字），其次是修環境時十幾次 PowerShell 往返與被擋重試。Codex 與 Opus 對話的額度不計在此。\r\n- 浪費點：測試指令與截圖數兩處筆誤各多花一輪修正；三個被安全規則擋下的指令各白跑一次。\r\n\r\n### 4. 下一步與規則建議\r\n- 下一步：Opus 對話已把六張（加 WO-07 彈簧線修正）驗收並合併進 feature（HEAD `6981888`，16/16），見本檔「下一輪第一件事」與 B 節待辦。等使用者決定：推不推 origin、`_v1-rejected` 刪不刪、真手機調手感、格鬥規格定案。\r\n- 規則建議（只提案，未改任何規則檔）：\r\n  1. **`ai-fleet-handoff` 或新開 `codex-exec` skill**：記「`codex exec` 的 `workspace-write` 沙箱不能寫 `.git`、不能開瀏覽器、不能連 npm；需要分支／commit／截圖的工單要給獨立 ASCII clone＋`danger-full-access`，且這個啟動必須由使用者或 `default` 權限對話執行，auto 模式會被分類器擋」。\r\n  2. **工單範本（`unity-ai-asset-gen/references/art-work-order-template.md` 或 `verify` skill）加一條**：寫進工單的每個驗證指令，主控要先在本機實跑一次並貼輸出；這次 `node --test tests/` 就是沒跑就寫。\r\n  3. **repo 內新增 `AGENTS.md`**：記 `node --test tests/en-play.test.mjs`、`node build.mjs` 後要 bump 版本字串、`play/creative-line/` 不經打包、`docs/qa`／`docs/design` 進版控其餘不進。這是專案慣例，不該放全域。\r\n  4. **hook 提案（低優先）**：PreToolUse 看到 `node --test <目錄>` 時提醒 Node 24 要給檔案路徑。\r\n- 下一輪建議：Claude Code／claude-opus-5-5／high\r\n  理由：獨立驗證或複驗；主線必須留在目前的 Claude 家族。\r\n  狀態：只提出建議，不切換模型、不建立新工作、不自行派工。\r\n"
+}

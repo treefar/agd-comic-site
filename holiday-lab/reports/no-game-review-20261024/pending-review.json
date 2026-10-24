@@ -1,0 +1,82 @@
+{
+  "observed_utc": "2026-10-24T06:10:19.020Z",
+  "scope": "Read existing latest research and six outstanding rows; no fresh official research or Drive query in this turn",
+  "games_deferred_by_user": true,
+  "checks": [
+    {
+      "id": "font-global",
+      "title": "中日全站逐字缺字稽核",
+      "disposition": "保留",
+      "result": "no",
+      "reason": "維持no作完整品質證據限制，不是已確認缺字。4個修正值未引入新候選字元，仍沿用既有字體，未下載字型；全站逐字fallback及跨OS未全核。跨OS不是本次新增必測門檻。",
+      "evidence": [
+        "holiday-lab/reports/copy-actions-20261024/delta-verification.json",
+        "holiday-lab/reports/copy-actions-20261024/font-delta-command.json",
+        "holiday-lab/reports/goal-audit-20261024/requirements-review.md"
+      ],
+      "current_decision": "保留驗證／來源限制；不是已確認的畫面缺陷，不自創發布門檻。"
+    },
+    {
+      "id": "formal-units",
+      "title": "全部正式職稱／處室外文名",
+      "disposition": "缺件",
+      "result": "no",
+      "reason": "維持no：全站尚有正式外文名與官網職稱衝突；本段另逐筆回讀官方同列雙語證據，確認註冊課務組為Registration and Curriculum Division，保留既有英名，不以此一筆推定全校名稱皆已核。",
+      "evidence": [
+        "holiday-lab/reports/goal-audit-20261024/translation-review.json",
+        "holiday-lab/reports/goal-audit-20261024/requirements-review.md",
+        "holiday-lab/reports/followup-20261024/contacts/REPORT.md"
+      ],
+      "current_decision": "官方資料／版本仍待核，現有提醒保留，不代校方裁決。"
+    },
+    {
+      "id": "guide-currentness",
+      "title": "當期完整規章、表單及年度衝突",
+      "disposition": "缺件",
+      "result": "no",
+      "reason": "維持no：兩份舊實習DOC全文已補讀，正文144/502個UTF16單位及完整已宣告文字story由獨立CFB/FIB/CLX核對；原件未改。表格版面/115當屆效力仍unknown，本系當期實習/海外/見學、證照表與其他版本衝突仍未齊，不能把舊表50%比例直接套用本屆。",
+      "evidence": [
+        "holiday-lab/reports/legacy-reader-20261024/REPORT.md",
+        "holiday-lab/reports/legacy-reader-review-20261024/parser-review.md",
+        "holiday-lab/reports/legacy-reader-review-20261024/content-review.md",
+        "holiday-lab/reports/legacy-reader-review-20261024/portability-final-r2.md",
+        "holiday-lab/reports/legacy-reader-review-20261024/current-proof-command.json"
+      ],
+      "current_decision": "官方資料／版本仍待核，現有提醒保留，不代校方裁決。"
+    },
+    {
+      "id": "art-provenance",
+      "title": "全部素材製程與權利已確認",
+      "disposition": "缺件",
+      "result": "no",
+      "reason": "前輪8879及其明列版本的限定證據保留；本段沒有重驗全部範圍。8876前版限定證據保留；本輪未新增此項全範圍驗收。小颯作者由使用者確認；其他既有校方作品／照片的逐件製程與權利未全數另核，不能宣稱整包零AI或所有改編權已核。",
+      "evidence": [
+        "holiday-lab/reports/overnight-20261024/root/asset-audit.json"
+      ],
+      "current_decision": "保留驗證／來源限制；不是已確認的畫面缺陷，不自創發布門檻。"
+    },
+    {
+      "id": "webgl",
+      "title": "Flora／胖倉鼠WebGL成品",
+      "disposition": "缺件",
+      "result": "no",
+      "reason": "最新2026-10-24 03:13:07 UTC指定TF-BASE夾回查仍只回5份工單/腳本、未見子夾或WebGL成品。僅對指定夾本次回傳作判定；沒有下載舊大包、重派或啟Unity。完整成品未回傳，不能執行包件驗收及頁底整合。",
+      "evidence": [
+        "holiday-lab/reports/legacy-reader-review-20261024/webgl-recheck.json"
+      ],
+      "current_decision": "依本次使用者裁定暫緩，不列網站本機審閱阻礙。未聲稱收到包件。"
+    },
+    {
+      "id": "real-phone",
+      "title": "實體手機與母語審閱",
+      "disposition": "保留",
+      "result": "no",
+      "reason": "維持no作尚無真機/母語/使用者新確認的誠實限制；現有手機模擬與獨立翻譯檢查各有證據。真人母語簽核、所有OS硬體認證不是自行新增的本機交付門檻。",
+      "evidence": [
+        "holiday-lab/reports/goal-audit-20261024/requirements-review.md",
+        "holiday-lab/reports/copy-actions-20261024/qa/REPORT.md"
+      ],
+      "current_decision": "保留驗證／來源限制；不是已確認的畫面缺陷，不自創發布門檻。"
+    }
+  ]
+}
