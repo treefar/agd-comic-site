@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "holiday-lab/reports/current-rules-20261024/source-notes.test.cjs"
+  ],
+  "cwd": "C:\\agywork\\agd-holiday-prototypes",
+  "observed_utc": "2026-10-24T01:52:22.962Z",
+  "stdout": "✖ source captions keep research limitations without transport or extraction jargon (3.5882ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 106.6276\n\n✖ failing tests:\n\ntest at holiday-lab\\reports\\current-rules-20261024\\source-notes.test.cjs:2:1\n✖ source captions keep research limitations without transport or extraction jargon (3.5882ms)\n  AssertionError [ERR_ASSERTION]: course-index\n      at TestContext.<anonymous> (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\current-rules-20261024\\source-notes.test.cjs:2:190)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1201:25)\n      at Test.start (node:internal/test_runner/test:1096:17)\n      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {\n    generatedMessage: false,\n    code: 'ERR_ASSERTION',\n    actual: '網頁全文可讀；本次重取成功（不單以HTTP成功認定已讀）',\n    expected: /HTTP|DOM|Chrome|403|202空|以web|渲染|抽文|頁圖|頁面影像/i,\n    operator: 'doesNotMatch',\n    diff: 'simple'\n  }\n",
+  "stderr": "",
+  "exit_code": 1
+}
