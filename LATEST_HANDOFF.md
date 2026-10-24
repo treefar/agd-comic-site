@@ -1,3 +1,15 @@
+## 2026-10-24 最新：8882維持，兩份舊DOC全文已補讀，等待外部資料
+
+- source_agent: codex；TF-GO。網站仍 http://127.0.0.1:8882/ ，指南 /?lang=zh#/students/guide ，儀表板 /progress/ 。.measure-copy-actions-20261024-01／360檔／app-R7TGU7Q2.js。本段沒有網站程式/資料變更、Build或三語重跑；47source/360build SHA相同，原服務未重啟，8881首頁/指南保留。
+- 原本機DOC解析缺口已閉合：隔離word-extractor@1.0.4純Node讀兩真OLE原件，不啟Word或重下載。正式全文legacy-reader-20261024/parsed-r2/；認定表144、評分表502個UTF16單位。獨立CFB/FAT/FIB/CLX逐字覆蓋所有已宣告story及末端CR；完整文字已讀，Word視覺表格/115當屆效力仍unknown。不得把舊表兩組各50%直接套成115評分規則。
+- 三代理分工：guide_content24擷取/可回歸方法；program_copy24完整內容14yes及原8條範圍/外部依賴審核；site_qa24獨立技術54yes及可攜12條。最後方法更正7yes/0no、exit0；最終補核為portability-final-r2.md/json，較早portability-final.md及兩份比對錯誤收據保留但不當終版。worker首版range helper負slice造成raw520/宣告502也保留為方法紅；API正文兩版SHA相同，不誤稱文件被截斷。
+- 可攜單命令 node holiday-lab/reports/legacy-reader-20261024/regression.cjs <fresh-dir>，實際regression-02及無node_modules鏡像已跑；16份未改MIT parser原碼/LICENSE與相對clone輸入保存，安裝/npm/lock/integrity/輸出SHA皆可核，不提交node_modules。表格欄位/原字/比重與未載明算法逐項在content-review.md/json，沒有補猜簽核先後/門檻。
+- 最新TF-BASE指定夾03:13:07 UTC回查仍回5工單/腳本，未見子夾或WebGL包；新metadata摘錄明標不是完整原始回覆，MCP isError=false、exit_code=null，未偽造shell exit0。只代表指定夾；Flora/胖倉鼠完整包仍待回傳，不抓舊大包、不啟Unity或重派。
+- 儀表板50列／44yes／6no／使用者0，依新legacy-reader-review-20261024/verification.json的1196檔SHA計算。guide-currentness明列DOC全文已補讀、當屆依據未齊，不能整項翻yes。權威18/18、桌面/手機深色搜尋展開篩選14yes；原收據同名被守門擋下與第一次UI早於state而失敗皆留存，root-前綴為主控終版收據。
+- 完整逐項yes/no、command/stdout/stderr/exit：legacy-reader-review-20261024/FINAL_REPORT.md；全文、技術及外部依賴另見parser-review、content-review、blocking-review。原第8條進度/儀表板/原交接/STATUS/Vault同步已完成，未把只做一項當全目標完成。整體仍待完整WebGL、當屆正式文件/校方名稱角色釐清及使用者畫面意見；跨OS、母語/新硬體等不是自創新門檻。
+- 本機codex/legacy-reader24；所有節日含勞動節繼續凍結，未測玩/改遊戲/巨量QA/生圖/Unity。315原圖與素材、小颯完整作品/署名、四dirty+R0、main refs/C節保持；不push、不發布、不刪檔，不推私人Vault。所有子代理/解析程序已收尾，不再自動重搜或重啟Word。
+- 下一輪第一件事：先看8882與最新外部依賴；收到TF-BASE完整WebGL才核包與頁底整合，收到當屆官方來源或使用者明確意見才做相依修正。不要再重做兩DOC解析、四個英日值或舊UI收據，不恢復節日或執行C節。整體目標未宣告全部最終完成。
+
 ## 2026-10-24 最新：8882英日動作譯文修正，8881審閱內容保留
 
 - source_agent: codex；TF-GO。最新本機候選 http://127.0.0.1:8882/ ，指南 /?lang=zh#/students/guide ，進度 /progress/ 。.measure-copy-actions-20261024-01／360檔／app-R7TGU7Q2.js。8881首頁及指南內容繼續保留；兩版progress使用共用最新儀表板，不把舊網址當新版。
