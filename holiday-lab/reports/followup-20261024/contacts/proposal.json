@@ -1,0 +1,232 @@
+{
+  "schema": 1,
+  "product_written": false,
+  "baseline_guide_sha256": "67a31cb941640c5de229f29470487dbff12ecd8b1e22646a25e2b1dc51a557d5",
+  "proposals": [
+    {
+      "id": "leave-phone",
+      "file": "data/students/guide.json",
+      "pointer": "/cards/3/contact/phone",
+      "before": "07-6158000#2114",
+      "after": "07-6158000#2126",
+      "source_ids": [
+        "life"
+      ],
+      "reason": "live成員職掌取代過時搜尋索引2114"
+    },
+    {
+      "id": "leave-faq",
+      "file": "data/students/guide.json",
+      "pointer": "/cards/3/faq/1/a",
+      "before": "請先問導師或生輔組2114，確認需要的證明與簽核方式；遇考試或長假，不確定時再向註冊課務組確認。",
+      "after": "請先問導師或生輔組2126，確認需要的證明與簽核方式；遇考試或長假，不確定時再向註冊課務組確認。",
+      "source_ids": [
+        "life"
+      ],
+      "reason": "與同卡分機一致，原其餘程序不重新核定"
+    },
+    {
+      "id": "leave-dictionary-en",
+      "file": "data/en/student-guide-ui.json",
+      "pointer": "/請先問導師或生輔組2114，確認需要的證明與簽核方式；遇考試或長假，不確定時再向註冊課務組確認。",
+      "before": "First ask your class advisor or the Student Assistance Section at ext. 2114 about the required documents and approval process. If your absence involves exams or a longer period, also check with the Registration and Curriculum Division if you are unsure.",
+      "after": "First ask your class advisor or the Student Assistance Section at ext. 2126 about the required documents and approval process. If your absence involves exams or a longer period, also check with the Registration and Curriculum Division if you are unsure.",
+      "source_ids": [
+        "life"
+      ],
+      "reason": "來源key同步rename且只換分機",
+      "operation": "rename_key_and_replace_value",
+      "new_key": "請先問導師或生輔組2126，確認需要的證明與簽核方式；遇考試或長假，不確定時再向註冊課務組確認。",
+      "new_pointer": "/請先問導師或生輔組2126，確認需要的證明與簽核方式；遇考試或長假，不確定時再向註冊課務組確認。",
+      "expected_new_key_absent": true
+    },
+    {
+      "id": "leave-dictionary-ja",
+      "file": "data/ja/messages.json",
+      "pointer": "/請先問導師或生輔組2114，確認需要的證明與簽核方式；遇考試或長假，不確定時再向註冊課務組確認。",
+      "before": "まず担任教員または生活指導組（内線2114）に、必要な証明書類と承認手続きを確認してください。試験に重なる場合や長期間の欠席で不明な点がある場合は、註冊課務組（学籍・履修担当）にも確認してください。",
+      "after": "まず担任教員または生活指導組（内線2126）に、必要な証明書類と承認手続きを確認してください。試験に重なる場合や長期間の欠席で不明な点がある場合は、註冊課務組（学籍・履修担当）にも確認してください。",
+      "source_ids": [
+        "life"
+      ],
+      "reason": "來源key同步rename且只換分機",
+      "operation": "rename_key_and_replace_value",
+      "new_key": "請先問導師或生輔組2126，確認需要的證明與簽核方式；遇考試或長假，不確定時再向註冊課務組確認。",
+      "new_pointer": "/請先問導師或生輔組2126，確認需要的證明與簽核方式；遇考試或長假，不確定時再向註冊課務組確認。",
+      "expected_new_key_absent": true
+    },
+    {
+      "id": "official-en-admissions",
+      "file": "data/en/student-guide-ui.json",
+      "pointer": "/教務處招生選才組（本校報名試務）",
+      "before": "Recruitment and Admissions Section, Office of Academic Affairs (University application and examination affairs)",
+      "after": "Admissions and Selection Division, Office of Academic Affairs (university application and examination matters)",
+      "source_ids": [
+        "admissions"
+      ],
+      "reason": "採校方英文單位名；general僅正規化標題大小寫"
+    },
+    {
+      "id": "official-en-general",
+      "file": "data/en/student-guide-ui.json",
+      "pointer": "/通識教育中心（外語修課；門檻請協助轉介）",
+      "before": "General Education Center (foreign language coursework; please request referral for graduation requirements)",
+      "after": "Center for General Education (foreign language coursework; please request referral for graduation requirements)",
+      "source_ids": [
+        "general"
+      ],
+      "reason": "採校方英文單位名；general僅正規化標題大小寫"
+    },
+    {
+      "id": "support-contact",
+      "file": "data/students/guide.json",
+      "pointer": "/cards/10/contact",
+      "before": {
+        "primary": "導師／學校在校學生入口（諮商與轉介）",
+        "phone": null,
+        "url": "https://www.stu.edu.tw/在校學生/"
+      },
+      "after": {
+        "primary": "身心健康中心（心理諮商）",
+        "phone": "07-6158000#2127",
+        "secondary": "特殊教育資源中心（動遊系特教支持）",
+        "secondary_phone": "07-6158000#2149",
+        "url": "https://ccdc.sao.stu.edu.tw/預約諮商/"
+      },
+      "source_ids": [
+        "wellness",
+        "special"
+      ],
+      "reason": "依兩個獨立中心實際公開服務分流；不要求先諮商才找權益窗口",
+      "requires_source_append": "special-members-20261024",
+      "requires_translation": true
+    },
+    {
+      "id": "life-source-read-level",
+      "file": "data/students/guide.json",
+      "pointer": "/sources/20",
+      "before": {
+        "id": "life-contact",
+        "title": "生活輔導組組織與職掌",
+        "url": "https://life.sao.stu.edu.tw/en/單位介紹/組織與成員/",
+        "published_or_document_date": "頁面未標更新日",
+        "checked_at": "2026-10-22",
+        "readability": "官方搜尋索引可讀；即時頁面403或202空內容，未核實搜尋索引後有無更新；本次直接重取為阻擋／空內容，不宣稱現行全文已讀",
+        "note": "名冊與急難頁姓名不一致，學生頁只列單位與分機，不填承辦人姓名。",
+        "http_recheck": {
+          "status": 202,
+          "bytes": 0,
+          "body_received": false,
+          "checked_at": "2026-10-22"
+        }
+      },
+      "after": {
+        "id": "life-contact",
+        "title": "生活輔導組組織與職掌",
+        "url": "https://life.sao.stu.edu.tw/en/單位介紹/組織與成員/",
+        "published_or_document_date": "頁面未標更新日",
+        "checked_at": "2026-10-24",
+        "readability": "2026/10/24 Chrome現行DOM與成員表實讀；web403、Node202空回覆另存，不將搜尋舊索引當即時全文",
+        "note": "請假/獎懲2126；急難2124；減免/獎助2140；役期折抵2134只適用該事項。搜尋索引仍有2114，與live表不同，採live分工。",
+        "http_recheck": {
+          "status": 202,
+          "bytes": 0,
+          "body_received": false,
+          "checked_at": "2026-10-22"
+        },
+        "evidence_path": "holiday-lab/reports/followup-20261024/contacts/raw/life-members-dom.txt"
+      },
+      "source_ids": [
+        "life"
+      ],
+      "reason": "更新確實已讀層級，舊http_recheck維持其歷史日期不竄改"
+    },
+    {
+      "id": "special-source-add",
+      "file": "data/students/guide.json",
+      "pointer": "/sources/-",
+      "before": null,
+      "after": {
+        "id": "special-members-20261024",
+        "title": "特殊教育資源中心成員與動遊系服務分工",
+        "url": "https://serc.stu.edu.tw/?p=60",
+        "published_or_document_date": "未標更新日；115新中心網站",
+        "checked_at": "2026-10-24",
+        "readability": "Chrome DOM全文實讀公開中心成員與分工；未讀個案資格規章、未聯絡或登入",
+        "note": "動遊系特教支持窗口列分機2149，不是一般心理諮商窗口。",
+        "evidence_path": "holiday-lab/reports/followup-20261024/contacts/raw/serc-members-dom.txt"
+      },
+      "source_ids": [
+        "special"
+      ],
+      "reason": "新增獨立精確成員表來源",
+      "operation": "append",
+      "expected_id_absent": true
+    },
+    {
+      "id": "support-source-link",
+      "file": "data/students/guide.json",
+      "pointer": "/cards/10/source_ids",
+      "before": [
+        "student-portal",
+        "academic-faq",
+        "dept-contact",
+        "counseling-reservation-20261023",
+        "special-education-center-115"
+      ],
+      "after": [
+        "student-portal",
+        "academic-faq",
+        "dept-contact",
+        "counseling-reservation-20261023",
+        "special-education-center-115",
+        "special-members-20261024"
+      ],
+      "source_ids": [
+        "special"
+      ],
+      "reason": "明確將聯絡分機連至新成員表來源"
+    }
+  ],
+  "additional_references": [
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/cards/3/contact/phone",
+      "value": "07-6158000#2114"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/cards/3/faq/1/a",
+      "value": "請先問導師或生輔組2114，確認需要的證明與簽核方式；遇考試或長假，不確定時再向註冊課務組確認。"
+    },
+    {
+      "file": "data/en/student-guide-ui.json",
+      "pointer": "/請先問導師或生輔組2114，確認需要的證明與簽核方式；遇考試或長假，不確定時再向註冊課務組確認。",
+      "value": "First ask your class advisor or the Student Assistance Section at ext. 2114 about the required documents and approval process. If your absence involves exams or a longer period, also check with the Registration and Curriculum Division if you are unsure."
+    },
+    {
+      "file": "data/en/student-guide-ui.json",
+      "pointer": "/教務處招生選才組（本校報名試務）",
+      "value": "Recruitment and Admissions Section, Office of Academic Affairs (University application and examination affairs)"
+    },
+    {
+      "file": "data/ja/messages.json",
+      "pointer": "/請先問導師或生輔組2114，確認需要的證明與簽核方式；遇考試或長假，不確定時再向註冊課務組確認。",
+      "value": "まず担任教員または生活指導組（内線2114）に、必要な証明書類と承認手続きを確認してください。試験に重なる場合や長期間の欠席で不明な点がある場合は、註冊課務組（学籍・履修担当）にも確認してください。"
+    }
+  ],
+  "translation_suggestions": [
+    {
+      "zh": "身心健康中心（心理諮商）",
+      "en": "身心健康中心 (counseling services)",
+      "ja": "身心健康中心（心理カウンセリング）",
+      "status": "保留中文正式名，括號只作說明"
+    },
+    {
+      "zh": "特殊教育資源中心（動遊系特教支持）",
+      "en": "特殊教育資源中心 (special education support for AGD students)",
+      "ja": "特殊教育資源中心（動遊系の特別支援）",
+      "status": "保留中文正式名，括號只作說明"
+    }
+  ]
+}
