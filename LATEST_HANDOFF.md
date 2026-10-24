@@ -1,3 +1,14 @@
+## 2026-10-24 最新：8882英日動作譯文修正，8881審閱內容保留
+
+- source_agent: codex；TF-GO。最新本機候選 http://127.0.0.1:8882/ ，指南 /?lang=zh#/students/guide ，進度 /progress/ 。.measure-copy-actions-20261024-01／360檔／app-R7TGU7Q2.js。8881首頁及指南內容繼續保留；兩版progress使用共用最新儀表板，不把舊網址當新版。
+- 原8條交付範圍由子代理獨立核對，50列44yes/6no不是44/50功能通過率。跨OS逐字證明、真人母語簽核與所有素材改編權是額外保證，不能自創為本機交付門檻；真正資料/正式名/方法缺口仍列，不縮窄原要求。詳goal-audit-20261024/requirements-review.md。
+- 子代理逐筆審122key／244英日值，發現2key共4值原意須明確：分級結果免修課程、返校程序及成果交件分開。已在codex/copy-actions24精確修正；每語345key、343其他映射及順序保持，繁中/完整guide與其他43來源SHA相同。15卡47步56FAQ89來源不變。註冊課務組正式英名Registration and Curriculum Division另回讀當日既存官方同列雙語解除疑問，不改產品該名稱、不外推全校專名已核。
+- 新候選獨立窄驗EN/JA×390/1440四組44yes/0no、8直WebP；47source/360build前後保持，四句反向可精確還原8881 app SHA，293圖像/字型檔相同。red8yes/10no exit1、修後green18yes/0no exit0；root再核4值/字典/畫面SHA通過。候選字集無新增字元，不換字型、不下載字體。未重跑三語全站、舊遊戲或與4句無關的QA。
+- 兩份已下載舊DOC另派代理離線全文：確認真OLE容器且原件SHA不變，但三次隱藏唯讀Word COM/CLR方法均在Open前未取得正文，分類為本機參數封送方法未完成，不能說文件損壞、授權或校方外部缺件。每次專用PID與退出均留證，最終WINWORD=0，無安裝新工具、無改原件/Unity/可見執行檔。全文仍no、115當屆效力unknown；詳goal-audit-20261024/legacy-docs/REPORT.md，不宣稱完成。
+- 儀表板50列／44yes／6no／使用者0，依新verification.json 854檔案SHA綁定計算。權威18/18、搜尋/展開/篩選與手機深色14yes。完整逐項yes/no、command/stdout/stderr/exit見copy-actions-20261024/FINAL_REPORT.md，原report與red不覆寫。
+- TF-BASE本段未重複輪詢，最近指定夾02:10:24 UTC仍5工單/腳本、0子夾、未見Flora/胖倉鼠WebGL；未下載舊大包、未啟Unity或重派。原漫畫/手繪與小颯完整作品/署名、315素材、四dirty+R0、main/C保持。節日全凍結，不push、不發布、不刪檔、不碰main、不執行C節。Vault只本機記錄，不推私人整庫。
+- 下一輪第一件事：先回收使用者對8881/8882的具體畫面意見；若要續補DOC，先讀三輪exact error及已停止PID，不盲重啟Word、不重做已核成果。新資料/校方更正或完整WebGL到包再處理相依項目；不自行提高品質門檻或恢復節日工作。整體目標仍未宣告全部最終完成。
+
 ## 2026-10-24 最新：8881在校指南審閱點，先看新版
 
 - source_agent: codex；TF-GO。最新本機 http://127.0.0.1:8881/ ，指南 /?lang=zh#/students/guide ，儀表板 /progress/ 。.measure-guide-final-docs-20261024-02／360檔／app-NOKAZJIM.js。8880為本段三語6組已驗前一版，8879及舊版保留。使用者要求到段落先看新版；先交審閱，接下來收具體畫面意見，不自行展開新節日工作。
