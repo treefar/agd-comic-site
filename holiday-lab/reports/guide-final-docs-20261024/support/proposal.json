@@ -1,0 +1,739 @@
+{
+  "schema": 1,
+  "product_written": false,
+  "guide_input_sha256": "30f77faaa65107c0ad73ec265f92c787e1f89a5ad0a7c722278809f5d0c68bd4",
+  "requires_translation_review": true,
+  "changes": [
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/cards/9/step_details/1/detail",
+      "before": "依承辦指定方案準備申請表、在學證明與事件相關文件，例如醫療或失業證明。所得、財產或戶籍資料是否需要、要哪個版本，也先問清楚再申請文件。",
+      "after": "按方案備文件；學產低收須從「學產助學金管理」填表列印，再繳紙本。勵學金先核對補助身分與當期學習項目，不能只完成線上填寫就算辦妥。",
+      "source_ids": [
+        "aid-115-1",
+        "low-income-115-1",
+        "hardship-rule-1141119",
+        "bursary-115-1-main",
+        "bursary-115-status",
+        "bursary-public-forms"
+      ],
+      "reason": "補學產紙本流程與勵學金身分／項目分流"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/cards/9/step_details/1/source_ids",
+      "before": [
+        "hardship-application-details"
+      ],
+      "after": [
+        "aid-115-1",
+        "low-income-115-1",
+        "hardship-rule-1141119",
+        "bursary-115-1-main",
+        "bursary-115-status",
+        "bursary-public-forms"
+      ],
+      "source_ids": [
+        "aid-115-1",
+        "low-income-115-1",
+        "hardship-rule-1141119",
+        "bursary-115-1-main",
+        "bursary-115-status",
+        "bursary-public-forms"
+      ],
+      "reason": "新說明逐句連正式來源"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/cards/9/step_details/2/detail",
+      "before": "送件前確認由自己交件還是學校統一辦理，並問清楚本案期限與補件方式。再核對姓名及款項資料是否正確；各方案期限不同，不沿用別張公告的日期。",
+      "after": "依各方案期限送件並留意補件通知。校內急難應於事件發生日起六個月內申請，同一事件限一次；家庭變故慰助須經審核，不保證一定核發。",
+      "source_ids": [
+        "aid-115-1",
+        "low-income-115-1",
+        "hardship-rule-1141119",
+        "bursary-115-1-main",
+        "bursary-115-status",
+        "bursary-public-forms"
+      ],
+      "reason": "校內急難六個月不外推校外方案"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/cards/9/step_details/2/source_ids",
+      "before": [
+        "hardship-application-details",
+        "hardship"
+      ],
+      "after": [
+        "aid-115-1",
+        "low-income-115-1",
+        "hardship-rule-1141119",
+        "bursary-115-1-main",
+        "bursary-115-status",
+        "bursary-public-forms"
+      ],
+      "source_ids": [
+        "aid-115-1",
+        "low-income-115-1",
+        "hardship-rule-1141119",
+        "bursary-115-1-main",
+        "bursary-115-status",
+        "bursary-public-forms"
+      ],
+      "reason": "核對校內1141119完整規則"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/cards/9/faq",
+      "before": [
+        {
+          "q": "錯過一項助學截止日，就不能再問其他協助嗎？",
+          "a": "不同方案分開辦理。115-1不利處境助學10/20、學產低收10/8都已截止；急難協助另依事件與方案判斷，請先洽生輔組2124。",
+          "source_ids": [
+            "aid-115-1",
+            "low-income-115-1",
+            "hardship",
+            "life-contact"
+          ]
+        },
+        {
+          "q": "可以同時領好幾種補助嗎？",
+          "a": "先把已申請或已領的補助告訴承辦，各方案可能有重複請領限制，不能只看名稱不同就認為可併領。",
+          "source_ids": [
+            "hardship",
+            "life-contact"
+          ]
+        }
+      ],
+      "after": [
+        {
+          "q": "錯過一項助學截止日，就不能再問其他協助嗎？",
+          "a": "不同方案分開辦理。115-1不利處境助學10/20、學產低收10/8都已截止；急難協助另依事件與方案判斷，請先洽生輔組2124。",
+          "source_ids": [
+            "aid-115-1",
+            "low-income-115-1",
+            "hardship",
+            "life-contact"
+          ]
+        },
+        {
+          "q": "可以同時領好幾種補助嗎？",
+          "a": "先把已申請或已領的補助告訴承辦，各方案可能有重複請領限制，不能只看名稱不同就認為可併領。",
+          "source_ids": [
+            "hardship",
+            "life-contact"
+          ]
+        },
+        {
+          "q": "有勵學金補助身分，就會自動領到錢嗎？",
+          "a": "不會。先確認系統補助身分，再依115-1項目申請、完成學習及繳件；資格認定與領款是兩件事。身分效期的公告與表單寫法不同，請向承辦確認。",
+          "source_ids": [
+            "bursary-115-1-main",
+            "bursary-115-status",
+            "bursary-public-forms"
+          ]
+        }
+      ],
+      "source_ids": [
+        "aid-115-1",
+        "low-income-115-1",
+        "hardship-rule-1141119",
+        "bursary-115-1-main",
+        "bursary-115-status",
+        "bursary-public-forms"
+      ],
+      "reason": "增加勵學金FAQ並明示文件用語差異"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/cards/9/source_ids",
+      "before": [
+        "aid-115-1",
+        "low-income-115-1",
+        "hardship",
+        "life-contact",
+        "hardship-application-details",
+        "aid-award-directory",
+        "aid-tuition-announcement"
+      ],
+      "after": [
+        "aid-115-1",
+        "low-income-115-1",
+        "hardship",
+        "life-contact",
+        "hardship-application-details",
+        "aid-award-directory",
+        "aid-tuition-announcement",
+        "hardship-rule-1141119",
+        "bursary-115-1-main",
+        "bursary-115-status",
+        "bursary-public-forms"
+      ],
+      "source_ids": [
+        "aid-115-1",
+        "low-income-115-1",
+        "hardship-rule-1141119",
+        "bursary-115-1-main",
+        "bursary-115-status",
+        "bursary-public-forms"
+      ],
+      "reason": "保留既有來源，新讀來源另外列"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/cards/10/summary",
+      "before": "情緒、相處或權益出了問題，可以先找導師協助轉介，再從學校在校學生入口找到對應資源。",
+      "after": "情緒壓力、特教支持與權益受損各有窗口，可依需要直接求助。一般學生申訴與校園性別事件分開受理，不必先諮商。",
+      "source_ids": [
+        "appeal-rule-1120426",
+        "appeal-public-forms",
+        "appeal-public-channel",
+        "gender-rule-1131225",
+        "gender-public-forms"
+      ],
+      "reason": "避免導師轉介或諮商成為申訴前置要求"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/cards/10/step_details/2/detail",
+      "before": "把收到的通知、事情發生日期與想反映的問題整理好，先請承辦確認應走哪種程序。再問正式表單、送件方式與期限，不把一般申訴和性平案件當成同一件事。",
+      "after": "把通知、日期與證據整理好。一般申訴原則於收到或接受處分、措施或決議的次日起30日內，以書面向生輔組提出；校園性別事件由性平會收件，另用調查申請／檢舉表。",
+      "source_ids": [
+        "appeal-rule-1120426",
+        "appeal-public-forms",
+        "appeal-public-channel",
+        "gender-rule-1131225",
+        "gender-public-forms"
+      ],
+      "reason": "以完整現列112規則第4、6、7條及113性平規則第17、18條補具體流程"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/cards/10/step_details/2/source_ids",
+      "before": [
+        "student-portal",
+        "academic-faq"
+      ],
+      "after": [
+        "appeal-rule-1120426",
+        "appeal-public-forms",
+        "appeal-public-channel",
+        "gender-rule-1131225",
+        "gender-public-forms"
+      ],
+      "source_ids": [
+        "appeal-rule-1120426",
+        "appeal-public-forms",
+        "appeal-public-channel",
+        "gender-rule-1131225",
+        "gender-public-forms"
+      ],
+      "reason": "不再只以一般入口支持程序"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/cards/10/faq",
+      "before": [
+        {
+          "q": "線上諮商預約從哪裡進？",
+          "a": "學校「在校學生」頁列有線上預約諮商入口。預約方式與時段以服務頁為準；若找不到入口，可請導師協助聯繫。",
+          "source_ids": [
+            "student-portal"
+          ]
+        },
+        {
+          "q": "一般申訴與性平可以共用同一張表嗎？",
+          "a": "不要先假設表單共用。請導師協助找對承辦，確認案件類型、受理方式與期限後，再使用對應表單。",
+          "source_ids": [
+            "student-portal"
+          ]
+        }
+      ],
+      "after": [
+        {
+          "q": "線上諮商預約從哪裡進？",
+          "a": "學校「在校學生」頁列有線上預約諮商入口。預約方式與時段以服務頁為準；若找不到入口，可請導師協助聯繫。",
+          "source_ids": [
+            "student-portal"
+          ]
+        },
+        {
+          "q": "一般學生申訴與性平案件怎麼分？",
+          "a": "一般申訴針對學校處分、措施或決議，由生輔組受理；疑似校園性別事件向性平會申請調查或檢舉。兩者表單與期限不同，可先請窗口協助辨別。",
+          "source_ids": [
+            "appeal-rule-1120426",
+            "appeal-public-forms",
+            "appeal-public-channel",
+            "gender-rule-1131225",
+            "gender-public-forms"
+          ]
+        },
+        {
+          "q": "性平案件的資料會如何保護？",
+          "a": "學校依法保護當事人隱私，但調查需要、公共安全或法律規定可能有例外。可先問承辦資料用途、會提供給誰及保護措施，再決定如何敘述。",
+          "source_ids": [
+            "gender-rule-1131225",
+            "gender-public-forms"
+          ]
+        }
+      ],
+      "source_ids": [
+        "appeal-rule-1120426",
+        "appeal-public-forms",
+        "appeal-public-channel",
+        "gender-rule-1131225",
+        "gender-public-forms"
+      ],
+      "reason": "分流具體化並避免無例外保密承諾"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/cards/10/warning",
+      "before": "申訴或性平案件，請先確認受理窗口與正式期限，再使用對應表單送件。",
+      "after": "一般申訴空白表附註與現列辦法的期限寫法不同，請核對現行辦法；性平案件的不受理申復、結果申復及後續學生申訴，也有各自期限。",
+      "source_ids": [
+        "appeal-rule-1120426",
+        "appeal-public-forms",
+        "appeal-public-channel",
+        "gender-rule-1131225",
+        "gender-public-forms"
+      ],
+      "reason": "不把普通30日、性平20日及結果30日混為同一期限"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/cards/10/source_ids",
+      "before": [
+        "student-portal",
+        "academic-faq",
+        "dept-contact",
+        "counseling-reservation-20261023",
+        "special-education-center-115",
+        "special-members-20261024"
+      ],
+      "after": [
+        "student-portal",
+        "academic-faq",
+        "dept-contact",
+        "counseling-reservation-20261023",
+        "special-education-center-115",
+        "special-members-20261024",
+        "appeal-rule-1120426",
+        "appeal-public-forms",
+        "appeal-public-channel",
+        "gender-rule-1131225",
+        "gender-public-forms"
+      ],
+      "source_ids": [
+        "appeal-rule-1120426",
+        "appeal-public-forms",
+        "appeal-public-channel",
+        "gender-rule-1131225",
+        "gender-public-forms"
+      ],
+      "reason": "保留諮商及特教既有來源"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/cards/11/step_details/1/detail",
+      "before": "帶作品與履歷向相關領域老師討論，再問職發中心目前有哪些職涯諮詢、職能檢測或徵才活動。把不確定的職務與技能列成問題，別只詢問有沒有工作。",
+      "after": "帶作品與履歷向老師討論，再用UCAN探索職業興趣及能力缺口。本次UCAN入口暫時無法使用，可先洽職發中心；18–29歲另可看台灣就業通Youth履歷自傳診斷。",
+      "source_ids": [
+        "career-contact",
+        "career-ep-ucan-public",
+        "career-jobs-public",
+        "taiwanjobs-public",
+        "youth-resume-public"
+      ],
+      "reason": "補實際UCAN與政府履歷服務，不承諾校內當期預約開放"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/cards/11/step_details/1/source_ids",
+      "before": [
+        "career-contact",
+        "dept-contact"
+      ],
+      "after": [
+        "career-contact",
+        "career-ep-ucan-public",
+        "career-jobs-public",
+        "taiwanjobs-public",
+        "youth-resume-public"
+      ],
+      "source_ids": [
+        "career-contact",
+        "career-ep-ucan-public",
+        "career-jobs-public",
+        "taiwanjobs-public",
+        "youth-resume-public"
+      ],
+      "reason": "逐句連官方入口"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/cards/11/step_details/2/detail",
+      "before": "每個職缺都重新核對工作內容、應交資料與投件期限，再依公司指定方式送出。保留投件日期與聯絡紀錄；過往徵才海報只能參考，不代表職缺現在仍開放。",
+      "after": "校方求職徵才網分就業、實習與工讀，先讀條件、截止日及投件方式，再調整履歷。舊消息不代表仍開缺；政府台灣就業通也提供公開職缺與求職資訊。",
+      "source_ids": [
+        "career-contact",
+        "career-ep-ucan-public",
+        "career-jobs-public",
+        "taiwanjobs-public",
+        "youth-resume-public"
+      ],
+      "reason": "補可操作的公開徵才分類，不把已結束活動當開放"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/cards/11/step_details/2/source_ids",
+      "before": [
+        "career-contact"
+      ],
+      "after": [
+        "career-contact",
+        "career-ep-ucan-public",
+        "career-jobs-public",
+        "taiwanjobs-public",
+        "youth-resume-public"
+      ],
+      "source_ids": [
+        "career-contact",
+        "career-ep-ucan-public",
+        "career-jobs-public",
+        "taiwanjobs-public",
+        "youth-resume-public"
+      ],
+      "reason": "採用真正公開資源"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/cards/11/warning",
+      "before": "",
+      "after": "本次查核UCAN暫時無法使用；校內履歷諮詢的當期預約表尚未找到，先洽職發中心確認安排。",
+      "source_ids": [
+        "career-contact",
+        "career-ep-ucan-public",
+        "career-jobs-public",
+        "taiwanjobs-public",
+        "youth-resume-public"
+      ],
+      "reason": "如實保留外部系統與校內當期預約缺件"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/cards/11/faq",
+      "before": [
+        {
+          "q": "還沒畢業，也可以先做職涯準備嗎？",
+          "a": "職發中心職掌列有學生職涯規劃、UCAN職能檢測、講座與就業輔導；可先洽中心確認當期可使用的資源。",
+          "source_ids": [
+            "career-contact"
+          ]
+        },
+        {
+          "q": "徵才活動或職缺一定每學期都一樣嗎？",
+          "a": "不一定。中心辦理就業相關活動，但實際日期與職缺要看當期公告；不要直接沿用過往海報的報名連結。",
+          "source_ids": [
+            "career-contact"
+          ]
+        }
+      ],
+      "after": [
+        {
+          "q": "還沒畢業，也可以先做職涯準備嗎？",
+          "a": "職發中心職掌列有學生職涯規劃、UCAN職能檢測、講座與就業輔導；可先洽中心確認當期可使用的資源。",
+          "source_ids": [
+            "career-contact"
+          ]
+        },
+        {
+          "q": "徵才活動或職缺一定每學期都一樣嗎？",
+          "a": "不一定。中心辦理就業相關活動，但實際日期與職缺要看當期公告；不要直接沿用過往海報的報名連結。",
+          "source_ids": [
+            "career-contact"
+          ]
+        },
+        {
+          "q": "想找人幫我看履歷，有公開入口嗎？",
+          "a": "先洽職發中心確認當期校內安排。台灣就業通Youth另提供18–29歲青年線上履歷自傳診斷，需自行登入並依預約規定辦理。",
+          "source_ids": [
+            "career-contact",
+            "youth-resume-public"
+          ]
+        }
+      ],
+      "source_ids": [
+        "career-contact",
+        "career-ep-ucan-public",
+        "career-jobs-public",
+        "taiwanjobs-public",
+        "youth-resume-public"
+      ],
+      "reason": "政府服務與校內安排分開標示"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/cards/11/source_ids",
+      "before": [
+        "career-contact",
+        "dept-contact"
+      ],
+      "after": [
+        "career-contact",
+        "dept-contact",
+        "career-ep-ucan-public",
+        "career-jobs-public",
+        "taiwanjobs-public",
+        "youth-resume-public"
+      ],
+      "source_ids": [
+        "career-contact",
+        "career-ep-ucan-public",
+        "career-jobs-public",
+        "taiwanjobs-public",
+        "youth-resume-public"
+      ],
+      "reason": "保留既有師長來源"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/sources/17/checked_at",
+      "before": "2026-10-22",
+      "after": "2026-10-24",
+      "source_ids": [
+        "aid-115-1"
+      ],
+      "reason": "只刷新本次實讀或明確重用當日全文，不覆蓋舊HTTP收據"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/sources/17/readability",
+      "before": "目前只核對官方公告摘要；完整規定與當期版本仍須向承辦確認。",
+      "after": "官方當期公告與公開表單已核對",
+      "source_ids": [
+        "aid-115-1"
+      ],
+      "reason": "只刷新本次實讀或明確重用當日全文，不覆蓋舊HTTP收據"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/sources/17/note",
+      "before": "本頁截止10/20，以查核日10/22已過期。",
+      "after": "本頁115-1截止10/20，於2026-10-24已過；現列轉學生原校審核通過、低收住宿與生活助學流程及3份空白PDF已讀。不把這一頁套為全部一般助學資格門檻。",
+      "source_ids": [
+        "aid-115-1"
+      ],
+      "reason": "只刷新本次實讀或明確重用當日全文，不覆蓋舊HTTP收據"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/sources/18/checked_at",
+      "before": "2026-10-22",
+      "after": "2026-10-24",
+      "source_ids": [
+        "low-income-115-1"
+      ],
+      "reason": "只刷新本次實讀或明確重用當日全文，不覆蓋舊HTTP收據"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/sources/18/readability",
+      "before": "目前只核對官方公告摘要；完整規定與當期版本仍須向承辦確認。",
+      "after": "官方當期公告與申請流程已核對",
+      "source_ids": [
+        "low-income-115-1"
+      ],
+      "reason": "只刷新本次實讀或明確重用當日全文，不覆蓋舊HTTP收據"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/sources/18/note",
+      "before": "第一學期截止2026/10/8；第二學期寫000年，不能直接公布為有效日期。",
+      "after": "115-1期間9/8–10/8已截止；須線上填列印並繳紙本。115-2仍寫000年，不能當確定日期。現列7頁操作手冊含111年、2022年示例，僅用於操作，不採其舊日期與案例個資。",
+      "source_ids": [
+        "low-income-115-1"
+      ],
+      "reason": "只刷新本次實讀或明確重用當日全文，不覆蓋舊HTTP收據"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/sources/36/checked_at",
+      "before": "2026-10-22",
+      "after": "2026-10-24",
+      "source_ids": [
+        "hardship-application-details"
+      ],
+      "reason": "只刷新本次實讀或明確重用當日全文，不覆蓋舊HTTP收據"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/sources/36/readability",
+      "before": "目前只核對官方公告摘要；完整規定與當期版本仍須向承辦確認。",
+      "after": "官方公開申請說明已核對；各方案條件須分開確認",
+      "source_ids": [
+        "hardship-application-details"
+      ],
+      "reason": "只刷新本次實讀或明確重用當日全文，不覆蓋舊HTTP收據"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/sources/36/note",
+      "after": "綜合頁148萬元／1000萬元並未列於本校1141119急難要點，不能外推全校內外急難。以各方案規則、事件期限與承辦分流。",
+      "source_ids": [
+        "hardship-application-details"
+      ],
+      "reason": "只刷新本次實讀或明確重用當日全文，不覆蓋舊HTTP收據"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/sources/15/checked_at",
+      "before": "2026-10-22",
+      "after": "2026-10-24",
+      "source_ids": [
+        "career-contact"
+      ],
+      "reason": "只刷新本次實讀或明確重用當日全文，不覆蓋舊HTTP收據"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/sources/15/readability",
+      "before": "目前只核對官方公告摘要；完整規定與當期版本仍須向承辦確認。",
+      "after": "官方現列職掌與窗口已核對",
+      "source_ids": [
+        "career-contact"
+      ],
+      "reason": "只刷新本次實讀或明確重用當日全文，不覆蓋舊HTTP收據"
+    },
+    {
+      "file": "data/students/guide.json",
+      "pointer": "/sources/15/note",
+      "before": "職掌列實習1711；證照1713另用2026公告交叉確認。",
+      "after": "重用2026-10-24 contacts/raw/career-members-dom.txt完整職掌：UCAN／講座1713、證照／就業職缺1712、實習／學海1711。現行首頁職掌亦相符；舊http_recheck為2026-10-22收據原封保留，並非今天再次失敗或今天全面重查。",
+      "source_ids": [
+        "career-contact"
+      ],
+      "reason": "只刷新本次實讀或明確重用當日全文，不覆蓋舊HTTP收據"
+    }
+  ],
+  "new_sources": [
+    {
+      "id": "hardship-rule-1141119",
+      "title": "校內學生急難慰助金實施要點",
+      "url": "https://wpc.stu.edu.tw/wp-content/uploads/sites/38/2025/11/學生急難慰助金實施要點.pdf",
+      "published_or_document_date": "114年11月19日修正",
+      "checked_at": "2026-10-24",
+      "readability": "官方規則全文已核對",
+      "note": "只適用本校急難慰助金。事件發生日起六個月內；同一事件一次，同校兄弟姐妹一人。本文未列綜合頁148萬元／1000萬元門檻，不外推其他校外方案。"
+    },
+    {
+      "id": "bursary-115-1-main",
+      "title": "115-1完善就學勵學金主公告",
+      "url": "https://www.sao.stu.edu.tw/2026/09/01/%e3%80%90115-1%e5%8b%b5%e5%ad%b8%e9%87%91%e3%80%91%e7%94%a8%e5%ad%b8%e7%bf%92%e6%8f%9b%e5%8b%b5%e5%ad%b8%e9%87%91%ef%bd%9e9-1%e9%96%8b%e6%94%be%e7%94%b3%e8%ab%8b/",
+      "published_or_document_date": "2026年9月1日",
+      "checked_at": "2026-10-24",
+      "readability": "官方當期公告全文已核對",
+      "note": "補助身分與當期項目分開；不進入新生探索活動、校務系統或影片。未具既有補助身分者另依身分申請公告與文件審查。"
+    },
+    {
+      "id": "bursary-115-status",
+      "title": "115年度勵學金補助身分申請",
+      "url": "https://www.sao.stu.edu.tw/2026/09/09/115%e5%b9%b4%e5%ba%a6%e3%80%90%e5%8b%b5%e5%ad%b8%e9%87%91%e8%a3%9c%e5%8a%a9%e8%ba%ab%e5%88%86%e7%94%b3%e8%ab%8b%e3%80%91-%e5%85%b6%e4%bb%96%e7%b6%93%e7%94%b1%e5%ad%b8%e6%a0%a1%e8%aa%8d%e5%ae%9a/",
+      "published_or_document_date": "2026年9月9日",
+      "checked_at": "2026-10-24",
+      "readability": "官方當期公告全文已核對",
+      "note": "當年度有效與空白表寫開通一年有用語差異，指南不自行合併；公告指向正式文件專區。"
+    },
+    {
+      "id": "bursary-public-forms",
+      "title": "完善就學勵學金身分與項目文件",
+      "url": "https://www.sao.stu.edu.tw/%e9%ab%98%e6%95%99%e5%8b%b5%e5%ad%b8%e9%87%91-2/%e8%a1%a8%e6%a0%bc%e4%b8%8b%e8%bc%89/",
+      "published_or_document_date": "現列115年項目文件；特殊身分表為114年版",
+      "checked_at": "2026-10-24",
+      "readability": "官方現列公開表單已核對",
+      "note": "家庭突遭變故與其他經濟不利身分空白DOCX已讀。其餘項目只核現列連結，未宣稱全部附件逐份實讀。現列「其他經濟不利」表將權限寫一年，與115公告當年度用語保留衝突。"
+    },
+    {
+      "id": "appeal-rule-1120426",
+      "title": "學生申訴評議辦法（112年修正）",
+      "url": "https://wpc.stu.edu.tw/wp-content/uploads/sites/28/2023/07/%E5%AD%B8%E7%94%9F%E7%94%B3%E8%A8%B4%E8%A9%95%E8%AD%B0%E8%BE%A6%E6%B3%95-112.pdf",
+      "published_or_document_date": "112年4月26日校務會議修正；112年5月11日教育部核定",
+      "checked_at": "2026-10-24",
+      "readability": "官方規則全文已核對",
+      "note": "PDF3頁已讀；生輔組現列表單母頁為4月26日，學務彙編母頁寫4月24日，PDF正文為26日。一般申訴第六條原則次日起30日；空白表附註保留10–30日文字，不能用表附註改寫本文。"
+    },
+    {
+      "id": "appeal-public-forms",
+      "title": "學生申訴辦法與中英文空白申訴書",
+      "url": "https://life.sao.stu.edu.tw/學生申訴/學生申訴/",
+      "published_or_document_date": "現列112年修訂辦法；中文表V4.0／英文表內標1.0",
+      "checked_at": "2026-10-24",
+      "readability": "官方現列公開表單已核對",
+      "note": "中英文ODT均已讀；空白表附註10–30日與現列規則固定30日有差異，不自訂新期限。英文檔名V4.0與正文Version1.0也有差異，直接連母頁讓承辦確認版本。"
+    },
+    {
+      "id": "appeal-public-channel",
+      "title": "一般學生申訴受理管道",
+      "url": "https://life.sao.stu.edu.tw/學生申訴/申訴管道/",
+      "published_or_document_date": "頁面未標更新日",
+      "checked_at": "2026-10-24",
+      "readability": "官方公開受理說明已核對",
+      "note": "生輔組收件、分機2115；不把一週聯絡說明當作申請期限或法定評議完成期限。"
+    },
+    {
+      "id": "gender-rule-1131225",
+      "title": "校園性別事件防治辦法（113年修正）",
+      "url": "https://wpc.stu.edu.tw/wp-content/uploads/sites/24/2025/05/%E6%A8%B9%E5%BE%B7%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%B8%E6%A0%A1%E5%9C%92%E6%80%A7%E5%88%A5%E4%BA%8B%E4%BB%B6%E5%87%8C%E9%98%B2%E6%B2%BB%E8%BE%A6%E6%B3%951131225.pdf",
+      "published_or_document_date": "113年12月25日校務會議修正",
+      "checked_at": "2026-10-24",
+      "readability": "官方規則全文已核對",
+      "note": "PDF10頁全文及頁圖已讀。官方連結文字及檔名多一「凌」，正文正式題名無「凌」。第17、18、20、22、23、31、36條區分收件、20日不受理申復、30日結果申復及後續學生申訴，保密有依法例外。"
+    },
+    {
+      "id": "gender-public-forms",
+      "title": "校園性別事件調查申請與表單",
+      "url": "https://www.gender.stu.edu.tw/處理事件流程圖/",
+      "published_or_document_date": "現列調查書2.2；ODT上傳2025年2月",
+      "checked_at": "2026-10-24",
+      "readability": "官方現列公開表單已核對",
+      "note": "2.2 ODT全文已讀，舊2.1與2018流程圖僅現列連結，未採為現行程序。書面、言詞或電子郵件依113規則提出並確認紀錄；不承諾無例外保密。"
+    },
+    {
+      "id": "career-ep-ucan-public",
+      "title": "學習歷程與UCAN公開使用說明",
+      "url": "https://dcpi.sao.stu.edu.tw/ep-ucan/",
+      "published_or_document_date": "頁面未標更新日；手冊連結為2021年",
+      "checked_at": "2026-10-24",
+      "readability": "官方公開使用說明已核對；外部平台暫時無法使用",
+      "note": "校務路徑與UCAN用途全文已讀。頁中舊分機2147與末段1713不同；沿用當日已核成員職掌1713。UCAN實際連結本次顯示系統錯誤，未登入或驗證帳號規則，不抄舊初始密碼或帳號格式。"
+    },
+    {
+      "id": "career-jobs-public",
+      "title": "STU求職與徵才資訊網",
+      "url": "https://career.sao.stu.edu.tw/",
+      "published_or_document_date": "本次首頁最新職缺列表2026年6月11日",
+      "checked_at": "2026-10-24",
+      "readability": "官方公開求職入口已核對",
+      "note": "就業、實習、工讀及徵才分類各自存在。列表可讀不等於所有職缺仍受理；2026校園就博為5月5日已結束，未開啟個資報名表。"
+    },
+    {
+      "id": "taiwanjobs-public",
+      "title": "台灣就業通公開求職資源",
+      "url": "https://www.taiwanjobs.gov.tw/",
+      "published_or_document_date": "當日公開頁；最新消息2026年10月22日",
+      "checked_at": "2026-10-24",
+      "readability": "政府公開求職入口已核對",
+      "note": "校方外部資訊列表實鏈；已讀公開首頁及Youth連結，不登入會員或提交履歷。"
+    },
+    {
+      "id": "youth-resume-public",
+      "title": "Youth職涯線上履歷自傳診斷",
+      "url": "https://coach.taiwanjobs.gov.tw/wdaecPublic/",
+      "published_or_document_date": "當日公開服務說明；未標全文更新日",
+      "checked_at": "2026-10-24",
+      "readability": "政府公開服務說明已核對",
+      "note": "政府Youth服務，非校內預約表：18–29歲青年，每年3次免費一對一，涵蓋履歷自傳診斷、面試等；預約需登入與確認同意書，本代理未操作。"
+    }
+  ]
+}
