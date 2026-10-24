@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "holiday-lab/reports/guide-final-docs-20261024/career-routing.test.cjs"
+  ],
+  "cwd": "C:\\agywork\\agd-holiday-prototypes",
+  "observed_utc": "2026-10-24T02:33:44.339Z",
+  "stdout": "✖ certificate awards, career exploration and internships retain their verified separate extensions (4.121ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 89.8528\n\n✖ failing tests:\n\ntest at holiday-lab\\reports\\guide-final-docs-20261024\\career-routing.test.cjs:2:1\n✖ certificate awards, career exploration and internships retain their verified separate extensions (4.121ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n  + actual - expected\n  \n  + '07-6158000#1713'\n  - '07-6158000#1712'\n                   ^\n  \n      at TestContext.<anonymous> (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\guide-final-docs-20261024\\career-routing.test.cjs:4:9)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1201:25)\n      at Test.start (node:internal/test_runner/test:1096:17)\n      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: '07-6158000#1713',\n    expected: '07-6158000#1712',\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n",
+  "stderr": "",
+  "exit_code": 1
+}
