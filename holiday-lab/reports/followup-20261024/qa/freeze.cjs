@@ -1,0 +1,5 @@
+const fs=require('fs'),path=require('path'),crypto=require('crypto'),assert=require('assert');
+const read=n=>JSON.parse(fs.readFileSync(path.join(__dirname,n),'utf8')),sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const verify=read('verification.json');assert.equal(verify.no,0);assert.equal(verify.yes,13);
+const artifacts=[];function walk(d){for(const x of fs.readdirSync(d,{withFileTypes:true})){const p=path.join(d,x.name);if(x.isDirectory())walk(p);else if(p!==path.join(__dirname,'freeze.json')){const b=fs.readFileSync(p);artifacts.push({file:path.relative(__dirname,p).replaceAll('\\','/'),bytes:b.length,sha256:sha(b)});}}}walk(__dirname);
+const result={frozen_at:new Date().toISOString(),base:'http://127.0.0.1:8876/',build:'.measure-followup-20261024-01',main_contexts:6,main_assertions:148,new_target_contexts:6,new_target_assertions:64,verifier_checks:13,full_project_approved:false,artifacts};fs.writeFileSync(path.join(__dirname,'freeze.json'),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({artifacts:artifacts.length,main:148,new_targets:64,readonly_checks:13,full_project_approved:false}));

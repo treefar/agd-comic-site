@@ -1,0 +1,8 @@
+{
+  "stage": "initial inline PowerShell invocation before any browser launch",
+  "exit_code": 1,
+  "stderr_excerpt": "ParserError: An expression was expected after '(' (nested quoting in inline node text). The following wrapper then failed ENOENT opening qa/command.json because preparation had not run.",
+  "product_changed": false,
+  "browser_started": false,
+  "resolution": "Moved exact JavaScript into prepare.cjs and run.cjs, avoiding shell nesting. This is a tool preparation failure, not a product failure."
+}

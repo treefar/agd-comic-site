@@ -1,7 +1,9 @@
 // This website-only dashboard never launches games or adopts old source-bound passes.
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),assert=require('node:assert/strict');
-const statePath='holiday-lab/reports/overnight-20261024/verification.json';
+const DEFAULT_STATE='holiday-lab/reports/overnight-20261024/verification.json';
 function load(root,{state:override}={}){
+ const statePath=override?DEFAULT_STATE:(JSON.parse(fs.readFileSync(path.join(root,'holiday-lab/dashboard/progress-policy.json'),'utf8')).dashboard_state_file||DEFAULT_STATE);
+ assert.match(statePath,/^holiday-lab\/reports\/[a-z0-9-]+\/verification\.json$/);
  const state=override||JSON.parse(fs.readFileSync(path.join(root,statePath),'utf8'));
  assert.equal(state.public_release,false);assert.equal(state.festival_games_frozen,true);
  for(const source of state.sources){const b=fs.readFileSync(path.join(root,source.file));assert.equal(crypto.createHash('sha256').update(b).digest('hex'),source.sha256,source.file);}

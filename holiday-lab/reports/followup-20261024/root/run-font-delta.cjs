@@ -1,0 +1,2 @@
+const fs=require('node:fs'),path=require('node:path'),cp=require('node:child_process');
+const args=['holiday-lab/reports/followup-20261024/root/font-delta.py'],r=cp.spawnSync('python',args,{encoding:'utf8'});fs.writeFileSync(path.join(__dirname,'font-delta-command.json'),JSON.stringify({command:['python',...args],cwd:process.cwd(),stdout:r.stdout,stderr:r.stderr,exit_code:r.status},null,2)+'\n',{flag:'wx'});console.log(r.stdout);if(r.stderr)console.error(r.stderr);process.exitCode=r.status??1;

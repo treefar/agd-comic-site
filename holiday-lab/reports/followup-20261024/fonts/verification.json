@@ -1,0 +1,48 @@
+{
+  "checks": [
+    {
+      "name": "six completed website-only states",
+      "result": "yes"
+    },
+    {
+      "name": "actual CDP families captured; not fonts.loaded-only",
+      "result": "yes"
+    },
+    {
+      "name": "source stayed stable during browser scan",
+      "result": "yes"
+    },
+    {
+      "name": "all downloaded/reused font bytes retain SHA",
+      "result": "yes"
+    },
+    {
+      "name": "all system and web font inventory bytes retain SHA",
+      "result": "yes"
+    },
+    {
+      "name": "CSS ranges inspected; incomplete family coverage explicitly retained",
+      "result": "yes"
+    },
+    {
+      "name": "bounded observed cmap availability has no missing/unknown",
+      "result": "yes"
+    },
+    {
+      "name": "candidate strings never promoted to actual fallback proof",
+      "result": "yes"
+    },
+    {
+      "name": "all website source-corpus inputs still match",
+      "result": "yes"
+    },
+    {
+      "name": "8875 frozen build remains identical to its independent QA snapshot",
+      "result": "yes"
+    }
+  ],
+  "yes": 10,
+  "no": 0,
+  "scope": "bounded 8875 font availability only; no product writes or game access",
+  "full_project_approved": false
+}
