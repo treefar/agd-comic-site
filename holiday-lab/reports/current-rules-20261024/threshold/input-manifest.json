@@ -1,0 +1,214 @@
+{
+  "captured_at": "2026-10-24T01:42:26.485Z",
+  "guide": {
+    "path": "data/students/guide.json",
+    "sha256": "7c6d6589c16a767d7e650d1bab5c0dc0b0c83cd0a5ed2fa1ed2dc71bdf47427a",
+    "bytes": 103927
+  },
+  "cards": [
+    {
+      "id": "certification",
+      "category": "jobs",
+      "title": "證照認列",
+      "summary": "證照能否算畢業門檻，要先對系上清單；認列與獎助金是兩件事，考過後仍要查申請流程。",
+      "steps": [
+        "考照前先問系辦是否認列",
+        "取得證明後完成認列登錄",
+        "另向職發中心查獎助資格並送件"
+      ],
+      "contact": {
+        "primary": "動遊系辦（認列）",
+        "phone": "07-6158000#6102",
+        "secondary": "研發處職發中心（獎助）",
+        "secondary_phone": "07-6158000#1713",
+        "url": "https://dcpi.sao.stu.edu.tw/業務介紹-成員/"
+      },
+      "source_ids": [
+        "curriculum-115",
+        "cert-award",
+        "dept-contact",
+        "certificate-system",
+        "career-contact"
+      ],
+      "warning": "技優班條件另核；畢業認列與獎助資格，請分別向系辦、職發中心確認。",
+      "faq": [
+        {
+          "q": "入學前考的證照也有獎助嗎？",
+          "a": "已核對的114-2公告不補助入學前證照；能否作本系畢業認列仍須對清單。當期獎助資格請洽職發中心1713。",
+          "source_ids": [
+            "cert-award"
+          ]
+        },
+        {
+          "q": "老師已幫我登錄，還要申請獎助嗎？",
+          "a": "114-2公告將證照登錄與獎助申請分開，團體登錄後仍可能要追加申請。公告列證照生效半年內；請先問1713自己的案件適用期限。",
+          "source_ids": [
+            "cert-award"
+          ]
+        }
+      ],
+      "step_details": [
+        {
+          "title": "考照前先問系辦是否認列",
+          "detail": "把證照全名、發照單位與預計考取版本交給系辦，問是否適用自己的入學年與班別。先確認能認列，再安排報名與費用，別只看別人考過哪一張。",
+          "source_ids": [
+            "curriculum-115",
+            "dept-contact"
+          ]
+        },
+        {
+          "title": "取得證明後完成認列登錄",
+          "detail": "準備清楚的證照或成績證明，先核對姓名、證照名稱與生效日期。再向系辦確認登錄位置、是否另交文件，以及畢業檢核何時可查到結果。",
+          "source_ids": [
+            "cert-award",
+            "dept-contact"
+          ]
+        },
+        {
+          "title": "另向職發中心查獎助資格並送件",
+          "detail": "先向職發中心確認當期獎助資格，並檢查本人匯款帳戶資料是否已交出納組。若老師已團體登錄證照，仍要確認是否需要另外追加獎助申請。",
+          "source_ids": [
+            "cert-award"
+          ]
+        }
+      ],
+      "flow_type": "sequence",
+      "flow": [
+        {
+          "label": "先查系上認列範圍",
+          "step_index": 0,
+          "source_ids": [
+            "dept-contact",
+            "curriculum-115"
+          ]
+        },
+        {
+          "label": "考取後登錄證明",
+          "step_index": 1,
+          "source_ids": [
+            "certificate-system"
+          ]
+        },
+        {
+          "label": "另查獎助資格送件",
+          "step_index": 2,
+          "source_ids": [
+            "cert-award",
+            "career-contact"
+          ]
+        }
+      ],
+      "flow_note": "畢業認列與獎助是兩件事；獎助須另查當期資格及期限。",
+      "related_news": [
+        {
+          "title": "114-2 Unity及AE證照班（系網消息索引）",
+          "url": "https://www.dgd.stu.edu.tw/support/",
+          "date": null,
+          "status_label": "過去學期，非當期報名"
+        }
+      ]
+    },
+    {
+      "id": "english",
+      "category": "graduation",
+      "title": "英文門檻",
+      "summary": "英文與外語修課、英文能力門檻，要分開確認。先看入學年度與分級結果，再查可認列的證明或方案。",
+      "steps": [
+        "核對入學年度、分級與外語學分",
+        "向語文承辦確認現行門檻與替代方案",
+        "完成課程及證明認列後，再查畢業檢核"
+      ],
+      "contact": {
+        "primary": "通識教育中心（外語修課；門檻請協助轉介）",
+        "phone": "07-6158000#4202、4204",
+        "url": "https://www.zzd.stu.edu.tw/通識英文及外語修課/"
+      },
+      "source_ids": [
+        "curriculum-114",
+        "curriculum-115",
+        "english-course",
+        "english-threshold",
+        "academic-faq"
+      ],
+      "warning": "測驗分數、證明效期與替代方案，先向語文承辦確認；考照獎助分數不能直接當畢業門檻。",
+      "faq": [
+        {
+          "q": "英文分級免修，學分就不用補了嗎？",
+          "a": "通識中心修課頁說明，分級後免修的課程學分仍須用認列的專業外語補足；日四技英文與外語合計8學分，請按入學年度核對。",
+          "source_ids": [
+            "english-course"
+          ]
+        },
+        {
+          "q": "可以直接照網路上的英檢分數準備嗎？",
+          "a": "先向語文承辦確認自己適用的測驗、分數、證明效期與替代方案，再決定報考，不直接套用別校或往年資訊。",
+          "source_ids": [
+            "english-threshold",
+            "english-course"
+          ]
+        }
+      ],
+      "step_details": [
+        {
+          "title": "核對入學年度、分級與外語學分",
+          "detail": "先找出入學分級結果及已修、抵免的英文與外語課，和自己的課表核對。若有免修，向通識中心確認還需補哪些外語學分，別直接把免修當學分已補足。",
+          "source_ids": [
+            "english-course",
+            "curriculum-114",
+            "curriculum-115"
+          ]
+        },
+        {
+          "title": "向語文承辦確認現行門檻與替代方案",
+          "detail": "向通識中心說明入學年與目前成績，請協助找到語文承辦。報考檢定前先確認測驗、分數、證明效期與替代方案，別拿別校或獎助金標準直接套用。",
+          "source_ids": [
+            "english-course",
+            "english-threshold"
+          ]
+        },
+        {
+          "title": "完成課程及證明認列後，再查畢業檢核",
+          "detail": "把修課成績和語文承辦要求的證明分開整理，問清楚交件位置與認列方式。辦完再查畢業檢核；若仍顯示未通過，拿送件紀錄找承辦核對。",
+          "source_ids": [
+            "academic-faq",
+            "english-course"
+          ]
+        }
+      ],
+      "flow_type": "sequence",
+      "flow": [
+        {
+          "label": "核對分級與外語學分",
+          "step_index": 0,
+          "source_ids": [
+            "english-course",
+            "curriculum-115"
+          ]
+        },
+        {
+          "label": "確認門檻通過方式",
+          "step_index": 1,
+          "source_ids": [
+            "english-threshold",
+            "academic-faq"
+          ]
+        },
+        {
+          "label": "完成認列再查檢核",
+          "step_index": 2,
+          "source_ids": [
+            "english-course",
+            "academic-faq"
+          ]
+        }
+      ],
+      "flow_note": "英文課程學分與英文能力門檻要分開確認；分級免修也要問清楚補足方式。"
+    }
+  ],
+  "historical_research": [
+    "holiday-lab/reports/overnight-20261024/guide/matrix.json",
+    "holiday-lab/reports/guide-graduation-research-20261023/sources.json",
+    "holiday-lab/reports/guide-graduation-research-20261023/FINDINGS.md",
+    "holiday-lab/reports/guide-graduation-research-20261023/STUDENT-DRAFT.md"
+  ]
+}

@@ -1,0 +1,222 @@
+{
+  "at": "2026-10-24T01:43:02.349Z",
+  "scope": "L0 local proposal/evidence only, not product integration or UI approval",
+  "yes": 12,
+  "no": 0,
+  "checks": [
+    {
+      "item": "每個精確before與目前目標欄位一致；不以全檔SHA阻擋他人修改",
+      "result": "yes",
+      "actual": {
+        "operations": 16,
+        "historical_sha": "7c6d6589c16a767d7e650d1bab5c0dc0b0c83cd0a5ed2fa1ed2dc71bdf47427a"
+      }
+    },
+    {
+      "item": "卡片id guard均正確",
+      "result": "yes",
+      "actual": [
+        "english",
+        "english",
+        "english",
+        "english",
+        "english",
+        "english",
+        "english",
+        "english",
+        "english",
+        "english",
+        "english",
+        "certification",
+        "certification",
+        "certification",
+        "certification",
+        "certification"
+      ]
+    },
+    {
+      "item": "來源追加採id缺席guard，不綁來源索引",
+      "result": "yes",
+      "actual": [
+        "english-rule-1141224",
+        "language-course-1130605-listed20240625",
+        "language-course-1091209-listed",
+        "english-forms-listed-20261024",
+        "certificate-award-rule-1131009"
+      ]
+    },
+    {
+      "item": "兩卡維持3大步及3小說明",
+      "result": "yes",
+      "actual": [
+        {
+          "id": "certification",
+          "steps": 3,
+          "details": 3
+        },
+        {
+          "id": "english",
+          "steps": 3,
+          "details": 3
+        }
+      ]
+    },
+    {
+      "item": "summary最多80字、每步detail25至100字、FAQ答案最多120字",
+      "result": "yes",
+      "actual": [
+        {
+          "id": "certification",
+          "summary": 40,
+          "details": [
+            64,
+            61,
+            77
+          ],
+          "answers": [
+            60,
+            72,
+            70,
+            66
+          ]
+        },
+        {
+          "id": "english",
+          "summary": 48,
+          "details": [
+            61,
+            65,
+            59
+          ],
+          "answers": [
+            71,
+            84,
+            76,
+            66,
+            75
+          ]
+        }
+      ]
+    },
+    {
+      "item": "所有來源id已存在或有新來源提案",
+      "result": "yes",
+      "actual": [
+        "curriculum-115",
+        "cert-award",
+        "dept-contact",
+        "certificate-system",
+        "career-contact",
+        "certificate-award-rule-1131009",
+        "curriculum-114",
+        "english-course",
+        "english-threshold",
+        "academic-faq",
+        "english-rule-1141224",
+        "language-course-1130605-listed20240625",
+        "language-course-1091209-listed",
+        "english-forms-listed-20261024",
+        "curriculum-112",
+        "curriculum-113"
+      ]
+    },
+    {
+      "item": "新增可見字串均有英日功能翻譯",
+      "result": "yes",
+      "actual": {
+        "visible": 36,
+        "translation_pairs": 36,
+        "missing": []
+      }
+    },
+    {
+      "item": "英文contact不改且未猜專責分機",
+      "result": "yes",
+      "actual": {
+        "primary": "通識教育中心（外語修課；門檻請協助轉介）",
+        "phone": "07-6158000#4202、4204",
+        "url": "https://www.zzd.stu.edu.tw/通識英文及外語修課/"
+      }
+    },
+    {
+      "item": "7原始PDF匿名200、PDF magic與SHA一致",
+      "result": "yes",
+      "actual": [
+        {
+          "file": "english-rule-20251224.pdf",
+          "status": 200,
+          "bytes": 140807,
+          "sha256": "fcc0ff3a638e1ad16d126932d23eeb3851ee89687ed6a352593634ef59caf75d"
+        },
+        {
+          "file": "language-course-20240625.pdf",
+          "status": 200,
+          "bytes": 114336,
+          "sha256": "e914e4679035133746e8a5d6e6db43303dc0e886427d60bf4beb43eb4ef8e91f"
+        },
+        {
+          "file": "language-course-20201209.pdf",
+          "status": 200,
+          "bytes": 213769,
+          "sha256": "d1c11054966fffa3605680d13eda6ae457f8b61bebf6cad675e6aebe2c5f3898"
+        },
+        {
+          "file": "BG00-4-101.pdf",
+          "status": 200,
+          "bytes": 277178,
+          "sha256": "630f4a3b2fd8ca278dda717c35d43b6b50ded9c024627779aee97db036296cc8"
+        },
+        {
+          "file": "BG00-4-102.pdf",
+          "status": 200,
+          "bytes": 266277,
+          "sha256": "81d54436187b0e543aa13f78a464457dd40a08d647a234c197f80f2f5f333507"
+        },
+        {
+          "file": "BG00-4-105.pdf",
+          "status": 200,
+          "bytes": 197087,
+          "sha256": "dd951d07673f1d72c62b041c356865e118747be08a234ba9e0666698a9b7478a"
+        },
+        {
+          "file": "certificate-award-1131009.pdf",
+          "status": 200,
+          "bytes": 134259,
+          "sha256": "a79eb8255ccd1fbf2d1a06f0d9be91e9fe554ad6dd65d13c94ee091253191c0a"
+        }
+      ]
+    },
+    {
+      "item": "115-1全英課／完整認列表／當期獎助明確維持no",
+      "result": "yes",
+      "actual": [
+        "免綁105與新版範圍完全一致",
+        "115-1可認列替代全英課程與名額",
+        "英文門檻專責分機",
+        "115-1證照獎助公告／金額／入口",
+        "本系各入學年／班別完整認列表"
+      ]
+    },
+    {
+      "item": "外語舊版影像限制明列、不冒充全頁目視",
+      "result": "yes",
+      "actual": {
+        "file": "language-course-20201209.pdf",
+        "sha256": "d1c11054966fffa3605680d13eda6ae457f8b61bebf6cad675e6aebe2c5f3898",
+        "anonymous_http": 200,
+        "full_text_read": true,
+        "visual_pages": [
+          1
+        ],
+        "visual_limit": "Only p1 visually rechecked; p2–3 text-read, not visually confirmed this round."
+      }
+    },
+    {
+      "item": "非目標卡保持不變",
+      "result": "yes",
+      "actual": {
+        "unmodified_other_cards": 13
+      }
+    }
+  ]
+}
