@@ -1,3 +1,11 @@
+## 2026-10-24 新對話接手入口已整理（保留8897方向）
+
+- source_agent: codex。使用者本輪表示「有覺得不錯」，要求列齊交接路徑及待辦，準備自行開新對話。記為8897海報／右下小面板方向的正向回饋，不是全站／發布／遊戲解凍批准。這回合只整理文件，未改網站、未重建Build或重跑遊戲。
+- 新對話先讀 C:/agywork/agd-holiday-prototypes/work-orders/20261024/NEXT-CHAT.md；原專案同內容副本 C:/Projects/系網漫畫版_AGDComicSite/work-orders/20261024/NEXT-CHAT.md。內含完整路徑、重啟指令、六項來源／驗證缺口、最新版獨立複驗、TF-BASE／節日凍結、校園冒險僅概念、發布未授權、五保全SHA及可直接貼的新對話提示。
+- 程式仍以C:/agywork/agd-holiday-prototypes為正本，產品基底codex/poster-corner24／c66ef5b0；這次文件分支codex/newchat-handoff24。原clone文件分支codex/newchat-receipt24，不可拿原clone較舊程式覆蓋工作樹。所有本機分支未push，另一台新clone不會自動有本輪成果。
+- 最新 http://127.0.0.1:8897/?lang=zh ，英日改lang，指南 #/students/guide，儀表板 /progress/；.measure-poster-corner-20261024-03。文件整理時實際HTTP200、與量測HTML SHA相同；1926既有來源SHA、原四dirty＋R0、main refs與C節保持。檢查收據work-orders/20261024/NEW-CHAT-RECEIPT.json；不是重新全站驗收。
+- 下一輪第一件事：選正確工作樹、完整讀NEXT-CHAT.md，再按總表優先序做現況確認及針對缺口複驗；不重做首頁，不把舊0100工單再播一次。不push、不發布、不碰main、不刪檔、不執行C節、所有節日繼續凍結、不啟Unity或生成素材；Vault僅本機保存。
+
 ## 2026-10-24 最新：8897清晰海報與右下角小面板，本機審閱
 
 - source_agent: codex；TF-GO。使用者要求海報更清楚、資訊及抽選縮小放角落，不要整條區塊擋作品。本次已移除橫條：預覽不透明度52%→88%、停格66%→96%、集中線13%→6%；右下小面板桌面304px／手機240px，桌面約6–7%、手機約11–14%頁框面積。作品名16px，保留完整作者／老師及作品連結，手機按鈕維持44px觸控高度。原圖八件不改，沒有生成或修圖。
