@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "holiday-lab/reports/followup-20261024/root/i18n-alignment.test.cjs"
+  ],
+  "cwd": "C:\\agywork\\agd-holiday-prototypes",
+  "observed_utc": "2026-10-24T01:03:47.689Z",
+  "stdout": "✖ English awards source retains all canonical years, counts and per-year item counts (1.3113ms)\n✖ the soothing-sounds source is classified as a game, consistent with canonical data (2.3789ms)\nℹ tests 2\nℹ suites 0\nℹ pass 0\nℹ fail 2\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 93.3408\n\n✖ failing tests:\n\ntest at holiday-lab\\reports\\followup-20261024\\root\\i18n-alignment.test.cjs:3:1\n✖ English awards source retains all canonical years, counts and per-year item counts (1.3113ms)\n  AssertionError [ERR_ASSERTION]: awards\n  \n  5 !== 6\n  \n      at TestContext.<anonymous> (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\followup-20261024\\root\\i18n-alignment.test.cjs:4:110)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1201:25)\n      at Test.start (node:internal/test_runner/test:1096:17)\n      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {\n    generatedMessage: false,\n    code: 'ERR_ASSERTION',\n    actual: 5,\n    expected: 6,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n\ntest at holiday-lab\\reports\\followup-20261024\\root\\i18n-alignment.test.cjs:7:1\n✖ the soothing-sounds source is classified as a game, consistent with canonical data (2.3789ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n  + actual - expected\n  \n  + 'Animation'\n  - 'Game'\n  \n      at TestContext.<anonymous> (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\reports\\followup-20261024\\root\\i18n-alignment.test.cjs:7:296)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1201:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)\n      at Test.postRun (node:internal/test_runner/test:1330:19)\n      at Test.run (node:internal/test_runner/test:1258:12)\n      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: 'Animation',\n    expected: 'Game',\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n",
+  "stderr": "",
+  "exit_code": 1
+}
