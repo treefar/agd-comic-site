@@ -1,3 +1,15 @@
+## 2026-10-24 最新：8888導覽集中／右側快捷恢復，作品抽選僅完成評估
+
+- source_agent: codex；TF-GO。使用者要求標題列集中及恢復右側隨頁面快捷；另詢問集中線中央快速換作品、點後慢停及海報連結的可行性。本輪只實作前兩項，作品抽選只有評估提案，沒有擴張成新遊戲或發布授權。最新 http://127.0.0.1:8888/ ，指南 /?lang=zh#/students/guide ，儀表板 /progress/ 。8887及舊候選保留。
+- 分支codex/nav-centered-cta24，產品僅改styles.css：桌面導覽justify-content從space-between改center，保留元件原inline 12／14px間距；把1900px以下快捷static縮至1180px以下，桌面1181以上恢復fixed四快捷／原LINE目標，平板手機留文末。原漫畫首頁、最新英日、指南、照片／職稱與頁底策展保持。77檔／app-WMPKTSKM.js，HTML及JS逐SHA等同8887。
+- red exit1與1440桌面space-between／static已記錄；修後Build與green exit0。主控Chrome中英日1440／390，加中文2518／1181／1180，共9組12項排版108yes；不是15組驗收。另英文1440分開兩次呼叫實測scrollY0→11776，fixed上下座標相同4yes。同步scroll讀值未動的欄位不當捲動證據；逾時、舊頁debugger及原gap方法錯誤留存。沒有新代理全站驗收。
+- 361其他來源、320保全檔與三策展原件SHA保持，main refs／C節不變，不push、不發布、不刪檔。所有節日繼續凍結，未測玩／修改遊戲、未啟Unity或生成素材。
+- 作品抽選評估：集中線交點可放淡色完整作品預覽，點後約2至3秒減速停格，再由清楚的作品名稱／作者／獨立連結進作品頁。建議先6至10件、手機改在主標下、保留停止／減動態、原圖與署名。W3C官方SC2.2.2與SC2.3.1已讀；未實作、未量測閃爍，不能宣稱功能或完整WCAG已通過。草案 holiday-lab/reports/nav-centered-cta-20261024/作品抽選評估.md。
+- 儀表板52列46yes/6no/使用者0，新增右側快捷與可行性評估兩列；1543來源SHA、權威18/18。新評估列搜尋／展開已檢，明列僅提案；不是52項功能完成率。既有六項官方資料／正式名／素材／字型真機限制照留。報告holiday-lab/reports/nav-centered-cta-20261024/REPORT.md，含逐條yes/no與實際command/stdout/stderr/exit。原交接／STATUS／Vault僅本機更新。
+- 下一輪第一件事：先看8888集中導航及右側快捷，再確認是否要做作品抽選本機試作；使用者目前只要求評估，不自行上線、不恢復節日或執行C節。若實作抽選，需逐筆核海報／作者／連結、保留完整作品及來源、實測10組隨機結果與動態控制。
+
+重啟：node scripts/serve-local-review.cjs --site=.measure-nav-centered-cta-20261024-01 --dashboard=holiday-lab/dashboard/out --port=8888
+
 ## 2026-10-24 最新：8887恢復原漫畫首頁，英日／指南保留，策展放頁底
 
 - source_agent: codex；TF-GO。使用者認為8883簡約首頁不如原來，要求保留原首頁＋新版英文／日文＋在校指南，遊戲放最下面；另明確選擇先放學生作品策展示範、節日繼續暫緩。這是範圍確認，不是新畫面或發布批准。最新 http://127.0.0.1:8887/ ，英日 ?lang=en／ja ，指南 /?lang=zh#/students/guide ，頁底 /#student-play ，儀表板 /progress/ 。

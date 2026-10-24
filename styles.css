@@ -1403,10 +1403,10 @@ html[lang='ja'] .h-jojo{font-family:'Bowlby One','Bangers','Yu Gothic','Hiragino
  .topnav{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 24px;}
  .topnav .brand{grid-column:1;grid-row:1;min-width:0;}
  .topnav>a:last-child{grid-column:2;grid-row:1;}
- .topnav nav{grid-column:1/-1;grid-row:2;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 14px;}
+ .topnav nav{grid-column:1/-1;grid-row:2;display:flex;flex-wrap:wrap;justify-content:center;gap:8px clamp(16px,1.5vw,28px);}
  .topnav .hamburger{display:none;}
  .chapter,.foot{scroll-margin-top:160px;}
 }
 @media(min-width:761px) and (max-width:1180px){.topnav .brand{min-width:0;flex-shrink:1 !important;}.topnav .brand>div{min-width:0;}.topnav .brand>div>span:first-child{white-space:normal;word-break:normal;overflow-wrap:normal;text-wrap:balance;}}
-/* Keep contact shortcuts outside portraits and reading content on ordinary desktop widths too. */
-@media(max-width:1900px){.floating-cta{position:static !important;align-items:stretch !important;margin:20px 16px;}.floating-cta a{white-space:normal;text-align:center;}}
+/* Tablet and mobile shortcuts remain in page flow; desktop keeps the original floating panel. */
+@media(max-width:1180px){.floating-cta{position:static !important;align-items:stretch !important;margin:20px 16px;}.floating-cta a{white-space:normal;text-align:center;}}
