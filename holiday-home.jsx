@@ -47,7 +47,6 @@ const HolidayHome = ({placement='hero'}={}) => {
  const frame=React.useRef(null),trigger=React.useRef(null),dialog=React.useRef(null),closeButton=React.useRef(null),detachFrame=React.useRef(()=>{});
  const words=(zh,en,ja)=>({zh,en,ja})[siteLanguage];
  const entries=[['new-year','明年的第一格','The First Frame Ahead','新しい年の最初のコマ'],['lunar-new-year','年獸表演課','Nian Performance Class','年獣の演技レッスン'],['lantern','燈影借位','Shadow Stage','灯りと影の舞台'],['children','玩具聲音偵探','Toy Sound Detective','おもちゃ音の探偵'],['dragon-boat','粽葉折疊局','Leaf Folding Studio','葉っぱ折りスタジオ'],['mid-autumn','月光剪接台','Moonlight Editing Desk','月明かりの編集室'],['teachers','老師，這格謝謝你','A Panel of Thanks','先生へ、感謝の一コマ'],['national-day','島嶼場景工作室','Island Scene Studio','島の風景スタジオ'],['semester','新生第一張地圖','Your First Campus Map','はじめてのキャンパスマップ'],['exhibition','畢展策展接力','Exhibition Curator Relay','卒展キュレーターリレー'],['peace-memory','把話聽完整','Listen to the Whole Story','最後まで聴こう'],['qingming','紙鳶借風','A Kite Borrows the Wind','風を借りる凧'],['retrocession','時光對照室','The Time Comparison Room','時の見比べアトリエ'],['constitution','同一頁，都看懂','One Page for Everyone','同じページを、みんなに']];
- React.useEffect(()=>{if(!gamesOnly)return;let live=true;import('./holiday-lab/catalog.mjs').then(({festivalAt})=>{const active=festivalAt(Date.now());if(live&&active&&active.id!=='labor')setSelected(active.id);}).catch(()=>{});return()=>{live=false;};},[gamesOnly]);
  const name=entries.find(e=>e[0]===selected)[{zh:1,en:2,ja:3}[siteLanguage]];
  const close=()=>setPlaying(false);
  const focusable=doc=>[...doc.querySelectorAll('button:not([disabled]),a[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])')].filter(n=>!n.closest('[inert]')&&n.getClientRects().length&&getComputedStyle(n).visibility!=='hidden');
@@ -104,15 +103,7 @@ const HolidayHome = ({placement='hero'}={}) => {
   {gamesOnly&&<div className="festival-copy">
    <h2 id="student-play-title" className="h-display">{words('創作試玩','Creative Playtests','創作の試遊')}</h2>
    <p className="student-curation-entry"><a id="student-curation-start" href={`holiday-lab/student-curation.html?lang=${siteLanguage}`}>{words('試做一場小型策展','Try a small curation exercise','小さな展示を組んでみよう')} <span aria-hidden="true">→</span></a></p>
-   <details id="festival-prototypes" className="festival-prototypes">
-    <summary>{words('節日創作試作','Seasonal creation prototypes','季節の制作プロトタイプ')}</summary>
-    <div className="festival-copy">
-     <p className="festival-review-note">{words('以下為系網開發試作，遊戲素材將分批調整。','These are website development prototypes. Game visuals will be revised in stages.','以下は学科サイトの開発試作です。ゲーム素材は順次見直します。')}</p>
-     <label htmlFor="festival-select">{words('選擇試作','Choose a prototype','試作を選ぶ')}</label>
-     <select id="festival-select" value={selected} onChange={e=>setSelected(e.target.value)}>{entries.map(e=><option key={e[0]} value={e[0]}>{e[{zh:1,en:2,ja:3}[siteLanguage]]}</option>)}</select>
-     <div className="festival-actions"><button ref={trigger} id="festival-start" className="festival-button" onClick={()=>setPlaying(true)}>{words('開啟試作','Open prototype','試作を開く')}</button><a className="festival-archive-link" href={`holiday-lab/?lang=${siteLanguage}`}>{words('全部試作','All prototypes','試作一覧')}</a></div>
-    </div>
-   </details>
+   <p id="festival-paused-note" className="festival-review-note">{words('節日試作暫緩。','Seasonal prototypes are on hold.','季節の試作は休止中です。')}</p>
   </div>}
   {!gamesOnly&&<nav className="hero-highlights" aria-label={words('系所亮點','Department highlights','学科の特徴')}>
    <a href="#about">{words('全台第一所動畫與遊戲科系','Taiwan’s first animation and game department','台湾初のアニメ・ゲーム学科')}</a>
