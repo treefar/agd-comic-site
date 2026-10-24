@@ -1,3 +1,16 @@
+## 2026-10-24 最新：8897清晰海報與右下角小面板，本機審閱
+
+- source_agent: codex；TF-GO。使用者要求海報更清楚、資訊及抽選縮小放角落，不要整條區塊擋作品。本次已移除橫條：預覽不透明度52%→88%、停格66%→96%、集中線13%→6%；右下小面板桌面304px／手機240px，桌面約6–7%、手機約11–14%頁框面積。作品名16px，保留完整作者／老師及作品連結，手機按鈕維持44px觸控高度。原圖八件不改，沒有生成或修圖。
+- 最新 http://127.0.0.1:8897/?lang=zh ，英日 /?lang=en／ja ，指南 /?lang=zh#/students/guide ，儀表板 /progress/。.measure-poster-corner-20261024-03、79檔／app-3RVTPKHI.js。8894是舊橫條版，8895／8896為中途候選，不作最新成果；舊檔均留存。Chrome已開新首頁，另已送右側本機預覽開啟請求，工具回queued不當作立即成功。
+- C:/agywork/agd-holiday-prototypes分支codex/poster-corner24；產品僅student-work-draw.css，18行新增／19行移除。原clone分支codex/corner-handoff24只存交接。JS／HTML與8894逐SHA相同。實際1798其他來源SHA、320保全檔（原四dirty＋R0等）、八原圖及三策展原件保持。
+- 七組實際Chrome：中英日1440／390，加中文1279×575，共126條通過；海報滿框、角落位置、面積比例、完整署名、兩按鈕逐點命中、無橫溢。各次滑鼠點選皆drawing後settled／idle，另實際點作品網址。初候選泡泡列padding透明區擋按鈕（hit-red）；改列的實際寬度。手機舊彩蛋被改靜態而多一格，恢復原浮動熱區後資訊卡貼底。外層section桌面0高度不作可見等待，改等實際連結仍另核phase／timer，失敗及等待說明原件保留。
+- Build exit0，HTTP11項200／SHA，8897 Console error0。只做CSS窄驗，不宣稱重跑前輪10個模型測試，沒有新代理／全站／真機／母語／完整WCAG驗收；原六項限制保持。報告holiday-lab/reports/poster-corner-20261024/REPORT.md、r3/case-*.json、*-command.json存command／stdout／stderr／exit與畫面。
+- 儀表板53列47yes／6no／使用者0，1926SHA，權威18/18、exit0。本次新畫面待使用者審閱，不能把修改要求當通過。交接、STATUS與既有Vault紀錄僅本機更新。
+- 不push、不發布、不碰main、不刪檔、不執行C節且原文SHA保持；所有節日含勞動節繼續凍結，沒有Unity、遊戲測玩或續跑QA；未新查TF-BASE，不宣稱WebGL回傳。
+- 下一輪第一件事：看8897清晰度與角落小面板，依使用者回饋僅改本機；不要以8892／8894舊畫面判斷最新版，重啟前先確認8897既有程序。
+
+重啟：node scripts/serve-local-review.cjs --site=.measure-poster-corner-20261024-03 --dashboard=holiday-lab/dashboard/out --port=8897
+
 ## 2026-10-24 最新：8894海報鋪滿漫畫首頁頁框，本機審閱
 
 - source_agent: codex；TF-GO。使用者裁定海報應滿版放在「畫出來，動起來」頁框，不要小幅輪播。本次已改為整格海報背景，前景保留漫畫主標、招生按鈕、泡泡，作品名稱／完整署名與抽選控制放在下方資訊帶。桌面與手機均鋪滿同一頁框；CSS cover會依框比例裁切顯示，八件原圖檔案不改，停格後連結及「看完整作品」保留。
