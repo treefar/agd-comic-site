@@ -1,0 +1,1213 @@
+{
+  "schema": 1,
+  "as_of": "2026-10-24",
+  "scope": "research only; root must apply and verify in local branch",
+  "product_written": false,
+  "native_speaker_approved": false,
+  "public_release": false,
+  "operations": [
+    {
+      "id": "PROGRAM-title",
+      "lang": "zh",
+      "op": "replace",
+      "file": "data/admission.json",
+      "pointer": "/6/title",
+      "before": "進修部相關招生",
+      "after": "四技進修部招生",
+      "source_ids": [
+        "B6"
+      ],
+      "reason": "本頁改為本系實際招生學制，其他學制仍在內容解釋且不誤稱本系有開。"
+    },
+    {
+      "id": "PROGRAM-title",
+      "lang": "en",
+      "op": "replace",
+      "file": "data/en/admission.json",
+      "pointer": "/6/title",
+      "before": "Continuing Education Admissions (進修部相關招生)",
+      "after": "Four-Year Continuing Education Admissions",
+      "source_ids": [
+        "B6"
+      ],
+      "reason": "本頁改為本系實際招生學制，其他學制仍在內容解釋且不誤稱本系有開。"
+    },
+    {
+      "id": "PROGRAM-title",
+      "lang": "ja",
+      "op": "add",
+      "file": "data/ja/messages.json",
+      "pointer": "/四技進修部招生",
+      "before": null,
+      "after": "四技進修部の入試",
+      "legacy_key": "進修部相關招生",
+      "legacy_before": "進修部関連募集",
+      "legacy_pointer": "/進修部相關招生",
+      "retain_legacy_key": true,
+      "source_ids": [
+        "B6"
+      ],
+      "reason": "本頁改為本系實際招生學制，其他學制仍在內容解釋且不誤稱本系有開。"
+    },
+    {
+      "id": "PROGRAM-quota",
+      "lang": "zh",
+      "op": "replace",
+      "file": "data/admission.json",
+      "pointer": "/6/quota",
+      "before": "請見樹德進修部專區",
+      "after": "115學年度一般單招30名，已截止",
+      "source_ids": [
+        "quota-native",
+        "closed-20261024",
+        "B6",
+        "D1",
+        "C5",
+        "E7",
+        "E8",
+        "E9"
+      ],
+      "reason": "30是115歷史名額，不代表現在可報名。"
+    },
+    {
+      "id": "PROGRAM-quota",
+      "lang": "en",
+      "op": "replace",
+      "file": "data/en/admission.json",
+      "pointer": "/6/quota",
+      "before": "Please refer to the Shu-Te Continuing Education Division website",
+      "after": "AY 115: 30 general-admission places; closed",
+      "source_ids": [
+        "quota-native",
+        "closed-20261024",
+        "B6",
+        "D1",
+        "C5",
+        "E7",
+        "E8",
+        "E9"
+      ],
+      "reason": "30是115歷史名額，不代表現在可報名。"
+    },
+    {
+      "id": "PROGRAM-quota",
+      "lang": "ja",
+      "op": "add",
+      "file": "data/ja/messages.json",
+      "pointer": "/115學年度一般單招30名，已截止",
+      "before": null,
+      "after": "115学年度：一般募集30名、募集終了",
+      "legacy_key": "請見樹德進修部專區",
+      "legacy_before": "樹徳科技大学進修部特設ページをご確認ください",
+      "legacy_pointer": "/請見樹德進修部專區",
+      "retain_legacy_key": true,
+      "source_ids": [
+        "quota-native",
+        "closed-20261024",
+        "B6",
+        "D1",
+        "C5",
+        "E7",
+        "E8",
+        "E9"
+      ],
+      "reason": "30是115歷史名額，不代表現在可報名。"
+    },
+    {
+      "id": "PROGRAM-schedule_short",
+      "lang": "zh",
+      "op": "replace",
+      "file": "data/admission.json",
+      "pointer": "/6/schedule_short",
+      "before": "獨立招生｜採書審 + 面試",
+      "after": "115招生已結束｜書面資料審查",
+      "source_ids": [
+        "closed-20261024",
+        "B6"
+      ],
+      "reason": "刪除不成立的統一面試敘述；未主張全管道免統測／學測。"
+    },
+    {
+      "id": "PROGRAM-schedule_short",
+      "lang": "en",
+      "op": "replace",
+      "file": "data/en/admission.json",
+      "pointer": "/6/schedule_short",
+      "before": "Individual Admissions | Documentary review + interview",
+      "after": "AY 115 admissions closed | Application-document review",
+      "source_ids": [
+        "closed-20261024",
+        "B6"
+      ],
+      "reason": "刪除不成立的統一面試敘述；未主張全管道免統測／學測。"
+    },
+    {
+      "id": "PROGRAM-schedule_short",
+      "lang": "ja",
+      "op": "add",
+      "file": "data/ja/messages.json",
+      "pointer": "/115招生已結束｜書面資料審查",
+      "before": null,
+      "after": "115学年度の募集終了｜出願書類審査",
+      "legacy_key": "獨立招生｜採書審 + 面試",
+      "legacy_before": "独自募集｜書類審査 + 面接",
+      "legacy_pointer": "/獨立招生｜採書審 + 面試",
+      "retain_legacy_key": true,
+      "source_ids": [
+        "closed-20261024",
+        "B6"
+      ],
+      "reason": "刪除不成立的統一面試敘述；未主張全管道免統測／學測。"
+    },
+    {
+      "id": "PROGRAM-summary",
+      "lang": "zh",
+      "op": "replace",
+      "file": "data/admission.json",
+      "pointer": "/6/summary",
+      "before": "包含二技 / 四技 / 二專進修部與產學攜手。目前頁面未列出動遊系名額 — 請洽樹德進修部專區。",
+      "after": "115學年度本系四技進修部一般單獨招生30名，招生已結束。二技、二專及產學攜手是不同管道，該年度招生名單未列本系。",
+      "source_ids": [
+        "quota-native",
+        "closed-20261024",
+        "B6",
+        "D1",
+        "C5",
+        "E7",
+        "E8",
+        "E9"
+      ],
+      "reason": "PROGRAM-01；修正未列本系名額，區分學制與資格層次。"
+    },
+    {
+      "id": "PROGRAM-summary",
+      "lang": "en",
+      "op": "replace",
+      "file": "data/en/admission.json",
+      "pointer": "/6/summary",
+      "before": "Includes two-year college / four-year college / two-year junior college continuing education and industry-academia collaboration programs. Currently no AGD quotas listed on this page — please consult the Shu-Te Continuing Education Division portal.",
+      "after": "For academic year 115, AGD listed 30 general-admission places in its four-year continuing education program. Admissions have ended. The separate two-year and industry–academia admission lists did not include AGD that year.",
+      "source_ids": [
+        "quota-native",
+        "closed-20261024",
+        "B6",
+        "D1",
+        "C5",
+        "E7",
+        "E8",
+        "E9"
+      ],
+      "reason": "PROGRAM-01；修正未列本系名額，區分學制與資格層次。"
+    },
+    {
+      "id": "PROGRAM-summary",
+      "lang": "ja",
+      "op": "add",
+      "file": "data/ja/messages.json",
+      "pointer": "/115學年度本系四技進修部一般單獨招生30名，招生已結束。二技、二專及產學攜手是不同管道，該年度招生名單未列本系。",
+      "before": null,
+      "after": "115学年度、本学科の四技進修部は独自入試の一般募集で定員30名でした。募集は終了しています。二技・二專・産学連携は別の入試区分で、同年度の募集一覧に本学科は記載されていません。",
+      "legacy_key": "包含二技 / 四技 / 二專進修部與產學攜手。目前頁面未列出動遊系名額 — 請洽樹德進修部專區。",
+      "legacy_before": "2年制大学／4年制課程／2年制短期大学の進修部および産学連携プログラムを含みます。現在ページ上にアニメとゲームデザイン学科の定員は記載されていません — 樹徳科技大学進修部特設ページへお問い合わせください。",
+      "legacy_pointer": "/包含二技 ~1 四技 ~1 二專進修部與產學攜手。目前頁面未列出動遊系名額 — 請洽樹德進修部專區。",
+      "retain_legacy_key": true,
+      "source_ids": [
+        "quota-native",
+        "closed-20261024",
+        "B6",
+        "D1",
+        "C5",
+        "E7",
+        "E8",
+        "E9"
+      ],
+      "reason": "PROGRAM-01；修正未列本系名額，區分學制與資格層次。"
+    },
+    {
+      "id": "PROGRAM-content",
+      "lang": "zh",
+      "op": "replace",
+      "file": "data/admission.json",
+      "pointer": "/6/content",
+      "before": "進修部相關招生 — 涵蓋二技 / 四技 / 二專進修部與產學攜手計畫，採書審 + 面試（免統測 / 學測）的彈性入學管道。\n\n適用對象：在職人士、想兼顧工作與學業者、二度就讀者\n\n上課時間：典型週一至五晚上 18:30-21:30 + 部分假日課程。\n\n※ 各管道是否開放動遊系名額，請以樹德招生網對應專區公告為準。",
+      "after": "本系115學年度四技進修部一般單獨招生30名，採書面資料審查；查核至2026年10月24日，招生已結束。該年度二技、二專及產學攜手招生名單未列本系。\n\n學制：二技、四技為學士課程；二專為二年制專科課程，修滿規定可取得副學士學位。報考前請核對各管道簡章的學歷、身分與應備資料。\n\n四技進修部原則上安排週一至週五晚間，輔以週六、週日；特殊課程可另行排課，實際時段以課表為準。二技、二專的時段依各系科規定。\n\n下一次招生請查看新學年度公告；舊名額不代表目前仍可報名。",
+      "source_ids": [
+        "quota-native",
+        "closed-20261024",
+        "B6",
+        "D1",
+        "C5",
+        "E7",
+        "E8",
+        "E9"
+      ],
+      "reason": "PROGRAM-02；不保留未證實的面試、免兩測及固定18:30–21:30保證；原台灣學制名保留。"
+    },
+    {
+      "id": "PROGRAM-content",
+      "lang": "en",
+      "op": "replace",
+      "file": "data/en/admission.json",
+      "pointer": "/6/content",
+      "before": "Continuing Education Division Admissions (進修部相關招生) — Encompassing two-year college / four-year college / two-year junior college continuing education and industry-academia collaboration programs, a flexible admission pathway using documentary review + interview (exempt from TCTE / GSAT).\n\nTarget Audience: Working professionals, those seeking to balance work and studies, second-degree seekers\n\nClass Hours: Typically Monday to Friday evenings 18:30-21:30 + selected weekend courses.\n\n* Please refer to announcements on the Shu-Te Admissions website to confirm whether AGD quotas are open for each pathway.",
+      "after": "AGD listed 30 general-admission places in four-year continuing education for academic year 115. Selection used application-document review. Admissions were closed when checked on 24 October 2026. The separate two-year and industry–academia admission lists did not include AGD that year.\n\nProgram levels: 二技 is a two-year bachelor’s completion program; 四技 is a four-year bachelor’s program; 二專 is a two-year associate-degree program. Check the education, applicant-status and document requirements in the relevant admission guide.\n\nFour-year continuing education classes are generally scheduled on weekday evenings, supplemented by weekend classes. Special courses may have other arrangements; follow the actual timetable. Schedules for the two-year programs vary by department.\n\nFor the next intake, check the new academic year’s announcements. A past quota does not mean applications remain open.",
+      "source_ids": [
+        "quota-native",
+        "closed-20261024",
+        "B6",
+        "D1",
+        "C5",
+        "E7",
+        "E8",
+        "E9"
+      ],
+      "reason": "PROGRAM-02；不保留未證實的面試、免兩測及固定18:30–21:30保證；原台灣學制名保留。"
+    },
+    {
+      "id": "PROGRAM-content",
+      "lang": "ja",
+      "op": "add",
+      "file": "data/ja/messages.json",
+      "pointer": "/本系115學年度四技進修部一般單獨招生30名，採書面資料審查；查核至2026年10月24日，招生已結束。該年度二技、二專及產學攜手招生名單未列本系。 學制：二技、四技為學士課程；二專為二年制專科課程，修滿規定可取得副學士學位。報考前請核對各管道簡章的學歷、身分與應備資料。 四技進修部原則上安排週一至週五晚間，輔以週六、週日；特殊課程可另行排課，實際時段以課表為準。二技、二專的時段依各系科規定。 下一次招生請查看新學年度公告；舊名額不代表目前仍可報名。",
+      "before": null,
+      "after": "115学年度、本学科の四技進修部は独自入試の一般募集で定員30名、選考方法は出願書類審査でした。2026年10月24日の確認時点で募集は終了しています。同年度の二技・二專・産学連携の募集一覧に、本学科は記載されていません。\n\n課程区分：二技は2年制の学士課程、四技は4年制の学士課程、二專は修了要件を満たすと副學士の学位を取得できる2年制の専科課程です。学歴・身分・提出書類などの出願条件は、各募集要項を確認してください。\n\n四技進修部の授業は原則として平日の夜間に行われ、土日にも開講されます。特別な授業は別の日程となる場合があるため、実際の時間割を確認してください。二技・二專の授業時間は学科ごとに異なります。\n\n次回の募集は新学年度の案内を確認してください。過去の募集定員は、現在も出願できることを意味しません。",
+      "legacy_key": "進修部相關招生 — 涵蓋二技 / 四技 / 二專進修部與產學攜手計畫，採書審 + 面試（免統測 / 學測）的彈性入學管道。 適用對象：在職人士、想兼顧工作與學業者、二度就讀者 上課時間：典型週一至五晚上 18:30-21:30 + 部分假日課程。 ※ 各管道是否開放動遊系名額，請以樹德招生網對應專區公告為準。",
+      "legacy_before": "進修部関連募集 — 2年制大学／4年制課程／2年制短期大学の進修部および産学連携プログラムを網羅し、書類審査 + 面接（統測／学測不要）で実施される柔軟な入試制度です。 適用対象：社会人、仕事と学業を両立したい方、学び直し希望者 授業時間：通常は月曜日〜金曜日夜間 18:30-21:30 + 一部休日の授業。 ※ 各入試枠におけるアニメとゲームデザイン学科の定員の有無は、樹徳科技大学受験生向けサイトの各募集特設ページのご案内をご確認ください。",
+      "legacy_pointer": "/進修部相關招生 — 涵蓋二技 ~1 四技 ~1 二專進修部與產學攜手計畫，採書審 + 面試（免統測 ~1 學測）的彈性入學管道。 適用對象：在職人士、想兼顧工作與學業者、二度就讀者 上課時間：典型週一至五晚上 18:30-21:30 + 部分假日課程。 ※ 各管道是否開放動遊系名額，請以樹德招生網對應專區公告為準。",
+      "retain_legacy_key": true,
+      "source_ids": [
+        "quota-native",
+        "closed-20261024",
+        "B6",
+        "D1",
+        "C5",
+        "E7",
+        "E8",
+        "E9"
+      ],
+      "reason": "PROGRAM-02；不保留未證實的面試、免兩測及固定18:30–21:30保證；原台灣學制名保留。"
+    },
+    {
+      "id": "PROGRAM-key_notes/0",
+      "lang": "zh",
+      "op": "replace",
+      "file": "data/admission.json",
+      "pointer": "/6/key_notes/0",
+      "before": "📌 目前頁面未列出動遊系名額 — 請定期關注樹德招生網",
+      "after": "115本系四技進修部一般單招30名，已截止；新年度以招生網公告為準。",
+      "source_ids": [
+        "quota-native",
+        "closed-20261024",
+        "B6",
+        "D1",
+        "C5",
+        "E7",
+        "E8",
+        "E9"
+      ],
+      "reason": "同摘要名額、狀態一致。"
+    },
+    {
+      "id": "PROGRAM-key_notes/0",
+      "lang": "en",
+      "op": "replace",
+      "file": "data/en/admission.json",
+      "pointer": "/6/key_notes/0",
+      "before": "📌 Currently no AGD quotas listed on this page — Please monitor the Shu-Te Admissions website regularly",
+      "after": "AY 115 listed 30 AGD general-admission places in four-year continuing education; admissions have closed. Check the admissions portal for the next intake.",
+      "source_ids": [
+        "quota-native",
+        "closed-20261024",
+        "B6",
+        "D1",
+        "C5",
+        "E7",
+        "E8",
+        "E9"
+      ],
+      "reason": "同摘要名額、狀態一致。"
+    },
+    {
+      "id": "PROGRAM-key_notes/0",
+      "lang": "ja",
+      "op": "add",
+      "file": "data/ja/messages.json",
+      "pointer": "/115本系四技進修部一般單招30名，已截止；新年度以招生網公告為準。",
+      "before": null,
+      "after": "115学年度の本学科・四技進修部の一般募集は30名で、募集は終了しています。次年度は入試サイトの案内を確認してください。",
+      "legacy_key": "📌 目前頁面未列出動遊系名額 — 請定期關注樹德招生網",
+      "legacy_before": "📌 現在ページ上にアニメとゲームデザイン学科の定員は掲載されていません — 樹徳科技大学受験生向けサイトを定期的にご確認ください",
+      "legacy_pointer": "/📌 目前頁面未列出動遊系名額 — 請定期關注樹德招生網",
+      "retain_legacy_key": true,
+      "source_ids": [
+        "quota-native",
+        "closed-20261024",
+        "B6",
+        "D1",
+        "C5",
+        "E7",
+        "E8",
+        "E9"
+      ],
+      "reason": "同摘要名額、狀態一致。"
+    },
+    {
+      "id": "PROGRAM-key_notes/2",
+      "lang": "zh",
+      "op": "replace",
+      "file": "data/admission.json",
+      "pointer": "/6/key_notes/2",
+      "before": "🌙 進修部上課多為週一至五 18:30-21:30",
+      "after": "四技進修部原則上平日晚間、輔以週末；特殊課程與實際時間以課表為準。",
+      "source_ids": [
+        "B6"
+      ],
+      "reason": "不提供簡章沒有的固定時段。"
+    },
+    {
+      "id": "PROGRAM-key_notes/2",
+      "lang": "en",
+      "op": "replace",
+      "file": "data/en/admission.json",
+      "pointer": "/6/key_notes/2",
+      "before": "🌙 Continuing education classes are mostly Monday to Friday 18:30-21:30",
+      "after": "Four-year continuing education generally uses weekday evenings and weekend sessions; special courses and actual times follow the timetable.",
+      "source_ids": [
+        "B6"
+      ],
+      "reason": "不提供簡章沒有的固定時段。"
+    },
+    {
+      "id": "PROGRAM-key_notes/2",
+      "lang": "ja",
+      "op": "add",
+      "file": "data/ja/messages.json",
+      "pointer": "/四技進修部原則上平日晚間、輔以週末；特殊課程與實際時間以課表為準。",
+      "before": null,
+      "after": "四技進修部は原則として平日の夜間と土日に開講されます。特別な授業を含む実際の日時は時間割を確認してください。",
+      "legacy_key": "🌙 進修部上課多為週一至五 18:30-21:30",
+      "legacy_before": "🌙 進修部の授業は主に月曜日〜金曜日 18:30-21:30",
+      "legacy_pointer": "/🌙 進修部上課多為週一至五 18:30-21:30",
+      "retain_legacy_key": true,
+      "source_ids": [
+        "B6"
+      ],
+      "reason": "不提供簡章沒有的固定時段。"
+    },
+    {
+      "id": "PROGRAM-key_notes/3",
+      "lang": "zh",
+      "op": "replace",
+      "file": "data/admission.json",
+      "pointer": "/6/key_notes/3",
+      "before": "🎓 進修部畢業證書與日四技完全相同",
+      "after": "四技進修部符合修業與畢業規定者授予學士學位。",
+      "source_ids": [
+        "B6"
+      ],
+      "reason": "已證成學位層次，未證成證書外觀／文字完全一樣；改為可核學位。"
+    },
+    {
+      "id": "PROGRAM-key_notes/3",
+      "lang": "en",
+      "op": "replace",
+      "file": "data/en/admission.json",
+      "pointer": "/6/key_notes/3",
+      "before": "🎓 The diploma awarded by the Continuing Education Division is completely identical to the Four-Year Day College diploma",
+      "after": "Students who meet the four-year continuing education program’s study and graduation requirements are awarded a bachelor’s degree.",
+      "source_ids": [
+        "B6"
+      ],
+      "reason": "已證成學位層次，未證成證書外觀／文字完全一樣；改為可核學位。"
+    },
+    {
+      "id": "PROGRAM-key_notes/3",
+      "lang": "ja",
+      "op": "add",
+      "file": "data/ja/messages.json",
+      "pointer": "/四技進修部符合修業與畢業規定者授予學士學位。",
+      "before": null,
+      "after": "四技進修部では、修業・卒業の要件を満たすと学士の学位が授与されます。",
+      "legacy_key": "🎓 進修部畢業證書與日四技完全相同",
+      "legacy_before": "🎓 進修部の卒業証書は昼間部4年制課程と完全に同一です",
+      "legacy_pointer": "/🎓 進修部畢業證書與日四技完全相同",
+      "retain_legacy_key": true,
+      "source_ids": [
+        "B6"
+      ],
+      "reason": "已證成學位層次，未證成證書外觀／文字完全一樣；改為可核學位。"
+    },
+    {
+      "id": "PROGRAM-stu_focus/0",
+      "lang": "zh",
+      "op": "replace",
+      "file": "data/admission.json",
+      "pointer": "/6/stu_focus/0",
+      "before": "🌙 上課時間：週一至五 18:30-21:30 + 部分假日課程",
+      "after": "上課安排以當學期課表為準，先評估工作與課程時間能否配合。",
+      "source_ids": [
+        "B6"
+      ],
+      "reason": "保留在職受眾實際用途，去掉無來源固定時段。"
+    },
+    {
+      "id": "PROGRAM-stu_focus/0",
+      "lang": "en",
+      "op": "replace",
+      "file": "data/en/admission.json",
+      "pointer": "/6/stu_focus/0",
+      "before": "🌙 Class hours: Monday to Friday 18:30-21:30 + selected weekend courses",
+      "after": "Check the semester timetable before deciding whether classes fit your work schedule.",
+      "source_ids": [
+        "B6"
+      ],
+      "reason": "保留在職受眾實際用途，去掉無來源固定時段。"
+    },
+    {
+      "id": "PROGRAM-stu_focus/0",
+      "lang": "ja",
+      "op": "add",
+      "file": "data/ja/messages.json",
+      "pointer": "/上課安排以當學期課表為準，先評估工作與課程時間能否配合。",
+      "before": null,
+      "after": "仕事と両立できるか、学期ごとの時間割を確認してください。",
+      "legacy_key": "🌙 上課時間：週一至五 18:30-21:30 + 部分假日課程",
+      "legacy_before": "🌙 授業時間：月曜日〜金曜日 18:30-21:30 + 一部休日の授業",
+      "legacy_pointer": "/🌙 上課時間：週一至五 18:30-21:30 + 部分假日課程",
+      "retain_legacy_key": true,
+      "source_ids": [
+        "B6"
+      ],
+      "reason": "保留在職受眾實際用途，去掉無來源固定時段。"
+    },
+    {
+      "id": "PROGRAM-stu_focus/1",
+      "lang": "zh",
+      "op": "replace",
+      "file": "data/admission.json",
+      "pointer": "/6/stu_focus/1",
+      "before": "🏢 與日四技共用實驗室、教師、業界資源",
+      "after": "課程、師資與教學空間請查看本系及進修部當期公告。",
+      "source_ids": [
+        "B6"
+      ],
+      "reason": "共用所有資源無直接來源；改成查證路徑而非保證。"
+    },
+    {
+      "id": "PROGRAM-stu_focus/1",
+      "lang": "en",
+      "op": "replace",
+      "file": "data/en/admission.json",
+      "pointer": "/6/stu_focus/1",
+      "before": "🏢 Shares laboratories, faculty, and industry resources with the Four-Year Day College",
+      "after": "Check current department and continuing education announcements for courses, instructors and teaching spaces.",
+      "source_ids": [
+        "B6"
+      ],
+      "reason": "共用所有資源無直接來源；改成查證路徑而非保證。"
+    },
+    {
+      "id": "PROGRAM-stu_focus/1",
+      "lang": "ja",
+      "op": "add",
+      "file": "data/ja/messages.json",
+      "pointer": "/課程、師資與教學空間請查看本系及進修部當期公告。",
+      "before": null,
+      "after": "授業・担当教員・教室は、本学科と進修部の当期の案内を確認してください。",
+      "legacy_key": "🏢 與日四技共用實驗室、教師、業界資源",
+      "legacy_before": "🏢 昼間部4年制課程と実験実習室、教員陣、業界リソースを共有",
+      "legacy_pointer": "/🏢 與日四技共用實驗室、教師、業界資源",
+      "retain_legacy_key": true,
+      "source_ids": [
+        "B6"
+      ],
+      "reason": "共用所有資源無直接來源；改成查證路徑而非保證。"
+    },
+    {
+      "id": "PROGRAM-stu_focus/2",
+      "lang": "zh",
+      "op": "replace",
+      "file": "data/admission.json",
+      "pointer": "/6/stu_focus/2",
+      "before": "💼 適合：在職動畫師、遊戲業界從業者進修升學、二度就讀者",
+      "after": "在職或再次升學者，先依簡章核對學歷、身分與應備資料。",
+      "source_ids": [
+        "B6"
+      ],
+      "reason": "適合不是資格保證；不泛化所有學制對象。"
+    },
+    {
+      "id": "PROGRAM-stu_focus/2",
+      "lang": "en",
+      "op": "replace",
+      "file": "data/en/admission.json",
+      "pointer": "/6/stu_focus/2",
+      "before": "💼 Suitable for: Working animators, gaming industry professionals seeking advanced degrees, second-degree seekers",
+      "after": "Working applicants and those returning to study should check the guide’s education, applicant-status and document requirements.",
+      "source_ids": [
+        "B6"
+      ],
+      "reason": "適合不是資格保證；不泛化所有學制對象。"
+    },
+    {
+      "id": "PROGRAM-stu_focus/2",
+      "lang": "ja",
+      "op": "add",
+      "file": "data/ja/messages.json",
+      "pointer": "/在職或再次升學者，先依簡章核對學歷、身分與應備資料。",
+      "before": null,
+      "after": "社会人や再進学を希望する方は、募集要項で学歴・身分・提出書類の条件を確認してください。",
+      "legacy_key": "💼 適合：在職動畫師、遊戲業界從業者進修升學、二度就讀者",
+      "legacy_before": "💼 対象：現役アニメーター、ゲーム業界従事者のスキルアップ・進学、学び直し希望者",
+      "legacy_pointer": "/💼 適合：在職動畫師、遊戲業界從業者進修升學、二度就讀者",
+      "retain_legacy_key": true,
+      "source_ids": [
+        "B6"
+      ],
+      "reason": "適合不是資格保證；不泛化所有學制對象。"
+    },
+    {
+      "id": "PROGRAM-stu_focus/3",
+      "lang": "zh",
+      "op": "replace",
+      "file": "data/admission.json",
+      "pointer": "/6/stu_focus/3",
+      "before": "💰 學雜費較日四技略低，可申請助學貸款 + 工讀補助",
+      "after": "學雜費、就學貸款與補助須分別核對當期公告及申請資格。",
+      "source_ids": [
+        "B6"
+      ],
+      "reason": "費用比日間部低及工讀補助承諾未證成，不作金額／資格保證。"
+    },
+    {
+      "id": "PROGRAM-stu_focus/3",
+      "lang": "en",
+      "op": "replace",
+      "file": "data/en/admission.json",
+      "pointer": "/6/stu_focus/3",
+      "before": "💰 Tuition and fees are slightly lower than Four-Year Day College; eligible for student loans + work-study subsidies",
+      "after": "Check current fee schedules, student-loan rules and subsidy eligibility separately.",
+      "source_ids": [
+        "B6"
+      ],
+      "reason": "費用比日間部低及工讀補助承諾未證成，不作金額／資格保證。"
+    },
+    {
+      "id": "PROGRAM-stu_focus/3",
+      "lang": "ja",
+      "op": "add",
+      "file": "data/ja/messages.json",
+      "pointer": "/學雜費、就學貸款與補助須分別核對當期公告及申請資格。",
+      "before": null,
+      "after": "授業料・諸費用、就学ローン、補助制度は、それぞれ当期の案内と申請条件を確認してください。",
+      "legacy_key": "💰 學雜費較日四技略低，可申請助學貸款 + 工讀補助",
+      "legacy_before": "💰 授業料・諸費用は昼間部4年制課程よりやや低く、就学ローン + 学内ワークスタディ補助の申請が可能",
+      "legacy_pointer": "/💰 學雜費較日四技略低，可申請助學貸款 + 工讀補助",
+      "retain_legacy_key": true,
+      "source_ids": [
+        "B6"
+      ],
+      "reason": "費用比日間部低及工讀補助承諾未證成，不作金額／資格保證。"
+    },
+    {
+      "id": "PROGRAM-timeline/0/date",
+      "lang": "zh",
+      "op": "replace",
+      "file": "data/admission.json",
+      "pointer": "/6/timeline/0/date",
+      "before": "依樹德進修部專區公告",
+      "after": "115招生已結束；新年度待公告",
+      "source_ids": [
+        "closed-20261024"
+      ],
+      "reason": "去除像現在可報名的無年度時程。"
+    },
+    {
+      "id": "PROGRAM-timeline/0/date",
+      "lang": "en",
+      "op": "replace",
+      "file": "data/en/admission.json",
+      "pointer": "/6/timeline/0/date",
+      "before": "依樹德進修部專區公告",
+      "after": "AY 115 closed; await the next intake announcement",
+      "source_ids": [
+        "closed-20261024"
+      ],
+      "reason": "去除像現在可報名的無年度時程。"
+    },
+    {
+      "id": "PROGRAM-timeline/0/date",
+      "lang": "ja",
+      "op": "add",
+      "file": "data/ja/messages.json",
+      "pointer": "/115招生已結束；新年度待公告",
+      "before": null,
+      "after": "115学年度は募集終了。次年度の案内を確認",
+      "legacy_key": "依樹德進修部專區公告",
+      "legacy_before": "樹徳科技大学 進修部（夜間・社会人課程）の発表に準ずる",
+      "legacy_pointer": "/依樹德進修部專區公告",
+      "retain_legacy_key": true,
+      "source_ids": [
+        "closed-20261024"
+      ],
+      "reason": "去除像現在可報名的無年度時程。"
+    },
+    {
+      "id": "PROGRAM-timeline/0/label",
+      "lang": "zh",
+      "op": "replace",
+      "file": "data/admission.json",
+      "pointer": "/6/timeline/0/label",
+      "before": "簡章公告 / 報名 / 面試 / 放榜",
+      "after": "查看新年度簡章 → 核對本系名額與資格 → 依公告報名及上傳資料",
+      "source_ids": [
+        "B6",
+        "closed-20261024"
+      ],
+      "reason": "未新增假日期；不保留本系未證成的面試流程。"
+    },
+    {
+      "id": "PROGRAM-timeline/0/label",
+      "lang": "en",
+      "op": "replace",
+      "file": "data/en/admission.json",
+      "pointer": "/6/timeline/0/label",
+      "before": "Prospectus announcement / Registration / Interview / Results announcement",
+      "after": "Check the new guide → Confirm AGD places and eligibility → Follow the announced application and document-upload schedule",
+      "source_ids": [
+        "B6",
+        "closed-20261024"
+      ],
+      "reason": "未新增假日期；不保留本系未證成的面試流程。"
+    },
+    {
+      "id": "PROGRAM-timeline/0/label",
+      "lang": "ja",
+      "op": "add",
+      "file": "data/ja/messages.json",
+      "pointer": "/查看新年度簡章 → 核對本系名額與資格 → 依公告報名及上傳資料",
+      "before": null,
+      "after": "新年度の募集要項を確認 → 本学科の定員・出願資格を確認 → 案内に従って出願・書類提出",
+      "legacy_key": "簡章公告 / 報名 / 面試 / 放榜",
+      "legacy_before": "募集要項発表 / 出願 / 面接 / 合格発表",
+      "legacy_pointer": "/簡章公告 ~1 報名 ~1 面試 ~1 放榜",
+      "retain_legacy_key": true,
+      "source_ids": [
+        "B6",
+        "closed-20261024"
+      ],
+      "reason": "未新增假日期；不保留本系未證成的面試流程。"
+    },
+    {
+      "id": "PROGRAM-fees/apply",
+      "lang": "zh",
+      "op": "replace",
+      "file": "data/admission.json",
+      "pointer": "/6/fees/apply",
+      "before": "報名費依當年度簡章",
+      "after": "依新學年度招生簡章；115學年度招生已結束。",
+      "source_ids": [
+        "B6",
+        "closed-20261024"
+      ],
+      "reason": "不拿115費用推新年度。"
+    },
+    {
+      "id": "PROGRAM-fees/apply",
+      "lang": "en",
+      "op": "replace",
+      "file": "data/en/admission.json",
+      "pointer": "/6/fees/apply",
+      "before": "Application fee per the current academic year prospectus",
+      "after": "Follow the new academic year’s admission guide; AY 115 admissions have closed.",
+      "source_ids": [
+        "B6",
+        "closed-20261024"
+      ],
+      "reason": "不拿115費用推新年度。"
+    },
+    {
+      "id": "PROGRAM-fees/apply",
+      "lang": "ja",
+      "op": "add",
+      "file": "data/ja/messages.json",
+      "pointer": "/依新學年度招生簡章；115學年度招生已結束。",
+      "before": null,
+      "after": "新学年度の募集要項を確認してください。115学年度の募集は終了しています。",
+      "legacy_key": "報名費依當年度簡章",
+      "legacy_before": "出願料は当該年度の募集要項に準ずる",
+      "legacy_pointer": "/報名費依當年度簡章",
+      "retain_legacy_key": true,
+      "source_ids": [
+        "B6",
+        "closed-20261024"
+      ],
+      "reason": "不拿115費用推新年度。"
+    },
+    {
+      "id": "PROGRAM-fees/tuition",
+      "lang": "zh",
+      "op": "replace",
+      "file": "data/admission.json",
+      "pointer": "/6/fees/tuition",
+      "before": "進修部學雜費較日四技略低，依當學期公告，可申請助學貸款",
+      "after": "以當學期學雜費表為準；就學貸款與減免另依資格申請。",
+      "source_ids": [
+        "B6"
+      ],
+      "reason": "刪除未核的費用比較與通通可貸保證。"
+    },
+    {
+      "id": "PROGRAM-fees/tuition",
+      "lang": "en",
+      "op": "replace",
+      "file": "data/en/admission.json",
+      "pointer": "/6/fees/tuition",
+      "before": "Tuition and fees for Continuing Education Division are slightly lower than Four-Year Day College, subject to semester announcement, eligible for student loans",
+      "after": "Follow the semester’s published tuition and fee schedule. Student loans and fee waivers have separate eligibility requirements.",
+      "source_ids": [
+        "B6"
+      ],
+      "reason": "刪除未核的費用比較與通通可貸保證。"
+    },
+    {
+      "id": "PROGRAM-fees/tuition",
+      "lang": "ja",
+      "op": "add",
+      "file": "data/ja/messages.json",
+      "pointer": "/以當學期學雜費表為準；就學貸款與減免另依資格申請。",
+      "before": null,
+      "after": "授業料・諸費用は当該学期の公表額を確認してください。就学ローンや減免は別途申請条件があります。",
+      "legacy_key": "進修部學雜費較日四技略低，依當學期公告，可申請助學貸款",
+      "legacy_before": "進修部の授業料・諸費用は昼間部4年制課程よりやや低く、当該学期の案内に準じます。就学ローンの申請も可能です",
+      "legacy_pointer": "/進修部學雜費較日四技略低，依當學期公告，可申請助學貸款",
+      "retain_legacy_key": true,
+      "source_ids": [
+        "B6"
+      ],
+      "reason": "刪除未核的費用比較與通通可貸保證。"
+    }
+  ],
+  "title_operations": [
+    {
+      "lang": "ja",
+      "op": "replace",
+      "file": "data/ja/messages.json",
+      "pointer": "/助理教授",
+      "before": "助教",
+      "after": "助理教授（台湾の職名／Assistant Professor）",
+      "source_ids": [
+        "dgd-faculty-20261024",
+        "mext-rank-not-equivalence"
+      ],
+      "reason": "日本助教可有Assistant Professor譯名，但並無台日任用等值證明。保留台灣原職、官方英稱，不把臺灣助理教授斷言為日本助教。",
+      "references": [
+        {
+          "file": "data/faculty.json",
+          "pointer": "/1/role",
+          "name": "江雅媚"
+        },
+        {
+          "file": "data/faculty.json",
+          "pointer": "/3/role",
+          "name": "楊智彰"
+        },
+        {
+          "file": "data/faculty.json",
+          "pointer": "/4/role",
+          "name": "陳慶鴻"
+        },
+        {
+          "file": "data/faculty.json",
+          "pointer": "/5/role",
+          "name": "張純雅"
+        },
+        {
+          "file": "data/faculty.json",
+          "pointer": "/6/role",
+          "name": "邱士展"
+        },
+        {
+          "file": "data/faculty.json",
+          "pointer": "/7/role",
+          "name": "陳美蓉"
+        },
+        {
+          "file": "data/faculty.json",
+          "pointer": "/9/role",
+          "name": "王宗立"
+        }
+      ],
+      "generated_reference": {
+        "file": "locale-ja.js",
+        "key": "助理教授",
+        "action": "由建置重產，不手改"
+      }
+    },
+    {
+      "lang": "ja",
+      "op": "replace",
+      "file": "data/ja/messages.json",
+      "pointer": "/助理教授 · 電競娛樂系合聘",
+      "before": "助教・eスポーツエンターテインメント学科との共同任用（原職：助理教授・合聘）",
+      "after": "助理教授（台湾の職名／Assistant Professor）・電競娛樂系との合聘",
+      "source_ids": [
+        "dgd-faculty-20261024",
+        "mext-rank-not-equivalence"
+      ],
+      "reason": "日本助教可有Assistant Professor譯名，但並無台日任用等值證明。保留台灣原職、官方英稱，不把臺灣助理教授斷言為日本助教。",
+      "references": [
+        {
+          "file": "data/faculty.json",
+          "pointer": "/2/role",
+          "name": "陳重光"
+        }
+      ],
+      "generated_reference": {
+        "file": "locale-ja.js",
+        "key": "助理教授 · 電競娛樂系合聘",
+        "action": "由建置重產，不手改"
+      }
+    },
+    {
+      "lang": "ja",
+      "op": "replace",
+      "file": "data/ja/messages.json",
+      "pointer": "/助理教授 · 從聘",
+      "before": "助教・共同任用（本学科は従たる所属）",
+      "after": "助理教授（台湾の職名／Assistant Professor）・従たる所属としての任用（從聘）",
+      "source_ids": [
+        "dgd-faculty-20261024",
+        "mext-rank-not-equivalence"
+      ],
+      "reason": "日本助教可有Assistant Professor譯名，但並無台日任用等值證明。保留台灣原職、官方英稱，不把臺灣助理教授斷言為日本助教。",
+      "references": [
+        {
+          "file": "data/faculty.json",
+          "pointer": "/10/role",
+          "name": "陳寀瑜"
+        }
+      ],
+      "generated_reference": {
+        "file": "locale-ja.js",
+        "key": "助理教授 · 從聘",
+        "action": "由建置重產，不手改"
+      }
+    },
+    {
+      "lang": "ja",
+      "op": "replace",
+      "file": "data/ja/messages.json",
+      "pointer": "/助理教授 · 留職停薪",
+      "before": "助教・無給休職中",
+      "after": "助理教授（台湾の職名／Assistant Professor）・無給休職中",
+      "source_ids": [
+        "dgd-faculty-20261024",
+        "mext-rank-not-equivalence"
+      ],
+      "reason": "日本助教可有Assistant Professor譯名，但並無台日任用等值證明。保留台灣原職、官方英稱，不把臺灣助理教授斷言為日本助教。",
+      "references": [
+        {
+          "file": "data/faculty.json",
+          "pointer": "/12/role",
+          "name": "尹立"
+        }
+      ],
+      "generated_reference": {
+        "file": "locale-ja.js",
+        "key": "助理教授 · 留職停薪",
+        "action": "由建置重產，不手改"
+      }
+    }
+  ],
+  "title_checks": [
+    {
+      "name": "鄧樹遠",
+      "file": "data/faculty.json",
+      "pointer": "/0/role",
+      "before": "系主任 · 副教授",
+      "english_role": "Department Chair · Associate Professor",
+      "source_url": "https://www.dgd.stu.edu.tw/系所成員/",
+      "decision": "retain",
+      "caveat": "現有中文合聘／從聘狀態未被本輪主頁全部證成；保留原有狀態，不另推定新任命"
+    },
+    {
+      "name": "江雅媚",
+      "file": "data/faculty.json",
+      "pointer": "/1/role",
+      "before": "助理教授",
+      "english_role": "Assistant Professor",
+      "source_url": "https://www.dgd.stu.edu.tw/系所成員/",
+      "decision": "Preserve Taiwan rank; change JA display only",
+      "caveat": "現有中文合聘／從聘狀態未被本輪主頁全部證成；保留原有狀態，不另推定新任命"
+    },
+    {
+      "name": "陳重光",
+      "file": "data/faculty.json",
+      "pointer": "/2/role",
+      "before": "助理教授 · 電競娛樂系合聘",
+      "english_role": "Assistant Professor · Joint Appointment with Department of Esports and Entertainment Industries (電競娛樂系合聘) [CHECK]",
+      "source_url": "https://www.dgd.stu.edu.tw/系所成員/",
+      "decision": "Preserve Taiwan rank; change JA display only",
+      "caveat": "現有中文合聘／從聘狀態未被本輪主頁全部證成；保留原有狀態，不另推定新任命"
+    },
+    {
+      "name": "楊智彰",
+      "file": "data/faculty.json",
+      "pointer": "/3/role",
+      "before": "助理教授",
+      "english_role": "Assistant Professor",
+      "source_url": "https://www.dgd.stu.edu.tw/系所成員/",
+      "decision": "Preserve Taiwan rank; change JA display only",
+      "caveat": "現有中文合聘／從聘狀態未被本輪主頁全部證成；保留原有狀態，不另推定新任命"
+    },
+    {
+      "name": "陳慶鴻",
+      "file": "data/faculty.json",
+      "pointer": "/4/role",
+      "before": "助理教授",
+      "english_role": "Assistant Professor",
+      "source_url": "https://www.dgd.stu.edu.tw/系所成員/",
+      "decision": "Preserve Taiwan rank; change JA display only",
+      "caveat": "現有中文合聘／從聘狀態未被本輪主頁全部證成；保留原有狀態，不另推定新任命"
+    },
+    {
+      "name": "張純雅",
+      "file": "data/faculty.json",
+      "pointer": "/5/role",
+      "before": "助理教授",
+      "english_role": "Assistant Professor",
+      "source_url": "https://www.dgd.stu.edu.tw/系所成員/",
+      "decision": "Preserve Taiwan rank; change JA display only",
+      "caveat": "現有中文合聘／從聘狀態未被本輪主頁全部證成；保留原有狀態，不另推定新任命"
+    },
+    {
+      "name": "邱士展",
+      "file": "data/faculty.json",
+      "pointer": "/6/role",
+      "before": "助理教授",
+      "english_role": "Assistant Professor",
+      "source_url": "https://www.dgd.stu.edu.tw/系所成員/",
+      "decision": "Preserve Taiwan rank; change JA display only",
+      "caveat": "現有中文合聘／從聘狀態未被本輪主頁全部證成；保留原有狀態，不另推定新任命"
+    },
+    {
+      "name": "陳美蓉",
+      "file": "data/faculty.json",
+      "pointer": "/7/role",
+      "before": "助理教授",
+      "english_role": "Assistant Professor",
+      "source_url": "https://www.dgd.stu.edu.tw/系所成員/",
+      "decision": "Preserve Taiwan rank; change JA display only",
+      "caveat": "現有中文合聘／從聘狀態未被本輪主頁全部證成；保留原有狀態，不另推定新任命"
+    },
+    {
+      "name": "吳焉昇",
+      "file": "data/faculty.json",
+      "pointer": "/8/role",
+      "before": "講師 · 電競娛樂系合聘",
+      "english_role": "Lecturer · Joint Appointment with Department of Esports and Entertainment Industries (電競娛樂系合聘) [CHECK]",
+      "source_url": "https://www.dgd.stu.edu.tw/系所成員/",
+      "decision": "retain",
+      "caveat": "現有中文合聘／從聘狀態未被本輪主頁全部證成；保留原有狀態，不另推定新任命"
+    },
+    {
+      "name": "王宗立",
+      "file": "data/faculty.json",
+      "pointer": "/9/role",
+      "before": "助理教授",
+      "english_role": "Assistant Professor",
+      "source_url": "https://www.dgd.stu.edu.tw/系所成員/",
+      "decision": "Preserve Taiwan rank; change JA display only",
+      "caveat": "現有中文合聘／從聘狀態未被本輪主頁全部證成；保留原有狀態，不另推定新任命"
+    },
+    {
+      "name": "陳寀瑜",
+      "file": "data/faculty.json",
+      "pointer": "/10/role",
+      "before": "助理教授 · 從聘",
+      "english_role": "Assistant Professor · Secondary Appointment (從聘) [CHECK]",
+      "source_url": "https://www.dgd.stu.edu.tw/系所成員/",
+      "decision": "Preserve Taiwan rank; change JA display only",
+      "caveat": "現有中文合聘／從聘狀態未被本輪主頁全部證成；保留原有狀態，不另推定新任命"
+    },
+    {
+      "name": "蔣天華",
+      "file": "data/faculty.json",
+      "pointer": "/11/role",
+      "before": "副教授 · 從聘",
+      "english_role": "Associate Professor · Secondary Appointment",
+      "source_url": "https://www.dgd.stu.edu.tw/系所成員/",
+      "decision": "retain",
+      "caveat": "官方雙語同列英文Assistant Professor(T)與中文副教授(技)衝突；依中文保留，不自行降等"
+    },
+    {
+      "name": "尹立",
+      "file": "data/faculty.json",
+      "pointer": "/12/role",
+      "before": "助理教授 · 留職停薪",
+      "english_role": "Assistant Professor · On Leave Without Pay (留職停薪) [CHECK]",
+      "source_url": "https://www.dgd.stu.edu.tw/系所成員/",
+      "decision": "Preserve Taiwan rank; change JA display only",
+      "caveat": "現有中文合聘／從聘狀態未被本輪主頁全部證成；保留原有狀態，不另推定新任命"
+    }
+  ],
+  "source_ids": [
+    {
+      "id": "quota-native",
+      "url": "https://reg.aca.stu.edu.tw/【115學年度】招生系所與名額",
+      "layer": "原生Chrome DOM＋兩張表格PNG",
+      "files": [
+        "native-quota.json",
+        "native-quota-row.png",
+        "native-four-year.json",
+        "native-four-year.png"
+      ],
+      "read_scope": "展開核定員額及四技進修部單獨招生；讀全部欄位及動遊系列。AGD進四技30、進二技/二專空白；一般單招30、運動0、產攜0。"
+    },
+    {
+      "id": "closed-native",
+      "url": "https://reg.aca.stu.edu.tw/",
+      "layer": "原生Chrome DOM＋PNG",
+      "files": [
+        "native-home.json",
+        "native-home-ax.txt",
+        "native-closed-statuses.json",
+        "native-home.png"
+      ],
+      "read_scope": "首頁二技／四技／二專進修部各卡片均讀到115學年度招生已結束。"
+    },
+    {
+      "id": "index-native",
+      "url": "https://info.stu.edu.tw/aca/newirs/qryIRSpdf/qryIRSCourse.asp",
+      "layer": "原生Chrome索引＋web open",
+      "files": [
+        "native-prospectus-index.json"
+      ],
+      "read_scope": "讀115欄B6/C5/D1/E7/E8實際PDF連結；E9由同官方索引web click。"
+    },
+    {
+      "id": "B6",
+      "url": "https://info.stu.edu.tw/attachfile/upload/IRS/file/115B6.pdf",
+      "layer": "HTTP200原PDF＋pypdf抽字＋原生頁渲染目視",
+      "files": [
+        "115B6.pdf",
+        "115B6-text.json",
+        "115B6-p9.png"
+      ],
+      "read_scope": "封面、印刷p3報名時程、p4–7資格、p8名額/考項/時間/學位、p11–12應備資料及成績、p19複查考項；非26頁逐頁精讀。",
+      "caveat": "p8考項原生圖亦寫「面資料審查」，保留疑似缺書字瑕疵；同頁書面審查資料、注意事項與後頁應備資料一致，不讀成面試。"
+    },
+    {
+      "id": "D1",
+      "url": "https://info.stu.edu.tw/attachfile/upload/IRS/file/115D1.pdf",
+      "layer": "HTTP200原PDF＋pypdf抽字＋原生頁渲染目視",
+      "files": [
+        "115D1.pdf",
+        "115D1-text.json",
+        "115D1-p5.png"
+      ],
+      "read_scope": "封面、印刷p3、p4全表及資格/學位/時間、p8成績；其餘頁只做詞彙搜尋，不稱25頁全文精讀。"
+    },
+    {
+      "id": "C5",
+      "url": "https://info.stu.edu.tw/attachfile/upload/IRS/file/115C5.pdf",
+      "layer": "HTTP200原PDF＋pypdf抽字＋原生頁渲染目視",
+      "files": [
+        "115C5.pdf",
+        "115C5-text.json",
+        "115C5-p5.png"
+      ],
+      "read_scope": "封面、印刷p3時程、p4全表/上課/書審/副學士、p5報考資格、p12–13應備資料/成績；非27頁全讀。"
+    },
+    {
+      "id": "E7",
+      "url": "https://info.stu.edu.tw/attachfile/upload/IRS/file/115E7.pdf",
+      "layer": "HTTP200原PDF＋pypdf抽字＋原生頁渲染目視",
+      "files": [
+        "115E7.pdf",
+        "115E7-text.json",
+        "115E7-p10.png"
+      ],
+      "read_scope": "封面、印刷p3時程、p4資格、p5–7全部招生班別、p9書面100%、p10報到媒合、p14轉廠面試文字；非25頁全讀。"
+    },
+    {
+      "id": "E8",
+      "url": "https://info.stu.edu.tw/attachfile/upload/IRS/file/115E8.pdf",
+      "layer": "HTTP200原PDF＋pypdf抽字＋原生頁渲染目視",
+      "files": [
+        "115E8.pdf",
+        "115E8-text.json",
+        "115E8-p8.png"
+      ],
+      "read_scope": "封面、印刷p3、p4資格、p5唯一招生科別、p7書面100%、p8報到媒合、p12轉廠面試文字；非23頁全讀。"
+    },
+    {
+      "id": "E9",
+      "url": "https://info.stu.edu.tw/attachfile/upload/IRS/file/115E9.pdf",
+      "layer": "HTTP200原PDF＋web open及pypdf文字",
+      "files": [
+        "115E9.pdf",
+        "115E9-text.json"
+      ],
+      "read_scope": "封面、目錄、印刷p1–3與後續p4招生系別及p6考項；其餘不稱全讀。",
+      "caveat": "休觀系本專班另列41，原生一般表該系產攜只列15，無充分核准文號/範圍說明可將兩數合併或互相覆蓋。本系30與產攜0並無此差異，不推導全校產攜合計。"
+    },
+    {
+      "id": "closed-20261024",
+      "url": "https://reg.aca.stu.edu.tw/",
+      "layer": "官方搜尋正文擷取；直接open403",
+      "read_scope": "115四技進修部及二技／二專均招生已結束，首頁寫請期待116；非即時原生頁",
+      "receipt": "web-research-02.json"
+    },
+    {
+      "id": "dgd-faculty-20261024",
+      "url": "https://www.dgd.stu.edu.tw/系所成員/",
+      "layer": "官方搜尋正文擷取",
+      "read_scope": "逐人中文與英職稱，鄧樹遠主任/副教授；蔣天華雙語衝突保留",
+      "receipt": "web-research-02.json"
+    },
+    {
+      "id": "mext-rank-not-equivalence",
+      "url": "https://www.mext.go.jp/b_menu/shingi/chukyo/chukyo4/003/gijiroku/06062315/006.htm",
+      "layer": "本輪web open全文",
+      "read_scope": "通知記7：不定日本准教授與助教公定英文，英文參考不等於跨國職級等值",
+      "receipt": "web-research-02.json"
+    }
+  ],
+  "input_sha256": [
+    {
+      "file": "data/admission.json",
+      "sha256": "a4b9a35be9b5b96d0783d1e79dda9d684f86565e7e26084415004c2db750123e"
+    },
+    {
+      "file": "data/en/admission.json",
+      "sha256": "aa1b5c3f4706eec932b08a82563407105421990b4c044e2158e085264d18366a"
+    },
+    {
+      "file": "data/ja/messages.json",
+      "sha256": "8f4453cc1398531c31ae2eb1dcf22d382025c6d314c2da39ed14845ab368d946"
+    },
+    {
+      "file": "data/faculty.json",
+      "sha256": "fb90191f0f3f9f3ccdda49b96e25588819c0662f23a11ba0194411581dba8d29"
+    },
+    {
+      "file": "data/en/faculty.json",
+      "sha256": "09e71ed9393f35cebcb5bcd9a5cde5313172890b12a1553ec409e8d461010554"
+    }
+  ],
+  "implementation_notes": [
+    "本提案不刪任何舊JA字典key。中文canonical字串變更後新增JA新key，避免只改原key造成翻譯失聯。",
+    "locale-en.js／locale-ja.js由原建置工具重產；勿把JSON pointer的~1視為一般字元。",
+    "key_notes/1既有本系電話保留；links原有三個URL保留，以免擴大變動。year維持115歷史紀錄，不拿未核116替代。",
+    "英文與日文為審閱翻譯，不是官方逐字譯名／母語簽核。",
+    "官方教師頁部分英中列本身矛盾；不從單一Assistant Professor翻譯推定所有人的任用。"
+  ],
+  "pending": [
+    "部分官方頁直接讀取403；本輪搜尋正文擷取不是即時Chrome完整頁。狀態另有10/23原生收據。",
+    "新年度116是否已有本系簡章／名額，未實讀全部116附件，不提供數字或申請承諾。",
+    "全部處室日文正式名稱未查得；不得以Student Assistance Section推導官方日文職名。",
+    "蔣天華官網中英職稱衝突，保留中文原資料，尚待校方資料更新。"
+  ]
+}
