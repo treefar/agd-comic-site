@@ -29,13 +29,17 @@ const StudentWorkDraw = () => {
     const rect = surface.getBoundingClientRect();inView = rect.bottom > 0 && rect.top < window.innerHeight;sync();updateEnvironment.current = sync;
     const observer = typeof IntersectionObserver === 'undefined' ? null : new IntersectionObserver(entries => {inView = entries[0].isIntersecting;sync();},{threshold:0.05});
     observer?.observe(surface);document.addEventListener('visibilitychange',sync);media.addEventListener?.('change',sync);
-    // Load every poster up front so a slide never flashes the empty frame while its file downloads.
-    catalog.forEach(work => {const preload = new Image();preload.decoding = 'async';preload.src = work.image;});
+    // Preload the other posters one at a time, only after the page has loaded, so they never compete with the app bundle
+    // (2026-10-25: preloading all 8 at once pushed DOMContentLoaded from 3 s to 40 s on simulated 4G).
+    let preloadStopped = false;
+    const preloadNext = i => {if (preloadStopped || i >= catalog.length) return;const img = new Image();img.decoding = 'async';img.onload = img.onerror = () => preloadNext(i + 1);img.src = catalog[i].image;};
+    const startPreload = () => preloadNext(0);
+    if (document.readyState === 'complete') startPreload();else window.addEventListener('load',startPreload,{once:true});
     // Desktop quick links appear from the second screen on: flag while more than half the window still shows the poster frame.
     const root = document.documentElement;
     const markHero = () => {const frame = host.current && host.current.closest('.hero-original-tier'), r = frame && frame.getBoundingClientRect();root.dataset.heroInView = r && r.bottom > window.innerHeight * 0.5 ? 'true' : 'false';};
     markHero();window.addEventListener('scroll',markHero,{passive:true});window.addEventListener('resize',markHero);
-    return () => {engine.destroy();controller.current = null;observer?.disconnect();window.removeEventListener('scroll',markHero);window.removeEventListener('resize',markHero);delete root.dataset.heroInView;document.removeEventListener('visibilitychange',sync);media.removeEventListener?.('change',sync);updateEnvironment.current = () => {};};
+    return () => {preloadStopped = true;window.removeEventListener('load',startPreload);engine.destroy();controller.current = null;observer?.disconnect();window.removeEventListener('scroll',markHero);window.removeEventListener('resize',markHero);delete root.dataset.heroInView;document.removeEventListener('visibilitychange',sync);media.removeEventListener?.('change',sync);updateEnvironment.current = () => {};};
   },[catalog]);
   // 調整模式：引擎建立後才能停在目前這一張（宣告順序在引擎 effect 之後）。
   React.useEffect(() => { if (adjust && controller.current) controller.current.goto(state.index); }, [adjust, catalog]);
