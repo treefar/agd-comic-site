@@ -1,3 +1,11 @@
+## 2026-10-25 最新：8902冤枉汪泡泡上移、競箱團標語框移到右上
+
+- source_agent: claude（Opus 5.5）；TF-GO。前一輪已 commit 61c3c830（codex/poster-mix24，未push）。本輪依使用者要求：冤枉汪左側三個泡泡上移到左上（focus.bubbles:"top"）；競箱團「動畫、遊戲…」標語框移到右上（focus.tagline:"right"）。皆為單張設定，不影響其他海報。
+- 最新 http://127.0.0.1:8902/?lang=zh （.measure-poster-mix-20261024-33-retry5）。重啟：node scripts/serve-local-review.cjs --site=.measure-poster-mix-20261024-33-retry5 --dashboard=holiday-lab/dashboard/out --port=8902
+- 本輪改動未commit／push／發布／main／刪檔，C節未動。
+- 驗證：首屏9組0問題、Console 0；調整模式15/15；單元35/35；全套本輪未跑。儀表板權威 holiday-lab/reports/hero-bubbles-20261025/verification.json。報告 holiday-lab/reports/poster-mix-20261024/r10/REPORT.md。
+- 待使用者：是否commit本輪；競箱團泡泡仍在左下。節日遊戲凍結、無AI生成素材。
+
 ## 2026-10-25 最新：8902套用使用者調整取景、靜態模式移到面板右上
 
 - source_agent: claude（Opus 5.5）；TF-GO。使用者用調整模式匯出5筆取景（TV秀、喀嚓、癒光之音、Dear All Robots、競箱團），已寫入 data/student-work-draw.json 的 focus.manual（原始檔 holiday-lab/reports/poster-mix-20261024/r9/user-adjust-2026-10-25.json）；並要求靜態模式移到資訊面板上方，已移到右上與作品名同列。

@@ -30,3 +30,13 @@ test('framing always fills the frame: protagonist centred when it fits, top kept
  assert.throws(()=>model.compose({ratio:0.7,subject:[0.6,0.4]},1000,500));assert.throws(()=>model.compose({ratio:0,subject:[0.1,0.2]},1000,500));
  assert.doesNotMatch(fs.readFileSync(path.join(root,'student-work-draw.jsx'),'utf8'),/swd-backdrop/);assert.doesNotMatch(fs.readFileSync(path.join(root,'student-work-draw.css'),'utf8'),/contain/);
  console.log('UNFIT '+[...unfit].join(' '));});
+test('optional bubbles placement is valid and wired to the right-side CSS',()=>{const data=JSON.parse(fs.readFileSync(path.join(root,'data/student-work-draw.json'),'utf8'));
+ for(const w of data)if('bubbles' in w.focus)assert.equal(w.focus.bubbles,'top',w.id+' bubbles must be "top"');
+ assert.equal(data.find(w=>w.id==='showcase-07').focus.bubbles,'top');
+ assert.match(fs.readFileSync(path.join(root,'student-work-draw.css'),'utf8'),/\[data-copy-side='right'\]\[data-bubbles='top'\] \.hero-original-highlights\{grid-row:1\/span 2/);
+ assert.match(fs.readFileSync(path.join(root,'student-work-draw.jsx'),'utf8'),/tier\.removeAttribute\('data-bubbles'\)/);});
+test('optional tagline placement is valid and only applies with the title on the left',()=>{const data=JSON.parse(fs.readFileSync(path.join(root,'data/student-work-draw.json'),'utf8'));
+ for(const w of data)if('tagline' in w.focus)assert.equal(w.focus.tagline,'right',w.id+' tagline must be "right"');
+ assert.equal(data.find(w=>w.id==='showcase-02').focus.tagline,'right');
+ const jsx=fs.readFileSync(path.join(root,'student-work-draw.jsx'),'utf8');assert.match(jsx,/focus\.tagline === 'right' && plan\.side === 'left'/);assert.match(jsx,/tier\.removeAttribute\('data-tagline'\)/);
+ assert.match(fs.readFileSync(path.join(root,'student-work-draw.css'),'utf8'),/\[data-copy-side='left'\]\[data-tagline='right'\] \.hero-original-copy>div:nth-child\(3\)\{position:absolute/);});

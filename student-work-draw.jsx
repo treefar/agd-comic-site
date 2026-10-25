@@ -49,7 +49,7 @@ const StudentWorkDraw = () => {
       if (!tier) return;
       const title = tier.querySelector('#hero-title'), focus = catalog[state.index] && catalog[state.index].focus, surface = host.current.querySelector('.swd-surface');
       if (!focus || window.innerWidth < 1181) {
-        tier.removeAttribute('data-copy-side');tier.removeAttribute('data-actions');tier.style.removeProperty('--hero-copy-w');tier.style.removeProperty('--hero-fit-h');if (title) title.style.removeProperty('font-size');
+        tier.removeAttribute('data-copy-side');tier.removeAttribute('data-actions');tier.removeAttribute('data-bubbles');tier.removeAttribute('data-tagline');tier.style.removeProperty('--hero-tagline-dx');tier.style.removeProperty('--hero-copy-w');tier.style.removeProperty('--hero-fit-h');if (title) title.style.removeProperty('font-size');
         surface.removeAttribute('data-fit');surface.removeAttribute('data-manual');tier.removeAttribute('data-fit');if (focus) surface.style.setProperty('--poster-y',focus.y+'%');lastPlan.current = null;return;
       }
       // Fill the first screen: the poster frame ends at the bottom of the window (460–1000px).
@@ -67,7 +67,13 @@ const StudentWorkDraw = () => {
         extent = StudentWorkDrawModel.remapExtent(focus.x,focus.ratio,frame.width,frame.height,geometry);
       } else surface.removeAttribute('data-manual');
       const plan = StudentWorkDrawModel.layout({x:extent},frame.width,0.035,220,manual && manual.side || null);
-      tier.dataset.copySide = plan.side;tier.dataset.actions = plan.actions;tier.style.setProperty('--hero-copy-w',plan.copyWidth+'px');
+      tier.dataset.copySide = plan.side;tier.dataset.actions = plan.actions;
+      if (focus.bubbles === 'top') tier.dataset.bubbles = 'top';else tier.removeAttribute('data-bubbles');
+      // Optional per-poster: with the title on the left, the tagline box moves to the empty top-right corner of the frame.
+      const taglineRight = focus.tagline === 'right' && plan.side === 'left', copyEl = tier.querySelector('.hero-original-copy');
+      if (taglineRight && copyEl) {tier.dataset.tagline = 'right';tier.style.setProperty('--hero-tagline-dx',Math.round(frame.right - frame.width * 0.035 - plan.copyWidth - copyEl.getBoundingClientRect().left)+'px');}
+      else {tier.removeAttribute('data-tagline');tier.style.removeProperty('--hero-tagline-dx');}
+      tier.style.setProperty('--hero-copy-w',plan.copyWidth+'px');
       if (title) {
         title.style.removeProperty('font-size');title.style.setProperty('white-space','nowrap');title.style.setProperty('width','max-content');
         const natural = parseFloat(getComputedStyle(title).fontSize), lineWidth = title.getBoundingClientRect().width;
