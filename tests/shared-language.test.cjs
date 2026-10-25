@@ -14,6 +14,8 @@ test('Canonical Chinese data preserve published updates except reviewed admissio
    const before='「オートクチュール株式会社」',after='「株式会社オートクチュール」';assert.equal(record.content.split(before).length-1,1,'one exact erroneous company name only');record.content=record.content.replace(before,after);
    const historical=expected[16];assert.equal(historical.id,6753);assert.equal(historical.slug,'2025-07-25-japan-hc-internship');
    const oldName='オートクチュール株式会社（Hautecouture Inc.',newName='株式会社オートクチュール（hautecouture Inc.';assert.equal(historical.content.split(oldName).length-1,1);historical.content=historical.content.replace(oldName,newName);
+   // 2026-10-25 使用者確認：《人造人》組員正確為「陳政名」
+   for(const r of expected)if(typeof r.content==='string'&&r.content.includes('陳政民'))r.content=r.content.split('陳政民').join('陳政名');
    assert.deepEqual(JSON.parse(current),expected,'only the verified Japanese partner name may change; all other news facts and records remain protected');continue;
   }
   if(file!=='admission.json'){assert.equal(hash(current),digest,file);continue;}
