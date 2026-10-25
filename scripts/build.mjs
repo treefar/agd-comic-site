@@ -116,7 +116,21 @@ for (const name of fs.readdirSync(ROOT)) {
   if (!["data", "images", "styles.css", "student-guide.css", "faculty-portrait.css", "holiday-home.css", "student-work-draw.css", ".nojekyll"].includes(name)) continue;
   fs.cpSync(path.join(ROOT, name), path.join(DIST, name), { recursive: true });
 }
-// Preserve temporary build output for this review's reproducibility.
+// 5) 公開版資料過濾（只改 dist/ 副本，原始資料不動）：拿掉內部查證欄位與翻譯工作標記 [CHECK]
+if (!REVIEW_BUILD.includes("true")) {
+  const guideFile = path.join(DIST, "data/students/guide.json");
+  if (fs.existsSync(guideFile)) {
+    const strip = x => Array.isArray(x) ? x.map(strip) : x && typeof x === "object" ? Object.fromEntries(Object.entries(x).filter(([k]) => k !== "evidence_path" && k !== "http_recheck").map(([k, v]) => [k, strip(v)])) : x;
+    const guide = strip(JSON.parse(fs.readFileSync(guideFile, "utf8")));
+    guide.publication_status = "public";
+    fs.writeFileSync(guideFile, JSON.stringify(guide, null, 2) + "\n");
+  }
+  const unmark = x => typeof x === "string" ? x.replace(/\s*\[CHECK\]/g, "") : Array.isArray(x) ? x.map(unmark) : x && typeof x === "object" ? Object.fromEntries(Object.entries(x).map(([k, v]) => [k, unmark(v)])) : x;
+  for (const f of fs.readdirSync(path.join(DIST, "data/en")).filter(f => f.endsWith(".json"))) {
+    const file = path.join(DIST, "data/en", f), text = fs.readFileSync(file, "utf8");
+    if (text.includes("[CHECK]")) fs.writeFileSync(file, JSON.stringify(unmark(JSON.parse(text)), null, 2) + "\n");
+  }
+}
 
 const kb = (n) => (n / 1024).toFixed(1) + " KB";
 console.log(`[build] 完成：${path.relative(ROOT, DIST)}/index.html ${kb(Buffer.byteLength(html))}、${bundleName} ${kb(fs.statSync(path.join(DIST, bundleName)).size)}`);

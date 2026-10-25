@@ -75,7 +75,7 @@ const StudentGuideDetail = () => {
         {!cards.length&&<p className="sg-empty">目前的篩選沒有相關問題。</p>}
       </section>
       <aside className="sg-bottom-note"><strong>還是不知道找誰？</strong><p>把「入學年度、班別、要辦的事」一起告訴系辦，協助你確認承辦窗口。</p><a href="tel:076158000,6102">動遊系辦 · 07-6158000 分機 6102 ↗</a></aside>
-      <p className="sg-editor-note">依學校及系所官方資料整理，閱讀限制已附在各項來源；尚未取得的當期規定保留提醒。本頁為審閱版本。</p>
+      <p className="sg-editor-note">依學校及系所官方資料整理，閱讀限制已附在各項來源；尚未取得的當期規定保留提醒。</p>
       <ChapterNext to="#hero" num="00" title="回首頁" hint="HOME" />
     </div>
   </main>;
