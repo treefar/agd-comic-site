@@ -1,0 +1,29 @@
+{
+  "tool": "Claude 內建瀏覽器（mcp__Claude_Browser），javascript_tool 讀 DOM；數值為工具實際回傳",
+  "observed_date": "2026-10-24",
+  "site": ".measure-poster-mix-20261024-03",
+  "port": 8900,
+  "desktop_1440x900": {
+    "method": "從頁頂每 50px 捲動、直到面板離開畫面（29 步），每步對 抽一件作品／暫停輪播／靜態模式 三個控制項中心做 elementFromPoint",
+    "zh": {"blocked": [], "steps": 29, "headerCta": ["我適合哪個管道 →", "#/guide/start"], "joinButtons": ["3 題找出入學管道 →", "LINE 聯絡系主任"], "fonts": {"credits": "12px", "motion": "12px", "button": "13px"}, "heroSpeedlines": "0.06", "navLineDisplay": "none", "pausedNote": false, "overflowX": false},
+    "en": {"blocked": [], "steps": 29, "headerCta": ["FIND MY ADMISSIONS PATHWAY →", "#/guide/start"], "joinButtons": ["FIND A PATHWAY IN THREE QUESTIONS →", "CONTACT THE CHAIR ON LINE"], "fonts": {"credits": "12px", "motion": "12px", "button": "13px"}, "overflowX": false},
+    "ja": {"blocked": [], "steps": 29, "headerCta": ["自分に合った入試方式を探す →", "#/guide/start"], "joinButtons": ["3問でわかる入試方式診断 →", "LINEで学科長に相談"], "fonts": {"credits": "12px", "motion": "12px", "button": "13px"}, "overflowX": false},
+    "result": "yes"
+  },
+  "desktop_1366x768_en": {
+    "top": {"attr": "true", "pointerEvents": "none", "runningTransitions": ["opacity:running", "visibility:running"]},
+    "blocked_scan": [],
+    "limit": "此尺寸在窗格縮放模擬下 window.scrollTo 不生效（scrollY 恆為 0），只驗到頁頂；浮動鈕 visibility 因窗格未在前景、過場動畫停在 running 而仍讀到 visible，但 pointer-events:none 已命中規則",
+    "result": "partial"
+  },
+  "intersection_observer_note": "第一版用 IntersectionObserver，窗格內 callback 1.5 秒內未觸發（實測 fired=false），屬性從未設定、靜態模式被擋；改為載入＋scroll/resize 直接量 getBoundingClientRect，第二輪通過。第一版 8899 收據不升格。",
+  "mobile_375x812_zh": {"menuOpen": true, "lineText": "LINE 聯絡系主任", "lineHref": "https://line.me/ti/p/~treefar", "lineVisible": true, "joinInMenu": true, "speedlines": "0.06", "credits": "13px", "overflowX": false, "screenshot_note": "選單底部綠色 LINE；背後海報（葛柏TV秀）清楚可辨", "result": "yes"},
+  "guide_1440x900": {
+    "zh": {"searchTop": 485, "searchVisibleNoScroll": true, "blueShortcuts": 0, "shortcutBg": ["rgb(244, 236, 216)"], "reviewBar": true, "請假 公假": 1, "獎學金": 3, "多益": 1, "宿舍": 0, "emptyShown": true, "clear": 15},
+    "en": {"label": "Search Information", "placeholder": "Enter a question or keyword", "searchTop": 474, "leave": 4, "獎學金": 3, "jump": "Showing 3／15 items of information ↓", "overflowX": false},
+    "ja": {"label": "情報を検索", "searchTop": 480, "休暇": 1, "jump": "表示 1／15 件の情報 ↓", "overflowX": false},
+    "before_fable_measure": "搜尋框原在 y=1157（fable-advice.md 量測紀錄）",
+    "result": "yes"
+  },
+  "not_tested": ["實體手機", "母語審閱", "完整 WCAG", "Console 錯誤逐頁", "1366×768 捲動中段", "減動態全站總開關（使用者本輪未選）"]
+}

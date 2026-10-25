@@ -412,6 +412,10 @@ const FlowArrow = ({ d, color = "#0f0d0a", style = {} }) => (
   </svg>
 );
 
+// 招生期間開關：115 各管道已結束、116 簡章未公布時為 false，頂欄改導「我適合哪個管道」測驗；
+// 116 簡章公布後改成 true，頂欄恢復「立即報名 →」連到 #join。
+const ADMISSION_OPEN = false;
+
 // Topnav — 選單採頁內錨點，點選即捲動到對應章節
 const TopNav = () => {
   const items = [
@@ -457,6 +461,8 @@ const TopNav = () => {
           color: "var(--accent-yellow)", letterSpacing: "0.08em",
           fontFamily: "'Bangers',sans-serif", fontWeight: 900
         }}>🌐 {{zh:'中文',en:'EN',ja:'日本語'}[language]}</a>)}
+        {/* 手機／平板選單才顯示：頂欄報名鈕在窄螢幕被隱藏，這裡補一個可直接聯絡的入口 */}
+        <a className="nav-mobile-only" href={LINE_URL} target="_blank" rel="noopener" style={{ color: "#06C755", fontWeight: 900 }}>LINE 聯絡系主任</a>
       </nav>
       {/* 手機／平板使用展開選單；桌面完整導覽另排一列（CSS 控制） */}
       <button
@@ -468,12 +474,12 @@ const TopNav = () => {
       >
         <span /><span /><span />
       </button>
-      <a href="#join" title="查看所有招生管道 — 申請入學 / 甄選入學 / 科技繁星 / 技優甄審 / 登記分發" style={{
+      <a href={ADMISSION_OPEN ? "#join" : "#/guide/start"} title="查看所有招生管道 — 申請入學 / 甄選入學 / 科技繁星 / 技優甄審 / 登記分發" style={{
         background: "var(--accent-red)", color: "#fff", padding: "8px 14px",
         textDecoration: "none", border: "3px solid var(--paper)",
         boxShadow: "3px 3px 0 var(--paper)", fontFamily: "'Noto Sans TC',sans-serif",
         fontWeight: 900, fontSize: 14, letterSpacing: "0.04em", transform: "rotate(-2deg)"
-      }}>立即報名 →</a>
+      }}>{ADMISSION_OPEN ? "立即報名 →" : "我適合哪個管道"}{ADMISSION_OPEN ? null : " →"}</a>
     </header>
   );
 };

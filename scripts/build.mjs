@@ -16,6 +16,8 @@ if (!process.argv.includes('--local-review')) {
 const DEV = process.argv.includes("--dev");
 const DIST = path.join(ROOT, process.argv.find(a => a.startsWith('--out='))?.slice(6) || (DEV ? ".build-dev" : "dist"));
 const NODE_ENV = JSON.stringify(DEV ? "development" : "production");
+// 審閱建置才顯示「審閱稿／尚未上線」等內部提示；將來公開建置會自動拿掉
+const REVIEW_BUILD = JSON.stringify(process.argv.includes('--local-review'));
 const TMP = path.join(ROOT, ".build-tmp");
 
 // 載入順序必須和 index.html 的 text/babel script 一致（彼此靠全域名稱串接）
@@ -62,7 +64,7 @@ await build({
   ...common,
   stdin: { contents: SERVER_PRELUDE + body + SERVER_EPILOGUE, loader: "jsx", resolveDir: ROOT, sourcefile: "ssr-entry.jsx" },
   platform: "node", format: "cjs",
-  define: { "process.env.NODE_ENV": NODE_ENV },
+  define: { "process.env.NODE_ENV": NODE_ENV, "globalThis.AGD_REVIEW_BUILD": REVIEW_BUILD },
   outfile: path.join(TMP, "ssr.cjs"),
 });
 const { renderApp } = createRequire(import.meta.url)(path.join(TMP, "ssr.cjs"));
@@ -74,7 +76,7 @@ const result = await build({
   ...common,
   stdin: { contents: CLIENT_PRELUDE + body, loader: "jsx", resolveDir: ROOT, sourcefile: "client-entry.jsx" },
   platform: "browser", format: "iife", target: ["es2019"], minify: !DEV,
-  define: { "process.env.NODE_ENV": NODE_ENV },
+  define: { "process.env.NODE_ENV": NODE_ENV, "globalThis.AGD_REVIEW_BUILD": REVIEW_BUILD },
   entryNames: "app-[hash]", outdir: DIST, write: true, metafile: true,
 });
 const bundleName = path.basename(Object.keys(result.metafile.outputs).find((o) => o.endsWith(".js")));

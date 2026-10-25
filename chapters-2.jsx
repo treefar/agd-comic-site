@@ -749,6 +749,11 @@ const JoinChapter = () => (
               <div style={{ fontSize: 13, color: "var(--ink)", background: "var(--accent-yellow)", marginTop: 14, fontWeight: 800, maxWidth: 460, lineHeight: 1.5, padding: "6px 10px", border: "3px solid var(--ink)" }}>
                 115 學年度招生已結束，116 學年度簡章公布後更新；右側為 115 學年度資料，供參考。
               </div>
+              {/* 招生關閉期間先給可以馬上做的事，不寫任何未公布日期 */}
+              <div className="join-now-actions" style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 14, maxWidth: 460 }}>
+                <a href="#/guide/start" style={{ flex: "1 1 180px", textAlign: "center", textDecoration: "none", background: "var(--paper)", color: "var(--ink)", border: "3px solid var(--ink)", boxShadow: "3px 3px 0 var(--ink)", padding: "10px 12px", fontWeight: 900, fontSize: 15, lineHeight: 1.3 }}>3 題找出入學管道 →</a>
+                <a href={LINE_URL} target="_blank" rel="noopener" style={{ flex: "1 1 180px", textAlign: "center", textDecoration: "none", background: "#06C755", color: "#fff", border: "3px solid var(--ink)", boxShadow: "3px 3px 0 var(--ink)", padding: "10px 12px", fontWeight: 900, fontSize: 15, lineHeight: 1.3 }}>LINE 聯絡系主任</a>
+              </div>
             </div>
           </Panel>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--gutter)" }}>

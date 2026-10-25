@@ -1,0 +1,15 @@
+{
+  "tool": "Claude 內建瀏覽器（mcp__Claude_Browser），javascript_tool 讀 DOM；數值為工具實際回傳，非手填推測",
+  "observed_date": "2026-10-24",
+  "site": ".measure-poster-mix-20261024-01",
+  "port": 8898,
+  "cases": [
+    {"case": "zh-1440x900 輪播一圈", "seenIds": ["showcase-03","showcase-05","obsessive-reality","showcase-01","showcase-04","showcase-02","showcase-07","showcase-06"], "unique": 8, "hasXiaosa": false, "imgOk": true, "sideXiaosaKept": true, "result": "yes"},
+    {"case": "zh-1440x900 停在癡迷的現實＋暫停", "id": "obsessive-reality", "pauseButton": "繼續輪播", "screenshot_note": "海報滿版、主標可讀；右下浮動快捷鈕壓到面板角落（既有問題，Fable 建議第2條）", "result": "yes"},
+    {"case": "en-375x812", "lang": "en", "overflowX": false, "preview": "Eight student works · select one to explore", "title": "Garble TV Show", "result": "yes"},
+    {"case": "ja-375x812 實際點抽選", "lang": "ja", "overflowX": false, "phase": "settled", "id": "showcase-02", "title": "競箱團", "credits": "制作チーム：林祐嬋 · 陳姵妏 · 吳柏邵 · 沈宗賢 · 王妤宸", "link": "#/news/2026-04-29-awards-showcase/work-02", "result": "yes"},
+    {"case": "en-375 海報與頁框比例 8897 vs 8898", "8897": {"poster": [356,1009], "tier": [351,1004]}, "8898": {"poster": [356,973], "tier": [351,968]}, "note": "兩版海報都比頁框多 5px 邊框重疊，關係相同；先前 posterCoversFrame=false 是量法，不是退步", "result": "yes"}
+  ],
+  "not_tested": ["zh-390 手機截圖未另存", "實體手機", "母語審閱", "完整 WCAG", "Console 錯誤數未逐頁讀取"],
+  "remote_dependency": "癡迷的現實海報為 YouTube maxresdefault 遠端圖（與 data/news.json 既有縮圖同一影片，未下載進 repo）；斷線時元件顯示既有的「海報暫時無法載入」文字與作品連結"
+}

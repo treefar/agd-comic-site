@@ -102,9 +102,7 @@ const HolidayHome = ({placement='hero'}={}) => {
   </div>}
   {gamesOnly&&<div className="festival-copy">
    <h2 id="student-play-title" className="h-display">{words('創作試玩','Creative Playtests','創作の試遊')}</h2>
-   <p className="student-curation-entry"><a id="student-curation-start" href={`holiday-lab/student-curation.html?lang=${siteLanguage}`}>{words('試做一場小型策展','Try a small curation exercise','小さな展示を組んでみよう')} <span aria-hidden="true">→</span></a></p>
-   <p id="festival-paused-note" className="festival-review-note">{words('節日試作暫緩。','Seasonal prototypes are on hold.','季節の試作は休止中です。')}</p>
-  </div>}
+   <p className="student-curation-entry"><a id="student-curation-start" href={`holiday-lab/student-curation.html?lang=${siteLanguage}`}>{words('試做一場小型策展','Try a small curation exercise','小さな展示を組んでみよう')} <span aria-hidden="true">→</span></a></p>  </div>}
   {!gamesOnly&&<nav className="hero-highlights" aria-label={words('系所亮點','Department highlights','学科の特徴')}>
    <a href="#about">{words('全台第一所動畫與遊戲科系','Taiwan’s first animation and game department','台湾初のアニメ・ゲーム学科')}</a>
    <a href="#/stats/international">{words('日本海外實習・第9屆','Japan internships · ninth cohort','日本での海外実習・第9期')}</a>

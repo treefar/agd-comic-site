@@ -1,0 +1,25 @@
+{
+  "tool": "Claude 內建瀏覽器（mcp__Claude_Browser），javascript_tool 讀 DOM；數值為工具實際回傳",
+  "observed_date": "2026-10-24",
+  "site": ".measure-poster-mix-20261024-08",
+  "port": 8902,
+  "method": "每張海報停格後強制完成動畫，量標題字實際範圍、文字區、按鈕區、右下面板在畫面框內的位置；通過條件＝標題伸進主體範圍≤0.03、標題在畫面框內、文字區／按鈕區／右下面板兩兩不重疊（腳本 r3/layout-probe.js）",
+  "desktop_1440x900": {
+    "zh": {"n": 8, "allOk": true, "title_font_px": {"showcase-06": 76, "showcase-03": 82, "dragon-before-us-2023": 73, "obsessive-reality": 82, "showcase-01": 115.2, "showcase-04": 115.2, "showcase-02": 76, "fumo-2023": 53}, "fumo_title_into_subject": 0.023},
+    "en": {"n": 8, "allOk": true, "title_font_px": {"showcase-06": 45, "showcase-03": 49, "dragon-before-us-2023": 43, "obsessive-reality": 49, "showcase-01": 76.32, "showcase-04": 76.32, "showcase-02": 45, "fumo-2023": 40}, "note": "最小 40px 為程式設定的字級下限"},
+    "ja": {"n": 8, "allOk": true, "title_font_px": {"showcase-06": 75, "showcase-03": 81, "dragon-before-us-2023": 72, "obsessive-reality": 81, "showcase-01": 106.56, "showcase-04": 106.56, "showcase-02": 75, "fumo-2023": 53}},
+    "result": "yes"
+  },
+  "desktop_1280x720_zh": {"n": 8, "allOk": false, "fail": {"id": "fumo-2023", "titleIntoSubject": 0.032, "limit": 0.03}, "note": "未過 0.03 門檻 0.002（約 2px），未放寬門檻；其餘 7 張通過", "result": "no（1 張邊際未過）"},
+  "mobile_375x812_zh": {"overflowX": false, "copySideAttr": null, "heroTitleFont": "56px", "objectPosition": "47.6% 35%", "posterMx": "47.6%", "note": "避讓只在 ≥1181px 啟用；手機用 --poster-mx 裁切位置", "result": "yes"},
+  "screenshots_viewed": ["dragon-before-us-2023", "showcase-01", "showcase-06", "showcase-03", "obsessive-reality", "showcase-04", "showcase-02", "fumo-2023"],
+  "screenshot_findings": "龍戰於前：臉完整、標題左上、按鈕疊下；癒光之音：大臉右側完整、標題左側放大；今食堂／葛柏TV：臉完整、標題在左；癡迷的現實：標題在左格、主角中央、PRESS START 在右；Dear All Robots：標題左上、機器人右側完整；競箱團與伏末：標題靠右、按鈕改到左側。",
+  "process_notes": [
+    "第一版用吸睛度重心＋模擬找最佳排法，被蓋比例只從 34% 降到 31%，不採用；改為縮小＋靠邊",
+    "吸睛度重心把龍戰於前裁到只剩下巴（臉不見），改為看圖指定主視覺位置（y／x），mobileX 仍用分析值",
+    "標題靠右時按鈕疊在標題下會壓到右下面板，改為靠右時按鈕一律放左側",
+    "窗格閒置時不出畫面幀：WAAPI 動畫停在 opacity 0，截圖看起來標題淡淡的；等頁面跑幀後即清楚（getAnimations 歸零、opacity 1）。檢查腳本因此不用 requestAnimationFrame",
+    "浮點數誤差曾讓『兩側空位一樣寬』隨機選右側，已加容差並由單元測試覆蓋"
+  ],
+  "not_tested": ["實體手機", "母語審閱", "完整 WCAG", "Console 錯誤逐頁", "1366×768 以外的桌面寬度（1180–1279、1441 以上）", "使用者實機 Chrome 的動畫實際觀感（本窗格閒置時不出畫面幀）"]
+}

@@ -1,3 +1,106 @@
+## 2026-10-25 最新：8902套用使用者調整取景、靜態模式移到面板右上
+
+- source_agent: claude（Opus 5.5）；TF-GO。使用者用調整模式匯出5筆取景（TV秀、喀嚓、癒光之音、Dear All Robots、競箱團），已寫入 data/student-work-draw.json 的 focus.manual（原始檔 holiday-lab/reports/poster-mix-20261024/r9/user-adjust-2026-10-25.json）；並要求靜態模式移到資訊面板上方，已移到右上與作品名同列。
+- 最新 http://127.0.0.1:8902/?lang=zh ，調整模式 ?lang=zh&adjust=1 （.measure-poster-mix-20261024-31）。重啟：node scripts/serve-local-review.cjs --site=.measure-poster-mix-20261024-31 --dashboard=holiday-lab/dashboard/out --port=8902
+- 分支 codex/poster-mix24，未commit／push／發布／main／刪檔，C節未動。
+- 驗證：首屏9組0問題、Console 0；調整模式15/15；單元22/22、指南11/11；全套68/71（3既有失敗）；儀表板18/18，權威 holiday-lab/reports/hero-user-adjust-20261025/verification.json。報告 holiday-lab/reports/poster-mix-20261024/r9/REPORT.md。
+- 待使用者：是否commit；冤枉汪、今食堂、癡迷的現實仍為自動取景。節日遊戲凍結、無AI生成素材。
+
+## 2026-10-25 最新：8902調整模式（?adjust=1）、Robots／冤枉汪取景、泡泡位置
+
+- source_agent: claude（Opus 5.5）；TF-GO。使用者要求：Robots機器人整個人、冤枉汪窗台貓頭出現；要一個調整模式可逐張手動調位置與大小；選項題結果為不縮小、不留空白。
+- 最新 http://127.0.0.1:8902/?lang=zh ，調整模式 http://127.0.0.1:8902/?lang=zh&adjust=1 （.measure-poster-mix-20261024-29-retry4／app-7OT6BK5U.js）。重啟：node scripts/serve-local-review.cjs --site=.measure-poster-mix-20261024-29-retry4 --dashboard=holiday-lab/dashboard/out --port=8902
+- 調整模式：拖曳＋放大(100–300%)＋左右上下位置＋強制標題靠左右；草稿存localStorage；複製設定後用 node scripts/apply-poster-adjust.cjs <檔> 寫入 data/student-work-draw.json 的 focus.manual。說明 holiday-lab/POSTER-ADJUST-HOWTO.md。
+- 分支 codex/poster-mix24，未commit／push／發布／main／刪檔，C節未動。泡泡移到標題下方；標題靠右時排左側。
+- 建置偶發 locale-en.js errno -4094（Windows 暫時打不開）：新增 scripts/build-review-retry.cjs 自動重試；第29版第4次成功。
+- 驗證：Playwright調整模式15/15、首屏9組0問題；單元抽選13／調整9／指南11；全套68/71（3既有失敗）；儀表板18/18，權威 holiday-lab/reports/hero-adjust-20261025/verification.json。報告 holiday-lab/reports/poster-mix-20261024/r8/REPORT.md。
+- 待使用者：Robots腿下半仍被右下面板擋到、冤枉汪小狗背被泡泡壓到——可用調整模式自己調；是否commit。節日遊戲凍結、無AI生成素材。
+
+## 2026-10-25 最新：8902三張依使用者指定調取景（全臉）
+
+- source_agent: claude（Opus 5.5）；TF-GO。使用者指定：癒光之音右方角色看到全臉、競箱團右方人臉出現、TV秀中心角色全臉（不換海報）。
+- 最新 http://127.0.0.1:8902/?lang=zh （.measure-poster-mix-20261024-21）。重啟：node scripts/serve-local-review.cjs --site=.measure-poster-mix-20261024-21 --dashboard=holiday-lab/dashboard/out --port=8902
+- 改 data/student-work-draw.json 三筆 focus（subject；競箱團另改水平範圍使標題靠左）。分支 codex/poster-mix24，未commit／push／發布／main／刪檔，C節未動。
+- 驗證：1440與1920截圖三張全臉完整（holiday-lab/reports/poster-mix-20261024/r4/pw-run-04/）；Playwright 9組首屏0問題、Console 0；單元13/13、指南11/11、全套59/62（3既有失敗）；儀表板18/18，權威 holiday-lab/reports/hero-faces-20261025/verification.json。
+- 仍待使用者：Dear All Robots腿被面板擋、冤枉汪窗台貓頭被切；是否commit。節日遊戲凍結、無AI生成素材。
+
+## 2026-10-25 最新：8902回到滿版裁切（不縮小、不模糊底）
+
+- source_agent: claude（Opus 5.5）；TF-GO。使用者裁定：不要整張縮小＋模糊底，回到整張滿版、只取部分畫面；切不好的告訴使用者，由使用者換海報。
+- 最新 http://127.0.0.1:8902/?lang=zh （.measure-poster-mix-20261024-20／app-3IXDAG4I.js）。8897原版保留。重啟：node scripts/serve-local-review.cjs --site=.measure-poster-mix-20261024-20 --dashboard=holiday-lab/dashboard/out --port=8902
+- 分支 codex/poster-mix24，未commit／push／發布／main／刪檔，C節未動。compose()一律滿版；主角放不進時從主角頂端取景。其餘保留：8件、面板右下、快捷鈕第二畫面、泡泡左下單列、預先載入。
+- 切不好待使用者決定（1440×900）：癒光之音小角色被泡泡擋、Dear All Robots腿與手提箱被面板擋、冤枉汪窗台貓頭被切。較寬畫面（1920×1080）時更多張主角放不進。
+- 驗證：Playwright pw-run-03 9組首屏0問題、快捷鈕正確、Console 0；單元13/13、指南11/11、全套59/62（3既有失敗）；儀表板18/18，權威 holiday-lab/reports/hero-cover-20261025/verification.json。報告 holiday-lab/reports/poster-mix-20261024/r6/REPORT.md。
+- 下一輪第一件事：使用者看8902，決定換哪些海報、是否commit。節日遊戲凍結、無AI生成素材。
+
+## 2026-10-25 最新：8902自動構圖主角不被切、8件、面板右下、快捷鈕第二畫面
+
+- source_agent: claude（Opus 5.5）；TF-GO。使用者要求：龍戰於前不要；TV秀閃兩次；其他頁重新構圖、主角不要被切；作品資訊面板固定第一畫面右下；快捷按鈕從第二畫面開始；亮點泡泡被切。
+- 最新 http://127.0.0.1:8902/?lang=zh （.measure-poster-mix-20261024-19／app-FQ6535DV.js）。8897原版保留。重啟：node scripts/serve-local-review.cjs --site=.measure-poster-mix-20261024-19 --dashboard=holiday-lab/dashboard/out --port=8902
+- 分支 codex/poster-mix24，未commit／push／發布／main／刪檔，C節未動。輪播8件：今食堂、葛柏TV秀、癡迷的現實、喀嚓、癒光之音、Dear All Robots、競箱團、冤枉汪。
+- 構圖：student-work-draw-model.js compose()，依每張focus.subject（主角上下範圍）與畫面比例，放得進就滿版置中，否則整張完整顯示，兩側用同一張圖模糊放大填邊（CSS效果，非新繪圖；使用者可改純色）。
+- TV秀：24秒取樣每張一輪各一次，無重複；已加海報預先載入、構圖改在繪製前套用以消除閃動。
+- 驗證：Playwright背景真瀏覽器（holiday-lab/reports/poster-mix-20261024/r4/pw-verify.cjs，結果pw-run-02）9組尺寸語言首屏0重疊0裁切、快捷鈕首屏隱藏捲過後出現、Console 0；8張截圖目視主角完整（修正Robots頭、喀嚓耳朵）；單元13/13、指南11/11、全套59/62（3既有失敗）；儀表板18/18，權威 holiday-lab/reports/hero-compose-20261025/verification.json。
+- 報告 holiday-lab/reports/poster-mix-20261024/r5/REPORT.md。節日遊戲凍結、Flora／胖倉鼠暫緩、無AI生成素材。
+- 下一輪第一件事：使用者看8902決定是否commit；模糊填邊是否改純色；英日頂欄、手機版待定。
+
+## 2026-10-25 最新：8902修正快捷按鈕被隱藏與元素重疊，中文頂欄一列到1181
+
+- source_agent: claude（Opus 5.5）；TF-GO。使用者回報：有些頁面元素重疊、有些不見；頂欄還沒調緊湊；伏末拿掉。
+- 最新 http://127.0.0.1:8902/?lang=zh （.measure-poster-mix-20261024-16／app-IE4IYQZL.js）。8897原版保留。重啟：node scripts/serve-local-review.cjs --site=.measure-poster-mix-20261024-16 --dashboard=holiday-lab/dashboard/out --port=8902
+- 分支 codex/poster-mix24，未commit／push／發布／main／刪檔，C節未動。
+- 不見的原因是我自己造成：上一階段為了不擋「靜態模式」勾選框，把右側四顆快捷按鈕在海報面板出現時隱藏，違背使用者先前「恢復右側隨頁面快捷」。已改為快捷按鈕常駐，作品資訊面板往左讓開。
+- 頂欄：中文一列門檻降到1181寬（1181–1279縮小間距），1265與1181中文79px一列；英日在1280–1599仍兩列（英文≥1600、日文≥1480才一列），尚未處理。
+- 伏末：8902實際送出9件、不含伏末，no-store，建置檔無fumo-2023；請使用者重新整理。fumo.jpg檔案保留。
+- 驗證：首屏元件逐張停格檢查，zh 1920／1440／1366／1280／1181、en 1920／1440、ja 1440共9張海報0重疊0消失；平板1100／1024首屏0重疊（截圖逾時）；單元12/12、指南11/11、全套58/61（3既有失敗）；儀表板53列47yes／6no／使用者0、18/18，權威 holiday-lab/reports/hero-recheck-b-20261025/verification.json。
+- 錯誤紀錄：建置結束碼曾被管線吃掉；更新腳本曾被字串替換截斷；重跑覆寫了已綁SHA的證據檔（改用新資料夾）。詳 holiday-lab/reports/poster-mix-20261024/r4/REPORT.md。
+- 下一輪第一件事：請使用者看8902並決定是否commit；英日頂欄是否再壓縮、手機海報區塞滿第一畫面。節日遊戲凍結、Flora／胖倉鼠暫緩、無AI生成素材。
+
+## 2026-10-24 最新：8902海報首頁精簡、塞滿第一畫面、輪播9件
+
+- source_agent: claude（Opus 5.5）；TF-GO。使用者裁定：拿掉集中線、碰！、PRESS START、頂上泡泡與CH.01章節章，保留標題、說明與底部亮點泡泡；拿掉伏末、放回喀嚓與冤枉汪；頂欄更緊湊；第一個畫面要看到整張海報區。
+- 最新 http://127.0.0.1:8902/?lang=zh （.measure-poster-mix-20261024-13／app-ZS4KSQ2D.js）。8897原版保留。重啟：node scripts/serve-local-review.cjs --site=.measure-poster-mix-20261024-13 --dashboard=holiday-lab/dashboard/out --port=8902
+- 分支 codex/poster-mix24，未commit／push／發布／main／刪檔，C節未動。裝飾以CSS display:none隱藏，原始碼保留；fumo.jpg不再引用但未刪。
+- 版面：桌面海報區高度依視窗算（460–1000px），標題區超過畫面高62%再縮字；頂欄放得下時一列（中文≥1280、日文≥1480、英文≥1600）。輪播9件，冤枉汪取景y80%、標題靠右以露出小狗。
+- 驗證：1920×1080中英日、1440×900、1366×768、1280×720中文皆整個海報區在第一畫面；1440中英日×9張27/27避讓通過、1366中文9/9；單元12/12、指南11/11、全套58/61（3既有失敗）；儀表板53列47yes／6no／使用者0、18/18，權威 holiday-lab/reports/hero-fit-20261024/verification.json。手機375海報區比一個畫面多約70px。
+- 報告 holiday-lab/reports/poster-mix-20261024/r4/REPORT.md。節日遊戲凍結、Flora／胖倉鼠暫緩、無AI生成素材。
+- 下一輪第一件事：使用者看8902並決定是否commit；可再處理手機海報區塞滿第一畫面。
+
+## 2026-10-24 最新：8902輪播換別年度作品＋標題自動避開主視覺
+
+- source_agent: claude（Opus 5.5）；TF-GO。使用者說喀嚓、冤枉汪不夠好看要換別年度，並要求底圖閃出時畫面元素自動避開主視覺。
+- 最新 http://127.0.0.1:8902/?lang=zh （.measure-poster-mix-20261024-09／app-4GPFUUKG.js）。8897原版保留；8900及中途埠已關。重啟：node scripts/serve-local-review.cjs --site=.measure-poster-mix-20261024-09 --dashboard=holiday-lab/dashboard/out --port=8902
+- 分支 codex/poster-mix24，未commit／push／發布／main／刪檔，C節未動。
+- 換圖：喀嚓、冤枉汪移出；新增2023年《龍戰於前》（高樂怡，插畫設計組第一名）、《伏末》（陳彥蓉，海報設計組第一名），來源系官網2023-12-20報導原圖（images/news/2023-design-awards/，未修改），署名照報導；指導老師欄「陳慧萍 · 陳重光」為報導寫的參賽同學指導老師，非逐件指定。兩件無官方英日譯名，三語顯示原中文。
+- 避讓：桌面≥1181px，標題與按鈕依每張海報主體位置縮到空位（student-work-draw-model.js layout()；focus.y/x 為看圖指定，mobileX 為吸睛度分析）。第一版「找最佳排法」只從34%降到31%被蓋，不採用；吸睛度重心會把龍的海報裁掉臉，改人工指定。
+- 驗證：1440中英日×8張24/24不壓主體；1280中文7/8（伏末超門檻0.002未放寬）；375無溢出；單元測試12/12；指南11/11；全套58/61（3個既有失敗，涉及的資料檔未改）；儀表板53列47yes／6no／使用者0、18/18，權威 holiday-lab/reports/poster-avoid-20261024/verification.json。
+- 注意：預覽窗格閒置時不出畫面幀，動畫會停在透明度0，截圖看起來標題淡淡的，不是版面問題。使用者實機 Chrome 的動畫觀感尚未驗。
+- 報告 holiday-lab/reports/poster-mix-20261024/r3/REPORT.md。節日遊戲仍凍結，Flora／胖倉鼠暫緩，無AI生成素材。
+- 下一輪第一件事：請使用者看8902，決定是否commit；Fable剩餘建議（減動態總開關、新聞排序、海報srcset、學長姐見證）與總表2–6項待續。
+
+## 2026-10-24 最新：8900套用Fable顧問8項（手機聯絡、浮動鈕避讓、指南搜尋）
+
+- source_agent: claude（Opus 5.5）；TF-GO。使用者以選項題選定：手機加報名入口、浮動鈕不壓面板、報名鈕改導可用處、手機海報變清楚、面板小字放大、指南搜尋變好用、拿掉內部用語、癡迷的現實縮圖下載進images/。未選：減動態總開關、新聞排序。
+- 最新 http://127.0.0.1:8900/?lang=zh （.measure-poster-mix-20261024-03／80檔／app-73QZMYRE.js）。8897原版保留；8898／8899中途版服務已關。重啟：node scripts/serve-local-review.cjs --site=.measure-poster-mix-20261024-03 --dashboard=holiday-lab/dashboard/out --port=8900
+- 分支 codex/poster-mix24，未commit／push／發布／main／刪檔，C節未動。產品改 comic-components.jsx、chapters-2.jsx、holiday-home.jsx、student-work-draw.jsx/.css、student-guide.jsx/.css、student-guide-model.js、styles.css、scripts/build.mjs、data/student-work-draw.json、兩個測試；新增 images/news/7200-obsessive-reality.jpg。
+- 重點：頂欄 ADMISSION_OPEN=false 時顯示「我適合哪個管道 →」連 #/guide/start，116簡章公布後改 true 即恢復「立即報名」。指南「尚未上線」黑條改由建置旗標 globalThis.AGD_REVIEW_BUILD 控制。
+- 驗證：抽選10/10、指南11/11（新增2測試先red後green）、全套56/59（3個既有失敗只涉及未改的admission.json／guide.json日譯／works.json小颯英譯）、Build exit0 Unpaired0；1440中英日29步捲動面板控制項0次被擋、375選單LINE可見、指南搜尋框y1157→485。1366只驗頁頂（窗格縮放下捲動無效）。儀表板53列47yes／6no／使用者0、18/18，權威 holiday-lab/reports/fable-polish-20261024/verification.json。
+- 意外：做改動前對照時tar中斷，node --test在 %TEMP%\agd-head-baseline-1024 暫存副本跑了歷史節日QA測試；工作樹無新增／修改、保全SHA不變。暫存副本未刪，等使用者決定。不是解凍節日QA。
+- 報告 holiday-lab/reports/poster-mix-20261024/r2/REPORT.md。節日遊戲繼續凍結，Flora／胖倉鼠暫緩，無生成素材。
+- 下一輪第一件事：請使用者看8900並決定是否commit；Fable剩餘建議（減動態、新聞排序、海報srcset、學長姐見證）與總表2–6項待續。
+
+## 2026-10-24 最新：8898輪播換圖（拿掉小颯、加不同畫風）＋只增不減複驗＋Fable顧問
+
+- source_agent: claude（Opus 5.5）；TF-GO。使用者說明8897是Codex做的新系網，要求確保穩定且相對舊系網只增不減，請Fable當顧問，並把底圖輪播的小颯換成不同畫風、吸引高中生的作品。
+- 分支 codex/poster-mix24（由 codex/newchat-handoff24／c66ef5b0 開出），未commit、未push、未發布、未碰main、未刪檔、C節未動。產品只改 data/student-work-draw.json 與 tests/student-work-draw.test.cjs。
+- 只增不減：相對origin/main 0檔刪除／改名；程式刪行皆為同處改寫（h1、三語切換、簡章用語）；中文資料0被刪鍵；en得獎清單其實125→144補齊，是比對腳本按索引誤判。結論：未發現被拔掉的功能。
+- 輪播八件（依高中生吸引力排序）：今食堂、葛柏TV秀、喀嚓、癡迷的現實（新加入，YouTube遠端縮圖）、癒光之音、Dear All Robots、競箱團、冤枉汪。小颯只從輪播移除，首頁右側原有原畫格與署名保留。
+- 驗證：Node 10pass、10組抽選相鄰不重複、Build exit0（.measure-poster-mix-20261024-01，79檔）、Chrome中文1440輪播一圈8件無小颯、英日375無橫溢、日文實點停格；保全5檔／8原圖／origin/main不變；儀表板53列47yes／6no／使用者0、1936 SHA、18/18。未做：真機、母語、完整WCAG、Console逐頁。
+- 最新 http://127.0.0.1:8898/?lang=zh （8897保留不動）。重啟：node scripts/serve-local-review.cjs --site=.measure-poster-mix-20261024-01 --dashboard=holiday-lab/dashboard/out --port=8898
+- Fable顧問12條建議在 holiday-lab/reports/takeover-claude-20261024/fable-advice.md，尚未套用，等使用者挑。前三條：手機版缺報名／聯絡入口、桌面右下浮動鈕壓到抽選面板、「立即報名」點進去全是已結束。
+- 報告 holiday-lab/reports/poster-mix-20261024/REPORT.md。節日遊戲繼續凍結，Flora／胖倉鼠暫緩，沒有生成素材。
+- 下一輪第一件事：請使用者看8898輪播，並從Fable清單挑要做的項目；《癡迷的現實》若要離線穩定需使用者同意下載縮圖進images/。
+
 ## 2026-10-24 新對話接手入口已整理（保留8897方向）
 
 - source_agent: codex。使用者本輪表示「有覺得不錯」，要求列齊交接路徑及待辦，準備自行開新對話。記為8897海報／右下小面板方向的正向回饋，不是全站／發布／遊戲解凍批准。這回合只整理文件，未改網站、未重建Build或重跑遊戲。

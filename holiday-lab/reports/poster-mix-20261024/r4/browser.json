@@ -1,0 +1,24 @@
+{
+  "tool": "Claude 內建瀏覽器（mcp__Claude_Browser），javascript_tool 讀 DOM；數值為工具實際回傳。腳本：r4/overlap-audit.js（每張海報停格後量首屏元件兩兩重疊、超出畫面框、不可見，並檢查桌面快捷按鈕與頂欄）",
+  "observed_date": "2026-10-25",
+  "site": ".measure-poster-mix-20261024-16",
+  "port": 8902,
+  "user_report": "使用者回報：有些頁面元素會重疊，有些會不見；頂欄還沒調緊湊；伏末拿掉",
+  "findings": [
+    {"issue": "不見：桌面右側四顆快捷按鈕（我適合哪個管道／家長看這裡／測驗／LINE）在海報面板出現時被我隱藏（上一輪為了不擋「靜態模式」勾選框做的）", "cause": "我自己的改動，違背使用者先前『恢復右側隨頁面快捷』的要求", "fix": "改為快捷按鈕維持原位常駐，作品資訊面板往左讓開（--cta-w 由程式量快捷按鈕寬度）", "verified": "1440／1920／1366／1280／1181 中文及 1440／1920 英文、1440 日文：quickLinks 可見、與面板與泡泡零重疊"},
+    {"issue": "頂欄在 1181–1279 寬仍是兩列（118px）", "cause": "一列門檻設在 1280", "fix": "中文門檻降到 1181，並在 1181–1279 縮小間距", "verified": "1265、1181 中文頂欄 79px 一列"},
+    {"issue": "上一版 8902 建置曾出現 Node 錯誤結尾，我沒有擋下就切換服務", "cause": "建置指令用管線接 tail，結束碼被吃掉", "fix": "之後改用 pipefail 並印出 BUILD_EXIT；重建 exit 0", "verified": "第 16 版 BUILD_EXIT=0"}
+  ],
+  "audit_results": {
+    "zh_1440x900": {"n": 9, "posterIssues": 0, "hero": [107, 884], "heroFits": true, "quickVisible": true, "header": "79px 一列"},
+    "en_1440x900": {"n": 9, "posterIssues": 0, "hero": [145, 884], "heroFits": true, "quickVisible": true, "header": "117px（英文 <1600 寬依設計為兩列）"},
+    "ja_1440x900": {"n": 9, "posterIssues": 0, "hero": [145, 884], "heroFits": true, "quickVisible": true, "header": "117px（日文 <1480 寬依設計為兩列）"},
+    "zh_en_1920x1080": {"n": 9, "posterIssues": 0, "hero": [107, 1064], "heroFits": true, "quickVisible": true, "header": "79px 一列"},
+    "zh_1366x768": {"n": 9, "posterIssues": 0, "hero": [107, 752], "heroFits": true, "quickVisible": true, "header": "79px 一列"},
+    "zh_1280x720": {"n": 9, "posterIssues": 0, "hero": [107, 704], "heroFits": true, "quickVisible": true, "header": "79px 一列"},
+    "zh_1181x720": {"n": 9, "posterIssues": 0, "hero": [107, 704], "heroFits": true, "quickVisible": true, "header": "79px 一列、nav 未超出"},
+    "zh_1100x800_and_1024x768": {"n": 9, "posterIssues": 0, "note": "平板版面（<1181）：首屏無重疊、無溢出；選單收進漢堡鈕，故 navLinkCount=0；1100 寬快捷按鈕在頁面流內可見", "screenshot": "窗格被隱藏，截圖逾時，未取得畫面"}
+  },
+  "served_catalog_check": "curl 8902 /data/student-work-draw.json：9 件，不含伏末；Cache-Control: no-store；建置檔內無 fumo-2023 字串",
+  "not_tested": ["實體手機", "母語審閱", "完整 WCAG", "英文 1481–1599 寬頂欄仍兩列", "1181–1279 的英日頂欄", "1024／1100 寬的畫面截圖（窗格隱藏）", "海報首屏以下各章節逐一重疊檢查（本輪只查首屏、頂欄與快捷按鈕）"]
+}

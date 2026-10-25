@@ -34,11 +34,13 @@ const StudentGuideDetail = () => {
   return <main id="student-guide" className="chapter student-guide" aria-labelledby="student-guide-title">
     <div className="container">
       <BackBar />
-      <div className="sg-review"><strong>官網版型審閱稿</strong><span>內容查核 {data.as_of} · 尚未上線</span></div>
+      {globalThis.AGD_REVIEW_BUILD !== false&&<div className="sg-review"><strong>官網版型審閱稿</strong><span>內容查核 {data.as_of} · 尚未上線</span></div>}
       <section className="sg-hero" aria-labelledby="student-guide-title">
         <div className="sg-hero-copy">
           <div className="sg-eyebrow">STUDENT GUIDE · 動遊在校生</div>
           <h1 id="student-guide-title">在校指南</h1>
+          <div className="sg-toolbar"><label htmlFor="student-search">搜尋資訊<input id="student-search" ref={input} type="search" placeholder="輸入問題或關鍵字" value={query} onChange={e=>setQuery(e.target.value)}/></label><button className="sg-clear" onClick={()=>{setCategory('all');setQuery('');setAudience('all');input.current?.focus();}}>清除篩選</button></div>
+          {query.trim()&&<p className="sg-search-jump"><a href="#student-topics" onClick={e=>{e.preventDefault();document.getElementById('student-topics').scrollIntoView({block:'start',behavior:'instant'});}}>顯示 {cards.length}／{data.cards.length} 項資訊{' ↓'}</a></p>}
           <h2 className="sg-directory-title">分類索引</h2>
         <div className="sg-categories sg-directory" role="group" aria-label="資訊分類">
           <button aria-pressed={category==='all'} onClick={()=>{setCategory('all');document.getElementById("student-topics").scrollIntoView({block:"start",behavior:"instant"});}}>全部 <span>{data.cards.length}</span></button>
@@ -51,7 +53,6 @@ const StudentGuideDetail = () => {
       <aside className="sg-note"><strong>畢業規則先看「入學年度＋班別」</strong><p>這份指南以日間四技在校生為主。一般班、技優班與不同入學年度可能不同；申請資格和日期請以各處室當期公告為準。</p></aside>
       <section id="student-topics" className="sg-browse" aria-labelledby="student-topics-title">
         <div className="sg-section-heading"><ChapterTag num="01" title="辦理資訊" headingId="student-topics-title" /></div>
-        <div className="sg-toolbar"><label htmlFor="student-search">搜尋資訊<input id="student-search" ref={input} type="search" placeholder="輸入問題或關鍵字" value={query} onChange={e=>setQuery(e.target.value)}/></label><button className="sg-clear" onClick={()=>{setCategory('all');setQuery('');setAudience('all');input.current?.focus();}}>清除篩選</button></div>
         <div className="sg-identities" role="group" aria-label={identityName('all')}>{identities.map(x=><button key={x[0]} type="button" aria-pressed={audience===x[0]} onClick={()=>setAudience(x[0])}>{identityName(x[0])}</button>)}</div>
         <p className="sg-identity-note">{({zh:'標籤依查找需求分類，申請資格仍以各項公告為準。',en:'Tags help you find topics; check each official notice for eligibility.',ja:'タグは検索の目安です。申請資格は各公式案内で確認してください。'})[siteLanguage]}</p>
         <p className="sg-count" role="status">顯示 {cards.length}／{data.cards.length} 項資訊</p>

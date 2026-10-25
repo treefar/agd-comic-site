@@ -10,7 +10,7 @@ const HeroChapter = () => (
         {/* TIER 1 — splash 全寬主格 — tier 設 position:relative 給 bubble 用 */}
         <div className="comic-tier tier-1-1 tier-splash hero-original-tier hero-draw-enabled" style={{ position: "relative" }}>
           {/* 對話泡泡 — 移到 panel 外側 + 突出 panel 上邊框，破第四面牆（panel 有 overflow:hidden 會切掉） */}
-          <div style={{ position: "absolute", top: -28, left: 36, zIndex: 7, transform: "rotate(-3deg)" }}>
+          <div className="hero-original-quote" style={{ position: "absolute", top: -28, left: 36, zIndex: 7, transform: "rotate(-3deg)" }}>
             <Bubble variant="bubble--cloud" className="bubble--anim-bounce">「動起來！動到極限！」</Bubble>
           </div>
           <Panel bg="bg-halftone-light" style={{ padding: 0, position: "relative" }}>

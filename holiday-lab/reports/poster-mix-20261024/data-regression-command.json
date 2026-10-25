@@ -1,0 +1,11 @@
+{
+  "recorded_utc": "2026-10-24T13:56:01.306Z",
+  "command": [
+    "node",
+    "holiday-lab/reports/takeover-claude-20261024/data-regression.cjs"
+  ],
+  "cwd": "C:\\agywork\\agd-holiday-prototypes",
+  "exit_code": 1,
+  "stdout": "{\n \"files\": 19,\n \"removed_count\": 9,\n \"changed_values\": 308,\n \"per_file_changed_values\": {\n  \"data/admission.json\": 23,\n  \"data/en/admission.json\": 37,\n  \"data/en/faculty.json\": 14,\n  \"data/en/labs.json\": 15,\n  \"data/en/news.json\": 50,\n  \"data/en/stats.json\": 126,\n  \"data/en/ui.json\": 19,\n  \"data/en/videos.json\": 1,\n  \"data/en/works.json\": 19,\n  \"data/news.json\": 2,\n  \"data/works.json\": 2\n },\n \"removed\": [\n  {\n   \"file\": \"data/en/stats.json\",\n   \"at\": \"[awards].groups[0].items\",\n   \"why\": \"array shorter 17->9\"\n  },\n  {\n   \"file\": \"data/en/stats.json\",\n   \"at\": \"[honors].groups[3].items\",\n   \"why\": \"array shorter 4->3\"\n  },\n  {\n   \"file\": \"data/en/stats.json\",\n   \"at\": \"[honors].groups[4].items\",\n   \"why\": \"array shorter 5->4\"\n  },\n  {\n   \"file\": \"data/en/stats.json\",\n   \"at\": \"[honors].groups[7].items\",\n   \"why\": \"array shorter 7->5\"\n  },\n  {\n   \"file\": \"data/en/stats.json\",\n   \"at\": \"[honors].groups[9].items\",\n   \"why\": \"array shorter 8->1\"\n  },\n  {\n   \"file\": \"data/en/stats.json\",\n   \"at\": \"[honors].groups[11].items\",\n   \"why\": \"array shorter 4->3\"\n  },\n  {\n   \"file\": \"data/en/stats.json\",\n   \"at\": \"[honors].groups[12].items\",\n   \"why\": \"array shorter 7->4\"\n  },\n  {\n   \"file\": \"data/en/ui.json\",\n   \"at\": \".技優甄審的適用對象是持技藝技能競賽得獎證明的高職應屆畢業生；高中生仍以申請入學為主。\",\n   \"why\": \"key missing\"\n  },\n  {\n   \"file\": \"data/en/ui.json\",\n   \"at\": \".科技繁星一旦錄取且未放棄資格，就不能再報名其他四技入學管道，記得先和學校老師討論順序。\",\n   \"why\": \"key missing\"\n  }\n ]\n}\n",
+  "stderr": ""
+}

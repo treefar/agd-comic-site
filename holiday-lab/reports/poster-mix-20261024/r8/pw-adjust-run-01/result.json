@@ -1,0 +1,166 @@
+{
+  "checks": [
+    {
+      "name": "一般網址沒有調整面板",
+      "ok": true
+    },
+    {
+      "name": "一般網址海報可點成連結（停格後）",
+      "ok": true
+    },
+    {
+      "name": "輪播已自動停在目前這一張",
+      "ok": true,
+      "detail": {
+        "manual": null,
+        "id": "showcase-06",
+        "w": 1277,
+        "h": 782,
+        "l": 0,
+        "t": 0,
+        "fw": 1277,
+        "fh": 782,
+        "side": "left"
+      }
+    },
+    {
+      "name": "停住後不再自動換圖",
+      "ok": true
+    },
+    {
+      "name": "拉桿放大後海報變大 2 倍且仍蓋滿畫面",
+      "ok": true,
+      "detail": {
+        "g0": {
+          "manual": null,
+          "id": "showcase-06",
+          "w": 1277,
+          "h": 782,
+          "l": 0,
+          "t": 0,
+          "fw": 1277,
+          "fh": 782,
+          "side": "left"
+        },
+        "g1": {
+          "manual": "true",
+          "id": "showcase-06",
+          "w": 2554,
+          "h": 3612,
+          "l": -638,
+          "t": -1559,
+          "fw": 1277,
+          "fh": 782,
+          "side": "left"
+        }
+      }
+    },
+    {
+      "name": "拖曳左上 40、60px 後海報位置精確移動",
+      "ok": false,
+      "detail": {
+        "g1": {
+          "manual": "true",
+          "id": "showcase-06",
+          "w": 2554,
+          "h": 3612,
+          "l": -638,
+          "t": -1559,
+          "fw": 1277,
+          "fh": 782,
+          "side": "left"
+        },
+        "g2": {
+          "manual": "true",
+          "id": "showcase-06",
+          "w": 2554,
+          "h": 3612,
+          "l": -646,
+          "t": -1570,
+          "fw": 1277,
+          "fh": 782,
+          "side": "left"
+        }
+      }
+    },
+    {
+      "name": "標題位置可強制靠右",
+      "ok": true,
+      "detail": {
+        "manual": "true",
+        "id": "showcase-06",
+        "w": 2554,
+        "h": 3612,
+        "l": -646,
+        "t": -1570,
+        "fw": 1277,
+        "fh": 782,
+        "side": "right"
+      }
+    },
+    {
+      "name": "標題位置可強制靠左",
+      "ok": true
+    },
+    {
+      "name": "下一張會換到另一件並維持停住",
+      "ok": true,
+      "detail": {
+        "manual": null,
+        "id": "showcase-03",
+        "w": 1277,
+        "h": 782,
+        "l": 0,
+        "t": 0,
+        "fw": 1277,
+        "fh": 782,
+        "side": "left"
+      }
+    },
+    {
+      "name": "回到原來那張時保留剛調的設定",
+      "ok": true
+    },
+    {
+      "name": "匯出 JSON 含剛調的海報、數值合法",
+      "ok": true,
+      "detail": {
+        "showcase-06": {
+          "zoom": 2,
+          "cx": 0.503,
+          "cy": 0.543,
+          "side": "left"
+        }
+      }
+    },
+    {
+      "name": "重新整理後草稿仍在",
+      "ok": true,
+      "detail": {
+        "showcase-06": {
+          "zoom": 2,
+          "cx": 0.503,
+          "cy": 0.543,
+          "side": "left"
+        }
+      }
+    },
+    {
+      "name": "清空草稿後匯出為空",
+      "ok": true
+    },
+    {
+      "name": "視窗過窄時面板提示需要桌面寬度",
+      "ok": false
+    },
+    {
+      "name": "調整過程瀏覽器錯誤 0 筆",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "errors": [
+    "拖曳左上 40、60px 後海報位置精確移動 {\"g1\":{\"manual\":\"true\",\"id\":\"showcase-06\",\"w\":2554,\"h\":3612,\"l\":-638,\"t\":-1559,\"fw\":1277,\"fh\":782,\"side\":\"left\"},\"g2\":{\"manual\":\"true\",\"id\":\"showcase-06\",\"w\":2554,\"h\":3612,\"l\":-646,\"t\":-1570,\"fw\":1277,\"fh\":782,\"side\":\"left\"}}",
+    "視窗過窄時面板提示需要桌面寬度 undefined"
+  ]
+}
