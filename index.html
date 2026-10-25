@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="data:," />
 <title>樹德科技大學 動畫與遊戲設計系 · 動畫・遊戲・互動媒體 — 全台第一所數位遊戲設計系</title>
 <meta name="description" content="樹德科大動畫與遊戲設計系 · 全台第一所數位遊戲設計系（2006 創系）。動畫、遊戲、互動媒體實戰，連 16 年國內外得獎、第 9 屆日本 HC 株式會社國際實習、就業比 94%、12 間特色實驗室、13 位業界派老師。招生諮詢 #6102。" />
 <meta name="keywords" content="樹德科大,動畫與遊戲設計系,動遊系,動畫設計,遊戲設計,互動媒體,VR,AR,數位遊戲設計,Unity,2026 招生,放視大賞,巴哈姆特 ACG,日本 HC 實習" />
@@ -23,7 +24,9 @@
 <!-- 預先連線到 React / Babel CDN，省 50-100ms 的 DNS+TLS 握手 -->
 <link rel="preconnect" href="https://unpkg.com" crossorigin />
 <link rel="dns-prefetch" href="https://www.dgd.stu.edu.tw" />
-<link rel="stylesheet" href="styles.css?v=20261022shared" />
+<link rel="stylesheet" href="styles.css?v=20261022students" />
+<link rel="stylesheet" href="student-guide.css?v=20261022students" />
+<link rel="stylesheet" href="faculty-portrait.css?v=20261022portrait" />
 <style>
   /* style variants */
   body.style-novel {
@@ -49,6 +52,8 @@
   body.style-webtoon .h-display { font-family: 'Noto Sans TC', system-ui; font-weight: 900; letter-spacing: -0.02em; }
   body.style-webtoon .sfx { -webkit-text-stroke: 2px #1a1a2e; }
 </style>
+<link rel="stylesheet" href="holiday-home.css" />
+<link rel="stylesheet" href="student-work-draw.css" />
 </head>
 <body>
 <template id="__bundler_thumbnail">
@@ -83,13 +88,20 @@
 
 <!-- BUILD_VER: 改 jsx 後 bump 這個字串，迫使瀏覽器拿新版（GitHub Pages 預設 jsx cache 10 分鐘） -->
 <script type="text/babel" src="locale-en.js?v=20261022shared"></script>
+<script type="text/babel" src="locale-ja.js?v=20261022review"></script>
 <script type="text/babel" src="en-pages.jsx?v=20261022shared"></script>
 <script type="text/babel" src="tweaks-panel.jsx?v=20261022shared"></script>
 <script type="text/babel" src="comic-components.jsx?v=20261022shared"></script>
+<script type="text/babel" src="holiday-home.jsx"></script>
+<script type="text/babel" src="student-work-draw-model.js"></script>
+<script type="text/babel" src="student-work-draw.jsx"></script>
 <script type="text/babel" src="chapters-1.jsx?v=20261022shared"></script>
+<script type="text/babel" src="faculty-portrait.js?v=20261022portrait"></script>
 <script type="text/babel" src="chapters-2.jsx?v=20261022shared"></script>
 <script type="text/babel" src="pages.jsx?v=20261022shared"></script>
-<script type="text/babel" src="app.jsx?v=20261022shared"></script>
+<script type="text/babel" src="student-guide-model.js?v=20261022students"></script>
+<script type="text/babel" src="student-guide.jsx?v=20261022students"></script>
+<script type="text/babel" src="app.jsx?v=20261022students"></script>
 
 <!-- iframe embed bridge：給 dgd.stu.edu.tw 嵌入時用，獨立於 React，原生 JS -->
 <script>

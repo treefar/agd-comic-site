@@ -8,19 +8,22 @@ import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+// 公開建置（2026-10-25 使用者授權上線）：首頁不放創作試玩，dist/ 不複製 holiday-lab；審閱提示只在 --local-review 顯示
 // --dev：React development 版、不壓縮，輸出到 .build-dev/（只供本機查 hydration 警告，不發布）
 const DEV = process.argv.includes("--dev");
-const DIST = path.join(ROOT, DEV ? ".build-dev" : "dist");
+const DIST = path.join(ROOT, process.argv.find(a => a.startsWith('--out='))?.slice(6) || (DEV ? ".build-dev" : "dist"));
 const NODE_ENV = JSON.stringify(DEV ? "development" : "production");
+// 審閱建置才顯示「審閱稿／尚未上線」等內部提示；將來公開建置會自動拿掉
+const REVIEW_BUILD = JSON.stringify(process.argv.includes('--local-review'));
 const TMP = path.join(ROOT, ".build-tmp");
 
 // 載入順序必須和 index.html 的 text/babel script 一致（彼此靠全域名稱串接）
-const SOURCES = ["locale-en.js", "en-pages.jsx", "tweaks-panel.jsx", "comic-components.jsx", "chapters-1.jsx", "chapters-2.jsx", "pages.jsx", "app.jsx"];
+const SOURCES = ["locale-en.js", "locale-ja.js", "en-pages.jsx", "tweaks-panel.jsx", "comic-components.jsx", "holiday-home.jsx", "student-work-draw-model.js", "student-work-draw.jsx", "chapters-1.jsx", "faculty-portrait.js", "chapters-2.jsx", "pages.jsx", "student-guide-model.js", "student-guide.jsx", "app.jsx"];
 // 首頁一定要出現在預渲染 HTML 的章節錨點
 const REQUIRED_IDS = ["hero", "news", "about", "works", "faculty", "labs", "join", "contact"];
 // 不複製進 dist 的來源/建置檔
 const EXCLUDE = new Set([
-  ".git", ".github", ".gitignore", "node_modules", "dist", ".build-dev", "scripts", ".build-tmp", "_prerender-check",
+  ".git", ".github", ".githooks", ".gitignore", "node_modules", "dist", ".build-dev", "scripts", ".build-tmp", "_prerender-check",
   "package.json", "package-lock.json", "index.html", "README.md", "CLAUDE.md", "AGENTS.md", "LATEST_HANDOFF.md", "tests", "docs", "uploads", ".claude",
   ...SOURCES,
 ]);
@@ -29,10 +32,12 @@ const fail = (msg) => { console.error("[build] 失敗：" + msg); process.exit(1
 
 // 讀全部 JSX，依序接成同一個模組（等同原本多支 classic script 共用全域作用域）
 createRequire(import.meta.url)('./build-translations.cjs');
+createRequire(import.meta.url)('./build-ja-translations.cjs');
 const body = SOURCES.map((f) => `// ---- ${f} ----\n` + fs.readFileSync(path.join(ROOT, f), "utf8")).join("\n\n");
 
 const CLIENT_PRELUDE = `import React from "react";
 import * as ReactDOM from "react-dom/client";
+import { createPortal } from "react-dom";
 `;
 // 伺服端沒有 window/document：給最小替身，只供 render 階段讀到的屬性（effect 不會在伺服端執行）
 const SERVER_PRELUDE = `import React from "react";
@@ -44,10 +49,9 @@ const SERVER_EPILOGUE = `
 export const renderApp = () => renderToString(React.createElement(App));
 `;
 
-// 清空輸出資料夾的內容（不刪資料夾本身：Windows 上若有本機伺服器開在裡面，刪資料夾會 EPERM）
+// 審閱工單禁止刪檔：保留已存在的輸出與暫存，覆寫目前引用的建置檔。
 fs.mkdirSync(DIST, { recursive: true });
-for (const n of fs.readdirSync(DIST)) fs.rmSync(path.join(DIST, n), { recursive: true, force: true });
-fs.rmSync(TMP, { recursive: true, force: true });
+// Review builds retain earlier generated files, in accordance with the no-deletion work order.
 fs.mkdirSync(TMP, { recursive: true });
 
 const common = { bundle: true, jsx: "transform", jsxFactory: "siteCreateElement", charset: "utf8", logLevel: "warning", legalComments: "none" };
@@ -57,7 +61,7 @@ await build({
   ...common,
   stdin: { contents: SERVER_PRELUDE + body + SERVER_EPILOGUE, loader: "jsx", resolveDir: ROOT, sourcefile: "ssr-entry.jsx" },
   platform: "node", format: "cjs",
-  define: { "process.env.NODE_ENV": NODE_ENV },
+  define: { "process.env.NODE_ENV": NODE_ENV, "globalThis.AGD_REVIEW_BUILD": REVIEW_BUILD },
   outfile: path.join(TMP, "ssr.cjs"),
 });
 const { renderApp } = createRequire(import.meta.url)(path.join(TMP, "ssr.cjs"));
@@ -69,7 +73,7 @@ const result = await build({
   ...common,
   stdin: { contents: CLIENT_PRELUDE + body, loader: "jsx", resolveDir: ROOT, sourcefile: "client-entry.jsx" },
   platform: "browser", format: "iife", target: ["es2019"], minify: !DEV,
-  define: { "process.env.NODE_ENV": NODE_ENV },
+  define: { "process.env.NODE_ENV": NODE_ENV, "globalThis.AGD_REVIEW_BUILD": REVIEW_BUILD },
   entryNames: "app-[hash]", outdir: DIST, write: true, metafile: true,
 });
 const bundleName = path.basename(Object.keys(result.metafile.outputs).find((o) => o.endsWith(".js")));
@@ -106,9 +110,24 @@ fs.writeFileSync(path.join(DIST, "index.html"), html, "utf8");
 // 4) 複製靜態資源：根目錄下 EXCLUDE 以外的全部（目前是 styles.css、data/、images/、.nojekyll；日後新增的資源資料夾自動帶上）
 for (const name of fs.readdirSync(ROOT)) {
   if (EXCLUDE.has(name)) continue;
+  if (!["data", "images", "styles.css", "student-guide.css", "faculty-portrait.css", "holiday-home.css", "student-work-draw.css", ".nojekyll"].includes(name)) continue;
   fs.cpSync(path.join(ROOT, name), path.join(DIST, name), { recursive: true });
 }
-fs.rmSync(TMP, { recursive: true, force: true });
+// 5) 公開版資料過濾（只改 dist/ 副本，原始資料不動）：拿掉內部查證欄位與翻譯工作標記 [CHECK]
+if (!REVIEW_BUILD.includes("true")) {
+  const guideFile = path.join(DIST, "data/students/guide.json");
+  if (fs.existsSync(guideFile)) {
+    const strip = x => Array.isArray(x) ? x.map(strip) : x && typeof x === "object" ? Object.fromEntries(Object.entries(x).filter(([k]) => k !== "evidence_path" && k !== "http_recheck").map(([k, v]) => [k, strip(v)])) : x;
+    const guide = strip(JSON.parse(fs.readFileSync(guideFile, "utf8")));
+    guide.publication_status = "public";
+    fs.writeFileSync(guideFile, JSON.stringify(guide, null, 2) + "\n");
+  }
+  const unmark = x => typeof x === "string" ? x.replace(/\s*\[CHECK\]/g, "") : Array.isArray(x) ? x.map(unmark) : x && typeof x === "object" ? Object.fromEntries(Object.entries(x).map(([k, v]) => [k, unmark(v)])) : x;
+  for (const f of fs.readdirSync(path.join(DIST, "data/en")).filter(f => f.endsWith(".json"))) {
+    const file = path.join(DIST, "data/en", f), text = fs.readFileSync(file, "utf8");
+    if (text.includes("[CHECK]")) fs.writeFileSync(file, JSON.stringify(unmark(JSON.parse(text)), null, 2) + "\n");
+  }
+}
 
 const kb = (n) => (n / 1024).toFixed(1) + " KB";
 console.log(`[build] 完成：${path.relative(ROOT, DIST)}/index.html ${kb(Buffer.byteLength(html))}、${bundleName} ${kb(fs.statSync(path.join(DIST, bundleName)).size)}`);

@@ -83,12 +83,32 @@ const FACULTY = [
   },
 ];
 
+// Only the directory cards share this crop. The detail page keeps its wider composition.
+const FacultyPortrait = ({ f, slug }) => {
+  const [source, setSource] = React.useState(f.photo);
+  React.useEffect(() => { setSource(f.photo); }, [f.photo]);
+  const crop = FacultyPortraitModel.styleFor(slug, source);
+  return (
+    <div className="faculty-portrait" data-faculty-slug={slug} data-normalized={crop ? "true" : "false"}
+      style={crop ? { backgroundImage: `url("images/faculty-portrait-background/${slug}.png")` } : undefined}>
+      {crop && <img className="faculty-portrait-backdrop" alt="" aria-hidden="true"
+        src={`images/faculty-portrait-background/${slug}.png`}
+        style={{ left: crop.left, transform: `scaleX(${parseFloat(crop.height) / 100}) ${crop.transform}` }} />}
+      <img className={crop ? "faculty-portrait-image" : "faculty-portrait-unmeasured"}
+        src={source} alt={`${f.name} 老師`} loading="lazy"
+        style={crop || undefined}
+        onError={() => { if (f.photoFallback && source !== f.photoFallback) setSource(f.photoFallback); }} />
+    </div>
+  );
+};
+
 const FacultyCard = ({ f, i }) => {
   const [hover, setHover] = React.useState(false);
   const slug = f.slug || f.en.toLowerCase().replace(/[^a-z]/g, "");
   return (
     <Panel
       clickable
+      className="faculty-card"
       onClick={() => { window.location.hash = "#/faculty/" + slug; }}
       bg={f.color === "red" ? "bg-halftone-red" : f.color === "blue" ? "bg-halftone-blue" : "bg-halftone-light"}
       /* 黃底改由位置決定：NO.02 / 04 / 06… 隔一張交錯，不再看資料的 color */
@@ -96,11 +116,12 @@ const FacultyCard = ({ f, i }) => {
       style={{ padding: 0, position: "relative", overflow: "hidden" }}
     >
       <div
+        className="faculty-portrait-slot"
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
         style={{ height: "62%", borderBottom: "var(--bw) solid var(--ink)", position: "relative" }}
       >
-        <PH label={`${f.name} portrait`} src={f.photo} fallback={f.photoFallback} alt={`${f.name} 老師`} pos="center top" />
+        <FacultyPortrait f={f} slug={slug} />
         <div style={{
           position: "absolute", top: 8, left: 8,
           fontFamily: "'Bangers',sans-serif",
@@ -271,7 +292,7 @@ const LABS = [
   { slug: "d0631",  code: "D0631",  name: "動作捕捉實驗室",     t: "MOCAP",      desc: "虛擬製片棚 — 不需後期、即時拍出寫實場景，培養虛擬與實體攝影機連動的數位影像人才。" },
   { slug: "d0633",  code: "D0633",  name: "體感互動實驗室",     t: "INTERACT",   desc: "VIVE 空間定位 + 跑步機 / 氣壓水平面 / 腳踏車，體感遊戲開發即時驗證場域。" },
   { slug: "d0637",  code: "D0637",  name: "偶動畫實驗室",       t: "STOP-MO",    desc: "停格動畫拍攝棚，立體造型 × 逐格手作的工藝場域。" },
-  { slug: "db101-1",code: "DB101-1",name: "週邊商品設計實驗室", t: "MERCH",      desc: "3D 印表機、直噴機、熱轉印、雷射切割 — 動漫遊戲周邊一條龍。" },
+  { slug: "db101-1",code: "DB101-1",name: "周邊商品設計實驗室", t: "MERCH",      desc: "3D 印表機、直噴機、熱轉印、雷射切割 — 動漫遊戲周邊一條龍。" },
   { slug: "db104",  code: "DB104",  name: "虛擬運動科藝館",     t: "VR / XR",    desc: "運動 × 科技數位化創新場館，戶外運動場域加值應用基地。" },
   { slug: "db105",  code: "DB105",  name: "影音後製 / 自媒體",  t: "POST-PROD",  desc: "4 間數位攝影棚 + 4 間錄音室，主播、聲優、配樂、3D 後製一站到位。" },
   // 教學環境 — 跨樓層特色教室
@@ -305,7 +326,7 @@ const LabCard = ({ l, i }) => (
     }}>
       <span style={{ background: "var(--ink)", color: "var(--paper)", padding: "3px 8px" }}>{l.t}</span>
       <a href={`#/labs/${l.slug}`} onClick={(e) => e.stopPropagation()} style={{
-        color: "inherit", textDecoration: "none", fontFamily: "'Bangers',sans-serif",
+        textDecoration: "none", fontFamily: "'Bangers',sans-serif",
         background: "var(--accent-yellow)", color: "var(--ink)",
         padding: "3px 10px", border: "2px solid var(--ink)",
         boxShadow: "2px 2px 0 var(--ink)"
@@ -468,6 +489,18 @@ const WORKS = [
   { id: "top-2-scientists", title: "科研雙星 · 全球前 2% 學者榜", award: "連四年榮登", year: "2025", img: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2025/09/c6135cb3c2111669fdf3d99d0b26bd20.jpg" },
 ];
 
+// Keep the whole sentence in language order; isolated translated fragments lose grammar.
+function WorksLocalizedHeading() {
+  const emphasis = text => React.createElement("span", { style: { color: "var(--accent-yellow)" } }, text);
+  const copy = {
+    en: ["20 chapters of stories.", React.createElement("br"), "The achievements ", emphasis("keep coming"), "."],
+    ja: ["連載20話。", React.createElement("br"), "実績は", emphasis("途切れない"), "。"]
+  };
+  const parts = copy[siteLanguage];
+  if (!parts) throw new Error("Unknown localized Works heading");
+  return React.createElement(React.Fragment, null, ...parts);
+}
+
 const WorksChapter = () => (
   <section className="chapter" id="works" data-screen-label="04 Works">
     <div className="container">
@@ -482,8 +515,8 @@ const WorksChapter = () => (
               <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 14, color: "var(--accent-yellow)", letterSpacing: "0.1em" }}>
                 HIGH SCORE BOARD ★
               </div>
-              <div className="h-display" style={{ fontSize: "clamp(36px, 5vw, 64px)", color: "var(--paper)", marginTop: 8 }}>
-                連載 20 話<br/>戰績<span style={{ color: "var(--accent-yellow)" }}>不間斷</span>。
+              <div className="h-display" data-copy-id="works-main-heading" style={{ fontSize: "clamp(36px, 5vw, 64px)", color: "var(--paper)", marginTop: 8 }}>
+                {siteLanguage === "zh" ? <>連載 20 話<br/>戰績<span style={{ color: "var(--accent-yellow)" }}>不間斷</span>。</> : <WorksLocalizedHeading />}
               </div>
               <div style={{ display: "flex", gap: 20, marginTop: 28, flexWrap: "wrap" }}>
                 {[
@@ -715,6 +748,11 @@ const JoinChapter = () => (
               {/* 2026-10 起 115 學年度各管道已結束，右側資料保留供參考 */}
               <div style={{ fontSize: 13, color: "var(--ink)", background: "var(--accent-yellow)", marginTop: 14, fontWeight: 800, maxWidth: 460, lineHeight: 1.5, padding: "6px 10px", border: "3px solid var(--ink)" }}>
                 115 學年度招生已結束，116 學年度簡章公布後更新；右側為 115 學年度資料，供參考。
+              </div>
+              {/* 招生關閉期間先給可以馬上做的事，不寫任何未公布日期 */}
+              <div className="join-now-actions" style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 14, maxWidth: 460 }}>
+                <a href="#/guide/start" style={{ flex: "1 1 180px", textAlign: "center", textDecoration: "none", background: "var(--paper)", color: "var(--ink)", border: "3px solid var(--ink)", boxShadow: "3px 3px 0 var(--ink)", padding: "10px 12px", fontWeight: 900, fontSize: 15, lineHeight: 1.3 }}>3 題找出入學管道 →</a>
+                <a href={LINE_URL} target="_blank" rel="noopener" style={{ flex: "1 1 180px", textAlign: "center", textDecoration: "none", background: "#06C755", color: "#fff", border: "3px solid var(--ink)", boxShadow: "3px 3px 0 var(--ink)", padding: "10px 12px", fontWeight: 900, fontSize: 15, lineHeight: 1.3 }}>LINE 聯絡系主任</a>
               </div>
             </div>
           </Panel>

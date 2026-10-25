@@ -42,12 +42,12 @@ const SFX = ({ children, color = "red", rotate = -8, size = 64, anim = "wobble",
 );
 
 // 章節標籤
-const ChapterTag = ({ num, title, jp }) => (
+const ChapterTag = ({ num, title, jp, headingId }) => (
   <div className="chapter-header">
     <div className="chapter-tag">
       <span>第</span><span className="num">{num}</span><span>話</span>
     </div>
-    <div className="title h-display">{title}</div>
+    {headingId ? <h2 id={headingId} className="title h-display">{title}</h2> : <div className="title h-display">{title}</div>}
     {jp && <div className="sub">— {jp} —</div>}
   </div>
 );
@@ -214,12 +214,13 @@ const GlobalClickFx = () => {
   const [sfxs, setSfxs] = React.useState([]);
   React.useEffect(() => {
     const onClick = (e) => {
+      if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
       // 表單元素不打擾
       if (e.target.matches?.("input, textarea, select, [contenteditable='true']")) return;
 
       // ZONE A — 純功能元件 / 標題 / 選單 → 無任何效果，避免干擾功能性
       if (e.target.closest?.(
-        "a[href], button, [role='button'], " +
+        "a[href], button, summary, [role='button'], " +
         ".topnav, .chapter-tag, .chapter-header, " +
         ".h-display, .h-jojo, .hero-tagline, " +
         "[data-no-fx='true'], [data-no-splat='true']"
@@ -411,6 +412,10 @@ const FlowArrow = ({ d, color = "#0f0d0a", style = {} }) => (
   </svg>
 );
 
+// 招生期間開關：115 各管道已結束、116 簡章未公布時為 false，頂欄改導「我適合哪個管道」測驗；
+// 116 簡章公布後改成 true，頂欄恢復「立即報名 →」連到 #join。
+const ADMISSION_OPEN = false;
+
 // Topnav — 選單採頁內錨點，點選即捲動到對應章節
 const TopNav = () => {
   const items = [
@@ -420,14 +425,17 @@ const TopNav = () => {
     { label: "師資陣容", href: "#faculty" },
     { label: "實驗室",   href: "#labs" },
     { label: "招生資訊", href: "#join" },
+    { label: "在校指南", href: siteLanguageUrl(siteLanguage, "#/students/guide") },
     { label: "聯絡我們", href: "#contact" },
   ];
   const [open, setOpen] = React.useState(false);
+  const [languageHash, setLanguageHash] = React.useState('#hero');
   // 點到 nav 內任何連結 → 自動關閉抽屜
   const closeOnNav = () => setOpen(false);
   // hash 變動（任何頁內跳轉）→ 自動關抽屜
   React.useEffect(() => {
-    const onHash = () => setOpen(false);
+    const onHash = () => { setOpen(false); setLanguageHash(window.location.hash||'#hero'); };
+    onHash();
     window.addEventListener("hashchange", onHash);
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
@@ -449,12 +457,14 @@ const TopNav = () => {
           display: "inline-block", width: 2, height: 16, background: "var(--paper)",
           opacity: 0.4, alignSelf: "center"
         }} />
-        <a href={siteLanguageUrl(siteLanguage === "en" ? "zh" : "en")} title={siteLanguage === "en" ? "切換中文版" : "Switch to English"} style={{
+        {['zh','en','ja'].filter(language=>language!==siteLanguage).map(language=><a key={language} data-language-choice="true" href={siteLanguageUrl(language,languageHash)} lang={language==='zh'?'zh-Hant':language} title={{zh:'切換中文版',en:'Switch to English',ja:'日本語に切り替え'}[language]} style={{
           color: "var(--accent-yellow)", letterSpacing: "0.08em",
           fontFamily: "'Bangers',sans-serif", fontWeight: 900
-        }}>🌐 {siteLanguage === "en" ? "中文" : "EN"}</a>
+        }}>🌐 {{zh:'中文',en:'EN',ja:'日本語'}[language]}</a>)}
+        {/* 手機／平板選單才顯示：頂欄報名鈕在窄螢幕被隱藏，這裡補一個可直接聯絡的入口 */}
+        <a className="nav-mobile-only" href={LINE_URL} target="_blank" rel="noopener" style={{ color: "#06C755", fontWeight: 900 }}>LINE 聯絡系主任</a>
       </nav>
-      {/* 漢堡按鈕：只在 ≤760px 顯示（CSS 控制） */}
+      {/* 手機／平板使用展開選單；桌面完整導覽另排一列（CSS 控制） */}
       <button
         className="hamburger"
         aria-label={open ? "關閉選單" : "開啟選單"}
@@ -464,12 +474,12 @@ const TopNav = () => {
       >
         <span /><span /><span />
       </button>
-      <a href="#join" title="查看所有招生管道 — 申請入學 / 甄選入學 / 科技繁星 / 技優甄審 / 登記分發" style={{
+      <a href={ADMISSION_OPEN ? "#join" : "#/guide/start"} title="查看所有招生管道 — 申請入學 / 甄選入學 / 科技繁星 / 技優甄審 / 登記分發" style={{
         background: "var(--accent-red)", color: "#fff", padding: "8px 14px",
         textDecoration: "none", border: "3px solid var(--paper)",
         boxShadow: "3px 3px 0 var(--paper)", fontFamily: "'Noto Sans TC',sans-serif",
         fontWeight: 900, fontSize: 14, letterSpacing: "0.04em", transform: "rotate(-2deg)"
-      }}>立即報名 →</a>
+      }}>{ADMISSION_OPEN ? "立即報名 →" : "我適合哪個管道"}{ADMISSION_OPEN ? null : " →"}</a>
     </header>
   );
 };

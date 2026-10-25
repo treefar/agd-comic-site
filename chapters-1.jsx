@@ -7,18 +7,17 @@ const HeroChapter = () => (
   <section className="chapter" id="hero" data-screen-label="01 Hero">
     <div className="container">
       <div className="comic-page">
-
         {/* TIER 1 — splash 全寬主格 — tier 設 position:relative 給 bubble 用 */}
-        <div className="comic-tier tier-1-1 tier-splash" style={{ position: "relative" }}>
+        <div className="comic-tier tier-1-1 tier-splash hero-original-tier hero-draw-enabled" style={{ position: "relative" }}>
           {/* 對話泡泡 — 移到 panel 外側 + 突出 panel 上邊框，破第四面牆（panel 有 overflow:hidden 會切掉） */}
-          <div style={{ position: "absolute", top: -28, left: 36, zIndex: 7, transform: "rotate(-3deg)" }}>
+          <div className="hero-original-quote" style={{ position: "absolute", top: -28, left: 36, zIndex: 7, transform: "rotate(-3deg)" }}>
             <Bubble variant="bubble--cloud" className="bubble--anim-bounce">「動起來！動到極限！」</Bubble>
           </div>
           <Panel bg="bg-halftone-light" style={{ padding: 0, position: "relative" }}>
             <div style={{ position: "absolute", inset: 0 }} className="bg-speedlines" />
             {/* 🥚 彩蛋熱區 — 集中線中心半徑 20px 內可點 */}
             <EasterEgg size={40} label="彩蛋！" />
-            <div style={{
+            <div className="hero-original-copy" style={{
               position: "absolute", inset: 0,
               display: "flex", flexDirection: "column", justifyContent: "flex-end",
               padding: "36px 36px 120px 36px"
@@ -28,11 +27,11 @@ const HeroChapter = () => (
                 color: "var(--accent-red)", fontSize: 22,
                 letterSpacing: "0.1em", textShadow: "2px 2px 0 var(--ink)"
               }}>SHU-TE UNIVERSITY · DEPT. OF ANIMATION & GAME DESIGN</div>
-              <div className="h-display h-jojo" style={{
-                fontSize: "clamp(72px, 10vw, 140px)", marginTop: 10
+              <h1 id="hero-title" className="h-display h-jojo" style={{
+                fontSize: "clamp(72px, 10vw, 140px)", margin: "10px 0 0"
               }}>
                 畫出來，<br />動起來。
-              </div>
+              </h1>
               <div style={{ marginTop: 18 }}>
                 <span className="hero-tagline" style={{
                   display: "inline-block",
@@ -49,11 +48,12 @@ const HeroChapter = () => (
                 </span>
               </div>
             </div>
+            <StudentWorkDraw />
             <SFX color="yellow" rotate={-10} size={120} anim="burst"
               style={{ position: "absolute", top: 30, right: 60, zIndex: 5 }}>
               碰！
             </SFX>
-            <div style={{
+            <div className="hero-original-chapter-stamp" style={{
               position: "absolute", top: 24, right: 24,
               fontFamily: "'Bangers',sans-serif", fontSize: 14,
               background: "var(--ink)", color: "var(--paper)",
@@ -63,7 +63,7 @@ const HeroChapter = () => (
             }}>CH. 01 — OPEN</div>
 
             {/* 「碰」下方的 PRESS START 按鈕 + 角色對白 */}
-            <div style={{
+            <div className="hero-original-actions" style={{
               position: "absolute", top: 170, right: 36,
               display: "flex", flexDirection: "column", alignItems: "flex-end",
               gap: 12, zIndex: 4, maxWidth: 240
@@ -98,7 +98,7 @@ const HeroChapter = () => (
               </div>
             </div>
             {/* 底部 highlight 泡泡 — 點擊即跳到對應的精彩內容 */}
-            <div style={{ position: "absolute", bottom: 24, left: 32, right: 280, display: "flex", gap: 10, flexWrap: "wrap", zIndex: 5 }}>
+            <div className="hero-original-highlights" style={{ position: "absolute", bottom: 24, left: 32, right: 280, display: "flex", gap: 10, flexWrap: "wrap", zIndex: 5 }}>
               <a href="#about" style={{ textDecoration: "none" }}>
                 <Bubble className="bubble--anim-glow" style={{
                   background: "#fff", color: "var(--ink)",
@@ -210,13 +210,14 @@ const HeroChapter = () => (
           </Panel>
 
           {/* RIGHT — 海報 sidebar（拉長 + 上下稍微 crop） */}
-          <Panel style={{ flex: 1, padding: 0, position: "relative", overflow: "hidden", background: "var(--ink)", minWidth: 280, alignSelf: "stretch" }}>
-            <PH label="ClipStudio Grand Prize 國際插畫首獎"
+          <Panel className="hero-original-art-panel" style={{ flex: 1, padding: 0, position: "relative", overflow: "hidden", background: "var(--ink)", minWidth: 280, alignSelf: "stretch" }}>
+            <PH className="hero-original-art" label="ClipStudio Grand Prize 國際插畫首獎"
               src="images/posters/clipstudio-grand-prize.jpg"
               fallback="https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2025/03/_page-0001-scaled-e1765931540737.jpg"
               alt="ClipStudio Grand Prize 國際插畫首獎 · 直幅原版海報"
-              fit="cover"
+              fit="contain"
               pos="center top" />
+            <div className="hero-original-art-credit">{siteLanguage === "en" ? "Illustration by graduate 小颯" : siteLanguage === "ja" ? "卒業生・小颯による手描き作品" : "畢業生手繪・小颯"}</div>
             {/* GRAND PRIZE 黃章 */}
             <div style={{
               position: "absolute", top: 10, right: 10, zIndex: 2,
@@ -618,6 +619,25 @@ const NewsChapter = () => (
 );
 
 // CH.03 — 系所介紹（標準 tier：3:2 大格 + 三格主軸）
+// Translate complete sentences before applying emphasis; fragment order differs by language.
+function AboutLocalizedCopy({ kind }) {
+  const bold = text => React.createElement("b", null, text);
+  const tone = (text, color) => React.createElement("span", { style: { color: `var(--accent-${color})` } }, text);
+  const copy = {
+    en: {
+      intro: ["We train professionals in ", tone("animation", "red"), ", ", tone("game design", "blue"), ", audiovisual post-production and interactive design (AR / VR)."],
+      history: ["Founded in ", bold("2006"), " as Taiwan’s first ", bold("Department of Digital Game Design"), ", the department was renamed the ", bold("Department of Animation and Game Design"), " in ", bold("2011"), " to meet industry needs. A comprehensive curriculum and industry partnerships connect students and faculty with regular company visits and professional talks, keeping them in touch with industry developments. The department continues to achieve strong results at ", bold("Vision Get Wild"), ", ", bold("Bahamut ACG"), ", the ", bold("Times Young Creative Awards"), " and other competitions."]
+    },
+    ja: {
+      intro: [tone("アニメーション制作", "red"), "、", tone("ゲームデザイン", "blue"), "、映像・音声のポストプロダクション、インタラクティブデザイン（AR / VR）に携わる専門人材を育成します。"],
+      history: [bold("2006"), "年に台湾初の「", bold("デジタルゲームデザイン学科"), "」として設立され、", bold("2011"), "年に産業界の人材ニーズに応じて「", bold("アニメとゲームデザイン学科"), "」へ名称を変更しました。充実した専門カリキュラムと産学連携の仕組みにより、教員と学生は定期的に企業見学や特別講座に参加し、業界の動向を学んでいます。また、", bold("放視大賞"), "、", bold("巴哈姆特 ACG"), "、", bold("金犢獎"), "などのコンテストで継続して優れた成果を収めています。"]
+    }
+  };
+  const parts = copy[siteLanguage]?.[kind];
+  if (!parts) throw new Error("Unknown localized About sentence");
+  return React.createElement(React.Fragment, null, ...parts);
+}
+
 const AboutChapter = () => (
   <section className="chapter" id="about" data-screen-label="03 About">
     <div className="container">
@@ -632,13 +652,13 @@ const AboutChapter = () => (
                 「動遊系到底在學什麼？」
               </Bubble>
             </div>
-            <div className="h-display" style={{ fontSize: "clamp(24px,3vw,40px)", margin: "10px 0 12px" }}>
-              培育<span style={{ color: "var(--accent-red)" }}>動畫創作</span>、
+            <div className="h-display" data-copy-id="about-main-sentence" style={{ fontSize: "clamp(24px,3vw,40px)", margin: "10px 0 12px" }}>
+              {siteLanguage === "zh" ? <>培育<span style={{ color: "var(--accent-red)" }}>動畫創作</span>、
               <span style={{ color: "var(--accent-blue)" }}>遊戲設計</span>、
-              影音後製、互動設計（AR / VR）<br/>所需的專業人才。
+              影音後製、互動設計（AR / VR）<br/>所需的專業人才。</> : <AboutLocalizedCopy kind="intro" />}
             </div>
-            <div style={{ fontSize: 14, lineHeight: 1.75, fontWeight: 500 }}>
-              <b>2006</b> 年成立全國第一所「<b>數位遊戲設計系</b>」，<b>2011</b> 年依產業人才需求更名為「<b>動畫與遊戲設計系</b>」。完整的專業學習課程＋產學合作機制，師生定期參與企業參訪、教學講座，掌握產業脈動；持續在<b>放視大賞</b>、<b>巴哈姆特 ACG</b>、<b>金犢獎</b>等競賽屢獲佳績。
+            <div data-copy-id="about-history-paragraph" style={{ fontSize: 14, lineHeight: 1.75, fontWeight: 500 }}>
+              {siteLanguage === "zh" ? <><b>2006</b> 年成立全國第一所「<b>數位遊戲設計系</b>」，<b>2011</b> 年依產業人才需求更名為「<b>動畫與遊戲設計系</b>」。完整的專業學習課程＋產學合作機制，師生定期參與企業參訪、教學講座，掌握產業脈動；持續在<b>放視大賞</b>、<b>巴哈姆特 ACG</b>、<b>金犢獎</b>等競賽屢獲佳績。</> : <AboutLocalizedCopy kind="history" />}
             </div>
             {/* 課程地圖 CTA — 塞進主獨白 panel 底部 */}
             <a href="#/curriculum/map" style={{

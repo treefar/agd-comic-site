@@ -1,0 +1,100 @@
+/* Full-panel display crop only: original poster files and credits are unchanged. */
+#hero .hero-original-tier.hero-draw-enabled{min-height:620px!important;}
+#hero .hero-draw-enabled>.panel{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(240px,1fr);gap:24px;padding:32px!important;align-items:center;isolation:isolate;}
+#hero .hero-original-tier.hero-draw-enabled .hero-original-copy{position:relative!important;inset:auto!important;width:auto!important;padding:0!important;grid-column:1;grid-row:1;z-index:2;min-width:0;pointer-events:none;}
+#hero .hero-original-copy>div:first-child{background:rgba(244,236,216,.92);padding:3px 7px;align-self:flex-start;}
+#hero .hero-original-tier.hero-draw-enabled #hero-title{font-size:clamp(64px,8vw,118px)!important;}
+html[lang='en'] #hero .hero-original-tier.hero-draw-enabled #hero-title{font-size:clamp(46px,5.3vw,78px)!important;}
+html[lang='ja'] #hero .hero-original-tier.hero-draw-enabled #hero-title{font-size:clamp(60px,7.4vw,108px)!important;}
+#hero .hero-draw-enabled .hero-original-actions{position:relative!important;inset:auto!important;grid-column:2;grid-row:1;justify-self:end;max-width:240px!important;}
+#hero .hero-draw-enabled .hero-original-highlights{position:relative!important;inset:auto!important;grid-column:1/-1;grid-row:3;width:calc(100% - 320px);}
+#hero .hero-draw-enabled>.panel>.bg-speedlines{z-index:1;opacity:.06!important;pointer-events:none;}
+#hero .hero-draw-enabled .hero-original-chapter-stamp{top:12px!important;right:12px!important;}
+#hero .hero-draw-enabled .sfx{font-size:78px!important;top:10px!important;right:145px!important;pointer-events:none;}
+.student-work-draw{position:static;grid-column:1/-1;grid-row:2;min-width:0;color:var(--ink);}
+.student-work-draw figure{margin:0;min-width:0;}
+.swd-surface{position:absolute;inset:0;z-index:0;}
+.swd-poster{position:absolute;inset:0;display:block;width:100%;height:100%;background:var(--paper);overflow:hidden;}
+.swd-poster img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% var(--poster-y,50%);opacity:.88;transition:opacity .25s ease;}
+.swd-drawing .swd-poster img{opacity:.8;}
+.swd-settled .swd-poster img{opacity:.96;}
+.swd-settled .swd-poster:hover img,.swd-settled .swd-poster:focus-visible img{opacity:1;}
+.swd-console{position:absolute;right:18px;bottom:18px;width:304px;max-width:calc(100% - 36px);z-index:3;display:grid;grid-template-columns:minmax(0,1fr);gap:8px;align-items:center;padding:10px 12px;background:rgba(244,236,216,.92);border:1px solid var(--ink);box-shadow:2px 2px 0 var(--ink);}
+.swd-meta,.swd-interaction{min-width:0;}
+.student-work-draw h2,.swd-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;margin:-1px;padding:0;border:0;}
+.student-work-draw h3{font-size:16px;line-height:1.3;margin:0 0 4px;text-wrap:balance;overflow-wrap:anywhere;}
+.swd-credits,.swd-mentor{font-size:12px;line-height:1.5;margin:2px 0;overflow-wrap:anywhere;}
+.swd-person{white-space:nowrap;}
+.swd-actions{display:flex;gap:6px;align-items:stretch;}
+.swd-actions button,.swd-actions a{flex:1 1 0;min-width:0;min-height:36px;border:2px solid var(--ink);padding:5px 6px;background:var(--accent-yellow);color:var(--ink);font:inherit;font-size:13px;line-height:1.3;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;text-wrap:balance;text-decoration:none;box-shadow:2px 2px 0 var(--ink);}
+.swd-actions a,.swd-actions button+button{background:var(--paper);}
+.swd-actions button:disabled{cursor:wait;opacity:.7;}
+.swd-motion{display:flex;gap:5px;align-items:center;justify-content:flex-end;font-size:12px;line-height:1.4;min-height:24px;margin-top:2px;}
+.swd-motion input{width:18px;height:18px;margin:0;accent-color:var(--ink);}
+.swd-image-error,.swd-loading p{font-size:13px;line-height:1.5;background:var(--paper);padding:12px;}
+.student-work-draw :is(a,button,input):focus-visible{outline:3px solid var(--accent-blue);outline-offset:4px;}
+@media(max-width:1180px){
+ #hero .hero-draw-enabled>.panel{grid-template-columns:minmax(0,1.4fr) minmax(220px,1fr);padding:28px 24px!important;}
+ #hero .hero-original-tier.hero-draw-enabled #hero-title{font-size:clamp(56px,7.4vw,88px)!important;}
+ html[lang='en'] #hero .hero-original-tier.hero-draw-enabled #hero-title{font-size:clamp(40px,5vw,62px)!important;}
+ html[lang='ja'] #hero .hero-original-tier.hero-draw-enabled #hero-title{font-size:clamp(52px,6.8vw,80px)!important;}
+ #hero .hero-draw-enabled .hero-original-chapter-stamp,#hero .hero-draw-enabled .sfx{display:none;}
+}
+@media(max-width:760px){
+ #hero .hero-draw-enabled>.panel>div[data-no-splat="true"]{position:absolute!important;top:50%!important;left:50%!important;transform:translate(-50%,-50%)!important;margin:0!important;}
+ #hero .hero-original-tier.hero-draw-enabled{min-height:auto!important;}
+ #hero .hero-draw-enabled>.panel{grid-template-columns:minmax(0,1fr);padding:24px 16px!important;gap:22px;}
+ #hero .hero-original-tier.hero-draw-enabled .hero-original-copy{grid-column:1;grid-row:1;}
+ #hero .hero-draw-enabled .hero-original-actions{grid-column:1;grid-row:2;justify-self:stretch;align-items:stretch!important;max-width:none!important;}
+ #hero .hero-draw-enabled .student-work-draw{grid-column:1;grid-row:4;}
+ #hero .hero-draw-enabled .hero-original-highlights{grid-column:1;grid-row:3;width:100%;}
+ .swd-console{position:relative;right:auto;bottom:auto;width:min(240px,82%);max-width:100%;margin-left:auto;padding:10px;gap:8px;}
+ .swd-actions button,.swd-actions a{min-height:44px;}
+ .swd-credits,.swd-mentor{font-size:13px;}
+ .swd-poster img{object-position:var(--poster-mx,50%) 35%;}
+}
+/* 2026-10-24 使用者裁定：海報輪播首頁只留標題、說明與底部亮點泡泡；集中線、碰！、PRESS START、頂上泡泡、章節章不顯示（原始碼保留）。 */
+#hero .hero-draw-enabled>.panel>.bg-speedlines,
+#hero .hero-draw-enabled .sfx,
+#hero .hero-draw-enabled .hero-original-actions,
+#hero .hero-draw-enabled .hero-original-chapter-stamp,
+#hero .hero-draw-enabled>.hero-original-quote{display:none!important;}
+/* Desktop: title block and buttons sit in the free strip beside the poster's subject (set by student-work-draw.jsx). */
+@media(min-width:1181px){
+ #hero .hero-original-tier.hero-draw-enabled[data-copy-side]{min-height:0!important;height:var(--hero-fit-h,620px);}
+ #hero .hero-draw-enabled[data-copy-side] .hero-original-copy{grid-column:1/-1!important;width:var(--hero-copy-w)!important;max-width:var(--hero-copy-w);}
+ #hero .hero-draw-enabled[data-copy-side='left'] .hero-original-copy{justify-self:start;}
+ #hero .hero-draw-enabled[data-copy-side='right'] .hero-original-copy{justify-self:end;}
+ #hero .hero-draw-enabled[data-copy-side] .hero-original-actions{grid-column:1/-1!important;}
+ #hero .hero-draw-enabled[data-copy-side='left'] .hero-original-actions{justify-self:end;}
+ #hero .hero-draw-enabled[data-copy-side='right'] .hero-original-actions{justify-self:start;}
+ #hero .hero-draw-enabled[data-copy-side][data-actions='stack'] .hero-original-actions{grid-row:2!important;align-self:start;max-width:var(--hero-copy-w)!important;}
+ #hero .hero-draw-enabled[data-copy-side='left'][data-actions='stack'] .hero-original-actions{justify-self:start;}
+ #hero .hero-draw-enabled[data-copy-side='right'][data-actions='stack'] .hero-original-actions{justify-self:end;}
+ }
+/* Desktop (2026-10-25 使用者裁定): info panel stays in the first screen's bottom-right corner; quick links appear from the second screen. */
+@media(min-width:1181px){
+ #hero .hero-draw-enabled[data-copy-side]>.panel{align-items:start;}
+ /* 2026-10-25：亮點泡泡移到標題說明正下方、同在主角旁的空白側，不再橫放底部壓到主角 */
+ #hero .hero-draw-enabled[data-copy-side] .hero-original-highlights{position:relative!important;inset:auto!important;grid-column:1/-1!important;grid-row:3!important;width:auto!important;max-width:var(--hero-copy-w)!important;align-self:start;margin-top:-8px;z-index:3;}
+ #hero .hero-draw-enabled[data-copy-side='left'] .hero-original-highlights{justify-self:start;}
+ /* 標題靠右時右下角是作品資訊面板，泡泡改排在左側空白處（直排） */
+ #hero .hero-draw-enabled[data-copy-side='right'] .hero-original-highlights{justify-self:start;flex-direction:column;align-items:flex-start;max-width:calc(100% - var(--hero-copy-w) - 470px)!important;min-width:230px;}
+ #hero .hero-draw-enabled[data-copy-side='left'][data-tagline='right'] .hero-original-copy>div:nth-child(3){position:absolute;top:0;left:var(--hero-tagline-dx,0px);width:var(--hero-copy-w);margin:0!important;display:flex;justify-content:flex-end;}
+ #hero .hero-draw-enabled[data-copy-side='right'][data-bubbles='top'] .hero-original-highlights{grid-row:1/span 2!important;align-self:start;margin-top:0;}
+ .floating-cta{transition:opacity .2s ease,visibility .2s;}
+ html[data-hero-in-view='true'] .floating-cta{opacity:0;visibility:hidden;pointer-events:none;}
+}
+@media(prefers-reduced-motion:reduce){.swd-poster img,.floating-cta{transition:none;}}
+
+/* 手動構圖（data/student-work-draw.json focus.manual 或調整模式）：海報以實際像素尺寸與位置擺放，仍滿版不留空白。 */
+.swd-surface[data-manual='true'] .swd-poster img.swd-art{position:absolute;width:var(--poster-w);height:var(--poster-h);left:var(--poster-l);top:var(--poster-t);max-width:none;object-fit:fill;}
+.swd-surface[data-adjust='true']{cursor:grab;touch-action:none;user-select:none;}
+.swd-surface[data-adjust='true'] img{-webkit-user-drag:none;user-select:none;}
+.swd-surface[data-adjust='true']:active{cursor:grabbing;}
+
+/* 2026-10-25 使用者：靜態模式勾選框移到資訊面板右上角（與作品名同列），面板少一行、較不佔空間 */
+.swd-console .swd-motion{position:absolute;top:8px;right:10px;margin:0;min-height:0;}
+.swd-console .swd-meta h3{padding-right:92px;}
+/* 桌面版資訊面板依名單長度變寬（最寬 440px），創作團隊與指導老師整行不換行 */
+@media(min-width:1181px){.swd-console{width:max-content;min-width:304px;max-width:min(440px,calc(100% - 36px));}.swd-console .swd-credits,.swd-console .swd-mentor{white-space:nowrap;overflow-wrap:normal;}}

@@ -1391,3 +1391,29 @@ body::before {
   .foot-banner { font-size: 12px !important; padding: 4px 12px !important; white-space: nowrap; }
   .foot { padding-top: 44px; }
 }
+/* Small-screen contact links stay in page flow, leaving play controls unobstructed. */
+@media(max-width:760px){.floating-cta{position:static !important;align-items:stretch !important;margin:20px 16px;}.floating-cta a{white-space:normal;text-align:center;}}
+/* Decorative Latin headings keep the site's existing CJK families in their fallback chain. */
+.h-jojo{font-family:'Bowlby One','Bangers','Reggae One','Noto Sans TC',system-ui,sans-serif;}
+html[lang='ja'] .h-jojo{font-family:'Bowlby One','Bangers','Yu Gothic','Hiragino Kaku Gothic ProN',Meiryo,'Noto Sans TC',sans-serif;}
+/* Keep navigation labels intact; desktop uses a separate row for the full menu. */
+.topnav nav a,.topnav>a:not(.brand){white-space:nowrap;flex-shrink:0;}
+.topnav nav{flex-shrink:0;}
+@media(min-width:1181px){
+ .topnav{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 24px;}
+ .topnav .brand{grid-column:1;grid-row:1;min-width:0;}
+ .topnav>a:last-child{grid-column:2;grid-row:1;}
+ .topnav nav{grid-column:1/-1;grid-row:2;display:flex;flex-wrap:wrap;justify-content:center;gap:8px clamp(16px,1.5vw,28px);}
+ .topnav .hamburger{display:none;}
+ .topnav nav .nav-mobile-only{display:none;}
+ .chapter,.foot{scroll-margin-top:160px;}
+}
+/* One-row header once brand + menu + button fit (widths measured 2026-10-24: zh 259+745+156, ja 318+785+243, en 327+859+289 px). */
+@media(min-width:1181px){html[lang='zh-Hant'] .topnav{grid-template-columns:auto minmax(0,1fr) auto;}html[lang='zh-Hant'] .topnav nav{grid-column:2;grid-row:1;}html[lang='zh-Hant'] .topnav>a:last-child{grid-column:3;}}
+/* 1181–1279px: tighter spacing so the Chinese menu still fits on one row (needs about 1248px at default spacing). */
+@media(min-width:1181px) and (max-width:1279px){html[lang='zh-Hant'] .topnav{column-gap:12px;}html[lang='zh-Hant'] .topnav nav{gap:8px!important;}}
+@media(min-width:1480px){html[lang='ja'] .topnav{grid-template-columns:auto minmax(0,1fr) auto;}html[lang='ja'] .topnav nav{grid-column:2;grid-row:1;}html[lang='ja'] .topnav>a:last-child{grid-column:3;}}
+@media(min-width:1600px){html[lang='en'] .topnav{grid-template-columns:auto minmax(0,1fr) auto;}html[lang='en'] .topnav nav{grid-column:2;grid-row:1;}html[lang='en'] .topnav>a:last-child{grid-column:3;}}
+@media(min-width:761px) and (max-width:1180px){.topnav .brand{min-width:0;flex-shrink:1 !important;}.topnav .brand>div{min-width:0;}.topnav .brand>div>span:first-child{white-space:normal;word-break:normal;overflow-wrap:normal;text-wrap:balance;}}
+/* Tablet and mobile shortcuts remain in page flow; desktop keeps the original floating panel. */
+@media(max-width:1180px){.floating-cta{position:static !important;align-items:stretch !important;margin:20px 16px;}.floating-cta a{white-space:normal;text-align:center;}}

@@ -1,6 +1,9 @@
 /** @jsx siteCreateElement */
 /* 本地頁面：路由 + 詳情頁渲染（漫畫風延用） */
 
+// Allow section titles to clear the actual responsive, sticky header.
+const siteHeaderOffset = () => Math.ceil(document.querySelector('.topnav')?.getBoundingClientRect().height || 60) + 12;
+
 // Hash router — listen to window.location.hash, parse "#/type/slug"
 // When hash is plain anchor (#about, #join...) we make sure to scroll to it AFTER React renders the homepage
 const useHashRoute = () => {
@@ -25,8 +28,9 @@ const useHashRoute = () => {
       const el = document.getElementById(id);
       if (!el) return;
       const rect = el.getBoundingClientRect();
-      if (Math.abs(rect.top) <= 30) return;
-      const targetY = rect.top + window.pageYOffset - 60;
+      const offset = siteHeaderOffset();
+      if (Math.abs(rect.top - offset) <= 2) return;
+      const targetY = rect.top + window.pageYOffset - offset;
       window.scrollTo({ top: targetY, behavior: "instant" });
     };
     // 50ms 立刻試、1700ms 補保險（涵蓋 bootLoading 結束）
@@ -92,7 +96,7 @@ const NewsDetail = ({ slug }) => {
     const tryScroll = () => {
       const el = document.getElementById(targetId);
       if (!el) return false;
-      const targetY = el.getBoundingClientRect().top + window.pageYOffset - 80;
+      const targetY = el.getBoundingClientRect().top + window.pageYOffset - siteHeaderOffset();
       window.scrollTo({ top: targetY, behavior: "instant" });
       return true;
     };
@@ -773,7 +777,16 @@ const AdmissionDetail = ({ slug }) => {
             </Panel>
           </div>
 
-          {/* 招生時程 — 關鍵日期排第一順位 */}
+          {a.content && (
+            <div className="comic-tier tier-1 tier-mid">
+              <Panel style={{ padding: 24 }}>
+                <h2 className="h-display" style={{ fontSize: 22, margin: "0 0 14px" }}>報名資格與流程</h2>
+                <div id="admission-content" style={{ fontSize: 16, lineHeight: 1.85, whiteSpace: "pre-line", overflowWrap: "anywhere" }}>{a.content}</div>
+              </Panel>
+            </div>
+          )}
+
+          {/* 招生時程 — 關鍵日期 */}
           {a.timeline && a.timeline.length > 0 && (
             <div className="comic-tier tier-1 tier-mid">
               <Panel variant="yellow" style={{ padding: 24, position: "relative" }}>
@@ -1710,7 +1723,7 @@ const QuizDetail = ({ slug }) => {
     // 系網首頁的 iframe 不會轉交 #/quiz/...，分享改走 share/<派>.html：有專屬預覽圖，點開再轉到結果頁
     // 分享連結帶各派的預覽圖（share/<派>.html 的 og:image）；結果頁本身改放得獎作品，不放插圖
     const QUIZ_SHARE_PREVIEW = true; // 使用者 2026-10-08 同意公開
-    const shareUrl = siteLanguage === "en" ? "https://treefar.link/agd-comic-site/?lang=en#/quiz/" + resultKey : "https://treefar.link/agd-comic-site/share/" + resultKey + ".html";
+    const shareUrl = siteLanguage !== "zh" ? "https://treefar.link/agd-comic-site/?lang=" + siteLanguage + "#/quiz/" + resultKey : "https://treefar.link/agd-comic-site/share/" + resultKey + ".html";
     const share = async () => {
       const text = siteText(`我是動遊系的「${r.name}」！你是哪一派？`);
       try {
@@ -1901,20 +1914,23 @@ const PvLabel = ({ children, color }) => (
 
 // ---------- 1. 招生管道導引 #/guide/start ----------
 const GUIDE_Q = [
-  { key: "school", q: "你現在就讀（或畢業於）哪一種學校？", a: [["hs", "普通型高中"], ["voc", "高職或綜合高中"], ["work", "已經畢業或在職，想邊工作邊讀"]] },
-  { key: "award", q: "有沒有技藝技能競賽得獎或證照？", a: [["award", "有全國級或國際級技藝技能競賽得獎"], ["cert", "沒有得獎，但有證照"], ["none", "都還沒有"]] },
+  { key: "school", q: "你現在就讀（或畢業於）哪一種學校？", a: [["hs", "普通型高中"], ["voc", "高職或綜合高中"], ["work", "優先找進修部，想邊工作邊讀"]] },
+  { key: "award", q: "有沒有技藝技能競賽得獎或證照？", a: [["award", "有簡章認可的技藝技能競賽獲獎"], ["cert", "持有勞動部乙級以上技術士證（職種仍須符合簡章）"], ["none", "沒有，或只有其他證照／尚未確認資格"]] },
   { key: "route", q: "你想靠哪一種成績或資料上大學？", a: [["gsat", "學測成績"], ["tcte", "統測成績"], ["school", "在校成績（由學校推薦）"], ["portfolio", "作品集與書面審查"]] },
 ];
 
 // 判定：回傳 1–2 個 data/admission.json 的 slug（第一個是最推薦）
 // 依據 admission.json 各管道「適用對象」：申請入學＝高中生持學測；甄選入學＝高職／綜高採統測；
-// 科技繁星＝應屆高職／綜高、學校推薦；技優甄審＝技藝技能競賽得獎者；登記分發＝參加統測的考生；進修部＝在職、二度就讀
+// 科技繁星＝應屆高職／綜高、學校推薦；技優甄審＝須符合當年度簡章的競賽或證照資格；登記分發＝參加統測的考生；進修部＝在職、二度就讀
 const guidePick = (school, award, route) => {
   if (school === "work") return ["evening"];
-  if (school === "hs") return route === "tcte" ? ["joint"] : ["high-school-application"];
+  if (school === "hs") {
+    const base = route === "tcte" ? "joint" : "high-school-application";
+    return award === "award" || award === "cert" ? ["tech-elite", base] : [base];
+  }
   const byRoute = { tcte: ["selection", "joint"], portfolio: ["selection"], school: ["tech-star", "selection"], gsat: ["selection", "joint"] };
   const base = byRoute[route] || ["selection", "joint"];
-  if (award === "award") return ["tech-elite", base[0]];
+  if (award === "award" || award === "cert") return ["tech-elite", base[0]];
   return base;
 };
 
@@ -1938,7 +1954,7 @@ const GuideDetail = () => {
   const done = step >= GUIDE_Q.length;
   const pick = (key, val) => {
     setAns({ ...ans, [key]: val });
-    // 已畢業／在職直接看結果（進修部），不用再答後兩題
+    // 明確優先找進修部者直接看結果；這是偏好，非依畢業身分排除日間部。
     setStep(key === "school" && val === "work" ? GUIDE_Q.length : step + 1);
   };
   const restart = () => { setAns({}); setStep(0); };
@@ -1983,9 +1999,9 @@ const GuideDetail = () => {
   // 補充說明：只轉述 admission.json 既有文字的意思，不另外推估
   const notes = [];
   if (ans.school === "hs" && ans.route === "school") notes.push("科技繁星限應屆高職／綜合高中，而且已報名大學繁星推薦就不能重複報名科技繁星；普通型高中建議走申請入學。");
-  if (ans.school === "hs" && ans.award === "award") notes.push("技優甄審的適用對象是持技藝技能競賽得獎證明的高職應屆畢業生；高中生仍以申請入學為主。");
+  if (ans.school === "hs" && ans.award === "award") notes.push("技優甄審不限競賽獲獎的高職應屆生；115學年度也採認符合簡章職種的勞動部乙級（含）以上技術士證等資格。高中、非應屆等身分須依當年簡章核對，不可只憑身分判定可否報名。");
   if (ans.school === "voc" && ans.route === "gsat") notes.push("申請入學的適用對象是高中應屆畢業生（持學測成績）；高職／綜合高中的主力是統測相關管道。");
-  if (slugs.includes("tech-star")) notes.push("科技繁星一旦錄取且未放棄資格，就不能再報名其他四技入學管道，記得先和學校老師討論順序。");
+  if (slugs.includes("tech-star")) notes.push("115 學年度科技繁星錄取生，不論是否放棄，均不得參加當年度四技二專甄選入學；其他管道請依各招生簡章與報到／放棄規定辦理。");
   return (
     <section className="chapter">
       <div className="container">
@@ -2389,6 +2405,7 @@ const FloatingCTA = () => {
 const DetailView = ({ type, slug }) => {
   React.useEffect(() => { window.scrollTo(0, 0); }, [type, slug]);
   switch (type) {
+    case "students": return <StudentGuideDetail />;
     case "news":     return <NewsDetail slug={slug} />;
     case "faculty":  return <FacultyDetail slug={slug} />;
     case "labs":     return <LabDetail slug={slug} />;
