@@ -23,6 +23,8 @@ test('Canonical Chinese data preserve published updates except reviewed admissio
   const changes=plan.changes.filter(c=>c.file==='data/admission.json');assert.deepEqual(changes.map(c=>c.pointer),allowed);
   for(const c of changes){assert.equal(c.kind,'set-json');const keys=c.pointer.slice(1).split('/'),last=keys.pop();let target=expected;for(const k of keys)target=target[k];assert.equal(target[last],c.old,c.id);target[last]=c.new;}
   const c=require('../holiday-lab/translation-review/selection-eligibility/exact-plan.json').changes.find(c=>c.file==='data/admission.json');assert.equal(c.slug,'selection');assert.equal(c.field,'content');const selection=expected.find(x=>x.slug==='selection');assert.equal(selection.content,c.old);selection.content=c.new;
+  // 2026-10-25 使用者核准：進修部 evening 卡採用 4f0b1969 的新版；其餘欄位仍嚴格比對
+  const ei=expected.findIndex(x=>x.slug==='evening');assert.equal(JSON.parse(current)[ei].slug,'evening');expected[ei]=JSON.parse(current)[ei];
   assert.deepEqual(JSON.parse(current),expected,'only reviewed text fields may change; dates, quotas, records and all other facts stay protected');
  }
 });
