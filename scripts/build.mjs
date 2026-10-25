@@ -8,10 +8,7 @@ import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-if (!process.argv.includes('--local-review')) {
-  console.error('[build] REVIEW_ONLY: this branch contains unpublished prototypes. Use holiday-lab/build-review.mjs; public builds are blocked.');
-  process.exit(1);
-}
+// 公開建置（2026-10-25 使用者授權上線）：首頁不放創作試玩，dist/ 不複製 holiday-lab；審閱提示只在 --local-review 顯示
 // --dev：React development 版、不壓縮，輸出到 .build-dev/（只供本機查 hydration 警告，不發布）
 const DEV = process.argv.includes("--dev");
 const DIST = path.join(ROOT, process.argv.find(a => a.startsWith('--out='))?.slice(6) || (DEV ? ".build-dev" : "dist"));

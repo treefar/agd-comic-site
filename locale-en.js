@@ -1127,6 +1127,7 @@ const SITE_EN_MESSAGES = {
   "ClipStudio 國際插畫大賽 · Grand Prize 國際首獎": "ClipStudio International Illustration Contest · Grand Prize (ClipStudio 國際插畫大賽 · Grand Prize 國際首獎)",
   "Grand Prize（首獎/全場大獎）": "Grand Prize",
   "插畫": "Illustration",
+  "小颯": "XiaoSA",
   "第 27 屆 ClipStudio 國際插畫大賽 · Grand Prize（全場大獎）": "The 27th ClipStudio International Illustration Contest · Grand Prize (第 27 屆 ClipStudio 國際插畫大賽 · Grand Prize 全場大獎)",
   "從全球各國參賽作品中脫穎而出，獲頒最高榮譽": "Stood out among entries worldwide to receive the highest honor",
   "第 27 屆 ClipStudio Paint 國際插畫大賽 · Grand Prize 全場大獎。 ClipStudio Paint 為全球專業插畫家、漫畫家最常使用的繪圖軟體之一，每年舉辦的國際插畫大賽吸引來自世界各地的創作者投稿，能拿下 Grand Prize 全場大獎是國際舞台上的最高肯定。": "The 27th ClipStudio Paint International Illustration Contest · Grand Prize (第 27 屆 ClipStudio Paint 國際插畫大賽 · Grand Prize 全場大獎).\n\nClipStudio Paint is one of the most widely used drawing software programs by professional illustrators and comic artists worldwide. Its annual international illustration contest attracts entries from creators around the globe, and winning the Grand Prize represents the highest recognition on the international stage.",
