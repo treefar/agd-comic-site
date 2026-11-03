@@ -351,6 +351,10 @@ const NewsDetail = ({ slug }) => {
 // =========================================================
 // FACULTY detail
 // =========================================================
+// 有學校教師資料系統紀錄的老師（值＝WordPress 頁面 ID）；資料由 WordPress 頁的學校短代碼即時提供，漫畫版只放連結
+// 對照 wp-sync/gen.js 的 SDTI；楊智彰（5037）沒有。不放 data/faculty.json（正本資料受基準測試保護）
+const SCHOOL_DATA_IDS = new Set([1477, 1479, 1481, 1483, 1485, 1487, 1489, 1493, 1495, 1497, 1571, 2059]);
+
 const FacultyDetail = ({ slug }) => {
   const data = useDataset("faculty");
   if (!data) return <Loading />;
@@ -464,6 +468,32 @@ const FacultyDetail = ({ slug }) => {
                 <ul style={{ paddingLeft: 22, margin: 0, lineHeight: 1.9, fontSize: 14 }}>
                   {f.experience.map((a, i) => <li key={i}>{a}</li>)}
                 </ul>
+              </Panel>
+            </div>
+          )}
+
+          {f.books && f.books.length > 0 && (
+            <div className="comic-tier tier-1 tier-mid">
+              <Panel variant="yellow" style={{ padding: 24 }}>
+                <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 13, letterSpacing: "0.1em", marginBottom: 12 }}>BOOKS · 專書</div>
+                <ul style={{ paddingLeft: 22, margin: 0, lineHeight: 1.9, fontSize: 14 }}>
+                  {f.books.map((b, i) => <li key={i}>{b}</li>)}
+                </ul>
+              </Panel>
+            </div>
+          )}
+
+          {SCHOOL_DATA_IDS.has(f.id) && (
+            <div className="comic-tier tier-1 tier-mid">
+              <Panel className="bg-halftone-light" style={{ padding: 24 }}>
+                <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 13, letterSpacing: "0.1em", marginBottom: 8 }}>SCHOOL DATA · 學校教師資料</div>
+                <div style={{ fontSize: 14, lineHeight: 1.7, marginBottom: 14 }}>學校教師資料系統收錄的論文、展演、計畫、課程與校內服務完整紀錄</div>
+                <a
+                  href={`https://www.dgd.stu.edu.tw/?page_id=${f.id}`}
+                  target="_blank"
+                  rel="noopener"
+                  style={{ display: "inline-block", background: "var(--ink)", color: "var(--accent-yellow)", padding: "10px 16px", fontWeight: 800, fontSize: 15, textDecoration: "none", border: "3px solid var(--ink)", boxShadow: "4px 4px 0 var(--accent-red)" }}
+                >看學校教師資料 →</a>
               </Panel>
             </div>
           )}

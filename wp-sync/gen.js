@@ -24,6 +24,7 @@
     指導與榮譽: 'ACHIEVEMENTS', 著作: 'PAPERS', 重點提醒: 'NOTES', 準備方向: 'PREP', 重要時程: 'SCHEDULE',
     費用: 'FEES', 聯絡窗口: 'CONTACT', 相關連結: 'LINKS', 學習軸線: 'TRACKS', 各學期課程: 'STAGES',
     系所特色: 'FEATURES', 三大學習主軸: 'STREAMS', 延伸閱讀: 'MORE', 預約參訪: 'VISIT',
+    專書: 'BOOKS', 學校教師資料: 'SCHOOL DATA',
   };
   // 章節頭：CSS 用 data-en 畫英文小標（例：COURSES · 授課科目）
   const ch2 = (s) => `<h2 class="agdc-ch2">${esc(s)}</h2>`;
@@ -209,6 +210,21 @@
     return join(`<p class="agdc-lead">共 ${D.faculty.length} 位專任教師，點姓名看個人頁。</p>`, `<ul class="agdc-cast">\n${cards.join('\n')}\n</ul>`, src('#faculty'));
   }
 
+  // 學校教師資料系統的短代碼代碼（鍵＝WordPress 頁面 ID）：2026-11-03 從各頁 10/06 改版前的修訂版本取回；楊智彰（5037）原本就沒有
+  // 短代碼輸出是一整份獨立網頁，由 wp-skin/comic-fx.html 在瀏覽器端整理成展開清單；學校系統抓不到時整段隱藏
+  const SDTI = {
+    1477: 'b017c8b542cccc932dd681f097adc3f33c23e8bc', 1479: '73b8075aad22630285b816972936097a8c44b3b3',
+    1481: '4dcb7221fe683476d6bb5c6ed27c812a676e98d0', 1483: '0fedbef93c20d3cbc868f521635cb69da3e18e85',
+    1485: '6d38b36d2952ab257ee1c094918b93e1fffa3974', 1487: 'a822ef39a16cdab3c5cd60cc8008bcdc3f642dad',
+    1489: '1f370ec916f5ac37f14e2474efa97444e25775c9', 1493: '66444c71edf58df41c8e177e4a1ef9bda863e2ce',
+    1495: '9691c4b23f3fa7c2d7e5d96bb76b8ebf3fc2efca', 1497: 'f45b30a68196f482e12fc6f19b911b1f589c9039',
+    1571: '3b399bd5c599b88c7bd792f8e86074320c4f83c4', 2059: '8d8a71f0d58befd47b81e10389bd8c528d1aad69',
+  };
+  const schoolData = (f) =>
+    SDTI[f.id]
+      ? `<section class="agdc-sec agdc-plain agdc-sdti">\n${ch3('學校教師資料')}\n<p class="agdc-sdti-note">以下由學校教師資料系統即時提供，點各項可展開。</p>\n[SDTI type="getTeacherInfo" teacher_id="${SDTI[f.id]}"]\n</section>`
+      : '';
+
   // 教師個人頁：版面對齊漫畫版 pages.jsx 教師頁（照片＋黑底名片，下面依序彩色區塊）
   function facultyPage(f) {
     const meta = [esc(f.en), f.ext && `分機 ${esc(f.ext)}`, mail(f.email), f.officeHours && `Office Hour：${esc(f.officeHours)}`].filter(Boolean);
@@ -226,6 +242,8 @@
       sec('plain', '經歷', f.experience && f.experience.length && ul(f.experience)),
       sec('ink', '指導與榮譽', f.achievements && f.achievements.length && ul(f.achievements)),
       sec('dots', '著作', papers.length && `<ul class="agdc-papers">\n${papers.join('\n')}\n</ul>`),
+      sec('yellow', '專書', f.books && f.books.length && ul(f.books)),
+      schoolData(f),
       src('#/faculty/' + f.slug)
     );
   }
@@ -292,7 +310,7 @@
     return { pages, widget: { id: 'custom_html-3', html: aboutWidget() } };
   }
 
-  const api = { buildAll, prose, esc, LAB_PAGE, ADM_PAGE };
+  const api = { buildAll, prose, esc, LAB_PAGE, ADM_PAGE, SDTI };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.AGDGen = api;
 })(typeof window !== 'undefined' ? window : globalThis);

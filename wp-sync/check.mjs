@@ -49,6 +49,15 @@ for (const id of [7139, 6906, 6926, 6908, 6919, 1952, 2001]) {
 ok(!/115 學年度招生已結束/.test(pages.find((y) => y.id === 3138).html), '參訪頁不應出現招生已結束提示');
 // 9. 小工具不可再出現舊系名
 ok(!/數位科技與遊戲設計系/.test(widget.html), '小工具還有舊系名');
+// 11. 學校教師資料短代碼（2026-11-03）：有代碼的老師頁剛好一段且代碼正確；沒有代碼的（楊智彰）不輸出；有專書就有專書區塊
+for (const f of D.faculty) {
+  const h = pages.find((y) => y.id === f.id).html;
+  const tid = gen.SDTI[f.id];
+  const n = (h.match(/\[SDTI type="getTeacherInfo" teacher_id="[0-9a-f]{40}"\]/g) || []).length;
+  ok(tid ? n === 1 && h.includes(`teacher_id="${tid}"`) : n === 0, `${f.name} 的學校資料短代碼數量或代碼不對（${n}）`);
+  if (f.books && f.books.length) ok(/data-en="BOOKS"/.test(h), `${f.name} 有專書資料但頁面沒有專書區塊`);
+}
+ok(Object.keys(gen.SDTI).length === 12 && !gen.SDTI[5037], '學校資料代碼應為 12 位（不含楊智彰）');
 // 10. 標題不重複（2026-11-03）：這幾頁的 WordPress 標題就是資料標題，內文不可再出現同字的 h2；總表人數改放導言
 const WP_TITLE = { 6926: '甄選入學', 6908: '科技繁星', 6919: '技優甄審', 1952: '技優甄審', 2001: '菁英獎學金', 25: '專任教師', 1627: '特色實驗室' };
 for (const [id, t] of Object.entries(WP_TITLE)) {
