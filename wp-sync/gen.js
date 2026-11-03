@@ -198,14 +198,21 @@
 
   // 角色卡牆：一位老師一張卡（取代原本 5 欄表格，手機不再擠成一字一行）
   function facultyList(D) {
+    // 照片用 WordPress 自動產生的 300×300 小圖（每張約 40 KB；原圖 1024px 約 130 KB），捲到才載入
+    const thumb = (u) => String(u || '').replace(/-1024x1024(\.\w+)$/, '-300x300$1');
     const cards = D.faculty.map((f) => [
       `<li class="agdc-card">`,
       `<p class="agdc-card-name">${a(SITE + '?page_id=' + f.id, f.name)}<small>${esc(f.en || '')}</small></p>`,
+      `<div class="agdc-card-body">`,
+      f.photo ? `<p class="agdc-card-photo"><img src="${esc(thumb(f.photo))}" alt="${esc(f.name)}" width="300" height="300" loading="lazy" /></p>` : '',
+      `<div class="agdc-card-info">`,
       `<p class="agdc-role">${esc(f.role)}</p>`,
       chips(f.spec),
       `<p class="agdc-card-contact">分機 ${esc(f.ext)}｜${mail(f.email)}</p>`,
+      `</div>`,
+      `</div>`,
       `</li>`,
-    ].join('\n'));
+    ].filter(Boolean).join('\n'));
     // 頁面標題已是「專任教師」，人數改放導言，不再重複一個標題
     return join(`<p class="agdc-lead">共 ${D.faculty.length} 位專任教師，點姓名看個人頁。</p>`, `<ul class="agdc-cast">\n${cards.join('\n')}\n</ul>`, src('#faculty'));
   }
