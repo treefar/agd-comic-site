@@ -899,6 +899,14 @@ body:not(.home) .agdc-splat svg { display: block; width: 100%; height: 100%; ove
   100% { transform: scale(0.95) translate(0, 14px); opacity: 0; }
 }
 
+/* 學校教師資料（SDTI 短代碼）：整理由 comic-fx 片段負責；沒有表格（學校系統 404）時直接不顯示，JS 沒跑也不會露出錯誤頁 */
+body:not(.home) .agdc-sdti:not(:has(table)) { display: none !important; }
+body:not(.home) .agdc-sdti center,
+body:not(.home) .agdc-sdti > hr { display: none !important; }
+body:not(.home) .agdc-sdti p.agdc-sdti-note { font-size: 14px; color: var(--agdc-muted) !important; }
+body:not(.home) .agdc-sdti details.agdc-more { margin-bottom: 10px; }
+body:not(.home) .agdc-sdti details.agdc-more table { width: 100%; }
+
 /* ---------- 13b. 手機（≤767px） ---------- */
 @media (max-width: 767px) {
   /* 內文加寬：外框內距收窄（原本只剩 311px） */

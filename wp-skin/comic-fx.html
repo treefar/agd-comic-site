@@ -12,6 +12,46 @@
   if (!b || b.classList.contains('home') || window.__agdcFx) return;
   window.__agdcFx = true;
 
+  // ---------- 學校教師資料（[SDTI] 短代碼輸出，2026-11-03）----------
+  // 輸出是一整份獨立網頁：自帶 Bootstrap、改全站字型的樣式、折疊卡片。
+  // 第一步一定先拿掉樣式類標籤（後面出錯也不會留下 Bootstrap）；接著把每張表改成漫畫風展開區；
+  // 一張有資料的表都沒有（學校系統回 404）就整段移除。要在跳轉列之前做，免得留下空的跳轉按鈕。
+  [].forEach.call(document.querySelectorAll('.agdc-sdti'), function (sec) {
+    [].forEach.call(sec.querySelectorAll('link, style, meta, title'), function (el) { el.parentNode.removeChild(el); });
+    try {
+      var box = document.createElement('div');
+      box.className = 'agdc-sdti-list';
+      [].forEach.call(sec.querySelectorAll('table'), function (t) {
+        var rows = t.querySelectorAll('tbody tr');
+        if (!rows.length) return;
+        var card = t.closest('.card');
+        var head = card && card.querySelector('.card-header');
+        var prev = t.previousElementSibling;
+        var title = ((head ? head.textContent : '') || (prev ? prev.textContent : '') || '學校資料').replace(/\s+/g, ' ').trim();
+        var heads = [].map.call(t.querySelectorAll('thead th'), function (th) { return th.textContent.trim(); });
+        [].forEach.call(rows, function (tr) {
+          [].forEach.call(tr.children, function (td, i) { if (heads[i]) td.setAttribute('data-label', heads[i]); });
+        });
+        t.className = 'agdc-table';
+        t.removeAttribute('style');
+        var d = document.createElement('details');
+        d.className = 'agdc-more';
+        var s = document.createElement('summary');
+        s.textContent = title + '（' + rows.length + ' 筆）';
+        d.appendChild(s);
+        d.appendChild(t);
+        box.appendChild(d);
+      });
+      if (!box.children.length) { sec.parentNode.removeChild(sec); return; }
+      [].slice.call(sec.childNodes).forEach(function (n) {
+        if (!(n.nodeType === 1 && n.matches('h3.agdc-ch, p.agdc-sdti-note'))) sec.removeChild(n);
+      });
+      sec.appendChild(box);
+    } catch (e) {
+      if (sec.parentNode) sec.parentNode.removeChild(sec);
+    }
+  });
+
   // ---------- 長頁跳轉列：本頁小標 4 個以上才產生 ----------
   var wrap = document.querySelector('.thn_post_wrap');
   if (wrap) {
