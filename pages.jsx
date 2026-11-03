@@ -380,7 +380,8 @@ const FacultyDetail = ({ slug }) => {
             </Panel>
             <Panel variant="inkbg" style={{ padding: 24 }}>
               <div className="h-display" style={{ fontSize: 38, lineHeight: 1, marginBottom: 6 }}>{f.name}</div>
-              <div style={{ fontSize: 12, fontWeight: 800, opacity: 0.7, letterSpacing: "0.06em", marginBottom: 14 }}>{f.en}</div>
+              <div style={{ fontSize: 12, fontWeight: 800, opacity: 0.7, letterSpacing: "0.06em", marginBottom: f.appointment ? 6 : 14 }}>{f.en}</div>
+              {f.appointment && <div style={{ fontSize: 11.5, lineHeight: 1.5, opacity: 0.8, marginBottom: 14 }}>{f.appointment}</div>}
               <div style={{ background: "var(--accent-yellow)", color: "var(--ink)", display: "inline-block", padding: "4px 10px", fontWeight: 800, fontSize: 13, marginBottom: 12 }}>
                 專長 · {f.spec}
               </div>

@@ -52,7 +52,7 @@ const FACULTY = [
     page: "https://www.dgd.stu.edu.tw/系所成員/陳美蓉/"
   },
   {
-    name: "吳焉昇", role: "講師 · 電競娛樂系合聘", en: "WU, YEN-SHEN",
+    name: "吳焉昇", role: "講師", en: "WU, YEN-SHEN",
     spec: "平面設計 / 網路多媒體 / 影像處理", color: "blue",
     photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/09/513-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/系所成員/吳焉昇/"
@@ -64,13 +64,13 @@ const FACULTY = [
     page: "https://www.dgd.stu.edu.tw/系所成員/王宗立/"
   },
   {
-    name: "陳寀瑜", role: "助理教授 · 從聘", en: "CHEN, TSAI-YU",
+    name: "陳寀瑜", role: "助理教授", en: "CHEN, TSAI-YU",
     spec: "資訊介面 / 數位遊戲理論 / 互動裝置 / 遊戲企劃", color: "",
     photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/04/157pan-scaled-e1712912482260-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/系所成員/陳寀瑜/"
   },
   {
-    name: "蔣天華", role: "副教授(技) · 從聘", en: "CHIANG, TIEN-HUA",
+    name: "蔣天華", role: "副教授(技)", en: "CHIANG, TIEN-HUA",
     spec: "互動遊戲 / AR VR MR / 物聯網", color: "",
     photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/04/1170pan-scaled-e1712911533827-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/系所成員/蔣天華/"
@@ -172,6 +172,7 @@ const FacultyCard = ({ f, i }) => {
           background: "var(--ink)", color: "var(--paper)",
           display: "inline-block", padding: "2px 6px"
         }}>{f.role}</div>
+        {f.appointment && <div style={{ fontSize: 10.5, fontWeight: 600, lineHeight: 1.45, marginTop: 4, opacity: 0.7 }}>{f.appointment}</div>}
         <div style={{ fontSize: 12, fontWeight: 600, marginTop: 6, opacity: 0.85 }}>專長 · {f.spec}</div>
       </div>
     </Panel>
