@@ -222,9 +222,9 @@
   };
   // snap：wp-sync/school-data.json 的固定內容（學校系統不穩，擷取後存成固定表格，頁面不再即時呼叫）；沒有擷取到的老師退回即時短碼
   const schoolData = (f, snap) => {
-    if (!SDTI[f.id]) return '';
     const secs = snap && snap.teachers && snap.teachers[f.id];
     if (!secs || !secs.length) {
+      if (!SDTI[f.id]) return '';
       return `<section class="agdc-sec agdc-plain agdc-sdti">\n${ch3('學校教師資料')}\n<p class="agdc-sdti-note">以下由學校教師資料系統即時提供，點各項可展開。</p>\n[SDTI type="getTeacherInfo" teacher_id="${SDTI[f.id]}"]\n</section>`;
     }
     const items = secs.map((s) =>
