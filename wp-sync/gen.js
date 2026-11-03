@@ -135,7 +135,8 @@
   const closedNote = () => `<p class="agdc-notice"><strong>${esc(ADM_CLOSED)}</strong></p>`;
   const admissionNotice = (x) => (/115/.test(x.year || '') && x.slug !== 'visit' ? closedNote() : '');
 
-  function admissionPage(x) {
+  // pageTitle：WordPress 頁面標題（主題畫成黃色貼紙 h1）；跟資料標題相同就不輸出 h2，避免同一個標題出現兩次
+  function admissionPage(x, pageTitle) {
     const meta = [x.year, x.quota && (/\d+\s*名/.test(x.quota) ? `名額：${x.quota}` : x.quota), x.code, x.schedule_short].filter(Boolean);
     const tl = (x.timeline || []).map((t) => [esc(t.date), esc(t.label)]);
     const fees = x.fees ? Object.values(x.fees).filter(Boolean) : [];
@@ -148,7 +149,7 @@
         ])
       : '';
     return join(
-      ch2(x.title),
+      x.title !== pageTitle && ch2(x.title),
       admissionNotice(x),
       facts(meta),
       x.summary && `<p class="agdc-lead">${esc(x.summary)}</p>`,
@@ -204,7 +205,8 @@
       `<p class="agdc-card-contact">分機 ${esc(f.ext)}｜${mail(f.email)}</p>`,
       `</li>`,
     ].join('\n'));
-    return join(ch2(`專任教師（${D.faculty.length} 位）`), `<ul class="agdc-cast">\n${cards.join('\n')}\n</ul>`, src('#faculty'));
+    // 頁面標題已是「專任教師」，人數改放導言，不再重複一個標題
+    return join(`<p class="agdc-lead">共 ${D.faculty.length} 位專任教師，點姓名看個人頁。</p>`, `<ul class="agdc-cast">\n${cards.join('\n')}\n</ul>`, src('#faculty'));
   }
 
   // 教師個人頁：版面對齊漫畫版 pages.jsx 教師頁（照片＋黑底名片，下面依序彩色區塊）
@@ -247,7 +249,7 @@
       const name = id ? a(SITE + '?page_id=' + id, `${l.code} ${l.name}`) : esc(`${l.code} ${l.name}`);
       return `<li>${name}：${esc(l.shortDesc || '')}</li>`;
     });
-    return join(ch2(`特色實驗室（${D.labs.length} 間）`), `<ul class="agdc-routes">\n${items.join('\n')}\n</ul>`, src('#labs'));
+    return join(`<p class="agdc-lead">共 ${D.labs.length} 間特色實驗室。</p>`, `<ul class="agdc-routes">\n${items.join('\n')}\n</ul>`, src('#labs'));
   }
 
   // ---------- 統計類 ----------
@@ -272,13 +274,13 @@
       { id: 3295, label: '課程資訊', html: curriculumPage(D) },
       { id: 7141, label: '系所介紹與課程地圖', html: introCurriculumPage(D) },
       { id: 7139, label: '招生資訊', html: admissionHub(D) },
-      { id: 6906, label: '高中申請', html: admissionPage(adm('high-school-application')) },
-      { id: 6926, label: '甄選入學', html: admissionPage(adm('selection')) },
-      { id: 6908, label: '科技繁星', html: admissionPage(adm('tech-star')) },
-      { id: 6919, label: '技優甄選', html: admissionPage(adm('tech-elite')) },
-      { id: 1952, label: '技優甄審（舊頁）', html: admissionPage(adm('tech-elite')) },
-      { id: 2001, label: '菁英獎學金', html: admissionPage(adm('scholarship')) },
-      { id: 3138, label: '參訪聯繫師長', html: admissionPage(adm('visit')) },
+      { id: 6906, label: '高中申請', html: admissionPage(adm('high-school-application'), '高中申請') },
+      { id: 6926, label: '甄選入學', html: admissionPage(adm('selection'), '甄選入學') },
+      { id: 6908, label: '科技繁星', html: admissionPage(adm('tech-star'), '科技繁星') },
+      { id: 6919, label: '技優甄選', html: admissionPage(adm('tech-elite'), '技優甄審') },
+      { id: 1952, label: '技優甄審（舊頁）', html: admissionPage(adm('tech-elite'), '技優甄審') },
+      { id: 2001, label: '菁英獎學金', html: admissionPage(adm('scholarship'), '菁英獎學金') },
+      { id: 3138, label: '參訪聯繫師長', html: admissionPage(adm('visit'), '參訪聯繫師長') },
       { id: 7137, label: '聯絡我們', html: contactPage(D) },
       { id: 25, label: '專任教師', html: facultyList(D) },
       ...D.faculty.map((f) => ({ id: f.id, label: `教師：${f.name}`, html: facultyPage(f) })),

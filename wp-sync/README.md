@@ -8,12 +8,15 @@ WordPress 版 https://www.dgd.stu.edu.tw/ 的 37 個舊頁面，內容由 `wp-sy
 | 項目 | 位置 | 版本 |
 |---|---|---|
 | 37 頁內容 | WordPress 頁面（ID 見 `gen.js` 的 `buildAll`） | 本分支 `gen.js`，資料來源日期 2026-11-03 |
-| 漫畫外衣 CSS | HFCM 片段 #7（Site Wide Header） | `20261103a`＝`wp-skin/dist/hfcm-header.html` |
-| 點擊特效＋長頁跳轉列 | HFCM 片段 #15（Site Wide Footer，2026-11-03 新增） | `20261103a`＝`wp-skin/dist/hfcm-fx-footer.html` |
-| LINE 浮動鈕 | HFCM 片段 #14（原始碼不在 repo） | 手機樣式由 #7 的 13b 節覆寫 |
+| 漫畫外衣 CSS | HFCM 片段 #7（Site Wide Header） | `20261103b`＝`wp-skin/dist/hfcm-header.html` |
+| 點擊特效＋長頁跳轉列 | HFCM 片段 #15（Site Wide Footer，2026-11-03 新增） | `20261103b`＝`wp-skin/dist/hfcm-fx-footer.html` |
+| LINE 浮動鈕 | HFCM 片段 #14（原始碼不在 repo） | 1024px 以下由 #7 覆寫成 50px 小方鈕 |
 
 2026-11-03 改版內容（使用者在對話中選定）：表格手機轉卡片、教師總表改角色卡、課程地圖改關卡軌道、
 章節頭＋彩色區塊、沿用漫畫版點擊特效（狀聲詞、圖片噴墨＋合成音效）、長頁跳轉列、手機 LINE 鈕縮成小方鈕、桌機一起套。
+
+20261103b（同日）：招生頁標題與 WordPress 頁面標題相同時不再重複輸出 h2，教師／實驗室總表人數改放導言；
+平板 768px 實測 LINE 長條鈕會壓字，小方鈕斷點從 767px 放寬到 1024px。37 頁在 768、1024 寬度皆無水平溢出。
 
 ## 同步流程
 

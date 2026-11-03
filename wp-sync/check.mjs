@@ -49,6 +49,13 @@ for (const id of [7139, 6906, 6926, 6908, 6919, 1952, 2001]) {
 ok(!/115 學年度招生已結束/.test(pages.find((y) => y.id === 3138).html), '參訪頁不應出現招生已結束提示');
 // 9. 小工具不可再出現舊系名
 ok(!/數位科技與遊戲設計系/.test(widget.html), '小工具還有舊系名');
+// 10. 標題不重複（2026-11-03）：這幾頁的 WordPress 標題就是資料標題，內文不可再出現同字的 h2；總表人數改放導言
+const WP_TITLE = { 6926: '甄選入學', 6908: '科技繁星', 6919: '技優甄審', 1952: '技優甄審', 2001: '菁英獎學金', 25: '專任教師', 1627: '特色實驗室' };
+for (const [id, t] of Object.entries(WP_TITLE)) {
+  const h = pages.find((y) => y.id === +id).html;
+  const h2 = (h.match(/<h2[^>]*>([^<]*)<\/h2>/) || [])[1] || '';
+  ok(!h2.startsWith(t), `頁面 ${id} 的 h2「${h2}」跟頁面標題「${t}」重複`);
+}
 
 // 預覽頁
 mkdirSync(join(here, 'dist'), { recursive: true });
