@@ -387,7 +387,7 @@ const SITE_EN_MESSAGES = {
   "陳慶鴻": "CHEN, CHING-HUNG",
   "數位設計 / 電腦動畫 / 動態影像": "Digital Design / Computer Animation / Motion Graphics",
   "數位設計、電腦動畫、動態影像製作": "Digital Design, Computer Animation, Motion Graphics Production",
-  "國立高雄師範大學 視覺傳達設計": "Visual Communication Design, National Kaohsiung Normal University",
+  "國立高雄師範大學 視覺傳達設計研究所 碩士": "Master, Graduate Institute of Visual Communication Design, National Kaohsiung Normal University",
   "中華民國廣告設計乙級技術士、ITE 數位內容遊戲企劃／美術專業人員、TQC 專業 e-office、Autodesk 3ds Max、勞動部圖文組版乙級技術士": "Republic of China Level B Technician in Advertising Design (中華民國廣告設計乙級技術士), ITE Digital Content Game Planning/Art Professional (ITE 數位內容遊戲企劃／美術專業人員), TQC Professional e-office, Autodesk 3ds Max, Class B Technician Certificate in Desktop Publishing (Ministry of Labor)",
   "週一 5、6 節": "Monday Periods 5, 6",
   "動態圖像設計、動畫與遊戲設計、商業動畫設計、數位影像剪輯、進階動畫與遊戲設計": "Motion Graphic Design, Animation and Game Design, Commercial Animation Design, Digital Video Editing, Advanced Animation and Game Design",
