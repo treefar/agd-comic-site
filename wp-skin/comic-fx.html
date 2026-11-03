@@ -1,0 +1,140 @@
+<!-- AGD COMIC FX：點擊特效＋長頁跳轉列
+     放置：HFCM 片段「Site Wide Footer」（node wp-skin/build.mjs 產出 dist/hfcm-fx-footer.html 再貼上）
+     樣式在 comic-skin.css 第 13 節；首頁（body.home，iframe 蓋住）不作用
+     點擊特效移植自漫畫版 comic-components.jsx 的 GlobalClickFx（3-zone 規則）：
+       A 功能元件（連結、按鈕、選單、標題、表單）→ 不放特效，避免干擾操作
+       B 圖片 → 噴墨＋合成音效
+       C 其他區塊 → 狀聲詞
+     系統設定「減少動態」時全部不放 -->
+<script>
+(function () {
+  var b = document.body;
+  if (!b || b.classList.contains('home') || window.__agdcFx) return;
+  window.__agdcFx = true;
+
+  // ---------- 長頁跳轉列：本頁小標 4 個以上才產生 ----------
+  var wrap = document.querySelector('.thn_post_wrap');
+  if (wrap) {
+    var heads = [].filter.call(wrap.querySelectorAll('h2.agdc-ch2, h3.agdc-ch'), function (h) {
+      return !h.closest('li, .agdc-hero');
+    });
+    if (heads.length >= 4) {
+      var nav = document.createElement('nav');
+      nav.className = 'agdc-jump';
+      nav.setAttribute('aria-label', '本頁段落');
+      heads.forEach(function (h, i) {
+        if (!h.id) h.id = 'agdc-s' + (i + 1);
+        var a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.textContent = h.textContent.replace(/（\d+\s*[位間]）$/, '');
+        nav.appendChild(a);
+      });
+      // 插在頁面標題（黃色貼紙 h1）後面；放最前面會讓 h1:first-child 的貼紙樣式失效
+      var first = wrap.firstElementChild;
+      wrap.insertBefore(nav, first && first.tagName === 'H1' ? first.nextSibling : wrap.firstChild);
+    }
+  }
+
+  // ---------- 點擊特效 ----------
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+  var POPS = ['碰！', '砰！', '咚！', '轟！', '喀！', '啪！', '鏘！', '叮！', '噹！', '登登！', '登愣！',
+    '嘩！', '刷！', '咻！', '唰！', '噠噠噠！', '咕嘟！', '嗡嗡！', '閃！', '爆！', '炸！',
+    '畫！', '想！', '做！', '成！', '耶！', '讚！', '哇！', '哦！', '來！', '上！', '衝！',
+    '轟隆隆！', '嘎嘎嘎！', '劈哩啪啦！', '咻咻！', '碰碰！',
+    'GO！', 'YES！', 'WOW！', 'OMG！', 'NICE！', "LET'S GO！", 'COOL！', 'EPIC！',
+    '蹦！', '啊哈！', '好欸！', '太神啦！', '欸嘿！', '好耶！', 'DOPE！', 'SLAY！',
+    '嘿嘿！', '咩噗！', '嗶嗶！', '噔噔！', '嘿呦！', '就是這個！', '起飛！', '狂！', '香！', '好料！'];
+  var INK = ['#d4ff3a', '#5cff7a', '#7df9ff', '#ff8fc8', '#ffb347'];
+  var ZONE_A = 'a[href], button, summary, input, textarea, select, label, [role="button"], [contenteditable="true"],' +
+    ' .header, .header_wrap, #footer, #copyright, nav, h1, h2, h3, #agdc-line, .to_top, [data-no-fx]';
+  var layer = null;
+  function getLayer() {
+    if (!layer) {
+      layer = document.createElement('div');
+      layer.className = 'agdc-fx-layer';
+      layer.setAttribute('aria-hidden', 'true');
+      b.appendChild(layer);
+    }
+    return layer;
+  }
+  function later(el, ms) { setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, ms); }
+
+  // 噴墨音效：Web Audio 合成，不需音檔（同漫畫版 playSplatSound）
+  var ctx = null;
+  function splatSound() {
+    try {
+      ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+      if (ctx.state === 'suspended') ctx.resume();
+      var t = ctx.currentTime;
+      var osc = ctx.createOscillator(), og = ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(720 + Math.random() * 200, t);
+      osc.frequency.exponentialRampToValueAtTime(110, t + 0.18);
+      og.gain.setValueAtTime(0.18, t);
+      og.gain.exponentialRampToValueAtTime(0.001, t + 0.22);
+      osc.connect(og).connect(ctx.destination);
+      osc.start(t); osc.stop(t + 0.25);
+      var len = Math.floor(ctx.sampleRate * 0.13), buf = ctx.createBuffer(1, len, ctx.sampleRate), d = buf.getChannelData(0);
+      for (var i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2.2);
+      var n = ctx.createBufferSource(), ng = ctx.createGain(), lp = ctx.createBiquadFilter();
+      n.buffer = buf; ng.gain.value = 0.10; lp.type = 'lowpass'; lp.frequency.value = 2400;
+      n.connect(lp).connect(ng).connect(ctx.destination);
+      n.start(t);
+    } catch (e) { /* 不支援就靜音 */ }
+  }
+
+  // 墨滴形狀：24 點圓形加 0～2 個暈染突起，Catmull-Rom 轉平滑曲線（同漫畫版 generateSplatShape）
+  function splatPath() {
+    var N = 24, drips = {}, k = Math.floor(Math.random() * 3), pts = [], i;
+    while (Object.keys(drips).length < k) drips[Math.floor(Math.random() * N)] = 1;
+    for (i = 0; i < N; i++) {
+      var ang = i / N * Math.PI * 2, r = drips[i] ? 36 + Math.random() * 8 : 27 + Math.random() * 4;
+      pts.push([50 + Math.cos(ang) * r, 50 + Math.sin(ang) * r]);
+    }
+    var dd = 'M' + pts[0][0].toFixed(1) + ',' + pts[0][1].toFixed(1);
+    for (i = 0; i < N; i++) {
+      var p0 = pts[(i - 1 + N) % N], p1 = pts[i], p2 = pts[(i + 1) % N], p3 = pts[(i + 2) % N];
+      dd += ' C' + (p1[0] + (p2[0] - p0[0]) / 6).toFixed(1) + ',' + (p1[1] + (p2[1] - p0[1]) / 6).toFixed(1) +
+        ' ' + (p2[0] - (p3[0] - p1[0]) / 6).toFixed(1) + ',' + (p2[1] - (p3[1] - p1[1]) / 6).toFixed(1) +
+        ' ' + p2[0].toFixed(1) + ',' + p2[1].toFixed(1);
+    }
+    return dd + ' Z';
+  }
+  function splat(x, y) {
+    var mobile = window.matchMedia && window.matchMedia('(max-width: 760px)').matches;
+    var range = mobile ? 60 : 80, count = mobile ? 2 : 3 + Math.floor(Math.random() * 2);
+    var color = INK[Math.floor(Math.random() * INK.length)], start = Math.random() * Math.PI * 2;
+    for (var i = 0; i < count; i++) {
+      var size = i === 0 ? 52 + Math.random() * 14 : 22 + Math.random() * 22;
+      var ang = start + (i - 1) / Math.max(1, count - 1) * Math.PI * 2, dist = i === 0 ? 0 : range * (0.55 + Math.random() * 0.45);
+      var el = document.createElement('div');
+      el.className = 'agdc-splat';
+      el.style.cssText = 'left:' + (x + Math.cos(ang) * dist - size / 2) + 'px;top:' + (y + Math.sin(ang) * dist - size / 2) +
+        'px;width:' + size + 'px;height:' + size + 'px;transform:rotate(' + Math.random() * 360 + 'deg)';
+      el.innerHTML = '<svg viewBox="0 0 100 100" style="animation-delay:' + (i ? 30 + Math.random() * 60 : 0) + 'ms;filter:drop-shadow(0 0 3px ' +
+        color + '99) drop-shadow(0 0 10px ' + color + '66)"><path d="' + splatPath() + '" fill="' + color + '" fill-opacity="0.78"/></svg>';
+      getLayer().appendChild(el);
+      later(el, 1100);
+    }
+    splatSound();
+  }
+  function pop(x, y) {
+    var el = document.createElement('span');
+    el.className = 'agdc-click-sfx';
+    el.textContent = POPS[Math.floor(Math.random() * POPS.length)];
+    el.style.cssText = 'left:' + (x - 60) + 'px;top:' + (y - 40) + 'px;--r:' + (Math.random() * 16 - 8) + 'deg';
+    getLayer().appendChild(el);
+    later(el, 750);
+  }
+
+  document.addEventListener('click', function (e) {
+    if (reduce && reduce.matches) return;
+    var t = e.target;
+    if (!t || !t.closest || t.closest(ZONE_A)) return;      // Zone A：功能元件不放特效
+    if (!t.closest('.single_post, .page_wrap')) return;      // 只在內文區
+    if (t.closest('img')) { splat(e.clientX, e.clientY); return; } // Zone B：圖片噴墨
+    if (window.getSelection && String(window.getSelection()).length) return; // 正在選字不打擾
+    pop(e.clientX, e.clientY);                                // Zone C：狀聲詞
+  }, true);
+})();
+</script>

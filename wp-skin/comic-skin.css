@@ -564,3 +564,388 @@ body:not(.home) .thn_post_wrap table {
 
 /* 2026-10-08 手機稽核：最新消息「Read More」可點區太小（68×14），放大成好按的按鈕高度 */
 body:not(.home) .elementor-post__read-more { display: inline-block; padding: 10px 2px; min-width: 44px; }
+
+/* =====================================================================
+   13. 漫畫版型（2026-11-03）：對應 wp-sync/gen.js 輸出的 agdc- class
+   對齊漫畫版 styles.css 的 Panel 配色、章節頭、課程軌道色；手機見 13b
+   ===================================================================== */
+:root {
+  --agdc-track-anim: #e63946;
+  --agdc-track-game: #1d4ed8;
+  --agdc-track-art: #b76aff;
+  --agdc-track-cross: #2d8a4f;
+  --agdc-track-core: #ffd60a;
+}
+/* 頁面大標（h2）：黑底黃字章節條，朱紅偏移陰影 */
+body:not(.home) .thn_post_wrap h2.agdc-ch2 {
+  display: inline-block;
+  background: var(--agdc-ink);
+  color: var(--agdc-yellow) !important;
+  border-left: 0 !important;
+  padding: 6px 16px !important;
+  margin: 0.6em 0 0.8em;
+  box-shadow: 5px 5px 0 var(--agdc-red);
+  transform: rotate(-0.6deg);
+  font-size: clamp(20px, 2.6vw, 26px) !important;
+  line-height: 1.4;
+}
+/* 區塊小標（h3）：英文小標＋中文，例如「COURSES · 授課科目」 */
+body:not(.home) .thn_post_wrap h3.agdc-ch {
+  border-left: 0 !important;
+  padding-left: 0 !important;
+  margin: 0 0 10px !important;
+  font-size: 19px !important;
+}
+body:not(.home) .thn_post_wrap h3.agdc-ch[data-en]:not([data-en=""])::before {
+  content: attr(data-en) " · ";
+  font-family: 'Bangers', var(--agdc-tc);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  font-size: 0.85em;
+}
+/* 不在區塊裡的小標（課程頁「各學期課程」）上方留白 */
+body:not(.home) .thn_post_wrap > h3.agdc-ch { margin-top: 1.4em !important; }
+/* 導言：比內文大一號、粗一點 */
+body:not(.home) .thn_post_wrap p.agdc-lead { font-size: 19px; font-weight: 700; }
+/* 資料來源行：小字靠右 */
+body:not(.home) .thn_post_wrap p.agdc-src { font-size: 14px; color: var(--agdc-muted) !important; margin-top: 28px; text-align: right; }
+
+/* 彩色區塊：一格漫畫格，黑框＋實心偏移陰影 */
+body:not(.home) .agdc-sec {
+  border: 4px solid var(--agdc-ink);
+  box-shadow: 6px 6px 0 var(--agdc-ink);
+  padding: 18px 20px 14px;
+  margin: 0 0 26px;
+  background: var(--agdc-card);
+}
+body:not(.home) .agdc-sec > :last-child { margin-bottom: 0; }
+body:not(.home) .agdc-yellow { background: var(--agdc-yellow); }
+body:not(.home) .agdc-red { background: var(--agdc-red-text); }
+body:not(.home) .agdc-red, body:not(.home) .agdc-red p, body:not(.home) .agdc-red li,
+body:not(.home) .agdc-red h3 { color: #fffaf0 !important; }
+body:not(.home) .agdc-ink { background: var(--agdc-ink); }
+body:not(.home) .agdc-ink, body:not(.home) .agdc-ink p, body:not(.home) .agdc-ink li { color: var(--agdc-paper) !important; }
+body:not(.home) .agdc-ink h3 { color: var(--agdc-yellow) !important; }
+body:not(.home) .agdc-ink a, body:not(.home) .agdc-red a { color: var(--agdc-yellow) !important; }
+body:not(.home) .agdc-dots,
+body:not(.home) .agdc-blue {
+  background-color: var(--agdc-card);
+  background-image: radial-gradient(rgba(15, 13, 10, 0.16) 1.2px, transparent 1.6px);
+  background-size: 9px 9px;
+}
+body:not(.home) .agdc-blue { background-image: radial-gradient(rgba(29, 78, 216, 0.28) 1.4px, transparent 1.8px); }
+body:not(.home) .agdc-plain { box-shadow: none; border-width: 3px; }
+
+/* 重點數字貼紙列 */
+body:not(.home) ul.agdc-facts { list-style: none !important; padding: 0 !important; margin: 0 0 20px !important; display: flex; flex-wrap: wrap; gap: 10px; }
+body:not(.home) ul.agdc-facts li {
+  margin: 0 !important;
+  background: var(--agdc-card);
+  border: 3px solid var(--agdc-ink);
+  box-shadow: 3px 3px 0 var(--agdc-ink);
+  padding: 4px 12px;
+  font-weight: 900;
+  font-size: 15px;
+  line-height: 1.5;
+}
+body:not(.home) ul.agdc-facts li:nth-child(4n+1) { background: var(--agdc-yellow); }
+body:not(.home) .agdc-yellow ul.agdc-facts li:nth-child(4n+1) { background: var(--agdc-card); }
+
+/* 已截止公告：紅框＋「已截止」印章 */
+body:not(.home) p.agdc-notice {
+  position: relative;
+  border: 3px solid var(--agdc-red-text);
+  background: var(--agdc-card);
+  padding: 12px 96px 12px 14px;
+  margin-bottom: 20px;
+}
+body:not(.home) p.agdc-notice::after {
+  content: '已截止';
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-8deg);
+  border: 3px solid var(--agdc-red-text);
+  color: var(--agdc-red-text);
+  font-weight: 900;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  padding: 2px 8px;
+  background: rgba(255, 250, 240, 0.8);
+}
+
+/* 招生管道、實驗室清單：每項一條黑框 */
+body:not(.home) ul.agdc-routes { list-style: none !important; padding: 0 !important; }
+body:not(.home) ul.agdc-routes > li {
+  border: 3px solid var(--agdc-ink);
+  border-left-width: 10px;
+  background: var(--agdc-card);
+  padding: 10px 14px;
+  margin: 0 0 12px !important;
+}
+
+/* 專任教師角色卡 */
+body:not(.home) ul.agdc-cast {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 0 20px !important;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+body:not(.home) ul.agdc-cast > li.agdc-card {
+  margin: 0 !important;
+  border: 4px solid var(--agdc-ink);
+  box-shadow: 6px 6px 0 var(--agdc-ink);
+  background: var(--agdc-card);
+  padding: 0 0 12px;
+}
+body:not(.home) .agdc-card p { margin: 0 14px 8px !important; }
+body:not(.home) .agdc-card p.agdc-card-name {
+  margin: 0 0 10px !important;
+  background: var(--agdc-ink);
+  padding: 8px 14px;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.3;
+}
+body:not(.home) .agdc-card p.agdc-card-name a { color: var(--agdc-yellow) !important; text-decoration: none !important; }
+body:not(.home) .agdc-card p.agdc-card-name a::after { content: ' ▶'; font-size: 0.7em; }
+body:not(.home) .agdc-card p.agdc-card-name small {
+  display: block;
+  font-family: 'Bangers', var(--agdc-tc);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  font-size: 13px;
+  color: var(--agdc-paper);
+  opacity: 0.75;
+}
+body:not(.home) .agdc-card p.agdc-card-contact { font-size: 14px; word-break: break-all; }
+body:not(.home) p.agdc-role { font-weight: 900; color: var(--agdc-red-text) !important; }
+body:not(.home) p.agdc-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+body:not(.home) p.agdc-chips span {
+  border: 2px solid var(--agdc-ink);
+  background: var(--agdc-yellow);
+  padding: 0 8px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+/* 教師個人頁：照片＋黑底名片（對齊漫畫版 pages.jsx 教師頁） */
+body:not(.home) .agdc-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  border: 4px solid var(--agdc-ink);
+  box-shadow: 8px 8px 0 var(--agdc-ink);
+  margin: 0 0 28px;
+  background: var(--agdc-ink);
+}
+body:not(.home) .agdc-hero p.agdc-photo { margin: 0 !important; }
+body:not(.home) .agdc-hero p.agdc-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 460px;
+  object-fit: cover;
+  object-position: center top;
+  border: 0 !important;
+  border-right: 4px solid var(--agdc-ink) !important;
+  box-shadow: none;
+}
+body:not(.home) .agdc-id { padding: 22px 20px; }
+body:not(.home) .agdc-id p.agdc-role {
+  display: inline-block;
+  background: var(--agdc-paper);
+  color: var(--agdc-ink) !important;
+  padding: 2px 12px;
+  margin-bottom: 12px;
+}
+body:not(.home) .agdc-id ul.agdc-meta { list-style: none !important; padding: 0 !important; margin: 0 0 14px !important; }
+body:not(.home) .agdc-id ul.agdc-meta li { color: var(--agdc-paper) !important; margin: 0 !important; font-size: 16px; }
+body:not(.home) .agdc-id ul.agdc-meta li:first-child { font-family: 'Bangers', var(--agdc-tc); letter-spacing: 0.08em; opacity: 0.8; }
+body:not(.home) .agdc-id ul.agdc-meta a { color: var(--agdc-yellow) !important; }
+body:not(.home) .agdc-id p.agdc-tag {
+  display: inline-block;
+  max-width: 100%;
+  box-sizing: border-box;
+  background: var(--agdc-yellow);
+  color: var(--agdc-ink) !important;
+  padding: 4px 10px;
+  font-weight: 900;
+  font-size: 15px;
+  line-height: 1.6;
+}
+/* 著作：年份大字 */
+body:not(.home) ul.agdc-papers { list-style: none !important; padding: 0 !important; }
+body:not(.home) ul.agdc-papers li { margin: 0 0 10px !important; padding: 0 0 8px 62px !important; position: relative; border-bottom: 1px dashed rgba(15, 13, 10, 0.25); }
+body:not(.home) ul.agdc-papers li:last-child { border-bottom: 0; }
+body:not(.home) ul.agdc-papers b.agdc-year { position: absolute; left: 0; top: 0; font-family: 'Bangers', var(--agdc-tc); font-weight: 400; font-size: 18px; color: var(--agdc-red-text); letter-spacing: 0.04em; }
+body:not(.home) ul.agdc-papers small { display: block; font-size: 14px; color: var(--agdc-muted); }
+
+/* 課程地圖：關卡軌道（一學期一關），軌道色對齊漫畫版 --track-* */
+body:not(.home) .agdc-tk-anim { --tk: var(--agdc-track-anim); }
+body:not(.home) .agdc-tk-game { --tk: var(--agdc-track-game); }
+body:not(.home) .agdc-tk-art { --tk: var(--agdc-track-art); }
+body:not(.home) .agdc-tk-cross { --tk: var(--agdc-track-cross); }
+body:not(.home) .agdc-tk-core { --tk: var(--agdc-track-core); }
+body:not(.home) p.agdc-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 14px; font-weight: 700; }
+body:not(.home) p.agdc-legend span::before { content: ''; display: inline-block; width: 12px; height: 12px; border: 2px solid var(--agdc-ink); background: var(--tk); margin-right: 5px; vertical-align: -1px; }
+body:not(.home) ol.agdc-map {
+  list-style: none !important;
+  padding: 0 0 0 34px !important;
+  margin: 0 0 20px !important;
+  position: relative;
+}
+/* 縱向進度軌：黑線貫穿每一關 */
+body:not(.home) ol.agdc-map::before { content: ''; position: absolute; left: 13px; top: 8px; bottom: 8px; width: 6px; background: var(--agdc-ink); }
+body:not(.home) ol.agdc-map > li.agdc-stage {
+  position: relative;
+  margin: 0 0 18px !important;
+  border: 4px solid var(--agdc-ink);
+  box-shadow: 5px 5px 0 var(--agdc-ink);
+  background: var(--agdc-card);
+}
+/* 關卡節點：黑框方塊，學年起點換黃色 */
+body:not(.home) ol.agdc-map > li.agdc-stage::before {
+  content: '';
+  position: absolute;
+  left: -32px;
+  top: 12px;
+  width: 18px;
+  height: 18px;
+  background: var(--agdc-card);
+  border: 4px solid var(--agdc-ink);
+}
+body:not(.home) ol.agdc-map > li.agdc-year-start::before { background: var(--agdc-yellow); }
+body:not(.home) p.agdc-stage-name {
+  margin: 0 !important;
+  background: var(--agdc-ink);
+  color: var(--agdc-paper) !important;
+  padding: 6px 12px;
+  font-weight: 900;
+}
+body:not(.home) span.agdc-lv { font-family: 'Bangers', var(--agdc-tc); color: var(--agdc-yellow); letter-spacing: 0.08em; margin-right: 10px; font-size: 18px; }
+body:not(.home) li.agdc-stage > ul { list-style: none !important; padding: 8px 12px !important; margin: 0 !important; }
+body:not(.home) li.agdc-tk { margin: 0 0 6px !important; padding-left: 12px; border-left: 6px solid var(--tk); line-height: 1.6; }
+body:not(.home) li.agdc-tk b { display: inline-block; min-width: 5.5em; margin-right: 6px; font-size: 14px; }
+/* 展開完整表格 */
+body:not(.home) details.agdc-more { border: 3px solid var(--agdc-ink); background: var(--agdc-card); margin: 0 0 20px; }
+body:not(.home) details.agdc-more summary { cursor: pointer; padding: 10px 14px; font-weight: 900; background: var(--agdc-paper2); min-height: 44px; box-sizing: border-box; }
+body:not(.home) details.agdc-more[open] summary { border-bottom: 3px solid var(--agdc-ink); }
+body:not(.home) details.agdc-more table { border: 0 !important; margin: 0; }
+body:not(.home) table.agdc-wide td, body:not(.home) table.agdc-wide th { min-width: 7em; }
+
+/* 頁首跳轉列（comic-fx 片段的 JS 產生）：貼紙按鈕，手機可左右滑 */
+body:not(.home) nav.agdc-jump {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 10px 2px 12px;
+  margin: 0 0 18px;
+  background: var(--agdc-card);
+  border-bottom: 3px solid var(--agdc-ink);
+  scrollbar-width: thin;
+}
+body:not(.home) nav.agdc-jump a {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 4px 12px;
+  border: 3px solid var(--agdc-ink);
+  background: var(--agdc-yellow);
+  box-shadow: 3px 3px 0 var(--agdc-ink);
+  color: var(--agdc-ink) !important;
+  text-decoration: none !important;
+  font-weight: 900;
+  font-size: 15px;
+  white-space: nowrap;
+}
+body:not(.home) nav.agdc-jump a:nth-child(even) { background: var(--agdc-card); }
+body:not(.home) .thn_post_wrap [id^="agdc-s"] { scroll-margin-top: 80px; }
+
+/* 點擊特效（comic-fx 片段的 JS 產生）：狀聲詞與噴墨，對齊漫畫版 styles.css .click-sfx／.ink-splat-anim */
+body:not(.home) .agdc-fx-layer { position: fixed; inset: 0; pointer-events: none; z-index: 99990; overflow: hidden; }
+body:not(.home) .agdc-click-sfx {
+  position: fixed;
+  font-family: 'Bangers', 'Noto Sans TC', system-ui;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  -webkit-text-stroke: 4px #0f0d0a;
+  paint-order: stroke fill;
+  color: #ffd60a;
+  text-shadow: 6px 6px 0 #0f0d0a;
+  font-size: 56px;
+  line-height: 0.9;
+  white-space: nowrap;
+  animation: agdcSfxPop 0.7s ease-out forwards;
+}
+@keyframes agdcSfxPop {
+  0% { transform: rotate(var(--r, -8deg)) scale(0.4); opacity: 0; }
+  40% { transform: rotate(calc(var(--r, -8deg) - 4deg)) scale(1.25); opacity: 1; }
+  70% { transform: rotate(var(--r, -8deg)) scale(1); opacity: 1; }
+  100% { transform: rotate(var(--r, -8deg)) scale(1.05); opacity: 0; }
+}
+body:not(.home) .agdc-splat { position: fixed; }
+body:not(.home) .agdc-splat svg { display: block; width: 100%; height: 100%; overflow: visible; opacity: 0; animation: agdcSplat 0.95s cubic-bezier(.2, .7, .2, 1) forwards; }
+@keyframes agdcSplat {
+  0% { transform: scale(0) translate(0, -10px); opacity: 0; }
+  15% { transform: scale(1.35); opacity: 0.55; }
+  55% { transform: scale(1); opacity: 0.55; }
+  100% { transform: scale(0.95) translate(0, 14px); opacity: 0; }
+}
+
+/* ---------- 13b. 手機（≤767px） ---------- */
+@media (max-width: 767px) {
+  /* 內文加寬：外框內距收窄（原本只剩 311px） */
+  body:not(.home) .single_post,
+  body:not(.home) .page_wrap .single_wrap > .single_post { padding: 20px 12px 16px; border-width: 4px; margin-bottom: 96px; }
+  body:not(.home) .thn_post_wrap, body:not(.home) .thn_post_wrap p, body:not(.home) .thn_post_wrap li { font-size: 16px; }
+  body:not(.home) .agdc-sec { padding: 14px 12px 10px; box-shadow: 4px 4px 0 var(--agdc-ink); margin-bottom: 20px; }
+  body:not(.home) ul.agdc-cast { grid-template-columns: 1fr; gap: 16px; }
+  body:not(.home) .agdc-hero { grid-template-columns: 1fr; box-shadow: 5px 5px 0 var(--agdc-ink); }
+  body:not(.home) .agdc-hero p.agdc-photo img { max-height: 380px; border-right: 0 !important; border-bottom: 4px solid var(--agdc-ink) !important; }
+  body:not(.home) .agdc-id { padding: 16px 14px; }
+  body:not(.home) ol.agdc-map { padding-left: 26px !important; }
+  body:not(.home) ol.agdc-map::before { left: 8px; width: 5px; }
+  body:not(.home) ol.agdc-map > li.agdc-stage::before { left: -25px; width: 14px; height: 14px; border-width: 3px; }
+  body:not(.home) li.agdc-tk b { display: block; min-width: 0; }
+  body:not(.home) p.agdc-notice { padding-right: 14px; padding-top: 34px; }
+  body:not(.home) p.agdc-notice::after { top: 6px; transform: rotate(-6deg); font-size: 14px; }
+  body:not(.home) .agdc-click-sfx { font-size: 36px; -webkit-text-stroke-width: 3px; text-shadow: 4px 4px 0 #0f0d0a; }
+
+  /* 表格一列一張卡：每格前面顯示欄名（td 的 data-label）；課程完整表 agdc-wide 改左右滑 */
+  body:not(.home) table.agdc-table:not(.agdc-wide),
+  body:not(.home) table.agdc-table:not(.agdc-wide) tbody,
+  body:not(.home) table.agdc-table:not(.agdc-wide) tr,
+  body:not(.home) table.agdc-table:not(.agdc-wide) td { display: block; width: 100% !important; box-sizing: border-box; }
+  body:not(.home) table.agdc-table:not(.agdc-wide) thead { display: none; }
+  body:not(.home) table.agdc-table:not(.agdc-wide) { border: 0 !important; background: transparent; }
+  body:not(.home) table.agdc-table:not(.agdc-wide) tr { border: 3px solid var(--agdc-ink); background: var(--agdc-card); margin: 0 0 10px; }
+  body:not(.home) table.agdc-table:not(.agdc-wide) td { border: 0 !important; border-bottom: 1px dashed rgba(15, 13, 10, 0.3) !important; padding: 6px 10px; }
+  body:not(.home) table.agdc-table:not(.agdc-wide) td:last-child { border-bottom: 0 !important; }
+  body:not(.home) table.agdc-table:not(.agdc-wide) td[data-label]:not([data-label=""])::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 13px;
+    font-weight: 900;
+    color: var(--agdc-red-text);
+  }
+
+  /* LINE 浮動鈕（HFCM #14）：縮成 50px 小方鈕只留「LINE」，不再蓋字 */
+  body:not(.home) #agdc-line { width: 50px; height: 50px; padding: 0 !important; display: flex !important; align-items: center; justify-content: center; right: 10px !important; bottom: 76px !important; font-size: 0 !important; }
+  body:not(.home) #agdc-line .agdc-zh, body:not(.home) #agdc-line .agdc-en { display: none !important; }
+  body:not(.home) #agdc-line::before { content: 'LINE'; font-size: 13px; font-weight: 900; color: #fff; }
+}
+
+/* 減少動態偏好：點擊特效全部不播（JS 端也會跳過） */
+@media (prefers-reduced-motion: reduce) {
+  body:not(.home) .agdc-fx-layer { display: none !important; }
+}
+@media print {
+  body:not(.home) nav.agdc-jump, body:not(.home) .agdc-fx-layer { display: none !important; }
+}

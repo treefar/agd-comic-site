@@ -5,7 +5,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const here = dirname(fileURLToPath(import.meta.url));
-const VERSION = '20261008c'; // 改 CSS 後一起改，方便在原始碼裡辨認線上是哪一版
+const VERSION = '20261103a'; // 改 CSS 後一起改，方便在原始碼裡辨認線上是哪一版
 
 const FONT_URL =
   'https://fonts.googleapis.com/css2?family=Bangers&family=Bowlby+One&family=Noto+Sans+TC:wght@400;700;900&display=swap';
@@ -36,6 +36,21 @@ export function buildFooter(barHtml) {
   return `<!-- AGD COMIC BAR ${VERSION} | 原始檔 agd-comic-site/wp-skin/comic-bar.html -->\n${script}\n`;
 }
 
+// 點擊特效片段：去掉 JS 註解（整行 // 與行尾 // 、/* */），線上片段比較短，也方便用雜湊比對線上與 repo 是否一致
+export function stripJsComments(js) {
+  return js
+    .replace(/[ \t]*\/\*[^*]*\*\/[ \t]*/g, ' ')
+    .split('\n')
+    .filter((l) => !/^\s*\/\//.test(l))
+    .map((l) => l.replace(/\s+\/\/ .*$/, ''))
+    .join('\n');
+}
+
+export function buildFx(fxHtml) {
+  const script = stripJsComments(fxHtml.match(/<script>[\s\S]*?<\/script>/)[0]);
+  return `<!-- AGD COMIC FX ${VERSION} | 原始檔 agd-comic-site/wp-skin/comic-fx.html -->\n${script}\n`;
+}
+
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const css = readFileSync(join(here, 'comic-skin.css'), 'utf8');
   const bar = readFileSync(join(here, 'comic-bar.html'), 'utf8');
@@ -43,7 +58,10 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   mkdirSync(out, { recursive: true });
   const header = buildHeader(css);
   const footer = buildFooter(bar);
+  // 點擊特效＋跳轉列：另一個 HFCM 片段（Site Wide Footer，2026-11-03）
+  const fx = buildFx(readFileSync(join(here, 'comic-fx.html'), 'utf8'));
   writeFileSync(join(out, 'hfcm-header.html'), header, 'utf8');
   writeFileSync(join(out, 'hfcm-footer.html'), footer, 'utf8');
-  console.log(`header ${header.length} chars, footer ${footer.length} chars → ${out}`);
+  writeFileSync(join(out, 'hfcm-fx-footer.html'), fx, 'utf8');
+  console.log(`header ${header.length} chars, footer ${footer.length} chars, fx ${fx.length} chars → ${out}`);
 }

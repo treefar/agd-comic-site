@@ -3,7 +3,7 @@
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { minify, buildHeader, buildFooter } from './build.mjs';
+import { minify, buildHeader, buildFooter, buildFx } from './build.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const css = readFileSync(join(here, 'comic-skin.css'), 'utf8');
@@ -28,7 +28,8 @@ for (const m of min.matchAll(/(box-shadow|text-shadow):([^;}]+)/g)) {
 }
 
 // 3. 每條規則都要限定範圍：body:not(.home)、#agdc-bar 或 :root，避免蓋到首頁
-const blocks = min.replace(/@media[^{]+\{/g, '').split('}');
+// @keyframes 的 0%／40% 不是選擇器，先整段拿掉（2026-11-03 點擊特效加入動畫）
+const blocks = min.replace(/@keyframes[^{]+\{(?:[^{}]*\{[^{}]*\})*[^{}]*\}/g, '').replace(/@media[^{]+\{/g, '').split('}');
 for (const b of blocks) {
   const sel = b.split('{')[0].trim();
   if (!sel || !b.includes('{')) continue;
@@ -60,6 +61,18 @@ const header = buildHeader(css);
 ok(/<style id="agdc-skin"[^>]*>[\s\S]+<\/style>/.test(header), 'header 片段缺 <style>');
 ok((min.match(/\{/g) || []).length === (min.match(/\}/g) || []).length, 'CSS 大括號不成對');
 ok(/^<!--[\s\S]*<script>[\s\S]*<\/script>\n$/.test(buildFooter(bar)), 'footer 片段格式不對');
+
+// 8. 點擊特效＋跳轉列片段（2026-11-03）：首頁不作用、防重複、尊重減少動態、功能元件不放特效
+const fx = readFileSync(join(here, 'comic-fx.html'), 'utf8');
+ok(/classList\.contains\('home'\)/.test(fx), '特效片段沒有排除首頁');
+ok(/window\.__agdcFx/.test(fx), '特效片段沒有防重複');
+ok(/prefers-reduced-motion: reduce/.test(fx), '特效片段沒有尊重減少動態');
+ok(/a\[href\], button, summary/.test(fx), '特效片段沒有排除連結與按鈕');
+const fxOut = buildFx(fx);
+ok(/^<!--[\s\S]*<script>[\s\S]*<\/script>\n$/.test(fxOut), 'fx 片段格式不對');
+ok(!/^\s*\/\/|\s\/\/ |\/\*/m.test(fxOut.replace(/^<!--.*-->\n/, '')), 'fx 片段殘留 JS 註解');
+try { new Function(fxOut.match(/<script>([\s\S]*)<\/script>/)[1]); } catch (e) { fails.push('fx 片段去註解後語法錯誤：' + e.message); }
+ok(!/[“”]/.test(fx.replace(/<!--[\s\S]*?-->/g, '')), '特效片段含全形引號，WordPress 可能轉壞');
 
 if (fails.length) {
   console.error(`FAIL ${fails.length} 項：\n- ` + fails.join('\n- '));

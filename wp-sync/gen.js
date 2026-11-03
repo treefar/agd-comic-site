@@ -1,10 +1,10 @@
 // 漫畫版資料 → WordPress 舊頁面內容產生器
 // 用途：把 data/*.json 轉成各 WordPress 頁面的 HTML，讓 Google 搜到的舊頁與漫畫版首頁資料一致
-// 限制：只用基本標籤（h2/h3/p/ul/table/img/a），不用 style／script／iframe（子站管理員存檔會被濾掉）
+// 限制：不用 style／script／iframe（子站管理員存檔會被濾掉）；版面靠 agdc- class，樣式在 wp-skin/comic-skin.css
 // 同一份程式在 Node（產生預覽、跑檢查）與瀏覽器（實際寫入 WordPress）都能用
 (function (root) {
   const SITE = 'https://www.dgd.stu.edu.tw/';
-  const UPDATED = '2026-10-06';
+  const UPDATED = '2026-11-03';
 
   const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   const p = (s) => `<p>${esc(s)}</p>`;
@@ -15,7 +15,28 @@
   // w：限制顯示寬度（老師照片原圖 1024px，不限會佔滿整個畫面）
   const img = (src, alt, w) => (src ? `<p><img src="${esc(src)}" alt="${esc(alt)}"${w ? ` width="${w}"` : ''} /></p>` : '');
   const comic = (hash, text) => a(SITE + hash, text || '到動遊系首頁看完整內容');
-  const src = (hash) => `<p>資料來源：${comic(hash, '動遊系首頁')}（更新日期 ${UPDATED}）</p>`;
+  const src = (hash) => `<p class="agdc-src">資料來源：${comic(hash, '動遊系首頁')}（更新日期 ${UPDATED}）</p>`;
+
+  // ---------- 漫畫版型（2026-11-03）：class 一律 agdc- 開頭，樣式在 wp-skin/comic-skin.css 第 13 節 ----------
+  // WordPress 子站管理員存檔會保留 class、data-*、role、details（2026-11-03 草稿頁實測）
+  const EN = {
+    專長: 'SKILLS', 研究領域: 'RESEARCH', 授課科目: 'COURSES', 學歷: 'EDU', 證照: 'CERTS', 經歷: 'CAREER',
+    指導與榮譽: 'ACHIEVEMENTS', 著作: 'PAPERS', 重點提醒: 'NOTES', 準備方向: 'PREP', 重要時程: 'SCHEDULE',
+    費用: 'FEES', 聯絡窗口: 'CONTACT', 相關連結: 'LINKS', 學習軸線: 'TRACKS', 各學期課程: 'STAGES',
+    系所特色: 'FEATURES', 三大學習主軸: 'STREAMS', 延伸閱讀: 'MORE', 預約參訪: 'VISIT',
+  };
+  // 章節頭：CSS 用 data-en 畫英文小標（例：COURSES · 授課科目）
+  const ch2 = (s) => `<h2 class="agdc-ch2">${esc(s)}</h2>`;
+  const ch3 = (s, en) => `<h3 class="agdc-ch" data-en="${esc(en ?? EN[s] ?? '')}">${esc(s)}</h3>`;
+  // 彩色區塊：tone = yellow／red／blue／dots／ink／plain，對齊漫畫版 Panel 的配色
+  const sec = (tone, title, body) => (body ? `<section class="agdc-sec agdc-${tone}">\n${ch3(title)}\n${body}\n</section>` : '');
+  // 表格每格附欄名，手機改成一列一張卡時由 CSS 顯示（td::before）
+  const table = (heads, rows, cls) =>
+    `<table class="agdc-table${cls ? ' ' + cls : ''}">\n` +
+    (heads.some(Boolean) ? `<thead><tr>${heads.map((h) => `<th>${esc(h)}</th>`).join('')}</tr></thead>\n` : '') +
+    `<tbody>\n${rows.map((r) => `<tr>${r.map((c, i) => `<td data-label="${esc(heads[i] || '')}">${c}</td>`).join('')}</tr>`).join('\n')}\n</tbody>\n</table>`;
+  // 重點數字：黑框貼紙排一排
+  const facts = (arr) => (arr && arr.length ? `<ul class="agdc-facts">\n${arr.map((x) => `<li>${esc(x)}</li>`).join('\n')}\n</ul>` : '');
 
   // 純文字段落：空行分段；「■」開頭當小標；「● / • / 1.」開頭的連續行當清單
   function prose(text) {
@@ -57,15 +78,12 @@
 
   function aboutPage(D) {
     return join(
-      h2('動畫與遊戲設計系在學什麼？'),
-      p(ABOUT_LEAD),
+      ch2('動畫與遊戲設計系在學什麼？'),
+      `<p class="agdc-lead">${esc(ABOUT_LEAD)}</p>`,
       p(ABOUT_HISTORY),
-      h3('系所特色'),
-      ul(aboutStats(D)),
-      h3('三大學習主軸'),
-      ul(['動畫製作：2D / 3D / 偶動畫 / 動態捕捉', '遊戲設計：Unity / Unreal / 美術 / 程式', '互動媒體：VR / AR / 體感互動 / 自媒體']),
-      h3('延伸閱讀'),
-      `<ul>\n<li>${a(SITE + '課程資訊新/', '課程資訊（四年課程地圖）')}</li>\n<li>${a(SITE + '系所成員/', '專任教師')}</li>\n<li>${a(SITE + '特色實驗室/', '特色實驗室')}</li>\n</ul>`,
+      sec('yellow', '系所特色', facts(aboutStats(D))),
+      sec('dots', '三大學習主軸', ul(['動畫製作：2D / 3D / 偶動畫 / 動態捕捉', '遊戲設計：Unity / Unreal / 美術 / 程式', '互動媒體：VR / AR / 體感互動 / 自媒體'])),
+      sec('plain', '延伸閱讀', `<ul>\n<li>${a(SITE + '課程資訊新/', '課程資訊（四年課程地圖）')}</li>\n<li>${a(SITE + '系所成員/', '專任教師')}</li>\n<li>${a(SITE + '特色實驗室/', '特色實驗室')}</li>\n</ul>`),
       src('#about')
     );
   }
@@ -78,25 +96,34 @@
   function curriculumBody(D) {
     const c = D.curriculum;
     const sems = c.semesters.map((s) => `${s.year}${s.term.replace('第', '').replace('學期', '')}`);
-    const rows = c.tracks.map((t) => {
-      const cells = t.courses.map((list) => esc((list || []).map((x) => x.name).join('、')) || '—');
-      return `<tr><th>${esc(t.name)}</th>${cells.map((x) => `<td>${x}</td>`).join('')}</tr>`;
+    const names = (t, i) => (t.courses[i] || []).map((x) => x.name).join('、');
+    // 關卡軌道：一學期一關，每關列出各軸線的課（沒有課的軸線不列）
+    const stages = c.semesters.map((s, i) => {
+      const lines = c.tracks
+        .filter((t) => names(t, i))
+        .map((t) => `<li class="agdc-tk agdc-tk-${esc(t.key)}"><b>${esc(t.name.replace(/軸線$/, ''))}</b>${esc(names(t, i))}</li>`);
+      return `<li class="agdc-stage${i % 2 === 0 ? ' agdc-year-start' : ''}"><p class="agdc-stage-name"><span class="agdc-lv">LV.${i + 1}</span>${esc(s.year + ' ' + s.term)}</p>\n<ul>\n${lines.join('\n')}\n</ul></li>`;
     });
+    const legend = `<p class="agdc-legend">${c.tracks.map((t) => `<span class="agdc-tk-${esc(t.key)}">${esc(t.name)}</span>`).join(' ')}</p>`;
+    // 原表格保留在「展開」裡，給要一次看全貌的人
+    const full = table(['軸線', ...sems], c.tracks.map((t) => [esc(t.name), ...t.courses.map((list) => esc((list || []).map((x) => x.name).join('、')) || '—')]), 'agdc-wide');
     return join(
+      facts([`畢業 ${c.credits.total} 學分`, `必修 ${c.credits.required}`, `選修 ${c.credits.elective}`, `校外實習 ${c.credits.internshipHours} 小時`]),
       p(`${c.yearTag}（${c.yearRange}）：畢業學分 ${c.credits.total} 學分，其中必修 ${c.credits.required} 學分、選修 ${c.credits.elective} 學分，另含校外實習 ${c.credits.internshipHours} 小時。`),
-      h3('學習軸線'),
-      ul(c.tracks.map((t) => `${t.name}（${t.nameEn}）：${t.desc}`)),
-      h3('各學期課程'),
-      `<table>\n<thead><tr><th>軸線</th>${sems.map((s) => `<th>${esc(s)}</th>`).join('')}</tr></thead>\n<tbody>\n${rows.join('\n')}\n</tbody>\n</table>`
+      sec('dots', '學習軸線', ul(c.tracks.map((t) => `${t.name}（${t.nameEn}）：${t.desc}`))),
+      ch3('各學期課程'),
+      legend,
+      `<ol class="agdc-map">\n${stages.join('\n')}\n</ol>`,
+      `<details class="agdc-more"><summary>展開完整課程表格</summary>\n${full}\n</details>`
     );
   }
 
   function curriculumPage(D) {
-    return join(h2('四年課程地圖'), curriculumBody(D), src('#/curriculum/map'));
+    return join(ch2('四年課程地圖'), curriculumBody(D), src('#/curriculum/map'));
   }
 
   function introCurriculumPage(D) {
-    return join(h2('系所介紹'), p(ABOUT_LEAD), p(ABOUT_HISTORY), ul(aboutStats(D)), h2('四年課程地圖'), curriculumBody(D), src('#about'));
+    return join(ch2('系所介紹'), `<p class="agdc-lead">${esc(ABOUT_LEAD)}</p>`, p(ABOUT_HISTORY), facts(aboutStats(D)), ch2('四年課程地圖'), curriculumBody(D), src('#about'));
   }
 
   // ---------- 招生 ----------
@@ -104,11 +131,13 @@
 
   // 115 學年度時程已全部結束（2026-10）；參訪是全年開放，不加註
   const ADM_CLOSED = '115 學年度招生已結束，以下時程與名額僅供參考；116 學年度簡章公布後更新。';
-  const admissionNotice = (x) => (/115/.test(x.year || '') && x.slug !== 'visit' ? `<p><strong>${esc(ADM_CLOSED)}</strong></p>` : '');
+  // 已結束的公告：紅框加「已截止」印章（CSS 畫印章）
+  const closedNote = () => `<p class="agdc-notice"><strong>${esc(ADM_CLOSED)}</strong></p>`;
+  const admissionNotice = (x) => (/115/.test(x.year || '') && x.slug !== 'visit' ? closedNote() : '');
 
   function admissionPage(x) {
     const meta = [x.year, x.quota && (/\d+\s*名/.test(x.quota) ? `名額：${x.quota}` : x.quota), x.code, x.schedule_short].filter(Boolean);
-    const tl = (x.timeline || []).map((t) => `<tr><td>${esc(t.date)}</td><td>${esc(t.label)}</td></tr>`);
+    const tl = (x.timeline || []).map((t) => [esc(t.date), esc(t.label)]);
     const fees = x.fees ? Object.values(x.fees).filter(Boolean) : [];
     const links = (x.links || []).map((l) => `<li>${a(l.url, l.label)}</li>`);
     const contact = x.contact
@@ -119,17 +148,17 @@
         ])
       : '';
     return join(
-      h2(x.title),
+      ch2(x.title),
       admissionNotice(x),
-      ul(meta),
-      x.summary && p(x.summary),
+      facts(meta),
+      x.summary && `<p class="agdc-lead">${esc(x.summary)}</p>`,
       prose(x.content),
-      x.key_notes && x.key_notes.length && h3('重點提醒') + '\n' + ul(x.key_notes),
-      x.stu_focus && x.stu_focus.length && h3('準備方向') + '\n' + ul(x.stu_focus),
-      tl.length && h3('重要時程') + `\n<table>\n<tbody>\n${tl.join('\n')}\n</tbody>\n</table>`,
-      fees.length && h3('費用') + '\n' + ul(fees),
-      contact && h3('聯絡窗口') + '\n' + contact,
-      links.length && h3('相關連結') + `\n<ul>\n${links.join('\n')}\n</ul>`,
+      x.key_notes && x.key_notes.length && sec('yellow', '重點提醒', ul(x.key_notes)),
+      x.stu_focus && x.stu_focus.length && sec('dots', '準備方向', ul(x.stu_focus)),
+      tl.length && sec('plain', '重要時程', table(['日期', '事項'], tl, 'agdc-timeline')),
+      fees.length && sec('blue', '費用', ul(fees)),
+      contact && sec('ink', '聯絡窗口', contact),
+      links.length && sec('plain', '相關連結', `<ul>\n${links.join('\n')}\n</ul>`),
       src('#/admission/' + x.slug)
     );
   }
@@ -143,46 +172,58 @@
       const bits = [x.year, q, x.schedule_short].filter(Boolean).map(esc).join('｜');
       return `<li>${name}｜${bits}<br />${esc(x.summary || '')}</li>`;
     });
-    return join(h2('招生管道一覽'), `<p><strong>${esc(ADM_CLOSED)}</strong></p>`, `<ul>\n${items.join('\n')}\n</ul>`, `<p>另有${a(SITE + '特殊選才/', '特殊選才')}管道，請見專頁。</p>`, src('#/admission/visit'));
+    return join(ch2('招生管道一覽'), closedNote(), `<ul class="agdc-routes">\n${items.join('\n')}\n</ul>`, `<p>另有${a(SITE + '特殊選才/', '特殊選才')}管道，請見專頁。</p>`, src('#/admission/visit'));
   }
 
   function contactPage(D) {
     const c = D.admission.find((x) => x.slug === 'visit').contact;
     return join(
-      h2('聯絡資訊'),
+      ch2('聯絡資訊'),
       ul([`地址：${c.address}`, `總機：${c.phone}`]),
-      h3('聯絡窗口'),
-      ul([
+      sec('ink', '聯絡窗口', ul([
         `${c.advisor.name}（${c.advisor.title}）分機 ${c.advisor.ext}｜${c.advisor.email}`,
         `${c.assistant.name}（${c.assistant.title}）分機 ${c.assistant.ext}｜${c.assistant.email}`,
-      ]),
-      h3('預約參訪'),
-      p('想實際走進動遊系？預約深度參訪，由專人帶你體驗實驗室、了解四年所學、規劃適合的入學管道。每週六固定開放，平日可另行協調。'),
-      `<p>${a(SITE + '參訪聯繫師長/', '預約一日參訪說明')}</p>`,
+      ])),
+      sec('yellow', '預約參訪', p('想實際走進動遊系？預約深度參訪，由專人帶你體驗實驗室、了解四年所學、規劃適合的入學管道。每週六固定開放，平日可另行協調。') + '\n' + `<p>${a(SITE + '參訪聯繫師長/', '預約一日參訪說明')}</p>`),
       src('#/admission/visit')
     );
   }
 
   // ---------- 師資 ----------
+  const mail = (e) => (e ? a('mailto:' + e, e) : '');
+  // 專長「遊戲設計 / 劇本創作」拆成一顆顆貼紙
+  const chips = (s) => `<p class="agdc-chips">${String(s || '').split(/\s*\/\s*/).filter(Boolean).map((x) => `<span>${esc(x)}</span>`).join(' ')}</p>`;
+
+  // 角色卡牆：一位老師一張卡（取代原本 5 欄表格，手機不再擠成一字一行）
   function facultyList(D) {
-    const rows = D.faculty.map((f) => `<tr><td>${a(SITE + '?page_id=' + f.id, f.name)}</td><td>${esc(f.role)}</td><td>${esc(f.spec)}</td><td>${esc(f.ext)}</td><td>${esc(f.email)}</td></tr>`);
-    return join(h2(`專任教師（${D.faculty.length} 位）`), `<table>\n<thead><tr><th>姓名</th><th>職稱</th><th>專長</th><th>分機</th><th>Email</th></tr></thead>\n<tbody>\n${rows.join('\n')}\n</tbody>\n</table>`, src('#faculty'));
+    const cards = D.faculty.map((f) => [
+      `<li class="agdc-card">`,
+      `<p class="agdc-card-name">${a(SITE + '?page_id=' + f.id, f.name)}<small>${esc(f.en || '')}</small></p>`,
+      `<p class="agdc-role">${esc(f.role)}</p>`,
+      chips(f.spec),
+      `<p class="agdc-card-contact">分機 ${esc(f.ext)}｜${mail(f.email)}</p>`,
+      `</li>`,
+    ].join('\n'));
+    return join(ch2(`專任教師（${D.faculty.length} 位）`), `<ul class="agdc-cast">\n${cards.join('\n')}\n</ul>`, src('#faculty'));
   }
 
+  // 教師個人頁：版面對齊漫畫版 pages.jsx 教師頁（照片＋黑底名片，下面依序彩色區塊）
   function facultyPage(f) {
-    const info = [f.role, f.en, f.ext && `分機 ${f.ext}`, f.email, f.officeHours && `Office Hour：${f.officeHours}`].filter(Boolean);
+    const meta = [esc(f.en), f.ext && `分機 ${esc(f.ext)}`, mail(f.email), f.officeHours && `Office Hour：${esc(f.officeHours)}`].filter(Boolean);
+    const papers = (f.papers || []).map((x) => `<li><b class="agdc-year">${esc(x.year)}</b>${esc(x.title)}<small>${esc(x.venue)}</small></li>`);
     // 頁面標題已經是老師姓名（主題的黃色標題貼紙），內文不再重複姓名
     return join(
-      img(f.photo, `${f.name} ${f.role}`, 280),
-      ul(info),
-      f.spec && h3('專長') + '\n' + p(f.spec),
-      f.research && h3('研究領域') + '\n' + p(f.research),
-      f.courses && h3('授課科目') + '\n' + p(f.courses),
-      f.education && h3('學歷') + '\n' + p(f.education),
-      f.certs && h3('證照') + '\n' + p(f.certs),
-      f.experience && f.experience.length && h3('經歷') + '\n' + ul(f.experience),
-      f.achievements && f.achievements.length && h3('指導與榮譽') + '\n' + ul(f.achievements),
-      f.papers && f.papers.length && h3('著作') + '\n' + ul(f.papers.map((x) => `${x.year}｜${x.title}｜${x.venue}`)),
+      `<div class="agdc-hero">`,
+      f.photo && `<p class="agdc-photo"><img src="${esc(f.photo)}" alt="${esc(`${f.name} ${f.role}`)}" width="420" /></p>`,
+      `<div class="agdc-id">\n<p class="agdc-role">${esc(f.role)}</p>\n<ul class="agdc-meta">\n${meta.map((x) => `<li>${x}</li>`).join('\n')}\n</ul>\n${f.spec ? `<p class="agdc-tag">專長 · ${esc(f.spec)}</p>` : ''}\n</div>`,
+      `</div>`,
+      sec('dots', '研究領域', f.research && p(f.research)),
+      sec('yellow', '授課科目', f.courses && p(f.courses)),
+      sec('blue', '學歷', f.education && p(f.education)),
+      sec('red', '證照', f.certs && p(f.certs)),
+      sec('plain', '經歷', f.experience && f.experience.length && ul(f.experience)),
+      sec('ink', '指導與榮譽', f.achievements && f.achievements.length && ul(f.achievements)),
+      sec('dots', '著作', papers.length && `<ul class="agdc-papers">\n${papers.join('\n')}\n</ul>`),
       src('#/faculty/' + f.slug)
     );
   }
@@ -206,17 +247,17 @@
       const name = id ? a(SITE + '?page_id=' + id, `${l.code} ${l.name}`) : esc(`${l.code} ${l.name}`);
       return `<li>${name}：${esc(l.shortDesc || '')}</li>`;
     });
-    return join(h2(`特色實驗室（${D.labs.length} 間）`), `<ul>\n${items.join('\n')}\n</ul>`, src('#labs'));
+    return join(ch2(`特色實驗室（${D.labs.length} 間）`), `<ul class="agdc-routes">\n${items.join('\n')}\n</ul>`, src('#labs'));
   }
 
   // ---------- 統計類 ----------
   function statsPage(s, hash) {
     return join(
-      h2(s.title),
-      s.subtitle && p(s.subtitle),
+      ch2(s.title),
+      s.subtitle && `<p class="agdc-lead">${esc(s.subtitle)}</p>`,
       s.summary && p(s.summary),
-      s.highlights && ul(s.highlights.map((h) => `${h.year}：${h.count}`)),
-      (s.groups || []).map((g) => h3(g.year) + '\n' + ul(g.items)).join('\n\n'),
+      s.highlights && facts(s.highlights.map((h) => `${h.year}：${h.count}`)),
+      (s.groups || []).map((g, i) => sec(i === 0 ? 'yellow' : 'plain', g.year, ul(g.items))).join('\n\n'),
       s.note && p(s.note),
       src(hash)
     );
