@@ -472,6 +472,29 @@ const FacultyDetail = ({ slug }) => {
             </div>
           )}
 
+          {f.materials && f.materials.length > 0 && (
+            <div className="comic-tier tier-1 tier-mid">
+              <Panel className="bg-halftone-blue" style={{ padding: 24 }}>
+                <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 13, letterSpacing: "0.1em", marginBottom: 12 }}>MATERIALS · 創新教材</div>
+                <ul style={{ paddingLeft: 22, margin: 0, lineHeight: 1.9, fontSize: 14 }}>
+                  {f.materials.map((m, i) => <li key={i}>{m}</li>)}
+                </ul>
+                <div style={{ marginTop: 10, fontSize: 11, color: "rgba(0,0,0,0.5)" }}>資料來源：114 學年度系所自評報告</div>
+              </Panel>
+            </div>
+          )}
+
+          {f.coteaching && f.coteaching.length > 0 && (
+            <div className="comic-tier tier-1 tier-mid">
+              <Panel className="bg-halftone-light" style={{ padding: 24 }}>
+                <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 13, letterSpacing: "0.1em", marginBottom: 12 }}>CO-TEACHING · 業師協同教學</div>
+                <ul style={{ paddingLeft: 22, margin: 0, lineHeight: 1.9, fontSize: 14 }}>
+                  {f.coteaching.map((c, i) => <li key={i}>{c}</li>)}
+                </ul>
+              </Panel>
+            </div>
+          )}
+
           {f.books && f.books.length > 0 && (
             <div className="comic-tier tier-1 tier-mid">
               <Panel variant="yellow" style={{ padding: 24 }}>
