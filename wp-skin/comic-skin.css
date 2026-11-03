@@ -721,6 +721,19 @@ body:not(.home) .agdc-card p.agdc-card-name small {
   opacity: 0.75;
 }
 body:not(.home) .agdc-card p.agdc-card-contact { font-size: 14px; word-break: break-all; }
+/* 角色卡照片（2026-11-03）：左側方形小照，右側職稱／專長／聯絡 */
+body:not(.home) .agdc-card-body { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 14px; padding: 0 14px; align-items: start; }
+body:not(.home) .agdc-card .agdc-card-body p { margin-left: 0 !important; margin-right: 0 !important; }
+body:not(.home) .agdc-card p.agdc-card-photo { margin: 0 !important; }
+body:not(.home) .agdc-card p.agdc-card-photo img {
+  display: block;
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  object-position: center top;
+  border: 3px solid var(--agdc-ink) !important;
+  box-shadow: 3px 3px 0 var(--agdc-ink);
+}
 body:not(.home) p.agdc-role { font-weight: 900; color: var(--agdc-red-text) !important; }
 body:not(.home) p.agdc-chips { display: flex; flex-wrap: wrap; gap: 6px; }
 body:not(.home) p.agdc-chips span {
@@ -915,6 +928,8 @@ body:not(.home) .agdc-sdti details.agdc-more table { width: 100%; }
   body:not(.home) .thn_post_wrap, body:not(.home) .thn_post_wrap p, body:not(.home) .thn_post_wrap li { font-size: 16px; }
   body:not(.home) .agdc-sec { padding: 14px 12px 10px; box-shadow: 4px 4px 0 var(--agdc-ink); margin-bottom: 20px; }
   body:not(.home) ul.agdc-cast { grid-template-columns: 1fr; gap: 16px; }
+  body:not(.home) .agdc-card-body { grid-template-columns: 84px minmax(0, 1fr); gap: 12px; padding: 0 12px; }
+  body:not(.home) .agdc-card p.agdc-card-photo img { width: 84px; height: 84px; }
   body:not(.home) .agdc-hero { grid-template-columns: 1fr; box-shadow: 5px 5px 0 var(--agdc-ink); }
   body:not(.home) .agdc-hero p.agdc-photo img { max-height: 380px; border-right: 0 !important; border-bottom: 4px solid var(--agdc-ink) !important; }
   body:not(.home) .agdc-id { padding: 16px 14px; }
