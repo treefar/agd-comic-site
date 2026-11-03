@@ -207,6 +207,7 @@
       f.photo ? `<p class="agdc-card-photo"><img src="${esc(thumb(f.photo))}" alt="${esc(f.name)}" width="300" height="300" loading="lazy" /></p>` : '',
       `<div class="agdc-card-info">`,
       `<p class="agdc-role">${esc(f.role)}</p>`,
+      f.appointment ? `<p class="agdc-appoint">${esc(f.appointment)}</p>` : '',
       chips(f.spec),
       `<p class="agdc-card-contact">分機 ${esc(f.ext)}｜${mail(f.email)}</p>`,
       `</div>`,
@@ -248,7 +249,7 @@
     return join(
       `<div class="agdc-hero">`,
       f.photo && `<p class="agdc-photo"><img src="${esc(f.photo)}" alt="${esc(`${f.name} ${f.role}`)}" width="420" /></p>`,
-      `<div class="agdc-id">\n<p class="agdc-role">${esc(f.role)}</p>\n<ul class="agdc-meta">\n${meta.map((x) => `<li>${x}</li>`).join('\n')}\n</ul>\n${f.spec ? `<p class="agdc-tag">專長 · ${esc(f.spec)}</p>` : ''}\n</div>`,
+      `<div class="agdc-id">\n<p class="agdc-role">${esc(f.role)}</p>\n${f.appointment ? `<p class="agdc-appoint">${esc(f.appointment)}</p>\n` : ''}<ul class="agdc-meta">\n${meta.map((x) => `<li>${x}</li>`).join('\n')}\n</ul>\n${f.spec ? `<p class="agdc-tag">專長 · ${esc(f.spec)}</p>` : ''}\n</div>`,
       `</div>`,
       sec('dots', '研究領域', f.research && p(f.research)),
       sec('yellow', '授課科目', f.courses && p(f.courses)),

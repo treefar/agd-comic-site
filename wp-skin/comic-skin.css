@@ -735,6 +735,9 @@ body:not(.home) .agdc-card p.agdc-card-photo img {
   box-shadow: 3px 3px 0 var(--agdc-ink);
 }
 body:not(.home) p.agdc-role { font-weight: 900; color: var(--agdc-red-text) !important; }
+/* 合聘（2026-11-03）：職稱下方一行小字，不搶姓名與職稱 */
+body:not(.home) .thn_post_wrap p.agdc-appoint { font-size: 13px; line-height: 1.5; font-weight: 700; color: var(--agdc-muted) !important; margin-top: -4px; }
+body:not(.home) .agdc-id p.agdc-appoint { color: var(--agdc-paper) !important; opacity: 0.8; margin: 0 0 12px !important; }
 body:not(.home) p.agdc-chips { display: flex; flex-wrap: wrap; gap: 6px; }
 body:not(.home) p.agdc-chips span {
   border: 2px solid var(--agdc-ink);
