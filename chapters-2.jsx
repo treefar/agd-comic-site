@@ -16,7 +16,7 @@ const FACULTY = [
     page: "https://www.dgd.stu.edu.tw/江雅媚/"
   },
   {
-    name: "陳重光", role: "助理教授 · 電競娛樂系合聘", en: "CHEN, CHUNG-KUANG",
+    name: "陳重光", role: "副教授(技)", en: "CHEN, CHUNG-KUANG",
     spec: "繪本製作 / 角色造型 / 電腦繪圖", color: "blue",
     photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/09/1189pan_0-scaled-e1725608414852-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/陳重光/"
@@ -70,7 +70,7 @@ const FACULTY = [
     page: "https://www.dgd.stu.edu.tw/系所成員/陳寀瑜/"
   },
   {
-    name: "蔣天華", role: "副教授 · 從聘", en: "CHIANG, TIEN-HUA",
+    name: "蔣天華", role: "副教授(技) · 從聘", en: "CHIANG, TIEN-HUA",
     spec: "互動遊戲 / AR VR MR / 物聯網", color: "",
     photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/04/1170pan-scaled-e1712911533827-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/系所成員/蔣天華/"
