@@ -24,7 +24,7 @@
     指導與榮譽: 'ACHIEVEMENTS', 著作: 'PAPERS', 重點提醒: 'NOTES', 準備方向: 'PREP', 重要時程: 'SCHEDULE',
     費用: 'FEES', 聯絡窗口: 'CONTACT', 相關連結: 'LINKS', 學習軸線: 'TRACKS', 各學期課程: 'STAGES',
     系所特色: 'FEATURES', 三大學習主軸: 'STREAMS', 延伸閱讀: 'MORE', 預約參訪: 'VISIT',
-    專書: 'BOOKS', 學校教師資料: 'SCHOOL DATA',
+    專書: 'BOOKS', 學校教師資料: 'SCHOOL DATA', 創新教材: 'MATERIALS', 業師協同教學: 'CO-TEACHING',
   };
   // 章節頭：CSS 用 data-en 畫英文小標（例：COURSES · 授課科目）
   const ch2 = (s) => `<h2 class="agdc-ch2">${esc(s)}</h2>`;
@@ -220,13 +220,21 @@
     1495: '9691c4b23f3fa7c2d7e5d96bb76b8ebf3fc2efca', 1497: 'f45b30a68196f482e12fc6f19b911b1f589c9039',
     1571: '3b399bd5c599b88c7bd792f8e86074320c4f83c4', 2059: '8d8a71f0d58befd47b81e10389bd8c528d1aad69',
   };
-  const schoolData = (f) =>
-    SDTI[f.id]
-      ? `<section class="agdc-sec agdc-plain agdc-sdti">\n${ch3('學校教師資料')}\n<p class="agdc-sdti-note">以下由學校教師資料系統即時提供，點各項可展開。</p>\n[SDTI type="getTeacherInfo" teacher_id="${SDTI[f.id]}"]\n</section>`
-      : '';
+  // snap：wp-sync/school-data.json 的固定內容（學校系統不穩，擷取後存成固定表格，頁面不再即時呼叫）；沒有擷取到的老師退回即時短碼
+  const schoolData = (f, snap) => {
+    const secs = snap && snap.teachers && snap.teachers[f.id];
+    if (!secs || !secs.length) {
+      if (!SDTI[f.id]) return '';
+      return `<section class="agdc-sec agdc-plain agdc-sdti">\n${ch3('學校教師資料')}\n<p class="agdc-sdti-note">以下由學校教師資料系統即時提供，點各項可展開。</p>\n[SDTI type="getTeacherInfo" teacher_id="${SDTI[f.id]}"]\n</section>`;
+    }
+    const items = secs.map((s) =>
+      `<details class="agdc-more"><summary>${esc(s.title)}（${s.rows.length} 筆）</summary>\n${table(s.heads, s.rows.map((r) => r.map(esc)))}\n</details>`
+    );
+    return `<section class="agdc-sec agdc-plain agdc-school">\n${ch3('學校教師資料')}\n<p class="agdc-sdti-note">以下取自學校教師資料系統（擷取日期 ${esc(snap.fetchedAt)}），點各項可展開。</p>\n${items.join('\n')}\n</section>`;
+  };
 
   // 教師個人頁：版面對齊漫畫版 pages.jsx 教師頁（照片＋黑底名片，下面依序彩色區塊）
-  function facultyPage(f) {
+  function facultyPage(f, snap) {
     const meta = [esc(f.en), f.ext && `分機 ${esc(f.ext)}`, mail(f.email), f.officeHours && `Office Hour：${esc(f.officeHours)}`].filter(Boolean);
     const papers = (f.papers || []).map((x) => `<li><b class="agdc-year">${esc(x.year)}</b>${esc(x.title)}<small>${esc(x.venue)}</small></li>`);
     // 頁面標題已經是老師姓名（主題的黃色標題貼紙），內文不再重複姓名
@@ -242,8 +250,10 @@
       sec('plain', '經歷', f.experience && f.experience.length && ul(f.experience)),
       sec('ink', '指導與榮譽', f.achievements && f.achievements.length && ul(f.achievements)),
       sec('dots', '著作', papers.length && `<ul class="agdc-papers">\n${papers.join('\n')}\n</ul>`),
+      sec('blue', '創新教材', f.materials && f.materials.length && ul(f.materials) + '\n<p class="agdc-sdti-note">資料來源：114 學年度系所自評報告</p>'),
+      sec('plain', '業師協同教學', f.coteaching && f.coteaching.length && ul(f.coteaching)),
       sec('yellow', '專書', f.books && f.books.length && ul(f.books)),
-      schoolData(f),
+      schoolData(f, snap),
       src('#/faculty/' + f.slug)
     );
   }
@@ -301,7 +311,7 @@
       { id: 3138, label: '參訪聯繫師長', html: admissionPage(adm('visit'), '參訪聯繫師長') },
       { id: 7137, label: '聯絡我們', html: contactPage(D) },
       { id: 25, label: '專任教師', html: facultyList(D) },
-      ...D.faculty.map((f) => ({ id: f.id, label: `教師：${f.name}`, html: facultyPage(f) })),
+      ...D.faculty.map((f) => ({ id: f.id, label: `教師：${f.name}`, html: facultyPage(f, D.school) })),
       { id: 1627, label: '特色實驗室', html: labsList(D) },
       ...D.labs.filter((l) => LAB_PAGE[l.code]).map((l) => ({ id: LAB_PAGE[l.code], label: `實驗室：${l.code}`, html: labPage(l) })),
       { id: 791, label: '榮譽事蹟', html: statsPage(stat('honors'), '#/stats/honors') },

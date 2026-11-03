@@ -1,6 +1,6 @@
 // 檢查 gen.js 產出的 WordPress 頁面內容，並輸出本機預覽 wp-sync/dist/preview.html
 // 用法：node wp-sync/check.mjs   → 全過離開碼 0，有錯離開碼 1
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -10,6 +10,9 @@ const require = createRequire(import.meta.url);
 const gen = require('./gen.js');
 const load = (n) => JSON.parse(readFileSync(join(here, '..', 'data', n + '.json'), 'utf8'));
 const D = { faculty: load('faculty'), labs: load('labs'), admission: load('admission'), curriculum: load('curriculum'), stats: load('stats') };
+// 學校教師資料固定內容（有擷取才有）
+const schoolFile = join(here, 'school-data.json');
+if (existsSync(schoolFile)) D.school = JSON.parse(readFileSync(schoolFile, 'utf8'));
 
 const { pages, widget } = gen.buildAll(D);
 const fails = [];
@@ -54,7 +57,14 @@ for (const f of D.faculty) {
   const h = pages.find((y) => y.id === f.id).html;
   const tid = gen.SDTI[f.id];
   const n = (h.match(/\[SDTI type="getTeacherInfo" teacher_id="[0-9a-f]{40}"\]/g) || []).length;
-  ok(tid ? n === 1 && h.includes(`teacher_id="${tid}"`) : n === 0, `${f.name} 的學校資料短代碼數量或代碼不對（${n}）`);
+  const snap = D.school && D.school.teachers && D.school.teachers[f.id];
+  if (snap && snap.length) {
+    // 有固定內容：不可再即時呼叫，且每一項都要輸出、筆數相符
+    ok(n === 0 && /class="agdc-sec agdc-plain agdc-school"/.test(h), `${f.name} 有學校資料固定內容，卻仍輸出短碼或缺區塊`);
+    for (const s of snap) ok(h.includes(`${s.title}（${s.rows.length} 筆）`), `${f.name} 的學校資料「${s.title}」沒有輸出或筆數不符`);
+  } else {
+    ok(tid ? n === 1 && h.includes(`teacher_id="${tid}"`) : n === 0, `${f.name} 的學校資料短代碼數量或代碼不對（${n}）`);
+  }
   if (f.books && f.books.length) ok(/data-en="BOOKS"/.test(h), `${f.name} 有專書資料但頁面沒有專書區塊`);
 }
 ok(Object.keys(gen.SDTI).length === 12 && !gen.SDTI[5037], '學校資料代碼應為 12 位（不含楊智彰）');
