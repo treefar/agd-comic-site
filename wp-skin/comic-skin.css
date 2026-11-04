@@ -720,7 +720,9 @@ body:not(.home) .agdc-card p.agdc-card-name small {
   color: var(--agdc-paper);
   opacity: 0.75;
 }
-body:not(.home) .agdc-card p.agdc-card-contact { font-size: 14px; word-break: break-all; }
+body:not(.home) .agdc-card p.agdc-card-contact { font-size: 14px; overflow-wrap: anywhere; }
+/* email 整段換到下一行，不在「.edu.」中間斷開；比一行還寬時才由 overflow-wrap 斷（2026-11-04） */
+body:not(.home) .agdc-card p.agdc-card-contact a { display: inline-block; }
 /* 角色卡照片（2026-11-03）：左側方形小照，右側職稱／專長／聯絡 */
 body:not(.home) .agdc-card-body { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 14px; padding: 0 14px; align-items: start; }
 body:not(.home) .agdc-card .agdc-card-body p { margin-left: 0 !important; margin-right: 0 !important; }

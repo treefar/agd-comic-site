@@ -22,7 +22,7 @@ const FACULTY = [
     page: "https://www.dgd.stu.edu.tw/陳重光/"
   },
   {
-    name: "楊智彰", role: "助理教授", en: "YANG, CHIH-CHANG",
+    name: "楊智彰", role: "助理教授(專)", en: "YANG, CHIH-CHANG",
     spec: "Unity / VR / 程式設計 / 大數據", color: "blue",
     photo: "https://www.dgd.stu.edu.tw/wp-content/uploads/sites/132/2024/04/1092pan-scaled-e1712909734467-1024x1024.jpg",
     page: "https://www.dgd.stu.edu.tw/楊智彰/"
@@ -172,7 +172,7 @@ const FacultyCard = ({ f, i }) => {
           background: "var(--ink)", color: "var(--paper)",
           display: "inline-block", padding: "2px 6px"
         }}>{f.role}</div>
-        {f.appointment && <div style={{ fontSize: 10.5, fontWeight: 600, lineHeight: 1.45, marginTop: 4, opacity: 0.7 }}>{f.appointment}</div>}
+        {f.appointment && <div style={{ fontSize: 12, fontWeight: 600, lineHeight: 1.45, marginTop: 4, opacity: 0.7 }}>{f.appointment}</div>}
         <div style={{ fontSize: 12, fontWeight: 600, marginTop: 6, opacity: 0.85 }}>專長 · {f.spec}</div>
       </div>
     </Panel>
