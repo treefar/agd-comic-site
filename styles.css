@@ -1417,3 +1417,8 @@ html[lang='ja'] .h-jojo{font-family:'Bowlby One','Bangers','Yu Gothic','Hiragino
 @media(min-width:761px) and (max-width:1180px){.topnav .brand{min-width:0;flex-shrink:1 !important;}.topnav .brand>div{min-width:0;}.topnav .brand>div>span:first-child{white-space:normal;word-break:normal;overflow-wrap:normal;text-wrap:balance;}}
 /* Tablet and mobile shortcuts remain in page flow; desktop keeps the original floating panel. */
 @media(max-width:1180px){.floating-cta{position:static !important;align-items:stretch !important;margin:20px 16px;}.floating-cta a{white-space:normal;text-align:center;}}
+/* 2026-11-04 選單加入「校園花絮」後約寬 80px：單列頂欄的起始寬度往後移，臨界寬度改用兩列，避免選單折成兩行；1260–1365px 中文用較窄間距。 */
+@media(min-width:1181px) and (max-width:1259px){html[lang='zh-Hant'] .topnav{grid-template-columns:minmax(0,1fr) auto;}html[lang='zh-Hant'] .topnav nav{grid-column:1/-1;grid-row:2;}html[lang='zh-Hant'] .topnav>a:last-child{grid-column:2;}html[lang='zh-Hant'] .topnav{column-gap:24px;}html[lang='zh-Hant'] .topnav nav{gap:8px clamp(16px,1.5vw,28px)!important;}}
+@media(min-width:1260px) and (max-width:1365px){html[lang='zh-Hant'] .topnav{column-gap:12px;}html[lang='zh-Hant'] .topnav nav{gap:8px!important;}}
+@media(min-width:1480px) and (max-width:1579px){html[lang='ja'] .topnav{grid-template-columns:minmax(0,1fr) auto;}html[lang='ja'] .topnav nav{grid-column:1/-1;grid-row:2;}html[lang='ja'] .topnav>a:last-child{grid-column:2;}}
+@media(min-width:1600px) and (max-width:1699px){html[lang='en'] .topnav{grid-template-columns:minmax(0,1fr) auto;}html[lang='en'] .topnav nav{grid-column:1/-1;grid-row:2;}html[lang='en'] .topnav>a:last-child{grid-column:2;}}
