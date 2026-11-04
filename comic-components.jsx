@@ -420,6 +420,7 @@ const ADMISSION_OPEN = false;
 const TopNav = () => {
   const items = [
     { label: "最新消息", href: "#news" },
+    { label: "校園花絮", href: "#/campus/all" },
     { label: "系所簡介", href: "#about" },
     { label: "作品成果", href: "#works" },
     { label: "師資陣容", href: "#faculty" },

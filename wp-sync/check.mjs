@@ -13,6 +13,9 @@ const D = { faculty: load('faculty'), labs: load('labs'), admission: load('admis
 // 學校教師資料固定內容（有擷取才有）
 const schoolFile = join(here, 'school-data.json');
 if (existsSync(schoolFile)) D.school = JSON.parse(readFileSync(schoolFile, 'utf8'));
+// 校園花絮（2026-11-04）：資料在 data/campus.json，照片位置在 wp-sync/campus-media.json
+D.campus = load('campus');
+D.campusMedia = JSON.parse(readFileSync(join(here, 'campus-media.json'), 'utf8'));
 
 const { pages, widget } = gen.buildAll(D);
 const fails = [];
@@ -74,6 +77,19 @@ for (const [id, t] of Object.entries(WP_TITLE)) {
   const h = pages.find((y) => y.id === +id).html;
   const h2 = (h.match(/<h2[^>]*>([^<]*)<\/h2>/) || [])[1] || '';
   ok(!h2.startsWith(t), `頁面 ${id} 的 h2「${h2}」跟頁面標題「${t}」重複`);
+}
+// 12. 校園花絮（2026-11-04）：每個活動都有一張相簿卡，每張照片都輸出且連到媒體庫原圖，不用自製 -s 縮圖（學校主機擋過）
+{
+  const cp = pages.find((y) => y.id === gen.CAMPUS_PAGE);
+  ok(cp, '缺校園花絮頁');
+  if (cp) {
+    const h = cp.html;
+    ok((h.match(/class="agdc-album"/g) || []).length === D.campus.events.length, '校園花絮相簿卡數量和活動數不符');
+    const photos = D.campus.events.reduce((t, e) => t + e.photos.length, 0);
+    ok((h.match(/<li><a href="https:\/\/wpc\.stu\.edu\.tw\/wp-content\/uploads\//g) || []).length === photos, '校園花絮照片數不符');
+    ok(!/-s\.jpg/.test(h), '校園花絮用到自製 -s 縮圖');
+    for (const c of D.campus.categories) if (D.campus.events.some((e) => e.category === c.slug)) ok(h.includes(`id="${c.slug}"`), `校園花絮缺分類錨點 ${c.slug}`);
+  }
 }
 
 // 預覽頁

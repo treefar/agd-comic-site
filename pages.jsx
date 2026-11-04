@@ -2454,6 +2454,148 @@ const FloatingCTA = () => {
 };
 
 // =========================================================
+// 校園花絮 #/campus/all（CAMPUS-LIFE-BEGIN）
+// 資料全部來自 data/campus.json：之後新增活動只要在 events 加一筆、照片放進 images/campus/<slug>/，不必改程式。
+// #/campus/<活動 slug> 會直接打開該活動的燈箱，可當分享連結。
+// 文字一律以單獨的字串節點或 alt/aria-label 呈現，讓 siteText 能整句對到英日翻譯（不要用字串串接）。
+// =========================================================
+const CAMPUS_CAT_COLOR = { "student-activities": "var(--accent-red)", "student-association": "var(--accent-blue)" };
+const CAMPUS_NAV_BTN = { position: "absolute", top: "50%", transform: "translateY(-50%)", width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Bangers',sans-serif", fontSize: 26, lineHeight: 1, color: "var(--ink)", background: "var(--accent-yellow)", border: "3px solid var(--ink)", boxShadow: "3px 3px 0 var(--ink)", cursor: "pointer", padding: 0 };
+
+// 燈箱：只載入目前這一張大圖，其餘用縮圖（loading="lazy"）；Esc 關閉、← → 切換，點背景也可關閉
+const CampusLightbox = ({ event, index, setIndex, onClose }) => {
+  const photos = event.photos || [];
+  const n = photos.length;
+  const photo = photos[index] || photos[0];
+  const closeRef = React.useRef(null);
+  const stripRef = React.useRef(null);
+  React.useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "Escape") { e.preventDefault(); onClose(); }
+      else if (e.key === "ArrowLeft") { e.preventDefault(); setIndex((i) => (i - 1 + n) % n); }
+      else if (e.key === "ArrowRight") { e.preventDefault(); setIndex((i) => (i + 1) % n); }
+    };
+    document.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden"; // 燈箱開著時背景不捲動
+    if (closeRef.current) closeRef.current.focus();
+    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = prevOverflow; };
+  }, [n]);
+  // 目前這張的縮圖捲到縮圖列中間（只捲縮圖列，不動整頁）
+  React.useEffect(() => {
+    const strip = stripRef.current;
+    const btn = strip && strip.children[index];
+    if (btn) strip.scrollLeft = btn.offsetLeft - (strip.clientWidth - btn.offsetWidth) / 2;
+  }, [index]);
+  if (!photo) return null;
+  return (
+    <div role="dialog" aria-modal="true" aria-label={event.title} data-campus-lightbox="true"
+      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+      style={{ position: "fixed", inset: 0, zIndex: 1000, background: "rgba(15,13,10,0.9)", display: "flex", alignItems: "center", justifyContent: "center", padding: 10, boxSizing: "border-box" }}>
+      <div style={{ width: "min(1100px, 100%)", maxHeight: "100%", display: "flex", flexDirection: "column", gap: 8, background: "var(--paper)", color: "var(--ink)", border: "4px solid var(--ink)", boxShadow: "6px 6px 0 var(--accent-red)", padding: 10, boxSizing: "border-box", minWidth: 0 }}>
+        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 10, minWidth: 0 }}>
+          <div style={{ minWidth: 0 }}>
+            <div className="h-display" style={{ fontSize: "clamp(17px, 2.4vw, 26px)", lineHeight: 1.25, overflowWrap: "anywhere" }}>{event.title}</div>
+            <div style={{ fontFamily: "'Bangers',sans-serif", letterSpacing: "0.08em", fontSize: 14, marginTop: 2 }}>
+              <span>{event.date}</span><span> · </span><span>{index + 1} / {n}</span>
+            </div>
+          </div>
+          <button ref={closeRef} type="button" onClick={onClose} aria-label="關閉" style={{ ...PV_BTN, flexShrink: 0, fontSize: 18, padding: "4px 12px", background: "var(--accent-red)", color: "#fff" }}>✕</button>
+        </div>
+        <div style={{ position: "relative", background: "var(--ink)", border: "3px solid var(--ink)", display: "flex", alignItems: "center", justifyContent: "center", minHeight: 0 }}>
+          <img key={photo.src} src={photo.src} alt={photo.alt} style={{ display: "block", maxWidth: "100%", maxHeight: "calc(100vh - 250px)", minHeight: 160, objectFit: "contain" }} />
+          {n > 1 && <button type="button" onClick={() => setIndex((i) => (i - 1 + n) % n)} aria-label="上一張" style={{ ...CAMPUS_NAV_BTN, left: 6 }}>‹</button>}
+          {n > 1 && <button type="button" onClick={() => setIndex((i) => (i + 1) % n)} aria-label="下一張" style={{ ...CAMPUS_NAV_BTN, right: 6 }}>›</button>}
+        </div>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 10, flexWrap: "wrap" }}>
+          <div style={{ fontWeight: 900, fontSize: 15 }}>{photo.alt}</div>
+          <div className="campus-keys-hint" style={{ fontSize: 12, fontWeight: 700, opacity: 0.6 }}>Esc 關閉 · ← → 切換</div>
+        </div>
+        <div ref={stripRef} role="group" aria-label="照片縮圖" style={{ display: "flex", gap: 6, overflowX: "auto", paddingBottom: 4, minWidth: 0 }}>
+          {photos.map((p, i) => (
+            <button key={p.src} type="button" onClick={() => setIndex(i)} aria-label={p.alt} aria-current={i === index ? "true" : undefined}
+              style={{ flex: "0 0 auto", width: 76, height: 57, padding: 0, cursor: "pointer", background: "var(--ink)", border: i === index ? "3px solid var(--accent-red)" : "3px solid var(--ink)", opacity: i === index ? 1 : 0.7 }}>
+              <img src={p.thumb} alt="" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const CampusDetail = ({ slug }) => {
+  const data = useDataset("campus");
+  const [cat, setCat] = React.useState("all");
+  const [open, setOpen] = React.useState(null); // { slug, index }
+  const trigger = React.useRef(null);
+  const events = ((data && data.events) || []).slice().sort((a, b) => String(b.date).localeCompare(String(a.date)));
+  const cats = (data && data.categories) || [];
+  // 網址帶活動 slug（#/campus/2026-09-30-welcome）→ 直接打開該活動
+  React.useEffect(() => {
+    if (slug && slug !== "all" && events.some((e) => e.slug === slug)) setOpen({ slug, index: 0 });
+  }, [data, slug]);
+  if (!data) return <Loading />;
+  const list = cat === "all" ? events : events.filter((e) => e.category === cat);
+  const current = open && events.find((e) => e.slug === open.slug);
+  const openAlbum = (ev, index, el) => { trigger.current = el; setOpen({ slug: ev.slug, index }); };
+  const close = () => { setOpen(null); const el = trigger.current; if (el) setTimeout(() => el.focus(), 0); };
+  const catLabel = (s) => (cats.find((c) => c.slug === s) || {}).label;
+  return (
+    <section className="chapter">
+      <div className="container">
+        <BackBar />
+        <DetailHeader tag="花" title="校園花絮" sub={`CAMPUS LIFE · ${list.length} ALBUMS`} />
+        <div role="tablist" aria-label="相簿分類" style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
+          {[{ slug: "all", label: "全部" }, ...cats].map((c) => {
+            const count = c.slug === "all" ? events.length : events.filter((e) => e.category === c.slug).length;
+            const on = c.slug === cat;
+            return (
+              <button key={c.slug} type="button" role="tab" aria-selected={on} onClick={() => setCat(c.slug)} style={{
+                ...PV_BTN, fontSize: 14, padding: "4px 12px", boxShadow: "2px 2px 0 var(--ink)",
+                color: on ? "#fff" : "var(--ink)", background: on ? "var(--ink)" : "var(--paper)"
+              }}><span>{c.label}</span><span> · {count}</span></button>
+            );
+          })}
+        </div>
+        <div className="pv-grid pv-grid--cards">
+          {list.map((ev) => {
+            const photos = ev.photos || [];
+            const coverIndex = Math.max(0, photos.findIndex((p) => p.src === ev.cover));
+            const cover = photos[coverIndex] || {};
+            return (
+              <Panel key={ev.slug} style={{ padding: 0, overflow: "hidden", display: "flex", flexDirection: "column" }}>
+                <button type="button" onClick={(e) => openAlbum(ev, coverIndex, e.currentTarget)} aria-label={ev.title}
+                  style={{ position: "relative", display: "block", width: "100%", aspectRatio: "4/3", padding: 0, border: 0, borderBottom: "3px solid var(--ink)", background: "var(--ink)", cursor: "pointer", overflow: "hidden" }}>
+                  {cover.thumb && <img src={cover.thumb} alt={cover.alt} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />}
+                  <span style={{ position: "absolute", right: 6, bottom: 6, background: "var(--accent-yellow)", color: "var(--ink)", fontWeight: 900, fontSize: 12, padding: "1px 8px", border: "2px solid var(--ink)" }}>{photos.length} 張照片</span>
+                </button>
+                <div style={{ padding: "10px 12px 12px", flex: 1, display: "flex", flexDirection: "column", gap: 6 }}>
+                  <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                    <span style={{ fontSize: 11, fontWeight: 900, color: "#fff", background: CAMPUS_CAT_COLOR[ev.category] || "var(--ink)", padding: "1px 8px", border: "2px solid var(--ink)" }}>{catLabel(ev.category)}</span>
+                  </div>
+                  <div style={{ fontWeight: 900, fontSize: 16, lineHeight: 1.4 }}>{ev.title}</div>
+                  <div style={{ fontSize: 12, fontWeight: 800, opacity: 0.75 }}>
+                    <span style={{ fontFamily: "'Bangers',sans-serif", letterSpacing: "0.06em", fontSize: 13 }}>{ev.date}</span><span> · </span><span>主辦</span><span> </span><span>{ev.organizer}</span>
+                  </div>
+                  <div style={{ fontSize: 13, lineHeight: 1.6 }}>{ev.summary}</div>
+                  <button type="button" onClick={(e) => openAlbum(ev, 0, e.currentTarget)} style={{ marginTop: "auto", alignSelf: "flex-end", background: "none", border: 0, padding: 0, cursor: "pointer", fontWeight: 900, fontSize: 13, color: "var(--ink)", textDecoration: "underline" }}>看全部照片 →</button>
+                </div>
+              </Panel>
+            );
+          })}
+        </div>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 24, padding: "20px 4px 12px", borderTop: "3px dashed var(--ink)", fontFamily: "'Bangers',sans-serif", letterSpacing: "0.08em", fontSize: 14, flexWrap: "wrap", gap: 10 }}>
+          <a href="#" style={{ color: "var(--ink)", textDecoration: "none" }}>回首頁 →</a>
+        </div>
+      </div>
+      {current && <CampusLightbox event={current} index={open.index} setIndex={(f) => setOpen((o) => o && { ...o, index: typeof f === "function" ? f(o.index) : f })} onClose={close} />}
+    </section>
+  );
+};
+// CAMPUS-LIFE-END
+
+// =========================================================
 // Detail dispatcher
 // =========================================================
 const DetailView = ({ type, slug }) => {
@@ -2471,6 +2613,7 @@ const DetailView = ({ type, slug }) => {
     case "curriculum": return <CurriculumDetail />;
     case "quiz":     return isPreviewQuiz() ? <QuizDetail slug={slug} /> : <NotFound type={type} slug={slug} />;
     case "reels":    return <ReelsDetail slug={slug} />;
+    case "campus":   return <CampusDetail slug={slug} />;
     // 以下兩條只在 ?preview=new 開放，否則與原站一樣顯示 404
     case "guide":    return isPreviewNew() ? <GuideDetail /> : <NotFound type={type} slug={slug} />;
     case "parents":  return isPreviewNew() ? <ParentsGuide /> : <NotFound type={type} slug={slug} />;

@@ -301,6 +301,53 @@
     );
   }
 
+  // ---------- 校園花絮（2026-11-04）：相簿卡片，照片在 WordPress 媒體庫（wp-sync/campus-media.json） ----------
+  // 沒有 script 可用，所以不做燈箱：封面＋details 展開縮圖，點縮圖開原圖
+  const CAMPUS_PAGE = 8155;
+  const CAMPUS_EN = { 'student-activities': 'STUDENT LIFE', 'student-association': 'STUDENT ASSOCIATION' };
+  function campusPage(D) {
+    const M = D.campusMedia;
+    const pic = (path) => {
+      const key = path.replace(/^images\/campus\//, '');
+      const f = M.files[key];
+      if (!f) throw new Error('campus-media.json 缺照片：' + key);
+      const name = M.base + key.replace('/', '-');
+      return { full: name, thumb: name.replace(/\.jpg$/, f.thumb + '.jpg') };
+    };
+    const events = [...D.campus.events].sort((x, y) => y.date.localeCompare(x.date));
+    const album = (ev) => {
+      const cover = pic(ev.cover);
+      const coverAlt = (ev.photos.find((x) => x.src === ev.cover) || {}).alt || ev.title;
+      const grid = ev.photos.map((ph) => {
+        const u = pic(ph.src);
+        return `<li><a href="${esc(u.full)}" target="_blank" rel="noopener"><img src="${esc(u.thumb)}" alt="${esc(ph.alt)}" loading="lazy" /></a></li>`;
+      }).join('\n');
+      return [
+        `<div class="agdc-album">`,
+        `<p class="agdc-album-cover"><a href="${esc(cover.full)}" target="_blank" rel="noopener"><img src="${esc(cover.thumb)}" alt="${esc(coverAlt)}" loading="lazy" /></a></p>`,
+        `<div class="agdc-album-info">`,
+        `<p class="agdc-album-title">${esc(ev.title)}</p>`,
+        `<p class="agdc-album-meta">${esc(ev.date)} · 主辦 ${esc(ev.organizer)} · ${ev.photos.length} 張照片</p>`,
+        p(ev.summary),
+        `<details class="agdc-album-more"><summary>看全部照片（${ev.photos.length} 張）</summary>`,
+        `<ul class="agdc-album-grid">\n${grid}\n</ul>`,
+        `</details>`,
+        `</div>`,
+        `</div>`,
+      ].join('\n');
+    };
+    const sections = D.campus.categories.map((c) => {
+      const evs = events.filter((e) => e.category === c.slug);
+      if (!evs.length) return '';
+      return `<section class="agdc-sec agdc-plain" id="${esc(c.slug)}">\n${ch3(c.label, CAMPUS_EN[c.slug] || '')}\n${evs.map(album).join('\n')}\n</section>`;
+    });
+    return join(
+      p('學生活動、系學會剪影，記錄動遊系上課以外的日常。點照片可以看大圖。'),
+      ...sections,
+      src('#/campus/all')
+    );
+  }
+
   // ---------- 全部頁面 ----------
   function buildAll(D) {
     const adm = (slug) => D.admission.find((x) => x.slug === slug);
@@ -324,11 +371,12 @@
       ...D.labs.filter((l) => LAB_PAGE[l.code]).map((l) => ({ id: LAB_PAGE[l.code], label: `實驗室：${l.code}`, html: labPage(l) })),
       { id: 791, label: '榮譽事蹟', html: statsPage(stat('honors'), '#/stats/honors') },
       { id: 4238, label: '實習資訊', html: statsPage(stat('international'), '#/stats/international') },
+      ...(D.campus && D.campusMedia ? [{ id: CAMPUS_PAGE, label: '校園花絮', html: campusPage(D) }] : []),
     ];
     return { pages, widget: { id: 'custom_html-3', html: aboutWidget() } };
   }
 
-  const api = { buildAll, prose, esc, LAB_PAGE, ADM_PAGE, SDTI };
+  const api = { buildAll, prose, esc, LAB_PAGE, ADM_PAGE, SDTI, CAMPUS_PAGE };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.AGDGen = api;
 })(typeof window !== 'undefined' ? window : globalThis);
