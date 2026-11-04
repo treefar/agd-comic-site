@@ -723,6 +723,50 @@ body:not(.home) .agdc-card p.agdc-card-name small {
 body:not(.home) .agdc-card p.agdc-card-contact { font-size: 14px; overflow-wrap: anywhere; }
 /* email 整段換到下一行，不在「.edu.」中間斷開；比一行還寬時才由 overflow-wrap 斷（2026-11-04） */
 body:not(.home) .agdc-card p.agdc-card-contact a { display: inline-block; }
+/* 校園花絮相簿卡（2026-11-04）：封面在左、文字在右；手機上下排；details 展開縮圖格 */
+body:not(.home) .agdc-album {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  margin: 0 0 22px;
+  padding: 14px;
+  background: var(--agdc-card);
+  border: 3px solid var(--agdc-ink);
+  box-shadow: 5px 5px 0 var(--agdc-ink);
+}
+body:not(.home) .agdc-album p { margin: 0 0 8px !important; }
+body:not(.home) .agdc-album p.agdc-album-cover { margin: 0 !important; }
+body:not(.home) .agdc-album p.agdc-album-cover img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 3px solid var(--agdc-ink) !important;
+}
+body:not(.home) .agdc-album p.agdc-album-title { font-size: 20px; font-weight: 900; line-height: 1.4; }
+body:not(.home) .agdc-album p.agdc-album-meta { font-size: 13px; font-weight: 800; opacity: 0.75; }
+body:not(.home) .agdc-album-more summary { cursor: pointer; font-weight: 900; text-decoration: underline; margin: 6px 0; }
+body:not(.home) ul.agdc-album-grid {
+  list-style: none !important;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 8px;
+  margin: 10px 0 0 !important;
+  padding: 0 !important;
+}
+body:not(.home) ul.agdc-album-grid li { margin: 0 !important; padding: 0 !important; }
+body:not(.home) ul.agdc-album-grid li::before { content: none !important; }
+body:not(.home) ul.agdc-album-grid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 2px solid var(--agdc-ink) !important;
+}
+@media (max-width: 767px) {
+  body:not(.home) .agdc-album { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+}
 /* 角色卡照片（2026-11-03）：左側方形小照，右側職稱／專長／聯絡 */
 body:not(.home) .agdc-card-body { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 14px; padding: 0 14px; align-items: start; }
 body:not(.home) .agdc-card .agdc-card-body p { margin-left: 0 !important; margin-right: 0 !important; }
