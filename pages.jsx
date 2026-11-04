@@ -351,9 +351,9 @@ const NewsDetail = ({ slug }) => {
 // =========================================================
 // FACULTY detail
 // =========================================================
-// 有學校教師資料系統紀錄的老師（值＝WordPress 頁面 ID）；資料由 WordPress 頁的學校短代碼即時提供，漫畫版只放連結
-// 對照 wp-sync/gen.js 的 SDTI；楊智彰（5037）沒有。不放 data/faculty.json（正本資料受基準測試保護）
-const SCHOOL_DATA_IDS = new Set([1477, 1479, 1481, 1483, 1485, 1487, 1489, 1493, 1495, 1497, 1571, 2059]);
+// 有學校教師資料的老師（值＝WordPress 頁面 ID）；WordPress 頁放校務系統固定內容（wp-sync/school-data.json），漫畫版只放連結
+// 楊智彰（5037）沒有學校短代碼，但校務固定內容有。不放 data/faculty.json（正本資料受基準測試保護）
+const SCHOOL_DATA_IDS = new Set([1477, 1479, 1481, 1483, 1485, 1487, 1489, 1493, 1495, 1497, 1571, 2059, 5037]);
 
 const FacultyDetail = ({ slug }) => {
   const data = useDataset("faculty");
