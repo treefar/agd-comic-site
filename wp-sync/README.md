@@ -28,6 +28,14 @@ WordPress 版 https://www.dgd.stu.edu.tw/ 的 37 個舊頁面，內容由 `wp-sy
 
 `core.autocrlf=true` 時 checkout 會把 `wp-skin/comic-fx.html` 換成 CRLF，`build.mjs` 的去註解失效、`wp-skin/check.mjs` 報「fx 片段殘留 JS 註解」，`gen.js` 產出的 HTML 也可能夾 `\r`（未實測）。產出前先確認 `git ls-files --eol wp-skin wp-sync` 是 `w/lf`。
 
+### 校園花絮與主選單（2026-11-04，PR #13）
+
+- 新頁 `/campus-life/`（頁面 8155），內容由 `gen.js` 的 `campusPage` 從 `data/campus.json` 產生；照片在媒體庫，對應表 `wp-sync/campus-media.json`。外衣 `20261104b` 加 `agdc-album` 樣式。
+- 新增活動：照片先放進漫畫版 `images/campus/<活動>/`，大圖上傳媒體庫（只傳大圖，學校主機擋過自製 `-s.jpg` 縮圖，原因不明），把 id 與 WordPress 產生的 768 寬縮圖後綴補進 `campus-media.json`，再照同步流程寫入 8155。
+- 主選單（選單 12「FOOTER」，位置 primary）：「最新消息」後加「校園花絮」（項目 8177，子項「學生活動」「系學會剪影」連到頁內錨點）；「參訪」（4360）與「參訪聯繫師長」（3804）改掛「招生資訊」（6718）底下。改動用 REST `/wp-json/wp/v2/menu-items`。
+- 還原選單：刪除 8177 與其子項，把 4360 的 parent 設回 0、3804 的 parent 設回 4360，順序照下面改前備份。
+- 改前備份（menu_order:項目:標題:parent）：1:3820:最新消息:0、2:4357:系所簡介:0、6:4390:課程與成果:0、10:3792:特色實驗教室:0、19:4150:實習與就業:0、23:6718:招生資訊:0、29:6724:備審資料準備:6718、30:4360:參訪:0、31:3804:參訪聯繫師長:4360、32:3800:English:0（其餘子項的 parent 不變）。
+- 學校站擋無頭瀏覽器（Playwright headless 回 AWS Access Denied），線上版面要用 App 內建瀏覽器或一般 Chrome 檢查。
 ### 學校教師資料短代碼的地雷
 
 - 輸出是一整份獨立網頁：自帶 Bootstrap 4、jQuery 1.12、改全站字型的 `<style>`、折疊卡片。#15 先拿掉 `link/style/meta/title`，再把每張表改成 `details` 展開區。
