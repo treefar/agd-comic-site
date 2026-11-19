@@ -11,7 +11,7 @@ try{
   await page.getByRole('button',{name:'SHARE MY RESULT',exact:true}).click();await page.waitForFunction(()=>!!window.__mockShare);const share=await page.evaluate(()=>window.__mockShare);assert.ok(share.url.includes('?lang=en#/quiz/'));assert.ok(!/[㐀-鿿]/.test(share.title+share.text));results.push({kind:'quiz',answers,winner,shareEnglish:true});
  }
  await page.goto(base+'?lang=en#/guide/start',{waitUntil:'domcontentloaded'});
- const guides=[[[0,0,0],'high-school-application'],[[0,2,1],'joint'],[[1,0,1],'tech-elite'],[[1,1,1],'selection'],[[1,2,2],'tech-star'],[[1,2,3],'selection'],[[1,2,0],'selection'],[[1,0,2],'tech-elite'],[[0,1,2],'high-school-application'],[[2],'evening']];
+ const guides=[[[0,0,0],'day-independent'],[[0,2,1],'joint'],[[1,0,1],'tech-elite'],[[1,1,1],'selection'],[[1,2,2],'tech-star'],[[1,2,3],'selection'],[[1,2,0],'selection'],[[1,0,2],'tech-elite'],[[0,1,2],'day-independent'],[[2],'evening']];
  for(let c=0;c<guides.length;c++){
   if(c)await page.getByRole('button',{name:'START AGAIN',exact:true}).click();const [answers,expected]=guides[c];for(let step=0;step<answers.length;step++){await page.getByText(new RegExp('^Q'+(step+1)+'\\.')).waitFor();await page.locator('.chapter .comic-page button').nth(answers[step]).click();}
   await page.getByText('YOUR RECOMMENDED PATHWAY',{exact:true}).waitFor();const href=await page.locator('.comic-page a[href^="#/admission/"]').first().getAttribute('href');assert.equal(href,'#/admission/'+expected);results.push({kind:'guide',answers,expected});

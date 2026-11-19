@@ -746,9 +746,9 @@ const JoinChapter = () => (
               <div style={{ fontSize: 16, color: "#fff", marginTop: 18, fontWeight: 700, maxWidth: 460, lineHeight: 1.6 }}>
                 只要你愛畫、愛玩、愛動腦 — 我們就有你的位置。歡迎報名校系說明會與一日體驗。
               </div>
-              {/* 2026-10 起 115 學年度各管道已結束，右側資料保留供參考 */}
+              {/* 116 學年度日間部名額已核定（教育部 115-11-18），各管道時程尚未公告，不寫日期 */}
               <div style={{ fontSize: 13, color: "var(--ink)", background: "var(--accent-yellow)", marginTop: 14, fontWeight: 800, maxWidth: 460, lineHeight: 1.5, padding: "6px 10px", border: "3px solid var(--ink)" }}>
-                115 學年度招生已結束，116 學年度簡章公布後更新；右側為 115 學年度資料，供參考。
+                116 學年度日間部名額已核定；各管道報名時程待簡章公告。
               </div>
               {/* 招生關閉期間先給可以馬上做的事，不寫任何未公布日期 */}
               <div className="join-now-actions" style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 14, maxWidth: 460 }}>
@@ -759,22 +759,22 @@ const JoinChapter = () => (
           </Panel>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--gutter)" }}>
             {[
-              { t: "申請入學", q: "11 名 · 代碼 205005", s: "報名 3/19-3/25 · 放榜 5/25", c: "", slug: "high-school-application" },
-              { t: "甄選入學", q: "46 名 · 設計 22 / 商管 14 / 資電 8 / 青儲 2", s: "統測 4/25-4/26 · 放榜 7/14", c: "yellow", slug: "selection" },
-              { t: "科技繁星", q: "設計群 3 名 · 代碼 08039", s: "報名 3/11-3/18 · 放榜 5/5", c: "inkbg", slug: "tech-star" },
+              { t: "甄選入學", q: "22 名 · 設計 14 / 商管 5 / 資電 3 · 外加 青儲 4、原住民 1", c: "yellow", slug: "selection" },
+              { t: "日間部單獨招生", q: "一般生 15 名", c: "", slug: "day-independent" },
+              { t: "科技繁星", q: "設計群 2 名", c: "inkbg", slug: "tech-star" },
             ].map((o, i) => (
               <Panel key={i} clickable
                 onClick={() => { window.location.hash = "#/admission/" + o.slug; }}
                 variant={o.c}
                 className={o.c === "" ? "bg-halftone-blue" : ""}
                 style={{ padding: 14, display: "flex", flexDirection: "column", justifyContent: "space-between", flex: 1 }}>
-                <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 12, letterSpacing: "0.1em", opacity: 0.85 }}>OPTION 0{i + 1} · 115 學年度（已結束）</div>
+                <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 12, letterSpacing: "0.1em", opacity: 0.85 }}>OPTION 0{i + 1} · 116 學年度</div>
                 <div>
                   <div className="h-display" style={{ fontSize: 22 }}>{o.t}</div>
                   <div style={{ fontSize: 12, fontWeight: 800, marginTop: 4, opacity: 0.85, lineHeight: 1.5 }}>名額 · {o.q}</div>
-                  <div style={{ fontSize: 11, fontWeight: 700, marginTop: 4, opacity: 0.78 }}>📅 {o.s}</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, marginTop: 4, opacity: 0.78 }}>📅 時程待簡章公告</div>
                 </div>
-                <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.1em" }}>看完整時程 →</div>
+                <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.1em" }}>看名額與說明 →</div>
               </Panel>
             ))}
           </div>
@@ -805,24 +805,25 @@ const JoinChapter = () => (
           </Panel>
         </div>
 
-        {/* TIER 2 — 2 格招生管道 */}
-        <div className="comic-tier tier-1-1 tier-short">
+        {/* TIER 2 — 3 格招生管道（116 學年度核定名額） */}
+        <div className="comic-tier tier-1-1-1 tier-short">
           {[
-            { t: "技優甄審", q: "16 名 · 85-035 商設", s: "報名 5/18-5/22 · 放榜 6/22", c: "", slug: "tech-elite" },
-            { t: "登記分發", q: "5 名 · 設計 3+1 / 資電 1 / 商管 1+1", s: "登記 7/28-7/31 · 放榜 8/06", c: "yellow", slug: "joint" },
+            { t: "特殊選才", q: "2 名 · 外加 青儲 4", c: "", slug: "special-selection" },
+            { t: "登記分發", q: "3 名 · 設計 1 / 資電 1 / 商管 1 · 外加 4（設計群）", c: "yellow", slug: "joint" },
+            { t: "技優甄審", q: "外加 4 名 · 85 商設", c: "", slug: "tech-elite" },
           ].map((o, i) => (
             <Panel key={i} clickable
               onClick={() => { window.location.hash = "#/admission/" + o.slug; }}
               variant={o.c}
               className={o.c === "" ? "bg-halftone-red" : ""}
               style={{ padding: 14, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-              <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 11, letterSpacing: "0.1em", opacity: 0.85 }}>OPTION 0{i + 4} · 115（已結束）</div>
+              <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 11, letterSpacing: "0.1em", opacity: 0.85 }}>OPTION 0{i + 4} · 116 學年度</div>
               <div>
                 <div className="h-display" style={{ fontSize: 19, lineHeight: 1.15 }}>{o.t}</div>
                 <div style={{ fontSize: 11, fontWeight: 700, marginTop: 6, opacity: 0.85, lineHeight: 1.5 }}>名額 · {o.q}</div>
-                <div style={{ fontSize: 10, fontWeight: 700, marginTop: 4, opacity: 0.78 }}>📅 {o.s}</div>
+                <div style={{ fontSize: 10, fontWeight: 700, marginTop: 4, opacity: 0.78 }}>📅 時程待簡章公告</div>
               </div>
-              <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.1em" }}>看完整時程 →</div>
+              <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.1em" }}>看名額與說明 →</div>
             </Panel>
           ))}
         </div>
@@ -850,18 +851,16 @@ const JoinChapter = () => (
               }}>
                 {[
                   { l: "樹德招生網（總入口）", u: "https://reg.aca.stu.edu.tw/", h: "樹德" },
-                  { l: "樹德 · 申請入學", u: "https://reg.aca.stu.edu.tw/4d_application_admission", h: "樹德" },
                   { l: "樹德 · 甄選入學", u: "https://reg.aca.stu.edu.tw/4d_selection_admission", h: "樹德" },
                   { l: "樹德 · 科技繁星", u: "https://reg.aca.stu.edu.tw/4d_star_admissions", h: "樹德" },
                   { l: "樹德 · 技優甄審", u: "https://reg.aca.stu.edu.tw/4d_skill_excellent", h: "樹德" },
                   { l: "樹德 · 登記分發", u: "https://reg.aca.stu.edu.tw/4d_distribution_adimission", h: "樹德" },
                   { l: "樹德 · 進修學制（夜四技）", u: "https://reg.aca.stu.edu.tw/continuing_es", h: "樹德" },
                   { l: "技專校院招聯會（jctv）", u: "https://www.jctv.ntut.edu.tw/", h: "聯招" },
-                  { l: "115 申請入學（CAAC）", u: "https://www.jctv.ntut.edu.tw/caac/", h: "聯招" },
-                  { l: "115 甄選入學", u: "https://www.jctv.ntut.edu.tw/enter42/apply/", h: "聯招" },
-                  { l: "115 科技繁星", u: "https://www.jctv.ntut.edu.tw/star/", h: "聯招" },
-                  { l: "115 技優甄審", u: "https://www.jctv.ntut.edu.tw/enter42/skill/", h: "聯招" },
-                  { l: "115 聯合登記分發", u: "https://www.jctv.ntut.edu.tw/union42/", h: "聯招" },
+                  { l: "招聯會 · 甄選入學", u: "https://www.jctv.ntut.edu.tw/enter42/apply/", h: "聯招" },
+                  { l: "招聯會 · 科技繁星", u: "https://www.jctv.ntut.edu.tw/star/", h: "聯招" },
+                  { l: "招聯會 · 技優甄審", u: "https://www.jctv.ntut.edu.tw/enter42/skill/", h: "聯招" },
+                  { l: "招聯會 · 聯合登記分發", u: "https://www.jctv.ntut.edu.tw/union42/", h: "聯招" },
                   { l: "統測中心（tcte）", u: "https://www.tcte.edu.tw/", h: "考試" },
                   { l: "學測中心（ceec）", u: "https://www.ceec.edu.tw/", h: "考試" },
                 ].map((x, i) => (
@@ -953,8 +952,9 @@ const FooterChapter = () => (
       </div>
       <div>
         <h4>招生</h4>
-        <a href="#/admission/high-school-application">申請入學</a>
         <a href="#/admission/selection">甄選入學</a>
+        <a href="#/admission/day-independent">日間部單獨招生</a>
+        <a href="#/admission/special-selection">特殊選才</a>
         <a href="#/admission/tech-star">科技繁星</a>
         <a href="#/admission/tech-elite">技優甄審</a>
         <a href="#/admission/joint">登記分發</a>

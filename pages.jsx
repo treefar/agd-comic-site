@@ -821,10 +821,10 @@ const AdmissionDetail = ({ slug }) => {
                     {a.summary}
                   </div>
                 )}
-                {/* 115 學年度時程已全部結束（2026-10），參訪是全年開放不加註 */}
-                {/115/.test(a.year || "") && a.slug !== "visit" && (
+                {/* 116 學年度名額已核定、各管道時程尚未公告；參訪全年開放、獎學金（115 學年度起）不加註 */}
+                {/116/.test(a.year || "") && a.slug !== "visit" && (
                   <div style={{ fontSize: 13, color: "var(--ink)", background: "var(--accent-yellow)", marginTop: 12, fontWeight: 800, lineHeight: 1.5, padding: "6px 10px", border: "3px solid var(--ink)", display: "inline-block" }}>
-                    115 學年度招生已結束，以下時程與名額僅供參考；116 學年度簡章公布後更新。
+                    116 學年度名額已核定；報名資格、方式與時程依 116 學年度簡章公告。
                   </div>
                 )}
               </div>
@@ -911,16 +911,16 @@ const AdmissionDetail = ({ slug }) => {
                   }}>
                     <thead>
                       <tr style={{ background: "var(--ink)", color: "var(--accent-yellow)", fontFamily: "'Bangers',sans-serif", letterSpacing: "0.06em" }}>
-                        <th style={{ padding: "8px 10px", textAlign: "left", border: "1px solid var(--ink)" }}>志願代碼</th>
+                        {a.groups.some((g) => g.code) && <th style={{ padding: "8px 10px", textAlign: "left", border: "1px solid var(--ink)" }}>志願代碼</th>}
                         <th style={{ padding: "8px 10px", textAlign: "left", border: "1px solid var(--ink)" }}>招生群類</th>
                         <th style={{ padding: "8px 10px", textAlign: "center", border: "1px solid var(--ink)" }}>一般生</th>
-                        <th style={{ padding: "8px 10px", textAlign: "center", border: "1px solid var(--ink)" }}>原住民</th>
+                        <th style={{ padding: "8px 10px", textAlign: "center", border: "1px solid var(--ink)" }}>原住民（外加）</th>
                       </tr>
                     </thead>
                     <tbody>
                       {a.groups.map((g, i) => (
                         <tr key={i} style={{ background: i % 2 === 0 ? "rgba(255,255,255,0.6)" : "rgba(255,235,180,0.4)" }}>
-                          <td style={{ padding: "8px 10px", border: "1px solid var(--ink)", fontFamily: "'Bowlby One',sans-serif", fontSize: 13 }}>{g.code}</td>
+                          {a.groups.some((x) => x.code) && <td style={{ padding: "8px 10px", border: "1px solid var(--ink)", fontFamily: "'Bowlby One',sans-serif", fontSize: 13 }}>{g.code}</td>}
                           <td style={{ padding: "8px 10px", border: "1px solid var(--ink)", fontWeight: 700 }}>{g.group}</td>
                           <td style={{ padding: "8px 10px", border: "1px solid var(--ink)", textAlign: "center", fontWeight: 800 }}>{g.regular}</td>
                           <td style={{ padding: "8px 10px", border: "1px solid var(--ink)", textAlign: "center", fontWeight: 800 }}>{g.indigenous == null ? "—" : g.indigenous}</td>
@@ -1711,7 +1711,7 @@ const CurriculumDetail = () => {
           <Panel clickable variant="red" style={{ padding: 24, textAlign: "center" }}
             onClick={() => { window.location.hash = "#join"; }}>
             <div className="h-display" style={{ fontSize: 26, color: "#fff" }}>看招生管道</div>
-            <div style={{ fontSize: 13, color: "#fff", marginTop: 6, opacity: 0.85 }}>申請入學 · 甄選入學 · 科技繁星 · 技優甄審 · 登記分發</div>
+            <div style={{ fontSize: 13, color: "#fff", marginTop: 6, opacity: 0.85 }}>甄選入學 · 單獨招生 · 特殊選才 · 科技繁星 · 技優甄審 · 登記分發</div>
           </Panel>
           <Panel clickable variant="yellow" style={{ padding: 24, textAlign: "center" }}
             onClick={() => { window.location.hash = "#/admission/visit"; }}>
@@ -1974,12 +1974,12 @@ const GUIDE_Q = [
 ];
 
 // 判定：回傳 1–2 個 data/admission.json 的 slug（第一個是最推薦）
-// 依據 admission.json 各管道「適用對象」：申請入學＝高中生持學測；甄選入學＝高職／綜高採統測；
+// 依據 admission.json 各管道「適用對象」：普通型高中（非統測）＝日間部單獨招生（116 無申請入學名額，使用者 2026-11-19 決定）；甄選入學＝高職／綜高採統測；
 // 科技繁星＝應屆高職／綜高、學校推薦；技優甄審＝須符合當年度簡章的競賽或證照資格；登記分發＝參加統測的考生；進修部＝在職、二度就讀
 const guidePick = (school, award, route) => {
   if (school === "work") return ["evening"];
   if (school === "hs") {
-    const base = route === "tcte" ? "joint" : "high-school-application";
+    const base = route === "tcte" ? "joint" : "day-independent";
     return award === "award" || award === "cert" ? ["tech-elite", base] : [base];
   }
   const byRoute = { tcte: ["selection", "joint"], portfolio: ["selection"], school: ["tech-star", "selection"], gsat: ["selection", "joint"] };
@@ -2047,15 +2047,16 @@ const GuideDetail = () => {
   }
 
   const slugs = guidePick(ans.school, ans.award, ans.route);
-  const picks = slugs.map((s) => data.find((x) => x.slug === s)).filter(Boolean);
+  // hidden: true 的管道（116 學年度申請入學）不出現在任何推薦結果
+  const picks = slugs.map((s) => data.find((x) => x.slug === s)).filter((a) => a && !a.hidden);
   const now = new Date();
   const scholarship = data.find((x) => x.slug === "scholarship");
   // 補充說明：只轉述 admission.json 既有文字的意思，不另外推估
   const notes = [];
-  if (ans.school === "hs" && ans.route === "school") notes.push("科技繁星限應屆高職／綜合高中，而且已報名大學繁星推薦就不能重複報名科技繁星；普通型高中建議走申請入學。");
-  if (ans.school === "hs" && ans.award === "award") notes.push("技優甄審不限競賽獲獎的高職應屆生；115學年度也採認符合簡章職種的勞動部乙級（含）以上技術士證等資格。高中、非應屆等身分須依當年簡章核對，不可只憑身分判定可否報名。");
-  if (ans.school === "voc" && ans.route === "gsat") notes.push("申請入學的適用對象是高中應屆畢業生（持學測成績）；高職／綜合高中的主力是統測相關管道。");
-  if (slugs.includes("tech-star")) notes.push("115 學年度科技繁星錄取生，不論是否放棄，均不得參加當年度四技二專甄選入學；其他管道請依各招生簡章與報到／放棄規定辦理。");
+  if (ans.school === "hs" && ans.route === "school") notes.push("科技繁星由就讀學校推薦，推薦資格依 116 學年度簡章公告；普通型高中可先看日間部單獨招生。");
+  if (ans.school === "hs" && ans.award === "award") notes.push("技優甄審可採認的競賽、證照與報名身分，依 116 學年度簡章公告，不可只憑身分判定可否報名。");
+  if (ans.school === "voc" && ans.route === "gsat") notes.push("高職／綜合高中的主力是統測相關管道（甄選入學、登記分發）。");
+  if (slugs.includes("tech-star")) notes.push("科技繁星與其他管道的重複報名限制，依 116 學年度簡章公告。");
   return (
     <section className="chapter">
       <div className="container">
@@ -2065,7 +2066,7 @@ const GuideDetail = () => {
           <div className="comic-tier tier-1">
             <Panel variant="yellow" style={{ padding: 16 }}>
               <div style={{ fontWeight: 900, fontSize: 15, lineHeight: 1.6 }}>
-                以 115 學年度時程為參考，116 學年度簡章公布後更新。名額與日期以當年度招生簡章為準。
+                116 學年度名額已核定，各管道時程尚未公告。報名資格與日期以 116 學年度招生簡章為準。
               </div>
             </Panel>
           </div>
@@ -2077,7 +2078,7 @@ const GuideDetail = () => {
                   <PvLabel color={i === 0 ? "var(--accent-yellow)" : "var(--accent-blue)"}>{i === 0 ? "BEST MATCH · 最推薦" : "ALSO TRY · 也可以搭配"}</PvLabel>
                   <div className="h-display" style={{ fontSize: "clamp(26px, 4vw, 40px)", lineHeight: 1.1 }}>{a.title}</div>
                   <div style={{ fontSize: 14, fontWeight: 800, marginTop: 8, lineHeight: 1.6 }}>{a.year} · 名額 {a.quota}</div>
-                  {a.schedule_short && <div style={{ fontSize: 14, fontWeight: 700, marginTop: 4, lineHeight: 1.6 }}>115 學年度時程：{a.schedule_short}</div>}
+                  {a.schedule_short && <div style={{ fontSize: 14, fontWeight: 700, marginTop: 4, lineHeight: 1.6 }}>時程：{a.schedule_short}</div>}
                   {next && <div style={{ fontSize: 14, fontWeight: 900, marginTop: 6 }}>下一個時程：{next.label}（{next.raw}），還有 {Math.ceil((next.date - now) / 86400000)} 天</div>}
                   {a.summary && <div style={{ fontSize: 15, fontWeight: 700, marginTop: 10, lineHeight: 1.7 }}>{a.summary}</div>}
                   {a.key_notes && (

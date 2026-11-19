@@ -47,12 +47,14 @@ for (const x of [...pages, { id: widget.id, label: '小工具', html: widget.htm
     ok(open === close, `${x.label} <${t}> 開關不成對（${open}/${close}）`);
   }
 }
-// 8. 115 學年度招生頁（參訪除外）都要有「已結束」提示
-for (const id of [7139, 6906, 6926, 6908, 6919, 1952, 2001]) {
+// 8. 116 學年度招生頁（參訪、獎學金除外）都要有「名額已核定、時程依簡章」提示；不可再出現 115 已結束或已截止印章
+for (const id of [7139, 6906, 6926, 6908, 6919, 1952]) {
   const x = pages.find((y) => y.id === id);
-  ok(x && /115 學年度招生已結束/.test(x.html), `招生頁 ${id} 缺「115 學年度招生已結束」提示`);
+  ok(x && /116 學年度名額已核定/.test(x.html), `招生頁 ${id} 缺「116 學年度名額已核定」提示`);
 }
-ok(!/115 學年度招生已結束/.test(pages.find((y) => y.id === 3138).html), '參訪頁不應出現招生已結束提示');
+for (const id of [3138, 2001]) ok(!/116 學年度名額已核定/.test(pages.find((y) => y.id === id).html), `頁 ${id} 不應出現招生提示`);
+for (const x of pages) ok(!/115 學年度招生已結束|agdc-notice/.test(x.html), `${x.label} 還有 115 已結束提示`);
+ok(!/高中申請|申請入學/.test(pages.find((y) => y.id === 7139).html), '招生一覽不應列出申請入學');
 // 9. 小工具不可再出現舊系名
 ok(!/數位科技與遊戲設計系/.test(widget.html), '小工具還有舊系名');
 // 11. 學校教師資料短代碼（2026-11-03）：有代碼的老師頁剛好一段且代碼正確；沒有代碼的（楊智彰）不輸出；有專書就有專書區塊

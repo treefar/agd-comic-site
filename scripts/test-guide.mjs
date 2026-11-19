@@ -19,16 +19,17 @@ const guideNextDate = new Function(grab(/const guideNextDate = \(timeline, now\)
 
 const admission = load('admission');
 const bySlug = Object.fromEntries(admission.map((a) => [a.slug, a]));
-// 不是入學管道的條目不可被推薦
+// 不是入學管道的條目不可被推薦；hidden: true（116 學年度申請入學）也不可被推薦
 const NOT_CHANNEL = ['visit', 'scholarship'];
+const HIDDEN = admission.filter((a) => a.hidden).map((a) => a.slug);
 const fails = [];
 
 // 1) 10+ 組代表性答案
 const cases = [
-  [['hs', 'none', 'gsat'], ['high-school-application']],
-  [['hs', 'none', 'portfolio'], ['high-school-application']],
+  [['hs', 'none', 'gsat'], ['day-independent']],
+  [['hs', 'none', 'portfolio'], ['day-independent']],
   [['hs', 'cert', 'tcte'], ['joint']],
-  [['hs', 'award', 'school'], ['high-school-application']],
+  [['hs', 'award', 'school'], ['day-independent']],
   [['voc', 'none', 'tcte'], ['selection', 'joint']],
   [['voc', 'none', 'portfolio'], ['selection']],
   [['voc', 'cert', 'school'], ['tech-star', 'selection']],
@@ -57,23 +58,28 @@ for (const s of ['hs', 'voc', 'work']) for (const w of ['award', 'cert', 'none']
   for (const slug of got) {
     if (!bySlug[slug]) fails.push(`${s}/${w}/${r} 推薦的 ${slug} 不在 admission.json`);
     if (NOT_CHANNEL.includes(slug)) fails.push(`${s}/${w}/${r} 推薦了非入學管道 ${slug}`);
+    if (HIDDEN.includes(slug)) fails.push(`${s}/${w}/${r} 推薦了隱藏管道 ${slug}`);
   }
 }
 
-// 3) 倒數只對未來日期：今天（2026-10-08）所有 115 學年度時程都已過去 → 不顯示倒數
-const today = new Date(2026, 9, 8);
+// 3) 116 學年度時程尚未公告：資料裡不可有 timeline／schedule_short（參訪的「全年｜每週六」除外），也不可殘留 115 的日期
 for (const a of admission) {
-  const n = guideNextDate(a.timeline, today);
-  if (n) fails.push(`${a.slug} 在 2026-10-08 不該有倒數，卻得到 ${n.raw}`);
+  if (a.timeline) fails.push(`${a.slug} 不該有 timeline（116 時程未公告）`);
+  if (a.schedule_short && a.slug !== 'visit') fails.push(`${a.slug} 不該有 schedule_short（116 時程未公告）`);
+  if (guideNextDate(a.timeline, new Date(2026, 10, 19))) fails.push(`${a.slug} 沒有時程卻算出倒數`);
 }
-// 時間倒回 2026-01-01：申請入學的下一個時程應是 2026/03/19 報名
-const early = guideNextDate(bySlug['high-school-application'].timeline, new Date(2026, 0, 1));
-if (!early || early.raw.indexOf('2026/03/19') !== 0) fails.push(`2026-01-01 的申請入學下一時程應為 2026/03/19，實際 ${early && early.raw}`);
+if (/20\d\d\/\d\d/.test(JSON.stringify(admission))) fails.push('admission.json 還有 yyyy/mm 日期');
+if (guideNextDate(undefined, new Date()) !== null) fails.push('沒有 timeline 時 guideNextDate 應回傳 null');
+// guideNextDate 本身：用自製時程確認只挑未來最近的完整日期
+const fake = [{ date: '2027/03/19 (五) 10:00', label: '報名' }, { date: '2027/05/25 (二)', label: '放榜' }, { date: '2026/01/02', label: '過去' }];
+const early = guideNextDate(fake, new Date(2027, 0, 1));
+if (!early || early.raw.indexOf('2027/03/19') !== 0) fails.push(`自製時程 2027-01-01 的下一時程應為 2027/03/19，實際 ${early && early.raw}`);
+if (guideNextDate(fake, new Date(2027, 5, 1))) fails.push('自製時程全部過去後不該有倒數');
 // 沒有完整日期（例如「2026/09 起」「依進修部專區公告」）不可被當成日期
 if (guideNextDate([{ date: '2026/09 起', label: 'x' }, { date: '依樹德進修部專區公告', label: 'y' }], new Date(2000, 0, 1))) fails.push('不完整日期被誤判成倒數目標');
 
 // 4) 結果頁必帶的文案
-for (const t of ['以 115 學年度時程為參考，116 學年度簡章公布後更新', '也做做看：你是哪一派？', '#/quiz/start']) {
+for (const t of ['116 學年度名額已核定，各管道時程尚未公告', '也做做看：你是哪一派？', '#/quiz/start']) {
   if (!src.includes(t)) fails.push(`pages.jsx 缺少「${t}」`);
 }
 

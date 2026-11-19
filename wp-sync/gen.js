@@ -128,13 +128,13 @@
   }
 
   // ---------- 招生 ----------
-  const ADM_PAGE = { 'high-school-application': '高中申請/', selection: '甄選入學/', 'tech-star': '科技繁星/', 'tech-elite': '技優甄選/', scholarship: '菁英獎學金/', visit: '參訪聯繫師長/' };
+  const ADM_PAGE = { 'high-school-application': '高中申請/', selection: '甄選入學/', 'tech-star': '科技繁星/', 'tech-elite': '技優甄選/', 'special-selection': '特殊選才/', scholarship: '菁英獎學金/', visit: '參訪聯繫師長/' };
 
-  // 115 學年度時程已全部結束（2026-10）；參訪是全年開放，不加註
-  const ADM_CLOSED = '115 學年度招生已結束，以下時程與名額僅供參考；116 學年度簡章公布後更新。';
-  // 已結束的公告：紅框加「已截止」印章（CSS 畫印章）
-  const closedNote = () => `<p class="agdc-notice"><strong>${esc(ADM_CLOSED)}</strong></p>`;
-  const admissionNotice = (x) => (/115/.test(x.year || '') && x.slug !== 'visit' ? closedNote() : '');
+  // 116 學年度名額已核定、各管道時程尚未公告；參訪全年開放、獎學金（115 學年度起）不加註
+  // 不用 agdc-notice：那個樣式會畫「已截止」印章（wp-skin/comic-skin.css）
+  const ADM_NOTE = '116 學年度名額已核定；報名資格、方式與時程依 116 學年度簡章公告。';
+  const admNote = () => `<p><strong>${esc(ADM_NOTE)}</strong></p>`;
+  const admissionNotice = (x) => (/116/.test(x.year || '') && x.slug !== 'visit' ? admNote() : '');
 
   // pageTitle：WordPress 頁面標題（主題畫成黃色貼紙 h1）；跟資料標題相同就不輸出 h2，避免同一個標題出現兩次
   function admissionPage(x, pageTitle) {
@@ -166,7 +166,8 @@
   }
 
   function admissionHub(D) {
-    const items = D.admission.map((x) => {
+    // hidden: true（116 學年度申請入學）不列入一覽
+    const items = D.admission.filter((x) => !x.hidden).map((x) => {
       const page = ADM_PAGE[x.slug];
       const name = page ? a(SITE + page, x.title) : esc(x.title);
       // 只有真的是名額（含「名」）才加「名額」字樣；參訪、獎學金的 quota 欄位放的是別的說明
@@ -174,7 +175,7 @@
       const bits = [x.year, q, x.schedule_short].filter(Boolean).map(esc).join('｜');
       return `<li>${name}｜${bits}<br />${esc(x.summary || '')}</li>`;
     });
-    return join(ch2('招生管道一覽'), closedNote(), `<ul class="agdc-routes">\n${items.join('\n')}\n</ul>`, `<p>另有${a(SITE + '特殊選才/', '特殊選才')}管道，請見專頁。</p>`, src('#/admission/visit'));
+    return join(ch2('招生管道一覽'), admNote(), `<ul class="agdc-routes">\n${items.join('\n')}\n</ul>`, src('#/admission/visit'));
   }
 
   function contactPage(D) {
