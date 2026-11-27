@@ -231,3 +231,80 @@ mod 沒記到但同樣改過的：`exit6/main.mjs`、`exit6/index.html`、`exit6
 - hook：無新提案。
 
 下一輪建議：Claude Sonnet 5.5／推理強度中等。剩下的是填老師名字、改文案這類小改動，規格都清楚。
+
+## 復盤 2026-11-03
+
+（TF-BASE，Claude Code；WordPress 版系網 www.dgd.stu.edu.tw 與漫畫版同步、改版、教師資料補齊。程式工作在 `C:/agywork/agd-wp-revamp` worktree，已全部合併進 main：PR #2～#10。）
+
+### 1. 做了什麼、改了哪些檔
+
+**WordPress 版（線上已更新）**
+- 37 頁內容依漫畫版正本同步（含拿掉鄧樹遠「電競娛樂系代理主任」），之後改成漫畫版型：章節頭、彩色區塊、教師角色卡（含 300×300 小照片）、課程地圖關卡軌道、表格手機轉卡片、招生頁「已截止」印章、長頁跳轉列、點擊特效（狀聲詞、圖片噴墨）、手機與平板 LINE 小方鈕、拿掉重複標題。
+- HFCM #7（外衣 CSS）從 20261008c 升到 20261103e；新增 HFCM #15（點擊特效＋跳轉列＋學校資料整理）。
+- 13 位老師頁加回「學校教師資料」：10/06 首次同步時誤刪了學校外掛短碼 `[SDTI getTeacherInfo]`；學校外掛當天一直回 404，改為擷取校務系統「專任教師簡歷表」做成固定內容（只收專業履歷，不含員編、照片、任職日、修業年月；學歷不另列）。
+- 教師資料：評鑑報告創新教材 60 筆、業師協同 5 筆、楊智彰學歷；Codex 網路查證後核對來源的 17 筆近年得獎；陳美蓉專書；職稱依校務系統加 (技)；合聘改為職稱下方小字；鄧樹遠學歷「設計學博士候選人」、陳慶鴻學歷補完整。
+
+**檔案（repo 內，用途）**
+- `wp-sync/gen.js`：WordPress 37 頁 HTML 產生器；新增 agdc- 版型、角色卡照片、合聘、創新教材、業師協同、專書、學校資料固定內容（沒有就退回即時短碼）。
+- `wp-sync/check.mjs`：產生器回歸檢查；新增標題重複、學校短碼與固定內容、專書區塊等檢查。
+- `wp-sync/school-data.json`（新）：校務系統簡歷固定內容，13 位。
+- `wp-sync/README.md`（新）：同步流程、地雷、還原方式。
+- `wp-skin/comic-skin.css`：外衣第 13 節（漫畫版型、手機 13b、學校資料、角色卡照片、合聘小字）。
+- `wp-skin/comic-fx.html`（新）：點擊特效、跳轉列、學校外掛輸出整理。
+- `wp-skin/build.mjs`、`wp-skin/check.mjs`：產出去註解的特效片段並檢查。
+- `pages.jsx`、`chapters-2.jsx`：漫畫版教師頁加創新教材、業師協同、專書、「看學校教師資料」按鈕、合聘小字；備用名單同步職稱。
+- `data/faculty.json`、`data/en/faculty.json`、`data/ja/messages.json`、`data/en/ui.json`、`data/ja/ui.json`、`tests/production-baseline.json`（每次正本變更都登記使用者核准）、`locale-en.js`、`locale-ja.js`（建置產物）。
+
+**暫存檔（scratchpad，不在 repo）**：`serve-dir.cjs`、`serve.cjs`、`bridge.html`（本機預覽伺服器）、`eval/add-eval.cjs`、`add-eval-i18n.cjs`、`add-awards.cjs`、`add-teng.cjs`（只新增不覆蓋的資料寫入腳本）、`pr-body.md`～`pr5-body.md`（PR 說明）、`scripts/extract.py`、`index.py`（子代理解析評鑑報告 docx 用）。另有 `C:/agywork/codex-awards-20261103/WORK_ORDER.md`（Codex 網路查證工單與成果）。
+
+### 2. 踩雷與根因
+
+| 症狀 | 根因 | 處理 |
+|---|---|---|
+| `curl` 抓學校網站回「Human Verification」、REST 回 401 `rest_login_required` | 學校站有人機驗證；REST 需登入 | 改用內建瀏覽器，使用者自行登入後以 `wpApiSettings.nonce` 呼叫 REST |
+| 線上頁面 `fetch('http://localhost…')` 回 `TypeError: Failed to fetch`；iframe 也收不到 | 瀏覽器私有網路限制 | 新內容改用 raw.githubusercontent 讀（先推分支）、或注入 JS；大量資料從瀏覽器回本機改走剪貼簿（按鈕複製→`Get-Clipboard`→比對 SHA-1） |
+| `node -e` 內 `'\n'` 變成真換行，`gen.js` 出現 `SyntaxError: Invalid or unexpected token` | Bash 吃掉 heredoc／引號內一層反斜線（hook 有提醒） | 改用 Edit 工具或先寫成檔案 |
+| 跳轉列插入後頁面黃色標題貼紙消失 | 插在 `.thn_post_wrap` 第一個子元素前，`h1:first-child` 樣式失效 | 改插在 h1 後面 |
+| 3 頁手機內文仍只有 283px | 外框選擇器 `.page_wrap .single_wrap > .single_post` 權重較高 | 手機規則補同一選擇器 |
+| 外衣檢查失敗（keyframes 的 0%／40% 被當選擇器） | `check.mjs` 範圍規則沒處理 `@keyframes` | 檢查前先移除 keyframes 區塊 |
+| 老師反映「教師資訊不完全」 | 10/06 首次同步整頁覆蓋，誤刪學校外掛短碼 | 以修訂版本取回 12 組識別碼，最後改為校務系統固定內容 |
+| 學校外掛回 nginx 404，且輸出整份 HTML（含 Bootstrap 4、jQuery 1.12） | 學校外部系統不穩；一次呼叫 12 位更易失敗 | #15 先剝樣式再整理；`:has(table)` 隱藏失敗區塊；最後改固定內容 |
+| `gh pr merge` 被擋：`[Merge Without Review]` | 該輪使用者未明確說要合併 | 先只開 PR，取得使用者「合併」指示後再合併 |
+| PDF 網址觸發下載對話框 | 該站直接回應下載 | 改在本機用 PyMuPDF 讀（`pdftoppm` 未安裝、主控台 cp950 亂碼→寫 UTF-8 檔再讀） |
+| 陳慶鴻頁一度未被檢查到 | 憑記憶猜 slug（chenchingshung）回 404 頁，檢查程式未報錯 | 一律從資料取 slug |
+| 漫畫版合併後頁面仍顯示舊資料 | GitHub Pages 快取約 10 分鐘 | 以 `cache:'no-store'` 驗資料檔與程式包，10 分鐘後再看頁面 |
+| 語言 hook 擋下 PR 說明裡老師識別碼的用詞 | zh-lint 規則（台灣用語） | 改「識別碼」「短碼（shortcode）」 |
+
+### 3. 額度花費
+
+- mod 量測：累計工作時間約 100 分鐘；本 session 約 **US$62.07**；最高用量窗口：週 8%。
+- 最耗的步驟：把產生器（約 16K 字元）、外衣 CSS（約 14K）、特效腳本（約 6K）原文經對話送進瀏覽器做預覽與上線，以及多次整頁手機截圖。其次是子代理讀 8 MB 評鑑報告（約 20 萬 token）。Codex 網路查證約 28 萬 token（走 ChatGPT 訂閱，不計入本 session 美金）。後半段改用「推分支→瀏覽器讀 raw.githubusercontent」與剪貼簿傳資料後，單次上線成本明顯下降。
+
+### 4. 下一步與規則建議
+
+**下一步**
+1. 問陳慶鴻老師「手機版不完全」是哪一頁哪一段（目前兩版都重現不出；可能是今天修正前的舊表格）。
+2. 英文新增句子都標 `[CHECK]`，需人工確認（教材 60、業師 5、得獎 12、職稱與合聘、專書譯名）。
+3. 學校資料固定內容日期為 2026-11-03，建議每學期由使用者登入校務系統後重抓一次（`wp-sync/README.md` 有流程）。
+4. 尚未處理：評鑑報告表 3-3-7 服務領導帶隊 18 筆（使用者未選）；江雅媚證照是否補「正指導師」與 2025 年 5 張新證照；楊智彰職稱是否加 (專)；漫畫版個人頁照片下方空白網點帶。
+5. `C:/Projects/agd-comic-site` 主 checkout 仍在 `feat/exit6-corridor-game` 分支（本復盤即寫在此分支的交接檔，未 commit）。
+
+**規則建議（只提案，未改規則檔）**
+- `agd-comic-site` skill 增加「WordPress 版」一節：REST＋nonce 寫入、HFCM 以 CodeMirror `setValue` 更新、上線前後以 SHA-1 比對、Pages 快取 10 分鐘、學校資料固定內容的重抓流程與個資範圍（只收專業履歷）。理由：這些都無法從程式碼推知，下次同步一定會再遇到。
+- `browser-bot-runner` skill 補「瀏覽器→本機傳大資料走剪貼簿＋SHA-1 比對；本機→瀏覽器先推分支用 raw.githubusercontent」。理由：本次最大成本來源。
+- 不建議新增 AGENTS.md 全域規則：涉及的地雷都是本專案特有，放 skill 即可。
+
+下一輪建議：Claude Code／claude-opus-5-5／high
+理由：剩下的是資料核對與老師回饋後的修正，需要逐筆查證；主線留在 Claude 家族。
+狀態：只提出建議，不切換模型、不建立新工作、不自行派工。
+
+## 補記 2026-11-14：2026-11-11 系網風格調整提案（與《六樓出口》無關，記在這裡是因為這個 clone 只有這份交接檔）
+
+claude-code（TF-BASE）封存「系網圖片風格調整提案」對話前，依對話紀錄整理。這一輪只提案與樣張，沒有改站，沒有任何方向定案。
+
+- 成果在 `docs\style-proposal\`（`docs/` 被 `.gitignore` 排除，不進版控）：`系網圖片風格調整提案_20261111.md`、`系網整體設計風格提案_20261111.md`、`measure-20261111.json`、`mock\design-mock.html`（長卷、集字、甲原畫桌、乙黑白漫畫四個分頁）。
+- 私人 Artifact：https://claude.ai/artifact/2m2Kdns2CeYNLXpFjMAxhB
+- 使用者意見：甲、乙被退（太素）；集字被退（太嚴肅）；「長卷」交出後還沒回覆。
+- 下一步：①等使用者看「長卷」決定；②書法字庫來自商業光碟、不可公開，能不能用在公開系網要使用者決定；③定案後才寫風格規格卡（`art-deai`）與改站；④測驗分享圖 4 張的提示詞含作品名，重生時要拿掉；師資肖像底圖 13 張來源查不到。
+- `mock\_preview.html` 是暫存檔，可刪（當時刪除被安全機制擋下）。
+- 完整四輪紀錄與提案副本在 Vault：`00 Codex 永久記憶\專案紀錄\附件\系網漫畫版_AGDComicSite\風格提案_20261111\`；摘要在 `專案紀錄\系網漫畫版_AGDComicSite.md`「2026-11-14 補記」。
