@@ -760,7 +760,7 @@ const JoinChapter = () => (
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--gutter)" }}>
             {[
               { t: "甄選入學", q: "22 名 · 設計 14 / 商管 5 / 資電 3 · 外加 青儲 4、原住民 1", c: "yellow", slug: "selection" },
-              { t: "日間部單獨招生", q: "一般生 15 名", c: "", slug: "day-independent" },
+              { t: "日間部單獨招生", q: "一般生 15 名 · 身障 4 名", c: "", slug: "day-independent" },
               { t: "科技繁星", q: "設計群 2 名", c: "inkbg", slug: "tech-star" },
             ].map((o, i) => (
               <Panel key={i} clickable

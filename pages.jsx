@@ -2390,7 +2390,7 @@ const ParentsGuide = () => {
               <div style={{ fontSize: 13, fontWeight: 900, color: "var(--accent-red)" }}>{sch.title} · {sch.year} · {sch.quota}</div>
               <div style={{ fontSize: 15, fontWeight: 700, lineHeight: 1.8, marginTop: 6 }}>{sch.summary}</div>
               <div style={{ fontSize: 14, lineHeight: 1.85, marginTop: 8, whiteSpace: "pre-line" }}>{sch.content}</div>
-              <div style={{ fontSize: 12, opacity: 0.75, marginTop: 8 }}>※ 以 115 學年度資料為參考，116 學年度簡章公布後更新。</div>
+              <div style={{ fontSize: 12, opacity: 0.75, marginTop: 8 }}>※ 門檻與金額依 116 學年度公告為準。</div>
               <div style={{ marginTop: 12 }}><a href="#/admission/scholarship" style={{ ...PV_BTN, background: "var(--accent-yellow)" }}>看獎學金完整說明 →</a></div>
             </>}
           </PvSection>
