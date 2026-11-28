@@ -1,0 +1,9 @@
+日期：2026-10-25（Asia/Taipei）
+1. exec_command 無法建立終端程序：CreateProcessAsUserW failed: 5（存取被拒）。以另一個 shell 參數重試後，工具仍指向 pwsh 並回傳相同錯誤。
+2. Node REPL 可讀寫，工作目錄已確認為 C:/agywork/agd-site-release/review-codex-20261025。
+3. Playwright 透過 createRequire 成功載入；chromium.launchPersistentContext(headless:true) 回傳 spawn EPERM。瀏覽器從未成功啟動，未產生任何畫面截圖。
+4. Playwright 設定中的 userDataDir、TEMP、TMP 全部指定本審閱資料夾，網路攔截僅允許 http://127.0.0.1:8910 的 GET/HEAD；瀏覽器啟動失敗後改用相同來源限制的 fetch（redirect:manual）。
+5. 依 WORK-ORDER.md 第5節執行 B/C 原始資料與靜態內容檢查，A 未完成。
+6. 未執行 git、npm、Build、伺服器啟停、套件安裝、刪檔、對外請求或網站檔案寫入。
+7. 靜態內容利用既有 .build-tmp/ssr.cjs 在記憶體執行，預載本機 GET 取得的資料；切換語言與重建翻譯快取均在記憶體。課程元件將唯一的 useState(null) 在記憶體改為從預載快取初始化，以查看資料載入後的文字；未執行瀏覽器 effect、版面計算或互動驗收。
+8. Playwright 初次使用 ESM 入口失敗，改用 createRequire 載入後成功；問題重查腳本先以 Node REPL require 執行成功，精確化姓名對照後改以 vm 執行再次成功。new Function 在 REPL 中遭禁止，未執行任何腳本內容。
