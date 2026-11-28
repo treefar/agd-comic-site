@@ -303,7 +303,7 @@ const LABS = [
   { slug: "startup-base",        code: "B1",    name: "三創基地 / 創客中心",t: "STARTUP",    desc: "三創（創意、創新、創業）基地，學生提案、原型到育成的孵化器。" },
 ];
 
-const LabCard = ({ l, i }) => (
+const LabCard = ({ l, i, photo }) => (
   <Panel
     clickable
     onClick={() => { if (l.slug) window.location.hash = "#/labs/" + l.slug; }}
@@ -312,6 +312,11 @@ const LabCard = ({ l, i }) => (
     style={{ padding: 16, display: "flex", flexDirection: "column", justifyContent: "space-between" }}
   >
     <div>
+      {photo && (
+        <div className="lab-photo" style={{ margin: "-16px -16px 12px", aspectRatio: "16 / 9", borderBottom: "3px solid var(--ink)" }}>
+          <PH src={photo} alt={l.name + " 實景照片"} fit="cover" pos="center" />
+        </div>
+      )}
       <div style={{ fontFamily: "'Bangers',sans-serif", fontSize: 13, letterSpacing: "0.1em", opacity: 0.85 }}>ROOM · {l.code}</div>
       <div className="h-display" style={{ fontSize: 22, marginTop: 6 }}>{l.name}</div>
       {l.desc && (
@@ -336,7 +341,15 @@ const LabCard = ({ l, i }) => (
   </Panel>
 );
 
-const LabsChapter = () => (
+// 2026-11-28：卡片與大格改用 data/labs.json 的實拍照片（系上官網原圖，網頁上只做裁切與淡網點疊層，不改原圖）。
+const LabsChapter = () => {
+  const labData = useDataset ? useDataset("labs") : null;
+  const labList = Array.isArray(labData) ? labData : (labData && (labData.labs || labData.items)) || [];
+  const photoOf = (slug) => { const hit = labList.find((x) => x.slug === slug); return hit && Array.isArray(hit.photos) && hit.photos[0] ? hit.photos[0] : null; };
+  const photo2Of = (slug) => { const hit = labList.find((x) => x.slug === slug); return hit && Array.isArray(hit.photos) && hit.photos[1] ? hit.photos[1] : null; };
+  // 大格用各實驗室的第二張照片，避免和下方卡片的第一張重複
+  const mapShots = ["db105", "d0637", "h0201", "d0604"].map((slug) => ({ slug, src: photo2Of(slug), name: (LABS.find((x) => x.slug === slug) || {}).name })).filter((x) => x.src);
+  return (
   <section className="chapter" id="labs" data-screen-label="06 Labs">
     <div className="container">
       <ChapterTag num="06" title="第六話 — 我們的祕密基地" jp="THE SECRET BASE" />
@@ -346,12 +359,23 @@ const LabsChapter = () => (
         <div className="comic-tier tier-1-2 tier-tall">
           <Panel clickable className="bg-halftone-light" style={{ padding: 0, position: "relative" }}
             onClick={() => { window.location.hash = "#/labs/h0201"; }}>
-            <PH label="樹德 設計大樓 · 動遊系實驗室全圖" />
-            <div style={{ position: "absolute", left: 18, top: 18, fontFamily: "'Bowlby One',sans-serif", fontSize: 28, lineHeight: 1, color: "var(--ink)" }}>
+            {mapShots.length === 4 ? (
+              <div className="lab-map-collage">
+                {mapShots.map((m) => (
+                  <div key={m.slug} className="lab-photo">
+                    <PH src={m.src} alt={m.name + " 實景照片"} fit="cover" pos="center" />
+                    <span className="lab-map-tag">{m.name}</span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <PH label="樹德 設計大樓 · 動遊系實驗室全圖" />
+            )}
+            <div style={{ position: "absolute", left: 18, top: 18, zIndex: 2, fontFamily: "'Bowlby One',sans-serif", fontSize: 28, lineHeight: 1, color: "var(--ink)", background: "var(--paper)", padding: "6px 10px", border: "3px solid var(--ink)", boxShadow: "3px 3px 0 var(--ink)" }}>
               D BLOCK<br/><span style={{ color: "var(--accent-red)" }}>BASEMENT</span>
             </div>
             <div style={{
-              position: "absolute", right: 18, top: 18,
+              position: "absolute", left: 18, top: 84, zIndex: 2,
               fontFamily: "'Bangers',sans-serif", fontSize: 13, letterSpacing: "0.1em",
               background: "var(--ink)", color: "var(--accent-yellow)",
               padding: "5px 12px", border: "3px solid var(--paper)",
@@ -360,7 +384,7 @@ const LabsChapter = () => (
               MAP · 12 ROOMS
             </div>
             <div style={{
-              position: "absolute", bottom: 18, right: 18,
+              position: "absolute", bottom: 18, right: 18, zIndex: 2,
               fontFamily: "'Bangers',sans-serif", fontSize: 14, letterSpacing: "0.08em",
               background: "var(--accent-yellow)", color: "var(--ink)",
               padding: "5px 14px", border: "3px solid var(--ink)",
@@ -368,30 +392,30 @@ const LabsChapter = () => (
             }}>
               探索基地 →
             </div>
-            <SFX color="ink" rotate={-8} size={48} style={{ position: "absolute", bottom: 18, left: 22 }}>
+            <SFX color="ink" rotate={-8} size={48} style={{ position: "absolute", bottom: 18, left: 22, zIndex: 2 }}>
               咻！
             </SFX>
           </Panel>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--gutter)" }}>
             <div className="comic-tier tier-1-1" style={{ flex: 1 }}>
-              <LabCard l={LABS[0]} i={0} />
-              <LabCard l={LABS[1]} i={1} />
+              <LabCard l={LABS[0]} i={0} photo={photoOf(LABS[0].slug)} />
+              <LabCard l={LABS[1]} i={1} photo={photoOf(LABS[1].slug)} />
             </div>
             <div className="comic-tier tier-1-1" style={{ flex: 1 }}>
-              <LabCard l={LABS[2]} i={2} />
-              <LabCard l={LABS[3]} i={3} />
+              <LabCard l={LABS[2]} i={2} photo={photoOf(LABS[2].slug)} />
+              <LabCard l={LABS[3]} i={3} photo={photoOf(LABS[3].slug)} />
             </div>
           </div>
         </div>
 
         {/* TIER 2 — 四格等寬 */}
         <div className="comic-tier tier-1-1-1-1 tier-mid">
-          {LABS.slice(4, 8).map((l, i) => <LabCard key={i + 4} l={l} i={i + 4} />)}
+          {LABS.slice(4, 8).map((l, i) => <LabCard key={i + 4} l={l} i={i + 4} photo={photoOf(l.slug)} />)}
         </div>
 
         {/* TIER 3 — 教學環境跨樓層特色教室 */}
         <div className="comic-tier tier-1-1-1-1 tier-mid">
-          {LABS.slice(8, 12).map((l, i) => <LabCard key={i + 8} l={l} i={i + 8} />)}
+          {LABS.slice(8, 12).map((l, i) => <LabCard key={i + 8} l={l} i={i + 8} photo={photoOf(l.slug)} />)}
         </div>
       </div>
 
@@ -435,7 +459,8 @@ const LabsChapter = () => (
       <ChapterNext to="#join" num="07" title="加入連載" currentLabel="P. 006 — 第六話 LABS" />
     </div>
   </section>
-);
+  );
+};
 
 // CH.04 — 作品 / 榮譽
 const WorkCard = ({ w, i }) => (

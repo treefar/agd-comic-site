@@ -98,3 +98,17 @@ html[lang='ja'] #hero .hero-original-tier.hero-draw-enabled #hero-title{font-siz
 .swd-console .swd-meta h3{padding-right:92px;}
 /* 桌面版資訊面板依名單長度變寬（最寬 440px），創作團隊與指導老師整行不換行 */
 @media(min-width:1181px){.swd-console{width:max-content;min-width:304px;max-width:min(440px,calc(100% - 36px));}.swd-console .swd-credits,.swd-console .swd-mentor{white-space:nowrap;overflow-wrap:normal;}}
+
+/* 2026-11-28 手機版（使用者同意美術評估第 1 條）：作品海報獨立成一格完整露出，標題在上、作品資訊與三個亮點泡泡移到海報下方，不再壓在作品上。 */
+@media(max-width:760px){
+ #hero .hero-original-tier.hero-draw-enabled #hero-title{font-size:clamp(40px,12vw,54px)!important;margin-top:6px!important;}
+ #hero .hero-original-tier.hero-draw-enabled .hero-original-copy>div:nth-child(3){margin-top:12px!important;}
+ #hero .hero-draw-enabled>.panel{gap:14px;padding-top:16px!important;}
+ #hero .hero-original-tier.hero-draw-enabled .hero-original-copy>div:first-child{font-size:13px!important;letter-spacing:.05em!important;text-shadow:1px 1px 0 var(--ink)!important;}
+ #hero .hero-draw-enabled .hero-tagline{font-size:14px!important;padding:5px 10px!important;white-space:normal!important;}
+ #hero .hero-draw-enabled .student-work-draw{grid-row:2;position:relative;}
+ #hero .hero-draw-enabled .hero-original-highlights{grid-row:3;}
+ #hero .hero-draw-enabled .swd-surface{position:relative;inset:auto;width:100%;aspect-ratio:var(--poster-ratio,.7071);max-height:78svh;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);background:var(--paper);}
+ #hero .hero-draw-enabled .swd-poster img{object-fit:cover;object-position:var(--poster-mx,50%) 50%;opacity:1;}
+ #hero .hero-draw-enabled .swd-console{width:100%;margin:12px 0 0;}
+}

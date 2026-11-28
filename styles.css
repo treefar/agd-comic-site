@@ -1422,3 +1422,11 @@ html[lang='ja'] .h-jojo{font-family:'Bowlby One','Bangers','Yu Gothic','Hiragino
 @media(min-width:1260px) and (max-width:1365px){html[lang='zh-Hant'] .topnav{column-gap:12px;}html[lang='zh-Hant'] .topnav nav{gap:8px!important;}}
 @media(min-width:1480px) and (max-width:1579px){html[lang='ja'] .topnav{grid-template-columns:minmax(0,1fr) auto;}html[lang='ja'] .topnav nav{grid-column:1/-1;grid-row:2;}html[lang='ja'] .topnav>a:last-child{grid-column:2;}}
 @media(min-width:1600px) and (max-width:1699px){html[lang='en'] .topnav{grid-template-columns:minmax(0,1fr) auto;}html[lang='en'] .topnav nav{grid-column:1/-1;grid-row:2;}html[lang='en'] .topnav>a:last-child{grid-column:2;}}
+/* 2026-11-28 第六話實驗室實拍照片：原圖不改，網頁上只裁切並疊一層淡網點，讓實景融進漫畫格。 */
+.lab-photo{position:relative;overflow:hidden;background:var(--ink);}
+.lab-photo .placeholder-img{position:absolute;inset:0;width:100%;height:100%;min-height:0;border:0;}
+.lab-photo img{filter:contrast(1.06) saturate(1.08);}
+.lab-photo::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(26,23,20,.22) 1px,transparent 1.3px);background-size:5px 5px;mix-blend-mode:multiply;}
+.lab-map-collage{position:absolute;inset:0;display:grid;grid-template-columns:1fr;grid-template-rows:repeat(4,1fr);gap:6px;background:var(--ink);padding:6px;}
+.lab-map-tag{position:absolute;right:8px;bottom:8px;z-index:1;font-size:12px;font-weight:900;background:var(--paper);color:var(--ink);padding:2px 8px;border:2px solid var(--ink);}
+@media(max-width:760px){#labs .tier-1-2 > .panel:first-child{min-height:520px;}}

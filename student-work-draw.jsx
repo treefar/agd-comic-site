@@ -132,7 +132,7 @@ const StudentWorkDraw = () => {
   const poster = failedImage === work.id ? <span className="swd-image-error" data-language-choice="true">{copy.imageError}</span> : <img className="swd-art" draggable="false" onDragStart={event => event.preventDefault()} src={work.image} alt={title} data-language-choice="true" width="320" height="420" decoding="async" onError={() => setFailedImage(work.id)} />;
   return <section ref={host} id="student-work-draw" className={'student-work-draw swd-'+state.phase} data-no-fx="true" data-no-splat="true" data-draw-phase={state.phase} data-draw-id={work.id} data-draw-timer={state.timerActive ? 'active' : 'idle'} data-draw-reduced={state.reduced ? 'true' : 'false'} aria-labelledby="student-work-draw-heading" onKeyDown={event => {if(event.key === 'Escape'){event.preventDefault();event.stopPropagation();controller.current?.stop();}}}>
     <figure>
-      <div className="swd-surface" data-adjust={adjust ? 'true' : undefined} style={work.focus ? {'--poster-mx':work.focus.mobileX+'%'} : undefined} onPointerDown={dragStart} onPointerMove={dragMove} onPointerUp={dragEnd} onPointerCancel={dragEnd}>
+      <div className="swd-surface" data-adjust={adjust ? 'true' : undefined} style={work.focus ? {'--poster-mx':work.focus.mobileX+'%','--poster-ratio':work.focus.ratio || 0.7071} : undefined} onPointerDown={dragStart} onPointerMove={dragMove} onPointerUp={dragEnd} onPointerCancel={dragEnd}>
       {settled && !adjust ? <a className="swd-poster" href={work.href} {...linkProps} data-language-choice="true" aria-label={copy.open+title}>{poster}</a> : <div className="swd-poster" aria-hidden="true">{poster}</div>}
       </div>
       <figcaption className="swd-console">
