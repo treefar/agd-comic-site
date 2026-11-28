@@ -1,3 +1,168 @@
+## 2026-11-28 最新：美術評估第 1、2 條已上線（main 07debd3f，Pages run 46113462552 成功）
+
+- source_agent: claude-code（Opus 5.5）；TF-GO。依據：`holiday-lab/reports/audience-art-20261128/FABLE-REPORT.md` 前 5 名建議，使用者指示先做第 1、2 條，第 3（老師專頁）、第 4（畢業生漫畫格）待使用者聯絡後再做。
+- 第 1 條：手機版（≤760px）首屏改成標題在上、作品海報獨立一格依原比例完整露出、作品資訊與三個亮點泡泡移到海報下方（`student-work-draw.css` 末段、`student-work-draw.jsx` 加 `--poster-ratio`）。桌機首屏沒動。
+- 第 2 條：第六話 12 張卡片加 `data/labs.json` 第一張實拍照片；左側大格改 4 張直排（各實驗室第二張照片，不和卡片重複）；網頁上只裁切加淡網點，原圖不改（`chapters-2.jsx`、`styles.css` 末段）。沒改正本資料、沒新增圖檔。
+- 驗證：build、check:report、CI 測試 9/9；`holiday-lab/reports/audience-art-20261128/pw-art.cjs` 本機與線上三語四尺寸全過（本機 360×740 海報下緣超出約 46px，線上版通過）。沒用實機手機看。
+
+## 2026-11-28：116 進修部與身障名額已上線（main eb847af5，Pages run 46100991734 成功）
+
+- source_agent: claude-code（Opus 5.5）；TF-GO。來源：招生網「【116學年度】招生系所與名額」頁（Chrome 實讀）與 11/19、11/20 招生選才組通告信。
+- 逐管道對過：甄選 22（設計 14／商管 5／資電 3）＋外加青儲 4、原住民 1；繁星設計群 2；技優外加 4（85 商設）；聯登 3＋設計群外加 4；特殊選才 2＋青儲 4；日間單招 15；申請入學 0；日四技合計 44，全部與系網一致。
+- 這次改（使用者在對話同意）：四技進修部改一般單招 20 名（二技、二專本系不招生）；日間單招補身心障礙生 4 名、註明日四技身心障礙甄試入學 9 名；家長懶人包獎學金註記改「門檻與金額依 116 學年度公告為準」；得獎副標 120+ 改 129。
+- 驗證：npm ci、build、check:report、兩支 CI 測試 9/9；三語 13 案例本機與線上都通過。
+- 追加（同日，main 10f7a221，run 46101396905 成功）：使用者指示沒招生的不用寫，進修部卡拿掉「二技、二專不招生」與「0 名管道」說明，只留一般單招 20 名；線上三語 13 案例通過。
+- 沒做：首頁三處大字「120+」維持四捨五入寫法；scripts/test-guide.mjs 有 3 條推薦期待（技優相關）在線上版原本就失敗，不在 CI，待決定期待值要不要改。
+
+## 2026-11-14 評估：Muse Dash 官網技巧能不能用在系網（只評估，沒改任何網站檔）
+
+- source_agent: claude-code（Fable 5.2）；TF-GO。來源：skill `web-spine-hero`（`C:\AIHome\claude\skills\web-spine-hero\`，2026-11-01 建立）。比對對象是線上版 origin/main da4e40ba 的 `student-work-draw.jsx`。
+- 系網已經有、不用再做：分頁隱藏與捲出畫面就暫停（visibilitychange＋IntersectionObserver）、減少動態效果、逐張預載、圖片失敗顯示錯誤文字、`?adjust=1` 調整模式（等同 Muse Dash 的除錯調位面板）、每張海報的 focus 取景。
+- 不需要新美術就能用（建議先做，未做）：
+  1. 圖檔出 WebP、失敗退回原檔（Muse Dash 貼圖 png／webp 互退的做法）。線上 images 共 37 檔約 7 MB（jpg 23、png 13），直接對應已知的 4G 可互動 20.7 秒問題。屬格式轉換，不動像素內容。
+  2. 海報載入失敗先重試 2 次、間隔 300ms，再顯示錯誤文字（現在 onerror 一次就放棄）。
+  3. 手機版取景：現在寬度 1181px 以下不套 focus；可仿「電腦、手機各一組基準」給手機自己的取景值。
+  4. 海報下緣漸層淡出：CSS `mask-image` 即可，不需 canvas。
+- 需要新美術才能做（待使用者決定）：首頁放一隻 Spine 看板角色。repo 內沒找到系吉祥物的分層圖；要先由核准生圖管線出分層圖、`spine-live2d-pipeline` 綁骨。程式包會多約 72 KB（gzip）加角色貼圖，必須等頁面載完才延後載入，不然手機更慢。
+- 未驗證：以上都還沒實作、沒量測。使用者 2026-10-25 曾決定「手機速度先不修」，要做第 1 項前先確認這個決定有沒有變。
+
+## 2026-10-29 最新：師資資料補齊已上線（main da4e40ba，Pages run 40824999155 成功）
+
+- source_agent: claude-code（Opus 5.5）；TF-GO。使用者交付「指導動遊系學生國際影展獲獎作品列表(陳慶鴻師).txt」，並要求補其他老師資料；選「每件一筆摘要、修明顯錯字缺的留空、驗完直接上線」。
+- 陳慶鴻：補 2020–2024 指導作品 11 筆（片名沿用站內英文名，國外影展只寫國名）。
+- 官網師資頁查證結果：官網 2026-10-06 已用本機資料改寫，補不到新東西；官網鄧樹遠職稱仍有「電競娛樂系代理主任」，本機依 10/22 指示不改。
+- 其他 10 位老師改依 114 學年度自評報告（雲端 待辦/評鑑0811-final.docx）：使用者選證照＋教學優良獎、研究與產學計畫名稱、專利／帶隊／召集人（創新教材 60 筆不補）；矛盾維持系網，只把陳重光學歷改為視覺設計研究所 碩士；陳慶鴻差異依老師清單。比對檔 holiday-lab/reports/faculty-official-20261029/eval-diff.json（134/139 筆逐字對到報告）。
+- 驗證：本機照 CI 測試 44/44；師資頁三語驗收本機與線上各 30 案例通過（pw-faculty.cjs）。審閱分支 5df5f1ba、發布分支 codex/site-publish-20261025 da4e40ba。
+- 未補：論文、業界經歷、指導學生獲獎（報告只有件數無明細）；楊智彰學歷；報告中不在系網的老師（蘇中和、陳慧萍、李宛庭、陳俊瑋）。8902 審閱版仍在跑（.measure-poster-mix-20261024-36）。
+
+## 2026-10-25 收工：審閱分支已同步上線修正
+
+- source_agent: claude-code（Opus 5.5）；TF-GO。codex/poster-mix24 帶回上線修正（2764ef27、51a3d0ed、79ff7464）＋ 058b9228（英文 XiaoSA、新增 tests/images-tracked.test.cjs）；保留建置守門與創作試玩。測試 45/45。未 push。
+- 本機 8902、8910 已停；重開審閱版：node scripts/serve-local-review.cjs --site=.measure-poster-mix-20261024-35-retry4 --dashboard=holiday-lab/dashboard/out --port=8902
+- 線上 main 8369ec96 不變。規則建議（push 防呆 hook、AGENTS 推送前檢查）仍為提案。手機速度使用者決定先不修。
+- 下一輪第一件事：查證 Codex 報告剩餘項（其他作品英文譯名、就業統計 5 年 300+、聯合登記 5 名口徑、國際交流 2018/7 起訖），問使用者後再決定是否另開發布。
+
+## 2026-10-25 最新：系網新版已上線（main 8369ec96，Pages run 40162690994 成功）
+
+- source_agent: claude-code（Opus 5.5）；TF-GO。使用者授權「派 Codex 檢查英日文排版、翻譯、內文，有問題問我，沒問題就推上系網；最後的創作試玩先不放」。
+- 上線內容：首屏 8 件學生作品全幅海報輪播、日英文強化、在校指南公開（拿掉審閱字樣）、首頁不放創作試玩。依使用者決定修：進修部招生卡用 4f0b1969 新版；教師英文名 Teng Shu-yuan／Chen Mei-jung／Yang Chih-chang；喀嚓 Kacha；陳政名；小颯年份 2021、團隊小颯；週邊→周邊；94% 英文 placement rate；面板依名單變寬不換行。
+- 發布方式：repo 是公開的。第一次誤把整條準備分支（含 holiday-lab 兩萬多檔）推送，25 分鐘後察覺並中止，遠端 main 未更新、未外露。改從 origin/main 開 codex/site-publish-20261025（C:/agywork/agd-site-publish），只搬 69 個網站檔，1 個 commit 快轉推上。線上 holiday-lab 404、guide.json 無內部路徑。
+- Codex 審查：review-codex-20261025/REPORT.md（11 項，P0 0）。Codex 沙盒開不了 Chromium，排版由 Claude 補測 48 案例無水平捲軸。
+- 驗證：本機照 CI npm ci／build／check:report 通過，測試 44/44；Pages 32 秒部署成功；線上 zh／en／ja 200、程式包 app-UBHYJM27.js。
+- 載入時間（pw-loadtime.cjs）：桌機可互動 0.8 秒（舊 1.4）；**4G 手機可互動 20.7 秒（舊 3.1）、首屏海報 29 秒**，原因是下方卡片用原尺寸海報當縮圖、與程式包搶頻寬（新版程式包 gzip 425 KB，舊 206 KB）。使用者 2026-10-25 決定手機速度先不修，維持現狀。
+- 未同步：審閱分支 codex/poster-mix24 尚未帶回準備分支的修正（codex/site-release-20261025，e3a870ab、796ff0de）；本機伺服器 8902、8910 仍在跑；新 skill ~/.claude/skills/agd-comic-site/SKILL.md 記錄流程與地雷。
+
+## 2026-10-25 最新：8902冤枉汪泡泡上移、競箱團標語框移到右上
+
+- source_agent: claude（Opus 5.5）；TF-GO。前一輪已 commit 61c3c830（codex/poster-mix24，未push）。本輪依使用者要求：冤枉汪左側三個泡泡上移到左上（focus.bubbles:"top"）；競箱團「動畫、遊戲…」標語框移到右上（focus.tagline:"right"）。皆為單張設定，不影響其他海報。
+- 最新 http://127.0.0.1:8902/?lang=zh （.measure-poster-mix-20261024-33-retry5）。重啟：node scripts/serve-local-review.cjs --site=.measure-poster-mix-20261024-33-retry5 --dashboard=holiday-lab/dashboard/out --port=8902
+- 本輪改動未commit／push／發布／main／刪檔，C節未動。
+- 驗證：首屏9組0問題、Console 0；調整模式15/15；單元35/35；全套本輪未跑。儀表板權威 holiday-lab/reports/hero-bubbles-20261025/verification.json。報告 holiday-lab/reports/poster-mix-20261024/r10/REPORT.md。
+- 待使用者：是否commit本輪；競箱團泡泡仍在左下。節日遊戲凍結、無AI生成素材。
+
+## 2026-10-25 最新：8902套用使用者調整取景、靜態模式移到面板右上
+
+- source_agent: claude（Opus 5.5）；TF-GO。使用者用調整模式匯出5筆取景（TV秀、喀嚓、癒光之音、Dear All Robots、競箱團），已寫入 data/student-work-draw.json 的 focus.manual（原始檔 holiday-lab/reports/poster-mix-20261024/r9/user-adjust-2026-10-25.json）；並要求靜態模式移到資訊面板上方，已移到右上與作品名同列。
+- 最新 http://127.0.0.1:8902/?lang=zh ，調整模式 ?lang=zh&adjust=1 （.measure-poster-mix-20261024-31）。重啟：node scripts/serve-local-review.cjs --site=.measure-poster-mix-20261024-31 --dashboard=holiday-lab/dashboard/out --port=8902
+- 分支 codex/poster-mix24，未commit／push／發布／main／刪檔，C節未動。
+- 驗證：首屏9組0問題、Console 0；調整模式15/15；單元22/22、指南11/11；全套68/71（3既有失敗）；儀表板18/18，權威 holiday-lab/reports/hero-user-adjust-20261025/verification.json。報告 holiday-lab/reports/poster-mix-20261024/r9/REPORT.md。
+- 待使用者：是否commit；冤枉汪、今食堂、癡迷的現實仍為自動取景。節日遊戲凍結、無AI生成素材。
+
+## 2026-10-25 最新：8902調整模式（?adjust=1）、Robots／冤枉汪取景、泡泡位置
+
+- source_agent: claude（Opus 5.5）；TF-GO。使用者要求：Robots機器人整個人、冤枉汪窗台貓頭出現；要一個調整模式可逐張手動調位置與大小；選項題結果為不縮小、不留空白。
+- 最新 http://127.0.0.1:8902/?lang=zh ，調整模式 http://127.0.0.1:8902/?lang=zh&adjust=1 （.measure-poster-mix-20261024-29-retry4／app-7OT6BK5U.js）。重啟：node scripts/serve-local-review.cjs --site=.measure-poster-mix-20261024-29-retry4 --dashboard=holiday-lab/dashboard/out --port=8902
+- 調整模式：拖曳＋放大(100–300%)＋左右上下位置＋強制標題靠左右；草稿存localStorage；複製設定後用 node scripts/apply-poster-adjust.cjs <檔> 寫入 data/student-work-draw.json 的 focus.manual。說明 holiday-lab/POSTER-ADJUST-HOWTO.md。
+- 分支 codex/poster-mix24，未commit／push／發布／main／刪檔，C節未動。泡泡移到標題下方；標題靠右時排左側。
+- 建置偶發 locale-en.js errno -4094（Windows 暫時打不開）：新增 scripts/build-review-retry.cjs 自動重試；第29版第4次成功。
+- 驗證：Playwright調整模式15/15、首屏9組0問題；單元抽選13／調整9／指南11；全套68/71（3既有失敗）；儀表板18/18，權威 holiday-lab/reports/hero-adjust-20261025/verification.json。報告 holiday-lab/reports/poster-mix-20261024/r8/REPORT.md。
+- 待使用者：Robots腿下半仍被右下面板擋到、冤枉汪小狗背被泡泡壓到——可用調整模式自己調；是否commit。節日遊戲凍結、無AI生成素材。
+
+## 2026-10-25 最新：8902三張依使用者指定調取景（全臉）
+
+- source_agent: claude（Opus 5.5）；TF-GO。使用者指定：癒光之音右方角色看到全臉、競箱團右方人臉出現、TV秀中心角色全臉（不換海報）。
+- 最新 http://127.0.0.1:8902/?lang=zh （.measure-poster-mix-20261024-21）。重啟：node scripts/serve-local-review.cjs --site=.measure-poster-mix-20261024-21 --dashboard=holiday-lab/dashboard/out --port=8902
+- 改 data/student-work-draw.json 三筆 focus（subject；競箱團另改水平範圍使標題靠左）。分支 codex/poster-mix24，未commit／push／發布／main／刪檔，C節未動。
+- 驗證：1440與1920截圖三張全臉完整（holiday-lab/reports/poster-mix-20261024/r4/pw-run-04/）；Playwright 9組首屏0問題、Console 0；單元13/13、指南11/11、全套59/62（3既有失敗）；儀表板18/18，權威 holiday-lab/reports/hero-faces-20261025/verification.json。
+- 仍待使用者：Dear All Robots腿被面板擋、冤枉汪窗台貓頭被切；是否commit。節日遊戲凍結、無AI生成素材。
+
+## 2026-10-25 最新：8902回到滿版裁切（不縮小、不模糊底）
+
+- source_agent: claude（Opus 5.5）；TF-GO。使用者裁定：不要整張縮小＋模糊底，回到整張滿版、只取部分畫面；切不好的告訴使用者，由使用者換海報。
+- 最新 http://127.0.0.1:8902/?lang=zh （.measure-poster-mix-20261024-20／app-3IXDAG4I.js）。8897原版保留。重啟：node scripts/serve-local-review.cjs --site=.measure-poster-mix-20261024-20 --dashboard=holiday-lab/dashboard/out --port=8902
+- 分支 codex/poster-mix24，未commit／push／發布／main／刪檔，C節未動。compose()一律滿版；主角放不進時從主角頂端取景。其餘保留：8件、面板右下、快捷鈕第二畫面、泡泡左下單列、預先載入。
+- 切不好待使用者決定（1440×900）：癒光之音小角色被泡泡擋、Dear All Robots腿與手提箱被面板擋、冤枉汪窗台貓頭被切。較寬畫面（1920×1080）時更多張主角放不進。
+- 驗證：Playwright pw-run-03 9組首屏0問題、快捷鈕正確、Console 0；單元13/13、指南11/11、全套59/62（3既有失敗）；儀表板18/18，權威 holiday-lab/reports/hero-cover-20261025/verification.json。報告 holiday-lab/reports/poster-mix-20261024/r6/REPORT.md。
+- 下一輪第一件事：使用者看8902，決定換哪些海報、是否commit。節日遊戲凍結、無AI生成素材。
+
+## 2026-10-25 最新：8902自動構圖主角不被切、8件、面板右下、快捷鈕第二畫面
+
+- source_agent: claude（Opus 5.5）；TF-GO。使用者要求：龍戰於前不要；TV秀閃兩次；其他頁重新構圖、主角不要被切；作品資訊面板固定第一畫面右下；快捷按鈕從第二畫面開始；亮點泡泡被切。
+- 最新 http://127.0.0.1:8902/?lang=zh （.measure-poster-mix-20261024-19／app-FQ6535DV.js）。8897原版保留。重啟：node scripts/serve-local-review.cjs --site=.measure-poster-mix-20261024-19 --dashboard=holiday-lab/dashboard/out --port=8902
+- 分支 codex/poster-mix24，未commit／push／發布／main／刪檔，C節未動。輪播8件：今食堂、葛柏TV秀、癡迷的現實、喀嚓、癒光之音、Dear All Robots、競箱團、冤枉汪。
+- 構圖：student-work-draw-model.js compose()，依每張focus.subject（主角上下範圍）與畫面比例，放得進就滿版置中，否則整張完整顯示，兩側用同一張圖模糊放大填邊（CSS效果，非新繪圖；使用者可改純色）。
+- TV秀：24秒取樣每張一輪各一次，無重複；已加海報預先載入、構圖改在繪製前套用以消除閃動。
+- 驗證：Playwright背景真瀏覽器（holiday-lab/reports/poster-mix-20261024/r4/pw-verify.cjs，結果pw-run-02）9組尺寸語言首屏0重疊0裁切、快捷鈕首屏隱藏捲過後出現、Console 0；8張截圖目視主角完整（修正Robots頭、喀嚓耳朵）；單元13/13、指南11/11、全套59/62（3既有失敗）；儀表板18/18，權威 holiday-lab/reports/hero-compose-20261025/verification.json。
+- 報告 holiday-lab/reports/poster-mix-20261024/r5/REPORT.md。節日遊戲凍結、Flora／胖倉鼠暫緩、無AI生成素材。
+- 下一輪第一件事：使用者看8902決定是否commit；模糊填邊是否改純色；英日頂欄、手機版待定。
+
+## 2026-10-25 最新：8902修正快捷按鈕被隱藏與元素重疊，中文頂欄一列到1181
+
+- source_agent: claude（Opus 5.5）；TF-GO。使用者回報：有些頁面元素重疊、有些不見；頂欄還沒調緊湊；伏末拿掉。
+- 最新 http://127.0.0.1:8902/?lang=zh （.measure-poster-mix-20261024-16／app-IE4IYQZL.js）。8897原版保留。重啟：node scripts/serve-local-review.cjs --site=.measure-poster-mix-20261024-16 --dashboard=holiday-lab/dashboard/out --port=8902
+- 分支 codex/poster-mix24，未commit／push／發布／main／刪檔，C節未動。
+- 不見的原因是我自己造成：上一階段為了不擋「靜態模式」勾選框，把右側四顆快捷按鈕在海報面板出現時隱藏，違背使用者先前「恢復右側隨頁面快捷」。已改為快捷按鈕常駐，作品資訊面板往左讓開。
+- 頂欄：中文一列門檻降到1181寬（1181–1279縮小間距），1265與1181中文79px一列；英日在1280–1599仍兩列（英文≥1600、日文≥1480才一列），尚未處理。
+- 伏末：8902實際送出9件、不含伏末，no-store，建置檔無fumo-2023；請使用者重新整理。fumo.jpg檔案保留。
+- 驗證：首屏元件逐張停格檢查，zh 1920／1440／1366／1280／1181、en 1920／1440、ja 1440共9張海報0重疊0消失；平板1100／1024首屏0重疊（截圖逾時）；單元12/12、指南11/11、全套58/61（3既有失敗）；儀表板53列47yes／6no／使用者0、18/18，權威 holiday-lab/reports/hero-recheck-b-20261025/verification.json。
+- 錯誤紀錄：建置結束碼曾被管線吃掉；更新腳本曾被字串替換截斷；重跑覆寫了已綁SHA的證據檔（改用新資料夾）。詳 holiday-lab/reports/poster-mix-20261024/r4/REPORT.md。
+- 下一輪第一件事：請使用者看8902並決定是否commit；英日頂欄是否再壓縮、手機海報區塞滿第一畫面。節日遊戲凍結、Flora／胖倉鼠暫緩、無AI生成素材。
+
+## 2026-10-24 最新：8902海報首頁精簡、塞滿第一畫面、輪播9件
+
+- source_agent: claude（Opus 5.5）；TF-GO。使用者裁定：拿掉集中線、碰！、PRESS START、頂上泡泡與CH.01章節章，保留標題、說明與底部亮點泡泡；拿掉伏末、放回喀嚓與冤枉汪；頂欄更緊湊；第一個畫面要看到整張海報區。
+- 最新 http://127.0.0.1:8902/?lang=zh （.measure-poster-mix-20261024-13／app-ZS4KSQ2D.js）。8897原版保留。重啟：node scripts/serve-local-review.cjs --site=.measure-poster-mix-20261024-13 --dashboard=holiday-lab/dashboard/out --port=8902
+- 分支 codex/poster-mix24，未commit／push／發布／main／刪檔，C節未動。裝飾以CSS display:none隱藏，原始碼保留；fumo.jpg不再引用但未刪。
+- 版面：桌面海報區高度依視窗算（460–1000px），標題區超過畫面高62%再縮字；頂欄放得下時一列（中文≥1280、日文≥1480、英文≥1600）。輪播9件，冤枉汪取景y80%、標題靠右以露出小狗。
+- 驗證：1920×1080中英日、1440×900、1366×768、1280×720中文皆整個海報區在第一畫面；1440中英日×9張27/27避讓通過、1366中文9/9；單元12/12、指南11/11、全套58/61（3既有失敗）；儀表板53列47yes／6no／使用者0、18/18，權威 holiday-lab/reports/hero-fit-20261024/verification.json。手機375海報區比一個畫面多約70px。
+- 報告 holiday-lab/reports/poster-mix-20261024/r4/REPORT.md。節日遊戲凍結、Flora／胖倉鼠暫緩、無AI生成素材。
+- 下一輪第一件事：使用者看8902並決定是否commit；可再處理手機海報區塞滿第一畫面。
+
+## 2026-10-24 最新：8902輪播換別年度作品＋標題自動避開主視覺
+
+- source_agent: claude（Opus 5.5）；TF-GO。使用者說喀嚓、冤枉汪不夠好看要換別年度，並要求底圖閃出時畫面元素自動避開主視覺。
+- 最新 http://127.0.0.1:8902/?lang=zh （.measure-poster-mix-20261024-09／app-4GPFUUKG.js）。8897原版保留；8900及中途埠已關。重啟：node scripts/serve-local-review.cjs --site=.measure-poster-mix-20261024-09 --dashboard=holiday-lab/dashboard/out --port=8902
+- 分支 codex/poster-mix24，未commit／push／發布／main／刪檔，C節未動。
+- 換圖：喀嚓、冤枉汪移出；新增2023年《龍戰於前》（高樂怡，插畫設計組第一名）、《伏末》（陳彥蓉，海報設計組第一名），來源系官網2023-12-20報導原圖（images/news/2023-design-awards/，未修改），署名照報導；指導老師欄「陳慧萍 · 陳重光」為報導寫的參賽同學指導老師，非逐件指定。兩件無官方英日譯名，三語顯示原中文。
+- 避讓：桌面≥1181px，標題與按鈕依每張海報主體位置縮到空位（student-work-draw-model.js layout()；focus.y/x 為看圖指定，mobileX 為吸睛度分析）。第一版「找最佳排法」只從34%降到31%被蓋，不採用；吸睛度重心會把龍的海報裁掉臉，改人工指定。
+- 驗證：1440中英日×8張24/24不壓主體；1280中文7/8（伏末超門檻0.002未放寬）；375無溢出；單元測試12/12；指南11/11；全套58/61（3個既有失敗，涉及的資料檔未改）；儀表板53列47yes／6no／使用者0、18/18，權威 holiday-lab/reports/poster-avoid-20261024/verification.json。
+- 注意：預覽窗格閒置時不出畫面幀，動畫會停在透明度0，截圖看起來標題淡淡的，不是版面問題。使用者實機 Chrome 的動畫觀感尚未驗。
+- 報告 holiday-lab/reports/poster-mix-20261024/r3/REPORT.md。節日遊戲仍凍結，Flora／胖倉鼠暫緩，無AI生成素材。
+- 下一輪第一件事：請使用者看8902，決定是否commit；Fable剩餘建議（減動態總開關、新聞排序、海報srcset、學長姐見證）與總表2–6項待續。
+
+## 2026-10-24 最新：8900套用Fable顧問8項（手機聯絡、浮動鈕避讓、指南搜尋）
+
+- source_agent: claude（Opus 5.5）；TF-GO。使用者以選項題選定：手機加報名入口、浮動鈕不壓面板、報名鈕改導可用處、手機海報變清楚、面板小字放大、指南搜尋變好用、拿掉內部用語、癡迷的現實縮圖下載進images/。未選：減動態總開關、新聞排序。
+- 最新 http://127.0.0.1:8900/?lang=zh （.measure-poster-mix-20261024-03／80檔／app-73QZMYRE.js）。8897原版保留；8898／8899中途版服務已關。重啟：node scripts/serve-local-review.cjs --site=.measure-poster-mix-20261024-03 --dashboard=holiday-lab/dashboard/out --port=8900
+- 分支 codex/poster-mix24，未commit／push／發布／main／刪檔，C節未動。產品改 comic-components.jsx、chapters-2.jsx、holiday-home.jsx、student-work-draw.jsx/.css、student-guide.jsx/.css、student-guide-model.js、styles.css、scripts/build.mjs、data/student-work-draw.json、兩個測試；新增 images/news/7200-obsessive-reality.jpg。
+- 重點：頂欄 ADMISSION_OPEN=false 時顯示「我適合哪個管道 →」連 #/guide/start，116簡章公布後改 true 即恢復「立即報名」。指南「尚未上線」黑條改由建置旗標 globalThis.AGD_REVIEW_BUILD 控制。
+- 驗證：抽選10/10、指南11/11（新增2測試先red後green）、全套56/59（3個既有失敗只涉及未改的admission.json／guide.json日譯／works.json小颯英譯）、Build exit0 Unpaired0；1440中英日29步捲動面板控制項0次被擋、375選單LINE可見、指南搜尋框y1157→485。1366只驗頁頂（窗格縮放下捲動無效）。儀表板53列47yes／6no／使用者0、18/18，權威 holiday-lab/reports/fable-polish-20261024/verification.json。
+- 意外：做改動前對照時tar中斷，node --test在 %TEMP%\agd-head-baseline-1024 暫存副本跑了歷史節日QA測試；工作樹無新增／修改、保全SHA不變。暫存副本未刪，等使用者決定。不是解凍節日QA。
+- 報告 holiday-lab/reports/poster-mix-20261024/r2/REPORT.md。節日遊戲繼續凍結，Flora／胖倉鼠暫緩，無生成素材。
+- 下一輪第一件事：請使用者看8900並決定是否commit；Fable剩餘建議（減動態、新聞排序、海報srcset、學長姐見證）與總表2–6項待續。
+
+## 2026-10-24 最新：8898輪播換圖（拿掉小颯、加不同畫風）＋只增不減複驗＋Fable顧問
+
+- source_agent: claude（Opus 5.5）；TF-GO。使用者說明8897是Codex做的新系網，要求確保穩定且相對舊系網只增不減，請Fable當顧問，並把底圖輪播的小颯換成不同畫風、吸引高中生的作品。
+- 分支 codex/poster-mix24（由 codex/newchat-handoff24／c66ef5b0 開出），未commit、未push、未發布、未碰main、未刪檔、C節未動。產品只改 data/student-work-draw.json 與 tests/student-work-draw.test.cjs。
+- 只增不減：相對origin/main 0檔刪除／改名；程式刪行皆為同處改寫（h1、三語切換、簡章用語）；中文資料0被刪鍵；en得獎清單其實125→144補齊，是比對腳本按索引誤判。結論：未發現被拔掉的功能。
+- 輪播八件（依高中生吸引力排序）：今食堂、葛柏TV秀、喀嚓、癡迷的現實（新加入，YouTube遠端縮圖）、癒光之音、Dear All Robots、競箱團、冤枉汪。小颯只從輪播移除，首頁右側原有原畫格與署名保留。
+- 驗證：Node 10pass、10組抽選相鄰不重複、Build exit0（.measure-poster-mix-20261024-01，79檔）、Chrome中文1440輪播一圈8件無小颯、英日375無橫溢、日文實點停格；保全5檔／8原圖／origin/main不變；儀表板53列47yes／6no／使用者0、1936 SHA、18/18。未做：真機、母語、完整WCAG、Console逐頁。
+- 最新 http://127.0.0.1:8898/?lang=zh （8897保留不動）。重啟：node scripts/serve-local-review.cjs --site=.measure-poster-mix-20261024-01 --dashboard=holiday-lab/dashboard/out --port=8898
+- Fable顧問12條建議在 holiday-lab/reports/takeover-claude-20261024/fable-advice.md，尚未套用，等使用者挑。前三條：手機版缺報名／聯絡入口、桌面右下浮動鈕壓到抽選面板、「立即報名」點進去全是已結束。
+- 報告 holiday-lab/reports/poster-mix-20261024/REPORT.md。節日遊戲繼續凍結，Flora／胖倉鼠暫緩，沒有生成素材。
+- 下一輪第一件事：請使用者看8898輪播，並從Fable清單挑要做的項目；《癡迷的現實》若要離線穩定需使用者同意下載縮圖進images/。
+
 ## 2026-10-24 新對話接手入口已整理（保留8897方向）
 
 - source_agent: codex。使用者本輪表示「有覺得不錯」，要求列齊交接路徑及待辦，準備自行開新對話。記為8897海報／右下小面板方向的正向回饋，不是全站／發布／遊戲解凍批准。這回合只整理文件，未改網站、未重建Build或重跑遊戲。
@@ -615,3 +780,115 @@ node scripts/serve-local-review.cjs --site=.measure-xiaosa-review-20261023-01 --
 - 下一輪建議：Claude Code／claude-opus-5-5／high
   理由：獨立驗證或複驗；主線必須留在目前的 Claude 家族。
   狀態：只提出建議，不切換模型、不建立新工作、不自行派工。
+
+## 復盤 2026-10-25
+
+source_agent: claude-code（Opus 5.5）；TF-GO；範圍：系網首屏海報輪播第七至十一階段＋上線準備。
+
+### 1. 做了什麼、改了哪些檔
+- 首屏海報（codex/poster-mix24，commit 61c3c830、2a2da4ca、80efedd2，未push）：
+  - student-work-draw-model.js：全幅取景 compose、手動取景 manualGeometry／remapExtent、layout 強制標題側、goto 跳張。
+  - student-work-draw.jsx：調整模式（?adjust=1，拖曳／放大／標題左右，草稿存 localStorage）、單張 focus.bubbles／focus.tagline 設定。
+  - student-work-draw.css：手動取景、靜態模式移面板右上、冤枉汪泡泡移左上、競箱團標語框移右上。
+  - data/student-work-draw.json：8 件作品、使用者 5 筆手動取景、冤枉汪 bubbles:"top"、競箱團 tagline:"right"。
+  - tests/student-work-draw.test.cjs、tests/student-work-adjust.test.cjs：單元回歸（抽選 15、調整 9）。
+  - scripts/apply-poster-adjust.cjs：把調整模式匯出的 JSON 寫入 focus.manual。scripts/build-review-retry.cjs：建置遇 errno -4094 自動重試、只開新資料夾不刪檔。
+  - holiday-lab/POSTER-ADJUST-HOWTO.md：調整模式使用說明。
+  - holiday-lab/reports/poster-mix-20261024/r6、r8、r9、r10：各階段 REPORT.md、Playwright 驗收（pw-adjust.cjs、pw-drag-debug.cjs 拖曳除錯、apply-adjust-ui.cjs）、儀表板更新 update-dashboard.cjs、交接 save-handoff.cjs、使用者匯出 user-adjust-2026-10-25.json。
+  - images/news/7200-obsessive-reality.jpg：補 commit（先前漏交）。
+- 上線準備（工作資料夾 C:/agywork/agd-site-release，分支 codex/site-release-20261025，commit 12d11cab、7e769ed7，未push）：app.jsx 拿掉首頁最下方創作試玩；scripts/build.mjs 解除審閱分支公開建置封鎖；data/en/works.json 作者「小颯」→ XiaoSA；review-codex-20261025/WORK-ORDER.md 派 Codex 檢查英日文排版、翻譯、內文（背景執行中）。公開版預覽 http://127.0.0.1:8910/ 。
+
+### 2. 踩雷與根因
+- 建置偶發 `UNKNOWN: unknown error, open 'locale-en.js'`（errno -4094，Windows 暫時鎖檔）：寫 build-review-retry.cjs 自動重試；第 33 版第 5 次才成功。
+- dcg hook 擋 `> "$TEMP/build32.log"`、`cat >> file <<EOF`：理由「shell redirect to a dynamic or escaped path may truncate a sensitive file」。改用管線 `| tail` 加 `PIPESTATUS`、Edit／Write 工具。
+- `git cherry-pick -q` 回 exit 129（cherry-pick 不支援 -q）：拿掉參數重跑。
+- CI 測試 tests/en-release.test.cjs 失敗 `AssertionError: images/news/7200-obsessive-reality.jpg`：根因是海報圖只在本機、從未 commit；data 引用圖檔卻沒驗證「已被 git 追蹤」。已補 commit。
+- CI 測試失敗 `+ [ '小颯' ]`（i18n-data-missing）：英文資料與中文相同被視為未翻譯；改 XiaoSA。
+- CI 測試 shared-language 仍失敗 `only reviewed text fields may change; dates, quotas, records and all other facts stay protected`：根因是 4f0b1969（10/24）重寫 data/admission.json 進修部卡 16 欄，超出已審核清單。**待使用者決定**採用新版或保留線上版，未解前不能部署。
+- 先前階段：調整模式拖曳失效（瀏覽器原生圖片拖曳觸發 pointercancel，改 draggable=false）；儀表板 17/18（已綁 SHA 的證據被覆寫，改每階段新資料夾）。
+
+### 3. 額度花費
+- mod 量測：累計工作約 79 分鐘；本 session 約 US$31.46；最高用量窗口週 77%。
+- 最耗的一步：多輪「建置→Playwright 9 組截圖→看截圖→儀表板重綁」循環（r4–r10 共七輪），每輪都讀多張全尺寸截圖並帶著長對話脈絡；其次是上線前整理差異（git status／diff 清單動輒數百行）。
+
+### 4. 下一步與規則建議
+- 下一步：讀 Codex 報告 review-codex-20261025/REPORT.md → 連同進修部招生 16 欄一次問使用者 → 都確定後在發布資料夾重跑 npm ci／build／check:report／CI 測試全綠 → fast-forward push origin HEAD:main → 確認 GitHub Pages run 成功與線上首頁、EN、JA。
+- 規則建議（只提案）：
+  1. 專案 tests：加「data 引用的 images/ 檔必須被 git ls-files 追蹤」回歸測試（本次漏交圖檔的直接防線）。
+  2. 專案 AGENTS.md：上線前在發布資料夾照 deploy-pages.yml 完整跑 npm ci／build／check:report／tests/en-release、shared-language，全綠才 push。
+  3. skill（windows-script-encoding 或 verify）：記「dcg 會擋重導向到 $TEMP 變數路徑與 heredoc 附加」，改用管線／Write 工具。
+  4. 不建議為 cherry-pick -q 立規則（一次性）。
+- 下一輪建議：Claude Code／claude-opus-5-5／high。下一步是對外上線與招生資料取捨，出錯代價高。
+
+## 復盤 2026-10-25（二）上線段
+
+source_agent: claude-code（Opus 5.5）；TF-GO；範圍：派 Codex 審查 → 依使用者決定修正 → 公開發布 → 載入時間量測。
+
+### 1. 做了什麼、改了哪些檔
+- 發布準備（C:/agywork/agd-site-release，分支 codex/site-release-20261025）：
+  - app.jsx：拿掉首頁最下面創作試玩區塊。
+  - scripts/build.mjs：解除審閱分支公開建置封鎖；新增公開版資料過濾（dist 裡拿掉 guide.json 的 evidence_path／http_recheck 與 data/en 的 [CHECK]）。
+  - data/en/works.json：作者「小颯」→ XiaoSA（英文與中文相同會被判為未翻譯）。
+  - student-work-draw.jsx：輪播海報改為頁面載完後逐張預載。student-work-draw.css（mod 未列）：桌面資訊面板依名單變寬、不換行。
+  - 經腳本修改（mod 未列）：data/en/news.json、stats.json、ui.json、admission.json、faculty.json、data/ja/messages.json、flow-ui.json、data/labs.json、data/works.json、data/news.json、chapters-2.jsx、student-guide.jsx、tests/production-baseline.json、tests/shared-language.test.cjs。
+  - review-codex-20261025/：WORK-ORDER.md（Codex 工單，第 0 節範圍鎖）、apply-fixes-20261025.cjs（教師英文名、非應屆生、官網→公式サイト、去重複中文、placement rate、周邊、指南審閱字樣）、apply-names-20261025.cjs（Kacha、陳政名）、rebase-baseline-20261025.cjs（核對差異只有核准項；因 works.json 中止，改手動記核准）、claude-layout/pw-layout.cjs（英日 3 尺寸 × 8 頁排版）、claude-layout/pw-loadtime.cjs（首頁載入量測）、copy-to-publish.cjs（只搬網站檔到發布資料夾）、publish-baseline.cjs（發布版保護測試改單純指紋比對）、save-handoff-publish.cjs（上線交接）。
+- 發布（C:/agywork/agd-site-publish，codex/site-publish-20261025）：從 origin/main 開，69 檔 1 commit 8369ec96 快轉推上 main；Pages run 40162690994 成功。tests/student-work-draw.test.cjs 改為找不到 holiday-lab 查證檔時給空物件（該段迴圈無資料）。
+- 其他：scratchpad/admission-diff.cjs（列出招生資料超出核准的 16 欄，一次性診斷）；holiday-lab/reports/poster-mix-20261024/r10/save-retro.cjs（上一段復盤）；~/.claude/skills/agd-comic-site/SKILL.md（新建系網 skill：部署、兩段式發布、保護測試、翻譯地雷、已確認名稱、載入速度）；images/news/7200-obsessive-reality.jpg 補 commit。
+
+### 2. 踩雷與根因
+- **把整條準備分支推上公開 repo**：`git push origin HEAD:main` 帶了 226 個 commit、holiday-lab 27,430 檔。根因：推送前沒看 repo visibility 與 `git diff --stat origin/main..HEAD` 檔案量，也沒照交接寫的「從 main 另開分支選移」。察覺點是上傳程序吃 500 MB 記憶體；TaskStop＋停 git-remote-https，`git ls-remote` 確認 main 仍 1b8322e6、未外露。改兩段式發布。
+- 第一次推送 `error: pack-objects died of signal 15`／`the remote end hung up unexpectedly`：根因是我自己加的 `timeout 60` 砍掉打包程序，不是網路。
+- Codex 審查 A 排版未完成：`spawn EPERM`（Codex 沙盒不能啟動 Chromium）。由 Claude 用 Playwright 補跑。
+- CI 測試失敗鏈：`AssertionError: images/news/7200-obsessive-reality.jpg`（圖未 commit）；`+ [ '小颯' ]`（英文同中文）；`only reviewed text fields may change`（進修部 16 欄）；`labs.json`／`works.json` 指紋不符（核准改動）；shared-language 測試用 `git show 904ac799` 與讀 holiday-lab exact-plan，GitHub 淺複製與公開 repo 都會失敗；student-work-draw 測試 `ENOENT … r3/catalog-proof.json`。逐項經使用者核准後記入 approvals，發布版測試改單純指紋比對。
+- apply-names 腳本 `"陳政民" expected 2, got 4`：日文以中文全文當鑰匙，消息全文也含該名；連中文 news.json 一起改。
+- dcg 擋：`git checkout <ref> -- <path>`（改用 git show 寫檔腳本）、重導向到 $TEMP、`cat >> <<EOF`。
+- 全 repo 搜尋超過 120 秒：holiday-lab 有大量舊副本；改限定 data/ 與根目錄。
+- Edit 工具 `File has not been read yet`：先 Read 再改。
+- 效能誤判：以為「8 張海報同時預載」是主因，改完 4G 可互動仍 39.7 秒；逐請求列出才知海報在程式執行前就被下方卡片的 lazy 圖抓走。本機不壓縮、HTTP/1.1 也讓數字失真，以線上量測為準。
+
+### 3. 額度花費
+- mod 量測：累計工作約 62 分鐘；本 session 約 US$44.31；最高用量窗口週 77%。
+- 最耗的一步：誤推整條分支後的等待與中止處理，連帶重做發布分支、重跑 npm ci／build／測試多輪；其次是大量輸出的指令（git status／diff 數百行、Playwright 結果 JSON、多張全尺寸截圖）累積在長對話脈絡中。
+
+### 4. 下一步與規則建議
+- 下一步：把 codex/site-release-20261025 的修正（7a48479a、e3a870ab、796ff0de）帶回審閱分支 codex/poster-mix24；停掉本機 8902、8910；Codex 報告未處理項待查證（其他作品多套英文譯名、就業統計「5 年總畢業生 300+」期間、聯合登記「5 名」口徑、國際交流 2018/7 起訖）；手機載入速度使用者決定先不修。
+- 規則建議（只提案）：
+  1. **hook（最優先）**：攔 `git push … main`，若遠端 repo 是 public 且 `git diff --name-only origin/main..HEAD` 含 holiday-lab/、reports/、work-orders/ 或超過 200 檔就擋下要求確認。這次只靠人工察覺。
+  2. 全域 AGENTS.md「實作紀律」：推送前先看 repo 是否公開與推送檔案數；git push 不設短 timeout，長推送放背景等通知。
+  3. 系網 skill 已更新（兩段式發布、淺複製、翻譯鑰匙、載入量測），不需再立規則。
+  4. 專案 tests：加「data 引用的 images 必須被 git 追蹤」測試（上一段已提，仍未做）。
+- 下一輪建議：Claude Code／claude-sonnet-5-5／medium。剩下是分支同步與清理，範圍明確。
+
+## 復盤 2026-10-29
+
+source_agent: claude-code（Opus 5.5）；TF-GO；範圍：陳慶鴻指導作品與其他 10 位老師資料補齊，並上線（main da4e40ba）。
+
+### 1. 做了什麼、改了哪些檔
+- holiday-lab/reports/faculty-official-20261029/add-chenchinghung.cjs：把陳老師提供的清單整理成 11 筆摘要，寫進 data/faculty.json、data/en/faculty.json、data/ja/messages.json。
+- holiday-lab/reports/faculty-official-20261029/add-from-eval.cjs：依自評報告補 10 位老師的證照、教學獎、計畫、專利、帶隊與召集人，並改陳重光學歷；中英日三語同步。
+- holiday-lab/reports/faculty-official-20261029/pw-faculty.cjs：師資頁三語驗收。檢查中文頁看得到新內容、英日頁沒有殘留中文原句，以及水平捲軸、Console 錯誤。
+- 暫存區 scratchpad/fac/lh.cjs、fac/build.cjs（子代理一）：把本機每個欄位做正規化雜湊，貼進瀏覽器跟官網比對，產生 official-diff.json／md。
+- 暫存區 scratchpad/evaldiff/parse.cjs、evaldiff/build.cjs（子代理二）：解析評鑑報告純文字裡的逐人表格（證照、產學案、創新教材），帶行號輸出，再產生 eval-diff.json／md。
+- mod 未列但有改：tests/production-baseline.json（兩條分支都記了 faculty.json 核准）、locale-en.js、locale-ja.js（建置產物）、scratchpad/eval-tools/docx2txt.py（docx 轉純文字）、交接三份、~/.claude/skills/agd-comic-site/SKILL.md（新增 5b 節）。
+- 結果：審閱分支 5df5f1ba；發布分支 da4e40ba 快轉推上 main，只動 6 個檔，Pages run 40824999155 成功，線上三語 30 個案例通過。
+
+### 2. 踩雷與根因
+- 官網不是資料來源：子代理比對 13 頁，全部跟本機一致。根因是官網 2026-10-06 已用本機資料改寫，頁底有寫。另外 curl／WebFetch 被 AWS WAF 擋下，子代理改用內建瀏覽器同源 fetch 才讀到。
+- 評鑑報告沒有論文、業界經歷、指導獲獎的逐人明細：只有件數。表 1-9～1-11 寫「請於附件提供原始表冊」。
+- 刪舊日文鑰匙誤傷別人：陳重光舊學歷「國立高雄師範大學 視覺傳達設計」，跟陳慶鴻的學歷是同一句。腳本刪了舊鑰匙，會讓陳慶鴻的日文學歷退回中文。改法：比對 git HEAD 的鑰匙，把仍被使用的補回 1 個。
+- 驗收腳本誤報：第一輪報陳慶鴻中文頁 0/17、證照 false，截圖其實都在。根因是新瀏覽器開的第一頁還沒畫完，腳本就讀了文字。改成等英文名出現再讀；接著因為楊智彰沒有 PAPERS／ACHIEVEMENTS 區塊，出現 `page.waitForFunction: Timeout 20000ms exceeded`，條件改成 RESEARCH／COURSES。
+- 線上驗收 `page.goto: Timeout 30000ms exceeded`：線上嵌入影片讓網路永遠不靜止，networkidle 等不到。改成 waitUntil load。
+- `git rev-parse --short origin/main HEAD` 回 `fatal: Needed a single revision`：--short 只能接一個參數，分開跑就好。
+- 發布資料夾不能用 copy-to-publish.cjs：它要求工作區乾淨，但有 9 個檔只差換行符號。改用小腳本只搬 6 個檔。搬之前先比對三份資料改動前的 SHA，兩邊一致才搬。
+
+### 3. 額度花費
+- mod 量測：累計工作約 41 分鐘；本 session 約 US$12.37；最高用量窗口週 15%。
+- 最耗的是兩次派子代理：官網比對約 13.9 萬 tokens，評鑑報告比對約 17.8 萬 tokens。官網那次最後沒有產出可用資料。其次是三輪 Playwright 驗收（本機兩輪、線上兩輪）和全頁截圖。
+
+### 4. 下一步與規則建議
+- 下一步：論文、業界經歷、指導學生獲獎要請各老師提供，或從評鑑附件的原始表冊取得；楊智彰學歷待補；官網那邊鄧樹遠職稱的「電競娛樂系代理主任」要由網管改。8902 審閱版仍在跑，可以停。
+- 規則建議（只提案）：
+  1. skill（已寫進 agd-comic-site 5b 節，不必另立規則）：官網不是來源、來源優先序、共用日文鑰匙、驗收要等渲染完成。
+  2. 全域 AGENTS.md「實作紀律」：派子代理查外部來源前，先花一次工具呼叫看來源是不是本專案的衍生品（例如頁底「資料來源」），避免白跑。這次官網比對花了約 14 萬 tokens，沒有產出。
+  3. 不建議為 networkidle、rev-parse 立規則（一次性）。
+- 下一輪建議：Claude Code／claude-sonnet-5-5／medium。剩下是等老師提供資料後照現有腳本補，範圍明確。
