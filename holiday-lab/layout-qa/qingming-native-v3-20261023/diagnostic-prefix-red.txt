@@ -1,0 +1,26 @@
+✔ only exact source-observed favicon404Other is non-target; raw arrays unchanged (2.4898ms)
+✔ missing location, wrong URL/status/type/request or unknown error never inherits favicon allowance (0.8525ms)
+✔ game resource404 and arbitrary console cannot be waived by a valid favicon sibling (0.2008ms)
+✔ successful session with no errors is still not global approval (0.1624ms)
+✖ case diagnostic prefix is immutable and cannot drop or swap raw errors (0.4615ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 153.7792
+
+✖ failing tests:
+
+test at holiday-lab\layout-qa\qingming-native-v3-20261023\diagnostics.test.cjs:9:1
+✖ case diagnostic prefix is immutable and cannot drop or swap raw errors (0.4615ms)
+  TypeError: D.verifyCheckpoint is not a function
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\qingming-native-v3-20261023\diagnostics.test.cjs:9:136)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)

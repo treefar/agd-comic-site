@@ -1,0 +1,23 @@
+// Exact execute() source, capability-free native/network stubs; cleanup writes ONLY independent fixtures.
+const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),test=require('node:test'),assert=require('node:assert/strict'),parser=require('@babel/parser'),crypto=require('node:crypto');
+const sourceDir=path.resolve(__dirname,'../labor-finite-native/continuation-20261023'),source=fs.readFileSync(path.join(sourceDir,'continue.cjs'),'utf8'),ast=parser.parse(source),n=ast.program.body.find(n=>n.type==='FunctionDeclaration'&&n.id.name==='execute'),executeSource=source.slice(n.start,n.end),cleanupModule=require(path.join(sourceDir,'cleanup.cjs'));
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+test('source-extracted execute: final-source then immutable cleanup then completion; failures never look complete',async()=>{
+ const scenarios=[];
+ for(const mode of ['success','final-source-failure','close-failure','completion-write-failure','primary-and-cleanup-failure']){
+  const container=fs.mkdtempSync(path.join(__dirname,'flow-'+mode+'-')),contexts=path.join(container,'contexts'),run=path.join(container,'run'),events=[],writer={count:0},f={freeze_sha256:'offline',own:{base_snapshot_sha256:'offline',explicit_recollection:{offline_test_only:true}},old:{suffix:[{id:'offline-target'}],f:{binding:{receipts:[]},freeze_sha256:'offline-old'},history:{offline_test_only:true}}};let closeCalls=0,sourceCalls=0;
+  const fakeNative={capture:async()=>({case:{pass:true},sample:{violations:[]}}),close:async()=>{events.push('native-close');closeCalls++;if(['close-failure','primary-and-cleanup-failure'].includes(mode))throw Error('offline close rejected');}};
+  const ctx={assert,fs:{mkdirSync:p=>{if(p!==container)fs.mkdirSync(p);}},path,container,contexts,run,process,read:()=>({offline_test_only:true}),frozen:()=>f,approve:()=>{},preflight:async()=>f,inspectProcess:()=>({state:'present',pid:process.pid}),SCOPE:'independent-offline-no-approval',RETRY_TARGET:'offline-target',sha:()=>null,store:{create:()=>writer},console:{log:()=>{},error:()=>{}},e:{writeJSON:(file,payload)=>{const name=path.basename(file);if(name==='completion.json'&&mode==='completion-write-failure')throw Error('offline completion disk write rejected');events.push({write:name,payload});}},b:{liveReceipts:async()=>{events.push('final-source');sourceCalls++;if(['final-source-failure','primary-and-cleanup-failure'].includes(mode))throw Error('offline final source reset');return[];}},verifyUnion:()=>({domain_complete:true,complete:false,run_complete:false,global_ui_pass:false,full_project_approved:false}),errorRecord:(error,stage)=>({message:error.message,stage}),require:id=>{
+   if(id==='./attempt.cjs')return {captureOne:async opts=>{const data=await opts.capture(opts.target);writer.count++;return {outcome:{domain:{valid:true}},original_pass:data.case.pass,original_flags:data.sample.violations};}};
+   if(id==='../engine-v4/native.cjs')return {createNative:async()=>fakeNative};
+   if(id==='./cleanup.cjs')return cleanupModule;
+   throw Error('unapproved dependency '+id);
+  }};vm.createContext(ctx);vm.runInContext(executeSource+'\npromise=execute("offline-no-approval-file");',ctx);
+  if(mode==='success')await ctx.promise;else await assert.rejects(ctx.promise);
+  assert.equal(sourceCalls,1);assert.equal(closeCalls,1,'cleanup must not retry');const completion=events.find(e=>e.write==='completion.json'),failure=events.find(e=>e.write==='failure.json'),cleanup=JSON.parse(fs.readFileSync(path.join(container,'cleanup.json')));
+  if(mode==='success'){assert.ok(completion);assert.equal(failure,undefined);assert.equal(cleanup.closed,true);assert.ok(events.indexOf('final-source')<events.indexOf('native-close'));assert.ok(events.indexOf('native-close')<events.indexOf(completion));}
+  else{assert.equal(completion,undefined);assert.ok(failure);assert.equal(failure.payload.error.stage,mode==='completion-write-failure'?'completion-write':mode==='close-failure'?'native-close':'final-source');if(mode==='primary-and-cleanup-failure'){assert.equal(failure.payload.error.message,'offline final source reset');assert.equal(cleanup.status,'failed');}}
+  scenarios.push({mode,sourceCalls,closeCalls,completion_written:!!completion,failure:failure?.payload??null,cleanup});
+ }
+ fs.writeFileSync(path.join(__dirname,'execute-flow-receipt.json'),JSON.stringify({type:'source-extracted-offline-execute-control-flow',continue_source_sha256:sha(source),execute_source_sha256:sha(executeSource),execute_source_span:{start:n.start,end:n.end},scenarios,native_browser_or_HTTP_executed:false},null,2));
+});

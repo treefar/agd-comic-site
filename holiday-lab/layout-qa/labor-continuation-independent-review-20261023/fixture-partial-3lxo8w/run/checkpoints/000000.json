@@ -1,0 +1,269 @@
+{
+  "payload": {
+    "seq": 0,
+    "target": {
+      "id": "labor/zh/320x900/load-0/labor-loads",
+      "job_id": "load-0",
+      "job_identity": {
+        "id": "load-0",
+        "lang": "zh",
+        "width": 320,
+        "schedule": [
+          {
+            "artist": 2,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          }
+        ],
+        "reason": "dependency",
+        "owners": [
+          "labor-loads"
+        ],
+        "height": 900
+      },
+      "job_sha256": "2b1f12f38c872cf1d511d2654f5a42af9f81892abba1f76a09d42fd8b01169ed",
+      "lang": "zh",
+      "width": 320,
+      "height": 900,
+      "owner": "labor-loads",
+      "schedule": [
+        {
+          "artist": 2,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        },
+        {
+          "artist": 2,
+          "start": 0
+        }
+      ],
+      "inputs": {
+        "schedule": [
+          {
+            "artist": 2,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          },
+          {
+            "artist": 2,
+            "start": 0
+          }
+        ],
+        "ranges": [
+          {
+            "id": "labor-start-0",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-1",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-2",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-3",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-4",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          },
+          {
+            "id": "labor-start-5",
+            "min": "0",
+            "max": "42",
+            "step": "1",
+            "value": "0"
+          }
+        ],
+        "choices": [
+          {
+            "id": "labor-worker-0-0",
+            "pressed": "false"
+          },
+          {
+            "id": "labor-worker-0-1",
+            "pressed": "false"
+          },
+          {
+            "id": "labor-worker-0-2",
+            "pressed": "true"
+          },
+          {
+            "id": "labor-worker-1-0",
+            "pressed": "false"
+          },
+          {
+            "id": "labor-worker-1-1",
+            "pressed": "false"
+          },
+          {
+            "id": "labor-worker-1-2",
+            "pressed": "true"
+          },
+          {
+            "id": "labor-worker-2-0",
+            "pressed": "false"
+          },
+          {
+            "id": "labor-worker-2-1",
+            "pressed": "false"
+          },
+          {
+            "id": "labor-worker-2-2",
+            "pressed": "true"
+          },
+          {
+            "id": "labor-worker-3-0",
+            "pressed": "false"
+          },
+          {
+            "id": "labor-worker-3-1",
+            "pressed": "false"
+          },
+          {
+            "id": "labor-worker-3-2",
+            "pressed": "true"
+          },
+          {
+            "id": "labor-worker-4-0",
+            "pressed": "false"
+          },
+          {
+            "id": "labor-worker-4-1",
+            "pressed": "false"
+          },
+          {
+            "id": "labor-worker-4-2",
+            "pressed": "true"
+          },
+          {
+            "id": "labor-worker-5-0",
+            "pressed": "false"
+          },
+          {
+            "id": "labor-worker-5-1",
+            "pressed": "false"
+          },
+          {
+            "id": "labor-worker-5-2",
+            "pressed": "true"
+          }
+        ]
+      },
+      "expected": {
+        "ok": false,
+        "reason": "dependency",
+        "loads": [
+          0,
+          0,
+          60
+        ],
+        "validJobs": 1
+      },
+      "dom_expected": {
+        "game-hint": "下一步太早開始，先等前一份工作完成。",
+        "labor-status": "下一步太早開始，先等前一份工作完成。",
+        "labor-loads": "工作量 A 0／B 0／C 60",
+        "game-progress": "1 / 6",
+        "output:labor-start-0": "0",
+        "output:labor-start-1": "0",
+        "output:labor-start-2": "0",
+        "output:labor-start-3": "0",
+        "output:labor-start-4": "0",
+        "output:labor-start-5": "0"
+      }
+    },
+    "target_sha256": "f55ff443dca4011853eec3932b8a2c9264050778831aff1d1e99c556ae2fe714",
+    "prev_hash": "6267e61328861aff0993dd8ef1bbc20e071415dffa80fcfc2e18f6524d668a62",
+    "lease_sha256": "6267e61328861aff0993dd8ef1bbc20e071415dffa80fcfc2e18f6524d668a62",
+    "inventory": [
+      {
+        "file": "records/000000/outcome.json",
+        "sha256": "633e9a5e8dcaf51c2f144bb3b6514a7ef474dae5abd17dc3ae6642bc43a0c3e0",
+        "bytes": 959
+      },
+      {
+        "file": "attempts/000000.start.json",
+        "sha256": "77a781030778c42e6aea942dc57834529c9417a4e3d4af6f008e1853e9c9003e",
+        "bytes": 5058
+      },
+      {
+        "file": "attempts/000000.end.json",
+        "sha256": "c6a07013c8af4716e5b360f45991864a048ab55748c9c6bf4a81f86ba348a336",
+        "bytes": 1231
+      }
+    ],
+    "outcome": {
+      "accepted": false,
+      "capture_error": "{\"name\":\"Error\",\"message\":\"native returned incomplete data; partial receipt is not native pass\",\"stack\":\"Error: native returned incomplete data; partial receipt is not native pass\\n    at Object.captureOne (C:\\\\agywork\\\\agd-holiday-prototypes\\\\holiday-lab\\\\layout-qa\\\\labor-finite-native\\\\continuation-20261023\\\\attempt.cjs:9:619)\\n    at async waitForActual (node:assert:646:5)\\n    at async strict.rejects (node:assert:769:25)\\n    at async TestContext.<anonymous> (C:\\\\agywork\\\\agd-holiday-prototypes\\\\holiday-lab\\\\layout-qa\\\\labor-continuation-independent-review-20261023\\\\independent.test.cjs:28:3)\\n    at async Test.run (node:internal/test_runner/test:1208:7)\\n    at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)\",\"stage\":\"partial-native-return: source stage unknown\",\"cause\":null,\"original_internal_source_stage\":\"unknown\"}"
+    }
+  },
+  "hash": "b79cb934beacee0ee7e107235c9479dc9b5132a17fde3575640ef452c7cdd5c7"
+}

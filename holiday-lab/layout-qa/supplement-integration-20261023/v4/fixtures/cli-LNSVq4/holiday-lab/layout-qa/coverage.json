@@ -1,0 +1,52 @@
+{
+  "status": "PARTIAL_RED",
+  "date": "2026-10-23T04:43:38.940Z",
+  "base": "http://127.0.0.1:8845",
+  "expected_sampler_sha256": "sampler-sha",
+  "required": 6,
+  "covered": 0,
+  "missing_count": 6,
+  "geometry_errors": 0,
+  "runs": [],
+  "rejected": [],
+  "supplemental_only": [],
+  "missing": [
+    {
+      "id": "peace-memory/zh/game/preview",
+      "width": 320,
+      "height": 900
+    },
+    {
+      "id": "peace-memory/zh/game/preview",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "id": "peace-memory/en/game/preview",
+      "width": 320,
+      "height": 900
+    },
+    {
+      "id": "peace-memory/en/game/preview",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "id": "peace-memory/ja/game/preview",
+      "width": 320,
+      "height": 900
+    },
+    {
+      "id": "peace-memory/ja/game/preview",
+      "width": 1440,
+      "height": 1000
+    }
+  ],
+  "red": [],
+  "scope_notes": [
+    "Completed exact-source rows only; live partial games do not receive completed-row credit.",
+    "Archive normal gets its canonical contract ID with explicit original raw ID preserved.",
+    "game/error-longest remains missing until actual branch identity and longest dynamic-string coverage have been audited.",
+    "This index does not populate official layout-report.json, clear raw method violations, or claim user visual approval."
+  ]
+}

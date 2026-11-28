@@ -1,0 +1,109 @@
+{
+  "seq": 0,
+  "target_id": "labor/en/1440x1000/load-189/labor-loads",
+  "start_ref": {
+    "file": "attempts/000000.start.json",
+    "sha256": "93325eec09a9fe7f87f170773675817ab399189a315248f56e8c4c2449a0e1cd",
+    "bytes": 5053
+  },
+  "outcome": {
+    "accepted": true,
+    "domain": {
+      "schema": 1,
+      "valid": false,
+      "target_checks": {
+        "exact_dom": true,
+        "fixed_safe": true,
+        "font": true,
+        "full_range": true,
+        "geometry_clear": true,
+        "safe": true,
+        "unclipped": true,
+        "viewport": true
+      },
+      "flag_classification": {
+        "valid": false,
+        "proofs": [
+          {
+            "flag": "TEXT_CLIPPED_OR_UNREAD_SCROLL_CONTENT layout-owner-12 Shot 1 · Motion (12)",
+            "classification": "proven_non_target_scroll",
+            "owner": "layout-owner-12",
+            "text": "Shot 1 · Motion (12)",
+            "ink": {
+              "x": 907.265625,
+              "y": 1105.2734375,
+              "width": 151.9691102074794,
+              "height": 14.7109375
+            },
+            "unclipped_ink": {
+              "x": 907.265625,
+              "y": 1105.2734375,
+              "width": 151.9691102074795,
+              "height": 16.240384615384617
+            }
+          },
+          {
+            "flag": "SCROLL_CONTENT_PENDING 41 text nodes require additional actual scroll captures",
+            "classification": "proven_non_target_scroll",
+            "owners": [
+              "labor-worker-1-0",
+              "labor-worker-1-1",
+              "labor-worker-1-2",
+              "layout-owner-13",
+              "labor-start-1-minus",
+              "layout-owner-14",
+              "labor-start-1-plus",
+              "layout-owner-15",
+              "labor-worker-2-0",
+              "labor-worker-2-1",
+              "labor-worker-2-2",
+              "layout-owner-16",
+              "labor-start-2-minus",
+              "layout-owner-17",
+              "labor-start-2-plus",
+              "layout-owner-18",
+              "labor-worker-3-0",
+              "labor-worker-3-1",
+              "labor-worker-3-2",
+              "layout-owner-19",
+              "labor-start-3-minus",
+              "layout-owner-20",
+              "labor-start-3-plus",
+              "layout-owner-21",
+              "labor-worker-4-0",
+              "labor-worker-4-1",
+              "labor-worker-4-2",
+              "layout-owner-22",
+              "labor-start-4-minus",
+              "layout-owner-23",
+              "labor-start-4-plus",
+              "layout-owner-24",
+              "labor-worker-5-0",
+              "labor-worker-5-1",
+              "labor-worker-5-2",
+              "layout-owner-25",
+              "labor-start-5-minus",
+              "layout-owner-26",
+              "labor-start-5-plus",
+              "labor-preview",
+              "labor-save"
+            ]
+          }
+        ],
+        "reasons": [
+          "target or unknown method flag: UNKNOWN_FLAG"
+        ]
+      },
+      "original_pass": false,
+      "original_global_method_clear": false,
+      "original_flags": [
+        "TEXT_CLIPPED_OR_UNREAD_SCROLL_CONTENT layout-owner-12 Shot 1 · Motion (12)",
+        "SCROLL_CONTENT_PENDING 41 text nodes require additional actual scroll captures",
+        "UNKNOWN_FLAG"
+      ],
+      "global_ui_pass": false,
+      "full_project_approved": false
+    }
+  },
+  "stopped": true
+}

@@ -1,5 +1,14 @@
 # 清明v3隔離工具準備 checkpoint
 
+## 離線交付完成，尚未准native
+
+- 新scope、完整Console location／CDP Network raw收據、精確favicon404Other分類、原旗標保留、globalfalse、case診斷prefix hash、合作式unknown-error stop與唯讀run verifier已實作。
+- method-freeze.json SHA336801bea732063145909c7f22156e203e84fb99ab6fbceca809808a31297cee；36files/28bindings。後續只寫REPORT/CHECKPOINT與stdout，不改凍結方法。
+- test-final.txt：27/27、fail0、exit0；verify-prepared-output.txt：exit0，原v2 unchanged、舊failed stillfailed、pilot36／1392未縮、runtime相符。
+- 原v2方法/inputs/runtime/freeze/run沒有改；原6張zh320沒有拿來補新run或洗舊failed。6個render helper原碼SHA逐函式相同。
+- approval-template.json=approvedfalse；沒有native-runs、沒有browser/native/HTTP或自有背景程序。完整新run verifier尚無核准run可整合實跑，保持NO。
+- 下一步由root審凍結方法與故障stdout後才可明確核准fresh root-v3-* pilot。詳REPORT.md／PLAN.md。以下保留開始準備時點的未完成記錄，不當最新狀態。
+
 2026-10-23。主控指派僅離線工具準備，未准native。本目錄已建立，僅從原v2逐SHA驗過後複製20份方法／來源／輸入／測試；繼承收據在V2-INHERITANCE.json。原v2所有方法/runtime/inputs/freeze/root-pilot-01沒有改動。
 
 主控已確認原root-pilot-01於06:10:12.703Z真exit1；已存6份zh320完整targetpass/geometry0案例，但session console有一條404、原callback未存location、未source_after，整run仍failed，不能回填成pass。另次新導航diagnostic確實觀察favicon URL `http://127.0.0.1:8845/favicon.ico`、404、Network resourceType Other；此為獨立新診斷，不能補舊run缺欄。

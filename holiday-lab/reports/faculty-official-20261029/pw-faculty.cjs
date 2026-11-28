@@ -17,7 +17,7 @@ const slugs = ['chenchinghung', 'chiangyamei', 'wangtsungli', 'chenchungkuang', 
       const page = await ctx.newPage(), errs = [];
       page.on('console', m => { if (m.type() === 'error') errs.push(m.text().slice(0, 160)); }); page.on('pageerror', e => errs.push(String(e).slice(0, 160)));
       const t = zh.find(x => x.slug === slug);
-      await page.goto(`${base}?lang=${lang}#/faculty/${slug}`, { waitUntil: 'networkidle' });
+      await page.goto(`${base}?lang=${lang}#/faculty/${slug}`, { waitUntil: 'load', timeout: 60000 });
       // 等詳細頁真的畫出來（英文名在三語頁面都會出現），避免第一頁還沒渲染就讀文字
       await page.waitForFunction(n => document.body.innerText.includes(n) && /RESEARCH|COURSES/i.test(document.body.innerText), t.en, { timeout: 20000 });
       await page.waitForTimeout(500);

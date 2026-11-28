@@ -1,5 +1,15 @@
 # 勞動continuation獨立審查暫存點
 
+## 最終r2複驗更新
+
+下方「尚未freeze／未全綠」是中途保全歷史，已由本段取代。作者最終r2 freeze SHA `c1b4937e2ace9504ed537cee973a387051227688d43944dd03791cf0a453ac07`已取得；plan原SHA `7460aa03682c3bcdf855fc00deb6034d8f2845d5edf3946cf6dcc1aa8fb9edef`已核。
+
+已親跑獨立6tests全部通過，詳`final-tests.txt`。不只terminalState helper，也抽取現行verifyUnion／execute完整原函式，以明標純離線fixtures驗五種terminal與五種control-flow故障分支，詳`terminal-final-receipt.json`、`execute-flow-receipt.json`。舊三個真RED原樣保留，不覆寫。
+
+親跑真唯讀`verify-review.cjs`／`continue.frozen()`重核331成功prefix、2453規劃suffix、原332attempt及3650舊refs；fetch0、真native module未載入、沒有新continuation run。結果`final-review.json`與正式`REPORT.md`可獨立閱讀。
+
+目前是「r2工具離線複驗通過」，仍不是新2453原生採集完成或批准。下一步只能由root審碼並決定明示新scope批准；本代理未新HTTP／browser／native。沒有背景程序。
+
 2026-10-23，source_agent: codex。依root要求保全。**本輪尚未完成最終審查，不是PASS，不代表批准native。**
 
 ## 寫入範圍與實際狀態
@@ -45,3 +55,11 @@ exit 1，三個false_positive=true
 5. 最終報告分「已修並獨立驗證」「仍未驗／NO」「原生未啟動」，交root審碼後才由root決定下一步。
 
 本審查沒有背景程序需要停止。
+
+## 後續離線複驗進度（仍未freeze）
+
+已新增`independent.test.cjs`，所有fixture只在本目錄。實際跑到的wrapper測試涵蓋full raw後置故障、partial return連PNG原bytes、ECONNRESET cause／unknown stage、halfwrite，以及context end篡改；這三個相關test項目通過，fetch counter為0。精確union純fixture測試亦在同一批通過。
+
+整批目前**未全綠**：作者正在將cleanup成功改成completion的必要前提，terminalState測試使用的舊成功fixture未帶cleanup receipt，被新assert拒絕；這不是已確認的產品缺陷。等待作者提供最終cleanup資料shape後更新獨立fixture再重驗。`independent-current.txt`保留目前3 passed／1 failed實際輸出，不宣稱PASS。
+
+cleanup風險已回報，作者現行程式出現`completion without successful immutable native cleanup`檢查，但本輪還未讀完最終實作或取得freeze，不能僅憑訊息／單條assert稱已閉合。

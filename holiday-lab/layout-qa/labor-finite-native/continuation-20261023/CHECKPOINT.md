@@ -1,5 +1,9 @@
 # 勞動獨立續接：離線工具尚未 ready／未批准
 
+2026-10-23 r2離線交付更新：`REPORT.md`已完成。cleanup與terminal缺口已修；r2 `tests-r2-output.txt`真7/7 PASS，`prepare-r2-output.txt`及`preflight-r2-output.txt`真exit0，無approval execute真exit1。r2 freeze `c1b4937e2ace9504ed537cee973a387051227688d43944dd03791cf0a453ac07`，plan `7460aa03682c3bcdf855fc00deb6034d8f2845d5edf3946cf6dcc1aa8fb9edef`，base snapshot `3ece6d2bf7a08082c3631dabc2bf44108b592bfa17bd55d6bd1857bcec08e8d5`。首版freeze76d1…保留且已取代不可用。現在工具已備妥供審碼，**仍未批准、未啟native、未有continuation-attempt**；不能宣稱2453suffix或2784union已完成。下一步是主控及獨立審查核r2方法／SHA，再決定新scope批准。以下保留歷次保全時點，不代表目前仍未修cleanup。
+
+2026-10-23 更新：cleanup終態缺口已修為 final-source → immutable native-close receipt → completion；失敗會保存cleanup failure／cause且不建立completion，不自動重試close。`tests-r2-output.txt` 已真7/7 PASS、exit0。新r2 prepare唯讀程序已啟動，session22172，目前尚待最終stdout與SHA確認；未啟native。首版freeze仍保留不覆寫。以下保留前一個保全時點供回溯，最終交付以待補REPORT與r2結果為準。
+
 2026-10-23 06:15 UTC。本輪未啟動 browser/native 或續接採集。`continuation-attempt/` 尚不存在；原 full folder／原 freeze／原332attempt均未改。
 
 ## 已完成並落地

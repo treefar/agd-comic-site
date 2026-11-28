@@ -1,0 +1,121 @@
+{
+  "type": "source-extracted-offline-negative-v1",
+  "source_sha256": "acccb72cf1a70b4f07897e054d0f0686eeed1e4050ae2400f4c3d1a28a844fb1",
+  "snapshot": "continue-source-v1.cjs.txt",
+  "snippets": {
+    "reconcile": {
+      "source": "function reconcile(full,prefix,suffix,history){assert.equal(full.length,2784);assert.deepEqual(history,{original_attempts:332,successful_prefix:331,failed_original_seq:331,failed_target:RETRY_TARGET,original_failure_retained:true,original_failure_has_png:false});assert.equal(prefix.length,331);for(let i=0;i<331;i++){assert.deepEqual(prefix[i].target,full[i],'immutable prefix identity');assert.equal(prefix[i].valid,true,'unverified prefix cannot count');}assert.ok(suffix.length<=2453);for(let i=0;i<suffix.length;i++){assert.deepEqual(suffix[i].target,full[i+331],'suffix skipped/repeated/wrong target');assert.equal(suffix[i].valid,true,'unknown/failed native is not credit');assert.equal(suffix[i].context_complete,true,'missing source/error-stage context cannot count');}return{complete:suffix.length===2453,immutable_completed_prefix:331,new_credited_targets:suffix.length,union_credited_targets:331+suffix.length,expected_union_targets:2784,original_failed_attempt_retained:true,recollected_failed_obligation:suffix.length>0?RETRY_TARGET:null,total_historical_attempts:332+suffix.length,global_ui_pass:false,full_project_approved:false};}",
+      "start": 1346,
+      "end": 2493
+    },
+    "verifyUnion": {
+      "source": "function verifyUnion({requireCompletion=false}={}){const f=frozen(),meta=read(path.join(container,'continuation.meta.json'));assert.deepEqual(fs.readdirSync(container).sort(),['run','contexts','continuation.meta.json',...['completion.json','failure.json'].filter(x=>fs.existsSync(path.join(container,x)))].sort(),'unexpected continuation container inventory');approve(meta.scope.approval,f);assert.equal(meta.scope.freeze_sha256,f.freeze_sha256);assert.equal(meta.scope.base_snapshot_sha256,f.own.base_snapshot_sha256);assert.deepEqual(meta.original_history,f.old.history);assert.equal(meta.old_freeze_sha256,f.old.f.freeze_sha256);assert.equal(meta.target_count,2453);assert.equal(meta.first_target,RETRY_TARGET);const config={binding:f.old.f.binding,targets:f.old.suffix,scope:meta.scope,owner:meta.owner},v=store.verify(run,config),suffix=[];let failedContext=null;const allRefs=[];\n for(let i=0;i<v.count;i++){const target=f.old.suffix[i],x=require('./attempt.cjs').verifyContext({container,run,contexts,i,target,explicit_recollection:f.own.explicit_recollection,binding:f.old.f.binding,load:()=>v.load(i)});allRefs.push(...x.files);if(x.credited)suffix.push({target,valid:true,context_complete:true});else{assert.equal(i,v.count-1,'records after failed context');failedContext={new_seq:i,original_plan_index:331+i,target_id:target.id,native_data_returned:x.end.native_data_returned,error:x.end.error};}}\n assert.deepEqual(fs.readdirSync(contexts).sort(),allRefs.sort(),'orphan/partial context evidence');const union=reconcile(f.old.f.plan,f.old.prefix,suffix,f.old.history);if(failedContext)assert.equal(union.complete,false);const summary={...union,new_attempts:v.count,new_failed_context:failedContext,old_last_hash:OLD_LAST,new_last_hash:v.last_hash,source_font_dependency_binding_sha256:e.digest(f.old.f.binding),freeze_sha256:f.freeze_sha256,original_pass_count:331+v.original_pass_count,original_false_count:v.original_false_count,browser_started:false,native_started:false};if(requireCompletion&&union.complete){assert.equal(fs.existsSync(path.join(container,'failure.json')),false);assert.deepEqual(read(path.join(container,'completion.json')),{schema:1,...summary,source_after:f.old.f.binding.receipts});}return summary;}",
+      "start": 11090,
+      "end": 13325
+    }
+  },
+  "results": [
+    {
+      "kind": "all-targets-no-completion",
+      "observed": {
+        "complete": true,
+        "immutable_completed_prefix": 331,
+        "new_credited_targets": 2453,
+        "union_credited_targets": 2784,
+        "expected_union_targets": 2784,
+        "original_failed_attempt_retained": true,
+        "recollected_failed_obligation": "labor/zh/320x900/output-3-2/output:labor-start-3",
+        "total_historical_attempts": 2785,
+        "global_ui_pass": false,
+        "full_project_approved": false,
+        "new_attempts": 2453,
+        "new_failed_context": null,
+        "old_last_hash": "unchanged-old-last-hash",
+        "new_last_hash": "new-last",
+        "source_font_dependency_binding_sha256": "176a295f7d63602386fc3d8723406f50c90fd6fcd831f844bc88baf62e5aa902",
+        "freeze_sha256": "freeze",
+        "original_pass_count": 2784,
+        "original_false_count": 0,
+        "browser_started": false,
+        "native_started": false
+      },
+      "expected": {
+        "domain_complete": true,
+        "run_complete": false,
+        "complete": false,
+        "terminal_failure_visible": false
+      },
+      "false_positive": true
+    },
+    {
+      "kind": "all-targets-final-source-failure",
+      "observed": {
+        "complete": true,
+        "immutable_completed_prefix": 331,
+        "new_credited_targets": 2453,
+        "union_credited_targets": 2784,
+        "expected_union_targets": 2784,
+        "original_failed_attempt_retained": true,
+        "recollected_failed_obligation": "labor/zh/320x900/output-3-2/output:labor-start-3",
+        "total_historical_attempts": 2785,
+        "global_ui_pass": false,
+        "full_project_approved": false,
+        "new_attempts": 2453,
+        "new_failed_context": null,
+        "old_last_hash": "unchanged-old-last-hash",
+        "new_last_hash": "new-last",
+        "source_font_dependency_binding_sha256": "176a295f7d63602386fc3d8723406f50c90fd6fcd831f844bc88baf62e5aa902",
+        "freeze_sha256": "freeze",
+        "original_pass_count": 2784,
+        "original_false_count": 0,
+        "browser_started": false,
+        "native_started": false
+      },
+      "expected": {
+        "domain_complete": true,
+        "run_complete": false,
+        "complete": false,
+        "terminal_failure_visible": true
+      },
+      "false_positive": true
+    },
+    {
+      "kind": "one-new-unknown-attempt",
+      "observed": {
+        "complete": false,
+        "immutable_completed_prefix": 331,
+        "new_credited_targets": 0,
+        "union_credited_targets": 331,
+        "expected_union_targets": 2784,
+        "original_failed_attempt_retained": true,
+        "recollected_failed_obligation": null,
+        "total_historical_attempts": 332,
+        "global_ui_pass": false,
+        "full_project_approved": false,
+        "new_attempts": 1,
+        "new_failed_context": {
+          "new_seq": 0,
+          "original_plan_index": 331,
+          "target_id": "labor/zh/320x900/output-3-2/output:labor-start-3",
+          "native_data_returned": false,
+          "error": {
+            "stage": "unknown native capture"
+          }
+        },
+        "old_last_hash": "unchanged-old-last-hash",
+        "new_last_hash": "new-last",
+        "source_font_dependency_binding_sha256": "176a295f7d63602386fc3d8723406f50c90fd6fcd831f844bc88baf62e5aa902",
+        "freeze_sha256": "freeze",
+        "original_pass_count": 331,
+        "original_false_count": 0,
+        "browser_started": false,
+        "native_started": false
+      },
+      "expected": {
+        "total_historical_attempts": 333
+      },
+      "false_positive": true
+    }
+  ],
+  "browser_or_native_or_HTTP": false
+}

@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "attempted": true,
+  "native_created": true,
+  "closed": false,
+  "status": "failed",
+  "error": {
+    "name": "Error",
+    "message": "close failed",
+    "stack": "Error: close failed\n    at Object.close (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\labor-finite-native\\continuation-20261023\\continuation.test.cjs:6:379)\n    at closeNative (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\labor-finite-native\\continuation-20261023\\cleanup.cjs:4:19)\n    at TestContext.<anonymous> (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\labor-finite-native\\continuation-20261023\\continuation.test.cjs:6:322)\n    at Test.runInAsyncScope (node:async_hooks:227:14)\n    at Test.run (node:internal/test_runner/test:1201:25)\n    at Test.processPendingSubtests (node:internal/test_runner/test:831:18)\n    at Test.postRun (node:internal/test_runner/test:1330:19)\n    at Test.run (node:internal/test_runner/test:1258:12)\n    at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)",
+    "stage": "native-close",
+    "cause": {
+      "name": "Error",
+      "message": "pipe closed",
+      "stack": "Error: pipe closed\n    at Object.close (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\labor-finite-native\\continuation-20261023\\continuation.test.cjs:6:426)\n    at closeNative (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\labor-finite-native\\continuation-20261023\\cleanup.cjs:4:19)\n    at TestContext.<anonymous> (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\labor-finite-native\\continuation-20261023\\continuation.test.cjs:6:322)\n    at Test.runInAsyncScope (node:async_hooks:227:14)\n    at Test.run (node:internal/test_runner/test:1201:25)\n    at Test.processPendingSubtests (node:internal/test_runner/test:831:18)\n    at Test.postRun (node:internal/test_runner/test:1330:19)\n    at Test.run (node:internal/test_runner/test:1258:12)\n    at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)",
+      "code": "EPIPE"
+    },
+    "original_internal_source_stage": null
+  }
+}

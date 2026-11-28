@@ -1,3 +1,29 @@
+## 2026-10-29 最新：師資資料補齊已上線（main da4e40ba，Pages run 40824999155 成功）
+
+- source_agent: claude-code（Opus 5.5）；TF-GO。使用者交付「指導動遊系學生國際影展獲獎作品列表(陳慶鴻師).txt」，並要求補其他老師資料；選「每件一筆摘要、修明顯錯字缺的留空、驗完直接上線」。
+- 陳慶鴻：補 2020–2024 指導作品 11 筆（片名沿用站內英文名，國外影展只寫國名）。
+- 官網師資頁查證結果：官網 2026-10-06 已用本機資料改寫，補不到新東西；官網鄧樹遠職稱仍有「電競娛樂系代理主任」，本機依 10/22 指示不改。
+- 其他 10 位老師改依 114 學年度自評報告（雲端 待辦/評鑑0811-final.docx）：使用者選證照＋教學優良獎、研究與產學計畫名稱、專利／帶隊／召集人（創新教材 60 筆不補）；矛盾維持系網，只把陳重光學歷改為視覺設計研究所 碩士；陳慶鴻差異依老師清單。比對檔 holiday-lab/reports/faculty-official-20261029/eval-diff.json（134/139 筆逐字對到報告）。
+- 驗證：本機照 CI 測試 44/44；師資頁三語驗收本機與線上各 30 案例通過（pw-faculty.cjs）。審閱分支 5df5f1ba、發布分支 codex/site-publish-20261025 da4e40ba。
+- 未補：論文、業界經歷、指導學生獲獎（報告只有件數無明細）；楊智彰學歷；報告中不在系網的老師（蘇中和、陳慧萍、李宛庭、陳俊瑋）。8902 審閱版仍在跑（.measure-poster-mix-20261024-36）。
+
+## 2026-10-25 收工：審閱分支已同步上線修正
+
+- source_agent: claude-code（Opus 5.5）；TF-GO。codex/poster-mix24 帶回上線修正（2764ef27、51a3d0ed、79ff7464）＋ 058b9228（英文 XiaoSA、新增 tests/images-tracked.test.cjs）；保留建置守門與創作試玩。測試 45/45。未 push。
+- 本機 8902、8910 已停；重開審閱版：node scripts/serve-local-review.cjs --site=.measure-poster-mix-20261024-35-retry4 --dashboard=holiday-lab/dashboard/out --port=8902
+- 線上 main 8369ec96 不變。規則建議（push 防呆 hook、AGENTS 推送前檢查）仍為提案。手機速度使用者決定先不修。
+- 下一輪第一件事：查證 Codex 報告剩餘項（其他作品英文譯名、就業統計 5 年 300+、聯合登記 5 名口徑、國際交流 2018/7 起訖），問使用者後再決定是否另開發布。
+
+## 2026-10-25 最新：系網新版已上線（main 8369ec96，Pages run 40162690994 成功）
+
+- source_agent: claude-code（Opus 5.5）；TF-GO。使用者授權「派 Codex 檢查英日文排版、翻譯、內文，有問題問我，沒問題就推上系網；最後的創作試玩先不放」。
+- 上線內容：首屏 8 件學生作品全幅海報輪播、日英文強化、在校指南公開（拿掉審閱字樣）、首頁不放創作試玩。依使用者決定修：進修部招生卡用 4f0b1969 新版；教師英文名 Teng Shu-yuan／Chen Mei-jung／Yang Chih-chang；喀嚓 Kacha；陳政名；小颯年份 2021、團隊小颯；週邊→周邊；94% 英文 placement rate；面板依名單變寬不換行。
+- 發布方式：repo 是公開的。第一次誤把整條準備分支（含 holiday-lab 兩萬多檔）推送，25 分鐘後察覺並中止，遠端 main 未更新、未外露。改從 origin/main 開 codex/site-publish-20261025（C:/agywork/agd-site-publish），只搬 69 個網站檔，1 個 commit 快轉推上。線上 holiday-lab 404、guide.json 無內部路徑。
+- Codex 審查：review-codex-20261025/REPORT.md（11 項，P0 0）。Codex 沙盒開不了 Chromium，排版由 Claude 補測 48 案例無水平捲軸。
+- 驗證：本機照 CI npm ci／build／check:report 通過，測試 44/44；Pages 32 秒部署成功；線上 zh／en／ja 200、程式包 app-UBHYJM27.js。
+- 載入時間（pw-loadtime.cjs）：桌機可互動 0.8 秒（舊 1.4）；**4G 手機可互動 20.7 秒（舊 3.1）、首屏海報 29 秒**，原因是下方卡片用原尺寸海報當縮圖、與程式包搶頻寬（新版程式包 gzip 425 KB，舊 206 KB）。使用者 2026-10-25 決定手機速度先不修，維持現狀。
+- 未同步：審閱分支 codex/poster-mix24 尚未帶回準備分支的修正（codex/site-release-20261025，e3a870ab、796ff0de）；本機伺服器 8902、8910 仍在跑；新 skill ~/.claude/skills/agd-comic-site/SKILL.md 記錄流程與地雷。
+
 ## 2026-10-25 最新：8902冤枉汪泡泡上移、競箱團標語框移到右上
 
 - source_agent: claude（Opus 5.5）；TF-GO。前一輪已 commit 61c3c830（codex/poster-mix24，未push）。本輪依使用者要求：冤枉汪左側三個泡泡上移到左上（focus.bubbles:"top"）；競箱團「動畫、遊戲…」標語框移到右上（focus.tagline:"right"）。皆為單張設定，不影響其他海報。

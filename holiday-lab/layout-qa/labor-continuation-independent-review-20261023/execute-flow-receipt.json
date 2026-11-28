@@ -1,0 +1,145 @@
+{
+  "type": "source-extracted-offline-execute-control-flow",
+  "continue_source_sha256": "66edd8174a67aaee350d6e0f6d0557d41334c7db36125e0f0af27f21e55b06a6",
+  "execute_source_sha256": "ecd9940fdc61390701fba9d29c77bc1313d4b05aa017fe0b0763d12a7f2ea41e",
+  "execute_source_span": {
+    "start": 10206,
+    "end": 12901
+  },
+  "scenarios": [
+    {
+      "mode": "success",
+      "sourceCalls": 1,
+      "closeCalls": 1,
+      "completion_written": true,
+      "failure": null,
+      "cleanup": {
+        "schema": 1,
+        "attempted": true,
+        "native_created": true,
+        "closed": true,
+        "status": "closed",
+        "error": null
+      }
+    },
+    {
+      "mode": "final-source-failure",
+      "sourceCalls": 1,
+      "closeCalls": 1,
+      "completion_written": false,
+      "failure": {
+        "schema": 1,
+        "captured_new_attempts": 1,
+        "error": {
+          "message": "offline final source reset",
+          "stage": "final-source"
+        },
+        "automatic_retry": false,
+        "original_failure_untouched": true,
+        "global_ui_pass": false,
+        "full_project_approved": false
+      },
+      "cleanup": {
+        "schema": 1,
+        "attempted": true,
+        "native_created": true,
+        "closed": true,
+        "status": "closed",
+        "error": null
+      }
+    },
+    {
+      "mode": "close-failure",
+      "sourceCalls": 1,
+      "closeCalls": 1,
+      "completion_written": false,
+      "failure": {
+        "schema": 1,
+        "captured_new_attempts": 1,
+        "error": {
+          "message": "offline close rejected",
+          "stage": "native-close"
+        },
+        "automatic_retry": false,
+        "original_failure_untouched": true,
+        "global_ui_pass": false,
+        "full_project_approved": false
+      },
+      "cleanup": {
+        "schema": 1,
+        "attempted": true,
+        "native_created": true,
+        "closed": false,
+        "status": "failed",
+        "error": {
+          "name": "Error",
+          "message": "offline close rejected",
+          "stack": "Error: offline close rejected\n    at Object.close (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\labor-continuation-independent-review-20261023\\execute-flow.test.cjs:9:211)\n    at Object.closeNative (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\labor-finite-native\\continuation-20261023\\cleanup.cjs:4:19)\n    at execute (evalmachine.<anonymous>:3:272)\n    at async waitForActual (node:assert:646:5)\n    at async strict.rejects (node:assert:769:25)\n    at async TestContext.<anonymous> (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\labor-continuation-independent-review-20261023\\execute-flow.test.cjs:16:46)\n    at async Test.run (node:internal/test_runner/test:1208:7)\n    at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3)",
+          "stage": "native-close",
+          "cause": null,
+          "original_internal_source_stage": null
+        }
+      }
+    },
+    {
+      "mode": "completion-write-failure",
+      "sourceCalls": 1,
+      "closeCalls": 1,
+      "completion_written": false,
+      "failure": {
+        "schema": 1,
+        "captured_new_attempts": 1,
+        "error": {
+          "message": "offline completion disk write rejected",
+          "stage": "completion-write"
+        },
+        "automatic_retry": false,
+        "original_failure_untouched": true,
+        "global_ui_pass": false,
+        "full_project_approved": false
+      },
+      "cleanup": {
+        "schema": 1,
+        "attempted": true,
+        "native_created": true,
+        "closed": true,
+        "status": "closed",
+        "error": null
+      }
+    },
+    {
+      "mode": "primary-and-cleanup-failure",
+      "sourceCalls": 1,
+      "closeCalls": 1,
+      "completion_written": false,
+      "failure": {
+        "schema": 1,
+        "captured_new_attempts": 1,
+        "error": {
+          "message": "offline final source reset",
+          "stage": "final-source"
+        },
+        "automatic_retry": false,
+        "original_failure_untouched": true,
+        "global_ui_pass": false,
+        "full_project_approved": false
+      },
+      "cleanup": {
+        "schema": 1,
+        "attempted": true,
+        "native_created": true,
+        "closed": false,
+        "status": "failed",
+        "error": {
+          "name": "Error",
+          "message": "offline close rejected",
+          "stack": "Error: offline close rejected\n    at Object.close (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\labor-continuation-independent-review-20261023\\execute-flow.test.cjs:9:211)\n    at Object.closeNative (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\labor-finite-native\\continuation-20261023\\cleanup.cjs:4:19)\n    at execute (evalmachine.<anonymous>:4:353)\n    at async waitForActual (node:assert:646:5)\n    at async strict.rejects (node:assert:769:25)\n    at async TestContext.<anonymous> (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\labor-continuation-independent-review-20261023\\execute-flow.test.cjs:16:46)\n    at async Test.run (node:internal/test_runner/test:1208:7)\n    at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3)",
+          "stage": "native-close",
+          "cause": null,
+          "original_internal_source_stage": null
+        }
+      }
+    }
+  ],
+  "native_browser_or_HTTP_executed": false
+}

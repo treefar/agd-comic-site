@@ -1,0 +1,33 @@
+✔ same numeric zero cannot be attached to a different output owner (0.9854ms)
+✔ numeric separability rejects missing serialized values and row geometry drift (0.4157ms)
+✔ truncated PNG and wrong dimensions fail actual decoder (69.3955ms)
+✖ approval, exact source, immutable checkpoint and primitive coverage fail closed (64.3754ms)
+✔ all original failure flags and exact native target requirements are mandatory (1.5415ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 140.5233
+
+✖ failing tests:
+
+test at holiday-lab\layout-qa\qingming-native-v3-20261023\native-tools.test.cjs:6:1
+✖ approval, exact source, immutable checkpoint and primitive coverage fail closed (64.3754ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (C:\agywork\agd-holiday-prototypes\holiday-lab\layout-qa\qingming-native-v3-20261023\native-tools.test.cjs:6:585)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }

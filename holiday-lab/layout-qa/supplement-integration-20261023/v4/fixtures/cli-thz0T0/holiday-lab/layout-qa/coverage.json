@@ -1,0 +1,60 @@
+{
+  "status": "PARTIAL_RED",
+  "date": "2026-10-23T04:48:09.666Z",
+  "base": "http://127.0.0.1:8845",
+  "expected_sampler_sha256": "sampler-sha",
+  "required": 6,
+  "covered": 6,
+  "missing_count": 0,
+  "geometry_errors": 0,
+  "runs": [
+    {
+      "kind": "peace-listening-preview",
+      "proof_file": "C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\supplement-integration-20261023\\v4\\fixtures\\cli-thz0T0\\holiday-lab\\layout-qa\\canonical-candidates.json",
+      "frames": 6,
+      "canonical_eligible_keys": [
+        [
+          "peace-memory/zh/game/preview",
+          320,
+          900
+        ],
+        [
+          "peace-memory/zh/game/preview",
+          1440,
+          1000
+        ],
+        [
+          "peace-memory/en/game/preview",
+          320,
+          900
+        ],
+        [
+          "peace-memory/en/game/preview",
+          1440,
+          1000
+        ],
+        [
+          "peace-memory/ja/game/preview",
+          320,
+          900
+        ],
+        [
+          "peace-memory/ja/game/preview",
+          1440,
+          1000
+        ]
+      ],
+      "full_project_approved": false
+    }
+  ],
+  "rejected": [],
+  "supplemental_only": [],
+  "missing": [],
+  "red": [],
+  "scope_notes": [
+    "Completed exact-source rows only; live partial games do not receive completed-row credit.",
+    "Archive normal gets its canonical contract ID with explicit original raw ID preserved.",
+    "game/error-longest remains missing until actual branch identity and longest dynamic-string coverage have been audited.",
+    "This index does not populate official layout-report.json, clear raw method violations, or claim user visual approval."
+  ]
+}

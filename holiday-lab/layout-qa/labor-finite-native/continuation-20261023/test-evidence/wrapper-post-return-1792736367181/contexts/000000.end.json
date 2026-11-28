@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "seq": 0,
+  "original_plan_index": 331,
+  "target_id": "labor/zh/320x900/load-0/labor-loads",
+  "source_context_complete": false,
+  "native_data_returned": true,
+  "native_return_complete": true,
+  "error": {
+    "name": "TypeError",
+    "message": "fetch failed",
+    "stack": "TypeError: fetch failed\n    at TestContext.<anonymous> (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\labor-finite-native\\continuation-20261023\\continuation.test.cjs:9:1288)\n    at Test.runInAsyncScope (node:async_hooks:227:14)\n    at Test.run (node:internal/test_runner/test:1201:25)\n    at Test.processPendingSubtests (node:internal/test_runner/test:831:18)\n    at Test.postRun (node:internal/test_runner/test:1330:19)\n    at Test.run (node:internal/test_runner/test:1258:12)\n    at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)",
+    "stage": "post-native-source-context",
+    "cause": {
+      "name": "Error",
+      "message": "read ECONNRESET",
+      "stack": "Error: read ECONNRESET\n    at TestContext.<anonymous> (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\labor-finite-native\\continuation-20261023\\continuation.test.cjs:9:1339)\n    at Test.runInAsyncScope (node:async_hooks:227:14)\n    at Test.run (node:internal/test_runner/test:1201:25)\n    at Test.processPendingSubtests (node:internal/test_runner/test:831:18)\n    at Test.postRun (node:internal/test_runner/test:1330:19)\n    at Test.run (node:internal/test_runner/test:1258:12)\n    at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)",
+      "code": "ECONNRESET"
+    },
+    "original_internal_source_stage": null
+  },
+  "preservation_error": null,
+  "receipts": [
+    {
+      "file": "contexts/000000.start.json",
+      "sha256": "d392286ed029734c670748faf69a5a58bd8e6f475ec5a36e51fe391098d4a14b",
+      "bytes": 4990
+    },
+    {
+      "file": "contexts/000000.before-source.json",
+      "sha256": "af6beb44a3a318b259c8228979a53d8a5ef1906978b6f09c60312c283a5b60bc",
+      "bytes": 5700
+    },
+    {
+      "file": "contexts/000000.native-return.json",
+      "sha256": "ff6e147c57b768674b50267a9ab8d71f979404819abc5362da84c50ce3e8a28d",
+      "bytes": 325
+    },
+    {
+      "file": "contexts/000000.after-source.json",
+      "sha256": "0f074608352c8eb87591ce12b1fea8e8765ece181868f3245df45faf78fb8c74",
+      "bytes": 5698
+    }
+  ],
+  "engine_checkpoint": {
+    "file": "run/checkpoints/000000.json",
+    "sha256": "3fe53606adff0f631716261e21572dbd842a9cc7599d1f8c1ba653f360e41591",
+    "bytes": 8366
+  },
+  "engine_outcome": {
+    "accepted": true,
+    "domain": {
+      "schema": 1,
+      "valid": true,
+      "target_checks": {
+        "exact_dom": true,
+        "fixed_safe": true,
+        "font": true,
+        "full_range": true,
+        "geometry_clear": true,
+        "safe": true,
+        "unclipped": true,
+        "viewport": true
+      },
+      "flag_classification": {
+        "valid": true,
+        "proofs": [],
+        "reasons": []
+      },
+      "original_pass": true,
+      "original_global_method_clear": true,
+      "original_flags": [],
+      "global_ui_pass": true,
+      "full_project_approved": false
+    }
+  }
+}

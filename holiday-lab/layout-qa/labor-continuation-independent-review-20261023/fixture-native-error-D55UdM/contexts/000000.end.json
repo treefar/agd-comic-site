@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "seq": 0,
+  "original_plan_index": 331,
+  "target_id": "labor/zh/320x900/load-0/labor-loads",
+  "source_context_complete": false,
+  "native_data_returned": false,
+  "native_return_complete": false,
+  "error": {
+    "name": "TypeError",
+    "message": "fetch failed",
+    "stack": "TypeError: fetch failed\n    at TestContext.<anonymous> (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\labor-continuation-independent-review-20261023\\independent.test.cjs:25:115)\n    at async Test.run (node:internal/test_runner/test:1208:7)\n    at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)",
+    "stage": "native.capture: internal source stage unknown",
+    "cause": {
+      "name": "Error",
+      "message": "read ECONNRESET",
+      "stack": "Error: read ECONNRESET\n    at TestContext.<anonymous> (C:\\agywork\\agd-holiday-prototypes\\holiday-lab\\layout-qa\\labor-continuation-independent-review-20261023\\independent.test.cjs:25:45)\n    at async Test.run (node:internal/test_runner/test:1208:7)\n    at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)",
+      "code": "ECONNRESET"
+    },
+    "original_internal_source_stage": "unknown"
+  },
+  "preservation_error": null,
+  "receipts": [
+    {
+      "file": "contexts/000000.start.json",
+      "sha256": "2e4cd051479135e8f395aacb430fb84c4a348106625198bb078ab966bcfd3031",
+      "bytes": 5008
+    }
+  ],
+  "engine_checkpoint": {
+    "file": "run/checkpoints/000000.json",
+    "sha256": "3aa83202b041a30e76eff6a562fd39042e3c1722a3ef3c69800bedfa22eb0da7",
+    "bytes": 7217
+  },
+  "engine_outcome": {
+    "accepted": false,
+    "capture_error": "{\"name\":\"TypeError\",\"message\":\"fetch failed\",\"stack\":\"TypeError: fetch failed\\n    at TestContext.<anonymous> (C:\\\\agywork\\\\agd-holiday-prototypes\\\\holiday-lab\\\\layout-qa\\\\labor-continuation-independent-review-20261023\\\\independent.test.cjs:25:115)\\n    at async Test.run (node:internal/test_runner/test:1208:7)\\n    at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)\",\"stage\":\"native.capture: internal source stage unknown\",\"cause\":{\"name\":\"Error\",\"message\":\"read ECONNRESET\",\"stack\":\"Error: read ECONNRESET\\n    at TestContext.<anonymous> (C:\\\\agywork\\\\agd-holiday-prototypes\\\\holiday-lab\\\\layout-qa\\\\labor-continuation-independent-review-20261023\\\\independent.test.cjs:25:45)\\n    at async Test.run (node:internal/test_runner/test:1208:7)\\n    at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)\",\"code\":\"ECONNRESET\"},\"original_internal_source_stage\":\"unknown\"}"
+  }
+}

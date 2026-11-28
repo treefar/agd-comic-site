@@ -1,0 +1,15 @@
+// Strict read-only final method/base review: never prepare, preflight, execute, launch, or fetch.
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),crypto=require('node:crypto');
+const source=path.resolve(__dirname,'../labor-finite-native/continuation-20261023'),hash=f=>crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');
+function verify(){
+ const freezeFile=path.join(source,'continuation-freeze-r2.json'),planFile=path.join(source,'continuation-plan.json'),expected='c1b4937e2ace9504ed537cee973a387051227688d43944dd03791cf0a453ac07',before=hash(freezeFile);assert.equal(before,expected,'reviewed r2 freeze drift');assert.equal(hash(planFile),'7460aa03682c3bcdf855fc00deb6034d8f2845d5edf3946cf6dcc1aa8fb9edef');
+ const nativeFile=require.resolve(path.resolve(source,'../engine-v4/native.cjs'));assert.equal(require.cache[nativeFile],undefined,'native module must remain unloaded');
+ const originalFetch=global.fetch;let fetchCalls=0;global.fetch=async()=>{fetchCalls++;throw Error('independent read-only review forbids HTTP');};
+ let f;try{f=require(path.join(source,'continue.cjs')).frozen();}finally{global.fetch=originalFetch;}
+ assert.equal(fetchCalls,0);assert.equal(require.cache[nativeFile],undefined);
+ const c=require(path.join(source,'continue.cjs')),own=f.own;assert.equal(own.revision,2);assert.equal(own.global_ui_pass,false);assert.equal(own.full_project_approved,false);assert.equal(own.automatic_retry,false);assert.equal(f.old.prefix.length,331);assert.equal(f.old.suffix.length,2453);assert.deepEqual(f.old.suffix,c.makeSuffix(f.old.f.plan));assert.equal(new Set(f.old.suffix.map(t=>t.id)).size,2453);assert.ok(!f.old.suffix.some(t=>f.old.prefix.some(x=>x.target.id===t.id)));assert.equal(f.old.suffix[0].id,c.RETRY_TARGET);assert.equal(f.old.snapshot.old_last_hash,c.OLD_LAST);assert.equal(f.old.history.original_attempts,332);assert.equal(f.old.history.failed_original_seq,331);assert.equal(f.old.history.original_failure_retained,true);assert.equal(f.old.history.original_failure_has_png,false);
+ for(const [file,r]of Object.entries(own.code)){const p=path.join(source,file);assert.equal(hash(p),r.sha256);assert.equal(fs.statSync(p).size,r.bytes);}
+ assert.equal(hash(freezeFile),before);assert.equal(fs.existsSync(path.join(source,'continuation-attempt')),false,'this review expects no new continuation run');
+ return {pass:true,freeze:{file:freezeFile,sha256:before},plan:{file:planFile,sha256:hash(planFile)},code:own.code,immutable_prefix:331,new_planned_suffix:2453,union_plan:2784,old_attempts:332,original_seq331_failure_retained:true,old_last_hash:c.OLD_LAST,old_evidence_refs:f.old.snapshot.refs.length,HTTP_calls:fetchCalls,native_module_loaded:false,new_continuation_run_present:false,approval_granted:false,full_native_continuation_verified:false,global_ui_pass:false,full_project_approved:false};
+}
+module.exports={verify};if(require.main===module){try{console.log(JSON.stringify(verify(),null,2));}catch(error){console.error(error);process.exitCode=1;}}
